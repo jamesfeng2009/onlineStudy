@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply font-sans text-brand-50 antialiased;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(249, 115, 22, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(14, 165, 233, 0.25), transparent 60%),
+    linear-gradient(180deg, #020617 0%, #051429 55%, #020617 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ==== 通用组件：玻璃卡片 ==== */
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+      0 20px 40px -20px rgba(2, 132, 199, 0.35);
+  }
+
+  .glass-soft {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-brand-400 to-brand-500 text-white shadow-lg shadow-brand-500/30 hover:from-brand-300 hover:to-brand-400 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-accent {
+    @apply btn bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/30 hover:from-accent-400 hover:to-accent-500 hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/5 text-brand-100 hover:bg-white/10 hover:text-white;
+  }
+
+  .btn-soft {
+    @apply btn bg-white/5 text-brand-100 hover:bg-white/10;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-brand-100/50 outline-none focus:border-brand-400/60 focus:bg-white/10;
+  }
+
+  .h-display {
+    @apply font-display tracking-tight;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-200 via-brand-100 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold text-white md:text-3xl;
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(186, 230, 253, 0.15);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(186, 230, 253, 0.25);
+  background-clip: padding-box;
+}
+
+/* 翻卡动画 */
+.card-flip {
+  perspective: 1400px;
+}
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-flip.is-flipped .card-flip-inner {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-face.back {
+  transform: rotateY(180deg);
+}
+
+/* 页面入场动画 */
+.page-enter > * {
+  animation: pageFade 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 细网格背景 */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* 进度条 shine */
+.progress-shine {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shine 3s linear infinite;
+}
