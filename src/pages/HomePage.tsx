@@ -19,12 +19,31 @@ import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { getLanguage } from "../data/languages";
-import type { Language } from "../types";
+import type { Language, UserProgress } from "../types";
+
+const EMPTY_PROGRESS: UserProgress = {
+  wordsLearned: 0,
+  wordCorrect: 0,
+  wordTotal: 0,
+  quizzesDone: 0,
+  quizCorrect: 0,
+  quizTotal: 0,
+  speakingMinutes: 0,
+  listeningMinutes: 0,
+  perDay: {},
+  moduleScores: {},
+};
 
 export default function HomePage() {
-  const user = useAuthStore((s) => s.currentUser());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
   const setLang = useAuthStore((s) => s.setLanguage);
-  const progress = useProgressStore((s) => s.getForCurrent());
+  const progressMap = useProgressStore((s) => s.progressMap);
+  const progress: UserProgress = useMemo(
+    () => (currentUserId ? (progressMap[currentUserId] ?? EMPTY_PROGRESS) : EMPTY_PROGRESS),
+    [progressMap, currentUserId]
+  );
   const today = useMemo(() => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;

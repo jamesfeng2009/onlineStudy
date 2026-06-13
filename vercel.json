@@ -3,7 +3,8 @@
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "framework": "vite",
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/((?!assets/|favicon\\.svg).*)", "destination": "/" }
   ]
 }

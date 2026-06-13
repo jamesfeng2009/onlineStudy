@@ -6,10 +6,30 @@ import { Flame, Target, BookOpen, Headphones, Mic, Pen, Trophy, TrendingUp } fro
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { lastDays } from "../utils/utils";
+import type { UserProgress } from "../types";
+
+const EMPTY_PROGRESS: UserProgress = {
+  wordsLearned: 0,
+  wordCorrect: 0,
+  wordTotal: 0,
+  quizzesDone: 0,
+  quizCorrect: 0,
+  quizTotal: 0,
+  speakingMinutes: 0,
+  listeningMinutes: 0,
+  perDay: {},
+  moduleScores: {},
+};
 
 export default function DashboardPage() {
-  const user = useAuthStore((s) => s.currentUser());
-  const progress = useProgressStore((s) => s.getForCurrent());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const progressMap = useProgressStore((s) => s.progressMap);
+  const progress: UserProgress = useMemo(
+    () => (currentUserId ? (progressMap[currentUserId] ?? EMPTY_PROGRESS) : EMPTY_PROGRESS),
+    [progressMap, currentUserId]
+  );
   const addExp = useProgressStore((s) => s.addExp);
 
   const days = useMemo(() => lastDays(14), []);

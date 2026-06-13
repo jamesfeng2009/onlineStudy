@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   Globe2,
@@ -28,8 +28,10 @@ const NAV = [
 ];
 
 export default function Header() {
-  const { currentUserId, currentUser, logout } = useAuthStore();
-  const user = currentUser();
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const logout = useAuthStore((s) => s.logout);
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 

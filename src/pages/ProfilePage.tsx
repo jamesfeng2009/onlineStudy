@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { UserCircle2, Globe2, Target, LogOut, Check } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
@@ -7,11 +7,16 @@ import { useProgressStore } from "../store/progressStore";
 import { LANGUAGES } from "../data/languages";
 
 export default function ProfilePage() {
-  const user = useAuthStore((s) => s.currentUser());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
   const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
   const updateUser = useAuthStore((s) => s.updateUser);
   const logout = useAuthStore((s) => s.logout);
-  const progress = useProgressStore((s) => s.getForCurrent());
+  const progressMap = useProgressStore((s) => s.progressMap);
+  const progress = useMemo(() => {
+    if (!currentUserId) return null;
+    return progressMap[currentUserId] ?? null;
+  }, [progressMap, currentUserId]);
 
   const [username, setUsername] = useState(user?.username ?? "");
   const [goal, setGoal] = useState(user?.goalMinutesPerDay ?? 30);

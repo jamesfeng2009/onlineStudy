@@ -1,8 +1,23 @@
+import { useMemo } from "react";
 import { Flame, Trophy, Sparkles, BookOpen, Pen, Mic, Headphones, Crown, Target, Zap, BookMarked } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
+import type { UserProgress } from "../types";
+
+const EMPTY_PROGRESS: UserProgress = {
+  wordsLearned: 0,
+  wordCorrect: 0,
+  wordTotal: 0,
+  quizzesDone: 0,
+  quizCorrect: 0,
+  quizTotal: 0,
+  speakingMinutes: 0,
+  listeningMinutes: 0,
+  perDay: {},
+  moduleScores: {},
+};
 
 const BADGES: {
   id: string;
@@ -144,8 +159,14 @@ interface AchievementContext {
 }
 
 export default function AchievementsPage() {
-  const user = useAuthStore((s) => s.currentUser());
-  const progress = useProgressStore((s) => s.getForCurrent());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const progressMap = useProgressStore((s) => s.progressMap);
+  const progress: UserProgress = useMemo(
+    () => (currentUserId ? (progressMap[currentUserId] ?? EMPTY_PROGRESS) : EMPTY_PROGRESS),
+    [progressMap, currentUserId]
+  );
 
   const ctx: AchievementContext = {
     streak: user?.streak ?? 0,

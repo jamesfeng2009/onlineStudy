@@ -18,7 +18,9 @@ const TABS: { key: Tab; label: string; icon: React.ElementType; desc: string }[]
 ];
 
 export default function LearnPage() {
-  const user = useAuthStore((s) => s.currentUser());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
   const [tab, setTab] = useState<Tab>("words");
   const [lang, setLang] = useState<Language>(user?.targetLanguage ?? "en");
 

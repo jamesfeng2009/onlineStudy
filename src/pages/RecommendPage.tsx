@@ -7,6 +7,9 @@ import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { COURSES } from "../data/courses";
 import { getLanguage } from "../data/languages";
+import type { UserProgress } from "../types";
+
+const EMPTY_MODULE: UserProgress["moduleScores"] = {};
 
 interface Step {
   icon: React.ElementType;
@@ -18,10 +21,16 @@ interface Step {
 }
 
 export default function RecommendPage() {
-  const user = useAuthStore((s) => s.currentUser());
-  const progress = useProgressStore((s) => s.getForCurrent());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const progressMap = useProgressStore((s) => s.progressMap);
+  const moduleScores = useMemo(
+    () => (currentUserId ? (progressMap[currentUserId]?.moduleScores ?? EMPTY_MODULE) : EMPTY_MODULE),
+    [progressMap, currentUserId]
+  );
 
-  const scores = progress.moduleScores;
+  const scores = moduleScores;
   const entries = Object.entries(scores) as [keyof typeof scores, number][];
   // sorted ascending - weakest first
   const sorted = entries.sort(([, a], [, b]) => (a ?? 0) - (b ?? 0));

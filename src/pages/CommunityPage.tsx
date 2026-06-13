@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { MessageCircle, Heart, Send, UserCircle2, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
@@ -9,7 +9,9 @@ import { formatDate } from "../utils/utils";
 const TOPICS = ["全部", "每日一句", "日语学习心得", "韩语 K-pop 学习", "英语职场经验", "提问求助"];
 
 export default function CommunityPage() {
-  const user = useAuthStore((s) => s.currentUser());
+  const currentUserId = useAuthStore((s) => s.currentUserId);
+  const users = useAuthStore((s) => s.users);
+  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
   const posts = useProgressStore((s) => s.posts);
   const toggleLike = useProgressStore((s) => s.toggleLike);
   const addComment = useProgressStore((s) => s.addComment);
