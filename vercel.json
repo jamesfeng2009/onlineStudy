@@ -2,7 +2,6 @@
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
   "installCommand": "bash scripts/vercel-install.sh",
-  "framework": "vite",
   "cleanUrls": true,
   "rewrites": [
     { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/" }
