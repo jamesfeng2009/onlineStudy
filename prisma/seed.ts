@@ -1,4 +1,4 @@
-import { PrismaClient } from "../server/lib/prisma-generated/client";
+import { PrismaClient } from "../server/lib/prisma-generated/client/index.js";
 import { LANGUAGES } from "../src/data/languages";
 import { COURSES } from "../src/data/courses";
 
