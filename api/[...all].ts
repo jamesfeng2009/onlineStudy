@@ -37,7 +37,12 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     }
 
     const method = (req.method || "GET").toUpperCase() as any;
-    const url = req.url || "/";
+    // Vercel catch-all 传入的 req.url 可能是 /auth/register（去掉 /api 前缀）
+    // 需要补回 /api 前缀，使 Fastify 路由匹配 /api/auth/register
+    let url = req.url || "/";
+    if (!url.startsWith("/api/") && url !== "/api") {
+      url = `/api${url === "/" ? "" : url}`;
+    }
 
     // Fastify inject 返回一个 LightMyRequest Response
     const response = await fastify.inject({
