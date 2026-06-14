@@ -45,6 +45,7 @@ export interface WordItem {
   phonetic?: string;
   example: string;
   language: Language;
+  level?: string;
 }
 
 export interface QuizItem {
@@ -54,6 +55,7 @@ export interface QuizItem {
   answer: number;
   explain: string;
   language: Language;
+  level?: string;
 }
 
 export interface ListeningItem {
@@ -62,6 +64,7 @@ export interface ListeningItem {
   script: string;
   blanks: { index: number; answer: string }[];
   language: Language;
+  level?: string;
 }
 
 export interface SpeakingPhrase {
@@ -70,6 +73,7 @@ export interface SpeakingPhrase {
   translation: string;
   phonetic?: string;
   language: Language;
+  level?: string;
 }
 
 export interface UserProgress {

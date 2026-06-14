@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightbulb, Play, Pause } from "lucide-react";
+import { useParams } from "react-router-dom";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { api } from "../lib/api";
@@ -7,6 +8,8 @@ import type { WordResp } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { WORDS, getWords, getQuizzes, getSpeaking, getListening } from "../data/content";
+import { COURSES } from "../data/courses";
+import { LANGUAGES, getLanguage } from "../data/languages";
 import type { Language } from "../types";
 
 type Tab = "words" | "grammar" | "speaking" | "listening";
@@ -20,34 +23,60 @@ const TABS: { key: Tab; label: string; icon: React.ElementType; desc: string }[]
 
 export default function LearnPage() {
   const user = useAuthStore((s) => s.user);
+  const { courseId } = useParams<{ courseId?: string }>();
+  const course = useMemo(() => {
+    if (!courseId) return null;
+    return COURSES.find((c) => c.id === courseId) ?? null;
+  }, [courseId]);
+
   const [tab, setTab] = useState<Tab>("words");
-  const [lang, setLang] = useState<Language>((user?.targetLanguage as Language) ?? "en");
+  const [lang, setLang] = useState<Language>(
+    (course?.language as Language) ?? (user?.targetLanguage as Language) ?? "en"
+  );
+  const level = course?.level;
+  const locked = !!course;
 
   useEffect(() => {
-    if (user && !["en", "ja", "ko", "zh", "es", "fr", "de"].includes(lang)) {
-      // ignore
+    if (course) {
+      setLang(course.language as Language);
     }
-  }, [user, lang]);
+  }, [course]);
+
+  const title = course
+    ? `${course.title}`
+    : "互动学习模块";
+  const subtitle = course
+    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).name} · ${course.level} · ${course.description}`
+    : "选择一个模块，开始 10 分钟的沉浸式练习。";
 
   return (
     <PageShell
-      title="互动学习模块"
-      subtitle="选择一个模块，开始 10 分钟的沉浸式练习。"
+      title={title}
+      subtitle={subtitle}
       action={
-        <div className="glass flex items-center gap-2 rounded-full p-1">
-          {["en", "ja", "ko"].map((l) => (
-            <button
-              key={l}
-              onClick={() => setLang(l as Language)}
-              className={
-                "rounded-full px-3 py-1.5 text-xs transition " +
-                (lang === l ? "bg-white/15 text-white shadow-inner" : "text-brand-200/70 hover:text-white")
-              }
-            >
-              {l === "en" ? "🇬🇧 英语" : l === "ja" ? "🇯🇵 日语" : "🇰🇷 韩语"}
-            </button>
-          ))}
-        </div>
+        locked ? (
+          <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
+            <span>{getLanguage(lang).flag}</span>
+            <span>{getLanguage(lang).name}</span>
+            <span className="text-white/30">|</span>
+            <span>{course?.level}</span>
+          </div>
+        ) : (
+          <div className="glass flex items-center gap-1 rounded-full p-1">
+            {LANGUAGES.map((l) => (
+              <button
+                key={l.id}
+                onClick={() => setLang(l.id)}
+                className={
+                  "rounded-full px-3 py-1.5 text-xs transition " +
+                  (lang === l.id ? "bg-white/15 text-white shadow-inner" : "text-brand-200/70 hover:text-white")
+                }
+              >
+                {l.flag} {l.name}
+              </button>
+            ))}
+          </div>
+        )
       }
     >
       {/* Tab switcher */}
@@ -79,10 +108,10 @@ export default function LearnPage() {
         })}
       </div>
 
-      {tab === "words" && <WordsModule language={lang} />}
-      {tab === "grammar" && <GrammarModule language={lang} />}
-      {tab === "speaking" && <SpeakingModule language={lang} />}
-      {tab === "listening" && <ListeningModule language={lang} />}
+      {tab === "words" && <WordsModule language={lang} level={level} />}
+      {tab === "grammar" && <GrammarModule language={lang} level={level} />}
+      {tab === "speaking" && <SpeakingModule language={lang} level={level} />}
+      {tab === "listening" && <ListeningModule language={lang} level={level} />}
     </PageShell>
   );
 }
@@ -90,7 +119,7 @@ export default function LearnPage() {
 /* ===============================
    单词记忆 — Flashcards
 ================================== */
-function WordsModule({ language }: { language: Language }) {
+function WordsModule({ language, level }: { language: Language; level?: string }) {
   const recordWord = useProgressStore((s) => s.recordWord);
   const [apiWords, setApiWords] = useState<WordResp[]>([]);
   const [apiLoading, setApiLoading] = useState(true);
@@ -99,7 +128,7 @@ function WordsModule({ language }: { language: Language }) {
     setApiLoading(true);
     let alive = true;
     api
-      .words({ language })
+      .words({ language, level })
       .then((data) => {
         if (alive) setApiWords(data);
       })
@@ -112,7 +141,7 @@ function WordsModule({ language }: { language: Language }) {
     return () => {
       alive = false;
     };
-  }, [language]);
+  }, [language, level]);
 
   const words = useMemo(() => {
     if (apiWords.length > 0) {
@@ -123,10 +152,10 @@ function WordsModule({ language }: { language: Language }) {
         example: w.exampleSentence,
       }));
     }
-    const local = getWords(language);
+    const local = getWords(language, level);
     if (local && local.length > 0) return local;
     return WORDS;
-  }, [apiWords, language]);
+  }, [apiWords, language, level]);
 
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -225,12 +254,12 @@ function WordsModule({ language }: { language: Language }) {
 /* ===============================
    语法练习
 ================================== */
-function GrammarModule({ language }: { language: Language }) {
+function GrammarModule({ language, level }: { language: Language; level?: string }) {
   const recordQuiz = useProgressStore((s) => s.recordQuiz);
   const quizzes = useMemo(() => {
-    const base = getQuizzes(language);
+    const base = getQuizzes(language, level);
     return base && base.length >= 2 ? base : getQuizzes("en");
-  }, [language]);
+  }, [language, level]);
 
   const [i, setI] = useState(0);
   const [pick, setPick] = useState<number | null>(null);
@@ -349,9 +378,9 @@ function GrammarModule({ language }: { language: Language }) {
 /* ===============================
    口语跟读
 ================================== */
-function SpeakingModule({ language }: { language: Language }) {
+function SpeakingModule({ language, level }: { language: Language; level?: string }) {
   const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
-  const phrases = useMemo(() => getSpeaking(language), [language]);
+  const phrases = useMemo(() => getSpeaking(language, level), [language, level]);
   const [i, setI] = useState(0);
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -453,9 +482,9 @@ function SpeakingModule({ language }: { language: Language }) {
 /* ===============================
    听力训练
 ================================== */
-function ListeningModule({ language }: { language: Language }) {
+function ListeningModule({ language, level }: { language: Language; level?: string }) {
   const recordListening = useProgressStore((s) => s.recordListening);
-  const items = useMemo(() => getListening(language), [language]);
+  const items = useMemo(() => getListening(language, level), [language, level]);
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [reveal, setReveal] = useState(false);

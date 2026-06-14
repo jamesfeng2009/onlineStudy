@@ -62,7 +62,7 @@ export default function CoursesPage() {
         {filtered.map((c) => (
           <GlassCard
             key={c.id}
-            onClick={() => navigate("/learn")}
+            onClick={() => navigate(`/learn/${c.id}`)}
             className="flex flex-col"
           >
             <div className="mb-4 flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">

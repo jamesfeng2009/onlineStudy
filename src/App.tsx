@@ -30,6 +30,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/learn" element={<LearnPage />} />
+            <Route path="/learn/:courseId" element={<LearnPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/recommend" element={<RecommendPage />} />
             <Route path="/community" element={<CommunityPage />} />
