@@ -16,6 +16,9 @@ async function getApp() {
 
 // Vercel Node.js runtime: 导出 handler(req, res)
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
+  const originalUrl = req.url || "/";
+  const method = (req.method || "GET").toUpperCase();
+
   try {
     const fastify = await getApp();
 
@@ -36,21 +39,28 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
       headers[k.toLowerCase()] = Array.isArray(v) ? v.join(",") : String(v);
     }
 
-    const method = (req.method || "GET").toUpperCase() as any;
     // Vercel catch-all 传入的 req.url 可能是 /auth/register（去掉 /api 前缀）
     // 需要补回 /api 前缀，使 Fastify 路由匹配 /api/auth/register
-    let url = req.url || "/";
+    let url = originalUrl;
     if (!url.startsWith("/api/") && url !== "/api") {
       url = `/api${url === "/" ? "" : url}`;
     }
 
+    console.log(`[vercel-handler] ${method} ${originalUrl} -> ${url}`);
+
     // Fastify inject 返回一个 LightMyRequest Response
     const response = await fastify.inject({
-      method,
+      method: method as any,
       url,
       headers,
       payload: rawBody as any,
     });
+
+    console.log(`[vercel-handler] response ${response.statusCode} ${url}`);
+    if (response.statusCode === 404) {
+      console.log(`[vercel-handler] 404 body: ${response.body}`);
+      console.log(`[vercel-handler] routes: ${fastify.printRoutes()}`);
+    }
 
     // 把 Fastify 返回的 headers 写到 res
     for (const [k, v] of Object.entries(response.headers)) {
@@ -66,7 +76,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     res.statusCode = response.statusCode;
     res.end(Buffer.from(response.rawPayload));
   } catch (err) {
-    console.error("[handler] request failed:", err);
+    console.error(`[vercel-handler] ${method} ${originalUrl} failed:`, err);
     res.statusCode = 500;
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify({ error: "Internal Server Error" }));
