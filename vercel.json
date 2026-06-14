@@ -1,7 +1,7 @@
 {
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install && pnpm prisma generate",
+  "installCommand": "bash scripts/vercel-install.sh",
   "framework": "vite",
   "cleanUrls": true,
   "functions": {

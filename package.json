@@ -19,6 +19,9 @@
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@prisma/client", "prisma"]
+  },
   "dependencies": {
     "@fastify/cors": "^10.0.1",
     "@fastify/jwt": "^9.0.1",
