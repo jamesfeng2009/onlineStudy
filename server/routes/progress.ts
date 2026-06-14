@@ -18,6 +18,7 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     await request.jwtVerify();
   };
 
+  // ====== 获取用户进度汇总 ======
   fastify.get(
     "/progress/me",
     { onRequest: [authenticate] },
@@ -86,6 +87,7 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     }
   );
 
+  // ====== 辅助函数：聚合进度数据 ======
   async function aggregateProgress(userId: string) {
     const user = await prisma.user.findUnique({ where: { id: userId } });
     if (!user) throw new Error("User not found");
@@ -146,77 +148,112 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     };
   }
 
-  // Helper: ensure a progress day record exists for today, then run an update function
-  async function ensureAndUpdate(
+  // ====== 事务内更新进度（幂等 + 事务） ======
+  // 使用 userId + studyDate unique constraint 保证幂等
+  async function updateProgressInTransaction(
     userId: string,
-    updater: (todayRecord: { moduleScores: ModuleScores; wordCorrect: number; wordTotal: number; quizCorrect: number; quizTotal: number; wordsLearned: number; quizzesDone: number; minutes: number; speakingMinutes: number; listeningMinutes: number }) => void
+    updater: (draft: {
+      moduleScores: ModuleScores;
+      wordCorrect: number;
+      wordTotal: number;
+      quizCorrect: number;
+      quizTotal: number;
+      wordsLearned: number;
+      quizzesDone: number;
+      minutes: number;
+      speakingMinutes: number;
+      listeningMinutes: number;
+    }) => void,
+    gainedExp: number
   ) {
-    const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    return prisma.$transaction(async (tx) => {
+      // 1. 获取用户信息
+      const user = await tx.user.findUnique({ where: { id: userId } });
+      if (!user) throw new Error("User not found");
 
-    const todayDate = new Date();
-    todayDate.setHours(0, 0, 0, 0);
+      // 2. 计算今天的日期（幂等键）
+      const todayDate = new Date();
+      todayDate.setHours(0, 0, 0, 0);
 
-    let day = await prisma.userProgressDay.findUnique({
-      where: {
-        userId_studyDate: { userId, studyDate: todayDate },
-      },
-    });
+      // 3. 查找或创建今天的进度记录（幂等：unique constraint userId + studyDate）
+      let day = await tx.userProgressDay.findUnique({
+        where: { userId_studyDate: { userId, studyDate: todayDate } },
+      });
 
-    if (!day) {
-      day = await prisma.userProgressDay.create({
+      if (!day) {
+        day = await tx.userProgressDay.create({
+          data: {
+            userId,
+            studyDate: todayDate,
+            moduleScores: defaultModuleScores,
+          },
+        });
+      }
+
+      // 4. 解析当前 moduleScores
+      const moduleScoresRaw = (day.moduleScores as unknown as Partial<ModuleScores>) ?? defaultModuleScores;
+      const moduleScores: ModuleScores = {
+        words: typeof moduleScoresRaw.words === "number" ? moduleScoresRaw.words : 0,
+        grammar: typeof moduleScoresRaw.grammar === "number" ? moduleScoresRaw.grammar : 0,
+        listening: typeof moduleScoresRaw.listening === "number" ? moduleScoresRaw.listening : 0,
+        speaking: typeof moduleScoresRaw.speaking === "number" ? moduleScoresRaw.speaking : 0,
+      };
+
+      // 5. 构建更新 draft
+      const draft = {
+        moduleScores,
+        wordCorrect: day.wordCorrect,
+        wordTotal: day.wordTotal,
+        quizCorrect: day.quizCorrect,
+        quizTotal: day.quizTotal,
+        wordsLearned: day.wordsLearned,
+        quizzesDone: day.quizzesDone,
+        minutes: day.minutes,
+        speakingMinutes: day.speakingMinutes,
+        listeningMinutes: day.listeningMinutes,
+      };
+
+      // 6. 应用更新逻辑
+      updater(draft);
+
+      // 7. 计算新的 streak
+      const streakUpdate = computeStreakFromLastActive(user.lastActive, user.streak);
+
+      // 8. 计算新的 level/exp
+      const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
+
+      // 9. 在事务内同时更新 progress day 和 user（原子操作）
+      await tx.userProgressDay.update({
+        where: { id: day.id },
         data: {
-          userId,
-          studyDate: todayDate,
-          moduleScores: defaultModuleScores,
+          moduleScores: draft.moduleScores,
+          wordCorrect: draft.wordCorrect,
+          wordTotal: draft.wordTotal,
+          quizCorrect: draft.quizCorrect,
+          quizTotal: draft.quizTotal,
+          wordsLearned: draft.wordsLearned,
+          quizzesDone: draft.quizzesDone,
+          minutes: draft.minutes,
+          speakingMinutes: draft.speakingMinutes,
+          listeningMinutes: draft.listeningMinutes,
         },
       });
-    }
 
-    const moduleScoresRaw = (day.moduleScores as unknown as Partial<ModuleScores>) ?? defaultModuleScores;
-    const moduleScores: ModuleScores = {
-      words: typeof moduleScoresRaw.words === "number" ? moduleScoresRaw.words : 0,
-      grammar: typeof moduleScoresRaw.grammar === "number" ? moduleScoresRaw.grammar : 0,
-      listening: typeof moduleScoresRaw.listening === "number" ? moduleScoresRaw.listening : 0,
-      speaking: typeof moduleScoresRaw.speaking === "number" ? moduleScoresRaw.speaking : 0,
-    };
+      await tx.user.update({
+        where: { id: userId },
+        data: {
+          level,
+          exp,
+          streak: streakUpdate.streak,
+          lastActive: streakUpdate.lastActive,
+        },
+      });
 
-    const draft = {
-      moduleScores,
-      wordCorrect: day.wordCorrect,
-      wordTotal: day.wordTotal,
-      quizCorrect: day.quizCorrect,
-      quizTotal: day.quizTotal,
-      wordsLearned: day.wordsLearned,
-      quizzesDone: day.quizzesDone,
-      minutes: day.minutes,
-      speakingMinutes: day.speakingMinutes,
-      listeningMinutes: day.listeningMinutes,
-    };
-
-    updater(draft);
-
-    const streakUpdate = computeStreakFromLastActive(user.lastActive, user.streak);
-
-    await prisma.userProgressDay.update({
-      where: { id: day.id },
-      data: {
-        moduleScores: draft.moduleScores,
-        wordCorrect: draft.wordCorrect,
-        wordTotal: draft.wordTotal,
-        quizCorrect: draft.quizCorrect,
-        quizTotal: draft.quizTotal,
-        wordsLearned: draft.wordsLearned,
-        quizzesDone: draft.quizzesDone,
-        minutes: draft.minutes,
-        speakingMinutes: draft.speakingMinutes,
-        listeningMinutes: draft.listeningMinutes,
-      },
+      return { streakUpdate };
     });
-
-    return { streakUpdate };
   }
 
+  // ====== 记录单词练习（幂等 + 事务） ======
   fastify.post<{
     Body: { correct: boolean; language: string };
   }>(
@@ -227,9 +264,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       const { correct } = request.body;
 
       const gainedExp = correct ? 5 : 0;
-      let result;
+
       try {
-        result = await ensureAndUpdate(userId, (d) => {
+        await updateProgressInTransaction(userId, (d) => {
           d.wordTotal += 1;
           if (correct) {
             d.wordCorrect += 1;
@@ -239,29 +276,16 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           if (d.wordTotal > 0) {
             d.moduleScores.words = clamp(Math.round((d.wordCorrect / d.wordTotal) * 100));
           }
-        });
+        }, gainedExp);
       } catch (err: unknown) {
         return reply.status(404).send({ error: (err as Error).message });
       }
-
-      const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (!user) return reply.status(404).send({ error: "User not found" });
-
-      const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          level,
-          exp,
-          streak: result.streakUpdate.streak,
-          lastActive: result.streakUpdate.lastActive,
-        },
-      });
 
       return reply.send(await aggregateProgress(userId));
     }
   );
 
+  // ====== 记录测验练习（幂等 + 事务） ======
   fastify.post<{
     Body: { correct: boolean; language: string };
   }>(
@@ -272,9 +296,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       const { correct } = request.body;
 
       const gainedExp = correct ? 8 : 0;
-      let result;
+
       try {
-        result = await ensureAndUpdate(userId, (d) => {
+        await updateProgressInTransaction(userId, (d) => {
           d.quizzesDone += 1;
           d.quizTotal += 1;
           if (correct) d.quizCorrect += 1;
@@ -282,29 +306,16 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           if (d.quizTotal > 0) {
             d.moduleScores.grammar = clamp(Math.round((d.quizCorrect / d.quizTotal) * 100));
           }
-        });
+        }, gainedExp);
       } catch (err: unknown) {
         return reply.status(404).send({ error: (err as Error).message });
       }
-
-      const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (!user) return reply.status(404).send({ error: "User not found" });
-
-      const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          level,
-          exp,
-          streak: result.streakUpdate.streak,
-          lastActive: result.streakUpdate.lastActive,
-        },
-      });
 
       return reply.send(await aggregateProgress(userId));
     }
   );
 
+  // ====== 记录口语练习（幂等 + 事务） ======
   fastify.post<{
     Body: { minutes: number; language: string };
   }>(
@@ -315,35 +326,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
-      let result;
       try {
-        result = await ensureAndUpdate(userId, (d) => {
+        await updateProgressInTransaction(userId, (d) => {
           d.speakingMinutes += minutes;
           d.minutes += minutes;
           d.moduleScores.speaking = clamp(Math.round(d.moduleScores.speaking * 0.85 + minutes * 5));
-        });
+        }, gainedExp);
       } catch (err: unknown) {
         return reply.status(404).send({ error: (err as Error).message });
       }
-
-      const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (!user) return reply.status(404).send({ error: "User not found" });
-
-      const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          level,
-          exp,
-          streak: result.streakUpdate.streak,
-          lastActive: result.streakUpdate.lastActive,
-        },
-      });
 
       return reply.send(await aggregateProgress(userId));
     }
   );
 
+  // ====== 记录听力练习（幂等 + 事务） ======
   fastify.post<{
     Body: { minutes: number; language: string };
   }>(
@@ -354,35 +351,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
-      let result;
       try {
-        result = await ensureAndUpdate(userId, (d) => {
+        await updateProgressInTransaction(userId, (d) => {
           d.listeningMinutes += minutes;
           d.minutes += minutes;
           d.moduleScores.listening = clamp(Math.round(d.moduleScores.listening * 0.85 + minutes * 5));
-        });
+        }, gainedExp);
       } catch (err: unknown) {
         return reply.status(404).send({ error: (err as Error).message });
       }
-
-      const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (!user) return reply.status(404).send({ error: "User not found" });
-
-      const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          level,
-          exp,
-          streak: result.streakUpdate.streak,
-          lastActive: result.streakUpdate.lastActive,
-        },
-      });
 
       return reply.send(await aggregateProgress(userId));
     }
   );
 
+  // ====== 更新进度设置（幂等） ======
   fastify.patch<{
     Body: Partial<{ goalMinutesPerDay: number; targetLanguage: string }>;
   }>(
@@ -402,6 +385,7 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         return reply.status(400).send({ error: "没有提供更新字段" });
       }
 
+      // 单表更新，天然幂等
       await prisma.user.update({ where: { id: userId }, data: update });
       return reply.send(await aggregateProgress(userId));
     }

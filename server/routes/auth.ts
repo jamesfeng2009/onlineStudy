@@ -1,5 +1,6 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma";
+import { registerUserIdempotent } from "../lib/idempotency";
 
 interface RegisterBody {
   email: string;
@@ -14,6 +15,8 @@ interface LoginBody {
 }
 
 const authRoutes: FastifyPluginAsync = async (fastify) => {
+  // ====== 注册（幂等 + 事务） ======
+  // 使用 email unique constraint 保证幂等
   fastify.post<{ Body: RegisterBody }>("/auth/register", async (request, reply) => {
     const { email, password, username, language } = request.body;
     if (!email || !password || !username || !language) {
@@ -21,33 +24,29 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     const normalizedEmail = email.toLowerCase().trim();
-    const existing = await prisma.user.findUnique({ where: { email: normalizedEmail } });
-    if (existing) {
-      return reply.status(409).send({ error: "该邮箱已注册" });
-    }
 
+    // 检查语言是否存在（快速校验）
     const lang = await prisma.language.findUnique({ where: { code: language } });
     if (!lang) {
       return reply.status(400).send({ error: "无效的语言代码" });
     }
 
+    // 哈希密码
     const passwordHash = await (fastify as any).bcrypt.hash(password);
 
-    const user = await prisma.user.create({
-      data: {
-        email: normalizedEmail,
-        username,
-        passwordHash,
-        targetLanguage: language,
-        level: 1,
-        exp: 0,
-        streak: 1,
-        role: "user",
-        goalMinutesPerDay: 30,
-        jwtVersion: 1,
-      },
+    // 使用事务创建用户（幂等：如果邮箱已存在，返回现有用户）
+    const result = await prisma.$transaction(async (tx) => {
+      return registerUserIdempotent(tx, normalizedEmail, username.trim(), passwordHash, language);
     });
 
+    if (!result.isNew) {
+      // 邮箱已存在，返回 409
+      return reply.status(409).send({ error: "该邮箱已注册" });
+    }
+
+    const user = result.user;
+
+    // 签发 JWT
     const token = fastify.jwt.sign(
       { userId: user.id, version: user.jwtVersion },
       { expiresIn: "7d" }
@@ -72,6 +71,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     });
   });
 
+  // ====== 登录（幂等 + 事务） ======
+  // 登录操作天然幂等：每次登录都验证密码并更新 streak/lastActive
   fastify.post<{ Body: LoginBody }>("/auth/login", async (request, reply) => {
     const { email, password } = request.body;
     if (!email || !password) {
@@ -88,7 +89,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       return reply.status(401).send({ error: "邮箱或密码不正确" });
     }
 
-    // bump streak / lastActive when logging in on new day
+    // 计算新的 streak（幂等：同一天多次登录 streak 不变）
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const la = new Date(user.lastActive);
@@ -105,9 +106,12 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       }
     }
 
-    const updated = await prisma.user.update({
-      where: { id: user.id },
-      data: { lastActive: new Date(), streak },
+    // 使用事务更新用户（幂等）
+    const updated = await prisma.$transaction(async (tx) => {
+      return tx.user.update({
+        where: { id: user.id },
+        data: { lastActive: new Date(), streak },
+      });
     });
 
     const token = fastify.jwt.sign(
@@ -134,6 +138,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     });
   });
 
+  // ====== 获取当前用户（幂等） ======
   fastify.get(
     "/auth/me",
     {
@@ -174,6 +179,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
   );
 
+  // ====== 更新用户信息（幂等） ======
+  // 单表更新，天然幂等
   fastify.patch<{
     Body: { username?: string; avatar?: string; targetLanguage?: string; goalMinutesPerDay?: number };
   }>(
@@ -201,6 +208,14 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
         return reply.status(400).send({ error: "缺少可更新字段" });
       }
 
+      // 如果更新 targetLanguage，需要验证语言是否存在
+      if (update.targetLanguage) {
+        const lang = await prisma.language.findUnique({ where: { code: update.targetLanguage as string } });
+        if (!lang) {
+          return reply.status(400).send({ error: "无效的语言代码" });
+        }
+      }
+
       const user = await prisma.user.update({ where: { id: payload.userId }, data: update });
       return reply.send({
         user: {
@@ -221,6 +236,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
   );
 
+  // ====== 登出（幂等） ======
+  // 登出操作天然幂等：清除本地 token 即可
   fastify.post("/auth/logout", async (request, reply) => {
     return reply.send({ ok: true });
   });

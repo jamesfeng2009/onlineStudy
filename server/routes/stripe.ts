@@ -1,6 +1,7 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma";
 import { stripe, STRIPE_PUBLISHABLE_KEY } from "../lib/stripe";
+import { withStripeIdempotency } from "../lib/idempotency";
 
 interface TierConfig {
   priceIdEnv?: string;
@@ -66,13 +67,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
     await request.jwtVerify();
   };
 
-  // Disable JSON parsing for the webhook endpoint
-  fastify.addContentTypeParser("application/json", (req, payload, done) => {
-    // Use raw buffer handling for all JSON requests; Fastify will still parse body normally in other routes
-    // We override specifically for /stripe/webhook in the handler using raw request buffer.
-    done(null, payload);
-  });
-
+  // ====== Checkout Session 创建 ======
   fastify.post<{
     Body: { tier: "basic" | "vip" };
   }>("/stripe/checkout-session", { onRequest: [authenticate] }, async (request, reply) => {
@@ -85,9 +80,12 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
     const user = await prisma.user.findUnique({ where: { id: userId } });
     if (!user) return reply.status(404).send({ error: "User not found" });
 
-    // Create / retrieve Stripe customer
-    let stripeCustomerId = user.role === "user" ? (await prisma.subscription.findUnique({ where: { userId } }))?.stripeCustomerId : undefined;
-    if (!stripeCustomerId) {
+    // 获取或创建 Stripe customer（幂等）
+    let stripeCustomerId: string | undefined;
+    const existingSub = await prisma.subscription.findUnique({ where: { userId } });
+    if (existingSub?.stripeCustomerId) {
+      stripeCustomerId = existingSub.stripeCustomerId;
+    } else {
       const customer = await stripe.customers.create({
         email: user.email,
         metadata: { userId },
@@ -96,7 +94,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     const priceInfo = await resolvePrice(config);
-
     const frontendUrl = process.env.FRONTEND_URL ?? "http://localhost:5173";
 
     const sessionParams: any = {
@@ -116,31 +113,31 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    // Persist preliminary subscription record
-    await prisma.subscription.upsert({
-      where: { userId },
-      update: {
-        stripeCustomerId,
-      },
-      create: {
-        userId,
-        stripeCustomerId,
-        tier: config.tier,
-        status: "pending",
-        amountTotal: "priceId" in priceInfo ? 0 : priceInfo.priceData.unit_amount,
-        currency: "priceId" in priceInfo ? config.currency : priceInfo.priceData.currency,
-      },
+    // 使用事务更新 subscription（幂等 upsert）
+    await prisma.$transaction(async (tx) => {
+      await tx.subscription.upsert({
+        where: { userId },
+        update: { stripeCustomerId },
+        create: {
+          userId,
+          stripeCustomerId,
+          tier: config.tier,
+          status: "pending",
+          amountTotal: "priceId" in priceInfo ? 0 : priceInfo.priceData.unit_amount,
+          currency: "priceId" in priceInfo ? config.currency : priceInfo.priceData.currency,
+        },
+      });
     });
 
     return reply.send({ sessionId: session.id, url: session.url });
   });
 
+  // ====== Webhook 处理（幂等 + 事务） ======
   fastify.post<{ Body: Buffer }>(
     "/stripe/webhook",
     {
       preParsing: [
         (req: any, payload: any, done: any) => {
-          // Keep raw buffer
           done(null, payload);
         },
       ],
@@ -150,9 +147,9 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       const sigHeader = (request.headers["stripe-signature"] as string) ?? "";
       const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
 
+      // 解析 raw body
       let rawBuffer: Buffer;
       try {
-        // Fastify may provide raw buffer on request.raw in newer versions.
         const body = (request as unknown as { raw?: { body?: Buffer } }).raw?.body;
         rawBuffer =
           body instanceof Buffer
@@ -164,6 +161,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
         return reply.status(400).send({ error: "无法获取原始 body" });
       }
 
+      // 验证 webhook 签名
       let event;
       try {
         event = stripe.webhooks.constructEvent(rawBuffer, sigHeader, webhookSecret);
@@ -171,125 +169,148 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
         return reply.status(400).send({ error: `Webhook Error: ${(err as Error).message}` });
       }
 
-      const session = event.data.object as any;
-      const userId = (session.metadata?.userId as string) ?? undefined;
+      const eventId = event.id;
+      const eventType = event.type;
+      const eventPayload = event.data.object as any;
+      const userId = (eventPayload.metadata?.userId as string) ?? undefined;
 
-      if (event.type === "checkout.session.completed") {
-        const tier = (session.metadata?.tier as "basic" | "vip" | undefined) ?? "basic";
-        const subscriptionId = typeof session.subscription === "string" ? session.subscription : undefined;
-        const customerId = typeof session.customer === "string" ? session.customer : undefined;
-        const amountTotal = session.amount_total ?? 0;
-        const currency = session.currency ?? "usd";
+      // ====== 幂等处理：使用 withStripeIdempotency ======
+      const result = await withStripeIdempotency(
+        eventId,
+        eventType,
+        event as Record<string, unknown>,
+        userId,
+        async (tx) => {
+          // 根据事件类型处理
+          if (eventType === "checkout.session.completed") {
+            const tier = (eventPayload.metadata?.tier as "basic" | "vip" | undefined) ?? "basic";
+            const subscriptionId = typeof eventPayload.subscription === "string" ? eventPayload.subscription : undefined;
+            const customerId = typeof eventPayload.customer === "string" ? eventPayload.customer : undefined;
+            const amountTotal = eventPayload.amount_total ?? 0;
+            const currency = eventPayload.currency ?? "usd";
 
-        if (userId) {
-          let stripeSub: any = null;
-          let currentPeriodStart: Date | null = null;
-          let currentPeriodEnd: Date | null = null;
-          let cancelAtPeriodEnd = false;
+            if (!userId) return; // 无 userId，跳过
 
-          if (subscriptionId) {
-            try {
-              stripeSub = await stripe.subscriptions.retrieve(subscriptionId);
-              if (stripeSub?.current_period_start) {
-                currentPeriodStart = new Date(stripeSub.current_period_start * 1000);
+            // 获取 Stripe subscription 详情
+            let currentPeriodStart: Date | null = null;
+            let currentPeriodEnd: Date | null = null;
+            let cancelAtPeriodEnd = false;
+
+            if (subscriptionId) {
+              try {
+                const stripeSub = await stripe.subscriptions.retrieve(subscriptionId);
+                if (stripeSub?.current_period_start) {
+                  currentPeriodStart = new Date(stripeSub.current_period_start * 1000);
+                }
+                if (stripeSub?.current_period_end) {
+                  currentPeriodEnd = new Date(stripeSub.current_period_end * 1000);
+                }
+                cancelAtPeriodEnd = !!stripeSub?.cancel_at_period_end;
+              } catch {
+                // ignore
               }
-              if (stripeSub?.current_period_end) {
-                currentPeriodEnd = new Date(stripeSub.current_period_end * 1000);
-              }
-              cancelAtPeriodEnd = !!stripeSub?.cancel_at_period_end;
-            } catch {
-              // ignore
             }
-          }
 
-          await prisma.subscription.upsert({
-            where: { userId },
-            update: {
-              stripeCustomerId: customerId,
-              stripeSubscriptionId: subscriptionId,
-              status: "active",
-              tier,
-              currentPeriodStart,
-              currentPeriodEnd,
-              cancelAtPeriodEnd,
-              amountTotal,
-              currency,
-              updatedAt: new Date(),
-            },
-            create: {
-              userId,
-              stripeCustomerId: customerId,
-              stripeSubscriptionId: subscriptionId,
-              status: "active",
-              tier,
-              currentPeriodStart,
-              currentPeriodEnd,
-              cancelAtPeriodEnd,
-              amountTotal,
-              currency,
-            },
-          });
+            // ====== 事务内更新 subscription + user ======
+            await tx.subscription.upsert({
+              where: { userId },
+              update: {
+                stripeCustomerId: customerId,
+                stripeSubscriptionId: subscriptionId,
+                status: "active",
+                tier,
+                currentPeriodStart,
+                currentPeriodEnd,
+                cancelAtPeriodEnd,
+                amountTotal,
+                currency,
+                updatedAt: new Date(),
+              },
+              create: {
+                userId,
+                stripeCustomerId: customerId,
+                stripeSubscriptionId: subscriptionId,
+                status: "active",
+                tier,
+                currentPeriodStart,
+                currentPeriodEnd,
+                cancelAtPeriodEnd,
+                amountTotal,
+                currency,
+              },
+            });
 
-          await prisma.user.update({
-            where: { id: userId },
-            data: { role: tier === "vip" ? "vip" : "user" },
-          });
-        }
-      } else if (event.type === "customer.subscription.updated") {
-        const sub = session;
-        const subscriptionId = sub.id as string;
-        const customerId = typeof sub.customer === "string" ? sub.customer : undefined;
-        const status = sub.status as string | undefined;
-        const cancelAtPeriodEnd = !!sub.cancel_at_period_end;
-        const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
-        const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
-
-        const existing = await prisma.subscription.findFirst({
-          where: {
-            OR: [{ stripeSubscriptionId: subscriptionId }, { stripeCustomerId: customerId ?? "" }],
-          },
-        });
-
-        if (existing) {
-          const tier = existing.tier;
-          await prisma.subscription.update({
-            where: { id: existing.id },
-            data: {
-              status: status ?? existing.status,
-              currentPeriodStart,
-              currentPeriodEnd,
-              cancelAtPeriodEnd,
-            },
-          });
-
-          if (status === "canceled" || status === "incomplete_expired" || status === "unpaid") {
-            await prisma.user.update({ where: { id: existing.userId }, data: { role: "user" } });
-          } else if (status === "active") {
-            await prisma.user.update({
-              where: { id: existing.userId },
+            await tx.user.update({
+              where: { id: userId },
               data: { role: tier === "vip" ? "vip" : "user" },
             });
+          } else if (eventType === "customer.subscription.updated") {
+            const sub = eventPayload;
+            const subscriptionId = sub.id as string;
+            const customerId = typeof sub.customer === "string" ? sub.customer : undefined;
+            const status = sub.status as string | undefined;
+            const cancelAtPeriodEnd = !!sub.cancel_at_period_end;
+            const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
+            const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
+
+            // 查找关联的 subscription
+            const existing = await tx.subscription.findFirst({
+              where: {
+                OR: [{ stripeSubscriptionId: subscriptionId }, { stripeCustomerId: customerId ?? "" }],
+              },
+            });
+
+            if (existing) {
+              const tier = existing.tier;
+              await tx.subscription.update({
+                where: { id: existing.id },
+                data: {
+                  status: status ?? existing.status,
+                  currentPeriodStart,
+                  currentPeriodEnd,
+                  cancelAtPeriodEnd,
+                },
+              });
+
+              // 更新用户角色
+              if (status === "canceled" || status === "incomplete_expired" || status === "unpaid") {
+                await tx.user.update({ where: { id: existing.userId }, data: { role: "user" } });
+              } else if (status === "active") {
+                await tx.user.update({
+                  where: { id: existing.userId },
+                  data: { role: tier === "vip" ? "vip" : "user" },
+                });
+              }
+            }
+          } else if (eventType === "customer.subscription.deleted") {
+            const sub = eventPayload;
+            const subscriptionId = sub.id as string;
+
+            const existing = await tx.subscription.findFirst({
+              where: { stripeSubscriptionId: subscriptionId },
+            });
+
+            if (existing) {
+              await tx.subscription.update({
+                where: { id: existing.id },
+                data: { status: "canceled", cancelAtPeriodEnd: true },
+              });
+              await tx.user.update({ where: { id: existing.userId }, data: { role: "user" } });
+            }
           }
         }
-      } else if (event.type === "customer.subscription.deleted") {
-        const sub = session;
-        const subscriptionId = sub.id as string;
-        const existing = await prisma.subscription.findFirst({
-          where: { stripeSubscriptionId: subscriptionId },
-        });
-        if (existing) {
-          await prisma.subscription.update({
-            where: { id: existing.id },
-            data: { status: "canceled", cancelAtPeriodEnd: true },
-          });
-          await prisma.user.update({ where: { id: existing.userId }, data: { role: "user" } });
-        }
+      );
+
+      // 如果已处理，返回成功但不重复执行
+      if (result.processed) {
+        return reply.send({ received: true, duplicate: true });
       }
 
       return reply.send({ received: true });
     }
   );
 
+  // ====== Current Plan 查询 ======
   fastify.get("/stripe/current-plan", { onRequest: [authenticate] }, async (request, reply) => {
     const { userId } = request.user as { userId: string };
 
