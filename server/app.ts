@@ -10,6 +10,7 @@ import wordsRoutes from "./routes/words.js";
 import progressRoutes from "./routes/progress.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
+import jwtPlugin from "./lib/jwt.js";
 import { sendSuccess } from "./lib/response.js";
 
 declare module "fastify" {
@@ -45,6 +46,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   });
 
   await app.register(fastifyJwt, { secret: JWT_SECRET });
+  await app.register(jwtPlugin);
 
   app.decorate("bcrypt", {
     hash: (password: string) => bcrypt.hash(password, SALT_WORK_FACTOR),
