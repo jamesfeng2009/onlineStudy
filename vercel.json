@@ -4,11 +4,6 @@
   "installCommand": "bash scripts/vercel-install.sh",
   "framework": "vite",
   "cleanUrls": true,
-  "functions": {
-    "api/[...all].ts": {
-      "maxDuration": 30
-    }
-  },
   "rewrites": [
     { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/" }
   ]
