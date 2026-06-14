@@ -11,6 +11,7 @@ import progressRoutes from "./routes/progress.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
 import jwtPlugin from "./lib/jwt.js";
+import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
 
 declare module "fastify" {
@@ -94,5 +95,13 @@ export async function buildApp(): Promise<FastifyInstance> {
   app.get("/", async (_request, reply) => sendSuccess(reply, { message: "LinguaVerse API is running" }));
 
   await app.ready();
+
+  // 预热数据库连接，减少首次 API 请求的握手耗时
+  try {
+    await prisma.$connect();
+  } catch (err) {
+    app.log.error({ err }, "failed to pre-connect to database");
+  }
+
   return app;
 }

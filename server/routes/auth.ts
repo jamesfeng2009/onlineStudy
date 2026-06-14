@@ -15,6 +15,19 @@ interface LoginBody {
   password: string;
 }
 
+// 内存缓存已知的语言 code，避免每次注册都查询 languages 表
+const validLanguageCodes = new Set<string>();
+
+async function isValidLanguage(code: string): Promise<boolean> {
+  if (validLanguageCodes.has(code)) return true;
+  const lang = await prisma.language.findUnique({ where: { code } });
+  if (lang) {
+    validLanguageCodes.add(code);
+    return true;
+  }
+  return false;
+}
+
 const authRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 注册（幂等 + 事务） ======
   // 使用 email unique constraint 保证幂等
@@ -26,9 +39,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // 检查语言是否存在（快速校验）
-    const lang = await prisma.language.findUnique({ where: { code: language } });
-    if (!lang) {
+    // 检查语言是否存在（带内存缓存）
+    if (!(await isValidLanguage(language))) {
       return sendError(reply, "BAD_REQUEST", "无效的语言代码");
     }
 
