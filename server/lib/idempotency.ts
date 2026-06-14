@@ -27,7 +27,7 @@ export async function recordStripeEvent(
   tx: TransactionClient,
   eventId: string,
   eventType: string,
-  payload: Record<string, unknown>,
+  payload: Prisma.InputJsonValue,
   userId?: string
 ): Promise<void> {
   await tx.stripeEvent.create({
@@ -47,9 +47,9 @@ export async function recordStripeEvent(
 export async function withStripeIdempotency<T>(
   eventId: string,
   eventType: string,
-  payload: Record<string, unknown>,
-  userId?: string,
-  handler: (tx: TransactionClient) => Promise<T>
+  payload: Prisma.InputJsonValue,
+  handler: (tx: TransactionClient) => Promise<T>,
+  userId?: string
 ): Promise<{ processed: boolean; result?: T }> {
   // 1. 先检查是否已处理（快速路径，不进事务）
   if (await isStripeEventProcessed(eventId)) {
@@ -210,17 +210,25 @@ export async function createCommentIdempotent(
   postId: string,
   userId: string,
   content: string
-): Promise<Prisma.CommentGetPayload<{ include: { user: true } }>> {
-  // 可选：检查是否短时间内已发相同内容评论
-  // const recentSame = await tx.comment.findFirst({
-  //   where: { postId, userId, content, createdAt: { gte: new Date(Date.now() - 5000) } },
-  // });
-  // if (recentSame) return recentSame; // 幂等返回
-
+): Promise<{
+  id: string;
+  content: string;
+  userId: string;
+  postId: string;
+  createdAt: Date;
+  user: { id: string; username: string; avatar: string | null };
+}> {
   const comment = await tx.comment.create({
     data: { postId, userId, content },
     include: { user: { select: { id: true, username: true, avatar: true } } },
   });
 
-  return comment;
+  return comment as unknown as {
+    id: string;
+    content: string;
+    userId: string;
+    postId: string;
+    createdAt: Date;
+    user: { id: string; username: string; avatar: string | null };
+  };
 }

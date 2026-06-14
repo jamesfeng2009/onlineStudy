@@ -178,8 +178,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       const result = await withStripeIdempotency(
         eventId,
         eventType,
-        event as Record<string, unknown>,
-        userId,
+        event as any,
         async (tx) => {
           // 根据事件类型处理
           if (eventType === "checkout.session.completed") {
@@ -298,7 +297,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
               await tx.user.update({ where: { id: existing.userId }, data: { role: "user" } });
             }
           }
-        }
+        },
+        userId
       );
 
       // 如果已处理，返回成功但不重复执行
