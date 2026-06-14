@@ -1,13 +1,12 @@
 {
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install && pnpm prisma generate",
   "framework": "vite",
   "cleanUrls": true,
   "functions": {
     "api/[...all].ts": {
-      "maxDuration": 30,
-      "memory": 1024
+      "maxDuration": 30
     }
   },
   "rewrites": [
