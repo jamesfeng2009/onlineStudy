@@ -176,6 +176,41 @@ export async function getCurrentPlan(): Promise<Record<string, unknown>> {
   return request("/stripe/current-plan", {}, true);
 }
 
+// ====== Admin ======
+export async function adminList(
+  resource: string,
+  params?: { language?: string; level?: string }
+): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  const query = qs.toString();
+  return request(`/admin/${resource}${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function adminGet(resource: string, id: string): Promise<Record<string, unknown>> {
+  return request(`/admin/${resource}/${id}`, {}, true);
+}
+
+export async function adminCreate(
+  resource: string,
+  data: Record<string, unknown>
+): Promise<Record<string, unknown>> {
+  return request(`/admin/${resource}`, { method: "POST", body: JSON.stringify(data) }, true);
+}
+
+export async function adminUpdate(
+  resource: string,
+  id: string,
+  data: Record<string, unknown>
+): Promise<Record<string, unknown>> {
+  return request(`/admin/${resource}/${id}`, { method: "PUT", body: JSON.stringify(data) }, true);
+}
+
+export async function adminDelete(resource: string, id: string): Promise<Record<string, unknown>> {
+  return request(`/admin/${resource}/${id}`, { method: "DELETE" }, true);
+}
+
 // ====== 类型别名（向后兼容）======
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UserResp = any;
@@ -214,4 +249,9 @@ export const api = {
   deleteComment,
   createCheckoutSession,
   currentPlan: getCurrentPlan,
+  adminList,
+  adminGet,
+  adminCreate,
+  adminUpdate,
+  adminDelete,
 };

@@ -158,6 +158,39 @@ exports.Prisma.WordBankScalarFieldEnum = {
   vocabOrder: 'vocabOrder'
 };
 
+exports.Prisma.QuizScalarFieldEnum = {
+  id: 'id',
+  languageCode: 'languageCode',
+  level: 'level',
+  question: 'question',
+  options: 'options',
+  answer: 'answer',
+  explain: 'explain',
+  quizOrder: 'quizOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ListeningScalarFieldEnum = {
+  id: 'id',
+  languageCode: 'languageCode',
+  level: 'level',
+  title: 'title',
+  script: 'script',
+  blanks: 'blanks',
+  listenOrder: 'listenOrder'
+};
+
+exports.Prisma.SpeakingScalarFieldEnum = {
+  id: 'id',
+  languageCode: 'languageCode',
+  level: 'level',
+  phrase: 'phrase',
+  translation: 'translation',
+  phonetic: 'phonetic',
+  speakOrder: 'speakOrder'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -269,6 +302,9 @@ exports.Prisma.ModelName = {
   Language: 'Language',
   Course: 'Course',
   WordBank: 'WordBank',
+  Quiz: 'Quiz',
+  Listening: 'Listening',
+  Speaking: 'Speaking',
   User: 'User',
   UserProgressDay: 'UserProgressDay',
   Post: 'Post',

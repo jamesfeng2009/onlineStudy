@@ -29,6 +29,21 @@ export type Course = $Result.DefaultSelection<Prisma.$CoursePayload>
  */
 export type WordBank = $Result.DefaultSelection<Prisma.$WordBankPayload>
 /**
+ * Model Quiz
+ * 
+ */
+export type Quiz = $Result.DefaultSelection<Prisma.$QuizPayload>
+/**
+ * Model Listening
+ * 
+ */
+export type Listening = $Result.DefaultSelection<Prisma.$ListeningPayload>
+/**
+ * Model Speaking
+ * 
+ */
+export type Speaking = $Result.DefaultSelection<Prisma.$SpeakingPayload>
+/**
  * Model User
  * 
  */
@@ -216,6 +231,36 @@ export class PrismaClient<
     * ```
     */
   get wordBank(): Prisma.WordBankDelegate<ExtArgs>;
+
+  /**
+   * `prisma.quiz`: Exposes CRUD operations for the **Quiz** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Quizzes
+    * const quizzes = await prisma.quiz.findMany()
+    * ```
+    */
+  get quiz(): Prisma.QuizDelegate<ExtArgs>;
+
+  /**
+   * `prisma.listening`: Exposes CRUD operations for the **Listening** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Listenings
+    * const listenings = await prisma.listening.findMany()
+    * ```
+    */
+  get listening(): Prisma.ListeningDelegate<ExtArgs>;
+
+  /**
+   * `prisma.speaking`: Exposes CRUD operations for the **Speaking** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Speakings
+    * const speakings = await prisma.speaking.findMany()
+    * ```
+    */
+  get speaking(): Prisma.SpeakingDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -730,6 +775,9 @@ export namespace Prisma {
     Language: 'Language',
     Course: 'Course',
     WordBank: 'WordBank',
+    Quiz: 'Quiz',
+    Listening: 'Listening',
+    Speaking: 'Speaking',
     User: 'User',
     UserProgressDay: 'UserProgressDay',
     Post: 'Post',
@@ -752,7 +800,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "language" | "course" | "wordBank" | "user" | "userProgressDay" | "post" | "likePost" | "comment" | "subscription" | "stripeEvent"
+      modelProps: "language" | "course" | "wordBank" | "quiz" | "listening" | "speaking" | "user" | "userProgressDay" | "post" | "likePost" | "comment" | "subscription" | "stripeEvent"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -963,6 +1011,216 @@ export namespace Prisma {
           count: {
             args: Prisma.WordBankCountArgs<ExtArgs>
             result: $Utils.Optional<WordBankCountAggregateOutputType> | number
+          }
+        }
+      }
+      Quiz: {
+        payload: Prisma.$QuizPayload<ExtArgs>
+        fields: Prisma.QuizFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.QuizFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.QuizFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          findFirst: {
+            args: Prisma.QuizFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.QuizFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          findMany: {
+            args: Prisma.QuizFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>[]
+          }
+          create: {
+            args: Prisma.QuizCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          createMany: {
+            args: Prisma.QuizCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.QuizCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>[]
+          }
+          delete: {
+            args: Prisma.QuizDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          update: {
+            args: Prisma.QuizUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          deleteMany: {
+            args: Prisma.QuizDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.QuizUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.QuizUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizPayload>
+          }
+          aggregate: {
+            args: Prisma.QuizAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQuiz>
+          }
+          groupBy: {
+            args: Prisma.QuizGroupByArgs<ExtArgs>
+            result: $Utils.Optional<QuizGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.QuizCountArgs<ExtArgs>
+            result: $Utils.Optional<QuizCountAggregateOutputType> | number
+          }
+        }
+      }
+      Listening: {
+        payload: Prisma.$ListeningPayload<ExtArgs>
+        fields: Prisma.ListeningFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ListeningFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ListeningFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          findFirst: {
+            args: Prisma.ListeningFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ListeningFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          findMany: {
+            args: Prisma.ListeningFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>[]
+          }
+          create: {
+            args: Prisma.ListeningCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          createMany: {
+            args: Prisma.ListeningCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ListeningCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>[]
+          }
+          delete: {
+            args: Prisma.ListeningDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          update: {
+            args: Prisma.ListeningUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          deleteMany: {
+            args: Prisma.ListeningDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ListeningUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ListeningUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ListeningPayload>
+          }
+          aggregate: {
+            args: Prisma.ListeningAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateListening>
+          }
+          groupBy: {
+            args: Prisma.ListeningGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ListeningGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ListeningCountArgs<ExtArgs>
+            result: $Utils.Optional<ListeningCountAggregateOutputType> | number
+          }
+        }
+      }
+      Speaking: {
+        payload: Prisma.$SpeakingPayload<ExtArgs>
+        fields: Prisma.SpeakingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SpeakingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SpeakingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          findFirst: {
+            args: Prisma.SpeakingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SpeakingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          findMany: {
+            args: Prisma.SpeakingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>[]
+          }
+          create: {
+            args: Prisma.SpeakingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          createMany: {
+            args: Prisma.SpeakingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SpeakingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>[]
+          }
+          delete: {
+            args: Prisma.SpeakingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          update: {
+            args: Prisma.SpeakingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          deleteMany: {
+            args: Prisma.SpeakingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SpeakingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SpeakingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpeakingPayload>
+          }
+          aggregate: {
+            args: Prisma.SpeakingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSpeaking>
+          }
+          groupBy: {
+            args: Prisma.SpeakingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SpeakingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SpeakingCountArgs<ExtArgs>
+            result: $Utils.Optional<SpeakingCountAggregateOutputType> | number
           }
         }
       }
@@ -1619,12 +1877,18 @@ export namespace Prisma {
   export type LanguageCountOutputType = {
     courses: number
     wordBank: number
+    quizzes: number
+    listening: number
+    speaking: number
     users: number
   }
 
   export type LanguageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | LanguageCountOutputTypeCountCoursesArgs
     wordBank?: boolean | LanguageCountOutputTypeCountWordBankArgs
+    quizzes?: boolean | LanguageCountOutputTypeCountQuizzesArgs
+    listening?: boolean | LanguageCountOutputTypeCountListeningArgs
+    speaking?: boolean | LanguageCountOutputTypeCountSpeakingArgs
     users?: boolean | LanguageCountOutputTypeCountUsersArgs
   }
 
@@ -1651,6 +1915,27 @@ export namespace Prisma {
    */
   export type LanguageCountOutputTypeCountWordBankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WordBankWhereInput
+  }
+
+  /**
+   * LanguageCountOutputType without action
+   */
+  export type LanguageCountOutputTypeCountQuizzesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuizWhereInput
+  }
+
+  /**
+   * LanguageCountOutputType without action
+   */
+  export type LanguageCountOutputTypeCountListeningArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ListeningWhereInput
+  }
+
+  /**
+   * LanguageCountOutputType without action
+   */
+  export type LanguageCountOutputTypeCountSpeakingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SpeakingWhereInput
   }
 
   /**
@@ -1941,6 +2226,9 @@ export namespace Prisma {
     status?: boolean
     courses?: boolean | Language$coursesArgs<ExtArgs>
     wordBank?: boolean | Language$wordBankArgs<ExtArgs>
+    quizzes?: boolean | Language$quizzesArgs<ExtArgs>
+    listening?: boolean | Language$listeningArgs<ExtArgs>
+    speaking?: boolean | Language$speakingArgs<ExtArgs>
     users?: boolean | Language$usersArgs<ExtArgs>
     _count?: boolean | LanguageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["language"]>
@@ -1968,6 +2256,9 @@ export namespace Prisma {
   export type LanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | Language$coursesArgs<ExtArgs>
     wordBank?: boolean | Language$wordBankArgs<ExtArgs>
+    quizzes?: boolean | Language$quizzesArgs<ExtArgs>
+    listening?: boolean | Language$listeningArgs<ExtArgs>
+    speaking?: boolean | Language$speakingArgs<ExtArgs>
     users?: boolean | Language$usersArgs<ExtArgs>
     _count?: boolean | LanguageCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -1978,6 +2269,9 @@ export namespace Prisma {
     objects: {
       courses: Prisma.$CoursePayload<ExtArgs>[]
       wordBank: Prisma.$WordBankPayload<ExtArgs>[]
+      quizzes: Prisma.$QuizPayload<ExtArgs>[]
+      listening: Prisma.$ListeningPayload<ExtArgs>[]
+      speaking: Prisma.$SpeakingPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2354,6 +2648,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     courses<T extends Language$coursesArgs<ExtArgs> = {}>(args?: Subset<T, Language$coursesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findMany"> | Null>
     wordBank<T extends Language$wordBankArgs<ExtArgs> = {}>(args?: Subset<T, Language$wordBankArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordBankPayload<ExtArgs>, T, "findMany"> | Null>
+    quizzes<T extends Language$quizzesArgs<ExtArgs> = {}>(args?: Subset<T, Language$quizzesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findMany"> | Null>
+    listening<T extends Language$listeningArgs<ExtArgs> = {}>(args?: Subset<T, Language$listeningArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findMany"> | Null>
+    speaking<T extends Language$speakingArgs<ExtArgs> = {}>(args?: Subset<T, Language$speakingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findMany"> | Null>
     users<T extends Language$usersArgs<ExtArgs> = {}>(args?: Subset<T, Language$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2742,6 +3039,66 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WordBankScalarFieldEnum | WordBankScalarFieldEnum[]
+  }
+
+  /**
+   * Language.quizzes
+   */
+  export type Language$quizzesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    where?: QuizWhereInput
+    orderBy?: QuizOrderByWithRelationInput | QuizOrderByWithRelationInput[]
+    cursor?: QuizWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: QuizScalarFieldEnum | QuizScalarFieldEnum[]
+  }
+
+  /**
+   * Language.listening
+   */
+  export type Language$listeningArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    where?: ListeningWhereInput
+    orderBy?: ListeningOrderByWithRelationInput | ListeningOrderByWithRelationInput[]
+    cursor?: ListeningWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ListeningScalarFieldEnum | ListeningScalarFieldEnum[]
+  }
+
+  /**
+   * Language.speaking
+   */
+  export type Language$speakingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    where?: SpeakingWhereInput
+    orderBy?: SpeakingOrderByWithRelationInput | SpeakingOrderByWithRelationInput[]
+    cursor?: SpeakingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SpeakingScalarFieldEnum | SpeakingScalarFieldEnum[]
   }
 
   /**
@@ -4834,6 +5191,3011 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: WordBankInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Quiz
+   */
+
+  export type AggregateQuiz = {
+    _count: QuizCountAggregateOutputType | null
+    _avg: QuizAvgAggregateOutputType | null
+    _sum: QuizSumAggregateOutputType | null
+    _min: QuizMinAggregateOutputType | null
+    _max: QuizMaxAggregateOutputType | null
+  }
+
+  export type QuizAvgAggregateOutputType = {
+    answer: number | null
+    quizOrder: number | null
+  }
+
+  export type QuizSumAggregateOutputType = {
+    answer: number | null
+    quizOrder: number | null
+  }
+
+  export type QuizMinAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    question: string | null
+    answer: number | null
+    explain: string | null
+    quizOrder: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuizMaxAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    question: string | null
+    answer: number | null
+    explain: string | null
+    quizOrder: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuizCountAggregateOutputType = {
+    id: number
+    languageCode: number
+    level: number
+    question: number
+    options: number
+    answer: number
+    explain: number
+    quizOrder: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type QuizAvgAggregateInputType = {
+    answer?: true
+    quizOrder?: true
+  }
+
+  export type QuizSumAggregateInputType = {
+    answer?: true
+    quizOrder?: true
+  }
+
+  export type QuizMinAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    question?: true
+    answer?: true
+    explain?: true
+    quizOrder?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuizMaxAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    question?: true
+    answer?: true
+    explain?: true
+    quizOrder?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuizCountAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    question?: true
+    options?: true
+    answer?: true
+    explain?: true
+    quizOrder?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type QuizAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Quiz to aggregate.
+     */
+    where?: QuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Quizzes to fetch.
+     */
+    orderBy?: QuizOrderByWithRelationInput | QuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: QuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Quizzes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Quizzes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Quizzes
+    **/
+    _count?: true | QuizCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: QuizAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: QuizSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: QuizMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: QuizMaxAggregateInputType
+  }
+
+  export type GetQuizAggregateType<T extends QuizAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuiz]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuiz[P]>
+      : GetScalarType<T[P], AggregateQuiz[P]>
+  }
+
+
+
+
+  export type QuizGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuizWhereInput
+    orderBy?: QuizOrderByWithAggregationInput | QuizOrderByWithAggregationInput[]
+    by: QuizScalarFieldEnum[] | QuizScalarFieldEnum
+    having?: QuizScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: QuizCountAggregateInputType | true
+    _avg?: QuizAvgAggregateInputType
+    _sum?: QuizSumAggregateInputType
+    _min?: QuizMinAggregateInputType
+    _max?: QuizMaxAggregateInputType
+  }
+
+  export type QuizGroupByOutputType = {
+    id: string
+    languageCode: string
+    level: string
+    question: string
+    options: JsonValue
+    answer: number
+    explain: string
+    quizOrder: number
+    createdAt: Date
+    updatedAt: Date
+    _count: QuizCountAggregateOutputType | null
+    _avg: QuizAvgAggregateOutputType | null
+    _sum: QuizSumAggregateOutputType | null
+    _min: QuizMinAggregateOutputType | null
+    _max: QuizMaxAggregateOutputType | null
+  }
+
+  type GetQuizGroupByPayload<T extends QuizGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<QuizGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof QuizGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], QuizGroupByOutputType[P]>
+            : GetScalarType<T[P], QuizGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type QuizSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    question?: boolean
+    options?: boolean
+    answer?: boolean
+    explain?: boolean
+    quizOrder?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quiz"]>
+
+  export type QuizSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    question?: boolean
+    options?: boolean
+    answer?: boolean
+    explain?: boolean
+    quizOrder?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quiz"]>
+
+  export type QuizSelectScalar = {
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    question?: boolean
+    options?: boolean
+    answer?: boolean
+    explain?: boolean
+    quizOrder?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type QuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+  export type QuizIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+
+  export type $QuizPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Quiz"
+    objects: {
+      language: Prisma.$LanguagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      languageCode: string
+      level: string
+      question: string
+      options: Prisma.JsonValue
+      answer: number
+      explain: string
+      quizOrder: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["quiz"]>
+    composites: {}
+  }
+
+  type QuizGetPayload<S extends boolean | null | undefined | QuizDefaultArgs> = $Result.GetResult<Prisma.$QuizPayload, S>
+
+  type QuizCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuizFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: QuizCountAggregateInputType | true
+    }
+
+  export interface QuizDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Quiz'], meta: { name: 'Quiz' } }
+    /**
+     * Find zero or one Quiz that matches the filter.
+     * @param {QuizFindUniqueArgs} args - Arguments to find a Quiz
+     * @example
+     * // Get one Quiz
+     * const quiz = await prisma.quiz.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends QuizFindUniqueArgs>(args: SelectSubset<T, QuizFindUniqueArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Quiz that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {QuizFindUniqueOrThrowArgs} args - Arguments to find a Quiz
+     * @example
+     * // Get one Quiz
+     * const quiz = await prisma.quiz.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends QuizFindUniqueOrThrowArgs>(args: SelectSubset<T, QuizFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Quiz that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizFindFirstArgs} args - Arguments to find a Quiz
+     * @example
+     * // Get one Quiz
+     * const quiz = await prisma.quiz.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends QuizFindFirstArgs>(args?: SelectSubset<T, QuizFindFirstArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Quiz that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizFindFirstOrThrowArgs} args - Arguments to find a Quiz
+     * @example
+     * // Get one Quiz
+     * const quiz = await prisma.quiz.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends QuizFindFirstOrThrowArgs>(args?: SelectSubset<T, QuizFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Quizzes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Quizzes
+     * const quizzes = await prisma.quiz.findMany()
+     * 
+     * // Get first 10 Quizzes
+     * const quizzes = await prisma.quiz.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const quizWithIdOnly = await prisma.quiz.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends QuizFindManyArgs>(args?: SelectSubset<T, QuizFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Quiz.
+     * @param {QuizCreateArgs} args - Arguments to create a Quiz.
+     * @example
+     * // Create one Quiz
+     * const Quiz = await prisma.quiz.create({
+     *   data: {
+     *     // ... data to create a Quiz
+     *   }
+     * })
+     * 
+     */
+    create<T extends QuizCreateArgs>(args: SelectSubset<T, QuizCreateArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Quizzes.
+     * @param {QuizCreateManyArgs} args - Arguments to create many Quizzes.
+     * @example
+     * // Create many Quizzes
+     * const quiz = await prisma.quiz.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends QuizCreateManyArgs>(args?: SelectSubset<T, QuizCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Quizzes and returns the data saved in the database.
+     * @param {QuizCreateManyAndReturnArgs} args - Arguments to create many Quizzes.
+     * @example
+     * // Create many Quizzes
+     * const quiz = await prisma.quiz.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Quizzes and only return the `id`
+     * const quizWithIdOnly = await prisma.quiz.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends QuizCreateManyAndReturnArgs>(args?: SelectSubset<T, QuizCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Quiz.
+     * @param {QuizDeleteArgs} args - Arguments to delete one Quiz.
+     * @example
+     * // Delete one Quiz
+     * const Quiz = await prisma.quiz.delete({
+     *   where: {
+     *     // ... filter to delete one Quiz
+     *   }
+     * })
+     * 
+     */
+    delete<T extends QuizDeleteArgs>(args: SelectSubset<T, QuizDeleteArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Quiz.
+     * @param {QuizUpdateArgs} args - Arguments to update one Quiz.
+     * @example
+     * // Update one Quiz
+     * const quiz = await prisma.quiz.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends QuizUpdateArgs>(args: SelectSubset<T, QuizUpdateArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Quizzes.
+     * @param {QuizDeleteManyArgs} args - Arguments to filter Quizzes to delete.
+     * @example
+     * // Delete a few Quizzes
+     * const { count } = await prisma.quiz.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends QuizDeleteManyArgs>(args?: SelectSubset<T, QuizDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Quizzes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Quizzes
+     * const quiz = await prisma.quiz.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends QuizUpdateManyArgs>(args: SelectSubset<T, QuizUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Quiz.
+     * @param {QuizUpsertArgs} args - Arguments to update or create a Quiz.
+     * @example
+     * // Update or create a Quiz
+     * const quiz = await prisma.quiz.upsert({
+     *   create: {
+     *     // ... data to create a Quiz
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Quiz we want to update
+     *   }
+     * })
+     */
+    upsert<T extends QuizUpsertArgs>(args: SelectSubset<T, QuizUpsertArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Quizzes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizCountArgs} args - Arguments to filter Quizzes to count.
+     * @example
+     * // Count the number of Quizzes
+     * const count = await prisma.quiz.count({
+     *   where: {
+     *     // ... the filter for the Quizzes we want to count
+     *   }
+     * })
+    **/
+    count<T extends QuizCountArgs>(
+      args?: Subset<T, QuizCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], QuizCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Quiz.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends QuizAggregateArgs>(args: Subset<T, QuizAggregateArgs>): Prisma.PrismaPromise<GetQuizAggregateType<T>>
+
+    /**
+     * Group by Quiz.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends QuizGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: QuizGroupByArgs['orderBy'] }
+        : { orderBy?: QuizGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, QuizGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuizGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Quiz model
+   */
+  readonly fields: QuizFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Quiz.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__QuizClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Quiz model
+   */ 
+  interface QuizFieldRefs {
+    readonly id: FieldRef<"Quiz", 'String'>
+    readonly languageCode: FieldRef<"Quiz", 'String'>
+    readonly level: FieldRef<"Quiz", 'String'>
+    readonly question: FieldRef<"Quiz", 'String'>
+    readonly options: FieldRef<"Quiz", 'Json'>
+    readonly answer: FieldRef<"Quiz", 'Int'>
+    readonly explain: FieldRef<"Quiz", 'String'>
+    readonly quizOrder: FieldRef<"Quiz", 'Int'>
+    readonly createdAt: FieldRef<"Quiz", 'DateTime'>
+    readonly updatedAt: FieldRef<"Quiz", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Quiz findUnique
+   */
+  export type QuizFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter, which Quiz to fetch.
+     */
+    where: QuizWhereUniqueInput
+  }
+
+  /**
+   * Quiz findUniqueOrThrow
+   */
+  export type QuizFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter, which Quiz to fetch.
+     */
+    where: QuizWhereUniqueInput
+  }
+
+  /**
+   * Quiz findFirst
+   */
+  export type QuizFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter, which Quiz to fetch.
+     */
+    where?: QuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Quizzes to fetch.
+     */
+    orderBy?: QuizOrderByWithRelationInput | QuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Quizzes.
+     */
+    cursor?: QuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Quizzes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Quizzes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Quizzes.
+     */
+    distinct?: QuizScalarFieldEnum | QuizScalarFieldEnum[]
+  }
+
+  /**
+   * Quiz findFirstOrThrow
+   */
+  export type QuizFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter, which Quiz to fetch.
+     */
+    where?: QuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Quizzes to fetch.
+     */
+    orderBy?: QuizOrderByWithRelationInput | QuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Quizzes.
+     */
+    cursor?: QuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Quizzes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Quizzes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Quizzes.
+     */
+    distinct?: QuizScalarFieldEnum | QuizScalarFieldEnum[]
+  }
+
+  /**
+   * Quiz findMany
+   */
+  export type QuizFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter, which Quizzes to fetch.
+     */
+    where?: QuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Quizzes to fetch.
+     */
+    orderBy?: QuizOrderByWithRelationInput | QuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Quizzes.
+     */
+    cursor?: QuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Quizzes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Quizzes.
+     */
+    skip?: number
+    distinct?: QuizScalarFieldEnum | QuizScalarFieldEnum[]
+  }
+
+  /**
+   * Quiz create
+   */
+  export type QuizCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Quiz.
+     */
+    data: XOR<QuizCreateInput, QuizUncheckedCreateInput>
+  }
+
+  /**
+   * Quiz createMany
+   */
+  export type QuizCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Quizzes.
+     */
+    data: QuizCreateManyInput | QuizCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Quiz createManyAndReturn
+   */
+  export type QuizCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Quizzes.
+     */
+    data: QuizCreateManyInput | QuizCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Quiz update
+   */
+  export type QuizUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Quiz.
+     */
+    data: XOR<QuizUpdateInput, QuizUncheckedUpdateInput>
+    /**
+     * Choose, which Quiz to update.
+     */
+    where: QuizWhereUniqueInput
+  }
+
+  /**
+   * Quiz updateMany
+   */
+  export type QuizUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Quizzes.
+     */
+    data: XOR<QuizUpdateManyMutationInput, QuizUncheckedUpdateManyInput>
+    /**
+     * Filter which Quizzes to update
+     */
+    where?: QuizWhereInput
+  }
+
+  /**
+   * Quiz upsert
+   */
+  export type QuizUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Quiz to update in case it exists.
+     */
+    where: QuizWhereUniqueInput
+    /**
+     * In case the Quiz found by the `where` argument doesn't exist, create a new Quiz with this data.
+     */
+    create: XOR<QuizCreateInput, QuizUncheckedCreateInput>
+    /**
+     * In case the Quiz was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QuizUpdateInput, QuizUncheckedUpdateInput>
+  }
+
+  /**
+   * Quiz delete
+   */
+  export type QuizDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+    /**
+     * Filter which Quiz to delete.
+     */
+    where: QuizWhereUniqueInput
+  }
+
+  /**
+   * Quiz deleteMany
+   */
+  export type QuizDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Quizzes to delete
+     */
+    where?: QuizWhereInput
+  }
+
+  /**
+   * Quiz without action
+   */
+  export type QuizDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Quiz
+     */
+    select?: QuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Listening
+   */
+
+  export type AggregateListening = {
+    _count: ListeningCountAggregateOutputType | null
+    _avg: ListeningAvgAggregateOutputType | null
+    _sum: ListeningSumAggregateOutputType | null
+    _min: ListeningMinAggregateOutputType | null
+    _max: ListeningMaxAggregateOutputType | null
+  }
+
+  export type ListeningAvgAggregateOutputType = {
+    listenOrder: number | null
+  }
+
+  export type ListeningSumAggregateOutputType = {
+    listenOrder: number | null
+  }
+
+  export type ListeningMinAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    title: string | null
+    script: string | null
+    listenOrder: number | null
+  }
+
+  export type ListeningMaxAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    title: string | null
+    script: string | null
+    listenOrder: number | null
+  }
+
+  export type ListeningCountAggregateOutputType = {
+    id: number
+    languageCode: number
+    level: number
+    title: number
+    script: number
+    blanks: number
+    listenOrder: number
+    _all: number
+  }
+
+
+  export type ListeningAvgAggregateInputType = {
+    listenOrder?: true
+  }
+
+  export type ListeningSumAggregateInputType = {
+    listenOrder?: true
+  }
+
+  export type ListeningMinAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    title?: true
+    script?: true
+    listenOrder?: true
+  }
+
+  export type ListeningMaxAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    title?: true
+    script?: true
+    listenOrder?: true
+  }
+
+  export type ListeningCountAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    title?: true
+    script?: true
+    blanks?: true
+    listenOrder?: true
+    _all?: true
+  }
+
+  export type ListeningAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Listening to aggregate.
+     */
+    where?: ListeningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Listenings to fetch.
+     */
+    orderBy?: ListeningOrderByWithRelationInput | ListeningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ListeningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Listenings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Listenings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Listenings
+    **/
+    _count?: true | ListeningCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ListeningAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ListeningSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ListeningMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ListeningMaxAggregateInputType
+  }
+
+  export type GetListeningAggregateType<T extends ListeningAggregateArgs> = {
+        [P in keyof T & keyof AggregateListening]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateListening[P]>
+      : GetScalarType<T[P], AggregateListening[P]>
+  }
+
+
+
+
+  export type ListeningGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ListeningWhereInput
+    orderBy?: ListeningOrderByWithAggregationInput | ListeningOrderByWithAggregationInput[]
+    by: ListeningScalarFieldEnum[] | ListeningScalarFieldEnum
+    having?: ListeningScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ListeningCountAggregateInputType | true
+    _avg?: ListeningAvgAggregateInputType
+    _sum?: ListeningSumAggregateInputType
+    _min?: ListeningMinAggregateInputType
+    _max?: ListeningMaxAggregateInputType
+  }
+
+  export type ListeningGroupByOutputType = {
+    id: string
+    languageCode: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonValue
+    listenOrder: number
+    _count: ListeningCountAggregateOutputType | null
+    _avg: ListeningAvgAggregateOutputType | null
+    _sum: ListeningSumAggregateOutputType | null
+    _min: ListeningMinAggregateOutputType | null
+    _max: ListeningMaxAggregateOutputType | null
+  }
+
+  type GetListeningGroupByPayload<T extends ListeningGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ListeningGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ListeningGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ListeningGroupByOutputType[P]>
+            : GetScalarType<T[P], ListeningGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ListeningSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    title?: boolean
+    script?: boolean
+    blanks?: boolean
+    listenOrder?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["listening"]>
+
+  export type ListeningSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    title?: boolean
+    script?: boolean
+    blanks?: boolean
+    listenOrder?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["listening"]>
+
+  export type ListeningSelectScalar = {
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    title?: boolean
+    script?: boolean
+    blanks?: boolean
+    listenOrder?: boolean
+  }
+
+  export type ListeningInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+  export type ListeningIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+
+  export type $ListeningPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Listening"
+    objects: {
+      language: Prisma.$LanguagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      languageCode: string
+      level: string
+      title: string
+      script: string
+      blanks: Prisma.JsonValue
+      listenOrder: number
+    }, ExtArgs["result"]["listening"]>
+    composites: {}
+  }
+
+  type ListeningGetPayload<S extends boolean | null | undefined | ListeningDefaultArgs> = $Result.GetResult<Prisma.$ListeningPayload, S>
+
+  type ListeningCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ListeningFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ListeningCountAggregateInputType | true
+    }
+
+  export interface ListeningDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Listening'], meta: { name: 'Listening' } }
+    /**
+     * Find zero or one Listening that matches the filter.
+     * @param {ListeningFindUniqueArgs} args - Arguments to find a Listening
+     * @example
+     * // Get one Listening
+     * const listening = await prisma.listening.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ListeningFindUniqueArgs>(args: SelectSubset<T, ListeningFindUniqueArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Listening that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ListeningFindUniqueOrThrowArgs} args - Arguments to find a Listening
+     * @example
+     * // Get one Listening
+     * const listening = await prisma.listening.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ListeningFindUniqueOrThrowArgs>(args: SelectSubset<T, ListeningFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Listening that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningFindFirstArgs} args - Arguments to find a Listening
+     * @example
+     * // Get one Listening
+     * const listening = await prisma.listening.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ListeningFindFirstArgs>(args?: SelectSubset<T, ListeningFindFirstArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Listening that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningFindFirstOrThrowArgs} args - Arguments to find a Listening
+     * @example
+     * // Get one Listening
+     * const listening = await prisma.listening.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ListeningFindFirstOrThrowArgs>(args?: SelectSubset<T, ListeningFindFirstOrThrowArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Listenings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Listenings
+     * const listenings = await prisma.listening.findMany()
+     * 
+     * // Get first 10 Listenings
+     * const listenings = await prisma.listening.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const listeningWithIdOnly = await prisma.listening.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ListeningFindManyArgs>(args?: SelectSubset<T, ListeningFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Listening.
+     * @param {ListeningCreateArgs} args - Arguments to create a Listening.
+     * @example
+     * // Create one Listening
+     * const Listening = await prisma.listening.create({
+     *   data: {
+     *     // ... data to create a Listening
+     *   }
+     * })
+     * 
+     */
+    create<T extends ListeningCreateArgs>(args: SelectSubset<T, ListeningCreateArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Listenings.
+     * @param {ListeningCreateManyArgs} args - Arguments to create many Listenings.
+     * @example
+     * // Create many Listenings
+     * const listening = await prisma.listening.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ListeningCreateManyArgs>(args?: SelectSubset<T, ListeningCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Listenings and returns the data saved in the database.
+     * @param {ListeningCreateManyAndReturnArgs} args - Arguments to create many Listenings.
+     * @example
+     * // Create many Listenings
+     * const listening = await prisma.listening.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Listenings and only return the `id`
+     * const listeningWithIdOnly = await prisma.listening.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ListeningCreateManyAndReturnArgs>(args?: SelectSubset<T, ListeningCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Listening.
+     * @param {ListeningDeleteArgs} args - Arguments to delete one Listening.
+     * @example
+     * // Delete one Listening
+     * const Listening = await prisma.listening.delete({
+     *   where: {
+     *     // ... filter to delete one Listening
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ListeningDeleteArgs>(args: SelectSubset<T, ListeningDeleteArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Listening.
+     * @param {ListeningUpdateArgs} args - Arguments to update one Listening.
+     * @example
+     * // Update one Listening
+     * const listening = await prisma.listening.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ListeningUpdateArgs>(args: SelectSubset<T, ListeningUpdateArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Listenings.
+     * @param {ListeningDeleteManyArgs} args - Arguments to filter Listenings to delete.
+     * @example
+     * // Delete a few Listenings
+     * const { count } = await prisma.listening.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ListeningDeleteManyArgs>(args?: SelectSubset<T, ListeningDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Listenings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Listenings
+     * const listening = await prisma.listening.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ListeningUpdateManyArgs>(args: SelectSubset<T, ListeningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Listening.
+     * @param {ListeningUpsertArgs} args - Arguments to update or create a Listening.
+     * @example
+     * // Update or create a Listening
+     * const listening = await prisma.listening.upsert({
+     *   create: {
+     *     // ... data to create a Listening
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Listening we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ListeningUpsertArgs>(args: SelectSubset<T, ListeningUpsertArgs<ExtArgs>>): Prisma__ListeningClient<$Result.GetResult<Prisma.$ListeningPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Listenings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningCountArgs} args - Arguments to filter Listenings to count.
+     * @example
+     * // Count the number of Listenings
+     * const count = await prisma.listening.count({
+     *   where: {
+     *     // ... the filter for the Listenings we want to count
+     *   }
+     * })
+    **/
+    count<T extends ListeningCountArgs>(
+      args?: Subset<T, ListeningCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ListeningCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Listening.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ListeningAggregateArgs>(args: Subset<T, ListeningAggregateArgs>): Prisma.PrismaPromise<GetListeningAggregateType<T>>
+
+    /**
+     * Group by Listening.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ListeningGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ListeningGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ListeningGroupByArgs['orderBy'] }
+        : { orderBy?: ListeningGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ListeningGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetListeningGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Listening model
+   */
+  readonly fields: ListeningFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Listening.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ListeningClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Listening model
+   */ 
+  interface ListeningFieldRefs {
+    readonly id: FieldRef<"Listening", 'String'>
+    readonly languageCode: FieldRef<"Listening", 'String'>
+    readonly level: FieldRef<"Listening", 'String'>
+    readonly title: FieldRef<"Listening", 'String'>
+    readonly script: FieldRef<"Listening", 'String'>
+    readonly blanks: FieldRef<"Listening", 'Json'>
+    readonly listenOrder: FieldRef<"Listening", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Listening findUnique
+   */
+  export type ListeningFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter, which Listening to fetch.
+     */
+    where: ListeningWhereUniqueInput
+  }
+
+  /**
+   * Listening findUniqueOrThrow
+   */
+  export type ListeningFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter, which Listening to fetch.
+     */
+    where: ListeningWhereUniqueInput
+  }
+
+  /**
+   * Listening findFirst
+   */
+  export type ListeningFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter, which Listening to fetch.
+     */
+    where?: ListeningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Listenings to fetch.
+     */
+    orderBy?: ListeningOrderByWithRelationInput | ListeningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Listenings.
+     */
+    cursor?: ListeningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Listenings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Listenings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Listenings.
+     */
+    distinct?: ListeningScalarFieldEnum | ListeningScalarFieldEnum[]
+  }
+
+  /**
+   * Listening findFirstOrThrow
+   */
+  export type ListeningFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter, which Listening to fetch.
+     */
+    where?: ListeningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Listenings to fetch.
+     */
+    orderBy?: ListeningOrderByWithRelationInput | ListeningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Listenings.
+     */
+    cursor?: ListeningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Listenings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Listenings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Listenings.
+     */
+    distinct?: ListeningScalarFieldEnum | ListeningScalarFieldEnum[]
+  }
+
+  /**
+   * Listening findMany
+   */
+  export type ListeningFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter, which Listenings to fetch.
+     */
+    where?: ListeningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Listenings to fetch.
+     */
+    orderBy?: ListeningOrderByWithRelationInput | ListeningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Listenings.
+     */
+    cursor?: ListeningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Listenings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Listenings.
+     */
+    skip?: number
+    distinct?: ListeningScalarFieldEnum | ListeningScalarFieldEnum[]
+  }
+
+  /**
+   * Listening create
+   */
+  export type ListeningCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Listening.
+     */
+    data: XOR<ListeningCreateInput, ListeningUncheckedCreateInput>
+  }
+
+  /**
+   * Listening createMany
+   */
+  export type ListeningCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Listenings.
+     */
+    data: ListeningCreateManyInput | ListeningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Listening createManyAndReturn
+   */
+  export type ListeningCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Listenings.
+     */
+    data: ListeningCreateManyInput | ListeningCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Listening update
+   */
+  export type ListeningUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Listening.
+     */
+    data: XOR<ListeningUpdateInput, ListeningUncheckedUpdateInput>
+    /**
+     * Choose, which Listening to update.
+     */
+    where: ListeningWhereUniqueInput
+  }
+
+  /**
+   * Listening updateMany
+   */
+  export type ListeningUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Listenings.
+     */
+    data: XOR<ListeningUpdateManyMutationInput, ListeningUncheckedUpdateManyInput>
+    /**
+     * Filter which Listenings to update
+     */
+    where?: ListeningWhereInput
+  }
+
+  /**
+   * Listening upsert
+   */
+  export type ListeningUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Listening to update in case it exists.
+     */
+    where: ListeningWhereUniqueInput
+    /**
+     * In case the Listening found by the `where` argument doesn't exist, create a new Listening with this data.
+     */
+    create: XOR<ListeningCreateInput, ListeningUncheckedCreateInput>
+    /**
+     * In case the Listening was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ListeningUpdateInput, ListeningUncheckedUpdateInput>
+  }
+
+  /**
+   * Listening delete
+   */
+  export type ListeningDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+    /**
+     * Filter which Listening to delete.
+     */
+    where: ListeningWhereUniqueInput
+  }
+
+  /**
+   * Listening deleteMany
+   */
+  export type ListeningDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Listenings to delete
+     */
+    where?: ListeningWhereInput
+  }
+
+  /**
+   * Listening without action
+   */
+  export type ListeningDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Listening
+     */
+    select?: ListeningSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ListeningInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Speaking
+   */
+
+  export type AggregateSpeaking = {
+    _count: SpeakingCountAggregateOutputType | null
+    _avg: SpeakingAvgAggregateOutputType | null
+    _sum: SpeakingSumAggregateOutputType | null
+    _min: SpeakingMinAggregateOutputType | null
+    _max: SpeakingMaxAggregateOutputType | null
+  }
+
+  export type SpeakingAvgAggregateOutputType = {
+    speakOrder: number | null
+  }
+
+  export type SpeakingSumAggregateOutputType = {
+    speakOrder: number | null
+  }
+
+  export type SpeakingMinAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    phrase: string | null
+    translation: string | null
+    phonetic: string | null
+    speakOrder: number | null
+  }
+
+  export type SpeakingMaxAggregateOutputType = {
+    id: string | null
+    languageCode: string | null
+    level: string | null
+    phrase: string | null
+    translation: string | null
+    phonetic: string | null
+    speakOrder: number | null
+  }
+
+  export type SpeakingCountAggregateOutputType = {
+    id: number
+    languageCode: number
+    level: number
+    phrase: number
+    translation: number
+    phonetic: number
+    speakOrder: number
+    _all: number
+  }
+
+
+  export type SpeakingAvgAggregateInputType = {
+    speakOrder?: true
+  }
+
+  export type SpeakingSumAggregateInputType = {
+    speakOrder?: true
+  }
+
+  export type SpeakingMinAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    phrase?: true
+    translation?: true
+    phonetic?: true
+    speakOrder?: true
+  }
+
+  export type SpeakingMaxAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    phrase?: true
+    translation?: true
+    phonetic?: true
+    speakOrder?: true
+  }
+
+  export type SpeakingCountAggregateInputType = {
+    id?: true
+    languageCode?: true
+    level?: true
+    phrase?: true
+    translation?: true
+    phonetic?: true
+    speakOrder?: true
+    _all?: true
+  }
+
+  export type SpeakingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Speaking to aggregate.
+     */
+    where?: SpeakingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Speakings to fetch.
+     */
+    orderBy?: SpeakingOrderByWithRelationInput | SpeakingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SpeakingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Speakings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Speakings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Speakings
+    **/
+    _count?: true | SpeakingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SpeakingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SpeakingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SpeakingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SpeakingMaxAggregateInputType
+  }
+
+  export type GetSpeakingAggregateType<T extends SpeakingAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpeaking]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSpeaking[P]>
+      : GetScalarType<T[P], AggregateSpeaking[P]>
+  }
+
+
+
+
+  export type SpeakingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SpeakingWhereInput
+    orderBy?: SpeakingOrderByWithAggregationInput | SpeakingOrderByWithAggregationInput[]
+    by: SpeakingScalarFieldEnum[] | SpeakingScalarFieldEnum
+    having?: SpeakingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SpeakingCountAggregateInputType | true
+    _avg?: SpeakingAvgAggregateInputType
+    _sum?: SpeakingSumAggregateInputType
+    _min?: SpeakingMinAggregateInputType
+    _max?: SpeakingMaxAggregateInputType
+  }
+
+  export type SpeakingGroupByOutputType = {
+    id: string
+    languageCode: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic: string | null
+    speakOrder: number
+    _count: SpeakingCountAggregateOutputType | null
+    _avg: SpeakingAvgAggregateOutputType | null
+    _sum: SpeakingSumAggregateOutputType | null
+    _min: SpeakingMinAggregateOutputType | null
+    _max: SpeakingMaxAggregateOutputType | null
+  }
+
+  type GetSpeakingGroupByPayload<T extends SpeakingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SpeakingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SpeakingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SpeakingGroupByOutputType[P]>
+            : GetScalarType<T[P], SpeakingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SpeakingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    phrase?: boolean
+    translation?: boolean
+    phonetic?: boolean
+    speakOrder?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["speaking"]>
+
+  export type SpeakingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    phrase?: boolean
+    translation?: boolean
+    phonetic?: boolean
+    speakOrder?: boolean
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["speaking"]>
+
+  export type SpeakingSelectScalar = {
+    id?: boolean
+    languageCode?: boolean
+    level?: boolean
+    phrase?: boolean
+    translation?: boolean
+    phonetic?: boolean
+    speakOrder?: boolean
+  }
+
+  export type SpeakingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+  export type SpeakingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+
+  export type $SpeakingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Speaking"
+    objects: {
+      language: Prisma.$LanguagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      languageCode: string
+      level: string
+      phrase: string
+      translation: string
+      phonetic: string | null
+      speakOrder: number
+    }, ExtArgs["result"]["speaking"]>
+    composites: {}
+  }
+
+  type SpeakingGetPayload<S extends boolean | null | undefined | SpeakingDefaultArgs> = $Result.GetResult<Prisma.$SpeakingPayload, S>
+
+  type SpeakingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SpeakingFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SpeakingCountAggregateInputType | true
+    }
+
+  export interface SpeakingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Speaking'], meta: { name: 'Speaking' } }
+    /**
+     * Find zero or one Speaking that matches the filter.
+     * @param {SpeakingFindUniqueArgs} args - Arguments to find a Speaking
+     * @example
+     * // Get one Speaking
+     * const speaking = await prisma.speaking.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SpeakingFindUniqueArgs>(args: SelectSubset<T, SpeakingFindUniqueArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Speaking that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SpeakingFindUniqueOrThrowArgs} args - Arguments to find a Speaking
+     * @example
+     * // Get one Speaking
+     * const speaking = await prisma.speaking.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SpeakingFindUniqueOrThrowArgs>(args: SelectSubset<T, SpeakingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Speaking that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingFindFirstArgs} args - Arguments to find a Speaking
+     * @example
+     * // Get one Speaking
+     * const speaking = await prisma.speaking.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SpeakingFindFirstArgs>(args?: SelectSubset<T, SpeakingFindFirstArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Speaking that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingFindFirstOrThrowArgs} args - Arguments to find a Speaking
+     * @example
+     * // Get one Speaking
+     * const speaking = await prisma.speaking.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SpeakingFindFirstOrThrowArgs>(args?: SelectSubset<T, SpeakingFindFirstOrThrowArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Speakings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Speakings
+     * const speakings = await prisma.speaking.findMany()
+     * 
+     * // Get first 10 Speakings
+     * const speakings = await prisma.speaking.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const speakingWithIdOnly = await prisma.speaking.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SpeakingFindManyArgs>(args?: SelectSubset<T, SpeakingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Speaking.
+     * @param {SpeakingCreateArgs} args - Arguments to create a Speaking.
+     * @example
+     * // Create one Speaking
+     * const Speaking = await prisma.speaking.create({
+     *   data: {
+     *     // ... data to create a Speaking
+     *   }
+     * })
+     * 
+     */
+    create<T extends SpeakingCreateArgs>(args: SelectSubset<T, SpeakingCreateArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Speakings.
+     * @param {SpeakingCreateManyArgs} args - Arguments to create many Speakings.
+     * @example
+     * // Create many Speakings
+     * const speaking = await prisma.speaking.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SpeakingCreateManyArgs>(args?: SelectSubset<T, SpeakingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Speakings and returns the data saved in the database.
+     * @param {SpeakingCreateManyAndReturnArgs} args - Arguments to create many Speakings.
+     * @example
+     * // Create many Speakings
+     * const speaking = await prisma.speaking.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Speakings and only return the `id`
+     * const speakingWithIdOnly = await prisma.speaking.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SpeakingCreateManyAndReturnArgs>(args?: SelectSubset<T, SpeakingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Speaking.
+     * @param {SpeakingDeleteArgs} args - Arguments to delete one Speaking.
+     * @example
+     * // Delete one Speaking
+     * const Speaking = await prisma.speaking.delete({
+     *   where: {
+     *     // ... filter to delete one Speaking
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SpeakingDeleteArgs>(args: SelectSubset<T, SpeakingDeleteArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Speaking.
+     * @param {SpeakingUpdateArgs} args - Arguments to update one Speaking.
+     * @example
+     * // Update one Speaking
+     * const speaking = await prisma.speaking.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SpeakingUpdateArgs>(args: SelectSubset<T, SpeakingUpdateArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Speakings.
+     * @param {SpeakingDeleteManyArgs} args - Arguments to filter Speakings to delete.
+     * @example
+     * // Delete a few Speakings
+     * const { count } = await prisma.speaking.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SpeakingDeleteManyArgs>(args?: SelectSubset<T, SpeakingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Speakings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Speakings
+     * const speaking = await prisma.speaking.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SpeakingUpdateManyArgs>(args: SelectSubset<T, SpeakingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Speaking.
+     * @param {SpeakingUpsertArgs} args - Arguments to update or create a Speaking.
+     * @example
+     * // Update or create a Speaking
+     * const speaking = await prisma.speaking.upsert({
+     *   create: {
+     *     // ... data to create a Speaking
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Speaking we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SpeakingUpsertArgs>(args: SelectSubset<T, SpeakingUpsertArgs<ExtArgs>>): Prisma__SpeakingClient<$Result.GetResult<Prisma.$SpeakingPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Speakings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingCountArgs} args - Arguments to filter Speakings to count.
+     * @example
+     * // Count the number of Speakings
+     * const count = await prisma.speaking.count({
+     *   where: {
+     *     // ... the filter for the Speakings we want to count
+     *   }
+     * })
+    **/
+    count<T extends SpeakingCountArgs>(
+      args?: Subset<T, SpeakingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SpeakingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Speaking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SpeakingAggregateArgs>(args: Subset<T, SpeakingAggregateArgs>): Prisma.PrismaPromise<GetSpeakingAggregateType<T>>
+
+    /**
+     * Group by Speaking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpeakingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SpeakingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SpeakingGroupByArgs['orderBy'] }
+        : { orderBy?: SpeakingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SpeakingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpeakingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Speaking model
+   */
+  readonly fields: SpeakingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Speaking.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SpeakingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Speaking model
+   */ 
+  interface SpeakingFieldRefs {
+    readonly id: FieldRef<"Speaking", 'String'>
+    readonly languageCode: FieldRef<"Speaking", 'String'>
+    readonly level: FieldRef<"Speaking", 'String'>
+    readonly phrase: FieldRef<"Speaking", 'String'>
+    readonly translation: FieldRef<"Speaking", 'String'>
+    readonly phonetic: FieldRef<"Speaking", 'String'>
+    readonly speakOrder: FieldRef<"Speaking", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Speaking findUnique
+   */
+  export type SpeakingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter, which Speaking to fetch.
+     */
+    where: SpeakingWhereUniqueInput
+  }
+
+  /**
+   * Speaking findUniqueOrThrow
+   */
+  export type SpeakingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter, which Speaking to fetch.
+     */
+    where: SpeakingWhereUniqueInput
+  }
+
+  /**
+   * Speaking findFirst
+   */
+  export type SpeakingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter, which Speaking to fetch.
+     */
+    where?: SpeakingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Speakings to fetch.
+     */
+    orderBy?: SpeakingOrderByWithRelationInput | SpeakingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Speakings.
+     */
+    cursor?: SpeakingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Speakings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Speakings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Speakings.
+     */
+    distinct?: SpeakingScalarFieldEnum | SpeakingScalarFieldEnum[]
+  }
+
+  /**
+   * Speaking findFirstOrThrow
+   */
+  export type SpeakingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter, which Speaking to fetch.
+     */
+    where?: SpeakingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Speakings to fetch.
+     */
+    orderBy?: SpeakingOrderByWithRelationInput | SpeakingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Speakings.
+     */
+    cursor?: SpeakingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Speakings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Speakings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Speakings.
+     */
+    distinct?: SpeakingScalarFieldEnum | SpeakingScalarFieldEnum[]
+  }
+
+  /**
+   * Speaking findMany
+   */
+  export type SpeakingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter, which Speakings to fetch.
+     */
+    where?: SpeakingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Speakings to fetch.
+     */
+    orderBy?: SpeakingOrderByWithRelationInput | SpeakingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Speakings.
+     */
+    cursor?: SpeakingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Speakings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Speakings.
+     */
+    skip?: number
+    distinct?: SpeakingScalarFieldEnum | SpeakingScalarFieldEnum[]
+  }
+
+  /**
+   * Speaking create
+   */
+  export type SpeakingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Speaking.
+     */
+    data: XOR<SpeakingCreateInput, SpeakingUncheckedCreateInput>
+  }
+
+  /**
+   * Speaking createMany
+   */
+  export type SpeakingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Speakings.
+     */
+    data: SpeakingCreateManyInput | SpeakingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Speaking createManyAndReturn
+   */
+  export type SpeakingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Speakings.
+     */
+    data: SpeakingCreateManyInput | SpeakingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Speaking update
+   */
+  export type SpeakingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Speaking.
+     */
+    data: XOR<SpeakingUpdateInput, SpeakingUncheckedUpdateInput>
+    /**
+     * Choose, which Speaking to update.
+     */
+    where: SpeakingWhereUniqueInput
+  }
+
+  /**
+   * Speaking updateMany
+   */
+  export type SpeakingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Speakings.
+     */
+    data: XOR<SpeakingUpdateManyMutationInput, SpeakingUncheckedUpdateManyInput>
+    /**
+     * Filter which Speakings to update
+     */
+    where?: SpeakingWhereInput
+  }
+
+  /**
+   * Speaking upsert
+   */
+  export type SpeakingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Speaking to update in case it exists.
+     */
+    where: SpeakingWhereUniqueInput
+    /**
+     * In case the Speaking found by the `where` argument doesn't exist, create a new Speaking with this data.
+     */
+    create: XOR<SpeakingCreateInput, SpeakingUncheckedCreateInput>
+    /**
+     * In case the Speaking was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SpeakingUpdateInput, SpeakingUncheckedUpdateInput>
+  }
+
+  /**
+   * Speaking delete
+   */
+  export type SpeakingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
+    /**
+     * Filter which Speaking to delete.
+     */
+    where: SpeakingWhereUniqueInput
+  }
+
+  /**
+   * Speaking deleteMany
+   */
+  export type SpeakingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Speakings to delete
+     */
+    where?: SpeakingWhereInput
+  }
+
+  /**
+   * Speaking without action
+   */
+  export type SpeakingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Speaking
+     */
+    select?: SpeakingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpeakingInclude<ExtArgs> | null
   }
 
 
@@ -11993,6 +15355,48 @@ export namespace Prisma {
   export type WordBankScalarFieldEnum = (typeof WordBankScalarFieldEnum)[keyof typeof WordBankScalarFieldEnum]
 
 
+  export const QuizScalarFieldEnum: {
+    id: 'id',
+    languageCode: 'languageCode',
+    level: 'level',
+    question: 'question',
+    options: 'options',
+    answer: 'answer',
+    explain: 'explain',
+    quizOrder: 'quizOrder',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type QuizScalarFieldEnum = (typeof QuizScalarFieldEnum)[keyof typeof QuizScalarFieldEnum]
+
+
+  export const ListeningScalarFieldEnum: {
+    id: 'id',
+    languageCode: 'languageCode',
+    level: 'level',
+    title: 'title',
+    script: 'script',
+    blanks: 'blanks',
+    listenOrder: 'listenOrder'
+  };
+
+  export type ListeningScalarFieldEnum = (typeof ListeningScalarFieldEnum)[keyof typeof ListeningScalarFieldEnum]
+
+
+  export const SpeakingScalarFieldEnum: {
+    id: 'id',
+    languageCode: 'languageCode',
+    level: 'level',
+    phrase: 'phrase',
+    translation: 'translation',
+    phonetic: 'phonetic',
+    speakOrder: 'speakOrder'
+  };
+
+  export type SpeakingScalarFieldEnum = (typeof SpeakingScalarFieldEnum)[keyof typeof SpeakingScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
@@ -12226,6 +15630,9 @@ export namespace Prisma {
     status?: StringFilter<"Language"> | string
     courses?: CourseListRelationFilter
     wordBank?: WordBankListRelationFilter
+    quizzes?: QuizListRelationFilter
+    listening?: ListeningListRelationFilter
+    speaking?: SpeakingListRelationFilter
     users?: UserListRelationFilter
   }
 
@@ -12239,6 +15646,9 @@ export namespace Prisma {
     status?: SortOrder
     courses?: CourseOrderByRelationAggregateInput
     wordBank?: WordBankOrderByRelationAggregateInput
+    quizzes?: QuizOrderByRelationAggregateInput
+    listening?: ListeningOrderByRelationAggregateInput
+    speaking?: SpeakingOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
   }
 
@@ -12255,6 +15665,9 @@ export namespace Prisma {
     status?: StringFilter<"Language"> | string
     courses?: CourseListRelationFilter
     wordBank?: WordBankListRelationFilter
+    quizzes?: QuizListRelationFilter
+    listening?: ListeningListRelationFilter
+    speaking?: SpeakingListRelationFilter
     users?: UserListRelationFilter
   }, "code">
 
@@ -12446,6 +15859,222 @@ export namespace Prisma {
     phonetic?: StringNullableWithAggregatesFilter<"WordBank"> | string | null
     exampleSentence?: StringWithAggregatesFilter<"WordBank"> | string
     vocabOrder?: IntWithAggregatesFilter<"WordBank"> | number
+  }
+
+  export type QuizWhereInput = {
+    AND?: QuizWhereInput | QuizWhereInput[]
+    OR?: QuizWhereInput[]
+    NOT?: QuizWhereInput | QuizWhereInput[]
+    id?: StringFilter<"Quiz"> | string
+    languageCode?: StringFilter<"Quiz"> | string
+    level?: StringFilter<"Quiz"> | string
+    question?: StringFilter<"Quiz"> | string
+    options?: JsonFilter<"Quiz">
+    answer?: IntFilter<"Quiz"> | number
+    explain?: StringFilter<"Quiz"> | string
+    quizOrder?: IntFilter<"Quiz"> | number
+    createdAt?: DateTimeFilter<"Quiz"> | Date | string
+    updatedAt?: DateTimeFilter<"Quiz"> | Date | string
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }
+
+  export type QuizOrderByWithRelationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    question?: SortOrder
+    options?: SortOrder
+    answer?: SortOrder
+    explain?: SortOrder
+    quizOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    language?: LanguageOrderByWithRelationInput
+  }
+
+  export type QuizWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: QuizWhereInput | QuizWhereInput[]
+    OR?: QuizWhereInput[]
+    NOT?: QuizWhereInput | QuizWhereInput[]
+    languageCode?: StringFilter<"Quiz"> | string
+    level?: StringFilter<"Quiz"> | string
+    question?: StringFilter<"Quiz"> | string
+    options?: JsonFilter<"Quiz">
+    answer?: IntFilter<"Quiz"> | number
+    explain?: StringFilter<"Quiz"> | string
+    quizOrder?: IntFilter<"Quiz"> | number
+    createdAt?: DateTimeFilter<"Quiz"> | Date | string
+    updatedAt?: DateTimeFilter<"Quiz"> | Date | string
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }, "id">
+
+  export type QuizOrderByWithAggregationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    question?: SortOrder
+    options?: SortOrder
+    answer?: SortOrder
+    explain?: SortOrder
+    quizOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: QuizCountOrderByAggregateInput
+    _avg?: QuizAvgOrderByAggregateInput
+    _max?: QuizMaxOrderByAggregateInput
+    _min?: QuizMinOrderByAggregateInput
+    _sum?: QuizSumOrderByAggregateInput
+  }
+
+  export type QuizScalarWhereWithAggregatesInput = {
+    AND?: QuizScalarWhereWithAggregatesInput | QuizScalarWhereWithAggregatesInput[]
+    OR?: QuizScalarWhereWithAggregatesInput[]
+    NOT?: QuizScalarWhereWithAggregatesInput | QuizScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Quiz"> | string
+    languageCode?: StringWithAggregatesFilter<"Quiz"> | string
+    level?: StringWithAggregatesFilter<"Quiz"> | string
+    question?: StringWithAggregatesFilter<"Quiz"> | string
+    options?: JsonWithAggregatesFilter<"Quiz">
+    answer?: IntWithAggregatesFilter<"Quiz"> | number
+    explain?: StringWithAggregatesFilter<"Quiz"> | string
+    quizOrder?: IntWithAggregatesFilter<"Quiz"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Quiz"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Quiz"> | Date | string
+  }
+
+  export type ListeningWhereInput = {
+    AND?: ListeningWhereInput | ListeningWhereInput[]
+    OR?: ListeningWhereInput[]
+    NOT?: ListeningWhereInput | ListeningWhereInput[]
+    id?: StringFilter<"Listening"> | string
+    languageCode?: StringFilter<"Listening"> | string
+    level?: StringFilter<"Listening"> | string
+    title?: StringFilter<"Listening"> | string
+    script?: StringFilter<"Listening"> | string
+    blanks?: JsonFilter<"Listening">
+    listenOrder?: IntFilter<"Listening"> | number
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }
+
+  export type ListeningOrderByWithRelationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    title?: SortOrder
+    script?: SortOrder
+    blanks?: SortOrder
+    listenOrder?: SortOrder
+    language?: LanguageOrderByWithRelationInput
+  }
+
+  export type ListeningWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ListeningWhereInput | ListeningWhereInput[]
+    OR?: ListeningWhereInput[]
+    NOT?: ListeningWhereInput | ListeningWhereInput[]
+    languageCode?: StringFilter<"Listening"> | string
+    level?: StringFilter<"Listening"> | string
+    title?: StringFilter<"Listening"> | string
+    script?: StringFilter<"Listening"> | string
+    blanks?: JsonFilter<"Listening">
+    listenOrder?: IntFilter<"Listening"> | number
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }, "id">
+
+  export type ListeningOrderByWithAggregationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    title?: SortOrder
+    script?: SortOrder
+    blanks?: SortOrder
+    listenOrder?: SortOrder
+    _count?: ListeningCountOrderByAggregateInput
+    _avg?: ListeningAvgOrderByAggregateInput
+    _max?: ListeningMaxOrderByAggregateInput
+    _min?: ListeningMinOrderByAggregateInput
+    _sum?: ListeningSumOrderByAggregateInput
+  }
+
+  export type ListeningScalarWhereWithAggregatesInput = {
+    AND?: ListeningScalarWhereWithAggregatesInput | ListeningScalarWhereWithAggregatesInput[]
+    OR?: ListeningScalarWhereWithAggregatesInput[]
+    NOT?: ListeningScalarWhereWithAggregatesInput | ListeningScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Listening"> | string
+    languageCode?: StringWithAggregatesFilter<"Listening"> | string
+    level?: StringWithAggregatesFilter<"Listening"> | string
+    title?: StringWithAggregatesFilter<"Listening"> | string
+    script?: StringWithAggregatesFilter<"Listening"> | string
+    blanks?: JsonWithAggregatesFilter<"Listening">
+    listenOrder?: IntWithAggregatesFilter<"Listening"> | number
+  }
+
+  export type SpeakingWhereInput = {
+    AND?: SpeakingWhereInput | SpeakingWhereInput[]
+    OR?: SpeakingWhereInput[]
+    NOT?: SpeakingWhereInput | SpeakingWhereInput[]
+    id?: StringFilter<"Speaking"> | string
+    languageCode?: StringFilter<"Speaking"> | string
+    level?: StringFilter<"Speaking"> | string
+    phrase?: StringFilter<"Speaking"> | string
+    translation?: StringFilter<"Speaking"> | string
+    phonetic?: StringNullableFilter<"Speaking"> | string | null
+    speakOrder?: IntFilter<"Speaking"> | number
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }
+
+  export type SpeakingOrderByWithRelationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    phonetic?: SortOrderInput | SortOrder
+    speakOrder?: SortOrder
+    language?: LanguageOrderByWithRelationInput
+  }
+
+  export type SpeakingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SpeakingWhereInput | SpeakingWhereInput[]
+    OR?: SpeakingWhereInput[]
+    NOT?: SpeakingWhereInput | SpeakingWhereInput[]
+    languageCode?: StringFilter<"Speaking"> | string
+    level?: StringFilter<"Speaking"> | string
+    phrase?: StringFilter<"Speaking"> | string
+    translation?: StringFilter<"Speaking"> | string
+    phonetic?: StringNullableFilter<"Speaking"> | string | null
+    speakOrder?: IntFilter<"Speaking"> | number
+    language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+  }, "id">
+
+  export type SpeakingOrderByWithAggregationInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    phonetic?: SortOrderInput | SortOrder
+    speakOrder?: SortOrder
+    _count?: SpeakingCountOrderByAggregateInput
+    _avg?: SpeakingAvgOrderByAggregateInput
+    _max?: SpeakingMaxOrderByAggregateInput
+    _min?: SpeakingMinOrderByAggregateInput
+    _sum?: SpeakingSumOrderByAggregateInput
+  }
+
+  export type SpeakingScalarWhereWithAggregatesInput = {
+    AND?: SpeakingScalarWhereWithAggregatesInput | SpeakingScalarWhereWithAggregatesInput[]
+    OR?: SpeakingScalarWhereWithAggregatesInput[]
+    NOT?: SpeakingScalarWhereWithAggregatesInput | SpeakingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Speaking"> | string
+    languageCode?: StringWithAggregatesFilter<"Speaking"> | string
+    level?: StringWithAggregatesFilter<"Speaking"> | string
+    phrase?: StringWithAggregatesFilter<"Speaking"> | string
+    translation?: StringWithAggregatesFilter<"Speaking"> | string
+    phonetic?: StringNullableWithAggregatesFilter<"Speaking"> | string | null
+    speakOrder?: IntWithAggregatesFilter<"Speaking"> | number
   }
 
   export type UserWhereInput = {
@@ -13000,6 +16629,9 @@ export namespace Prisma {
     status?: string
     courses?: CourseCreateNestedManyWithoutLanguageInput
     wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
     users?: UserCreateNestedManyWithoutLanguageInput
   }
 
@@ -13013,6 +16645,9 @@ export namespace Prisma {
     status?: string
     courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
     wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
     users?: UserUncheckedCreateNestedManyWithoutLanguageInput
   }
 
@@ -13026,6 +16661,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUpdateManyWithoutLanguageNestedInput
     wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
     users?: UserUpdateManyWithoutLanguageNestedInput
   }
 
@@ -13039,6 +16677,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
     wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
     users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
@@ -13250,6 +16891,234 @@ export namespace Prisma {
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type QuizCreateInput = {
+    id?: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    language: LanguageCreateNestedOneWithoutQuizzesInput
+  }
+
+  export type QuizUncheckedCreateInput = {
+    id?: string
+    languageCode: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuizUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    language?: LanguageUpdateOneRequiredWithoutQuizzesNestedInput
+  }
+
+  export type QuizUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuizCreateManyInput = {
+    id?: string
+    languageCode: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuizUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuizUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ListeningCreateInput = {
+    id?: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+    language: LanguageCreateNestedOneWithoutListeningInput
+  }
+
+  export type ListeningUncheckedCreateInput = {
+    id?: string
+    languageCode: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+  }
+
+  export type ListeningUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+    language?: LanguageUpdateOneRequiredWithoutListeningNestedInput
+  }
+
+  export type ListeningUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ListeningCreateManyInput = {
+    id?: string
+    languageCode: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+  }
+
+  export type ListeningUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ListeningUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingCreateInput = {
+    id?: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+    language: LanguageCreateNestedOneWithoutSpeakingInput
+  }
+
+  export type SpeakingUncheckedCreateInput = {
+    id?: string
+    languageCode: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+  }
+
+  export type SpeakingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
+    language?: LanguageUpdateOneRequiredWithoutSpeakingNestedInput
+  }
+
+  export type SpeakingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingCreateManyInput = {
+    id?: string
+    languageCode: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+  }
+
+  export type SpeakingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateInput = {
@@ -13888,6 +17757,24 @@ export namespace Prisma {
     none?: WordBankWhereInput
   }
 
+  export type QuizListRelationFilter = {
+    every?: QuizWhereInput
+    some?: QuizWhereInput
+    none?: QuizWhereInput
+  }
+
+  export type ListeningListRelationFilter = {
+    every?: ListeningWhereInput
+    some?: ListeningWhereInput
+    none?: ListeningWhereInput
+  }
+
+  export type SpeakingListRelationFilter = {
+    every?: SpeakingWhereInput
+    some?: SpeakingWhereInput
+    none?: SpeakingWhereInput
+  }
+
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
@@ -13899,6 +17786,18 @@ export namespace Prisma {
   }
 
   export type WordBankOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type QuizOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ListeningOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SpeakingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14167,6 +18066,141 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type QuizCountOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    question?: SortOrder
+    options?: SortOrder
+    answer?: SortOrder
+    explain?: SortOrder
+    quizOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuizAvgOrderByAggregateInput = {
+    answer?: SortOrder
+    quizOrder?: SortOrder
+  }
+
+  export type QuizMaxOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    explain?: SortOrder
+    quizOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuizMinOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    explain?: SortOrder
+    quizOrder?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuizSumOrderByAggregateInput = {
+    answer?: SortOrder
+    quizOrder?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type ListeningCountOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    title?: SortOrder
+    script?: SortOrder
+    blanks?: SortOrder
+    listenOrder?: SortOrder
+  }
+
+  export type ListeningAvgOrderByAggregateInput = {
+    listenOrder?: SortOrder
+  }
+
+  export type ListeningMaxOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    title?: SortOrder
+    script?: SortOrder
+    listenOrder?: SortOrder
+  }
+
+  export type ListeningMinOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    title?: SortOrder
+    script?: SortOrder
+    listenOrder?: SortOrder
+  }
+
+  export type ListeningSumOrderByAggregateInput = {
+    listenOrder?: SortOrder
+  }
+
+  export type SpeakingCountOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    phonetic?: SortOrder
+    speakOrder?: SortOrder
+  }
+
+  export type SpeakingAvgOrderByAggregateInput = {
+    speakOrder?: SortOrder
+  }
+
+  export type SpeakingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    phonetic?: SortOrder
+    speakOrder?: SortOrder
+  }
+
+  export type SpeakingMinOrderByAggregateInput = {
+    id?: SortOrder
+    languageCode?: SortOrder
+    level?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    phonetic?: SortOrder
+    speakOrder?: SortOrder
+  }
+
+  export type SpeakingSumOrderByAggregateInput = {
+    speakOrder?: SortOrder
+  }
+
   export type UserProgressDayListRelationFilter = {
     every?: UserProgressDayWhereInput
     some?: UserProgressDayWhereInput
@@ -14280,20 +18314,6 @@ export namespace Prisma {
     streak?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type UserRelationFilter = {
@@ -14572,6 +18592,27 @@ export namespace Prisma {
     connect?: WordBankWhereUniqueInput | WordBankWhereUniqueInput[]
   }
 
+  export type QuizCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput> | QuizCreateWithoutLanguageInput[] | QuizUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: QuizCreateOrConnectWithoutLanguageInput | QuizCreateOrConnectWithoutLanguageInput[]
+    createMany?: QuizCreateManyLanguageInputEnvelope
+    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+  }
+
+  export type ListeningCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput> | ListeningCreateWithoutLanguageInput[] | ListeningUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ListeningCreateOrConnectWithoutLanguageInput | ListeningCreateOrConnectWithoutLanguageInput[]
+    createMany?: ListeningCreateManyLanguageInputEnvelope
+    connect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+  }
+
+  export type SpeakingCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput> | SpeakingCreateWithoutLanguageInput[] | SpeakingUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: SpeakingCreateOrConnectWithoutLanguageInput | SpeakingCreateOrConnectWithoutLanguageInput[]
+    createMany?: SpeakingCreateManyLanguageInputEnvelope
+    connect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+  }
+
   export type UserCreateNestedManyWithoutLanguageInput = {
     create?: XOR<UserCreateWithoutLanguageInput, UserUncheckedCreateWithoutLanguageInput> | UserCreateWithoutLanguageInput[] | UserUncheckedCreateWithoutLanguageInput[]
     connectOrCreate?: UserCreateOrConnectWithoutLanguageInput | UserCreateOrConnectWithoutLanguageInput[]
@@ -14591,6 +18632,27 @@ export namespace Prisma {
     connectOrCreate?: WordBankCreateOrConnectWithoutLanguageInput | WordBankCreateOrConnectWithoutLanguageInput[]
     createMany?: WordBankCreateManyLanguageInputEnvelope
     connect?: WordBankWhereUniqueInput | WordBankWhereUniqueInput[]
+  }
+
+  export type QuizUncheckedCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput> | QuizCreateWithoutLanguageInput[] | QuizUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: QuizCreateOrConnectWithoutLanguageInput | QuizCreateOrConnectWithoutLanguageInput[]
+    createMany?: QuizCreateManyLanguageInputEnvelope
+    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+  }
+
+  export type ListeningUncheckedCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput> | ListeningCreateWithoutLanguageInput[] | ListeningUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ListeningCreateOrConnectWithoutLanguageInput | ListeningCreateOrConnectWithoutLanguageInput[]
+    createMany?: ListeningCreateManyLanguageInputEnvelope
+    connect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+  }
+
+  export type SpeakingUncheckedCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput> | SpeakingCreateWithoutLanguageInput[] | SpeakingUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: SpeakingCreateOrConnectWithoutLanguageInput | SpeakingCreateOrConnectWithoutLanguageInput[]
+    createMany?: SpeakingCreateManyLanguageInputEnvelope
+    connect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutLanguageInput = {
@@ -14630,6 +18692,48 @@ export namespace Prisma {
     update?: WordBankUpdateWithWhereUniqueWithoutLanguageInput | WordBankUpdateWithWhereUniqueWithoutLanguageInput[]
     updateMany?: WordBankUpdateManyWithWhereWithoutLanguageInput | WordBankUpdateManyWithWhereWithoutLanguageInput[]
     deleteMany?: WordBankScalarWhereInput | WordBankScalarWhereInput[]
+  }
+
+  export type QuizUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput> | QuizCreateWithoutLanguageInput[] | QuizUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: QuizCreateOrConnectWithoutLanguageInput | QuizCreateOrConnectWithoutLanguageInput[]
+    upsert?: QuizUpsertWithWhereUniqueWithoutLanguageInput | QuizUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: QuizCreateManyLanguageInputEnvelope
+    set?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    disconnect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    delete?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    update?: QuizUpdateWithWhereUniqueWithoutLanguageInput | QuizUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: QuizUpdateManyWithWhereWithoutLanguageInput | QuizUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: QuizScalarWhereInput | QuizScalarWhereInput[]
+  }
+
+  export type ListeningUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput> | ListeningCreateWithoutLanguageInput[] | ListeningUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ListeningCreateOrConnectWithoutLanguageInput | ListeningCreateOrConnectWithoutLanguageInput[]
+    upsert?: ListeningUpsertWithWhereUniqueWithoutLanguageInput | ListeningUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: ListeningCreateManyLanguageInputEnvelope
+    set?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    disconnect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    delete?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    connect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    update?: ListeningUpdateWithWhereUniqueWithoutLanguageInput | ListeningUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: ListeningUpdateManyWithWhereWithoutLanguageInput | ListeningUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: ListeningScalarWhereInput | ListeningScalarWhereInput[]
+  }
+
+  export type SpeakingUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput> | SpeakingCreateWithoutLanguageInput[] | SpeakingUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: SpeakingCreateOrConnectWithoutLanguageInput | SpeakingCreateOrConnectWithoutLanguageInput[]
+    upsert?: SpeakingUpsertWithWhereUniqueWithoutLanguageInput | SpeakingUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: SpeakingCreateManyLanguageInputEnvelope
+    set?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    disconnect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    delete?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    connect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    update?: SpeakingUpdateWithWhereUniqueWithoutLanguageInput | SpeakingUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: SpeakingUpdateManyWithWhereWithoutLanguageInput | SpeakingUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: SpeakingScalarWhereInput | SpeakingScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutLanguageNestedInput = {
@@ -14672,6 +18776,48 @@ export namespace Prisma {
     update?: WordBankUpdateWithWhereUniqueWithoutLanguageInput | WordBankUpdateWithWhereUniqueWithoutLanguageInput[]
     updateMany?: WordBankUpdateManyWithWhereWithoutLanguageInput | WordBankUpdateManyWithWhereWithoutLanguageInput[]
     deleteMany?: WordBankScalarWhereInput | WordBankScalarWhereInput[]
+  }
+
+  export type QuizUncheckedUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput> | QuizCreateWithoutLanguageInput[] | QuizUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: QuizCreateOrConnectWithoutLanguageInput | QuizCreateOrConnectWithoutLanguageInput[]
+    upsert?: QuizUpsertWithWhereUniqueWithoutLanguageInput | QuizUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: QuizCreateManyLanguageInputEnvelope
+    set?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    disconnect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    delete?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    update?: QuizUpdateWithWhereUniqueWithoutLanguageInput | QuizUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: QuizUpdateManyWithWhereWithoutLanguageInput | QuizUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: QuizScalarWhereInput | QuizScalarWhereInput[]
+  }
+
+  export type ListeningUncheckedUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput> | ListeningCreateWithoutLanguageInput[] | ListeningUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ListeningCreateOrConnectWithoutLanguageInput | ListeningCreateOrConnectWithoutLanguageInput[]
+    upsert?: ListeningUpsertWithWhereUniqueWithoutLanguageInput | ListeningUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: ListeningCreateManyLanguageInputEnvelope
+    set?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    disconnect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    delete?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    connect?: ListeningWhereUniqueInput | ListeningWhereUniqueInput[]
+    update?: ListeningUpdateWithWhereUniqueWithoutLanguageInput | ListeningUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: ListeningUpdateManyWithWhereWithoutLanguageInput | ListeningUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: ListeningScalarWhereInput | ListeningScalarWhereInput[]
+  }
+
+  export type SpeakingUncheckedUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput> | SpeakingCreateWithoutLanguageInput[] | SpeakingUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: SpeakingCreateOrConnectWithoutLanguageInput | SpeakingCreateOrConnectWithoutLanguageInput[]
+    upsert?: SpeakingUpsertWithWhereUniqueWithoutLanguageInput | SpeakingUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: SpeakingCreateManyLanguageInputEnvelope
+    set?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    disconnect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    delete?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    connect?: SpeakingWhereUniqueInput | SpeakingWhereUniqueInput[]
+    update?: SpeakingUpdateWithWhereUniqueWithoutLanguageInput | SpeakingUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: SpeakingUpdateManyWithWhereWithoutLanguageInput | SpeakingUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: SpeakingScalarWhereInput | SpeakingScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutLanguageNestedInput = {
@@ -14730,6 +18876,52 @@ export namespace Prisma {
     upsert?: LanguageUpsertWithoutWordBankInput
     connect?: LanguageWhereUniqueInput
     update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutWordBankInput, LanguageUpdateWithoutWordBankInput>, LanguageUncheckedUpdateWithoutWordBankInput>
+  }
+
+  export type LanguageCreateNestedOneWithoutQuizzesInput = {
+    create?: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutQuizzesInput
+    connect?: LanguageWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type LanguageUpdateOneRequiredWithoutQuizzesNestedInput = {
+    create?: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutQuizzesInput
+    upsert?: LanguageUpsertWithoutQuizzesInput
+    connect?: LanguageWhereUniqueInput
+    update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutQuizzesInput, LanguageUpdateWithoutQuizzesInput>, LanguageUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type LanguageCreateNestedOneWithoutListeningInput = {
+    create?: XOR<LanguageCreateWithoutListeningInput, LanguageUncheckedCreateWithoutListeningInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutListeningInput
+    connect?: LanguageWhereUniqueInput
+  }
+
+  export type LanguageUpdateOneRequiredWithoutListeningNestedInput = {
+    create?: XOR<LanguageCreateWithoutListeningInput, LanguageUncheckedCreateWithoutListeningInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutListeningInput
+    upsert?: LanguageUpsertWithoutListeningInput
+    connect?: LanguageWhereUniqueInput
+    update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutListeningInput, LanguageUpdateWithoutListeningInput>, LanguageUncheckedUpdateWithoutListeningInput>
+  }
+
+  export type LanguageCreateNestedOneWithoutSpeakingInput = {
+    create?: XOR<LanguageCreateWithoutSpeakingInput, LanguageUncheckedCreateWithoutSpeakingInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutSpeakingInput
+    connect?: LanguageWhereUniqueInput
+  }
+
+  export type LanguageUpdateOneRequiredWithoutSpeakingNestedInput = {
+    create?: XOR<LanguageCreateWithoutSpeakingInput, LanguageUncheckedCreateWithoutSpeakingInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutSpeakingInput
+    upsert?: LanguageUpsertWithoutSpeakingInput
+    connect?: LanguageWhereUniqueInput
+    update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutSpeakingInput, LanguageUpdateWithoutSpeakingInput>, LanguageUncheckedUpdateWithoutSpeakingInput>
   }
 
   export type LanguageCreateNestedOneWithoutUsersInput = {
@@ -14804,10 +18996,6 @@ export namespace Prisma {
     create?: XOR<SubscriptionCreateWithoutUserInput, SubscriptionUncheckedCreateWithoutUserInput>
     connectOrCreate?: SubscriptionCreateOrConnectWithoutUserInput
     connect?: SubscriptionWhereUniqueInput
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type LanguageUpdateOneRequiredWithoutUsersNestedInput = {
@@ -15400,6 +19588,96 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type QuizCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuizUncheckedCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuizCreateOrConnectWithoutLanguageInput = {
+    where: QuizWhereUniqueInput
+    create: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type QuizCreateManyLanguageInputEnvelope = {
+    data: QuizCreateManyLanguageInput | QuizCreateManyLanguageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ListeningCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+  }
+
+  export type ListeningUncheckedCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+  }
+
+  export type ListeningCreateOrConnectWithoutLanguageInput = {
+    where: ListeningWhereUniqueInput
+    create: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type ListeningCreateManyLanguageInputEnvelope = {
+    data: ListeningCreateManyLanguageInput | ListeningCreateManyLanguageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SpeakingCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+  }
+
+  export type SpeakingUncheckedCreateWithoutLanguageInput = {
+    id?: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+  }
+
+  export type SpeakingCreateOrConnectWithoutLanguageInput = {
+    where: SpeakingWhereUniqueInput
+    create: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type SpeakingCreateManyLanguageInputEnvelope = {
+    data: SpeakingCreateManyLanguageInput | SpeakingCreateManyLanguageInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserCreateWithoutLanguageInput = {
     id?: string
     email: string
@@ -15518,6 +19796,96 @@ export namespace Prisma {
     vocabOrder?: IntFilter<"WordBank"> | number
   }
 
+  export type QuizUpsertWithWhereUniqueWithoutLanguageInput = {
+    where: QuizWhereUniqueInput
+    update: XOR<QuizUpdateWithoutLanguageInput, QuizUncheckedUpdateWithoutLanguageInput>
+    create: XOR<QuizCreateWithoutLanguageInput, QuizUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type QuizUpdateWithWhereUniqueWithoutLanguageInput = {
+    where: QuizWhereUniqueInput
+    data: XOR<QuizUpdateWithoutLanguageInput, QuizUncheckedUpdateWithoutLanguageInput>
+  }
+
+  export type QuizUpdateManyWithWhereWithoutLanguageInput = {
+    where: QuizScalarWhereInput
+    data: XOR<QuizUpdateManyMutationInput, QuizUncheckedUpdateManyWithoutLanguageInput>
+  }
+
+  export type QuizScalarWhereInput = {
+    AND?: QuizScalarWhereInput | QuizScalarWhereInput[]
+    OR?: QuizScalarWhereInput[]
+    NOT?: QuizScalarWhereInput | QuizScalarWhereInput[]
+    id?: StringFilter<"Quiz"> | string
+    languageCode?: StringFilter<"Quiz"> | string
+    level?: StringFilter<"Quiz"> | string
+    question?: StringFilter<"Quiz"> | string
+    options?: JsonFilter<"Quiz">
+    answer?: IntFilter<"Quiz"> | number
+    explain?: StringFilter<"Quiz"> | string
+    quizOrder?: IntFilter<"Quiz"> | number
+    createdAt?: DateTimeFilter<"Quiz"> | Date | string
+    updatedAt?: DateTimeFilter<"Quiz"> | Date | string
+  }
+
+  export type ListeningUpsertWithWhereUniqueWithoutLanguageInput = {
+    where: ListeningWhereUniqueInput
+    update: XOR<ListeningUpdateWithoutLanguageInput, ListeningUncheckedUpdateWithoutLanguageInput>
+    create: XOR<ListeningCreateWithoutLanguageInput, ListeningUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type ListeningUpdateWithWhereUniqueWithoutLanguageInput = {
+    where: ListeningWhereUniqueInput
+    data: XOR<ListeningUpdateWithoutLanguageInput, ListeningUncheckedUpdateWithoutLanguageInput>
+  }
+
+  export type ListeningUpdateManyWithWhereWithoutLanguageInput = {
+    where: ListeningScalarWhereInput
+    data: XOR<ListeningUpdateManyMutationInput, ListeningUncheckedUpdateManyWithoutLanguageInput>
+  }
+
+  export type ListeningScalarWhereInput = {
+    AND?: ListeningScalarWhereInput | ListeningScalarWhereInput[]
+    OR?: ListeningScalarWhereInput[]
+    NOT?: ListeningScalarWhereInput | ListeningScalarWhereInput[]
+    id?: StringFilter<"Listening"> | string
+    languageCode?: StringFilter<"Listening"> | string
+    level?: StringFilter<"Listening"> | string
+    title?: StringFilter<"Listening"> | string
+    script?: StringFilter<"Listening"> | string
+    blanks?: JsonFilter<"Listening">
+    listenOrder?: IntFilter<"Listening"> | number
+  }
+
+  export type SpeakingUpsertWithWhereUniqueWithoutLanguageInput = {
+    where: SpeakingWhereUniqueInput
+    update: XOR<SpeakingUpdateWithoutLanguageInput, SpeakingUncheckedUpdateWithoutLanguageInput>
+    create: XOR<SpeakingCreateWithoutLanguageInput, SpeakingUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type SpeakingUpdateWithWhereUniqueWithoutLanguageInput = {
+    where: SpeakingWhereUniqueInput
+    data: XOR<SpeakingUpdateWithoutLanguageInput, SpeakingUncheckedUpdateWithoutLanguageInput>
+  }
+
+  export type SpeakingUpdateManyWithWhereWithoutLanguageInput = {
+    where: SpeakingScalarWhereInput
+    data: XOR<SpeakingUpdateManyMutationInput, SpeakingUncheckedUpdateManyWithoutLanguageInput>
+  }
+
+  export type SpeakingScalarWhereInput = {
+    AND?: SpeakingScalarWhereInput | SpeakingScalarWhereInput[]
+    OR?: SpeakingScalarWhereInput[]
+    NOT?: SpeakingScalarWhereInput | SpeakingScalarWhereInput[]
+    id?: StringFilter<"Speaking"> | string
+    languageCode?: StringFilter<"Speaking"> | string
+    level?: StringFilter<"Speaking"> | string
+    phrase?: StringFilter<"Speaking"> | string
+    translation?: StringFilter<"Speaking"> | string
+    phonetic?: StringNullableFilter<"Speaking"> | string | null
+    speakOrder?: IntFilter<"Speaking"> | number
+  }
+
   export type UserUpsertWithWhereUniqueWithoutLanguageInput = {
     where: UserWhereUniqueInput
     update: XOR<UserUpdateWithoutLanguageInput, UserUncheckedUpdateWithoutLanguageInput>
@@ -15564,6 +19932,9 @@ export namespace Prisma {
     levels: JsonNullValueInput | InputJsonValue
     status?: string
     wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
     users?: UserCreateNestedManyWithoutLanguageInput
   }
 
@@ -15576,6 +19947,9 @@ export namespace Prisma {
     levels: JsonNullValueInput | InputJsonValue
     status?: string
     wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
     users?: UserUncheckedCreateNestedManyWithoutLanguageInput
   }
 
@@ -15604,6 +19978,9 @@ export namespace Prisma {
     levels?: JsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
     users?: UserUpdateManyWithoutLanguageNestedInput
   }
 
@@ -15616,6 +19993,9 @@ export namespace Prisma {
     levels?: JsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
     users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
@@ -15628,6 +20008,9 @@ export namespace Prisma {
     levels: JsonNullValueInput | InputJsonValue
     status?: string
     courses?: CourseCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
     users?: UserCreateNestedManyWithoutLanguageInput
   }
 
@@ -15640,6 +20023,9 @@ export namespace Prisma {
     levels: JsonNullValueInput | InputJsonValue
     status?: string
     courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
     users?: UserUncheckedCreateNestedManyWithoutLanguageInput
   }
 
@@ -15668,6 +20054,9 @@ export namespace Prisma {
     levels?: JsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
     users?: UserUpdateManyWithoutLanguageNestedInput
   }
 
@@ -15680,6 +20069,237 @@ export namespace Prisma {
     levels?: JsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
+    users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageCreateWithoutQuizzesInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
+    users?: UserCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUncheckedCreateWithoutQuizzesInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
+    users?: UserUncheckedCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageCreateOrConnectWithoutQuizzesInput = {
+    where: LanguageWhereUniqueInput
+    create: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
+  }
+
+  export type LanguageUpsertWithoutQuizzesInput = {
+    update: XOR<LanguageUpdateWithoutQuizzesInput, LanguageUncheckedUpdateWithoutQuizzesInput>
+    create: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
+    where?: LanguageWhereInput
+  }
+
+  export type LanguageUpdateToOneWithWhereWithoutQuizzesInput = {
+    where?: LanguageWhereInput
+    data: XOR<LanguageUpdateWithoutQuizzesInput, LanguageUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type LanguageUpdateWithoutQuizzesInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
+    users?: UserUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateWithoutQuizzesInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
+    users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageCreateWithoutListeningInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
+    users?: UserCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUncheckedCreateWithoutListeningInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
+    users?: UserUncheckedCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageCreateOrConnectWithoutListeningInput = {
+    where: LanguageWhereUniqueInput
+    create: XOR<LanguageCreateWithoutListeningInput, LanguageUncheckedCreateWithoutListeningInput>
+  }
+
+  export type LanguageUpsertWithoutListeningInput = {
+    update: XOR<LanguageUpdateWithoutListeningInput, LanguageUncheckedUpdateWithoutListeningInput>
+    create: XOR<LanguageCreateWithoutListeningInput, LanguageUncheckedCreateWithoutListeningInput>
+    where?: LanguageWhereInput
+  }
+
+  export type LanguageUpdateToOneWithWhereWithoutListeningInput = {
+    where?: LanguageWhereInput
+    data: XOR<LanguageUpdateWithoutListeningInput, LanguageUncheckedUpdateWithoutListeningInput>
+  }
+
+  export type LanguageUpdateWithoutListeningInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
+    users?: UserUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateWithoutListeningInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
+    users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageCreateWithoutSpeakingInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    users?: UserCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUncheckedCreateWithoutSpeakingInput = {
+    code: string
+    name: string
+    native: string
+    flag: string
+    tagline: string
+    levels: JsonNullValueInput | InputJsonValue
+    status?: string
+    courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
+    wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    users?: UserUncheckedCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageCreateOrConnectWithoutSpeakingInput = {
+    where: LanguageWhereUniqueInput
+    create: XOR<LanguageCreateWithoutSpeakingInput, LanguageUncheckedCreateWithoutSpeakingInput>
+  }
+
+  export type LanguageUpsertWithoutSpeakingInput = {
+    update: XOR<LanguageUpdateWithoutSpeakingInput, LanguageUncheckedUpdateWithoutSpeakingInput>
+    create: XOR<LanguageCreateWithoutSpeakingInput, LanguageUncheckedCreateWithoutSpeakingInput>
+    where?: LanguageWhereInput
+  }
+
+  export type LanguageUpdateToOneWithWhereWithoutSpeakingInput = {
+    where?: LanguageWhereInput
+    data: XOR<LanguageUpdateWithoutSpeakingInput, LanguageUncheckedUpdateWithoutSpeakingInput>
+  }
+
+  export type LanguageUpdateWithoutSpeakingInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    users?: UserUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateWithoutSpeakingInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    native?: StringFieldUpdateOperationsInput | string
+    flag?: StringFieldUpdateOperationsInput | string
+    tagline?: StringFieldUpdateOperationsInput | string
+    levels?: JsonNullValueInput | InputJsonValue
+    status?: StringFieldUpdateOperationsInput | string
+    courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
+    wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
     users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
@@ -15693,6 +20313,9 @@ export namespace Prisma {
     status?: string
     courses?: CourseCreateNestedManyWithoutLanguageInput
     wordBank?: WordBankCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizCreateNestedManyWithoutLanguageInput
+    listening?: ListeningCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingCreateNestedManyWithoutLanguageInput
   }
 
   export type LanguageUncheckedCreateWithoutUsersInput = {
@@ -15705,6 +20328,9 @@ export namespace Prisma {
     status?: string
     courses?: CourseUncheckedCreateNestedManyWithoutLanguageInput
     wordBank?: WordBankUncheckedCreateNestedManyWithoutLanguageInput
+    quizzes?: QuizUncheckedCreateNestedManyWithoutLanguageInput
+    listening?: ListeningUncheckedCreateNestedManyWithoutLanguageInput
+    speaking?: SpeakingUncheckedCreateNestedManyWithoutLanguageInput
   }
 
   export type LanguageCreateOrConnectWithoutUsersInput = {
@@ -15882,6 +20508,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUpdateManyWithoutLanguageNestedInput
     wordBank?: WordBankUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUpdateManyWithoutLanguageNestedInput
   }
 
   export type LanguageUncheckedUpdateWithoutUsersInput = {
@@ -15894,6 +20523,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     courses?: CourseUncheckedUpdateManyWithoutLanguageNestedInput
     wordBank?: WordBankUncheckedUpdateManyWithoutLanguageNestedInput
+    quizzes?: QuizUncheckedUpdateManyWithoutLanguageNestedInput
+    listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
+    speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
   export type UserProgressDayUpsertWithWhereUniqueWithoutUserInput = {
@@ -16777,6 +21409,36 @@ export namespace Prisma {
     vocabOrder?: number
   }
 
+  export type QuizCreateManyLanguageInput = {
+    id?: string
+    level: string
+    question: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    explain: string
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ListeningCreateManyLanguageInput = {
+    id?: string
+    level: string
+    title: string
+    script: string
+    blanks: JsonNullValueInput | InputJsonValue
+    listenOrder?: number
+  }
+
+  export type SpeakingCreateManyLanguageInput = {
+    id?: string
+    level: string
+    phrase: string
+    translation: string
+    phonetic?: string | null
+    speakOrder?: number
+  }
+
   export type UserCreateManyLanguageInput = {
     id?: string
     email: string
@@ -16864,6 +21526,96 @@ export namespace Prisma {
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type QuizUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuizUncheckedUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuizUncheckedUpdateManyWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    explain?: StringFieldUpdateOperationsInput | string
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ListeningUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ListeningUncheckedUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ListeningUncheckedUpdateManyWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    blanks?: JsonNullValueInput | InputJsonValue
+    listenOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingUncheckedUpdateWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SpeakingUncheckedUpdateManyWithoutLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    speakOrder?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUpdateWithoutLanguageInput = {
@@ -17144,6 +21896,18 @@ export namespace Prisma {
      * @deprecated Use WordBankDefaultArgs instead
      */
     export type WordBankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WordBankDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuizDefaultArgs instead
+     */
+    export type QuizArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuizDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ListeningDefaultArgs instead
+     */
+    export type ListeningArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ListeningDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SpeakingDefaultArgs instead
+     */
+    export type SpeakingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SpeakingDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */

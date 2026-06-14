@@ -10,6 +10,7 @@ import wordsRoutes from "./routes/words.js";
 import progressRoutes from "./routes/progress.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
+import adminRoutes from "./routes/admin.js";
 import jwtPlugin from "./lib/jwt.js";
 import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
@@ -82,6 +83,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     progressRoutes,
     communityRoutes,
     stripeRoutes,
+    adminRoutes,
   ];
 
   for (const route of apiRoutes) {

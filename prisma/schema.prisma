@@ -18,9 +18,12 @@ model Language {
   levels  Json
   status  String   @default("active") // 'active' | 'coming_soon'
 
-  courses  Course[]
-  wordBank WordBank[]
-  users    User[]
+  courses   Course[]
+  wordBank  WordBank[]
+  quizzes   Quiz[]
+  listening Listening[]
+  speaking  Speaking[]
+  users     User[]
 
   @@map("languages")
 }
@@ -57,6 +60,54 @@ model WordBank {
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
 
   @@map("word_bank")
+  @@index([languageCode, level])
+}
+
+model Quiz {
+  id           String   @id @default(uuid())
+  languageCode String
+  level        String
+  question     String
+  options      Json     // string[]
+  answer       Int      // index of correct option
+  explain      String
+  quizOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("quizzes")
+  @@index([languageCode, level])
+}
+
+model Listening {
+  id           String @id @default(uuid())
+  languageCode String
+  level        String
+  title        String
+  script       String
+  blanks       Json   // { index: number; answer: string }[]
+  listenOrder  Int    @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("listening")
+  @@index([languageCode, level])
+}
+
+model Speaking {
+  id           String  @id @default(uuid())
+  languageCode String
+  level        String
+  phrase       String
+  translation  String
+  phonetic     String?
+  speakOrder   Int     @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("speaking")
   @@index([languageCode, level])
 }
 
