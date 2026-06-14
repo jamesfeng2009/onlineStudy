@@ -11,19 +11,22 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [lang, setLang] = useState<Language>("en");
   const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(false);
   const register = useAuthStore((s) => s.register);
   const navigate = useNavigate();
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErr("");
     if (!username.trim() || !email.trim() || password.length < 4) {
       setErr("请填写用户名和邮箱，密码至少 4 位");
       return;
     }
-    const res = register({ username, email, password, language: lang });
+    setLoading(true);
+    const res = await register({ username: username.trim(), email: email.trim(), password, language: lang });
+    setLoading(false);
     if (!res.ok) {
-      setErr(res.error ?? "注册失败");
+      setErr(res.error ?? "注册失败，请稍后再试");
       return;
     }
     navigate("/");
@@ -128,9 +131,10 @@ export default function RegisterPage() {
 
             <button
               type="submit"
-              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
+              disabled={loading}
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50 disabled:opacity-60"
             >
-              立即注册 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              {loading ? "注册中..." : <>立即注册 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></>}
             </button>
 
             <div className="text-center text-sm text-brand-200/70">

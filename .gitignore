@@ -7,12 +7,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 .pnpm-store
+
+# Trae
 .trae
+
+# Build output
 dist
+server/dist
 dist-ssr
 *.local
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Prisma generated client (optional)
+# prisma/generated
 
 # Editor directories and files
 .vscode/*

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   Globe2,
@@ -28,9 +28,8 @@ const NAV = [
 ];
 
 export default function Header() {
-  const currentUserId = useAuthStore((s) => s.currentUserId);
-  const users = useAuthStore((s) => s.users);
-  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const user = useAuthStore((s) => s.user);
+  const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,6 +38,8 @@ export default function Header() {
     logout();
     navigate("/login");
   };
+
+  const isLoggedIn = !!user;
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl">
@@ -78,8 +79,17 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {user && currentUserId ? (
+          {isLoggedIn ? (
             <>
+              <Link
+                to="/profile"
+                className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-brand-100 transition hover:bg-white/10 md:flex"
+              >
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-fuchsia-500 text-[10px] font-bold text-white">
+                  {user.username?.slice(0, 1).toUpperCase() ?? "U"}
+                </div>
+                <span className="font-medium">{user.username}</span>
+              </Link>
               <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-brand-100 md:flex">
                 <Flame className="h-4 w-4 text-orange-400" />
                 <span className="font-medium">{user.streak} 天连续</span>
@@ -99,7 +109,7 @@ export default function Header() {
               to="/login"
               className="rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30 transition hover:shadow-fuchsia-500/50"
             >
-              登录 / 注册
+              {status === "loading" ? "加载中..." : "登录 / 注册"}
             </Link>
           )}
 

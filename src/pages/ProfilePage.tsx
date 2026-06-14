@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
-import { UserCircle2, Globe2, Target, LogOut, Check } from "lucide-react";
+import { useState } from "react";
+import { UserCircle2, Globe2, Target, LogOut, Check, Flame, Trophy, BookOpen } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
@@ -7,41 +8,59 @@ import { useProgressStore } from "../store/progressStore";
 import { LANGUAGES } from "../data/languages";
 
 export default function ProfilePage() {
-  const currentUserId = useAuthStore((s) => s.currentUserId);
-  const users = useAuthStore((s) => s.users);
-  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
-  const updateUser = useAuthStore((s) => s.updateUser);
+  const user = useAuthStore((s) => s.user);
+  const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
-  const progressMap = useProgressStore((s) => s.progressMap);
-  const progress = useMemo(() => {
-    if (!currentUserId) return null;
-    return progressMap[currentUserId] ?? null;
-  }, [progressMap, currentUserId]);
+  const updateProfile = useAuthStore((s) => s.updateProfile);
+  const progress = useProgressStore((s) => s.progress);
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState(user?.username ?? "");
-  const [goal, setGoal] = useState(user?.goalMinutesPerDay ?? 30);
-  const [lang, setLang] = useState(user?.targetLanguage ?? "en");
+  const [goal, setGoal] = useState<number>(user?.goalMinutesPerDay ?? 30);
+  const [lang, setLang] = useState<string>(user?.targetLanguage ?? "en");
   const [savedMsg, setSavedMsg] = useState("");
+  const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  if (!user) {
+  if (!user && status !== "loading") {
     return (
       <PageShell title="我的">
         <GlassCard className="p-10 text-center">
           <UserCircle2 className="mx-auto h-10 w-10 text-brand-200/60" />
-          <div className="mt-4 text-white">请先登录以查看个人信息。</div>
+          <div className="mt-4 text-white">
+            <p>请先登录以查看个人信息。</p>
+            <button
+              onClick={() => navigate("/login")}
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
+            >
+              前往登录
+            </button>
+          </div>
         </GlassCard>
       </PageShell>
     );
   }
 
-  const save = () => {
-    updateUser({
-      username: username.trim() || user.username,
+  const save = async () => {
+    setErr("");
+    setLoading(true);
+    const res = await updateProfile({
+      username: username.trim() || user?.username,
       targetLanguage: lang,
       goalMinutesPerDay: Number(goal) || 30,
     });
+    setLoading(false);
+    if (!res.ok) {
+      setErr(res.error ?? "保存失败");
+      return;
+    }
     setSavedMsg("已保存 ✓");
     window.setTimeout(() => setSavedMsg(""), 2000);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -54,26 +73,32 @@ export default function ProfilePage() {
         <GlassCard className="p-6">
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 via-fuchsia-500 to-amber-400 text-2xl text-white shadow-lg shadow-fuchsia-500/20">
-              {user.username.slice(0, 1).toUpperCase()}
+              {user?.username?.slice(0, 1).toUpperCase()}
             </div>
             <div>
-              <div className="font-display text-xl font-bold text-white">{user.username}</div>
-              <div className="text-xs text-brand-200/70">{user.email}</div>
-              <div className="mt-2 text-xs text-brand-200/60">创建于 {user.createdAt}</div>
+              <div className="font-display text-xl font-bold text-white">{user?.username}</div>
+              <div className="text-xs text-brand-200/70">{user?.email}</div>
+              <div className="mt-2 text-xs text-brand-200/60">创建于 {user?.createdAt}</div>
             </div>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <Info label="等级" value={`Lv. ${user.level}`} />
-            <Info label="经验" value={`${user.exp} EXP`} />
-            <Info label="连续学习" value={`${user.streak} 天`} />
-            <Info label="累计单词" value={progress.wordsLearned + ""} />
-            <Info label="语法练习" value={progress.quizzesDone + ""} />
-            <Info label="口语/听力" value={`${progress.speakingMinutes + progress.listeningMinutes} 分`} />
+            <Info label="连续学习" value={`${user?.streak ?? 0} 天`} />
+            <Info label="等级" value={`Lv.${user?.level ?? 1}`} />
+            <Info label="已学单词" value={progress ? `${progress.wordsLearned}` : "—"} />
+            <Info label="语法练习" value={progress ? `${progress.quizzesDone}` : "—"} />
+            <Info
+              label="口语"
+              value={progress ? `${progress.speakingMinutes} 分钟` : "—"}
+            />
+            <Info
+              label="听力"
+              value={progress ? `${progress.listeningMinutes} 分钟` : "—"}
+            />
           </div>
 
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-rose-200 transition hover:bg-rose-500/10"
           >
             <LogOut className="h-4 w-4" /> 退出当前账号
@@ -96,7 +121,7 @@ export default function ProfilePage() {
 
             <Field label="邮箱">
               <input
-                value={user.email}
+                value={user?.email ?? ""}
                 disabled
                 className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-brand-200/60 outline-none"
               />
@@ -107,6 +132,7 @@ export default function ProfilePage() {
                 {LANGUAGES.map((l) => (
                   <button
                     key={l.id}
+                    type="button"
                     onClick={() => setLang(l.id)}
                     className={
                       "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
@@ -144,20 +170,28 @@ export default function ProfilePage() {
           </div>
 
           <div className="mt-8 flex items-center justify-between">
-            <span className="text-xs text-emerald-300">{savedMsg}</span>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-emerald-300">{savedMsg}</span>
+              <span className="text-xs text-rose-300">{err}</span>
+            </div>
             <button
               onClick={save}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
+              disabled={loading}
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-60"
             >
-              保存修改 <Target className="h-4 w-4" />
+              {loading ? "保存中..." : <>保存修改 <Target className="h-4 w-4" /></>}
             </button>
           </div>
 
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <div className="text-xs uppercase tracking-wider text-brand-200/60">账号信息</div>
+            <div className="flex items-center gap-2 text-xs text-brand-200/70">
+              <Flame className="h-4 w-4 text-orange-400" />
+              <Trophy className="h-4 w-4 text-amber-300" />
+              <BookOpen className="h-4 w-4 text-sky-300" />
+              <span className="ml-1">持续学习，稳步前进</span>
+            </div>
             <div className="mt-2 text-sm text-brand-100/90">
-              本系统为纯前端演示版本，账户与学习数据保存在浏览器本地 (localStorage)。
-              当前共有 {users.length} 个本地账户。
+              LinguaVerse 使用后端 API 记录所有学习数据，随时在任意设备上同步进度。
             </div>
           </div>
         </GlassCard>
@@ -166,10 +200,16 @@ export default function ProfilePage() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
-      <div className="mb-2 text-xs font-medium text-brand-200/70">{label}</div>
+      <div className="mb-2 text-xs font-medium text-brand-200/80">{label}</div>
       {children}
     </div>
   );

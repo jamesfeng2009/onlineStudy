@@ -1,0 +1,168 @@
+// Prisma schema for the online learning platform
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Language {
+  code    String   @id
+  name    String
+  native  String
+  flag    String
+  tagline String
+  levels  Json
+  status  String   @default("active") // 'active' | 'coming_soon'
+
+  courses  Course[]
+  wordBank WordBank[]
+  users    User[]
+
+  @@map("languages")
+}
+
+model Course {
+  id           String   @id @default(uuid())
+  languageCode String
+  title        String
+  level        String
+  levelGroup   String   // beginner | intermediate | advanced
+  description  String
+  lessons      Int
+  minutes      Int
+  cover        String
+  tags         Json
+  vipOnly      Boolean  @default(false)
+  courseOrder  Int      @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("courses")
+}
+
+model WordBank {
+  id              String @id @default(uuid())
+  languageCode    String
+  level           String
+  word            String
+  translation     String
+  phonetic        String?
+  exampleSentence String
+  vocabOrder      Int    @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("word_bank")
+  @@index([languageCode, level])
+}
+
+model User {
+  id               String              @id @default(uuid())
+  email            String              @unique
+  username         String
+  passwordHash     String
+  avatar           String?
+  level            Int                 @default(1)
+  exp              Int                 @default(0)
+  streak           Int                 @default(0)
+  lastActive       DateTime            @default(now())
+  targetLanguage   String
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  role             String              @default("user") // user | vip | admin
+  goalMinutesPerDay Int                @default(30)
+  jwtVersion       Int                 @default(0)
+
+  language        Language             @relation(fields: [targetLanguage], references: [code], onDelete: Restrict)
+  progressDays    UserProgressDay[]
+  posts           Post[]
+  likedPosts      LikePost[]
+  comments        Comment[]
+  subscription    Subscription?
+
+  @@map("users")
+}
+
+model UserProgressDay {
+  id              String   @id @default(uuid())
+  userId          String
+  studyDate       DateTime
+  minutes         Int      @default(0)
+  wordsLearned    Int      @default(0)
+  wordCorrect     Int      @default(0)
+  wordTotal       Int      @default(0)
+  quizzesDone     Int      @default(0)
+  quizCorrect     Int      @default(0)
+  quizTotal       Int      @default(0)
+  speakingMinutes Int      @default(0)
+  listeningMinutes Int     @default(0)
+  moduleScores    Json     @default("{\"words\":0,\"grammar\":0,\"listening\":0,\"speaking\":0}")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, studyDate])
+  @@map("user_progress_days")
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  authorId  String
+  topic     String
+  content   String
+  createdAt DateTime @default(now())
+
+  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  likes    LikePost[]
+  comments Comment[]
+
+  @@map("posts")
+}
+
+model LikePost {
+  id     String @id @default(uuid())
+  postId String
+  userId String
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@map("like_posts")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  postId    String
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Subscription {
+  id                  String   @id @default(uuid())
+  userId              String   @unique
+  stripeCustomerId    String?
+  stripeSubscriptionId String?
+  stripePriceId       String?
+  status              String   @default("inactive")
+  tier                String   @default("free") // free | basic | vip
+  currentPeriodStart  DateTime?
+  currentPeriodEnd    DateTime?
+  cancelAtPeriodEnd   Boolean  @default(false)
+  amountTotal         Int      @default(0)
+  currency            String   @default("usd")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("subscriptions")
+}

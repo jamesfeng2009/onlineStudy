@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightbulb, Play, Pause } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
-import { LANGUAGES, getLanguage } from "../data/languages";
-import { WORDS, QUIZZES, LISTENING, SPEAKING, getWords, getQuizzes, getListening, getSpeaking } from "../data/content";
-import { useProgressStore } from "../store/progressStore";
+import { api } from "../lib/api";
+import type { WordResp } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
+import { useProgressStore } from "../store/progressStore";
+import { WORDS, getWords, getQuizzes, getSpeaking, getListening } from "../data/content";
 import type { Language } from "../types";
 
 type Tab = "words" | "grammar" | "speaking" | "listening";
@@ -18,11 +19,15 @@ const TABS: { key: Tab; label: string; icon: React.ElementType; desc: string }[]
 ];
 
 export default function LearnPage() {
-  const currentUserId = useAuthStore((s) => s.currentUserId);
-  const users = useAuthStore((s) => s.users);
-  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
+  const user = useAuthStore((s) => s.user);
   const [tab, setTab] = useState<Tab>("words");
-  const [lang, setLang] = useState<Language>(user?.targetLanguage ?? "en");
+  const [lang, setLang] = useState<Language>((user?.targetLanguage as Language) ?? "en");
+
+  useEffect(() => {
+    if (user && !["en", "ja", "ko", "zh", "es", "fr", "de"].includes(lang)) {
+      // ignore
+    }
+  }, [user, lang]);
 
   return (
     <PageShell
@@ -30,18 +35,16 @@ export default function LearnPage() {
       subtitle="选择一个模块，开始 10 分钟的沉浸式练习。"
       action={
         <div className="glass flex items-center gap-2 rounded-full p-1">
-          {LANGUAGES.map((l) => (
+          {["en", "ja", "ko"].map((l) => (
             <button
-              key={l.id}
-              onClick={() => setLang(l.id)}
+              key={l}
+              onClick={() => setLang(l as Language)}
               className={
                 "rounded-full px-3 py-1.5 text-xs transition " +
-                (lang === l.id
-                  ? "bg-white/15 text-white shadow-inner"
-                  : "text-brand-200/70 hover:text-white")
+                (lang === l ? "bg-white/15 text-white shadow-inner" : "text-brand-200/70 hover:text-white")
               }
             >
-              {l.flag} {l.name}
+              {l === "en" ? "🇬🇧 英语" : l === "ja" ? "🇯🇵 日语" : "🇰🇷 韩语"}
             </button>
           ))}
         </div>
@@ -64,14 +67,7 @@ export default function LearnPage() {
               }
             >
               <div className="flex items-center justify-between">
-                <div
-                  className={
-                    "flex h-10 w-10 items-center justify-center rounded-xl " +
-                    (active
-                      ? "bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white"
-                      : "bg-white/5 text-brand-200")
-                  }
-                >
+                <div className={"flex h-10 w-10 items-center justify-center rounded-xl " + (active ? "bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white" : "bg-white/5 text-brand-200")}>
                   <Icon className="h-5 w-5" />
                 </div>
                 {active && <span className="text-[10px] text-sky-300">正在使用</span>}
@@ -83,11 +79,6 @@ export default function LearnPage() {
         })}
       </div>
 
-      <div className="mb-6 text-sm text-brand-200/70">
-        当前语言：
-        <span className="ml-1 font-medium text-white">{getLanguage(lang).name}</span>
-      </div>
-
       {tab === "words" && <WordsModule language={lang} />}
       {tab === "grammar" && <GrammarModule language={lang} />}
       {tab === "speaking" && <SpeakingModule language={lang} />}
@@ -96,29 +87,61 @@ export default function LearnPage() {
   );
 }
 
-/* ============================================================
+/* ===============================
    单词记忆 — Flashcards
-============================================================ */
+================================== */
 function WordsModule({ language }: { language: Language }) {
-  const words = useMemo(() => {
-    const base = getWords(language);
-    return [...base, ...base].sort(() => Math.random() - 0.5);
+  const recordWord = useProgressStore((s) => s.recordWord);
+  const [apiWords, setApiWords] = useState<WordResp[]>([]);
+  const [apiLoading, setApiLoading] = useState(true);
+
+  useEffect(() => {
+    setApiLoading(true);
+    let alive = true;
+    api
+      .words({ language })
+      .then((data) => {
+        if (alive) setApiWords(data);
+      })
+      .catch(() => {
+        if (alive) setApiWords([]);
+      })
+      .finally(() => {
+        if (alive) setApiLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
   }, [language]);
+
+  const words = useMemo(() => {
+    if (apiWords.length > 0) {
+      return apiWords.map((w) => ({
+        word: w.word,
+        translation: w.translation,
+        phonetic: w.phonetic,
+        example: w.exampleSentence,
+      }));
+    }
+    const local = getWords(language);
+    if (local && local.length > 0) return local;
+    return WORDS;
+  }, [apiWords, language]);
+
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState(0);
   const [unknown, setUnknown] = useState(0);
-  const record = useProgressStore((s) => s.recordWord);
-  const card = words[i % words.length];
+  const card = words[i % Math.max(1, words.length)];
 
-  const next = (k: boolean) => {
-    record(k);
+  const next = async (k: boolean) => {
+    await recordWord(k, language);
     if (k) setKnown((n) => n + 1);
     else setUnknown((n) => n + 1);
     setFlipped(false);
     setI((n) => n + 1);
   };
-  const pct = Math.round(((i % words.length) / words.length) * 100);
+  const pct = Math.round(((i % words.length) / Math.max(1, words.length)) * 100);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -140,34 +163,28 @@ function WordsModule({ language }: { language: Language }) {
             />
           </div>
 
-          <div className="card-flip flex-1">
-            <div
-              className={"card-flip-inner" + (flipped ? " is-flipped" : "")}
-              onClick={() => setFlipped((f) => !f)}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 via-slate-900/20 to-fuchsia-500/20 p-10">
-                <div className="text-xs uppercase tracking-[0.3em] text-sky-300">单词</div>
-                <div className="mt-4 font-display text-5xl font-bold text-white md:text-6xl">
-                  {card.word}
+          {apiLoading && apiWords.length === 0 ? (
+            <div className="flex flex-1 items-center justify-center text-sm text-brand-200/70">
+              加载单词中...
+            </div>
+          ) : (
+            <div className="card-flip flex-1">
+              <div className={"card-flip-inner" + (flipped ? " is-flipped" : "")} onClick={() => setFlipped((f) => !f)} style={{ cursor: "pointer" }}>
+                <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 via-slate-900/20 to-fuchsia-500/20 p-10">
+                  <div className="text-xs uppercase tracking-[0.3em] text-sky-300">单词</div>
+                  <div className="mt-4 font-display text-5xl font-bold text-white md:text-6xl">{card?.word}</div>
+                  {card?.phonetic && <div className="mt-3 text-sm text-brand-200/70">{card.phonetic}</div>}
+                  <div className="mt-8 text-xs text-brand-200/50">点击卡片查看释义 ↻</div>
                 </div>
-                {card.phonetic && (
-                  <div className="mt-3 text-sm text-brand-200/70">{card.phonetic}</div>
-                )}
-                <div className="mt-8 text-xs text-brand-200/50">点击卡片查看释义 ↻</div>
-              </div>
-              <div className="card-face back glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-amber-500/20 via-slate-900/20 to-rose-500/20 p-10">
-                <div className="text-xs uppercase tracking-[0.3em] text-amber-300">释义 · 例句</div>
-                <div className="mt-4 font-display text-3xl font-bold text-white md:text-4xl">
-                  {card.translation}
+                <div className="card-face back glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-amber-500/20 via-slate-900/20 to-rose-500/20 p-10">
+                  <div className="text-xs uppercase tracking-[0.3em] text-amber-300">释义 · 例句</div>
+                  <div className="mt-4 font-display text-3xl font-bold text-white md:text-4xl">{card?.translation}</div>
+                  <div className="mt-6 max-w-md text-center text-sm italic text-brand-100/90">"{card?.example}"</div>
+                  <div className="mt-6 text-xs text-brand-200/50">再次点击卡片翻回 ↻</div>
                 </div>
-                <div className="mt-6 max-w-md text-center text-sm italic text-brand-100/90">
-                  "{card.example}"
-                </div>
-                <div className="mt-6 text-xs text-brand-200/50">再次点击卡片翻回 ↻</div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="mt-6 grid grid-cols-2 gap-3">
             <button
@@ -205,26 +222,27 @@ function WordsModule({ language }: { language: Language }) {
   );
 }
 
-/* ============================================================
+/* ===============================
    语法练习
-============================================================ */
+================================== */
 function GrammarModule({ language }: { language: Language }) {
+  const recordQuiz = useProgressStore((s) => s.recordQuiz);
   const quizzes = useMemo(() => {
     const base = getQuizzes(language);
-    return base.length >= 2 ? base : QUIZZES; // fallback for small list
+    return base && base.length >= 2 ? base : getQuizzes("en");
   }, [language]);
+
   const [i, setI] = useState(0);
   const [pick, setPick] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
-  const record = useProgressStore((s) => s.recordQuiz);
 
-  const q = quizzes[i % quizzes.length];
+  const q = quizzes[i % Math.max(1, quizzes.length)];
 
-  const submit = () => {
+  const submit = async () => {
     if (pick === null) return;
     const ok = pick === q.answer;
-    record(ok);
+    await recordQuiz(ok, language);
     if (ok) setCorrect((n) => n + 1);
     else setWrong((n) => n + 1);
   };
@@ -250,11 +268,10 @@ function GrammarModule({ language }: { language: Language }) {
             {q.question}
           </div>
           <div className="mt-6 grid gap-3">
-            {q.options.map((opt, idx) => {
+            {q.options.map((opt: string, idx: number) => {
               const isAns = idx === q.answer;
               const isPick = pick !== null && idx === pick;
-              let cls =
-                "border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white";
+              let cls = "border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white";
               if (pick !== null) {
                 if (isAns) cls = "border-emerald-400/50 bg-emerald-400/15 text-emerald-100";
                 else if (isPick) cls = "border-rose-400/50 bg-rose-500/15 text-rose-100";
@@ -267,19 +284,14 @@ function GrammarModule({ language }: { language: Language }) {
                   key={idx}
                   disabled={pick !== null}
                   onClick={() => setPick(idx)}
-                  className={
-                    "flex items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition " +
-                    cls
-                  }
+                  className={"flex items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition " + cls}
                 >
                   <span className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-white/5 text-xs font-bold text-brand-200">
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span className="flex-1">{opt}</span>
                   {pick !== null && isAns && <Check className="h-4 w-4 text-emerald-300" />}
-                  {pick !== null && isPick && !isAns && (
-                    <X className="h-4 w-4 text-rose-300" />
-                  )}
+                  {pick !== null && isPick && !isAns && <X className="h-4 w-4 text-rose-300" />}
                 </button>
               );
             })}
@@ -318,9 +330,7 @@ function GrammarModule({ language }: { language: Language }) {
       <div className="space-y-4">
         <GlassCard className="p-5">
           <div className="text-xs uppercase tracking-wider text-brand-200/60">正确率</div>
-          <div className="mt-2 font-display text-3xl font-bold text-white">
-            {i === 0 ? "—" : `${Math.round((correct / i) * 100)}%`}
-          </div>
+          <div className="mt-2 font-display text-3xl font-bold text-white">{i === 0 ? "—" : `${Math.round((correct / i) * 100)}%`}</div>
           <div className="text-xs text-brand-200/60">已作答 {i} 题</div>
         </GlassCard>
         <GlassCard className="p-5">
@@ -336,17 +346,17 @@ function GrammarModule({ language }: { language: Language }) {
   );
 }
 
-/* ============================================================
+/* ===============================
    口语跟读
-============================================================ */
+================================== */
 function SpeakingModule({ language }: { language: Language }) {
+  const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
   const phrases = useMemo(() => getSpeaking(language), [language]);
   const [i, setI] = useState(0);
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [count, setCount] = useState(0);
-  const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
-  const p = phrases[i % phrases.length];
+  const p = phrases[i % Math.max(1, phrases.length)];
 
   const start = () => {
     setRecording(true);
@@ -358,7 +368,7 @@ function SpeakingModule({ language }: { language: Language }) {
       if (s >= 15) {
         window.clearInterval(iv);
         setRecording(false);
-        recordSpeaking(15);
+        recordSpeaking(15, language);
         setCount((c) => c + 1);
       }
     }, 500);
@@ -366,11 +376,10 @@ function SpeakingModule({ language }: { language: Language }) {
   const stop = () => {
     setRecording(false);
     if (seconds > 0) {
-      recordSpeaking(seconds);
+      recordSpeaking(seconds, language);
       setCount((c) => c + 1);
     }
   };
-  const next = () => setI((n) => n + 1);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -381,49 +390,32 @@ function SpeakingModule({ language }: { language: Language }) {
             {p.phrase}
           </div>
           <div className="mt-3 text-lg text-brand-200/80">{p.translation}</div>
-          {p.phonetic && (
-            <div className="mt-2 text-xs text-brand-200/60">{p.phonetic}</div>
-          )}
+          {p.phonetic && <div className="mt-2 text-xs text-brand-200/60">{p.phonetic}</div>}
 
-          {/* 录音按钮 */}
           <div className="mt-10 flex flex-col items-center">
             <button
               onClick={recording ? stop : start}
-              className={
-                "relative flex h-32 w-32 items-center justify-center rounded-full text-white transition " +
+              className={"relative flex h-32 w-32 items-center justify-center rounded-full text-white transition " +
                 (recording
                   ? "bg-gradient-to-br from-rose-500 to-fuchsia-600 shadow-[0_0_60px_-5px] shadow-fuchsia-500"
-                  : "bg-gradient-to-br from-sky-400 to-fuchsia-500 shadow-[0_0_60px_-10px] shadow-fuchsia-500/40 hover:-translate-y-1")
-              }
+                  : "bg-gradient-to-br from-sky-400 to-fuchsia-500 shadow-[0_0_60px_-10px] shadow-fuchsia-500/40 hover:-translate-y-1")}
             >
-              {recording ? (
-                <Pause className="h-12 w-12" />
-              ) : (
-                <Mic className="h-12 w-12" />
-              )}
-              {recording && (
-                <span className="pointer-events-none absolute inset-0 animate-ping rounded-full border border-fuchsia-400/40" />
-              )}
+              {recording ? <Pause className="h-12 w-12" /> : <Mic className="h-12 w-12" />}
+              {recording && <span className="pointer-events-none absolute inset-0 animate-ping rounded-full border border-fuchsia-400/40" />}
             </button>
-            <div className="mt-4 text-sm text-brand-100">
-              {recording ? `正在录音 · ${seconds}s` : "点击开始录音，大声朗读一次"}
-            </div>
-            <div className="mt-1 text-[11px] text-brand-200/50">
-              提示：浏览器不会实际上传音频，录音仅用于本地体验计时
-            </div>
+            <div className="mt-4 text-sm text-brand-100">{recording ? `正在录音 · ${seconds}s` : "点击开始录音，大声朗读一次"}</div>
+            <div className="mt-1 text-[11px] text-brand-200/50">提示：浏览器不会实际上传音频，录音仅用于本地体验计时</div>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3">
             <button
-              onClick={() => {
-                setSeconds(0);
-              }}
+              onClick={() => setSeconds(0)}
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-brand-100 hover:bg-white/10"
             >
               <RotateCcw className="h-4 w-4" /> 重来
             </button>
             <button
-              onClick={next}
+              onClick={() => setI((n) => n + 1)}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
               下一句 <ArrowRight className="h-4 w-4" />
@@ -458,25 +450,24 @@ function SpeakingModule({ language }: { language: Language }) {
   );
 }
 
-/* ============================================================
+/* ===============================
    听力训练
-============================================================ */
+================================== */
 function ListeningModule({ language }: { language: Language }) {
+  const recordListening = useProgressStore((s) => s.recordListening);
   const items = useMemo(() => getListening(language), [language]);
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [reveal, setReveal] = useState(false);
   const [inputs, setInputs] = useState<Record<number, string>>({});
-  const recordListening = useProgressStore((s) => s.recordListening);
   const [sessions, setSessions] = useState(0);
 
-  const L = items[i % items.length];
+  const L = items[i % Math.max(1, items.length)];
   const tokens = L.script.split(" ");
 
   const play = () => {
     if (playing) return;
     setPlaying(true);
-    // use Web Speech synthesis when available for real audio experience
     const synth = window.speechSynthesis;
     if (synth) {
       try {
@@ -485,7 +476,7 @@ function ListeningModule({ language }: { language: Language }) {
         u.rate = 0.9;
         u.onend = () => {
           setPlaying(false);
-          recordListening(Math.max(1, Math.ceil(L.script.length / 20)));
+          recordListening(Math.max(1, Math.ceil(L.script.length / 20)), language);
         };
         synth.cancel();
         synth.speak(u);
@@ -515,9 +506,7 @@ function ListeningModule({ language }: { language: Language }) {
         <GlassCard>
           <div className="flex items-center justify-between">
             <div className="text-xs uppercase tracking-[0.3em] text-sky-300">{L.title}</div>
-            <span className="text-xs text-brand-200/60">
-              第 {(i % items.length) + 1} / {items.length}
-            </span>
+            <span className="text-xs text-brand-200/60">第 {(i % items.length) + 1} / {items.length}</span>
           </div>
 
           <button
@@ -526,11 +515,8 @@ function ListeningModule({ language }: { language: Language }) {
           >
             {playing ? <Pause className="h-9 w-9" /> : <Play className="h-9 w-9" />}
           </button>
-          <div className="mt-3 text-xs text-brand-200/70">
-            {playing ? "正在朗读…" : "点击播放音频（浏览器会把这段文字念出来）"}
-          </div>
+          <div className="mt-3 text-xs text-brand-200/70">{playing ? "正在朗读…" : "点击播放音频（浏览器会把这段文字念出来）"}</div>
 
-          {/* 填空 */}
           <div className="mt-6 flex flex-wrap items-baseline gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
             {tokens.map((w, idx) => {
               const isBlank = blankIndices.has(idx);
@@ -561,9 +547,7 @@ function ListeningModule({ language }: { language: Language }) {
                         : "border-white/20 text-white focus:border-sky-400")
                     }
                   />
-                  {reveal && !correct && (
-                    <span className="ml-1 text-xs text-emerald-300">({blank!.answer})</span>
-                  )}
+                  {reveal && !correct && <span className="ml-1 text-xs text-emerald-300">({blank!.answer})</span>}
                 </span>
               );
             })}

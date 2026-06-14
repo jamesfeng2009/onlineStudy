@@ -7,15 +7,22 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
-  const { login } = useAuthStore();
+  const [loading, setLoading] = useState(false);
+  const login = useAuthStore((s) => s.login);
   const navigate = useNavigate();
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErr("");
-    const res = login(email, password);
+    if (!email.trim() || !password) {
+      setErr("请填写邮箱和密码");
+      return;
+    }
+    setLoading(true);
+    const res = await login(email.trim(), password);
+    setLoading(false);
     if (!res.ok) {
-      setErr(res.error ?? "登录失败");
+      setErr(res.error ?? "登录失败，请检查账号或密码");
       return;
     }
     navigate("/");
@@ -54,7 +61,7 @@ export default function LoginPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="至少 4 位"
+                    placeholder="请输入密码"
                     className="w-full bg-transparent text-sm text-white placeholder:text-brand-200/40 outline-none"
                   />
                 </div>
@@ -68,9 +75,10 @@ export default function LoginPage() {
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
+                disabled={loading}
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50 disabled:opacity-60"
               >
-                登录 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                {loading ? "登录中..." : <>登录 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></>}
               </button>
 
               <div className="text-center text-sm text-brand-200/70">
@@ -82,8 +90,8 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-brand-200/80">
-              <div className="mb-1 font-semibold text-white">演示账号</div>
-              <div>随便输入任何注册过的邮箱 + 密码，或先去注册页面新建一个即可。</div>
+              <div className="mb-1 font-semibold text-white">使用说明</div>
+              <div>请输入已注册的邮箱和密码登录。新用户请先注册账号。</div>
             </div>
           </div>
         </div>

@@ -1,97 +1,134 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import type { User, Language } from "../types";
-import { today, uuid } from "../utils/utils";
+import type { UserResp } from "../lib/api";
+import { api } from "../lib/api";
+
+type AuthStatus = "idle" | "loading" | "logged";
 
 interface AuthState {
-  users: User[];
-  currentUserId: string | null;
-  register: (input: { username: string; email: string; password: string; language: Language }) => { ok: boolean; error?: string };
-  login: (email: string, password: string) => { ok: boolean; error?: string };
+  token: string | null;
+  user: UserResp | null;
+  status: AuthStatus;
+  register: (input: { email: string; password: string; username: string; language: string }) => Promise<{ ok: boolean; error?: string }>;
+  login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
   logout: () => void;
-  setLanguage: (lang: Language) => void;
-  updateUser: (patch: Partial<User>) => void;
-  currentUser: () => User | null;
+  refreshMe: () => Promise<{ ok: boolean; error?: string }>;
+  updateLanguage: (lang: string) => Promise<{ ok: boolean; error?: string }>;
+  updateGoal: (goal: number) => Promise<{ ok: boolean; error?: string }>;
+  updateProfile: (patch: { username?: string; avatar?: string; targetLanguage?: string; goalMinutesPerDay?: number }) => Promise<{ ok: boolean; error?: string }>;
+  bootstrap: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set, get) => ({
-      users: [],
-      currentUserId: null,
+function readToken(): string | null {
+  try {
+    return localStorage.getItem("lv_token");
+  } catch {
+    return null;
+  }
+}
 
-      register: ({ username, email, password, language }) => {
-        const { users } = get();
-        if (users.some((u) => u.email.toLowerCase() === email.toLowerCase())) {
-          return { ok: false, error: "该邮箱已注册" };
-        }
-        const user: User = {
-          id: uuid(),
-          username,
-          email,
-          password,
-          level: 1,
-          exp: 0,
-          streak: 0,
-          lastActive: today(),
-          targetLanguage: language,
-          createdAt: today(),
-          goalMinutesPerDay: 30,
-        };
-        set({ users: [...users, user], currentUserId: user.id });
-        return { ok: true };
-      },
+function writeToken(token: string | null) {
+  try {
+    if (token) localStorage.setItem("lv_token", token);
+    else localStorage.removeItem("lv_token");
+  } catch {
+    /* ignore */
+  }
+}
 
-      login: (email, password) => {
-        const { users } = get();
-        const user = users.find(
-          (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password
-        );
-        if (!user) return { ok: false, error: "邮箱或密码不正确" };
-        // 更新 lastActive / streak
-        const td = today();
-        let streak = user.streak;
-        if (user.lastActive !== td) {
-          const yesterday = new Date(Date.now() - 86_400_000);
-          const y = yesterday.getFullYear();
-          const m = String(yesterday.getMonth() + 1).padStart(2, "0");
-          const d = String(yesterday.getDate()).padStart(2, "0");
-          if (user.lastActive === `${y}-${m}-${d}`) streak += 1;
-          else streak = 1;
-        }
-        const updated = { ...user, lastActive: td, streak };
-        set({
-          users: users.map((u) => (u.id === user.id ? updated : u)),
-          currentUserId: user.id,
-        });
-        return { ok: true };
-      },
+export const useAuthStore = create<AuthState>()((set, get) => ({
+  token: readToken(),
+  user: null,
+  status: "idle",
 
-      logout: () => set({ currentUserId: null }),
+  async bootstrap() {
+    const existing = readToken();
+    if (!existing) return;
+    try {
+      set({ status: "loading" });
+      const res = await api.me();
+      set({ user: res.user, status: "logged" });
+    } catch (err: any) {
+      writeToken(null);
+      set({ token: null, user: null, status: "idle" });
+    }
+  },
 
-      setLanguage: (lang) => {
-        const { currentUserId, users } = get();
-        if (!currentUserId) return;
-        set({
-          users: users.map((u) =>
-            u.id === currentUserId ? { ...u, targetLanguage: lang } : u
-          ),
-        });
-      },
+  async register({ email, password, username, language }) {
+    try {
+      set({ status: "loading" });
+      const res = await api.register({ email, password, username, language });
+      writeToken(res.token);
+      set({ token: res.token, user: res.user, status: "logged" });
+      return { ok: true };
+    } catch (err: any) {
+      const s = get().status;
+      if (s === "logged") set({ status: "idle" });
+      return { ok: false, error: err.message };
+    }
+  },
 
-      updateUser: (patch) => {
-        const { currentUserId, users } = get();
-        if (!currentUserId) return;
-        set({
-          users: users.map((u) => (u.id === currentUserId ? { ...u, ...patch } : u)),
-        });
-      },
+  async login(email, password) {
+    try {
+      set({ status: "loading" });
+      const res = await api.login({ email, password });
+      writeToken(res.token);
+      set({ token: res.token, user: res.user, status: "logged" });
+      return { ok: true };
+    } catch (err: any) {
+      const s = get().status;
+      if (s === "logged") set({ status: "idle" });
+      return { ok: false, error: err.message };
+    }
+  },
 
-      currentUser: () => {
-        const { users, currentUserId } = get();
-        return users.find((u) => u.id === currentUserId) ?? null;
-      },
-    }),
-    { name: "lv_auth" }
-  )
-);
+  logout() {
+    writeToken(null);
+    set({ token: null, user: null, status: "idle" });
+  },
+
+  async refreshMe() {
+    if (!readToken()) return { ok: false, error: "未登录" };
+    try {
+      set({ status: "loading" });
+      const res = await api.me();
+      set({ user: res.user, status: "logged" });
+      return { ok: true };
+    } catch (err: any) {
+      set({ status: "idle" });
+      return { ok: false, error: err.message };
+    }
+  },
+
+  async updateLanguage(lang) {
+    if (!readToken()) return { ok: false, error: "未登录" };
+    try {
+      const res = await api.updateMe({ targetLanguage: lang });
+      set({ user: res.user });
+      return { ok: true };
+    } catch (err: any) {
+      return { ok: false, error: err.message };
+    }
+  },
+
+  async updateGoal(goal) {
+    if (!readToken()) return { ok: false, error: "未登录" };
+    try {
+      const res = await api.updateMe({ goalMinutesPerDay: Number(goal) });
+      set({ user: res.user });
+      return { ok: true };
+    } catch (err: any) {
+      return { ok: false, error: err.message };
+    }
+  },
+
+  async updateProfile(patch) {
+    if (!readToken()) return { ok: false, error: "未登录" };
+    try {
+      const res = await api.updateMe(patch);
+      set({ user: res.user });
+      return { ok: true };
+    } catch (err: any) {
+      return { ok: false, error: err.message };
+    }
+  },
+}));

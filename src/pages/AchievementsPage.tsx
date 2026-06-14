@@ -1,23 +1,8 @@
-import { useMemo } from "react";
-import { Flame, Trophy, Sparkles, BookOpen, Pen, Mic, Headphones, Crown, Target, Zap, BookMarked } from "lucide-react";
+import { Flame, Trophy, Sparkles, BookOpen, Pen, Mic, Headphones, Crown, Target, Zap, Bookmark } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
-import type { UserProgress } from "../types";
-
-const EMPTY_PROGRESS: UserProgress = {
-  wordsLearned: 0,
-  wordCorrect: 0,
-  wordTotal: 0,
-  quizzesDone: 0,
-  quizCorrect: 0,
-  quizTotal: 0,
-  speakingMinutes: 0,
-  listeningMinutes: 0,
-  perDay: {},
-  moduleScores: {},
-};
 
 const BADGES: {
   id: string;
@@ -57,23 +42,15 @@ const BADGES: {
     description: "掌握 20 个新单词",
     icon: BookOpen,
     color: "from-sky-400 to-blue-600",
-    check: (ctx) => ({
-      earned: ctx.wordsLearned >= 20,
-      progress: Math.min(ctx.wordsLearned, 20),
-      total: 20,
-    }),
+    check: (ctx) => ({ earned: ctx.wordsLearned >= 20, progress: Math.min(ctx.wordsLearned, 20), total: 20 }),
   },
   {
     id: "words-100",
     title: "词汇达人",
     description: "掌握 100 个新单词",
-    icon: BookMarked,
+    icon: Bookmark,
     color: "from-cyan-400 to-teal-600",
-    check: (ctx) => ({
-      earned: ctx.wordsLearned >= 100,
-      progress: Math.min(ctx.wordsLearned, 100),
-      total: 100,
-    }),
+    check: (ctx) => ({ earned: ctx.wordsLearned >= 100, progress: Math.min(ctx.wordsLearned, 100), total: 100 }),
   },
   {
     id: "quizzes-10",
@@ -81,11 +58,7 @@ const BADGES: {
     description: "完成 10 道语法题",
     icon: Pen,
     color: "from-emerald-400 to-green-600",
-    check: (ctx) => ({
-      earned: ctx.quizzesDone >= 10,
-      progress: Math.min(ctx.quizzesDone, 10),
-      total: 10,
-    }),
+    check: (ctx) => ({ earned: ctx.quizzesDone >= 10, progress: Math.min(ctx.quizzesDone, 10), total: 10 }),
   },
   {
     id: "quizzes-50",
@@ -93,11 +66,7 @@ const BADGES: {
     description: "完成 50 道语法题",
     icon: Sparkles,
     color: "from-lime-400 to-emerald-600",
-    check: (ctx) => ({
-      earned: ctx.quizzesDone >= 50,
-      progress: Math.min(ctx.quizzesDone, 50),
-      total: 50,
-    }),
+    check: (ctx) => ({ earned: ctx.quizzesDone >= 50, progress: Math.min(ctx.quizzesDone, 50), total: 50 }),
   },
   {
     id: "speaking-10",
@@ -105,11 +74,7 @@ const BADGES: {
     description: "口语跟读累计 10 分钟",
     icon: Mic,
     color: "from-rose-400 to-pink-600",
-    check: (ctx) => ({
-      earned: ctx.speakingMinutes >= 10,
-      progress: Math.min(ctx.speakingMinutes, 10),
-      total: 10,
-    }),
+    check: (ctx) => ({ earned: ctx.speakingMinutes >= 10, progress: Math.min(ctx.speakingMinutes, 10), total: 10 }),
   },
   {
     id: "listening-10",
@@ -117,11 +82,7 @@ const BADGES: {
     description: "听力训练累计 10 分钟",
     icon: Headphones,
     color: "from-violet-400 to-purple-600",
-    check: (ctx) => ({
-      earned: ctx.listeningMinutes >= 10,
-      progress: Math.min(ctx.listeningMinutes, 10),
-      total: 10,
-    }),
+    check: (ctx) => ({ earned: ctx.listeningMinutes >= 10, progress: Math.min(ctx.listeningMinutes, 10), total: 10 }),
   },
   {
     id: "level-5",
@@ -129,11 +90,7 @@ const BADGES: {
     description: "达到等级 5",
     icon: Target,
     color: "from-fuchsia-400 to-rose-600",
-    check: (ctx) => ({
-      earned: ctx.level >= 5,
-      progress: Math.min(ctx.level, 5),
-      total: 5,
-    }),
+    check: (ctx) => ({ earned: ctx.level >= 5, progress: Math.min(ctx.level, 5), total: 5 }),
   },
   {
     id: "level-10",
@@ -141,11 +98,7 @@ const BADGES: {
     description: "达到等级 10",
     icon: Crown,
     color: "from-amber-300 to-yellow-500",
-    check: (ctx) => ({
-      earned: ctx.level >= 10,
-      progress: Math.min(ctx.level, 10),
-      total: 10,
-    }),
+    check: (ctx) => ({ earned: ctx.level >= 10, progress: Math.min(ctx.level, 10), total: 10 }),
   },
 ];
 
@@ -159,22 +112,16 @@ interface AchievementContext {
 }
 
 export default function AchievementsPage() {
-  const currentUserId = useAuthStore((s) => s.currentUserId);
-  const users = useAuthStore((s) => s.users);
-  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
-  const progressMap = useProgressStore((s) => s.progressMap);
-  const progress: UserProgress = useMemo(
-    () => (currentUserId ? (progressMap[currentUserId] ?? EMPTY_PROGRESS) : EMPTY_PROGRESS),
-    [progressMap, currentUserId]
-  );
+  const user = useAuthStore((s) => s.user);
+  const progress = useProgressStore((s) => s.progress);
 
   const ctx: AchievementContext = {
-    streak: user?.streak ?? 0,
-    wordsLearned: progress.wordsLearned,
-    quizzesDone: progress.quizzesDone,
-    speakingMinutes: progress.speakingMinutes,
-    listeningMinutes: progress.listeningMinutes,
-    level: user?.level ?? 0,
+    streak: user?.streak ?? progress?.streak ?? 0,
+    wordsLearned: progress?.wordsLearned ?? 0,
+    quizzesDone: progress?.quizzesDone ?? 0,
+    speakingMinutes: progress?.speakingMinutes ?? 0,
+    listeningMinutes: progress?.listeningMinutes ?? 0,
+    level: user?.level ?? progress?.level ?? 1,
   };
 
   const earnedCount = BADGES.reduce((acc, b) => acc + (b.check(ctx).earned ? 1 : 0), 0);
@@ -241,12 +188,7 @@ export default function AchievementsPage() {
               }
             >
               <div className="flex items-start justify-between">
-                <div
-                  className={
-                    "inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br " +
-                    (earned ? b.color + " text-white shadow-lg" : "bg-white/10 text-white/60")
-                  }
-                >
+                <div className={"inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br " + (earned ? b.color + " text-white shadow-lg" : "bg-white/10 text-white/60")}>
                   <Icon className="h-7 w-7" />
                 </div>
                 {earned && (
@@ -255,18 +197,14 @@ export default function AchievementsPage() {
                   </span>
                 )}
               </div>
-              <div className="mt-4 font-display text-lg font-semibold text-white">
-                {b.title}
-              </div>
+              <div className="mt-4 font-display text-lg font-semibold text-white">{b.title}</div>
               <div className="mt-1 text-xs text-brand-200/70">{b.description}</div>
               <div className="mt-4">
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
                   <div
                     className={
                       "h-full rounded-full " +
-                      (earned
-                        ? "bg-gradient-to-r from-amber-300 to-rose-400"
-                        : "bg-gradient-to-r from-sky-400 to-fuchsia-400")
+                      (earned ? "bg-gradient-to-r from-amber-300 to-rose-400" : "bg-gradient-to-r from-sky-400 to-fuchsia-400")
                     }
                     style={{ width: `${pct}%` }}
                   />

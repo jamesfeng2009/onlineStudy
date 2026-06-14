@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Sparkles,
@@ -19,41 +19,67 @@ import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { getLanguage } from "../data/languages";
-import type { Language, UserProgress } from "../types";
-
-const EMPTY_PROGRESS: UserProgress = {
-  wordsLearned: 0,
-  wordCorrect: 0,
-  wordTotal: 0,
-  quizzesDone: 0,
-  quizCorrect: 0,
-  quizTotal: 0,
-  speakingMinutes: 0,
-  listeningMinutes: 0,
-  perDay: {},
-  moduleScores: {},
-};
+import { api } from "../lib/api";
+import type { CourseResp } from "../lib/api";
 
 export default function HomePage() {
-  const currentUserId = useAuthStore((s) => s.currentUserId);
-  const users = useAuthStore((s) => s.users);
-  const user = useMemo(() => users.find((u) => u.id === currentUserId) ?? null, [users, currentUserId]);
-  const setLang = useAuthStore((s) => s.setLanguage);
-  const progressMap = useProgressStore((s) => s.progressMap);
-  const progress: UserProgress = useMemo(
-    () => (currentUserId ? (progressMap[currentUserId] ?? EMPTY_PROGRESS) : EMPTY_PROGRESS),
-    [progressMap, currentUserId]
-  );
+  const user = useAuthStore((s) => s.user);
+  const status = useAuthStore((s) => s.status);
+  const updateLanguage = useAuthStore((s) => s.updateLanguage);
+  const progress = useProgressStore((s) => s.progress);
+  const refreshProgress = useProgressStore((s) => s.refresh);
+  const [courses, setCourses] = useState<CourseResp[]>([]);
+  const [coursesLoading, setCoursesLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) refreshProgress();
+  }, [user, refreshProgress]);
+
+  useEffect(() => {
+    let alive = true;
+    setCoursesLoading(true);
+    api
+      .courses()
+      .then((data) => {
+        if (alive) setCourses(data);
+      })
+      .catch(() => {
+        if (alive) setCourses([]);
+      })
+      .finally(() => {
+        if (alive) setCoursesLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const featureCourses = useMemo(() => {
+    if (courses.length > 0) return courses.slice(0, 4);
+    return COURSES.slice(0, 4).map((c) => ({
+      ...c,
+      id: c.id,
+      title: c.title,
+      language: c.language,
+      level: c.level,
+      levelGroup: c.levelGroup,
+      description: c.description,
+      lessons: c.lessons,
+      minutes: c.minutes,
+      cover: c.cover,
+      tags: c.tags,
+      vipOnly: false,
+    })) as CourseResp[];
+  }, [courses]);
+
   const today = useMemo(() => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   }, []);
-  const minutesToday = progress.perDay[today] ?? 0;
+  const minutesToday = progress?.perDay?.[today] ?? 0;
   const goal = user?.goalMinutesPerDay ?? 30;
-  const pctGoal = Math.min(100, Math.round((minutesToday / goal) * 100));
-  const navigate = useNavigate();
-
-  const featured = COURSES.slice(0, 4);
+  const pctGoal = Math.min(100, Math.round((minutesToday / Math.max(1, goal)) * 100));
 
   return (
     <PageShell>
@@ -77,8 +103,8 @@ export default function HomePage() {
               {user ? (
                 <>
                   欢迎回来，<span className="text-white">{user.username}</span>
-                  ！你今天已学习 <b className="text-sky-300">{minutesToday}</b> 分钟，目标{" "}
-                  {goal} 分钟。继续加油！
+                  ！你今天已学习 <b className="text-sky-300">{minutesToday}</b> 分钟，目标 {goal}{" "}
+                  分钟。继续加油！
                 </>
               ) : (
                 <>选择一门你想征服的语言，从今天开始建立属于你的学习习惯。</>
@@ -101,8 +127,16 @@ export default function HomePage() {
             </div>
 
             <div className="mt-6 grid grid-cols-3 gap-3">
-              <StatTile label="连续天数" value={user ? `${user.streak}` : "—"} icon={<Flame className="h-5 w-5 text-orange-400" />} />
-              <StatTile label="等级" value={user ? `Lv.${user.level}` : "—"} icon={<Trophy className="h-5 w-5 text-amber-300" />} />
+              <StatTile
+                label="连续天数"
+                value={user ? `${user.streak ?? 0}` : status === "loading" ? "..." : "—"}
+                icon={<Flame className="h-5 w-5 text-orange-400" />}
+              />
+              <StatTile
+                label="等级"
+                value={user ? `Lv.${user.level ?? 1}` : status === "loading" ? "..." : "—"}
+                icon={<Trophy className="h-5 w-5 text-amber-300" />}
+              />
               <StatTile
                 label="今日目标"
                 value={`${pctGoal}%`}
@@ -124,9 +158,12 @@ export default function HomePage() {
                 return (
                   <button
                     key={l.id}
-                    onClick={() => {
-                      if (user) setLang(l.id);
-                      else navigate("/register");
+                    onClick={async () => {
+                      if (user) {
+                        await updateLanguage(l.id);
+                      } else {
+                        navigate("/register");
+                      }
                     }}
                     className={`glass group relative overflow-hidden rounded-2xl p-5 text-left transition hover:-translate-y-1 ${
                       active ? "ring-2 ring-sky-400/60" : ""
@@ -229,29 +266,35 @@ export default function HomePage() {
             查看全部 →
           </Link>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((c) => (
-            <Link to="/courses" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
-              <div className="relative h-32 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 flex items-center justify-center">
-                <span className="text-6xl drop-shadow">{c.cover}</span>
-                <span className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
-                  {c.level}
-                </span>
-                <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
-                  {getLanguage(c.language as Language).name}
-                </span>
-              </div>
-              <div className="p-5">
-                <div className="font-semibold text-white">{c.title}</div>
-                <div className="mt-1 line-clamp-2 text-xs text-brand-200/70">{c.description}</div>
-                <div className="mt-3 flex items-center justify-between text-xs text-brand-200/60">
-                  <span>{c.lessons} 课时</span>
-                  <span>{c.minutes} 分钟</span>
+        {coursesLoading && courses.length === 0 ? (
+          <div className="rounded-2xl border border-white/5 bg-white/5 p-10 text-center text-sm text-brand-200/70">
+            正在加载课程...
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featureCourses.map((c) => (
+              <Link to="/courses" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
+                <div className="relative flex h-32 items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
+                  <span className="text-6xl drop-shadow">{c.cover}</span>
+                  <span className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
+                    {c.level}
+                  </span>
+                  <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
+                    {getLanguage(c.language as any).name}
+                  </span>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+                <div className="p-5">
+                  <div className="font-semibold text-white">{c.title}</div>
+                  <div className="mt-1 line-clamp-2 text-xs text-brand-200/70">{c.description}</div>
+                  <div className="mt-3 flex items-center justify-between text-xs text-brand-200/60">
+                    <span>{c.lessons} 课时</span>
+                    <span>{c.minutes} 分钟</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
     </PageShell>
   );
