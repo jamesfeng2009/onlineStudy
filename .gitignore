@@ -20,6 +20,8 @@ server/dist
 server/**/*.js
 server/**/*.js.map
 server/**/*.d.ts
+!server/lib/prisma-generated/**
+server/lib/prisma-generated/client/*.node
 dist-ssr
 *.local
 

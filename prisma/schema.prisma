@@ -1,6 +1,7 @@
 // Prisma schema for the online learning platform
 generator client {
   provider = "prisma-client-js"
+  output   = "../server/lib/prisma-generated/client"
 }
 
 datasource db {
