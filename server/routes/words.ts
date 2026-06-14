@@ -1,5 +1,6 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma.js";
+import { sendSuccess } from "../lib/response.js";
 
 const wordsRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get<{
@@ -16,7 +17,8 @@ const wordsRoutes: FastifyPluginAsync = async (fastify) => {
       orderBy: [{ vocabOrder: "asc" }, { word: "asc" }],
     });
 
-    return reply.send(
+    return sendSuccess(
+      reply,
       words.map((w) => ({
         id: w.id,
         language: w.languageCode,

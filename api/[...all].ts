@@ -2,7 +2,7 @@
 // 底层用 Fastify 的 inject() 方法处理请求，不需要独立服务器
 
 import type { IncomingMessage, ServerResponse } from "http";
-import { buildApp } from "../server/app";
+import { buildApp } from "../server/app.js";
 
 // 单例模式：同一份实例在冷启动后可被复用（Vercel warm start）
 let app: Awaited<ReturnType<typeof buildApp>> | null = null;

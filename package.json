@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "prisma generate && tsc -b && vite build",
+    "build": "prisma generate && tsc -p server/tsconfig.json && tsc -b --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
@@ -13,8 +13,8 @@
     "prisma:db:push": "prisma db push",
     "prisma:seed": "prisma db seed",
     "server:dev": "tsx watch server/index.ts",
-    "server:build": "tsc -b server/tsconfig.json",
-    "server:start": "node server/dist/index.js"
+    "server:build": "tsc -p server/tsconfig.json",
+    "server:start": "node server/index.js"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

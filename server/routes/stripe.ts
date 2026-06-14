@@ -1,7 +1,8 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma";
-import { stripe, STRIPE_PUBLISHABLE_KEY } from "../lib/stripe";
-import { withStripeIdempotency } from "../lib/idempotency";
+import { prisma } from "../lib/prisma.js";
+import { stripe, STRIPE_PUBLISHABLE_KEY } from "../lib/stripe.js";
+import { withStripeIdempotency } from "../lib/idempotency.js";
+import { sendSuccess, sendError } from "../lib/response.js";
 
 interface TierConfig {
   priceIdEnv?: string;
@@ -71,16 +72,15 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post<{
     Body: { tier: "basic" | "vip" };
   }>("/stripe/checkout-session", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = request.user as { userId: string };
+    const { userId } = (request as any).user as { userId: string };
     const { tier } = request.body;
 
     const config = tierConfigs.find((c) => c.tier === tier);
-    if (!config) return reply.status(400).send({ error: "无效的 tier" });
+    if (!config) return sendError(reply, "BAD_REQUEST", "无效的 tier");
 
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) return reply.status(404).send({ error: "User not found" });
+    if (!user) return sendError(reply, "NOT_FOUND", "User not found");
 
-    // 获取或创建 Stripe customer（幂等）
     let stripeCustomerId: string | undefined;
     const existingSub = await prisma.subscription.findUnique({ where: { userId } });
     if (existingSub?.stripeCustomerId) {
@@ -113,7 +113,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    // 使用事务更新 subscription（幂等 upsert）
     await prisma.$transaction(async (tx) => {
       await tx.subscription.upsert({
         where: { userId },
@@ -129,7 +128,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       });
     });
 
-    return reply.send({ sessionId: session.id, url: session.url });
+    return sendSuccess(reply, { sessionId: session.id, url: session.url });
   });
 
   // ====== Webhook 处理（幂等 + 事务） ======
@@ -147,7 +146,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       const sigHeader = (request.headers["stripe-signature"] as string) ?? "";
       const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
 
-      // 解析 raw body
       let rawBuffer: Buffer;
       try {
         const body = (request as unknown as { raw?: { body?: Buffer } }).raw?.body;
@@ -158,15 +156,14 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
               ? Buffer.from(body)
               : Buffer.from(JSON.stringify(request.body));
       } catch {
-        return reply.status(400).send({ error: "无法获取原始 body" });
+        return sendError(reply, "BAD_REQUEST", "无法获取原始 body");
       }
 
-      // 验证 webhook 签名
       let event;
       try {
         event = stripe.webhooks.constructEvent(rawBuffer, sigHeader, webhookSecret);
       } catch (err) {
-        return reply.status(400).send({ error: `Webhook Error: ${(err as Error).message}` });
+        return sendError(reply, "BAD_REQUEST", `Webhook Error: ${(err as Error).message}`);
       }
 
       const eventId = event.id;
@@ -174,13 +171,11 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       const eventPayload = event.data.object as any;
       const userId = (eventPayload.metadata?.userId as string) ?? undefined;
 
-      // ====== 幂等处理：使用 withStripeIdempotency ======
       const result = await withStripeIdempotency(
         eventId,
         eventType,
         event as any,
         async (tx) => {
-          // 根据事件类型处理
           if (eventType === "checkout.session.completed") {
             const tier = (eventPayload.metadata?.tier as "basic" | "vip" | undefined) ?? "basic";
             const subscriptionId = typeof eventPayload.subscription === "string" ? eventPayload.subscription : undefined;
@@ -188,9 +183,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
             const amountTotal = eventPayload.amount_total ?? 0;
             const currency = eventPayload.currency ?? "usd";
 
-            if (!userId) return; // 无 userId，跳过
+            if (!userId) return;
 
-            // 获取 Stripe subscription 详情
             let currentPeriodStart: Date | null = null;
             let currentPeriodEnd: Date | null = null;
             let cancelAtPeriodEnd = false;
@@ -210,7 +204,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
               }
             }
 
-            // ====== 事务内更新 subscription + user ======
             await tx.subscription.upsert({
               where: { userId },
               update: {
@@ -252,7 +245,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
             const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
             const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
 
-            // 查找关联的 subscription
             const existing = await tx.subscription.findFirst({
               where: {
                 OR: [{ stripeSubscriptionId: subscriptionId }, { stripeCustomerId: customerId ?? "" }],
@@ -271,7 +263,6 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
                 },
               });
 
-              // 更新用户角色
               if (status === "canceled" || status === "incomplete_expired" || status === "unpaid") {
                 await tx.user.update({ where: { id: existing.userId }, data: { role: "user" } });
               } else if (status === "active") {
@@ -301,27 +292,22 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
         userId
       );
 
-      // 如果已处理，返回成功但不重复执行
-      if (result.processed) {
-        return reply.send({ received: true, duplicate: true });
-      }
-
-      return reply.send({ received: true });
+      return sendSuccess(reply, { received: true, duplicate: result.processed });
     }
   );
 
   // ====== Current Plan 查询 ======
   fastify.get("/stripe/current-plan", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = request.user as { userId: string };
+    const { userId } = (request as any).user as { userId: string };
 
     const [user, subscription] = await Promise.all([
       prisma.user.findUnique({ where: { id: userId } }),
       prisma.subscription.findUnique({ where: { userId } }),
     ]);
 
-    if (!user) return reply.status(404).send({ error: "User not found" });
+    if (!user) return sendError(reply, "NOT_FOUND", "User not found");
 
-    return reply.send({
+    return sendSuccess(reply, {
       role: user.role,
       tier: subscription?.tier ?? "free",
       status: subscription?.status ?? "none",

@@ -1,7 +1,8 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma";
-import { addExpAndLevelUp, computeStreakFromLastActive } from "../lib/level";
-import { clamp } from "../lib/utils";
+import { prisma } from "../lib/prisma.js";
+import { addExpAndLevelUp, computeStreakFromLastActive } from "../lib/level.js";
+import { clamp } from "../lib/utils.js";
+import { sendSuccess, sendError } from "../lib/response.js";
 
 interface ModuleScores {
   [key: string]: number;
@@ -23,10 +24,10 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     "/progress/me",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
 
       const user = await prisma.user.findUnique({ where: { id: userId } });
-      if (!user) return reply.status(404).send({ error: "User not found" });
+      if (!user) return sendError(reply, "NOT_FOUND", "User not found");
 
       const progressDays = await prisma.userProgressDay.findMany({
         where: { userId },
@@ -68,7 +69,7 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         }
       }
 
-      return reply.send({
+      return sendSuccess(reply, {
         wordsLearned: totalWordsLearned,
         wordCorrect: totalWordCorrect,
         wordTotal: totalWordTotal,
@@ -149,7 +150,6 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
   }
 
   // ====== 事务内更新进度（幂等 + 事务） ======
-  // 使用 userId + studyDate unique constraint 保证幂等
   async function updateProgressInTransaction(
     userId: string,
     updater: (draft: {
@@ -167,15 +167,12 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     gainedExp: number
   ) {
     return prisma.$transaction(async (tx) => {
-      // 1. 获取用户信息
       const user = await tx.user.findUnique({ where: { id: userId } });
       if (!user) throw new Error("User not found");
 
-      // 2. 计算今天的日期（幂等键）
       const todayDate = new Date();
       todayDate.setHours(0, 0, 0, 0);
 
-      // 3. 查找或创建今天的进度记录（幂等：unique constraint userId + studyDate）
       let day = await tx.userProgressDay.findUnique({
         where: { userId_studyDate: { userId, studyDate: todayDate } },
       });
@@ -190,7 +187,6 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         });
       }
 
-      // 4. 解析当前 moduleScores
       const moduleScoresRaw = (day.moduleScores as unknown as Partial<ModuleScores>) ?? defaultModuleScores;
       const moduleScores: ModuleScores = {
         words: typeof moduleScoresRaw.words === "number" ? moduleScoresRaw.words : 0,
@@ -199,7 +195,6 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         speaking: typeof moduleScoresRaw.speaking === "number" ? moduleScoresRaw.speaking : 0,
       };
 
-      // 5. 构建更新 draft
       const draft = {
         moduleScores,
         wordCorrect: day.wordCorrect,
@@ -213,16 +208,11 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         listeningMinutes: day.listeningMinutes,
       };
 
-      // 6. 应用更新逻辑
       updater(draft);
 
-      // 7. 计算新的 streak
       const streakUpdate = computeStreakFromLastActive(user.lastActive, user.streak);
-
-      // 8. 计算新的 level/exp
       const { level, exp } = addExpAndLevelUp(user.level, user.exp, gainedExp);
 
-      // 9. 在事务内同时更新 progress day 和 user（原子操作）
       await tx.userProgressDay.update({
         where: { id: day.id },
         data: {
@@ -253,14 +243,14 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     });
   }
 
-  // ====== 记录单词练习（幂等 + 事务） ======
+  // ====== 记录单词练习 ======
   fastify.post<{
     Body: { correct: boolean; language: string };
   }>(
     "/progress/record-word",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
       const { correct } = request.body;
 
       const gainedExp = correct ? 5 : 0;
@@ -278,21 +268,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           }
         }, gainedExp);
       } catch (err: unknown) {
-        return reply.status(404).send({ error: (err as Error).message });
+        return sendError(reply, "NOT_FOUND", (err as Error).message);
       }
 
-      return reply.send(await aggregateProgress(userId));
+      return sendSuccess(reply, await aggregateProgress(userId));
     }
   );
 
-  // ====== 记录测验练习（幂等 + 事务） ======
+  // ====== 记录测验练习 ======
   fastify.post<{
     Body: { correct: boolean; language: string };
   }>(
     "/progress/record-quiz",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
       const { correct } = request.body;
 
       const gainedExp = correct ? 8 : 0;
@@ -308,21 +298,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           }
         }, gainedExp);
       } catch (err: unknown) {
-        return reply.status(404).send({ error: (err as Error).message });
+        return sendError(reply, "NOT_FOUND", (err as Error).message);
       }
 
-      return reply.send(await aggregateProgress(userId));
+      return sendSuccess(reply, await aggregateProgress(userId));
     }
   );
 
-  // ====== 记录口语练习（幂等 + 事务） ======
+  // ====== 记录口语练习 ======
   fastify.post<{
     Body: { minutes: number; language: string };
   }>(
     "/progress/record-speaking",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
@@ -333,21 +323,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           d.moduleScores.speaking = clamp(Math.round(d.moduleScores.speaking * 0.85 + minutes * 5));
         }, gainedExp);
       } catch (err: unknown) {
-        return reply.status(404).send({ error: (err as Error).message });
+        return sendError(reply, "NOT_FOUND", (err as Error).message);
       }
 
-      return reply.send(await aggregateProgress(userId));
+      return sendSuccess(reply, await aggregateProgress(userId));
     }
   );
 
-  // ====== 记录听力练习（幂等 + 事务） ======
+  // ====== 记录听力练习 ======
   fastify.post<{
     Body: { minutes: number; language: string };
   }>(
     "/progress/record-listening",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
@@ -358,21 +348,21 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
           d.moduleScores.listening = clamp(Math.round(d.moduleScores.listening * 0.85 + minutes * 5));
         }, gainedExp);
       } catch (err: unknown) {
-        return reply.status(404).send({ error: (err as Error).message });
+        return sendError(reply, "NOT_FOUND", (err as Error).message);
       }
 
-      return reply.send(await aggregateProgress(userId));
+      return sendSuccess(reply, await aggregateProgress(userId));
     }
   );
 
-  // ====== 更新进度设置（幂等） ======
+  // ====== 更新进度设置 ======
   fastify.patch<{
     Body: Partial<{ goalMinutesPerDay: number; targetLanguage: string }>;
   }>(
     "/progress/me",
     { onRequest: [authenticate] },
     async (request, reply) => {
-      const { userId } = request.user as { userId: string };
+      const { userId } = (request as any).user as { userId: string };
       const update: Record<string, unknown> = {};
       if (typeof request.body.goalMinutesPerDay === "number") {
         update.goalMinutesPerDay = Math.max(0, Math.floor(request.body.goalMinutesPerDay));
@@ -382,12 +372,11 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       }
 
       if (Object.keys(update).length === 0) {
-        return reply.status(400).send({ error: "没有提供更新字段" });
+        return sendError(reply, "BAD_REQUEST", "没有提供更新字段");
       }
 
-      // 单表更新，天然幂等
       await prisma.user.update({ where: { id: userId }, data: update });
-      return reply.send(await aggregateProgress(userId));
+      return sendSuccess(reply, await aggregateProgress(userId));
     }
   );
 };

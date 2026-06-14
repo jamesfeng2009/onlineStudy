@@ -7,7 +7,7 @@
  * 3. Stripe webhook 必须记录 event ID 防止重复处理
  */
 
-import { prisma, Prisma, TransactionClient } from "./prisma";
+import { prisma, Prisma, TransactionClient } from "./prisma.js";
 
 // ====== Stripe Event 幂等性 ======
 

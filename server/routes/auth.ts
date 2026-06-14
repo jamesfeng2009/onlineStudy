@@ -1,6 +1,7 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma";
-import { registerUserIdempotent } from "../lib/idempotency";
+import { prisma } from "../lib/prisma.js";
+import { registerUserIdempotent } from "../lib/idempotency.js";
+import { sendSuccess, sendError } from "../lib/response.js";
 
 interface RegisterBody {
   email: string;
@@ -20,7 +21,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post<{ Body: RegisterBody }>("/auth/register", async (request, reply) => {
     const { email, password, username, language } = request.body;
     if (!email || !password || !username || !language) {
-      return reply.status(400).send({ error: "缺少必填字段" });
+      return sendError(reply, "BAD_REQUEST", "缺少必填字段");
     }
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -28,7 +29,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     // 检查语言是否存在（快速校验）
     const lang = await prisma.language.findUnique({ where: { code: language } });
     if (!lang) {
-      return reply.status(400).send({ error: "无效的语言代码" });
+      return sendError(reply, "BAD_REQUEST", "无效的语言代码");
     }
 
     // 哈希密码
@@ -41,7 +42,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
 
     if (!result.isNew) {
       // 邮箱已存在，返回 409
-      return reply.status(409).send({ error: "该邮箱已注册" });
+      return sendError(reply, "CONFLICT", "该邮箱已注册");
     }
 
     const user = result.user;
@@ -52,7 +53,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       { expiresIn: "7d" }
     );
 
-    return reply.status(201).send({
+    return sendSuccess(reply, {
       token,
       user: {
         id: user.id,
@@ -76,17 +77,17 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post<{ Body: LoginBody }>("/auth/login", async (request, reply) => {
     const { email, password } = request.body;
     if (!email || !password) {
-      return reply.status(400).send({ error: "邮箱和密码不能为空" });
+      return sendError(reply, "BAD_REQUEST", "邮箱和密码不能为空");
     }
 
     const user = await prisma.user.findUnique({ where: { email: email.toLowerCase().trim() } });
     if (!user) {
-      return reply.status(401).send({ error: "邮箱或密码不正确" });
+      return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
     const isMatch = await (fastify as any).bcrypt.compare(password, user.passwordHash);
     if (!isMatch) {
-      return reply.status(401).send({ error: "邮箱或密码不正确" });
+      return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
     // 计算新的 streak（幂等：同一天多次登录 streak 不变）
@@ -119,7 +120,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       { expiresIn: "7d" }
     );
 
-    return reply.send({
+    return sendSuccess(reply, {
       token,
       user: {
         id: updated.id,
@@ -144,23 +145,23 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     {
       onRequest: [
         async (request, reply) => {
-          await request.jwtVerify();
+          await (request as any).jwtVerify();
         },
       ],
     },
     async (request, reply) => {
-      const payload = request.user as { userId: string; version: number };
+      const payload = (request as any).user as { userId: string; version: number };
       if (!payload || !payload.userId) {
-        return reply.status(401).send({ error: "Unauthorized" });
+        return sendError(reply, "UNAUTHORIZED", "Unauthorized");
       }
       const user = await prisma.user.findUnique({ where: { id: payload.userId } });
       if (!user) {
-        return reply.status(401).send({ error: "User not found" });
+        return sendError(reply, "UNAUTHORIZED", "User not found");
       }
       if (user.jwtVersion !== payload.version) {
-        return reply.status(401).send({ error: "Token expired" });
+        return sendError(reply, "UNAUTHORIZED", "Token expired");
       }
-      return reply.send({
+      return sendSuccess(reply, {
         user: {
           id: user.id,
           email: user.email,
@@ -188,14 +189,14 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     {
       onRequest: [
         async (request, reply) => {
-          await request.jwtVerify();
+          await (request as any).jwtVerify();
         },
       ],
     },
     async (request, reply) => {
-      const payload = request.user as { userId: string; version: number };
+      const payload = (request as any).user as { userId: string; version: number };
       if (!payload || !payload.userId) {
-        return reply.status(401).send({ error: "Unauthorized" });
+        return sendError(reply, "UNAUTHORIZED", "Unauthorized");
       }
       const { username, avatar, targetLanguage, goalMinutesPerDay } = request.body;
       const update: Record<string, unknown> = {};
@@ -205,19 +206,19 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       if (typeof goalMinutesPerDay === "number") update.goalMinutesPerDay = Math.max(0, Math.floor(goalMinutesPerDay));
 
       if (Object.keys(update).length === 0) {
-        return reply.status(400).send({ error: "缺少可更新字段" });
+        return sendError(reply, "BAD_REQUEST", "缺少可更新字段");
       }
 
       // 如果更新 targetLanguage，需要验证语言是否存在
       if (update.targetLanguage) {
         const lang = await prisma.language.findUnique({ where: { code: update.targetLanguage as string } });
         if (!lang) {
-          return reply.status(400).send({ error: "无效的语言代码" });
+          return sendError(reply, "BAD_REQUEST", "无效的语言代码");
         }
       }
 
       const user = await prisma.user.update({ where: { id: payload.userId }, data: update });
-      return reply.send({
+      return sendSuccess(reply, {
         user: {
           id: user.id,
           email: user.email,
@@ -239,7 +240,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 登出（幂等） ======
   // 登出操作天然幂等：清除本地 token 即可
   fastify.post("/auth/logout", async (request, reply) => {
-    return reply.send({ ok: true });
+    return sendSuccess(reply, { ok: true });
   });
 };
 

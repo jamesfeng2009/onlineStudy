@@ -3,8 +3,8 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "./dist",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "target": "ES2022",
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -13,7 +13,7 @@
     "strict": true,
     "types": ["node"],
     "declaration": false,
-    "sourceMap": true
+    "sourceMap": false
   },
   "include": ["."]
 }

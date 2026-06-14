@@ -13,7 +13,7 @@ export default function RecommendPage() {
   const refresh = useProgressStore((s) => s.refresh);
   const moduleScores = progress?.moduleScores ?? {};
 
-  const entries = Object.entries(moduleScores).sort(([, a], [, b]) => a - b);
+  const entries = Object.entries(moduleScores as Record<string, number>).sort(([, a], [, b]) => a - b);
 
   const iconFor: Record<string, React.ElementType> = {
     words: BookOpen,

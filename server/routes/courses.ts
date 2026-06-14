@@ -1,5 +1,6 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma.js";
+import { sendSuccess, sendError } from "../lib/response.js";
 
 const coursesRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get<{
@@ -23,7 +24,8 @@ const coursesRoutes: FastifyPluginAsync = async (fastify) => {
       orderBy: [{ courseOrder: "asc" }, { title: "asc" }],
     });
 
-    return reply.send(
+    return sendSuccess(
+      reply,
       courses.map((c) => ({
         id: c.id,
         language: c.languageCode,
@@ -43,9 +45,9 @@ const coursesRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get<{ Params: { id: string } }>("/courses/:id", async (request, reply) => {
     const course = await prisma.course.findUnique({ where: { id: request.params.id } });
     if (!course) {
-      return reply.status(404).send({ error: "课程不存在" });
+      return sendError(reply, "NOT_FOUND", "课程不存在");
     }
-    return reply.send({
+    return sendSuccess(reply, {
       id: course.id,
       language: course.languageCode,
       title: course.title,
