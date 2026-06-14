@@ -15,12 +15,11 @@ export interface ApiResponse<T = unknown> {
   data: T;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function request(
+async function request<T = unknown>(
   path: string,
   options: RequestInit = {},
   needAuth = false
-): Promise<any> {
+): Promise<T> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(options.headers as Record<string, string> | undefined),
@@ -30,9 +29,9 @@ async function request(
     if (t) headers["Authorization"] = `Bearer ${t}`;
   }
   const res = await fetch(buildUrl(path), { ...options, headers });
-  let body: ApiResponse | null = null;
+  let body: ApiResponse<T> | null = null;
   try {
-    body = await res.json();
+    body = (await res.json()) as ApiResponse<T>;
   } catch {
     /* ignore */
   }
@@ -54,7 +53,7 @@ async function request(
   if (body === null) {
     throw new Error("服务器返回空数据");
   }
-  return body.data as any;
+  return body.data as T;
 }
 
 // ====== Auth ======
@@ -92,7 +91,7 @@ export async function updateMe(data: {
 }
 
 // ====== Courses ======
-export async function getCourses(params?: { language?: string; levelGroup?: string; vipOnly?: boolean }) {
+export async function getCourses(params?: { language?: string; levelGroup?: string; vipOnly?: boolean }): Promise<Record<string, unknown>[]> {
   const qs = new URLSearchParams();
   if (params?.language) qs.set("language", params.language);
   if (params?.levelGroup) qs.set("levelGroup", params.levelGroup);
@@ -101,12 +100,12 @@ export async function getCourses(params?: { language?: string; levelGroup?: stri
   return request(`/courses${query ? `?${query}` : ""}`);
 }
 
-export async function getCourse(id: string) {
+export async function getCourse(id: string): Promise<Record<string, unknown>> {
   return request(`/courses/${id}`);
 }
 
 // ====== Words ======
-export async function getWords(params?: { language?: string; level?: string }) {
+export async function getWords(params?: { language?: string; level?: string }): Promise<Record<string, unknown>[]> {
   const qs = new URLSearchParams();
   if (params?.language) qs.set("language", params.language);
   if (params?.level) qs.set("level", params.level);
@@ -115,65 +114,65 @@ export async function getWords(params?: { language?: string; level?: string }) {
 }
 
 // ====== Progress ======
-export async function getProgress() {
+export async function getProgress(): Promise<Record<string, unknown>> {
   return request("/progress/me", {}, true);
 }
 
-export async function recordWord(correct: boolean, _language?: string) {
+export async function recordWord(correct: boolean, _language?: string): Promise<Record<string, unknown>> {
   return request("/progress/record-word", { method: "POST", body: JSON.stringify({ correct }) }, true);
 }
 
-export async function recordQuiz(correct: boolean, _language?: string) {
+export async function recordQuiz(correct: boolean, _language?: string): Promise<Record<string, unknown>> {
   return request("/progress/record-quiz", { method: "POST", body: JSON.stringify({ correct }) }, true);
 }
 
-export async function recordSpeaking(minutes: number, _language?: string) {
+export async function recordSpeaking(minutes: number, _language?: string): Promise<Record<string, unknown>> {
   return request("/progress/record-speaking", { method: "POST", body: JSON.stringify({ minutes }) }, true);
 }
 
-export async function recordListening(minutes: number, _language?: string) {
+export async function recordListening(minutes: number, _language?: string): Promise<Record<string, unknown>> {
   return request("/progress/record-listening", { method: "POST", body: JSON.stringify({ minutes }) }, true);
 }
 
 export async function updateProgressSettings(data: {
   goalMinutesPerDay?: number;
   targetLanguage?: string;
-}) {
+}): Promise<Record<string, unknown>> {
   return request("/progress/me", { method: "PATCH", body: JSON.stringify(data) }, true);
 }
 
 // ====== Community ======
-export async function getPosts(topic?: string) {
+export async function getPosts(topic?: string): Promise<Record<string, unknown>[]> {
   const query = topic ? `?topic=${encodeURIComponent(topic)}` : "";
   return request(`/posts${query}`);
 }
 
-export async function createPost(topic: string, content: string) {
+export async function createPost(topic: string, content: string): Promise<Record<string, unknown>> {
   return request("/posts", { method: "POST", body: JSON.stringify({ topic, content }) }, true);
 }
 
-export async function likePost(id: string) {
+export async function likePost(id: string): Promise<{ id: string; likeCount: number; likedByMe: boolean }> {
   return request(`/posts/${id}/like`, { method: "POST" }, true);
 }
 
-export async function commentPost(id: string, content: string) {
+export async function commentPost(id: string, content: string): Promise<Record<string, unknown>> {
   return request(`/posts/${id}/comment`, { method: "POST", body: JSON.stringify({ content }) }, true);
 }
 
-export async function deletePost(id: string) {
+export async function deletePost(id: string): Promise<Record<string, unknown>> {
   return request(`/posts/${id}`, { method: "DELETE" }, true);
 }
 
-export async function deleteComment(postId: string, commentId: string) {
+export async function deleteComment(postId: string, commentId: string): Promise<Record<string, unknown>> {
   return request(`/posts/${postId}/comments/${commentId}`, { method: "DELETE" }, true);
 }
 
 // ====== Stripe ======
-export async function createCheckoutSession(tier: "basic" | "vip") {
+export async function createCheckoutSession(tier: "basic" | "vip"): Promise<Record<string, unknown>> {
   return request("/stripe/checkout-session", { method: "POST", body: JSON.stringify({ tier }) }, true);
 }
 
-export async function getCurrentPlan() {
+export async function getCurrentPlan(): Promise<Record<string, unknown>> {
   return request("/stripe/current-plan", {}, true);
 }
 

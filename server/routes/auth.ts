@@ -33,7 +33,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     // 哈希密码
-    const passwordHash = await (fastify as any).bcrypt.hash(password);
+    const passwordHash = await fastify.bcrypt.hash(password);
 
     // 使用事务创建用户（幂等：如果邮箱已存在，返回现有用户）
     const result = await prisma.$transaction(async (tx) => {
@@ -85,7 +85,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
-    const isMatch = await (fastify as any).bcrypt.compare(password, user.passwordHash);
+    const isMatch = await fastify.bcrypt.compare(password, user.passwordHash);
     if (!isMatch) {
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
@@ -143,14 +143,10 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get(
     "/auth/me",
     {
-      onRequest: [
-        async (request, reply) => {
-          await (request as any).jwtVerify();
-        },
-      ],
+      onRequest: [fastify.authenticate],
     },
     async (request, reply) => {
-      const payload = (request as any).user as { userId: string; version: number };
+      const payload = request.user;
       if (!payload || !payload.userId) {
         return sendError(reply, "UNAUTHORIZED", "Unauthorized");
       }
@@ -187,14 +183,10 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   }>(
     "/auth/me",
     {
-      onRequest: [
-        async (request, reply) => {
-          await (request as any).jwtVerify();
-        },
-      ],
+      onRequest: [fastify.authenticate],
     },
     async (request, reply) => {
-      const payload = (request as any).user as { userId: string; version: number };
+      const payload = request.user;
       if (!payload || !payload.userId) {
         return sendError(reply, "UNAUTHORIZED", "Unauthorized");
       }

@@ -4,8 +4,8 @@ import fastifyPlugin from "fastify-plugin";
 const jwtPlugin: FastifyPluginCallback = (fastify, _options, done) => {
   fastify.decorate("authenticate", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
-      await (request as any).jwtVerify();
-    } catch (err) {
+      await request.jwtVerify();
+    } catch {
       reply.status(401).send({ error: "Unauthorized" });
       return;
     }

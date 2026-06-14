@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { ProgressResp, PostResp, CommentResp } from "../lib/api";
+import type { ProgressResp, PostResp } from "../lib/api";
 import { api } from "../lib/api";
 
 const emptyProgress: ProgressResp = {
@@ -54,9 +54,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.progressMe();
       set({ progress: data, progressLoading: false });
       return { ok: true };
-    } catch (err: any) {
-      set({ progressLoading: false, progressError: err.message });
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      set({ progressLoading: false, progressError: (err as Error).message });
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -66,9 +66,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.posts(topic);
       set({ posts: data, postsLoading: false });
       return { ok: true };
-    } catch (err: any) {
-      set({ postsLoading: false, postsError: err.message });
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      set({ postsLoading: false, postsError: (err as Error).message });
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -77,8 +77,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.recordWord(correct, language);
       set({ progress: data });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -87,8 +87,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.recordQuiz(correct, language);
       set({ progress: data });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -97,8 +97,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.recordSpeaking(minutes, language);
       set({ progress: data });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -107,8 +107,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.recordListening(minutes, language);
       set({ progress: data });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -117,8 +117,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const data = await api.createPost(topic, content);
       set({ posts: [data, ...get().posts] });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -127,12 +127,12 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const result = await api.toggleLike(postId);
       const next = get().posts.map((p) => {
         if (p.id !== postId) return p;
-        return { ...p, likedByMe: result.liked, likeCount: result.likes };
+        return { ...p, likedByMe: result.likedByMe, likeCount: result.likeCount };
       });
       set({ posts: next });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -145,8 +145,8 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       });
       set({ posts: next });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 }));

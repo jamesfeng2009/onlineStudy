@@ -1,4 +1,4 @@
-import type { Language, LanguageMeta } from "../types";
+import type { LanguageMeta } from "../types";
 
 export const LANGUAGES: LanguageMeta[] = [
   {

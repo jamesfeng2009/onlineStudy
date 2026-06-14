@@ -2,6 +2,7 @@
 // 底层用 Fastify 的 inject() 方法处理请求，不需要独立服务器
 
 import type { IncomingMessage, ServerResponse } from "http";
+type InjectMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS";
 import { buildApp } from "../server/app.js";
 
 // 单例模式：同一份实例在冷启动后可被复用（Vercel warm start）
@@ -24,9 +25,9 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
     // 读取 body（Vercel 可能会解析成字符串/对象；我们需要原始 payload）
     let rawBody: string | Buffer | undefined = undefined;
-    const reqAny = req as any;
-    if (reqAny.body !== undefined && reqAny.body !== null) {
-      const b = reqAny.body;
+    const reqWithBody = req as IncomingMessage & { body?: unknown };
+    if (reqWithBody.body !== undefined && reqWithBody.body !== null) {
+      const b = reqWithBody.body;
       if (Buffer.isBuffer(b)) rawBody = b;
       else if (typeof b === "string") rawBody = b;
       else rawBody = JSON.stringify(b);
@@ -52,10 +53,10 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
     // Fastify inject 返回一个 LightMyRequest Response
     const response = await fastify.inject({
-      method: method as any,
+      method: method as InjectMethod,
       url,
       headers,
-      payload: rawBody as any,
+      payload: rawBody,
     });
 
     console.log(`[vercel-handler] response ${response.statusCode} ${url}`);

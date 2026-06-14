@@ -280,7 +280,7 @@ export default function HomePage() {
                     {c.level}
                   </span>
                   <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
-                    {getLanguage(c.language as any).name}
+                    {getLanguage(c.language as string).name}
                   </span>
                 </div>
                 <div className="p-5">

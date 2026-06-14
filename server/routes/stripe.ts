@@ -1,8 +1,10 @@
 import type { FastifyPluginAsync } from "fastify";
-import { prisma } from "../lib/prisma.js";
+import { prisma, Prisma } from "../lib/prisma.js";
 import { stripe, STRIPE_PUBLISHABLE_KEY } from "../lib/stripe.js";
 import { withStripeIdempotency } from "../lib/idempotency.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+
+type SessionCreateParams = import("stripe").Stripe.Checkout.SessionCreateParams;
 
 interface TierConfig {
   priceIdEnv?: string;
@@ -64,15 +66,12 @@ async function resolvePrice(config: TierConfig): Promise<
 }
 
 const stripeRoutes: FastifyPluginAsync = async (fastify) => {
-  const authenticate = async (request: any, reply: any) => {
-    await request.jwtVerify();
-  };
 
   // ====== Checkout Session 创建 ======
   fastify.post<{
     Body: { tier: "basic" | "vip" };
-  }>("/stripe/checkout-session", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/stripe/checkout-session", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { tier } = request.body;
 
     const config = tierConfigs.find((c) => c.tier === tier);
@@ -96,20 +95,16 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
     const priceInfo = await resolvePrice(config);
     const frontendUrl = process.env.FRONTEND_URL ?? "http://localhost:5173";
 
-    const sessionParams: any = {
+    const sessionParams: SessionCreateParams = {
       customer: stripeCustomerId,
       mode: "subscription",
       success_url: `${frontendUrl}/?stripe=success&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${frontendUrl}/pricing`,
       metadata: { userId, tier: config.tier },
-      line_items: [],
+      line_items: "priceId" in priceInfo
+        ? [{ price: priceInfo.priceId, quantity: 1 }]
+        : [{ price_data: priceInfo.priceData, quantity: 1 }],
     };
-
-    if ("priceId" in priceInfo) {
-      sessionParams.line_items.push({ price: priceInfo.priceId, quantity: 1 });
-    } else {
-      sessionParams.line_items.push({ price_data: priceInfo.priceData, quantity: 1 });
-    }
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
@@ -136,9 +131,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
     "/stripe/webhook",
     {
       preParsing: [
-        (req: any, payload: any, done: any) => {
-          done(null, payload);
-        },
+        async (_request, _reply, payload) => payload,
       ],
       config: { rawBody: true },
     },
@@ -168,20 +161,22 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
 
       const eventId = event.id;
       const eventType = event.type;
-      const eventPayload = event.data.object as any;
-      const userId = (eventPayload.metadata?.userId as string) ?? undefined;
+      const eventPayload = event.data.object as unknown as Record<string, unknown> & {
+        metadata?: Record<string, string>;
+      };
+      const userId = eventPayload.metadata?.userId;
 
       const result = await withStripeIdempotency(
         eventId,
         eventType,
-        event as any,
+        event as unknown as Prisma.InputJsonValue,
         async (tx) => {
           if (eventType === "checkout.session.completed") {
             const tier = (eventPayload.metadata?.tier as "basic" | "vip" | undefined) ?? "basic";
             const subscriptionId = typeof eventPayload.subscription === "string" ? eventPayload.subscription : undefined;
             const customerId = typeof eventPayload.customer === "string" ? eventPayload.customer : undefined;
-            const amountTotal = eventPayload.amount_total ?? 0;
-            const currency = eventPayload.currency ?? "usd";
+            const amountTotal = (eventPayload.amount_total as number | undefined) ?? 0;
+            const currency = (eventPayload.currency as string | undefined) ?? "usd";
 
             if (!userId) return;
 
@@ -242,8 +237,12 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
             const customerId = typeof sub.customer === "string" ? sub.customer : undefined;
             const status = sub.status as string | undefined;
             const cancelAtPeriodEnd = !!sub.cancel_at_period_end;
-            const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
-            const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
+            const currentPeriodStart = sub.current_period_start
+              ? new Date((sub.current_period_start as number) * 1000)
+              : null;
+            const currentPeriodEnd = sub.current_period_end
+              ? new Date((sub.current_period_end as number) * 1000)
+              : null;
 
             const existing = await tx.subscription.findFirst({
               where: {
@@ -297,8 +296,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
   );
 
   // ====== Current Plan 查询 ======
-  fastify.get("/stripe/current-plan", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  fastify.get("/stripe/current-plan", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
 
     const [user, subscription] = await Promise.all([
       prisma.user.findUnique({ where: { id: userId } }),

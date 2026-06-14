@@ -530,7 +530,6 @@ function ListeningModule({ language }: { language: Language }) {
               }
               const val = inputs[idx] ?? "";
               const correct = reveal && val.trim().toLowerCase() === blank!.answer.toLowerCase();
-              const wrong = reveal && !correct;
               return (
                 <span key={idx} className="inline-flex items-center">
                   <input

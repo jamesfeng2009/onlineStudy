@@ -4,9 +4,6 @@ import { toggleLikeIdempotent, createCommentIdempotent } from "../lib/idempotenc
 import { sendSuccess, sendError } from "../lib/response.js";
 
 const communityRoutes: FastifyPluginAsync = async (fastify) => {
-  const authenticate = async (request: any, reply: any) => {
-    await request.jwtVerify();
-  };
 
   // ====== 获取帖子列表（读操作，无需事务） ======
   fastify.get<{
@@ -34,8 +31,7 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
     let currentUserId: string | null = null;
     try {
       await request.jwtVerify();
-      const u = (request as any).user as { userId: string } | undefined;
-      if (u?.userId) currentUserId = u.userId;
+      currentUserId = request.user.userId;
     } catch {
       // 未认证，视为匿名用户
     }
@@ -67,8 +63,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 创建帖子（幂等：每次创建新 ID） ======
   fastify.post<{
     Body: { topic: string; content: string };
-  }>("/posts", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/posts", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { topic, content } = request.body;
 
     if (!topic || !content) {
@@ -97,8 +93,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 点赞/取消点赞（幂等 + 事务） ======
   fastify.post<{
     Params: { id: string };
-  }>("/posts/:id/like", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/posts/:id/like", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { id: postId } = request.params;
 
     const post = await prisma.post.findUnique({ where: { id: postId } });
@@ -115,8 +111,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post<{
     Params: { id: string };
     Body: { content: string };
-  }>("/posts/:id/comment", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/posts/:id/comment", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { id: postId } = request.params;
     const { content } = request.body;
 
@@ -144,8 +140,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 删除帖子（幂等 + 事务） ======
   fastify.delete<{
     Params: { id: string };
-  }>("/posts/:id", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/posts/:id", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { id: postId } = request.params;
 
     const post = await prisma.post.findUnique({ where: { id: postId } });
@@ -166,8 +162,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 删除评论（幂等） ======
   fastify.delete<{
     Params: { postId: string; commentId: string };
-  }>("/posts/:postId/comments/:commentId", { onRequest: [authenticate] }, async (request, reply) => {
-    const { userId } = (request as any).user as { userId: string };
+  }>("/posts/:postId/comments/:commentId", { onRequest: [fastify.authenticate] }, async (request, reply) => {
+    const { userId } = request.user;
     const { postId, commentId } = request.params;
 
     const comment = await prisma.comment.findUnique({

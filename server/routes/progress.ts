@@ -15,16 +15,13 @@ interface ModuleScores {
 const defaultModuleScores: ModuleScores = { words: 0, grammar: 0, listening: 0, speaking: 0 };
 
 const progressRoutes: FastifyPluginAsync = async (fastify) => {
-  const authenticate = async (request: any, reply: any) => {
-    await request.jwtVerify();
-  };
 
   // ====== 获取用户进度汇总 ======
   fastify.get(
     "/progress/me",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
 
       const user = await prisma.user.findUnique({ where: { id: userId } });
       if (!user) return sendError(reply, "NOT_FOUND", "User not found");
@@ -42,7 +39,6 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       let totalQuizTotal = 0;
       let totalSpeakingMinutes = 0;
       let totalListeningMinutes = 0;
-      let totalMinutes = 0;
       const perDay: Record<string, number> = {};
       let lastModuleScores: ModuleScores = defaultModuleScores;
 
@@ -55,7 +51,6 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
         totalQuizTotal += day.quizTotal;
         totalSpeakingMinutes += day.speakingMinutes;
         totalListeningMinutes += day.listeningMinutes;
-        totalMinutes += day.minutes;
         const key = new Date(day.studyDate).toISOString().slice(0, 10);
         perDay[key] = day.minutes;
         if (day.moduleScores) {
@@ -248,9 +243,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     Body: { correct: boolean; language: string };
   }>(
     "/progress/record-word",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
       const { correct } = request.body;
 
       const gainedExp = correct ? 5 : 0;
@@ -280,9 +275,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     Body: { correct: boolean; language: string };
   }>(
     "/progress/record-quiz",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
       const { correct } = request.body;
 
       const gainedExp = correct ? 8 : 0;
@@ -310,9 +305,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     Body: { minutes: number; language: string };
   }>(
     "/progress/record-speaking",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
@@ -335,9 +330,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     Body: { minutes: number; language: string };
   }>(
     "/progress/record-listening",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
       const minutes = Math.max(0, Number(request.body.minutes) || 0);
       const gainedExp = minutes * 3;
 
@@ -360,9 +355,9 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
     Body: Partial<{ goalMinutesPerDay: number; targetLanguage: string }>;
   }>(
     "/progress/me",
-    { onRequest: [authenticate] },
+    { onRequest: [fastify.authenticate] },
     async (request, reply) => {
-      const { userId } = (request as any).user as { userId: string };
+      const { userId } = request.user;
       const update: Record<string, unknown> = {};
       if (typeof request.body.goalMinutesPerDay === "number") {
         update.goalMinutesPerDay = Math.max(0, Math.floor(request.body.goalMinutesPerDay));

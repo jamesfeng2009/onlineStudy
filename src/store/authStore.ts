@@ -47,7 +47,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       set({ status: "loading" });
       const res = await api.me();
       set({ user: res.user, status: "logged" });
-    } catch (err: any) {
+    } catch {
       writeToken(null);
       set({ token: null, user: null, status: "idle" });
     }
@@ -60,10 +60,10 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       writeToken(res.token);
       set({ token: res.token, user: res.user, status: "logged" });
       return { ok: true };
-    } catch (err: any) {
+    } catch (err: unknown) {
       const s = get().status;
       if (s === "logged") set({ status: "idle" });
-      return { ok: false, error: err.message };
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -74,10 +74,10 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       writeToken(res.token);
       set({ token: res.token, user: res.user, status: "logged" });
       return { ok: true };
-    } catch (err: any) {
+    } catch (err: unknown) {
       const s = get().status;
       if (s === "logged") set({ status: "idle" });
-      return { ok: false, error: err.message };
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -93,9 +93,9 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       const res = await api.me();
       set({ user: res.user, status: "logged" });
       return { ok: true };
-    } catch (err: any) {
+    } catch (err: unknown) {
       set({ status: "idle" });
-      return { ok: false, error: err.message };
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -105,8 +105,8 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       const res = await api.updateMe({ targetLanguage: lang });
       set({ user: res.user });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -116,8 +116,8 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       const res = await api.updateMe({ goalMinutesPerDay: Number(goal) });
       set({ user: res.user });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 
@@ -127,8 +127,8 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       const res = await api.updateMe(patch);
       set({ user: res.user });
       return { ok: true };
-    } catch (err: any) {
-      return { ok: false, error: err.message };
+    } catch (err: unknown) {
+      return { ok: false, error: (err as Error).message };
     }
   },
 }));

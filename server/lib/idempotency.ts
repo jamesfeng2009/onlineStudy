@@ -141,7 +141,7 @@ export async function registerUserIdempotent(
   username: string,
   passwordHash: string,
   targetLanguage: string
-): Promise<{ user: Prisma.UserGetPayload<{}>; isNew: boolean }> {
+): Promise<{ user: Prisma.UserGetPayload<Prisma.UserDefaultArgs>; isNew: boolean }> {
   const normalizedEmail = email.toLowerCase().trim();
 
   // 检查是否已存在
