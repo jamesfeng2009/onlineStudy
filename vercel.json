@@ -4,7 +4,13 @@
   "installCommand": "pnpm install",
   "framework": "vite",
   "cleanUrls": true,
+  "functions": {
+    "api/[...all].ts": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
   "rewrites": [
-    { "source": "/((?!assets/|favicon\\.svg).*)", "destination": "/" }
+    { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/" }
   ]
 }

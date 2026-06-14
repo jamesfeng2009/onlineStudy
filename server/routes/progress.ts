@@ -4,6 +4,7 @@ import { addExpAndLevelUp, computeStreakFromLastActive } from "../lib/level";
 import { clamp } from "../lib/utils";
 
 interface ModuleScores {
+  [key: string]: number;
   words: number;
   grammar: number;
   listening: number;

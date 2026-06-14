@@ -31,7 +31,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       return reply.status(400).send({ error: "无效的语言代码" });
     }
 
-    const passwordHash = await fastify.bcrypt.hash(password);
+    const passwordHash = await (fastify as any).bcrypt.hash(password);
 
     const user = await prisma.user.create({
       data: {
@@ -83,7 +83,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       return reply.status(401).send({ error: "邮箱或密码不正确" });
     }
 
-    const isMatch = await fastify.bcrypt.compare(password, user.passwordHash);
+    const isMatch = await (fastify as any).bcrypt.compare(password, user.passwordHash);
     if (!isMatch) {
       return reply.status(401).send({ error: "邮箱或密码不正确" });
     }
