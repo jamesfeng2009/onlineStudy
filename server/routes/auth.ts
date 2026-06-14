@@ -39,13 +39,14 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // 检查语言是否存在（带内存缓存）
-    if (!(await isValidLanguage(language))) {
+    // 语言校验与密码哈希互不依赖，并行执行
+    const [isLanguageValid, passwordHash] = await Promise.all([
+      isValidLanguage(language),
+      fastify.bcrypt.hash(password),
+    ]);
+    if (!isLanguageValid) {
       return sendError(reply, "BAD_REQUEST", "无效的语言代码");
     }
-
-    // 哈希密码
-    const passwordHash = await fastify.bcrypt.hash(password);
 
     // 使用事务创建用户（幂等：如果邮箱已存在，返回现有用户）
     const result = await prisma.$transaction(async (tx) => {
@@ -119,12 +120,10 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       }
     }
 
-    // 使用事务更新用户（幂等）
-    const updated = await prisma.$transaction(async (tx) => {
-      return tx.user.update({
-        where: { id: user.id },
-        data: { lastActive: new Date(), streak },
-      });
+    // 单表 update 本身是原子的，无需事务
+    const updated = await prisma.user.update({
+      where: { id: user.id },
+      data: { lastActive: new Date(), streak },
     });
 
     const token = fastify.jwt.sign(
