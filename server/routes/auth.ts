@@ -2,6 +2,7 @@ import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { registerUserIdempotent } from "../lib/idempotency.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { computeStreakFromLastActive } from "../lib/level.js";
 
 interface RegisterBody {
   email: string;
@@ -103,27 +104,13 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
-    // 计算新的 streak（幂等：同一天多次登录 streak 不变）
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const la = new Date(user.lastActive);
-    la.setHours(0, 0, 0, 0);
-    const yest = new Date(today);
-    yest.setDate(yest.getDate() - 1);
-
-    let streak = user.streak;
-    if (la.getTime() !== today.getTime()) {
-      if (la.getTime() === yest.getTime()) {
-        streak = user.streak + 1;
-      } else {
-        streak = 1;
-      }
-    }
+    // 计算新的 streak（幂等：同一天多次登录 streak 不变；按 Asia/Shanghai 日期判断）
+    const { streak, lastActive } = computeStreakFromLastActive(user.lastActive, user.streak);
 
     // 单表 update 本身是原子的，无需事务
     const updated = await prisma.user.update({
       where: { id: user.id },
-      data: { lastActive: new Date(), streak },
+      data: { lastActive, streak },
     });
 
     const token = fastify.jwt.sign(

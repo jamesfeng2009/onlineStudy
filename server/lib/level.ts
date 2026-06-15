@@ -16,23 +16,35 @@ function expToNextLevel(level: number): number {
   return 50 + level * 50;
 }
 
-function startOfDay(d: Date): Date {
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const STREAK_TIMEZONE = "Asia/Shanghai";
+
+function dateStr(d: Date): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: STREAK_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(d);
+}
+
+function addDays(d: Date, days: number): Date {
+  const result = new Date(d);
+  result.setDate(result.getDate() + days);
+  return result;
 }
 
 export function computeStreakFromLastActive(lastActive: Date, currentStreak: number): {
   streak: number;
   lastActive: Date;
 } {
-  const today = startOfDay(new Date());
-  const yest = new Date(today);
-  yest.setDate(yest.getDate() - 1);
-  const la = startOfDay(lastActive);
+  const todayStr = dateStr(new Date());
+  const yestStr = dateStr(addDays(new Date(), -1));
+  const laStr = dateStr(lastActive);
 
-  if (la.getTime() === today.getTime()) {
+  if (laStr === todayStr) {
     return { streak: currentStreak, lastActive: new Date() };
   }
-  if (la.getTime() === yest.getTime()) {
+  if (laStr === yestStr) {
     return { streak: currentStreak + 1, lastActive: new Date() };
   }
   return { streak: 1, lastActive: new Date() };
