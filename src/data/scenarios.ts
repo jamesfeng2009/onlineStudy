@@ -114,7 +114,7 @@ const SCENARIOS_EN: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "The 10 phrases that get you through 95% of any trip to an English-speaking country, with audio and example dialogues.",
     intro:
-      "Travel English is the highest-leverage English you will ever learn: the same 50 phrases get you through the airport, the hotel, the taxi, the restaurant, and the front desk of an embassy. Whether you are flying into New York, London, Sydney, or Toronto, the practical English of travel is the same — and mastering it is the difference between a stressful trip and a smooth one. LangOria's travel-phrase deck is built around the 10 sentences you actually need, not the 1000 you might need someday. Each phrase is paired with audio shadowing, an example dialogue, and the culture tip that tells you when it would be rude to use it.",
+      "Travel English is the highest-leverage English you will ever learn: the same 50 phrases get you through the airport, the hotel, the taxi, the restaurant, and the front desk of an embassy. Whether you are flying into New York, London, Sydney, or Toronto, the practical English of travel is the same — and mastering it is the difference between a stressful trip and a smooth one. LangOria's travel-phrase deck is built around the 10 sentences you actually need, not the 1000 you might need someday. Each phrase is paired with audio shadowing, an example dialogue, and the culture tip that tells you when it would be rude to use it. Beyond the airport, the same 10 phrases get you through taxi rides, hotel check-ins, train stations, and the small emergencies of being a stranger in a new place — asking for a pharmacy at midnight, finding the right bus platform, or asking a stranger to take your photo at the harbour. If you only learn ten English sentences in your life, these are the ten. The 10-minute daily loop for one week is enough to internalise them — and that single week pays off every trip for the rest of your life.",
     culture:
       "In English-speaking countries, politeness scales with indirectness: a request framed as a question ('Could I have the check, please?') is heard as neutral, while the same request as a statement ('Give me the check.') is heard as rude. Hotel staff and service workers in the UK and US respond well to 'please' and 'thank you' — these two words carry more politeness than in many other languages. Tipping 15-20% at restaurants is expected in the US and Canada; the bill will say 'tip not included' or 'gratuity suggested'. In the UK, service charge is usually included and tipping is optional.",
     howTo:
@@ -143,7 +143,7 @@ const SCENARIOS_EN: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "Polite, professional phrases for the modern working day: scheduling, agendas, status updates, and the soft skills that get you promoted.",
     intro:
-      "Business English is the difference between being understood at work and being trusted at work. The vocabulary of meetings, emails, and follow-ups is a small, finite set — the same 50 phrases cover 90% of professional communication in English. Whether you are writing a status update, opening a Monday standup, or pushing back on a deadline, the right phrase in the right register is what makes you sound like a peer, not a foreigner. LangOria's business-phrase deck is built around the 10 phrases that come up in every meeting and every email chain, with politeness levels calibrated for the US, UK, and Australian work cultures.",
+      "Business English is the difference between being understood at work and being trusted at work. The vocabulary of meetings, emails, and follow-ups is a small, finite set — the same 50 phrases cover 90% of professional communication in English. Whether you are writing a status update, opening a Monday standup, or pushing back on a deadline, the right phrase in the right register is what makes you sound like a peer, not a foreigner. LangOria's business-phrase deck is built around the 10 phrases that come up in every meeting and every email chain, with politeness levels calibrated for the US, UK, and Australian work cultures. What separates professional English from conversational English is not grammar — it is register. The same idea, said with the right formality, is what makes you sound like a peer in a Monday standup, a 1:1 with your manager, or a video call with a global team. Master these 10 phrases and you can walk into any English-language meeting and carry your weight — even if the rest of your English is still mid-B1. The phrases double as templates for the email lines you write the night before.",
     culture:
       "English business culture is direct in the US and the UK — clarity is treated as a virtue, and 'let's table this' is not rude, it is efficient. In Australia, the same directness is wrapped in understatement ('maybe we could look at this again' often means 'no'). Avoid the false friend 'actually' (it does not mean 'currently' in English); use 'currently' instead. Email subject lines should describe the action ('Q3 budget review — your input by Friday' is good; 'quick question' is bad). Meetings are called with agendas; if you call a meeting without one, people will skip it.",
     howTo:
@@ -172,7 +172,7 @@ const SCENARIOS_EN: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "Ordering food, asking about ingredients, paying the bill, and complimenting the chef — the 10 phrases every traveller needs.",
     intro:
-      "Food is the fastest way to feel at home in a new language. The 10 phrases in this deck cover the 95% case: walking into a restaurant, ordering, asking about allergies, paying, and leaving. Whether you are in a diner in New York, a pub in London, or a café in Melbourne, the script is the same — and the politeness register is forgiving: servers in English-speaking countries expect to be asked simple questions and respond well to direct, polite language. LangOria's food-phrase deck is built around the 10 sentences that come up in every meal out, with a culture tip on tipping and a sample dialogue so you can rehearse the whole encounter before you walk in.",
+      "Food is the fastest way to feel at home in a new language. The 10 phrases in this deck cover the 95% case: walking into a restaurant, ordering, asking about allergies, paying, and leaving. Whether you are in a diner in New York, a pub in London, or a café in Melbourne, the script is the same — and the politeness register is forgiving: servers in English-speaking countries expect to be asked simple questions and respond well to direct, polite language. LangOria's food-phrase deck is built around the 10 sentences that come up in every meal out, with a culture tip on tipping and a sample dialogue so you can rehearse the whole encounter before you walk in. The same phrases get you from a fast-casual counter to a tasting menu, from a coffee shop to a wine bar, and from the awkward 'is this spicy?' to the warm 'this was amazing, thank you.' Servers in English-speaking countries are trained to flag allergies to the kitchen — say yours clearly, and they will take care of you. Food English is the most rewarding 10 minutes of any language course: you rehearse in the app, you use it for dinner, and the next morning you remember it for life.",
     culture:
       "In the US, tipping 15-20% is standard and the bill will say 'tip not included' or 'gratuity suggested' — you must calculate and add it. In the UK, a 10-12% service charge is often already included; check the fine print on the bill. In Australia, tipping is not expected and the staff wage is set accordingly. If you have a dietary restriction, say it clearly at the start of the order ('I'm allergic to peanuts' or 'I'm a vegetarian') — servers in English-speaking countries are trained to flag allergies to the kitchen. Avoid saying 'I'm a little allergic' — this is heard as a small allergy, not a real one.",
     howTo:
@@ -201,7 +201,7 @@ const SCENARIOS_EN: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "Greetings, hobbies, weather, and the small phrases that turn a stranger into a friend — the social glue of English-speaking countries.",
     intro:
-      "Small talk is the front door of English fluency. The 10 phrases in this deck are the ones that come up in every elevator, every coffee line, every conference reception, and every first date: introducing yourself, asking what someone does, talking about the weather, and finding common ground. Whether you are at a networking event in San Francisco, a house party in London, or a waiting room in Toronto, the script is the same — and the politeness register is well-tuned: English small talk is friendly but not intimate, and the 10 phrases here will keep you in the right zone. LangOria's small-talk deck is built around the 10 sentences that make you sound like a peer, not a tourist.",
+      "Small talk is the front door of English fluency. The 10 phrases in this deck are the ones that come up in every elevator, every coffee line, every conference reception, and every first date: introducing yourself, asking what someone does, talking about the weather, and finding common ground. Whether you are at a networking event in San Francisco, a house party in London, or a waiting room in Toronto, the script is the same — and the politeness register is well-tuned: English small talk is friendly but not intimate, and the 10 phrases here will keep you in the right zone. LangOria's small-talk deck is built around the 10 sentences that make you sound like a peer, not a tourist. The first five minutes of any social encounter — a coffee line, a coworking space, a party, a flight — are run on a predictable script, and the people who know that script are the ones who get asked to stay. Small talk is a habit, not a vocabulary, and the habit transfers across English-speaking countries. Drill the dialogue out loud with a partner or a recording; the trick to small talk is sounding natural, not correct.",
     culture:
       "English small talk follows a predictable pattern: weather (safe), work (allowed but don't pry), hobbies (encouraged), recent media (great), and personal life (do not ask about money, politics, or relationships on first meeting). The question 'What do you do?' is not aggressive in English — it is the standard opener in the US and the UK, even between strangers. In Australia and Canada, the same opener is often wrapped in 'How's it going?' first. Avoid the false friend 'actually' as a discourse marker ('Actually, I'm a doctor' sounds defensive; 'I'm a doctor, actually' sounds defensive too — drop it).",
     howTo:
@@ -240,7 +240,7 @@ const SCENARIOS_JA: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "空港・ホテル・電車・道案内の 95% をカバーする 10 フレーズと、会話例。",
     intro:
-      "旅行日本語は、英語圏を旅行するときに最も投資対効果の高い日本語です。空港、ホテル、レストラン、駅の窓口で使う 50 フレーズを覚えれば、たいていの旅はスムーズにいきます。日本で英語が通じない場所も多いので、「すみません、〇〇はどこですか?」の一言が、旅全体を救います。LangOria の旅行フレーズ集は、実際に必要になる 10 文に絞り込みました。シャドウイング音声、文化メモ、会話例つきで、到着初日から使えます。",
+      "旅行日本語は、英語圏を旅行するときに最も投資対効果の高い日本語です。空港、ホテル、レストラン、駅の窓口で使う 50 フレーズを覚えれば、たいていの旅はスムーズにいきます。日本で英語が通じない場所も多いので、「すみません、〇〇はどこですか?」の一言が、旅全体を救います。LangOria の旅行フレーズ集は、実際に必要になる 10 文に絞り込みました。シャドウイング音声、文化メモ、会話例つきで、到着初日から使えます。空港を出た瞬間から同じ 10 文が、駅で道を聞くとき、コンビニで切符を買うとき、居酒屋で注文するときに、繰り返し救ってくれます。深夜の薬局を探すとき、バスの乗り場がわからないとき、神社で写真の撮影をお願いするとき — 10 フレーズを覚えていれば、困ることはほぼありません。旅行日本語の 9 割は、1 週間の 10 分間 × 7 日で身につきます。一生使える日本語の最初の 10 文を、ここで覚えてください。",
     culture:
       "日本では、駅や観光案内所で「すみません」と呼びかけても無視されることがよくあります — 大声では呼ばず、すれ違う人の目を一瞬見て軽く会釈してから声をかけます。ホテルでは、靴を脱ぐ宿が多いので、靴の脱ぎ方に気をつけましょう。電車の優先席では、スマホの電源を切る、マナーモードにする、というのが暗黙のルールです。チップの習慣はなく、駅員・旅館スタッフへの心付けは通常不要です。",
     howTo:
@@ -269,7 +269,7 @@ const SCENARIOS_JA: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "会議のアジェンダ、メールの書き方、フォローアップのフレーズ集。",
     intro:
-      "ビジネス日本語は、英語の「let's touch base」のような決まった言い回しを、日本語なりの丁寧さで言えるかどうかで決まります。会議の設定、議事録の共有、納期交渉、お詫び — これら 50 フレーズを覚えれば、日本の職場で「外国人の新人」ではなく「同僚」として扱われます。LangOria のビジネスフレーズ集は、外資系・日本国内企業どちらでも通じる 10 文を厳選しました。",
+      "ビジネス日本語は、英語の「let's touch base」のような決まった言い回しを、日本語なりの丁寧さで言えるかどうかで決まります。会議の設定、議事録の共有、納期交渉、お詫び — これら 50 フレーズを覚えれば、日本の職場で「外国人の新人」ではなく「同僚」として扱われます。LangOria のビジネスフレーズ集は、外資系・日本国内企業どちらでも通じる 10 文を厳選しました。ビジネス日本語と日常会話の違いは、文法ではなく 敬語(けいご, 尊敬語と謙譲語) です。同じ内容でも、敬語のレベルを正しく選べば、会議(かいぎ)で「同僚」、接待で「ゲスト」として扱われます。10 文を覚えれば、英語力が B1 レベルでも、日本語の会議で自分の役割を果たせます。フレーズは、夜に送るメールの一行や、議事録の冒頭としても、そのまま使えます。",
     culture:
       "日本の会議は「根回し」が基本 — 会議の前に、上司と同僚に非公式に相談してから本会議に臨みます。会議中は反対意見でも「それは一つの考え方ですね」と柔らかく表現するのが礼儀。メールの件名は具体的に:「【ご共有】Q3 売上レポートのご確認のお願い」のように、アクションと期日を入れます。名刺交換は、片手で渡すのは失礼 — 両手で、受け取る側も両手で受け取り、すぐに机に置かずに膝の上に置きます。",
     howTo:
@@ -298,7 +298,7 @@ const SCENARIOS_JA: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "レストラン、居酒屋、コンビニで使う 10 フレーズ。",
     intro:
-      "食事の日本語は、最も報酬が大きい日本語です。10 フレーズを覚えれば、日本のあらゆる飲食店 — 立ち飲み屋から高級鮨店まで — で困らなくなります。「おすすめは何ですか?」「辛くできますか?」「アレルギーがあります」の 3 フレーズで、食事の 90% は完結します。LangOria の食事フレーズ集は、店に入る瞬間から出て行く瞬間までを一気に通せる 10 文を厳選しました。",
+      "食事の日本語は、最も報酬が大きい日本語です。10 フレーズを覚えれば、日本のあらゆる飲食店 — 立ち飲み屋から高級鮨店まで — で困らなくなります。「おすすめは何ですか?」「辛くできますか?」「アレルギーがあります」の 3 フレーズで、食事の 90% は完結します。LangOria の食事フレーズ集は、店に入る瞬間から出て行く瞬間までを一気に通せる 10 文を厳選しました。同じ 10 フレーズが、コンビニ(こんびに) から 高級鮨店(こうきゅう ずし-てん) まで、居酒屋(いざかや) から ラーメン屋(ラーメンや) まで、どこでも通じます。「いただきます」と「ごちそうさまでした」 — この 2 つの言葉が、食事で最も重要な礼儀です。日本の飲食店では、店員が客席に来るまで待つのが礼儀ですが、注文のときは「すみません」と声をかけて OK。10 フレーズを覚えたら、ランチタイムに一人で ラーメン屋 に行き、4 位 / メニュー / おすすめ / 辛く / 买单 の全流程を 30 分で練習するのが最速です。",
     culture:
       "日本のレストランでは、店員が客席に来るまで待つのが普通 — 自分で席に座っても、店員が来るまで注文はせず、飲み物のメニューだけもらいます。注文は「すみません、〇〇 をお願いします」の一言で OK。飲食店で声をかけるときは「すみません」が標準で、店内では「店員さん!」と叫ぶのは避けましょう。食事中は「いただきます」と「ごちそうさま」を忘れない — これら二つの言葉が一番の礼儀です。",
     howTo:
@@ -327,7 +327,7 @@ const SCENARIOS_JA: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "初対面、待ち合わせ、交流会で使う 10 フレーズ。",
     intro:
-      "雑談は、日本語の「入口」です。日本の初対面では、名刺交換のあと、必ず「趣味はなんですか?」「休日は何をされていますか?」と軽い話題が続きます。この 10 フレーズを覚えれば、日本の交流会、ホストファミリーとの夕食、会社の同僚との飲み会、すべてに通じます。LangOria の雑談フレーズ集は、日本の礼儀作法を含めた 10 文を厳選しました。",
+      "雑談は、日本語の「入口」です。日本の初対面では、名刺交換のあと、必ず「趣味はなんですか?」「休日は何をされていますか?」と軽い話題が続きます。この 10 フレーズを覚えれば、日本の交流会、ホストファミリーとの夕食、会社の同僚との飲み会、すべてに通じます。LangOria の雑談フレーズ集は、日本の礼儀作法を含めた 10 文を厳選しました。日本の初対面 5 分は、交流会(こうりゅうかい) でも 飲み会(のみかい) でも ホストファミリー(ほすとふぁみりー) でも同じスクリプトで進みます。「はじめまして」→「お仕事」→「ご出身」→「ご趣味」 — この 4 ステップが、日本語の雑談の 9 割です。スクリプトを知っている人は、次の食事にも誘われる人。雑談は語彙ではなく習慣で、習慣は毎日の小さな実践で作られます。10 フレーズを覚えたら、自分の情報に置き換えて自己紹介を 5 回書き、録音して発音をチェック。日本人の同僚に「日本語で自己紹介したい」と 10 分間もらえれば、最速の上達ルートです。",
     culture:
       "日本の自己紹介は「〇〇 と申します。〇〇 出身です。〇〇 をしています」の定型 — 名前、出身地、職業の 3 点セットが礼儀です。「よろしくお願いします」は会話の最初に言うのが礼儀で、最後に言うのは不自然。相手が名刺を渡してくれたら、受け取った名刺をすぐ鞄に入れず、会話中はテーブルの上に置いて敬意を示します。",
     howTo:
@@ -363,7 +363,7 @@ const SCENARIOS_ZH: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "机场、酒店、地铁、问路最常用的 10 句中文,带拼音和场景对话。",
     intro:
-      "旅行中文是性价比最高的中文投资。同样 50 个句子,能让你在中国大陆、台湾、香港、新加坡的机场、酒店、餐厅、出租车上畅通无阻。即使你不会说中文,把这 10 句背下来,再加上手机翻译,就已经能应付 95% 的旅行场景。LangOria 的旅行短语集专注于「真正会用到」的 10 句,配有拼音、音频、对话示例,落地第一天就能用。",
+      "旅行中文是性价比最高的中文投资。同样 50 个句子,能让你在中国大陆、台湾、香港、新加坡的机场、酒店、餐厅、出租车上畅通无阻。即使你不会说中文,把这 10 句背下来,再加上手机翻译,就已经能应付 95% 的旅行场景。LangOria 的旅行短语集专注于「真正会用到」的 10 句,配有拼音、音频、对话示例,落地第一天就能用。出机场后,这 10 句能帮你打车、问路、办酒店入住、找地铁口、点餐、问洗手间 — 同一组句子覆盖整个行程。深夜找药店、不确定公交在哪一站、想请路人帮忙拍张照 — 10 句学会,旅行中 99% 的困境都能解决。每天 10 分钟、连续 7 天,旅行中文的 9 成就能搞定。值得一辈子反复使用的 10 句中文,从这里开始。",
     culture:
       "在中国,问路最好用「请问」开头 — 直接喊「哎,机场在哪?」会被当作粗鲁。大城市里警察、地铁站工作人员、便利店店员是免费问路的最稳定渠道;出租车司机有时听不懂英文,只问「到机场多少钱?」即可。酒店和高端餐厅有 10-15% 服务费(不强制),出租车不收小费。地铁站里禁止饮食(喝水也不行),违者罚款。",
     howTo:
@@ -392,7 +392,7 @@ const SCENARIOS_ZH: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "会议安排、议程分享、工作跟进 — 职场最常说的 10 句。",
     intro:
-      "商务中文,核心是「得体」。同样一件事,用「麻烦您看一下」和「给我看一下」说,效果天差地别。商务场景的 50 个固定句式,能让你在中外合资企业、中国本土公司、外贸生意中都显得专业。LangOria 的商务短语集挑选的是「每周都会用到」的 10 句:开会、议程、跟进、致谢、调整时间,这些占了你职场沟通的 9 成。",
+      "商务中文,核心是「得体」。同样一件事,用「麻烦您看一下」和「给我看一下」说,效果天差地别。商务场景的 50 个固定句式,能让你在中外合资企业、中国本土公司、外贸生意中都显得专业。LangOria 的商务短语集挑选的是「每周都会用到」的 10 句:开会、议程、跟进、致谢、调整时间,这些占了你职场沟通的 9 成。商务中文与日常中文的差别,不是语法,而是 得体(dé-tǐ, 体面与礼貌)。同一句话,得体等级选对了,在 会议(huìyì) 里是「同事」、在 客户面前是「合作伙伴」、在微信里是「下属」对「上司」该有的样子。这 10 句掌握了,即便你的中文只有 A2 水平,也能在中国的会议上发挥应有的作用。短语可以直接套用到你的工作邮件、微信工作群、议程文档的标题里。",
     culture:
       "中国的职场,「面子」很重要 — 拒绝别人的方案时,不要直接说「不行」,而是用「我再考虑一下」、「这个方案可能还要再优化一下」来表达。邮件主题要写得清楚:「【请审阅】Q3 项目报告(截止 10/15)」比「项目报告」更有效。微信是中国职场的主要沟通工具,大部分内部沟通都在微信群里,而不是邮件。会议前给老板发一条「王总,明天的会议我会准备 Q3 的数据」,效果远胜于会上直接说。",
     howTo:
@@ -421,7 +421,7 @@ const SCENARIOS_ZH: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "餐厅、便利店、外卖都用得到的 10 个核心句子。",
     intro:
-      "吃饭是中国日常生活最有温度的场景,也是学中文最好玩的入口。在中国,大街上几乎所有餐厅都需要你直接告诉店员你想吃什么 — 没有人会来问「Can I help you?」。把这 10 句背下来,你就可以独立走进任何一家面馆、火锅店、烧烤摊、便利店,完成从进门到结账的完整流程。LangOria 的点餐短语集覆盖了中国餐厅从「几位?」到「买单」的完整对话。",
+      "吃饭是中国日常生活最有温度的场景,也是学中文最好玩的入口。在中国,大街上几乎所有餐厅都需要你直接告诉店员你想吃什么 — 没有人会来问「Can I help you?」。把这 10 句背下来,你就可以独立走进任何一家面馆、火锅店、烧烤摊、便利店,完成从进门到结账的完整流程。LangOria 的点餐短语集覆盖了中国餐厅从「几位?」到「买单」的完整对话。同样的 10 句,从 便利店(biànlìdiàn) 到 火锅店(huǒguō diàn) 、从 面馆(miànguǎn) 到 高档餐厅(gāodàng cāntīng) ,全部通吃。「您好」(nín hǎo) 和「谢谢」(xièxie) — 这两个词是任何一餐里最重要的礼貌。中国餐厅大多使用「扫码点单」,但口头点餐依然行得通,尤其是服务员主动来问的时候。10 句学会后,找一个工作日午餐,独自去一家面馆或饺子馆完成「4 位 / 菜单 / 推荐 / 辣不辣 / 买单 / 打包」的全流程 — 这是学中文最有满足感的 30 分钟,胜过一周课本。",
     culture:
       "在中国餐厅,进门第一句通常是「几位?」或「您几位?」,这是「how many people in your party」的中国版。「扫码点单」(扫桌上的二维码用微信点菜)是中国餐厅 2020 年以后的主流,大多数连锁店都没有纸质菜单,只提供二维码。点菜时如果不知道点什么,直接问「您这有什么推荐?」(What do you recommend?),服务员会很高兴推荐。吃不完想打包,说「打包」(takeaway)即可。中国没有小费文化,买单后直接走即可。",
     howTo:
@@ -450,7 +450,7 @@ const SCENARIOS_ZH: Record<ScenarioKey, ScenarioContent> = {
     subtitle:
       "第一次见面、寒暄客套、聊兴趣爱好的 10 句中文。",
     intro:
-      "闲聊是中文社交的入口。在中国,陌生人之间 5 分钟内就会问「您贵姓?」「您是哪里人?」「您做哪行的?」 — 这种「陌生人问隐私」的习惯,和中国社会的「关系」文化直接相关。把 10 句闲聊短语记熟,你在出租车、火车、电梯、招待会都能和中国人聊起来。LangOria 的闲聊短语集覆盖了从「你好」到「您慢走」的中国式寒暄完整流程。",
+      "闲聊是中文社交的入口。在中国,陌生人之间 5 分钟内就会问「您贵姓?」「您是哪里人?」「您做哪行的?」 — 这种「陌生人问隐私」的习惯,和中国社会的「关系」文化直接相关。把 10 句闲聊短语记熟,你在出租车、火车、电梯、招待会都能和中国人聊起来。LangOria 的闲聊短语集覆盖了从「你好」到「您慢走」的中国式寒暄完整流程。中国的初次见面 5 分钟,无论在 商务晚宴(shāngwù wǎnyàn) 、 微信群(Wēixìn qún) 还是 朋友聚会(péngyǒu jùhuì) ,都遵循「您好」→「贵姓」→「哪里人」→「做什么工作」→「爱好」这一固定流程。掌握这个流程的人,会被邀请下一顿饭;掌握不了的,只会被客气地结束对话。闲聊不是词汇量,而是反射弧。10 句学会后,挑 3 句最常用的改成自己的版本(比如「我来自北京,做设计工作」、「我喜欢跑步和摄影」),在中国旅行时主动和出租车司机、酒店前台、便利店店员搭话 — 会比你想象的受欢迎。",
     culture:
       "中国人初次见面喜欢问「您贵姓?」(您的姓是? ) — 回答时只说姓即可,「我姓王」(I am surnamed Wang)。「您是哪里人?」(Where are you from?) 是固定开场白,即使你们已经在同一个城市,这也是礼节性的「我们来自哪里」的开场。称谓在中国很重要:对陌生人和长辈用「您」(nín) 而不是「你」(nǐ),朋友和晚辈才用「你」。送客时主人说「您慢走」、「您走好」,客人说「您留步」、「别送了」 — 这些都是场面话,不是真的让你慢慢走。",
     howTo:

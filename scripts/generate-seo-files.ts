@@ -171,6 +171,8 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
+Disallow: /login         # auth — no SEO value
+Disallow: /register      # auth — no SEO value
 Disallow: /profile
 Disallow: /settings
 Disallow: /dashboard
