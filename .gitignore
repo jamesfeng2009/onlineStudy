@@ -25,6 +25,10 @@ server/lib/prisma-generated/client/*.node
 dist-ssr
 *.local
 
+# Script caches (large dictionaries downloaded by build scripts)
+scripts/cache
+
+
 # Env
 .env
 .env.local

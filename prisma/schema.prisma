@@ -259,3 +259,24 @@ model StripeEvent {
 
   @@map("stripe_events")
 }
+
+// Blog posts (CMS) —— 单语种内容，多语言由 baseLanguageCode 区分
+model BlogPost {
+  id               String   @id @default(uuid())
+  slug             String   @unique
+  title            String
+  excerpt          String
+  content          Json     // string[] (paragraphs)
+  tag              String
+  readTime         String   @default("5 min read")
+  coverEmoji       String?  // 文章封面 emoji，备用
+  baseLanguageCode String   @default("en") // en/zh/ja/ko/es/fr/de
+  status           String   @default("draft") // draft | published
+  publishedAt      DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("blog_posts")
+  @@index([status, publishedAt])
+  @@index([baseLanguageCode, status])
+}

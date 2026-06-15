@@ -11,6 +11,7 @@ import progressRoutes from "./routes/progress.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
 import adminRoutes from "./routes/admin.js";
+import blogRoutes from "./routes/blog.js";
 import jwtPlugin from "./lib/jwt.js";
 import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
@@ -84,6 +85,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     communityRoutes,
     stripeRoutes,
     adminRoutes,
+    blogRoutes,
   ];
 
   for (const route of apiRoutes) {

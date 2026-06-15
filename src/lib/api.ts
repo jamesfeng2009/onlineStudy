@@ -216,6 +216,43 @@ export async function adminDelete(resource: string, id: string): Promise<Record<
   return request(`/admin/${resource}/${id}`, { method: "DELETE" }, true);
 }
 
+// ====== Blog (public + admin) ======
+export async function getBlogPosts(params?: { language?: string }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  const query = qs.toString();
+  return request(`/blog/posts${query ? `?${query}` : ""}`);
+}
+
+export async function getBlogPost(slug: string): Promise<Record<string, unknown>> {
+  return request(`/blog/posts/${slug}`);
+}
+
+export async function adminListBlogPosts(params?: {
+  language?: string;
+  status?: string;
+  q?: string;
+}): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.status) qs.set("status", params.status);
+  if (params?.q) qs.set("q", params.q);
+  const query = qs.toString();
+  return request(`/admin/blog/posts${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function adminCreateBlogPost(data: Record<string, unknown>): Promise<Record<string, unknown>> {
+  return request(`/admin/blog/posts`, { method: "POST", body: JSON.stringify(data) }, true);
+}
+
+export async function adminUpdateBlogPost(id: string, data: Record<string, unknown>): Promise<Record<string, unknown>> {
+  return request(`/admin/blog/posts/${id}`, { method: "PUT", body: JSON.stringify(data) }, true);
+}
+
+export async function adminDeleteBlogPost(id: string): Promise<Record<string, unknown>> {
+  return request(`/admin/blog/posts/${id}`, { method: "DELETE" }, true);
+}
+
 // ====== 类型别名（向后兼容）======
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UserResp = any;
@@ -259,4 +296,10 @@ export const api = {
   adminCreate,
   adminUpdate,
   adminDelete,
+  getBlogPosts,
+  getBlogPost,
+  adminListBlogPosts,
+  adminCreateBlogPost,
+  adminUpdateBlogPost,
+  adminDeleteBlogPost,
 };

@@ -12,6 +12,7 @@ import {
   HelpCircle,
   Headphones,
   MessageSquare,
+  Newspaper,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
@@ -36,6 +37,7 @@ interface ResourceConfig {
   resource: string;
   idKey: string;
   fields: FieldConfig[];
+  custom?: boolean;
 }
 
 function useResources() {
@@ -140,6 +142,15 @@ function useResources() {
           { key: "speakOrder", label: t("admin.fields.speakOrder"), type: "number", width: "w-20" },
         ],
       },
+      {
+        key: "blog",
+        label: t("admin.resources.blog"),
+        icon: Newspaper,
+        resource: "blog/posts",
+        idKey: "id",
+        custom: true,
+        fields: [],
+      },
     ],
     [t]
   );
@@ -228,7 +239,11 @@ export default function AdminPage() {
         })}
       </div>
 
-      <ResourcePanel key={config.key} config={config} onError={setError} t={t} />
+      {config.custom ? (
+        <BlogPostPanel onError={setError} t={t} />
+      ) : (
+        <ResourcePanel key={config.key} config={config} onError={setError} t={t} />
+      )}
     </PageShell>
   );
 }
@@ -602,5 +617,441 @@ function FormInput({
       className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-brand-200/40 focus:border-sky-400/50 focus:outline-none"
       placeholder={field.label}
     />
+  );
+}
+
+// ====== Blog Post Panel (custom) ======
+const BLOG_LANGUAGES = [
+  { code: "en", label: "English" },
+  { code: "zh", label: "中文" },
+  { code: "ja", label: "日本語" },
+  { code: "ko", label: "한국어" },
+  { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
+  { code: "de", label: "Deutsch" },
+];
+
+function BlogPostPanel({
+  onError,
+  t,
+}: {
+  onError: (msg: string | null) => void;
+  t: (key: string, options?: Record<string, unknown>) => string;
+}) {
+  const [items, setItems] = useState<Record<string, unknown>[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [q, setQ] = useState("");
+  const [status, setStatus] = useState("");
+  const [language, setLanguage] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [form, setForm] = useState<{
+    title: string;
+    slug: string;
+    excerpt: string;
+    content: string;
+    tag: string;
+    readTime: string;
+    coverEmoji: string;
+    baseLanguageCode: string;
+    postStatus: string;
+  }>({
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    tag: "",
+    readTime: "5 min read",
+    coverEmoji: "",
+    baseLanguageCode: "en",
+    postStatus: "draft",
+  });
+
+  const load = async () => {
+    setLoading(true);
+    onError(null);
+    try {
+      const data = await api.adminListBlogPosts({
+        q: q || undefined,
+        status: status || undefined,
+        language: language || undefined,
+      });
+      setItems(data);
+    } catch (err: unknown) {
+      onError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    void load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const openCreate = () => {
+    setEditingId(null);
+    setForm({
+      title: "",
+      slug: "",
+      excerpt: "",
+      content: "",
+      tag: "",
+      readTime: "5 min read",
+      coverEmoji: "",
+      baseLanguageCode: "en",
+      postStatus: "draft",
+    });
+    setModalOpen(true);
+  };
+
+  const openEdit = (item: Record<string, unknown>) => {
+    setEditingId(String(item.id));
+    const content = Array.isArray(item.content) ? (item.content as string[]).join("\n\n") : "";
+    setForm({
+      title: String(item.title ?? ""),
+      slug: String(item.slug ?? ""),
+      excerpt: String(item.excerpt ?? ""),
+      content,
+      tag: String(item.tag ?? ""),
+      readTime: String(item.readTime ?? "5 min read"),
+      coverEmoji: String(item.coverEmoji ?? ""),
+      baseLanguageCode: String(item.baseLanguageCode ?? "en"),
+      postStatus: String(item.status ?? "draft"),
+    });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setEditingId(null);
+  };
+
+  const handleSave = async () => {
+    if (!form.title.trim() || !form.excerpt.trim() || !form.content.trim() || !form.tag.trim()) {
+      onError(t("admin.errors.required", { label: t("admin.blog.fields.title") }));
+      return;
+    }
+    const paragraphs = form.content
+      .split(/\n\s*\n/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (paragraphs.length === 0) {
+      onError(t("admin.errors.required", { label: t("admin.blog.fields.content") }));
+      return;
+    }
+    const payload: Record<string, unknown> = {
+      title: form.title.trim(),
+      excerpt: form.excerpt.trim(),
+      content: paragraphs,
+      tag: form.tag.trim(),
+      readTime: form.readTime.trim() || "5 min read",
+      coverEmoji: form.coverEmoji.trim() || null,
+      baseLanguageCode: form.baseLanguageCode,
+      status: form.postStatus,
+    };
+    if (form.slug.trim()) payload.slug = form.slug.trim();
+
+    setSaving(true);
+    onError(null);
+    try {
+      if (editingId) {
+        await api.adminUpdateBlogPost(editingId, payload);
+      } else {
+        await api.adminCreateBlogPost(payload);
+      }
+      await load();
+      closeModal();
+    } catch (err: unknown) {
+      onError((err as Error).message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (item: Record<string, unknown>) => {
+    if (!confirm(t("admin.confirmDelete", { label: t("admin.resources.blog") }))) return;
+    onError(null);
+    try {
+      await api.adminDeleteBlogPost(String(item.id));
+      await load();
+    } catch (err: unknown) {
+      onError((err as Error).message);
+    }
+  };
+
+  return (
+    <>
+      <GlassCard>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2">
+              <Search className="h-4 w-4 text-brand-200/60" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder={t("admin.blog.searchPlaceholder")}
+                className="bg-transparent text-sm text-white placeholder:text-brand-200/40 focus:outline-none"
+              />
+            </div>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="rounded-xl bg-white/5 px-3 py-2 text-sm text-white focus:outline-none"
+            >
+              <option value="">{t("admin.blog.allStatus")}</option>
+              <option value="draft">{t("admin.blog.draft")}</option>
+              <option value="published">{t("admin.blog.published")}</option>
+            </select>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="rounded-xl bg-white/5 px-3 py-2 text-sm text-white focus:outline-none"
+            >
+              <option value="">{t("admin.blog.allLanguages")}</option>
+              {BLOG_LANGUAGES.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={() => void load()}
+              className="rounded-xl bg-white/5 px-3 py-2 text-sm text-brand-200/80 transition hover:bg-white/10 hover:text-white"
+            >
+              {t("admin.query")}
+            </button>
+          </div>
+          <button
+            onClick={openCreate}
+            className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30"
+          >
+            <Plus className="h-4 w-4" />
+            {t("admin.blog.newPost")}
+          </button>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-white/10 text-brand-200/60">
+                <th className="px-3 py-3 font-medium">{t("admin.blog.colTitle")}</th>
+                <th className="px-3 py-3 font-medium">{t("admin.blog.colSlug")}</th>
+                <th className="px-3 py-3 font-medium">{t("admin.blog.colLang")}</th>
+                <th className="px-3 py-3 font-medium">{t("admin.blog.colStatus")}</th>
+                <th className="px-3 py-3 font-medium">{t("admin.blog.colUpdated")}</th>
+                <th className="px-3 py-3 text-right">{t("admin.actions")}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {loading ? (
+                <tr>
+                  <td colSpan={6} className="py-10 text-center text-brand-200/60">
+                    <Loader2 className="mx-auto h-5 w-5 animate-spin" />
+                  </td>
+                </tr>
+              ) : items.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-10 text-center text-brand-200/60">
+                    {t("admin.noData")}
+                  </td>
+                </tr>
+              ) : (
+                items.map((item) => (
+                  <tr key={String(item.id)} className="hover:bg-white/[0.02]">
+                    <td className="px-3 py-3 text-white">
+                      <div className="line-clamp-1 font-medium">{String(item.title)}</div>
+                      <div className="line-clamp-1 text-xs text-brand-200/50">
+                        {String(item.tag)}
+                      </div>
+                    </td>
+                    <td className="px-3 py-3 font-mono text-xs text-brand-200/70">
+                      {String(item.slug)}
+                    </td>
+                    <td className="px-3 py-3 text-brand-100">
+                      {String(item.baseLanguageCode)}
+                    </td>
+                    <td className="px-3 py-3">
+                      <span
+                        className={
+                          "rounded-full px-2 py-1 text-[11px] " +
+                          (item.status === "published"
+                            ? "bg-emerald-400/10 text-emerald-300"
+                            : "bg-amber-400/10 text-amber-300")
+                        }
+                      >
+                        {item.status === "published"
+                          ? t("admin.blog.published")
+                          : t("admin.blog.draft")}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3 text-xs text-brand-200/60">
+                      {String(item.updatedAt).slice(0, 10)}
+                    </td>
+                    <td className="px-3 py-3 text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => openEdit(item)}
+                          className="rounded-lg bg-white/5 p-1.5 text-brand-200 transition hover:bg-white/10 hover:text-white"
+                          title={t("admin.edit")}
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => void handleDelete(item)}
+                          className="rounded-lg bg-white/5 p-1.5 text-red-300 transition hover:bg-red-400/10"
+                          title={t("admin.delete")}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </GlassCard>
+
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+          <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-[#0b1324] p-6 shadow-2xl">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-display text-lg font-bold text-white">
+                {editingId ? t("admin.blog.editPost") : t("admin.blog.newPost")}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="rounded-lg p-1 text-brand-200 transition hover:bg-white/10 hover:text-white"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="md:col-span-2">
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.title")} <span className="text-red-300">*</span>
+                </label>
+                <input
+                  value={form.title}
+                  onChange={(e) => setForm((s) => ({ ...s, title: e.target.value }))}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.slug")}
+                </label>
+                <input
+                  value={form.slug}
+                  onChange={(e) => setForm((s) => ({ ...s, slug: e.target.value }))}
+                  placeholder={t("admin.blog.slugHint")}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.tag")} <span className="text-red-300">*</span>
+                </label>
+                <input
+                  value={form.tag}
+                  onChange={(e) => setForm((s) => ({ ...s, tag: e.target.value }))}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.readTime")}
+                </label>
+                <input
+                  value={form.readTime}
+                  onChange={(e) => setForm((s) => ({ ...s, readTime: e.target.value }))}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.language")}
+                </label>
+                <select
+                  value={form.baseLanguageCode}
+                  onChange={(e) => setForm((s) => ({ ...s, baseLanguageCode: e.target.value }))}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                >
+                  {BLOG_LANGUAGES.map((l) => (
+                    <option key={l.code} value={l.code}>
+                      {l.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.status")}
+                </label>
+                <select
+                  value={form.postStatus}
+                  onChange={(e) => setForm((s) => ({ ...s, postStatus: e.target.value }))}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                >
+                  <option value="draft">{t("admin.blog.draft")}</option>
+                  <option value="published">{t("admin.blog.published")}</option>
+                </select>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.excerpt")} <span className="text-red-300">*</span>
+                </label>
+                <textarea
+                  value={form.excerpt}
+                  onChange={(e) => setForm((s) => ({ ...s, excerpt: e.target.value }))}
+                  rows={2}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.content")} <span className="text-red-300">*</span>
+                </label>
+                <textarea
+                  value={form.content}
+                  onChange={(e) => setForm((s) => ({ ...s, content: e.target.value }))}
+                  rows={14}
+                  placeholder={t("admin.blog.contentHint")}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 font-mono text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                onClick={closeModal}
+                className="rounded-xl bg-white/5 px-4 py-2 text-sm text-brand-200 transition hover:bg-white/10 hover:text-white"
+              >
+                {t("admin.cancel")}
+              </button>
+              <button
+                onClick={() => void handleSave()}
+                disabled={saving}
+                className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30 disabled:opacity-60"
+              >
+                {saving && <Loader2 className="h-4 w-4 animate-spin" />}
+                {t("admin.save")}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

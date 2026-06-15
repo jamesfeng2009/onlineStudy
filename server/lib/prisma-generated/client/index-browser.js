@@ -287,6 +287,22 @@ exports.Prisma.StripeEventScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.BlogPostScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  excerpt: 'excerpt',
+  content: 'content',
+  tag: 'tag',
+  readTime: 'readTime',
+  coverEmoji: 'coverEmoji',
+  baseLanguageCode: 'baseLanguageCode',
+  status: 'status',
+  publishedAt: 'publishedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -328,7 +344,8 @@ exports.Prisma.ModelName = {
   LikePost: 'LikePost',
   Comment: 'Comment',
   Subscription: 'Subscription',
-  StripeEvent: 'StripeEvent'
+  StripeEvent: 'StripeEvent',
+  BlogPost: 'BlogPost'
 };
 
 /**
