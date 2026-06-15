@@ -8,6 +8,7 @@ import { JsonLd, buildCourseLd, buildBreadcrumbLd } from "../components/JsonLd";
 import {
   LEARN_CONTENT_LOADERS,
   LEARN_LANG_META,
+  URL_SLUG_TO_DATA,
   type LearnLangSlug,
   type LearnWord,
 } from "../data/learn-content";
@@ -27,13 +28,9 @@ export default function LearnLangPage() {
   const [words, setWords] = useState<LearnWord[] | null>(null);
 
   // /languages/:langSlug — the URL slug is a human-friendly name
-  // ("english", "japanese", "chinese") but the data loader keys are
-  // ISO codes ("en", "ja", "zh"). Map between them.
-  const URL_SLUG_TO_DATA: Record<string, LearnLangSlug> = {
-    english: "en",
-    japanese: "ja",
-    chinese: "zh",
-  };
+  // ("english", "japanese", "korean", "spanish", …) but the data
+  // loader keys are ISO codes ("en", "ja", "ko", "es", …). Map
+  // between them.
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const valid = Boolean(dataSlug);
   const slug = (dataSlug ?? "en") as LearnLangSlug;
@@ -52,23 +49,34 @@ export default function LearnLangPage() {
 
   // /languages (no slug) — show a directory of available languages.
   if (!langSlug) {
+    // /languages (no slug) — show a directory of all 7 supported
+    // target languages. URL slugs are the human-friendly form
+    // ("english", "japanese", …) and live in URL_SLUG_TO_DATA.
+    const ALL_URL_SLUGS: { data: LearnLangSlug; url: string }[] = (
+      Object.keys(URL_SLUG_TO_DATA) as Array<keyof typeof URL_SLUG_TO_DATA>
+    ).map((urlSlug) => ({
+      data: URL_SLUG_TO_DATA[urlSlug],
+      url: `/languages/${urlSlug}`,
+    }));
+
     return (
       <PageShell
         title="Languages"
         subtitle="Pick a language to start learning. Each course is hand-curated with native-speaker audio and a 10-minute daily loop."
       >
         <Seo
-          title="Learn a Language Online — English, Japanese, Chinese | LangOria"
-          description="Pick from English, Japanese, or Chinese courses with spaced-repetition vocabulary, native-speaker audio, and a 10-minute daily practice loop."
+          title="Learn a Language Online — 7 Languages from A1 to C1 | LangOria"
+          description="Pick from English, Japanese, Chinese, Korean, Spanish, French, or German. Spaced-repetition vocabulary, native-speaker audio, and a 10-minute daily practice loop."
           pathname="/languages"
         />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {(["en", "ja", "zh"] as LearnLangSlug[]).map((s) => {
-            const m = LEARN_LANG_META[s];
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {ALL_URL_SLUGS.map(({ data, url }) => {
+            const m = LEARN_LANG_META[data];
+            const wordCount = data === "en" ? "961" : data === "ja" ? "762" : data === "zh" ? "984" : "200+";
             return (
               <Link
-                key={s}
-                to={`/languages/${s === "en" ? "english" : s === "ja" ? "japanese" : "chinese"}`}
+                key={data}
+                to={url}
                 className="glass group relative overflow-hidden rounded-3xl p-8 transition hover:-translate-y-1"
               >
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
@@ -78,15 +86,15 @@ export default function LearnLangPage() {
                 </div>
                 <div className="text-sm text-brand-200/70">{m.nativeName}</div>
                 <p className="mt-4 text-sm leading-relaxed text-brand-100/80">
-                  {s === "ja" &&
-                    "Master N5–N1 vocabulary with spaced repetition and shadowing drills."}
-                  {s === "en" &&
-                    "A1–C2 vocabulary across every CEFR level with real example sentences."}
-                  {s === "zh" &&
-                    "HSK 1–4 vocabulary with tone-trained audio and pinyin on every character."}
+                  {DESCRIPTIONS[data]}
                 </p>
-                <div className="mt-5 inline-flex items-center gap-1 text-sm text-sky-300 transition group-hover:text-sky-200">
-                  Start learning <ArrowRight className="h-4 w-4" />
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-widest text-brand-200/50">
+                    {wordCount} {m.dataShape === "sentence" ? "sentences" : "words"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-sm text-sky-300 transition group-hover:text-sky-200">
+                    Start <ArrowRight className="h-4 w-4" />
+                  </span>
                 </div>
               </Link>
             );
@@ -270,6 +278,16 @@ export default function LearnLangPage() {
 // editorially controlled and unique to the page; i18n files only
 // translate the chrome (titles, CTAs).
 // ---------------------------------------------------------------------------
+const DESCRIPTIONS: Record<LearnLangSlug, string> = {
+  en: "A1–C2 vocabulary across every CEFR level with real example sentences from the Tatoeba corpus.",
+  ja: "Master N5–N1 vocabulary with spaced repetition and shadowing drills for the natural pace of native speech.",
+  zh: "HSK 1–4 vocabulary with tone-trained audio and pinyin shown on every character.",
+  ko: "Practical sentence pairs from native Korean speakers, with new vocabulary added weekly.",
+  es: "Practical sentence pairs from native Spanish speakers, with vocabulary organised by frequency.",
+  fr: "Practical sentence pairs from native French speakers, with vocabulary organised by frequency.",
+  de: "Practical sentence pairs from native German speakers, with vocabulary organised by frequency.",
+};
+
 function pickCopy(slug: LearnLangSlug) {
   if (slug === "ja") {
     return {
@@ -325,6 +343,122 @@ function pickCopy(slug: LearnLangSlug) {
         {
           q: "What is HSK?",
           a: "HSK (Hanyu Shuiping Kaoshi) is the standardised Chinese proficiency test recognised by employers and universities worldwide. HSK 1 is beginner; HSK 6 is full professional fluency. LangOria currently covers HSK 1-4.",
+        },
+      ],
+    };
+  }
+  if (slug === "ko") {
+    return {
+      title: "Learn Korean online — sentence-pair drills for beginners",
+      lead:
+        "Learn Korean on LangOria with practical sentence pairs from native speakers, spaced repetition scheduling, and audio shadowing for the natural rhythm of Korean.",
+      whoFor:
+        "Korean is the right language to learn if you want to engage with K-pop, K-drama, Korean business, or live and work in Korea. With 77 million native speakers and a writing system that rewards consistency, Korean is a high-leverage choice for learners who can stick to a daily habit. LangOria's Korean course is built around real sentence pairs from the Tatoeba corpus, so the Korean you memorise is the Korean native speakers actually use.",
+      method:
+        "We start with 200 hand-curated sentence pairs ranked by frequency, then layer in new vocabulary each week. Spaced repetition keeps recall above 90% across reviews, and audio shadowing trains you to match the natural pace of native Korean speech. The 10-minute daily loop fits into any morning routine and the streak mechanic keeps you honest.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational Korean on LangOria?",
+          a: "Most beginners reach A2 (basic travel Korean) after about 3 months of consistent 10-minute daily practice. B1 (working Korean) typically takes 6-9 months.",
+        },
+        {
+          q: "Do I need to learn Hangul first?",
+          a: "Yes — Hangul is one of the easiest writing systems in the world to learn (about 2 hours for the alphabet, a week for fluency). LangOria shows Hangul prominently from day one.",
+        },
+        {
+          q: "Is the Korean data real or synthetic?",
+          a: "Every sentence pair in LangOria's Korean course comes from the Tatoeba corpus, a crowdsourced database of translations by native speakers. You are learning real sentences, not textbook fabrications.",
+        },
+        {
+          q: "How is Korean different from Japanese?",
+          a: "Korean is generally considered easier for English speakers than Japanese — no kanji to memorise, simpler grammar in many places, and a phonetic writing system (Hangul). If you are choosing between the two as a first Asian language, Korean is a great starting point.",
+        },
+      ],
+    };
+  }
+  if (slug === "es") {
+    return {
+      title: "Learn Spanish online — sentence-pair drills across all dialects",
+      lead:
+        "Learn Spanish on LangOria with practical sentence pairs from native speakers across Latin America and Spain, spaced repetition scheduling, and audio shadowing.",
+      whoFor:
+        "Spanish is the second-most-spoken native language in the world, with 500+ million speakers across 20 countries. Whether you are learning for travel, business, family, or cultural reasons, Spanish offers the highest return on investment of any language. LangOria's Spanish course is built around real sentence pairs from the Tatoeba corpus, so you learn the Spanish native speakers actually use.",
+      method:
+        "We start with 200 hand-curated sentence pairs ranked by frequency, then layer in new vocabulary each week. Spaced repetition keeps recall above 90% across reviews, and audio shadowing trains you to match the natural rhythm of native Spanish speech — useful whether you are aiming for Castilian, Mexican, or Argentinian Spanish.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational Spanish on LangOria?",
+          a: "Most beginners reach A2 (basic travel Spanish) after about 2-3 months of consistent 10-minute daily practice. B1 (working Spanish) typically takes 5-7 months. Spanish is one of the fastest languages for English speakers to learn.",
+        },
+        {
+          q: "Which Spanish dialect does LangOria teach?",
+          a: "LangOria's sentence pairs draw from both European and Latin American Spanish. The vocabulary is largely shared, and the structures are mutually intelligible. If you need a specific dialect (e.g. Castilian Spanish for Spain, or Rioplatense for Argentina), supplement with region-specific listening practice.",
+        },
+        {
+          q: "Is the Spanish data real?",
+          a: "Yes — every sentence pair in LangOria's Spanish course comes from the Tatoeba corpus, a crowdsourced database of translations by native speakers. You are learning real sentences from real Spanish, not textbook fabrications.",
+        },
+        {
+          q: "Do I need to learn grammar separately?",
+          a: "LangOria's spaced-repetition system is most effective when paired with a basic grammar primer. We recommend spending 2-3 hours on Spanish verb conjugations (the main hurdle) before or alongside your daily drills.",
+        },
+      ],
+    };
+  }
+  if (slug === "fr") {
+    return {
+      title: "Learn French online — sentence-pair drills from native speakers",
+      lead:
+        "Learn French on LangOria with practical sentence pairs from native French speakers, spaced repetition scheduling, and audio shadowing for the natural rhythm of French.",
+      whoFor:
+        "French is the official language of 29 countries and a working language of dozens of international organisations. It is the most-learned foreign language in the world after English. LangOria's French course is built around real sentence pairs from the Tatoeba corpus, so you learn the French native speakers actually use in Paris, Quebec, Dakar, and beyond.",
+      method:
+        "We start with 200 hand-curated sentence pairs ranked by frequency, then layer in new vocabulary each week. Spaced repetition keeps recall above 90% across reviews, and audio shadowing trains you to match the natural rhythm of native French speech — including the liaison between words that gives French its characteristic flow.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational French on LangOria?",
+          a: "Most beginners reach A2 (basic travel French) after about 3 months of consistent 10-minute daily practice. B1 (working French) typically takes 6-9 months. French requires more time than Spanish for English speakers due to pronunciation and gendered nouns.",
+        },
+        {
+          q: "Which French accent does LangOria teach?",
+          a: "LangOria's sentence pairs draw from Metropolitan French as the standard reference, with content intelligible across all Francophone regions. If you need a specific regional accent (Quebec, Belgian, North African), supplement with region-specific listening practice.",
+        },
+        {
+          q: "Is the French data real?",
+          a: "Yes — every sentence pair in LangOria's French course comes from the Tatoeba corpus, a crowdsourced database of translations by native speakers. You are learning real sentences from real French, not textbook fabrications.",
+        },
+        {
+          q: "How hard is French pronunciation?",
+          a: "French pronunciation is famously tricky — the 'r' sound, nasal vowels, and silent letters all present challenges. The 10-minute audio shadowing drills in LangOria are designed to train your ear and mouth to the natural rhythm of French speech, which is more important than memorising rules.",
+        },
+      ],
+    };
+  }
+  if (slug === "de") {
+    return {
+      title: "Learn German online — sentence-pair drills from native speakers",
+      lead:
+        "Learn German on LangOria with practical sentence pairs from native German speakers, spaced repetition scheduling, and audio shadowing for the natural rhythm of German.",
+      whoFor:
+        "German is the most-spoken native language in Europe, with 100+ million speakers across Germany, Austria, Switzerland, and beyond. It is the language of choice for engineering, science, philosophy, and classical music, and a major business language. LangOria's German course is built around real sentence pairs from the Tatoeba corpus, so you learn the German native speakers actually use.",
+      method:
+        "We start with 200 hand-curated sentence pairs ranked by frequency, then layer in new vocabulary each week. Spaced repetition keeps recall above 90% across reviews, and audio shadowing trains you to match the natural rhythm of native German speech — including the word order in subordinate clauses that trips up most beginners.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational German on LangOria?",
+          a: "Most beginners reach A2 (basic travel German) after about 3-4 months of consistent 10-minute daily practice. B1 (working German) typically takes 7-10 months. German is moderately difficult for English speakers — easier than Japanese or Chinese, harder than Spanish.",
+        },
+        {
+          q: "Do I need to learn the German cases (Nominativ, Akkusativ, Dativ, Genitiv)?",
+          a: "Yes — German cases are unavoidable. LangOria's sentence pairs show you the cases in context, but you will need a separate grammar reference for the rules. We recommend pairing LangOria with a structured textbook.",
+        },
+        {
+          q: "Is the German data real?",
+          a: "Yes — every sentence pair in LangOria's German course comes from the Tatoeba corpus, a crowdsourced database of translations by native speakers. You are learning real sentences from real German, not textbook fabrications.",
+        },
+        {
+          q: "Which German does LangOria teach?",
+          a: "LangOria teaches Standard German (Hochdeutsch), which is the standard form used in Germany and understood across all German-speaking regions. If you need Austrian German or Swiss German specifically, supplement with region-specific listening practice.",
         },
       ],
     };

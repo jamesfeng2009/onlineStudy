@@ -7,6 +7,7 @@ import { JsonLd, buildBreadcrumbLd } from "../components/JsonLd";
 import {
   LEARN_CONTENT_LOADERS,
   LEARN_LANG_META,
+  URL_SLUG_TO_DATA,
   type LearnLangSlug,
   type LearnWord,
 } from "../data/learn-content";
@@ -27,15 +28,14 @@ export default function LearnWordPage() {
   const { langSlug, wordSlug } = useParams<{ langSlug: string; wordSlug: string }>();
   const [words, setWords] = useState<LearnWord[] | null>(null);
 
-  const URL_SLUG_TO_DATA: Record<string, LearnLangSlug> = {
-    english: "en",
-    japanese: "ja",
-    chinese: "zh",
-  };
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const valid = Boolean(dataSlug);
   const slug = (dataSlug ?? "en") as LearnLangSlug;
   const meta = LEARN_LANG_META[slug];
+  // 4 new languages (ko/es/fr/de) ship per-sentence-pair data, not
+  // per-word. The page renders them as "sentence cards" — same UI,
+  // bigger word field.
+  const isSentence = meta.dataShape === "sentence";
 
   useEffect(() => {
     let cancelled = false;
@@ -148,13 +148,24 @@ export default function LearnWordPage() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="glass rounded-3xl p-8 lg:col-span-2">
             <div className="flex items-baseline gap-3">
-              <span className="font-display text-5xl font-bold text-white">
+              <span
+                className={
+                  isSentence
+                    ? "font-display text-2xl font-bold leading-tight text-white md:text-3xl"
+                    : "font-display text-5xl font-bold text-white"
+                }
+              >
                 {word.word}
               </span>
               {word.reading && (
                 <span className="text-xl text-brand-200/70">{word.reading}</span>
               )}
             </div>
+            {isSentence && word.translation && (
+              <div className="mt-3 text-sm leading-relaxed text-brand-100/90 md:text-base">
+                {word.translation}
+              </div>
+            )}
             {word.phonetic && (
               <div className="mt-1 text-sm text-brand-200/60">
                 <Volume2 className="mr-1 inline h-3.5 w-3.5" />
@@ -162,10 +173,10 @@ export default function LearnWordPage() {
               </div>
             )}
             <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-200/80">
-              <BookOpen className="h-3.5 w-3.5" /> {word.level}
+              <BookOpen className="h-3.5 w-3.5" /> {word.level} · {isSentence ? "sentence" : "word"}
             </div>
 
-            {word.translation && (
+            {!isSentence && word.translation && (
               <div className="mt-6">
                 <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
                   Meaning
@@ -176,7 +187,7 @@ export default function LearnWordPage() {
               </div>
             )}
 
-            {word.example && (
+            {word.example && word.example !== word.word && (
               <div className="mt-8">
                 <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
                   Example
