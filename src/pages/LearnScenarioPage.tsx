@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, MessageSquare, Sparkles, Volume2 } from "lucide-react";
+import { ArrowRight, MessageSquare, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd";
+import AudioButton from "../components/AudioButton";
 import {
   LEARN_LANG_META,
   URL_SLUG_TO_DATA,
@@ -190,6 +191,7 @@ export default function LearnScenarioPage() {
   const content: ScenarioContent = SCENARIO_CONTENT[langKey]![scenarioKey];
   const scMeta = SCENARIO_META[scenarioKey];
   const pageUrl = `${siteUrl}/languages/${langSlug}/scenarios/${scenarioKey}`;
+  const ttsLang = TTS_LANG_FOR_SCENARIO[langKey];
 
   return (
     <PageShell
@@ -265,13 +267,7 @@ export default function LearnScenarioPage() {
                       </div>
                     ) : null}
                   </div>
-                  <button
-                    type="button"
-                    className="rounded-full border border-white/10 bg-white/5 p-2 text-sky-300 transition hover:bg-white/10"
-                    aria-label="Play audio"
-                  >
-                    <Volume2 className="h-4 w-4" />
-                  </button>
+                  <AudioButton text={p.tgt} lang={ttsLang} size="sm" />
                 </div>
               </div>
             ))}
@@ -294,18 +290,23 @@ export default function LearnScenarioPage() {
                     {t.speaker}
                   </div>
                   <div className="flex-1">
-                    <div className="text-base text-white">{t.tgt}</div>
-                    {t.romanization ? (
-                      <div className="mt-1 text-sm italic text-sky-300/70">
-                        {t.romanization}
+                    <div className="flex items-start gap-3">
+                      <div className="flex-1">
+                        <div className="text-base text-white">{t.tgt}</div>
+                        {t.romanization ? (
+                          <div className="mt-1 text-sm italic text-sky-300/70">
+                            {t.romanization}
+                          </div>
+                        ) : null}
+                        {t.literal ? (
+                          <div className="mt-1 text-xs text-brand-200/60">
+                            <span className="text-brand-200/40">Lit:</span> {t.literal}
+                          </div>
+                        ) : null}
+                        <div className="mt-1 text-sm text-brand-200/60">{t.en}</div>
                       </div>
-                    ) : null}
-                    {t.literal ? (
-                      <div className="mt-1 text-xs text-brand-200/60">
-                        <span className="text-brand-200/40">Lit:</span> {t.literal}
-                      </div>
-                    ) : null}
-                    <div className="mt-1 text-sm text-brand-200/60">{t.en}</div>
+                      <AudioButton text={t.tgt} lang={ttsLang} size="sm" />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -372,3 +373,20 @@ export default function LearnScenarioPage() {
     </PageShell>
   );
 }
+
+/**
+ * Map scenario language key → BCP-47 tag for the Web Speech API.
+ * Each language gets a region-specific tag so the OS picks the
+ * most natural voice (e.g. ja-JP > ja for Japanese, es-ES for
+ * Castilian Spanish). If the user has no voice for the region we
+ * fall back to the language root inside AudioButton.
+ */
+const TTS_LANG_FOR_SCENARIO: Record<ScenarioLang, string> = {
+  english: "en-US",
+  japanese: "ja-JP",
+  chinese: "zh-CN",
+  korean: "ko-KR",
+  spanish: "es-ES",
+  french: "fr-FR",
+  german: "de-DE",
+};
