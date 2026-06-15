@@ -44,9 +44,17 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     // 例如 /api/auth/register 会被重写成 /api/handler?__path=auth/register
     const urlObj = new URL(originalUrl, "http://localhost");
     const pathParam = urlObj.searchParams.get("__path") || "";
+    const searchParams = new URLSearchParams();
+    for (const [k, v] of urlObj.searchParams) {
+      if (k !== "__path") searchParams.append(k, v);
+    }
     let url = "/api";
     if (pathParam) {
       url += "/" + pathParam;
+    }
+    const query = searchParams.toString();
+    if (query) {
+      url += "?" + query;
     }
 
     console.log(`[vercel-handler] ${method} ${originalUrl} -> ${url}`);
