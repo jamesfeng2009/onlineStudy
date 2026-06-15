@@ -41,10 +41,9 @@ function LocaleSync() {
   return <Outlet />;
 }
 
-// Internal pages mounted both at the bare path (English default) and
-// under /<locale>/ (any other supported language). Each entry uses an
-// absolute path so the same JSX works in both route trees.
-const childRoutes = (
+// Root-level routes (no locale prefix → English default).
+// Paths MUST be absolute (start with "/").
+const rootRoutes = (
   <>
     <Route path="/" element={<HomePage />} />
     <Route path="/courses" element={<CoursesPage />} />
@@ -62,6 +61,31 @@ const childRoutes = (
     <Route path="/admin" element={<AdminPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
+    <Route path="*" element={<HomePage />} />
+  </>
+);
+
+// Locale-level routes (under "/:locale" parent).
+// Paths MUST be relative (no leading "/"); the index route matches the
+// bare "/:locale" URL.
+const localeRoutes = (
+  <>
+    <Route index element={<HomePage />} />
+    <Route path="courses" element={<CoursesPage />} />
+    <Route path="learn" element={<LearnPage />} />
+    <Route path="learn/:courseId" element={<LearnPage />} />
+    <Route path="dashboard" element={<DashboardPage />} />
+    <Route path="recommend" element={<RecommendPage />} />
+    <Route path="community" element={<CommunityPage />} />
+    <Route path="achievements" element={<AchievementsPage />} />
+    <Route path="profile" element={<ProfilePage />} />
+    <Route path="settings" element={<SettingsPage />} />
+    <Route path="faq" element={<FaqPage />} />
+    <Route path="blog" element={<BlogPage />} />
+    <Route path="blog/:slug" element={<BlogPostPage />} />
+    <Route path="admin" element={<AdminPage />} />
+    <Route path="login" element={<LoginPage />} />
+    <Route path="register" element={<RegisterPage />} />
     <Route path="*" element={<HomePage />} />
   </>
 );
@@ -99,9 +123,9 @@ export default function App() {
         <Header />
         <main>
           <Routes>
-            {childRoutes}
+            {rootRoutes}
             <Route path="/:locale" element={<LocaleSync />}>
-              {childRoutes}
+              {localeRoutes}
             </Route>
           </Routes>
         </main>
