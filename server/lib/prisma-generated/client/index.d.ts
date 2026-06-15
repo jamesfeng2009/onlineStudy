@@ -29,10 +29,20 @@ export type Course = $Result.DefaultSelection<Prisma.$CoursePayload>
  */
 export type WordBank = $Result.DefaultSelection<Prisma.$WordBankPayload>
 /**
+ * Model WordBankTranslation
+ * 
+ */
+export type WordBankTranslation = $Result.DefaultSelection<Prisma.$WordBankTranslationPayload>
+/**
  * Model Quiz
  * 
  */
 export type Quiz = $Result.DefaultSelection<Prisma.$QuizPayload>
+/**
+ * Model QuizTranslation
+ * 
+ */
+export type QuizTranslation = $Result.DefaultSelection<Prisma.$QuizTranslationPayload>
 /**
  * Model Listening
  * 
@@ -233,6 +243,16 @@ export class PrismaClient<
   get wordBank(): Prisma.WordBankDelegate<ExtArgs>;
 
   /**
+   * `prisma.wordBankTranslation`: Exposes CRUD operations for the **WordBankTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WordBankTranslations
+    * const wordBankTranslations = await prisma.wordBankTranslation.findMany()
+    * ```
+    */
+  get wordBankTranslation(): Prisma.WordBankTranslationDelegate<ExtArgs>;
+
+  /**
    * `prisma.quiz`: Exposes CRUD operations for the **Quiz** model.
     * Example usage:
     * ```ts
@@ -241,6 +261,16 @@ export class PrismaClient<
     * ```
     */
   get quiz(): Prisma.QuizDelegate<ExtArgs>;
+
+  /**
+   * `prisma.quizTranslation`: Exposes CRUD operations for the **QuizTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more QuizTranslations
+    * const quizTranslations = await prisma.quizTranslation.findMany()
+    * ```
+    */
+  get quizTranslation(): Prisma.QuizTranslationDelegate<ExtArgs>;
 
   /**
    * `prisma.listening`: Exposes CRUD operations for the **Listening** model.
@@ -775,7 +805,9 @@ export namespace Prisma {
     Language: 'Language',
     Course: 'Course',
     WordBank: 'WordBank',
+    WordBankTranslation: 'WordBankTranslation',
     Quiz: 'Quiz',
+    QuizTranslation: 'QuizTranslation',
     Listening: 'Listening',
     Speaking: 'Speaking',
     User: 'User',
@@ -800,7 +832,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "language" | "course" | "wordBank" | "quiz" | "listening" | "speaking" | "user" | "userProgressDay" | "post" | "likePost" | "comment" | "subscription" | "stripeEvent"
+      modelProps: "language" | "course" | "wordBank" | "wordBankTranslation" | "quiz" | "quizTranslation" | "listening" | "speaking" | "user" | "userProgressDay" | "post" | "likePost" | "comment" | "subscription" | "stripeEvent"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1014,6 +1046,76 @@ export namespace Prisma {
           }
         }
       }
+      WordBankTranslation: {
+        payload: Prisma.$WordBankTranslationPayload<ExtArgs>
+        fields: Prisma.WordBankTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WordBankTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WordBankTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.WordBankTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WordBankTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.WordBankTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.WordBankTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.WordBankTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WordBankTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.WordBankTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          update: {
+            args: Prisma.WordBankTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.WordBankTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WordBankTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WordBankTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WordBankTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.WordBankTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWordBankTranslation>
+          }
+          groupBy: {
+            args: Prisma.WordBankTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WordBankTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WordBankTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<WordBankTranslationCountAggregateOutputType> | number
+          }
+        }
+      }
       Quiz: {
         payload: Prisma.$QuizPayload<ExtArgs>
         fields: Prisma.QuizFieldRefs
@@ -1081,6 +1183,76 @@ export namespace Prisma {
           count: {
             args: Prisma.QuizCountArgs<ExtArgs>
             result: $Utils.Optional<QuizCountAggregateOutputType> | number
+          }
+        }
+      }
+      QuizTranslation: {
+        payload: Prisma.$QuizTranslationPayload<ExtArgs>
+        fields: Prisma.QuizTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.QuizTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.QuizTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.QuizTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.QuizTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.QuizTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.QuizTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.QuizTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.QuizTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.QuizTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          update: {
+            args: Prisma.QuizTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.QuizTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.QuizTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.QuizTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuizTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.QuizTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQuizTranslation>
+          }
+          groupBy: {
+            args: Prisma.QuizTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<QuizTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.QuizTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<QuizTranslationCountAggregateOutputType> | number
           }
         }
       }
@@ -1943,6 +2115,68 @@ export namespace Prisma {
    */
   export type LanguageCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+
+  /**
+   * Count Type WordBankCountOutputType
+   */
+
+  export type WordBankCountOutputType = {
+    translations: number
+  }
+
+  export type WordBankCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | WordBankCountOutputTypeCountTranslationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WordBankCountOutputType without action
+   */
+  export type WordBankCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankCountOutputType
+     */
+    select?: WordBankCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WordBankCountOutputType without action
+   */
+  export type WordBankCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WordBankTranslationWhereInput
+  }
+
+
+  /**
+   * Count Type QuizCountOutputType
+   */
+
+  export type QuizCountOutputType = {
+    translations: number
+  }
+
+  export type QuizCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | QuizCountOutputTypeCountTranslationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * QuizCountOutputType without action
+   */
+  export type QuizCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizCountOutputType
+     */
+    select?: QuizCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * QuizCountOutputType without action
+   */
+  export type QuizCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuizTranslationWhereInput
   }
 
 
@@ -4216,7 +4450,6 @@ export namespace Prisma {
     languageCode: string | null
     level: string | null
     word: string | null
-    translation: string | null
     phonetic: string | null
     exampleSentence: string | null
     vocabOrder: number | null
@@ -4227,7 +4460,6 @@ export namespace Prisma {
     languageCode: string | null
     level: string | null
     word: string | null
-    translation: string | null
     phonetic: string | null
     exampleSentence: string | null
     vocabOrder: number | null
@@ -4238,7 +4470,6 @@ export namespace Prisma {
     languageCode: number
     level: number
     word: number
-    translation: number
     phonetic: number
     exampleSentence: number
     vocabOrder: number
@@ -4259,7 +4490,6 @@ export namespace Prisma {
     languageCode?: true
     level?: true
     word?: true
-    translation?: true
     phonetic?: true
     exampleSentence?: true
     vocabOrder?: true
@@ -4270,7 +4500,6 @@ export namespace Prisma {
     languageCode?: true
     level?: true
     word?: true
-    translation?: true
     phonetic?: true
     exampleSentence?: true
     vocabOrder?: true
@@ -4281,7 +4510,6 @@ export namespace Prisma {
     languageCode?: true
     level?: true
     word?: true
-    translation?: true
     phonetic?: true
     exampleSentence?: true
     vocabOrder?: true
@@ -4379,7 +4607,6 @@ export namespace Prisma {
     languageCode: string
     level: string
     word: string
-    translation: string
     phonetic: string | null
     exampleSentence: string
     vocabOrder: number
@@ -4409,11 +4636,12 @@ export namespace Prisma {
     languageCode?: boolean
     level?: boolean
     word?: boolean
-    translation?: boolean
     phonetic?: boolean
     exampleSentence?: boolean
     vocabOrder?: boolean
     language?: boolean | LanguageDefaultArgs<ExtArgs>
+    translations?: boolean | WordBank$translationsArgs<ExtArgs>
+    _count?: boolean | WordBankCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["wordBank"]>
 
   export type WordBankSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4421,7 +4649,6 @@ export namespace Prisma {
     languageCode?: boolean
     level?: boolean
     word?: boolean
-    translation?: boolean
     phonetic?: boolean
     exampleSentence?: boolean
     vocabOrder?: boolean
@@ -4433,7 +4660,6 @@ export namespace Prisma {
     languageCode?: boolean
     level?: boolean
     word?: boolean
-    translation?: boolean
     phonetic?: boolean
     exampleSentence?: boolean
     vocabOrder?: boolean
@@ -4441,6 +4667,8 @@ export namespace Prisma {
 
   export type WordBankInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     language?: boolean | LanguageDefaultArgs<ExtArgs>
+    translations?: boolean | WordBank$translationsArgs<ExtArgs>
+    _count?: boolean | WordBankCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WordBankIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     language?: boolean | LanguageDefaultArgs<ExtArgs>
@@ -4450,13 +4678,13 @@ export namespace Prisma {
     name: "WordBank"
     objects: {
       language: Prisma.$LanguagePayload<ExtArgs>
+      translations: Prisma.$WordBankTranslationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       languageCode: string
       level: string
       word: string
-      translation: string
       phonetic: string | null
       exampleSentence: string
       vocabOrder: number
@@ -4825,6 +5053,7 @@ export namespace Prisma {
   export interface Prisma__WordBankClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    translations<T extends WordBank$translationsArgs<ExtArgs> = {}>(args?: Subset<T, WordBank$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4858,7 +5087,6 @@ export namespace Prisma {
     readonly languageCode: FieldRef<"WordBank", 'String'>
     readonly level: FieldRef<"WordBank", 'String'>
     readonly word: FieldRef<"WordBank", 'String'>
-    readonly translation: FieldRef<"WordBank", 'String'>
     readonly phonetic: FieldRef<"WordBank", 'String'>
     readonly exampleSentence: FieldRef<"WordBank", 'String'>
     readonly vocabOrder: FieldRef<"WordBank", 'Int'>
@@ -5180,6 +5408,26 @@ export namespace Prisma {
   }
 
   /**
+   * WordBank.translations
+   */
+  export type WordBank$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    where?: WordBankTranslationWhereInput
+    orderBy?: WordBankTranslationOrderByWithRelationInput | WordBankTranslationOrderByWithRelationInput[]
+    cursor?: WordBankTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WordBankTranslationScalarFieldEnum | WordBankTranslationScalarFieldEnum[]
+  }
+
+  /**
    * WordBank without action
    */
   export type WordBankDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5191,6 +5439,939 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: WordBankInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WordBankTranslation
+   */
+
+  export type AggregateWordBankTranslation = {
+    _count: WordBankTranslationCountAggregateOutputType | null
+    _min: WordBankTranslationMinAggregateOutputType | null
+    _max: WordBankTranslationMaxAggregateOutputType | null
+  }
+
+  export type WordBankTranslationMinAggregateOutputType = {
+    id: string | null
+    wordBankId: string | null
+    baseLanguageCode: string | null
+    translation: string | null
+    exampleTranslation: string | null
+  }
+
+  export type WordBankTranslationMaxAggregateOutputType = {
+    id: string | null
+    wordBankId: string | null
+    baseLanguageCode: string | null
+    translation: string | null
+    exampleTranslation: string | null
+  }
+
+  export type WordBankTranslationCountAggregateOutputType = {
+    id: number
+    wordBankId: number
+    baseLanguageCode: number
+    translation: number
+    exampleTranslation: number
+    _all: number
+  }
+
+
+  export type WordBankTranslationMinAggregateInputType = {
+    id?: true
+    wordBankId?: true
+    baseLanguageCode?: true
+    translation?: true
+    exampleTranslation?: true
+  }
+
+  export type WordBankTranslationMaxAggregateInputType = {
+    id?: true
+    wordBankId?: true
+    baseLanguageCode?: true
+    translation?: true
+    exampleTranslation?: true
+  }
+
+  export type WordBankTranslationCountAggregateInputType = {
+    id?: true
+    wordBankId?: true
+    baseLanguageCode?: true
+    translation?: true
+    exampleTranslation?: true
+    _all?: true
+  }
+
+  export type WordBankTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WordBankTranslation to aggregate.
+     */
+    where?: WordBankTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WordBankTranslations to fetch.
+     */
+    orderBy?: WordBankTranslationOrderByWithRelationInput | WordBankTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WordBankTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WordBankTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WordBankTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WordBankTranslations
+    **/
+    _count?: true | WordBankTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WordBankTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WordBankTranslationMaxAggregateInputType
+  }
+
+  export type GetWordBankTranslationAggregateType<T extends WordBankTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateWordBankTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWordBankTranslation[P]>
+      : GetScalarType<T[P], AggregateWordBankTranslation[P]>
+  }
+
+
+
+
+  export type WordBankTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WordBankTranslationWhereInput
+    orderBy?: WordBankTranslationOrderByWithAggregationInput | WordBankTranslationOrderByWithAggregationInput[]
+    by: WordBankTranslationScalarFieldEnum[] | WordBankTranslationScalarFieldEnum
+    having?: WordBankTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WordBankTranslationCountAggregateInputType | true
+    _min?: WordBankTranslationMinAggregateInputType
+    _max?: WordBankTranslationMaxAggregateInputType
+  }
+
+  export type WordBankTranslationGroupByOutputType = {
+    id: string
+    wordBankId: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation: string | null
+    _count: WordBankTranslationCountAggregateOutputType | null
+    _min: WordBankTranslationMinAggregateOutputType | null
+    _max: WordBankTranslationMaxAggregateOutputType | null
+  }
+
+  type GetWordBankTranslationGroupByPayload<T extends WordBankTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WordBankTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WordBankTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WordBankTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], WordBankTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WordBankTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    wordBankId?: boolean
+    baseLanguageCode?: boolean
+    translation?: boolean
+    exampleTranslation?: boolean
+    wordBank?: boolean | WordBankDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["wordBankTranslation"]>
+
+  export type WordBankTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    wordBankId?: boolean
+    baseLanguageCode?: boolean
+    translation?: boolean
+    exampleTranslation?: boolean
+    wordBank?: boolean | WordBankDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["wordBankTranslation"]>
+
+  export type WordBankTranslationSelectScalar = {
+    id?: boolean
+    wordBankId?: boolean
+    baseLanguageCode?: boolean
+    translation?: boolean
+    exampleTranslation?: boolean
+  }
+
+  export type WordBankTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    wordBank?: boolean | WordBankDefaultArgs<ExtArgs>
+  }
+  export type WordBankTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    wordBank?: boolean | WordBankDefaultArgs<ExtArgs>
+  }
+
+  export type $WordBankTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WordBankTranslation"
+    objects: {
+      wordBank: Prisma.$WordBankPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      wordBankId: string
+      baseLanguageCode: string
+      translation: string
+      exampleTranslation: string | null
+    }, ExtArgs["result"]["wordBankTranslation"]>
+    composites: {}
+  }
+
+  type WordBankTranslationGetPayload<S extends boolean | null | undefined | WordBankTranslationDefaultArgs> = $Result.GetResult<Prisma.$WordBankTranslationPayload, S>
+
+  type WordBankTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WordBankTranslationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WordBankTranslationCountAggregateInputType | true
+    }
+
+  export interface WordBankTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WordBankTranslation'], meta: { name: 'WordBankTranslation' } }
+    /**
+     * Find zero or one WordBankTranslation that matches the filter.
+     * @param {WordBankTranslationFindUniqueArgs} args - Arguments to find a WordBankTranslation
+     * @example
+     * // Get one WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WordBankTranslationFindUniqueArgs>(args: SelectSubset<T, WordBankTranslationFindUniqueArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WordBankTranslation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WordBankTranslationFindUniqueOrThrowArgs} args - Arguments to find a WordBankTranslation
+     * @example
+     * // Get one WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WordBankTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, WordBankTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WordBankTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationFindFirstArgs} args - Arguments to find a WordBankTranslation
+     * @example
+     * // Get one WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WordBankTranslationFindFirstArgs>(args?: SelectSubset<T, WordBankTranslationFindFirstArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WordBankTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationFindFirstOrThrowArgs} args - Arguments to find a WordBankTranslation
+     * @example
+     * // Get one WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WordBankTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, WordBankTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WordBankTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WordBankTranslations
+     * const wordBankTranslations = await prisma.wordBankTranslation.findMany()
+     * 
+     * // Get first 10 WordBankTranslations
+     * const wordBankTranslations = await prisma.wordBankTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const wordBankTranslationWithIdOnly = await prisma.wordBankTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WordBankTranslationFindManyArgs>(args?: SelectSubset<T, WordBankTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WordBankTranslation.
+     * @param {WordBankTranslationCreateArgs} args - Arguments to create a WordBankTranslation.
+     * @example
+     * // Create one WordBankTranslation
+     * const WordBankTranslation = await prisma.wordBankTranslation.create({
+     *   data: {
+     *     // ... data to create a WordBankTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends WordBankTranslationCreateArgs>(args: SelectSubset<T, WordBankTranslationCreateArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WordBankTranslations.
+     * @param {WordBankTranslationCreateManyArgs} args - Arguments to create many WordBankTranslations.
+     * @example
+     * // Create many WordBankTranslations
+     * const wordBankTranslation = await prisma.wordBankTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WordBankTranslationCreateManyArgs>(args?: SelectSubset<T, WordBankTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WordBankTranslations and returns the data saved in the database.
+     * @param {WordBankTranslationCreateManyAndReturnArgs} args - Arguments to create many WordBankTranslations.
+     * @example
+     * // Create many WordBankTranslations
+     * const wordBankTranslation = await prisma.wordBankTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WordBankTranslations and only return the `id`
+     * const wordBankTranslationWithIdOnly = await prisma.wordBankTranslation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WordBankTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, WordBankTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WordBankTranslation.
+     * @param {WordBankTranslationDeleteArgs} args - Arguments to delete one WordBankTranslation.
+     * @example
+     * // Delete one WordBankTranslation
+     * const WordBankTranslation = await prisma.wordBankTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one WordBankTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WordBankTranslationDeleteArgs>(args: SelectSubset<T, WordBankTranslationDeleteArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WordBankTranslation.
+     * @param {WordBankTranslationUpdateArgs} args - Arguments to update one WordBankTranslation.
+     * @example
+     * // Update one WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WordBankTranslationUpdateArgs>(args: SelectSubset<T, WordBankTranslationUpdateArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WordBankTranslations.
+     * @param {WordBankTranslationDeleteManyArgs} args - Arguments to filter WordBankTranslations to delete.
+     * @example
+     * // Delete a few WordBankTranslations
+     * const { count } = await prisma.wordBankTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WordBankTranslationDeleteManyArgs>(args?: SelectSubset<T, WordBankTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WordBankTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WordBankTranslations
+     * const wordBankTranslation = await prisma.wordBankTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WordBankTranslationUpdateManyArgs>(args: SelectSubset<T, WordBankTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WordBankTranslation.
+     * @param {WordBankTranslationUpsertArgs} args - Arguments to update or create a WordBankTranslation.
+     * @example
+     * // Update or create a WordBankTranslation
+     * const wordBankTranslation = await prisma.wordBankTranslation.upsert({
+     *   create: {
+     *     // ... data to create a WordBankTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WordBankTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WordBankTranslationUpsertArgs>(args: SelectSubset<T, WordBankTranslationUpsertArgs<ExtArgs>>): Prisma__WordBankTranslationClient<$Result.GetResult<Prisma.$WordBankTranslationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WordBankTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationCountArgs} args - Arguments to filter WordBankTranslations to count.
+     * @example
+     * // Count the number of WordBankTranslations
+     * const count = await prisma.wordBankTranslation.count({
+     *   where: {
+     *     // ... the filter for the WordBankTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends WordBankTranslationCountArgs>(
+      args?: Subset<T, WordBankTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WordBankTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WordBankTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WordBankTranslationAggregateArgs>(args: Subset<T, WordBankTranslationAggregateArgs>): Prisma.PrismaPromise<GetWordBankTranslationAggregateType<T>>
+
+    /**
+     * Group by WordBankTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBankTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WordBankTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WordBankTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: WordBankTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WordBankTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWordBankTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WordBankTranslation model
+   */
+  readonly fields: WordBankTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WordBankTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WordBankTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    wordBank<T extends WordBankDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WordBankDefaultArgs<ExtArgs>>): Prisma__WordBankClient<$Result.GetResult<Prisma.$WordBankPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WordBankTranslation model
+   */ 
+  interface WordBankTranslationFieldRefs {
+    readonly id: FieldRef<"WordBankTranslation", 'String'>
+    readonly wordBankId: FieldRef<"WordBankTranslation", 'String'>
+    readonly baseLanguageCode: FieldRef<"WordBankTranslation", 'String'>
+    readonly translation: FieldRef<"WordBankTranslation", 'String'>
+    readonly exampleTranslation: FieldRef<"WordBankTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WordBankTranslation findUnique
+   */
+  export type WordBankTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which WordBankTranslation to fetch.
+     */
+    where: WordBankTranslationWhereUniqueInput
+  }
+
+  /**
+   * WordBankTranslation findUniqueOrThrow
+   */
+  export type WordBankTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which WordBankTranslation to fetch.
+     */
+    where: WordBankTranslationWhereUniqueInput
+  }
+
+  /**
+   * WordBankTranslation findFirst
+   */
+  export type WordBankTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which WordBankTranslation to fetch.
+     */
+    where?: WordBankTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WordBankTranslations to fetch.
+     */
+    orderBy?: WordBankTranslationOrderByWithRelationInput | WordBankTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WordBankTranslations.
+     */
+    cursor?: WordBankTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WordBankTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WordBankTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WordBankTranslations.
+     */
+    distinct?: WordBankTranslationScalarFieldEnum | WordBankTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * WordBankTranslation findFirstOrThrow
+   */
+  export type WordBankTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which WordBankTranslation to fetch.
+     */
+    where?: WordBankTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WordBankTranslations to fetch.
+     */
+    orderBy?: WordBankTranslationOrderByWithRelationInput | WordBankTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WordBankTranslations.
+     */
+    cursor?: WordBankTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WordBankTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WordBankTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WordBankTranslations.
+     */
+    distinct?: WordBankTranslationScalarFieldEnum | WordBankTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * WordBankTranslation findMany
+   */
+  export type WordBankTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which WordBankTranslations to fetch.
+     */
+    where?: WordBankTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WordBankTranslations to fetch.
+     */
+    orderBy?: WordBankTranslationOrderByWithRelationInput | WordBankTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WordBankTranslations.
+     */
+    cursor?: WordBankTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WordBankTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WordBankTranslations.
+     */
+    skip?: number
+    distinct?: WordBankTranslationScalarFieldEnum | WordBankTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * WordBankTranslation create
+   */
+  export type WordBankTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WordBankTranslation.
+     */
+    data: XOR<WordBankTranslationCreateInput, WordBankTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * WordBankTranslation createMany
+   */
+  export type WordBankTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WordBankTranslations.
+     */
+    data: WordBankTranslationCreateManyInput | WordBankTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WordBankTranslation createManyAndReturn
+   */
+  export type WordBankTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WordBankTranslations.
+     */
+    data: WordBankTranslationCreateManyInput | WordBankTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WordBankTranslation update
+   */
+  export type WordBankTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WordBankTranslation.
+     */
+    data: XOR<WordBankTranslationUpdateInput, WordBankTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which WordBankTranslation to update.
+     */
+    where: WordBankTranslationWhereUniqueInput
+  }
+
+  /**
+   * WordBankTranslation updateMany
+   */
+  export type WordBankTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WordBankTranslations.
+     */
+    data: XOR<WordBankTranslationUpdateManyMutationInput, WordBankTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which WordBankTranslations to update
+     */
+    where?: WordBankTranslationWhereInput
+  }
+
+  /**
+   * WordBankTranslation upsert
+   */
+  export type WordBankTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WordBankTranslation to update in case it exists.
+     */
+    where: WordBankTranslationWhereUniqueInput
+    /**
+     * In case the WordBankTranslation found by the `where` argument doesn't exist, create a new WordBankTranslation with this data.
+     */
+    create: XOR<WordBankTranslationCreateInput, WordBankTranslationUncheckedCreateInput>
+    /**
+     * In case the WordBankTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WordBankTranslationUpdateInput, WordBankTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * WordBankTranslation delete
+   */
+  export type WordBankTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which WordBankTranslation to delete.
+     */
+    where: WordBankTranslationWhereUniqueInput
+  }
+
+  /**
+   * WordBankTranslation deleteMany
+   */
+  export type WordBankTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WordBankTranslations to delete
+     */
+    where?: WordBankTranslationWhereInput
+  }
+
+  /**
+   * WordBankTranslation without action
+   */
+  export type WordBankTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBankTranslation
+     */
+    select?: WordBankTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WordBankTranslationInclude<ExtArgs> | null
   }
 
 
@@ -5220,9 +6401,7 @@ export namespace Prisma {
     id: string | null
     languageCode: string | null
     level: string | null
-    question: string | null
     answer: number | null
-    explain: string | null
     quizOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5232,9 +6411,7 @@ export namespace Prisma {
     id: string | null
     languageCode: string | null
     level: string | null
-    question: string | null
     answer: number | null
-    explain: string | null
     quizOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5244,10 +6421,8 @@ export namespace Prisma {
     id: number
     languageCode: number
     level: number
-    question: number
     options: number
     answer: number
-    explain: number
     quizOrder: number
     createdAt: number
     updatedAt: number
@@ -5269,9 +6444,7 @@ export namespace Prisma {
     id?: true
     languageCode?: true
     level?: true
-    question?: true
     answer?: true
-    explain?: true
     quizOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -5281,9 +6454,7 @@ export namespace Prisma {
     id?: true
     languageCode?: true
     level?: true
-    question?: true
     answer?: true
-    explain?: true
     quizOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -5293,10 +6464,8 @@ export namespace Prisma {
     id?: true
     languageCode?: true
     level?: true
-    question?: true
     options?: true
     answer?: true
-    explain?: true
     quizOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -5393,10 +6562,8 @@ export namespace Prisma {
     id: string
     languageCode: string
     level: string
-    question: string
     options: JsonValue
     answer: number
-    explain: string
     quizOrder: number
     createdAt: Date
     updatedAt: Date
@@ -5425,24 +6592,22 @@ export namespace Prisma {
     id?: boolean
     languageCode?: boolean
     level?: boolean
-    question?: boolean
     options?: boolean
     answer?: boolean
-    explain?: boolean
     quizOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     language?: boolean | LanguageDefaultArgs<ExtArgs>
+    translations?: boolean | Quiz$translationsArgs<ExtArgs>
+    _count?: boolean | QuizCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quiz"]>
 
   export type QuizSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     languageCode?: boolean
     level?: boolean
-    question?: boolean
     options?: boolean
     answer?: boolean
-    explain?: boolean
     quizOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5453,10 +6618,8 @@ export namespace Prisma {
     id?: boolean
     languageCode?: boolean
     level?: boolean
-    question?: boolean
     options?: boolean
     answer?: boolean
-    explain?: boolean
     quizOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5464,6 +6627,8 @@ export namespace Prisma {
 
   export type QuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     language?: boolean | LanguageDefaultArgs<ExtArgs>
+    translations?: boolean | Quiz$translationsArgs<ExtArgs>
+    _count?: boolean | QuizCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type QuizIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     language?: boolean | LanguageDefaultArgs<ExtArgs>
@@ -5473,15 +6638,14 @@ export namespace Prisma {
     name: "Quiz"
     objects: {
       language: Prisma.$LanguagePayload<ExtArgs>
+      translations: Prisma.$QuizTranslationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       languageCode: string
       level: string
-      question: string
       options: Prisma.JsonValue
       answer: number
-      explain: string
       quizOrder: number
       createdAt: Date
       updatedAt: Date
@@ -5850,6 +7014,7 @@ export namespace Prisma {
   export interface Prisma__QuizClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    translations<T extends Quiz$translationsArgs<ExtArgs> = {}>(args?: Subset<T, Quiz$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5882,10 +7047,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Quiz", 'String'>
     readonly languageCode: FieldRef<"Quiz", 'String'>
     readonly level: FieldRef<"Quiz", 'String'>
-    readonly question: FieldRef<"Quiz", 'String'>
     readonly options: FieldRef<"Quiz", 'Json'>
     readonly answer: FieldRef<"Quiz", 'Int'>
-    readonly explain: FieldRef<"Quiz", 'String'>
     readonly quizOrder: FieldRef<"Quiz", 'Int'>
     readonly createdAt: FieldRef<"Quiz", 'DateTime'>
     readonly updatedAt: FieldRef<"Quiz", 'DateTime'>
@@ -6207,6 +7370,26 @@ export namespace Prisma {
   }
 
   /**
+   * Quiz.translations
+   */
+  export type Quiz$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    where?: QuizTranslationWhereInput
+    orderBy?: QuizTranslationOrderByWithRelationInput | QuizTranslationOrderByWithRelationInput[]
+    cursor?: QuizTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: QuizTranslationScalarFieldEnum | QuizTranslationScalarFieldEnum[]
+  }
+
+  /**
    * Quiz without action
    */
   export type QuizDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6218,6 +7401,939 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: QuizInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model QuizTranslation
+   */
+
+  export type AggregateQuizTranslation = {
+    _count: QuizTranslationCountAggregateOutputType | null
+    _min: QuizTranslationMinAggregateOutputType | null
+    _max: QuizTranslationMaxAggregateOutputType | null
+  }
+
+  export type QuizTranslationMinAggregateOutputType = {
+    id: string | null
+    quizId: string | null
+    baseLanguageCode: string | null
+    question: string | null
+    explain: string | null
+  }
+
+  export type QuizTranslationMaxAggregateOutputType = {
+    id: string | null
+    quizId: string | null
+    baseLanguageCode: string | null
+    question: string | null
+    explain: string | null
+  }
+
+  export type QuizTranslationCountAggregateOutputType = {
+    id: number
+    quizId: number
+    baseLanguageCode: number
+    question: number
+    explain: number
+    _all: number
+  }
+
+
+  export type QuizTranslationMinAggregateInputType = {
+    id?: true
+    quizId?: true
+    baseLanguageCode?: true
+    question?: true
+    explain?: true
+  }
+
+  export type QuizTranslationMaxAggregateInputType = {
+    id?: true
+    quizId?: true
+    baseLanguageCode?: true
+    question?: true
+    explain?: true
+  }
+
+  export type QuizTranslationCountAggregateInputType = {
+    id?: true
+    quizId?: true
+    baseLanguageCode?: true
+    question?: true
+    explain?: true
+    _all?: true
+  }
+
+  export type QuizTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuizTranslation to aggregate.
+     */
+    where?: QuizTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuizTranslations to fetch.
+     */
+    orderBy?: QuizTranslationOrderByWithRelationInput | QuizTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: QuizTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuizTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuizTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned QuizTranslations
+    **/
+    _count?: true | QuizTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: QuizTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: QuizTranslationMaxAggregateInputType
+  }
+
+  export type GetQuizTranslationAggregateType<T extends QuizTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuizTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuizTranslation[P]>
+      : GetScalarType<T[P], AggregateQuizTranslation[P]>
+  }
+
+
+
+
+  export type QuizTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuizTranslationWhereInput
+    orderBy?: QuizTranslationOrderByWithAggregationInput | QuizTranslationOrderByWithAggregationInput[]
+    by: QuizTranslationScalarFieldEnum[] | QuizTranslationScalarFieldEnum
+    having?: QuizTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: QuizTranslationCountAggregateInputType | true
+    _min?: QuizTranslationMinAggregateInputType
+    _max?: QuizTranslationMaxAggregateInputType
+  }
+
+  export type QuizTranslationGroupByOutputType = {
+    id: string
+    quizId: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+    _count: QuizTranslationCountAggregateOutputType | null
+    _min: QuizTranslationMinAggregateOutputType | null
+    _max: QuizTranslationMaxAggregateOutputType | null
+  }
+
+  type GetQuizTranslationGroupByPayload<T extends QuizTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<QuizTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof QuizTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], QuizTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], QuizTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type QuizTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quizId?: boolean
+    baseLanguageCode?: boolean
+    question?: boolean
+    explain?: boolean
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quizTranslation"]>
+
+  export type QuizTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quizId?: boolean
+    baseLanguageCode?: boolean
+    question?: boolean
+    explain?: boolean
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quizTranslation"]>
+
+  export type QuizTranslationSelectScalar = {
+    id?: boolean
+    quizId?: boolean
+    baseLanguageCode?: boolean
+    question?: boolean
+    explain?: boolean
+  }
+
+  export type QuizTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+  }
+  export type QuizTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+  }
+
+  export type $QuizTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "QuizTranslation"
+    objects: {
+      quiz: Prisma.$QuizPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      quizId: string
+      baseLanguageCode: string
+      question: string
+      explain: string
+    }, ExtArgs["result"]["quizTranslation"]>
+    composites: {}
+  }
+
+  type QuizTranslationGetPayload<S extends boolean | null | undefined | QuizTranslationDefaultArgs> = $Result.GetResult<Prisma.$QuizTranslationPayload, S>
+
+  type QuizTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuizTranslationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: QuizTranslationCountAggregateInputType | true
+    }
+
+  export interface QuizTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuizTranslation'], meta: { name: 'QuizTranslation' } }
+    /**
+     * Find zero or one QuizTranslation that matches the filter.
+     * @param {QuizTranslationFindUniqueArgs} args - Arguments to find a QuizTranslation
+     * @example
+     * // Get one QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends QuizTranslationFindUniqueArgs>(args: SelectSubset<T, QuizTranslationFindUniqueArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one QuizTranslation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {QuizTranslationFindUniqueOrThrowArgs} args - Arguments to find a QuizTranslation
+     * @example
+     * // Get one QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends QuizTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, QuizTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first QuizTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationFindFirstArgs} args - Arguments to find a QuizTranslation
+     * @example
+     * // Get one QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends QuizTranslationFindFirstArgs>(args?: SelectSubset<T, QuizTranslationFindFirstArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first QuizTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationFindFirstOrThrowArgs} args - Arguments to find a QuizTranslation
+     * @example
+     * // Get one QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends QuizTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, QuizTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more QuizTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all QuizTranslations
+     * const quizTranslations = await prisma.quizTranslation.findMany()
+     * 
+     * // Get first 10 QuizTranslations
+     * const quizTranslations = await prisma.quizTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const quizTranslationWithIdOnly = await prisma.quizTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends QuizTranslationFindManyArgs>(args?: SelectSubset<T, QuizTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a QuizTranslation.
+     * @param {QuizTranslationCreateArgs} args - Arguments to create a QuizTranslation.
+     * @example
+     * // Create one QuizTranslation
+     * const QuizTranslation = await prisma.quizTranslation.create({
+     *   data: {
+     *     // ... data to create a QuizTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends QuizTranslationCreateArgs>(args: SelectSubset<T, QuizTranslationCreateArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many QuizTranslations.
+     * @param {QuizTranslationCreateManyArgs} args - Arguments to create many QuizTranslations.
+     * @example
+     * // Create many QuizTranslations
+     * const quizTranslation = await prisma.quizTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends QuizTranslationCreateManyArgs>(args?: SelectSubset<T, QuizTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many QuizTranslations and returns the data saved in the database.
+     * @param {QuizTranslationCreateManyAndReturnArgs} args - Arguments to create many QuizTranslations.
+     * @example
+     * // Create many QuizTranslations
+     * const quizTranslation = await prisma.quizTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many QuizTranslations and only return the `id`
+     * const quizTranslationWithIdOnly = await prisma.quizTranslation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends QuizTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, QuizTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a QuizTranslation.
+     * @param {QuizTranslationDeleteArgs} args - Arguments to delete one QuizTranslation.
+     * @example
+     * // Delete one QuizTranslation
+     * const QuizTranslation = await prisma.quizTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one QuizTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends QuizTranslationDeleteArgs>(args: SelectSubset<T, QuizTranslationDeleteArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one QuizTranslation.
+     * @param {QuizTranslationUpdateArgs} args - Arguments to update one QuizTranslation.
+     * @example
+     * // Update one QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends QuizTranslationUpdateArgs>(args: SelectSubset<T, QuizTranslationUpdateArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more QuizTranslations.
+     * @param {QuizTranslationDeleteManyArgs} args - Arguments to filter QuizTranslations to delete.
+     * @example
+     * // Delete a few QuizTranslations
+     * const { count } = await prisma.quizTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends QuizTranslationDeleteManyArgs>(args?: SelectSubset<T, QuizTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more QuizTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many QuizTranslations
+     * const quizTranslation = await prisma.quizTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends QuizTranslationUpdateManyArgs>(args: SelectSubset<T, QuizTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one QuizTranslation.
+     * @param {QuizTranslationUpsertArgs} args - Arguments to update or create a QuizTranslation.
+     * @example
+     * // Update or create a QuizTranslation
+     * const quizTranslation = await prisma.quizTranslation.upsert({
+     *   create: {
+     *     // ... data to create a QuizTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the QuizTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends QuizTranslationUpsertArgs>(args: SelectSubset<T, QuizTranslationUpsertArgs<ExtArgs>>): Prisma__QuizTranslationClient<$Result.GetResult<Prisma.$QuizTranslationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of QuizTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationCountArgs} args - Arguments to filter QuizTranslations to count.
+     * @example
+     * // Count the number of QuizTranslations
+     * const count = await prisma.quizTranslation.count({
+     *   where: {
+     *     // ... the filter for the QuizTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends QuizTranslationCountArgs>(
+      args?: Subset<T, QuizTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], QuizTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a QuizTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends QuizTranslationAggregateArgs>(args: Subset<T, QuizTranslationAggregateArgs>): Prisma.PrismaPromise<GetQuizTranslationAggregateType<T>>
+
+    /**
+     * Group by QuizTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuizTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends QuizTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: QuizTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: QuizTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, QuizTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuizTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the QuizTranslation model
+   */
+  readonly fields: QuizTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for QuizTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__QuizTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    quiz<T extends QuizDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuizDefaultArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the QuizTranslation model
+   */ 
+  interface QuizTranslationFieldRefs {
+    readonly id: FieldRef<"QuizTranslation", 'String'>
+    readonly quizId: FieldRef<"QuizTranslation", 'String'>
+    readonly baseLanguageCode: FieldRef<"QuizTranslation", 'String'>
+    readonly question: FieldRef<"QuizTranslation", 'String'>
+    readonly explain: FieldRef<"QuizTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * QuizTranslation findUnique
+   */
+  export type QuizTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which QuizTranslation to fetch.
+     */
+    where: QuizTranslationWhereUniqueInput
+  }
+
+  /**
+   * QuizTranslation findUniqueOrThrow
+   */
+  export type QuizTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which QuizTranslation to fetch.
+     */
+    where: QuizTranslationWhereUniqueInput
+  }
+
+  /**
+   * QuizTranslation findFirst
+   */
+  export type QuizTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which QuizTranslation to fetch.
+     */
+    where?: QuizTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuizTranslations to fetch.
+     */
+    orderBy?: QuizTranslationOrderByWithRelationInput | QuizTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuizTranslations.
+     */
+    cursor?: QuizTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuizTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuizTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuizTranslations.
+     */
+    distinct?: QuizTranslationScalarFieldEnum | QuizTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * QuizTranslation findFirstOrThrow
+   */
+  export type QuizTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which QuizTranslation to fetch.
+     */
+    where?: QuizTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuizTranslations to fetch.
+     */
+    orderBy?: QuizTranslationOrderByWithRelationInput | QuizTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuizTranslations.
+     */
+    cursor?: QuizTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuizTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuizTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuizTranslations.
+     */
+    distinct?: QuizTranslationScalarFieldEnum | QuizTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * QuizTranslation findMany
+   */
+  export type QuizTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which QuizTranslations to fetch.
+     */
+    where?: QuizTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuizTranslations to fetch.
+     */
+    orderBy?: QuizTranslationOrderByWithRelationInput | QuizTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing QuizTranslations.
+     */
+    cursor?: QuizTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuizTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuizTranslations.
+     */
+    skip?: number
+    distinct?: QuizTranslationScalarFieldEnum | QuizTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * QuizTranslation create
+   */
+  export type QuizTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a QuizTranslation.
+     */
+    data: XOR<QuizTranslationCreateInput, QuizTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * QuizTranslation createMany
+   */
+  export type QuizTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many QuizTranslations.
+     */
+    data: QuizTranslationCreateManyInput | QuizTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * QuizTranslation createManyAndReturn
+   */
+  export type QuizTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many QuizTranslations.
+     */
+    data: QuizTranslationCreateManyInput | QuizTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * QuizTranslation update
+   */
+  export type QuizTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a QuizTranslation.
+     */
+    data: XOR<QuizTranslationUpdateInput, QuizTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which QuizTranslation to update.
+     */
+    where: QuizTranslationWhereUniqueInput
+  }
+
+  /**
+   * QuizTranslation updateMany
+   */
+  export type QuizTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update QuizTranslations.
+     */
+    data: XOR<QuizTranslationUpdateManyMutationInput, QuizTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which QuizTranslations to update
+     */
+    where?: QuizTranslationWhereInput
+  }
+
+  /**
+   * QuizTranslation upsert
+   */
+  export type QuizTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the QuizTranslation to update in case it exists.
+     */
+    where: QuizTranslationWhereUniqueInput
+    /**
+     * In case the QuizTranslation found by the `where` argument doesn't exist, create a new QuizTranslation with this data.
+     */
+    create: XOR<QuizTranslationCreateInput, QuizTranslationUncheckedCreateInput>
+    /**
+     * In case the QuizTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QuizTranslationUpdateInput, QuizTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * QuizTranslation delete
+   */
+  export type QuizTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which QuizTranslation to delete.
+     */
+    where: QuizTranslationWhereUniqueInput
+  }
+
+  /**
+   * QuizTranslation deleteMany
+   */
+  export type QuizTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuizTranslations to delete
+     */
+    where?: QuizTranslationWhereInput
+  }
+
+  /**
+   * QuizTranslation without action
+   */
+  export type QuizTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuizTranslation
+     */
+    select?: QuizTranslationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuizTranslationInclude<ExtArgs> | null
   }
 
 
@@ -8237,6 +10353,8 @@ export namespace Prisma {
     exp: number | null
     streak: number | null
     lastActive: Date | null
+    uiLanguage: string | null
+    nativeLanguage: string | null
     targetLanguage: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8255,6 +10373,8 @@ export namespace Prisma {
     exp: number | null
     streak: number | null
     lastActive: Date | null
+    uiLanguage: string | null
+    nativeLanguage: string | null
     targetLanguage: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8273,6 +10393,8 @@ export namespace Prisma {
     exp: number
     streak: number
     lastActive: number
+    uiLanguage: number
+    nativeLanguage: number
     targetLanguage: number
     createdAt: number
     updatedAt: number
@@ -8309,6 +10431,8 @@ export namespace Prisma {
     exp?: true
     streak?: true
     lastActive?: true
+    uiLanguage?: true
+    nativeLanguage?: true
     targetLanguage?: true
     createdAt?: true
     updatedAt?: true
@@ -8327,6 +10451,8 @@ export namespace Prisma {
     exp?: true
     streak?: true
     lastActive?: true
+    uiLanguage?: true
+    nativeLanguage?: true
     targetLanguage?: true
     createdAt?: true
     updatedAt?: true
@@ -8345,6 +10471,8 @@ export namespace Prisma {
     exp?: true
     streak?: true
     lastActive?: true
+    uiLanguage?: true
+    nativeLanguage?: true
     targetLanguage?: true
     createdAt?: true
     updatedAt?: true
@@ -8450,6 +10578,8 @@ export namespace Prisma {
     exp: number
     streak: number
     lastActive: Date
+    uiLanguage: string
+    nativeLanguage: string
     targetLanguage: string
     createdAt: Date
     updatedAt: Date
@@ -8487,6 +10617,8 @@ export namespace Prisma {
     exp?: boolean
     streak?: boolean
     lastActive?: boolean
+    uiLanguage?: boolean
+    nativeLanguage?: boolean
     targetLanguage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8512,6 +10644,8 @@ export namespace Prisma {
     exp?: boolean
     streak?: boolean
     lastActive?: boolean
+    uiLanguage?: boolean
+    nativeLanguage?: boolean
     targetLanguage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8531,6 +10665,8 @@ export namespace Prisma {
     exp?: boolean
     streak?: boolean
     lastActive?: boolean
+    uiLanguage?: boolean
+    nativeLanguage?: boolean
     targetLanguage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8572,6 +10708,8 @@ export namespace Prisma {
       exp: number
       streak: number
       lastActive: Date
+      uiLanguage: string
+      nativeLanguage: string
       targetLanguage: string
       createdAt: Date
       updatedAt: Date
@@ -8986,6 +11124,8 @@ export namespace Prisma {
     readonly exp: FieldRef<"User", 'Int'>
     readonly streak: FieldRef<"User", 'Int'>
     readonly lastActive: FieldRef<"User", 'DateTime'>
+    readonly uiLanguage: FieldRef<"User", 'String'>
+    readonly nativeLanguage: FieldRef<"User", 'String'>
     readonly targetLanguage: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -15346,7 +17486,6 @@ export namespace Prisma {
     languageCode: 'languageCode',
     level: 'level',
     word: 'word',
-    translation: 'translation',
     phonetic: 'phonetic',
     exampleSentence: 'exampleSentence',
     vocabOrder: 'vocabOrder'
@@ -15355,20 +17494,40 @@ export namespace Prisma {
   export type WordBankScalarFieldEnum = (typeof WordBankScalarFieldEnum)[keyof typeof WordBankScalarFieldEnum]
 
 
+  export const WordBankTranslationScalarFieldEnum: {
+    id: 'id',
+    wordBankId: 'wordBankId',
+    baseLanguageCode: 'baseLanguageCode',
+    translation: 'translation',
+    exampleTranslation: 'exampleTranslation'
+  };
+
+  export type WordBankTranslationScalarFieldEnum = (typeof WordBankTranslationScalarFieldEnum)[keyof typeof WordBankTranslationScalarFieldEnum]
+
+
   export const QuizScalarFieldEnum: {
     id: 'id',
     languageCode: 'languageCode',
     level: 'level',
-    question: 'question',
     options: 'options',
     answer: 'answer',
-    explain: 'explain',
     quizOrder: 'quizOrder',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type QuizScalarFieldEnum = (typeof QuizScalarFieldEnum)[keyof typeof QuizScalarFieldEnum]
+
+
+  export const QuizTranslationScalarFieldEnum: {
+    id: 'id',
+    quizId: 'quizId',
+    baseLanguageCode: 'baseLanguageCode',
+    question: 'question',
+    explain: 'explain'
+  };
+
+  export type QuizTranslationScalarFieldEnum = (typeof QuizTranslationScalarFieldEnum)[keyof typeof QuizTranslationScalarFieldEnum]
 
 
   export const ListeningScalarFieldEnum: {
@@ -15407,6 +17566,8 @@ export namespace Prisma {
     exp: 'exp',
     streak: 'streak',
     lastActive: 'lastActive',
+    uiLanguage: 'uiLanguage',
+    nativeLanguage: 'nativeLanguage',
     targetLanguage: 'targetLanguage',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -15797,11 +17958,11 @@ export namespace Prisma {
     languageCode?: StringFilter<"WordBank"> | string
     level?: StringFilter<"WordBank"> | string
     word?: StringFilter<"WordBank"> | string
-    translation?: StringFilter<"WordBank"> | string
     phonetic?: StringNullableFilter<"WordBank"> | string | null
     exampleSentence?: StringFilter<"WordBank"> | string
     vocabOrder?: IntFilter<"WordBank"> | number
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+    translations?: WordBankTranslationListRelationFilter
   }
 
   export type WordBankOrderByWithRelationInput = {
@@ -15809,11 +17970,11 @@ export namespace Prisma {
     languageCode?: SortOrder
     level?: SortOrder
     word?: SortOrder
-    translation?: SortOrder
     phonetic?: SortOrderInput | SortOrder
     exampleSentence?: SortOrder
     vocabOrder?: SortOrder
     language?: LanguageOrderByWithRelationInput
+    translations?: WordBankTranslationOrderByRelationAggregateInput
   }
 
   export type WordBankWhereUniqueInput = Prisma.AtLeast<{
@@ -15824,11 +17985,11 @@ export namespace Prisma {
     languageCode?: StringFilter<"WordBank"> | string
     level?: StringFilter<"WordBank"> | string
     word?: StringFilter<"WordBank"> | string
-    translation?: StringFilter<"WordBank"> | string
     phonetic?: StringNullableFilter<"WordBank"> | string | null
     exampleSentence?: StringFilter<"WordBank"> | string
     vocabOrder?: IntFilter<"WordBank"> | number
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+    translations?: WordBankTranslationListRelationFilter
   }, "id">
 
   export type WordBankOrderByWithAggregationInput = {
@@ -15836,7 +17997,6 @@ export namespace Prisma {
     languageCode?: SortOrder
     level?: SortOrder
     word?: SortOrder
-    translation?: SortOrder
     phonetic?: SortOrderInput | SortOrder
     exampleSentence?: SortOrder
     vocabOrder?: SortOrder
@@ -15855,10 +18015,65 @@ export namespace Prisma {
     languageCode?: StringWithAggregatesFilter<"WordBank"> | string
     level?: StringWithAggregatesFilter<"WordBank"> | string
     word?: StringWithAggregatesFilter<"WordBank"> | string
-    translation?: StringWithAggregatesFilter<"WordBank"> | string
     phonetic?: StringNullableWithAggregatesFilter<"WordBank"> | string | null
     exampleSentence?: StringWithAggregatesFilter<"WordBank"> | string
     vocabOrder?: IntWithAggregatesFilter<"WordBank"> | number
+  }
+
+  export type WordBankTranslationWhereInput = {
+    AND?: WordBankTranslationWhereInput | WordBankTranslationWhereInput[]
+    OR?: WordBankTranslationWhereInput[]
+    NOT?: WordBankTranslationWhereInput | WordBankTranslationWhereInput[]
+    id?: StringFilter<"WordBankTranslation"> | string
+    wordBankId?: StringFilter<"WordBankTranslation"> | string
+    baseLanguageCode?: StringFilter<"WordBankTranslation"> | string
+    translation?: StringFilter<"WordBankTranslation"> | string
+    exampleTranslation?: StringNullableFilter<"WordBankTranslation"> | string | null
+    wordBank?: XOR<WordBankRelationFilter, WordBankWhereInput>
+  }
+
+  export type WordBankTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    wordBankId?: SortOrder
+    baseLanguageCode?: SortOrder
+    translation?: SortOrder
+    exampleTranslation?: SortOrderInput | SortOrder
+    wordBank?: WordBankOrderByWithRelationInput
+  }
+
+  export type WordBankTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    wordBankId_baseLanguageCode?: WordBankTranslationWordBankIdBaseLanguageCodeCompoundUniqueInput
+    AND?: WordBankTranslationWhereInput | WordBankTranslationWhereInput[]
+    OR?: WordBankTranslationWhereInput[]
+    NOT?: WordBankTranslationWhereInput | WordBankTranslationWhereInput[]
+    wordBankId?: StringFilter<"WordBankTranslation"> | string
+    baseLanguageCode?: StringFilter<"WordBankTranslation"> | string
+    translation?: StringFilter<"WordBankTranslation"> | string
+    exampleTranslation?: StringNullableFilter<"WordBankTranslation"> | string | null
+    wordBank?: XOR<WordBankRelationFilter, WordBankWhereInput>
+  }, "id" | "wordBankId_baseLanguageCode">
+
+  export type WordBankTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    wordBankId?: SortOrder
+    baseLanguageCode?: SortOrder
+    translation?: SortOrder
+    exampleTranslation?: SortOrderInput | SortOrder
+    _count?: WordBankTranslationCountOrderByAggregateInput
+    _max?: WordBankTranslationMaxOrderByAggregateInput
+    _min?: WordBankTranslationMinOrderByAggregateInput
+  }
+
+  export type WordBankTranslationScalarWhereWithAggregatesInput = {
+    AND?: WordBankTranslationScalarWhereWithAggregatesInput | WordBankTranslationScalarWhereWithAggregatesInput[]
+    OR?: WordBankTranslationScalarWhereWithAggregatesInput[]
+    NOT?: WordBankTranslationScalarWhereWithAggregatesInput | WordBankTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WordBankTranslation"> | string
+    wordBankId?: StringWithAggregatesFilter<"WordBankTranslation"> | string
+    baseLanguageCode?: StringWithAggregatesFilter<"WordBankTranslation"> | string
+    translation?: StringWithAggregatesFilter<"WordBankTranslation"> | string
+    exampleTranslation?: StringNullableWithAggregatesFilter<"WordBankTranslation"> | string | null
   }
 
   export type QuizWhereInput = {
@@ -15868,28 +18083,26 @@ export namespace Prisma {
     id?: StringFilter<"Quiz"> | string
     languageCode?: StringFilter<"Quiz"> | string
     level?: StringFilter<"Quiz"> | string
-    question?: StringFilter<"Quiz"> | string
     options?: JsonFilter<"Quiz">
     answer?: IntFilter<"Quiz"> | number
-    explain?: StringFilter<"Quiz"> | string
     quizOrder?: IntFilter<"Quiz"> | number
     createdAt?: DateTimeFilter<"Quiz"> | Date | string
     updatedAt?: DateTimeFilter<"Quiz"> | Date | string
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+    translations?: QuizTranslationListRelationFilter
   }
 
   export type QuizOrderByWithRelationInput = {
     id?: SortOrder
     languageCode?: SortOrder
     level?: SortOrder
-    question?: SortOrder
     options?: SortOrder
     answer?: SortOrder
-    explain?: SortOrder
     quizOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     language?: LanguageOrderByWithRelationInput
+    translations?: QuizTranslationOrderByRelationAggregateInput
   }
 
   export type QuizWhereUniqueInput = Prisma.AtLeast<{
@@ -15899,24 +18112,21 @@ export namespace Prisma {
     NOT?: QuizWhereInput | QuizWhereInput[]
     languageCode?: StringFilter<"Quiz"> | string
     level?: StringFilter<"Quiz"> | string
-    question?: StringFilter<"Quiz"> | string
     options?: JsonFilter<"Quiz">
     answer?: IntFilter<"Quiz"> | number
-    explain?: StringFilter<"Quiz"> | string
     quizOrder?: IntFilter<"Quiz"> | number
     createdAt?: DateTimeFilter<"Quiz"> | Date | string
     updatedAt?: DateTimeFilter<"Quiz"> | Date | string
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
+    translations?: QuizTranslationListRelationFilter
   }, "id">
 
   export type QuizOrderByWithAggregationInput = {
     id?: SortOrder
     languageCode?: SortOrder
     level?: SortOrder
-    question?: SortOrder
     options?: SortOrder
     answer?: SortOrder
-    explain?: SortOrder
     quizOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15934,13 +18144,67 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Quiz"> | string
     languageCode?: StringWithAggregatesFilter<"Quiz"> | string
     level?: StringWithAggregatesFilter<"Quiz"> | string
-    question?: StringWithAggregatesFilter<"Quiz"> | string
     options?: JsonWithAggregatesFilter<"Quiz">
     answer?: IntWithAggregatesFilter<"Quiz"> | number
-    explain?: StringWithAggregatesFilter<"Quiz"> | string
     quizOrder?: IntWithAggregatesFilter<"Quiz"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Quiz"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Quiz"> | Date | string
+  }
+
+  export type QuizTranslationWhereInput = {
+    AND?: QuizTranslationWhereInput | QuizTranslationWhereInput[]
+    OR?: QuizTranslationWhereInput[]
+    NOT?: QuizTranslationWhereInput | QuizTranslationWhereInput[]
+    id?: StringFilter<"QuizTranslation"> | string
+    quizId?: StringFilter<"QuizTranslation"> | string
+    baseLanguageCode?: StringFilter<"QuizTranslation"> | string
+    question?: StringFilter<"QuizTranslation"> | string
+    explain?: StringFilter<"QuizTranslation"> | string
+    quiz?: XOR<QuizRelationFilter, QuizWhereInput>
+  }
+
+  export type QuizTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    baseLanguageCode?: SortOrder
+    question?: SortOrder
+    explain?: SortOrder
+    quiz?: QuizOrderByWithRelationInput
+  }
+
+  export type QuizTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    quizId_baseLanguageCode?: QuizTranslationQuizIdBaseLanguageCodeCompoundUniqueInput
+    AND?: QuizTranslationWhereInput | QuizTranslationWhereInput[]
+    OR?: QuizTranslationWhereInput[]
+    NOT?: QuizTranslationWhereInput | QuizTranslationWhereInput[]
+    quizId?: StringFilter<"QuizTranslation"> | string
+    baseLanguageCode?: StringFilter<"QuizTranslation"> | string
+    question?: StringFilter<"QuizTranslation"> | string
+    explain?: StringFilter<"QuizTranslation"> | string
+    quiz?: XOR<QuizRelationFilter, QuizWhereInput>
+  }, "id" | "quizId_baseLanguageCode">
+
+  export type QuizTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    baseLanguageCode?: SortOrder
+    question?: SortOrder
+    explain?: SortOrder
+    _count?: QuizTranslationCountOrderByAggregateInput
+    _max?: QuizTranslationMaxOrderByAggregateInput
+    _min?: QuizTranslationMinOrderByAggregateInput
+  }
+
+  export type QuizTranslationScalarWhereWithAggregatesInput = {
+    AND?: QuizTranslationScalarWhereWithAggregatesInput | QuizTranslationScalarWhereWithAggregatesInput[]
+    OR?: QuizTranslationScalarWhereWithAggregatesInput[]
+    NOT?: QuizTranslationScalarWhereWithAggregatesInput | QuizTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"QuizTranslation"> | string
+    quizId?: StringWithAggregatesFilter<"QuizTranslation"> | string
+    baseLanguageCode?: StringWithAggregatesFilter<"QuizTranslation"> | string
+    question?: StringWithAggregatesFilter<"QuizTranslation"> | string
+    explain?: StringWithAggregatesFilter<"QuizTranslation"> | string
   }
 
   export type ListeningWhereInput = {
@@ -16090,6 +18354,8 @@ export namespace Prisma {
     exp?: IntFilter<"User"> | number
     streak?: IntFilter<"User"> | number
     lastActive?: DateTimeFilter<"User"> | Date | string
+    uiLanguage?: StringFilter<"User"> | string
+    nativeLanguage?: StringFilter<"User"> | string
     targetLanguage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -16114,6 +18380,8 @@ export namespace Prisma {
     exp?: SortOrder
     streak?: SortOrder
     lastActive?: SortOrder
+    uiLanguage?: SortOrder
+    nativeLanguage?: SortOrder
     targetLanguage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16141,6 +18409,8 @@ export namespace Prisma {
     exp?: IntFilter<"User"> | number
     streak?: IntFilter<"User"> | number
     lastActive?: DateTimeFilter<"User"> | Date | string
+    uiLanguage?: StringFilter<"User"> | string
+    nativeLanguage?: StringFilter<"User"> | string
     targetLanguage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -16165,6 +18435,8 @@ export namespace Prisma {
     exp?: SortOrder
     streak?: SortOrder
     lastActive?: SortOrder
+    uiLanguage?: SortOrder
+    nativeLanguage?: SortOrder
     targetLanguage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16191,6 +18463,8 @@ export namespace Prisma {
     exp?: IntWithAggregatesFilter<"User"> | number
     streak?: IntWithAggregatesFilter<"User"> | number
     lastActive?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    uiLanguage?: StringWithAggregatesFilter<"User"> | string
+    nativeLanguage?: StringWithAggregatesFilter<"User"> | string
     targetLanguage?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -16821,11 +19095,11 @@ export namespace Prisma {
     id?: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
     language: LanguageCreateNestedOneWithoutWordBankInput
+    translations?: WordBankTranslationCreateNestedManyWithoutWordBankInput
   }
 
   export type WordBankUncheckedCreateInput = {
@@ -16833,21 +19107,21 @@ export namespace Prisma {
     languageCode: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
+    translations?: WordBankTranslationUncheckedCreateNestedManyWithoutWordBankInput
   }
 
   export type WordBankUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
     language?: LanguageUpdateOneRequiredWithoutWordBankNestedInput
+    translations?: WordBankTranslationUpdateManyWithoutWordBankNestedInput
   }
 
   export type WordBankUncheckedUpdateInput = {
@@ -16855,10 +19129,10 @@ export namespace Prisma {
     languageCode?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
+    translations?: WordBankTranslationUncheckedUpdateManyWithoutWordBankNestedInput
   }
 
   export type WordBankCreateManyInput = {
@@ -16866,7 +19140,6 @@ export namespace Prisma {
     languageCode: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
@@ -16876,7 +19149,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
@@ -16887,72 +19159,120 @@ export namespace Prisma {
     languageCode?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
   }
 
+  export type WordBankTranslationCreateInput = {
+    id?: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+    wordBank: WordBankCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type WordBankTranslationUncheckedCreateInput = {
+    id?: string
+    wordBankId: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+  }
+
+  export type WordBankTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+    wordBank?: WordBankUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type WordBankTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wordBankId?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WordBankTranslationCreateManyInput = {
+    id?: string
+    wordBankId: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+  }
+
+  export type WordBankTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WordBankTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wordBankId?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type QuizCreateInput = {
     id?: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     language: LanguageCreateNestedOneWithoutQuizzesInput
+    translations?: QuizTranslationCreateNestedManyWithoutQuizInput
   }
 
   export type QuizUncheckedCreateInput = {
     id?: string
     languageCode: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: QuizTranslationUncheckedCreateNestedManyWithoutQuizInput
   }
 
   export type QuizUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     language?: LanguageUpdateOneRequiredWithoutQuizzesNestedInput
+    translations?: QuizTranslationUpdateManyWithoutQuizNestedInput
   }
 
   export type QuizUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     languageCode?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: QuizTranslationUncheckedUpdateManyWithoutQuizNestedInput
   }
 
   export type QuizCreateManyInput = {
     id?: string
     languageCode: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16961,10 +19281,8 @@ export namespace Prisma {
   export type QuizUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16974,13 +19292,66 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     languageCode?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuizTranslationCreateInput = {
+    id?: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+    quiz: QuizCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type QuizTranslationUncheckedCreateInput = {
+    id?: string
+    quizId: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+  }
+
+  export type QuizTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
+    quiz?: QuizUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type QuizTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quizId?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type QuizTranslationCreateManyInput = {
+    id?: string
+    quizId: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+  }
+
+  export type QuizTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type QuizTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quizId?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
   }
 
   export type ListeningCreateInput = {
@@ -17131,6 +19502,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -17154,6 +19527,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17177,6 +19552,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -17200,6 +19577,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17223,6 +19602,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17241,6 +19622,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -17258,6 +19641,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17991,9 +20376,19 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type WordBankTranslationListRelationFilter = {
+    every?: WordBankTranslationWhereInput
+    some?: WordBankTranslationWhereInput
+    none?: WordBankTranslationWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type WordBankTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type WordBankCountOrderByAggregateInput = {
@@ -18001,7 +20396,6 @@ export namespace Prisma {
     languageCode?: SortOrder
     level?: SortOrder
     word?: SortOrder
-    translation?: SortOrder
     phonetic?: SortOrder
     exampleSentence?: SortOrder
     vocabOrder?: SortOrder
@@ -18016,7 +20410,6 @@ export namespace Prisma {
     languageCode?: SortOrder
     level?: SortOrder
     word?: SortOrder
-    translation?: SortOrder
     phonetic?: SortOrder
     exampleSentence?: SortOrder
     vocabOrder?: SortOrder
@@ -18027,7 +20420,6 @@ export namespace Prisma {
     languageCode?: SortOrder
     level?: SortOrder
     word?: SortOrder
-    translation?: SortOrder
     phonetic?: SortOrder
     exampleSentence?: SortOrder
     vocabOrder?: SortOrder
@@ -18055,6 +20447,40 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type WordBankRelationFilter = {
+    is?: WordBankWhereInput
+    isNot?: WordBankWhereInput
+  }
+
+  export type WordBankTranslationWordBankIdBaseLanguageCodeCompoundUniqueInput = {
+    wordBankId: string
+    baseLanguageCode: string
+  }
+
+  export type WordBankTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    wordBankId?: SortOrder
+    baseLanguageCode?: SortOrder
+    translation?: SortOrder
+    exampleTranslation?: SortOrder
+  }
+
+  export type WordBankTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    wordBankId?: SortOrder
+    baseLanguageCode?: SortOrder
+    translation?: SortOrder
+    exampleTranslation?: SortOrder
+  }
+
+  export type WordBankTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    wordBankId?: SortOrder
+    baseLanguageCode?: SortOrder
+    translation?: SortOrder
+    exampleTranslation?: SortOrder
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -18066,14 +20492,22 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type QuizTranslationListRelationFilter = {
+    every?: QuizTranslationWhereInput
+    some?: QuizTranslationWhereInput
+    none?: QuizTranslationWhereInput
+  }
+
+  export type QuizTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type QuizCountOrderByAggregateInput = {
     id?: SortOrder
     languageCode?: SortOrder
     level?: SortOrder
-    question?: SortOrder
     options?: SortOrder
     answer?: SortOrder
-    explain?: SortOrder
     quizOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18088,9 +20522,7 @@ export namespace Prisma {
     id?: SortOrder
     languageCode?: SortOrder
     level?: SortOrder
-    question?: SortOrder
     answer?: SortOrder
-    explain?: SortOrder
     quizOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18100,9 +20532,7 @@ export namespace Prisma {
     id?: SortOrder
     languageCode?: SortOrder
     level?: SortOrder
-    question?: SortOrder
     answer?: SortOrder
-    explain?: SortOrder
     quizOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18125,6 +20555,40 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type QuizRelationFilter = {
+    is?: QuizWhereInput
+    isNot?: QuizWhereInput
+  }
+
+  export type QuizTranslationQuizIdBaseLanguageCodeCompoundUniqueInput = {
+    quizId: string
+    baseLanguageCode: string
+  }
+
+  export type QuizTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    baseLanguageCode?: SortOrder
+    question?: SortOrder
+    explain?: SortOrder
+  }
+
+  export type QuizTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    baseLanguageCode?: SortOrder
+    question?: SortOrder
+    explain?: SortOrder
+  }
+
+  export type QuizTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    baseLanguageCode?: SortOrder
+    question?: SortOrder
+    explain?: SortOrder
   }
 
   export type ListeningCountOrderByAggregateInput = {
@@ -18256,6 +20720,8 @@ export namespace Prisma {
     exp?: SortOrder
     streak?: SortOrder
     lastActive?: SortOrder
+    uiLanguage?: SortOrder
+    nativeLanguage?: SortOrder
     targetLanguage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18282,6 +20748,8 @@ export namespace Prisma {
     exp?: SortOrder
     streak?: SortOrder
     lastActive?: SortOrder
+    uiLanguage?: SortOrder
+    nativeLanguage?: SortOrder
     targetLanguage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18300,6 +20768,8 @@ export namespace Prisma {
     exp?: SortOrder
     streak?: SortOrder
     lastActive?: SortOrder
+    uiLanguage?: SortOrder
+    nativeLanguage?: SortOrder
     targetLanguage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18866,6 +21336,20 @@ export namespace Prisma {
     connect?: LanguageWhereUniqueInput
   }
 
+  export type WordBankTranslationCreateNestedManyWithoutWordBankInput = {
+    create?: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput> | WordBankTranslationCreateWithoutWordBankInput[] | WordBankTranslationUncheckedCreateWithoutWordBankInput[]
+    connectOrCreate?: WordBankTranslationCreateOrConnectWithoutWordBankInput | WordBankTranslationCreateOrConnectWithoutWordBankInput[]
+    createMany?: WordBankTranslationCreateManyWordBankInputEnvelope
+    connect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+  }
+
+  export type WordBankTranslationUncheckedCreateNestedManyWithoutWordBankInput = {
+    create?: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput> | WordBankTranslationCreateWithoutWordBankInput[] | WordBankTranslationUncheckedCreateWithoutWordBankInput[]
+    connectOrCreate?: WordBankTranslationCreateOrConnectWithoutWordBankInput | WordBankTranslationCreateOrConnectWithoutWordBankInput[]
+    createMany?: WordBankTranslationCreateManyWordBankInputEnvelope
+    connect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -18878,10 +21362,66 @@ export namespace Prisma {
     update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutWordBankInput, LanguageUpdateWithoutWordBankInput>, LanguageUncheckedUpdateWithoutWordBankInput>
   }
 
+  export type WordBankTranslationUpdateManyWithoutWordBankNestedInput = {
+    create?: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput> | WordBankTranslationCreateWithoutWordBankInput[] | WordBankTranslationUncheckedCreateWithoutWordBankInput[]
+    connectOrCreate?: WordBankTranslationCreateOrConnectWithoutWordBankInput | WordBankTranslationCreateOrConnectWithoutWordBankInput[]
+    upsert?: WordBankTranslationUpsertWithWhereUniqueWithoutWordBankInput | WordBankTranslationUpsertWithWhereUniqueWithoutWordBankInput[]
+    createMany?: WordBankTranslationCreateManyWordBankInputEnvelope
+    set?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    disconnect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    delete?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    connect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    update?: WordBankTranslationUpdateWithWhereUniqueWithoutWordBankInput | WordBankTranslationUpdateWithWhereUniqueWithoutWordBankInput[]
+    updateMany?: WordBankTranslationUpdateManyWithWhereWithoutWordBankInput | WordBankTranslationUpdateManyWithWhereWithoutWordBankInput[]
+    deleteMany?: WordBankTranslationScalarWhereInput | WordBankTranslationScalarWhereInput[]
+  }
+
+  export type WordBankTranslationUncheckedUpdateManyWithoutWordBankNestedInput = {
+    create?: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput> | WordBankTranslationCreateWithoutWordBankInput[] | WordBankTranslationUncheckedCreateWithoutWordBankInput[]
+    connectOrCreate?: WordBankTranslationCreateOrConnectWithoutWordBankInput | WordBankTranslationCreateOrConnectWithoutWordBankInput[]
+    upsert?: WordBankTranslationUpsertWithWhereUniqueWithoutWordBankInput | WordBankTranslationUpsertWithWhereUniqueWithoutWordBankInput[]
+    createMany?: WordBankTranslationCreateManyWordBankInputEnvelope
+    set?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    disconnect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    delete?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    connect?: WordBankTranslationWhereUniqueInput | WordBankTranslationWhereUniqueInput[]
+    update?: WordBankTranslationUpdateWithWhereUniqueWithoutWordBankInput | WordBankTranslationUpdateWithWhereUniqueWithoutWordBankInput[]
+    updateMany?: WordBankTranslationUpdateManyWithWhereWithoutWordBankInput | WordBankTranslationUpdateManyWithWhereWithoutWordBankInput[]
+    deleteMany?: WordBankTranslationScalarWhereInput | WordBankTranslationScalarWhereInput[]
+  }
+
+  export type WordBankCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<WordBankCreateWithoutTranslationsInput, WordBankUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: WordBankCreateOrConnectWithoutTranslationsInput
+    connect?: WordBankWhereUniqueInput
+  }
+
+  export type WordBankUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<WordBankCreateWithoutTranslationsInput, WordBankUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: WordBankCreateOrConnectWithoutTranslationsInput
+    upsert?: WordBankUpsertWithoutTranslationsInput
+    connect?: WordBankWhereUniqueInput
+    update?: XOR<XOR<WordBankUpdateToOneWithWhereWithoutTranslationsInput, WordBankUpdateWithoutTranslationsInput>, WordBankUncheckedUpdateWithoutTranslationsInput>
+  }
+
   export type LanguageCreateNestedOneWithoutQuizzesInput = {
     create?: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
     connectOrCreate?: LanguageCreateOrConnectWithoutQuizzesInput
     connect?: LanguageWhereUniqueInput
+  }
+
+  export type QuizTranslationCreateNestedManyWithoutQuizInput = {
+    create?: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput> | QuizTranslationCreateWithoutQuizInput[] | QuizTranslationUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: QuizTranslationCreateOrConnectWithoutQuizInput | QuizTranslationCreateOrConnectWithoutQuizInput[]
+    createMany?: QuizTranslationCreateManyQuizInputEnvelope
+    connect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+  }
+
+  export type QuizTranslationUncheckedCreateNestedManyWithoutQuizInput = {
+    create?: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput> | QuizTranslationCreateWithoutQuizInput[] | QuizTranslationUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: QuizTranslationCreateOrConnectWithoutQuizInput | QuizTranslationCreateOrConnectWithoutQuizInput[]
+    createMany?: QuizTranslationCreateManyQuizInputEnvelope
+    connect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -18894,6 +21434,48 @@ export namespace Prisma {
     upsert?: LanguageUpsertWithoutQuizzesInput
     connect?: LanguageWhereUniqueInput
     update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutQuizzesInput, LanguageUpdateWithoutQuizzesInput>, LanguageUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type QuizTranslationUpdateManyWithoutQuizNestedInput = {
+    create?: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput> | QuizTranslationCreateWithoutQuizInput[] | QuizTranslationUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: QuizTranslationCreateOrConnectWithoutQuizInput | QuizTranslationCreateOrConnectWithoutQuizInput[]
+    upsert?: QuizTranslationUpsertWithWhereUniqueWithoutQuizInput | QuizTranslationUpsertWithWhereUniqueWithoutQuizInput[]
+    createMany?: QuizTranslationCreateManyQuizInputEnvelope
+    set?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    disconnect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    delete?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    connect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    update?: QuizTranslationUpdateWithWhereUniqueWithoutQuizInput | QuizTranslationUpdateWithWhereUniqueWithoutQuizInput[]
+    updateMany?: QuizTranslationUpdateManyWithWhereWithoutQuizInput | QuizTranslationUpdateManyWithWhereWithoutQuizInput[]
+    deleteMany?: QuizTranslationScalarWhereInput | QuizTranslationScalarWhereInput[]
+  }
+
+  export type QuizTranslationUncheckedUpdateManyWithoutQuizNestedInput = {
+    create?: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput> | QuizTranslationCreateWithoutQuizInput[] | QuizTranslationUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: QuizTranslationCreateOrConnectWithoutQuizInput | QuizTranslationCreateOrConnectWithoutQuizInput[]
+    upsert?: QuizTranslationUpsertWithWhereUniqueWithoutQuizInput | QuizTranslationUpsertWithWhereUniqueWithoutQuizInput[]
+    createMany?: QuizTranslationCreateManyQuizInputEnvelope
+    set?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    disconnect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    delete?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    connect?: QuizTranslationWhereUniqueInput | QuizTranslationWhereUniqueInput[]
+    update?: QuizTranslationUpdateWithWhereUniqueWithoutQuizInput | QuizTranslationUpdateWithWhereUniqueWithoutQuizInput[]
+    updateMany?: QuizTranslationUpdateManyWithWhereWithoutQuizInput | QuizTranslationUpdateManyWithWhereWithoutQuizInput[]
+    deleteMany?: QuizTranslationScalarWhereInput | QuizTranslationScalarWhereInput[]
+  }
+
+  export type QuizCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<QuizCreateWithoutTranslationsInput, QuizUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: QuizCreateOrConnectWithoutTranslationsInput
+    connect?: QuizWhereUniqueInput
+  }
+
+  export type QuizUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<QuizCreateWithoutTranslationsInput, QuizUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: QuizCreateOrConnectWithoutTranslationsInput
+    upsert?: QuizUpsertWithoutTranslationsInput
+    connect?: QuizWhereUniqueInput
+    update?: XOR<XOR<QuizUpdateToOneWithWhereWithoutTranslationsInput, QuizUpdateWithoutTranslationsInput>, QuizUncheckedUpdateWithoutTranslationsInput>
   }
 
   export type LanguageCreateNestedOneWithoutListeningInput = {
@@ -19562,20 +22144,20 @@ export namespace Prisma {
     id?: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
+    translations?: WordBankTranslationCreateNestedManyWithoutWordBankInput
   }
 
   export type WordBankUncheckedCreateWithoutLanguageInput = {
     id?: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
+    translations?: WordBankTranslationUncheckedCreateNestedManyWithoutWordBankInput
   }
 
   export type WordBankCreateOrConnectWithoutLanguageInput = {
@@ -19591,25 +22173,23 @@ export namespace Prisma {
   export type QuizCreateWithoutLanguageInput = {
     id?: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: QuizTranslationCreateNestedManyWithoutQuizInput
   }
 
   export type QuizUncheckedCreateWithoutLanguageInput = {
     id?: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: QuizTranslationUncheckedCreateNestedManyWithoutQuizInput
   }
 
   export type QuizCreateOrConnectWithoutLanguageInput = {
@@ -19688,6 +22268,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -19710,6 +22292,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -19790,7 +22374,6 @@ export namespace Prisma {
     languageCode?: StringFilter<"WordBank"> | string
     level?: StringFilter<"WordBank"> | string
     word?: StringFilter<"WordBank"> | string
-    translation?: StringFilter<"WordBank"> | string
     phonetic?: StringNullableFilter<"WordBank"> | string | null
     exampleSentence?: StringFilter<"WordBank"> | string
     vocabOrder?: IntFilter<"WordBank"> | number
@@ -19819,10 +22402,8 @@ export namespace Prisma {
     id?: StringFilter<"Quiz"> | string
     languageCode?: StringFilter<"Quiz"> | string
     level?: StringFilter<"Quiz"> | string
-    question?: StringFilter<"Quiz"> | string
     options?: JsonFilter<"Quiz">
     answer?: IntFilter<"Quiz"> | number
-    explain?: StringFilter<"Quiz"> | string
     quizOrder?: IntFilter<"Quiz"> | number
     createdAt?: DateTimeFilter<"Quiz"> | Date | string
     updatedAt?: DateTimeFilter<"Quiz"> | Date | string
@@ -19915,6 +22496,8 @@ export namespace Prisma {
     exp?: IntFilter<"User"> | number
     streak?: IntFilter<"User"> | number
     lastActive?: DateTimeFilter<"User"> | Date | string
+    uiLanguage?: StringFilter<"User"> | string
+    nativeLanguage?: StringFilter<"User"> | string
     targetLanguage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -20034,6 +22617,30 @@ export namespace Prisma {
     create: XOR<LanguageCreateWithoutWordBankInput, LanguageUncheckedCreateWithoutWordBankInput>
   }
 
+  export type WordBankTranslationCreateWithoutWordBankInput = {
+    id?: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+  }
+
+  export type WordBankTranslationUncheckedCreateWithoutWordBankInput = {
+    id?: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+  }
+
+  export type WordBankTranslationCreateOrConnectWithoutWordBankInput = {
+    where: WordBankTranslationWhereUniqueInput
+    create: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput>
+  }
+
+  export type WordBankTranslationCreateManyWordBankInputEnvelope = {
+    data: WordBankTranslationCreateManyWordBankInput | WordBankTranslationCreateManyWordBankInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LanguageUpsertWithoutWordBankInput = {
     update: XOR<LanguageUpdateWithoutWordBankInput, LanguageUncheckedUpdateWithoutWordBankInput>
     create: XOR<LanguageCreateWithoutWordBankInput, LanguageUncheckedCreateWithoutWordBankInput>
@@ -20075,6 +22682,89 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
+  export type WordBankTranslationUpsertWithWhereUniqueWithoutWordBankInput = {
+    where: WordBankTranslationWhereUniqueInput
+    update: XOR<WordBankTranslationUpdateWithoutWordBankInput, WordBankTranslationUncheckedUpdateWithoutWordBankInput>
+    create: XOR<WordBankTranslationCreateWithoutWordBankInput, WordBankTranslationUncheckedCreateWithoutWordBankInput>
+  }
+
+  export type WordBankTranslationUpdateWithWhereUniqueWithoutWordBankInput = {
+    where: WordBankTranslationWhereUniqueInput
+    data: XOR<WordBankTranslationUpdateWithoutWordBankInput, WordBankTranslationUncheckedUpdateWithoutWordBankInput>
+  }
+
+  export type WordBankTranslationUpdateManyWithWhereWithoutWordBankInput = {
+    where: WordBankTranslationScalarWhereInput
+    data: XOR<WordBankTranslationUpdateManyMutationInput, WordBankTranslationUncheckedUpdateManyWithoutWordBankInput>
+  }
+
+  export type WordBankTranslationScalarWhereInput = {
+    AND?: WordBankTranslationScalarWhereInput | WordBankTranslationScalarWhereInput[]
+    OR?: WordBankTranslationScalarWhereInput[]
+    NOT?: WordBankTranslationScalarWhereInput | WordBankTranslationScalarWhereInput[]
+    id?: StringFilter<"WordBankTranslation"> | string
+    wordBankId?: StringFilter<"WordBankTranslation"> | string
+    baseLanguageCode?: StringFilter<"WordBankTranslation"> | string
+    translation?: StringFilter<"WordBankTranslation"> | string
+    exampleTranslation?: StringNullableFilter<"WordBankTranslation"> | string | null
+  }
+
+  export type WordBankCreateWithoutTranslationsInput = {
+    id?: string
+    level: string
+    word: string
+    phonetic?: string | null
+    exampleSentence: string
+    vocabOrder?: number
+    language: LanguageCreateNestedOneWithoutWordBankInput
+  }
+
+  export type WordBankUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    languageCode: string
+    level: string
+    word: string
+    phonetic?: string | null
+    exampleSentence: string
+    vocabOrder?: number
+  }
+
+  export type WordBankCreateOrConnectWithoutTranslationsInput = {
+    where: WordBankWhereUniqueInput
+    create: XOR<WordBankCreateWithoutTranslationsInput, WordBankUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type WordBankUpsertWithoutTranslationsInput = {
+    update: XOR<WordBankUpdateWithoutTranslationsInput, WordBankUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<WordBankCreateWithoutTranslationsInput, WordBankUncheckedCreateWithoutTranslationsInput>
+    where?: WordBankWhereInput
+  }
+
+  export type WordBankUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: WordBankWhereInput
+    data: XOR<WordBankUpdateWithoutTranslationsInput, WordBankUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type WordBankUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    word?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    exampleSentence?: StringFieldUpdateOperationsInput | string
+    vocabOrder?: IntFieldUpdateOperationsInput | number
+    language?: LanguageUpdateOneRequiredWithoutWordBankNestedInput
+  }
+
+  export type WordBankUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    word?: StringFieldUpdateOperationsInput | string
+    phonetic?: NullableStringFieldUpdateOperationsInput | string | null
+    exampleSentence?: StringFieldUpdateOperationsInput | string
+    vocabOrder?: IntFieldUpdateOperationsInput | number
+  }
+
   export type LanguageCreateWithoutQuizzesInput = {
     code: string
     name: string
@@ -20108,6 +22798,30 @@ export namespace Prisma {
   export type LanguageCreateOrConnectWithoutQuizzesInput = {
     where: LanguageWhereUniqueInput
     create: XOR<LanguageCreateWithoutQuizzesInput, LanguageUncheckedCreateWithoutQuizzesInput>
+  }
+
+  export type QuizTranslationCreateWithoutQuizInput = {
+    id?: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+  }
+
+  export type QuizTranslationUncheckedCreateWithoutQuizInput = {
+    id?: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+  }
+
+  export type QuizTranslationCreateOrConnectWithoutQuizInput = {
+    where: QuizTranslationWhereUniqueInput
+    create: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput>
+  }
+
+  export type QuizTranslationCreateManyQuizInputEnvelope = {
+    data: QuizTranslationCreateManyQuizInput | QuizTranslationCreateManyQuizInput[]
+    skipDuplicates?: boolean
   }
 
   export type LanguageUpsertWithoutQuizzesInput = {
@@ -20149,6 +22863,93 @@ export namespace Prisma {
     listening?: ListeningUncheckedUpdateManyWithoutLanguageNestedInput
     speaking?: SpeakingUncheckedUpdateManyWithoutLanguageNestedInput
     users?: UserUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type QuizTranslationUpsertWithWhereUniqueWithoutQuizInput = {
+    where: QuizTranslationWhereUniqueInput
+    update: XOR<QuizTranslationUpdateWithoutQuizInput, QuizTranslationUncheckedUpdateWithoutQuizInput>
+    create: XOR<QuizTranslationCreateWithoutQuizInput, QuizTranslationUncheckedCreateWithoutQuizInput>
+  }
+
+  export type QuizTranslationUpdateWithWhereUniqueWithoutQuizInput = {
+    where: QuizTranslationWhereUniqueInput
+    data: XOR<QuizTranslationUpdateWithoutQuizInput, QuizTranslationUncheckedUpdateWithoutQuizInput>
+  }
+
+  export type QuizTranslationUpdateManyWithWhereWithoutQuizInput = {
+    where: QuizTranslationScalarWhereInput
+    data: XOR<QuizTranslationUpdateManyMutationInput, QuizTranslationUncheckedUpdateManyWithoutQuizInput>
+  }
+
+  export type QuizTranslationScalarWhereInput = {
+    AND?: QuizTranslationScalarWhereInput | QuizTranslationScalarWhereInput[]
+    OR?: QuizTranslationScalarWhereInput[]
+    NOT?: QuizTranslationScalarWhereInput | QuizTranslationScalarWhereInput[]
+    id?: StringFilter<"QuizTranslation"> | string
+    quizId?: StringFilter<"QuizTranslation"> | string
+    baseLanguageCode?: StringFilter<"QuizTranslation"> | string
+    question?: StringFilter<"QuizTranslation"> | string
+    explain?: StringFilter<"QuizTranslation"> | string
+  }
+
+  export type QuizCreateWithoutTranslationsInput = {
+    id?: string
+    level: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    language: LanguageCreateNestedOneWithoutQuizzesInput
+  }
+
+  export type QuizUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    languageCode: string
+    level: string
+    options: JsonNullValueInput | InputJsonValue
+    answer: number
+    quizOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuizCreateOrConnectWithoutTranslationsInput = {
+    where: QuizWhereUniqueInput
+    create: XOR<QuizCreateWithoutTranslationsInput, QuizUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type QuizUpsertWithoutTranslationsInput = {
+    update: XOR<QuizUpdateWithoutTranslationsInput, QuizUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<QuizCreateWithoutTranslationsInput, QuizUncheckedCreateWithoutTranslationsInput>
+    where?: QuizWhereInput
+  }
+
+  export type QuizUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: QuizWhereInput
+    data: XOR<QuizUpdateWithoutTranslationsInput, QuizUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type QuizUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    language?: LanguageUpdateOneRequiredWithoutQuizzesNestedInput
+  }
+
+  export type QuizUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    languageCode?: StringFieldUpdateOperationsInput | string
+    level?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    answer?: IntFieldUpdateOperationsInput | number
+    quizOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LanguageCreateWithoutListeningInput = {
@@ -20695,6 +23496,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -20717,6 +23520,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20755,6 +23560,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -20777,6 +23584,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20799,6 +23608,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -20821,6 +23632,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20903,6 +23716,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -20925,6 +23740,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21002,6 +23819,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -21024,6 +23843,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21091,6 +23912,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -21113,6 +23936,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21158,6 +23983,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -21180,6 +24007,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21247,6 +24076,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -21269,6 +24100,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21291,6 +24124,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -21313,6 +24148,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     targetLanguage: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21351,6 +24188,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -21373,6 +24212,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     targetLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21403,7 +24244,6 @@ export namespace Prisma {
     id?: string
     level: string
     word: string
-    translation: string
     phonetic?: string | null
     exampleSentence: string
     vocabOrder?: number
@@ -21412,10 +24252,8 @@ export namespace Prisma {
   export type QuizCreateManyLanguageInput = {
     id?: string
     level: string
-    question: string
     options: JsonNullValueInput | InputJsonValue
     answer: number
-    explain: string
     quizOrder?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21449,6 +24287,8 @@ export namespace Prisma {
     exp?: number
     streak?: number
     lastActive?: Date | string
+    uiLanguage?: string
+    nativeLanguage?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: string
@@ -21502,27 +24342,26 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
+    translations?: WordBankTranslationUpdateManyWithoutWordBankNestedInput
   }
 
   export type WordBankUncheckedUpdateWithoutLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
+    translations?: WordBankTranslationUncheckedUpdateManyWithoutWordBankNestedInput
   }
 
   export type WordBankUncheckedUpdateManyWithoutLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
     word?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
     phonetic?: NullableStringFieldUpdateOperationsInput | string | null
     exampleSentence?: StringFieldUpdateOperationsInput | string
     vocabOrder?: IntFieldUpdateOperationsInput | number
@@ -21531,34 +24370,30 @@ export namespace Prisma {
   export type QuizUpdateWithoutLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: QuizTranslationUpdateManyWithoutQuizNestedInput
   }
 
   export type QuizUncheckedUpdateWithoutLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: QuizTranslationUncheckedUpdateManyWithoutQuizNestedInput
   }
 
   export type QuizUncheckedUpdateManyWithoutLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     level?: StringFieldUpdateOperationsInput | string
-    question?: StringFieldUpdateOperationsInput | string
     options?: JsonNullValueInput | InputJsonValue
     answer?: IntFieldUpdateOperationsInput | number
-    explain?: StringFieldUpdateOperationsInput | string
     quizOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21628,6 +24463,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -21650,6 +24487,8 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
@@ -21672,11 +24511,69 @@ export namespace Prisma {
     exp?: IntFieldUpdateOperationsInput | number
     streak?: IntFieldUpdateOperationsInput | number
     lastActive?: DateTimeFieldUpdateOperationsInput | Date | string
+    uiLanguage?: StringFieldUpdateOperationsInput | string
+    nativeLanguage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WordBankTranslationCreateManyWordBankInput = {
+    id?: string
+    baseLanguageCode: string
+    translation: string
+    exampleTranslation?: string | null
+  }
+
+  export type WordBankTranslationUpdateWithoutWordBankInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WordBankTranslationUncheckedUpdateWithoutWordBankInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WordBankTranslationUncheckedUpdateManyWithoutWordBankInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    exampleTranslation?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type QuizTranslationCreateManyQuizInput = {
+    id?: string
+    baseLanguageCode: string
+    question: string
+    explain: string
+  }
+
+  export type QuizTranslationUpdateWithoutQuizInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type QuizTranslationUncheckedUpdateWithoutQuizInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type QuizTranslationUncheckedUpdateManyWithoutQuizInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseLanguageCode?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    explain?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserProgressDayCreateManyUserInput = {
@@ -21877,6 +24774,14 @@ export namespace Prisma {
      */
     export type LanguageCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LanguageCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use WordBankCountOutputTypeDefaultArgs instead
+     */
+    export type WordBankCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WordBankCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuizCountOutputTypeDefaultArgs instead
+     */
+    export type QuizCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuizCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -21897,9 +24802,17 @@ export namespace Prisma {
      */
     export type WordBankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WordBankDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use WordBankTranslationDefaultArgs instead
+     */
+    export type WordBankTranslationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WordBankTranslationDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use QuizDefaultArgs instead
      */
     export type QuizArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuizDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuizTranslationDefaultArgs instead
+     */
+    export type QuizTranslationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuizTranslationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ListeningDefaultArgs instead
      */

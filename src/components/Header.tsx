@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Globe2,
   Home,
@@ -12,27 +13,30 @@ import {
   LogOut,
   Sparkles,
   Flame,
+  Settings,
 } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
 
-const NAV = [
-  { to: "/", label: "首页", icon: Home },
-  { to: "/courses", label: "课程中心", icon: BookOpen },
-  { to: "/learn", label: "学习模块", icon: GraduationCap },
-  { to: "/dashboard", label: "学习进度", icon: TrendingUp },
-  { to: "/recommend", label: "推荐路径", icon: Sparkles },
-  { to: "/community", label: "社区", icon: MessageCircle },
-  { to: "/achievements", label: "成就", icon: Trophy },
-  { to: "/profile", label: "我的", icon: User },
-];
-
 export default function Header() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const NAV = [
+    { to: "/", label: t("nav.home"), icon: Home },
+    { to: "/courses", label: t("nav.courses"), icon: BookOpen },
+    { to: "/learn", label: t("nav.learn"), icon: GraduationCap },
+    { to: "/dashboard", label: t("nav.progress"), icon: TrendingUp },
+    { to: "/recommend", label: t("nav.recommended"), icon: Sparkles },
+    { to: "/community", label: t("nav.community"), icon: MessageCircle },
+    { to: "/achievements", label: t("nav.achievements"), icon: Trophy },
+    { to: "/profile", label: t("nav.profile"), icon: User },
+    { to: "/settings", label: t("nav.settings"), icon: Settings },
+  ];
 
   const handleLogout = () => {
     logout();
@@ -92,14 +96,14 @@ export default function Header() {
               </Link>
               <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-brand-100 md:flex">
                 <Flame className="h-4 w-4 text-orange-400" />
-                <span className="font-medium">{user.streak} 天连续</span>
+                <span className="font-medium">{t("header.streak", { days: user.streak })}</span>
                 <span className="mx-1 h-3 w-px bg-white/10" />
                 <span className="text-brand-200">Lv.{user.level}</span>
               </div>
               <button
                 onClick={handleLogout}
                 className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-brand-200 transition hover:bg-white/10 hover:text-white hidden md:flex"
-                title="退出登录"
+                title={t("header.logout")}
               >
                 <LogOut className="h-4 w-4" />
               </button>
@@ -109,7 +113,7 @@ export default function Header() {
               to="/login"
               className="rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30 transition hover:shadow-fuchsia-500/50"
             >
-              {status === "loading" ? "加载中..." : "登录 / 注册"}
+              {status === "loading" ? t("header.loading") : t("header.login")}
             </Link>
           )}
 

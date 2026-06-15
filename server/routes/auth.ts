@@ -9,6 +9,8 @@ interface RegisterBody {
   password: string;
   username: string;
   language: string;
+  uiLanguage?: string;
+  nativeLanguage?: string;
 }
 
 interface LoginBody {
@@ -34,6 +36,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
   // 使用 email unique constraint 保证幂等
   fastify.post<{ Body: RegisterBody }>("/auth/register", async (request, reply) => {
     const { email, password, username, language } = request.body;
+    const uiLanguage = request.body.uiLanguage || "en";
+    const nativeLanguage = request.body.nativeLanguage || "en";
     if (!email || !password || !username || !language) {
       return sendError(reply, "BAD_REQUEST", "缺少必填字段");
     }
@@ -51,7 +55,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
 
     // 使用事务创建用户（幂等：如果邮箱已存在，返回现有用户）
     const result = await prisma.$transaction(async (tx) => {
-      return registerUserIdempotent(tx, normalizedEmail, username.trim(), passwordHash, language);
+      return registerUserIdempotent(tx, normalizedEmail, username.trim(), passwordHash, language, uiLanguage, nativeLanguage);
     });
 
     if (!result.isNew) {
@@ -78,6 +82,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
         exp: user.exp,
         streak: user.streak,
         lastActive: user.lastActive.toISOString().slice(0, 10),
+        uiLanguage: user.uiLanguage,
+        nativeLanguage: user.nativeLanguage,
         targetLanguage: user.targetLanguage,
         createdAt: user.createdAt.toISOString(),
         role: user.role,
@@ -129,6 +135,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
         exp: updated.exp,
         streak: updated.streak,
         lastActive: updated.lastActive.toISOString().slice(0, 10),
+        uiLanguage: updated.uiLanguage,
+        nativeLanguage: updated.nativeLanguage,
         targetLanguage: updated.targetLanguage,
         createdAt: updated.createdAt.toISOString(),
         role: updated.role,
@@ -165,19 +173,20 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
           exp: user.exp,
           streak: user.streak,
           lastActive: user.lastActive.toISOString().slice(0, 10),
+          uiLanguage: user.uiLanguage,
+          nativeLanguage: user.nativeLanguage,
           targetLanguage: user.targetLanguage,
           createdAt: user.createdAt.toISOString(),
           role: user.role,
           goalMinutesPerDay: user.goalMinutesPerDay,
         },
       });
-    }
-  );
+    });
 
   // ====== 更新用户信息（幂等） ======
   // 单表更新，天然幂等
   fastify.patch<{
-    Body: { username?: string; avatar?: string; targetLanguage?: string; goalMinutesPerDay?: number };
+    Body: { username?: string; avatar?: string; uiLanguage?: string; nativeLanguage?: string; targetLanguage?: string; goalMinutesPerDay?: number };
   }>(
     "/auth/me",
     {
@@ -188,10 +197,12 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       if (!payload || !payload.userId) {
         return sendError(reply, "UNAUTHORIZED", "Unauthorized");
       }
-      const { username, avatar, targetLanguage, goalMinutesPerDay } = request.body;
+      const { username, avatar, uiLanguage, nativeLanguage, targetLanguage, goalMinutesPerDay } = request.body;
       const update: Record<string, unknown> = {};
       if (typeof username === "string" && username.trim().length > 0) update.username = username.trim();
       if (typeof avatar === "string") update.avatar = avatar;
+      if (typeof uiLanguage === "string" && uiLanguage.trim().length > 0) update.uiLanguage = uiLanguage.trim();
+      if (typeof nativeLanguage === "string" && nativeLanguage.trim().length > 0) update.nativeLanguage = nativeLanguage.trim();
       if (typeof targetLanguage === "string" && targetLanguage.trim().length > 0) update.targetLanguage = targetLanguage.trim();
       if (typeof goalMinutesPerDay === "number") update.goalMinutesPerDay = Math.max(0, Math.floor(goalMinutesPerDay));
 
@@ -218,6 +229,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
           exp: user.exp,
           streak: user.streak,
           lastActive: user.lastActive.toISOString().slice(0, 10),
+          uiLanguage: user.uiLanguage,
+          nativeLanguage: user.nativeLanguage,
           targetLanguage: user.targetLanguage,
           createdAt: user.createdAt.toISOString(),
           role: user.role,

@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { UserCircle2, Globe2, Target, LogOut, Check, Flame, Trophy, BookOpen } from "lucide-react";
+import { useEffect, useState } from "react";
+import { UserCircle2, Globe2, Target, LogOut, Check, Flame, Trophy, BookOpen, Monitor, MessageCircleQuestion } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { LANGUAGES } from "../data/languages";
+import { SUPPORTED_LANGUAGES } from "../lib/i18n";
 
 export default function ProfilePage() {
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
@@ -18,22 +21,34 @@ export default function ProfilePage() {
   const [username, setUsername] = useState(user?.username ?? "");
   const [goal, setGoal] = useState<number>(user?.goalMinutesPerDay ?? 30);
   const [lang, setLang] = useState<string>(user?.targetLanguage ?? "en");
+  const [uiLang, setUiLang] = useState<string>((user?.uiLanguage as string) ?? i18n.language ?? "en");
+  const [nativeLang, setNativeLang] = useState<string>((user?.nativeLanguage as string) ?? "en");
   const [savedMsg, setSavedMsg] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (user) {
+      setUsername(user.username ?? "");
+      setGoal(user.goalMinutesPerDay ?? 30);
+      setLang(user.targetLanguage ?? "en");
+      setUiLang((user.uiLanguage as string) ?? i18n.language ?? "en");
+      setNativeLang((user.nativeLanguage as string) ?? "en");
+    }
+  }, [user, i18n.language]);
+
   if (!user && status !== "loading") {
     return (
-      <PageShell title="我的">
+      <PageShell title={t("profile.title")}>
         <GlassCard className="p-10 text-center">
           <UserCircle2 className="mx-auto h-10 w-10 text-brand-200/60" />
           <div className="mt-4 text-white">
-            <p>请先登录以查看个人信息。</p>
+            <p>{t("profile.pleaseLogin")}</p>
             <button
               onClick={() => navigate("/login")}
               className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              前往登录
+              {t("profile.goLogin")}
             </button>
           </div>
         </GlassCard>
@@ -44,17 +59,21 @@ export default function ProfilePage() {
   const save = async () => {
     setErr("");
     setLoading(true);
-    const res = await updateProfile({
+    const patch: Parameters<typeof updateProfile>[0] = {
       username: username.trim() || user?.username,
       targetLanguage: lang,
       goalMinutesPerDay: Number(goal) || 30,
-    });
+      uiLanguage: uiLang,
+      nativeLanguage: nativeLang,
+    };
+    const res = await updateProfile(patch);
     setLoading(false);
     if (!res.ok) {
-      setErr(res.error ?? "保存失败");
+      setErr(res.error ?? t("profile.saveFailed"));
       return;
     }
-    setSavedMsg("已保存 ✓");
+    i18n.changeLanguage(uiLang);
+    setSavedMsg(t("profile.saved"));
     window.setTimeout(() => setSavedMsg(""), 2000);
   };
 
@@ -65,8 +84,8 @@ export default function ProfilePage() {
 
   return (
     <PageShell
-      title="个人中心"
-      subtitle="管理你的账户信息、学习目标与偏好。"
+      title={t("profile.title")}
+      subtitle={t("profile.subtitle")}
     >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* 左：卡片档案 */}
@@ -78,22 +97,22 @@ export default function ProfilePage() {
             <div>
               <div className="font-display text-xl font-bold text-white">{user?.username}</div>
               <div className="text-xs text-brand-200/70">{user?.email}</div>
-              <div className="mt-2 text-xs text-brand-200/60">创建于 {user?.createdAt}</div>
+              <div className="mt-2 text-xs text-brand-200/60">{t("profile.createdAt", { date: user?.createdAt })}</div>
             </div>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <Info label="连续学习" value={`${user?.streak ?? 0} 天`} />
-            <Info label="等级" value={`Lv.${user?.level ?? 1}`} />
-            <Info label="已学单词" value={progress ? `${progress.wordsLearned}` : "—"} />
-            <Info label="语法练习" value={progress ? `${progress.quizzesDone}` : "—"} />
+            <Info label={t("profile.info.streak")} value={`${user?.streak ?? 0} ${t("common.days")}`} />
+            <Info label={t("profile.info.level")} value={`Lv.${user?.level ?? 1}`} />
+            <Info label={t("profile.info.words")} value={progress ? `${progress.wordsLearned}` : "—"} />
+            <Info label={t("profile.info.grammar")} value={progress ? `${progress.quizzesDone}` : "—"} />
             <Info
-              label="口语"
-              value={progress ? `${progress.speakingMinutes} 分钟` : "—"}
+              label={t("profile.info.speaking")}
+              value={progress ? `${progress.speakingMinutes} ${t("common.minutes")}` : "—"}
             />
             <Info
-              label="听力"
-              value={progress ? `${progress.listeningMinutes} 分钟` : "—"}
+              label={t("profile.info.listening")}
+              value={progress ? `${progress.listeningMinutes} ${t("common.minutes")}` : "—"}
             />
           </div>
 
@@ -101,17 +120,17 @@ export default function ProfilePage() {
             onClick={handleLogout}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-rose-200 transition hover:bg-rose-500/10"
           >
-            <LogOut className="h-4 w-4" /> 退出当前账号
+            <LogOut className="h-4 w-4" /> {t("profile.logout")}
           </button>
         </GlassCard>
 
         {/* 中：设置 */}
         <GlassCard className="p-6 lg:col-span-2">
-          <div className="text-sm font-semibold text-white">账户与偏好</div>
-          <p className="mt-1 text-xs text-brand-200/70">修改后点击"保存"。</p>
+          <div className="text-sm font-semibold text-white">{t("profile.settingsTitle")}</div>
+          <p className="mt-1 text-xs text-brand-200/70">{t("profile.settingsHint")}</p>
 
           <div className="mt-6 grid gap-5">
-            <Field label="昵称">
+            <Field label={t("profile.fields.nickname")}>
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -119,7 +138,7 @@ export default function ProfilePage() {
               />
             </Field>
 
-            <Field label="邮箱">
+            <Field label={t("profile.fields.email")}>
               <input
                 value={user?.email ?? ""}
                 disabled
@@ -127,7 +146,7 @@ export default function ProfilePage() {
               />
             </Field>
 
-            <Field label="目标语言">
+            <Field label={t("profile.fields.targetLanguage")}>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {LANGUAGES.map((l) => (
                   <button
@@ -151,7 +170,61 @@ export default function ProfilePage() {
               </div>
             </Field>
 
-            <Field label={`每日目标（${goal} 分钟）`}>
+            <Field label={t("profile.fields.uiLanguage")}>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {SUPPORTED_LANGUAGES.map((id) => {
+                  const l = LANGUAGES.find((x) => x.id === id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setUiLang(id)}
+                      className={
+                        "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
+                        (uiLang === id
+                          ? "border-sky-400/50 bg-sky-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                      }
+                    >
+                      <span className="flex items-center gap-2">
+                        <Monitor className="h-4 w-4" />
+                        {l?.flag ?? "🌐"} {l?.name ?? id}
+                      </span>
+                      {uiLang === id && <Check className="h-4 w-4 text-sky-300" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </Field>
+
+            <Field label={t("profile.fields.nativeLanguage")}>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {SUPPORTED_LANGUAGES.map((id) => {
+                  const l = LANGUAGES.find((x) => x.id === id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setNativeLang(id)}
+                      className={
+                        "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
+                        (nativeLang === id
+                          ? "border-sky-400/50 bg-sky-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                      }
+                    >
+                      <span className="flex items-center gap-2">
+                        <MessageCircleQuestion className="h-4 w-4" />
+                        {l?.flag ?? "🌐"} {l?.name ?? id}
+                      </span>
+                      {nativeLang === id && <Check className="h-4 w-4 text-sky-300" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </Field>
+
+            <Field label={t("profile.fields.dailyGoal", { goal })}>
               <div className="flex items-center gap-3">
                 <input
                   type="range"
@@ -163,7 +236,7 @@ export default function ProfilePage() {
                   className="flex-1 accent-sky-400"
                 />
                 <span className="min-w-[60px] rounded-full bg-white/5 px-3 py-1 text-center text-xs text-brand-100">
-                  {goal} 分钟
+                  {goal} {t("common.minutes")}
                 </span>
               </div>
             </Field>
@@ -179,7 +252,7 @@ export default function ProfilePage() {
               disabled={loading}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-60"
             >
-              {loading ? "保存中..." : <>保存修改 <Target className="h-4 w-4" /></>}
+              {loading ? t("profile.saving") : <>{t("profile.save")} <Target className="h-4 w-4" /></>}
             </button>
           </div>
 
@@ -188,10 +261,10 @@ export default function ProfilePage() {
               <Flame className="h-4 w-4 text-orange-400" />
               <Trophy className="h-4 w-4 text-amber-300" />
               <BookOpen className="h-4 w-4 text-sky-300" />
-              <span className="ml-1">持续学习，稳步前进</span>
+              <span className="ml-1">{t("profile.bannerTitle")}</span>
             </div>
             <div className="mt-2 text-sm text-brand-100/90">
-              LinguaVerse 使用后端 API 记录所有学习数据，随时在任意设备上同步进度。
+              {t("profile.bannerText")}
             </div>
           </div>
         </GlassCard>

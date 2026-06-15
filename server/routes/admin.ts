@@ -249,31 +249,36 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     const words = await prisma.wordBank.findMany({
       where: buildWhere(request.query.language, request.query.level),
       orderBy: [{ vocabOrder: "asc" }, { word: "asc" }],
+      include: { translations: true },
     });
     return sendSuccess(
       reply,
-      words.map((w) => ({
-        id: w.id,
-        languageCode: w.languageCode,
-        level: w.level,
-        word: w.word,
-        translation: w.translation,
-        phonetic: w.phonetic,
-        exampleSentence: w.exampleSentence,
-        vocabOrder: w.vocabOrder,
-      }))
+      words.map((w) => {
+        const tr = w.translations.find((x) => x.baseLanguageCode === "en") ?? w.translations[0];
+        return {
+          id: w.id,
+          languageCode: w.languageCode,
+          level: w.level,
+          word: w.word,
+          translation: tr?.translation ?? "",
+          phonetic: w.phonetic,
+          exampleSentence: w.exampleSentence,
+          vocabOrder: w.vocabOrder,
+        };
+      })
     );
   });
 
   fastify.get<{ Params: { id: string } }>("/admin/words/:id", async (request, reply) => {
-    const word = await prisma.wordBank.findUnique({ where: { id: request.params.id } });
+    const word = await prisma.wordBank.findUnique({ where: { id: request.params.id }, include: { translations: true } });
     if (!word) return sendError(reply, "NOT_FOUND", "单词不存在");
+    const tr = word.translations.find((x) => x.baseLanguageCode === "en") ?? word.translations[0];
     return sendSuccess(reply, {
       id: word.id,
       languageCode: word.languageCode,
       level: word.level,
       word: word.word,
-      translation: word.translation,
+      translation: tr?.translation ?? "",
       phonetic: word.phonetic,
       exampleSentence: word.exampleSentence,
       vocabOrder: word.vocabOrder,
@@ -285,22 +290,30 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     if (!languageCode || !level || !word || !translation || !exampleSentence) {
       return badRequest(reply, "缺少必填字段");
     }
-    const data: Prisma.WordBankCreateInput = {
-      language: { connect: { code: String(languageCode) } },
-      level: String(level),
-      word: String(word),
-      translation: String(translation),
-      phonetic: typeof phonetic === "string" ? phonetic : null,
-      exampleSentence: String(exampleSentence),
-      vocabOrder: typeof vocabOrder === "number" ? vocabOrder : Number(vocabOrder ?? 0),
-    };
-    const created = await prisma.wordBank.create({ data });
+    const created = await prisma.wordBank.create({
+      data: {
+        language: { connect: { code: String(languageCode) } },
+        level: String(level),
+        word: String(word),
+        phonetic: typeof phonetic === "string" ? phonetic : null,
+        exampleSentence: String(exampleSentence),
+        vocabOrder: typeof vocabOrder === "number" ? vocabOrder : Number(vocabOrder ?? 0),
+        translations: {
+          create: {
+            baseLanguageCode: "en",
+            translation: String(translation),
+          },
+        },
+      },
+      include: { translations: true },
+    });
+    const tr = created.translations.find((x) => x.baseLanguageCode === "en") ?? created.translations[0];
     return sendSuccess(reply, {
       id: created.id,
       languageCode: created.languageCode,
       level: created.level,
       word: created.word,
-      translation: created.translation,
+      translation: tr?.translation ?? "",
       phonetic: created.phonetic,
       exampleSentence: created.exampleSentence,
       vocabOrder: created.vocabOrder,
@@ -313,18 +326,26 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     if (typeof languageCode === "string") update.language = { connect: { code: languageCode } };
     if (typeof level === "string") update.level = level;
     if (typeof word === "string") update.word = word;
-    if (typeof translation === "string") update.translation = translation;
     if (typeof phonetic === "string") update.phonetic = phonetic;
     if (typeof exampleSentence === "string") update.exampleSentence = exampleSentence;
     if (typeof vocabOrder === "number") update.vocabOrder = vocabOrder;
-    if (Object.keys(update).length === 0) return badRequest(reply, "缺少可更新字段");
-    const updated = await prisma.wordBank.update({ where: { id: request.params.id }, data: update });
+    if (Object.keys(update).length === 0 && typeof translation !== "string") return badRequest(reply, "缺少可更新字段");
+    const updated = await prisma.wordBank.update({ where: { id: request.params.id }, data: update, include: { translations: true } });
+    if (typeof translation === "string") {
+      const existing = updated.translations.find((x) => x.baseLanguageCode === "en");
+      if (existing) {
+        await prisma.wordBankTranslation.update({ where: { id: existing.id }, data: { translation } });
+      } else {
+        await prisma.wordBankTranslation.create({ data: { wordBankId: updated.id, baseLanguageCode: "en", translation } });
+      }
+    }
+    const tr = updated.translations.find((x) => x.baseLanguageCode === "en") ?? updated.translations[0];
     return sendSuccess(reply, {
       id: updated.id,
       languageCode: updated.languageCode,
       level: updated.level,
       word: updated.word,
-      translation: updated.translation,
+      translation: tr?.translation ?? "",
       phonetic: updated.phonetic,
       exampleSentence: updated.exampleSentence,
       vocabOrder: updated.vocabOrder,
@@ -341,33 +362,38 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     const quizzes = await prisma.quiz.findMany({
       where: buildWhere(request.query.language, request.query.level),
       orderBy: [{ quizOrder: "asc" }, { createdAt: "asc" }],
+      include: { translations: true },
     });
     return sendSuccess(
       reply,
-      quizzes.map((q) => ({
-        id: q.id,
-        languageCode: q.languageCode,
-        level: q.level,
-        question: q.question,
-        options: q.options as string[],
-        answer: q.answer,
-        explain: q.explain,
-        quizOrder: q.quizOrder,
-      }))
+      quizzes.map((q) => {
+        const tr = q.translations.find((x) => x.baseLanguageCode === "en") ?? q.translations[0];
+        return {
+          id: q.id,
+          languageCode: q.languageCode,
+          level: q.level,
+          question: tr?.question ?? "",
+          options: q.options as string[],
+          answer: q.answer,
+          explain: tr?.explain ?? "",
+          quizOrder: q.quizOrder,
+        };
+      })
     );
   });
 
   fastify.get<{ Params: { id: string } }>("/admin/quizzes/:id", async (request, reply) => {
-    const quiz = await prisma.quiz.findUnique({ where: { id: request.params.id } });
+    const quiz = await prisma.quiz.findUnique({ where: { id: request.params.id }, include: { translations: true } });
     if (!quiz) return sendError(reply, "NOT_FOUND", "题目不存在");
+    const tr = quiz.translations.find((x) => x.baseLanguageCode === "en") ?? quiz.translations[0];
     return sendSuccess(reply, {
       id: quiz.id,
       languageCode: quiz.languageCode,
       level: quiz.level,
-      question: quiz.question,
+      question: tr?.question ?? "",
       options: quiz.options as string[],
       answer: quiz.answer,
-      explain: quiz.explain,
+      explain: tr?.explain ?? "",
       quizOrder: quiz.quizOrder,
     });
   });
@@ -379,24 +405,32 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     }
     const optionsArray = ensureArray(options);
     if (optionsArray === null) return badRequest(reply, "options 必须是数组");
-    const data: Prisma.QuizCreateInput = {
-      language: { connect: { code: String(languageCode) } },
-      level: String(level),
-      question: String(question),
-      options: optionsArray as Prisma.InputJsonValue,
-      answer: Number(answer),
-      explain: String(explain),
-      quizOrder: typeof quizOrder === "number" ? quizOrder : Number(quizOrder ?? 0),
-    };
-    const quiz = await prisma.quiz.create({ data });
+    const quiz = await prisma.quiz.create({
+      data: {
+        language: { connect: { code: String(languageCode) } },
+        level: String(level),
+        options: optionsArray as Prisma.InputJsonValue,
+        answer: Number(answer),
+        quizOrder: typeof quizOrder === "number" ? quizOrder : Number(quizOrder ?? 0),
+        translations: {
+          create: {
+            baseLanguageCode: "en",
+            question: String(question),
+            explain: String(explain),
+          },
+        },
+      },
+      include: { translations: true },
+    });
+    const tr = quiz.translations.find((x) => x.baseLanguageCode === "en") ?? quiz.translations[0];
     return sendSuccess(reply, {
       id: quiz.id,
       languageCode: quiz.languageCode,
       level: quiz.level,
-      question: quiz.question,
+      question: tr?.question ?? "",
       options: quiz.options as string[],
       answer: quiz.answer,
-      explain: quiz.explain,
+      explain: tr?.explain ?? "",
       quizOrder: quiz.quizOrder,
     });
   });
@@ -406,8 +440,6 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
     const update: Prisma.QuizUpdateInput = {};
     if (typeof languageCode === "string") update.language = { connect: { code: languageCode } };
     if (typeof level === "string") update.level = level;
-    if (typeof question === "string") update.question = question;
-    if (typeof explain === "string") update.explain = explain;
     if (typeof answer === "number") update.answer = answer;
     if (typeof quizOrder === "number") update.quizOrder = quizOrder;
     if (options !== undefined) {
@@ -415,16 +447,36 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
       if (optionsArray === null) return badRequest(reply, "options 必须是数组");
       update.options = optionsArray as Prisma.InputJsonValue;
     }
-    if (Object.keys(update).length === 0) return badRequest(reply, "缺少可更新字段");
-    const quiz = await prisma.quiz.update({ where: { id: request.params.id }, data: update });
+    const hasTranslation = typeof question === "string" || typeof explain === "string";
+    if (Object.keys(update).length === 0 && !hasTranslation) return badRequest(reply, "缺少可更新字段");
+    const quiz = await prisma.quiz.update({ where: { id: request.params.id }, data: update, include: { translations: true } });
+    if (hasTranslation) {
+      const existing = quiz.translations.find((x) => x.baseLanguageCode === "en");
+      if (existing) {
+        await prisma.quizTranslation.update({
+          where: { id: existing.id },
+          data: { question: typeof question === "string" ? question : existing.question, explain: typeof explain === "string" ? explain : existing.explain },
+        });
+      } else {
+        await prisma.quizTranslation.create({
+          data: {
+            quizId: quiz.id,
+            baseLanguageCode: "en",
+            question: typeof question === "string" ? question : "",
+            explain: typeof explain === "string" ? explain : "",
+          },
+        });
+      }
+    }
+    const tr = quiz.translations.find((x) => x.baseLanguageCode === "en") ?? quiz.translations[0];
     return sendSuccess(reply, {
       id: quiz.id,
       languageCode: quiz.languageCode,
       level: quiz.level,
-      question: quiz.question,
+      question: tr?.question ?? "",
       options: quiz.options as string[],
       answer: quiz.answer,
-      explain: quiz.explain,
+      explain: tr?.explain ?? "",
       quizOrder: quiz.quizOrder,
     });
   });

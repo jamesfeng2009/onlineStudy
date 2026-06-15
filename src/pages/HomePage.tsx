@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Sparkles,
   ArrowRight,
@@ -23,6 +24,7 @@ import { api } from "../lib/api";
 import type { CourseResp } from "../lib/api";
 
 export default function HomePage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const updateLanguage = useAuthStore((s) => s.updateLanguage);
@@ -81,6 +83,15 @@ export default function HomePage() {
   const goal = user?.goalMinutesPerDay ?? 30;
   const pctGoal = Math.min(100, Math.round((minutesToday / Math.max(1, goal)) * 100));
 
+  const tasks = useMemo(
+    () => t("home.tasks.items", { returnObjects: true }) as { title: string; time: string }[],
+    [t]
+  );
+  const features = useMemo(
+    () => t("home.features.items", { returnObjects: true }) as { title: string; desc: string; action: string }[],
+    [t]
+  );
+
   return (
     <PageShell>
       {/* Hero */}
@@ -91,23 +102,21 @@ export default function HomePage() {
         <div className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-2">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-              <Sparkles className="h-3.5 w-3.5 text-amber-300" /> 沉浸式多语种学习平台
+              <Sparkles className="h-3.5 w-3.5 text-amber-300" /> {t("home.hero.badge")}
             </div>
             <h1 className="mt-4 font-display text-4xl font-bold leading-tight text-white md:text-6xl">
-              今天，让世界
+              {t("home.hero.title")}
               <span className="block bg-gradient-to-r from-sky-300 via-fuchsia-300 to-amber-300 bg-clip-text text-transparent">
-                多一种说母语的方式。
+                {t("home.hero.titleHighlight")}
               </span>
             </h1>
             <p className="mt-4 max-w-lg text-brand-200/80">
               {user ? (
                 <>
-                  欢迎回来，<span className="text-white">{user.username}</span>
-                  ！你今天已学习 <b className="text-sky-300">{minutesToday}</b> 分钟，目标 {goal}{" "}
-                  分钟。继续加油！
+                  {t("home.hero.welcomeBack", { name: user.username, minutes: minutesToday, goal })}
                 </>
               ) : (
-                <>选择一门你想征服的语言，从今天开始建立属于你的学习习惯。</>
+                <>{t("home.hero.guest")}</>
               )}
             </p>
 
@@ -116,32 +125,32 @@ export default function HomePage() {
                 to="/learn"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
               >
-                开始今日学习 <ArrowRight className="h-4 w-4" />
+                {t("home.hero.startToday")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/courses"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                浏览课程
+                {t("home.hero.browseCourses")}
               </Link>
             </div>
 
             <div className="mt-6 grid grid-cols-3 gap-3">
               <StatTile
-                label="连续天数"
+                label={t("home.hero.streak")}
                 value={user ? `${user.streak ?? 0}` : status === "loading" ? "..." : "—"}
                 icon={<Flame className="h-5 w-5 text-orange-400" />}
               />
               <StatTile
-                label="等级"
+                label={t("home.hero.level")}
                 value={user ? `Lv.${user.level ?? 1}` : status === "loading" ? "..." : "—"}
                 icon={<Trophy className="h-5 w-5 text-amber-300" />}
               />
               <StatTile
-                label="今日目标"
+                label={t("home.hero.todaysGoal")}
                 value={`${pctGoal}%`}
                 icon={<Target className="h-5 w-5 text-sky-300" />}
-                hint={`${minutesToday}/${goal} 分钟`}
+                hint={t("home.hero.minutesOfGoal", { minutes: minutesToday, goal })}
               />
             </div>
           </div>
@@ -149,8 +158,8 @@ export default function HomePage() {
           {/* 语言卡片 carousel */}
           <div className="relative">
             <div className="mb-3 flex items-center justify-between text-xs text-brand-200/70">
-              <span>选择你正在学习的语言</span>
-              {user && <span>当前：{getLanguage(user.targetLanguage).name}</span>}
+              <span>{t("home.languages.choose")}</span>
+              {user && <span>{t("home.languages.current", { language: getLanguage(user.targetLanguage).name })}</span>}
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               {LANGUAGES.map((l, i) => {
@@ -176,7 +185,7 @@ export default function HomePage() {
                     <div className="text-xs text-brand-200/70">{l.native}</div>
                     <div className="mt-3 text-xs text-brand-200/60">{l.tagline}</div>
                     <div className="mt-4 inline-flex items-center text-xs text-sky-300 transition group-hover:text-sky-200">
-                      {active ? "当前语言" : "点击选择"} <ArrowRight className="ml-1 h-3 w-3" />
+                      {active ? t("home.languages.currentLanguage") : t("home.languages.select")} <ArrowRight className="ml-1 h-3 w-3" />
                     </div>
                   </button>
                 );
@@ -187,34 +196,34 @@ export default function HomePage() {
             <GlassCard className="mt-6">
               <div className="mb-3 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <Zap className="h-4 w-4 text-amber-300" /> 今日推荐
+                  <Zap className="h-4 w-4 text-amber-300" /> {t("home.tasks.title")}
                 </div>
                 <Link to="/recommend" className="text-xs text-sky-300 hover:text-sky-200">
-                  查看全部 →
+                  {t("home.tasks.viewAll")}
                 </Link>
               </div>
               <div className="grid gap-2">
-                {[
-                  { t: "记 20 个新单词", m: "10 分钟", i: BookOpen, c: "from-sky-400/30" },
-                  { t: "语法练习 · 基础时态", m: "15 分钟", i: Pen, c: "from-fuchsia-400/30" },
-                  { t: "跟读一段对话", m: "8 分钟", i: Mic, c: "from-amber-400/30" },
-                  { t: "听力 5 分钟", m: "5 分钟", i: Headphones, c: "from-rose-400/30" },
-                ].map((x, i) => (
-                  <Link
-                    key={i}
-                    to="/learn"
-                    className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.03] p-3 transition hover:bg-white/5"
-                  >
-                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${x.c} text-white`}>
-                      <x.i className="h-4 w-4" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm text-white">{x.t}</div>
-                      <div className="text-xs text-brand-200/60">{x.m}</div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-brand-200/50" />
-                  </Link>
-                ))}
+                {tasks.map((x, i) => {
+                  const icons = [BookOpen, Pen, Mic, Headphones];
+                  const colors = ["from-sky-400/30", "from-fuchsia-400/30", "from-amber-400/30", "from-rose-400/30"];
+                  const Icon = icons[i] ?? BookOpen;
+                  return (
+                    <Link
+                      key={i}
+                      to="/learn"
+                      className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.03] p-3 transition hover:bg-white/5"
+                    >
+                      <div className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${colors[i]} text-white`}>
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm text-white">{x.title}</div>
+                        <div className="text-xs text-brand-200/60">{x.time}</div>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-brand-200/50" />
+                    </Link>
+                  );
+                })}
               </div>
             </GlassCard>
           </div>
@@ -225,33 +234,31 @@ export default function HomePage() {
       <section className="mt-16">
         <div className="mb-6 flex items-end justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-              四种核心练习，构筑完整的语言能力
-            </h2>
-            <p className="mt-1 text-sm text-brand-200/70">输入 · 输出 · 反馈，构建真正能说出口的自信。</p>
+            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{t("home.features.title")}</h2>
+            <p className="mt-1 text-sm text-brand-200/70">{t("home.features.desc")}</p>
           </div>
           <Link to="/learn" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
-            进入学习 →
+            {t("home.features.enter")}
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {[
-            { t: "闪卡记单词", d: "基于间隔记忆，记住就是记住了", i: BookOpen, c: "from-sky-400 to-blue-600" },
-            { t: "语法练习", d: "即时反馈 + 答案解析，规则清晰易懂", i: Pen, c: "from-fuchsia-400 to-purple-600" },
-            { t: "口语跟读", d: "读出来，让你的舌头形成肌肉记忆", i: Mic, c: "from-amber-400 to-orange-500" },
-            { t: "听力训练", d: "真实语境，填空练习，越听越清楚", i: Headphones, c: "from-rose-400 to-pink-600" },
-          ].map((f, i) => (
-            <Link to="/learn" key={i} className="glass group rounded-2xl p-5 transition hover:-translate-y-1">
-              <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${f.c} text-white shadow-lg`}>
-                <f.i className="h-5 w-5" />
-              </div>
-              <div className="mt-4 font-semibold text-white">{f.t}</div>
-              <div className="mt-1 text-sm text-brand-200/70">{f.d}</div>
-              <div className="mt-4 inline-flex text-xs text-sky-300 group-hover:text-sky-200">
-                去试一试 <ArrowRight className="ml-1 h-3 w-3" />
-              </div>
-            </Link>
-          ))}
+          {features.map((f, i) => {
+            const icons = [BookOpen, Pen, Mic, Headphones];
+            const colors = ["from-sky-400 to-blue-600", "from-fuchsia-400 to-purple-600", "from-amber-400 to-orange-500", "from-rose-400 to-pink-600"];
+            const Icon = icons[i] ?? BookOpen;
+            return (
+              <Link to="/learn" key={i} className="glass group rounded-2xl p-5 transition hover:-translate-y-1">
+                <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${colors[i]} text-white shadow-lg`}>
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div className="mt-4 font-semibold text-white">{f.title}</div>
+                <div className="mt-1 text-sm text-brand-200/70">{f.desc}</div>
+                <div className="mt-4 inline-flex text-xs text-sky-300 group-hover:text-sky-200">
+                  {f.action} <ArrowRight className="ml-1 h-3 w-3" />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -259,16 +266,16 @@ export default function HomePage() {
       <section className="mt-16">
         <div className="mb-6 flex items-end justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">精选课程</h2>
-            <p className="mt-1 text-sm text-brand-200/70">系统分级 · 循序渐进 · 适配多种学习目标</p>
+            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{t("home.courses.title")}</h2>
+            <p className="mt-1 text-sm text-brand-200/70">{t("home.courses.desc")}</p>
           </div>
           <Link to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
-            查看全部 →
+            {t("home.courses.viewAll")}
           </Link>
         </div>
         {coursesLoading && courses.length === 0 ? (
           <div className="rounded-2xl border border-white/5 bg-white/5 p-10 text-center text-sm text-brand-200/70">
-            正在加载课程...
+            {t("home.courses.loading")}
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -287,8 +294,8 @@ export default function HomePage() {
                   <div className="font-semibold text-white">{c.title}</div>
                   <div className="mt-1 line-clamp-2 text-xs text-brand-200/70">{c.description}</div>
                   <div className="mt-3 flex items-center justify-between text-xs text-brand-200/60">
-                    <span>{c.lessons} 课时</span>
-                    <span>{c.minutes} 分钟</span>
+                    <span>{t("home.courses.lessons", { count: c.lessons })}</span>
+                    <span>{t("home.courses.minutes", { count: c.minutes })}</span>
                   </div>
                 </div>
               </Link>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightbulb, Play, Pause } from "lucide-react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { api } from "../lib/api";
@@ -14,20 +15,21 @@ import type { Language } from "../types";
 
 type Tab = "words" | "grammar" | "speaking" | "listening";
 
-const TABS: { key: Tab; label: string; icon: React.ElementType; desc: string }[] = [
-  { key: "words", label: "单词记忆", icon: BookOpen, desc: "翻转闪卡，主动回忆，加深长期记忆" },
-  { key: "grammar", label: "语法练习", icon: Pen, desc: "多选择+填空，即时反馈答案与解析" },
-  { key: "speaking", label: "口语跟读", icon: Mic, desc: "听一段，读一段，让舌头形成肌肉记忆" },
-  { key: "listening", label: "听力训练", icon: Headphones, desc: "真实听力材料，填空训练辨音" },
-];
-
 export default function LearnPage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const { courseId } = useParams<{ courseId?: string }>();
   const course = useMemo(() => {
     if (!courseId) return null;
     return COURSES.find((c) => c.id === courseId) ?? null;
   }, [courseId]);
+
+  const TABS: { key: Tab; label: string; icon: React.ElementType; desc: string }[] = [
+    { key: "words", label: t("learn.wordMemory"), icon: BookOpen, desc: t("learn.wordMemoryDesc") },
+    { key: "grammar", label: t("learn.grammar"), icon: Pen, desc: t("learn.grammarDesc") },
+    { key: "speaking", label: t("learn.speaking"), icon: Mic, desc: t("learn.speakingDesc") },
+    { key: "listening", label: t("learn.listening"), icon: Headphones, desc: t("learn.listeningDesc") },
+  ];
 
   const [tab, setTab] = useState<Tab>("words");
   const [lang, setLang] = useState<Language>(
@@ -44,10 +46,10 @@ export default function LearnPage() {
 
   const title = course
     ? `${course.title}`
-    : "互动学习模块";
+    : t("learn.wordMemory");
   const subtitle = course
     ? `${getLanguage(course.language).flag} ${getLanguage(course.language).name} · ${course.level} · ${course.description}`
-    : "选择一个模块，开始 10 分钟的沉浸式练习。";
+    : t("learn.wordMemoryDesc");
 
   return (
     <PageShell
@@ -81,13 +83,13 @@ export default function LearnPage() {
     >
       {/* Tab switcher */}
       <div className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {TABS.map((t) => {
-          const Icon = t.icon;
-          const active = tab === t.key;
+        {TABS.map((tabItem) => {
+          const Icon = tabItem.icon;
+          const active = tab === tabItem.key;
           return (
             <button
-              key={t.key}
-              onClick={() => setTab(t.key)}
+              key={tabItem.key}
+              onClick={() => setTab(tabItem.key)}
               className={
                 "glass relative overflow-hidden rounded-2xl p-4 text-left transition " +
                 (active
@@ -99,10 +101,10 @@ export default function LearnPage() {
                 <div className={"flex h-10 w-10 items-center justify-center rounded-xl " + (active ? "bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white" : "bg-white/5 text-brand-200")}>
                   <Icon className="h-5 w-5" />
                 </div>
-                {active && <span className="text-[10px] text-sky-300">正在使用</span>}
+                {active && <span className="text-[10px] text-sky-300">{t("learn.inUse")}</span>}
               </div>
-              <div className="mt-3 font-semibold text-white">{t.label}</div>
-              <div className="mt-1 text-xs text-brand-200/70">{t.desc}</div>
+              <div className="mt-3 font-semibold text-white">{tabItem.label}</div>
+              <div className="mt-1 text-xs text-brand-200/70">{tabItem.desc}</div>
             </button>
           );
         })}
@@ -120,15 +122,18 @@ export default function LearnPage() {
    单词记忆 — Flashcards
 ================================== */
 function WordsModule({ language, level }: { language: Language; level?: string }) {
+  const { t } = useTranslation();
+  const user = useAuthStore((s) => s.user);
   const recordWord = useProgressStore((s) => s.recordWord);
   const [apiWords, setApiWords] = useState<WordResp[]>([]);
   const [apiLoading, setApiLoading] = useState(true);
+  const nativeLanguage = (user?.nativeLanguage as string) || "en";
 
   useEffect(() => {
     setApiLoading(true);
-    let alive = true;
+    const alive = true;
     api
-      .words({ language, level })
+      .words({ language, level, nativeLanguage })
       .then((data) => {
         if (alive) setApiWords(data);
       })
@@ -138,10 +143,7 @@ function WordsModule({ language, level }: { language: Language; level?: string }
       .finally(() => {
         if (alive) setApiLoading(false);
       });
-    return () => {
-      alive = false;
-    };
-  }, [language, level]);
+  }, [language, level, nativeLanguage]);
 
   const words = useMemo(() => {
     if (apiWords.length > 0) {
@@ -178,7 +180,7 @@ function WordsModule({ language, level }: { language: Language; level?: string }
         <GlassCard className="flex min-h-[380px] flex-col">
           <div className="flex items-center justify-between text-xs">
             <span className="text-brand-200/70">
-              第 {i + 1} 张 / 共 {words.length} 张
+              {t("learn.card", { current: i + 1, total: words.length })}
             </span>
             <span className="text-brand-200/70">
               <span className="text-emerald-300">✓ {known}</span>{" "}
@@ -194,22 +196,22 @@ function WordsModule({ language, level }: { language: Language; level?: string }
 
           {apiLoading && apiWords.length === 0 ? (
             <div className="flex flex-1 items-center justify-center text-sm text-brand-200/70">
-              加载单词中...
+              {t("common.loading")}
             </div>
           ) : (
             <div className="card-flip flex-1">
               <div className={"card-flip-inner" + (flipped ? " is-flipped" : "")} onClick={() => setFlipped((f) => !f)} style={{ cursor: "pointer" }}>
                 <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 via-slate-900/20 to-fuchsia-500/20 p-10">
-                  <div className="text-xs uppercase tracking-[0.3em] text-sky-300">单词</div>
+                  <div className="text-xs uppercase tracking-[0.3em] text-sky-300">{t("learn.word")}</div>
                   <div className="mt-4 font-display text-5xl font-bold text-white md:text-6xl">{card?.word}</div>
                   {card?.phonetic && <div className="mt-3 text-sm text-brand-200/70">{card.phonetic}</div>}
-                  <div className="mt-8 text-xs text-brand-200/50">点击卡片查看释义 ↻</div>
+                  <div className="mt-8 text-xs text-brand-200/50">{t("learn.tapToSeeMeaning")} ↻</div>
                 </div>
                 <div className="card-face back glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-amber-500/20 via-slate-900/20 to-rose-500/20 p-10">
-                  <div className="text-xs uppercase tracking-[0.3em] text-amber-300">释义 · 例句</div>
+                  <div className="text-xs uppercase tracking-[0.3em] text-amber-300">{t("learn.translation")} · {t("learn.example")}</div>
                   <div className="mt-4 font-display text-3xl font-bold text-white md:text-4xl">{card?.translation}</div>
                   <div className="mt-6 max-w-md text-center text-sm italic text-brand-100/90">"{card?.example}"</div>
-                  <div className="mt-6 text-xs text-brand-200/50">再次点击卡片翻回 ↻</div>
+                  <div className="mt-6 text-xs text-brand-200/50">{t("learn.tapToSeeMeaning")} ↻</div>
                 </div>
               </div>
             </div>
@@ -220,13 +222,13 @@ function WordsModule({ language, level }: { language: Language; level?: string }
               onClick={() => next(false)}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm font-medium text-rose-200 transition hover:bg-rose-500/20"
             >
-              <X className="h-4 w-4" /> 还不熟悉
+              <X className="h-4 w-4" /> {t("learn.notFamiliar")}
             </button>
             <button
               onClick={() => next(true)}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              <Check className="h-4 w-4" /> 记住了
+              <Check className="h-4 w-4" /> {t("learn.remembered")}
             </button>
           </div>
         </GlassCard>
@@ -234,16 +236,16 @@ function WordsModule({ language, level }: { language: Language; level?: string }
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">今日单词</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.word")}</div>
           <div className="mt-2 font-display text-3xl font-bold text-white">{i}</div>
-          <div className="text-xs text-brand-200/60">已翻看 · 记住率 {i === 0 ? "—" : `${Math.round((known / i) * 100)}%`}</div>
+          <div className="text-xs text-brand-200/60">{t("learn.tapToSeeMeaning")} · {i === 0 ? "—" : `${Math.round((known / i) * 100)}%`}</div>
         </GlassCard>
         <GlassCard className="p-5">
-          <div className="mb-3 text-xs uppercase tracking-wider text-brand-200/60">技巧</div>
+          <div className="mb-3 text-xs uppercase tracking-wider text-brand-200/60">{t("learn.tips")}</div>
           <ul className="space-y-2 text-sm text-brand-100/90">
-            <li>· 读一遍单词，再读一遍例句。</li>
-            <li>· 用单词自己造句，哪怕只是一句。</li>
-            <li>· 不熟悉的会反复出现，直到你记住。</li>
+            <li>· {t("learn.wordMemoryDesc")}</li>
+            <li>· {t("learn.speakingDesc")}</li>
+            <li>· {t("learn.listeningDesc")}</li>
           </ul>
         </GlassCard>
       </div>

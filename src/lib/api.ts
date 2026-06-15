@@ -62,6 +62,8 @@ export async function register(data: {
   password: string;
   username: string;
   language: string;
+  uiLanguage?: string;
+  nativeLanguage?: string;
 }): Promise<{ token: string; user: Record<string, unknown> }> {
   return request("/auth/register", { method: "POST", body: JSON.stringify(data) });
 }
@@ -84,6 +86,8 @@ export async function getMe(): Promise<{ user: Record<string, unknown> }> {
 export async function updateMe(data: {
   username?: string;
   avatar?: string;
+  uiLanguage?: string;
+  nativeLanguage?: string;
   targetLanguage?: string;
   goalMinutesPerDay?: number;
 }): Promise<{ user: Record<string, unknown> }> {
@@ -105,10 +109,11 @@ export async function getCourse(id: string): Promise<Record<string, unknown>> {
 }
 
 // ====== Words ======
-export async function getWords(params?: { language?: string; level?: string }): Promise<Record<string, unknown>[]> {
+export async function getWords(params?: { language?: string; level?: string; nativeLanguage?: string }): Promise<Record<string, unknown>[]> {
   const qs = new URLSearchParams();
   if (params?.language) qs.set("language", params.language);
   if (params?.level) qs.set("level", params.level);
+  if (params?.nativeLanguage) qs.set("nativeLanguage", params.nativeLanguage);
   const query = qs.toString();
   return request(`/words${query ? `?${query}` : ""}`);
 }

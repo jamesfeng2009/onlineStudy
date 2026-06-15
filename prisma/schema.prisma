@@ -48,37 +48,65 @@ model Course {
 }
 
 model WordBank {
-  id              String @id @default(uuid())
+  id              String                  @id @default(uuid())
   languageCode    String
   level           String
   word            String
-  translation     String
   phonetic        String?
   exampleSentence String
-  vocabOrder      Int    @default(0)
+  vocabOrder      Int                     @default(0)
 
-  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  language      Language                @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  translations  WordBankTranslation[]
 
   @@map("word_bank")
   @@index([languageCode, level])
 }
 
+model WordBankTranslation {
+  id                 String   @id @default(uuid())
+  wordBankId         String
+  baseLanguageCode   String   // 用户母语/释义语言，如 en/zh/ja/ko/es/fr/de
+  translation        String
+  exampleTranslation String?
+
+  wordBank WordBank @relation(fields: [wordBankId], references: [id], onDelete: Cascade)
+
+  @@map("word_bank_translations")
+  @@unique([wordBankId, baseLanguageCode])
+  @@index([baseLanguageCode])
+  @@index([baseLanguageCode, wordBankId])
+}
+
 model Quiz {
-  id           String   @id @default(uuid())
+  id           String             @id @default(uuid())
   languageCode String
   level        String
-  question     String
-  options      Json     // string[]
-  answer       Int      // index of correct option
-  explain      String
-  quizOrder    Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  options      Json               // string[]
+  answer       Int                // index of correct option
+  quizOrder    Int                @default(0)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
 
-  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  language      Language           @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  translations  QuizTranslation[]
 
   @@map("quizzes")
   @@index([languageCode, level])
+}
+
+model QuizTranslation {
+  id               String @id @default(uuid())
+  quizId           String
+  baseLanguageCode String
+  question         String
+  explain          String
+
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@map("quiz_translations")
+  @@unique([quizId, baseLanguageCode])
+  @@index([baseLanguageCode])
 }
 
 model Listening {
@@ -121,6 +149,8 @@ model User {
   exp              Int                 @default(0)
   streak           Int                 @default(0)
   lastActive       DateTime            @default(now())
+  uiLanguage       String              @default("en") // 界面语言：en/zh/ja/ko/...
+  nativeLanguage   String              @default("en") // 学习释义语言：en/zh/ja/ko/...
   targetLanguage   String
   createdAt        DateTime            @default(now())
   updatedAt        DateTime            @updatedAt

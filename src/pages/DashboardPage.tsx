@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard, StatTile } from "../components/GlassCard";
 import { LineChart, RadarChart, ProgressRing, HorizontalBar } from "../components/Charts";
@@ -18,6 +19,7 @@ function lastDays(n: number): string[] {
 }
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const progress = useProgressStore((s) => s.progress);
@@ -37,12 +39,15 @@ export default function DashboardPage() {
   );
   const totalMinutes = lineData.reduce((a, b) => a + b.value, 0);
 
-  const radarScores = [
-    { label: "词汇", value: progress?.moduleScores?.words ?? 0, icon: BookOpen },
-    { label: "语法", value: progress?.moduleScores?.grammar ?? 0, icon: Pen },
-    { label: "听力", value: progress?.moduleScores?.listening ?? 0, icon: Headphones },
-    { label: "口语", value: progress?.moduleScores?.speaking ?? 0, icon: Mic },
-  ];
+  const radarScores = useMemo(
+    () => [
+      { label: t("dashboard.skills.words"), value: progress?.moduleScores?.words ?? 0, icon: BookOpen },
+      { label: t("dashboard.skills.grammar"), value: progress?.moduleScores?.grammar ?? 0, icon: Pen },
+      { label: t("dashboard.skills.listening"), value: progress?.moduleScores?.listening ?? 0, icon: Headphones },
+      { label: t("dashboard.skills.speaking"), value: progress?.moduleScores?.speaking ?? 0, icon: Mic },
+    ],
+    [progress, t]
+  );
 
   const todayKey = useMemo(() => {
     const d = new Date();
@@ -66,44 +71,48 @@ export default function DashboardPage() {
 
   return (
     <PageShell
-      title="学习进度仪表盘"
-      subtitle={user ? `你好 ${user.username}，这里是你的学习数据全景。` : "请先登录以查看你的学习进度。"}
+      title={t("dashboard.title")}
+      subtitle={
+        user
+          ? t("dashboard.subtitle", { name: user.username })
+          : t("dashboard.subtitleGuest")
+      }
     >
       {/* Top stats */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <StatTile
-          label="连续学习"
-          value={`${progress?.streak ?? user?.streak ?? 0} 天`}
+          label={t("dashboard.streakLearn")}
+          value={t("common.days", { count: progress?.streak ?? user?.streak ?? 0 })}
           icon={<Flame className="h-5 w-5 text-orange-400" />}
-          hint="保持节奏，就是胜利。"
+          hint={t("dashboard.keepGoing")}
         />
         <StatTile
-          label="累计单词"
+          label={t("dashboard.wordsLearned")}
           value={String(progress?.wordsLearned ?? 0)}
           icon={<BookOpen className="h-5 w-5 text-sky-300" />}
-          hint={`已答题 ${progress?.wordTotal ?? 0} 次`}
+          hint={t("dashboard.wordsAnswered", { count: progress?.wordTotal ?? 0 })}
         />
         <StatTile
-          label="语法练习"
+          label={t("dashboard.grammar")}
           value={String(progress?.quizzesDone ?? 0)}
           icon={<Pen className="h-5 w-5 text-fuchsia-300" />}
-          hint={`正确率 ${
-            progress?.quizTotal
+          hint={t("dashboard.grammarAccuracy", {
+            pct: progress?.quizTotal
               ? Math.round((progress.quizCorrect / progress.quizTotal) * 100)
-              : 0
-          }%`}
+              : 0,
+          })}
         />
         <StatTile
-          label="14 日累计"
-          value={`${totalMinutes} 分`}
+          label={t("dashboard.total14")}
+          value={t("dashboard.total14Value", { total: totalMinutes })}
           icon={<TrendingUp className="h-5 w-5 text-emerald-300" />}
-          hint={`平均 ${Math.round(totalMinutes / 14)} 分/天`}
+          hint={t("dashboard.avgPerDay", { avg: Math.round(totalMinutes / 14) })}
         />
       </div>
 
       {loading && mounted ? (
         <div className="mt-8 rounded-2xl border border-white/5 bg-white/5 p-10 text-center text-sm text-brand-200/70">
-          正在加载学习数据...
+          {t("dashboard.loading")}
         </div>
       ) : (
         <>
@@ -112,12 +121,12 @@ export default function DashboardPage() {
             <GlassCard className="lg:col-span-2">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-semibold text-white">最近 14 天学习时长</div>
-                  <div className="text-xs text-brand-200/60">单位：分钟 · 每日累计</div>
+                  <div className="text-sm font-semibold text-white">{t("dashboard.chartTitle")}</div>
+                  <div className="text-xs text-brand-200/60">{t("dashboard.chartUnit")}</div>
                 </div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-                  <Target className="h-3.5 w-3.5 text-sky-300" /> 今日目标
-                  {user?.goalMinutesPerDay ? ` ${user.goalMinutesPerDay} 分钟` : ""}
+                  <Target className="h-3.5 w-3.5 text-sky-300" /> {t("dashboard.todayGoal")}
+                  {user?.goalMinutesPerDay ? ` ${user.goalMinutesPerDay} ${t("common.minutes")}` : ""}
                 </span>
               </div>
               <div className="mt-4">
@@ -127,13 +136,13 @@ export default function DashboardPage() {
 
             {/* Rings */}
             <GlassCard>
-              <div className="text-sm font-semibold text-white">达成进度</div>
+              <div className="text-sm font-semibold text-white">{t("dashboard.progressTitle")}</div>
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <div className="flex flex-col items-center">
                   <ProgressRing
                     value={goalPct}
                     centerLabel={`${goalPct}%`}
-                    centerHint="今日目标"
+                    centerHint={t("dashboard.todayGoal")}
                     color="#38BDF8"
                   />
                 </div>
@@ -141,7 +150,7 @@ export default function DashboardPage() {
                   <ProgressRing
                     value={levelPct}
                     centerLabel={`Lv.${progress?.level ?? user?.level ?? 1}`}
-                    centerHint={`${progress?.exp ?? 0} EXP`}
+                    centerHint={`${progress?.exp ?? 0} ${t("dashboard.exp")}`}
                     color="#F59E0B"
                   />
                 </div>
@@ -160,8 +169,8 @@ export default function DashboardPage() {
           {/* Radar + Modules heatmap */}
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-5">
             <GlassCard className="lg:col-span-2">
-              <div className="text-sm font-semibold text-white">能力雷达</div>
-              <div className="mt-2 text-xs text-brand-200/60">词汇 · 语法 · 听力 · 口语</div>
+              <div className="text-sm font-semibold text-white">{t("dashboard.radarTitle")}</div>
+              <div className="mt-2 text-xs text-brand-200/60">{t("dashboard.radarSubtitle")}</div>
               <div className="mt-4 flex justify-center">
                 <RadarChart
                   labels={radarScores.map((x) => x.label)}
@@ -173,9 +182,9 @@ export default function DashboardPage() {
 
             <GlassCard className="lg:col-span-3">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-white">模块表现 · 最近表现</div>
+                <div className="text-sm font-semibold text-white">{t("dashboard.moduleTitle")}</div>
                 <div className="text-xs text-brand-200/60">
-                  <Trophy className="mr-1 inline h-3.5 w-3.5 text-amber-300" /> 持续练习会让指标逐步上升
+                  <Trophy className="mr-1 inline h-3.5 w-3.5 text-amber-300" /> {t("dashboard.moduleTip")}
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3">
@@ -187,7 +196,7 @@ export default function DashboardPage() {
                       </div>
                       <div>
                         <div className="font-semibold text-white">{s.label}</div>
-                        <div className="text-xs text-brand-200/60">练习得分</div>
+                        <div className="text-xs text-brand-200/60">{t("dashboard.moduleScore")}</div>
                       </div>
                     </div>
                     <div className="mt-4">
@@ -211,8 +220,8 @@ export default function DashboardPage() {
           <div className="mt-6">
             <GlassCard>
               <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-white">14 天学习热力</div>
-                <div className="text-xs text-brand-200/60">每格代表一天 · 颜色越深学习越久</div>
+                <div className="text-sm font-semibold text-white">{t("dashboard.heatmapTitle")}</div>
+                <div className="text-xs text-brand-200/60">{t("dashboard.heatmapSubtitle")}</div>
               </div>
               <div className="mt-4 grid grid-cols-14 gap-2">
                 {days.map((d) => {
@@ -221,7 +230,7 @@ export default function DashboardPage() {
                   return (
                     <div
                       key={d}
-                      title={`${d} · ${val} 分钟`}
+                      title={t("dashboard.heatmapTooltip", { date: d, minutes: val })}
                       className="aspect-square rounded-md border border-white/5 text-[9px] text-brand-200/60"
                       style={{
                         background: `linear-gradient(135deg, rgba(56,189,248,${opacity}), rgba(217,70,239,${opacity}))`,

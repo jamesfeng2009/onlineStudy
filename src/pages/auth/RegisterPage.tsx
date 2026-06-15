@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Mail, Lock, UserCircle, ArrowRight, Sparkles } from "lucide-react";
+import { Mail, Lock, UserCircle, ArrowRight, Sparkles, Monitor, MessageCircleQuestion } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
 import { LANGUAGES } from "../../data/languages";
 import type { Language } from "../../types";
+import { SUPPORTED_LANGUAGES } from "../../lib/i18n";
 
 export default function RegisterPage() {
+  const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lang, setLang] = useState<Language>("en");
+  const [uiLang, setUiLang] = useState<Language>((i18n.language as Language) ?? "en");
+  const [nativeLang, setNativeLang] = useState<Language>("en");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
   const register = useAuthStore((s) => s.register);
@@ -19,16 +24,24 @@ export default function RegisterPage() {
     e.preventDefault();
     setErr("");
     if (!username.trim() || !email.trim() || password.length < 4) {
-      setErr("请填写用户名和邮箱，密码至少 4 位");
+      setErr(t("auth.register.validation"));
       return;
     }
     setLoading(true);
-    const res = await register({ username: username.trim(), email: email.trim(), password, language: lang });
+    const res = await register({
+      username: username.trim(),
+      email: email.trim(),
+      password,
+      language: lang,
+      uiLanguage: uiLang,
+      nativeLanguage: nativeLang,
+    });
     setLoading(false);
     if (!res.ok) {
-      setErr(res.error ?? "注册失败，请稍后再试");
+      setErr(res.error ?? t("auth.register.errorDefault"));
       return;
     }
+    i18n.changeLanguage(uiLang);
     navigate("/");
   };
 
@@ -40,16 +53,16 @@ export default function RegisterPage() {
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-8">
         <div className="hidden md:block">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-            <Sparkles className="h-3.5 w-3.5 text-amber-300" /> 沉浸式学语言
+            <Sparkles className="h-3.5 w-3.5 text-amber-300" /> {t("auth.register.badge")}
           </div>
           <h1 className="font-display text-5xl font-bold leading-tight text-white">
-            让整个世界
+            {t("auth.register.title")}
             <span className="block bg-gradient-to-r from-sky-300 via-fuchsia-300 to-amber-300 bg-clip-text text-transparent">
-              都成为你的课堂。
+              {t("auth.register.titleHighlight")}
             </span>
           </h1>
           <p className="mt-4 max-w-md text-brand-200/80">
-            注册一个账号，开启个性化分级学习路径，跟踪你的进步，与全球学习者一起成长。
+            {t("auth.register.description")}
           </p>
 
           <div className="mt-8 grid grid-cols-3 gap-3">
@@ -73,20 +86,20 @@ export default function RegisterPage() {
         </div>
 
         <div className="glass rounded-3xl p-8 md:p-10">
-          <h2 className="font-display text-2xl font-bold text-white">创建你的账号</h2>
-          <p className="mt-1 text-sm text-brand-200/70">几秒钟即可开始学习</p>
+          <h2 className="font-display text-2xl font-bold text-white">{t("auth.register.formTitle")}</h2>
+          <p className="mt-1 text-sm text-brand-200/70">{t("auth.register.formSubtitle")}</p>
 
           <form onSubmit={submit} className="mt-8 space-y-4">
             <Field
               icon={<UserCircle className="h-4 w-4" />}
-              label="用户名"
+              label={t("auth.username")}
               value={username}
               onChange={setUsername}
-              placeholder="显示在社区和成就墙"
+              placeholder={t("auth.register.usernamePlaceholder")}
             />
             <Field
               icon={<Mail className="h-4 w-4" />}
-              label="邮箱"
+              label={t("auth.email")}
               type="email"
               value={email}
               onChange={setEmail}
@@ -94,15 +107,63 @@ export default function RegisterPage() {
             />
             <Field
               icon={<Lock className="h-4 w-4" />}
-              label="密码"
+              label={t("auth.password")}
               type="password"
               value={password}
               onChange={setPassword}
-              placeholder="至少 4 位"
+              placeholder={t("auth.register.passwordPlaceholder")}
             />
 
+            <Field label={t("auth.interfaceLanguage")}>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {SUPPORTED_LANGUAGES.map((id) => {
+                  const l = LANGUAGES.find((x) => x.id === id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setUiLang(id)}
+                      className={
+                        "flex items-center justify-center gap-2 rounded-xl border px-2 py-2 text-xs transition " +
+                        (uiLang === id
+                          ? "border-sky-400/60 bg-sky-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                      }
+                    >
+                      <Monitor className="h-3.5 w-3.5" />
+                      {l?.flag ?? "🌐"} {l?.name ?? id}
+                    </button>
+                  );
+                })}
+              </div>
+            </Field>
+
+            <Field label={t("auth.nativeLanguage")}>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {SUPPORTED_LANGUAGES.map((id) => {
+                  const l = LANGUAGES.find((x) => x.id === id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setNativeLang(id)}
+                      className={
+                        "flex items-center justify-center gap-2 rounded-xl border px-2 py-2 text-xs transition " +
+                        (nativeLang === id
+                          ? "border-sky-400/60 bg-sky-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                      }
+                    >
+                      <MessageCircleQuestion className="h-3.5 w-3.5" />
+                      {l?.flag ?? "🌐"} {l?.name ?? id}
+                    </button>
+                  );
+                })}
+              </div>
+            </Field>
+
             <div className="md:hidden">
-              <div className="mb-2 text-xs text-brand-200/70">你最想学的语言</div>
+              <div className="mb-2 text-xs text-brand-200/70">{t("auth.register.mobileLabel")}</div>
               <div className="grid grid-cols-3 gap-2">
                 {LANGUAGES.map((l) => (
                   <button
@@ -134,13 +195,13 @@ export default function RegisterPage() {
               disabled={loading}
               className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50 disabled:opacity-60"
             >
-              {loading ? "注册中..." : <>立即注册 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></>}
+              {loading ? t("auth.register.loading") : <>{t("auth.register.button")} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></>}
             </button>
 
             <div className="text-center text-sm text-brand-200/70">
-              已经有账号？{" "}
+              {t("auth.haveAccount")}{" "}
               <Link to="/login" className="text-sky-300 hover:text-sky-200">
-                前往登录
+                {t("auth.login.button")}
               </Link>
             </div>
           </form>
@@ -157,27 +218,33 @@ function Field({
   onChange,
   placeholder,
   type = "text",
+  children,
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   label: string;
-  value: string;
-  onChange: (s: string) => void;
+  value?: string;
+  onChange?: (s: string) => void;
   placeholder?: string;
   type?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <label className="block">
       <span className="text-xs font-medium text-brand-200/80">{label}</span>
-      <div className="mt-2 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 transition focus-within:border-sky-400/60 focus-within:bg-white/10">
-        <span className="text-brand-200/70">{icon}</span>
-        <input
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="w-full bg-transparent text-sm text-white placeholder:text-brand-200/40 outline-none"
-        />
-      </div>
+      {children ? (
+        <div className="mt-2">{children}</div>
+      ) : (
+        <div className="mt-2 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 transition focus-within:border-sky-400/60 focus-within:bg-white/10">
+          <span className="text-brand-200/70">{icon}</span>
+          <input
+            type={type}
+            value={value}
+            onChange={(e) => onChange?.(e.target.value)}
+            placeholder={placeholder}
+            className="w-full bg-transparent text-sm text-white placeholder:text-brand-200/40 outline-none"
+          />
+        </div>
+      )}
     </label>
   );
 }

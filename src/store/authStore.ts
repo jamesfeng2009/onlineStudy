@@ -8,13 +8,13 @@ interface AuthState {
   token: string | null;
   user: UserResp | null;
   status: AuthStatus;
-  register: (input: { email: string; password: string; username: string; language: string }) => Promise<{ ok: boolean; error?: string }>;
+  register: (input: { email: string; password: string; username: string; language: string; uiLanguage?: string; nativeLanguage?: string }) => Promise<{ ok: boolean; error?: string }>;
   login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
   logout: () => void;
   refreshMe: () => Promise<{ ok: boolean; error?: string }>;
   updateLanguage: (lang: string) => Promise<{ ok: boolean; error?: string }>;
   updateGoal: (goal: number) => Promise<{ ok: boolean; error?: string }>;
-  updateProfile: (patch: { username?: string; avatar?: string; targetLanguage?: string; goalMinutesPerDay?: number }) => Promise<{ ok: boolean; error?: string }>;
+  updateProfile: (patch: { username?: string; avatar?: string; uiLanguage?: string; nativeLanguage?: string; targetLanguage?: string; goalMinutesPerDay?: number }) => Promise<{ ok: boolean; error?: string }>;
   bootstrap: () => Promise<void>;
 }
 
@@ -53,10 +53,10 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     }
   },
 
-  async register({ email, password, username, language }) {
+  async register({ email, password, username, language, uiLanguage, nativeLanguage }) {
     try {
       set({ status: "loading" });
-      const res = await api.register({ email, password, username, language });
+      const res = await api.register({ email, password, username, language, uiLanguage, nativeLanguage });
       writeToken(res.token);
       set({ token: res.token, user: res.user, status: "logged" });
       return { ok: true };

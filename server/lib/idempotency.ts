@@ -140,7 +140,9 @@ export async function registerUserIdempotent(
   email: string,
   username: string,
   passwordHash: string,
-  targetLanguage: string
+  targetLanguage: string,
+  uiLanguage: string,
+  nativeLanguage: string
 ): Promise<{ user: Prisma.UserGetPayload<Prisma.UserDefaultArgs>; isNew: boolean }> {
   const normalizedEmail = email.toLowerCase().trim();
 
@@ -157,6 +159,8 @@ export async function registerUserIdempotent(
       username,
       passwordHash,
       targetLanguage,
+      uiLanguage,
+      nativeLanguage,
       level: 1,
       exp: 0,
       streak: 1,

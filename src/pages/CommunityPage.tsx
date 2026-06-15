@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MessageCircle, Heart, Send, UserCircle2, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import type { PostResp } from "../lib/api";
 
-const TOPICS = [
-  { key: "", label: "全部" },
-  { key: "每日一句", label: "每日一句" },
-  { key: "日语学习心得", label: "日语学习心得" },
-  { key: "韩语 K-pop 学习", label: "韩语 K-pop 学习" },
-  { key: "英语职场经验", label: "英语职场经验" },
-  { key: "提问求助", label: "提问求助" },
-];
+const TOPIC_VALUES = ["", "每日一句", "日语学习心得", "韩语 K-pop 学习", "英语职场经验", "提问求助"] as const;
 
 function formatDate(iso: string | number): string {
   if (!iso) return "";
@@ -30,6 +24,7 @@ function formatDate(iso: string | number): string {
 }
 
 export default function CommunityPage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const posts = useProgressStore((s) => s.posts);
   const postsLoading = useProgressStore((s) => s.postsLoading);
@@ -38,8 +33,17 @@ export default function CommunityPage() {
   const addComment = useProgressStore((s) => s.addComment);
   const createPost = useProgressStore((s) => s.createPost);
 
+  const topics = useMemo(
+    () =>
+      TOPIC_VALUES.map((value, idx) => ({
+        value,
+        label: value ? t(`community.topics.${["daily", "japanese", "kpop", "english", "help"][idx - 1]}`) : t("community.topics.all"),
+      })),
+    [t]
+  );
+
   const [topic, setTopic] = useState("");
-  const [newTopic, setNewTopic] = useState("每日一句");
+  const [newTopic, setNewTopic] = useState<string>(TOPIC_VALUES[1]);
   const [content, setContent] = useState("");
   const [commentMap, setCommentMap] = useState<Record<string, string>>({});
 
@@ -66,8 +70,8 @@ export default function CommunityPage() {
 
   return (
     <PageShell
-      title="社区交流"
-      subtitle="分享你的学习心得，和其他学习者一起成长。"
+      title={t("community.title")}
+      subtitle={t("community.subtitle")}
     >
       {/* 发帖区 */}
       <GlassCard className="mb-6">
@@ -77,40 +81,40 @@ export default function CommunityPage() {
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-brand-200/70">话题</span>
+              <span className="text-xs text-brand-200/70">{t("community.topic")}</span>
               <select
                 value={newTopic}
                 onChange={(e) => setNewTopic(e.target.value)}
                 className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-sky-400/50"
               >
-                {TOPICS.filter((t) => t.key !== "").map((t) => (
-                  <option key={t.key} value={t.key} className="bg-slate-900">
+                {topics.filter((t) => t.value !== "").map((t) => (
+                  <option key={t.value} value={t.value} className="bg-slate-900">
                     {t.label}
                   </option>
                 ))}
               </select>
               <span className="ml-auto text-xs text-brand-200/50">
-                {user ? user.username : "访客"} · 你现在说的每一句话都是未来的回响。
+                {t("community.signature", { name: user ? user.username : t("community.guest") })}
               </span>
             </div>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder={
-                user ? "分享一段你最近学到的表达，或提一个问题…" : "请先登录后发帖。"
+                user ? t("community.placeholderLogged") : t("community.placeholderGuest")
               }
               rows={3}
               disabled={!user}
               className="mt-3 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-sky-400/50 disabled:opacity-60"
             />
             <div className="mt-3 flex items-center justify-between">
-              <span className="text-xs text-brand-200/60">{content.length} / 500</span>
+              <span className="text-xs text-brand-200/60">{t("community.charCount", { length: content.length })}</span>
               <button
                 disabled={!user || content.trim().length < 5}
                 onClick={submitPost}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                <Send className="h-4 w-4" /> 发布
+                <Send className="h-4 w-4" /> {t("community.post")}
               </button>
             </div>
           </div>
@@ -119,13 +123,13 @@ export default function CommunityPage() {
 
       {/* 话题筛选 */}
       <div className="mb-6 flex flex-wrap items-center gap-2">
-        {TOPICS.map((t) => (
+        {topics.map((t) => (
           <button
-            key={t.key || "all"}
-            onClick={() => setTopic(t.key)}
+            key={t.value || "all"}
+            onClick={() => setTopic(t.value)}
             className={
               "rounded-full border px-3 py-1.5 text-xs transition " +
-              ((topic === "" && t.key === "") || topic === t.key
+              ((topic === "" && t.value === "") || topic === t.value
                 ? "border-sky-400/40 bg-sky-400/15 text-white"
                 : "border-white/10 bg-white/5 text-brand-200/80 hover:bg-white/10 hover:text-white")
             }
@@ -137,10 +141,10 @@ export default function CommunityPage() {
 
       {/* Posts */}
       {postsLoading && posts.length === 0 ? (
-        <GlassCard className="p-8 text-center text-brand-200/70">加载帖子中...</GlassCard>
+        <GlassCard className="p-8 text-center text-brand-200/70">{t("community.loading")}</GlassCard>
       ) : filtered.length === 0 ? (
         <GlassCard className="p-8 text-center text-brand-200/60">
-          还没有人在这个话题下发言，不如你先开个场。
+          {t("community.empty")}
         </GlassCard>
       ) : (
         <div className="grid gap-4">
@@ -204,7 +208,7 @@ export default function CommunityPage() {
                             submitComment(p.id);
                           }
                         }}
-                        placeholder={user ? "写点什么回应…" : "登录后即可发表评论"}
+                        placeholder={user ? t("community.commentPlaceholderLogged") : t("community.commentPlaceholderGuest")}
                         disabled={!user}
                         className="flex-1 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-sky-400/50 disabled:opacity-60"
                       />
@@ -213,7 +217,7 @@ export default function CommunityPage() {
                         onClick={() => submitComment(p.id)}
                         className="inline-flex items-center gap-1 rounded-xl bg-white/5 px-3 py-2 text-xs text-white transition hover:bg-white/10 disabled:opacity-40"
                       >
-                        <Send className="h-3.5 w-3.5" /> 发送
+                        <Send className="h-3.5 w-3.5" /> {t("community.send")}
                       </button>
                     </div>
                   </div>

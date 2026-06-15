@@ -13,21 +13,48 @@ const CACHE_TTL_MS = 60_000; // 同一函数实例内缓存 60 秒
 function getCacheKey(
   language: string | undefined,
   level: string | undefined,
+  nativeLanguage: string,
   limit: number | undefined,
   offset: number | undefined
 ): string {
-  return `words:${language ?? "all"}:${level ?? "all"}:${limit ?? "all"}:${offset ?? 0}`;
+  return `words:${language ?? "all"}:${level ?? "all"}:${nativeLanguage}:${limit ?? "all"}:${offset ?? 0}`;
+}
+
+function pickTranslation(
+  translations: { baseLanguageCode: string; translation: string; exampleTranslation: string | null }[],
+  nativeLanguage: string
+): { translation: string; exampleTranslation: string | null } {
+  const exact = translations.find((t) => t.baseLanguageCode === nativeLanguage);
+  if (exact) {
+    return { translation: exact.translation, exampleTranslation: exact.exampleTranslation };
+  }
+  const en = translations.find((t) => t.baseLanguageCode === "en");
+  if (en) {
+    return { translation: en.translation, exampleTranslation: en.exampleTranslation };
+  }
+  const any = translations[0];
+  if (any) {
+    return { translation: any.translation, exampleTranslation: any.exampleTranslation };
+  }
+  return { translation: "", exampleTranslation: null };
 }
 
 const wordsRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get<{
-    Querystring: { language?: string; level?: string; limit?: string; offset?: string };
+    Querystring: {
+      language?: string;
+      level?: string;
+      nativeLanguage?: string;
+      limit?: string;
+      offset?: string;
+    };
   }>("/words", async (request, reply) => {
     const { language, level } = request.query;
+    const nativeLanguage = request.query.nativeLanguage || "en";
     const limit = request.query.limit ? parseInt(request.query.limit, 10) : undefined;
     const offset = request.query.offset ? parseInt(request.query.offset, 10) : undefined;
 
-    const cacheKey = getCacheKey(language, level, limit, offset);
+    const cacheKey = getCacheKey(language, level, nativeLanguage, limit, offset);
     const cached = cache.get(cacheKey);
     if (cached && cached.expiresAt > Date.now()) {
       reply.header("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
@@ -46,27 +73,36 @@ const wordsRoutes: FastifyPluginAsync = async (fastify) => {
         languageCode: true,
         level: true,
         word: true,
-        translation: true,
         phonetic: true,
         exampleSentence: true,
+        translations: {
+          select: {
+            baseLanguageCode: true,
+            translation: true,
+            exampleTranslation: true,
+          },
+        },
       },
       take: limit,
       skip: offset,
     });
 
-    const result = words.map((w) => ({
-      id: w.id,
-      language: w.languageCode,
-      level: w.level,
-      word: w.word,
-      translation: w.translation,
-      phonetic: w.phonetic,
-      exampleSentence: w.exampleSentence,
-    }));
+    const result = words.map((w) => {
+      const { translation, exampleTranslation } = pickTranslation(w.translations, nativeLanguage);
+      return {
+        id: w.id,
+        language: w.languageCode,
+        level: w.level,
+        word: w.word,
+        translation,
+        exampleTranslation,
+        phonetic: w.phonetic,
+        exampleSentence: w.exampleSentence,
+      };
+    });
 
     cache.set(cacheKey, { data: result, expiresAt: Date.now() + CACHE_TTL_MS });
 
-    // 单词数据变更不频繁，适合边缘缓存，可大幅减少冷启动和重复查询耗时
     reply.header("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
     return sendSuccess(reply, result);
   });

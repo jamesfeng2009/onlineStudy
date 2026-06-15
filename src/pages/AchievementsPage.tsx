@@ -1,106 +1,52 @@
+import { useMemo } from "react";
 import { Flame, Trophy, Sparkles, BookOpen, Pen, Mic, Headphones, Crown, Target, Zap, Bookmark } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 
-const BADGES: {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  color: string;
-  check: (ctx: AchievementContext) => { earned: boolean; progress: number; total: number };
-}[] = [
-  {
-    id: "streak-3",
-    title: "三日坚持",
-    description: "连续学习 3 天，养成小习惯",
-    icon: Flame,
-    color: "from-orange-400 to-rose-500",
-    check: (ctx) => ({ earned: ctx.streak >= 3, progress: Math.min(ctx.streak, 3), total: 3 }),
-  },
-  {
-    id: "streak-7",
-    title: "一周之星",
-    description: "连续学习 7 天",
-    icon: Zap,
-    color: "from-amber-300 to-orange-500",
-    check: (ctx) => ({ earned: ctx.streak >= 7, progress: Math.min(ctx.streak, 7), total: 7 }),
-  },
-  {
-    id: "streak-30",
-    title: "月度冠军",
-    description: "连续学习 30 天",
-    icon: Trophy,
-    color: "from-yellow-300 to-amber-500",
-    check: (ctx) => ({ earned: ctx.streak >= 30, progress: Math.min(ctx.streak, 30), total: 30 }),
-  },
-  {
-    id: "words-20",
-    title: "词汇新星",
-    description: "掌握 20 个新单词",
-    icon: BookOpen,
-    color: "from-sky-400 to-blue-600",
-    check: (ctx) => ({ earned: ctx.wordsLearned >= 20, progress: Math.min(ctx.wordsLearned, 20), total: 20 }),
-  },
-  {
-    id: "words-100",
-    title: "词汇达人",
-    description: "掌握 100 个新单词",
-    icon: Bookmark,
-    color: "from-cyan-400 to-teal-600",
-    check: (ctx) => ({ earned: ctx.wordsLearned >= 100, progress: Math.min(ctx.wordsLearned, 100), total: 100 }),
-  },
-  {
-    id: "quizzes-10",
-    title: "语法练习生",
-    description: "完成 10 道语法题",
-    icon: Pen,
-    color: "from-emerald-400 to-green-600",
-    check: (ctx) => ({ earned: ctx.quizzesDone >= 10, progress: Math.min(ctx.quizzesDone, 10), total: 10 }),
-  },
-  {
-    id: "quizzes-50",
-    title: "语法大师",
-    description: "完成 50 道语法题",
-    icon: Sparkles,
-    color: "from-lime-400 to-emerald-600",
-    check: (ctx) => ({ earned: ctx.quizzesDone >= 50, progress: Math.min(ctx.quizzesDone, 50), total: 50 }),
-  },
-  {
-    id: "speaking-10",
-    title: "开口勇者",
-    description: "口语跟读累计 10 分钟",
-    icon: Mic,
-    color: "from-rose-400 to-pink-600",
-    check: (ctx) => ({ earned: ctx.speakingMinutes >= 10, progress: Math.min(ctx.speakingMinutes, 10), total: 10 }),
-  },
-  {
-    id: "listening-10",
-    title: "聆听者",
-    description: "听力训练累计 10 分钟",
-    icon: Headphones,
-    color: "from-violet-400 to-purple-600",
-    check: (ctx) => ({ earned: ctx.listeningMinutes >= 10, progress: Math.min(ctx.listeningMinutes, 10), total: 10 }),
-  },
-  {
-    id: "level-5",
-    title: "步步进阶",
-    description: "达到等级 5",
-    icon: Target,
-    color: "from-fuchsia-400 to-rose-600",
-    check: (ctx) => ({ earned: ctx.level >= 5, progress: Math.min(ctx.level, 5), total: 5 }),
-  },
-  {
-    id: "level-10",
-    title: "登堂入室",
-    description: "达到等级 10",
-    icon: Crown,
-    color: "from-amber-300 to-yellow-500",
-    check: (ctx) => ({ earned: ctx.level >= 10, progress: Math.min(ctx.level, 10), total: 10 }),
-  },
-];
+const BADGE_IDS = [
+  "streak-3",
+  "streak-7",
+  "streak-30",
+  "words-20",
+  "words-100",
+  "quizzes-10",
+  "quizzes-50",
+  "speaking-10",
+  "listening-10",
+  "level-5",
+  "level-10",
+] as const;
+
+const BADGE_ICONS: Record<string, React.ElementType> = {
+  "streak-3": Flame,
+  "streak-7": Zap,
+  "streak-30": Trophy,
+  "words-20": BookOpen,
+  "words-100": Bookmark,
+  "quizzes-10": Pen,
+  "quizzes-50": Sparkles,
+  "speaking-10": Mic,
+  "listening-10": Headphones,
+  "level-5": Target,
+  "level-10": Crown,
+};
+
+const BADGE_COLORS: Record<string, string> = {
+  "streak-3": "from-orange-400 to-rose-500",
+  "streak-7": "from-amber-300 to-orange-500",
+  "streak-30": "from-yellow-300 to-amber-500",
+  "words-20": "from-sky-400 to-blue-600",
+  "words-100": "from-cyan-400 to-teal-600",
+  "quizzes-10": "from-emerald-400 to-green-600",
+  "quizzes-50": "from-lime-400 to-emerald-600",
+  "speaking-10": "from-rose-400 to-pink-600",
+  "listening-10": "from-violet-400 to-purple-600",
+  "level-5": "from-fuchsia-400 to-rose-600",
+  "level-10": "from-amber-300 to-yellow-500",
+};
 
 interface AchievementContext {
   streak: number;
@@ -111,9 +57,40 @@ interface AchievementContext {
   level: number;
 }
 
+const BADGE_CHECKS: Record<
+  string,
+  (ctx: AchievementContext) => { earned: boolean; progress: number; total: number }
+> = {
+  "streak-3": (ctx) => ({ earned: ctx.streak >= 3, progress: Math.min(ctx.streak, 3), total: 3 }),
+  "streak-7": (ctx) => ({ earned: ctx.streak >= 7, progress: Math.min(ctx.streak, 7), total: 7 }),
+  "streak-30": (ctx) => ({ earned: ctx.streak >= 30, progress: Math.min(ctx.streak, 30), total: 30 }),
+  "words-20": (ctx) => ({ earned: ctx.wordsLearned >= 20, progress: Math.min(ctx.wordsLearned, 20), total: 20 }),
+  "words-100": (ctx) => ({ earned: ctx.wordsLearned >= 100, progress: Math.min(ctx.wordsLearned, 100), total: 100 }),
+  "quizzes-10": (ctx) => ({ earned: ctx.quizzesDone >= 10, progress: Math.min(ctx.quizzesDone, 10), total: 10 }),
+  "quizzes-50": (ctx) => ({ earned: ctx.quizzesDone >= 50, progress: Math.min(ctx.quizzesDone, 50), total: 50 }),
+  "speaking-10": (ctx) => ({ earned: ctx.speakingMinutes >= 10, progress: Math.min(ctx.speakingMinutes, 10), total: 10 }),
+  "listening-10": (ctx) => ({ earned: ctx.listeningMinutes >= 10, progress: Math.min(ctx.listeningMinutes, 10), total: 10 }),
+  "level-5": (ctx) => ({ earned: ctx.level >= 5, progress: Math.min(ctx.level, 5), total: 5 }),
+  "level-10": (ctx) => ({ earned: ctx.level >= 10, progress: Math.min(ctx.level, 10), total: 10 }),
+};
+
 export default function AchievementsPage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const progress = useProgressStore((s) => s.progress);
+
+  const badges = useMemo(
+    () =>
+      BADGE_IDS.map((id) => ({
+        id,
+        title: t(`achievements.badges.${id}.title`),
+        description: t(`achievements.badges.${id}.description`),
+        icon: BADGE_ICONS[id],
+        color: BADGE_COLORS[id],
+        check: BADGE_CHECKS[id],
+      })),
+    [t]
+  );
 
   const ctx: AchievementContext = {
     streak: user?.streak ?? progress?.streak ?? 0,
@@ -124,12 +101,22 @@ export default function AchievementsPage() {
     level: user?.level ?? progress?.level ?? 1,
   };
 
-  const earnedCount = BADGES.reduce((acc, b) => acc + (b.check(ctx).earned ? 1 : 0), 0);
+  const earnedCount = badges.reduce((acc, b) => acc + (b.check(ctx).earned ? 1 : 0), 0);
+
+  const stats = useMemo(
+    () => [
+      { key: "streak", value: ctx.streak, unit: t("achievements.units.streak"), color: "text-orange-300" },
+      { key: "level", value: ctx.level, unit: t("achievements.units.level"), color: "text-amber-300" },
+      { key: "words", value: ctx.wordsLearned, unit: t("achievements.units.words"), color: "text-sky-300" },
+      { key: "quizzes", value: ctx.quizzesDone, unit: t("achievements.units.quizzes"), color: "text-fuchsia-300" },
+    ],
+    [ctx, t]
+  );
 
   return (
     <PageShell
-      title="成就系统"
-      subtitle="每一次坚持都值得被看见。"
+      title={t("achievements.title")}
+      subtitle={t("achievements.subtitle")}
     >
       {/* Hero */}
       <div className="glass relative mb-8 overflow-hidden rounded-3xl p-6 md:p-10">
@@ -137,33 +124,28 @@ export default function AchievementsPage() {
         <div className="relative grid grid-cols-1 items-center gap-6 md:grid-cols-3">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-              <Trophy className="h-3.5 w-3.5 text-amber-300" /> 成就墙
+              <Trophy className="h-3.5 w-3.5 text-amber-300" /> {t("achievements.wall")}
             </div>
             <h2 className="mt-3 font-display text-3xl font-bold text-white md:text-4xl">
-              解锁 {earnedCount} / {BADGES.length} 个徽章
+              {t("achievements.heading", { earned: earnedCount, total: badges.length })}
             </h2>
             <p className="mt-2 text-sm text-brand-200/70">
-              完成系统判定的学习里程碑，获得荣誉徽章，记录你的每一次成长。
+              {t("achievements.description")}
             </p>
           </div>
           <div className="md:col-span-2">
             <div className="h-3 w-full overflow-hidden rounded-full bg-white/5">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-amber-300 via-rose-400 to-fuchsia-500"
-                style={{ width: `${Math.round((earnedCount / BADGES.length) * 100)}%` }}
+                style={{ width: `${Math.round((earnedCount / badges.length) * 100)}%` }}
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-              {[
-                { l: "连续天数", v: ctx.streak, u: "天", c: "text-orange-300" },
-                { l: "等级", v: ctx.level, u: "Lv.", c: "text-amber-300" },
-                { l: "累计单词", v: ctx.wordsLearned, u: "词", c: "text-sky-300" },
-                { l: "练习答题", v: ctx.quizzesDone, u: "题", c: "text-fuchsia-300" },
-              ].map((x, i) => (
-                <GlassCard key={i} className="p-4">
-                  <div className="text-xs text-brand-200/70">{x.l}</div>
-                  <div className={"mt-1 font-display text-2xl font-bold " + x.c}>
-                    {x.v} <span className="text-sm text-white/60">{x.u}</span>
+              {stats.map((x) => (
+                <GlassCard key={x.key} className="p-4">
+                  <div className="text-xs text-brand-200/70">{t(`achievements.stats.${x.key}`)}</div>
+                  <div className={"mt-1 font-display text-2xl font-bold " + x.color}>
+                    {x.value} <span className="text-sm text-white/60">{x.unit}</span>
                   </div>
                 </GlassCard>
               ))}
@@ -174,7 +156,7 @@ export default function AchievementsPage() {
 
       {/* Badges grid */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {BADGES.map((b) => {
+        {badges.map((b) => {
           const Icon = b.icon;
           const { earned, progress, total } = b.check(ctx);
           const pct = Math.round((progress / total) * 100);
@@ -193,7 +175,7 @@ export default function AchievementsPage() {
                 </div>
                 {earned && (
                   <span className="rounded-full border border-amber-300/30 bg-amber-400/10 px-2 py-0.5 text-[10px] font-medium text-amber-200">
-                    已解锁
+                    {t("achievements.unlocked")}
                   </span>
                 )}
               </div>

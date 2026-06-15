@@ -1,5 +1,7 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Flame, BookOpen, Mic, Pen, Target } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
@@ -8,6 +10,7 @@ import { COURSES } from "../data/courses";
 import { getLanguage } from "../data/languages";
 
 export default function RecommendPage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const progress = useProgressStore((s) => s.progress);
   const refresh = useProgressStore((s) => s.refresh);
@@ -22,19 +25,30 @@ export default function RecommendPage() {
     speaking: Mic,
   };
   const titleFor: Record<string, string> = {
-    words: "闪卡记忆加强训练",
-    grammar: "语法题库强化",
-    listening: "每日听力练习",
-    speaking: "口语跟读训练",
+    words: t("recommend.titles.words"),
+    grammar: t("recommend.titles.grammar"),
+    listening: t("recommend.titles.listening"),
+    speaking: t("recommend.titles.speaking"),
   };
+
+  const fallbackItems = useMemo(
+    () => t("recommend.fallback", { returnObjects: true }) as { title: string; desc: string }[],
+    [t]
+  );
+  const fallbackIcons = [BookOpen, Pen, Mic];
+  const fallbackColors = [
+    "from-sky-400 to-blue-600",
+    "from-fuchsia-400 to-purple-600",
+    "from-amber-400 to-orange-500",
+  ];
 
   const language = user?.targetLanguage ?? "en";
   const recommendedCourses = COURSES.filter((c) => c.language === language).slice(0, 4);
 
   return (
     <PageShell
-      title="个性化学习路径"
-      subtitle="基于你最近的练习数据与目标语言，为你定制今天的提升路径。"
+      title={t("recommend.title")}
+      subtitle={t("recommend.subtitle")}
     >
       <div className="glass mb-8 overflow-hidden rounded-3xl">
         <div className="relative p-6 md:p-10">
@@ -42,39 +56,39 @@ export default function RecommendPage() {
           <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-                <Sparkles className="h-3.5 w-3.5 text-amber-300" /> 今日推荐路径
+                <Sparkles className="h-3.5 w-3.5 text-amber-300" /> {t("recommend.badge")}
               </div>
               <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
                 {user
-                  ? `${user.username}，让我们巩固薄弱环节吧`
-                  : "让学习有方向，不迷茫"}
+                  ? t("recommend.heading", { name: user.username })
+                  : t("recommend.headingGuest")}
               </h2>
               <p className="mt-2 max-w-lg text-sm text-brand-200/70">
-                按弱项 → 强化 → 综合挑战的顺序，逐步提高各模块得分。
+                {t("recommend.description")}
               </p>
               <button
                 onClick={() => user && refresh()}
                 className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs text-brand-100 hover:bg-white/10"
               >
-                刷新最新数据 <ArrowRight className="h-3.5 w-3.5" />
+                {t("recommend.refresh")} <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
             <div className="flex items-center gap-6">
               <div>
-                <div className="text-xs text-brand-200/60">当前级别</div>
+                <div className="text-xs text-brand-200/60">{t("recommend.currentLevel")}</div>
                 <div className="font-display text-3xl font-bold text-white">
                   Lv.{user?.level ?? progress?.level ?? 1}
                 </div>
               </div>
               <div>
-                <div className="text-xs text-brand-200/60">连续学习</div>
+                <div className="text-xs text-brand-200/60">{t("recommend.streak")}</div>
                 <div className="flex items-center gap-1 font-display text-3xl font-bold text-white">
                   <Flame className="h-6 w-6 text-orange-400" />
                   {user?.streak ?? progress?.streak ?? 0}
                 </div>
               </div>
               <div>
-                <div className="text-xs text-brand-200/60">目标语言</div>
+                <div className="text-xs text-brand-200/60">{t("recommend.targetLanguage")}</div>
                 <div className="font-display text-3xl font-bold text-white">
                   {getLanguage(language).flag} {getLanguage(language).name}
                 </div>
@@ -93,45 +107,44 @@ export default function RecommendPage() {
                 <Link to="/learn" key={key}>
                   <GlassCard className="relative h-full transition hover:-translate-y-0.5">
                     <div className="mb-4 flex items-center justify-between">
-                      <div className="text-xs text-brand-200/60">步骤 {idx + 1}</div>
-                      <div className="text-xs text-brand-200/60">建议 10 + {Math.round((100 - value) / 10)} 分钟</div>
+                      <div className="text-xs text-brand-200/60">{t("recommend.step", { n: idx + 1 })}</div>
+                      <div className="text-xs text-brand-200/60">{t("recommend.suggestMinutes", { minutes: 10 + Math.round((100 - value) / 10) })}</div>
                     </div>
                     <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white shadow-lg">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="mt-4 font-display text-xl font-bold text-white">{titleFor[key] || `${key} 模块训练`}</h3>
-                    <p className="mt-1 text-sm text-brand-200/70">当前该模块得分 {Math.max(15, value)} / 100 · 建议优先加强</p>
+                    <h3 className="mt-4 font-display text-xl font-bold text-white">{titleFor[key] || t("recommend.moduleTraining", { key })}</h3>
+                    <p className="mt-1 text-sm text-brand-200/70">{t("recommend.scoreHint", { score: Math.max(15, value) })}</p>
                     <div className="mt-5 flex items-center justify-between">
                       <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-brand-100">
-                        <Target className="h-3.5 w-3.5" /> 优先度 {idx === 0 ? "最高" : idx === 1 ? "中等" : "较低"}
+                        <Target className="h-3.5 w-3.5" /> {t("recommend.priorityLabel")} {idx === 0 ? t("recommend.priorityHigh") : idx === 1 ? t("recommend.priorityMedium") : t("recommend.priorityLow")}
                       </span>
                       <span className="inline-flex items-center gap-1 text-sm text-sky-300">
-                        开始学习 <ArrowRight className="h-4 w-4" />
+                        {t("recommend.start")} <ArrowRight className="h-4 w-4" />
                       </span>
                     </div>
                   </GlassCard>
                 </Link>
               );
             })
-          : [
-              { t: "闪卡词汇入门", d: "从零开始建立第一套词汇库", c: "from-sky-400 to-blue-600", i: BookOpen },
-              { t: "基础语法训练", d: "掌握语言结构的基础规则", c: "from-fuchsia-400 to-purple-600", i: Pen },
-              { t: "日常会话入门", d: "跟读者最常用的口语表达", c: "from-amber-400 to-orange-500", i: Mic },
-            ].map((item, idx) => (
-              <Link to="/learn" key={item.t}>
-                <GlassCard className="relative h-full transition hover:-translate-y-0.5">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="text-xs text-brand-200/60">步骤 {idx + 1}</div>
-                    <div className="text-xs text-brand-200/60">建议 10 分钟</div>
-                  </div>
-                  <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.c} text-white shadow-lg`}>
-                    <item.i className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-4 font-display text-xl font-bold text-white">{item.t}</h3>
-                  <p className="mt-1 text-sm text-brand-200/70">{item.d}</p>
-                </GlassCard>
-              </Link>
-            ))}
+          : fallbackItems.map((item, idx) => {
+              const Icon = fallbackIcons[idx] ?? BookOpen;
+              return (
+                <Link to="/learn" key={item.title}>
+                  <GlassCard className="relative h-full transition hover:-translate-y-0.5">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="text-xs text-brand-200/60">{t("recommend.step", { n: idx + 1 })}</div>
+                      <div className="text-xs text-brand-200/60">{t("recommend.suggestMinutes", { minutes: 10 })}</div>
+                    </div>
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${fallbackColors[idx]} text-white shadow-lg`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-4 font-display text-xl font-bold text-white">{item.title}</h3>
+                    <p className="mt-1 text-sm text-brand-200/70">{item.desc}</p>
+                  </GlassCard>
+                </Link>
+              );
+            })}
       </div>
 
       {/* Recommended courses */}
@@ -139,12 +152,12 @@ export default function RecommendPage() {
         <div className="mb-4 flex items-end justify-between">
           <div>
             <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-              推荐课程 · {getLanguage(language).flag} {getLanguage(language).name}
+              {t("recommend.coursesTitle", { flag: getLanguage(language).flag, name: getLanguage(language).name })}
             </h2>
-            <p className="mt-1 text-sm text-brand-200/70">按分级体系精选，系统化学习不迷路。</p>
+            <p className="mt-1 text-sm text-brand-200/70">{t("recommend.coursesDesc")}</p>
           </div>
           <Link to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
-            浏览全部课程 →
+            {t("recommend.browseAll")}
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -156,7 +169,7 @@ export default function RecommendPage() {
               <div className="p-5">
                 <div className="font-semibold text-white">{c.title}</div>
                 <div className="mt-1 text-xs text-brand-200/70">{c.description}</div>
-                <div className="mt-4 text-xs text-sky-300 group-hover:text-sky-200">加入学习计划 →</div>
+                <div className="mt-4 text-xs text-sky-300 group-hover:text-sky-200">{t("recommend.joinPlan")}</div>
               </div>
             </Link>
           ))}
