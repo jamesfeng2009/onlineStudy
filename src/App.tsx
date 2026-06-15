@@ -19,6 +19,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import LearnLangPage from "./pages/LearnLangPage";
 import LearnWordPage from "./pages/LearnWordPage";
+import LearnVocabPage from "./pages/LearnVocabPage";
 import { useAuthStore } from "./store/authStore";
 import i18n, { SUPPORTED_LANGUAGES, type SupportedLanguage } from "./lib/i18n";
 
@@ -53,6 +54,8 @@ const rootRoutes = (
     <Route path="/learn/:courseId" element={<LearnPage />} />
     <Route path="/languages" element={<LearnLangPage />} />
     <Route path="/languages/:langSlug" element={<LearnLangPage />} />
+    <Route path="/languages/:langSlug/vocabulary" element={<LearnVocabPage />} />
+    <Route path="/languages/:langSlug/vocabulary/:levelSlug" element={<LearnVocabPage />} />
     <Route path="/languages/:langSlug/word/:wordSlug" element={<LearnWordPage />} />
     <Route path="/dashboard" element={<DashboardPage />} />
     <Route path="/recommend" element={<RecommendPage />} />

@@ -268,6 +268,25 @@ export default function LearnLangPage() {
             ))}
           </div>
         </section>
+
+        <section className="mt-10 glass rounded-3xl p-8">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div>
+              <h2 className="font-display text-xl font-bold text-white md:text-2xl">
+                Browse {meta.englishName} vocabulary by level
+              </h2>
+              <p className="mt-1 text-sm text-brand-100/80">
+                {levels.length} level{levels.length === 1 ? "" : "s"}, {words?.length ?? 0} curated {meta.dataShape === "sentence" ? "sentences" : "words"}.
+              </p>
+            </div>
+            <Link
+              to={`/languages/${slug}/vocabulary`}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Open vocabulary index <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </section>
       </article>
     </PageShell>
   );

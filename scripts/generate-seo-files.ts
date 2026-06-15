@@ -69,6 +69,17 @@ const STATIC_PAGES = [
   { path: "/languages/japanese", changefreq: "monthly", priority: 0.8 },
   { path: "/languages/english", changefreq: "monthly", priority: 0.8 },
   { path: "/languages/chinese", changefreq: "monthly", priority: 0.8 },
+  // Vocabulary aggregation index pages (P1-4) — one per supported language.
+  // These are programmatic-but-data-driven: each renders a real
+  // ItemList of levels (CEFR / JLPT / HSK tiers) with actual word counts
+  // and a sample of vocabulary, so they are not doorway-page duplicates.
+  { path: "/languages/english/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/japanese/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/chinese/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/korean/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/spanish/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/french/vocabulary", changefreq: "weekly", priority: 0.7 },
+  { path: "/languages/german/vocabulary", changefreq: "weekly", priority: 0.7 },
   { path: "/register", changefreq: "monthly", priority: 0.5 },
   { path: "/login", changefreq: "monthly", priority: 0.4 },
 ] as const;
@@ -178,6 +189,13 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push(`- [Learn Japanese online](${bare("/languages/japanese")}): hand-written guide to learning Japanese with JLPT-level spaced repetition.`);
   lines.push(`- [Learn English online](${bare("/languages/english")}): hand-written guide to learning English across CEFR A1-C2.`);
   lines.push(`- [Learn Chinese online](${bare("/languages/chinese")}): hand-written guide to learning Mandarin with HSK-level spaced repetition.`);
+  lines.push("");
+  lines.push("## Vocabulary indexes");
+  lines.push("One per supported language. Each page lists every level (CEFR / JLPT / HSK tier) with the actual word count, a sample of the vocabulary, and a link to the level detail page.");
+  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german"]) {
+    const name = slug.charAt(0).toUpperCase() + slug.slice(1);
+    lines.push(`- [${name} vocabulary by level](${bare(`/languages/${slug}/vocabulary`)}): data-driven list of every ${name} vocabulary level in the library, with example sentences.`);
+  }
   lines.push("");
   if (published.length > 0) {
     lines.push("## Latest articles");

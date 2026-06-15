@@ -131,3 +131,27 @@ export function buildBreadcrumbLd(
     })),
   };
 }
+
+/**
+ * Build an ItemList JSON-LD block. Used for vocabulary aggregations,
+ * blog archives, and any other "list of N related pages" page.
+ */
+export function buildItemListLd(opts: {
+  name: string;
+  url: string;
+  items: { name: string; url: string; description?: string }[];
+}): JsonLd {
+  return {
+    "@type": "ItemList",
+    name: opts.name,
+    url: opts.url,
+    numberOfItems: opts.items.length,
+    itemListElement: opts.items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: it.url,
+      ...(it.description ? { description: it.description } : {}),
+    })),
+  };
+}
