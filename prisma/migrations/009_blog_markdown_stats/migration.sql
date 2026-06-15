@@ -4,6 +4,8 @@
 
 -- 1. 调整 content 字段：JSONB 数组 → TEXT (整篇 markdown)
 --    兼容旧数据：若已是 JSONB 数组则按 \n\n 拼接成 markdown
+--    PG 限制：ALTER COLUMN ... USING 不允许子查询，
+--    改用「加临时列 → UPDATE 写入 → 切列名」两步法。
 DO $$
 BEGIN
   IF EXISTS (
@@ -13,14 +15,19 @@ BEGIN
       AND column_name = 'content'
       AND data_type = 'jsonb'
   ) THEN
-    ALTER TABLE "blog_posts"
-      ALTER COLUMN "content" DROP DEFAULT;
-    ALTER TABLE "blog_posts"
-      ALTER COLUMN "content" TYPE TEXT
-      USING array_to_string(
-        ARRAY(SELECT jsonb_array_elements_text("content"::jsonb)),
-        E'\n\n'
-      );
+    -- 1.1 加临时 text 列
+    ALTER TABLE "blog_posts" ADD COLUMN "content_text" TEXT;
+
+    -- 1.2 把原 JSONB 数组按 \n\n 拼接写入
+    UPDATE "blog_posts"
+       SET "content_text" = array_to_string(
+             ARRAY(SELECT jsonb_array_elements_text("content"::jsonb)),
+             E'\n\n'
+           );
+
+    -- 1.3 删旧列 + 改名
+    ALTER TABLE "blog_posts" DROP COLUMN "content";
+    ALTER TABLE "blog_posts" RENAME COLUMN "content_text" TO "content";
   END IF;
 END $$;
 
