@@ -80,6 +80,23 @@ const STATIC_PAGES = [
   { path: "/languages/spanish/vocabulary", changefreq: "weekly", priority: 0.7 },
   { path: "/languages/french/vocabulary", changefreq: "weekly", priority: 0.7 },
   { path: "/languages/german/vocabulary", changefreq: "weekly", priority: 0.7 },
+  // Vocabulary level detail pages — one per (language, level) pair.
+  // 3 word-level languages: en (6 CEFR levels) + ja (1 JLPT level) +
+  // zh (4 HSK levels) = 11 indexable URLs. Each is hand-tuned copy
+  // (A1/A2/B1/B2/C1/C2/N5/HSK1-4) so the level pages are editorially
+  // unique, not templated doorway duplicates.
+  ...(["english", "japanese", "chinese"] as const).flatMap((slug) => {
+    const LEVELS_BY_LANG: Record<string, readonly string[]> = {
+      english: ["a1", "a2", "b1", "b2", "c1", "c2"],
+      japanese: ["n5"],
+      chinese: ["hsk1", "hsk2", "hsk3", "hsk4"],
+    };
+    return LEVELS_BY_LANG[slug].map((lvl) => ({
+      path: `/languages/${slug}/vocabulary/${lvl}`,
+      changefreq: "weekly" as const,
+      priority: 0.6,
+    }));
+  }),
   // Scenario pages (P1-3) — 3 word-level languages × 4 scenarios + 3
   // scenario index pages = 15 indexable URLs. Each /scenarios/:slug
   // page is hand-written for that (lang, scenario) pair, so the
@@ -212,6 +229,25 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german"]) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} vocabulary by level](${bare(`/languages/${slug}/vocabulary`)}): data-driven list of every ${name} vocabulary level in the library, with example sentences.`);
+  }
+  lines.push("");
+  lines.push("## Vocabulary level details");
+  lines.push("Hand-written detail page for each (language, level) pair. 11 pages total: 6 English CEFR levels (A1-C2), 1 Japanese JLPT level (N5), and 4 Chinese HSK levels (HSK 1-4).");
+  const LEVEL_DETAIL: Array<{ slug: string; name: string; levelSlug: string; label: string }> = [
+    { slug: "english", name: "English", levelSlug: "a1", label: "A1" },
+    { slug: "english", name: "English", levelSlug: "a2", label: "A2" },
+    { slug: "english", name: "English", levelSlug: "b1", label: "B1" },
+    { slug: "english", name: "English", levelSlug: "b2", label: "B2" },
+    { slug: "english", name: "English", levelSlug: "c1", label: "C1" },
+    { slug: "english", name: "English", levelSlug: "c2", label: "C2" },
+    { slug: "japanese", name: "Japanese", levelSlug: "n5", label: "N5" },
+    { slug: "chinese", name: "Chinese", levelSlug: "hsk1", label: "HSK 1" },
+    { slug: "chinese", name: "Chinese", levelSlug: "hsk2", label: "HSK 2" },
+    { slug: "chinese", name: "Chinese", levelSlug: "hsk3", label: "HSK 3" },
+    { slug: "chinese", name: "Chinese", levelSlug: "hsk4", label: "HSK 4" },
+  ];
+  for (const l of LEVEL_DETAIL) {
+    lines.push(`- [${l.name} ${l.label} vocabulary](${bare(`/languages/${l.slug}/vocabulary/${l.levelSlug}`)}): full ${l.name} ${l.label} word/sentence list with study advice and example usage.`);
   }
   lines.push("");
   lines.push("## Scenario-based learning");

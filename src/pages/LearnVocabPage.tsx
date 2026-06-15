@@ -149,6 +149,38 @@ export default function LearnVocabPage() {
               {copy.howTo}
             </p>
           </section>
+
+          {/* Sibling-level cross-links. Showing the other levels in the
+              same language keeps users (and crawlers) inside the
+              vocabulary hub and helps distribute page authority. */}
+          {grouped.length > 1 ? (
+            <section className="mt-10">
+              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+                Other {meta.englishName} levels
+              </h2>
+              <p className="mt-2 text-sm text-brand-200/70">
+                Move up or down within the same language to keep your recall curve consistent.
+              </p>
+              <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+                {grouped
+                  .filter((g) => g.level !== levelLabel)
+                  .map((g) => (
+                    <Link
+                      key={g.level}
+                      to={`/languages/${slug}/vocabulary/${slugifyLevel(g.level)}`}
+                      className="glass group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-white/10"
+                    >
+                      <span className="font-display text-white">
+                        {meta.englishName} {g.level}
+                      </span>
+                      <span className="text-xs text-brand-200/50">
+                        {g.items.length} {unit}
+                      </span>
+                    </Link>
+                  ))}
+              </div>
+            </section>
+          ) : null}
         </article>
       </PageShell>
     );
