@@ -722,7 +722,133 @@ const SCENARIOS_ES: Record<ScenarioKey, ScenarioContent> = {
       { en: "Do you have any plans for the weekend?", tgt: "¿Tiene planes para el fin de semana?" },
       { en: "What kind of music do you like?", tgt: "¿Qué tipo de música le gusta?" },
       { en: "It's nice weather today, isn't it?", tgt: "Hace buen tiempo hoy, ¿verdad?" },
-      { en: "It was lovely talking to you.", tgt: "Fue un placer charlar con usted." },
+      { en: "It was lovely talking to you.", tgt: "Fue un placer charlar con usted.", romanization: "" },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// French scenarios. Phrasing is Metropolitan French (vous form) where
+// politeness register matters and "tu" where small-talk intimacy applies.
+// The two-letter connector liaison marks (e.g. "vous_avez") are not
+// shown — French speakers produce them naturally from listening.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_FR: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Phrases de voyage en français — aéroport, hôtel, indications",
+    subtitle:
+      "Les 10 phrases françaises pour 95% de tout voyage: aéroport, hôtel, taxi et demandes d'indications.",
+    intro:
+      "Le français de voyage est le français au meilleur rapport effort-résultat: les mêmes 50 phrases vous mènent à travers l'aéroport, l'hôtel, le taxi, le restaurant et l'accueil d'une ambassade. Que vous voliez vers Paris, Montréal, Dakar ou Bruxelles, le français pratique du voyage est le même — et le maîtriser fait la différence entre un voyage stressant et un voyage qui coule. Les 10 phrases du jeu de voyage de LangOria sont celles dont vous avez réellement besoin, pas les 1000 dont vous pourriez avoir besoin un jour. Chaque phrase est accompagnée d'un audio d'ombroscopie, d'un dialogue exemple et d'un conseil culturel.",
+    culture:
+      "Dans les pays francophones, la politesse commence par « bonjour » — entrer dans un commerce sans dire « bonjour » est considéré comme impoli, et c'est souvent la première cause de froideur dans une interaction. En France, on tutoie rarement un inconnu; on garde le « vous » jusqu'à ce que l'interlocuteur propose le « tu ». Le pourboire n'est pas obligatoire: en France le service est inclus (mention « service compris » sur l'addition); en Suisse et au Québec on arrondit à 5 CHF / 2-3 CAD. Dans les menus, « entrée / plat / dessert » est la structure standard.",
+    howTo:
+      "Consacrez 3-5 jours au jeu de voyage avant tout déplacement. Révisez les 10 phrases avec la répétition espacée jusqu'à ce qu'elles soient automatiques, puis pratiquez le dialogue à voix haute avec un partenaire ou un enregistrement. En voyage, essayez d'utiliser chaque phrase au moins une fois dans la vie réelle — la mémoire musculaire de parler français à un inconnu se construit dans l'instant, pas dans l'application. La boucle quotidienne de 10 minutes suffit.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Excusez-moi, où est l'aéroport?", romanization: "" },
+      { speaker: "B", en: "Take the RER B south. It's about 40 minutes.", tgt: "Prenez le RER B en direction du sud. C'est environ 40 minutes.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Merci. Combien coûte un billet?", romanization: "" },
+      { speaker: "B", en: "11,80 euros. You can use a Navigo card or contactless.", tgt: "11,80 euros. Vous pouvez utiliser une carte Navigo ou sans contact.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Excusez-moi, où est l'aéroport?" },
+      { en: "I have a reservation under the name [X].", tgt: "J'ai une réservation au nom de [X]." },
+      { en: "Could I have the check, please?", tgt: "L'addition, s'il vous plaît." },
+      { en: "How do I get to [place]?", tgt: "Comment aller à [lieu]?" },
+      { en: "Is there a train station nearby?", tgt: "Y a-t-il une gare près d'ici?" },
+      { en: "I would like to check in.", tgt: "Je voudrais m'enregistrer." },
+      { en: "What time does the flight leave?", tgt: "À quelle heure part le vol?" },
+      { en: "I'm lost. Can you help me?", tgt: "Je suis perdu. Pouvez-vous m'aider?" },
+      { en: "How much is a ticket to [place]?", tgt: "Combien coûte un billet pour [lieu]?" },
+      { en: "Where is the bathroom?", tgt: "Où sont les toilettes?" },
+    ],
+  },
+  business: {
+    title: "Français des affaires — réunions, e-mails, suivi",
+    subtitle:
+      "Phrases professionnelles pour la journée de travail: planifier, ordres du jour, suivi et compétences relationnelles qui vous font promouvoir.",
+    intro:
+      "Le français des affaires est la différence entre être compris au travail et être de confiance au travail. Le vocabulaire des réunions, des e-mails et des suivis est un ensemble petit et fini — les mêmes 50 phrases couvrent 90% de la communication professionnelle en français. Que vous rédigiez un rapport d'état, ouvriez une réunion du lundi ou négociiez un délai, la bonne phrase au bon registre est ce qui vous fait ressembler à un pair, pas à un étranger. Le jeu de français des affaires de LangOria est construit autour des 10 phrases qui reviennent dans chaque réunion et chaque fil d'e-mail.",
+    culture:
+      "La culture d'entreprise en français est plus formelle qu'en anglais: le « vous » se maintient avec les clients et les supérieurs jusqu'à ce qu'ils proposent le « tu ». Évitez les réunions improvisées: prévenez 24-48 heures à l'avance. Les e-mails professionnels en français sont généralement plus longs et plus contextuels qu'en anglais — un bon e-mail commence par « J'espère que vous allez bien » et se termine par « Je reste à votre disposition ». La ponctualité est plus stricte en Suisse et en Allemagne qu'en France; au Sénégal et en Côte d'Ivoire, les réunions peuvent commencer 15-30 minutes après l'heure.",
+    howTo:
+      "Consacrez 5-7 jours au jeu des affaires avant votre première réunion en français. Révisez les 10 phrases avec la répétition espacée jusqu'à ce que vous puissiez les produire à froid, puis pratiquez les modèles d'e-mail à voix haute. En pratique, écoutez le registre que vos collègues utilisent et reproduisez-le — s'ils disent « on fait le point », vous dites « on fait le point »; s'ils disent « on se cale », vous dites « on se cale ». La boucle quotidienne de 10 minutes plus une vraie réunion par semaine suffit pour atteindre un français professionnel de travail en 3 mois.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Bonjour. Merci d'être présents. J'ai un ordre du jour bref.", romanization: "" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Bien sûr, allez-y.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "D'abord, le statut du lancement Q3. Ensuite, le budget. Enfin, les questions ouvertes.", romanization: "" },
+      { speaker: "B", en: "Sounds good. I'll send the agenda and pre-read via email.", tgt: "Parfait. J'enverrai l'ordre du jour et la documentation préalable par e-mail.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Planifions une réunion pour mardi prochain." },
+      { en: "Could you send me the agenda?", tgt: "Pouvez-vous m'envoyer l'ordre du jour?" },
+      { en: "I'll follow up via email.", tgt: "Je ferai un suivi par e-mail." },
+      { en: "Let's touch base next week.", tgt: "Reprenons contact la semaine prochaine." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Je voudrais proposer un délai de [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "Pouvons-nous déplacer la réunion à [heure]?" },
+      { en: "What's the status on the [project]?", tgt: "Où en est le [projet]?" },
+      { en: "I have a question about the contract.", tgt: "J'ai une question sur le contrat." },
+      { en: "Thank you for your time.", tgt: "Merci pour votre temps." },
+      { en: "Let's circle back on this.", tgt: "Revenons sur ce sujet." },
+    ],
+  },
+  food: {
+    title: "Phrases de restauration en français — restaurants, commander, payer",
+    subtitle:
+      "Commander au restaurant, restrictions alimentaires, demander l'addition et féliciter le chef.",
+    intro:
+      "La nourriture est le moyen le plus rapide de se sentir chez soi dans une nouvelle langue. Les 10 phrases de ce jeu couvrent le cas à 95%: entrer dans un restaurant, commander, demander pour les allergies, payer et partir. Que vous soyez dans un bistrot parisien, une brasserie québécoise, un restaurant sénégalais ou un café belge, le script est le même — et le registre de politesse est indulgent: les serveurs dans les pays francophones attendent des questions simples et répondent bien à un langage direct et poli. Le jeu de nourriture de LangOria est construit autour des 10 phrases qui reviennent à chaque repas au restaurant.",
+    culture:
+      "En France, le serveur vous demandera « Vous avez choisi? » quand il pense que vous êtes prêt — ne soyez pas surpris s'il revient 2-3 fois. Au Québec, on dit « la facture » au lieu de « l'addition ». Le pain est systématiquement apporté en France (et souvent facturé 1-2€), au Québec on l'offre. La propina n'est pas obligatoire en France (le service est inclus); au Québec on laisse 15-20% (« laisser un pourboire »). Pour les restrictions, annoncez clairement dès le début: « Je suis allergique aux fruits à coque » ou « Je suis végétarien » — les chefs s'adaptent volontiers.",
+    howTo:
+      "Consacrez 2-3 jours au jeu de nourriture avant toute visite au restaurant. Pratiquez le dialogue à voix haute avec un partenaire ou un enregistrement; le français de restaurant est une mémoire musculaire, pas une grammaire. Au moment, entrez avec un script clair: « Une table pour [X], s'il vous plaît » → « Je peux voir le menu? » → « Je vais prendre [X], s'il vous plaît » → « L'addition, s'il vous plaît » → « C'était délicieux, merci ». La boucle quotidienne de 10 minutes suffit.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Bonjour, une table pour deux, s'il vous plaît.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Bien sûr. Par ici. Voici le menu.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Merci. Que recommandez-vous?", romanization: "" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "Le poisson est excellent aujourd'hui. Êtes-vous allergique à quelque chose?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Puis-je voir le menu, s'il vous plaît?" },
+      { en: "What do you recommend?", tgt: "Que recommandez-vous?" },
+      { en: "I'm allergic to [X].", tgt: "Je suis allergique à [X]." },
+      { en: "Could I have the bill, please?", tgt: "L'addition, s'il vous plaît." },
+      { en: "Is this dish spicy?", tgt: "Ce plat est-il épicé?" },
+      { en: "I'll have [X], please.", tgt: "Je vais prendre [X], s'il vous plaît." },
+      { en: "Can I get this to go?", tgt: "Puis-je l'emporter?" },
+      { en: "Is the tip included?", tgt: "Le pourboire est-il inclus?" },
+      { en: "I'm a vegetarian.", tgt: "Je suis végétarien." },
+      { en: "That was delicious, thank you.", tgt: "C'était délicieux, merci." },
+    ],
+  },
+  "small-talk": {
+    title: "Petite conversation en français — présentations et loisirs",
+    subtitle:
+      "Salutations, présentations, loisirs et les phrases qui transforment un inconnu en ami.",
+    intro:
+      "La petite conversation est la porte d'entrée de la fluidité en français. Les 10 phrases de ce jeu sont celles qui reviennent dans chaque ascenseur, chaque file d'attente, chaque réception de conférence et chaque premier rendez-vous: vous présenter, demander ce que quelqu'un fait, parler du temps et trouver des terrains d'entente. Que vous soyez à un événement de networking à Paris, une fête à Montréal ou une salle d'attente à Dakar, le script est le même — et le registre de politesse est bien calibré: la conversation légère en français est amicale mais pas intime, et les 10 phrases ici vous maintiendront dans la bonne zone. Le jeu de conversation légère de LangOria est construit autour des 10 phrases qui vous font ressembler à un pair, pas à un touriste.",
+    culture:
+      "Dans les pays francophones, le « bonjour » initial est sacré — sans lui, toute la suite est mal reçue. « Comment allez-vous? » est un rituel de politesse, pas une vraie question — répondre « Bien, merci, et vous? » suffit, et l'interlocuteur enchaîne. En France, on garde le « vous » en contexte professionnel ou avec des inconnus; le « tu » se propose naturellement dans un groupe d'amis ou après un moment partagé. La bise (deux, trois ou quatre fois selon la région) est le salut entre amis et collègues proches. Évitez le faux ami « bibliothèque » (library, not bookshop — c'est « librairie »).",
+    howTo:
+      "Consacrez 3-5 jours au jeu de conversation légère. Pratiquez le dialogue à voix haute avec un partenaire ou un enregistrement; l'astuce est de sonner naturel, pas correct. La boucle quotidienne de 10 minutes suffit — mais utilisez au moins une phrase dans la vie réelle chaque jour, même si c'est juste un « Bonne journée! » au boulanger. La conversation légère est une habitude, pas un vocabulaire, et l'habitude se transfère entre pays francophones.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Bonjour, je m'appelle Sarah. Enchantée.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Enchanté. Je suis David. Que faites-vous dans la vie?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Je suis ingénieure logicielle. Et vous?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you seen any good movies lately?", tgt: "Je travaille dans le marketing. Avez-vous vu un bon film récemment?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Bonjour, je m'appelle [X]. Enchanté(e)." },
+      { en: "What do you do for a living?", tgt: "Que faites-vous dans la vie?" },
+      { en: "Where are you from?", tgt: "D'où venez-vous?" },
+      { en: "What are your hobbies?", tgt: "Quels sont vos hobbies?" },
+      { en: "Have you seen any good movies lately?", tgt: "Avez-vous vu un bon film récemment?" },
+      { en: "How was your weekend?", tgt: "Comment était votre week-end?" },
+      { en: "Do you have any plans for the weekend?", tgt: "Avez-vous des projets pour le week-end?" },
+      { en: "What kind of music do you like?", tgt: "Quel genre de musique aimez-vous?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Il fait beau aujourd'hui, n'est-ce pas?" },
+      { en: "It was lovely talking to you.", tgt: "C'était un plaisir de discuter avec vous." },
     ],
   },
 };
@@ -737,8 +863,10 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
   japanese: SCENARIOS_JA,
   chinese: SCENARIOS_ZH,
   korean: SCENARIOS_KO,
+  spanish: SCENARIOS_ES,
+  french: SCENARIOS_FR,
 };
 
 /** Languages that currently have scenario content shipped. */
-export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean"] as const;
+export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean", "spanish", "french"] as const;
 export type ScenarioLang = (typeof SCENARIO_LANGS)[number];
