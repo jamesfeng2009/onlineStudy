@@ -287,6 +287,27 @@ export default function LearnLangPage() {
             </Link>
           </div>
         </section>
+
+        {slug === "en" || slug === "ja" || slug === "zh" ? (
+          <section className="mt-6 glass rounded-3xl p-8">
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <div>
+                <h2 className="font-display text-xl font-bold text-white md:text-2xl">
+                  Real-world {meta.englishName} scenarios
+                </h2>
+                <p className="mt-1 text-sm text-brand-100/80">
+                  4 high-leverage situations — travel, business, food, and small talk — each with 10 phrases, a sample dialogue, and a culture tip.
+                </p>
+              </div>
+              <Link
+                to={`/languages/${slug}/scenarios`}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Open scenario lessons <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </section>
+        ) : null}
       </article>
     </PageShell>
   );

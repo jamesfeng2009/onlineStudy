@@ -80,6 +80,23 @@ const STATIC_PAGES = [
   { path: "/languages/spanish/vocabulary", changefreq: "weekly", priority: 0.7 },
   { path: "/languages/french/vocabulary", changefreq: "weekly", priority: 0.7 },
   { path: "/languages/german/vocabulary", changefreq: "weekly", priority: 0.7 },
+  // Scenario pages (P1-3) — 3 word-level languages × 4 scenarios + 3
+  // scenario index pages = 15 indexable URLs. Each /scenarios/:slug
+  // page is hand-written for that (lang, scenario) pair, so the
+  // content is editorially unique per URL — not a templated doorway.
+  ...(["english", "japanese", "chinese"] as const).flatMap((slug) => {
+    const index = {
+      path: `/languages/${slug}/scenarios`,
+      changefreq: "weekly" as const,
+      priority: 0.7,
+    };
+    const details = (["travel", "business", "food", "small-talk"] as const).map((s) => ({
+      path: `/languages/${slug}/scenarios/${s}`,
+      changefreq: "weekly" as const,
+      priority: 0.7,
+    }));
+    return [index, ...details];
+  }),
   { path: "/register", changefreq: "monthly", priority: 0.5 },
   { path: "/login", changefreq: "monthly", priority: 0.4 },
 ] as const;
@@ -195,6 +212,17 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german"]) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} vocabulary by level](${bare(`/languages/${slug}/vocabulary`)}): data-driven list of every ${name} vocabulary level in the library, with example sentences.`);
+  }
+  lines.push("");
+  lines.push("## Scenario-based learning");
+  lines.push("Real-world phrases for the 4 most-requested situations: travel, business, food, and small talk. Each (language, scenario) page is hand-written with 10 phrases, a sample dialogue, a culture tip, and study advice.");
+  for (const slug of ["english", "japanese", "chinese"]) {
+    const name = slug.charAt(0).toUpperCase() + slug.slice(1);
+    lines.push(`- [${name} scenarios](${bare(`/languages/${slug}/scenarios`)}): 4 high-leverage ${name} situations, each with 10 phrases and a sample dialogue.`);
+    for (const scenario of ["travel", "business", "food", "small-talk"]) {
+      const title = scenario.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+      lines.push(`- [${name} for ${title}](${bare(`/languages/${slug}/scenarios/${scenario}`)}): 10 essential ${name} ${title.toLowerCase()} phrases, with romanization and culture tip.`);
+    }
   }
   lines.push("");
   if (published.length > 0) {
