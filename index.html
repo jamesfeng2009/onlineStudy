@@ -1,10 +1,76 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinguaVerse · 多语种沉浸式学习平台</title>
+    <title>LinguaVerse — Learn languages with spaced repetition</title>
+    <meta name="description" content="Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice." />
+
+    <!--
+      Pre-render hreflang / canonical / og:meta before React boots.
+      Vite serves this as-is; SPA hydration later replaces these via the
+      data-seo="1" sentinel inside the React <Seo /> component.
+    -->
+    <script>
+      (function () {
+        var SITE = "https://lang-oria.com";
+        var LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de"];
+        var OG = { en: "en_US", zh: "zh_CN", ja: "ja_JP", ko: "ko_KR", es: "es_ES", fr: "fr_FR", de: "de_DE" };
+        var path = window.location.pathname || "/";
+
+        function setMeta(key, content, attr) {
+          attr = attr || "name";
+          var el = document.head.querySelector('meta[' + attr + '="' + key + '"]');
+          if (!el) {
+            el = document.createElement("meta");
+            el.setAttribute(attr, key);
+            document.head.appendChild(el);
+          }
+          el.setAttribute("content", content);
+        }
+
+        // canonical
+        var canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        canonical.href = SITE + path;
+        canonical.setAttribute("data-seo", "1");
+        document.head.appendChild(canonical);
+
+        // hreflang alternates
+        LOCALES.forEach(function (l) {
+          var link = document.createElement("link");
+          link.rel = "alternate";
+          link.setAttribute("hreflang", l);
+          link.href = SITE + path;
+          link.setAttribute("data-seo", "1");
+          document.head.appendChild(link);
+        });
+        var xDef = document.createElement("link");
+        xDef.rel = "alternate";
+        xDef.setAttribute("hreflang", "x-default");
+        xDef.href = SITE + path;
+        xDef.setAttribute("data-seo", "1");
+        document.head.appendChild(xDef);
+
+        // 同步 <html lang>
+        var detected =
+          (navigator.languages && navigator.languages[0]) ||
+          navigator.language ||
+          "en";
+        detected = (detected.split("-")[0] || "en").toLowerCase();
+        if (LOCALES.indexOf(detected) === -1) detected = "en";
+        document.documentElement.lang = detected;
+        setMeta("og:locale", OG[detected] || "en_US", "property");
+        setMeta("og:site_name", "LinguaVerse", "property");
+        setMeta("og:type", "website", "property");
+        setMeta("og:url", SITE + path, "property");
+        setMeta("og:title", "LinguaVerse", "property");
+        setMeta("og:description", "Master languages with bite-sized lessons and spaced repetition.", "property");
+        setMeta("twitter:card", "summary_large_image");
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
