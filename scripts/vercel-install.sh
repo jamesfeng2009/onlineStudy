@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-pnpm install --frozen-lockfile
+# wordnet-lmf-en / better-sqlite3 等 devDep 的 postinstall 会在 Vercel build
+# 容器里跑失败（better-sqlite3 找不到 native binding），但 production runtime
+# 完全不依赖这些。 --ignore-scripts 跳过所有 postinstall，再用 pnpm rebuild
+# 单独跑 esbuild 的 binding 安装。
+pnpm install --frozen-lockfile --ignore-scripts
+pnpm rebuild esbuild
 
 # 修复 P3009：清理之前在 Supabase 手动执行 009 留下的 failed 记录。
 # 009 已设计为幂等（IF NOT EXISTS / DO 块判断），Prisma 重新跑一遍不会出错。
