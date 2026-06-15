@@ -20,10 +20,10 @@ export default function FaqPage() {
   return (
     <PageShell title={t("faq.title")} subtitle={t("faq.subtitle")}>
       <Seo
-        title={t("faq.seoTitle", { defaultValue: "FAQ — LinguaVerse" })}
+        title={t("faq.seoTitle", { defaultValue: "FAQ — LangOria" })}
         description={t("faq.seoDescription", {
           defaultValue:
-            "Common questions about LinguaVerse: how lessons work, spaced repetition, languages offered, free vs VIP, and more.",
+            "Common questions about LangOria: how lessons work, spaced repetition, languages offered, free vs VIP, and more.",
         })}
         pathname="/faq"
       />

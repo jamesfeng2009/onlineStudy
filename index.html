@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinguaVerse — Learn languages with spaced repetition</title>
+    <title>LangOria — Learn languages with spaced repetition</title>
     <meta name="description" content="Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice." />
 
     <!--
@@ -17,7 +17,36 @@
         var SITE = "https://lang-oria.com";
         var LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de"];
         var OG = { en: "en_US", zh: "zh_CN", ja: "ja_JP", ko: "ko_KR", es: "es_ES", fr: "fr_FR", de: "de_DE" };
-        var path = window.location.pathname || "/";
+        var DEFAULT_LOCALE = "en";
+        var LOCALE_URLS = { en: "", zh: "/zh", ja: "/jp", ko: "/ko", es: "/es", fr: "/fr", de: "/de" };
+
+        function detectLocale(path) {
+          var segs = path.split("/").filter(Boolean);
+          if (segs.length > 0 && LOCALES.indexOf(segs[0]) === -1) return DEFAULT_LOCALE;
+          if (LOCALES.indexOf(segs[0]) !== -1) return segs[0];
+          var nav = (navigator.languages && navigator.languages[0]) || navigator.language || DEFAULT_LOCALE;
+          nav = (nav.split("-")[0] || DEFAULT_LOCALE).toLowerCase();
+          return LOCALES.indexOf(nav) !== -1 ? nav : DEFAULT_LOCALE;
+        }
+
+        // 1) Determine the *current* locale from URL.
+        var rawPath = window.location.pathname || "/";
+        var segs = rawPath.split("/").filter(Boolean);
+        var isLocaleSeg = segs.length > 0 && LOCALES.indexOf(segs[0]) !== -1;
+        var currentLocale = isLocaleSeg ? segs[0] : detectLocale(rawPath);
+
+        // 2) Strip the locale segment so we can re-prefix per alternate.
+        var stripped = isLocaleSeg
+          ? "/" + segs.slice(1).join("/")
+          : rawPath;
+        if (stripped === "" || stripped === "/") stripped = "/";
+
+        // 3) Build per-locale canonical URL.
+        function localePath(loc) {
+          var prefix = LOCALE_URLS[loc] || "";
+          if (stripped === "/") return prefix || "/";
+          return prefix + stripped;
+        }
 
         function setMeta(key, content, attr) {
           attr = attr || "name";
@@ -30,42 +59,36 @@
           el.setAttribute("content", content);
         }
 
-        // canonical
+        // canonical: prefer the current locale's URL.
         var canonical = document.createElement("link");
         canonical.rel = "canonical";
-        canonical.href = SITE + path;
+        canonical.href = SITE + localePath(currentLocale);
         canonical.setAttribute("data-seo", "1");
         document.head.appendChild(canonical);
 
-        // hreflang alternates
+        // hreflang: one link per locale, plus x-default.
         LOCALES.forEach(function (l) {
           var link = document.createElement("link");
           link.rel = "alternate";
           link.setAttribute("hreflang", l);
-          link.href = SITE + path;
+          link.href = SITE + localePath(l);
           link.setAttribute("data-seo", "1");
           document.head.appendChild(link);
         });
         var xDef = document.createElement("link");
         xDef.rel = "alternate";
         xDef.setAttribute("hreflang", "x-default");
-        xDef.href = SITE + path;
+        xDef.href = SITE + localePath(DEFAULT_LOCALE);
         xDef.setAttribute("data-seo", "1");
         document.head.appendChild(xDef);
 
-        // 同步 <html lang>
-        var detected =
-          (navigator.languages && navigator.languages[0]) ||
-          navigator.language ||
-          "en";
-        detected = (detected.split("-")[0] || "en").toLowerCase();
-        if (LOCALES.indexOf(detected) === -1) detected = "en";
-        document.documentElement.lang = detected;
-        setMeta("og:locale", OG[detected] || "en_US", "property");
-        setMeta("og:site_name", "LinguaVerse", "property");
+        // 4) <html lang> + og:locale for the current URL.
+        document.documentElement.lang = currentLocale;
+        setMeta("og:locale", OG[currentLocale] || OG[DEFAULT_LOCALE], "property");
+        setMeta("og:site_name", "LangOria", "property");
         setMeta("og:type", "website", "property");
-        setMeta("og:url", SITE + path, "property");
-        setMeta("og:title", "LinguaVerse", "property");
+        setMeta("og:url", SITE + localePath(currentLocale), "property");
+        setMeta("og:title", "LangOria", "property");
         setMeta("og:description", "Master languages with bite-sized lessons and spaced repetition.", "property");
         setMeta("twitter:card", "summary_large_image");
       })();

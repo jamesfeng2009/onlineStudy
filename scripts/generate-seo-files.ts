@@ -112,7 +112,7 @@ ${lines.join("\n")}
 
 // ---------- robots.txt ----------
 function buildRobots() {
-  return `# LinguaVerse robots.txt
+  return `# LangOria robots.txt
 # Generated at build time by scripts/generate-seo-files.ts
 
 User-agent: *
@@ -152,9 +152,9 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
     .sort((a, b) => (b.publishedAt?.getTime?.() ?? 0) - (a.publishedAt?.getTime?.() ?? 0));
 
   const lines: string[] = [];
-  lines.push("# LinguaVerse");
+  lines.push("# LangOria");
   lines.push("");
-  lines.push("> LinguaVerse is a multilingual learning platform with bite-sized lessons,");
+  lines.push("> LangOria is a multilingual learning platform with bite-sized lessons,");
   lines.push("> spaced-repetition vocabulary, listening practice, and speaking drills across");
   lines.push("> English, Japanese, Korean, Chinese, Spanish, French and German.");
   lines.push("");
@@ -164,10 +164,10 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push("");
   lines.push("## Main pages");
   const bare = (p: string) => `${SITE_URL}${p}`;
-  lines.push(`- [LinguaVerse — language learning platform](${bare("/")}): homepage with hero, how-it-works, language list, featured courses, FAQ teaser, blog teaser.`);
+  lines.push(`- [LangOria — language learning platform](${bare("/")}): homepage with hero, how-it-works, language list, featured courses, FAQ teaser, blog teaser.`);
   lines.push(`- [Courses catalog](${bare("/courses")}): structured language courses from A1 to C1.`);
   lines.push(`- [Blog](${bare("/blog")}): language learning articles.`);
-  lines.push(`- [FAQ](${bare("/faq")}): common questions about how LinguaVerse works.`);
+  lines.push(`- [FAQ](${bare("/faq")}): common questions about how LangOria works.`);
   lines.push("");
   if (published.length > 0) {
     lines.push("## Latest articles");

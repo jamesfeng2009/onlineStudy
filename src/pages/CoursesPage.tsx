@@ -40,7 +40,7 @@ export default function CoursesPage() {
   return (
     <PageShell title={t("courses.title")} subtitle={t("courses.subtitle")}>
       <Seo
-        title={t("courses.seoTitle", { defaultValue: "Courses — LinguaVerse" })}
+        title={t("courses.seoTitle", { defaultValue: "Courses — LangOria" })}
         description={t("courses.seoDescription", {
           defaultValue:
             "Browse structured language courses from A1 to C1 across English, Japanese, Korean, Chinese, Spanish, French and German.",

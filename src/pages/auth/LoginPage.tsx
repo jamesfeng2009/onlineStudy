@@ -105,7 +105,7 @@ export default function LoginPage() {
 
         <div className="order-1 md:order-2">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-            <Sparkles className="h-3.5 w-3.5 text-amber-300" /> LinguaVerse
+            <Sparkles className="h-3.5 w-3.5 text-amber-300" /> LangOria
           </div>
           <h1 className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
             {t("auth.login.heroTitle")}

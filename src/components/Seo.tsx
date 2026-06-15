@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SUPPORTED_LANGUAGES } from "../lib/i18n";
+import { SUPPORTED_LANGUAGES, buildLocalePath, DEFAULT_UI_LANGUAGE, type SupportedLanguage } from "../lib/i18n";
 
 // 生产域名（Vercel 上确认过是 lang-oria.com）
 const SITE_URL = "https://lang-oria.com";
@@ -58,10 +58,13 @@ function buildAlternates(
   const pathByLang = new Map<string, string>(
     (localizedPaths ?? []).map((p) => [p.lang, p.path])
   );
-  return SUPPORTED_LANGUAGES.map((code) => ({
-    lang: code,
-    url: `${SITE_URL}${pathByLang.get(code) ?? pathname}`,
-  }));
+  return SUPPORTED_LANGUAGES.map((code) => {
+    const target = pathByLang.get(code) ?? pathname;
+    return {
+      lang: code,
+      url: `${SITE_URL}${buildLocalePath(code as SupportedLanguage, target)}`,
+    };
+  });
 }
 
 function resolveCanonical(
@@ -70,7 +73,7 @@ function resolveCanonical(
   canonical?: string
 ) {
   if (canonical) return canonical;
-  return `${SITE_URL}${pathname}`;
+  return `${SITE_URL}${buildLocalePath((lang || DEFAULT_UI_LANGUAGE) as SupportedLanguage, pathname)}`;
 }
 
 export function Seo({
@@ -115,7 +118,7 @@ export function Seo({
     setMeta("og:type", type, "property");
     if (description) setMeta("og:description", description, "property");
     setMeta("og:url", canonicalUrl, "property");
-    setMeta("og:site_name", "LinguaVerse", "property");
+    setMeta("og:site_name", "LangOria", "property");
     setMeta("og:locale", ogLocale, "property");
     if (image) setMeta("og:image", image, "property");
     setMeta("twitter:card", "summary_large_image", "name");

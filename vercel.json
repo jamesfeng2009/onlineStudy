@@ -13,6 +13,18 @@
   },
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/handler?__path=:path*" },
+    { "source": "/jp", "destination": "/" },
+    { "source": "/jp/:path*", "destination": "/:path*" },
+    { "source": "/zh", "destination": "/" },
+    { "source": "/zh/:path*", "destination": "/:path*" },
+    { "source": "/ko", "destination": "/" },
+    { "source": "/ko/:path*", "destination": "/:path*" },
+    { "source": "/es", "destination": "/" },
+    { "source": "/es/:path*", "destination": "/:path*" },
+    { "source": "/fr", "destination": "/" },
+    { "source": "/fr/:path*", "destination": "/:path*" },
+    { "source": "/de", "destination": "/" },
+    { "source": "/de/:path*", "destination": "/:path*" },
     { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/" }
   ]
 }

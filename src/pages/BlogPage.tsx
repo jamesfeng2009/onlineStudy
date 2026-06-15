@@ -53,7 +53,7 @@ export default function BlogPage() {
   return (
     <PageShell title={t("blog.title")} subtitle={t("blog.subtitle")}>
       <Seo
-        title={t("blog.seoTitle", { defaultValue: "Blog — LinguaVerse" })}
+        title={t("blog.seoTitle", { defaultValue: "Blog — LangOria" })}
         description={t("blog.seoDescription", {
           defaultValue:
             "Articles on spaced repetition, vocabulary, listening and speaking — practical guides for language learners.",

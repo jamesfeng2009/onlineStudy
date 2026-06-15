@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
 import { LANGUAGES } from "../../data/languages";
 import type { Language } from "../../types";
-import { SUPPORTED_LANGUAGES } from "../../lib/i18n";
+import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../../lib/i18n";
 
 export default function RegisterPage() {
   const { t, i18n } = useTranslation();
@@ -42,7 +42,7 @@ export default function RegisterPage() {
       return;
     }
     i18n.changeLanguage(uiLang);
-    navigate("/");
+    navigate(buildLocalePath(uiLang as SupportedLanguage, "/"));
   };
 
   return (

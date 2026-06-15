@@ -7,7 +7,7 @@ import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { LANGUAGES } from "../data/languages";
-import { SUPPORTED_LANGUAGES } from "../lib/i18n";
+import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../lib/i18n";
 
 export default function ProfilePage() {
   const { t, i18n } = useTranslation();
@@ -73,6 +73,13 @@ export default function ProfilePage() {
       return;
     }
     i18n.changeLanguage(uiLang);
+    const target = buildLocalePath(
+      uiLang as SupportedLanguage,
+      window.location.pathname
+    );
+    if (target !== window.location.pathname) {
+      navigate(target);
+    }
     setSavedMsg(t("profile.saved"));
     window.setTimeout(() => setSavedMsg(""), 2000);
   };

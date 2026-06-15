@@ -84,7 +84,7 @@ export default function BlogPostPage() {
   return (
     <PageShell>
       <Seo
-        title={`${seoTitle} · LinguaVerse`}
+        title={`${seoTitle} · LangOria`}
         description={seoDesc}
         image={post.coverImageUrl ?? undefined}
         type="article"

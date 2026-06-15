@@ -111,7 +111,7 @@ export default function HomePage() {
   return (
     <PageShell>
       <Seo
-        title={t("home.seoTitle", { defaultValue: "LinguaVerse — Learn languages with spaced repetition" })}
+        title={t("home.seoTitle", { defaultValue: "LangOria — Learn languages with spaced repetition" })}
         description={t("home.seoDescription", {
           defaultValue:
             "Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice.",

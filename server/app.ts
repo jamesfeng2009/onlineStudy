@@ -96,7 +96,7 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   // Health check
   app.get("/health", async (_request, reply) => sendSuccess(reply, { ok: true, uptime: process.uptime() }, "API is healthy"));
-  app.get("/", async (_request, reply) => sendSuccess(reply, { message: "LinguaVerse API is running" }));
+  app.get("/", async (_request, reply) => sendSuccess(reply, { message: "LangOria API is running" }));
 
   await app.ready();
 

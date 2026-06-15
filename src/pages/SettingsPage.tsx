@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Monitor, MessageCircleQuestion, Globe2, Check, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { LANGUAGES } from "../data/languages";
-import { SUPPORTED_LANGUAGES } from "../lib/i18n";
+import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../lib/i18n";
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const updateProfile = useAuthStore((s) => s.updateProfile);
 
@@ -37,7 +39,17 @@ export default function SettingsPage() {
       setErr(res.error ?? t("settings.saveFailed"));
       return;
     }
+    // Persisted UI language should match the URL locale.  We jump to the
+    // URL that corresponds to the new language, keeping the user on the
+    // same page otherwise.
     i18n.changeLanguage(uiLang);
+    const target = buildLocalePath(
+      uiLang as SupportedLanguage,
+      window.location.pathname
+    );
+    if (target !== window.location.pathname) {
+      navigate(target);
+    }
     setSavedMsg(t("settings.saved"));
     window.setTimeout(() => setSavedMsg(""), 2000);
   };

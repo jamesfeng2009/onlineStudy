@@ -58,7 +58,7 @@ export default function Header() {
           </div>
           <div className="leading-tight">
             <div className="font-display text-lg font-bold tracking-wide text-white">
-              LinguaVerse
+              LangOria
             </div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-brand-200/70">
               immersive learning

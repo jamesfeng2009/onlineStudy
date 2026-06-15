@@ -22,7 +22,7 @@ const tierConfigs: TierConfig[] = [
     fallbackAmount: 900,
     currency: "usd",
     tier: "basic",
-    title: "LinguaVerse Basic Monthly",
+    title: "LangOria Basic Monthly",
   },
   {
     priceIdEnv: process.env.STRIPE_PRICE_VIP,
@@ -30,7 +30,7 @@ const tierConfigs: TierConfig[] = [
     fallbackAmount: 2900,
     currency: "usd",
     tier: "vip",
-    title: "LinguaVerse VIP Monthly",
+    title: "LangOria VIP Monthly",
   },
 ];
 
