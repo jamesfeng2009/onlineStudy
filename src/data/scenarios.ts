@@ -602,6 +602,132 @@ const SCENARIOS_KO: Record<ScenarioKey, ScenarioContent> = {
 };
 
 // ---------------------------------------------------------------------------
+// Spanish scenarios. Phrasing is Castilian (usted) where the politeness
+// register matters (business, formal travel) and Latin-American neutral
+// (tú + usted) where it does not. Surnames and accent marks are
+// preserved.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_ES: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Frases de viaje en español — aeropuerto, hotel, indicaciones",
+    subtitle:
+      "Las 10 frases de español para el 95% de cualquier viaje: aeropuerto, hotel, taxi y pedir direcciones.",
+    intro:
+      "El español de viaje es el español con mejor relación esfuerzo-resultado: las mismas 50 frases te llevan por el aeropuerto, el hotel, el taxi, el restaurante y la recepción de una embajada. Tanto si vuelas a Madrid, a Ciudad de México, a Buenos Aires o a Bogotá, el español práctico del viaje es el mismo — y dominarlo es la diferencia entre un viaje estresante y uno que fluye. Las 10 frases del mazo de viaje de LangOria son las que realmente necesitas, no las 1000 que podrías necesitar algún día. Cada frase viene con audio de repetición, un diálogo de ejemplo y un consejo cultural.",
+    culture:
+      "En los países hispanohablantes, la cortesía se expresa con «por favor» y «gracias» (no tan obligatoria como en inglés, pero muy valorada). En España se usa más el «usted» formal; en Latinoamérica se usa más el «tú» coloquial — en la duda, empieza con «usted» y deja que el interlocutor te invite a tutearte. La propina no es obligatoria: en España se deja 5-10% redondeando; en México y Argentina es 10-15%. En los menús, «primer plato» / «segundo plato» / «postre» es la estructura de España; en Latinoamérica se dice más «entrada» / «plato fuerte» / «postre».",
+    howTo:
+      "Dedica 3-5 días al mazo de viaje antes de cualquier viaje. Repasa las 10 frases con repetición espaciada hasta que salgan en automático, luego practica el diálogo en voz alta con un compañero o una grabación. De viaje, intenta usar cada frase al menos una vez en la vida real — la memoria muscular de hablar español con un extraño se construye en el momento, no en la app. El bucle diario de 10 minutos es suficiente.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Disculpe, ¿dónde está el aeropuerto?", romanization: "" },
+      { speaker: "B", en: "Take metro line 8 south. It's about 40 minutes.", tgt: "Tome la línea 8 del metro hacia el sur. Son unos 40 minutos.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Gracias. ¿Cuánto cuesta el billete?", romanization: "" },
+      { speaker: "B", en: "1,50 euros. You can use the contactless card at the turnstile.", tgt: "1,50 euros. Puede usar la tarjeta sin contacto en el torno.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Disculpe, ¿dónde está el aeropuerto?" },
+      { en: "I have a reservation under the name [X].", tgt: "Tengo una reserva a nombre de [X]." },
+      { en: "Could I have the check, please?", tgt: "La cuenta, por favor." },
+      { en: "How do I get to [place]?", tgt: "¿Cómo llego a [lugar]?" },
+      { en: "Is there a train station nearby?", tgt: "¿Hay una estación de tren cerca?" },
+      { en: "I would like to check in.", tgt: "Quisiera registrarme." },
+      { en: "What time does the flight leave?", tgt: "¿A qué hora sale el vuelo?" },
+      { en: "I'm lost. Can you help me?", tgt: "Estoy perdido. ¿Puede ayudarme?" },
+      { en: "How much is a ticket to [place]?", tgt: "¿Cuánto cuesta un billete a [lugar]?" },
+      { en: "Where is the bathroom?", tgt: "¿Dónde está el baño?" },
+    ],
+  },
+  business: {
+    title: "Español de negocios — reuniones, correos, seguimiento",
+    subtitle:
+      "Frases profesionales para el día laboral: agendar, agendas, seguimiento y habilidades blandas que te hacen ascender.",
+    intro:
+      "El español de negocios es la diferencia entre ser entendido en el trabajo y ser de confianza en el trabajo. El vocabulario de reuniones, correos y seguimientos es un conjunto pequeño y finito — las mismas 50 frases cubren el 90% de la comunicación profesional en español. Ya sea escribiendo un informe de estado, abriendo una reunión de lunes o negociando una fecha límite, la frase correcta en el registro correcto es lo que te hace sonar como un par, no como un extranjero. El mazo de español de negocios de LangOria está construido alrededor de las 10 frases que aparecen en cada reunión y cada hilo de correo.",
+    culture:
+      "La cultura empresarial en español es generalmente más formal que en inglés: el «usted» se mantiene con clientes y superiores hasta que ellos inviten a tutearse. Evita las reuniones improvisadas: agenda con 24-48 horas de anticipación. Los correos electrónicos en español suelen ser más largos y contextuales que en inglés — un buen correo de negocios comienza con un «Espero que esté bien» y termina con un «Quedo a la espera de su respuesta». La puntualidad varía: España y Chile son puntuales, México y Argentina suelen empezar 15-30 minutos tarde.",
+    howTo:
+      "Dedica 5-7 días al mazo de negocios antes de tu primera reunión en español. Repasa las 10 frases con repetición espaciada hasta que puedas producirlas en frío, luego practica las plantillas de correo en voz alta. En la vida real, escucha el registro que usan tus colegas y hazlo espejo — si ellos dicen «agendemos», tú dices «agendemos»; si ellos dicen «conversamos», tú dices «conversamos». El bucle diario de 10 minutos más una reunión real por semana es suficiente para alcanzar español profesional de trabajo en 3 meses.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Buenos días. Gracias por unirse. Tengo una agenda breve.", romanization: "" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Por supuesto, adelante.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "Primero, el estado del lanzamiento del Q3. Luego, el presupuesto. Finalmente, preguntas abiertas.", romanization: "" },
+      { speaker: "B", en: "Sounds good. I'll send the agenda and pre-read via email.", tgt: "Perfecto. Enviaré la agenda y la documentación previa por correo.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Programemos una reunión para el martes que viene." },
+      { en: "Could you send me the agenda?", tgt: "¿Puede enviarme la agenda?" },
+      { en: "I'll follow up via email.", tgt: "Le haré seguimiento por correo." },
+      { en: "Let's touch base next week.", tgt: "Volvamos a hablar la próxima semana." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Quisiera proponer una fecha límite de [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "¿Podemos mover la reunión a las [hora]?" },
+      { en: "What's the status on the [project]?", tgt: "¿Cómo va el [proyecto]?" },
+      { en: "I have a question about the contract.", tgt: "Tengo una pregunta sobre el contrato." },
+      { en: "Thank you for your time.", tgt: "Gracias por su tiempo." },
+      { en: "Let's circle back on this.", tgt: "Volvamos a tratar este tema." },
+    ],
+  },
+  food: {
+    title: "Frases de comida en español — restaurantes, pedir, pagar",
+    subtitle:
+      "Pedir en restaurantes, restricciones dietéticas, pedir la cuenta y felicitar al chef.",
+    intro:
+      "La comida es la forma más rápida de sentirse en casa en un nuevo idioma. Las 10 frases de este mazo cubren el caso del 95%: entrar en un restaurante, pedir, preguntar por alergias, pagar y salir. Tanto si estás en un bar de Madrid como en una fonda mexicana, una parrilla argentina o un café colombiano, el guion es el mismo — y el registro de cortesía es indulgente: los camareros en países hispanohablantes esperan preguntas simples y responden bien al lenguaje directo y educado. El mazo de comida de LangOria está construido alrededor de las 10 frases que aparecen en cada comida fuera.",
+    culture:
+      "En España, el camarero te pregunta «¿Qué va a tomar?» al sentarte — listo para pedir. En México, te dan más tiempo y vuelven después. El pan y las tapas son comunes en España, pero no en Latinoamérica. La propina varía: en España 5-10% redondeando (o nada), en México 10-15% (el 10% a veces viene incluido en la cuenta como «servicio»), en Argentina no se espera propina. Si tienes restricciones, dilo claramente al principio: «Soy alérgico a los frutos secos» o «Soy vegetariano» — los chefs suelen estar encantados de adaptar.",
+    howTo:
+      "Dedica 2-3 días al mazo de comida antes de cualquier visita a un restaurante. Practica el diálogo en voz alta con un compañero o una grabación; el español de restaurante es memoria muscular, no gramática. En el momento, entra con un guion claro: «Mesa para [X], por favor» → «¿Puedo ver la carta?» → «Voy a pedir [X], por favor» → «La cuenta, por favor» → «Estaba delicioso, gracias». El bucle diario de 10 minutos es suficiente.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Hola, una mesa para dos, por favor.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Por supuesto. Por aquí. Aquí tiene la carta.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Gracias. ¿Qué recomienda?", romanization: "" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "El pescado está excelente hoy. ¿Es alérgico a algo?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "¿Puedo ver la carta, por favor?" },
+      { en: "What do you recommend?", tgt: "¿Qué recomienda?" },
+      { en: "I'm allergic to [X].", tgt: "Soy alérgico a [X]." },
+      { en: "Could I have the bill, please?", tgt: "La cuenta, por favor." },
+      { en: "Is this dish spicy?", tgt: "¿Este plato es picante?" },
+      { en: "I'll have [X], please.", tgt: "Voy a pedir [X], por favor." },
+      { en: "Can I get this to go?", tgt: "¿Me lo puede llevar para llevar?" },
+      { en: "Is the tip included?", tgt: "¿Está incluida la propina?" },
+      { en: "I'm a vegetarian.", tgt: "Soy vegetariano." },
+      { en: "That was delicious, thank you.", tgt: "Estaba delicioso, gracias." },
+    ],
+  },
+  "small-talk": {
+    title: "Conversación ligera en español — presentaciones y hobbies",
+    subtitle:
+      "Saludos, presentaciones, pasatiempos y las frases que convierten a un desconocido en un amigo.",
+    intro:
+      "La conversación ligera es la puerta de entrada de la fluidez en español. Las 10 frases de este mazo son las que aparecen en cada ascensor, cada cola de café, cada recepción de conferencia y cada primera cita: presentarte, preguntar a qué se dedica alguien, hablar del tiempo y encontrar puntos en común. Tanto si estás en un evento de networking en Madrid, una fiesta en Buenos Aires o una sala de espera en Bogotá, el guion es el mismo — y el registro de cortesía está bien calibrado: la conversación ligera en español es amigable pero no íntima, y las 10 frases aquí te mantendrán en la zona correcta. El mazo de conversación ligera de LangOria está construido alrededor de las 10 frases que te hacen sonar como un par, no como un turista.",
+    culture:
+      "En los países hispanohablantes, «¿Cómo te llamas?» es el primer acercamiento estándar, seguido de «¿De dónde eres?» y «¿A qué te dedicas?». A diferencia del inglés, en español se usa «tú» rápidamente — en una fiesta es habitual tutearse desde la primera conversación. El «abrazo» (abrazo de un solo lado) y los dos besos (en España) o un solo beso (en muchos países latinoamericanos) son los saludos estándar. Evita el falso amigo «embarazada» (pregnant, not embarrassed — di «tengo vergüenza» o «estoy avergonzado» en su lugar).",
+    howTo:
+      "Dedica 3-5 días al mazo de conversación ligera. Practica el diálogo en voz alta con un compañero o una grabación; el truco está en sonar natural, no correcto. El bucle diario de 10 minutos es suficiente — pero usa al menos una frase en la vida real cada día, aunque sea un «¡Qué bien!» al camarero. La conversación ligera es un hábito, no un vocabulario, y el hábito se transfiere entre países hispanohablantes.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Hola, me llamo Sarah. Mucho gusto.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Mucho gusto. Yo soy David. ¿A qué se dedica?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Soy ingeniera de software. ¿Y usted?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you seen any good movies lately?", tgt: "Trabajo en marketing. ¿Ha visto alguna buena película últimamente?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Hola, me llamo [X]. Mucho gusto." },
+      { en: "What do you do for a living?", tgt: "¿A qué se dedica?" },
+      { en: "Where are you from?", tgt: "¿De dónde es?" },
+      { en: "What are your hobbies?", tgt: "¿Cuáles son sus aficiones?" },
+      { en: "Have you seen any good movies lately?", tgt: "¿Ha visto alguna buena película últimamente?" },
+      { en: "How was your weekend?", tgt: "¿Qué tal el fin de semana?" },
+      { en: "Do you have any plans for the weekend?", tgt: "¿Tiene planes para el fin de semana?" },
+      { en: "What kind of music do you like?", tgt: "¿Qué tipo de música le gusta?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Hace buen tiempo hoy, ¿verdad?" },
+      { en: "It was lovely talking to you.", tgt: "Fue un placer charlar con usted." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Public lookup: url-slug (lang, scenario) → content.
 // The lang param is the URL_SLUG_TO_DATA key (e.g. "english", "japanese").
 // ---------------------------------------------------------------------------

@@ -288,7 +288,7 @@ export default function LearnLangPage() {
           </div>
         </section>
 
-        {slug === "en" || slug === "ja" || slug === "zh" ? (
+        {(slug === "en" || slug === "ja" || slug === "zh" || slug === "ko" || slug === "es" || slug === "fr" || slug === "de") ? (
           <section className="mt-6 glass rounded-3xl p-8">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div>

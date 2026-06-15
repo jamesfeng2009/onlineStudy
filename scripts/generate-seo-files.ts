@@ -100,7 +100,7 @@ const STATIC_PAGES = [
   // Scenario pages (P1-3 + P1-5 sentence-pair langs) — word-level
   // languages + sentence-pair languages with scenario content shipped.
   // 4 langs × 4 scenarios + 4 scenario index pages = 20 indexable URLs.
-  ...(["english", "japanese", "chinese", "korean"] as const).flatMap((slug) => {
+  ...(["english", "japanese", "chinese", "korean", "spanish"] as const).flatMap((slug) => {
     const index = {
       path: `/languages/${slug}/scenarios`,
       changefreq: "weekly" as const,
@@ -253,7 +253,7 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push("");
   lines.push("## Scenario-based learning");
   lines.push("Real-world phrases for the 4 most-requested situations: travel, business, food, and small talk. Each (language, scenario) page is hand-written with 10 phrases, a sample dialogue, a culture tip, and study advice.");
-  for (const slug of ["english", "japanese", "chinese", "korean"]) {
+  for (const slug of ["english", "japanese", "chinese", "korean", "spanish"]) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} scenarios](${bare(`/languages/${slug}/scenarios`)}): 4 high-leverage ${name} situations, each with 10 phrases and a sample dialogue.`);
     for (const scenario of ["travel", "business", "food", "small-talk"]) {
