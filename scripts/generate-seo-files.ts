@@ -100,7 +100,7 @@ const STATIC_PAGES = [
   // Scenario pages (P1-3 + P1-5 sentence-pair langs) — word-level
   // languages + sentence-pair languages with scenario content shipped.
   // 4 langs × 4 scenarios + 4 scenario index pages = 20 indexable URLs.
-  ...(["english", "japanese", "chinese", "korean", "spanish", "french"] as const).flatMap((slug) => {
+  ...(["english", "japanese", "chinese", "korean", "spanish", "french", "german"] as const).flatMap((slug) => {
     const index = {
       path: `/languages/${slug}/scenarios`,
       changefreq: "weekly" as const,

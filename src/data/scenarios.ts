@@ -854,6 +854,131 @@ const SCENARIOS_FR: Record<ScenarioKey, ScenarioContent> = {
 };
 
 // ---------------------------------------------------------------------------
+// German scenarios. Phrasing uses the formal "Sie" register where
+// politeness matters and "du" where small-talk intimacy applies.
+// All nouns are capitalised per German orthography.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_DE: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Reise-Phrasen auf Deutsch — Flughafen, Hotel, Wegbeschreibungen",
+    subtitle:
+      "Die 10 deutschen Sätze für 95% jeder Reise: Flughafen, Hotel, Taxi und nach dem Weg fragen.",
+    intro:
+      "Reise-Deutsch ist das Deutsch mit dem besten Aufwand-Nutzen-Verhältnis: dieselben 50 Sätze bringen Sie durch den Flughafen, das Hotel, das Taxi, das Restaurant und den Empfang einer Botschaft. Egal ob Sie nach Berlin, Wien, Zürich oder München fliegen — das praktische Reise-Deutsch ist dasselbe, und es zu beherrschen ist der Unterschied zwischen einer stressigen und einer fließenden Reise. LangOrias Reise-Phrasen-Set konzentriert sich auf die 10 Sätze, die Sie tatsächlich brauchen, nicht auf die 1000, die Sie vielleicht irgendwann brauchen könnten. Jede Phrase kommt mit Audio, einem Beispieldialog und einem Kulturhinweis.",
+    culture:
+      "In Deutschland, Österreich und der Schweiz beginnt jede Interaktion mit «Hallo» oder «Guten Tag» — ohne Gruß direkt nach etwas zu fragen gilt als unhöflich. Das «Sie» bleibt mit Fremden und im beruflichen Kontext, bis man auf das «Du» eingeladen wird. Trinkgeld ist üblich, aber nicht obligatorisch: in Deutschland und Österreich rundet man auf 5-10% auf; in der Schweiz ist Trinkgeld selten und oft im Service inbegriffen («Service inklusive»). In den Speisekarten ist die Reihenfolge «Vorspeise / Hauptgang / Nachspeise» Standard.",
+    howTo:
+      "Widmen Sie 3-5 Tage dem Reise-Set vor jeder Reise. Lernen Sie die 10 Sätze mit Spaced Repetition, bis sie automatisch kommen, und üben Sie dann den Dialog laut mit einem Partner oder einer Aufnahme. Auf der Reise selbst versuchen Sie, jeden Satz mindestens einmal im wirklichen Leben zu benutzen — das Muskelgedächtnis, mit einem Fremden Deutsch zu sprechen, entsteht im Moment, nicht in der App. Die tägliche 10-Minuten-Routine reicht.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Entschuldigen Sie, wo ist der Flughafen?" },
+      { speaker: "B", en: "Take the S-Bahn line 8 or 9. It's about 40 minutes.", tgt: "Nehmen Sie die S-Bahn Linie 8 oder 9. Es sind ungefähr 40 Minuten." },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Danke. Wie viel kostet eine Fahrkarte?" },
+      { speaker: "B", en: "4,40 euros. You can use the contactless card at the turnstile.", tgt: "4,40 Euro. Sie können die kontaktlose Karte am Drehkreuz benutzen." },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Entschuldigen Sie, wo ist der Flughafen?" },
+      { en: "I have a reservation under the name [X].", tgt: "Ich habe eine Reservierung auf den Namen [X]." },
+      { en: "Could I have the check, please?", tgt: "Die Rechnung, bitte." },
+      { en: "How do I get to [place]?", tgt: "Wie komme ich zu [Ort]?" },
+      { en: "Is there a train station nearby?", tgt: "Gibt es einen Bahnhof in der Nähe?" },
+      { en: "I would like to check in.", tgt: "Ich möchte einchecken." },
+      { en: "What time does the flight leave?", tgt: "Wann geht der Flug?" },
+      { en: "I'm lost. Can you help me?", tgt: "Ich habe mich verlaufen. Können Sie mir helfen?" },
+      { en: "How much is a ticket to [place]?", tgt: "Wie viel kostet eine Fahrkarte nach [Ort]?" },
+      { en: "Where is the bathroom?", tgt: "Wo ist die Toilette?" },
+    ],
+  },
+  business: {
+    title: "Geschäftsdeutsch — Meetings, E-Mails, Follow-ups",
+    subtitle:
+      "Professionelle Sätze für den Arbeitsalltag: Termine planen, Tagesordnungen, Follow-ups und Soft Skills, die Sie befördern.",
+    intro:
+      "Geschäftsdeutsch ist der Unterschied zwischen im Beruf verstanden und im Beruf vertraut zu werden. Der Wortschatz für Meetings, E-Mails und Follow-ups ist eine kleine, endliche Menge — dieselben 50 Sätze decken 90% der beruflichen Kommunikation auf Deutsch ab. Ob Sie einen Statusbericht schreiben, ein Montags-Meeting eröffnen oder eine Deadline verhandeln, der richtige Satz im richtigen Register ist das, was Sie wie einen Kollegen wirken lässt, nicht wie einen Ausländer. LangOrias Geschäftsdeutsch-Set ist um die 10 Sätze gebaut, die in jedem Meeting und jeder E-Mail-Kette vorkommen.",
+    culture:
+      "Die Geschäftskultur im deutschsprachigen Raum ist formeller als im Englischen: das «Sie» bleibt mit Kunden und Vorgesetzten, bis sie auf das «Du» anstoßen. Vermeiden Sie spontane Meetings: kündigen Sie 24-48 Stunden im Voraus an. Geschäfts-E-Mails auf Deutsch sind in der Regel länger und kontextueller als auf Englisch — eine gute E-Mail beginnt mit «Ich hoffe, es geht Ihnen gut» und endet mit «Mit freundlichen Grüßen». Pünktlichkeit ist im deutschsprachigen Raum sehr wichtig: 5 Minuten zu spät gilt bereits als verspätet. «Smalltalk» vor Meetings ist kürzer als in den USA — kommen Sie schnell zum Thema.",
+    howTo:
+      "Widmen Sie 5-7 Tage dem Geschäftsset vor Ihrem ersten Meeting auf Deutsch. Lernen Sie die 10 Sätze mit Spaced Repetition, bis Sie sie kalt produzieren können, und üben Sie dann die E-Mail-Vorlagen laut. Im Arbeitsalltag hören Sie auf das Register, das Ihre Kollegen verwenden, und spiegeln es — wenn sie «Lass uns mal schauen» sagen, sagen Sie auch «Lass uns mal schauen». Die tägliche 10-Minuten-Routine plus ein echtes Meeting pro Woche reichen aus, um in 3 Monaten berufstaugliches Geschäftsdeutsch zu erreichen.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Guten Morgen. Danke fürs Kommen. Ich habe eine kurze Tagesordnung." },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Gerne, fahren Sie fort." },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "Zuerst der Q3-Launch-Status, dann das Budget, zum Schluss offene Fragen." },
+      { speaker: "B", en: "Sounds good. I'll send the agenda and pre-read via email.", tgt: "Gut. Ich schicke die Tagesordnung und die Vorab-Unterlagen per E-Mail." },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Lassen Sie uns ein Meeting für nächsten Dienstag planen." },
+      { en: "Could you send me the agenda?", tgt: "Können Sie mir die Tagesordnung schicken?" },
+      { en: "I'll follow up via email.", tgt: "Ich melde mich per E-Mail nochmal." },
+      { en: "Let's touch base next week.", tgt: "Lassen Sie uns nächste Woche wieder sprechen." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Ich würde eine Deadline von [X] vorschlagen." },
+      { en: "Can we move the meeting to [time]?", tgt: "Können wir das Meeting auf [Uhrzeit] verschieben?" },
+      { en: "What's the status on the [project]?", tgt: "Wie ist der Stand bei [Projekt]?" },
+      { en: "I have a question about the contract.", tgt: "Ich habe eine Frage zum Vertrag." },
+      { en: "Thank you for your time.", tgt: "Vielen Dank für Ihre Zeit." },
+      { en: "Let's circle back on this.", tgt: "Lassen Sie uns darauf zurückkommen." },
+    ],
+  },
+  food: {
+    title: "Restaurant-Phrasen auf Deutsch — bestellen, bezahlen, Allergien",
+    subtitle:
+      "Im Restaurant bestellen, auf Allergien hinweisen, die Rechnung bestellen und dem Koch ein Kompliment machen.",
+    intro:
+      "Essen ist der schnellste Weg, sich in einer neuen Sprache zu Hause zu fühlen. Die 10 Sätze in diesem Set decken den 95%-Fall ab: ein Restaurant betreten, bestellen, nach Allergien fragen, bezahlen und gehen. Egal ob Sie in einer Berliner Eckkneipe, einem Wiener Kaffeehaus, einem Zürcher Restaurant oder einem Münchner Biergarten sitzen — der Ablauf ist derselbe, und das Höflichkeitsregister ist nachsichtig: Kellner im deutschsprachigen Raum erwarten einfache Fragen und reagieren gut auf direkte, höfliche Sprache. LangOrias Restaurant-Set ist um die 10 Sätze gebaut, die bei jeder auswärtigen Mahlzeit vorkommen.",
+    culture:
+      "Im deutschsprachigen Raum ist es üblich, dass der Kellner am Anfang kommt und nach den Getränken fragt (« Was darf es sein? » oder « Was möchten Sie trinken? »). Er kommt erst wieder, wenn er sieht, dass Sie bereit sind — oder Sie signalisieren mit einem leichten Blickkontakt oder einem diskreten Handzeichen, dass Sie bestellen möchten. « Die Rechnung, bitte » oder « Zahlen, bitte » ist Standard. In der Schweiz sagt man « Die Rechnung, bitte » und der Service ist oft inklusive; in Deutschland und Österreich rundet man auf 5-10% auf. Für Allergien sagen Sie deutlich am Anfang: « Ich bin allergisch gegen Nüsse » oder « Ich bin Vegetarier » — Köche passen gerne an.",
+    howTo:
+      "Widmen Sie 2-3 Tage dem Restaurant-Set vor jedem Restaurantbesuch. Üben Sie den Dialog laut mit einem Partner oder einer Aufnahme; Restaurant-Deutsch ist Muskelgedächtnis, nicht Grammatik. Im Moment betreten Sie mit einem klaren Skript: « Einen Tisch für [X], bitte » → « Kann ich die Speisekarte sehen? » → « Ich nehme [X], bitte » → « Die Rechnung, bitte » → « Das war köstlich, danke ». Die tägliche 10-Minuten-Routine reicht.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Hallo, einen Tisch für zwei, bitte." },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Gerne. Bitte hier entlang. Hier ist die Speisekarte." },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Danke. Was empfehlen Sie?" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "Der Fisch ist heute ausgezeichnet. Sind Sie allergisch gegen etwas?" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Kann ich bitte die Speisekarte sehen?" },
+      { en: "What do you recommend?", tgt: "Was empfehlen Sie?" },
+      { en: "I'm allergic to [X].", tgt: "Ich bin allergisch gegen [X]." },
+      { en: "Could I have the bill, please?", tgt: "Die Rechnung, bitte." },
+      { en: "Is this dish spicy?", tgt: "Ist dieses Gericht scharf?" },
+      { en: "I'll have [X], please.", tgt: "Ich nehme [X], bitte." },
+      { en: "Can I get this to go?", tgt: "Kann ich das zum Mitnehmen bekommen?" },
+      { en: "Is the tip included?", tgt: "Ist das Trinkgeld inbegriffen?" },
+      { en: "I'm a vegetarian.", tgt: "Ich bin Vegetarier." },
+      { en: "That was delicious, thank you.", tgt: "Das war köstlich, danke." },
+    ],
+  },
+  "small-talk": {
+    title: "Smalltalk auf Deutsch — Vorstellungen und Hobbys",
+    subtitle:
+      "Begrüßungen, Vorstellungen, Hobbys und die Sätze, die einen Fremden in einen Freund verwandeln.",
+    intro:
+      "Smalltalk ist die Eingangstür zur deutschen Sprachgewandtheit. Die 10 Sätze in diesem Set sind die, die in jedem Aufzug, jeder Schlange, jedem Konferenzempfang und jedem ersten Date vorkommen: sich vorstellen, fragen, was jemand macht, über das Wetter reden und Gemeinsamkeiten finden. Egal ob Sie bei einem Networking-Event in Berlin, einer Party in Wien oder einem Wartezimmer in Zürich sind — der Ablauf ist derselbe, und das Höflichkeitsregister ist gut kalibriert: Smalltalk auf Deutsch ist freundlich, aber nicht intim, und die 10 Sätze hier halten Sie in der richtigen Zone. LangOrias Smalltalk-Set ist um die 10 Sätze gebaut, die Sie wie einen Kollegen wirken lassen, nicht wie einen Touristen.",
+    culture:
+      "Im deutschsprachigen Raum ist die direkte Frage nach dem Beruf (« Was machen Sie beruflich? ») am Anfang der meisten Smalltalk-Gespräche — anders als im Englischen wird sie hier nicht als aufdringlich empfunden. Das «Du» wird unter Erwachsenen seltener angeboten als im Englischen; Sie bleiben oft monatelang beim «Sie», bis der andere aktiv vorschlägt, sich zu duzen. Wetter ist ein sicheres Smalltalk-Thema; das Lieblingsessen, der Urlaub und der Beruf sind auch gute Themen. Vermeiden Sie das falsche Wort «aktuell» im Sinne von «currently» — das bedeutet auf Deutsch «derzeit». Nutzen Sie «derzeit» oder «gerade».",
+    howTo:
+      "Widmen Sie 3-5 Tage dem Smalltalk-Set. Üben Sie den Dialog laut mit einem Partner oder einer Aufnahme; der Trick ist, natürlich zu klingen, nicht korrekt. Die tägliche 10-Minuten-Routine reicht — aber benutzen Sie mindestens einen Satz pro Tag in der realen Welt, auch wenn es nur « Schönen Tag noch » zum Bäcker ist. Smalltalk ist eine Gewohnheit, kein Wortschatz, und die Gewohnheit überträgt sich zwischen Deutschland, Österreich und der Schweiz.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Hallo, ich heiße Sarah. Freut mich." },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Freut mich auch. Ich bin David. Was machen Sie beruflich?" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Ich bin Softwareingenieurin. Und Sie?" },
+      { speaker: "B", en: "I work in marketing. Have you seen any good movies lately?", tgt: "Ich arbeite im Marketing. Haben Sie in letzter Zeit einen guten Film gesehen?" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Hallo, ich heiße [X]. Freut mich." },
+      { en: "What do you do for a living?", tgt: "Was machen Sie beruflich?" },
+      { en: "Where are you from?", tgt: "Woher kommen Sie?" },
+      { en: "What are your hobbies?", tgt: "Was sind Ihre Hobbys?" },
+      { en: "Have you seen any good movies lately?", tgt: "Haben Sie in letzter Zeit einen guten Film gesehen?" },
+      { en: "How was your weekend?", tgt: "Wie war Ihr Wochenende?" },
+      { en: "Do you have any plans for the weekend?", tgt: "Haben Sie Pläne für das Wochenende?" },
+      { en: "What kind of music do you like?", tgt: "Was für Musik mögen Sie?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Heute ist schönes Wetter, nicht wahr?" },
+      { en: "It was lovely talking to you.", tgt: "Es war schön, mit Ihnen zu sprechen." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Public lookup: url-slug (lang, scenario) → content.
 // The lang param is the URL_SLUG_TO_DATA key (e.g. "english", "japanese").
 // ---------------------------------------------------------------------------
@@ -865,8 +990,9 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
   korean: SCENARIOS_KO,
   spanish: SCENARIOS_ES,
   french: SCENARIOS_FR,
+  german: SCENARIOS_DE,
 };
 
 /** Languages that currently have scenario content shipped. */
-export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean", "spanish", "french"] as const;
+export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean", "spanish", "french", "german"] as const;
 export type ScenarioLang = (typeof SCENARIO_LANGS)[number];
