@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ArrowRight, Clock, BookOpen, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
+import { Seo } from "../components/Seo";
 import { COURSES } from "../data/courses";
 import { LANGUAGES } from "../data/languages";
 import { getLanguage } from "../data/languages";
@@ -38,6 +39,14 @@ export default function CoursesPage() {
 
   return (
     <PageShell title={t("courses.title")} subtitle={t("courses.subtitle")}>
+      <Seo
+        title={t("courses.seoTitle", { defaultValue: "Courses — LinguaVerse" })}
+        description={t("courses.seoDescription", {
+          defaultValue:
+            "Browse structured language courses from A1 to C1 across English, Japanese, Korean, Chinese, Spanish, French and German.",
+        })}
+        pathname="/courses"
+      />
       {/* 语言切换 */}
       <div className="glass mb-6 flex flex-wrap items-center gap-2 rounded-2xl p-3">
         <span className="px-2 text-xs text-brand-200/70">{t("courses.filter.language")}</span>

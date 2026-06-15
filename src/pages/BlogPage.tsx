@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Loader2 } from "lucide-react";
 import PageShell from "../components/PageShell";
+import { Seo } from "../components/Seo";
 import { api } from "../lib/api";
 
 interface BlogPost {
@@ -51,6 +52,14 @@ export default function BlogPage() {
 
   return (
     <PageShell title={t("blog.title")} subtitle={t("blog.subtitle")}>
+      <Seo
+        title={t("blog.seoTitle", { defaultValue: "Blog — LinguaVerse" })}
+        description={t("blog.seoDescription", {
+          defaultValue:
+            "Articles on spaced repetition, vocabulary, listening and speaking — practical guides for language learners.",
+        })}
+        pathname="/blog"
+      />
       {loading ? (
         <div className="flex items-center justify-center py-20 text-brand-200/70">
           <Loader2 className="mr-2 h-5 w-5 animate-spin" />

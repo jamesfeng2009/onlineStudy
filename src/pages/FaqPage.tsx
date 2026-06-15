@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
+import { Seo } from "../components/Seo";
 import { Link } from "react-router-dom";
 
 export default function FaqPage() {
@@ -18,6 +19,14 @@ export default function FaqPage() {
 
   return (
     <PageShell title={t("faq.title")} subtitle={t("faq.subtitle")}>
+      <Seo
+        title={t("faq.seoTitle", { defaultValue: "FAQ — LinguaVerse" })}
+        description={t("faq.seoDescription", {
+          defaultValue:
+            "Common questions about LinguaVerse: how lessons work, spaced repetition, languages offered, free vs VIP, and more.",
+        })}
+        pathname="/faq"
+      />
       <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-brand-200/80 md:text-base">
         {t("faq.intro")}
       </div>

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { StatTile, GlassCard } from "../components/GlassCard";
+import { Seo } from "../components/Seo";
 import { LANGUAGES } from "../data/languages";
 import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
@@ -109,6 +110,14 @@ export default function HomePage() {
 
   return (
     <PageShell>
+      <Seo
+        title={t("home.seoTitle", { defaultValue: "LinguaVerse — Learn languages with spaced repetition" })}
+        description={t("home.seoDescription", {
+          defaultValue:
+            "Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice.",
+        })}
+        pathname="/"
+      />
       {/* Hero */}
       <section id="hero" className="relative">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">

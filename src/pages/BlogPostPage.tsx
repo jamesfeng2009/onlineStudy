@@ -79,7 +79,7 @@ export default function BlogPostPage() {
 
   const seoTitle = post.seoTitle ?? post.title;
   const seoDesc = post.seoDescription ?? post.excerpt;
-  const pageUrl = typeof window !== "undefined" ? window.location.href : `https://example.com/blog/${post.slug}`;
+  const pagePath = typeof window !== "undefined" ? `/blog/${post.slug}` : `/blog/${post.slug}`;
 
   return (
     <PageShell>
@@ -89,10 +89,7 @@ export default function BlogPostPage() {
         image={post.coverImageUrl ?? undefined}
         type="article"
         lang={post.baseLanguageCode}
-        alternates={[
-          { lang: post.baseLanguageCode, url: pageUrl },
-          { lang: "x-default", url: pageUrl },
-        ]}
+        pathname={pagePath}
       />
       <Link
         to="/blog"
