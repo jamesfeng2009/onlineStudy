@@ -162,7 +162,7 @@ export default function ProfilePage() {
                   >
                     <span className="flex items-center gap-2">
                       <Globe2 className="h-4 w-4" />
-                      {l.flag} {l.name}
+                      {l.flag} {l.native}
                     </span>
                     {lang === l.id && <Check className="h-4 w-4 text-sky-300" />}
                   </button>
@@ -188,7 +188,7 @@ export default function ProfilePage() {
                     >
                       <span className="flex items-center gap-2">
                         <Monitor className="h-4 w-4" />
-                        {l?.flag ?? "🌐"} {l?.name ?? id}
+                        {l?.flag ?? "🌐"} {l?.native ?? id}
                       </span>
                       {uiLang === id && <Check className="h-4 w-4 text-sky-300" />}
                     </button>
@@ -215,7 +215,7 @@ export default function ProfilePage() {
                     >
                       <span className="flex items-center gap-2">
                         <MessageCircleQuestion className="h-4 w-4" />
-                        {l?.flag ?? "🌐"} {l?.name ?? id}
+                        {l?.flag ?? "🌐"} {l?.native ?? id}
                       </span>
                       {nativeLang === id && <Check className="h-4 w-4 text-sky-300" />}
                     </button>

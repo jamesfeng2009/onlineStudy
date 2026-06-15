@@ -90,7 +90,7 @@ export default function RecommendPage() {
               <div>
                 <div className="text-xs text-brand-200/60">{t("recommend.targetLanguage")}</div>
                 <div className="font-display text-3xl font-bold text-white">
-                  {getLanguage(language).flag} {getLanguage(language).name}
+                  {getLanguage(language).flag} {getLanguage(language).native}
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function RecommendPage() {
         <div className="mb-4 flex items-end justify-between">
           <div>
             <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-              {t("recommend.coursesTitle", { flag: getLanguage(language).flag, name: getLanguage(language).name })}
+              {t("recommend.coursesTitle", { flag: getLanguage(language).flag, name: getLanguage(language).native })}
             </h2>
             <p className="mt-1 text-sm text-brand-200/70">{t("recommend.coursesDesc")}</p>
           </div>

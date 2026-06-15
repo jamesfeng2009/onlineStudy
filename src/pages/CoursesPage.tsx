@@ -47,7 +47,7 @@ export default function CoursesPage() {
         {LANGUAGES.map((l) => (
           <Pill key={l.id} active={lang === l.id} onClick={() => setLang(l.id)}>
             <span className="mr-1">{l.flag}</span>
-            {l.name}
+            {l.native}
           </Pill>
         ))}
         <div className="mx-3 h-5 w-px bg-white/10" />
@@ -75,7 +75,7 @@ export default function CoursesPage() {
                 {c.level}
               </span>
               <span className="rounded-full bg-fuchsia-400/10 px-2.5 py-1 text-[11px] font-medium text-fuchsia-300">
-                {getLanguage(c.language).flag} {getLanguage(c.language).name}
+                {getLanguage(c.language).flag} {getLanguage(c.language).native}
               </span>
               {c.tags.slice(0, 1).map((tag, i) => (
                 <span key={i} className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-200/70">

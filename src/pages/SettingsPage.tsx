@@ -71,7 +71,7 @@ export default function SettingsPage() {
                   }
                 >
                   <span className="flex items-center gap-2">
-                    {l?.flag ?? "🌐"} {l?.name ?? id}
+                    {l?.flag ?? "🌐"} {l?.native ?? id}
                   </span>
                   {uiLang === id && <Check className="h-4 w-4 text-sky-300" />}
                 </button>
@@ -106,7 +106,7 @@ export default function SettingsPage() {
                   }
                 >
                   <span className="flex items-center gap-2">
-                    {l?.flag ?? "🌐"} {l?.name ?? id}
+                    {l?.flag ?? "🌐"} {l?.native ?? id}
                   </span>
                   {nativeLang === id && <Check className="h-4 w-4 text-fuchsia-300" />}
                 </button>
@@ -137,7 +137,7 @@ export default function SettingsPage() {
                 }
               >
                 <span className="text-2xl">{l.flag}</span>
-                <span>{l.name}</span>
+                <span>{l.native}</span>
               </div>
             ))}
           </div>

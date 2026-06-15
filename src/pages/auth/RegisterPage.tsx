@@ -77,7 +77,7 @@ export default function RegisterPage() {
               >
                 <div>
                   <div className="text-2xl">{l.flag}</div>
-                  <div className="mt-2 text-sm text-white">{l.name}</div>
+                  <div className="mt-2 text-sm text-white">{l.native}</div>
                   <div className="text-[10px] text-brand-200/60">{l.native}</div>
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function RegisterPage() {
                       }
                     >
                       <Monitor className="h-3.5 w-3.5" />
-                      {l?.flag ?? "🌐"} {l?.name ?? id}
+                      {l?.flag ?? "🌐"} {l?.native ?? id}
                     </button>
                   );
                 })}
@@ -155,7 +155,7 @@ export default function RegisterPage() {
                       }
                     >
                       <MessageCircleQuestion className="h-3.5 w-3.5" />
-                      {l?.flag ?? "🌐"} {l?.name ?? id}
+                      {l?.flag ?? "🌐"} {l?.native ?? id}
                     </button>
                   );
                 })}
@@ -178,7 +178,7 @@ export default function RegisterPage() {
                     }
                   >
                     <div className="text-xl">{l.flag}</div>
-                    <div className="mt-1">{l.name}</div>
+                    <div className="mt-1">{l.native}</div>
                   </button>
                 ))}
               </div>

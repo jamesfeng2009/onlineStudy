@@ -48,7 +48,7 @@ export default function LearnPage() {
     ? `${course.title}`
     : t("learn.wordMemory");
   const subtitle = course
-    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).name} · ${course.level} · ${course.description}`
+    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).native} · ${course.level} · ${course.description}`
     : t("learn.wordMemoryDesc");
 
   return (
@@ -59,7 +59,7 @@ export default function LearnPage() {
         locked ? (
           <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
             <span>{getLanguage(lang).flag}</span>
-            <span>{getLanguage(lang).name}</span>
+            <span>{getLanguage(lang).native}</span>
             <span className="text-white/30">|</span>
             <span>{course?.level}</span>
           </div>
@@ -74,7 +74,7 @@ export default function LearnPage() {
                   (lang === l.id ? "bg-white/15 text-white shadow-inner" : "text-brand-200/70 hover:text-white")
                 }
               >
-                {l.flag} {l.name}
+                {l.flag} {l.native}
               </button>
             ))}
           </div>

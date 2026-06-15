@@ -159,7 +159,7 @@ export default function HomePage() {
           <div className="relative">
             <div className="mb-3 flex items-center justify-between text-xs text-brand-200/70">
               <span>{t("home.languages.choose")}</span>
-              {user && <span>{t("home.languages.current", { language: getLanguage(user.targetLanguage).name })}</span>}
+              {user && <span>{t("home.languages.current", { language: getLanguage(user.targetLanguage).native })}</span>}
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               {LANGUAGES.map((l, i) => {
@@ -181,7 +181,7 @@ export default function HomePage() {
                   >
                     <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
                     <div className="text-4xl">{l.flag}</div>
-                    <div className="mt-4 font-display text-xl font-bold text-white">{l.name}</div>
+                    <div className="mt-4 font-display text-xl font-bold text-white">{l.native}</div>
                     <div className="text-xs text-brand-200/70">{l.native}</div>
                     <div className="mt-3 text-xs text-brand-200/60">{l.tagline}</div>
                     <div className="mt-4 inline-flex items-center text-xs text-sky-300 transition group-hover:text-sky-200">
@@ -287,7 +287,7 @@ export default function HomePage() {
                     {c.level}
                   </span>
                   <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
-                    {getLanguage(c.language as string).name}
+                    {getLanguage(c.language as string).native}
                   </span>
                 </div>
                 <div className="p-5">
