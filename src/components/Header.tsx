@@ -2,19 +2,21 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
-  Globe2,
-  Home,
-  BookOpen,
-  GraduationCap,
-  TrendingUp,
-  MessageCircle,
-  Trophy,
-  User,
-  LogOut,
-  Sparkles,
-  Flame,
-  Settings,
-} from "lucide-react";
+    Globe2,
+    Home,
+    BookOpen,
+    GraduationCap,
+    TrendingUp,
+    MessageCircle,
+    Trophy,
+    User,
+    LogOut,
+    Sparkles,
+    Flame,
+    Settings,
+    HelpCircle,
+    Newspaper,
+  } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
 
@@ -36,6 +38,8 @@ export default function Header() {
     { to: "/achievements", label: t("nav.achievements"), icon: Trophy },
     { to: "/profile", label: t("nav.profile"), icon: User },
     { to: "/settings", label: t("nav.settings"), icon: Settings },
+    { to: "/faq", label: t("nav.faq"), icon: HelpCircle },
+    { to: "/blog", label: t("nav.blog"), icon: Newspaper },
   ];
 
   const handleLogout = () => {

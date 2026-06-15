@@ -12,6 +12,9 @@ import {
   Trophy,
   Target,
   Zap,
+  Search,
+  Quote,
+  ChevronDown,
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { StatTile, GlassCard } from "../components/GlassCard";
@@ -91,11 +94,23 @@ export default function HomePage() {
     () => t("home.features.items", { returnObjects: true }) as { title: string; desc: string; action: string }[],
     [t]
   );
+  const steps = useMemo(
+    () => t("home.steps.items", { returnObjects: true }) as { title: string; desc: string }[],
+    [t]
+  );
+  const stories = useMemo(
+    () => t("home.stories.items", { returnObjects: true }) as { name: string; role: string; quote: string }[],
+    [t]
+  );
+  const faqs = useMemo(
+    () => t("home.faq.items", { returnObjects: true }) as { q: string; a: string }[],
+    [t]
+  );
 
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative">
+      <section id="hero" className="relative">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-500/30 via-fuchsia-500/20 to-amber-400/20 blur-3xl" />
         </div>
@@ -112,9 +127,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-4 max-w-lg text-brand-200/80">
               {user ? (
-                <>
-                  {t("home.hero.welcomeBack", { name: user.username, minutes: minutesToday, goal })}
-                </>
+                <>{t("home.hero.welcomeBack", { name: user.username, minutes: minutesToday, goal })}</>
               ) : (
                 <>{t("home.hero.guest")}</>
               )}
@@ -122,17 +135,17 @@ export default function HomePage() {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
-                to="/learn"
+                to="/register"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
               >
                 {t("home.hero.startToday")} <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                to="/courses"
+              <a
+                href="#how-it-works"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                {t("home.hero.browseCourses")}
-              </Link>
+                {t("home.hero.learnMethod")}
+              </a>
             </div>
 
             <div className="mt-6 grid grid-cols-3 gap-3">
@@ -230,14 +243,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section id="how-it-works" className="mt-20">
+        <div className="mb-8 max-w-2xl">
+          <div className="text-xs font-semibold uppercase tracking-widest text-sky-300">
+            {t("home.steps.badge")}
+          </div>
+          <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
+            {t("home.steps.title")}
+          </h2>
+          <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.steps.desc")}</p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {steps.map((s, i) => {
+            const colors = ["from-sky-400 to-blue-600", "from-fuchsia-400 to-purple-600", "from-amber-400 to-orange-500"];
+            return (
+              <div key={i} className="glass relative overflow-hidden rounded-2xl p-6">
+                <div className="absolute -right-6 -top-6 text-7xl font-display font-bold text-white/5">
+                  0{i + 1}
+                </div>
+                <div className={`inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${colors[i]} text-white shadow-lg`}>
+                  {i === 0 ? <Search className="h-5 w-5" /> : i === 1 ? <BookOpen className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold text-white">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brand-200/70">{s.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Features strip */}
-      <section className="mt-16">
+      <section className="mt-20">
         <div className="mb-6 flex items-end justify-between">
           <div>
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{t("home.features.title")}</h2>
             <p className="mt-1 text-sm text-brand-200/70">{t("home.features.desc")}</p>
           </div>
-          <Link to="/learn" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
+          <Link to="/courses" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
             {t("home.features.enter")}
           </Link>
         </div>
@@ -247,7 +290,7 @@ export default function HomePage() {
             const colors = ["from-sky-400 to-blue-600", "from-fuchsia-400 to-purple-600", "from-amber-400 to-orange-500", "from-rose-400 to-pink-600"];
             const Icon = icons[i] ?? BookOpen;
             return (
-              <Link to="/learn" key={i} className="glass group rounded-2xl p-5 transition hover:-translate-y-1">
+              <Link to="/courses" key={i} className="glass group rounded-2xl p-5 transition hover:-translate-y-1">
                 <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${colors[i]} text-white shadow-lg`}>
                   <Icon className="h-5 w-5" />
                 </div>
@@ -263,7 +306,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured courses */}
-      <section className="mt-16">
+      <section className="mt-20">
         <div className="mb-6 flex items-end justify-between">
           <div>
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{t("home.courses.title")}</h2>
@@ -302,6 +345,121 @@ export default function HomePage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* Stories */}
+      <section className="mt-20">
+        <div className="mb-8 max-w-2xl">
+          <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
+            {t("home.stories.badge")}
+          </div>
+          <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
+            {t("home.stories.title")}
+          </h2>
+          <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.stories.desc")}</p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {stories.map((s, i) => (
+            <div key={i} className="glass relative rounded-2xl p-6">
+              <Quote className="h-6 w-6 text-sky-300/60" />
+              <p className="mt-3 text-sm leading-relaxed text-brand-100">{s.quote}</p>
+              <div className="mt-5 border-t border-white/5 pt-4">
+                <div className="text-sm font-semibold text-white">{s.name}</div>
+                <div className="text-xs text-brand-200/60">{s.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="mt-20">
+        <div className="mb-8 max-w-2xl">
+          <div className="text-xs font-semibold uppercase tracking-widest text-amber-300">
+            {t("home.faq.badge")}
+          </div>
+          <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
+            {t("home.faq.title")}
+          </h2>
+          <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.faq.desc")}</p>
+        </div>
+        <div className="glass divide-y divide-white/5 overflow-hidden rounded-2xl">
+          {faqs.map((item, i) => (
+            <details key={i} className="group p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                <span className="text-sm font-medium text-white md:text-base">{item.q}</span>
+                <ChevronDown className="h-4 w-4 shrink-0 text-brand-200/60 transition group-open:rotate-180" />
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-brand-200/80">{item.a}</p>
+            </details>
+          ))}
+        </div>
+        <div className="mt-6 text-center">
+          <Link to="/faq" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
+            {t("home.faq.viewAll")} <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Blog teaser */}
+      <section className="mt-20">
+        <div className="mb-6 flex items-end justify-between">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-widest text-emerald-300">
+              {t("home.blog.badge")}
+            </div>
+            <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
+              {t("home.blog.title")}
+            </h2>
+            <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.blog.desc")}</p>
+          </div>
+          <Link to="/blog" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
+            {t("home.blog.viewAll")}
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {(
+            t("home.blog.items", { returnObjects: true }) as { title: string; excerpt: string; tag: string }[]
+          ).map((p, i) => (
+            <Link to="/blog" key={i} className="glass group rounded-2xl p-6 transition hover:-translate-y-1">
+              <div className="text-xs font-medium uppercase tracking-wide text-emerald-300">{p.tag}</div>
+              <h3 className="mt-3 font-display text-lg font-semibold text-white">{p.title}</h3>
+              <p className="mt-2 line-clamp-3 text-sm text-brand-200/70">{p.excerpt}</p>
+              <div className="mt-4 inline-flex items-center text-xs text-sky-300 group-hover:text-sky-200">
+                {t("home.blog.readMore")} <ArrowRight className="ml-1 h-3 w-3" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="mt-20">
+        <div className="glass relative overflow-hidden rounded-3xl p-10 text-center md:p-16">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-sky-500/10 via-fuchsia-500/10 to-amber-400/10" />
+          <div className="relative">
+            <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
+              {t("home.cta.title")}
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-brand-200/70 md:text-base">
+              {t("home.cta.desc")}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to="/register"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5"
+              >
+                {t("home.cta.start")} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/courses"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+              >
+                {t("home.cta.browse")}
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
     </PageShell>
   );

@@ -15,7 +15,9 @@
     "settings": "Settings",
     "login": "Login",
     "register": "Register",
-    "logout": "Logout"
+    "logout": "Logout",
+    "faq": "FAQ",
+    "blog": "Blog"
   },
   "header": {
     "streak": "{{days}} day streak",
@@ -156,8 +158,9 @@
       "titleHighlight": "gain one more native speaker.",
       "welcomeBack": "Welcome back, <1>{{name}}</1>! You have studied <3>{{minutes}}</3> minutes today, goal {{goal}} minutes. Keep going!",
       "guest": "Choose a language you want to conquer and build your learning habit starting today.",
-      "startToday": "Start Today's Learning",
+      "startToday": "Start Free Trial",
       "browseCourses": "Browse Courses",
+      "learnMethod": "See How It Works",
       "streak": "Streak",
       "level": "Level",
       "todaysGoal": "Today's Goal",
@@ -179,6 +182,16 @@
         { "title": "Listening 5 minutes", "time": "5 min" }
       ]
     },
+    "steps": {
+      "badge": "How It Works",
+      "title": "A proven 3-step path from beginner to fluent",
+      "desc": "Each learner is different, but the path to fluency is always the same: input, output, and feedback. LinguaVerse turns that loop into a 10-minute daily ritual.",
+      "items": [
+        { "title": "Diagnose your level", "desc": "Pick your target language and starting level. We build a personalized path based on what you already know." },
+        { "title": "Daily 10-minute loop", "desc": "Vocab + grammar + listening + speaking, scheduled by spaced repetition so you remember what you learn." },
+        { "title": "Speak with confidence", "desc": "Shadow real sentences, get instant feedback, and track your streak to keep the habit alive." }
+      ]
+    },
     "features": {
       "title": "Four Core Exercises for Complete Fluency",
       "desc": "Input · Output · Feedback — build real speaking confidence.",
@@ -197,7 +210,139 @@
       "loading": "Loading courses...",
       "lessons": "{{count}} lessons",
       "minutes": "{{count}} min"
+    },
+    "stories": {
+      "badge": "Learner Stories",
+      "title": "Real progress, real people",
+      "desc": "Hear from learners who turned a 10-minute daily habit into a language they can actually use.",
+      "items": [
+        { "name": "Yuki, 27", "role": "Marketing Manager · Tokyo", "quote": "I tried three apps before. LinguaVerse is the only one where I actually open it every day. The streak system works." },
+        { "name": "Carlos, 34", "role": "Software Engineer · Madrid", "quote": "The grammar explanations are short and clear. I went from A2 to B1 in three months while commuting." },
+        { "name": "Mei, 22", "role": "University Student · Shanghai", "quote": "I love that the interface is in Chinese but the words are in Japanese. It feels like the app actually knows me." }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Common questions, clear answers",
+      "desc": "Everything you need to know before you start.",
+      "viewAll": "See all questions",
+      "items": [
+        { "q": "Is LinguaVerse really free?", "a": "Yes. The core learning experience — vocab, grammar, listening, speaking, and the community — is free. Premium features will be added later for power users." },
+        { "q": "Do I need to install anything?", "a": "No. LinguaVerse runs in any modern browser. Mobile apps will follow once the web version stabilizes." },
+        { "q": "Which languages are supported?", "a": "English, Japanese, Korean, Chinese, Spanish, French, and German. New languages are added every month based on learner demand." },
+        { "q": "How long until I see progress?", "a": "Most learners feel a clear difference in 4-6 weeks when they stick to the 10-minute daily loop. The streak system and spaced repetition are designed to make that habit stick." },
+        { "q": "Can I use it on my phone?", "a": "Yes. The site is fully responsive and works great on mobile browsers. Add it to your home screen for an app-like experience." }
+      ]
+    },
+    "blog": {
+      "badge": "From the Blog",
+      "title": "Tips, guides, and learning science",
+      "desc": "Bite-sized articles that make your study time more effective.",
+      "viewAll": "All articles →",
+      "readMore": "Read more",
+      "items": [
+        { "tag": "Methods", "title": "Why 10 minutes a day beats 2 hours on weekends", "excerpt": "Spaced repetition is the most researched technique in learning science. Here is why shorter, more frequent sessions outperform long cramming." },
+        { "tag": "Vocabulary", "title": "How to remember 1000 words without burning out", "excerpt": "A practical 8-week plan built on the 3-2-1 rule, with examples across English, Japanese, and Spanish." },
+        { "tag": "Speaking", "title": "Shadowing: the speaking exercise that actually works", "excerpt": "Why repeating native audio is the fastest way to fix pronunciation, and a 5-step routine you can start today." }
+      ]
+    },
+    "cta": {
+      "title": "Start your 10-minute daily ritual",
+      "desc": "Free forever. No credit card. Cancel anytime you want — but you probably won't.",
+      "start": "Create free account",
+      "browse": "Browse courses first"
     }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about LinguaVerse.",
+    "intro": "Can't find the answer you're looking for? Reach out via the community, and our team will get back to you.",
+    "groups": [
+      {
+        "title": "Getting started",
+        "items": [
+          { "q": "How do I create an account?", "a": "Click the Sign up button in the top right corner, enter your email and a password, choose your target language and native language, and you're in." },
+          { "q": "Do I need a credit card?", "a": "No. The core learning experience is free. You only need a payment method when you choose to upgrade to Premium in the future." },
+          { "q": "Can I change my target language later?", "a": "Yes. Go to Settings → Target Language at any time. All your progress stays tied to the language you were practicing." }
+        ]
+      },
+      {
+        "title": "Learning",
+        "items": [
+          { "q": "How long should I study each day?", "a": "We recommend 10 minutes a day. Spaced repetition works best with consistent, short sessions — not cramming." },
+          { "q": "Why are explanations in my native language?", "a": "Research shows learning is faster when explanations come from your strongest language. The actual words you study are always in the target language." },
+          { "q": "Will my streak reset if I skip a day?", "a": "Yes, the streak resets if you skip a full day. The grace window is 36 hours to cover time zone differences." }
+        ]
+      },
+      {
+        "title": "Account & Privacy",
+        "items": [
+          { "q": "Where is my data stored?", "a": "Your learning data is stored on Supabase (Postgres) in a region near you. We do not sell any user data." },
+          { "q": "How do I delete my account?", "a": "Go to Profile → Danger Zone, and click Delete Account. All your data is removed within 7 days." }
+        ]
+      }
+    ],
+    "ctaTitle": "Ready to start?",
+    "ctaDesc": "Create a free account and try the 10-minute daily ritual.",
+    "cta": "Sign up free"
+  },
+  "blog": {
+    "title": "LinguaVerse Blog",
+    "subtitle": "Practical guides, learning science, and stories from real learners.",
+    "readMore": "Read more",
+    "backToList": "← Back to all articles",
+    "notFoundTitle": "Article not found",
+    "notFoundDesc": "The article you are looking for has moved or no longer exists.",
+    "ctaTitle": "Put these tips into practice",
+    "ctaDesc": "Create a free account and start your 10-minute daily loop today.",
+    "cta": "Start learning",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Why 10 minutes a day beats 2 hours on weekends",
+        "excerpt": "Spaced repetition is the most researched technique in learning science. Here is why shorter, more frequent sessions outperform long cramming.",
+        "tag": "Methods",
+        "readTime": "6 min read",
+        "date": "2026-06-10",
+        "content": [
+          "If you have ever crammed for an exam and forgotten everything two weeks later, you already know the problem with long, infrequent study sessions. The fix is not studying harder. The fix is studying more often.",
+          "Learning science has been clear on this for decades. Hermann Ebbinghaus discovered the forgetting curve in 1885: we lose newly learned information at a predictable rate unless we actively recall it at the right moment. The 'right moment' is just before you are about to forget.",
+          "This is exactly what spaced repetition does. LinguaVerse schedules each word and grammar point for review at the moment you are most likely to forget it. Hit 'remembered' and the next review gets pushed further out. Hit 'not familiar' and the next review comes sooner.",
+          "The result: in 10 minutes a day, you cover more ground than 2 hours on Sunday, because every minute is spent on something your brain actually needs to recall. After 30 days, most learners have reviewed 600+ items — more than a single weekend cramming session could ever cover.",
+          "So if you have been telling yourself you don't have time to learn a language, you do. Ten minutes. Every day. That is the entire trick."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "How to remember 1000 words without burning out",
+        "excerpt": "A practical 8-week plan built on the 3-2-1 rule, with examples across English, Japanese, and Spanish.",
+        "tag": "Vocabulary",
+        "readTime": "8 min read",
+        "date": "2026-06-04",
+        "content": [
+          "Most language learners aim for 1000 words as a first milestone. The bad news: trying to memorize them all at once is a recipe for burnout. The good news: you do not need to memorize them. You need to meet them.",
+          "We use a simple 3-2-1 rule. Three encounters a day, two contexts per encounter, and one forced recall. That is it.",
+          "Day 1: learn 3 new words. See them in your flashcard, see them in a sentence, see them in a grammar example. Day 2: 3 more new words, plus 6 from yesterday. Day 7: 21 new words this week, but 80+ reviews. By the time a word has been reviewed 5 times, retention is over 90%.",
+          "Across 8 weeks, this adds up to 168 words at a pace of 3 per day. To hit 1000, you scale to 15 new words a day by month 3, when reviews are mostly cached. The 10-minute daily loop in LinguaVerse handles this for you automatically.",
+          "The key insight: vocabulary is not a memory contest. It is a frequency game. Show up every day, trust the system, and the words will stick."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Shadowing: the speaking exercise that actually works",
+        "excerpt": "Why repeating native audio is the fastest way to fix pronunciation, and a 5-step routine you can start today.",
+        "tag": "Speaking",
+        "readTime": "5 min read",
+        "date": "2026-05-28",
+        "content": [
+          "If you can read a sentence but cannot say it, you are not alone. Most learners spend 90% of their time reading and listening, and 10% speaking. That ratio is backwards.",
+          "Shadowing is the practice of listening to a native speaker and repeating what they say in real time, mimicking rhythm, intonation, and stress. It is the technique professional interpreters use to maintain fluency, and it works for any language.",
+          "The 5-step routine: (1) Listen to a sentence at native speed. (2) Listen again with the transcript. (3) Repeat at native speed while recording. (4) Compare your recording to the original. (5) Repeat 3 times before moving on.",
+          "Do this for 5 minutes a day. Within a month, your accent will start to shift noticeably. Within three months, you will be able to produce sentences you could not read aloud before.",
+          "LinguaVerse's Speaking module is built around this exact idea. Pick a sentence, listen, repeat, repeat, repeat. No judging, no feedback anxiety. Just your voice and the model."
+        ]
+      }
+    ]
   },
   "recommend": {
     "title": "Personalized Learning Path",
