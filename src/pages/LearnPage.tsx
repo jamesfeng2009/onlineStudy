@@ -3,6 +3,7 @@ import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightb
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
+import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
 import { api } from "../lib/api";
 import type { WordResp } from "../lib/api";
@@ -56,15 +57,22 @@ export default function LearnPage() {
       title={title}
       subtitle={subtitle}
       action={
-        locked ? (
-          <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
-            <span>{getLanguage(lang).flag}</span>
-            <span>{getLanguage(lang).native}</span>
-            <span className="text-white/30">|</span>
-            <span>{course?.level}</span>
-          </div>
-        ) : (
-          <div className="glass flex items-center gap-1 rounded-full p-1">
+        <>
+          <Seo
+            title={title}
+            description={subtitle}
+            noindex
+            pathname={`/learn/${courseId ?? ""}`}
+          />
+          {locked ? (
+            <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
+              <span>{getLanguage(lang).flag}</span>
+              <span>{getLanguage(lang).native}</span>
+              <span className="text-white/30">|</span>
+              <span>{course?.level}</span>
+            </div>
+          ) : (
+            <div className="glass flex items-center gap-1 rounded-full p-1">
             {LANGUAGES.map((l) => (
               <button
                 key={l.id}
@@ -78,7 +86,8 @@ export default function LearnPage() {
               </button>
             ))}
           </div>
-        )
+          )}
+        </>
       }
     >
       {/* Tab switcher */}

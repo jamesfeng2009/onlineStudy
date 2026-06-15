@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ChevronDown, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildFaqLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { Link } from "react-router-dom";
 
 export default function FaqPage() {
@@ -17,6 +18,12 @@ export default function FaqPage() {
     [t]
   );
 
+  // Flatten every group into a single FAQPage question list.
+  const flatFaqs = useMemo(
+    () => groups.flatMap((g) => g.items),
+    [groups]
+  );
+
   return (
     <PageShell title={t("faq.title")} subtitle={t("faq.subtitle")}>
       <Seo
@@ -26,6 +33,15 @@ export default function FaqPage() {
             "Common questions about LangOria: how lessons work, spaced repetition, languages offered, free vs VIP, and more.",
         })}
         pathname="/faq"
+      />
+      <JsonLd
+        data={[
+          buildBreadcrumbLd([
+            { name: "Home", url: "https://lang-oria.com/" },
+            { name: "FAQ", url: "https://lang-oria.com/faq" },
+          ]),
+          buildFaqLd(flatFaqs.map((x) => ({ question: x.q, answer: x.a }))),
+        ]}
       />
       <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-brand-200/80 md:text-base">
         {t("faq.intro")}

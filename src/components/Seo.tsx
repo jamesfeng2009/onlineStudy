@@ -42,6 +42,12 @@ interface SeoProps {
    * 当前页面的 canonical URL（不传则按 SITE_URL + pathname 生成）
    */
   canonical?: string;
+  /**
+   * Set true to emit <meta name="robots" content="noindex, nofollow">.
+   * Use for pages we don't want crawled even if they slip past robots.txt
+   * (learn player pages, internal dashboards, paginated listings, etc).
+   */
+  noindex?: boolean;
 }
 
 /**
@@ -73,7 +79,11 @@ function resolveCanonical(
   canonical?: string
 ) {
   if (canonical) return canonical;
-  return `${SITE_URL}${buildLocalePath((lang || DEFAULT_UI_LANGUAGE) as SupportedLanguage, pathname)}`;
+  // Strip tracking / sort / pagination query strings so that
+  // /blog?utm_source=x and /blog?ref=foo and /blog?page=2 all
+  // canonicalise to /blog and don't fragment ranking signals.
+  const cleanPath = (pathname ?? "/").split("?")[0].split("#")[0];
+  return `${SITE_URL}${buildLocalePath((lang || DEFAULT_UI_LANGUAGE) as SupportedLanguage, cleanPath)}`;
 }
 
 export function Seo({
@@ -85,6 +95,7 @@ export function Seo({
   pathname,
   localizedPaths,
   canonical,
+  noindex = false,
 }: SeoProps) {
   useEffect(() => {
     const currentPath =
@@ -126,6 +137,12 @@ export function Seo({
     setMeta("twitter:title", title, "name");
     if (image) setMeta("twitter:image", image, "name");
 
+    // ---------- robots (noindex opt-in) ----------
+    setMeta(
+      "robots",
+      noindex ? "noindex, nofollow, noarchive" : "index, follow, max-image-preview:large"
+    );
+
     // 同步 <html lang>，对屏幕阅读器与浏览器 UI 提示很重要
     if (typeof document !== "undefined" && document.documentElement.lang !== currentLang) {
       document.documentElement.lang = currentLang;
@@ -157,6 +174,6 @@ export function Seo({
       link.setAttribute("data-seo", "1");
       document.head.appendChild(link);
     }
-  }, [title, description, image, type, lang, pathname, localizedPaths, canonical]);
+  }, [title, description, image, type, lang, pathname, localizedPaths, canonical, noindex]);
   return null;
 }

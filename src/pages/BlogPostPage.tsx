@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { ArrowLeft, BookOpen, Eye, Loader2 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { api } from "../lib/api";
 
 interface BlogPost {
@@ -90,6 +91,34 @@ export default function BlogPostPage() {
         type="article"
         lang={post.baseLanguageCode}
         pathname={pagePath}
+      />
+      <JsonLd
+        data={[
+          buildBreadcrumbLd([
+            { name: "Home", url: "https://lang-oria.com/" },
+            { name: "Blog", url: "https://lang-oria.com/blog" },
+            { name: post.title, url: `https://lang-oria.com${pagePath}` },
+          ]),
+          {
+            "@type": "Article",
+            headline: post.title,
+            description: seoDesc,
+            ...(post.coverImageUrl ? { image: post.coverImageUrl } : {}),
+            datePublished: post.publishedAt ?? undefined,
+            inLanguage: post.baseLanguageCode,
+            author: {
+              "@type": "Organization",
+              name: "LangOria",
+              url: "https://lang-oria.com/",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "LangOria",
+              url: "https://lang-oria.com/",
+            },
+            mainEntityOfPage: `https://lang-oria.com${pagePath}`,
+          },
+        ]}
       />
       <Link
         to="/blog"

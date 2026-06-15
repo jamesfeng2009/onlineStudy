@@ -13,12 +13,13 @@ import {
   Target,
   Zap,
   Search,
-  Quote,
   ChevronDown,
+  Globe2,
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { StatTile, GlassCard } from "../components/GlassCard";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildCourseLd, buildFaqLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { LANGUAGES } from "../data/languages";
 import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
@@ -111,12 +112,26 @@ export default function HomePage() {
   return (
     <PageShell>
       <Seo
-        title={t("home.seoTitle", { defaultValue: "LangOria — Learn languages with spaced repetition" })}
-        description={t("home.seoDescription", {
-          defaultValue:
-            "Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice.",
-        })}
+        title={t("home.seoTitle")}
+        description={t("home.seoDescription")}
         pathname="/"
+      />
+      <JsonLd
+        data={[
+          buildBreadcrumbLd([{ name: "Home", url: "https://lang-oria.com/" }]),
+          buildCourseLd({
+            name: t("home.seoTitle"),
+            description: t("home.seoDescription"),
+            url: "https://lang-oria.com/",
+            inLanguage: "en",
+            offers: [{ price: 0, currency: "USD" }],
+          }),
+          buildFaqLd(
+            (t("home.faq.items", { returnObjects: true }) as { q: string; a: string }[]).map(
+              (x) => ({ question: x.q, answer: x.a })
+            )
+          ),
+        ]}
       />
       {/* Hero */}
       <section id="hero" className="relative">
@@ -144,7 +159,7 @@ export default function HomePage() {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
-                to="/register"
+                to="/courses"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
               >
                 {t("home.hero.startToday")} <ArrowRight className="h-4 w-4" />
@@ -357,26 +372,46 @@ export default function HomePage() {
       </section>
 
       {/* Stories */}
-      <section className="mt-20">
+      {/* (Removed: the "Learner Stories" / Testimonials section was based on
+          fictional quotes, which Google can detect and which damages the
+          site's E-E-A-T signal. Re-introduce only after we have real
+          verifiable testimonials.) */}
+
+      {/* Supported Languages — independent indexable section so that
+          /  surfaces all 7 language landing pages as internal links
+          and shows Googlebot a clear "this site teaches these
+          languages" signal. */}
+      <section id="languages" className="mt-20">
         <div className="mb-8 max-w-2xl">
-          <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
-            {t("home.stories.badge")}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
+            <Globe2 className="h-3.5 w-3.5 text-sky-300" /> 7 languages
           </div>
-          <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
-            {t("home.stories.title")}
+          <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
+            {t("home.languages.choose")}
           </h2>
-          <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.stories.desc")}</p>
+          <p className="mt-2 text-sm text-brand-200/70 md:text-base">
+            {t("home.languages.standaloneDesc", {
+              defaultValue:
+                "Pick the language you are learning. Each course is leveled, with spaced-repetition vocab, native-speaker audio, and a daily 10-minute loop.",
+            })}
+          </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {stories.map((s, i) => (
-            <div key={i} className="glass relative rounded-2xl p-6">
-              <Quote className="h-6 w-6 text-sky-300/60" />
-              <p className="mt-3 text-sm leading-relaxed text-brand-100">{s.quote}</p>
-              <div className="mt-5 border-t border-white/5 pt-4">
-                <div className="text-sm font-semibold text-white">{s.name}</div>
-                <div className="text-xs text-brand-200/60">{s.role}</div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+          {LANGUAGES.map((l) => (
+            <Link
+              key={l.id}
+              to={`/learn?lang=${l.id}`}
+              className="glass group relative overflow-hidden rounded-2xl p-5 text-left transition hover:-translate-y-1"
+            >
+              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
+              <div className="text-4xl">{l.flag}</div>
+              <div className="mt-4 font-display text-xl font-bold text-white">{l.native}</div>
+              <div className="text-xs text-brand-200/70">{l.name}</div>
+              <div className="mt-3 text-xs text-brand-200/60">{l.tagline}</div>
+              <div className="mt-4 inline-flex items-center text-xs text-sky-300 transition group-hover:text-sky-200">
+                {t("home.languages.select")} <ArrowRight className="ml-1 h-3 w-3" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -442,7 +477,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA — soft: explore first, signup secondary */}
       <section className="mt-20">
         <div className="glass relative overflow-hidden rounded-3xl p-10 text-center md:p-16">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-sky-500/10 via-fuchsia-500/10 to-amber-400/10" />
@@ -455,16 +490,16 @@ export default function HomePage() {
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <Link
-                to="/register"
+                to="/courses"
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5"
               >
-                {t("home.cta.start")} <ArrowRight className="h-4 w-4" />
+                {t("home.cta.browse")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                to="/courses"
+                to="/register"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                {t("home.cta.browse")}
+                {t("home.cta.start")}
               </Link>
             </div>
           </div>
