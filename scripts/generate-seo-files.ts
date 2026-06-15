@@ -57,11 +57,18 @@ function loadDotenv() {
 loadDotenv();
 
 // ---------- static pages ----------
+// Note: /learn/* is intentionally not in this list — every /learn page
+// is a noindex course player. /languages/* and /blog/* slug pages are
+// added below from filesystem data.
 const STATIC_PAGES = [
   { path: "/", changefreq: "weekly", priority: 1.0 },
   { path: "/courses", changefreq: "weekly", priority: 0.9 },
   { path: "/blog", changefreq: "daily", priority: 0.9 },
   { path: "/faq", changefreq: "monthly", priority: 0.7 },
+  { path: "/languages", changefreq: "monthly", priority: 0.8 },
+  { path: "/languages/japanese", changefreq: "monthly", priority: 0.8 },
+  { path: "/languages/english", changefreq: "monthly", priority: 0.8 },
+  { path: "/languages/chinese", changefreq: "monthly", priority: 0.8 },
   { path: "/register", changefreq: "monthly", priority: 0.5 },
   { path: "/login", changefreq: "monthly", priority: 0.4 },
 ] as const;
@@ -168,6 +175,9 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push(`- [Courses catalog](${bare("/courses")}): structured language courses from A1 to C1.`);
   lines.push(`- [Blog](${bare("/blog")}): language learning articles.`);
   lines.push(`- [FAQ](${bare("/faq")}): common questions about how LangOria works.`);
+  lines.push(`- [Learn Japanese online](${bare("/languages/japanese")}): hand-written guide to learning Japanese with JLPT-level spaced repetition.`);
+  lines.push(`- [Learn English online](${bare("/languages/english")}): hand-written guide to learning English across CEFR A1-C2.`);
+  lines.push(`- [Learn Chinese online](${bare("/languages/chinese")}): hand-written guide to learning Mandarin with HSK-level spaced repetition.`);
   lines.push("");
   if (published.length > 0) {
     lines.push("## Latest articles");
