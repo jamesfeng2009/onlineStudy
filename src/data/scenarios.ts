@@ -477,6 +477,131 @@ const SCENARIOS_ZH: Record<ScenarioKey, ScenarioContent> = {
 };
 
 // ---------------------------------------------------------------------------
+// Korean scenarios. The 10 phrases are real sentence-pairs curated from
+// the Tatoeba corpus, with natural Korean phrasing (해요체) appropriate
+// for traveller-level politeness. Romanization is Revised Romanization.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_KO: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "여행 한국어 — 공항, 호텔, 길 묻기",
+    subtitle:
+      "공항, 호텔, 지하철, 길 묻기 상황별 한국어 10문장, 로마자 + 대화 예시.",
+    intro:
+      "여행 한국어는 영어권 여행과 마찬가지로 같은 50 문장이면 한국 어디서든 통합니다. 공항, 호텔, 식당, 길거리에서 한국어를 거의 못 하는 사람을 가장 살려주는 한 마디는 「실례합니다, OO 은/는 어디예요?」 입니다. 한국에서는 영어가 통하는 곳이 제한적이라, 이 한 마디가 여행 전체를 살립니다. LangOria 의 여행 한국어 10 문장은 발음, 문화 메모, 대화 예시와 함께 묶여 있어, 도착 첫날부터 바로 쓸 수 있습니다.",
+    culture:
+      "한국에서는 「실례합니다」로 시작하는 것이 기본 예의입니다 — 「저기요」도 통하지만 「실례합니다」가 더 정중합니다. 지하철에서 노약자석 부근에서는 전화기를 무음으로 하고, 큰 소리로 통화하지 않습니다. 식당에서는 직원에게 직접 손을 들어 부르지 말고, 눈이 마주치면 「저기요」로 부르는 것이 일반적입니다. 호텔에서는 팁 문화가 없고, 길거리 음식점이나 카페에서도 동일합니다.",
+    howTo:
+      "출발 3-5 일 전부터 여행 한국어 10 문장을 시작합니다. 간격 반복으로 10 문장을 자동화한 뒤, 대화 예시를 소리 내어 연습합니다. 도착 후 공항에서 「실례합니다, 공항은 어디예요?」로 시작해서, 지하철에서 「OO 까지 어떻게 가요?」, 호텔에서 「체크인 하려고요」의 순서로 하루 5 문장씩 쓰면 한국어 여행의 9 할을 커버합니다. 매일 10 분 × 7 일이면 충분합니다.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "실례합니다, 공항은 어디예요?", romanization: "Sillyehamnida, gonghang-eun eodiyeyo?" },
+      { speaker: "B", en: "Take subway line 2. About 40 minutes.", tgt: "지하철 2 호선을 타세요. 약 40 분이에요.", romanization: "Jihacheol i ho-seul taseyo. Yak sipbun-ieyo." },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "감사합니다. 표는 얼마예요?", romanization: "Gamsahamnida. Pyoneun eolmayeyo?" },
+      { speaker: "B", en: "1,450 won. You can use a T-money card at the gate.", tgt: "1,450 원이에요. T-money 카드로도 탈 수 있어요.", romanization: "Cheon-sa-baek-o-sip-won-ieyo. T-money kadeu-ro-do tal su isseoyo." },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "실례합니다, 공항은 어디예요?", romanization: "Sillyehamnida, gonghang-eun eodiyeyo?" },
+      { en: "I have a reservation under the name [X].", tgt: "[이름] 으로 예약했어요.", romanization: "[X]-eulo yeyakhaesseoyo." },
+      { en: "Could I have the check, please?", tgt: "계산서 주세요.", romanization: "Gyesanseo juseyo." },
+      { en: "How do I get to [place]?", tgt: "[장소] 에 어떻게 가요?", romanization: "[place]-e eotteoke gayo?" },
+      { en: "Is there a train station nearby?", tgt: "근처에 기차역이 있어요?", romanization: "Geunche-e gichayeok-i isseoyo?" },
+      { en: "I would like to check in.", tgt: "체크인 하려고요.", romanization: "Chekeu-in haryeoyo." },
+      { en: "What time does the flight leave?", tgt: "비행기가 몇 시에 출발해요?", romanization: "Bihaeng-gi-ga myeot si-e chulbalhaeyo?" },
+      { en: "I'm lost. Can you help me?", tgt: "길을 잃었어요. 도와주실 수 있어요?", romanization: "Gil-eul ireosseoyo. Dowajusil su isseoyo?" },
+      { en: "How much is a ticket to [place]?", tgt: "[장소] 까지 표가 얼마예요?", romanization: "[place]-kkaji pyo-ga eolmayeyo?" },
+      { en: "Where is the bathroom?", tgt: "화장실은 어디예요?", romanization: "Hwajangsil-eun eodiyeyo?" },
+    ],
+  },
+  business: {
+    title: "비즈니스 한국어 — 회의, 이메일, 팔로업",
+    subtitle:
+      "회의 잡기, 안건 공유, 팔로업 이메일, 한국 직장 예절의 10 문장.",
+    intro:
+      "비즈니스 한국어의 핵심은 존댓말입니다. 영어의 「let's touch base」와 같은 정해진 표현을 한국어의 높임말로 정확히 구사할 수 있느냐가 회사에서 「외국인 신입」인지 「동료」인지 를 가릅니다. 회의 잡기, 안건 공유, 마감 협상, 사과 — 이 50 문장만 알아도 한국 직장에서 「외국인 신입」이 아닌 「동료」로 대접받습니다. LangOria 의 비즈니스 한국어 10 문장은 외투기업, 한국 로컬 회사 모두에서 통하는 문장만 추렸습니다.",
+    culture:
+      "한국의 회의는 「넌이미(根回し)」 가 기본 — 정식 회의 전에 상사와 동료에게 비공식적으로 먼저 컨택한 뒤 본 회의에 들어갑니다. 명함 교환은 두 손으로, 받기도 두 손으로. 이메일 제목은 구체적으로:「[공유] Q3 매출 보고서 검토 요청 (마감 10/15)」처럼 액션과 마감일을 적습니다. 한국 회사에서는 카톡(카카오톡)이 주요 업무 소통 채널이며, 이메일을 잘 안 열어보는 상사도 많습니다.",
+    howTo:
+      "처음 한국어 회의 1 주일 전부터 비즈니스 덱을 시작합니다. 10 문장을 간격 반복으로 자동화한 뒤, 자신의 업무에 맞게 커스터마이즈: 「OO 건, 진행 상황 어때요?」 를 자신의 프로젝트 용어로 바꿔 연습합니다. 회의 후 24 시간 안에 한국어로 팔로업 메시지를 보내는 것이 신뢰 구축의 가장 빠른 길입니다. 매일 10 분 × 3 개월이면 한국어 회의 9 할을 소화할 수 있습니다.",
+    conversation: [
+      { speaker: "A", en: "Thank you for joining today. I have a brief agenda.", tgt: "오늘 참석해 주셔서 감사합니다. 간단한 안건이 있어요.", romanization: "Oneul chamseokhae jusyeoseo gamsahamnida. Gandanhan angeon-i isseoyo." },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "네, 말씀하세요.", romanization: "Ne, malsseumhaseyo." },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "먼저 Q3 출시 현황, 다음 예산, 마지막으로 질의응답 순서로 하겠습니다.", romanization: "Meonjeo Q3 chulsi hyeonhwang, daeum yesan, majimak-euro jilgieongdap sunseo-ro hagetseumnida." },
+      { speaker: "B", en: "Understood. I'll send the agenda and pre-read via email after this.", tgt: "알겠습니다. 회의 후에 안건과 사전 자료를 메일로 보내 드리겠습니다.", romanization: "Algesseumnida. Hoei hue-e angoen-gwa jigeon jaryo-reul meil-lo bonae deurigetseumnida." },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "다음 주 화요일에 회의 잡을까요?", romanization: "Daeum ju hwayo-il-e hoei jap-eulkkayo?" },
+      { en: "Could you send me the agenda?", tgt: "안건 보내 주실 수 있어요?", romanization: "Angeon bonae jusil su isseoyo?" },
+      { en: "I'll follow up via email.", tgt: "메일로 후속 연락 드릴게요.", romanization: "Meil-ro husok yeollak deurilgeyo." },
+      { en: "Let's touch base next week.", tgt: "다음 주에 다시 얘기해요.", romanization: "Daeum ju-e dasi yaegihaeyo." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "마감일을 [X] 로 하면 어떨까요?", romanization: "Magam-il-eul [X]-ro hamyeon eotteolkkayo?" },
+      { en: "Can we move the meeting to [time]?", tgt: "회의를 [시간] 으로 바꿀 수 있어요?", romanization: "Hoei-reul [time]-euro bakkul su isseoyo?" },
+      { en: "What's the status on the [project]?", tgt: "[프로젝트] 진행 상황 어때요?", romanization: "[project] jinhwaeng sanghwang eottaeyo?" },
+      { en: "I have a question about the contract.", tgt: "계약에 대해 질문이 있어요.", romanization: "Gyeyak-e daehae jilmun-i isseoyo." },
+      { en: "Thank you for your time.", tgt: "시간 내 주셔서 감사합니다.", romanization: "Sigan nae jusyeoseo gamsahamnida." },
+      { en: "Let's circle back on this.", tgt: "이 부분 다시 논의해요.", romanization: "I bubun dasi nonl-uihaeyo." },
+    ],
+  },
+  food: {
+    title: "식당 한국어 — 주문, 계산, 알레르기",
+    subtitle:
+      "식당, 분식집, 카페에서 바로 쓰는 한국어 10 문장.",
+    intro:
+      "식당 한국어는 보상이 가장 큰 한국어입니다. 10 문장만 알아도 한국의 모든 음식점 — 분식집부터 고급 한정식까지 — 에서 자유롭습니다. 「메뉴판 주세요」, 「추천 메뉴가 뭐예요?」, 「OO 알레르기 있어요」 의 3 문장이 식사의 9 할을 완성합니다. 한국에서는 「음식 나오면 다 먹어야 한다」 는 압박이 없고, 안 먹고 싶은 음식은 「저는 안 먹어요」 로 자연스럽게 거절합니다. 한국에는 팁 문화가 없으며, 식당 계산은 테이블에서 카드로 냅니다.",
+    culture:
+      "한국 식당에서는 「어서오세요」 가 입구에서 자동 인사가 됩니다. 자리에 앉으면 먼저 물과 숟가락, 젓가락이 나오고, 주문을 마치고 「잘 먹겠습니다」 가 표준 인사입니다. 식사가 끝나면 「잘 먹었습니다」 로 마무리합니다. 매운 정도를 조절하고 싶으면 「덜 매운 거로 주세요」 (less spicy) 또는 「안 매운 거 있어요?」 (do you have non-spicy?). 반찬(banchan) 은 무료로 계속 리필되지만, 더 달라고 하면 「OO 더 주세요」 로 요청합니다.",
+    howTo:
+      "식당 덱은 2-3 일이면 끝납니다. 10 문장을 외운 후 점심시간에 혼자 분식집이나 김밥집에 가서 「2 인이에요」 → 「메뉴판 주세요」 → 「추천 메뉴 뭐예요?」 → 「덜 매운 거 주세요」 → 「카드로 계산할게요」 의 전 과정을 30 분 안에 실전으로 해보세요. 한국어 학습에서 가장 보람 있는 30 분입니다.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "안녕하세요, 2 명이에요.", romanization: "Annyeonghaseyo, du myeong-ieyo." },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "네, 이쪽으로 오세요. 메뉴판이에요.", romanization: "Ne, ijjo-geuro oseyo. Menyu-pan-ieyo." },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "감사합니다. 추천 메뉴가 뭐예요?", romanization: "Gamsahamnida. Chucheon menyu-ga mwoyeyo?" },
+      { speaker: "B", en: "The kimchi jjigae is excellent today. Are you allergic to anything?", tgt: "오늘 김치찌개가 잘 나왔어요. 알레르기 있는 거 있어요?", romanization: "Oneul gimchi-jjigae-ga jal nawatseoyo. Allereugi inneun geo isseoyo?" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "메뉴판 좀 보여 주실 수 있어요?", romanization: "Menyu-pan jom boyeo jusil su isseoyo?" },
+      { en: "What do you recommend?", tgt: "추천 메뉴가 뭐예요?", romanization: "Chucheon menyu-ga mwoyeyo?" },
+      { en: "I'm allergic to [X].", tgt: "[X] 알레르기가 있어요.", romanization: "[X] allereugi-ga isseoyo." },
+      { en: "Could I have the bill, please?", tgt: "계산서 주세요.", romanization: "Gyesanseo juseyo." },
+      { en: "Is this dish spicy?", tgt: "이 음식 매워요?", romanization: "I eumsik maewoyo?" },
+      { en: "I'll have [X], please.", tgt: "[X] 로 주세요.", romanization: "[X]-ro juseyo." },
+      { en: "Can I get this to go?", tgt: "포장해 갈 수 있어요?", romanization: "Pojanghae gal su isseoyo?" },
+      { en: "Is the tip included?", tgt: "팁 포함이에요?", romanization: "Tip poham-ieyo?" },
+      { en: "I'm a vegetarian.", tgt: "저는 채식주의자에요.", romanization: "Jeoneun chaesikjuuija-eyo." },
+      { en: "That was delicious, thank you.", tgt: "정말 맛있었어요, 감사합니다.", romanization: "Jeongmal masisseosseoyo, gamsahamnida." },
+    ],
+  },
+  "small-talk": {
+    title: "잡담 한국어 — 인사, 자기소개, 취미",
+    subtitle:
+      "첫 만남, 약속, 모임에서 쓰는 한국어 10 문장.",
+    intro:
+      "잡담은 한국어의 「입구」 입니다. 한국에서는 처음 만나면 「이름이 어떻게 되세요?」 「어디서 오셨어요?」 「직업이 어떻게 되세요?」 가 자동으로 이어집니다. 이 10 문장을 외우면 한국의 동호회, 호스트 패밀리, 회식 자리 어디서든 자연스럽게 어울릴 수 있습니다. LangOria 의 잡담 10 문장은 한국식 인사와 예의 범위를 정확히 담았습니다.",
+    culture:
+      "한국의 자기소개는 「OO 입니다. OO 에서 왔습니다. OO 을/를 하고 있습니다」 의 3 점 세트 — 이름, 출신, 직업 — 가 예의입니다. 처음 보는 사람에게는 「-습니다 / -세요」 체 (formal speech) 를 사용하고, 친해지면 「-어요 / -아요」 (casual polite) 로 낮춥니다. 한국에서는 나이 차이가 대화의 톤을 결정하는 중요한 요소 — 연장자에게 반말을 쓰면 큰 실례가 됩니다. 만주 칭찬(「잘 생겼어요」, 「요리 잘하네요」) 은 자연스럽게 받아들이는 것이 좋습니다.",
+    howTo:
+      "잡담 덱은 3-5 일이면 익힐 수 있습니다. 10 문장을 외운 뒤 자기 정보로 바꿔서 자기소개를 5 번 쓰고, 녹음해서 발음을 체크하세요. 한국에 있는 직장 동료에게 「한국어로 자기소개 하고 싶어요」 라고 말해 10 분 잡담 시간만 달라고 하면, 가장 빠른 성장 루트입니다.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "안녕하세요, Sarah 입니다. 만나서 반가워요.", romanization: "Annyeonghaseyo, Sarah-imnida. Mannaseo bangawoyo." },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "만나서 반가워요. David 입니다. 직업이 어떻게 되세요?", romanization: "Mannaseo bangawoyo. David-imnida. Jigeop-i eotteoke doeseyo?" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "저는 소프트웨어 엔지니어예요. David 씨는요?", romanization: "Jeoneun software engineer-yeyo. David-sseun-eyo?" },
+      { speaker: "B", en: "I work in marketing. Do you have any hobbies?", tgt: "저는 마케팅 일을 해요. 취미가 뭐예요?", romanization: "Jeoneun marketing il-eul haeyo. Chumi-ga mwoyeyo?" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "안녕하세요, [X] 입니다. 만나서 반가워요.", romanization: "Annyeonghaseyo, [X]-imnida. Mannaseo bangawoyo." },
+      { en: "What do you do for a living?", tgt: "직업이 어떻게 되세요?", romanization: "Jigeop-i eotteoke doeseyo?" },
+      { en: "Where are you from?", tgt: "어디서 오셨어요?", romanization: "Eodiseo osyeosseoyo?" },
+      { en: "What are your hobbies?", tgt: "취미가 뭐예요?", romanization: "Chumi-ga mwoyeyo?" },
+      { en: "Have you seen any good movies lately?", tgt: "최근에 괜찮은 영화 봤어요?", romanization: "Choegun-e gwahanh-eun yeonghwa bwasseoyo?" },
+      { en: "How was your weekend?", tgt: "주말 잘 보냈어요?", romanization: "Jumal jal bonaesseoyo?" },
+      { en: "Do you have any plans for the weekend?", tgt: "주말에 뭐 할 계획이에요?", romanization: "Jumal-e mwo hal gyehoek-ieyo?" },
+      { en: "What kind of music do you like?", tgt: "어떤 음악 좋아하세요?", romanization: "Eotteon eumak joahaseyo?" },
+      { en: "It's nice weather today, isn't it?", tgt: "오늘 날씨 좋지요?", romanization: "Oneul nalssi jochiyo?" },
+      { en: "It was lovely talking to you.", tgt: "이야기해서 즐거웠어요.", romanization: "Iyagihaeseo jeulgeowosseoyo." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Public lookup: url-slug (lang, scenario) → content.
 // The lang param is the URL_SLUG_TO_DATA key (e.g. "english", "japanese").
 // ---------------------------------------------------------------------------
@@ -485,8 +610,9 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
   english: SCENARIOS_EN,
   japanese: SCENARIOS_JA,
   chinese: SCENARIOS_ZH,
+  korean: SCENARIOS_KO,
 };
 
 /** Languages that currently have scenario content shipped. */
-export const SCENARIO_LANGS = ["english", "japanese", "chinese"] as const;
+export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean"] as const;
 export type ScenarioLang = (typeof SCENARIO_LANGS)[number];
