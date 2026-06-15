@@ -419,7 +419,12 @@
       "colStatus": "Estado",
       "colUpdated": "Actualizado",
       "slugHint": "Déjalo vacío para generarlo desde el título",
-      "contentHint": "Separa los párrafos con una línea en blanco. Se dividirá por \\n\\n.",
+      "contentHint": "Escribe el artículo en Markdown. Soporta títulos, listas, código, tablas, enlaces e imágenes.",
+      "markdownHint": "Markdown soportado",
+      "tldrHint": "Opcional: 1-2 frases como gancho al inicio.",
+      "tabEdit": "Editar",
+      "tabPreview": "Vista previa",
+      "previewEmpty": "Aún no hay contenido. Cambia a «Editar» para empezar.",
       "fields": {
         "title": "Título",
         "slug": "Slug",
@@ -428,7 +433,11 @@
         "tag": "Etiqueta",
         "readTime": "Tiempo de lectura",
         "language": "Idioma",
-        "status": "Estado"
+        "status": "Estado",
+        "coverImageUrl": "URL de imagen de portada",
+        "tldr": "TL;DR",
+        "seoTitle": "Título SEO",
+        "seoDescription": "Descripción SEO"
       }
     },
     "actions": "Acciones",

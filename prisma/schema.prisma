@@ -260,23 +260,71 @@ model StripeEvent {
   @@map("stripe_events")
 }
 
-// Blog posts (CMS) —— 单语种内容，多语言由 baseLanguageCode 区分
+// Blog posts (CMS) —— Markdown 内容，多语言由 baseLanguageCode 区分
 model BlogPost {
   id               String   @id @default(uuid())
-  slug             String   @unique
+  slug             String
   title            String
   excerpt          String
-  content          Json     // string[] (paragraphs)
+  content          String   // 整篇 markdown 文本（不再用 JSON 数组）
   tag              String
   readTime         String   @default("5 min read")
   coverEmoji       String?  // 文章封面 emoji，备用
+  coverImageUrl    String?  // OG 图/封面图 URL（可选）
+  tldr             String?  // 1-2 句简短引子
+  seoTitle         String?  // SEO 独立标题
+  seoDescription   String?  // SEO 独立描述
   baseLanguageCode String   @default("en") // en/zh/ja/ko/es/fr/de
   status           String   @default("draft") // draft | published
   publishedAt      DateTime?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
+  revisions BlogPostRevision[]
+  views     BlogPostView[]
+
+  @@unique([baseLanguageCode, slug])
   @@map("blog_posts")
-  @@index([status, publishedAt])
+  @@index([status, publishedAt(sort: Desc)])
   @@index([baseLanguageCode, status])
+}
+
+// 博客文章编辑历史（每次保存草稿生成一条）
+model BlogPostRevision {
+  id               String   @id @default(uuid())
+  postId           String
+  revisionNo       Int
+  title            String
+  excerpt          String
+  content          String
+  coverImageUrl    String?
+  tldr             String?
+  seoTitle         String?
+  seoDescription   String?
+  tag              String
+  readTime         String   @default("5 min read")
+  baseLanguageCode String
+  status           String
+  editorId         String?
+  createdAt        DateTime @default(now())
+
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, revisionNo])
+  @@map("blog_post_revisions")
+  @@index([postId, revisionNo(sort: Desc)])
+}
+
+// 博客阅读量统计（用户访问 /blog/:slug 时记一条）
+model BlogPostView {
+  id        BigInt   @id @default(autoincrement())
+  postId    String
+  userId    String?
+  viewedAt  DateTime @default(now())
+
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("blog_post_views")
+  @@index([postId])
+  @@index([viewedAt(sort: Desc)])
 }

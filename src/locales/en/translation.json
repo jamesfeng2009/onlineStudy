@@ -568,7 +568,12 @@
       "colStatus": "Status",
       "colUpdated": "Updated",
       "slugHint": "Leave empty to auto-generate from title",
-      "contentHint": "Separate paragraphs with a blank line. The system will split by \\n\\n.",
+      "contentHint": "Write the article body in Markdown. Supports headings, lists, code blocks, tables, links, and images.",
+      "markdownHint": "Markdown supported",
+      "tldrHint": "Optional 1-2 sentence hook shown above the article.",
+      "tabEdit": "Edit",
+      "tabPreview": "Preview",
+      "previewEmpty": "Nothing to preview yet — switch to Edit and start writing.",
       "fields": {
         "title": "Title",
         "slug": "Slug",
@@ -577,7 +582,11 @@
         "tag": "Tag",
         "readTime": "Read Time",
         "language": "Language",
-        "status": "Status"
+        "status": "Status",
+        "coverImageUrl": "Cover image URL",
+        "tldr": "TL;DR",
+        "seoTitle": "SEO title",
+        "seoDescription": "SEO description"
       }
     },
     "actions": "Actions",

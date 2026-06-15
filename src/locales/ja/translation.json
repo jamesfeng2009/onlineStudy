@@ -402,7 +402,12 @@
       "colStatus": "ステータス",
       "colUpdated": "更新日時",
       "slugHint": "空欄の場合、タイトルから自動生成",
-      "contentHint": "段落は空行で区切ってください。\\n\\n で分割します。",
+      "contentHint": "本文は Markdown で記述します。見出し・リスト・コード・表・リンク・画像に対応。",
+      "markdownHint": "Markdown 対応",
+      "tldrHint": "任意。記事の先頭に 1〜2 文で要点を表示。",
+      "tabEdit": "編集",
+      "tabPreview": "プレビュー",
+      "previewEmpty": "まだ内容がありません。「編集」に切り替えて書き始めてください。",
       "fields": {
         "title": "タイトル",
         "slug": "Slug",
@@ -411,7 +416,11 @@
         "tag": "タグ",
         "readTime": "読了時間",
         "language": "言語",
-        "status": "ステータス"
+        "status": "ステータス",
+        "coverImageUrl": "カバー画像 URL",
+        "tldr": "TL;DR",
+        "seoTitle": "SEO タイトル",
+        "seoDescription": "SEO 説明"
       }
     },
     "actions": "操作",

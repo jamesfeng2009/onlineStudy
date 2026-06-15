@@ -402,7 +402,12 @@
       "colStatus": "状态",
       "colUpdated": "更新时间",
       "slugHint": "留空则根据标题自动生成",
-      "contentHint": "段落之间用空行分隔，系统会按 \\n\\n 切分。",
+      "contentHint": "使用 Markdown 写正文，支持标题、列表、代码块、表格、链接与图片。",
+      "markdownHint": "支持 Markdown",
+      "tldrHint": "可选 1-2 句引子，显示在正文上方。",
+      "tabEdit": "编辑",
+      "tabPreview": "预览",
+      "previewEmpty": "暂无内容，请切换到「编辑」开始写作。",
       "fields": {
         "title": "标题",
         "slug": "Slug",
@@ -411,7 +416,11 @@
         "tag": "标签",
         "readTime": "阅读时长",
         "language": "语言",
-        "status": "状态"
+        "status": "状态",
+        "coverImageUrl": "封面图链接",
+        "tldr": "TL;DR",
+        "seoTitle": "SEO 标题",
+        "seoDescription": "SEO 描述"
       }
     },
     "actions": "操作",

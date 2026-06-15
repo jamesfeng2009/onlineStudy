@@ -419,7 +419,12 @@
       "colStatus": "Status",
       "colUpdated": "Aktualisiert",
       "slugHint": "Leer lassen, um aus dem Titel zu generieren",
-      "contentHint": "Absätze mit Leerzeile trennen. Wird nach \\n\\n gesplittet.",
+      "contentHint": "Artikel in Markdown schreiben. Überschriften, Listen, Code, Tabellen, Links und Bilder werden unterstützt.",
+      "markdownHint": "Markdown unterstützt",
+      "tldrHint": "Optional: 1-2 Sätze als Aufhänger über dem Artikel.",
+      "tabEdit": "Bearbeiten",
+      "tabPreview": "Vorschau",
+      "previewEmpty": "Noch nichts zum Anzeigen — wechsle auf «Bearbeiten», um zu beginnen.",
       "fields": {
         "title": "Titel",
         "slug": "Slug",
@@ -428,7 +433,11 @@
         "tag": "Tag",
         "readTime": "Lesezeit",
         "language": "Sprache",
-        "status": "Status"
+        "status": "Status",
+        "coverImageUrl": "Cover-Bild URL",
+        "tldr": "TL;DR",
+        "seoTitle": "SEO-Titel",
+        "seoDescription": "SEO-Beschreibung"
       }
     },
     "actions": "Aktionen",

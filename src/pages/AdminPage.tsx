@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {
   Loader2,
   Plus,
@@ -13,6 +15,7 @@ import {
   Headphones,
   MessageSquare,
   Newspaper,
+  Eye,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
@@ -646,6 +649,7 @@ function BlogPostPanel({
   const [modalOpen, setModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [contentTab, setContentTab] = useState<"edit" | "preview">("edit");
   const [form, setForm] = useState<{
     title: string;
     slug: string;
@@ -654,6 +658,10 @@ function BlogPostPanel({
     tag: string;
     readTime: string;
     coverEmoji: string;
+    coverImageUrl: string;
+    tldr: string;
+    seoTitle: string;
+    seoDescription: string;
     baseLanguageCode: string;
     postStatus: string;
   }>({
@@ -664,6 +672,10 @@ function BlogPostPanel({
     tag: "",
     readTime: "5 min read",
     coverEmoji: "",
+    coverImageUrl: "",
+    tldr: "",
+    seoTitle: "",
+    seoDescription: "",
     baseLanguageCode: "en",
     postStatus: "draft",
   });
@@ -700,6 +712,10 @@ function BlogPostPanel({
       tag: "",
       readTime: "5 min read",
       coverEmoji: "",
+      coverImageUrl: "",
+      tldr: "",
+      seoTitle: "",
+      seoDescription: "",
       baseLanguageCode: "en",
       postStatus: "draft",
     });
@@ -708,15 +724,18 @@ function BlogPostPanel({
 
   const openEdit = (item: Record<string, unknown>) => {
     setEditingId(String(item.id));
-    const content = Array.isArray(item.content) ? (item.content as string[]).join("\n\n") : "";
     setForm({
       title: String(item.title ?? ""),
       slug: String(item.slug ?? ""),
       excerpt: String(item.excerpt ?? ""),
-      content,
+      content: String(item.content ?? ""),
       tag: String(item.tag ?? ""),
       readTime: String(item.readTime ?? "5 min read"),
       coverEmoji: String(item.coverEmoji ?? ""),
+      coverImageUrl: String(item.coverImageUrl ?? ""),
+      tldr: String(item.tldr ?? ""),
+      seoTitle: String(item.seoTitle ?? ""),
+      seoDescription: String(item.seoDescription ?? ""),
       baseLanguageCode: String(item.baseLanguageCode ?? "en"),
       postStatus: String(item.status ?? "draft"),
     });
@@ -733,21 +752,17 @@ function BlogPostPanel({
       onError(t("admin.errors.required", { label: t("admin.blog.fields.title") }));
       return;
     }
-    const paragraphs = form.content
-      .split(/\n\s*\n/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (paragraphs.length === 0) {
-      onError(t("admin.errors.required", { label: t("admin.blog.fields.content") }));
-      return;
-    }
     const payload: Record<string, unknown> = {
       title: form.title.trim(),
       excerpt: form.excerpt.trim(),
-      content: paragraphs,
+      content: form.content,
       tag: form.tag.trim(),
       readTime: form.readTime.trim() || "5 min read",
       coverEmoji: form.coverEmoji.trim() || null,
+      coverImageUrl: form.coverImageUrl.trim() || null,
+      tldr: form.tldr.trim() || null,
+      seoTitle: form.seoTitle.trim() || null,
+      seoDescription: form.seoDescription.trim() || null,
       baseLanguageCode: form.baseLanguageCode,
       status: form.postStatus,
     };
@@ -1021,15 +1036,113 @@ function BlogPostPanel({
 
               <div className="md:col-span-2">
                 <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
-                  {t("admin.blog.fields.content")} <span className="text-red-300">*</span>
+                  {t("admin.blog.fields.coverImageUrl")}
+                </label>
+                <input
+                  value={form.coverImageUrl}
+                  onChange={(e) => setForm((s) => ({ ...s, coverImageUrl: e.target.value }))}
+                  placeholder="https://..."
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                  {t("admin.blog.fields.tldr")}
                 </label>
                 <textarea
-                  value={form.content}
-                  onChange={(e) => setForm((s) => ({ ...s, content: e.target.value }))}
-                  rows={14}
-                  placeholder={t("admin.blog.contentHint")}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 font-mono text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                  value={form.tldr}
+                  onChange={(e) => setForm((s) => ({ ...s, tldr: e.target.value }))}
+                  rows={2}
+                  placeholder={t("admin.blog.tldrHint")}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
                 />
+              </div>
+
+              <div className="md:col-span-2 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                    {t("admin.blog.fields.seoTitle")}
+                  </label>
+                  <input
+                    value={form.seoTitle}
+                    onChange={(e) => setForm((s) => ({ ...s, seoTitle: e.target.value }))}
+                    placeholder={form.title}
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-brand-200/80">
+                    {t("admin.blog.fields.seoDescription")}
+                  </label>
+                  <input
+                    value={form.seoDescription}
+                    onChange={(e) => setForm((s) => ({ ...s, seoDescription: e.target.value }))}
+                    placeholder={form.excerpt.slice(0, 80)}
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-sky-400/50 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="md:col-span-2">
+                <div className="mb-1.5 flex items-center justify-between">
+                  <label className="block text-xs font-medium text-brand-200/80">
+                    {t("admin.blog.fields.content")} <span className="text-red-300">*</span>
+                    <span className="ml-2 text-[10px] text-brand-200/40">
+                      {t("admin.blog.markdownHint")}
+                    </span>
+                  </label>
+                  <div className="flex items-center gap-1 rounded-lg bg-white/5 p-0.5 text-[11px]">
+                    <button
+                      type="button"
+                      onClick={() => setContentTab("edit")}
+                      className={cn(
+                        "rounded-md px-2.5 py-1 transition",
+                        contentTab === "edit"
+                          ? "bg-white/10 text-white"
+                          : "text-brand-200/60 hover:text-white"
+                      )}
+                    >
+                      {t("admin.blog.tabEdit")}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setContentTab("preview")}
+                      className={cn(
+                        "flex items-center gap-1 rounded-md px-2.5 py-1 transition",
+                        contentTab === "preview"
+                          ? "bg-white/10 text-white"
+                          : "text-brand-200/60 hover:text-white"
+                      )}
+                    >
+                      <Eye className="h-3 w-3" />
+                      {t("admin.blog.tabPreview")}
+                    </button>
+                  </div>
+                </div>
+                {contentTab === "edit" ? (
+                  <textarea
+                    value={form.content}
+                    onChange={(e) => setForm((s) => ({ ...s, content: e.target.value }))}
+                    rows={16}
+                    placeholder={t("admin.blog.contentHint")}
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 font-mono text-sm leading-6 text-white focus:border-sky-400/50 focus:outline-none"
+                  />
+                ) : (
+                  <div className="min-h-[24rem] rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                    {form.content.trim() ? (
+                      <div className="prose prose-invert max-w-none text-sm leading-7 text-brand-100 prose-headings:text-white prose-a:text-sky-300 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1 prose-code:py-0.5 prose-code:text-emerald-300 prose-pre:bg-black/40">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {form.content}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-brand-200/40">
+                        {t("admin.blog.previewEmpty")}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 

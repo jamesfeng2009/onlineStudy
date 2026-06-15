@@ -419,7 +419,12 @@
       "colStatus": "Statut",
       "colUpdated": "Mis à jour",
       "slugHint": "Laisser vide pour générer depuis le titre",
-      "contentHint": "Séparez les paragraphes par une ligne vide. Coupé par \\n\\n.",
+      "contentHint": "Rédigez en Markdown. Titres, listes, code, tableaux, liens et images sont supportés.",
+      "markdownHint": "Markdown pris en charge",
+      "tldrHint": "Optionnel : 1-2 phrases d'accroche au-dessus de l'article.",
+      "tabEdit": "Éditer",
+      "tabPreview": "Aperçu",
+      "previewEmpty": "Rien à prévisualiser — passez sur « Éditer » pour commencer.",
       "fields": {
         "title": "Titre",
         "slug": "Slug",
@@ -428,7 +433,11 @@
         "tag": "Tag",
         "readTime": "Temps de lecture",
         "language": "Langue",
-        "status": "Statut"
+        "status": "Statut",
+        "coverImageUrl": "URL de l'image de couverture",
+        "tldr": "TL;DR",
+        "seoTitle": "Titre SEO",
+        "seoDescription": "Description SEO"
       }
     },
     "actions": "Actions",

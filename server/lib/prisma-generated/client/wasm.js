@@ -296,11 +296,41 @@ exports.Prisma.BlogPostScalarFieldEnum = {
   tag: 'tag',
   readTime: 'readTime',
   coverEmoji: 'coverEmoji',
+  coverImageUrl: 'coverImageUrl',
+  tldr: 'tldr',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
   baseLanguageCode: 'baseLanguageCode',
   status: 'status',
   publishedAt: 'publishedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlogPostRevisionScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  revisionNo: 'revisionNo',
+  title: 'title',
+  excerpt: 'excerpt',
+  content: 'content',
+  coverImageUrl: 'coverImageUrl',
+  tldr: 'tldr',
+  seoTitle: 'seoTitle',
+  seoDescription: 'seoDescription',
+  tag: 'tag',
+  readTime: 'readTime',
+  baseLanguageCode: 'baseLanguageCode',
+  status: 'status',
+  editorId: 'editorId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BlogPostViewScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  userId: 'userId',
+  viewedAt: 'viewedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -345,7 +375,9 @@ exports.Prisma.ModelName = {
   Comment: 'Comment',
   Subscription: 'Subscription',
   StripeEvent: 'StripeEvent',
-  BlogPost: 'BlogPost'
+  BlogPost: 'BlogPost',
+  BlogPostRevision: 'BlogPostRevision',
+  BlogPostView: 'BlogPostView'
 };
 
 /**
