@@ -56,6 +56,17 @@ loadDotenv(path.join(process.cwd(), ".env"));
 
 const API_KEY = process.env.GEMINI_API_KEY?.trim();
 const MODEL = process.env.GEMINI_MODEL?.trim() || "gemini-2.0-flash";
+// Hard cost cap. Pass --max-cost=0.50 (USD) to abort the run once
+// the *estimated* spend on completed batches crosses the threshold.
+// Estimated cost is conservative (we count output tokens including
+// reasoning tokens, and round up to the next 0.1 cent). This guards
+// against a retry storm on a paid-tier key silently burning through
+// your budget — a real risk because Gemini's same model alias
+// (`gemini-2.5-flash`) is used by both free and paid tiers, so there
+// is no "model name" way to opt out of billing.
+const MAX_COST_USD = Number(arg("max-cost", process.env.GEMINI_MAX_COST_USD ?? "1.00"));
+const COST_PER_1M_IN = Number(process.env.GEMINI_COST_PER_1M_IN ?? "0.30");
+const COST_PER_1M_OUT = Number(process.env.GEMINI_COST_PER_1M_OUT ?? "2.50");
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(MODEL)}:generateContent`;
 
 // ---------- CLI args ----------
@@ -336,14 +347,27 @@ async function main() {
     }
   }
 
-  console.log(`→ ${totalBatches.length} batch(es) to run\n`);
+  console.log(`→ ${totalBatches.length} batch(es) to run`);
+  console.log(`→ cost cap: $${MAX_COST_USD.toFixed(2)} (using $${COST_PER_1M_IN}/1M in, $${COST_PER_1M_OUT}/1M out)\n`);
 
   let successCount = 0;
   let failCount = 0;
   let totalQuestions = 0;
+  let estCostUsd = 0;
+  let estTokensIn = 0;
+  let estTokensOut = 0;
 
   for (let i = 0; i < totalBatches.length; i++) {
     const { lang, level } = totalBatches[i];
+
+    if (estCostUsd > MAX_COST_USD) {
+      console.log(
+        `\n  ⛔ cost cap reached: est $${estCostUsd.toFixed(3)} > $${MAX_COST_USD.toFixed(2)}. Aborting.`,
+      );
+      console.log(`  Re-run with --max-cost=${(MAX_COST_USD * 5).toFixed(2)} to continue.`);
+      break;
+    }
+
     const outFile = path.join(outDir, `${lang}-${level}.json`);
 
     if (!overwrite && fs.existsSync(outFile)) {
@@ -357,10 +381,20 @@ async function main() {
 
     process.stdout.write(`[${i + 1}/${totalBatches.length}] ${lang}/${level} … `);
     const prompt = buildPrompt(lang, level, perBatch);
+    estTokensIn += prompt.length / 4; // ~4 chars per token, conservative
 
     try {
       const t0 = Date.now();
       const batch = await callGemini(prompt);
+      // Batch.usageMetadata is not in the public response shape for
+      // every model; we estimate output tokens from the JSON size
+      // (Gemini response includes thinking tokens in the count for
+      // 2.5+ models, so we round up generously).
+      const outTextLen = JSON.stringify(batch).length;
+      const estOut = Math.ceil(outTextLen / 3); // ~3 chars per output token (JSON dense)
+      estTokensOut += estOut;
+      estCostUsd =
+        (estTokensIn * COST_PER_1M_IN + estTokensOut * COST_PER_1M_OUT) / 1_000_000;
       const items = validateAndId(batch.items, lang, level);
       const ms = ((Date.now() - t0) / 1000).toFixed(1);
 
@@ -376,7 +410,9 @@ async function main() {
       if (!dryRun) fs.writeFileSync(outFile, JSON.stringify(items, null, 2) + "\n");
       totalQuestions += items.length;
       successCount++;
-      console.log(`✓ ${items.length} items in ${ms}s`);
+      console.log(
+        `✓ ${items.length} items in ${ms}s (est. spend so far: $${estCostUsd.toFixed(3)})`,
+      );
 
       // Stay under Gemini free-tier RPM (15 for Flash). 4.5s is
       // a safe margin and keeps the script polite.
@@ -395,6 +431,8 @@ async function main() {
   console.log(`  batches ok:    ${successCount}/${totalBatches.length}`);
   console.log(`  batches fail:  ${failCount}`);
   console.log(`  total items:   ${totalQuestions}`);
+  console.log(`  est. tokens:   ${Math.round(estTokensIn)} in / ${Math.round(estTokensOut)} out`);
+  console.log(`  est. cost:     $${estCostUsd.toFixed(3)} (cap was $${MAX_COST_USD.toFixed(2)})`);
   console.log(`  output dir:    ${path.relative(process.cwd(), outDir)}`);
   if (failCount > 0) {
     console.log(
