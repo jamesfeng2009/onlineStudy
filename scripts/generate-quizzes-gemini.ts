@@ -38,20 +38,24 @@ import fs from "node:fs";
 import path from "node:path";
 
 // Node 20.6+ supports --env-file natively; we read .env manually
-// here so `tsx scripts/...` works without a flag. Keys that are
-// not present in the shell or .env are simply undefined and the
-// script aborts with a clear error before doing any work.
+// here so `tsx scripts/...` works without a flag. Precedence
+// matches Vite / Next.js / SvelteKit convention:
+//   shell  >  .env.local  >  .env
+// .env.local is the right place for secrets committed nowhere
+// (typical workflow: `vercel env pull .env.local` syncs the
+// team's shared Vercel env into a per-developer file).
 function loadDotenv(file: string) {
   if (!fs.existsSync(file)) return;
   for (const line of fs.readFileSync(file, "utf-8").split("\n")) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/i);
     if (!m) continue;
     const [, k, raw] = m;
-    if (process.env[k] !== undefined) continue; // shell wins
+    if (process.env[k] !== undefined) continue; // already set (shell or earlier file)
     const v = raw.replace(/^["']|["']$/g, "");
     if (v) process.env[k] = v;
   }
 }
+loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
 const API_KEY = process.env.GEMINI_API_KEY?.trim();
