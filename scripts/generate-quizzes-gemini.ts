@@ -58,8 +58,32 @@ function loadDotenv(file: string) {
 loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
-const API_KEY = process.env.GEMINI_API_KEY?.trim();
-const MODEL = process.env.GEMINI_MODEL?.trim() || "gemini-2.0-flash";
+// ─── Provider router ──────────────────────────────────────────────
+// Gemini is restricted in mainland China ("User location is not
+// supported"). To keep this script usable for CN users, we route
+// the same request through OpenRouter when LLM_PROVIDER=openrouter.
+// OpenRouter serves the SAME model names (gemini-2.5-flash,
+// anthropic/claude-3.5-sonnet, openai/gpt-4o, …) and is reachable
+// from China. Doubao via Volcano Ark is also wired in for users
+// who want a domestic-only path.
+//
+// To switch:
+//   LLM_PROVIDER=openrouter LLM_MODEL=google/gemini-2.5-flash  pnpm tsx ...
+//   LLM_PROVIDER=doubao    LLM_MODEL=doubao-seed-2.0-mini     pnpm tsx ...
+//   LLM_PROVIDER=gemini    LLM_MODEL=gemini-2.5-flash         pnpm tsx ...
+type Provider = "gemini" | "openrouter" | "doubao";
+const PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
+const API_KEY =
+  (PROVIDER === "openrouter" ? process.env.OPENROUTER_API_KEY
+    : PROVIDER === "doubao" ? process.env.DOUBAO_API_KEY
+    : process.env.GEMINI_API_KEY
+  )?.trim();
+const DEFAULT_MODEL: Record<Provider, string> = {
+  gemini: "gemini-2.5-flash",
+  openrouter: "google/gemini-2.5-flash",
+  doubao: "doubao-seed-2.0-mini",
+};
+const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
 // Hard cost cap. Pass --max-cost=0.50 (USD) to abort the run once
 // the *estimated* spend on completed batches crosses the threshold.
 // Estimated cost is conservative (we count output tokens including
@@ -68,10 +92,35 @@ const MODEL = process.env.GEMINI_MODEL?.trim() || "gemini-2.0-flash";
 // your budget — a real risk because Gemini's same model alias
 // (`gemini-2.5-flash`) is used by both free and paid tiers, so there
 // is no "model name" way to opt out of billing.
-const MAX_COST_USD = Number(arg("max-cost", process.env.GEMINI_MAX_COST_USD ?? "1.00"));
-const COST_PER_1M_IN = Number(process.env.GEMINI_COST_PER_1M_IN ?? "0.30");
-const COST_PER_1M_OUT = Number(process.env.GEMINI_COST_PER_1M_OUT ?? "2.50");
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(MODEL)}:generateContent`;
+// Per-1M-token cost used by the cost cap. Defaults match Gemini
+// 2.5 Flash; override LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT
+// for the provider you're using.
+const MAX_COST_USD = Number(
+  arg("max-cost", process.env.LLM_MAX_COST_USD ?? "1.00"),
+);
+const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.30");
+const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "2.50");
+
+// Endpoints are provider-specific:
+//   gemini      → native Google AI Studio (not reachable from CN)
+//   openrouter  → unified OpenAI-compatible router (CN-accessible)
+//   doubao      → Volcano Ark (China-direct, real-name KYC required)
+const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
+  gemini: {
+    url: (m) =>
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent`,
+    auth: (k) => ({ "x-goog-api-key": k }),
+  },
+  openrouter: {
+    url: () => "https://openrouter.ai/api/v1/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+  doubao: {
+    url: (m) => "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+};
+const ENDPOINT = ENDPOINTS[PROVIDER];
 
 // ---------- CLI args ----------
 function arg(name: string, def?: string): string | undefined {
@@ -211,25 +260,69 @@ interface GeneratedBatch {
 }
 
 async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> {
-  const url = `${ENDPOINT}?key=${encodeURIComponent(API_KEY!)}`;
-  const body = {
-    contents: [{ role: "user", parts: [{ text: prompt }] }],
-    generationConfig: {
+  // Provider-specific request shape:
+  //   gemini      → native generateContent with responseSchema
+  //   openrouter  → OpenAI-compatible chat/completions, response_format json
+  //   doubao      → OpenAI-compatible chat/completions (Ark)
+  //
+  // Both OpenRouter and Doubao honor `response_format: {type: "json_object"}`
+  // but cannot enforce the full Gemini responseSchema, so we rely on
+  // the prompt to ask for the right shape and the parser to validate
+  // it downstream.
+  let url: string;
+  let headers: Record<string, string>;
+  let body: any;
+
+  if (PROVIDER === "gemini") {
+    url = `${ENDPOINT.url(MODEL)}?key=${encodeURIComponent(API_KEY!)}`;
+    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    body = {
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.9,
+        topP: 0.95,
+        maxOutputTokens: 8192,
+        responseMimeType: "application/json",
+        responseSchema: RESPONSE_SCHEMA,
+      },
+    };
+  } else {
+    // OpenRouter / Doubao (OpenAI-compatible chat/completions).
+    // The system message carries the JSON schema in plain English
+    // because these providers do not accept a structured schema the
+    // way Gemini does.
+    const sysMsg = [
+      "You are a strict JSON generator. Output ONLY a JSON object —",
+      "no prose, no markdown fences, no apologies. The JSON must match this shape:",
+      "{",
+      '  "items": [',
+      "    {",
+      '      "question": "string (a single sentence with a blank or grammar choice)",',
+      '      "options": ["string", "string", "string", "string"],',
+      '      "answer": 0,    // 0..3, index into options[]',
+      '      "explain": "string (1-2 sentence grammar explanation)"',
+      "    }",
+      "  ]",
+      "}",
+    ].join("\n");
+    url = ENDPOINT.url(MODEL);
+    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    body = {
+      model: MODEL,
+      messages: [
+        { role: "system", content: sysMsg },
+        { role: "user", content: prompt },
+      ],
       temperature: 0.9,
-      topP: 0.95,
-      maxOutputTokens: 8192,
-      responseMimeType: "application/json",
-      responseSchema: RESPONSE_SCHEMA,
-    },
-  };
+      top_p: 0.95,
+      max_tokens: 8192,
+      response_format: { type: "json_object" },
+    };
+  }
 
   let res: Response;
   try {
-    res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
   } catch (err) {
     if (attempt < 4) {
       const wait = 2000 * Math.pow(2, attempt);
@@ -248,16 +341,23 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       return callGemini(prompt, attempt + 1);
     }
     const text = await res.text();
-    throw new Error(`Gemini ${res.status} after retries: ${text.slice(0, 200)}`);
+    throw new Error(`${PROVIDER} ${res.status} after retries: ${text.slice(0, 200)}`);
   }
 
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`Gemini ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`${PROVIDER} ${res.status}: ${text.slice(0, 400)}`);
   }
 
   const data: any = await res.json();
-  const text: string | undefined = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  // Gemini nests under candidates[0].content.parts[0].text; the
+  // OpenAI-compatible shape returns choices[0].message.content.
+  let text: string | undefined;
+  if (PROVIDER === "gemini") {
+    text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  } else {
+    text = data?.choices?.[0]?.message?.content;
+  }
   if (!text) {
     if (attempt < 2) {
       await sleep(2000);
@@ -266,8 +366,8 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
     throw new Error(`empty response: ${JSON.stringify(data).slice(0, 200)}`);
   }
 
-  // Schema mode returns raw JSON; we still wrap in try/catch in case
-  // the model emits a fenced code block anyway.
+  // response_format=json_object guarantees raw JSON. We still strip
+  // accidental code fences in case the model wrapped the output.
   let parsed: any;
   try {
     parsed = JSON.parse(text);
@@ -331,12 +431,22 @@ function validateAndId(
 // ---------- Main ----------
 async function main() {
   if (!API_KEY) {
+    const keyUrl: Record<Provider, string> = {
+      gemini: "https://aistudio.google.com/apikey",
+      openrouter: "https://openrouter.ai/keys",
+      doubao: "https://www.volcengine.com/product/ark",
+    };
+    const envName: Record<Provider, string> = {
+      gemini: "GEMINI_API_KEY",
+      openrouter: "OPENROUTER_API_KEY",
+      doubao: "DOUBAO_API_KEY",
+    };
     console.error(
-      "✗ GEMINI_API_KEY is empty. Get a free key at https://aistudio.google.com/apikey and paste it into .env",
+      `✗ ${envName[PROVIDER]} is empty. Get one at ${keyUrl[PROVIDER]} and paste it into .env, or set LLM_PROVIDER=<gemini|openrouter|doubao>.`,
     );
     process.exit(1);
   }
-  console.log(`✓ Gemini model: ${MODEL}`);
+  console.log(`✓ provider: ${PROVIDER}  model: ${MODEL}`);
   console.log(`✓ Per batch: ${perBatch} questions`);
 
   const outDir = path.join(process.cwd(), "scripts", "generated", "quizzes");

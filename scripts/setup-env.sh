@@ -40,23 +40,51 @@ if [[ -f .env.example ]]; then
   cp .env.example "$TMP"
 fi
 if [[ -f "$TARGET" ]]; then
-  # Copy all lines except the three we manage.
-  grep -vE '^(GEMINI_API_KEY|GEMINI_MODEL|GEMINI_MAX_COST_USD|GEMINI_COST_PER_1M_IN|GEMINI_COST_PER_1M_OUT)=' "$TARGET" >> "$TMP" || true
+  # Copy all lines except the ones we manage below.
+  grep -vE '^(LLM_PROVIDER|GEMINI_API_KEY|GEMINI_MODEL|OPENROUTER_API_KEY|OPENROUTER_MODEL|DOUBAO_API_KEY|DOUBAO_MODEL|LLM_MAX_COST_USD|LLM_COST_PER_1M_IN|LLM_COST_PER_1M_OUT)=' "$TARGET" >> "$TMP" || true
 fi
 
 # Pull current values from $TARGET (if any) so we can prefill.
-CURRENT_KEY=$(grep -E '^GEMINI_API_KEY=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
-CURRENT_MODEL=$(grep -E '^GEMINI_MODEL=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
-CURRENT_CAP=$(grep -E '^GEMINI_MAX_COST_USD=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_PROVIDER=$(grep -E '^LLM_PROVIDER=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_GEMINI_KEY=$(grep -E '^GEMINI_API_KEY=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_GEMINI_MODEL=$(grep -E '^GEMINI_MODEL=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_OR_KEY=$(grep -E '^OPENROUTER_API_KEY=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_OR_MODEL=$(grep -E '^OPENROUTER_MODEL=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_DOUBAO_KEY=$(grep -E '^DOUBAO_API_KEY=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_DOUBAO_MODEL=$(grep -E '^DOUBAO_MODEL=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+CURRENT_CAP=$(grep -E '^LLM_MAX_COST_USD=' "$TARGET" 2>/dev/null | head -1 | cut -d= -f2- || true)
+
+# Choose provider first. Defaults to gemini if the user just hits enter.
+echo ""
+echo "Which LLM provider?"
+echo "  1) gemini      — Google AI Studio (NOT reachable from mainland China)"
+echo "  2) openrouter  — Unified router, works in CN, free tier available"
+echo "  3) doubao      — 字节火山引擎 Ark, China-direct, real-name KYC"
+echo ""
+read -r -p "Enter choice [1]: " PROVIDER_CHOICE
+case "${PROVIDER_CHOICE:-1}" in
+  2|openrouter) NEW_PROVIDER="openrouter" ;;
+  3|doubao)     NEW_PROVIDER="doubao" ;;
+  *)            NEW_PROVIDER="gemini" ;;
+esac
 
 # Prompt for the secret without echoing it to the terminal.
-PROMPT_KEY="Enter GEMINI_API_KEY (https://aistudio.google.com/apikey): "
+case "$NEW_PROVIDER" in
+  openrouter) KEY_PROMPT="Enter OPENROUTER_API_KEY (https://openrouter.ai/keys): " ;;
+  doubao)     KEY_PROMPT="Enter DOUBAO_API_KEY (https://www.volcengine.com/product/ark): " ;;
+  *)          KEY_PROMPT="Enter GEMINI_API_KEY (https://aistudio.google.com/apikey): " ;;
+esac
+case "$NEW_PROVIDER" in
+  openrouter) CURRENT_KEY="$CURRENT_OR_KEY" ;;
+  doubao)     CURRENT_KEY="$CURRENT_DOUBAO_KEY" ;;
+  *)          CURRENT_KEY="$CURRENT_GEMINI_KEY" ;;
+esac
 if [[ -n "$CURRENT_KEY" && "$CURRENT_KEY" != "" ]]; then
-  PROMPT_KEY="Enter GEMINI_API_KEY (Enter to keep current ending ...$(printf '%s' "$CURRENT_KEY" | tail -c 6 | tr -d '\n')): "
+  KEY_PROMPT="${KEY_PROMPT%? } (Enter to keep current ending ...$(printf '%s' "$CURRENT_KEY" | tail -c 6 | tr -d '\n')): "
 fi
 
 # `read -s` suppresses echo; `-r` keeps backslashes literal.
-read -r -s -p "$PROMPT_KEY" NEW_KEY
+read -r -s -p "$KEY_PROMPT" NEW_KEY
 echo "" # newline after the silent input
 
 # If user just hit enter, keep the existing key.
@@ -65,55 +93,88 @@ if [[ -z "$NEW_KEY" ]]; then
 fi
 
 if [[ -z "$NEW_KEY" ]]; then
-  echo "✗ GEMINI_API_KEY is empty; aborting." >&2
+  echo "✗ API key is empty; aborting." >&2
   rm -f "$TMP"
   exit 1
 fi
 
-# Sanity-check the key shape. Real keys start with "AIza" and
-# are ~39 chars. We warn but don't block — paid-tier keys
-# occasionally have different prefixes.
-if [[ ! "$NEW_KEY" =~ ^AIza[A-Za-z0-9_-]{30,}$ ]]; then
+# Sanity-check the key shape. Gemini starts with "AIza",
+# OpenRouter / Doubao start with "sk-or-" / random alnum.
+if [[ "$NEW_PROVIDER" == "gemini" ]] && [[ ! "$NEW_KEY" =~ ^AIza[A-Za-z0-9_-]{30,}$ ]]; then
   echo "  ! key doesn't look like a typical AIzaSy… key — proceeding anyway"
   echo "    (paid keys from non-Google-AI-Studio paths sometimes differ)"
 fi
 
-NEW_MODEL="${CURRENT_MODEL:-gemini-2.5-flash}"
-read -r -p "Enter GEMINI_MODEL [${NEW_MODEL}]: " INPUT_MODEL
+# Pick model default per provider.
+case "$NEW_PROVIDER" in
+  openrouter) NEW_MODEL="${CURRENT_OR_MODEL:-google/gemini-2.5-flash}" ;;
+  doubao)     NEW_MODEL="${CURRENT_DOUBAO_MODEL:-doubao-seed-2.0-mini}" ;;
+  *)          NEW_MODEL="${CURRENT_GEMINI_MODEL:-gemini-2.5-flash}" ;;
+esac
+read -r -p "Enter model [${NEW_MODEL}]: " INPUT_MODEL
 if [[ -n "$INPUT_MODEL" ]]; then
   NEW_MODEL="$INPUT_MODEL"
 fi
 
 NEW_CAP="${CURRENT_CAP:-1.00}"
-read -r -p "Enter GEMINI_MAX_COST_USD [${NEW_CAP}]: " INPUT_CAP
+read -r -p "Enter LLM_MAX_COST_USD [${NEW_CAP}]: " INPUT_CAP
 if [[ -n "$INPUT_CAP" ]]; then
   NEW_CAP="$INPUT_CAP"
 fi
 
-# Drop any previous Gemini block from the temp file (in case
+# Drop any previous LLM block from the temp file (in case
 # .env.example had placeholder lines), then append the new values.
-sed -i.bak '/^# Gemini (Google AI Studio)/,/^GEMINI_COST_PER_1M_OUT=/d' "$TMP" 2>/dev/null || true
+sed -i.bak '/^# ====/,/^LLM_COST_PER_1M_OUT=/d' "$TMP" 2>/dev/null || true
 rm -f "$TMP.bak"
 
 cat >> "$TMP" <<EOF
 
 # ============================================
-# Gemini (Google AI Studio) — quiz generator
+# LLM provider (used by scripts/generate-quizzes-gemini.ts)
 # ============================================
 # Filled by scripts/setup-env.sh on $(date -u +%Y-%m-%dT%H:%M:%SZ).
-# Free key: https://aistudio.google.com/apikey
-# Same model alias for free/paid — keep MAX_COST_USD low.
-GEMINI_API_KEY=${NEW_KEY}
-GEMINI_MODEL=${NEW_MODEL}
-GEMINI_MAX_COST_USD=${NEW_CAP}
-GEMINI_COST_PER_1M_IN=0.30
-GEMINI_COST_PER_1M_OUT=2.50
+# Get a key from the URL matching LLM_PROVIDER, then paste it into
+# the matching _API_KEY variable. Same-model-name caveat for gemini:
+# gemini-2.5-flash is the same alias for free/paid keys, so keep
+# LLM_MAX_COST_USD low if you bind a card.
+LLM_PROVIDER=${NEW_PROVIDER}
+GEMINI_API_KEY=${CURRENT_GEMINI_KEY}
+GEMINI_MODEL=${CURRENT_GEMINI_MODEL:-gemini-2.5-flash}
+OPENROUTER_API_KEY=${CURRENT_OR_KEY}
+OPENROUTER_MODEL=${CURRENT_OR_MODEL:-google/gemini-2.5-flash}
+DOUBAO_API_KEY=${CURRENT_DOUBAO_KEY}
+DOUBAO_MODEL=${CURRENT_DOUBAO_MODEL:-doubao-seed-2.0-mini}
+LLM_MAX_COST_USD=${NEW_CAP}
+LLM_COST_PER_1M_IN=0.30
+LLM_COST_PER_1M_OUT=2.50
 EOF
+
+# If the active provider's key was just updated, also write it to
+# its dedicated variable (the block above preserves the others).
+# We use sed in-place because we want only the matching line
+# of the active provider to change.
+if [[ "$NEW_PROVIDER" == "gemini" ]]; then
+  sed -i.bak "s|^GEMINI_API_KEY=.*|GEMINI_API_KEY=${NEW_KEY}|" "$TMP"
+elif [[ "$NEW_PROVIDER" == "openrouter" ]]; then
+  sed -i.bak "s|^OPENROUTER_API_KEY=.*|OPENROUTER_API_KEY=${NEW_KEY}|" "$TMP"
+else
+  sed -i.bak "s|^DOUBAO_API_KEY=.*|DOUBAO_API_KEY=${NEW_KEY}|" "$TMP"
+fi
+# Always write the freshly-typed model to its dedicated variable.
+if [[ "$NEW_PROVIDER" == "gemini" ]]; then
+  sed -i.bak "s|^GEMINI_MODEL=.*|GEMINI_MODEL=${NEW_MODEL}|" "$TMP"
+elif [[ "$NEW_PROVIDER" == "openrouter" ]]; then
+  sed -i.bak "s|^OPENROUTER_MODEL=.*|OPENROUTER_MODEL=${NEW_MODEL}|" "$TMP"
+else
+  sed -i.bak "s|^DOUBAO_MODEL=.*|DOUBAO_MODEL=${NEW_MODEL}|" "$TMP"
+fi
+rm -f "$TMP.bak"
 
 mv "$TMP" "$TARGET"
 chmod 600 "$TARGET" # rw for owner only — secret hygiene
 echo ""
 echo "✓ wrote $TARGET (mode 600)"
 echo ""
+echo "Active provider: $NEW_PROVIDER  model: $NEW_MODEL"
 echo "Test the setup:"
 echo "  pnpm tsx scripts/generate-quizzes-gemini.ts --lang=en --count=5 --max-cost=0.10"
