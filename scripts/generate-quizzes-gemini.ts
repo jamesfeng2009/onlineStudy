@@ -80,7 +80,11 @@ const API_KEY =
   )?.trim();
 const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: "gemini-2.5-flash",
-  openrouter: "google/gemini-2.5-flash",
+  // DeepSeek V3 Chat is free on OpenRouter (50 calls/day, no card
+  // required). 8K output tokens is enough for ~25 grammar items
+  // per batch. Switch to `google/gemini-2.5-flash` here if you
+  // want a paid fallback once the free quota is exhausted.
+  openrouter: "deepseek/deepseek-chat:free",
   doubao: "doubao-seed-2.0-mini",
 };
 const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
@@ -129,7 +133,17 @@ function arg(name: string, def?: string): string | undefined {
 }
 const onlyLang = arg("lang");
 const onlyLevel = arg("level");
-const perBatch = Math.max(5, Math.min(50, Number(arg("count", "25"))));
+// Gemini-2.5-flash (and a few other providers) occasionally
+// emits JSON with truncated strings when max_output_tokens
+// squeezes the response. 25 items × ~270 output chars pushes
+// the model close to the cap, so we default to 20 and let the
+// caller raise it via --count when they're on a model with a
+// larger budget (e.g. DeepSeek V3 on OpenRouter, 8K output).
+const DEFAULT_PER_BATCH = 20;
+const perBatch = Math.max(
+  5,
+  Math.min(50, Number(arg("count", String(DEFAULT_PER_BATCH)))),
+);
 const overwrite = process.argv.includes("--overwrite");
 const dryRun = process.argv.includes("--dry-run");
 
@@ -218,6 +232,50 @@ const RESPONSE_SCHEMA = {
 // ---------- Helpers ----------
 function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+// Best-effort JSON repair for responses that got truncated mid-string
+// (Gemini-2.5-flash emits these on long outputs). Strategy:
+//   1. close any open string with a quote
+//   2. close any open object/array
+// The result is allowed to have a trailing comma; the validator
+// downstream drops any malformed item, so we keep going.
+function repairJson(input: string): string {
+  let s = input;
+  // Strip a trailing partial "key": "val fragment if max_tokens cut us
+  // inside a string. We scan from the end and look for the last
+  // unterminated quote.
+  const lastQuote = s.lastIndexOf('"');
+  if (lastQuote === -1) return s;
+  // count unescaped quotes from the start
+  let inStr = false;
+  let escape = false;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') inStr = !inStr;
+  }
+  if (inStr) s += '"';
+  // count braces/brackets (ignoring those inside strings)
+  inStr = false;
+  escape = false;
+  let opens = 0;
+  let closes = 0;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') { inStr = !inStr; continue; }
+    if (inStr) continue;
+    if (ch === "{" || ch === "[") opens++;
+    else if (ch === "}" || ch === "]") closes++;
+  }
+  while (closes < opens) {
+    s += s.trimEnd().endsWith("[") ? "]" : "}";
+    closes++;
+  }
+  return s;
 }
 
 function buildPrompt(lang: LangKey, level: string, count: number): string {
@@ -367,13 +425,24 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
   }
 
   // response_format=json_object guarantees raw JSON. We still strip
-  // accidental code fences in case the model wrapped the output.
+  // accidental code fences in case the model wrapped the output,
+  // and try to repair the response if max_output_tokens truncated
+  // a string mid-way (Gemini-2.5-flash does this occasionally).
   let parsed: any;
   try {
     parsed = JSON.parse(text);
   } catch {
-    const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "").trim();
-    parsed = JSON.parse(cleaned);
+    try {
+      const cleaned = text
+        .replace(/^```(?:json)?\s*/i, "")
+        .replace(/```\s*$/i, "")
+        .trim();
+      parsed = JSON.parse(repairJson(cleaned));
+    } catch (err) {
+      throw new Error(
+        `json parse failed: ${(err as Error).message} (text starts: ${text.slice(0, 80)}…)`,
+      );
+    }
   }
 
   if (!parsed || !Array.isArray(parsed.items)) {
