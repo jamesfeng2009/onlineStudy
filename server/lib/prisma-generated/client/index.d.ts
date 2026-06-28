@@ -10659,6 +10659,9 @@ export namespace Prisma {
     role: string | null
     goalMinutesPerDay: number | null
     jwtVersion: number | null
+    oauthProvider: string | null
+    oauthId: string | null
+    emailVerified: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -10679,6 +10682,9 @@ export namespace Prisma {
     role: string | null
     goalMinutesPerDay: number | null
     jwtVersion: number | null
+    oauthProvider: string | null
+    oauthId: string | null
+    emailVerified: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -10699,6 +10705,9 @@ export namespace Prisma {
     role: number
     goalMinutesPerDay: number
     jwtVersion: number
+    oauthProvider: number
+    oauthId: number
+    emailVerified: number
     _all: number
   }
 
@@ -10737,6 +10746,9 @@ export namespace Prisma {
     role?: true
     goalMinutesPerDay?: true
     jwtVersion?: true
+    oauthProvider?: true
+    oauthId?: true
+    emailVerified?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -10757,6 +10769,9 @@ export namespace Prisma {
     role?: true
     goalMinutesPerDay?: true
     jwtVersion?: true
+    oauthProvider?: true
+    oauthId?: true
+    emailVerified?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -10777,6 +10792,9 @@ export namespace Prisma {
     role?: true
     goalMinutesPerDay?: true
     jwtVersion?: true
+    oauthProvider?: true
+    oauthId?: true
+    emailVerified?: true
     _all?: true
   }
 
@@ -10870,7 +10888,7 @@ export namespace Prisma {
     id: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash: string | null
     avatar: string | null
     level: number
     exp: number
@@ -10884,6 +10902,9 @@ export namespace Prisma {
     role: string
     goalMinutesPerDay: number
     jwtVersion: number
+    oauthProvider: string | null
+    oauthId: string | null
+    emailVerified: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -10923,6 +10944,9 @@ export namespace Prisma {
     role?: boolean
     goalMinutesPerDay?: boolean
     jwtVersion?: boolean
+    oauthProvider?: boolean
+    oauthId?: boolean
+    emailVerified?: boolean
     language?: boolean | LanguageDefaultArgs<ExtArgs>
     progressDays?: boolean | User$progressDaysArgs<ExtArgs>
     posts?: boolean | User$postsArgs<ExtArgs>
@@ -10950,6 +10974,9 @@ export namespace Prisma {
     role?: boolean
     goalMinutesPerDay?: boolean
     jwtVersion?: boolean
+    oauthProvider?: boolean
+    oauthId?: boolean
+    emailVerified?: boolean
     language?: boolean | LanguageDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -10971,6 +10998,9 @@ export namespace Prisma {
     role?: boolean
     goalMinutesPerDay?: boolean
     jwtVersion?: boolean
+    oauthProvider?: boolean
+    oauthId?: boolean
+    emailVerified?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11000,7 +11030,7 @@ export namespace Prisma {
       id: string
       email: string
       username: string
-      passwordHash: string
+      passwordHash: string | null
       avatar: string | null
       level: number
       exp: number
@@ -11014,6 +11044,9 @@ export namespace Prisma {
       role: string
       goalMinutesPerDay: number
       jwtVersion: number
+      oauthProvider: string | null
+      oauthId: string | null
+      emailVerified: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -11430,6 +11463,9 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'String'>
     readonly goalMinutesPerDay: FieldRef<"User", 'Int'>
     readonly jwtVersion: FieldRef<"User", 'Int'>
+    readonly oauthProvider: FieldRef<"User", 'String'>
+    readonly oauthId: FieldRef<"User", 'String'>
+    readonly emailVerified: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -21041,7 +21077,10 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     role: 'role',
     goalMinutesPerDay: 'goalMinutesPerDay',
-    jwtVersion: 'jwtVersion'
+    jwtVersion: 'jwtVersion',
+    oauthProvider: 'oauthProvider',
+    oauthId: 'oauthId',
+    emailVerified: 'emailVerified'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -21885,7 +21924,7 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
-    passwordHash?: StringFilter<"User"> | string
+    passwordHash?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
     exp?: IntFilter<"User"> | number
@@ -21899,6 +21938,9 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     goalMinutesPerDay?: IntFilter<"User"> | number
     jwtVersion?: IntFilter<"User"> | number
+    oauthProvider?: StringNullableFilter<"User"> | string | null
+    oauthId?: StringNullableFilter<"User"> | string | null
+    emailVerified?: BoolFilter<"User"> | boolean
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
     progressDays?: UserProgressDayListRelationFilter
     posts?: PostListRelationFilter
@@ -21911,7 +21953,7 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     username?: SortOrder
-    passwordHash?: SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     level?: SortOrder
     exp?: SortOrder
@@ -21925,6 +21967,9 @@ export namespace Prisma {
     role?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
+    oauthProvider?: SortOrderInput | SortOrder
+    oauthId?: SortOrderInput | SortOrder
+    emailVerified?: SortOrder
     language?: LanguageOrderByWithRelationInput
     progressDays?: UserProgressDayOrderByRelationAggregateInput
     posts?: PostOrderByRelationAggregateInput
@@ -21936,11 +21981,12 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    oauthProvider_oauthId?: UserOauthProviderOauthIdCompoundUniqueInput
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     username?: StringFilter<"User"> | string
-    passwordHash?: StringFilter<"User"> | string
+    passwordHash?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
     exp?: IntFilter<"User"> | number
@@ -21954,19 +22000,22 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     goalMinutesPerDay?: IntFilter<"User"> | number
     jwtVersion?: IntFilter<"User"> | number
+    oauthProvider?: StringNullableFilter<"User"> | string | null
+    oauthId?: StringNullableFilter<"User"> | string | null
+    emailVerified?: BoolFilter<"User"> | boolean
     language?: XOR<LanguageRelationFilter, LanguageWhereInput>
     progressDays?: UserProgressDayListRelationFilter
     posts?: PostListRelationFilter
     likedPosts?: LikePostListRelationFilter
     comments?: CommentListRelationFilter
     subscription?: XOR<SubscriptionNullableRelationFilter, SubscriptionWhereInput> | null
-  }, "id" | "email">
+  }, "id" | "email" | "oauthProvider_oauthId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     username?: SortOrder
-    passwordHash?: SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     level?: SortOrder
     exp?: SortOrder
@@ -21980,6 +22029,9 @@ export namespace Prisma {
     role?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
+    oauthProvider?: SortOrderInput | SortOrder
+    oauthId?: SortOrderInput | SortOrder
+    emailVerified?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -21994,7 +22046,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     username?: StringWithAggregatesFilter<"User"> | string
-    passwordHash?: StringWithAggregatesFilter<"User"> | string
+    passwordHash?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     level?: IntWithAggregatesFilter<"User"> | number
     exp?: IntWithAggregatesFilter<"User"> | number
@@ -22008,6 +22060,9 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"User"> | string
     goalMinutesPerDay?: IntWithAggregatesFilter<"User"> | number
     jwtVersion?: IntWithAggregatesFilter<"User"> | number
+    oauthProvider?: StringNullableWithAggregatesFilter<"User"> | string | null
+    oauthId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type UserProgressDayWhereInput = {
@@ -23317,7 +23372,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -23330,6 +23385,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -23342,7 +23400,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -23356,6 +23414,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
@@ -23367,7 +23428,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -23380,6 +23441,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -23392,7 +23456,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -23406,6 +23470,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
@@ -23417,7 +23484,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -23431,13 +23498,16 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -23450,13 +23520,16 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -23470,6 +23543,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserProgressDayCreateInput = {
@@ -24859,6 +24935,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type UserOauthProviderOauthIdCompoundUniqueInput = {
+    oauthProvider: string
+    oauthId: string
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -24877,6 +24958,9 @@ export namespace Prisma {
     role?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
+    oauthProvider?: SortOrder
+    oauthId?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -24905,6 +24989,9 @@ export namespace Prisma {
     role?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
+    oauthProvider?: SortOrder
+    oauthId?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -24925,6 +25012,9 @@ export namespace Prisma {
     role?: SortOrder
     goalMinutesPerDay?: SortOrder
     jwtVersion?: SortOrder
+    oauthProvider?: SortOrder
+    oauthId?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -26774,7 +26864,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -26787,6 +26877,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostCreateNestedManyWithoutUserInput
@@ -26798,7 +26891,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -26811,6 +26904,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
@@ -27002,7 +27098,7 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
-    passwordHash?: StringFilter<"User"> | string
+    passwordHash?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     level?: IntFilter<"User"> | number
     exp?: IntFilter<"User"> | number
@@ -27016,6 +27112,9 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     goalMinutesPerDay?: IntFilter<"User"> | number
     jwtVersion?: IntFilter<"User"> | number
+    oauthProvider?: StringNullableFilter<"User"> | string | null
+    oauthId?: StringNullableFilter<"User"> | string | null
+    emailVerified?: BoolFilter<"User"> | boolean
   }
 
   export type LanguageCreateWithoutCoursesInput = {
@@ -28002,7 +28101,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28015,6 +28114,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     posts?: PostCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostCreateNestedManyWithoutUserInput
@@ -28026,7 +28128,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28040,6 +28142,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -28066,7 +28171,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28079,6 +28184,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUpdateManyWithoutUserNestedInput
@@ -28090,7 +28198,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28104,6 +28212,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -28114,7 +28225,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28127,6 +28238,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     likedPosts?: LikePostCreateNestedManyWithoutUserInput
@@ -28138,7 +28252,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28152,6 +28266,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -28222,7 +28339,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28235,6 +28352,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     likedPosts?: LikePostUpdateManyWithoutUserNestedInput
@@ -28246,7 +28366,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28260,6 +28380,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -28325,7 +28448,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28338,6 +28461,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -28349,7 +28475,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28363,6 +28489,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -28418,7 +28547,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28431,6 +28560,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -28442,7 +28574,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28456,6 +28588,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -28489,7 +28624,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28502,6 +28637,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -28513,7 +28651,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28527,6 +28665,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
@@ -28582,7 +28723,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28595,6 +28736,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -28606,7 +28750,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28620,6 +28764,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
@@ -28630,7 +28777,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28643,6 +28790,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     language: LanguageCreateNestedOneWithoutUsersInput
     progressDays?: UserProgressDayCreateNestedManyWithoutUserInput
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -28654,7 +28804,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -28668,6 +28818,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
     progressDays?: UserProgressDayUncheckedCreateNestedManyWithoutUserInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     likedPosts?: LikePostUncheckedCreateNestedManyWithoutUserInput
@@ -28694,7 +28847,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28707,6 +28860,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     language?: LanguageUpdateOneRequiredWithoutUsersNestedInput
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -28718,7 +28874,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -28732,6 +28888,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
@@ -29125,7 +29284,7 @@ export namespace Prisma {
     id?: string
     email: string
     username: string
-    passwordHash: string
+    passwordHash?: string | null
     avatar?: string | null
     level?: number
     exp?: number
@@ -29138,6 +29297,9 @@ export namespace Prisma {
     role?: string
     goalMinutesPerDay?: number
     jwtVersion?: number
+    oauthProvider?: string | null
+    oauthId?: string | null
+    emailVerified?: boolean
   }
 
   export type CourseUpdateWithoutLanguageInput = {
@@ -29301,7 +29463,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -29314,6 +29476,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUpdateManyWithoutUserNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUpdateManyWithoutUserNestedInput
@@ -29325,7 +29490,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -29338,6 +29503,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     progressDays?: UserProgressDayUncheckedUpdateManyWithoutUserNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     likedPosts?: LikePostUncheckedUpdateManyWithoutUserNestedInput
@@ -29349,7 +29517,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     level?: IntFieldUpdateOperationsInput | number
     exp?: IntFieldUpdateOperationsInput | number
@@ -29362,6 +29530,9 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     goalMinutesPerDay?: IntFieldUpdateOperationsInput | number
     jwtVersion?: IntFieldUpdateOperationsInput | number
+    oauthProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthId?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type WordBankTranslationCreateManyWordBankInput = {

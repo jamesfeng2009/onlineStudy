@@ -5,6 +5,7 @@ import fastifyJwt from "@fastify/jwt";
 import bcrypt from "bcryptjs";
 
 import authRoutes from "./routes/auth.js";
+import oauthRoutes from "./routes/oauth.js";
 import coursesRoutes from "./routes/courses.js";
 import wordsRoutes from "./routes/words.js";
 import progressRoutes from "./routes/progress.js";
@@ -33,9 +34,15 @@ declare module "@fastify/jwt" {
   }
 }
 
-const JWT_SECRET = process.env.JWT_SECRET ?? "dev-secret-change-me";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET || JWT_SECRET.length < 16) {
+  throw new Error("JWT_SECRET must be set in env and at least 16 chars. Refusing to boot with weak/dev secret.");
+}
 const FRONTEND_URL = process.env.FRONTEND_URL ?? "http://localhost:5173";
-const SALT_WORK_FACTOR = 10;
+const SALT_WORK_FACTOR = 12;
+
+// 将已经校验过的 secret 赋给常量，避免 TS 报 "string | undefined"
+const SECRET: string = JWT_SECRET;
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = fastify({
@@ -48,7 +55,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     credentials: true,
   });
 
-  await app.register(fastifyJwt, { secret: JWT_SECRET });
+  await app.register(fastifyJwt, { secret: SECRET });
   await app.register(jwtPlugin);
 
   app.decorate("bcrypt", {
@@ -79,6 +86,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   // Register API routes under /api/
   const apiRoutes: Array<typeof authRoutes> = [
     authRoutes,
+    oauthRoutes,
     coursesRoutes,
     wordsRoutes,
     progressRoutes,

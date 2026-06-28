@@ -17,6 +17,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
+import OAuthCallbackPage from "./pages/auth/OAuthCallbackPage";
 import LearnLangPage from "./pages/LearnLangPage";
 import LearnWordPage from "./pages/LearnWordPage";
 import LearnVocabPage from "./pages/LearnVocabPage";
@@ -72,6 +73,8 @@ const rootRoutes = (
     <Route path="/admin" element={<AdminPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
+    <Route path="/auth/callback" element={<OAuthCallbackPage />} />
+    <Route path="/auth/callback/:provider" element={<OAuthCallbackPage />} />
     <Route path="*" element={<HomePage />} />
   </>
 );
@@ -100,6 +103,8 @@ const localeRoutes = (
     <Route path="admin" element={<AdminPage />} />
     <Route path="login" element={<LoginPage />} />
     <Route path="register" element={<RegisterPage />} />
+    <Route path="auth/callback" element={<OAuthCallbackPage />} />
+    <Route path="auth/callback/:provider" element={<OAuthCallbackPage />} />
     <Route path="*" element={<HomePage />} />
   </>
 );

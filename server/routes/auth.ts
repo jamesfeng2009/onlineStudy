@@ -31,6 +31,14 @@ async function isValidLanguage(code: string): Promise<boolean> {
   return false;
 }
 
+// 密码强度校验：至少 8 位，必须包含字母和数字（OAuth 用户不校验密码）
+function validatePasswordStrength(password: string): { ok: boolean; reason?: string } {
+  if (password.length < 8) return { ok: false, reason: "密码至少 8 位" };
+  if (!/[a-zA-Z]/.test(password)) return { ok: false, reason: "密码必须包含字母" };
+  if (!/[0-9]/.test(password)) return { ok: false, reason: "密码必须包含数字" };
+  return { ok: true };
+}
+
 const authRoutes: FastifyPluginAsync = async (fastify) => {
   // ====== 注册（幂等 + 事务） ======
   // 使用 email unique constraint 保证幂等
@@ -40,6 +48,12 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     const nativeLanguage = request.body.nativeLanguage || "en";
     if (!email || !password || !username || !language) {
       return sendError(reply, "BAD_REQUEST", "缺少必填字段");
+    }
+
+    // 密码强度校验（与前端保持一致）
+    const pwCheck = validatePasswordStrength(password);
+    if (!pwCheck.ok) {
+      return sendError(reply, "BAD_REQUEST", pwCheck.reason ?? "密码强度不足");
     }
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -101,7 +115,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     const user = await prisma.user.findUnique({ where: { email: email.toLowerCase().trim() } });
-    if (!user) {
+    if (!user || !user.passwordHash) {
+      // passwordHash 为 null 说明是纯 OAuth 用户，不允许用密码登录
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 

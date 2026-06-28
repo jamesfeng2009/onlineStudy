@@ -221,7 +221,10 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt',
   role: 'role',
   goalMinutesPerDay: 'goalMinutesPerDay',
-  jwtVersion: 'jwtVersion'
+  jwtVersion: 'jwtVersion',
+  oauthProvider: 'oauthProvider',
+  oauthId: 'oauthId',
+  emailVerified: 'emailVerified'
 };
 
 exports.Prisma.UserProgressDayScalarFieldEnum = {

@@ -143,7 +143,7 @@ model User {
   id                String   @id @default(uuid())
   email             String   @unique
   username          String
-  passwordHash      String
+  passwordHash      String?
   avatar            String?
   level             Int      @default(1)
   exp               Int      @default(0)
@@ -157,6 +157,11 @@ model User {
   role              String   @default("user") // user | vip | admin
   goalMinutesPerDay Int      @default(30)
   jwtVersion        Int      @default(0)
+  // OAuth 绑定信息：同一邮箱可关联多个 provider，null 表示该账号由密码注册
+  oauthProvider     String?
+  oauthId           String?
+  // 邮箱验证：OAuth 用户默认视为已验证；密码注册用户默认 false
+  emailVerified     Boolean  @default(false)
 
   language     Language          @relation(fields: [targetLanguage], references: [code], onDelete: Restrict)
   progressDays UserProgressDay[]
@@ -165,6 +170,7 @@ model User {
   comments     Comment[]
   subscription Subscription?
 
+  @@unique([oauthProvider, oauthId])
   @@map("users")
 }
 
