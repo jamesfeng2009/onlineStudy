@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
+import LoginPromptModal from "../components/LoginPromptModal";
 import { api } from "../lib/api";
 import type { WordResp } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
@@ -38,6 +39,9 @@ export default function LearnPage() {
   );
   const level = course?.level;
   const locked = !!course;
+  const isLoggedIn = !!user;
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+  const onNeedLogin = () => setShowLoginPrompt(true);
 
   useEffect(() => {
     if (course) {
@@ -119,10 +123,12 @@ export default function LearnPage() {
         })}
       </div>
 
-      {tab === "words" && <WordsModule language={lang} level={level} />}
-      {tab === "grammar" && <GrammarModule language={lang} level={level} />}
-      {tab === "speaking" && <SpeakingModule language={lang} level={level} />}
-      {tab === "listening" && <ListeningModule language={lang} level={level} />}
+      {tab === "words" && <WordsModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+      {tab === "grammar" && <GrammarModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+      {tab === "speaking" && <SpeakingModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+      {tab === "listening" && <ListeningModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+
+      {showLoginPrompt && <LoginPromptModal onClose={() => setShowLoginPrompt(false)} />}
     </PageShell>
   );
 }
@@ -130,7 +136,7 @@ export default function LearnPage() {
 /* ===============================
    单词记忆 — Flashcards
 ================================== */
-function WordsModule({ language, level }: { language: Language; level?: string }) {
+function WordsModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const recordWord = useProgressStore((s) => s.recordWord);
@@ -175,6 +181,7 @@ function WordsModule({ language, level }: { language: Language; level?: string }
   const card = words[i % Math.max(1, words.length)];
 
   const next = async (k: boolean) => {
+    if (!isLoggedIn) { onNeedLogin(); return; }
     await recordWord(k, language);
     if (k) setKnown((n) => n + 1);
     else setUnknown((n) => n + 1);
@@ -265,7 +272,7 @@ function WordsModule({ language, level }: { language: Language; level?: string }
 /* ===============================
    语法练习
 ================================== */
-function GrammarModule({ language, level }: { language: Language; level?: string }) {
+function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const recordQuiz = useProgressStore((s) => s.recordQuiz);
   const quizzes = useMemo(() => {
     const base = getQuizzes(language, level);
@@ -281,6 +288,7 @@ function GrammarModule({ language, level }: { language: Language; level?: string
 
   const submit = async () => {
     if (pick === null) return;
+    if (!isLoggedIn) { onNeedLogin(); return; }
     const ok = pick === q.answer;
     await recordQuiz(ok, language);
     if (ok) setCorrect((n) => n + 1);
@@ -389,7 +397,7 @@ function GrammarModule({ language, level }: { language: Language; level?: string
 /* ===============================
    口语跟读
 ================================== */
-function SpeakingModule({ language, level }: { language: Language; level?: string }) {
+function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
   const phrases = useMemo(() => getSpeaking(language, level), [language, level]);
   const [i, setI] = useState(0);
@@ -399,6 +407,7 @@ function SpeakingModule({ language, level }: { language: Language; level?: strin
   const p = phrases[i % Math.max(1, phrases.length)];
 
   const start = () => {
+    if (!isLoggedIn) { onNeedLogin(); return; }
     setRecording(true);
     setSeconds(0);
     const startAt = Date.now();
@@ -493,7 +502,7 @@ function SpeakingModule({ language, level }: { language: Language; level?: strin
 /* ===============================
    听力训练
 ================================== */
-function ListeningModule({ language, level }: { language: Language; level?: string }) {
+function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const recordListening = useProgressStore((s) => s.recordListening);
   const items = useMemo(() => getListening(language, level), [language, level]);
   const [i, setI] = useState(0);
@@ -507,6 +516,7 @@ function ListeningModule({ language, level }: { language: Language; level?: stri
 
   const play = () => {
     if (playing) return;
+    if (!isLoggedIn) { onNeedLogin(); return; }
     setPlaying(true);
     const synth = window.speechSynthesis;
     if (synth) {
