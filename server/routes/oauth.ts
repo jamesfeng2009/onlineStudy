@@ -236,20 +236,9 @@ async function exchangeCodeForProfile(
 }
 
 const oauthRoutes: FastifyPluginAsync = async (fastify) => {
-  // 调试：打印 env 读取状态（不泄露值，只打印是否存在 + 长度）
-  console.log("[oauth] env check:", {
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID ? `len=${process.env.GOOGLE_CLIENT_ID.length}` : "MISSING",
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET ? `len=${process.env.GOOGLE_CLIENT_SECRET.length}` : "MISSING",
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID ? `len=${process.env.GITHUB_CLIENT_ID.length}` : "MISSING",
-    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET ? `len=${process.env.GITHUB_CLIENT_SECRET.length}` : "MISSING",
-    BACKEND_URL: process.env.BACKEND_URL ?? "MISSING",
-  });
-
   const enabledProviders: Provider[] = [];
   if (getProviderConfig("google")) enabledProviders.push("google");
   if (getProviderConfig("github")) enabledProviders.push("github");
-
-  fastify.log.info(`[oauth] enabled providers: ${enabledProviders.join(", ") || "none"}`);
 
   if (enabledProviders.length === 0) {
     fastify.log.warn("[oauth] No OAuth provider configured (GOOGLE_*/GITHUB_* env vars missing). OAuth disabled.");
