@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
     Globe2,
@@ -16,9 +16,12 @@ import {
     Settings,
     HelpCircle,
     Newspaper,
+    Languages,
   } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
+import i18n, { buildLocalePath, type SupportedLanguage } from "../lib/i18n";
+import { LANGUAGES } from "../data/languages";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -26,7 +29,33 @@ export default function Header() {
   const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
   const navigate = useNavigate();
+  const location = useLocation();
+  const updateProfile = useAuthStore((s) => s.updateProfile);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  // Click outside to close language dropdown
+  useEffect(() => {
+    if (!langOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [langOpen]);
+
+  const handleLanguageChange = (lang: SupportedLanguage) => {
+    i18n.changeLanguage(lang);
+    navigate(buildLocalePath(lang, location.pathname));
+    setLangOpen(false);
+    // Logged-in users: also persist to backend (best-effort)
+    if (user) {
+      void updateProfile({ uiLanguage: lang });
+    }
+  };
 
   const NAV = [
     { to: "/", label: t("nav.home"), icon: Home },
@@ -87,6 +116,35 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* Language switcher - visible to all users */}
+          <div className="relative" ref={langRef}>
+            <button
+              onClick={() => setLangOpen((s) => !s)}
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-brand-100 transition hover:bg-white/10 hover:text-white"
+              aria-label="Language"
+            >
+              <Languages className="h-4 w-4" />
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-2 w-40 rounded-xl border border-white/10 bg-[#020617]/95 p-1 shadow-xl backdrop-blur-xl">
+                {LANGUAGES.map((l) => (
+                  <button
+                    key={l.id}
+                    onClick={() => handleLanguageChange(l.id as SupportedLanguage)}
+                    className={cn(
+                      "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm transition",
+                      i18n.language?.startsWith(l.id)
+                        ? "bg-sky-400/10 text-white"
+                        : "text-brand-100 hover:bg-white/5"
+                    )}
+                  >
+                    <span>{l.flag}</span>
+                    <span>{l.native}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           {isLoggedIn ? (
             <>
               <Link
