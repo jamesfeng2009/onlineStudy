@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Loader2 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd";
 import { api } from "../lib/api";
 
 interface BlogPost {
@@ -59,6 +60,27 @@ export default function BlogPage() {
             "Articles on spaced repetition, vocabulary, listening and speaking — practical guides for language learners.",
         })}
         pathname="/blog"
+      />
+      <JsonLd
+        data={[
+          buildBreadcrumbLd([
+            { name: "Home", url: "https://lang-oria.com/" },
+            { name: "Blog", url: "https://lang-oria.com/blog" },
+          ]),
+          ...(posts.length > 0
+            ? [
+                buildItemListLd({
+                  name: "LangOria blog",
+                  url: "https://lang-oria.com/blog",
+                  items: posts.map((p) => ({
+                    name: p.title,
+                    url: `https://lang-oria.com/blog/${p.slug}`,
+                    description: p.excerpt,
+                  })),
+                }),
+              ]
+            : []),
+        ]}
       />
       {loading ? (
         <div className="flex items-center justify-center py-20 text-brand-200/70">

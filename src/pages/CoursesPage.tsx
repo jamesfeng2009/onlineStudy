@@ -5,6 +5,7 @@ import { ArrowRight, Clock, BookOpen, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd";
 import { COURSES } from "../data/courses";
 import { LANGUAGES } from "../data/languages";
 import { getLanguage } from "../data/languages";
@@ -46,6 +47,23 @@ export default function CoursesPage() {
             "Browse structured language courses from A1 to C1 across English, Japanese, Korean, Chinese, Spanish, French and German.",
         })}
         pathname="/courses"
+      />
+      <JsonLd
+        data={[
+          buildBreadcrumbLd([
+            { name: "Home", url: "https://lang-oria.com/" },
+            { name: "Courses", url: "https://lang-oria.com/courses" },
+          ]),
+          buildItemListLd({
+            name: "LangOria language courses",
+            url: "https://lang-oria.com/courses",
+            items: COURSES.map((c) => ({
+              name: c.title,
+              url: `https://lang-oria.com/learn/${c.id}`,
+              description: c.description,
+            })),
+          }),
+        ]}
       />
       {/* 语言切换 */}
       <div className="glass mb-6 flex flex-wrap items-center gap-2 rounded-2xl p-3">
