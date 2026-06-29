@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "prisma generate && tsc -p server/tsconfig.json && tsc -b --noEmit && tsx scripts/generate-seo-files.ts && vite build",
+    "build": "prisma generate && tsc -p server/tsconfig.json && tsc -b --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
