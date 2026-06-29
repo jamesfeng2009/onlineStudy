@@ -13,6 +13,7 @@ import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
 import adminRoutes from "./routes/admin.js";
 import blogRoutes from "./routes/blog.js";
+import seoRoutes from "./routes/seo.js";
 import jwtPlugin from "./lib/jwt.js";
 import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
@@ -94,6 +95,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     stripeRoutes,
     adminRoutes,
     blogRoutes,
+    seoRoutes,
   ];
 
   for (const route of apiRoutes) {

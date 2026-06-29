@@ -119,6 +119,24 @@ export default function HomePage() {
       <JsonLd
         data={[
           buildBreadcrumbLd([{ name: "Home", url: "https://lang-oria.com/" }]),
+          {
+            "@type": "WebSite",
+            name: "LangOria",
+            url: "https://lang-oria.com/",
+            description: "Immersive language learning platform",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://lang-oria.com/courses?q={query}",
+              "query-input": "required name=query",
+            },
+          },
+          {
+            "@type": "Organization",
+            name: "LangOria",
+            url: "https://lang-oria.com/",
+            logo: "https://lang-oria.com/favicon.svg",
+            sameAs: [],
+          },
           buildCourseLd({
             name: t("home.seoTitle"),
             description: t("home.seoDescription"),
