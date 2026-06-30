@@ -1,0 +1,120 @@
+/* eslint-disable no-console */
+/**
+ * Scan scripts/generated/quizzes/*.json and emit a single TypeScript
+ * module at src/data/generated-quizzes.ts that re-exports all quizzes
+ * as a flat QuizItem[] array. Run after generate-quizzes-gemini.ts.
+ *
+ * Usage:  pnpm tsx scripts/merge-generated-to-content.ts
+ */
+import fs from "node:fs";
+import path from "node:path";
+
+const SRC_DIR = path.join(process.cwd(), "scripts", "generated", "quizzes");
+const OUT_FILE = path.join(process.cwd(), "src", "data", "generated-quizzes.ts");
+
+interface QuizJson {
+  id: string;
+  question: string;
+  options: string[];
+  answer: number;
+  explain: string;
+  language: string;
+  level: string;
+}
+
+function main() {
+  if (!fs.existsSync(SRC_DIR)) {
+    console.error(`✗ ${SRC_DIR} does not exist`);
+    process.exit(1);
+  }
+
+  const files = fs
+    .readdirSync(SRC_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .sort();
+
+  if (files.length === 0) {
+    console.error(`✗ No .json files found in ${SRC_DIR}`);
+    process.exit(1);
+  }
+
+  const allQuizzes: QuizJson[] = [];
+  const fileLabels: string[] = [];
+
+  for (const file of files) {
+    const filePath = path.join(SRC_DIR, file);
+    const raw = fs.readFileSync(filePath, "utf-8");
+    let data: QuizJson[];
+    try {
+      data = JSON.parse(raw);
+    } catch (e) {
+      console.error(`✗ Failed to parse ${file}:`, e);
+      continue;
+    }
+    if (!Array.isArray(data) || data.length === 0) {
+      console.warn(`⚠ ${file}: empty or not an array, skipped`);
+      continue;
+    }
+    allQuizzes.push(...data);
+    fileLabels.push(`  // ${file}: ${data.length} items`);
+  }
+
+  // Deduplicate by id (keep first occurrence)
+  const seen = new Set<string>();
+  const deduped = allQuizzes.filter((q) => {
+    if (seen.has(q.id)) return false;
+    seen.add(q.id);
+    return true;
+  });
+
+  // Group by language for readability
+  const byLang: Record<string, QuizJson[]> = {};
+  for (const q of deduped) {
+    if (!byLang[q.language]) byLang[q.language] = [];
+    byLang[q.language].push(q);
+  }
+
+  // Emit TypeScript
+  const lines: string[] = [
+    "/**",
+     " * AUTO-GENERATED — do not edit manually.",
+     " * Source: scripts/generated/quizzes/*.json",
+     " * Regenerate: pnpm tsx scripts/merge-generated-to-content.ts",
+     " */",
+    "import type { QuizItem } from \"../types\";",
+    "",
+    ...fileLabels,
+    "",
+    "export const GENERATED_QUIZZES: QuizItem[] = [",
+  ];
+
+  for (const [lang, items] of Object.entries(byLang)) {
+    lines.push(`  // ── ${lang} (${items.length} items) ──`);
+    for (const q of items) {
+      lines.push(
+        `  { id: ${JSON.stringify(q.id)}, question: ${JSON.stringify(q.question)}, options: ${JSON.stringify(q.options)}, answer: ${q.answer}, explain: ${JSON.stringify(q.explain)}, language: ${JSON.stringify(q.language)}, level: ${JSON.stringify(q.level)} },`
+      );
+    }
+  }
+
+  lines.push("];");
+  lines.push("");
+
+  fs.writeFileSync(OUT_FILE, lines.join("\n"), "utf-8");
+
+  // Summary
+  console.log(`✓ Wrote ${OUT_FILE}`);
+  console.log(`  Total quizzes: ${deduped.length}`);
+  for (const [lang, items] of Object.entries(byLang)) {
+    const levels: Record<string, number> = {};
+    for (const q of items) {
+      levels[q.level] = (levels[q.level] ?? 0) + 1;
+    }
+    const levelStr = Object.entries(levels)
+      .map(([k, v]) => `${k}:${v}`)
+      .join(", ");
+    console.log(`  ${lang}: ${items.length} items (${levelStr})`);
+  }
+}
+
+main();

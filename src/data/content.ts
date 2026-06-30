@@ -1,4 +1,7 @@
 import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase } from "../types";
+import { GENERATED_QUIZZES } from "./generated-quizzes";
+import { GENERATED_LISTENING } from "./generated-listening";
+import { GENERATED_SPEAKING } from "./generated-speaking";
 
 export const WORDS: WordItem[] = [
   // English A1
@@ -23,6 +26,24 @@ export const WORDS: WordItem[] = [
   { id: "w-ja-7", word: "美しい（うつくしい）", translation: "美丽的", example: "美しい景色。", language: "ja", level: "N3" },
   { id: "w-ja-8", word: "優しい（やさしい）", translation: "温柔的", example: "彼女は優しい。", language: "ja", level: "N2" },
 
+  // Chinese HSK1-HSK4
+  { id: "w-zh-1", word: "你好 (nǐ hǎo)", translation: "你好", phonetic: "nǐ hǎo", example: "你好，请问你叫什么名字？", language: "zh", level: "HSK1" },
+  { id: "w-zh-2", word: "谢谢 (xièxie)", translation: "谢谢", phonetic: "xièxie", example: "谢谢你的帮助。", language: "zh", level: "HSK1" },
+  { id: "w-zh-3", word: "吃饭 (chīfàn)", translation: "吃饭", phonetic: "chī fàn", example: "我们中午一起吃饭吧。", language: "zh", level: "HSK1" },
+  { id: "w-zh-4", word: "朋友 (péngyou)", translation: "朋友", phonetic: "péng you", example: "他是我的好朋友。", language: "zh", level: "HSK1" },
+  { id: "w-zh-5", word: "学习 (xuéxí)", translation: "学习", phonetic: "xué xí", example: "我每天学习三个小时。", language: "zh", level: "HSK2" },
+  { id: "w-zh-6", word: "开始 (kāishǐ)", translation: "开始", phonetic: "kāi shǐ", example: "课程八点开始。", language: "zh", level: "HSK2" },
+  { id: "w-zh-7", word: "准备 (zhǔnbèi)", translation: "准备", phonetic: "zhǔn bèi", example: "我已经准备好了。", language: "zh", level: "HSK2" },
+  { id: "w-zh-8", word: "觉得 (juéde)", translation: "觉得", phonetic: "jué de", example: "我觉得这个主意很好。", language: "zh", level: "HSK2" },
+  { id: "w-zh-9", word: "帮助 (bāngzhù)", translation: "帮助", phonetic: "bāng zhù", example: "谢谢你对我的帮助。", language: "zh", level: "HSK3" },
+  { id: "w-zh-10", word: "完成 (wánchéng)", translation: "完成", phonetic: "wán chéng", example: "他已经完成了作业。", language: "zh", level: "HSK3" },
+  { id: "w-zh-11", word: "关心 (guānxīn)", translation: "关心", phonetic: "guān xīn", example: "妈妈一直很关心我的学习。", language: "zh", level: "HSK3" },
+  { id: "w-zh-12", word: "解释 (jiěshì)", translation: "解释", phonetic: "jiě shì", example: "请解释一下这句话的意思。", language: "zh", level: "HSK3" },
+  { id: "w-zh-13", word: "经验 (jīngyàn)", translation: "经验", phonetic: "jīng yàn", example: "他在这方面有很多经验。", language: "zh", level: "HSK4" },
+  { id: "w-zh-14", word: "提高 (tígāo)", translation: "提高", phonetic: "tí gāo", example: "我想提高自己的中文水平。", language: "zh", level: "HSK4" },
+  { id: "w-zh-15", word: "适应 (shìyìng)", translation: "适应", phonetic: "shì yìng", example: "我已经适应了这里的生活。", language: "zh", level: "HSK4" },
+  { id: "w-zh-16", word: "重视 (zhòngshì)", translation: "重视", phonetic: "zhòng shì", example: "公司非常重视员工的成长。", language: "zh", level: "HSK4" },
+
   // Korean
   { id: "w-ko-1", word: "사랑 (sarang)", translation: "爱", example: "사랑해요.", language: "ko", level: "初级" },
   { id: "w-ko-2", word: "친구 (chingu)", translation: "朋友", example: "친구를 만나요.", language: "ko", level: "初级" },
@@ -33,6 +54,9 @@ export const WORDS: WordItem[] = [
 ];
 
 export const QUIZZES: QuizItem[] = [
+  // ── Auto-generated quizzes from Gemini (190 items: en:20, ja:85, zh:85) ──
+  ...GENERATED_QUIZZES,
+  // ── Hand-crafted quizzes (kept for variety) ──
   {
     id: "q-en-1",
     question: "She ___ to the gym every morning before work.",
@@ -126,6 +150,9 @@ export const QUIZZES: QuizItem[] = [
 ];
 
 export const LISTENING: ListeningItem[] = [
+  // ── Auto-generated listening exercises (45 items: en:15, ja:15, zh:15) ──
+  ...GENERATED_LISTENING,
+  // ── Hand-crafted listening exercises (kept for variety) ──
   {
     id: "l-en-1",
     title: "Morning Routine",
@@ -177,6 +204,9 @@ export const LISTENING: ListeningItem[] = [
 ];
 
 export const SPEAKING: SpeakingPhrase[] = [
+  // ── Auto-generated speaking phrases (45 items: en:15, ja:15, zh:15) ──
+  ...GENERATED_SPEAKING,
+  // ── Hand-crafted speaking phrases (kept for variety) ──
   { id: "s-en-1", phrase: "Hello! Nice to meet you.", translation: "你好！很高兴认识你。", phonetic: "/həˈloʊ/ /naɪs/ /tə/ /mit/ /ju/", language: "en", level: "A1" },
   { id: "s-en-2", phrase: "How was your weekend?", translation: "你周末过得怎么样？", phonetic: "/haʊ/ /wʌz/ /jʊr/ /ˈwikˌɛnd/", language: "en", level: "A2" },
   { id: "s-en-3", phrase: "Could you repeat that, please?", translation: "你能重复一下吗？", phonetic: "/kʊd/ /ju/ /rɪˈpit/ /ðæt/", language: "en", level: "B1" },
