@@ -3,6 +3,7 @@ import { BrowserRouter, Outlet, Route, Routes, useParams } from "react-router-do
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import CoursesPage from "./pages/CoursesPage";
 import LearnPage from "./pages/LearnPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -75,7 +76,7 @@ const rootRoutes = (
     <Route path="/register" element={<RegisterPage />} />
     <Route path="/auth/callback" element={<OAuthCallbackPage />} />
     <Route path="/auth/callback/:provider" element={<OAuthCallbackPage />} />
-    <Route path="*" element={<HomePage />} />
+    <Route path="*" element={<NotFoundPage />} />
   </>
 );
 
@@ -105,7 +106,7 @@ const localeRoutes = (
     <Route path="register" element={<RegisterPage />} />
     <Route path="auth/callback" element={<OAuthCallbackPage />} />
     <Route path="auth/callback/:provider" element={<OAuthCallbackPage />} />
-    <Route path="*" element={<HomePage />} />
+    <Route path="*" element={<NotFoundPage />} />
   </>
 );
 
