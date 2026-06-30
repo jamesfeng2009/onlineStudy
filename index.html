@@ -8,6 +8,37 @@
     <meta name="description" content="Master English, Japanese, Spanish, French, German, Korean and Chinese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice." />
 
     <!--
+      SEO webmaster verification meta tags.
+      Vite replaces %VITE_xxx% at build time with values from .env.
+      Until you fill the env vars below, the content stays as the literal
+      placeholder string and Google/Bing simply ignore the tag — no error.
+
+      To enable:
+        1. Google Search Console → Add property → lang-oria.com →
+           "HTML tag" verification → copy the content value into
+           VITE_GOOGLE_SITE_VERIFICATION in Vercel env vars.
+        2. Bing Webmaster Tools → Add site → "HTML meta tag" verification →
+           copy the content value into VITE_BING_SITE_VERIFICATION.
+        3. Redeploy on Vercel.
+    -->
+    <meta name="google-site-verification" content="%VITE_GOOGLE_SITE_VERIFICATION%" />
+    <meta name="msvalidate.01" content="%VITE_BING_SITE_VERIFICATION%" />
+
+    <!--
+      Cloudflare Web Analytics — privacy-friendly, cookie-free, free.
+      Vite replaces %VITE_CF_WEB_ANALYTICS_TOKEN% at build time.
+
+      To enable:
+        1. Cloudflare dashboard → lang-oria.com →
+           Analytics & Logs → Web Analytics → Enable.
+        2. Copy the "tag ID" (a short hex string) into
+           VITE_CF_WEB_ANALYTICS_TOKEN in Vercel env vars.
+        3. Redeploy on Vercel.
+    -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "%VITE_CF_WEB_ANALYTICS_TOKEN%"}'></script>
+
+    <!--
       Pre-render hreflang / canonical / og:meta before React boots.
       Vite serves this as-is; SPA hydration later replaces these via the
       data-seo="1" sentinel inside the React <Seo /> component.

@@ -1,11 +1,13 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
+import { submitToIndexNow } from "../lib/indexnow.js";
 
 /**
  * SEO/GEO 后端路由
  *
- * - GET /seo/sitemap  → 动态 sitemap.xml（含博客文章 + hreflang 注解）
- * - GET /seo/robots   → 动态 robots.txt
+ * - GET  /seo/sitemap     → 动态 sitemap.xml（含博客文章 + hreflang 注解）
+ * - GET  /seo/robots      → 动态 robots.txt
+ * - POST /seo/indexnow    → 批量提交全量 URL 到 Bing IndexNow（首次接入/大改版用）
  *
  * 内容变更（新增题目/单词）不需要修改此文件，
  * sitemap 会自动从数据库读取最新的博客文章。
@@ -199,6 +201,70 @@ Allow: /`;
     reply.type("text/plain; charset=utf-8");
     reply.header("Cache-Control", "public, max-age=3600, s-maxage=3600");
     return reply.send(txt);
+  });
+
+  /**
+   * POST /seo/indexnow — 批量提交全量 sitemap URL 到 Bing IndexNow
+   *
+   * 使用场景：
+   *   - 首次接入 IndexNow 后，触发一次性全站推送
+   *   - 大改版/迁移后，重新提交全量 URL
+   *
+   * 鉴权：仅 admin 可调用（通过 X-IndexNow-Token 头校验）。
+   * 触发方式：curl -X POST -H "X-IndexNow-Token: $INDEXNOW_ADMIN_TOKEN" \
+   *          https://lang-oria.com/api/seo/indexnow
+   *
+   * 注意：单次请求最多 10000 URL，超出由 indexnow.ts 自动截断。
+   *       Bing 的速率限制约为每分钟 10000 URL，建议每天最多调用 1-2 次。
+   */
+  fastify.post("/seo/indexnow", async (request, reply) => {
+    // 简单 token 鉴权，避免接口被随意触发
+    const expectedToken = process.env.INDEXNOW_ADMIN_TOKEN;
+    if (!expectedToken) {
+      reply.code(503);
+      return reply.send({
+        error: "INDEXNOW_ADMIN_TOKEN not configured on server",
+      });
+    }
+    const provided =
+      (request.headers["x-indexnow-token"] as string | undefined) ?? "";
+    if (provided !== expectedToken) {
+      reply.code(401);
+      return reply.send({ error: "Unauthorized" });
+    }
+
+    try {
+      // 从数据库读取已发布的博客文章
+      const posts = await prisma.blogPost.findMany({
+        where: { status: "published" },
+        select: { slug: true, baseLanguageCode: true },
+      });
+
+      // 静态页面 URL（en 默认语种）
+      const staticUrls = STATIC_PAGES.map((page) =>
+        localeUrl(DEFAULT_LOCALE, page.path)
+      );
+
+      // 博客文章 URL（按 baseLanguageCode 加 locale 前缀）
+      const blogUrls = posts.map((post) => {
+        const path = `/blog/${post.slug}`;
+        return localeUrl(post.baseLanguageCode || DEFAULT_LOCALE, path);
+      });
+
+      const allUrls = [...staticUrls, ...blogUrls];
+      const statusCode = await submitToIndexNow(allUrls);
+
+      return reply.send({
+        ok: statusCode === 200 || statusCode === 202,
+        submitted: allUrls.length,
+        statusCode,
+        urls: allUrls.slice(0, 5), // 只回显前 5 个用于排查
+      });
+    } catch (err) {
+      fastify.log.error({ err }, "[seo] indexnow batch submit failed");
+      reply.code(500);
+      return reply.send({ error: "Internal Server Error" });
+    }
   });
 };
 

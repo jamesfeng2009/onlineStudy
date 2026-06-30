@@ -2,6 +2,7 @@ import type { FastifyPluginAsync, FastifyReply } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
 import { adminOnly } from "../lib/admin.js";
+import { submitBlogPost } from "../lib/indexnow.js";
 
 function badRequest(reply: FastifyReply, message: string) {
   return sendError(reply, "BAD_REQUEST", message);
@@ -258,6 +259,10 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
       baseLanguageCode: post.baseLanguageCode,
       status: post.status,
     });
+    // 博客文章首次发布时，主动推送 URL 到 Bing IndexNow（fire-and-forget）
+    if (postStatus === "published") {
+      void submitBlogPost(post.slug, post.baseLanguageCode || "en");
+    }
     return sendSuccess(reply, serializePost(post as unknown as PostWithExtras));
   });
 
@@ -331,6 +336,10 @@ const adminRoutes: FastifyPluginAsync = async (fastify) => {
         baseLanguageCode: post.baseLanguageCode,
         status: post.status,
       });
+      // 文章更新后若仍为 published 状态，主动推送到 IndexNow
+      if (post.status === "published") {
+        void submitBlogPost(post.slug, post.baseLanguageCode || "en");
+      }
       return sendSuccess(reply, serializePost(post as unknown as PostWithExtras));
     }
   );
