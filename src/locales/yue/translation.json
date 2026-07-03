@@ -1,0 +1,674 @@
+{
+  "app": {
+    "name": "LangOria",
+    "tagline": "沉浸式語言學習"
+  },
+  "loginPrompt": {
+    "title": "需要登入",
+    "message": "請登入或註冊以繼續。你嘅學習進度會自動儲存。",
+    "login": "去登入",
+    "register": "註冊"
+  },
+  "nav": {
+    "home": "主頁",
+    "courses": "課程",
+    "learn": "學習",
+    "progress": "進度",
+    "recommended": "推薦",
+    "community": "社群",
+    "achievements": "成就",
+    "profile": "個人檔案",
+    "settings": "設定",
+    "login": "登入",
+    "register": "註冊",
+    "logout": "登出",
+    "faq": "常見問題",
+    "blog": "網誌"
+  },
+  "header": {
+    "streak": "連續 {{days}} 日",
+    "login": "登入 / 註冊",
+    "loading": "載入中...",
+    "logout": "登出"
+  },
+  "footer": {
+    "copyright": "© {{year}} LangOria · 沉浸式多語種學習平台"
+  },
+  "dashboard": {
+    "title": "學習儀表板",
+    "subtitle": "你好 {{name}}，呢度係你嘅學習數據全景。",
+    "subtitleGuest": "請先登入以查看你嘅學習進度。",
+    "welcomeBack": "歡迎返嚟，{{name}}！",
+    "learnedToday": "你今日已經學咗 {{minutes}} 分鐘，目標係 {{goal}} 分鐘。繼續加油！",
+    "startToday": "開始今日學習",
+    "browseCourses": "瀏覽課程",
+    "streak": "連續日數",
+    "level": "等級",
+    "todaysGoal": "今日目標",
+    "recommended": "今日推薦",
+    "viewAll": "查看全部",
+    "loading": "載入學習數據中...",
+    "streakLearn": "連續學習",
+    "wordsLearned": "累計單詞",
+    "wordsAnswered": "已答題 {{count}} 次",
+    "grammar": "語法練習",
+    "grammarAccuracy": "正確率 {{pct}}%",
+    "total14": "14 日累計",
+    "total14Value": "{{total}} 分",
+    "avgPerDay": "平均 {{avg}} 分/日",
+    "chartTitle": "最近 14 日學習時長",
+    "chartUnit": "單位：分鐘 · 每日累計",
+    "todayGoal": "今日目標",
+    "progressTitle": "達成進度",
+    "exp": "EXP",
+    "radarTitle": "能力雷達",
+    "radarSubtitle": "詞彙 · 語法 · 聽力 · 口語",
+    "moduleTitle": "模組表現 · 最近表現",
+    "moduleTip": "持續練習會令指標逐步上升",
+    "moduleScore": "練習得分",
+    "heatmapTitle": "14 日學習熱力圖",
+    "heatmapSubtitle": "每格代表一日 · 顏色越深學得越耐",
+    "heatmapTooltip": "{{date}} · {{minutes}} 分鐘",
+    "skills": {
+      "words": "詞彙",
+      "grammar": "語法",
+      "listening": "聽力",
+      "speaking": "口語"
+    }
+  },
+  "courses": {
+    "seoTitle": "語言課程 — A1 到 C1 | LangOria",
+    "seoDescription": "瀏覽英語、日語、韓語、中文、西班牙語、法語同德語嘅分級課程，由 A1 到 C1。間隔重複詞彙、聽力訓練同口語練習。",
+    "title": "分級課程體系",
+    "subtitle": "按語言同等級篩選，零基礎都可以一路學到精通。",
+    "currentLanguage": "目前語言",
+    "select": "選擇",
+    "locked": "未解鎖",
+    "start": "開始學習",
+    "continue": "繼續學習",
+    "filter": {
+      "language": "語言",
+      "all": "全部",
+      "level": "等級"
+    },
+    "levelGroups": {
+      "beginner": "入門/基礎",
+      "intermediate": "進階/中級",
+      "advanced": "高級/精通"
+    },
+    "lessons": "{{count}} 課堂",
+    "minutes": "{{count}} 分鐘",
+    "noResults": "冇符合條件嘅課程，換個篩選試吓啦。"
+  },
+  "learn": {
+    "wordMemory": "單詞記憶",
+    "wordMemoryDesc": "翻轉閃卡，主動回憶，加深長期記憶",
+    "grammar": "語法練習",
+    "grammarDesc": "選擇題 + 填空，即時回饋答案同解析",
+    "speaking": "口語練習",
+    "speakingDesc": "聽一段，讀一段，令條脔形成肌肉記憶",
+    "listening": "聽力訓練",
+    "listeningDesc": "真實聽力材料，填空訓練辨音",
+    "inUse": "使用中",
+    "card": "第 {{current}} 張 / 共 {{total}} 張",
+    "tapToSeeMeaning": "撳卡片查看釋義",
+    "notFamiliar": "未熟",
+    "remembered": "記住咗",
+    "word": "單詞",
+    "translation": "釋義",
+    "example": "例句",
+    "tips": "技巧",
+    "grammarModule": {
+      "question": "第 {{current}} / {{total}} 題",
+      "correct": "正確",
+      "wrong": "錯誤",
+      "explain": "解析",
+      "submit": "遞交答案",
+      "next": "下一題",
+      "accuracy": "正確率",
+      "answered": "已作答 {{count}} 題",
+      "tip1": "先讀成句，再判斷語法結構。",
+      "tip2": "唔肯定嗰陣可以憑語感揀一個。",
+      "tip3": "每一條解析都值得停下嚟讀一次。"
+    },
+    "speakingModule": {
+      "title": "跟讀呢句",
+      "recording": "錄音中 · {{seconds}}s",
+      "startHint": "撳開始錄音，大聲朗讀一次",
+      "privacyHint": "提示：瀏覽器唔會上傳音頻，錄音只係本地計時用",
+      "reset": "重來",
+      "next": "下一句",
+      "session": "本次練習",
+      "count": "{{count}} 次",
+      "times": "已跟讀次數",
+      "otherSentences": "其他句子"
+    },
+    "listeningModule": {
+      "title": "聽力填空",
+      "progress": "第 {{current}} / {{total}}",
+      "playHint": "撳播放（瀏覽器會讀出呢段文字）",
+      "playing": "朗讀中…",
+      "placeholder": "____",
+      "check": "核對答案",
+      "next": "下一段",
+      "completed": "已完成 {{count}} 段聽力練習",
+      "tip1": "先盲聽一次，睇聽到幾多。",
+      "tip2": "再對照文本填空，識別弱讀/連讀。",
+      "tip3": "重複播放嗰陣可以同步跟住讀。",
+      "reference": "參考原文",
+      "showAfterFinish": "完成後顯示。"
+    }
+  },
+  "home": {
+    "seoTitle": "用 AI 學語言 | LangOria",
+    "seoDescription": "AI 驅動嘅沉浸式語言學習。每日 10 分鐘，間隔重複 + 母語者音頻，7 種語言自適應課程，穩步提升聽說讀寫。",
+    "hero": {
+      "badge": "沉浸式多語種學習平台",
+      "title": "今日，令世界",
+      "titleHighlight": "多一種講母語嘅方式。",
+      "welcomeBack": "歡迎返嚟，{{name}}！你今日已經學咗 {{minutes}} 分鐘，目標係 {{goal}} 分鐘。繼續加油！",
+      "guest": "揀一種你想征服嘅語言，由今日開始建立屬於你嘅學習習慣。",
+      "startToday": "探索語言",
+      "browseCourses": "瀏覽課程",
+      "learnMethod": "睇吓點運作",
+      "streak": "連續日數",
+      "level": "等級",
+      "todaysGoal": "今日目標",
+      "minutesOfGoal": "{{minutes}}/{{goal}} 分鐘"
+    },
+    "languages": {
+      "choose": "揀你正在學嘅語言",
+      "current": "目前：{{language}}",
+      "currentLanguage": "目前語言",
+      "select": "撳選擇"
+    },
+    "tasks": {
+      "title": "今日推薦",
+      "viewAll": "查看全部 →",
+      "items": [
+        { "title": "記 20 個新單詞", "time": "10 分鐘" },
+        { "title": "語法練習 · 基礎時態", "time": "15 分鐘" },
+        { "title": "跟讀一段對話", "time": "8 分鐘" },
+        { "title": "聽力 5 分鐘", "time": "5 分鐘" }
+      ]
+    },
+    "steps": {
+      "badge": "點運作",
+      "title": "由初學到流利嘅三步法",
+      "desc": "每個學習者都唔同，但流利嘅路徑永遠一樣：輸入、輸出、回饋。LangOria 將呢個循環變成每日 10 分鐘嘅儀式。",
+      "items": [
+        { "title": "診斷你嘅程度", "desc": "揀你嘅目標語言同起點等級。我哋會根據你已經識嘅嘢，建立個人化路徑。" },
+        { "title": "每日 10 分鐘循環", "desc": "詞彙 + 語法 + 聽力 + 口語，由間隔重複排程，令你記住所學嘅嘢。" },
+        { "title": "自信咁講", "desc": "跟讀真實句子，獲得即時回饋，追蹤你嘅連續紀錄保持習慣。" }
+      ]
+    },
+    "features": {
+      "title": "四種核心練習，構建完整語言能力",
+      "desc": "輸入 · 輸出 · 回饋，建立真正講得出口嘅自信。",
+      "enter": "試吓 →",
+      "items": [
+        { "title": "閃卡記單詞", "desc": "間隔重複 — 記住就係記住咗", "action": "試吓" },
+        { "title": "語法練習", "desc": "即時回饋 + 答案解析，規則清晰易懂", "action": "試吓" },
+        { "title": "口語跟讀", "desc": "讀出嚟，令你條脔形成肌肉記憶", "action": "試吓" },
+        { "title": "聽力訓練", "desc": "真實語境，填空練習，越聽越清楚", "action": "試吓" }
+      ]
+    },
+    "courses": {
+      "title": "精選課程",
+      "desc": "系統分級 · 循序漸進 · 配合多種學習目標",
+      "viewAll": "查看全部 →",
+      "loading": "載入課程中...",
+      "lessons": "{{count}} 課堂",
+      "minutes": "{{count}} 分鐘"
+    },
+    "stories": {
+      "badge": "學習者故事",
+      "title": "真實進步，真實人物",
+      "desc": "聽吓嗰啲將每日 10 分鐘習慣變成可以實際使用嘅語言嘅學習者點講。",
+      "items": [
+        { "name": "Yuki, 27", "role": "市場推廣經理 · 東京", "quote": "我之前試過三個 App。LangOria 係唯一一個我每日都會打開嘅。連續紀錄系統真係有用。" },
+        { "name": "Carlos, 34", "role": "軟件工程師 · 馬德里", "quote": "語法解釋簡短清晰。我三個月內由 A2 去到 B1，仲係搭車嗰陣學嘅。" },
+        { "name": "Mei, 22", "role": "大學生 · 上海", "quote": "我好鍾意介面係中文但單詞係日文。感覺個 App 真係識我。" }
+      ]
+    },
+    "faq": {
+      "badge": "常見問題",
+      "title": "常見問題，清晰解答",
+      "desc": "開始之前你需要知道嘅一切。",
+      "viewAll": "查看所有問題",
+      "items": [
+        { "q": "LangOria 真係免費？", "a": "係。核心學習體驗 — 詞彙、語法、聽力、口語同社群 — 係免費嘅。進階功能之後會為重度用戶加入。" },
+        { "q": "使唔使安裝咩？", "a": "唔使。LangOria 喺任何現代瀏覽器都可以行。流動版 App 會喺網頁版穩定後跟進。" },
+        { "q": "支援邊啲語言？", "a": "英語、日語、韓語、中文、西班牙語、法語同德語。新語言會根據學習者需求每月加入。" },
+        { "q": "幾耐先見到進步？", "a": "大部分學習者堅持每日 10 分鐘循環，4-6 星期就會感到明顯分別。連續紀錄系統同間隔重複就係為咗令習慣持續。" },
+        { "q": "手機用唔用到？", "a": "可以。網站完全自適應，喺流動瀏覽器上面行得好好。加到主畫面就有 App 嘅感覺。" }
+      ]
+    },
+    "blog": {
+      "badge": "網誌文章",
+      "title": "技巧、指南同學習科學",
+      "desc": "簡短文章令你嘅學習時間更有效。",
+      "viewAll": "全部文章 →",
+      "readMore": "閱讀更多",
+      "items": [
+        { "tag": "方法", "title": "點解每日 10 分鐘好過週末 2 小時", "excerpt": "間隔重複係學習科學中最有研究支撐嘅技術。呢度解釋點解短而頻密嘅練習勝過長時間死記。" },
+        { "tag": "詞彙", "title": "點樣記住 1000 個單詞而唔崩潰", "excerpt": "一個基於 3-2-1 法則嘅實用 8 星期計劃，跨英語、日語同西班牙語示例。" },
+        { "tag": "口語", "title": "跟讀：真正有效嘅口語練習", "excerpt": "點解重複母語者音頻係改善發音最快嘅方法，同埋一個你今日就可以開始嘅 5 步 routine。" }
+      ]
+    },
+    "cta": {
+      "title": "開始你嘅每日 10 分鐘儀式",
+      "desc": "永久免費。唔使信用卡。隨時取消 — 不過你好可能唔會。",
+      "start": "建立免費帳戶",
+      "browse": "先瀏覽課程"
+    }
+  },
+  "faq": {
+    "seoTitle": "常見問題 | LangOria",
+    "seoDescription": "LangOria 間隔重複語言學習嘅常見問題解答：10 分鐘循環點運作、定價、支援語言同帳戶幫助。",
+    "title": "常見問題",
+    "subtitle": "關於 LangOria 你需要知道嘅一切。",
+    "intro": "搵唔到答案？去社群發問，我哋嘅團隊會回覆你。",
+    "groups": [
+      {
+        "title": "開始使用",
+        "items": [
+          { "q": "點樣建立帳戶？", "a": "撳右上角嘅註冊按鈕，輸入電郵同密碼，揀你嘅目標語言同母語，就搞掂。" },
+          { "q": "使唔使信用卡？", "a": "唔使。核心學習體驗係免費嘅。只有將來你揀升級到 Premium 嗰陣先需要付款。" },
+          { "q": "之後可唔可以改目標語言？", "a": "可以。隨時去設定 → 目標語言。你所有進度都會綁住你之前練習緊嘅語言。" }
+        ]
+      },
+      {
+        "title": "學習",
+        "items": [
+          { "q": "每日應該學幾耐？", "a": "我哋建議每日 10 分鐘。間隔重複最適合持續、短暫嘅練習 — 唔係死記。" },
+          { "q": "點解解釋用我嘅母語？", "a": "研究顯示用你最強嘅語言解釋會學得更快。你實際學習嘅單詞永遠係目標語言。" },
+          { "q": "跳過一日會唔會重置連續紀錄？", "a": "會，跳過成日會重置連續紀錄。寬限期係 36 小時以涵蓋時差。" }
+        ]
+      },
+      {
+        "title": "帳戶同私隱",
+        "items": [
+          { "q": "我嘅數據儲喺邊？", "a": "你嘅學習數據儲存喺 Supabase（Postgres），喺靠近你嘅地區。我哋唔會賣任何用戶數據。" },
+          { "q": "點樣刪除帳戶？", "a": "去個人檔案 → 危險地帶，撳刪除帳戶。你所有數據會喺 7 日內移除。" }
+        ]
+      }
+    ],
+    "ctaTitle": "準備好開始未？",
+    "ctaDesc": "建立免費帳戶，試吓每日 10 分鐘嘅儀式。",
+    "cta": "免費註冊"
+  },
+  "blog": {
+    "seoTitle": "語言學習網誌 — 技巧同科學 | LangOria",
+    "seoDescription": "實用指南、學習科學同技巧，用間隔重複、跟讀同每日 10 分鐘習慣掌握一門語言。",
+    "title": "LangOria 網誌",
+    "subtitle": "實用指南、學習科學同真實學習者嘅故事。",
+    "readMore": "閱讀更多",
+    "backToList": "← 返回所有文章",
+    "notFoundTitle": "搵唔到文章",
+    "notFoundDesc": "你搵緊嘅文章已經搬咗或者唔再存在。",
+    "empty": "仲未有文章出爐。快啲返嚟睇吓！",
+    "ctaTitle": "將呢啲技巧付諸實行",
+    "ctaDesc": "今日就建立免費帳戶，開始你嘅每日 10 分鐘循環。",
+    "cta": "開始學習",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "點解每日 10 分鐘好過週末 2 小時",
+        "excerpt": "間隔重複係學習科學中最有研究支撐嘅技術。呢度解釋點解短而頻密嘅練習勝過長時間死記。",
+        "tag": "方法",
+        "readTime": "6 分鐘閱讀",
+        "date": "2026-06-10",
+        "content": [
+          "如果你試過考前突擊然後兩個星期後乜都唔記得，你已經知道長時間、唔頻密嘅學習有幾大問題。解決方法唔係學得更辛苦，而係學得更頻密。",
+          "學習科學幾十年前已經講得好清楚。Hermann Ebbinghaus 喺 1885 年發現遺忘曲線：除非我哋啱啱好喺快要忘記嗰刻主動回憶，否則新學嘅資訊會以可預測嘅速度流失。「啱啱好」就係你快要忘記之前嗰一刻。",
+          "呢個正正就係間隔重複做嘅嘢。LangOria 將每個單詞同語法點安排喺你最可能忘記嗰刻複習。撳「記住咗」下次複習就推遠啲。撳「未熟」下次複習就早啲嚟。",
+          "結果：每日 10 分鐘，你學到嘅嘢多過星期日坐兩個鐘，因為每分鐘都花喺你個腦真正需要回憶嘅嘢上面。30 日之後，大部分學習者已經複習咗 600+ 個項目 — 一次週末突擊根本做唔到。",
+          "所以如果你一直話自己冇時間學語言，你有嘅。十分鐘。每日。就係咁簡單。"
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "點樣記住 1000 個單詞而唔崩潰",
+        "excerpt": "一個基於 3-2-1 法則嘅實用 8 星期計劃，跨英語、日語同西班牙語示例。",
+        "tag": "詞彙",
+        "readTime": "8 分鐘閱讀",
+        "date": "2026-06-04",
+        "content": [
+          "大部分語言學習者將 1000 個單詞定為第一個里程碑。壞消息：一次過記晒佢哋係崩潰嘅配方。好消息：你唔使死記佢哋。你需要嘅係同佢哋相遇。",
+          "我哋用一個簡單嘅 3-2-1 法則。每日三次相遇，每次兩個語境，一次強制回憶。就係咁。",
+          "第 1 日：學 3 個新單詞。喺閃卡見到、喺句子見到、喺語法例子見到。第 2 日：3 個新單詞，加埋昨日 6 個。第 7 日：今星期 21 個新單詞，但 80+ 次複習。到一個單詞複習咗 5 次嗰陣，留存量超過 90%。",
+          "8 個星期入面，每日 3 個加起嚟係 168 個單詞。要達到 1000，第 3 個月要加速到每日 15 個新單詞，嗰陣複習已經大部份 cache 咗。LangOria 嘅每日 10 分鐘循環會自動幫你處理呢樣。",
+          "關鍵洞察：詞彙唔係記憶比賽。佢係頻率遊戲。每日出現，信個系統，單詞就會記住。"
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "跟讀：真正有效嘅口語練習",
+        "excerpt": "點解重複母語者音頻係改善發音最快嘅方法，同埋一個你今日就可以開始嘅 5 步 routine。",
+        "tag": "口語",
+        "readTime": "5 分鐘閱讀",
+        "date": "2026-05-28",
+        "content": [
+          "如果你識讀一句但唔識講，你唔係孤單。大部分學習者花 90% 時間閱讀同聽力，10% 口語。呢個比例係掉轉咗。",
+          "跟讀係聽住母語者然後即時重複佢講嘅嘢嘅練習，模仿節奏、語調同重音。呢個係專業傳譯員用嚟維持流利度嘅技術，對任何語言都有效。",
+          "5 步 routine：(1) 以正常語速聽一句。(2) 配住文本再聽一次。(3) 錄音同步以正常語速重複。(4) 將你嘅錄音同原聲比較。(5) 重複 3 次先繼續下一句。",
+          "每日做 5 分鐘。一個月內，你嘅口音會開始明顯轉變。三個月內，你會講得出之前唔識讀出嚟嘅句子。",
+          "LangOria 嘅口語模組就係圍繞呢個理念建造嘅。揀一句，聽，重複，重複，重複。冇評判，冇回饋焦慮。淨係你把聲同範本。"
+        ]
+      }
+    ]
+  },
+  "recommend": {
+    "title": "個人化學習路徑",
+    "subtitle": "基於你最近嘅練習數據同目標語言，為你度身訂造今日嘅提升路徑。",
+    "badge": "今日推薦路徑",
+    "heading": "{{name}}，等我哋鞏固弱項啦",
+    "headingGuest": "令學習有方向，唔迷惘",
+    "description": "按弱項 → 強化 → 綜合挑戰嘅順序，逐步提高各模組得分。",
+    "refresh": "刷新最新數據",
+    "currentLevel": "目前等級",
+    "streak": "連續學習",
+    "targetLanguage": "目標語言",
+    "step": "步驟 {{n}}",
+    "suggestMinutes": "建議 {{minutes}} 分鐘",
+    "priorityHigh": "最高",
+    "priorityMedium": "中等",
+    "priorityLow": "較低",
+    "priorityLabel": "優先級",
+    "start": "開始學習",
+    "titles": {
+      "words": "閃卡詞彙衝刺",
+      "grammar": "語法操練",
+      "listening": "每日聽力",
+      "speaking": "口語跟讀"
+    },
+    "moduleTraining": "{{key}} 模組訓練",
+    "scoreHint": "目前得分 {{score}} / 100 · 優先強化",
+    "fallback": [
+      { "title": "閃卡詞彙入門", "desc": "由零開始建立第一套詞彙庫" },
+      { "title": "基礎語法訓練", "desc": "掌握語言結構嘅基礎規則" },
+      { "title": "日常會話入門", "desc": "跟讀最常用嘅口語表達" }
+    ],
+    "coursesTitle": "推薦課程 · {{flag}} {{name}}",
+    "coursesDesc": "按分級體系精選，系統化學習唔迷路。",
+    "browseAll": "瀏覽全部課程 →",
+    "joinPlan": "加入學習計劃 →"
+  },
+  "achievements": {
+    "title": "成就系統",
+    "subtitle": "每一次堅持都值得被看見。",
+    "wall": "成就牆",
+    "heading": "解鎖 {{earned}} / {{total}} 個徽章",
+    "description": "完成系統判定嘅學習里程碑，獲得榮譽徽章，記錄你嘅每一次成長。",
+    "unlocked": "已解鎖",
+    "stats": {
+      "streak": "連續日數",
+      "level": "等級",
+      "words": "累計單詞",
+      "quizzes": "練習答題"
+    },
+    "units": {
+      "streak": "日",
+      "level": "Lv.",
+      "words": "詞",
+      "quizzes": "題"
+    },
+    "badges": {
+      "streak-3": { "title": "三日堅持", "description": "連續學習 3 日，養成小習慣" },
+      "streak-7": { "title": "一週之星", "description": "連續學習 7 日" },
+      "streak-30": { "title": "月度冠軍", "description": "連續學習 30 日" },
+      "words-20": { "title": "詞彙新星", "description": "掌握 20 個新單詞" },
+      "words-100": { "title": "詞彙達人", "description": "掌握 100 個新單詞" },
+      "quizzes-10": { "title": "語法練習生", "description": "完成 10 道語法題" },
+      "quizzes-50": { "title": "語法大師", "description": "完成 50 道語法題" },
+      "speaking-10": { "title": "開口勇者", "description": "口語跟讀累計 10 分鐘" },
+      "listening-10": { "title": "聆聽者", "description": "聽力訓練累計 10 分鐘" },
+      "level-5": { "title": "步步進階", "description": "達到等級 5" },
+      "level-10": { "title": "登堂入室", "description": "達到等級 10" }
+    }
+  },
+  "community": {
+    "title": "社群交流",
+    "subtitle": "分享你嘅學習心得，同其他學習者一齊成長。",
+    "topic": "話題",
+    "topics": {
+      "all": "全部",
+      "daily": "每日一句",
+      "japanese": "日語學習心得",
+      "kpop": "韓語 K-pop 學習",
+      "english": "英語職場經驗",
+      "help": "提問求助"
+    },
+    "placeholderLogged": "分享一段你最近學到嘅表達，或者問個問題…",
+    "placeholderGuest": "請先登入後發帖。",
+    "post": "發佈",
+    "charCount": "{{length}} / 500",
+    "signature": "{{name}} · 你而家講嘅每句說話都係未來嘅迴響。",
+    "loading": "載入帖子中...",
+    "empty": "仲未有喺呢個話題發言，不如你開個頭啦。",
+    "commentPlaceholderLogged": "寫啲咩回應…",
+    "commentPlaceholderGuest": "登入後就可以評論",
+    "send": "發送",
+    "guest": "訪客"
+  },
+  "profile": {
+    "title": "個人中心",
+    "subtitle": "管理你嘅帳戶資訊、學習目標同偏好。",
+    "pleaseLogin": "請先登入以查看個人資料。",
+    "goLogin": "去登入",
+    "createdAt": "建立於 {{date}}",
+    "info": {
+      "streak": "連續學習",
+      "level": "等級",
+      "words": "已學單詞",
+      "grammar": "語法練習",
+      "speaking": "口語",
+      "listening": "聽力"
+    },
+    "settingsTitle": "帳戶同偏好",
+    "settingsHint": "修改後撳「儲存」。",
+    "fields": {
+      "nickname": "暱稱",
+      "email": "電郵",
+      "targetLanguage": "目標語言",
+      "uiLanguage": "介面語言",
+      "nativeLanguage": "母語 / 釋義語言",
+      "dailyGoal": "每日目標（{{goal}} 分鐘）"
+    },
+    "saving": "儲存中...",
+    "save": "儲存修改",
+    "saved": "已儲存 ✓",
+    "saveFailed": "儲存失敗",
+    "logout": "登出目前帳號",
+    "bannerTitle": "持續學習，穩步前進",
+    "bannerText": "LangOria 用後端 API 記錄所有學習數據，隨時喺任何裝置同步進度。"
+  },
+  "settings": {
+    "title": "語言設定",
+    "subtitle": "設定介面語言同單詞釋義所用嘅語言。",
+    "interface": "介面語言",
+    "interfaceDesc": "控制選單、按鈕同提示嘅顯示語言。",
+    "native": "母語 / 釋義語言",
+    "nativeDesc": "單詞釋義同例句翻譯會優先用呢個語言顯示。",
+    "target": "目標語言",
+    "targetDesc": "你目前學緊嘅語言。",
+    "saving": "儲存中...",
+    "save": "儲存語言設定",
+    "saved": "已儲存 ✓",
+    "saveFailed": "儲存失敗"
+  },
+  "auth": {
+    "email": "電郵",
+    "password": "密碼",
+    "username": "用戶名",
+    "confirmPassword": "確認密碼",
+    "iSpeak": "我嘅母語係",
+    "iWantToLearn": "我想學",
+    "interfaceLanguage": "介面語言",
+    "nativeLanguage": "母語/釋義語言",
+    "targetLanguage": "目標語言",
+    "haveAccount": "已有帳號？去登入",
+    "noAccount": "仲未有帳號？去註冊",
+    "registerSuccess": "註冊成功",
+    "loginSuccess": "登入成功",
+    "login": {
+      "title": "歡迎返嚟",
+      "subtitle": "登入繼續你嘅沉浸式學習之旅",
+      "button": "登入",
+      "loading": "登入中...",
+      "error": "請填寫電郵同密碼",
+      "errorDefault": "登入失敗，請檢查帳號或密碼",
+      "usageTitle": "使用說明",
+      "usageText": "請輸入已註冊嘅電郵同密碼登入。新用戶請先註冊帳號。",
+      "heroTitle": "按自己節奏",
+      "heroHighlight": "征服一門新語言。",
+      "heroDesc": "分級課程、互動練習同社群動力 — 將學習變成習慣，唔係任務。",
+      "oauthDivider": "或用第三方帳號",
+      "continueWithGoogle": "用 Google 登入",
+      "continueWithGitHub": "用 GitHub 登入",
+      "forgotPassword": "忘記密碼？",
+      "forgotPasswordHint": "密碼重置功能暫未開放，請聯絡客服。",
+      "features": [
+        { "title": "分級課程", "desc": "由初學到精通", "c": "from-sky-400/20 to-sky-500/0" },
+        { "title": "多語種", "desc": "英語 · 日語 · 韓語", "c": "from-fuchsia-400/20 to-fuchsia-500/0" },
+        { "title": "個人化路徑", "desc": "根據你嘅數據智能推薦", "c": "from-amber-400/20 to-amber-500/0" },
+        { "title": "成就系統", "desc": "徽章 · 等級 · 積分", "c": "from-rose-400/20 to-rose-500/0" }
+      ]
+    },
+    "register": {
+      "badge": "沉浸式學語言",
+      "title": "令成個世界",
+      "titleHighlight": "成為你嘅課堂。",
+      "description": "註冊帳號，開啟個人化分級學習路徑，追蹤你嘅進步，同全球學習者一齊成長。",
+      "formTitle": "建立你嘅帳號",
+      "formSubtitle": "幾秒就開始學習",
+      "mobileLabel": "你最想學嘅語言",
+      "button": "立即註冊",
+      "loading": "註冊中...",
+      "validation": "請填寫用戶名同電郵，密碼至少 4 位",
+      "errorDefault": "註冊失敗，請稍後再試"
+    },
+    "oauth": {
+      "processing": "完成登入中…",
+      "callbackNoToken": "登入失敗：未收到 token。",
+      "callbackFailed": "登入失敗，請重試。"
+    }
+  },
+  "admin": {
+    "title": "管理後台",
+    "subtitle": "管理學習內容：語言、課程、單詞、語法題、聽力、口語。",
+    "loading": "載入中...",
+    "noPermissionTitle": "無權限存取",
+    "noPermissionDesc": "此頁面僅管理員可存取。",
+    "query": "搜尋",
+    "add": "新增",
+    "edit": "編輯",
+    "delete": "刪除",
+    "save": "儲存",
+    "cancel": "取消",
+    "confirmDelete": "確定要刪除呢個{{label}}？",
+    "noData": "暫無數據",
+    "resources": {
+      "languages": "語言",
+      "courses": "課程",
+      "words": "單詞",
+      "quizzes": "語法題",
+      "listening": "聽力",
+      "speaking": "口語",
+      "blog": "網誌文章"
+    },
+    "blog": {
+      "newPost": "新建文章",
+      "editPost": "編輯文章",
+      "searchPlaceholder": "搜尋標題或摘要...",
+      "allStatus": "全部狀態",
+      "allLanguages": "全部語言",
+      "draft": "草稿",
+      "published": "已發佈",
+      "colTitle": "標題",
+      "colSlug": "Slug",
+      "colLang": "語言",
+      "colStatus": "狀態",
+      "colUpdated": "更新時間",
+      "slugHint": "留空則根據標題自動生成",
+      "contentHint": "用 Markdown 寫正文，支援標題、列表、程式碼區塊、表格、連結同圖片。",
+      "markdownHint": "支援 Markdown",
+      "tldrHint": "可選 1-2 句引子，顯示喺正文上方。",
+      "tabEdit": "編輯",
+      "tabPreview": "預覽",
+      "previewEmpty": "暫無內容，請切換到「編輯」開始寫作。",
+      "fields": {
+        "title": "標題",
+        "slug": "Slug",
+        "excerpt": "摘要",
+        "content": "正文",
+        "tag": "標籤",
+        "readTime": "閱讀時長",
+        "language": "語言",
+        "status": "狀態",
+        "coverImageUrl": "封面圖連結",
+        "tldr": "TL;DR",
+        "seoTitle": "SEO 標題",
+        "seoDescription": "SEO 描述"
+      }
+    },
+    "actions": "操作",
+    "fields": {
+      "code": "代碼",
+      "name": "名稱",
+      "native": "本地名",
+      "flag": "旗幟",
+      "tagline": "標語",
+      "levels": "等級",
+      "status": "狀態",
+      "languageCode": "語言代碼",
+      "title": "標題",
+      "level": "等級",
+      "levelGroup": "級別組",
+      "description": "描述",
+      "lessons": "課堂",
+      "minutes": "分鐘",
+      "cover": "封面",
+      "tags": "標籤",
+      "vipOnly": "VIP",
+      "courseOrder": "排序",
+      "word": "單詞",
+      "translation": "翻譯",
+      "phonetic": "音標",
+      "exampleSentence": "例句",
+      "vocabOrder": "排序",
+      "question": "題目",
+      "options": "選項",
+      "answer": "答案",
+      "explain": "解析",
+      "quizOrder": "排序",
+      "script": "原文",
+      "blanks": "填空",
+      "listenOrder": "排序",
+      "phrase": "句子",
+      "speakOrder": "排序"
+    },
+    "errors": {
+      "required": "{{label}} 唔可以為空",
+      "invalidJson": "{{label}} 唔係有效嘅 JSON"
+    },
+    "enabled": "是",
+    "disabled": "否"
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "出錯",
+    "retry": "重試",
+    "save": "儲存",
+    "cancel": "取消",
+    "confirm": "確認",
+    "submit": "遞交",
+    "back": "返回",
+    "next": "下一題",
+    "finish": "完成",
+    "minutes": "分鐘",
+    "days": "日",
+    "all": "全部"
+  }
+}

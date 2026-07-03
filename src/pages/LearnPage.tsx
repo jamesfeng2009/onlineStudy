@@ -6,6 +6,7 @@ import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
 import LoginPromptModal from "../components/LoginPromptModal";
+import PronunciationScore from "../components/PronunciationScore";
 import { api } from "../lib/api";
 import type { WordResp } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
@@ -16,6 +17,20 @@ import { LANGUAGES, getLanguage } from "../data/languages";
 import type { Language } from "../types";
 
 type Tab = "words" | "grammar" | "speaking" | "listening";
+
+/** Map app Language → BCP-47 tag for Web Speech API (TTS + STT). */
+const BCP47: Record<Language, string> = {
+  en: "en-US",
+  ja: "ja-JP",
+  ko: "ko-KR",
+  zh: "zh-CN",
+  es: "es-ES",
+  fr: "fr-FR",
+  de: "de-DE",
+  it: "it-IT",
+  th: "th-TH",
+  yue: "zh-HK",
+};
 
 export default function LearnPage() {
   const { t } = useTranslation();
@@ -401,68 +416,43 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
   const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
   const phrases = useMemo(() => getSpeaking(language, level), [language, level]);
   const [i, setI] = useState(0);
-  const [recording, setRecording] = useState(false);
-  const [seconds, setSeconds] = useState(0);
   const [count, setCount] = useState(0);
   const p = phrases[i % Math.max(1, phrases.length)];
 
-  const start = () => {
-    if (!isLoggedIn) { onNeedLogin(); return; }
-    setRecording(true);
-    setSeconds(0);
-    const startAt = Date.now();
-    const iv = window.setInterval(() => {
-      const s = Math.floor((Date.now() - startAt) / 1000);
-      setSeconds(s);
-      if (s >= 15) {
-        window.clearInterval(iv);
-        setRecording(false);
-        recordSpeaking(15, language);
-        setCount((c) => c + 1);
-      }
-    }, 500);
-  };
-  const stop = () => {
-    setRecording(false);
-    if (seconds > 0) {
-      recordSpeaking(seconds, language);
-      setCount((c) => c + 1);
-    }
+  const handleScored = (score: number) => {
+    recordSpeaking(Math.max(1, Math.round(score / 10)), language);
+    setCount((c) => c + 1);
   };
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
       <div className="lg:col-span-2">
-        <GlassCard className="text-center">
-          <div className="text-xs uppercase tracking-[0.3em] text-fuchsia-300">跟读这句</div>
-          <div className="mt-4 font-display text-3xl font-bold leading-snug text-white md:text-5xl">
-            {p.phrase}
+        <GlassCard>
+          <div className="mb-5 text-center">
+            <div className="text-lg text-brand-200/80">{p.translation}</div>
+            {p.phonetic && <div className="mt-1 text-xs text-brand-200/60">{p.phonetic}</div>}
           </div>
-          <div className="mt-3 text-lg text-brand-200/80">{p.translation}</div>
-          {p.phonetic && <div className="mt-2 text-xs text-brand-200/60">{p.phonetic}</div>}
 
-          <div className="mt-10 flex flex-col items-center">
-            <button
-              onClick={recording ? stop : start}
-              className={"relative flex h-32 w-32 items-center justify-center rounded-full text-white transition " +
-                (recording
-                  ? "bg-gradient-to-br from-rose-500 to-fuchsia-600 shadow-[0_0_60px_-5px] shadow-fuchsia-500"
-                  : "bg-gradient-to-br from-sky-400 to-fuchsia-500 shadow-[0_0_60px_-10px] shadow-fuchsia-500/40 hover:-translate-y-1")}
-            >
-              {recording ? <Pause className="h-12 w-12" /> : <Mic className="h-12 w-12" />}
-              {recording && <span className="pointer-events-none absolute inset-0 animate-ping rounded-full border border-fuchsia-400/40" />}
-            </button>
-            <div className="mt-4 text-sm text-brand-100">{recording ? `正在录音 · ${seconds}s` : "点击开始录音，大声朗读一次"}</div>
-            <div className="mt-1 text-[11px] text-brand-200/50">提示：浏览器不会实际上传音频，录音仅用于本地体验计时</div>
-          </div>
+          {isLoggedIn ? (
+            <PronunciationScore
+              key={i}
+              text={p.phrase}
+              lang={BCP47[language]}
+              onScored={handleScored}
+            />
+          ) : (
+            <div className="flex flex-col items-center py-8">
+              <button
+                onClick={onNeedLogin}
+                className="relative flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white shadow-[0_0_60px_-10px] shadow-fuchsia-500/40 transition hover:-translate-y-1"
+              >
+                <Mic className="h-10 w-10" />
+              </button>
+              <div className="mt-4 text-sm text-brand-100">登录后开始跟读评分</div>
+            </div>
+          )}
 
           <div className="mt-8 flex items-center justify-center gap-3">
-            <button
-              onClick={() => setSeconds(0)}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-brand-100 hover:bg-white/10"
-            >
-              <RotateCcw className="h-4 w-4" /> 重来
-            </button>
             <button
               onClick={() => setI((n) => n + 1)}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"

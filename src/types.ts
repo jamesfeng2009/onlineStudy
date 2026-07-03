@@ -13,7 +13,7 @@ export interface User {
   goalMinutesPerDay: number;
 }
 
-export type Language = "en" | "ja" | "ko" | "zh" | "es" | "fr" | "de";
+export type Language = "en" | "ja" | "ko" | "zh" | "es" | "fr" | "de" | "it" | "th" | "yue";
 
 export interface LanguageMeta {
   id: Language;

@@ -217,6 +217,18 @@ export const SPEAKING: SpeakingPhrase[] = [
   { id: "s-ko-1", phrase: "안녕하세요, 만나서 반갑습니다.", translation: "你好，很高兴见到你。", language: "ko", level: "初级" },
   { id: "s-ko-2", phrase: "감사합니다!", translation: "谢谢！", language: "ko", level: "初级" },
   { id: "s-ko-3", phrase: "잘 부탁드립니다.", translation: "请多关照。", language: "ko", level: "中级" },
+  // Italian
+  { id: "s-it-1", phrase: "Ciao! Piacere di conoscerti.", translation: "你好！很高兴认识你。", language: "it", level: "A1" },
+  { id: "s-it-2", phrase: "Come stai oggi?", translation: "你今天好吗？", language: "it", level: "A1" },
+  { id: "s-it-3", phrase: "Posso avere il menu, per favore?", translation: "请给我菜单好吗？", language: "it", level: "B1" },
+  // Thai
+  { id: "s-th-1", phrase: "สวัสดีครับ", translation: "你好（男性说话）。", language: "th", level: "初级" },
+  { id: "s-th-2", phrase: "ขอบคุณครับ", translation: "谢谢（男性说话）。", language: "th", level: "初级" },
+  { id: "s-th-3", phrase: "ราคาเท่าไหร่", translation: "多少钱？", language: "th", level: "中级" },
+  // Cantonese
+  { id: "s-yue-1", phrase: "你好，好高興見到你。", translation: "你好，很高兴见到你。", language: "yue", level: "初级" },
+  { id: "s-yue-2", phrase: "多謝你！", translation: "谢谢你！", language: "yue", level: "初级" },
+  { id: "s-yue-3", phrase: "唔該畀個餐牌我。", translation: "请给我菜单。", language: "yue", level: "中级" },
 ];
 
 export const getWords = (language: string, level?: string) => filterByLangLevel(WORDS, language, level);

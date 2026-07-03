@@ -8,6 +8,9 @@ import ko from "../locales/ko/translation.json";
 import es from "../locales/es/translation.json";
 import fr from "../locales/fr/translation.json";
 import de from "../locales/de/translation.json";
+import it from "../locales/it/translation.json";
+import th from "../locales/th/translation.json";
+import yue from "../locales/yue/translation.json";
 
 export const resources = {
   en: { translation: en },
@@ -17,9 +20,12 @@ export const resources = {
   es: { translation: es },
   fr: { translation: fr },
   de: { translation: de },
+  it: { translation: it },
+  th: { translation: th },
+  yue: { translation: yue },
 };
 
-export const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de"] as const;
+export const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const DEFAULT_UI_LANGUAGE: SupportedLanguage = "en";

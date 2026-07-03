@@ -57,6 +57,30 @@ export const LANGUAGES: LanguageMeta[] = [
     tagline: "严谨精准的哲学与工程之语",
     levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
   },
+  {
+    id: "it",
+    name: "意大利语",
+    native: "Italiano",
+    flag: "🇮🇹",
+    tagline: "热情浪漫的地中海之声",
+    levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  },
+  {
+    id: "th",
+    name: "泰语",
+    native: "ภาษาไทย",
+    flag: "🇹🇭",
+    tagline: "五个声调的微笑之语",
+    levels: ["初级", "中级", "高级"],
+  },
+  {
+    id: "yue",
+    name: "粤语",
+    native: "粵語",
+    flag: "🇭🇰",
+    tagline: "九声六调的岭南文化载体",
+    levels: ["初级", "中级", "高级"],
+  },
 ];
 
 export const getLanguage = (id: string) =>

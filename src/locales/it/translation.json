@@ -1,0 +1,674 @@
+{
+  "app": {
+    "name": "LangOria",
+    "tagline": "Apprendimento linguistico immersivo"
+  },
+  "loginPrompt": {
+    "title": "Accesso richiesto",
+    "message": "Accedi o registrati per continuare. I tuoi progressi di apprendimento verranno salvati automaticamente.",
+    "login": "Vai al login",
+    "register": "Registrati"
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Corsi",
+    "learn": "Impara",
+    "progress": "Progressi",
+    "recommended": "Consigliati",
+    "community": "Community",
+    "achievements": "Traguardi",
+    "profile": "Profilo",
+    "settings": "Impostazioni",
+    "login": "Accedi",
+    "register": "Registrati",
+    "logout": "Esci",
+    "faq": "FAQ",
+    "blog": "Blog"
+  },
+  "header": {
+    "streak": "{{days}} giorni di streak",
+    "login": "Accedi / Registrati",
+    "loading": "Caricamento...",
+    "logout": "Esci"
+  },
+  "footer": {
+    "copyright": "© {{year}} LangOria · Piattaforma di apprendimento multilingue immersivo"
+  },
+  "dashboard": {
+    "title": "Dashboard di apprendimento",
+    "subtitle": "Ciao {{name}}, ecco una panoramica completa dei tuoi dati di apprendimento.",
+    "subtitleGuest": "Accedi per visualizzare i tuoi progressi di apprendimento.",
+    "welcomeBack": "Bentornato, {{name}}!",
+    "learnedToday": "Oggi hai studiato {{minutes}} minuti, obiettivo {{goal}} minuti. Continua così!",
+    "startToday": "Inizia lo studio di oggi",
+    "browseCourses": "Sfoglia i corsi",
+    "streak": "Streak",
+    "level": "Livello",
+    "todaysGoal": "Obiettivo di oggi",
+    "recommended": "Consigliato oggi",
+    "viewAll": "Vedi tutto",
+    "loading": "Caricamento dati di apprendimento...",
+    "streakLearn": "Streak",
+    "wordsLearned": "Parole apprese",
+    "wordsAnswered": "Risposto {{count}} volte",
+    "grammar": "Grammatica",
+    "grammarAccuracy": "Precisione {{pct}}%",
+    "total14": "Totale 14 giorni",
+    "total14Value": "{{total}} min",
+    "avgPerDay": "Media {{avg}} min/giorno",
+    "chartTitle": "Tempo di studio ultimi 14 giorni",
+    "chartUnit": "Unità: minuti · totale giornaliero",
+    "todayGoal": "Obiettivo di oggi",
+    "progressTitle": "Progressi",
+    "exp": "EXP",
+    "radarTitle": "Radar delle competenze",
+    "radarSubtitle": "Vocabolario · Grammatica · Ascolto · Parlato",
+    "moduleTitle": "Prestazioni dei moduli · Recenti",
+    "moduleTip": "La pratica costante aumenterà gradualmente queste metriche",
+    "moduleScore": "Punteggio",
+    "heatmapTitle": "Mappa di calore 14 giorni",
+    "heatmapSubtitle": "Ogni cella è un giorno · più scuro significa più tempo di studio",
+    "heatmapTooltip": "{{date}} · {{minutes}} min",
+    "skills": {
+      "words": "Vocabolario",
+      "grammar": "Grammatica",
+      "listening": "Ascolto",
+      "speaking": "Parlato"
+    }
+  },
+  "courses": {
+    "seoTitle": "Corsi di lingue — A1 a C1 | LangOria",
+    "seoDescription": "Sfoglia corsi di lingua strutturati da A1 a C1 in inglese, giapponese, coreano, cinese, spagnolo, francese e tedesco. Vocabolario con ripetizione dilazionata, esercizi di ascolto e pratica del parlato.",
+    "title": "Sistema di corsi a livelli",
+    "subtitle": "Filtra per lingua e livello — da zero alla padronanza.",
+    "currentLanguage": "Lingua corrente",
+    "select": "Seleziona",
+    "locked": "Bloccato",
+    "start": "Inizia a imparare",
+    "continue": "Continua",
+    "filter": {
+      "language": "Lingua",
+      "all": "Tutte",
+      "level": "Livello"
+    },
+    "levelGroups": {
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzato"
+    },
+    "lessons": "{{count}} lezioni",
+    "minutes": "{{count}} min",
+    "noResults": "Nessun corso corrisponde. Prova un filtro diverso."
+  },
+  "learn": {
+    "wordMemory": "Memoria delle parole",
+    "wordMemoryDesc": "Gira le flashcard, richiamo attivo, rafforza la memoria a lungo termine",
+    "grammar": "Pratica grammaticale",
+    "grammarDesc": "Scelta multipla + riempimento degli spazi, feedback immediato",
+    "speaking": "Pratica del parlato",
+    "speakingDesc": "Ascolta e ripeti, costruisce la memoria muscolare",
+    "listening": "Pratica dell'ascolto",
+    "listeningDesc": "Materiale d'ascolto reale, allenamento con riempimento degli spazi",
+    "inUse": "In uso",
+    "card": "Scheda {{current}} / {{total}}",
+    "tapToSeeMeaning": "Tocca la scheda per vedere il significato",
+    "notFamiliar": "Non familiare",
+    "remembered": "Ricordato",
+    "word": "Parola",
+    "translation": "Traduzione",
+    "example": "Esempio",
+    "tips": "Suggerimenti",
+    "grammarModule": {
+      "question": "Domanda {{current}} / {{total}}",
+      "correct": "Corretto",
+      "wrong": "Sbagliato",
+      "explain": "Spiegazione",
+      "submit": "Invia risposta",
+      "next": "Avanti",
+      "accuracy": "Precisione",
+      "answered": "Risposto a {{count}} domande",
+      "tip1": "Prima leggi l'intera frase, poi valuta la struttura grammaticale.",
+      "tip2": "In caso di dubbio, segui prima l'intuizione.",
+      "tip3": "Ogni spiegazione merita di essere letta con attenzione."
+    },
+    "speakingModule": {
+      "title": "Ripeti questa frase",
+      "recording": "Registrazione · {{seconds}}s",
+      "startHint": "Tocca per iniziare la registrazione e leggere ad alta voce",
+      "privacyHint": "Suggerimento: il browser non caricherà l'audio; la registrazione serve solo per il timer locale.",
+      "reset": "Ripristina",
+      "next": "Frase successiva",
+      "session": "Questa sessione",
+      "count": "{{count}} volte",
+      "times": "Volte ripetute",
+      "otherSentences": "Altre frasi"
+    },
+    "listeningModule": {
+      "title": "Ascolta e completa",
+      "progress": "{{current}} / {{total}}",
+      "playHint": "Tocca play (il browser leggerà questo testo ad alta voce)",
+      "playing": "In riproduzione…",
+      "placeholder": "____",
+      "check": "Verifica risposta",
+      "next": "Avanti",
+      "completed": "Completate {{count}} sessioni di ascolto",
+      "tip1": "Ascolta una volta senza testo e vedi quanto capisci.",
+      "tip2": "Poi completa gli spazi mentre leggi per individuare forme deboli e collegamenti.",
+      "tip3": "Riproduci ripetutamente e leggi insieme allo stesso tempo.",
+      "reference": "Copione di riferimento",
+      "showAfterFinish": "Mostrato al termine."
+    }
+  },
+  "home": {
+    "seoTitle": "Impara le lingue con l'AI | LangOria",
+    "seoDescription": "Apprendimento linguistico immersivo potenziato dall'AI. 10 minuti al giorno con ripetizione dilazionata, audio di madrelingua e lezioni adattive in 7 lingue.",
+    "hero": {
+      "badge": "Piattaforma di apprendimento multilingue immersivo",
+      "title": "Oggi, lascia che il mondo",
+      "titleHighlight": "guadagni un madrelingua in più.",
+      "welcomeBack": "Bentornato, {{name}}! Oggi hai studiato {{minutes}} minuti, obiettivo {{goal}} minuti. Continua così!",
+      "guest": "Scegli una lingua che vuoi padroneggiare e costruisci la tua abitudine di studio a partire da oggi.",
+      "startToday": "Esplora le lingue",
+      "browseCourses": "Sfoglia i corsi",
+      "learnMethod": "Scopri come funziona",
+      "streak": "Streak",
+      "level": "Livello",
+      "todaysGoal": "Obiettivo di oggi",
+      "minutesOfGoal": "{{minutes}}/{{goal}} min"
+    },
+    "languages": {
+      "choose": "Scegli la lingua che stai imparando",
+      "current": "Corrente: {{language}}",
+      "currentLanguage": "Lingua corrente",
+      "select": "Tocca per selezionare"
+    },
+    "tasks": {
+      "title": "Consigliato oggi",
+      "viewAll": "Vedi tutto →",
+      "items": [
+        { "title": "Impara 20 nuove parole", "time": "10 min" },
+        { "title": "Grammatica · Tempi base", "time": "15 min" },
+        { "title": "Ripeti un dialogo", "time": "8 min" },
+        { "title": "Ascolto 5 minuti", "time": "5 min" }
+      ]
+    },
+    "steps": {
+      "badge": "Come funziona",
+      "title": "Un percorso collaudato in 3 passi da principiante a fluente",
+      "desc": "Ogni studente è diverso, ma il percorso verso la fluidità è sempre lo stesso: input, output e feedback. LangOria trasforma questo ciclo in un rito quotidiano di 10 minuti.",
+      "items": [
+        { "title": "Valuta il tuo livello", "desc": "Scegli la lingua target e il livello di partenza. Costruiamo un percorso personalizzato in base a ciò che già conosci." },
+        { "title": "Ciclo quotidiano di 10 minuti", "desc": "Vocabolario + grammatica + ascolto + parlato, pianificati con ripetizione dilazionata così ricorderai ciò che impari." },
+        { "title": "Parla con sicurezza", "desc": "Fai shadowing di frasi reali, ricevi feedback immediato e monitora la tua streak per mantenere l'abitudine." }
+      ]
+    },
+    "features": {
+      "title": "Quattro esercizi fondamentali per una fluidità completa",
+      "desc": "Input · Output · Feedback — costruisce vera sicurezza nel parlato.",
+      "enter": "Provalo →",
+      "items": [
+        { "title": "Parole con flashcard", "desc": "Ripetizione dilazionata — una volta ricordato, mai più dimenticato", "action": "Provalo" },
+        { "title": "Pratica grammaticale", "desc": "Feedback immediato + spiegazioni, regole chiare", "action": "Provalo" },
+        { "title": "Ripetizione del parlato", "desc": "Leggi ad alta voce per costruire la memoria muscolare", "action": "Provalo" },
+        { "title": "Allenamento dell'ascolto", "desc": "Contesti reali, riempimento degli spazi, ascolta più chiaramente", "action": "Provalo" }
+      ]
+    },
+    "courses": {
+      "title": "Corsi in evidenza",
+      "desc": "A livelli, progressivi, adattabili a molteplici obiettivi di apprendimento",
+      "viewAll": "Vedi tutto →",
+      "loading": "Caricamento corsi...",
+      "lessons": "{{count}} lezioni",
+      "minutes": "{{count}} min"
+    },
+    "stories": {
+      "badge": "Storie di studenti",
+      "title": "Progressi reali, persone reali",
+      "desc": "Ascolta studenti che hanno trasformato un'abitudine quotidiana di 10 minuti in una lingua che possono davvero usare.",
+      "items": [
+        { "name": "Yuki, 27", "role": "Responsabile marketing · Tokyo", "quote": "Ho provato tre app prima. LangOria è l'unica che apro davvero ogni giorno. Il sistema di streak funziona." },
+        { "name": "Carlos, 34", "role": "Ingegnere del software · Madrid", "quote": "Le spiegazioni grammaticali sono brevi e chiare. Sono passato da A2 a B1 in tre mesi durante i pendolari." },
+        { "name": "Mei, 22", "role": "Studentessa universitaria · Shanghai", "quote": "Adoro che l'interfaccia sia in italiano ma le parole in giapponese. Sembra che l'app mi conosca davvero." }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Domande comuni, risposte chiare",
+      "desc": "Tutto ciò che devi sapere prima di iniziare.",
+      "viewAll": "Vedi tutte le domande",
+      "items": [
+        { "q": "LangOria è davvero gratuito?", "a": "Sì. L'esperienza di apprendimento base — vocabolario, grammatica, ascolto, parlato e community — è gratuita. Funzionalità premium saranno aggiunte in seguito per gli utenti avanzati." },
+        { "q": "Devo installare qualcosa?", "a": "No. LangOria funziona in qualsiasi browser moderno. Le app mobili arriveranno quando la versione web sarà stabile." },
+        { "q": "Quali lingue sono supportate?", "a": "Inglese, giapponese, coreano, cinese, spagnolo, francese e tedesco. Nuove lingue vengono aggiunte ogni mese in base alla richiesta degli studenti." },
+        { "q": "Quanto tempo prima vedo progressi?", "a": "La maggior parte degli studenti nota una differenza chiara in 4-6 settimane seguendo il ciclo quotidiano di 10 minuti. Il sistema di streak e la ripetizione dilazionata sono pensati per rendere quell'abitudine duratura." },
+        { "q": "Posso usarlo sul telefono?", "a": "Sì. Il sito è completamente responsive e funziona bene sui browser mobili. Aggiungilo alla schermata home per un'esperienza simile a un'app." }
+      ]
+    },
+    "blog": {
+      "badge": "Dal blog",
+      "title": "Consigli, guide e scienza dell'apprendimento",
+      "desc": "Articoli brevi che rendono il tuo tempo di studio più efficace.",
+      "viewAll": "Tutti gli articoli →",
+      "readMore": "Leggi di più",
+      "items": [
+        { "tag": "Metodi", "title": "Perché 10 minuti al giorno battono 2 ore nel weekend", "excerpt": "La ripetizione dilazionata è la tecnica più studiata nella scienza dell'apprendimento. Ecco perché sessioni più brevi e frequenti superano lo studio lungo e intenso." },
+        { "tag": "Vocabolario", "title": "Come ricordare 1000 parole senza esaurirti", "excerpt": "Un piano pratico di 8 settimane basato sulla regola del 3-2-1, con esempi in inglese, giapponese e spagnolo." },
+        { "tag": "Parlato", "title": "Shadowing: l'esercizio di parlato che funziona davvero", "excerpt": "Perché ripetere audio di madrelingua è il modo più veloce per correggere la pronuncia, e una routine in 5 passi che puoi iniziare oggi." }
+      ]
+    },
+    "cta": {
+      "title": "Inizia il tuo rito quotidiano di 10 minuti",
+      "desc": "Gratis per sempre. Nessuna carta di credito. Cancella quando vuoi — ma probabilmente non lo farai.",
+      "start": "Crea un account gratuito",
+      "browse": "Prima sfoglia i corsi"
+    }
+  },
+  "faq": {
+    "seoTitle": "Domande frequenti | LangOria",
+    "seoDescription": "Risposte alle domande comuni sull'apprendimento linguistico con ripetizione dilazionata di LangOria: come funziona il ciclo di 10 minuti, i prezzi, le lingue supportate e l'assistenza account.",
+    "title": "Domande frequenti",
+    "subtitle": "Tutto ciò che devi sapere su LangOria.",
+    "intro": "Non trovi la risposta che cerchi? Scrivici nella community e il nostro team ti risponderà.",
+    "groups": [
+      {
+        "title": "Iniziare",
+        "items": [
+          { "q": "Come creo un account?", "a": "Clicca sul pulsante Registrati in alto a destra, inserisci email e password, scegli la lingua target e la lingua madre, e sei dentro." },
+          { "q": "Mi serve una carta di credito?", "a": "No. L'esperienza di apprendimento base è gratuita. Ti servirà un metodo di pagamento solo quando sceglierai di passare a Premium in futuro." },
+          { "q": "Posso cambiare la lingua target più tardi?", "a": "Sì. Vai su Impostazioni → Lingua target in qualsiasi momento. Tutti i tuoi progressi restano legati alla lingua che stavi esercitando." }
+        ]
+      },
+      {
+        "title": "Apprendimento",
+        "items": [
+          { "q": "Quanto dovrei studiare ogni giorno?", "a": "Consigliamo 10 minuti al giorno. La ripetizione dilazionata funziona meglio con sessioni brevi e costanti — non con studio intenso." },
+          { "q": "Perché le spiegazioni sono nella mia lingua madre?", "a": "Le ricerche mostrano che si impara più velocemente quando le spiegazioni arrivano dalla lingua che si padroneggia meglio. Le parole che studi sono sempre nella lingua target." },
+          { "q": "La mia streak si resetta se salto un giorno?", "a": "Sì, la streak si resetta se salti un giorno intero. La finestra di tolleranza è di 36 ore per coprire le differenze di fuso orario." }
+        ]
+      },
+      {
+        "title": "Account e privacy",
+        "items": [
+          { "q": "Dove sono salvati i miei dati?", "a": "I tuoi dati di apprendimento sono salvati su Supabase (Postgres) in una regione vicino a te. Non vendiamo nessun dato utente." },
+          { "q": "Come elimino il mio account?", "a": "Vai su Profilo → Zona pericolosa e clicca Elimina account. Tutti i tuoi dati verranno rimossi entro 7 giorni." }
+        ]
+      }
+    ],
+    "ctaTitle": "Pronto per iniziare?",
+    "ctaDesc": "Crea un account gratuito e prova il rito quotidiano di 10 minuti.",
+    "cta": "Registrati gratis"
+  },
+  "blog": {
+    "seoTitle": "Blog sull'apprendimento delle lingue — Consigli e scienza | LangOria",
+    "seoDescription": "Guide pratiche, scienza dell'apprendimento e consigli per padroneggiare una lingua con ripetizione dilazionata, shadowing e un'abitudine quotidiana di 10 minuti.",
+    "title": "Blog di LangOria",
+    "subtitle": "Guide pratiche, scienza dell'apprendimento e storie di veri studenti.",
+    "readMore": "Leggi di più",
+    "backToList": "← Torna a tutti gli articoli",
+    "notFoundTitle": "Articolo non trovato",
+    "notFoundDesc": "L'articolo che cerchi è stato spostato o non esiste più.",
+    "empty": "Nessun articolo è stato ancora pubblicato. Torna a trovarci presto!",
+    "ctaTitle": "Metti in pratica questi consigli",
+    "ctaDesc": "Crea un account gratuito e inizia oggi il tuo ciclo quotidiano di 10 minuti.",
+    "cta": "Inizia a imparare",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Perché 10 minuti al giorno battono 2 ore nel weekend",
+        "excerpt": "La ripetizione dilazionata è la tecnica più studiata nella scienza dell'apprendimento. Ecco perché sessioni più brevi e frequenti superano lo studio lungo e intenso.",
+        "tag": "Metodi",
+        "readTime": "6 min di lettura",
+        "date": "2026-06-10",
+        "content": [
+          "Se hai mai studiato intensamente per un esame per poi dimenticare tutto due settimane dopo, conosci già il problema delle sessioni lunghe e poco frequenti. La soluzione non è studiare di più, ma studiare più spesso.",
+          "La scienza dell'apprendimento è chiara su questo da decenni. Hermann Ebbinghaus ha scoperto la curva dell'oblio nel 1885: perdiamo le informazioni appena apprese a un ritmo prevedibile se non le richiamiamo attivamente al momento giusto. Il 'momento giusto' è appena prima di dimenticare.",
+          "È esattamente questo che fa la ripetizione dilazionata. LangOria pianifica la revisione di ogni parola e punto grammaticale nel momento in cui è più probabile che tu lo dimentichi. Premi 'ricordato' e la prossima revisione viene posticipata. Premi 'non familiare' e la prossima revisione arriva prima.",
+          "Il risultato: in 10 minuti al giorno fai più progressi di 2 ore la domenica, perché ogni minuto è speso su qualcosa che il tuo cervello deve davvero richiamare. Dopo 30 giorni, la maggior parte degli studenti ha rivisto più di 600 elementi — più di quanto una singola sessione di studio intensa nel weekend potrebbe mai coprire.",
+          "Quindi se ti sei detto che non hai tempo per imparare una lingua, ce l'hai. Dieci minuti. Ogni giorno. Questo è il trucco."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "Come ricordare 1000 parole senza esaurirti",
+        "excerpt": "Un piano pratico di 8 settimane basato sulla regola del 3-2-1, con esempi in inglese, giapponese e spagnolo.",
+        "tag": "Vocabolario",
+        "readTime": "8 min di lettura",
+        "date": "2026-06-04",
+        "content": [
+          "La maggior parte di chi impara una lingua punta a 1000 parole come primo traguardo. La cattiva notizia: cercare di memorizzarle tutte insieme è una ricetta per il burnout. La buona notizia: non devi memorizzarle. Devi incontrarle.",
+          "Usiamo una semplice regola del 3-2-1. Tre incontri al giorno, due contesti per incontro e un richiamo forzato. Tutto qui.",
+          "Giorno 1: impara 3 nuove parole. Viale nella flashcard, viste in una frase, viste in un esempio grammaticale. Giorno 2: altre 3 parole nuove, più 6 di ieri. Giorno 7: 21 parole nuove questa settimana, ma più di 80 revisioni. Quando una parola è stata rivista 5 volte, la ritenzione supera il 90%.",
+          "In 8 settimane, questo porta a 168 parole a un ritmo di 3 al giorno. Per arrivare a 1000, sali a 15 parole nuove al giorno dal mese 3, quando le revisioni sono per lo più consolidate. Il ciclo quotidiano di 10 minuti di LangOria gestisce tutto questo automaticamente.",
+          "L'intuizione chiave: il vocabolario non è una gara di memoria. È un gioco di frequenza. Presentati ogni giorno, fidati del sistema e le parole rimarranno."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Shadowing: l'esercizio di parlato che funziona davvero",
+        "excerpt": "Perché ripetere audio di madrelingua è il modo più veloce per correggere la pronuncia, e una routine in 5 passi che puoi iniziare oggi.",
+        "tag": "Parlato",
+        "readTime": "5 min di lettura",
+        "date": "2026-05-28",
+        "content": [
+          "Se riesci a leggere una frase ma non a dirla, non sei solo. La maggior parte degli studenti dedica il 90% del tempo a leggere e ascoltare, e solo il 10% a parlare. Questa proporzione è invertita.",
+          "Lo shadowing è la pratica di ascoltare un madrelingua e ripetere ciò che dice in tempo reale, imitandone ritmo, intonazione e accento. È la tecnica usata dagli interpreti professionisti per mantenere la fluidità, e funziona per qualsiasi lingua.",
+          "La routine in 5 passi: (1) Ascolta una frase a velocità madrelingua. (2) Ascolta di nuovo con la trascrizione. (3) Ripeti a velocità madrelingua mentre registri. (4) Confronta la tua registrazione con l'originale. (5) Ripeti 3 volte prima di passare oltre.",
+          "Fallo per 5 minuti al giorno. Entro un mese il tuo accento inizierà a cambiare in modo evidente. Entro tre mesi sarai in grado di produrre frasi che prima non riuscivi a leggere ad alta voce.",
+          "Il modulo Parlato di LangOria è costruito proprio su questa idea. Scegli una frase, ascolta, ripeti, ripeti, ripeti. Nessun giudizio, nessuna ansia da feedback. Solo la tua voce e il modello."
+        ]
+      }
+    ]
+  },
+  "recommend": {
+    "title": "Percorso di apprendimento personalizzato",
+    "subtitle": "Un percorso di miglioramento su misura basato sui tuoi recenti dati di pratica e sulla lingua target.",
+    "badge": "Percorso consigliato di oggi",
+    "heading": "{{name}}, rafforziamo i punti deboli",
+    "headingGuest": "Dai direzione e chiarezza al tuo apprendimento",
+    "description": "Segui l'ordine punto debole → rafforzamento → sfida completa per alzare il punteggio di ogni modulo.",
+    "refresh": "Aggiorna dati",
+    "currentLevel": "Livello attuale",
+    "streak": "Streak",
+    "targetLanguage": "Lingua target",
+    "step": "Passo {{n}}",
+    "suggestMinutes": "Consigliati {{minutes}} min",
+    "priorityHigh": "Massima",
+    "priorityMedium": "Media",
+    "priorityLow": "Bassa",
+    "priorityLabel": "Priorità",
+    "start": "Inizia a imparare",
+    "titles": {
+      "words": "Potenziamento memoria flashcard",
+      "grammar": "Allenamento grammaticale",
+      "listening": "Ascolto giornaliero",
+      "speaking": "Shadowing del parlato"
+    },
+    "moduleTraining": "Allenamento modulo {{key}}",
+    "scoreHint": "Punteggio attuale {{score}} / 100 · dai priorità al rafforzamento",
+    "fallback": [
+      { "title": "Introduzione al vocabolario con flashcard", "desc": "Costruisci il tuo primo set di vocabolario da zero" },
+      { "title": "Allenamento grammaticale di base", "desc": "Padroneggia le regole fondamentali della struttura della lingua" },
+      { "title": "Introduzione alla conversazione quotidiana", "desc": "Ripeti le espressioni parlate più comuni" }
+    ],
+    "coursesTitle": "Consigliati · {{flag}} {{name}}",
+    "coursesDesc": "Selezionati con cura per livello per un apprendimento sistematico.",
+    "browseAll": "Sfoglia tutto →",
+    "joinPlan": "Aggiungi al piano →"
+  },
+  "achievements": {
+    "title": "Traguardi",
+    "subtitle": "Ogni costanza merita di essere vista.",
+    "wall": "Bacheca dei traguardi",
+    "heading": "{{earned}} / {{total}} badge sbloccati",
+    "description": "Guadagna badge onorari raggiungendo traguardi di apprendimento e registra ogni passo di crescita.",
+    "unlocked": "Sbloccato",
+    "stats": {
+      "streak": "Streak",
+      "level": "Livello",
+      "words": "Parole",
+      "quizzes": "Quiz"
+    },
+    "units": {
+      "streak": "giorni",
+      "level": "Lv.",
+      "words": "parole",
+      "quizzes": "quiz"
+    },
+    "badges": {
+      "streak-3": { "title": "Streak di 3 giorni", "description": "Studia 3 giorni di fila per costruire una piccola abitudine" },
+      "streak-7": { "title": "Stella della settimana", "description": "Studia 7 giorni di fila" },
+      "streak-30": { "title": "Campione del mese", "description": "Studia 30 giorni di fila" },
+      "words-20": { "title": "Stella emergente del vocabolario", "description": "Padroneggia 20 nuove parole" },
+      "words-100": { "title": "Maestro del vocabolario", "description": "Padroneggia 100 nuove parole" },
+      "quizzes-10": { "title": "Allievo di grammatica", "description": "Completa 10 domande di grammatica" },
+      "quizzes-50": { "title": "Maestro di grammatica", "description": "Completa 50 domande di grammatica" },
+      "speaking-10": { "title": "Parlatore", "description": "Ripeti ad alta voce per 10 minuti in totale" },
+      "listening-10": { "title": "Ascoltatore", "description": "Ascolta per 10 minuti in totale" },
+      "level-5": { "title": "Passo dopo passo", "description": "Raggiungi il livello 5" },
+      "level-10": { "title": "Avanzato", "description": "Raggiungi il livello 10" }
+    }
+  },
+  "community": {
+    "title": "Community",
+    "subtitle": "Condividi la tua esperienza di apprendimento e cresci insieme ad altri studenti.",
+    "topic": "Argomento",
+    "topics": {
+      "all": "Tutti",
+      "daily": "Frase del giorno",
+      "japanese": "Consigli per il giapponese",
+      "kpop": "Coreano con il K-pop",
+      "english": "Inglese sul lavoro",
+      "help": "Aiuto e Q&A"
+    },
+    "placeholderLogged": "Condividi un'espressione che hai imparato di recente o fai una domanda…",
+    "placeholderGuest": "Accedi per pubblicare.",
+    "post": "Pubblica",
+    "charCount": "{{length}} / 500",
+    "signature": "{{name}} · Ogni parola che dici ora risuona nel futuro.",
+    "loading": "Caricamento post...",
+    "empty": "Nessuno ha ancora parlato in questo argomento. Perché non inizi tu?",
+    "commentPlaceholderLogged": "Scrivi una risposta…",
+    "commentPlaceholderGuest": "Accedi per commentare",
+    "send": "Invia",
+    "guest": "Ospite"
+  },
+  "profile": {
+    "title": "Profilo",
+    "subtitle": "Gestisci le informazioni dell'account, gli obiettivi e le preferenze.",
+    "pleaseLogin": "Accedi per visualizzare il tuo profilo.",
+    "goLogin": "Vai al login",
+    "createdAt": "Creato il {{date}}",
+    "info": {
+      "streak": "Streak",
+      "level": "Livello",
+      "words": "Parole apprese",
+      "grammar": "Pratica grammaticale",
+      "speaking": "Parlato",
+      "listening": "Ascolto"
+    },
+    "settingsTitle": "Account e preferenze",
+    "settingsHint": "Clicca Salva dopo aver fatto le modifiche.",
+    "fields": {
+      "nickname": "Soprannome",
+      "email": "Email",
+      "targetLanguage": "Lingua target",
+      "uiLanguage": "Lingua dell'interfaccia",
+      "nativeLanguage": "Lingua madre / Lingua delle spiegazioni",
+      "dailyGoal": "Obiettivo giornaliero ({{goal}} min)"
+    },
+    "saving": "Salvataggio…",
+    "save": "Salva modifiche",
+    "saved": "Salvato ✓",
+    "saveFailed": "Salvataggio fallito",
+    "logout": "Esci",
+    "bannerTitle": "Continua a imparare, continua ad andare avanti",
+    "bannerText": "LangOria registra tutti i dati di apprendimento tramite l'API backend, sincronizzando i progressi su qualsiasi dispositivo."
+  },
+  "settings": {
+    "title": "Impostazioni lingua",
+    "subtitle": "Imposta la lingua dell'interfaccia e la lingua usata per le spiegazioni delle parole.",
+    "interface": "Lingua dell'interfaccia",
+    "interfaceDesc": "Controlla la lingua di menu, pulsanti e prompt.",
+    "native": "Lingua madre / Lingua delle spiegazioni",
+    "nativeDesc": "Le definizioni delle parole e le traduzioni degli esempi verranno mostrate in questa lingua quando disponibili.",
+    "target": "Lingua target",
+    "targetDesc": "La lingua che stai attualmente imparando.",
+    "saving": "Salvataggio…",
+    "save": "Salva impostazioni lingua",
+    "saved": "Salvato ✓",
+    "saveFailed": "Salvataggio fallito"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "username": "Nome utente",
+    "confirmPassword": "Conferma password",
+    "iSpeak": "Parlo",
+    "iWantToLearn": "Voglio imparare",
+    "interfaceLanguage": "Lingua dell'interfaccia",
+    "nativeLanguage": "Lingua madre",
+    "targetLanguage": "Lingua target",
+    "haveAccount": "Hai già un account? Accedi",
+    "noAccount": "Non hai un account? Registrati",
+    "registerSuccess": "Registrazione riuscita",
+    "loginSuccess": "Accesso riuscito",
+    "login": {
+      "title": "Bentornato",
+      "subtitle": "Accedi per continuare il tuo percorso di apprendimento immersivo",
+      "button": "Accedi",
+      "loading": "Accesso in corso…",
+      "error": "Inserisci email e password",
+      "errorDefault": "Accesso fallito, controlla l'account o la password",
+      "usageTitle": "Istruzioni",
+      "usageText": "Inserisci email e password registrate per accedere. I nuovi utenti si registrino prima.",
+      "heroTitle": "A tuo ritmo",
+      "heroHighlight": "padroneggia una nuova lingua.",
+      "heroDesc": "Corsi a livelli, esercizi interattivi e motivazione dalla community — trasforma l'apprendimento in un'abitudine, non in un compito.",
+      "oauthDivider": "oppure continua con",
+      "continueWithGoogle": "Continua con Google",
+      "continueWithGitHub": "Continua con GitHub",
+      "forgotPassword": "Password dimenticata?",
+      "forgotPasswordHint": "Il reset della password non è ancora disponibile. Contatta l'assistenza.",
+      "features": [
+        { "title": "Corsi a livelli", "desc": "Da principiante a padronanza", "c": "from-sky-400/20 to-sky-500/0" },
+        { "title": "Multilingue", "desc": "Inglese · Giapponese · Coreano", "c": "from-fuchsia-400/20 to-fuchsia-500/0" },
+        { "title": "Percorso personalizzato", "desc": "Consigli intelligenti dai tuoi dati", "c": "from-amber-400/20 to-amber-500/0" },
+        { "title": "Traguardi", "desc": "Badge · Livelli · Punti", "c": "from-rose-400/20 to-rose-500/0" }
+      ]
+    },
+    "register": {
+      "badge": "Apprendimento linguistico immersivo",
+      "title": "Lascia che il mondo intero",
+      "titleHighlight": "diventi la tua aula.",
+      "description": "Registrati per iniziare un percorso di apprendimento a livelli personalizzato, monitorare i progressi e crescere con studenti di tutto il mondo.",
+      "formTitle": "Crea il tuo account",
+      "formSubtitle": "Inizia a imparare in pochi secondi",
+      "mobileLabel": "La lingua che vuoi imparare di più",
+      "button": "Registrati ora",
+      "loading": "Registrazione in corso…",
+      "validation": "Inserisci nome utente ed email, password di almeno 4 caratteri",
+      "errorDefault": "Registrazione fallita, riprova più tardi"
+    },
+    "oauth": {
+      "processing": "Completamento dell'accesso…",
+      "callbackNoToken": "Accesso fallito: nessun token restituito.",
+      "callbackFailed": "Accesso fallito. Riprova."
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "subtitle": "Gestisci i contenuti di apprendimento: lingue, corsi, parole, quiz, ascolto e parlato.",
+    "loading": "Caricamento…",
+    "noPermissionTitle": "Nessun permesso",
+    "noPermissionDesc": "Questa pagina è riservata agli amministratori.",
+    "query": "Cerca",
+    "add": "Aggiungi",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirmDelete": "Sei sicuro di voler eliminare questo {{label}}?",
+    "noData": "Nessun dato",
+    "resources": {
+      "languages": "Lingue",
+      "courses": "Corsi",
+      "words": "Parole",
+      "quizzes": "Quiz",
+      "listening": "Ascolto",
+      "speaking": "Parlato",
+      "blog": "Articoli del blog"
+    },
+    "blog": {
+      "newPost": "Nuovo articolo",
+      "editPost": "Modifica articolo",
+      "searchPlaceholder": "Cerca titolo o estratto...",
+      "allStatus": "Tutti gli stati",
+      "allLanguages": "Tutte le lingue",
+      "draft": "Bozza",
+      "published": "Pubblicato",
+      "colTitle": "Titolo",
+      "colSlug": "Slug",
+      "colLang": "Lingua",
+      "colStatus": "Stato",
+      "colUpdated": "Aggiornato",
+      "slugHint": "Lascia vuoto per generarlo automaticamente dal titolo",
+      "contentHint": "Scrivi il corpo dell'articolo in Markdown. Supporta titoli, elenchi, blocchi di codice, tabelle, link e immagini.",
+      "markdownHint": "Markdown supportato",
+      "tldrHint": "Hook opzionale di 1-2 frasi mostrato sopra l'articolo.",
+      "tabEdit": "Modifica",
+      "tabPreview": "Anteprima",
+      "previewEmpty": "Nulla da visualizzare — passa a Modifica e inizia a scrivere.",
+      "fields": {
+        "title": "Titolo",
+        "slug": "Slug",
+        "excerpt": "Estratto",
+        "content": "Contenuto",
+        "tag": "Tag",
+        "readTime": "Tempo di lettura",
+        "language": "Lingua",
+        "status": "Stato",
+        "coverImageUrl": "URL immagine di copertina",
+        "tldr": "TL;DR",
+        "seoTitle": "Titolo SEO",
+        "seoDescription": "Descrizione SEO"
+      }
+    },
+    "actions": "Azioni",
+    "fields": {
+      "code": "Codice",
+      "name": "Nome",
+      "native": "Nome nativo",
+      "flag": "Bandiera",
+      "tagline": "Slogan",
+      "levels": "Livelli",
+      "status": "Stato",
+      "languageCode": "Codice lingua",
+      "title": "Titolo",
+      "level": "Livello",
+      "levelGroup": "Gruppo di livello",
+      "description": "Descrizione",
+      "lessons": "Lezioni",
+      "minutes": "Minuti",
+      "cover": "Copertina",
+      "tags": "Tag",
+      "vipOnly": "VIP",
+      "courseOrder": "Ordine",
+      "word": "Parola",
+      "translation": "Traduzione",
+      "phonetic": "Fonetica",
+      "exampleSentence": "Frase di esempio",
+      "vocabOrder": "Ordine",
+      "question": "Domanda",
+      "options": "Opzioni",
+      "answer": "Risposta",
+      "explain": "Spiegazione",
+      "quizOrder": "Ordine",
+      "script": "Copione",
+      "blanks": "Spazi",
+      "listenOrder": "Ordine",
+      "phrase": "Frase",
+      "speakOrder": "Ordine"
+    },
+    "errors": {
+      "required": "{{label}} è obbligatorio",
+      "invalidJson": "{{label}} non è un JSON valido"
+    },
+    "enabled": "Abilitato",
+    "disabled": "Disabilitato"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "retry": "Riprova",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "submit": "Invia",
+    "back": "Indietro",
+    "next": "Avanti",
+    "finish": "Fine",
+    "minutes": "min",
+    "days": "giorni",
+    "all": "Tutti"
+  }
+}
