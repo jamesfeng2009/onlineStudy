@@ -61,13 +61,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/generated/quizzes/
-          if git diff --staged --quiet; then
+          # Check if there are changes to commit (unstaged quiz files).
+          if git diff --quiet scripts/generated/quizzes/ && ! git ls-files --others --exclude-standard scripts/generated/quizzes/ | grep -q .; then
             echo "No changes — all batches already up to date."
-          else
-            # Rebase on remote so we don't fail when other commits landed
-            # while this job was running (e.g. manual edits to quiz files).
-            git pull --rebase origin main
-            git commit -m "chore: auto-generate quiz batches [skip ci]"
-            git push
+            exit 0
           fi
+          # Pull latest main and rebase before staging, so the runner
+          # catches any commits that landed while this job was running.
+          # (git pull --rebase refuses to run with a dirty index.)
+          git pull --rebase origin main
+          git add scripts/generated/quizzes/
+          git commit -m "chore: auto-generate quiz batches [skip ci]"
+          git push
