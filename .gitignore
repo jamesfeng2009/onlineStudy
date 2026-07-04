@@ -27,8 +27,9 @@ dist-ssr
 
 # Script caches (large dictionaries downloaded by build scripts)
 scripts/cache
-scripts/generated/quizzes
-scripts/generated/listening
+# Note: scripts/generated/quizzes and scripts/generated/listening
+# are committed to the repo because they are source content used at
+# build time, not throwaway caches.
 
 
 # Env
