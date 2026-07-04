@@ -1,7 +1,7 @@
 [
   {
-    "id": "q-ko-초급-gemini-1-mr5nygjl",
-    "question": "김치 ___ 맛있어요.",
+    "id": "q-ko-초급-gemini-1-mr5z3hf4",
+    "question": "저는 학생___ 아니에요.",
     "options": [
       "은",
       "는",
@@ -9,251 +9,125 @@
       "가"
     ],
     "answer": 1,
-    "explain": "은/는 is a topic particle. '는' is used after a noun ending in a vowel, and 김치 ends in a vowel.",
+    "explain": "'는' is a topic particle used after a noun ending in a vowel. It highlights the topic of the sentence.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-2-mr5nygjl",
-    "question": "누가 문 ___ 열었어요?",
+    "id": "q-ko-초급-gemini-2-mr5z3hf4",
+    "question": "비___ 와요.",
     "options": [
-      "이",
-      "을",
+      "은",
       "는",
+      "이",
       "가"
     ],
-    "answer": 1,
-    "explain": "「을」是宾格助词，用于有收音的名词后。「문을 열었어요」中「문」是「열다」（打开）的宾语，故用「을」。主格助词「이/가」标记主语，但「문」在此处是动作对象而非发出者。",
+    "answer": 3,
+    "explain": "'가' is a subject particle used after a noun ending in a vowel. It marks the subject of the verb.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-3-mr5nygjl",
-    "question": "저는 물 ___ 마셔요.",
+    "id": "q-ko-초급-gemini-3-mr5z3hf4",
+    "question": "저는 커피___ 마셔요.",
     "options": [
       "은",
       "는",
       "을",
       "를"
     ],
-    "answer": 2,
-    "explain": "「을」是宾格助词，用于有收音的名词后。「물」收辅音「ㄹ」，故用「을」而非「를」。「물을 마셔요」意为「喝水」。",
+    "answer": 3,
+    "explain": "'를' is an object particle used after a noun ending in a vowel. It marks the direct object of the verb.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-5-mr5nygjl",
-    "question": "저는 매일 학교에 ___ (가다).",
+    "id": "q-ko-초급-gemini-4-mr5z3hf4",
+    "question": "매일 한국어 공부___",
     "options": [
-      "가요",
+      "하다",
+      "해요",
+      "했어요",
+      "하고"
+    ],
+    "answer": 1,
+    "explain": "The present tense polite ending for verbs ending in -하다 is -해요.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-5-mr5z3hf4",
+    "question": "저는 지금 집___",
+    "options": [
+      "가다",
       "갔어요",
-      "갑니다",
-      "가세요"
-    ],
-    "answer": 0,
-    "explain": "To form the present informal polite tense, -아요/-어요 is added to the verb stem. '가다' (to go) becomes '가요'.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-6-mr5nygjl",
-    "question": "어제 영화를 ___ (보다).",
-    "options": [
-      "봐요",
-      "봤어요",
-      "봅니다",
-      "보세요"
-    ],
-    "answer": 1,
-    "explain": "To form the past informal polite tense, -았어요/-었어요 is added to the verb stem. '보다' (to see/watch) becomes '봤어요'.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-7-mr5nygjl",
-    "question": "저는 한국어를 ___ (배우다).",
-    "options": [
-      "배워요",
-      "배웠어요",
-      "배우고",
-      "배울까요"
-    ],
-    "answer": 0,
-    "explain": "Korean sentences follow a Subject-Object-Verb (SOV) structure. The verb '배우다' (to learn) in the present tense is '배워요'.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-8-mr5nygjl",
-    "question": "오늘 날씨 ___ 정말 좋아요.",
-    "options": [
-      "은",
-      "는",
-      "이",
-      "가"
-    ],
-    "answer": 3,
-    "explain": "이/가 is used to mark the subject of a sentence, often highlighting new information or stating a fact. 날씨 (weather) ends in a vowel, so '가' is used.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-9-mr5nygjl",
-    "question": "저는 책 ___ 읽어요.",
-    "options": [
-      "은",
-      "는",
-      "을",
-      "를"
+      "가요",
+      "가고"
     ],
     "answer": 2,
-    "explain": "을/를 is an object particle. '을' is used after a noun ending in a consonant, and 책 (book) ends in a consonant.",
+    "explain": "For verb stems ending in 'ㅏ' or 'ㅗ', '아요' is added. '가 + 아요' contracts to '가요' for the present tense polite form.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-10-mr5nygjl",
-    "question": "저는 매일 운동 ___ (하다).",
+    "id": "q-ko-초급-gemini-6-mr5z3hf4",
+    "question": "물을 많이 ___",
     "options": [
-      "해요",
-      "했다",
-      "하고",
-      "합니까"
-    ],
-    "answer": 0,
-    "explain": "Verbs ending in -하다, like '운동하다' (to exercise), change to -해요 in the present informal polite tense.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-11-mr5nygjl",
-    "question": "어제 숙제 ___ (하다).",
-    "options": [
-      "했어요",
-      "해요",
-      "합니다",
-      "할 거예요"
-    ],
-    "answer": 0,
-    "explain": "Verbs ending in -하다 change to -했어요 in the past informal polite tense. '숙제하다' (to do homework) becomes '숙제했어요'.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-12-mr5nygjl",
-    "question": "저는 밥을 먹어요. ___ 커피를 마셔요.",
-    "options": [
-      "그리고",
-      "하지만",
-      "그래서",
-      "또는"
-    ],
-    "answer": 0,
-    "explain": "그리고 is a basic connective that means 'and' or 'and then', used to connect two sentences or clauses.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-13-mr5nygjl",
-    "question": "저는 매운 음식은 ___ 먹어요.",
-    "options": [
-      "안",
-      "못",
-      "없",
-      "아니다"
-    ],
-    "answer": 0,
-    "explain": "To make a verb negative in Korean, place '안' directly before the verb. '안 먹어요' means 'I don't eat'.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-14-mr5nygjl",
-    "question": "이거 연필___?",
-    "options": [
-      "이에요",
-      "입니다",
-      "이세요",
-      "이예요"
-    ],
-    "answer": 0,
-    "explain": "To form a question with '이다' (to be) in the informal polite style, you attach -이에요/-예요. 연필 (pencil) ends in a consonant, so '이에요' is used.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-15-mr5nygjl",
-    "question": "저는 사과를 좋아해요. 동생 ___ 오렌지를 좋아해요.",
-    "options": [
-      "은",
-      "는",
-      "이",
-      "가"
-    ],
-    "answer": 0,
-    "explain": "「은」是主题助词，用于有收音的名词后。「동생」收辅音「ㅇ」，故用「은」。「동생은 오렌지를 좋아해요」意为「弟弟/妹妹喜欢橙子」。",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-16-mr5nygjl",
-    "question": "저기 ___ 제 친구예요.",
-    "options": [
-      "은",
-      "는",
-      "이",
-      "가"
-    ],
-    "answer": 3,
-    "explain": "이/가 is used to introduce new information or identify someone/something. '저기' (over there) is followed by '가' to mark it as the subject being identified.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-17-mr5nygjl",
-    "question": "무슨 음악 ___ 들어요?",
-    "options": [
-      "은",
-      "는",
-      "을",
-      "를"
+      "마시다",
+      "마셨어요",
+      "마셔요",
+      "마시고"
     ],
     "answer": 2,
-    "explain": "을/를 is an object particle. '음악' (music) ends in a consonant, so '을' is used to mark it as the object of '듣다' (to listen).",
+    "explain": "For verb stems not ending in 'ㅏ' or 'ㅗ', '어요' is added. '마시 + 어요' contracts to '마셔요' for the present tense polite form.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-18-mr5nygjl",
-    "question": "저는 친구와 백화점에서 옷을 ___ (사다).",
+    "id": "q-ko-초급-gemini-7-mr5z3hf4",
+    "question": "어제 숙제___",
     "options": [
-      "사요",
-      "샀어요",
-      "사고",
-      "사세요"
-    ],
-    "answer": 0,
-    "explain": "The verb '사다' (to buy) in the present informal polite tense is '사요'. This question tests the present tense conjugation.",
-    "language": "ko",
-    "level": "초급"
-  },
-  {
-    "id": "q-ko-초급-gemini-19-mr5nygjl",
-    "question": "지난 주말에 뭐 ___ (하다)?",
-    "options": [
-      "했어요",
+      "하다",
       "해요",
-      "합니다",
+      "했어요",
       "하세요"
     ],
-    "answer": 0,
-    "explain": "The phrase '지난 주말에' (last weekend) indicates a past event. '하다' (to do) becomes '했어요' in the past informal polite tense.",
+    "answer": 2,
+    "explain": "The past tense polite ending for verbs ending in -하다 is -했어요.",
     "language": "ko",
     "level": "초급"
   },
   {
-    "id": "q-ko-초급-gemini-20-mr5nygjl",
-    "question": "한국어 ___ 정말 재미있어요.",
+    "id": "q-ko-초급-gemini-8-mr5z3hf4",
+    "question": "지난주에 영화___",
+    "options": [
+      "보다",
+      "봐요",
+      "봤어요",
+      "보고"
+    ],
+    "answer": 2,
+    "explain": "For verb stems ending in 'ㅏ' or 'ㅗ', '았어요' is added. '보 + 았어요' contracts to '봤어요' for the past tense polite form.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-9-mr5z3hf4",
+    "question": "저는 어제 김치를 ___",
+    "options": [
+      "만들다",
+      "만들어요",
+      "만들었어요",
+      "만들고"
+    ],
+    "answer": 2,
+    "explain": "For verb stems not ending in 'ㅏ' or 'ㅗ', '었어요' is added. '만들 + 었어요' forms '만들었어요' for the past tense polite form.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-10-mr5z3hf4",
+    "question": "저는 커피는 좋아해요. 차___ 안 좋아해요.",
     "options": [
       "은",
       "는",
@@ -261,7 +135,147 @@
       "가"
     ],
     "answer": 1,
-    "explain": "은/는 marks the topic of the sentence. '한국어' (Korean language) ends in a vowel, so '는' is used to make a general statement about it.",
+    "explain": "'는' is used here for contrast, highlighting that while coffee is liked, tea is not.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-11-mr5z3hf4",
+    "question": "저 사람___ 제 친구예요.",
+    "options": [
+      "은",
+      "는",
+      "이",
+      "가"
+    ],
+    "answer": 2,
+    "explain": "'이' is a subject particle used after a noun ending in a consonant. It identifies the subject.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-12-mr5z3hf4",
+    "question": "무엇___ 드세요?",
+    "options": [
+      "은",
+      "를",
+      "을",
+      "는"
+    ],
+    "answer": 2,
+    "explain": "'을' is an object particle used after a noun ending in a consonant. It marks the direct object of the verb.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-13-mr5z3hf4",
+    "question": "저는 빵___ 우유를 먹었어요.",
+    "options": [
+      "와",
+      "과",
+      "이랑",
+      "하고"
+    ],
+    "answer": 1,
+    "explain": "'과' is used after a noun ending in a consonant to mean 'and' or 'with'.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-14-mr5z3hf4",
+    "question": "저는 엄마___ 아빠를 사랑해요.",
+    "options": [
+      "와",
+      "과",
+      "이랑",
+      "하고"
+    ],
+    "answer": 3,
+    "explain": "'하고' is a versatile particle that connects two nouns, meaning 'and' or 'with'. It can be used after both consonant and vowel-ending nouns.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-15-mr5z3hf4",
+    "question": "저는 아침에 일어나___ 세수해요.",
+    "options": [
+      "고",
+      "지만",
+      "서",
+      "니까"
+    ],
+    "answer": 0,
+    "explain": "The connective '-고' is used to link two or more actions or states that occur in sequence or are simply listed.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-16-mr5z3hf4",
+    "question": "이 음식은 맛있___ 싸요.",
+    "options": [
+      "고",
+      "지만",
+      "서",
+      "니까"
+    ],
+    "answer": 0,
+    "explain": "The connective '-고' can also connect two descriptive adjectives, meaning 'and' or 'and also'.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-17-mr5z3hf4",
+    "question": "동생___ 학교에 가요.",
+    "options": [
+      "은",
+      "는",
+      "이",
+      "가"
+    ],
+    "answer": 2,
+    "explain": "'이' is a subject particle used after a noun ending in a consonant. It marks the subject of the sentence.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-18-mr5z3hf4",
+    "question": "저는 한국어___ 공부해요.",
+    "options": [
+      "은",
+      "를",
+      "을",
+      "는"
+    ],
+    "answer": 1,
+    "explain": "'를' is an object particle used after a noun ending in a vowel. It marks the direct object of the verb.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-19-mr5z3hf4",
+    "question": "저는 매일 도서관에서 책___",
+    "options": [
+      "읽다",
+      "읽어요",
+      "읽었어요",
+      "읽고"
+    ],
+    "answer": 1,
+    "explain": "'읽어요' is the present tense polite form of '읽다' (to read). It describes a habitual action.",
+    "language": "ko",
+    "level": "초급"
+  },
+  {
+    "id": "q-ko-초급-gemini-20-mr5z3hf4",
+    "question": "어제 친구와 PC방에서 게임___",
+    "options": [
+      "하다",
+      "해요",
+      "했어요",
+      "하고"
+    ],
+    "answer": 2,
+    "explain": "'했어요' is the past tense polite form of '하다' (to do) or '게임하다' (to play a game). It describes an action completed in the past.",
     "language": "ko",
     "level": "초급"
   }
