@@ -526,12 +526,17 @@ function validateAndId(
     // Answer-duplication: correct answer appears elsewhere in the question
     // (e.g. "Wenn ich reicher wäre, würde ich ___" with answer "wäre").
     // Filling the blank would repeat a token already in the sentence.
-    const qNoBlank = q.replace(/_+/g, " ");
-    const qTokens = qNoBlank.toLowerCase().split(/[\s,.!?;:'"()]+/).filter(Boolean);
-    if (qTokens.includes(ans.toLowerCase())) {
-      console.warn(`  skip ${label}: answer "${ans}" appears elsewhere in question`);
-      dropped++;
-      continue;
+    // Use substring check (matches validate-quizzes.ts behaviour) so it
+    // also catches duplicates in spaceless scripts (Thai/CJK/日本語).
+    // Skip short answers (≤3 chars) to avoid false positives on common
+    // function particles (是, は, à, der, etc.) that legitimately recur.
+    if (ans.length > 3) {
+      const qNoBlank = q.replace(/_+/g, " ").toLowerCase();
+      if (qNoBlank.includes(ans.toLowerCase())) {
+        console.warn(`  skip ${label}: answer "${ans}" appears elsewhere in question`);
+        dropped++;
+        continue;
+      }
     }
 
     // Multi-blank: exactly one "___" expected; if there are 2+, learners
