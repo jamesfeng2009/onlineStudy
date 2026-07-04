@@ -57,6 +57,15 @@ interface SeoProps {
  * 注意：D 阶段（URL 子目录 locale）上线后，这里需要拼 `/<locale>/...`。
  * 现阶段所有 locale 共享同一 pathname，hreflang 的 href 全部相同。
  */
+/**
+ * Build hreflang alternates. Each supported locale gets one
+ * `<link rel="alternate" hreflang="...">`, with the URL staying
+ * the same as the current page (no UI-language prefixing).
+ *
+ * If a localizedPaths mapping is provided, use that for each
+ * language instead; otherwise all locales point to the current
+ * URL (acceptable when content is the same across languages).
+ */
 function buildAlternates(
   pathname: string,
   localizedPaths?: { lang: string; path: string }[]
@@ -66,24 +75,35 @@ function buildAlternates(
   );
   return SUPPORTED_LANGUAGES.map((code) => {
     const target = pathByLang.get(code) ?? pathname;
+    const cleanTarget = (target ?? "/").split("?")[0].split("#")[0] || "/";
     return {
       lang: code,
-      url: `${SITE_URL}${buildLocalePath(code as SupportedLanguage, target)}`,
+      url: `${SITE_URL}${cleanTarget}`,
     };
   });
 }
 
+/**
+ * Build the canonical URL for the current page.
+ *
+ * IMPORTANT: the locale is derived from the **actual URL pathname**
+ * (via `extractLocaleFromPath`), NOT from the user's current UI
+ * language. Using the UI language caused Google to crawl phantom
+ * URLs like `/de/languages/japanese/vocabulary/n1` (from a German
+ * user visiting a Japanese page) that don't exist in the app.
+ *
+ *   "/languages/japanese/vocabulary/n1" → "/languages/japanese/vocabulary/n1"
+ *   "/jp/blog/abc"                      → "/jp/blog/abc"
+ *   "/de"                               → "/de"
+ */
 function resolveCanonical(
-  lang: string,
+  _uiLang: string,
   pathname: string,
   canonical?: string
 ) {
   if (canonical) return canonical;
-  // Strip tracking / sort / pagination query strings so that
-  // /blog?utm_source=x and /blog?ref=foo and /blog?page=2 all
-  // canonicalise to /blog and don't fragment ranking signals.
   const cleanPath = (pathname ?? "/").split("?")[0].split("#")[0];
-  return `${SITE_URL}${buildLocalePath((lang || DEFAULT_UI_LANGUAGE) as SupportedLanguage, cleanPath)}`;
+  return `${SITE_URL}${cleanPath || "/"}`;
 }
 
 export function Seo({
