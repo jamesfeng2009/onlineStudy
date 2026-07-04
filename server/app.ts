@@ -8,7 +8,13 @@ import authRoutes from "./routes/auth.js";
 import oauthRoutes from "./routes/oauth.js";
 import coursesRoutes from "./routes/courses.js";
 import wordsRoutes from "./routes/words.js";
+import quizzesRoutes from "./routes/quizzes.js";
+import listeningRoutes from "./routes/listening.js";
+import speakingRoutes from "./routes/speaking.js";
 import progressRoutes from "./routes/progress.js";
+import userReviewsRoutes from "./routes/user-reviews.js";
+import courseProgressRoutes from "./routes/course-progress.js";
+import achievementsRoutes from "./routes/achievements.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
 import adminRoutes from "./routes/admin.js";
@@ -90,7 +96,13 @@ export async function buildApp(): Promise<FastifyInstance> {
     oauthRoutes,
     coursesRoutes,
     wordsRoutes,
+    quizzesRoutes,
+    listeningRoutes,
+    speakingRoutes,
     progressRoutes,
+    userReviewsRoutes,
+    courseProgressRoutes,
+    achievementsRoutes,
     communityRoutes,
     stripeRoutes,
     adminRoutes,

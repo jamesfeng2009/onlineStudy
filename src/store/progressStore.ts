@@ -1,5 +1,12 @@
 import { create } from "zustand";
-import type { ProgressResp, PostResp } from "../lib/api";
+import type {
+  ProgressResp,
+  PostResp,
+  RecordWordDetails,
+  RecordQuizDetails,
+  RecordSpeakingDetails,
+  RecordListeningDetails,
+} from "../lib/api";
 import { api } from "../lib/api";
 
 const emptyProgress: ProgressResp = {
@@ -30,30 +37,22 @@ interface ProgressState {
   refreshPosts: (topic?: string) => Promise<{ ok: boolean; error?: string }>;
   recordWord: (
     correct: boolean,
-    details?:
-      | string
-      | {
-          itemId?: string;
-          language?: string;
-          level?: string;
-          root?: string;
-        },
+    details?: string | RecordWordDetails,
   ) => Promise<{ ok: boolean; error?: string }>;
   recordQuiz: (
     correct: boolean,
-    details?:
-      | string
-      | {
-          itemId?: string;
-          language?: string;
-          level?: string;
-          selectedOption?: number;
-          correctOption?: number;
-          grammarPointId?: string;
-        },
+    details?: string | RecordQuizDetails,
   ) => Promise<{ ok: boolean; error?: string }>;
-  recordSpeaking: (minutes: number, language: string) => Promise<{ ok: boolean; error?: string }>;
-  recordListening: (minutes: number, language: string) => Promise<{ ok: boolean; error?: string }>;
+  recordSpeaking: (
+    minutes: number,
+    languageOrDetails?: string | RecordSpeakingDetails,
+    details?: RecordSpeakingDetails,
+  ) => Promise<{ ok: boolean; error?: string }>;
+  recordListening: (
+    minutes: number,
+    languageOrDetails?: string | RecordListeningDetails,
+    details?: RecordListeningDetails,
+  ) => Promise<{ ok: boolean; error?: string }>;
   createPost: (topic: string, content: string) => Promise<{ ok: boolean; error?: string }>;
   toggleLike: (postId: string) => Promise<{ ok: boolean; error?: string }>;
   addComment: (postId: string, content: string) => Promise<{ ok: boolean; error?: string }>;
@@ -114,9 +113,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
     }
   },
 
-  async recordSpeaking(minutes, language) {
+  async recordSpeaking(minutes, languageOrDetails, details) {
     try {
-      const data = await api.recordSpeaking(minutes, language);
+      const data = await api.recordSpeaking(minutes, languageOrDetails, details);
       set({ progress: data });
       return { ok: true };
     } catch (err: unknown) {
@@ -124,9 +123,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
     }
   },
 
-  async recordListening(minutes, language) {
+  async recordListening(minutes, languageOrDetails, details) {
     try {
-      const data = await api.recordListening(minutes, language);
+      const data = await api.recordListening(minutes, languageOrDetails, details);
       set({ progress: data });
       return { ok: true };
     } catch (err: unknown) {

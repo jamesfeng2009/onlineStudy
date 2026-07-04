@@ -13,7 +13,7 @@ import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { useReviewStore, trackWordReview, trackQuizReview } from "../store/reviewStore";
 import { useMistakeStore } from "../store/mistakeStore";
-import { describeNextInterval } from "../lib/sm2";
+import { describeNextInterval, scheduleNext, INITIAL_SRS_STATE } from "../lib/sm2";
 import { speak as ttsSpeak, stopSpeaking, SPEED_PRESETS } from "../lib/tts";
 import { WORDS, getWords, getQuizzes, getSpeaking, getListening } from "../data/content";
 import { COURSES } from "../data/courses";
@@ -248,14 +248,26 @@ function WordsModule({ language, level, isLoggedIn, onNeedLogin }: { language: L
 
   const next = async (k: boolean) => {
     if (!isLoggedIn) { onNeedLogin(); return; }
+    const id = (card as { id?: string })?.id;
+    // Derive SM-2 quality from the remembered/not-familiar button so
+    // the backend can keep its SRS copy in sync (write-through).
+    const quality: ReviewQuality = k ? "good" : "again";
+    const existingSrs = id ? useReviewStore.getState().items[id]?.srs : undefined;
+    const nextSrs = scheduleNext(existingSrs ?? INITIAL_SRS_STATE, quality);
     await recordWord(k, {
-      itemId: (card as { id?: string })?.id,
+      itemId: id,
       language,
       level,
+      quality,
+      srsState: {
+        easeFactor: nextSrs.easeFactor,
+        interval: nextSrs.interval,
+        repetitions: nextSrs.repetitions,
+        nextReviewAt: nextSrs.nextReviewAt,
+      },
     });
     if (!k) {
       // Mark unknown → add to SRS review queue so it resurfaces later.
-      const id = (card as { id?: string })?.id;
       if (id) {
         trackWordReview({
           itemId: id,
@@ -400,6 +412,11 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
     if (pick === null) return;
     if (!isLoggedIn) { onNeedLogin(); return; }
     const ok = pick === q.answer;
+    // Derive SM-2 quality so the backend can keep its SRS copy in sync
+    // (write-through). Wrong answers map to "again" (lapse).
+    const quality: ReviewQuality = ok ? "good" : "again";
+    const existingSrs = useReviewStore.getState().items[q.id]?.srs;
+    const nextSrs = scheduleNext(existingSrs ?? INITIAL_SRS_STATE, quality);
     await recordQuiz(ok, {
       itemId: q.id,
       language,
@@ -407,6 +424,13 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
       selectedOption: pick,
       correctOption: q.answer,
       grammarPointId,
+      quality,
+      srsState: {
+        easeFactor: nextSrs.easeFactor,
+        interval: nextSrs.interval,
+        repetitions: nextSrs.repetitions,
+        nextReviewAt: nextSrs.nextReviewAt,
+      },
     });
     if (ok) setCorrect((n) => n + 1);
     else {
@@ -561,7 +585,7 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
   const p = phrases[i % Math.max(1, phrases.length)];
 
   const handleScored = (score: number) => {
-    recordSpeaking(Math.max(1, Math.round(score / 10)), language);
+    recordSpeaking(Math.max(1, Math.round(score / 10)), language, { itemId: p.id, score });
     setCount((c) => c + 1);
   };
 
@@ -665,7 +689,20 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
     setPlaying(true);
     await ttsSpeak(L.script, { language, rate: speed });
     setPlaying(false);
-    recordListening(Math.max(1, Math.ceil(L.script.length / 20)), language);
+    // Snapshot the user's blank-fill progress for this listening item so
+    // the backend can store per-item analytics. Blanks the user hasn't
+    // filled yet count as incorrect.
+    const totalBlanks = L.blanks.length;
+    const blankResults = L.blanks.map((b) => {
+      const val = (inputs[b.index] ?? "").trim().toLowerCase();
+      return val.length > 0 && val === b.answer.toLowerCase();
+    });
+    const correctCount = blankResults.filter(Boolean).length;
+    recordListening(
+      Math.max(1, Math.ceil(L.script.length / 20)),
+      language,
+      { itemId: L.id, blankResults, correctCount, totalBlanks },
+    );
   };
 
   // Re-play at a different speed without recording minutes again.

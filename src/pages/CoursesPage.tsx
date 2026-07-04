@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Clock, BookOpen, Sparkles } from "lucide-react";
@@ -9,6 +9,8 @@ import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd
 import { COURSES } from "../data/courses";
 import { LANGUAGES } from "../data/languages";
 import { getLanguage } from "../data/languages";
+import { api } from "../lib/api";
+import { useAuthStore } from "../store/authStore";
 import type { Language } from "../types";
 
 export default function CoursesPage() {
@@ -16,6 +18,40 @@ export default function CoursesPage() {
   const [lang, setLang] = useState<Language | "all">("all");
   const [lv, setLv] = useState<string>("all");
   const navigate = useNavigate();
+  const user = useAuthStore((s) => s.user);
+
+  // Per-course progress fetched from the backend (only when logged in).
+  // Keyed by courseId; value = { currentLesson, completedLesson }.
+  const [progressMap, setProgressMap] = useState<Record<string, { currentLesson?: number; completedLesson?: number }>>({});
+
+  useEffect(() => {
+    if (!user) {
+      setProgressMap({});
+      return;
+    }
+    let cancelled = false;
+    api
+      .courseProgress()
+      .then((rows) => {
+        if (cancelled) return;
+        const map: Record<string, { currentLesson?: number; completedLesson?: number }> = {};
+        for (const row of rows) {
+          const courseId = row.courseId as string | undefined;
+          if (!courseId) continue;
+          map[courseId] = {
+            currentLesson: row.currentLesson as number | undefined,
+            completedLesson: row.completedLesson as number | undefined,
+          };
+        }
+        setProgressMap(map);
+      })
+      .catch((err) => {
+        console.warn("CoursesPage: failed to load course progress:", err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   const LEVELS = useMemo(
     () => [
@@ -88,7 +124,15 @@ export default function CoursesPage() {
 
       {/* 课程列表 */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((c) => (
+        {filtered.map((c) => {
+          const prog = progressMap[c.id];
+          const completedLesson = prog?.completedLesson ?? 0;
+          // Render progress as 0-100 based on completed lessons vs total.
+          const pct = prog && c.lessons > 0
+            ? Math.min(100, Math.round((completedLesson / c.lessons) * 100))
+            : c.progress ?? 0;
+          const showProgress = !!user && !!prog;
+          return (
           <GlassCard
             key={c.id}
             onClick={() => navigate(`/learn/${c.id}`)}
@@ -112,6 +156,20 @@ export default function CoursesPage() {
             </div>
             <h3 className="mt-3 font-display text-lg font-bold text-white">{c.title}</h3>
             <p className="mt-1 text-sm text-brand-200/70">{c.description}</p>
+            {showProgress && (
+              <div className="mt-3">
+                <div className="mb-1 flex items-center justify-between text-[11px] text-brand-200/70">
+                  <span>进度</span>
+                  <span>{completedLesson} / {c.lessons} · {pct}%</span>
+                </div>
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-400"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            )}
             <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-4 text-xs text-brand-200/70">
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center gap-1">
@@ -126,7 +184,8 @@ export default function CoursesPage() {
               </span>
             </div>
           </GlassCard>
-        ))}
+          );
+        })}
         {filtered.length === 0 && (
           <div className="col-span-full rounded-2xl border border-dashed border-white/10 bg-white/5 p-10 text-center text-brand-200/70">
             {t("courses.noResults")}

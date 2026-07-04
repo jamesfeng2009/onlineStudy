@@ -1,52 +1,38 @@
-import { useMemo } from "react";
-import { Flame, Trophy, Sparkles, BookOpen, Pen, Mic, Headphones, Crown, Target, Zap, Bookmark } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Flame, Trophy, Sparkles, BookOpen, BookMarked, Pencil, GraduationCap,
+  Mic, Headphones, Crown, Zap,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
+import { api } from "../lib/api";
+import { BADGES, checkBadge } from "../data/badges";
+import type { Badge } from "../types";
 
-const BADGE_IDS = [
-  "streak-3",
-  "streak-7",
-  "streak-30",
-  "words-20",
-  "words-100",
-  "quizzes-10",
-  "quizzes-50",
-  "speaking-10",
-  "listening-10",
-  "level-5",
-  "level-10",
-] as const;
-
-const BADGE_ICONS: Record<string, React.ElementType> = {
-  "streak-3": Flame,
-  "streak-7": Zap,
-  "streak-30": Trophy,
-  "words-20": BookOpen,
-  "words-100": Bookmark,
-  "quizzes-10": Pen,
-  "quizzes-50": Sparkles,
-  "speaking-10": Mic,
-  "listening-10": Headphones,
-  "level-5": Target,
-  "level-10": Crown,
+/** Icon name → component lookup. Driven by the `icon` string in
+ *  src/data/badges.ts so adding a new badge only requires editing
+ *  that data file (plus adding the icon name here). */
+const ICONS: Record<string, React.ElementType> = {
+  Flame,
+  Zap,
+  Trophy,
+  BookOpen,
+  BookMarked,
+  Pencil,
+  GraduationCap,
+  Mic,
+  Headphones,
+  Sparkles,
+  Crown,
 };
 
-const BADGE_COLORS: Record<string, string> = {
-  "streak-3": "from-orange-400 to-rose-500",
-  "streak-7": "from-amber-300 to-orange-500",
-  "streak-30": "from-yellow-300 to-amber-500",
-  "words-20": "from-sky-400 to-blue-600",
-  "words-100": "from-cyan-400 to-teal-600",
-  "quizzes-10": "from-emerald-400 to-green-600",
-  "quizzes-50": "from-lime-400 to-emerald-600",
-  "speaking-10": "from-rose-400 to-pink-600",
-  "listening-10": "from-violet-400 to-purple-600",
-  "level-5": "from-fuchsia-400 to-rose-600",
-  "level-10": "from-amber-300 to-yellow-500",
-};
+interface UnlockedBadge {
+  unlockedAt: string;
+  isRead: boolean;
+}
 
 interface AchievementContext {
   streak: number;
@@ -57,51 +43,164 @@ interface AchievementContext {
   level: number;
 }
 
-const BADGE_CHECKS: Record<
-  string,
-  (ctx: AchievementContext) => { earned: boolean; progress: number; total: number }
-> = {
-  "streak-3": (ctx) => ({ earned: ctx.streak >= 3, progress: Math.min(ctx.streak, 3), total: 3 }),
-  "streak-7": (ctx) => ({ earned: ctx.streak >= 7, progress: Math.min(ctx.streak, 7), total: 7 }),
-  "streak-30": (ctx) => ({ earned: ctx.streak >= 30, progress: Math.min(ctx.streak, 30), total: 30 }),
-  "words-20": (ctx) => ({ earned: ctx.wordsLearned >= 20, progress: Math.min(ctx.wordsLearned, 20), total: 20 }),
-  "words-100": (ctx) => ({ earned: ctx.wordsLearned >= 100, progress: Math.min(ctx.wordsLearned, 100), total: 100 }),
-  "quizzes-10": (ctx) => ({ earned: ctx.quizzesDone >= 10, progress: Math.min(ctx.quizzesDone, 10), total: 10 }),
-  "quizzes-50": (ctx) => ({ earned: ctx.quizzesDone >= 50, progress: Math.min(ctx.quizzesDone, 50), total: 50 }),
-  "speaking-10": (ctx) => ({ earned: ctx.speakingMinutes >= 10, progress: Math.min(ctx.speakingMinutes, 10), total: 10 }),
-  "listening-10": (ctx) => ({ earned: ctx.listeningMinutes >= 10, progress: Math.min(ctx.listeningMinutes, 10), total: 10 }),
-  "level-5": (ctx) => ({ earned: ctx.level >= 5, progress: Math.min(ctx.level, 5), total: 5 }),
-  "level-10": (ctx) => ({ earned: ctx.level >= 10, progress: Math.min(ctx.level, 10), total: 10 }),
-};
+function getBadgeProgress(
+  badge: Badge,
+  ctx: AchievementContext,
+): { earned: boolean; progress: number; total: number } {
+  const { type, value } = badge.requirement;
+  let current = 0;
+  switch (type) {
+    case "streak": current = ctx.streak; break;
+    case "words": current = ctx.wordsLearned; break;
+    case "quizzes": current = ctx.quizzesDone; break;
+    case "speaking": current = ctx.speakingMinutes; break;
+    case "listening": current = ctx.listeningMinutes; break;
+    case "level": current = ctx.level; break;
+  }
+  return {
+    earned: checkBadge(badge, ctx),
+    progress: Math.min(current, value),
+    total: value,
+  };
+}
+
+/** Format an ISO timestamp into a short local date for display. */
+function formatDate(iso: string): string {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleDateString();
+  } catch {
+    return "";
+  }
+}
 
 export default function AchievementsPage() {
   const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const progress = useProgressStore((s) => s.progress);
 
+  // Badges the backend says the user has unlocked.
+  const [unlockedMap, setUnlockedMap] = useState<Record<string, UnlockedBadge>>({});
+  const [apiLoaded, setApiLoaded] = useState(false);
+  // Track which badges we've already kicked off an unlock request for,
+  // so we don't fire duplicates while the first request is in flight.
+  const unlockInitiated = useRef<Set<string>>(new Set());
+
+  const streak = user?.streak ?? progress?.streak ?? 0;
+  const wordsLearned = progress?.wordsLearned ?? 0;
+  const quizzesDone = progress?.quizzesDone ?? 0;
+  const speakingMinutes = progress?.speakingMinutes ?? 0;
+  const listeningMinutes = progress?.listeningMinutes ?? 0;
+  const level = user?.level ?? progress?.level ?? 1;
+
+  const ctx: AchievementContext = {
+    streak,
+    wordsLearned,
+    quizzesDone,
+    speakingMinutes,
+    listeningMinutes,
+    level,
+  };
+
+  // Pull unlocked badges from the API on mount (only when logged in)
+  // and fire-and-forget a mark-read so the badge notification dot clears.
+  useEffect(() => {
+    if (!user) {
+      setUnlockedMap({});
+      setApiLoaded(true);
+      return;
+    }
+    let cancelled = false;
+    api
+      .achievements()
+      .then((rows) => {
+        if (cancelled) return;
+        const map: Record<string, UnlockedBadge> = {};
+        for (const row of rows) {
+          const key = row.badgeKey as string | undefined;
+          if (!key) continue;
+          map[key] = {
+            unlockedAt: (row.unlockedAt as string) ?? new Date().toISOString(),
+            isRead: !!row.isRead,
+          };
+        }
+        setUnlockedMap(map);
+        setApiLoaded(true);
+        // Mark all unlocked badges as read on entry — fire-and-forget.
+        api.markAchievementsRead().catch((err) => {
+          console.warn("AchievementsPage: failed to mark as read:", err);
+        });
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.warn("AchievementsPage: failed to load achievements:", err);
+        setApiLoaded(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
+  // Auto-unlock badges the user has earned (per checkBadge) but that
+  // aren't yet recorded in the DB. Fire-and-forget; backend dedupes.
+  useEffect(() => {
+    if (!user || !apiLoaded) return;
+    for (const badge of BADGES) {
+      if (unlockInitiated.current.has(badge.id)) continue;
+      if (unlockedMap[badge.id]) continue;
+      if (!checkBadge(badge, ctx)) continue;
+      unlockInitiated.current.add(badge.id);
+      api
+        .unlockAchievement(badge.id)
+        .then((res) => {
+          const unlockedAt = (res?.unlockedAt as string) ?? new Date().toISOString();
+          setUnlockedMap((prev) => ({
+            ...prev,
+            [badge.id]: { unlockedAt, isRead: !!res?.isRead },
+          }));
+        })
+        .catch((err) => {
+          console.warn(`AchievementsPage: failed to unlock ${badge.id}:`, err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    user,
+    apiLoaded,
+    unlockedMap,
+    streak,
+    wordsLearned,
+    quizzesDone,
+    speakingMinutes,
+    listeningMinutes,
+    level,
+  ]);
+
   const badges = useMemo(
     () =>
-      BADGE_IDS.map((id) => ({
-        id,
-        title: t(`achievements.badges.${id}.title`),
-        description: t(`achievements.badges.${id}.description`),
-        icon: BADGE_ICONS[id],
-        color: BADGE_COLORS[id],
-        check: BADGE_CHECKS[id],
-      })),
+      BADGES.map((b) => {
+        // The translation file uses keys without the "b-" prefix
+        // (e.g. "streak-3"); badges.ts uses "b-streak-3".
+        const badgeKey = b.id.startsWith("b-") ? b.id.slice(2) : b.id;
+        const title = t(`achievements.badges.${badgeKey}.title`, { defaultValue: b.title });
+        const description = t(`achievements.badges.${badgeKey}.description`, { defaultValue: b.description });
+        const Icon = ICONS[b.icon] ?? Sparkles;
+        return { badge: b, title, description, Icon };
+      }),
     [t]
   );
 
-  const ctx: AchievementContext = {
-    streak: user?.streak ?? progress?.streak ?? 0,
-    wordsLearned: progress?.wordsLearned ?? 0,
-    quizzesDone: progress?.quizzesDone ?? 0,
-    speakingMinutes: progress?.speakingMinutes ?? 0,
-    listeningMinutes: progress?.listeningMinutes ?? 0,
-    level: user?.level ?? progress?.level ?? 1,
-  };
-
-  const earnedCount = badges.reduce((acc, b) => acc + (b.check(ctx).earned ? 1 : 0), 0);
+  const earnedCount = useMemo(
+    () =>
+      badges.reduce((acc, { badge }) => {
+        const isUnlocked = !!unlockedMap[badge.id];
+        const isEarnedNow = checkBadge(badge, ctx);
+        return acc + (isUnlocked || isEarnedNow ? 1 : 0);
+      }, 0),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [badges, unlockedMap, streak, wordsLearned, quizzesDone, speakingMinutes, listeningMinutes, level]
+  );
 
   const stats = useMemo(
     () => [
@@ -110,7 +209,7 @@ export default function AchievementsPage() {
       { key: "words", value: ctx.wordsLearned, unit: t("achievements.units.words"), color: "text-sky-300" },
       { key: "quizzes", value: ctx.quizzesDone, unit: t("achievements.units.quizzes"), color: "text-fuchsia-300" },
     ],
-    [ctx, t]
+    [ctx.streak, ctx.level, ctx.wordsLearned, ctx.quizzesDone, t]
   );
 
   return (
@@ -156,43 +255,50 @@ export default function AchievementsPage() {
 
       {/* Badges grid */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {badges.map((b) => {
-          const Icon = b.icon;
-          const { earned, progress, total } = b.check(ctx);
+        {badges.map(({ badge, title, description, Icon }) => {
+          const unlocked = !!unlockedMap[badge.id];
+          const { earned, progress, total } = getBadgeProgress(badge, ctx);
+          // A badge is "earned" if either the DB says it's unlocked OR
+          // the user just satisfied the conditions (DB sync pending).
+          const isEarned = unlocked || earned;
           const pct = Math.round((progress / total) * 100);
+          const unlockedAt = unlockedMap[badge.id]?.unlockedAt;
           return (
             <GlassCard
-              key={b.id}
+              key={badge.id}
               className={
-                earned
+                isEarned
                   ? "ring-1 ring-amber-300/40 shadow-[0_0_40px_-10px] shadow-amber-500/30"
                   : "opacity-90"
               }
             >
               <div className="flex items-start justify-between">
-                <div className={"inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br " + (earned ? b.color + " text-white shadow-lg" : "bg-white/10 text-white/60")}>
+                <div className={"inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br " + (isEarned ? badge.color + " text-white shadow-lg" : "bg-white/10 text-white/60")}>
                   <Icon className="h-7 w-7" />
                 </div>
-                {earned && (
+                {isEarned && (
                   <span className="rounded-full border border-amber-300/30 bg-amber-400/10 px-2 py-0.5 text-[10px] font-medium text-amber-200">
                     {t("achievements.unlocked")}
                   </span>
                 )}
               </div>
-              <div className="mt-4 font-display text-lg font-semibold text-white">{b.title}</div>
-              <div className="mt-1 text-xs text-brand-200/70">{b.description}</div>
+              <div className="mt-4 font-display text-lg font-semibold text-white">{title}</div>
+              <div className="mt-1 text-xs text-brand-200/70">{description}</div>
               <div className="mt-4">
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
                   <div
                     className={
                       "h-full rounded-full " +
-                      (earned ? "bg-gradient-to-r from-amber-300 to-rose-400" : "bg-gradient-to-r from-sky-400 to-fuchsia-400")
+                      (isEarned ? "bg-gradient-to-r from-amber-300 to-rose-400" : "bg-gradient-to-r from-sky-400 to-fuchsia-400")
                     }
-                    style={{ width: `${pct}%` }}
+                    style={{ width: `${isEarned ? 100 : pct}%` }}
                   />
                 </div>
-                <div className="mt-1 text-right text-[11px] text-brand-200/60">
-                  {progress} / {total}
+                <div className="mt-1 flex items-center justify-between text-[11px] text-brand-200/60">
+                  <span>{isEarned ? `${total} / ${total}` : `${progress} / ${total}`}</span>
+                  {unlocked && unlockedAt && (
+                    <span>{formatDate(unlockedAt)}</span>
+                  )}
                 </div>
               </div>
             </GlassCard>

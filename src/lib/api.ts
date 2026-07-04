@@ -118,9 +118,115 @@ export async function getWords(params?: { language?: string; level?: string; nat
   return request(`/words${query ? `?${query}` : ""}`);
 }
 
+// ====== Public content: quizzes / listening / speaking ======
+export async function getQuizzes(params?: { language?: string; level?: string; nativeLanguage?: string }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  if (params?.nativeLanguage) qs.set("nativeLanguage", params.nativeLanguage);
+  const query = qs.toString();
+  return request(`/quizzes${query ? `?${query}` : ""}`);
+}
+
+export async function getListening(params?: { language?: string; level?: string }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  const query = qs.toString();
+  return request(`/listening${query ? `?${query}` : ""}`);
+}
+
+export async function getSpeaking(params?: { language?: string; level?: string }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  const query = qs.toString();
+  return request(`/speaking${query ? `?${query}` : ""}`);
+}
+
+// ====== User SRS review queues (auth) ======
+export async function getWordReviews(params?: { language?: string; due?: boolean }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.due !== undefined) qs.set("due", String(params.due));
+  const query = qs.toString();
+  return request(`/user/word-reviews${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function getQuizReviews(params?: { language?: string; due?: boolean }): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.due !== undefined) qs.set("due", String(params.due));
+  const query = qs.toString();
+  return request(`/user/quiz-reviews${query ? `?${query}` : ""}`, {}, true);
+}
+
+/** Submit a single word review (SM-2 write-through). */
+export async function reviewWord(
+  wordBankId: string,
+  body: { quality: string; srsState: SrsStatePayload },
+): Promise<Record<string, unknown>> {
+  return request(`/user/word-reviews/${encodeURIComponent(wordBankId)}/review`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  }, true);
+}
+
+/** Submit a single quiz review (SM-2 write-through). */
+export async function reviewQuiz(
+  quizId: string,
+  body: { quality: string; srsState: SrsStatePayload; correct?: boolean },
+): Promise<Record<string, unknown>> {
+  return request(`/user/quiz-reviews/${encodeURIComponent(quizId)}/review`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  }, true);
+}
+
+// ====== User course progress (auth) ======
+export async function getCourseProgress(): Promise<Record<string, unknown>[]> {
+  return request("/user/course-progress", {}, true);
+}
+
+export async function trackCourseProgress(
+  courseId: string,
+  body: { currentLesson?: number; completedLesson?: number },
+): Promise<Record<string, unknown>> {
+  return request(`/user/course-progress/${encodeURIComponent(courseId)}/track`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  }, true);
+}
+
+// ====== User achievements (auth) ======
+export async function getAchievements(): Promise<Record<string, unknown>[]> {
+  return request("/user/achievements", {}, true);
+}
+
+export async function unlockAchievement(badgeKey: string): Promise<Record<string, unknown>> {
+  return request(`/user/achievements/${encodeURIComponent(badgeKey)}/unlock`, {
+    method: "POST",
+  }, true);
+}
+
+export async function markAchievementsRead(): Promise<Record<string, unknown>> {
+  return request("/user/achievements/mark-read", { method: "POST" }, true);
+}
+
 // ====== Progress ======
 export async function getProgress(): Promise<Record<string, unknown>> {
   return request("/progress/me", {}, true);
+}
+
+/**
+ * SM-2 SRS state snapshot forwarded to the backend so it can keep its
+ * own copy in sync (write-through). All fields are required when present.
+ */
+export interface SrsStatePayload {
+  easeFactor: number;
+  interval: number;
+  repetitions: number;
+  nextReviewAt: string;
 }
 
 /**
@@ -137,6 +243,10 @@ export interface RecordWordDetails {
   level?: string;
   /** Latin/Greek root if known, e.g. "port" for "portable". Enables root-based review. */
   root?: string;
+  /** Self-rating ("again"/"hard"/"good"/"easy") the user just gave in the SRS UI. */
+  quality?: string;
+  /** Computed SM-2 state after this review (write-through to backend). */
+  srsState?: SrsStatePayload;
 }
 export interface RecordQuizDetails {
   /** Stable id of the quiz the user just answered. */
@@ -151,6 +261,35 @@ export interface RecordQuizDetails {
   correctOption?: number;
   /** Grammar point id this quiz exercises, e.g. "present_simple_3rd_person". */
   grammarPointId?: string;
+  /** Self-rating ("again"/"hard"/"good"/"easy") the user just gave in the SRS UI. */
+  quality?: string;
+  /** Computed SM-2 state after this review (write-through to backend). */
+  srsState?: SrsStatePayload;
+}
+
+/** Optional extra fields for recordSpeaking. Back-compat: callers that
+ *  pass only (minutes, language) keep working. */
+export interface RecordSpeakingDetails {
+  /** Target language code (kept for back-compat with callers that pass it positionally). */
+  language?: string;
+  /** Stable id of the speaking phrase the user practiced. */
+  itemId?: string;
+  /** Pronunciation score (0-100) from PronunciationScore. */
+  score?: number;
+}
+
+/** Optional extra fields for recordListening. */
+export interface RecordListeningDetails {
+  /** Target language code (kept for back-compat). */
+  language?: string;
+  /** Stable id of the listening item the user practiced. */
+  itemId?: string;
+  /** Per-blank correctness, e.g. [true, false, true]. */
+  blankResults?: boolean[];
+  /** Count of correctly filled blanks. */
+  correctCount?: number;
+  /** Total blanks in this listening exercise. */
+  totalBlanks?: number;
 }
 
 export async function recordWord(
@@ -166,6 +305,8 @@ export async function recordWord(
     if (details.itemId) body.itemId = details.itemId;
     if (details.level) body.level = details.level;
     if (details.root) body.root = details.root;
+    if (details.quality) body.quality = details.quality;
+    if (details.srsState) body.srsState = details.srsState;
   }
   return request("/progress/record-word", { method: "POST", body: JSON.stringify(body) }, true);
 }
@@ -182,16 +323,48 @@ export async function recordQuiz(
     if (typeof details.selectedOption === "number") body.selectedOption = details.selectedOption;
     if (typeof details.correctOption === "number") body.correctOption = details.correctOption;
     if (details.grammarPointId) body.grammarPointId = details.grammarPointId;
+    if (details.quality) body.quality = details.quality;
+    if (details.srsState) body.srsState = details.srsState;
   }
   return request("/progress/record-quiz", { method: "POST", body: JSON.stringify(body) }, true);
 }
 
-export async function recordSpeaking(minutes: number, _language?: string): Promise<Record<string, unknown>> {
-  return request("/progress/record-speaking", { method: "POST", body: JSON.stringify({ minutes }) }, true);
+export async function recordSpeaking(
+  minutes: number,
+  languageOrDetails?: string | RecordSpeakingDetails,
+  details?: RecordSpeakingDetails,
+): Promise<Record<string, unknown>> {
+  // Back-compat: recordSpeaking(minutes, language) still works.
+  const lang =
+    typeof languageOrDetails === "string"
+      ? languageOrDetails
+      : languageOrDetails?.language ?? details?.language;
+  const extra = typeof languageOrDetails === "object" ? languageOrDetails : details;
+  const body: Record<string, unknown> = { minutes };
+  if (lang) body.language = lang;
+  if (extra?.itemId) body.itemId = extra.itemId;
+  if (typeof extra?.score === "number") body.score = extra.score;
+  return request("/progress/record-speaking", { method: "POST", body: JSON.stringify(body) }, true);
 }
 
-export async function recordListening(minutes: number, _language?: string): Promise<Record<string, unknown>> {
-  return request("/progress/record-listening", { method: "POST", body: JSON.stringify({ minutes }) }, true);
+export async function recordListening(
+  minutes: number,
+  languageOrDetails?: string | RecordListeningDetails,
+  details?: RecordListeningDetails,
+): Promise<Record<string, unknown>> {
+  // Back-compat: recordListening(minutes, language) still works.
+  const lang =
+    typeof languageOrDetails === "string"
+      ? languageOrDetails
+      : languageOrDetails?.language ?? details?.language;
+  const extra = typeof languageOrDetails === "object" ? languageOrDetails : details;
+  const body: Record<string, unknown> = { minutes };
+  if (lang) body.language = lang;
+  if (extra?.itemId) body.itemId = extra.itemId;
+  if (Array.isArray(extra?.blankResults)) body.blankResults = extra.blankResults;
+  if (typeof extra?.correctCount === "number") body.correctCount = extra.correctCount;
+  if (typeof extra?.totalBlanks === "number") body.totalBlanks = extra.totalBlanks;
+  return request("/progress/record-listening", { method: "POST", body: JSON.stringify(body) }, true);
 }
 
 export async function updateProgressSettings(data: {
@@ -332,6 +505,18 @@ export const api = {
   courses: getCourses,
   course: getCourse,
   words: getWords,
+  quizzes: getQuizzes,
+  listening: getListening,
+  speaking: getSpeaking,
+  wordReviews: getWordReviews,
+  quizReviews: getQuizReviews,
+  reviewWord,
+  reviewQuiz,
+  courseProgress: getCourseProgress,
+  trackCourseProgress,
+  achievements: getAchievements,
+  unlockAchievement,
+  markAchievementsRead,
   progressMe: getProgress,
   recordWord,
   recordQuiz,

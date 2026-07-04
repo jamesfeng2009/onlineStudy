@@ -2,7 +2,7 @@ import type { Badge } from "../types";
 
 export const BADGES: Badge[] = [
   {
-    id: "b-streak-3",
+    id: "streak-3",
     title: "三日坚持",
     description: "连续学习 3 天，习惯养成中！",
     icon: "Flame",
@@ -10,7 +10,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "streak", value: 3 },
   },
   {
-    id: "b-streak-7",
+    id: "streak-7",
     title: "一周之星",
     description: "连续学习 7 天，已形成稳定习惯。",
     icon: "Zap",
@@ -18,7 +18,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "streak", value: 7 },
   },
   {
-    id: "b-streak-30",
+    id: "streak-30",
     title: "月度冠军",
     description: "连续学习 30 天，你是真正的学习者！",
     icon: "Trophy",
@@ -26,7 +26,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "streak", value: 30 },
   },
   {
-    id: "b-words-20",
+    id: "words-20",
     title: "词汇新星",
     description: "掌握 20 个新单词。",
     icon: "BookOpen",
@@ -34,7 +34,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "words", value: 20 },
   },
   {
-    id: "b-words-100",
+    id: "words-100",
     title: "词汇达人",
     description: "掌握 100 个新单词。",
     icon: "BookMarked",
@@ -42,7 +42,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "words", value: 100 },
   },
   {
-    id: "b-quizzes-10",
+    id: "quizzes-10",
     title: "语法练习生",
     description: "完成 10 道语法练习题。",
     icon: "Pencil",
@@ -50,7 +50,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "quizzes", value: 10 },
   },
   {
-    id: "b-quizzes-50",
+    id: "quizzes-50",
     title: "语法大师",
     description: "完成 50 道语法练习题。",
     icon: "GraduationCap",
@@ -58,7 +58,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "quizzes", value: 50 },
   },
   {
-    id: "b-speaking-10",
+    id: "speaking-10",
     title: "开口勇者",
     description: "口语跟读累计 10 分钟。",
     icon: "Mic",
@@ -66,7 +66,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "speaking", value: 10 },
   },
   {
-    id: "b-listening-10",
+    id: "listening-10",
     title: "聆听者",
     description: "听力训练累计 10 分钟。",
     icon: "Headphones",
@@ -74,7 +74,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "listening", value: 10 },
   },
   {
-    id: "b-level-5",
+    id: "level-5",
     title: "步步进阶",
     description: "达到等级 5。",
     icon: "Sparkles",
@@ -82,7 +82,7 @@ export const BADGES: Badge[] = [
     requirement: { type: "level", value: 5 },
   },
   {
-    id: "b-level-10",
+    id: "level-10",
     title: "登堂入室",
     description: "达到等级 10。",
     icon: "Crown",
