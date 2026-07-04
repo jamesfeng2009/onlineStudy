@@ -53,6 +53,9 @@ jobs:
             --max-cost=${{ inputs.max_cost || '1.00' }} \
             ${{ inputs.overwrite == 'true' && '--overwrite' || '' }}
 
+      - name: Validate generated quizzes
+        run: npx tsx scripts/validate-quizzes.ts
+
       - name: Commit generated quizzes
         run: |
           git config user.name "github-actions[bot]"
@@ -61,6 +64,9 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes — all batches already up to date."
           else
+            # Rebase on remote so we don't fail when other commits landed
+            # while this job was running (e.g. manual edits to quiz files).
+            git pull --rebase origin main
             git commit -m "chore: auto-generate quiz batches [skip ci]"
             git push
           fi
