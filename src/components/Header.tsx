@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
     Globe2,
@@ -17,11 +17,12 @@ import {
     HelpCircle,
     Newspaper,
     Languages,
-  } from "lucide-react";
+} from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
-import i18n, { buildLocalePath, type SupportedLanguage } from "../lib/i18n";
+import i18n, { buildLocalePath, extractLocaleFromPath, type SupportedLanguage } from "../lib/i18n";
 import { LANGUAGES } from "../data/languages";
+import { LocaleLink, LocaleNavLink } from "./LocaleLink";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -73,7 +74,8 @@ export default function Header() {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    const { locale } = extractLocaleFromPath(location.pathname);
+    navigate(buildLocalePath(locale, "/login"));
   };
 
   const isLoggedIn = !!user;
@@ -81,7 +83,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
-        <Link to="/" className="flex items-center gap-2">
+        <LocaleLink to="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 via-sky-500 to-fuchsia-500 shadow-lg shadow-sky-500/30">
             <Globe2 className="h-5 w-5 text-white" />
           </div>
@@ -93,11 +95,11 @@ export default function Header() {
               immersive learning
             </div>
           </div>
-        </Link>
+        </LocaleLink>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map(({ to, label, icon: Icon }) => (
-            <NavLink
+            <LocaleNavLink
               key={to}
               to={to}
               end={to === "/"}
@@ -111,7 +113,7 @@ export default function Header() {
             >
               <Icon className="h-4 w-4" />
               {label}
-            </NavLink>
+            </LocaleNavLink>
           ))}
         </nav>
 
@@ -147,7 +149,7 @@ export default function Header() {
           </div>
           {isLoggedIn ? (
             <>
-              <Link
+              <LocaleLink
                 to="/profile"
                 className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-brand-100 transition hover:bg-white/10 md:flex"
               >
@@ -155,7 +157,7 @@ export default function Header() {
                   {user.username?.slice(0, 1).toUpperCase() ?? "U"}
                 </div>
                 <span className="font-medium">{user.username}</span>
-              </Link>
+              </LocaleLink>
               <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-brand-100 md:flex">
                 <Flame className="h-4 w-4 text-orange-400" />
                 <span className="font-medium">{t("header.streak", { days: user.streak })}</span>
@@ -171,12 +173,12 @@ export default function Header() {
               </button>
             </>
           ) : (
-            <Link
+            <LocaleLink
               to="/login"
               className="rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30 transition hover:shadow-fuchsia-500/50"
             >
               {status === "loading" ? t("header.loading") : t("header.login")}
-            </Link>
+            </LocaleLink>
           )}
 
           <button
@@ -193,7 +195,7 @@ export default function Header() {
         <div className="border-t border-white/5 bg-[#020617]/95 lg:hidden">
           <div className="grid grid-cols-2 gap-1 p-3">
             {NAV.map(({ to, label, icon: Icon }) => (
-              <NavLink
+              <LocaleNavLink
                 key={to}
                 to={to}
                 end={to === "/"}
@@ -207,7 +209,7 @@ export default function Header() {
               >
                 <Icon className="h-4 w-4" />
                 {label}
-              </NavLink>
+              </LocaleNavLink>
             ))}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { ArrowRight, Sparkles, Flame, BookOpen, Mic, Pen, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
@@ -104,7 +104,7 @@ export default function RecommendPage() {
           ? entries.map(([key, value], idx) => {
               const Icon = iconFor[key] ?? BookOpen;
               return (
-                <Link to="/learn" key={key}>
+                <LocaleLink to="/learn" key={key}>
                   <GlassCard className="relative h-full transition hover:-translate-y-0.5">
                     <div className="mb-4 flex items-center justify-between">
                       <div className="text-xs text-brand-200/60">{t("recommend.step", { n: idx + 1 })}</div>
@@ -124,13 +124,13 @@ export default function RecommendPage() {
                       </span>
                     </div>
                   </GlassCard>
-                </Link>
+                </LocaleLink>
               );
             })
           : fallbackItems.map((item, idx) => {
               const Icon = fallbackIcons[idx] ?? BookOpen;
               return (
-                <Link to="/learn" key={item.title}>
+                <LocaleLink to="/learn" key={item.title}>
                   <GlassCard className="relative h-full transition hover:-translate-y-0.5">
                     <div className="mb-4 flex items-center justify-between">
                       <div className="text-xs text-brand-200/60">{t("recommend.step", { n: idx + 1 })}</div>
@@ -142,7 +142,7 @@ export default function RecommendPage() {
                     <h3 className="mt-4 font-display text-xl font-bold text-white">{item.title}</h3>
                     <p className="mt-1 text-sm text-brand-200/70">{item.desc}</p>
                   </GlassCard>
-                </Link>
+                </LocaleLink>
               );
             })}
       </div>
@@ -156,13 +156,13 @@ export default function RecommendPage() {
             </h2>
             <p className="mt-1 text-sm text-brand-200/70">{t("recommend.coursesDesc")}</p>
           </div>
-          <Link to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
+          <LocaleLink to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
             {t("recommend.browseAll")}
-          </Link>
+          </LocaleLink>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {recommendedCourses.map((c) => (
-            <Link to="/learn" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
+            <LocaleLink to="/learn" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
               <div className="relative flex h-32 items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
                 <span className="text-6xl drop-shadow">{c.cover}</span>
               </div>
@@ -171,7 +171,7 @@ export default function RecommendPage() {
                 <div className="mt-1 text-xs text-brand-200/70">{c.description}</div>
                 <div className="mt-4 text-xs text-sky-300 group-hover:text-sky-200">{t("recommend.joinPlan")}</div>
               </div>
-            </Link>
+            </LocaleLink>
           ))}
         </div>
       </div>

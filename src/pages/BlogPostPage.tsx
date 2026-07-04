@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -71,9 +72,9 @@ export default function BlogPostPage() {
     return (
       <PageShell title={t("blog.notFoundTitle")} subtitle={t("blog.notFoundDesc")}>
         <Seo title={t("blog.notFoundTitle")} />
-        <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
+        <LocaleLink to="/blog" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
           <ArrowLeft className="h-4 w-4" /> {t("blog.backToList")}
-        </Link>
+        </LocaleLink>
       </PageShell>
     );
   }
@@ -120,12 +121,12 @@ export default function BlogPostPage() {
           },
         ]}
       />
-      <Link
+      <LocaleLink
         to="/blog"
         className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200"
       >
         <ArrowLeft className="h-4 w-4" /> {t("blog.backToList")}
-      </Link>
+      </LocaleLink>
 
       <article className="mt-6">
         <div className="flex items-center gap-2 text-xs">
@@ -190,12 +191,12 @@ export default function BlogPostPage() {
                 {t("blog.ctaDesc")}
               </p>
             </div>
-            <Link
+            <LocaleLink
               to="/register"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30"
             >
               {t("blog.cta")} <ArrowLeft className="h-4 w-4 rotate-180" />
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </div>

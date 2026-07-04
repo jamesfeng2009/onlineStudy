@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LocaleLink from "../../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
 
@@ -49,12 +50,12 @@ export default function OAuthCallbackPage() {
             <div className="rounded-2xl border border-rose-400/30 bg-rose-500/10 px-6 py-4 text-rose-200">
               {err}
             </div>
-            <a
-              href="/login"
+            <LocaleLink
+              to="/login"
               className="rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-2.5 font-semibold text-slate-900"
             >
               {t("auth.login.button")}
-            </a>
+            </LocaleLink>
           </>
         ) : (
           <>

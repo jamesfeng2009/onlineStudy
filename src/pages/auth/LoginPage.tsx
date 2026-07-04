@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LocaleLink from "../../components/LocaleLink";
 import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
@@ -155,9 +156,9 @@ export default function LoginPage() {
 
               <div className="text-center text-sm text-brand-200/70">
                 {t("auth.noAccount")}{" "}
-                <Link to="/register" className="text-sky-300 hover:text-sky-200">
+                <LocaleLink to="/register" className="text-sky-300 hover:text-sky-200">
                   {t("auth.register.button")}
-                </Link>
+                </LocaleLink>
               </div>
             </form>
 

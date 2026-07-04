@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import {
   Sparkles,
@@ -152,12 +153,12 @@ export default function HomePage() {
             </p>
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Link
+              <LocaleLink
                 to="/courses"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/50"
               >
                 {t("home.hero.startToday")} <ArrowRight className="h-4 w-4" />
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className="mx-auto mt-6 grid max-w-md grid-cols-3 gap-3">
@@ -189,9 +190,9 @@ export default function HomePage() {
             <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{t("home.courses.title")}</h2>
             <p className="mt-1 text-sm text-brand-200/70">{t("home.courses.desc")}</p>
           </div>
-          <Link to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
+          <LocaleLink to="/courses" className="text-sm text-sky-300 hover:text-sky-200">
             {t("home.courses.viewAll")}
-          </Link>
+          </LocaleLink>
         </div>
         {coursesLoading && courses.length === 0 ? (
           <div className="rounded-2xl border border-white/5 bg-white/5 p-10 text-center text-sm text-brand-200/70">
@@ -200,7 +201,7 @@ export default function HomePage() {
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featureCourses.map((c) => (
-              <Link to="/courses" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
+              <LocaleLink to="/courses" key={c.id} className="glass group overflow-hidden rounded-2xl transition hover:-translate-y-1">
                 <div className="relative flex h-32 items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
                   <span className="text-6xl drop-shadow">{c.cover}</span>
                   <span className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
@@ -218,7 +219,7 @@ export default function HomePage() {
                     <span>{t("home.courses.minutes", { count: c.minutes })}</span>
                   </div>
                 </div>
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         )}
@@ -292,9 +293,9 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-6 text-center">
-          <Link to="/faq" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
+          <LocaleLink to="/faq" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
             {t("home.faq.viewAll")} <ArrowRight className="h-4 w-4" />
-          </Link>
+          </LocaleLink>
         </div>
       </section>
 
@@ -310,22 +311,22 @@ export default function HomePage() {
             </h2>
             <p className="mt-2 text-sm text-brand-200/70 md:text-base">{t("home.blog.desc")}</p>
           </div>
-          <Link to="/blog" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
+          <LocaleLink to="/blog" className="hidden text-sm text-sky-300 hover:text-sky-200 md:block">
             {t("home.blog.viewAll")}
-          </Link>
+          </LocaleLink>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {(
             t("home.blog.items", { returnObjects: true }) as { title: string; excerpt: string; tag: string }[]
           ).map((p, i) => (
-            <Link to="/blog" key={i} className="glass group rounded-2xl p-6 transition hover:-translate-y-1">
+            <LocaleLink to="/blog" key={i} className="glass group rounded-2xl p-6 transition hover:-translate-y-1">
               <div className="text-xs font-medium uppercase tracking-wide text-emerald-300">{p.tag}</div>
               <h3 className="mt-3 font-display text-lg font-semibold text-white">{p.title}</h3>
               <p className="mt-2 line-clamp-3 text-sm text-brand-200/70">{p.excerpt}</p>
               <div className="mt-4 inline-flex items-center text-xs text-sky-300 group-hover:text-sky-200">
                 {t("home.blog.readMore")} <ArrowRight className="ml-1 h-3 w-3" />
               </div>
-            </Link>
+            </LocaleLink>
           ))}
         </div>
       </section>

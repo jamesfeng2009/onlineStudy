@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { ArrowRight, ArrowLeft, BookOpen, Sparkles, Volume2 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -213,12 +214,12 @@ export default function LearnWordPage() {
               tomorrow, then in 3 days, then in a week — the way your
               brain actually wants to learn.
             </p>
-            <Link
+            <LocaleLink
               to="/register"
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
               Start practicing <ArrowRight className="h-4 w-4" />
-            </Link>
+            </LocaleLink>
 
             <div className="mt-6 border-t border-white/10 pt-5">
               <div className="text-xs font-semibold uppercase tracking-widest text-sky-300">

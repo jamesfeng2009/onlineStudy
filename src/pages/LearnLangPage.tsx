@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, BookOpen, Headphones, Sparkles, Globe2 } from "lucide-react";
 import PageShell from "../components/PageShell";
@@ -108,9 +109,9 @@ export default function LearnLangPage() {
     return (
       <PageShell title="Language not found" subtitle="That language is not yet supported.">
         <p className="text-brand-200/80">
-          <Link to="/languages" className="text-sky-300 hover:underline">
+          <LocaleLink to="/languages" className="text-sky-300 hover:underline">
             ← Pick a language
-          </Link>
+          </LocaleLink>
         </p>
       </PageShell>
     );
@@ -139,12 +140,12 @@ export default function LearnLangPage() {
       title={title}
       subtitle={lead}
       action={
-        <Link
+        <LocaleLink
           to="/register"
           className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5"
         >
           {t("home.hero.startToday")} <ArrowRight className="h-4 w-4" />
-        </Link>
+        </LocaleLink>
       }
     >
       <Seo

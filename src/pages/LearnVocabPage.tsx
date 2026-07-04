@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { ArrowRight, BookOpen, ChevronRight, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -55,9 +56,9 @@ export default function LearnVocabPage() {
     return (
       <PageShell title="Language not found" subtitle="That language is not yet supported.">
         <p className="text-brand-200/80">
-          <Link to="/languages" className="text-sky-300 hover:underline">
+          <LocaleLink to="/languages" className="text-sky-300 hover:underline">
             ← Pick a language
-          </Link>
+          </LocaleLink>
         </p>
       </PageShell>
     );

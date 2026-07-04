@@ -25,6 +25,7 @@ import LearnVocabPage from "./pages/LearnVocabPage";
 import LearnScenarioPage from "./pages/LearnScenarioPage";
 import { useAuthStore } from "./store/authStore";
 import i18n, { SUPPORTED_LANGUAGES, type SupportedLanguage } from "./lib/i18n";
+import { LocaleLink } from "./components/LocaleLink";
 
 /**
  * Syncs the active i18n language to the `:locale` URL segment.
@@ -153,11 +154,11 @@ export default function App() {
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 md:flex-row md:justify-between md:px-8">
             <div>{t("footer.copyright", { year: new Date().getFullYear() })}</div>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <a href="/faq" className="hover:text-white">{t("nav.faq")}</a>
+              <LocaleLink to="/faq" className="hover:text-white">{t("nav.faq")}</LocaleLink>
               <span className="text-white/10">·</span>
-              <a href="/blog" className="hover:text-white">{t("nav.blog")}</a>
+              <LocaleLink to="/blog" className="hover:text-white">{t("nav.blog")}</LocaleLink>
               <span className="text-white/10">·</span>
-              <a href="/courses" className="hover:text-white">{t("nav.courses")}</a>
+              <LocaleLink to="/courses" className="hover:text-white">{t("nav.courses")}</LocaleLink>
             </div>
           </div>
         </footer>

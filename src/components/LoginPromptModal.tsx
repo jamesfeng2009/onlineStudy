@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { X, LogIn } from "lucide-react";
+import { useLocalePath } from "./LocaleLink";
 
 export default function LoginPromptModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const loginPath = useLocalePath("/login");
+  const registerPath = useLocalePath("/register");
 
   return (
     <div
@@ -35,13 +38,13 @@ export default function LoginPromptModal({ onClose }: { onClose: () => void }) {
 
         <div className="mt-5 flex gap-2">
           <button
-            onClick={() => navigate("/login")}
+            onClick={() => navigate(loginPath)}
             className="flex-1 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-fuchsia-500/30 transition hover:shadow-fuchsia-500/50"
           >
             {t("loginPrompt.login")}
           </button>
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate(registerPath)}
             className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-brand-100 transition hover:bg-white/10"
           >
             {t("loginPrompt.register")}

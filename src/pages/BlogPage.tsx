@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { ArrowRight, BookOpen, Loader2 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -143,12 +144,12 @@ export default function BlogPage() {
                 {t("blog.ctaDesc")}
               </p>
             </div>
-            <Link
+            <LocaleLink
               to="/register"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30"
             >
               {t("blog.cta")} <ArrowRight className="h-4 w-4" />
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </div>

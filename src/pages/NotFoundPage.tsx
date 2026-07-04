@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 import { Compass, Home, Search } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -65,19 +66,19 @@ export default function NotFoundPage() {
             <Home className="h-4 w-4" />
             {t("notFound.goHome", { defaultValue: "Homepage" })}
           </Link>
-          <Link
+          <LocaleLink
             to="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
           >
             <Search className="h-4 w-4" />
             {t("notFound.browseCourses", { defaultValue: "Browse courses" })}
-          </Link>
-          <Link
+          </LocaleLink>
+          <LocaleLink
             to="/blog"
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
           >
             {t("notFound.readBlog", { defaultValue: "Read the blog" })}
-          </Link>
+          </LocaleLink>
         </div>
       </div>
     </PageShell>

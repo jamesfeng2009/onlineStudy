@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
+import { useLocalePath } from "../components/LocaleLink";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import { LANGUAGES } from "../data/languages";
@@ -17,6 +18,7 @@ export default function ProfilePage() {
   const updateProfile = useAuthStore((s) => s.updateProfile);
   const progress = useProgressStore((s) => s.progress);
   const navigate = useNavigate();
+  const loginPath = useLocalePath("/login");
 
   const [username, setUsername] = useState(user?.username ?? "");
   const [goal, setGoal] = useState<number>(user?.goalMinutesPerDay ?? 30);
@@ -45,7 +47,7 @@ export default function ProfilePage() {
           <div className="mt-4 text-white">
             <p>{t("profile.pleaseLogin")}</p>
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(loginPath)}
               className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
               {t("profile.goLogin")}

@@ -4,7 +4,7 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildFaqLd, buildBreadcrumbLd } from "../components/JsonLd";
-import { Link } from "react-router-dom";
+import LocaleLink from "../components/LocaleLink";
 
 export default function FaqPage() {
   const { t } = useTranslation();
@@ -75,12 +75,12 @@ export default function FaqPage() {
             <p className="mx-auto mt-2 max-w-xl text-sm text-brand-200/70 md:text-base">
               {t("faq.ctaDesc")}
             </p>
-            <Link
+            <LocaleLink
               to="/register"
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30"
             >
               {t("faq.cta")}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </div>
