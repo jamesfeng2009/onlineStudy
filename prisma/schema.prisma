@@ -43,6 +43,7 @@ model Course {
   courseOrder  Int      @default(0)
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  userProgress UserCourseProgress[]
 
   @@map("courses")
 }
@@ -58,6 +59,7 @@ model WordBank {
 
   language      Language                @relation(fields: [languageCode], references: [code], onDelete: Cascade)
   translations  WordBankTranslation[]
+  userReviews   UserWordReview[]
 
   @@map("word_bank")
   @@index([languageCode, level])
@@ -90,6 +92,7 @@ model Quiz {
 
   language      Language           @relation(fields: [languageCode], references: [code], onDelete: Cascade)
   translations  QuizTranslation[]
+  userReviews   UserQuizReview[]
 
   @@map("quizzes")
   @@index([languageCode, level])
@@ -119,6 +122,7 @@ model Listening {
   listenOrder  Int    @default(0)
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  userProgress UserListeningProgress[]
 
   @@map("listening")
   @@index([languageCode, level])
@@ -134,6 +138,7 @@ model Speaking {
   speakOrder   Int     @default(0)
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  userProgress UserSpeakingProgress[]
 
   @@map("speaking")
   @@index([languageCode, level])
@@ -169,6 +174,14 @@ model User {
   likedPosts      LikePost[]
   comments        Comment[]
   subscription    Subscription?
+  // P0: 学习进度
+  wordReviews     UserWordReview[]
+  courseProgress  UserCourseProgress[]
+  quizReviews     UserQuizReview[]
+  // P1: 练习记录
+  listeningProgress UserListeningProgress[]
+  speakingProgress  UserSpeakingProgress[]
+  achievements      UserAchievement[]
 
   @@unique([oauthProvider, oauthId])
   @@map("users")
@@ -333,4 +346,136 @@ model BlogPostView {
   @@map("blog_post_views")
   @@index([postId])
   @@index([viewedAt(sort: Desc)])
+}
+
+// ============================================================
+// P0: 用户学习进度核心表
+// ============================================================
+
+// 单词记忆状态（SM2 间隔重复）
+model UserWordReview {
+  id              String   @id @default(uuid())
+  userId          String
+  wordBankId      String
+  easeFactor      Float    @default(2.5)
+  interval        Int      @default(1)      // 天
+  repetitions     Int      @default(0)
+  nextReviewAt    DateTime @default(now())
+  lastReviewAt    DateTime?
+  lastRating      String?  // remembered | fuzzy | forgot
+  totalReviews    Int      @default(0)
+  correctReviews  Int      @default(0)
+  isLearned       Boolean  @default(false)  // 首次记住后 true
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wordBank WordBank @relation(fields: [wordBankId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, wordBankId])
+  @@index([userId, nextReviewAt])
+  @@map("user_word_reviews")
+}
+
+// 课程/课时进度
+model UserCourseProgress {
+  id               String    @id @default(uuid())
+  userId           String
+  courseId         String
+  status           String    @default("not_started") // not_started | in_progress | completed
+  currentLesson    Int       @default(0)
+  completedLessons Json      @default("[]")           // [1, 2, 3] 已完成课时
+  progressPercent  Int       @default(0)
+  startedAt       DateTime?
+  completedAt      DateTime?
+  lastStudiedAt   DateTime?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@index([userId, lastStudiedAt])
+  @@map("user_course_progress")
+}
+
+// 测验作答记录（SM2 + 错题本）
+model UserQuizReview {
+  id              String    @id @default(uuid())
+  userId          String
+  quizId          String
+  easeFactor      Float     @default(2.5)
+  interval        Int       @default(1)
+  repetitions     Int      @default(0)
+  nextReviewAt    DateTime  @default(now())
+  lastReviewAt    DateTime?
+  wrongCount      Int      @default(0)
+  lastWrongAt     DateTime?
+  isMastered      Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, quizId])
+  @@index([userId, nextReviewAt])
+  @@index([userId, isMastered])
+  @@map("user_quiz_reviews")
+}
+
+// ============================================================
+// P1: 用户练习记录
+// ============================================================
+
+// 听力练习进度
+model UserListeningProgress {
+  id              String    @id @default(uuid())
+  userId          String
+  listeningId     String
+  status          String    @default("not_started") // not_started | in_progress | completed
+  blankResults    Json      @default("[]")           // [{ index, correct, userAnswer }]
+  correctCount    Int       @default(0)
+  totalBlanks     Int       @default(0)
+  attempts        Int       @default(0)
+  bestAccuracy    Int       @default(0)              // 最佳正确率 %
+  completedAt     DateTime?
+  lastPracticedAt DateTime?
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listening Listening @relation(fields: [listeningId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listeningId])
+  @@index([userId, lastPracticedAt])
+  @@map("user_listening_progress")
+}
+
+// 口语跟读记录
+model UserSpeakingProgress {
+  id              String    @id @default(uuid())
+  userId          String
+  speakingId      String
+  attempts        Int       @default(0)
+  scoreHistory    Json      @default("[]")           // [{ score, timestamp, audioUrl? }]
+  bestScore       Int       @default(0)              // 0-100
+  lastScore       Int       @default(0)
+  isCompleted     Boolean   @default(false)           // 达到 60 分视为完成
+  lastPracticedAt DateTime?
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  speaking Speaking @relation(fields: [speakingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, speakingId])
+  @@index([userId, lastPracticedAt])
+  @@map("user_speaking_progress")
+}
+
+// 成就解锁记录
+model UserAchievement {
+  id          String   @id @default(uuid())
+  userId      String
+  badgeKey    String                                  // 对应 badges.ts 里的 key
+  unlockedAt  DateTime @default(now())
+  isRead      Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeKey])
+  @@index([userId, isRead])
+  @@map("user_achievements")
 }
