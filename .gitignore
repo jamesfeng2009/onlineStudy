@@ -20,8 +20,9 @@ server/dist
 server/**/*.js
 server/**/*.js.map
 server/**/*.d.ts
-!server/lib/prisma-generated/**
-server/lib/prisma-generated/client/*.node
+# Prisma generated client — build artifact, do not commit.
+# Each environment regenerates it via `prisma generate`.
+server/lib/prisma-generated/
 dist-ssr
 *.local
 
