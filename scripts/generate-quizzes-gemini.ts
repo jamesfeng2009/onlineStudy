@@ -151,7 +151,7 @@ const dryRun = process.argv.includes("--dry-run");
 // `target` is the human language the model writes the question + explain in.
 // `levelHint` is the extra context we feed the model so it knows what
 // grammar to test at that level.
-type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de";
+type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
 
 const LANG_NAMES: Record<LangKey, { native: string; english: string }> = {
   en: { native: "English", english: "English" },
@@ -161,6 +161,9 @@ const LANG_NAMES: Record<LangKey, { native: string; english: string }> = {
   es: { native: "Español", english: "Spanish" },
   fr: { native: "Français", english: "French" },
   de: { native: "Deutsch", english: "German" },
+  it: { native: "Italiano", english: "Italian" },
+  th: { native: "ภาษาไทย", english: "Thai" },
+  yue: { native: "粵語", english: "Cantonese (traditional, Hong Kong)" },
 };
 
 const LEVELS: Record<LangKey, string[]> = {
@@ -171,6 +174,9 @@ const LEVELS: Record<LangKey, string[]> = {
   es: ["A1", "A2", "B1", "B2"],
   fr: ["A1", "A2", "B1", "B2"],
   de: ["A1", "A2", "B1", "B2"],
+  it: ["A1", "A2", "B1", "B2"],
+  th: ["A1", "A2", "B1", "B2"],
+  yue: ["初级", "中级", "高级"],
 };
 
 const LEVEL_HINT: Record<string, string> = {
@@ -194,6 +200,10 @@ const LEVEL_HINT: Record<string, string> = {
   중급: "Korean intermediate (TOPIK I level 3-4): -고 있다 vs -아/어 있다, -(으)니까, -(으)면, -(으)ㄹ 거예요 future, plain speech in narration, basic honorific 시/-(으)세요.",
   고급: "Korean advanced (TOPIK II level 5-6): -(으)므로, -(으)ㄹ수록, -아/어도, complex connective -(으)며, double passive/causative (시키다/어떠하다), written register 요체 → 합쇼체.",
   심화: "Korean mastery (TOPIK II level 6+): literary connective -(으)되, -거니와, -다기보다(는), complex honorifics (께서/드시다), -더라/-던 modifier nuance, news/article register.",
+  // Cantonese (no official CEFR; we use a 3-tier system)
+  初级: "Cantonese beginner (CEFR A1-equivalent): 喺/去/有 + place, 係 + noun (係學生), 唔 + verb negation, 嗰個/呢個 demonstratives, basic final particles (啦/㗎/喎), 咁 (then/so), numbers with 幾/點.",
+  中级: "Cantonese intermediate (CEFR A2-B1-equative): 緊 progressive (食緊飯), 咗 perfective (食咗), 過 experiential (見過), 唔通...咩 rhetorical, 緊要/最緊要, 所以/因為 cause-effect, 仲 (still/yet), 先 (first/before), 先...再 (first...then).",
+  高级: "Cantonese advanced (CEFR B2+): 落去/起上嚟 directional complements, 啲/啲嘢 partitive, 啲唔啲 contrastive, 咁...咁 (the more...the more), 連...都/都...連 focus, 唔止...仲 (not only...also), formal news Cantonese vs colloquial speech register shifts.",
 };
 
 // ---------- Schema ----------
@@ -281,12 +291,22 @@ function repairJson(input: string): string {
 function buildPrompt(lang: LangKey, level: string, count: number): string {
   const { native, english } = LANG_NAMES[lang];
   const lvl = LEVEL_HINT[level] ?? "";
+  const langSpecific: string[] = [];
+  if (lang === "yue") {
+    langSpecific.push(
+      `Script: traditional Chinese characters, Hong Kong Cantonese vocabulary (NOT Mandarin, NOT simplified).`,
+      `Do not use Mandarin-only particles (的/了/吗/呢). Use Cantonese particles (嘅/咗/嗎/喎/㗎/啦).`,
+    );
+  } else if (lang === "th") {
+    langSpecific.push(`Script: Thai script only. Do not use romanization or transliteration in the question or options.`);
+  }
   return [
     `You are a senior ${english} language teacher writing a CEFR-level grammar drill.`,
     ``,
     `Target language: ${english} (${native})`,
     `Level: ${level}`,
     `Grammar scope: ${lvl}`,
+    ...(langSpecific.length ? ["", ...langSpecific] : []),
     ``,
     `Produce exactly ${count} multiple-choice grammar questions. Each question must:`,
     `  1. Be a single sentence in ${english} with a blank or one of four choices to fill in.`,
