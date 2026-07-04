@@ -28,8 +28,30 @@ interface ProgressState {
   postsError: string | null;
   refresh: () => Promise<{ ok: boolean; error?: string }>;
   refreshPosts: (topic?: string) => Promise<{ ok: boolean; error?: string }>;
-  recordWord: (correct: boolean, language: string) => Promise<{ ok: boolean; error?: string }>;
-  recordQuiz: (correct: boolean, language: string) => Promise<{ ok: boolean; error?: string }>;
+  recordWord: (
+    correct: boolean,
+    details?:
+      | string
+      | {
+          itemId?: string;
+          language?: string;
+          level?: string;
+          root?: string;
+        },
+  ) => Promise<{ ok: boolean; error?: string }>;
+  recordQuiz: (
+    correct: boolean,
+    details?:
+      | string
+      | {
+          itemId?: string;
+          language?: string;
+          level?: string;
+          selectedOption?: number;
+          correctOption?: number;
+          grammarPointId?: string;
+        },
+  ) => Promise<{ ok: boolean; error?: string }>;
   recordSpeaking: (minutes: number, language: string) => Promise<{ ok: boolean; error?: string }>;
   recordListening: (minutes: number, language: string) => Promise<{ ok: boolean; error?: string }>;
   createPost: (topic: string, content: string) => Promise<{ ok: boolean; error?: string }>;
@@ -72,9 +94,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
     }
   },
 
-  async recordWord(correct, language) {
+  async recordWord(correct, details) {
     try {
-      const data = await api.recordWord(correct, language);
+      const data = await api.recordWord(correct, details);
       set({ progress: data });
       return { ok: true };
     } catch (err: unknown) {
@@ -82,9 +104,9 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
     }
   },
 
-  async recordQuiz(correct, language) {
+  async recordQuiz(correct, details) {
     try {
-      const data = await api.recordQuiz(correct, language);
+      const data = await api.recordQuiz(correct, details);
       set({ progress: data });
       return { ok: true };
     } catch (err: unknown) {

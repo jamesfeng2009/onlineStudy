@@ -90,9 +90,19 @@ function main() {
 
   for (const [lang, items] of Object.entries(byLang)) {
     lines.push(`  // ── ${lang} (${items.length} items) ──`);
-    for (const q of items) {
+    // Rewrite volatile ids (e.g. "q-en-a1-gemini-1-mr60t6zm") into
+    // stable ones ("q-en-A1-001") so the SRS / mistake-log subsystem
+    // can track cards across regenerations. Sort by original id first
+    // so the assignment is deterministic across runs.
+    const sorted = [...items].sort((a, b) => a.id.localeCompare(b.id));
+    const seenLevelCount: Record<string, number> = {};
+    for (const q of sorted) {
+      const lvl = q.level ?? "?";
+      seenLevelCount[lvl] = (seenLevelCount[lvl] ?? 0) + 1;
+      const n = String(seenLevelCount[lvl]).padStart(3, "0");
+      const stableId = `q-${lang}-${lvl}-${n}`;
       lines.push(
-        `  { id: ${JSON.stringify(q.id)}, question: ${JSON.stringify(q.question)}, options: ${JSON.stringify(q.options)}, answer: ${q.answer}, explain: ${JSON.stringify(q.explain)}, language: ${JSON.stringify(q.language)}, level: ${JSON.stringify(q.level)} },`
+        `  { id: ${JSON.stringify(stableId)}, question: ${JSON.stringify(q.question)}, options: ${JSON.stringify(q.options)}, answer: ${q.answer}, explain: ${JSON.stringify(q.explain)}, language: ${JSON.stringify(q.language)}, level: ${JSON.stringify(q.level)} },`
       );
     }
   }

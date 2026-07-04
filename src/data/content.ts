@@ -31,7 +31,7 @@ export const WORDS: WordItem[] = [
   { id: "w-zh-2", word: "谢谢 (xièxie)", translation: "谢谢", phonetic: "xièxie", example: "谢谢你的帮助。", language: "zh", level: "HSK1" },
   { id: "w-zh-3", word: "吃饭 (chīfàn)", translation: "吃饭", phonetic: "chī fàn", example: "我们中午一起吃饭吧。", language: "zh", level: "HSK1" },
   { id: "w-zh-4", word: "朋友 (péngyou)", translation: "朋友", phonetic: "péng you", example: "他是我的好朋友。", language: "zh", level: "HSK1" },
-  { id: "w-zh-5", word: "学习 (xuéxí)", translation: "学习", phonetic: "xué xí", example: "我每天学习三个小时。", language: "zh", level: "HSK2" },
+  { id: "w-zh-5", word: "学习 (xuéxí)", translation: "学习", phonetic: "xué xí", example: "我每天学习三个小时。", language: "zh", level: "HSK2", pos: "verb", root: "学", rootMeaning: "to learn, to study", familyId: "fam-zh-xue" },
   { id: "w-zh-6", word: "开始 (kāishǐ)", translation: "开始", phonetic: "kāi shǐ", example: "课程八点开始。", language: "zh", level: "HSK2" },
   { id: "w-zh-7", word: "准备 (zhǔnbèi)", translation: "准备", phonetic: "zhǔn bèi", example: "我已经准备好了。", language: "zh", level: "HSK2" },
   { id: "w-zh-8", word: "觉得 (juéde)", translation: "觉得", phonetic: "jué de", example: "我觉得这个主意很好。", language: "zh", level: "HSK2" },

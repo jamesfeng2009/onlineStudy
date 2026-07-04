@@ -19,6 +19,7 @@ interface ListenItem {
   id: string;
   title: string;
   script: string;
+  tokens?: string[];
   blanks: { index: number; answer: string }[];
   language: string;
   level: string;
@@ -95,9 +96,12 @@ function normalizeListening(item: ListenItem): ListenItem | null {
   if (fixedBlanks.length === 0) return null;
 
   // Re-join script with single spaces so the frontend's split(' ')
-  // produces exactly the same tokens we used here.
+  // produces exactly the same tokens we used here. Also expose `tokens`
+  // as a pre-tokenized array so CJK languages (zh/yue/ja) no longer
+  // rely on the brittle string-split hack — frontend prefers `tokens`
+  // when present and falls back to `script.split(" ")` for legacy data.
   const fixedScript = tokens.join(" ");
-  return { ...item, script: fixedScript, blanks: fixedBlanks };
+  return { ...item, script: fixedScript, tokens, blanks: fixedBlanks };
 }
 
 function groupByLang<T extends { language: string; level: string }>(items: T[]): Record<string, T[]> {
@@ -130,8 +134,11 @@ function emitListening(items: ListenItem[], labels: string[]): string {
       const blanksStr = item.blanks
         .map((b) => `{ index: ${b.index}, answer: ${JSON.stringify(b.answer)} }`)
         .join(", ");
+      const tokensStr = item.tokens
+        ? `, tokens: [${item.tokens.map((t) => JSON.stringify(t)).join(", ")}]`
+        : "";
       lines.push(
-        `  { id: ${JSON.stringify(item.id)}, title: ${JSON.stringify(item.title)}, script: ${JSON.stringify(item.script)}, blanks: [${blanksStr}], language: ${JSON.stringify(item.language)}, level: ${JSON.stringify(item.level)} },`
+        `  { id: ${JSON.stringify(item.id)}, title: ${JSON.stringify(item.title)}, script: ${JSON.stringify(item.script)}${tokensStr}, blanks: [${blanksStr}], language: ${JSON.stringify(item.language)}, level: ${JSON.stringify(item.level)} },`
       );
     }
   }

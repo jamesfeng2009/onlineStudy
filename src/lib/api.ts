@@ -123,12 +123,67 @@ export async function getProgress(): Promise<Record<string, unknown>> {
   return request("/progress/me", {}, true);
 }
 
-export async function recordWord(correct: boolean, _language?: string): Promise<Record<string, unknown>> {
-  return request("/progress/record-word", { method: "POST", body: JSON.stringify({ correct }) }, true);
+/**
+ * Optional details attached to a recordWord call. Used by the SRS / mistake
+ * log subsystem (Phase 3 review layer). Older backends will silently ignore
+ * these fields, so passing them is always safe.
+ */
+export interface RecordWordDetails {
+  /** Stable id of the word card the user just answered (e.g. "w-en-1"). */
+  itemId?: string;
+  /** Target language code, e.g. "en", "zh", "yue". */
+  language?: string;
+  /** CEFR-equivalent level, e.g. "A1", "HSK1", "N5", "初级". */
+  level?: string;
+  /** Latin/Greek root if known, e.g. "port" for "portable". Enables root-based review. */
+  root?: string;
+}
+export interface RecordQuizDetails {
+  /** Stable id of the quiz the user just answered. */
+  itemId?: string;
+  /** Target language code. */
+  language?: string;
+  /** CEFR-equivalent level. */
+  level?: string;
+  /** Index of the option the user picked (0-3). */
+  selectedOption?: number;
+  /** Index of the correct option (=== q.answer). Sent for redundancy. */
+  correctOption?: number;
+  /** Grammar point id this quiz exercises, e.g. "present_simple_3rd_person". */
+  grammarPointId?: string;
 }
 
-export async function recordQuiz(correct: boolean, _language?: string): Promise<Record<string, unknown>> {
-  return request("/progress/record-quiz", { method: "POST", body: JSON.stringify({ correct }) }, true);
+export async function recordWord(
+  correct: boolean,
+  details?: RecordWordDetails | string,
+): Promise<Record<string, unknown>> {
+  // Keep `language` as a top-level field for back-compat with the old API
+  // signature (recordWord(correct, language)) — old code passing a string
+  // as the 2nd arg will be coerced into { language: <string> }.
+  const lang = typeof details === "string" ? details : details?.language;
+  const body: Record<string, unknown> = { correct, language: lang };
+  if (details && typeof details === "object") {
+    if (details.itemId) body.itemId = details.itemId;
+    if (details.level) body.level = details.level;
+    if (details.root) body.root = details.root;
+  }
+  return request("/progress/record-word", { method: "POST", body: JSON.stringify(body) }, true);
+}
+
+export async function recordQuiz(
+  correct: boolean,
+  details?: RecordQuizDetails | string,
+): Promise<Record<string, unknown>> {
+  const lang = typeof details === "string" ? details : details?.language;
+  const body: Record<string, unknown> = { correct, language: lang };
+  if (details && typeof details === "object") {
+    if (details.itemId) body.itemId = details.itemId;
+    if (details.level) body.level = details.level;
+    if (typeof details.selectedOption === "number") body.selectedOption = details.selectedOption;
+    if (typeof details.correctOption === "number") body.correctOption = details.correctOption;
+    if (details.grammarPointId) body.grammarPointId = details.grammarPointId;
+  }
+  return request("/progress/record-quiz", { method: "POST", body: JSON.stringify(body) }, true);
 }
 
 export async function recordSpeaking(minutes: number, _language?: string): Promise<Record<string, unknown>> {
