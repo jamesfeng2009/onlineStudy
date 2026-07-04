@@ -54,7 +54,7 @@ export const WORDS: WordItem[] = [
 ];
 
 export const QUIZZES: QuizItem[] = [
-  // ── Auto-generated quizzes from Gemini (190 items: en:20, ja:85, zh:85) ──
+  // ── Auto-generated quizzes from Gemini (449 items: en:50, ja:80, zh:80, ko:19, es:80, fr:80, de:60) ──
   ...GENERATED_QUIZZES,
   // ── Hand-crafted quizzes (kept for variety) ──
   {

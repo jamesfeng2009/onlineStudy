@@ -17,13 +17,13 @@
     "id": "q-ko-초급-gemini-2-mr5nygjl",
     "question": "누가 문 ___ 열었어요?",
     "options": [
-      "은",
-      "는",
       "이",
+      "을",
+      "는",
       "가"
     ],
-    "answer": 2,
-    "explain": "이/가 is a subject particle. '이' is used after a noun ending in a consonant, and 문 ends in a consonant.",
+    "answer": 1,
+    "explain": "「을」是宾格助词，用于有收音的名词后。「문을 열었어요」中「문」是「열다」（打开）的宾语，故用「을」。主格助词「이/가」标记主语，但「문」在此处是动作对象而非发出者。",
     "language": "ko",
     "level": "초급"
   },
@@ -36,8 +36,8 @@
       "을",
       "를"
     ],
-    "answer": 3,
-    "explain": "을/를 is an object particle. '를' is used after a noun ending in a vowel, and 물 ends in a consonant (but here it's asking for the correct particle for '물', which is '물 + 을'). Oh, wait, 물 ends in a consonant. So it should be '물을'. Re-checking. 물 (mul) ends in ㄹ, which is a consonant. So it should be 을. The answer should be 2. Let me fix the answer and explanation.",
+    "answer": 2,
+    "explain": "「을」是宾格助词，用于有收音的名词后。「물」收辅音「ㄹ」，故用「을」而非「를」。「물을 마셔요」意为「喝水」。",
     "language": "ko",
     "level": "초급"
   },
@@ -190,8 +190,8 @@
       "이",
       "가"
     ],
-    "answer": 1,
-    "explain": "은/는 can be used to show contrast or comparison between two subjects or topics. Here, it contrasts what the speaker likes with what the sibling likes.",
+    "answer": 0,
+    "explain": "「은」是主题助词，用于有收音的名词后。「동생」收辅音「ㅇ」，故用「은」。「동생은 오렌지를 좋아해요」意为「弟弟/妹妹喜欢橙子」。",
     "language": "ko",
     "level": "초급"
   },

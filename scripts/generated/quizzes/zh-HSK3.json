@@ -3,13 +3,13 @@
     "id": "q-zh-hsk3-gemini-1-mr5nwwir",
     "question": "我的手机昨天___小偷拿走了。",
     "options": [
-      "给",
-      "让",
       "被",
-      "叫"
+      "把",
+      "对",
+      "向"
     ],
-    "answer": 2,
-    "explain": "\"被\" is a common passive marker in Chinese, indicating that the subject is the receiver of the action. It is often used when the agent is known or implied, as in this case where \"小偷\" (thief) is the agent.",
+    "answer": 0,
+    "explain": "「被」是书面语中标准的被动标记，引出施事者。「把/对/向」不能引出施事者作被动。",
     "language": "zh",
     "level": "HSK3"
   },
@@ -99,7 +99,7 @@
   },
   {
     "id": "q-zh-hsk3-gemini-8-mr5nwwir",
-    "question": "我等了他___晚上九点。",
+    "question": "我等他 ___ 晚上九点才回来。",
     "options": [
       "自从",
       "到",
@@ -107,7 +107,7 @@
       "从"
     ],
     "answer": 2,
-    "explain": "\"直到\" means \"until\" a certain time or event, indicating the end point of an action or state. It specifies the moment when an action or state ceases or concludes.",
+    "explain": "「直到」表示动作或状态延续到某个时间点。「等他直到晚上九点」表示等待动作持续到九点。",
     "language": "zh",
     "level": "HSK3"
   },
@@ -115,13 +115,13 @@
     "id": "q-zh-hsk3-gemini-9-mr5nwwir",
     "question": "那个盘子不小心___我打碎了。",
     "options": [
-      "把",
       "被",
-      "是",
-      "让"
+      "把",
+      "对",
+      "给"
     ],
-    "answer": 1,
-    "explain": "\"被\" is used in passive voice constructions to indicate that the subject is acted upon. It is often followed by the agent of the action (我) when the agent is known.",
+    "answer": 0,
+    "explain": "「被」是书面语被动标记，引出施事者。「把」是主动处置标记；「对/给」在此句法位置不能作被动。",
     "language": "zh",
     "level": "HSK3"
   },
@@ -253,15 +253,15 @@
   },
   {
     "id": "q-zh-hsk3-gemini-19-mr5nwwir",
-    "question": "这个孩子很聪明，___三岁的字___会写。",
+    "question": "这个孩子很聪明，___ 三岁的孩子 ___ 会写的字。",
     "options": [
-      "不仅...还",
-      "既然...就",
       "连...都",
-      "只有...才"
+      "不但...而且",
+      "虽然...但是",
+      "因为...所以"
     ],
-    "answer": 2,
-    "explain": "\"连...都\" emphasizes the surprising fact that \"even three-year-old characters\" can be written by the child, highlighting their exceptional intelligence for their age.",
+    "answer": 0,
+    "explain": "「连...都」用于强调极端情况，意为「甚至」。「连三岁的孩子都会写的字」强调这个字非常简单，连幼儿都会写。",
     "language": "zh",
     "level": "HSK3"
   },
