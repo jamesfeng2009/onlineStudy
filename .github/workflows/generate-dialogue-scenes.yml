@@ -1,0 +1,83 @@
+name: Generate dialogue scenes
+
+# Manually triggered: batch-generate multi-turn dialogue scenes
+# for the conversation module via Google Gemini.
+#
+# Workflow:
+#   1. Generate 4 langs × 6 scenarios = 24 scenes (or filtered subset).
+#   2. Validate each scene against the 4 defenses.
+#   3. Merge into src/data/dialogue-scenes.ts.
+#   4. Commit + push if anything changed.
+#
+# Trigger this workflow from the Actions tab after you've reviewed
+# the hand-authored scenes and want to expand coverage.
+
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "Limit to a single language (en|zh|ja|yue) — leave empty for all"
+        required: false
+        type: string
+        default: ""
+      scenario:
+        description: "Limit to a single scenario (hotel|phone-call|interview|transport|shopping-clothes|small-talk) — leave empty for all"
+        required: false
+        type: string
+        default: ""
+      overwrite:
+        description: "Overwrite existing generated files (default: skip existing)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate scenes
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: "gemini-2.0-flash"
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.lang }}" ]; then ARGS="$ARGS --lang=${{ inputs.lang }}"; fi
+          if [ -n "${{ inputs.scenario }}" ]; then ARGS="$ARGS --scenario=${{ inputs.scenario }}"; fi
+          if [ "${{ inputs.overwrite }}" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
+          pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS
+
+      - name: Validate (strict: warnings fail too)
+        run: pnpm tsx scripts/validate-dialogue-scenes.ts --strict || echo "::warning::Some scenes have warnings — review before merging."
+
+      - name: Merge into src/data/dialogue-scenes.ts
+        run: pnpm tsx scripts/merge-dialogue-scenes.ts
+
+      - name: Build to verify merge compiles
+        run: pnpm build
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin main
+          if ! git diff --quiet -- src/data/dialogue-scenes.ts scripts/generated/dialogues/ || \
+             ! git ls-files --others --exclude-standard src/data/dialogue-scenes.ts scripts/generated/dialogues/ | grep -q .; then
+            git add src/data/dialogue-scenes.ts scripts/generated/dialogues/
+            git commit -m "chore(dialogues): batch-generate via Gemini [skip ci]"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
