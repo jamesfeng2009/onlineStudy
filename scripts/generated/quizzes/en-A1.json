@@ -1,49 +1,91 @@
 [
   {
-    "id": "q-en-a1-gemini-1-mr5yw1p6",
-    "question": "My name ___ John.",
+    "id": "q-en-a1-gemini-1-mr60t6zm",
+    "question": "My favorite color ___ blue.",
     "options": [
       "am",
-      "are",
       "is",
+      "are",
+      "be"
+    ],
+    "answer": 1,
+    "explain": "Use 'is' for singular subjects like 'My favorite color'. 'Am' is for 'I' and 'are' is for plural subjects or 'you'.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-2-mr60t6zm",
+    "question": "They ___ happy to be here.",
+    "options": [
+      "is",
+      "am",
+      "are",
       "be"
     ],
     "answer": 2,
-    "explain": "For singular subjects like 'My name' (which is 'it'), we use the verb 'is' in the present tense. 'Am' is for 'I', and 'are' is for 'you/we/they'.",
+    "explain": "Use 'are' with plural subjects like 'they'. 'Is' is for singular subjects and 'am' is for 'I'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-2-mr5yw1p6",
-    "question": "They ___ students at this school.",
+    "id": "q-en-a1-gemini-3-mr60t6zm",
+    "question": "I ___ a student.",
     "options": [
-      "am",
       "is",
+      "are",
       "be",
-      "are"
+      "am"
     ],
     "answer": 3,
-    "explain": "For plural subjects like 'They', we use the verb 'are' in the present tense. 'Is' is for singular subjects, and 'am' is for 'I'.",
+    "explain": "Use 'am' only with the subject 'I'. 'Is' is for singular subjects and 'are' is for plural subjects or 'you'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-3-mr5yw1p6",
-    "question": "I ___ a new car.",
+    "id": "q-en-a1-gemini-4-mr60t6zm",
+    "question": "We ___ a new car.",
     "options": [
       "has",
+      "is",
       "have",
-      "having",
-      "is having"
+      "are"
     ],
-    "answer": 1,
-    "explain": "For the subject 'I', we use 'have' in the present simple tense to show possession. 'Has' is used for he/she/it.",
+    "answer": 2,
+    "explain": "Use 'have' with plural subjects like 'we' and 'they', and also with 'I' and 'you'. 'Has' is used with singular subjects like 'he', 'she', 'it'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-4-mr5yw1p6",
-    "question": "She ___ to the park every day.",
+    "id": "q-en-a1-gemini-5-mr60t6zm",
+    "question": "She ___ a beautiful dog.",
+    "options": [
+      "have",
+      "is",
+      "are",
+      "has"
+    ],
+    "answer": 3,
+    "explain": "Use 'has' with singular subjects like 'she', 'he', 'it'. 'Have' is used with 'I', 'you', 'we', 'they'.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-6-mr60t6zm",
+    "question": "I ___ to work by train.",
+    "options": [
+      "goes",
+      "went",
+      "go",
+      "going"
+    ],
+    "answer": 2,
+    "explain": "For the simple present tense, use 'go' with 'I', 'you', 'we', and 'they'. 'Goes' is used with 'he', 'she', 'it'.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-7-mr60t6zm",
+    "question": "He ___ to the park on Sundays.",
     "options": [
       "go",
       "goes",
@@ -51,217 +93,189 @@
       "going"
     ],
     "answer": 1,
-    "explain": "For third-person singular subjects like 'She', we add '-es' to the verb 'go' in the present simple tense. So, 'she goes'.",
+    "explain": "For the simple present tense, use 'goes' with 'he', 'she', and 'it'. 'Go' is used with 'I', 'you', 'we', 'they'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-5-mr5yw1p6",
-    "question": "We ___ English in class.",
+    "id": "q-en-a1-gemini-8-mr60t6zm",
+    "question": "They ___ English.",
     "options": [
-      "study",
       "studies",
       "studying",
-      "studied"
+      "studied",
+      "study"
     ],
-    "answer": 0,
-    "explain": "For the subject 'We', we use the base form of the verb 'study' in the present simple tense. 'Studies' is for he/she/it.",
+    "answer": 3,
+    "explain": "In the simple present tense, for subjects 'I', 'you', 'we', 'they', the verb remains in its base form. 'Studies' is for 'he', 'she', 'it'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-7-mr5yw1p6",
-    "question": "He ___ a doctor.",
-    "options": [
-      "am",
-      "is",
-      "are",
-      "be"
-    ],
-    "answer": 1,
-    "explain": "For singular subjects like 'He', we use the verb 'is' in the present tense. 'Am' is for 'I', and 'are' is for 'you/we/they'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-8-mr5yw1p6",
-    "question": "My cat ___ milk.",
-    "options": [
-      "like",
-      "likes",
-      "liking",
-      "liked"
-    ],
-    "answer": 1,
-    "explain": "For third-person singular subjects like 'My cat' (which is 'it'), we add '-s' to the verb 'like' in the present simple tense. So, 'likes'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-9-mr5yw1p6",
-    "question": "They ___ coffee in the morning.",
+    "id": "q-en-a1-gemini-9-mr60t6zm",
+    "question": "She ___ coffee every morning.",
     "options": [
       "drink",
-      "drinks",
+      "drinking",
       "drank",
-      "drinking"
+      "drinks"
     ],
-    "answer": 0,
-    "explain": "For the plural subject 'They', we use the base form of the verb 'drink' in the present simple tense. 'Drinks' is for he/she/it.",
+    "answer": 3,
+    "explain": "In the simple present tense, for subjects 'he', 'she', 'it', add '-s' or '-es' to the verb. 'Drink' is for 'I', 'you', 'we', 'they'.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-10-mr5yw1p6",
+    "id": "q-en-a1-gemini-10-mr60t6zm",
+    "question": "We ___ like cold weather.",
+    "options": [
+      "does not",
+      "is not",
+      "do not",
+      "are not"
+    ],
+    "answer": 2,
+    "explain": "To form negative sentences in the simple present tense with 'I', 'you', 'we', 'they', use 'do not' before the base verb. 'Does not' is for 'he', 'she', 'it'.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-11-mr60t6zm",
+    "question": "He ___ play tennis.",
+    "options": [
+      "do not",
+      "does not",
+      "is not",
+      "are not"
+    ],
+    "answer": 1,
+    "explain": "To form negative sentences in the simple present tense with 'he', 'she', 'it', use 'does not' before the base verb. 'Do not' is for 'I', 'you', 'we', 'they'.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-12-mr60t6zm",
+    "question": "I have ___ red pen.",
+    "options": [
+      "an",
+      "the",
+      "a",
+      "some"
+    ],
+    "answer": 2,
+    "explain": "Use 'a' before singular nouns that start with a consonant sound. 'An' is used before singular nouns that start with a vowel sound.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-13-mr60t6zm",
+    "question": "She wants ___ apple.",
+    "options": [
+      "a",
+      "the",
+      "some",
+      "an"
+    ],
+    "answer": 3,
+    "explain": "Use 'an' before singular nouns that start with a vowel sound (a, e, i, o, u). 'A' is used before singular nouns that start with a consonant sound.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-14-mr60t6zm",
+    "question": "___ sun is very hot today.",
+    "options": [
+      "A",
+      "An",
+      "Some",
+      "The"
+    ],
+    "answer": 3,
+    "explain": "Use 'the' when referring to something specific or unique, like 'the sun'. 'A' and 'an' are for general, non-specific items.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-15-mr60t6zn",
     "question": "The book is ___ the table.",
     "options": [
       "in",
       "at",
       "on",
-      "to"
+      "under"
     ],
     "answer": 2,
-    "explain": "We use the preposition 'on' to say that something is physically located on the surface of another object, like a book on a table.",
+    "explain": "Use 'on' to say something is physically touching and supported by a surface. 'In' is for being inside something.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-11-mr5yw1p6",
-    "question": "I usually ___ up early.",
-    "options": [
-      "get",
-      "gets",
-      "got",
-      "getting"
-    ],
-    "answer": 0,
-    "explain": "For the subject 'I', we use the base form of the verb 'get' in the present simple tense. 'Gets' is for he/she/it.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-12-mr5yw1p6",
-    "question": "She ___ two sisters.",
-    "options": [
-      "have",
-      "has",
-      "having",
-      "is having"
-    ],
-    "answer": 1,
-    "explain": "For the subject 'She', we use 'has' in the present simple tense to show possession. 'Have' is used for I/you/we/they.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-13-mr5yw1p6",
-    "question": "We ___ to the cinema tomorrow.",
-    "options": [
-      "go",
-      "goes",
-      "going",
-      "went"
-    ],
-    "answer": 0,
-    "explain": "For the subject 'We', we use the base form of the verb 'go' in the present simple tense for future plans. 'Goes' is for he/she/it.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-14-mr5yw1p6",
-    "question": "He ___ not happy.",
-    "options": [
-      "am",
-      "are",
-      "is",
-      "be"
-    ],
-    "answer": 2,
-    "explain": "For singular subjects like 'He', we use the verb 'is' in the present tense for negatives. 'Am' is for 'I', and 'are' is for 'you/we/they'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-15-mr5yw1p6",
-    "question": "I live ___ a big city.",
+    "id": "q-en-a1-gemini-16-mr60t6zn",
+    "question": "My keys are ___ my bag.",
     "options": [
       "on",
       "at",
+      "next",
+      "in"
+    ],
+    "answer": 3,
+    "explain": "Use 'in' to indicate something is inside a container or enclosed space. 'On' means it is on the surface.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-17-mr60t6zn",
+    "question": "We have lunch ___ noon.",
+    "options": [
+      "on",
       "in",
+      "at",
       "to"
     ],
     "answer": 2,
-    "explain": "We use the preposition 'in' for large areas like cities, countries, or regions. 'At' is for specific points or smaller locations.",
+    "explain": "Use 'at' for specific times, such as 'at noon' or 'at 3 o'clock'. 'On' is for days and dates, and 'in' is for months and seasons.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-16-mr5yw1p6",
-    "question": "There are three ___ in the garden.",
+    "id": "q-en-a1-gemini-18-mr60t6zn",
+    "question": "The party is ___ Saturday.",
     "options": [
-      "flower",
-      "flowers",
-      "flowering",
-      "flower's"
-    ],
-    "answer": 1,
-    "explain": "To make a noun plural, we usually add '-s' or '-es' to the end. Since there are 'three', we need the plural form 'flowers'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-17-mr5yw1p6",
-    "question": "This is ___ old house.",
-    "options": [
-      "a",
-      "an",
-      "the",
-      "one"
-    ],
-    "answer": 1,
-    "explain": "We use 'an' before words that start with a vowel sound. 'Old' starts with the vowel sound 'o'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-18-mr5yw1p6",
-    "question": "My parents ___ in the living room.",
-    "options": [
-      "is",
-      "am",
-      "are",
-      "be"
-    ],
-    "answer": 2,
-    "explain": "For plural subjects like 'My parents', we use the verb 'are' in the present tense. 'Is' is for singular subjects, and 'am' is for 'I'.",
-    "language": "en",
-    "level": "A1"
-  },
-  {
-    "id": "q-en-a1-gemini-19-mr5yw1p6",
-    "question": "The cat plays ___ a ball.",
-    "options": [
-      "to",
+      "in",
       "at",
-      "with",
+      "on",
       "for"
     ],
     "answer": 2,
-    "explain": "We use the preposition 'with' to indicate that something is used as a tool or companion. The cat plays using a ball.",
+    "explain": "Use 'on' for specific days of the week or dates. 'In' is for months or seasons, and 'at' is for specific times.",
     "language": "en",
     "level": "A1"
   },
   {
-    "id": "q-en-a1-gemini-20-mr5yw1p6",
-    "question": "She ___ TV in the evening.",
+    "id": "q-en-a1-gemini-19-mr60t6zn",
+    "question": "I have two ___ .",
     "options": [
-      "watch",
-      "watches",
-      "watching",
-      "watched"
+      "cat",
+      "cat's",
+      "cates",
+      "cats"
     ],
-    "answer": 1,
-    "explain": "For third-person singular subjects like 'She', we add '-es' to verbs ending in '-ch' in the present simple tense. So, 'watches'.",
+    "answer": 3,
+    "explain": "To make most nouns plural, add '-s' to the end. 'Cat' is singular.",
+    "language": "en",
+    "level": "A1"
+  },
+  {
+    "id": "q-en-a1-gemini-20-mr60t6zn",
+    "question": "There are three ___ in the room.",
+    "options": [
+      "child",
+      "childs",
+      "childrens",
+      "children"
+    ],
+    "answer": 3,
+    "explain": "'Children' is the irregular plural form of 'child'. Many English nouns have irregular plural forms.",
     "language": "en",
     "level": "A1"
   }

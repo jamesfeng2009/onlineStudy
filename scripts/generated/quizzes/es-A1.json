@@ -1,281 +1,267 @@
 [
   {
-    "id": "q-es-a1-gemini-1-mr5z5zeo",
-    "question": "Yo ___ estudiante de español.",
+    "id": "q-es-a1-gemini-1-mr613the",
+    "question": "La biblioteca ___ al lado del parque.",
+    "options": [
+      "es",
+      "está",
+      "son",
+      "están"
+    ],
+    "answer": 1,
+    "explain": "Use 'estar' to talk about the location of people or things, especially when referring to a temporary or specific position. 'Está' is the third-person singular form for 'la biblioteca'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-2-mr613the",
+    "question": "Yo ___ estudiante.",
     "options": [
       "soy",
+      "estoy",
       "eres",
-      "es",
       "somos"
     ],
     "answer": 0,
-    "explain": "The verb 'ser' (to be) is used for permanent characteristics or professions. 'Soy' is the correct conjugation for the first person singular, 'yo'.",
+    "explain": "'Ser' is used for permanent characteristics, identity, or profession. 'Soy' is the correct 'yo' (I) form of the verb 'ser'.",
     "language": "es",
     "level": "A1"
   },
   {
-    "id": "q-es-a1-gemini-2-mr5z5zeo",
-    "question": "Ella ___ en la oficina ahora.",
+    "id": "q-es-a1-gemini-3-mr613the",
+    "question": "Nosotros ___ un perro grande.",
     "options": [
-      "eres",
-      "está",
-      "estoy",
-      "son"
-    ],
-    "answer": 1,
-    "explain": "The verb 'estar' (to be) is used for temporary states or locations. 'Está' is the correct conjugation for the third person singular, 'ella'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-3-mr5z5zeo",
-    "question": "Nosotros ___ dos perros y un gato.",
-    "options": [
-      "tengo",
-      "tienes",
+      "tienen",
       "tiene",
-      "tenemos"
-    ],
-    "answer": 3,
-    "explain": "'Tener' means 'to have'. 'Tenemos' is the correct conjugation for the first person plural, 'nosotros'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-4-mr5z5zeo",
-    "question": "Ellos ___ al cine todos los viernes.",
-    "options": [
-      "vamos",
-      "van",
-      "va",
-      "vas"
-    ],
-    "answer": 1,
-    "explain": "'Ir' means 'to go'. 'Van' is the correct conjugation for the third person plural, 'ellos'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-5-mr5z5zeo",
-    "question": "¿Qué ___ tú los fines de semana?",
-    "options": [
-      "hago",
-      "hace",
-      "haces",
-      "hacemos"
+      "tenemos",
+      "tenéis"
     ],
     "answer": 2,
-    "explain": "'Hacer' means 'to do' or 'to make'. 'Haces' is the correct conjugation for the second person singular, 'tú'.",
+    "explain": "'Tener' means 'to have.' 'Tenemos' is the correct conjugation for 'nosotros' (we) in the present tense.",
     "language": "es",
     "level": "A1"
   },
   {
-    "id": "q-es-a1-gemini-6-mr5z5zeo",
-    "question": "Ustedes ___ muy bien el inglés.",
-    "options": [
-      "hablamos",
-      "hablan",
-      "hablas",
-      "habla"
-    ],
-    "answer": 1,
-    "explain": "The verb 'hablar' (to speak) is a regular -ar verb. 'Hablan' is the correct conjugation for 'ustedes' (you plural formal).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-7-mr5z5zeo",
-    "question": "Él ___ una hamburguesa para cenar.",
-    "options": [
-      "como",
-      "comen",
-      "comes",
-      "come"
-    ],
-    "answer": 3,
-    "explain": "'Comer' is a regular -er verb meaning 'to eat'. 'Come' is the correct conjugation for 'él' (he).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-8-mr5z5zeo",
-    "question": "Yo ___ en un apartamento pequeño.",
-    "options": [
-      "vives",
-      "vive",
-      "vivo",
-      "vivimos"
-    ],
-    "answer": 2,
-    "explain": "'Vivir' is a regular -ir verb meaning 'to live'. 'Vivo' is the correct conjugation for 'yo' (I).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-9-mr5z5zeo",
-    "question": "Yo ___ un vaso de agua, por favor.",
-    "options": [
-      "quiere",
-      "quieres",
-      "quiero",
-      "queremos"
-    ],
-    "answer": 2,
-    "explain": "'Querer' is an irregular verb meaning 'to want'. 'Quiero' is the correct conjugation for 'yo' (I).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-10-mr5z5zeo",
-    "question": "Mi padre compra ___ coche nuevo.",
-    "options": [
-      "la",
-      "un",
-      "los",
-      "unas"
-    ],
-    "answer": 1,
-    "explain": "'Coche' is a masculine singular noun. 'Un' is the indefinite article (a/an) for masculine singular nouns.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-11-mr5z5zeo",
-    "question": "___ estudiantes son muy inteligentes.",
-    "options": [
-      "Unas",
-      "La",
-      "Los",
-      "El"
-    ],
-    "answer": 2,
-    "explain": "'Estudiantes' is a masculine plural noun. 'Los' is the definite article (the) for masculine plural nouns.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-12-mr5z5zeo",
-    "question": "Necesito ___ mochila para mis libros.",
-    "options": [
-      "un",
-      "el",
-      "una",
-      "los"
-    ],
-    "answer": 2,
-    "explain": "'Mochila' is a feminine singular noun. 'Una' is the indefinite article (a/an) for feminine singular nouns.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-13-mr5z5zeo",
-    "question": "Voy ___ la biblioteca después de clase.",
-    "options": [
-      "de",
-      "en",
-      "con",
-      "a"
-    ],
-    "answer": 3,
-    "explain": "The preposition 'a' is used to indicate direction or destination, meaning 'to' or 'at'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-14-mr5z5zeo",
-    "question": "Soy ___ México.",
-    "options": [
-      "con",
-      "a",
-      "de",
-      "en"
-    ],
-    "answer": 2,
-    "explain": "The preposition 'de' is used to indicate origin, meaning 'from' or 'of'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-15-mr5z5zeo",
-    "question": "Mi teléfono está ___ la mesa.",
-    "options": [
-      "a",
-      "con",
-      "de",
-      "en"
-    ],
-    "answer": 3,
-    "explain": "The preposition 'en' is used to indicate location, meaning 'in', 'on', or 'at'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-16-mr5z5zeo",
-    "question": "Tengo dos ___ en mi casa.",
-    "options": [
-      "gato",
-      "gatos",
-      "gatas",
-      "gatito"
-    ],
-    "answer": 1,
-    "explain": "When referring to more than one item, nouns must be plural. 'Gatos' is the plural form of 'gato' (cat).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-17-mr5z5zeo",
-    "question": "La flor es muy ___.",
-    "options": [
-      "rojo",
-      "rojizos",
-      "roja",
-      "rojos"
-    ],
-    "answer": 2,
-    "explain": "Adjectives must agree in gender and number with the noun they describe. 'Flor' is feminine singular, so the adjective must be 'roja'.",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-18-mr5z5zeo",
-    "question": "Nosotros ___ listos para aprender.",
-    "options": [
-      "son",
-      "están",
-      "somos",
-      "estamos"
-    ],
-    "answer": 3,
-    "explain": "'Estar' is used for temporary states like being ready. 'Estamos' is the correct conjugation for 'nosotros' (we).",
-    "language": "es",
-    "level": "A1"
-  },
-  {
-    "id": "q-es-a1-gemini-19-mr5z5zeo",
-    "question": "¿Adónde ___ usted de vacaciones?",
+    "id": "q-es-a1-gemini-4-mr613the",
+    "question": "¿Adónde ___ tú después de clase?",
     "options": [
       "vas",
+      "van",
       "vamos",
-      "va",
-      "van"
+      "va"
     ],
-    "answer": 2,
-    "explain": "'Ir' means 'to go'. 'Va' is the correct conjugation for 'usted' (you formal singular).",
+    "answer": 0,
+    "explain": "'Ir' means 'to go.' 'Vas' is the correct conjugation for 'tú' (you singular informal) in the present tense.",
     "language": "es",
     "level": "A1"
   },
   {
-    "id": "q-es-a1-gemini-20-mr5z5zeo",
-    "question": "Mi hermana ___ muchos libros interesantes.",
+    "id": "q-es-a1-gemini-5-mr613the",
+    "question": "Ella ___ español muy bien.",
     "options": [
-      "lee",
-      "leo",
-      "leemos",
-      "leen"
+      "hablan",
+      "hablo",
+      "habla",
+      "hablamos"
+    ],
+    "answer": 2,
+    "explain": "For regular -AR verbs like 'hablar' (to speak), the 'ella/él/usted' form ends in -a. 'Habla' means 'she speaks'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-6-mr613the",
+    "question": "¿Qué ___ vosotros para la cena?",
+    "options": [
+      "coméis",
+      "comen",
+      "comes",
+      "comemos"
     ],
     "answer": 0,
-    "explain": "'Leer' is a regular -er verb meaning 'to read'. 'Lee' is the correct conjugation for 'mi hermana' (she).",
+    "explain": "'Comer' means 'to eat.' 'Coméis' is the correct conjugation for 'vosotros' (you plural informal, used in Spain).",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-7-mr613the",
+    "question": "Mis padres ___ en una casa pequeña.",
+    "options": [
+      "vivo",
+      "viven",
+      "vives",
+      "vivimos"
+    ],
+    "answer": 1,
+    "explain": "'Vivir' means 'to live.' 'Viven' is the correct conjugation for 'ellos/ellas/ustedes' (they/you plural formal).",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-8-mr613the",
+    "question": "Él tiene ___ libro nuevo.",
+    "options": [
+      "una",
+      "la",
+      "el",
+      "un"
+    ],
+    "answer": 2,
+    "explain": "'Libro' is a masculine singular noun. The definite article 'el' (the) is used for masculine singular nouns.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-9-mr613the",
+    "question": "Nosotros compramos ___ manzanas rojas.",
+    "options": [
+      "unos",
+      "una",
+      "las",
+      "unas"
+    ],
+    "answer": 3,
+    "explain": "'Manzanas' is a feminine plural noun. The indefinite article 'unas' (some) is used for feminine plural nouns.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-10-mr613the",
+    "question": "Hay muchos ___ en el parque.",
+    "options": [
+      "árbol",
+      "árboles",
+      "arbole",
+      "arboles"
+    ],
+    "answer": 1,
+    "explain": "To make 'árbol' (tree) plural, you add -es because it ends in a consonant. The accent mark is also preserved over the 'a'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-11-mr613the",
+    "question": "Este es el coche ___ mi hermano.",
+    "options": [
+      "en",
+      "a",
+      "con",
+      "de"
+    ],
+    "answer": 3,
+    "explain": "The preposition 'de' is used to show possession, similar to 'of' or 's' in English. Here it means 'of my brother'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-12-mr613the",
+    "question": "Pon los libros ___ la mesa.",
+    "options": [
+      "a",
+      "con",
+      "de",
+      "en"
+    ],
+    "answer": 3,
+    "explain": "'En' means 'in' or 'on' and is used to indicate the location or position of something. The books are placed 'on the table'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-13-mr613the",
+    "question": "Ellos ___ la escuela cada día.",
+    "options": [
+      "vamos a",
+      "va a",
+      "van a",
+      "vas a"
+    ],
+    "answer": 2,
+    "explain": "When using the verb 'ir' (to go) to indicate a destination, it is always followed by the preposition 'a'. 'Van' is the correct 'ellos' form.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-14-mr613the",
+    "question": "La casa es muy ___.",
+    "options": [
+      "grande",
+      "grandes",
+      "gran",
+      "granda"
+    ],
+    "answer": 0,
+    "explain": "'Grande' is an adjective that does not change its form for masculine or feminine nouns. It only changes for plural, but 'casa' is singular.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-15-mr613the",
+    "question": "Yo siempre ___ hambre por la mañana.",
+    "options": [
+      "tiene",
+      "tengo",
+      "tenemos",
+      "tienes"
+    ],
+    "answer": 1,
+    "explain": "'Tener hambre' is an idiomatic expression in Spanish that means 'to be hungry.' 'Tengo' is the 'yo' form of 'tener'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-16-mr613the",
+    "question": "Hoy ___ un día soleado.",
+    "options": [
+      "está",
+      "es",
+      "son",
+      "están"
+    ],
+    "answer": 1,
+    "explain": "When describing the nature or characteristic of a day, 'ser' is used. 'Es' is the third-person singular form of 'ser' for 'un día'.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-17-mr613the",
+    "question": "Yo no ___ mucho la televisión.",
+    "options": [
+      "veo",
+      "ves",
+      "ve",
+      "vemos"
+    ],
+    "answer": 0,
+    "explain": "'Ver' means 'to see' or 'to watch.' 'Veo' is the irregular 'yo' form in the present tense.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-18-mr613the",
+    "question": "¿___ tú café con leche?",
+    "options": [
+      "tomas",
+      "tomo",
+      "toma",
+      "tomamos"
+    ],
+    "answer": 0,
+    "explain": "'Tomar' means 'to take' or 'to drink.' 'Tomas' is the correct 'tú' form for regular -AR verbs in the present tense.",
+    "language": "es",
+    "level": "A1"
+  },
+  {
+    "id": "q-es-a1-gemini-19-mr613the",
+    "question": "¿De dónde ___ usted, señorita?",
+    "options": [
+      "es",
+      "soy",
+      "eres",
+      "son"
+    ],
+    "answer": 0,
+    "explain": "'Ser' means 'to be.' 'Es' is the correct conjugation for 'usted' (you formal singular) in the present tense when asking about origin.",
     "language": "es",
     "level": "A1"
   }
