@@ -485,8 +485,12 @@ function validateAndId(
 ): { id: string; question: string; options: string[]; answer: number; explain: string; language: LangKey; level: string }[] {
   const seen = new Set<string>();
   const out: any[] = [];
+  let dropped = 0;
   for (let i = 0; i < raw.length; i++) {
     const it = raw[i];
+    const label = `#${i} "${(it?.question ?? "").slice(0, 40)}…"`;
+
+    // Structural checks (already there).
     if (
       !it ||
       typeof it.question !== "string" ||
@@ -497,25 +501,67 @@ function validateAndId(
       it.answer > 3 ||
       typeof it.explain !== "string"
     ) {
-      console.warn(`  skip malformed item #${i}: ${JSON.stringify(it).slice(0, 100)}`);
+      console.warn(`  skip malformed ${label}: ${JSON.stringify(it).slice(0, 100)}`);
+      dropped++;
       continue;
     }
     if (it.options.some((o: unknown) => typeof o !== "string" || !o.trim())) {
-      console.warn(`  skip item #${i}: empty option`);
+      console.warn(`  skip ${label}: empty option`);
+      dropped++;
       continue;
     }
-    const dedupeKey = it.question.toLowerCase().replace(/\s+/g, " ").trim();
-    if (seen.has(dedupeKey)) continue;
+
+    const q = it.question.trim();
+    const opts = it.options.map((o: string) => o.trim());
+    const ans = opts[it.answer];
+
+    // Duplicate options (case-insensitive) — confuses learners.
+    const lowerOpts = opts.map((o) => o.toLowerCase());
+    if (new Set(lowerOpts).size !== lowerOpts.length) {
+      console.warn(`  skip ${label}: duplicate options ${JSON.stringify(opts)}`);
+      dropped++;
+      continue;
+    }
+
+    // Answer-duplication: correct answer appears elsewhere in the question
+    // (e.g. "Wenn ich reicher wäre, würde ich ___" with answer "wäre").
+    // Filling the blank would repeat a token already in the sentence.
+    const qNoBlank = q.replace(/_+/g, " ");
+    const qTokens = qNoBlank.toLowerCase().split(/[\s,.!?;:'"()]+/).filter(Boolean);
+    if (qTokens.includes(ans.toLowerCase())) {
+      console.warn(`  skip ${label}: answer "${ans}" appears elsewhere in question`);
+      dropped++;
+      continue;
+    }
+
+    // Multi-blank: exactly one "___" expected; if there are 2+, learners
+    // can't tell which blank to fill.
+    const blankCount = (q.match(/_{2,}/g) || []).length;
+    if (blankCount !== 1) {
+      console.warn(`  skip ${label}: has ${blankCount} blanks, expected 1`);
+      dropped++;
+      continue;
+    }
+
+    const dedupeKey = q.toLowerCase().replace(/\s+/g, " ").trim();
+    if (seen.has(dedupeKey)) {
+      console.warn(`  skip ${label}: duplicate question`);
+      dropped++;
+      continue;
+    }
     seen.add(dedupeKey);
     out.push({
       id: `q-${lang}-${level.toLowerCase()}-gemini-${i + 1}-${Date.now().toString(36)}`,
-      question: it.question.trim(),
-      options: it.options.map((o: string) => o.trim()),
+      question: q,
+      options: opts,
       answer: it.answer,
       explain: it.explain.trim(),
       language: lang,
       level,
     });
+  }
+  if (dropped > 0) {
+    console.warn(`  ⚠ ${lang}/${level}: dropped ${dropped} of ${raw.length} items for failing quality gates`);
   }
   return out;
 }
@@ -607,8 +653,14 @@ async function main() {
       if (items.length < Math.max(5, perBatch / 2)) {
         console.warn(`\n  ! only ${items.length}/${perBatch} valid items, retrying once…`);
         const retry = await callGemini(prompt);
-        const retryItems = validateAndId(retry.items, lang, level);
-        if (retryItems.length > items.length) {
+        // Re-run validation with the existing dedupe keys so retry
+        // items that duplicate the first batch are dropped too.
+        // We do this by re-validating the combined raw list with a
+        // fresh dedupe set, then taking only the new ones.
+        const retryAll = validateAndId([...batch.items, ...retry.items], lang, level);
+        // Keep only items beyond the first batch's count (the retry's contribution)
+        const retryItems = retryAll.slice(items.length);
+        if (retryItems.length > 0) {
           items.push(...retryItems.slice(0, perBatch - items.length));
         }
       }
