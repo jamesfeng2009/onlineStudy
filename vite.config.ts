@@ -13,6 +13,23 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: 'hidden',
     },
+    server: {
+      watch: {
+        // Vite 默认会 watch 整个项目目录。沙箱里 .pnpm-store 含海量
+        // 小文件，会耗尽 inotify watcher 上限（ENOSPC）让 dev 崩溃。
+        // 这里把不需要触发热重载的大目录显式排除。
+        ignored: [
+          '**/.pnpm-store/**',
+          '**/node_modules/**',
+          '**/.git/**',
+          '**/dist/**',
+          '**/build/**',
+          '**/.cache/**',
+          '**/.trae/**',
+          '**/coverage/**',
+        ],
+      },
+    },
     plugins: [
       react({
         babel: {
