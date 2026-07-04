@@ -178,10 +178,41 @@
       "title": "Recommandation du jour",
       "viewAll": "Voir tout →",
       "items": [
-        { "title": "Apprendre 20 mots nouveaux", "time": "10 min" },
-        { "title": "Grammaire · Temps de base", "time": "15 min" },
-        { "title": "Répéter un dialogue", "time": "8 min" },
-        { "title": "Écouter 5 minutes", "time": "5 min" }
+        {
+          "title": "Apprendre 20 mots nouveaux",
+          "time": "10 min"
+        },
+        {
+          "title": "Grammaire · Temps de base",
+          "time": "15 min"
+        },
+        {
+          "title": "Répéter un dialogue",
+          "time": "8 min"
+        },
+        {
+          "title": "Écouter 5 minutes",
+          "time": "5 min"
+        }
+      ]
+    },
+    "steps": {
+      "badge": "Comment ça marche",
+      "title": "Un parcours en 3 étapes, de débutant à courant",
+      "desc": "Chaque apprenant est unique, mais le chemin vers la fluidité est toujours le même : input, output, feedback. LangOria transforme cette boucle en un rituel quotidien de 10 minutes.",
+      "items": [
+        {
+          "title": "Diagnostiquez votre niveau",
+          "desc": "Choisissez votre langue cible et votre niveau de départ. Nous construisons un parcours personnalisé à partir de ce que vous savez déjà."
+        },
+        {
+          "title": "Boucle quotidienne de 10 minutes",
+          "desc": "Vocabulaire + grammaire + écoute + oral, orchestrés par la répétition espacée pour que ça reste en mémoire."
+        },
+        {
+          "title": "Parlez avec confiance",
+          "desc": "Répétez de vraies phrases, obtenez un feedback instantané et entretenez votre streak."
+        }
       ]
     },
     "features": {
@@ -189,10 +220,26 @@
       "desc": "Entrée · Sortie · Feedback — développez une vraie confiance pour parler.",
       "enter": "Essayer →",
       "items": [
-        { "title": "Flashcards vocabulaire", "desc": "Répétition espacée — une fois mémorisé, jamais oublié", "action": "Essayer" },
-        { "title": "Pratique de grammaire", "desc": "Feedback immédiat + explications, les règles deviennent claires", "action": "Essayer" },
-        { "title": "Répétition orale", "desc": "Lisez à haute voix pour ancrer la mémoire musculaire", "action": "Essayer" },
-        { "title": "Entraînement auditif", "desc": "Contexte réel, remplir les blancs, entendez plus clairement", "action": "Essayer" }
+        {
+          "title": "Flashcards vocabulaire",
+          "desc": "Répétition espacée — une fois mémorisé, jamais oublié",
+          "action": "Essayer"
+        },
+        {
+          "title": "Pratique de grammaire",
+          "desc": "Feedback immédiat + explications, les règles deviennent claires",
+          "action": "Essayer"
+        },
+        {
+          "title": "Répétition orale",
+          "desc": "Lisez à haute voix pour ancrer la mémoire musculaire",
+          "action": "Essayer"
+        },
+        {
+          "title": "Entraînement auditif",
+          "desc": "Contexte réel, remplir les blancs, entendez plus clairement",
+          "action": "Essayer"
+        }
       ]
     },
     "courses": {
@@ -202,6 +249,86 @@
       "loading": "Chargement des cours...",
       "lessons": "{{count}} leçons",
       "minutes": "{{count}} min"
+    },
+    "stories": {
+      "badge": "Témoignages d'apprenants",
+      "title": "De vrais progrès, de vraies personnes",
+      "desc": "Découvrez des apprenants qui ont transformé 10 minutes par jour en une langue qu'ils peuvent vraiment utiliser.",
+      "items": [
+        {
+          "name": "Yuki, 27 ans",
+          "role": "Responsable marketing · Tokyo",
+          "quote": "J'ai essayé trois applis avant. LangOria est la seule que j'ouvre vraiment chaque jour. Le système de streak fonctionne."
+        },
+        {
+          "name": "Carlos, 34 ans",
+          "role": "Ingénieur logiciel · Madrid",
+          "quote": "Les explications de grammaire sont courtes et claires. En trois mois de trajet, je suis passé de A2 à B1."
+        },
+        {
+          "name": "Mei, 22 ans",
+          "role": "Étudiante · Shanghai",
+          "quote": "J'adore que l'interface soit en chinois mais les mots en japonais. On a l'impression que l'appli me connaît."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Questions fréquentes, réponses claires",
+      "desc": "Tout ce qu'il faut savoir avant de commencer.",
+      "viewAll": "Voir toutes les questions",
+      "items": [
+        {
+          "q": "LangOria est-il vraiment gratuit ?",
+          "a": "Oui. L'expérience centrale — vocabulaire, grammaire, écoute, oral et la communauté — est gratuite. Des fonctions premium arriveront plus tard pour les utilisateurs avancés."
+        },
+        {
+          "q": "Faut-il installer quelque chose ?",
+          "a": "Non. LangOria fonctionne dans n'importe quel navigateur moderne. Les applications mobiles suivront une fois la version web stabilisée."
+        },
+        {
+          "q": "Quelles langues sont prises en charge ?",
+          "a": "Anglais, japonais, coréen, chinois, espagnol, français et allemand. De nouvelles langues sont ajoutées chaque mois."
+        },
+        {
+          "q": "Quand verrai-je des progrès ?",
+          "a": "La plupart des apprenants constatent une différence nette en 4 à 6 semaines s'ils maintiennent la routine de 10 minutes. Le système de streak et la répétition espacée sont conçus pour faire tenir l'habitude."
+        },
+        {
+          "q": "Puis-je l'utiliser sur mon téléphone ?",
+          "a": "Oui. Le site est entièrement responsive et fonctionne très bien sur les navigateurs mobiles. Ajoutez-le à votre écran d'accueil pour une expérience proche d'une appli."
+        }
+      ]
+    },
+    "blog": {
+      "badge": "Depuis le blog",
+      "title": "Conseils, guides et science de l'apprentissage",
+      "desc": "Des articles courts pour rendre votre temps d'étude plus efficace.",
+      "viewAll": "Tous les articles →",
+      "readMore": "Lire la suite",
+      "items": [
+        {
+          "tag": "Méthodes",
+          "title": "Pourquoi 10 minutes par jour battent 2 heures le week-end",
+          "excerpt": "La répétition espacée est la technique la plus étudiée en sciences de l'apprentissage. Voici pourquoi des sessions courtes et fréquentes surpassent le bachotage."
+        },
+        {
+          "tag": "Vocabulaire",
+          "title": "Retenir 1000 mots sans s'épuiser",
+          "excerpt": "Un plan pratique de 8 semaines bâti sur la règle 3-2-1, avec des exemples en anglais, japonais et espagnol."
+        },
+        {
+          "tag": "Expression orale",
+          "title": "Le shadowing : l'exercice oral qui marche vraiment",
+          "excerpt": "Pourquoi répéter un audio natif est le moyen le plus rapide de corriger sa prononciation, et une routine en 5 étapes pour commencer aujourd'hui."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Lancez votre rituel quotidien de 10 minutes",
+      "desc": "Gratuit pour toujours. Pas de carte bancaire. Annulez à tout moment — mais vous ne le ferez probablement pas.",
+      "start": "Créer un compte gratuit",
+      "browse": "Voir d'abord les cours"
     }
   },
   "recommend": {
@@ -231,9 +358,18 @@
     "moduleTraining": "Entraînement du module {{key}}",
     "scoreHint": "Score actuel {{score}} / 100 · priorisez le renforcement",
     "fallback": [
-      { "title": "Introduction au vocabulaire", "desc": "Construisez votre premier ensemble de mots à partir de zéro" },
-      { "title": "Entraînement grammatical de base", "desc": "Maîtrisez les règles fondamentales de la structure de la langue" },
-      { "title": "Introduction à la conversation quotidienne", "desc": "Répétez les expressions orales les plus courantes" }
+      {
+        "title": "Introduction au vocabulaire",
+        "desc": "Construisez votre premier ensemble de mots à partir de zéro"
+      },
+      {
+        "title": "Entraînement grammatical de base",
+        "desc": "Maîtrisez les règles fondamentales de la structure de la langue"
+      },
+      {
+        "title": "Introduction à la conversation quotidienne",
+        "desc": "Répétez les expressions orales les plus courantes"
+      }
     ],
     "coursesTitle": "Recommandé · {{flag}} {{name}}",
     "coursesDesc": "Sélectionnés avec soin par niveau pour un apprentissage systématique.",
@@ -260,17 +396,50 @@
       "quizzes": "quiz"
     },
     "badges": {
-      "streak-3": { "title": "Série de 3 jours", "description": "Étudiez 3 jours de suite pour créer une petite habitude" },
-      "streak-7": { "title": "Star de la semaine", "description": "Étudiez 7 jours de suite" },
-      "streak-30": { "title": "Champion du mois", "description": "Étudiez 30 jours de suite" },
-      "words-20": { "title": "Étoile du vocabulaire", "description": "Maîtrisez 20 mots nouveaux" },
-      "words-100": { "title": "Maître du vocabulaire", "description": "Maîtrisez 100 mots nouveaux" },
-      "quizzes-10": { "title": "Apprenti en grammaire", "description": "Terminez 10 questions de grammaire" },
-      "quizzes-50": { "title": "Maître de la grammaire", "description": "Terminez 50 questions de grammaire" },
-      "speaking-10": { "title": "Orateur", "description": "Répétez à haute voix pendant 10 minutes au total" },
-      "listening-10": { "title": "Auditeur", "description": "Écoutez pendant 10 minutes au total" },
-      "level-5": { "title": "Pas à pas", "description": "Atteignez le niveau 5" },
-      "level-10": { "title": "Avancé", "description": "Atteignez le niveau 10" }
+      "streak-3": {
+        "title": "Série de 3 jours",
+        "description": "Étudiez 3 jours de suite pour créer une petite habitude"
+      },
+      "streak-7": {
+        "title": "Star de la semaine",
+        "description": "Étudiez 7 jours de suite"
+      },
+      "streak-30": {
+        "title": "Champion du mois",
+        "description": "Étudiez 30 jours de suite"
+      },
+      "words-20": {
+        "title": "Étoile du vocabulaire",
+        "description": "Maîtrisez 20 mots nouveaux"
+      },
+      "words-100": {
+        "title": "Maître du vocabulaire",
+        "description": "Maîtrisez 100 mots nouveaux"
+      },
+      "quizzes-10": {
+        "title": "Apprenti en grammaire",
+        "description": "Terminez 10 questions de grammaire"
+      },
+      "quizzes-50": {
+        "title": "Maître de la grammaire",
+        "description": "Terminez 50 questions de grammaire"
+      },
+      "speaking-10": {
+        "title": "Orateur",
+        "description": "Répétez à haute voix pendant 10 minutes au total"
+      },
+      "listening-10": {
+        "title": "Auditeur",
+        "description": "Écoutez pendant 10 minutes au total"
+      },
+      "level-5": {
+        "title": "Pas à pas",
+        "description": "Atteignez le niveau 5"
+      },
+      "level-10": {
+        "title": "Avancé",
+        "description": "Atteignez le niveau 10"
+      }
     }
   },
   "community": {
@@ -370,10 +539,26 @@
       "heroHighlight": "conquérez une nouvelle langue.",
       "heroDesc": "Cours par niveaux, exercices interactifs et motivation communautaire — transformez l'apprentissage en habitude, pas en corvée.",
       "features": [
-        { "title": "Cours par niveaux", "desc": "Du débutant à la maîtrise", "c": "from-sky-400/20 to-sky-500/0" },
-        { "title": "Multilingue", "desc": "Anglais · Japonais · Coréen", "c": "from-fuchsia-400/20 to-fuchsia-500/0" },
-        { "title": "Parcours personnalisé", "desc": "Recommandations intelligentes basées sur vos données", "c": "from-amber-400/20 to-amber-500/0" },
-        { "title": "Succès", "desc": "Badges · Niveaux · Points", "c": "from-rose-400/20 to-rose-500/0" }
+        {
+          "title": "Cours par niveaux",
+          "desc": "Du débutant à la maîtrise",
+          "c": "from-sky-400/20 to-sky-500/0"
+        },
+        {
+          "title": "Multilingue",
+          "desc": "Anglais · Japonais · Coréen",
+          "c": "from-fuchsia-400/20 to-fuchsia-500/0"
+        },
+        {
+          "title": "Parcours personnalisé",
+          "desc": "Recommandations intelligentes basées sur vos données",
+          "c": "from-amber-400/20 to-amber-500/0"
+        },
+        {
+          "title": "Succès",
+          "desc": "Badges · Niveaux · Points",
+          "c": "from-rose-400/20 to-rose-500/0"
+        }
       ]
     },
     "register": {

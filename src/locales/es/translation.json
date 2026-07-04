@@ -178,10 +178,41 @@
       "title": "Recomendación de hoy",
       "viewAll": "Ver todo →",
       "items": [
-        { "title": "Aprender 20 palabras nuevas", "time": "10 min" },
-        { "title": "Gramática · Tiempos básicos", "time": "15 min" },
-        { "title": "Repetir un diálogo", "time": "8 min" },
-        { "title": "Escuchar 5 minutos", "time": "5 min" }
+        {
+          "title": "Aprender 20 palabras nuevas",
+          "time": "10 min"
+        },
+        {
+          "title": "Gramática · Tiempos básicos",
+          "time": "15 min"
+        },
+        {
+          "title": "Repetir un diálogo",
+          "time": "8 min"
+        },
+        {
+          "title": "Escuchar 5 minutos",
+          "time": "5 min"
+        }
+      ]
+    },
+    "steps": {
+      "badge": "Cómo funciona",
+      "title": "Un camino probado en 3 pasos de principiante a fluido",
+      "desc": "Cada aprendiz es distinto, pero el camino hacia la fluidez siempre es el mismo: input, output y feedback. LangOria convierte ese ciclo en un ritual diario de 10 minutos.",
+      "items": [
+        {
+          "title": "Diagnostica tu nivel",
+          "desc": "Elige tu idioma objetivo y tu nivel de partida. Creamos una ruta personalizada según lo que ya sabes."
+        },
+        {
+          "title": "Bucle diario de 10 minutos",
+          "desc": "Vocabulario + gramática + escucha + habla, programados por repetición espaciada para que lo aprendido permanezca."
+        },
+        {
+          "title": "Habla con confianza",
+          "desc": "Repite frases reales, recibe feedback al instante y mantén tu racha viva."
+        }
       ]
     },
     "features": {
@@ -189,10 +220,26 @@
       "desc": "Entrada · Salida · Retroalimentación — desarrolla confianza real para hablar.",
       "enter": "Pruébalo →",
       "items": [
-        { "title": "Tarjetas de vocabulario", "desc": "Repetición espaciada — una vez recordado, nunca olvidado", "action": "Pruébalo" },
-        { "title": "Práctica de gramática", "desc": "Retroalimentación inmediata + explicaciones, reglas claras", "action": "Pruébalo" },
-        { "title": "Repetición oral", "desc": "Lee en voz alta para crear memoria muscular en tu lengua", "action": "Pruébalo" },
-        { "title": "Entrenamiento auditivo", "desc": "Contexto real, completar espacios, escucha con más claridad", "action": "Pruébalo" }
+        {
+          "title": "Tarjetas de vocabulario",
+          "desc": "Repetición espaciada — una vez recordado, nunca olvidado",
+          "action": "Pruébalo"
+        },
+        {
+          "title": "Práctica de gramática",
+          "desc": "Retroalimentación inmediata + explicaciones, reglas claras",
+          "action": "Pruébalo"
+        },
+        {
+          "title": "Repetición oral",
+          "desc": "Lee en voz alta para crear memoria muscular en tu lengua",
+          "action": "Pruébalo"
+        },
+        {
+          "title": "Entrenamiento auditivo",
+          "desc": "Contexto real, completar espacios, escucha con más claridad",
+          "action": "Pruébalo"
+        }
       ]
     },
     "courses": {
@@ -202,6 +249,86 @@
       "loading": "Cargando cursos...",
       "lessons": "{{count}} lecciones",
       "minutes": "{{count}} min"
+    },
+    "stories": {
+      "badge": "Historias de aprendices",
+      "title": "Progreso real, personas reales",
+      "desc": "Escucha a aprendices que convirtieron un hábito diario de 10 minutos en un idioma que realmente pueden usar.",
+      "items": [
+        {
+          "name": "Yuki, 27",
+          "role": "Responsable de marketing · Tokio",
+          "quote": "Probé tres apps antes. LangOria es la única que abro cada día. El sistema de rachas funciona."
+        },
+        {
+          "name": "Carlos, 34",
+          "role": "Ingeniero de software · Madrid",
+          "quote": "Las explicaciones de gramática son cortas y claras. Pasé de A2 a B1 en tres meses yendo al trabajo."
+        },
+        {
+          "name": "Mei, 22",
+          "role": "Estudiante universitaria · Shanghái",
+          "quote": "Me encanta que la interfaz esté en chino pero las palabras en japonés. Se siente como si la app me conociera."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Preguntas frecuentes, respuestas claras",
+      "desc": "Todo lo que necesitas saber antes de empezar.",
+      "viewAll": "Ver todas las preguntas",
+      "items": [
+        {
+          "q": "¿LangOria es realmente gratis?",
+          "a": "Sí. La experiencia central — vocabulario, gramática, escucha, habla y la comunidad — es gratuita. Las funciones premium se añadirán más adelante para usuarios avanzados."
+        },
+        {
+          "q": "¿Necesito instalar algo?",
+          "a": "No. LangOria funciona en cualquier navegador moderno. Las apps móviles llegarán cuando la versión web se estabilice."
+        },
+        {
+          "q": "¿Qué idiomas están soportados?",
+          "a": "Inglés, japonés, coreano, chino, español, francés y alemán. Cada mes añadimos nuevos idiomas según la demanda."
+        },
+        {
+          "q": "¿Cuánto tarda en notarse el progreso?",
+          "a": "La mayoría de los aprendices nota una diferencia clara en 4–6 semanas si mantiene la rutina de 10 minutos. El sistema de rachas y la repetición espaciada están diseñados para que el hábito se mantenga."
+        },
+        {
+          "q": "¿Puedo usarlo en el móvil?",
+          "a": "Sí. El sitio es totalmente responsivo y funciona muy bien en navegadores móviles. Añádelo a la pantalla de inicio para tener una experiencia tipo app."
+        }
+      ]
+    },
+    "blog": {
+      "badge": "Desde el blog",
+      "title": "Consejos, guías y ciencia del aprendizaje",
+      "desc": "Artículos breves que hacen tu tiempo de estudio más efectivo.",
+      "viewAll": "Todos los artículos →",
+      "readMore": "Leer más",
+      "items": [
+        {
+          "tag": "Métodos",
+          "title": "Por qué 10 minutos al día ganan a 2 horas el fin de semana",
+          "excerpt": "La repetición espaciada es la técnica más investigada en la ciencia del aprendizaje. Por qué las sesiones cortas y frecuentes superan al estudio maratoniano."
+        },
+        {
+          "tag": "Vocabulario",
+          "title": "Cómo recordar 1000 palabras sin quemarte",
+          "excerpt": "Un plan práctico de 8 semanas basado en la regla 3-2-1, con ejemplos en inglés, japonés y español."
+        },
+        {
+          "tag": "Speaking",
+          "title": "Shadowing: el ejercicio de speaking que sí funciona",
+          "excerpt": "Por qué repetir audio nativo es la forma más rápida de corregir la pronunciación, y una rutina de 5 pasos para empezar hoy."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Empieza tu ritual diario de 10 minutos",
+      "desc": "Gratis para siempre. Sin tarjeta de crédito. Cancela cuando quieras — aunque probablemente no lo harás.",
+      "start": "Crear cuenta gratis",
+      "browse": "Ver cursos primero"
     }
   },
   "recommend": {
@@ -231,9 +358,18 @@
     "moduleTraining": "Entrenamiento del módulo {{key}}",
     "scoreHint": "Puntuación actual {{score}} / 100 · prioriza reforzar",
     "fallback": [
-      { "title": "Introducción al vocabulario con tarjetas", "desc": "Construye tu primer conjunto de vocabulario desde cero" },
-      { "title": "Entrenamiento básico de gramática", "desc": "Domina las reglas fundamentales de la estructura del idioma" },
-      { "title": "Introducción a la conversación diaria", "desc": "Repite las expresiones habladas más comunes" }
+      {
+        "title": "Introducción al vocabulario con tarjetas",
+        "desc": "Construye tu primer conjunto de vocabulario desde cero"
+      },
+      {
+        "title": "Entrenamiento básico de gramática",
+        "desc": "Domina las reglas fundamentales de la estructura del idioma"
+      },
+      {
+        "title": "Introducción a la conversación diaria",
+        "desc": "Repite las expresiones habladas más comunes"
+      }
     ],
     "coursesTitle": "Recomendado · {{flag}} {{name}}",
     "coursesDesc": "Cuidadosamente seleccionados por nivel para un aprendizaje sistemático.",
@@ -260,17 +396,50 @@
       "quizzes": "cuestionarios"
     },
     "badges": {
-      "streak-3": { "title": "Racha de 3 días", "description": "Estudia 3 días seguidos para crear un pequeño hábito" },
-      "streak-7": { "title": "Estrella de la semana", "description": "Estudia 7 días seguidos" },
-      "streak-30": { "title": "Campeón mensual", "description": "Estudia 30 días seguidos" },
-      "words-20": { "title": "Estrella en vocabulario", "description": "Domina 20 palabras nuevas" },
-      "words-100": { "title": "Maestro del vocabulario", "description": "Domina 100 palabras nuevas" },
-      "quizzes-10": { "title": "Aprendiz de gramática", "description": "Completa 10 preguntas de gramática" },
-      "quizzes-50": { "title": "Maestro de gramática", "description": "Completa 50 preguntas de gramática" },
-      "speaking-10": { "title": "Hablante", "description": "Repite en voz alta durante 10 minutos en total" },
-      "listening-10": { "title": "Escucha", "description": "Escucha durante 10 minutos en total" },
-      "level-5": { "title": "Paso a paso", "description": "Alcanza el nivel 5" },
-      "level-10": { "title": "Avanzado", "description": "Alcanza el nivel 10" }
+      "streak-3": {
+        "title": "Racha de 3 días",
+        "description": "Estudia 3 días seguidos para crear un pequeño hábito"
+      },
+      "streak-7": {
+        "title": "Estrella de la semana",
+        "description": "Estudia 7 días seguidos"
+      },
+      "streak-30": {
+        "title": "Campeón mensual",
+        "description": "Estudia 30 días seguidos"
+      },
+      "words-20": {
+        "title": "Estrella en vocabulario",
+        "description": "Domina 20 palabras nuevas"
+      },
+      "words-100": {
+        "title": "Maestro del vocabulario",
+        "description": "Domina 100 palabras nuevas"
+      },
+      "quizzes-10": {
+        "title": "Aprendiz de gramática",
+        "description": "Completa 10 preguntas de gramática"
+      },
+      "quizzes-50": {
+        "title": "Maestro de gramática",
+        "description": "Completa 50 preguntas de gramática"
+      },
+      "speaking-10": {
+        "title": "Hablante",
+        "description": "Repite en voz alta durante 10 minutos en total"
+      },
+      "listening-10": {
+        "title": "Escucha",
+        "description": "Escucha durante 10 minutos en total"
+      },
+      "level-5": {
+        "title": "Paso a paso",
+        "description": "Alcanza el nivel 5"
+      },
+      "level-10": {
+        "title": "Avanzado",
+        "description": "Alcanza el nivel 10"
+      }
     }
   },
   "community": {
@@ -370,10 +539,26 @@
       "heroHighlight": "conquista un nuevo idioma.",
       "heroDesc": "Cursos por niveles, ejercicios interactivos y motivación de la comunidad — convierte el aprendizaje en un hábito, no una tarea.",
       "features": [
-        { "title": "Cursos por niveles", "desc": "De principiante a dominio", "c": "from-sky-400/20 to-sky-500/0" },
-        { "title": "Multilingüe", "desc": "Inglés · Japonés · Coreano", "c": "from-fuchsia-400/20 to-fuchsia-500/0" },
-        { "title": "Ruta personalizada", "desc": "Recomendaciones inteligentes de tus datos", "c": "from-amber-400/20 to-amber-500/0" },
-        { "title": "Logros", "desc": "Insignias · Niveles · Puntos", "c": "from-rose-400/20 to-rose-500/0" }
+        {
+          "title": "Cursos por niveles",
+          "desc": "De principiante a dominio",
+          "c": "from-sky-400/20 to-sky-500/0"
+        },
+        {
+          "title": "Multilingüe",
+          "desc": "Inglés · Japonés · Coreano",
+          "c": "from-fuchsia-400/20 to-fuchsia-500/0"
+        },
+        {
+          "title": "Ruta personalizada",
+          "desc": "Recomendaciones inteligentes de tus datos",
+          "c": "from-amber-400/20 to-amber-500/0"
+        },
+        {
+          "title": "Logros",
+          "desc": "Insignias · Niveles · Puntos",
+          "c": "from-rose-400/20 to-rose-500/0"
+        }
       ]
     },
     "register": {
