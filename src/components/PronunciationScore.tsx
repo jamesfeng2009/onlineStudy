@@ -27,7 +27,7 @@ interface SRInstance extends EventTarget {
 type SRCtor = { new (): SRInstance };
 function getSpeechRecognition(): SRCtor | null {
   if (typeof window === "undefined") return null;
-  return (window as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtr })
+  return (window as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtor })
     .SpeechRecognition ?? (window as unknown as { webkitSpeechRecognition?: SRCtor }).webkitSpeechRecognition ?? null;
 }
 
