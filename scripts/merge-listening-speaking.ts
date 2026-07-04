@@ -62,6 +62,44 @@ function dedupById<T extends { id: string }>(items: T[]): T[] {
   });
 }
 
+/**
+ * Normalize a listening item so its blanks ALWAYS match what the frontend
+ * will render. The frontend splits `script` on a single space
+ * (LearnPage.tsx: `L.script.split(' ')`), so:
+ *   1. We re-split the script with the SAME rule.
+ *   2. For each blank, if `index` is in range, we OVERRIDE `answer`
+ *      with `tokens[index]`. This guarantees the input box's "correct"
+ *      hint matches what the user sees, even if Gemini miscounted.
+ *   3. If `index` is out of range (Gemini occasionally does this on
+ *      scripts with trailing punctuation), we drop the blank.
+ *   4. Drop the whole item if it has < 1 valid blank after repair.
+ *
+ * This catches the 78 mismatch errors validate-listening-speaking.ts
+ * reported: Gemini's index is often off by 1-2 because it didn't
+ * split the same way the frontend does.
+ */
+function normalizeListening(item: ListenItem): ListenItem | null {
+  if (!item.script || !Array.isArray(item.blanks)) return null;
+  const tokens = item.script.split(" ").filter((t) => t.length > 0);
+  if (tokens.length === 0) return null;
+
+  const seenIdx = new Set<number>();
+  const fixedBlanks: { index: number; answer: string }[] = [];
+  for (const b of item.blanks) {
+    if (typeof b.index !== "number" || typeof b.answer !== "string") continue;
+    if (b.index < 0 || b.index >= tokens.length) continue;
+    if (seenIdx.has(b.index)) continue;
+    seenIdx.add(b.index);
+    fixedBlanks.push({ index: b.index, answer: tokens[b.index] });
+  }
+  if (fixedBlanks.length === 0) return null;
+
+  // Re-join script with single spaces so the frontend's split(' ')
+  // produces exactly the same tokens we used here.
+  const fixedScript = tokens.join(" ");
+  return { ...item, script: fixedScript, blanks: fixedBlanks };
+}
+
 function groupByLang<T extends { language: string; level: string }>(items: T[]): Record<string, T[]> {
   const groups: Record<string, T[]> = {};
   for (const item of items) {
@@ -134,7 +172,19 @@ function emitSpeaking(items: SpeakItem[], labels: string[]): string {
 function main() {
   // Listening
   const listenRaw = readJsonDir<ListenItem>(LISTEN_SRC);
-  const listenDedup = dedupById(listenRaw.data);
+  // Normalize each item so blank indices/answers match what the frontend
+  // will render. Drop items that can't be repaired (no valid blanks).
+  const listenNormalized: ListenItem[] = [];
+  let listenDropped = 0;
+  for (const item of listenRaw.data) {
+    const fixed = normalizeListening(item);
+    if (fixed) listenNormalized.push(fixed);
+    else listenDropped++;
+  }
+  if (listenDropped > 0) {
+    console.warn(`⚠ dropped ${listenDropped} listening items that couldn't be repaired`);
+  }
+  const listenDedup = dedupById(listenNormalized);
   if (listenDedup.length > 0) {
     fs.writeFileSync(LISTEN_OUT, emitListening(listenDedup, listenRaw.labels), "utf-8");
     console.log(`✓ Wrote ${LISTEN_OUT}`);
