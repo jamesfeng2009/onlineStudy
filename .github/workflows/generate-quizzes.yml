@@ -1,0 +1,66 @@
+# Generate LLM quiz batches on GitHub's US-based runners,
+# bypassing Gemini's "User location is not supported" block.
+#
+# Trigger manually from the Actions tab, or it runs weekly.
+name: Generate Quizzes
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Questions per batch (5-50)"
+        default: "20"
+        required: false
+      max_cost:
+        description: "Cost cap in USD"
+        default: "1.00"
+        required: false
+      overwrite:
+        description: "Overwrite existing files? (true/false)"
+        default: "false"
+        required: false
+
+  schedule:
+    # Every Monday 02:00 UTC
+    - cron: "0 2 * * 1"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate quiz batches
+        env:
+          LLM_PROVIDER: gemini
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-2.5-flash
+        run: |
+          npx tsx scripts/generate-quizzes-gemini.ts \
+            --count=${{ inputs.count || '20' }} \
+            --max-cost=${{ inputs.max_cost || '1.00' }} \
+            ${{ inputs.overwrite == 'true' && '--overwrite' || '' }}
+
+      - name: Commit generated quizzes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/generated/quizzes/
+          if git diff --staged --quiet; then
+            echo "No changes — all batches already up to date."
+          else
+            git commit -m "chore: auto-generate quiz batches [skip ci]"
+            git push
+          fi
