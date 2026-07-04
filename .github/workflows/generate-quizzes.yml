@@ -61,15 +61,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Check if there are changes to commit (unstaged quiz files).
+          # Check if there are changes to commit (unstaged tracked OR untracked new files).
           if git diff --quiet scripts/generated/quizzes/ && ! git ls-files --others --exclude-standard scripts/generated/quizzes/ | grep -q .; then
             echo "No changes — all batches already up to date."
             exit 0
           fi
-          # Pull latest main and rebase before staging, so the runner
-          # catches any commits that landed while this job was running.
-          # (git pull --rebase refuses to run with a dirty index.)
-          git pull --rebase origin main
+          # --autostash handles both staged and unstaged tracked changes:
+          # git stashes them, rebases on the latest main, then pops them
+          # back so we don't lose any regenerated files. Without this,
+          # pull --rebase refuses to run with a dirty working tree.
+          git pull --rebase --autostash origin main
           git add scripts/generated/quizzes/
           git commit -m "chore: auto-generate quiz batches [skip ci]"
           git push
