@@ -1,0 +1,91 @@
+# gitleaks config for LangOria (jamesfeng2009/onlineStudy)
+# Docs: https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+#
+# Goals:
+#   1. Catch anything that smells like a real secret going to git.
+#   2. Stay out of the way of generated/lockfile/example data.
+#
+# If you legitimately need to commit a sample secret, add the marker
+# `gitleaks:allow` on the same line, e.g. `STRIPE_KEY=sk_test_xxx # gitleaks:allow`.
+
+title = "LangOria gitleaks config"
+
+# ---- global knobs ----
+[extend]
+useDefault = true   # pull in gitleaks' built-in rules (GitHub, AWS, Stripe, etc.)
+
+# ---- custom rules: only add things gitleaks doesn't already cover ----
+[[rules]]
+id = "langoria-gh-token"
+description = "GitHub PAT (fine-grained or classic) — must never be committed"
+regex = '''\bgh[pousr]_[A-Za-z0-9]{20,}\b'''
+tags = ["github", "token", "critical"]
+entropy = 3.5
+
+[[rules]]
+id = "langoria-gemini-api-key"
+description = "Google Gemini API key (AIza...)"
+regex = '''\bAIza[0-9A-Za-z_\-]{20,}\b'''
+tags = ["gemini", "google", "api-key"]
+entropy = 3.0
+
+[[rules]]
+id = "langoria-jwt-secret-equals"
+description = "Looks like a hard-coded JWT secret assignment"
+regex = '''(?i)\b(JWT_SECRET|SESSION_SECRET|COOKIE_SECRET)\s*=\s*["'][A-Za-z0-9_\-/.+]{16,}["']'''
+tags = ["jwt", "secret"]
+
+[[rules]]
+id = "langoria-supabase-connection-string"
+description = "Supabase/Postgres connection string with embedded password"
+regex = '''postgres(ql)?://[^\s:'"]+:[^\s:'"]+@[a-z0-9.\-]+\.pooler\.supabase\.com[:/][^\s'"]*'''
+tags = ["supabase", "database", "credential"]
+
+[[rules]]
+id = "langoria-stripe-live-key"
+description = "Stripe LIVE key (rk_live_ / sk_live_) — production money"
+regex = '''\b[rs]k_live_[0-9A-Za-z]{16,}\b'''
+tags = ["stripe", "live", "critical"]
+entropy = 3.0
+
+# ---- allowlist: things that LOOK like secrets but are intentionally committed ----
+[allowlist]
+description = "Allow generated, example, and lockfile data"
+paths = [
+  # Example/sample config
+  '''\.env\.example$''',
+  '''\.env\.sample$''',
+  '''\.env\.template$''',
+
+  # Dependency lockfiles (long base64-looking strings)
+  '''pnpm-lock\.yaml$''',
+  '''package-lock\.json$''',
+  '''yarn\.lock$''',
+
+  # Prisma auto-generated client (binary + JS, large blobs)
+  '''server/lib/prisma-generated/''',
+
+  # Tatoeba / JMdict / cedict dictionaries (very large, no secrets)
+  '''scripts/cache/''',
+  '''scripts/generate-content/data/''',
+
+  # Generated content data (TSV/JSON, not secrets)
+  '''scripts/generated/''',
+  '''generated/''',
+
+  # Public assets (sitemap, robots, llms.txt)
+  '''public/''',
+
+  # Build output
+  '''dist/''',
+  '''build/''',
+  '''\.next/''',
+  '''node_modules/''',
+]
+
+# Don't flag ${{ secrets.X }} references inside GitHub Actions workflows.
+regexes = [
+  '''\$\{\{\s*secrets\.[A-Z0-9_]+\s*\}\}''',
+  # The "your-key-here" placeholder pattern used in docs/.env.example
+  '''(?i)(change.?me|replace.?me|your[-_]?key|xxxx{4,})''',
+]

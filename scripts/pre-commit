@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+# scripts/pre-commit
+# Lightweight local pre-commit guard: refuse to commit anything that looks
+# like a leaked credential. Mirrors the most important rules in
+# .gitleaks.toml so devs get an immediate "no" before pushing.
+#
+# Heavy lifting still happens in CI via .github/workflows/gitleaks.yml —
+# this hook is just a fast first line of defense.
+#
+# Install with: scripts/install-hooks.sh
+# Bypass with:  git commit --no-verify    (use sparingly; CI will still catch it)
+set -euo pipefail
+
+RED='\033[0;31m'
+YEL='\033[1;33m'
+NC='\033[0m'
+
+# 0. Path filter — match the same allowlist as .gitleaks.toml.
+is_excluded() {
+  case "$1" in
+    *.env.example|*.env.sample|*.env.template) return 0 ;;
+    pnpm-lock.yaml|package-lock.json|yarn.lock) return 0 ;;
+    server/lib/prisma-generated/*) return 0 ;;
+    scripts/cache/*) return 0 ;;
+    scripts/generate-content/data/*) return 0 ;;
+    scripts/generated/*) return 0 ;;
+    generated/*) return 0 ;;
+    public/*) return 0 ;;
+    dist/*|build/*|.next/*|node_modules/*) return 0 ;;
+  esac
+  return 1
+}
+
+# 1. Collect the list of files about to be committed.
+mapfile -t STAGED < <(git diff --cached --name-only --diff-filter=ACMR)
+
+if [[ ${#STAGED[@]} -eq 0 ]]; then
+  exit 0
+fi
+
+violations=0
+for f in "${STAGED[@]}"; do
+  if is_excluded "$f"; then
+    continue
+  fi
+  # Only scan text-ish files smaller than 1 MB.
+  if [[ ! -f "$f" ]]; then
+    continue
+  fi
+  size=$(stat -c '%s' -- "$f" 2>/dev/null || echo 0)
+  if [[ "$size" -gt 1048576 ]]; then
+    continue
+  fi
+
+  # Per-line scan of the staged content (diff against HEAD).
+  matches=$(git diff --cached -U0 -- "$f" \
+            | grep -E '^\+' \
+            | grep -v '^\+\+\+' \
+            | grep -E \
+                '\bgh[pousr]_[A-Za-z0-9]{20,}\b|\
+\bAIza[0-9A-Za-z_\-]{20,}\b|\
+\bsk_live_[0-9A-Za-z]{16,}\b|\
+\brk_live_[0-9A-Za-z]{16,}\b|\
+postgres(ql)?://[^[:space:]]+:[^[:space:]]+@[a-z0-9.\-]+\.pooler\.supabase\.com' \
+            | grep -v 'gitleaks:allow' || true)
+
+  if [[ -n "$matches" ]]; then
+    echo -e "${RED}BLOCKED${NC}: $f looks like it contains a credential:" >&2
+    echo -e "${YEL}$matches${NC}" >&2
+    violations=$((violations + 1))
+  fi
+done
+
+if [[ "$violations" -gt 0 ]]; then
+  echo "" >&2
+  echo -e "${RED}✗ Pre-commit secret scan failed: $violations file(s) blocked.${NC}" >&2
+  echo "" >&2
+  echo "  If this is intentional, add the marker  # gitleaks:allow  on the same line," >&2
+  echo "  or bypass the local hook with:  git commit --no-verify" >&2
+  echo "  (CI will still scan via .github/workflows/gitleaks.yml)" >&2
+  exit 1
+fi
+
+exit 0

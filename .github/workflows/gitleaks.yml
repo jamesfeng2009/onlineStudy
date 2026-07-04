@@ -1,0 +1,34 @@
+# GitHub Actions: secret scanning on every push & PR.
+# Uses the official gitleaks action; fails the workflow if anything
+# that looks like a credential is about to land in the tree.
+#
+# Docs: https://github.com/gitleaks/gitleaks-action
+name: gitleaks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Scan for secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so re-commits of an old secret still get caught.
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          # Use the repo-local config (extends gitleaks defaults + project rules).
+          GITLEAKS_CONFIG: .gitleaks.toml
+          # Upload sarif to the Security tab on push (best-effort; ignored on PRs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
