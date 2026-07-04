@@ -52,11 +52,17 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: "gemini-2.0-flash"
+          # Expose inputs as env vars so the bash block can safely
+          # test for empty values (GitHub renders ${{ inputs.x }}
+          # to literal "" when empty, which breaks `[ -n "${{ x }}" ]`).
+          INPUT_LANG: ${{ inputs.lang }}
+          INPUT_SCENARIO: ${{ inputs.scenario }}
+          INPUT_OVERWRITE: ${{ inputs.overwrite }}
         run: |
           ARGS=""
-          if [ -n "${{ inputs.lang }}" ]; then ARGS="$ARGS --lang=${{ inputs.lang }}"; fi
-          if [ -n "${{ inputs.scenario }}" ]; then ARGS="$ARGS --scenario=${{ inputs.scenario }}"; fi
-          if [ "${{ inputs.overwrite }}" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
+          if [ -n "$INPUT_LANG" ]; then ARGS="$ARGS --lang=$INPUT_LANG"; fi
+          if [ -n "$INPUT_SCENARIO" ]; then ARGS="$ARGS --scenario=$INPUT_SCENARIO"; fi
+          if [ "$INPUT_OVERWRITE" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
           pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS
 
       - name: Validate (strict: warnings fail too)
@@ -73,8 +79,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin main
-          if ! git diff --quiet -- src/data/dialogue-scenes.ts scripts/generated/dialogues/ || \
-             ! git ls-files --others --exclude-standard src/data/dialogue-scenes.ts scripts/generated/dialogues/ | grep -q .; then
+          # Detect any change to dialogue-scenes.ts or generated/dialogues/.
+          if [ -n "$(git status --porcelain -- src/data/dialogue-scenes.ts scripts/generated/dialogues/)" ]; then
             git add src/data/dialogue-scenes.ts scripts/generated/dialogues/
             git commit -m "chore(dialogues): batch-generate via Gemini [skip ci]"
             git push origin main
