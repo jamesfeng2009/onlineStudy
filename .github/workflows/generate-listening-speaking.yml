@@ -1,0 +1,67 @@
+# Generate listening fill-in-the-blank + speaking phrases
+# via Gemini on GitHub's US-based runners.
+#
+# Trigger manually from the Actions tab to (re)generate content
+# for any of: en, ja, zh, it, th, yue.
+name: Generate Listening & Speaking
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Items per batch (3-20)"
+        default: "5"
+        required: false
+      lang:
+        description: "Only run for this language code (en/ja/zh/it/th/yue). Empty = all."
+        default: ""
+        required: false
+      type:
+        description: "Only run this type (listening/speaking). Empty = both."
+        default: ""
+        required: false
+
+  schedule:
+    # Every Monday 02:30 UTC (after the quiz workflow at 02:00)
+    - cron: "30 2 * * 1"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate listening & speaking batches
+        env:
+          LLM_PROVIDER: gemini
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LLM_MODEL: gemini-2.5-flash
+        run: |
+          ARGS="--count=${{ inputs.count || '5' }}"
+          if [ -n "${{ inputs.lang }}" ]; then ARGS="$ARGS --lang=${{ inputs.lang }}"; fi
+          if [ -n "${{ inputs.type }}" ]; then ARGS="$ARGS --type=${{ inputs.type }}"; fi
+          npx tsx scripts/generate-listening-speaking-gemini.ts $ARGS
+
+      - name: Commit generated content
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/generated/listening/ scripts/generated/speaking/
+          if git diff --staged --quiet; then
+            echo "No changes — content already up to date."
+          else
+            git commit -m "chore: auto-generate listening & speaking batches [skip ci]"
+            git push
+          fi

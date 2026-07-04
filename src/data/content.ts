@@ -221,10 +221,10 @@ export const SPEAKING: SpeakingPhrase[] = [
   { id: "s-it-1", phrase: "Ciao! Piacere di conoscerti.", translation: "你好！很高兴认识你。", language: "it", level: "A1" },
   { id: "s-it-2", phrase: "Come stai oggi?", translation: "你今天好吗？", language: "it", level: "A1" },
   { id: "s-it-3", phrase: "Posso avere il menu, per favore?", translation: "请给我菜单好吗？", language: "it", level: "B1" },
-  // Thai
-  { id: "s-th-1", phrase: "สวัสดีครับ", translation: "你好（男性说话）。", language: "th", level: "初级" },
-  { id: "s-th-2", phrase: "ขอบคุณครับ", translation: "谢谢（男性说话）。", language: "th", level: "初级" },
-  { id: "s-th-3", phrase: "ราคาเท่าไหร่", translation: "多少钱？", language: "th", level: "中级" },
+  // Thai — level aligned with the quiz's CEFR scheme (A1/A2/B1/B2)
+  { id: "s-th-1", phrase: "สวัสดีครับ", translation: "你好（男性说话）。", language: "th", level: "A1" },
+  { id: "s-th-2", phrase: "ขอบคุณครับ", translation: "谢谢（男性说话）。", language: "th", level: "A1" },
+  { id: "s-th-3", phrase: "ราคาเท่าไหร่", translation: "多少钱？", language: "th", level: "A2" },
   // Cantonese
   { id: "s-yue-1", phrase: "你好，好高興見到你。", translation: "你好，很高兴见到你。", language: "yue", level: "初级" },
   { id: "s-yue-2", phrase: "多謝你！", translation: "谢谢你！", language: "yue", level: "初级" },

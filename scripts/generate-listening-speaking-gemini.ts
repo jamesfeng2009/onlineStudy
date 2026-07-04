@@ -45,20 +45,41 @@ const onlyLang = arg("lang");
 const onlyType = arg("type"); // "listening" | "speaking" | undefined (both)
 const perBatch = Math.max(3, Math.min(20, Number(arg("count", "5"))));
 
-type LangKey = "en" | "ja" | "zh";
-const LANGS: LangKey[] = ["en", "ja", "zh"];
+type LangKey = "en" | "ja" | "zh" | "it" | "th" | "yue";
+const LANGS: LangKey[] = ["en", "ja", "zh", "it", "th", "yue"];
 
 const LEVELS: Record<LangKey, string[]> = {
   en: ["A1", "A2", "B1"],
   ja: ["N5", "N4", "N3"],
   zh: ["HSK1", "HSK2", "HSK3"],
+  it: ["A1", "A2", "B1"],
+  th: ["A1", "A2", "B1"],
+  yue: ["初级", "中级", "高级"],
 };
 
 const LANG_NATIVE: Record<LangKey, string> = {
   en: "English",
   ja: "Japanese",
   zh: "Chinese (Mandarin, simplified)",
+  it: "Italian",
+  th: "Thai",
+  yue: "Cantonese (traditional, Hong Kong)",
 };
+
+// Per-language extra rules appended to the prompt.
+function langRules(lang: LangKey): string {
+  if (lang === "yue") {
+    return [
+      "Script: traditional Chinese characters, Hong Kong Cantonese vocabulary (NOT Mandarin, NOT simplified).",
+      "Do NOT use Mandarin-only particles (的/了/吗/呢). Use Cantonese particles (嘅/咗/嗎/喎/㗎/啦).",
+      "Translation must be in Mandarin Chinese (simplified) so a Mandarin speaker can compare meaning.",
+    ].join("\n");
+  }
+  if (lang === "th") {
+    return "Script: Thai script only. Do not use romanization or transliteration in phrase or script.";
+  }
+  return "";
+}
 
 async function callGemini(prompt: string, schema: object): Promise<any> {
   const body = {
@@ -92,8 +113,9 @@ async function generateListening(lang: LangKey, level: string, count: number) {
   const native = LANG_NATIVE[lang];
   const spaceNote = lang === "en"
     ? "Use normal English spacing."
-    : `CRITICAL: Insert a space between every word/phrase in the script so that script.split(' ') produces correct tokens. For example: ${lang === "ja" ? "私 は 毎日 朝 7時 に 起きます" : "我 每天 早上 七点 起床"}`;
+    : `CRITICAL: Insert a space between every word/phrase in the script so that script.split(' ') produces correct tokens. For example: ${lang === "ja" ? "私 は 毎日 朝 7時 に 起きます" : lang === "th" ? "ฉัน ไป ตลาด ทุก เช้า" : lang === "yue" ? "我 想 去 香港" : "我 每天 早上 七点 起床"}`;
 
+  const rules = langRules(lang);
   const prompt = `Generate ${count} listening exercises for ${native} learners at level ${level}.
 Each exercise has:
 - title: a short title (in ${native})
@@ -105,7 +127,7 @@ Rules:
 - The script should be natural and educational.
 - Blank out content words (nouns, verbs, adjectives), not function words.
 - The answer must exactly match the word in the script (including capitalization).
-- Return a JSON array of ${count} objects.`;
+${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects.`;
 
   const schema = {
     type: "array",
@@ -137,6 +159,7 @@ Rules:
 // ── Speaking generator ──
 async function generateSpeaking(lang: LangKey, level: string, count: number) {
   const native = LANG_NATIVE[lang];
+  const rules = langRules(lang);
   const prompt = `Generate ${count} speaking practice phrases for ${native} learners at level ${level}.
 Each phrase has:
 - phrase: a natural conversational phrase in ${native}
@@ -147,7 +170,7 @@ Each phrase has:
 Rules:
 - Phrases should be commonly used in daily life.
 - Vary the topics: greetings, ordering food, asking directions, shopping, etc.
-- Return a JSON array of ${count} objects.`;
+${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects.`;
 
   const schema = {
     type: "array",
