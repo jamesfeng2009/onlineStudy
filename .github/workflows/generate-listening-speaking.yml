@@ -2,7 +2,7 @@
 # via Gemini on GitHub's US-based runners.
 #
 # Trigger manually from the Actions tab to (re)generate content
-# for any of: en, ja, zh, it, th, yue.
+# for any of: en, ja, zh, ko, es, fr, de, it, th, yue.
 name: Generate Listening & Speaking
 
 on:
@@ -13,12 +13,16 @@ on:
         default: "5"
         required: false
       lang:
-        description: "Only run for this language code (en/ja/zh/it/th/yue). Empty = all."
+        description: "Only run for this language code (en/ja/zh/ko/es/fr/de/it/th/yue). Empty = all."
         default: ""
         required: false
       type:
         description: "Only run this type (listening/speaking). Empty = both."
         default: ""
+        required: false
+      overwrite:
+        description: "Overwrite existing files? (true/false)"
+        default: "false"
         required: false
 
   schedule:
@@ -52,6 +56,7 @@ jobs:
           ARGS="--count=${{ inputs.count || '5' }}"
           if [ -n "${{ inputs.lang }}" ]; then ARGS="$ARGS --lang=${{ inputs.lang }}"; fi
           if [ -n "${{ inputs.type }}" ]; then ARGS="$ARGS --type=${{ inputs.type }}"; fi
+          if [ "${{ inputs.overwrite }}" = "true" ]; then ARGS="$ARGS --overwrite"; fi
           npx tsx scripts/generate-listening-speaking-gemini.ts $ARGS
 
       - name: Commit generated content
