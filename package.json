@@ -15,7 +15,7 @@
     "seed:all": "tsx scripts/seed-all.ts",
     "seed:content": "tsx scripts/seed-listening-speaking.ts",
     "seo:generate": "tsx scripts/generate-seo-files.ts",
-    "content:generate": "cd scripts/generate-content && python3 generate_en.py && python3 generate_ja.py && python3 generate_zh.py",
+    "content:generate": "cd scripts/generate-content && python3 generate_en.py && python3 generate_ja.py && python3 generate_zh.py && python3 generate_other.py",
     "content:import:sql": "pnpm tsx scripts/generate-import-sql.ts",
     "content:import:db": "pnpm tsx scripts/import-generated-content.ts",
     "server:dev": "tsx watch server/index.ts",

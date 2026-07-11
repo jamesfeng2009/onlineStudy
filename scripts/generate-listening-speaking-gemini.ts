@@ -1,16 +1,29 @@
 /* eslint-disable no-console */
 /**
  * Generate listening fill-in-the-blank exercises and speaking phrases
- * via Google Gemini for en/zh/ja.
+ * via LLM (Gemini / OpenRouter / Doubao) for all 10 languages.
  *
  * Output:
  *   scripts/generated/listening/{lang}-{level}.json
  *   scripts/generated/speaking/{lang}-{level}.json
  *
  * Usage:
- *   LLM_MODEL=gemini-2.5-flash pnpm tsx scripts/generate-listening-speaking-gemini.ts
- *   LLM_MODEL=gemini-2.5-flash pnpm tsx scripts/generate-listening-speaking-gemini.ts --lang=ja
- *   LLM_MODEL=gemini-2.5-flash pnpm tsx scripts/generate-listening-speaking-gemini.ts --type=listening
+ *   # Default: Gemini
+ *   pnpm tsx scripts/generate-listening-speaking-gemini.ts
+ *   # Use OpenRouter (Qwen 2.5 72B, best multilingual price/quality)
+ *   LLM_PROVIDER=openrouter pnpm tsx scripts/generate-listening-speaking-gemini.ts
+ *   # Filter
+ *   pnpm tsx scripts/generate-listening-speaking-gemini.ts --lang=ja
+ *   pnpm tsx scripts/generate-listening-speaking-gemini.ts --type=listening
+ *   pnpm tsx scripts/generate-listening-speaking-gemini.ts --count=10
+ *
+ * Env (loaded from .env / .env.local):
+ *   GEMINI_API_KEY     — for LLM_PROVIDER=gemini
+ *   OPENROUTER_API_KEY — for LLM_PROVIDER=openrouter
+ *   DOUBAO_API_KEY     — for LLM_PROVIDER=doubao
+ *   LLM_MODEL          — override model name
+ *   LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT — cost cap accounting
+ *   LLM_MAX_COST_USD   — abort once est. spend crosses this (default 1.00)
  *
  * Key: listening scripts MUST use spaces between words so that
  * script.split(" ") produces correct token indices for blanks.
@@ -19,6 +32,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+// ─── .env loader ───
 function loadDotenv(file: string) {
   if (!fs.existsSync(file)) return;
   for (const line of fs.readFileSync(file, "utf-8").split("\n")) {
@@ -33,10 +47,44 @@ function loadDotenv(file: string) {
 loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
-const API_KEY = process.env.GEMINI_API_KEY?.trim();
-const MODEL = process.env.LLM_MODEL?.trim() || "gemini-2.5-flash";
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(MODEL)}:generateContent`;
+// ─── Provider router ───
+type Provider = "gemini" | "openrouter" | "doubao";
+const PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
+const API_KEY =
+  (PROVIDER === "openrouter" ? process.env.OPENROUTER_API_KEY
+    : PROVIDER === "doubao" ? process.env.DOUBAO_API_KEY
+    : process.env.GEMINI_API_KEY
+  )?.trim();
+const DEFAULT_MODEL: Record<Provider, string> = {
+  gemini: "gemini-2.5-flash",
+  // Qwen 2.5 72B Instruct: $0.36/$0.40 per 1M tokens, 29+ languages
+  openrouter: "qwen/qwen-2.5-72b-instruct",
+  doubao: "doubao-seed-2.0-mini",
+};
+const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
 
+const MAX_COST_USD = Number(process.env.LLM_MAX_COST_USD ?? "1.00");
+const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? (PROVIDER === "openrouter" ? "0.36" : "0.30"));
+const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? (PROVIDER === "openrouter" ? "0.40" : "2.50"));
+
+const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
+  gemini: {
+    url: (m) =>
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent`,
+    auth: (k) => ({ "x-goog-api-key": k }),
+  },
+  openrouter: {
+    url: () => "https://openrouter.ai/api/v1/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+  doubao: {
+    url: () => "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+};
+const ENDPOINT = ENDPOINTS[PROVIDER];
+
+// ─── CLI args ───
 function arg(name: string, def?: string): string | undefined {
   const m = process.argv.find((a) => a.startsWith(`--${name}=`));
   return m ? m.split("=").slice(1).join("=") : def;
@@ -44,14 +92,21 @@ function arg(name: string, def?: string): string | undefined {
 const onlyLang = arg("lang");
 const onlyType = arg("type"); // "listening" | "speaking" | undefined (both)
 const perBatch = Math.max(3, Math.min(20, Number(arg("count", "5"))));
+const overwrite = process.argv.includes("--overwrite");
+const dryRun = process.argv.includes("--dry-run");
 
-type LangKey = "en" | "ja" | "zh" | "it" | "th" | "yue";
-const LANGS: LangKey[] = ["en", "ja", "zh", "it", "th", "yue"];
+// ─── Language / level tables ───
+type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
+const LANGS: LangKey[] = ["en", "ja", "zh", "ko", "es", "fr", "de", "it", "th", "yue"];
 
 const LEVELS: Record<LangKey, string[]> = {
   en: ["A1", "A2", "B1"],
   ja: ["N5", "N4", "N3"],
   zh: ["HSK1", "HSK2", "HSK3"],
+  ko: ["초급", "중급", "고급"],
+  es: ["A1", "A2", "B1"],
+  fr: ["A1", "A2", "B1"],
+  de: ["A1", "A2", "B1"],
   it: ["A1", "A2", "B1"],
   th: ["A1", "A2", "B1"],
   yue: ["初级", "中级", "高级"],
@@ -61,6 +116,10 @@ const LANG_NATIVE: Record<LangKey, string> = {
   en: "English",
   ja: "Japanese",
   zh: "Chinese (Mandarin, simplified)",
+  ko: "Korean",
+  es: "Spanish",
+  fr: "French",
+  de: "German",
   it: "Italian",
   th: "Thai",
   yue: "Cantonese (traditional, Hong Kong)",
@@ -81,31 +140,152 @@ function langRules(lang: LangKey): string {
   return "";
 }
 
-async function callGemini(prompt: string, schema: object): Promise<any> {
-  const body = {
-    contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: {
-      temperature: 0.7,
-      responseMimeType: "application/json",
-      responseSchema: schema,
-    },
-  };
+function sleep(ms: number) {
+  return new Promise((r) => setTimeout(r, ms));
+}
 
-  const res = await fetch(ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": API_KEY! },
-    body: JSON.stringify(body),
-  });
+// Best-effort JSON repair (see generate-quizzes-gemini.ts for details).
+function repairJson(input: string): string {
+  let s = input;
+  const lastQuote = s.lastIndexOf('"');
+  if (lastQuote === -1) return s;
+  let inStr = false;
+  let escape = false;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') inStr = !inStr;
+  }
+  if (inStr) s += '"';
+  inStr = false;
+  escape = false;
+  let opens = 0;
+  let closes = 0;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') { inStr = !inStr; continue; }
+    if (inStr) continue;
+    if (ch === "{" || ch === "[") opens++;
+    else if (ch === "}" || ch === "]") closes++;
+  }
+  while (closes < opens) {
+    s += s.trimEnd().endsWith("[") ? "]" : "}";
+    closes++;
+  }
+  return s;
+}
+
+// Unified LLM caller. Gemini uses native generateContent + responseSchema;
+// OpenRouter/Doubao use OpenAI-compatible chat/completions + response_format.
+async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any> {
+  let url: string;
+  let headers: Record<string, string>;
+  let body: any;
+
+  if (PROVIDER === "gemini") {
+    url = `${ENDPOINT.url(MODEL)}?key=${encodeURIComponent(API_KEY!)}`;
+    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    body = {
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.7,
+        topP: 0.95,
+        maxOutputTokens: 8192,
+        responseMimeType: "application/json",
+        responseSchema: schema,
+      },
+    };
+  } else {
+    // OpenRouter / Doubao: OpenAI-compatible chat/completions
+    const sysMsg = "You are a strict JSON generator. Output ONLY a JSON array — no prose, no markdown fences, no apologies. Match the schema requested in the user message.";
+    url = ENDPOINT.url(MODEL);
+    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    body = {
+      model: MODEL,
+      messages: [
+        { role: "system", content: sysMsg },
+        { role: "user", content: prompt },
+      ],
+      temperature: 0.7,
+      top_p: 0.95,
+      max_tokens: 8192,
+      response_format: { type: "json_object" },
+    };
+  }
+
+  let res: Response;
+  try {
+    res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
+  } catch (err) {
+    if (attempt < 4) {
+      const wait = 2000 * Math.pow(2, attempt);
+      console.warn(`  network error, retry in ${wait}ms: ${(err as Error).message}`);
+      await sleep(wait);
+      return callLLM(prompt, schema, attempt + 1);
+    }
+    throw err;
+  }
+
+  if (res.status === 429 || res.status >= 500) {
+    if (attempt < 4) {
+      const wait = 4000 * Math.pow(2, attempt);
+      console.warn(`  HTTP ${res.status}, retry in ${wait}ms`);
+      await sleep(wait);
+      return callLLM(prompt, schema, attempt + 1);
+    }
+    const text = await res.text();
+    throw new Error(`${PROVIDER} ${res.status} after retries: ${text.slice(0, 200)}`);
+  }
 
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`gemini ${res.status}: ${text}`);
+    throw new Error(`${PROVIDER} ${res.status}: ${text.slice(0, 400)}`);
   }
 
-  const data = await res.json();
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error("empty response from gemini");
-  return JSON.parse(text);
+  const data: any = await res.json();
+  let text: string | undefined;
+  if (PROVIDER === "gemini") {
+    text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  } else {
+    text = data?.choices?.[0]?.message?.content;
+  }
+  if (!text) {
+    if (attempt < 2) {
+      await sleep(2000);
+      return callLLM(prompt, schema, attempt + 1);
+    }
+    throw new Error(`empty response: ${JSON.stringify(data).slice(0, 200)}`);
+  }
+
+  // Clean + parse
+  let parsed: any;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    try {
+      const cleaned = text
+        .replace(/^```(?:json)?\s*/i, "")
+        .replace(/```\s*$/i, "")
+        .trim();
+      parsed = JSON.parse(repairJson(cleaned));
+    } catch (err) {
+      throw new Error(
+        `json parse failed: ${(err as Error).message} (text starts: ${text.slice(0, 80)}…)`,
+      );
+    }
+  }
+
+  // OpenRouter/Doubao return an object (response_format=json_object)
+  // but our prompt asked for an array. Unwrap if the model wrapped it.
+  if (Array.isArray(parsed)) return parsed;
+  if (Array.isArray(parsed.items)) return parsed.items;
+  if (Array.isArray(parsed.data)) return parsed.data;
+  if (Array.isArray(parsed.exercises)) return parsed.exercises;
+  if (Array.isArray(parsed.phrases)) return parsed.phrases;
+  return parsed;
 }
 
 // ── Listening generator ──
@@ -127,7 +307,7 @@ Rules:
 - The script should be natural and educational.
 - Blank out content words (nouns, verbs, adjectives), not function words.
 - The answer must exactly match the word in the script (including capitalization).
-${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects.`;
+${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects. The top-level JSON value MUST be an array.`;
 
   const schema = {
     type: "array",
@@ -153,7 +333,8 @@ ${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${
     },
   };
 
-  return callGemini(prompt, schema);
+  const data = await callLLM(prompt, schema);
+  return Array.isArray(data) ? data : [];
 }
 
 // ── Speaking generator ──
@@ -170,7 +351,7 @@ Each phrase has:
 Rules:
 - Phrases should be commonly used in daily life.
 - Vary the topics: greetings, ordering food, asking directions, shopping, etc.
-${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects.`;
+${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${count} objects. The top-level JSON value MUST be an array.`;
 
   const schema = {
     type: "array",
@@ -186,20 +367,37 @@ ${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${
     },
   };
 
-  return callGemini(prompt, schema);
+  const data = await callLLM(prompt, schema);
+  return Array.isArray(data) ? data : [];
 }
 
 // ── Main ──
 async function main() {
   if (!API_KEY) {
-    console.error("✗ GEMINI_API_KEY not set");
+    const keyUrl: Record<Provider, string> = {
+      gemini: "https://aistudio.google.com/apikey",
+      openrouter: "https://openrouter.ai/keys",
+      doubao: "https://www.volcengine.com/product/ark",
+    };
+    const envName: Record<Provider, string> = {
+      gemini: "GEMINI_API_KEY",
+      openrouter: "OPENROUTER_API_KEY",
+      doubao: "DOUBAO_API_KEY",
+    };
+    console.error(
+      `✗ ${envName[PROVIDER]} is empty. Get one at ${keyUrl[PROVIDER]} and paste it into .env, or set LLM_PROVIDER=<gemini|openrouter|doubao>.`,
+    );
     process.exit(1);
   }
 
+  console.log(`✓ provider: ${PROVIDER}  model: ${MODEL}`);
+  console.log(`✓ Per batch: ${perBatch} items`);
+  console.log(`→ cost cap: $${MAX_COST_USD.toFixed(2)} (using $${COST_PER_1M_IN}/1M in, $${COST_PER_1M_OUT}/1M out)\n`);
+
   const listenDir = path.join(process.cwd(), "scripts", "generated", "listening");
   const speakDir = path.join(process.cwd(), "scripts", "generated", "speaking");
-  if (!onlyType || onlyType === "listening") fs.mkdirSync(listenDir, { recursive: true });
-  if (!onlyType || onlyType === "speaking") fs.mkdirSync(speakDir, { recursive: true });
+  if (!dryRun && (!onlyType || onlyType === "listening")) fs.mkdirSync(listenDir, { recursive: true });
+  if (!dryRun && (!onlyType || onlyType === "speaking")) fs.mkdirSync(speakDir, { recursive: true });
 
   const batches: { type: "listening" | "speaking"; lang: LangKey; level: string }[] = [];
   for (const lang of LANGS) {
@@ -210,22 +408,38 @@ async function main() {
     }
   }
 
-  console.log(`✓ provider: gemini  model: ${MODEL}`);
-  console.log(`✓ Per batch: ${perBatch} items`);
   console.log(`→ ${batches.length} batch(es) to run\n`);
 
   let ok = 0;
   let fail = 0;
   let totalItems = 0;
+  let estCostUsd = 0;
+  let estTokensIn = 0;
+  let estTokensOut = 0;
 
   for (let i = 0; i < batches.length; i++) {
     const { type, lang, level } = batches[i];
+
+    if (estCostUsd > MAX_COST_USD) {
+      console.log(`\n  ⛔ cost cap reached: est $${estCostUsd.toFixed(3)} > $${MAX_COST_USD.toFixed(2)}. Aborting.`);
+      console.log(`  Re-run with LLM_MAX_COST_USD=${(MAX_COST_USD * 5).toFixed(2)} to continue.`);
+      break;
+    }
+
     const dir = type === "listening" ? listenDir : speakDir;
     const outFile = path.join(dir, `${lang}-${level}.json`);
 
-    console.log(`[${i + 1}/${batches.length}] ${type}/${lang}/${level} …`);
+    if (!overwrite && fs.existsSync(outFile)) {
+      const existing = JSON.parse(fs.readFileSync(outFile, "utf-8"));
+      console.log(`[${i + 1}/${batches.length}] skip ${type}/${lang}/${level} (${existing.length} items already at ${path.relative(process.cwd(), outFile)})`);
+      totalItems += existing.length;
+      continue;
+    }
+
+    process.stdout.write(`[${i + 1}/${batches.length}] ${type}/${lang}/${level} … `);
 
     try {
+      const t0 = Date.now();
       const data = type === "listening"
         ? await generateListening(lang, level, perBatch)
         : await generateSpeaking(lang, level, perBatch);
@@ -237,22 +451,28 @@ async function main() {
       // Add ids and language field
       const withMeta = data.map((item: any, idx: number) => ({
         ...item,
-        id: `${type === "listening" ? "l" : "s"}-${lang}-${level.toLowerCase()}-gemini-${idx + 1}`,
+        id: `${type === "listening" ? "l" : "s"}-${lang}-${level.toLowerCase()}-gemini-${idx + 1}-${Date.now().toString(36)}`,
         language: lang,
       }));
 
-      fs.writeFileSync(outFile, JSON.stringify(withMeta, null, 2), "utf-8");
-      console.log(`  ✓ ${withMeta.length} items → ${path.relative(process.cwd(), outFile)}`);
-      ok++;
-      totalItems += withMeta.length;
-    } catch (e: any) {
-      console.log(`  ✗ ${e.message}`);
-      fail++;
-    }
+      // cost accounting
+      const outTextLen = JSON.stringify(withMeta).length;
+      estTokensIn += 400; // ~400 input tokens per prompt (rough)
+      estTokensOut += Math.ceil(outTextLen / 3);
+      estCostUsd = (estTokensIn * COST_PER_1M_IN + estTokensOut * COST_PER_1M_OUT) / 1_000_000;
 
-    // Rate limit: sleep 3s between batches
-    if (i < batches.length - 1) {
-      await new Promise((r) => setTimeout(r, 3000));
+      if (!dryRun) fs.writeFileSync(outFile, JSON.stringify(withMeta, null, 2), "utf-8");
+      const ms = ((Date.now() - t0) / 1000).toFixed(1);
+      totalItems += withMeta.length;
+      ok++;
+      console.log(`✓ ${withMeta.length} items in ${ms}s (est. $${estCostUsd.toFixed(3)})`);
+
+      // Polite delay (Gemini free-tier: 15 RPM for Flash)
+      if (i < batches.length - 1) await sleep(PROVIDER === "gemini" ? 4500 : 1000);
+    } catch (e: any) {
+      console.error(`✗ ${e.message}`);
+      fail++;
+      await sleep(2000);
     }
   }
 
@@ -260,6 +480,8 @@ async function main() {
   console.log(`  batches ok:   ${ok}/${batches.length}`);
   console.log(`  batches fail: ${fail}`);
   console.log(`  total items:  ${totalItems}`);
+  console.log(`  est. tokens:  ${Math.round(estTokensIn)} in / ${Math.round(estTokensOut)} out`);
+  console.log(`  est. cost:    $${estCostUsd.toFixed(3)} (cap was $${MAX_COST_USD.toFixed(2)})`);
 }
 
 main().catch((e) => {

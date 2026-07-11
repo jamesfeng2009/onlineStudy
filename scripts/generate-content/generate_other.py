@@ -44,6 +44,9 @@ TATOEBA_CODE = {
     "es": "spa",
     "fr": "fra",
     "de": "deu",
+    "it": "ita",
+    "th": "tha",
+    "yue": "yue",
 }
 
 UI_LANG = {
@@ -51,6 +54,9 @@ UI_LANG = {
     "es": "es",
     "fr": "fr",
     "de": "de",
+    "it": "it",
+    "th": "th",
+    "yue": "yue",
 }
 
 LEVEL_FILE = {
@@ -142,6 +148,12 @@ def generate_for_language(target: str, max_words: int = 200) -> list[dict]:
             continue
         if target == "de" and not re.search(r"[a-zA-ZäöüßÄÖÜ]", tgt_sent):
             continue
+        if target == "it" and not re.search(r"[a-zA-ZàèéìîòóùÀÈÉÌÎÒÓÙ]", tgt_sent):
+            continue
+        if target == "th" and not re.search(r"[\u0E00-\u0E7F]", tgt_sent):
+            continue
+        if target == "yue" and not re.search(r"[\u4e00-\u9fff]", tgt_sent):
+            continue
         # 截断 tgt 句子作为 word 字段
         key = tgt_sent[:80]
         if key in seen_tgt_sentences:
@@ -163,13 +175,13 @@ def generate_for_language(target: str, max_words: int = 200) -> list[dict]:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--lang", choices=["ko", "es", "fr", "de", "all"], default="all",
+    parser.add_argument("--lang", choices=["ko", "es", "fr", "de", "it", "th", "yue", "all"], default="all",
                         help="要生成的目标语言（默认 all）")
-    parser.add_argument("--max-words", type=int, default=200,
-                        help="每个语言最多生成多少条（默认 200）")
+    parser.add_argument("--max-words", type=int, default=1000,
+                        help="每个语言最多生成多少条（默认 1000）")
     args = parser.parse_args()
 
-    langs = ["ko", "es", "fr", "de"] if args.lang == "all" else [args.lang]
+    langs = ["ko", "es", "fr", "de", "it", "th", "yue"] if args.lang == "all" else [args.lang]
 
     for target in langs:
         try:

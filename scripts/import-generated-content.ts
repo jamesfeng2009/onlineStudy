@@ -53,12 +53,19 @@ function sanitizeLevel(level: string, languageCode: string): string {
     en: ["A1", "A2", "B1", "B2", "C1", "C2"],
     ja: ["N5", "N4", "N3", "N2", "N1"],
     zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6"],
+    // ko/es/fr/de/it 走 CEFR（generate_other.py 用 en 词频估算）
+    ko: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    es: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    fr: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    de: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    it: ["A1", "A2", "B1", "B2", "C1", "C2"],
   };
   const levels = knownLevels[languageCode] ?? [];
   const upper = level.trim().toUpperCase();
   if (levels.includes(upper)) return upper;
   // 简单兜底映射
-  if (languageCode === "en") {
+  if (languageCode === "en" || languageCode === "ko" || languageCode === "es"
+      || languageCode === "fr" || languageCode === "de" || languageCode === "it") {
     if (upper.startsWith("A")) return "A1";
     if (upper.startsWith("B")) return "B1";
     if (upper.startsWith("C")) return "C1";
@@ -85,8 +92,14 @@ function wordToInput(item: GeneratedWord, order: number): WordBankInput {
   const phonetic = item.reading || item.phonetic || "";
   // 例句翻译与单词释义语言不同，不能混用；释义为空时留空占位
   const translation = item.translation || "(释义待补充)";
+  // ID 必须稳定且只含 ASCII 安全字符（原 word 字段可能是长句/含空格/非 ASCII）
+  const safeKey = item.word
+    .toLowerCase()
+    .replace(/[^a-z0-9\u3040-\u30ff\u4e00-\u9fff\uac00-\ud7af]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 30);
   return {
-    id: `gen-${languageCode}-${order}-${item.word}`,
+    id: `gen-${languageCode}-${order}-${safeKey || "item"}`,
     languageCode,
     level,
     word: item.word,
@@ -163,13 +176,15 @@ function generateQuizzes(words: WordBankInput[], maxPerLevel = 30): QuizInput[] 
 async function importWords(inputs: WordBankInput[]) {
   let count = 0;
   for (const w of inputs) {
+    // WordBank 表不再存 translation（拆到 WordBankTranslation 表）；
+    // generated_*.json 的 translation 是英文释义（en↔tgt 句对的 en 一侧），
+    // 所以 baseLanguageCode="en"。
     await prisma.wordBank.upsert({
       where: { id: w.id },
       update: {
         languageCode: w.languageCode,
         level: w.level,
         word: w.word,
-        translation: w.translation,
         phonetic: w.phonetic,
         exampleSentence: w.exampleSentence,
         vocabOrder: w.vocabOrder,
@@ -179,10 +194,21 @@ async function importWords(inputs: WordBankInput[]) {
         languageCode: w.languageCode,
         level: w.level,
         word: w.word,
-        translation: w.translation,
         phonetic: w.phonetic,
         exampleSentence: w.exampleSentence,
         vocabOrder: w.vocabOrder,
+      },
+    });
+    await prisma.wordBankTranslation.upsert({
+      where: { wordBankId_baseLanguageCode: { wordBankId: w.id, baseLanguageCode: "en" } },
+      update: {
+        baseLanguageCode: "en",
+        translation: w.translation,
+      },
+      create: {
+        wordBankId: w.id,
+        baseLanguageCode: "en",
+        translation: w.translation,
       },
     });
     count++;
@@ -193,26 +219,37 @@ async function importWords(inputs: WordBankInput[]) {
 async function importQuizzes(quizzes: QuizInput[]) {
   let count = 0;
   for (const q of quizzes) {
+    // Quiz 表只存 options/answer/quizOrder；question/explain 在 QuizTranslation
     await prisma.quiz.upsert({
       where: { id: q.id },
       update: {
         languageCode: q.languageCode,
         level: q.level,
-        question: q.question,
         options: q.options,
         answer: q.answer,
-        explain: q.explain,
         quizOrder: q.quizOrder,
       },
       create: {
         id: q.id,
         languageCode: q.languageCode,
         level: q.level,
-        question: q.question,
         options: q.options,
         answer: q.answer,
-        explain: q.explain,
         quizOrder: q.quizOrder,
+      },
+    });
+    await prisma.quizTranslation.upsert({
+      where: { quizId_baseLanguageCode: { quizId: q.id, baseLanguageCode: "en" } },
+      update: {
+        baseLanguageCode: "en",
+        question: q.question,
+        explain: q.explain,
+      },
+      create: {
+        quizId: q.id,
+        baseLanguageCode: "en",
+        question: q.question,
+        explain: q.explain,
       },
     });
     count++;
@@ -225,6 +262,13 @@ async function main() {
     { filename: "generated_en.json", languageCode: "en" },
     { filename: "generated_ja.json", languageCode: "ja" },
     { filename: "generated_zh.json", languageCode: "zh" },
+    { filename: "generated_ko.json", languageCode: "ko" },
+    { filename: "generated_es.json", languageCode: "es" },
+    { filename: "generated_fr.json", languageCode: "fr" },
+    { filename: "generated_de.json", languageCode: "de" },
+    { filename: "generated_it.json", languageCode: "it" },
+    { filename: "generated_th.json", languageCode: "th" },
+    { filename: "generated_yue.json", languageCode: "yue" },
   ];
 
   let totalWords = 0;

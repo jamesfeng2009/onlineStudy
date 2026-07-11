@@ -80,11 +80,12 @@ const API_KEY =
   )?.trim();
 const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: "gemini-2.5-flash",
-  // DeepSeek V3 Chat is free on OpenRouter (50 calls/day, no card
-  // required). 8K output tokens is enough for ~25 grammar items
-  // per batch. Switch to `google/gemini-2.5-flash` here if you
-  // want a paid fallback once the free quota is exhausted.
-  openrouter: "deepseek/deepseek-chat:free",
+  // Qwen 2.5 72B Instruct is the best price/multilingual trade-off
+  // on OpenRouter: $0.36/$0.40 per 1M tokens, official support for
+  // 29+ languages (incl. ja/ko/th/vi). For 28 batches × 20 items
+  // total cost is ~$0.40. Switch to `deepseek/deepseek-chat:free`
+  // for zero-cost runs (slower, weaker on th/yue).
+  openrouter: "qwen/qwen-2.5-72b-instruct",
   doubao: "doubao-seed-2.0-mini",
 };
 const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
@@ -102,8 +103,8 @@ const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
 const MAX_COST_USD = Number(
   arg("max-cost", process.env.LLM_MAX_COST_USD ?? "1.00"),
 );
-const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.30");
-const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "2.50");
+const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.36");
+const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "0.40");
 
 // Endpoints are provider-specific:
 //   gemini      → native Google AI Studio (not reachable from CN)
