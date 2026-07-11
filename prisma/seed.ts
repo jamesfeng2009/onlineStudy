@@ -227,16 +227,22 @@ async function main() {
   }
 
   console.log("Seeding word bank...");
+  // SeedWordInput.translation 是中文释义（zh 的 seed 例外，是英文释义）。
+  // WordBank 表本身不存 translation（按 schema 是 WordBankTranslation 表），
+  // 所以先 upsert WordBank，再 upsert 对应的 WordBankTranslation。
   for (let i = 0; i < seedWords.length; i++) {
     const w = seedWords[i];
     const id = `word-${w.languageCode}-${i}`;
+    // zh 的目标语言是中文，所以释义用英文（baseLanguageCode="en"）；
+    // 其他语言的释义都是中文。
+    const baseLanguageCode = w.languageCode === "zh" ? "en" : "zh";
+
     await prisma.wordBank.upsert({
       where: { id },
       update: {
         languageCode: w.languageCode,
         level: w.level,
         word: w.word,
-        translation: w.translation,
         phonetic: w.phonetic ?? null,
         exampleSentence: w.exampleSentence,
         vocabOrder: i,
@@ -246,10 +252,22 @@ async function main() {
         languageCode: w.languageCode,
         level: w.level,
         word: w.word,
-        translation: w.translation,
         phonetic: w.phonetic ?? null,
         exampleSentence: w.exampleSentence,
         vocabOrder: i,
+      },
+    });
+
+    await prisma.wordBankTranslation.upsert({
+      where: { wordBankId_baseLanguageCode: { wordBankId: id, baseLanguageCode } },
+      update: {
+        baseLanguageCode,
+        translation: w.translation,
+      },
+      create: {
+        wordBankId: id,
+        baseLanguageCode,
+        translation: w.translation,
       },
     });
   }
