@@ -12,6 +12,8 @@
     "prisma:generate": "prisma generate",
     "prisma:db:push": "prisma db push",
     "prisma:seed": "prisma db seed",
+    "seed:all": "tsx scripts/seed-all.ts",
+    "seed:content": "tsx scripts/seed-listening-speaking.ts",
     "seo:generate": "tsx scripts/generate-seo-files.ts",
     "content:generate": "cd scripts/generate-content && python3 generate_en.py && python3 generate_ja.py && python3 generate_zh.py",
     "content:import:sql": "pnpm tsx scripts/generate-import-sql.ts",

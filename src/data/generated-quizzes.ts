@@ -37,9 +37,9 @@ import type { QuizItem } from "../types";
   // th-A2.json: 20 items
   // th-B1.json: 20 items
   // th-B2.json: 20 items
-  // yue-中级.json: 12 items
+  // yue-中级.json: 20 items
   // yue-初级.json: 20 items
-  // yue-高级.json: 12 items
+  // yue-高级.json: 20 items
   // zh-HSK1.json: 19 items
   // zh-HSK2.json: 18 items
   // zh-HSK3.json: 13 items
@@ -679,7 +679,7 @@ export const GENERATED_QUIZZES: QuizItem[] = [
   { id: "q-th-B2-018", question: "ประตูหน้าต่างหลายบานในอาคารเก่าแห่งนี้___พังเสียหายจากพายุเมื่อคืน", options: ["ได้รับ","ถูก","กำลัง","จะ"], answer: 1, explain: "ถูก (took) is a common passive marker in Thai, often used when the action is negative, undesirable, or indicates that something happened to the subject, usually without their will.", language: "th", level: "B2" },
   { id: "q-th-B2-019", question: "ถ้าเมื่อก่อนฉันเลือกเรียนวิศวะกรรม ตอนนี้ฉัน___ทำงานในโรงงานแล้ว", options: ["คง","ต้อง","อาจ","ควร"], answer: 0, explain: "This is a mixed conditional sentence (Type 3 condition, Type 2 result). คง (khong) is used here to express a hypothetical present outcome that would likely be true if a past condition had been different.", language: "th", level: "B2" },
   { id: "q-th-B2-020", question: "ในโอกาสปีใหม่นี้ พวกเรา___อวยพรให้ทุกท่านมีความสุขความเจริญ", options: ["ควรจะ","ขอ","หวังจะ","อาจจะ"], answer: 1, explain: "ขอ (khaw) is used to politely express a wish, request, or blessing, often followed by a verb like \"อวยพร\" (to bless/wish good fortune).", language: "th", level: "B2" },
-  // ── yue (44 items) ──
+  // ── yue (60 items) ──
   { id: "q-yue-中级-001", question: "佢___喺圖書館睇書，唔好嘈佢。", options: ["會","咗","緊","過"], answer: 2, explain: "「緊」是動態助詞，表示動作正在進行中。這句話的意思是「他正在圖書館看書，不要吵他。」", language: "yue", level: "中级" },
   { id: "q-yue-中级-002", question: "佢哋___開會，我哋等陣先啦。", options: ["咗","過","係","緊"], answer: 3, explain: "「緊」是動態助詞，表示動作正在進行中。這句話的意思是「他們正在開會，我們等一下吧。」", language: "yue", level: "中级" },
   { id: "q-yue-中级-003", question: "呢本書我已經睇___一半。", options: ["過","住","咗","緊"], answer: 2, explain: "「咗」是完成式助詞，表示動作已經完成。這句話的意思是「這本書我已經看了一半。」", language: "yue", level: "中级" },
@@ -692,6 +692,14 @@ export const GENERATED_QUIZZES: QuizItem[] = [
   { id: "q-yue-中级-010", question: "佢病咗好耐，___瘦咗好多。", options: ["仲","所以","因為","然後"], answer: 1, explain: "「所以」用於引導結果。這句話的意思是「他病了很久，所以瘦了很多。」", language: "yue", level: "中级" },
   { id: "q-yue-中级-011", question: "你食飽咗未？我___未食呀。", options: ["都","仲","已經","淨係"], answer: 1, explain: "「仲」在此處與「未」連用，表示「還沒有」。這句話的意思是「你吃飽了嗎？我還沒吃呢。」", language: "yue", level: "中级" },
   { id: "q-yue-中级-012", question: "我想飲___杯咖啡。", options: ["仲","已經","都","淨係"], answer: 0, explain: "「仲」在這裡表示「另外的」或「再多一個/一份」。這句話的意思是「我還想再喝一杯咖啡。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-013", question: "你做___功課未呀？快啲做啦。", options: ["晒","埋","吓","返"], answer: 0, explain: "「晒」是動詞後綴，表示動作全部完成或全部包括。這句話的意思是「你做完功課了沒有？快點做吧。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-014", question: "行埋___，我同你傾啲偈。", options: ["嚟","去","過","到"], answer: 0, explain: "「埋」是動詞後綴，表示向著說話者方向移動。這句話的意思是「走過來，我和你聊聊天。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-015", question: "你試___飲呢杯茶吖，好香㗎。", options: ["吓","晒","埋","返"], answer: 0, explain: "「吓」是動詞後綴，表示短暫或嘗試性的動作。這句話的意思是「你嘗試喝一下這杯茶吧，很香的。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-016", question: "佢高___我半個頭。", options: ["過","比","如","同"], answer: 0, explain: "「過」用於比較句中，表示「比...更...」，是粵語特有的比較結構。這句話的意思是「他比我高半個頭。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-017", question: "我想買一___紙寫嘢。", options: ["隻","張","部","件"], answer: 1, explain: "「張」是平面薄片狀物件（如紙、床、桌）的量詞。這句話的意思是「我想買一張紙寫字。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-018", question: "你鍾意飲茶___飲咖啡呀？", options: ["定","或者","還是","同"], answer: 0, explain: "「定」用於選擇疑問句，連接兩個選項，相當於普通話的「還是」。這句話的意思是「你喜歡喝茶還是喝咖啡？」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-019", question: "你要___多錢呀？我借畀你。", options: ["幾多","幾","點","邊"], answer: 0, explain: "「幾多」是粵語中表示「多少」的疑問詞，用於詢問數量。這句話的意思是「你要多少錢？我借給你。」", language: "yue", level: "中级" },
+  { id: "q-yue-中级-020", question: "我今日有___唔舒服，想早啲走。", options: ["啲","好","幾","都"], answer: 0, explain: "「有啲」表示「有一點點」，「啲」表示程度輕微。這句話的意思是「我今天有點不舒服，想早點走。」", language: "yue", level: "中级" },
   { id: "q-yue-初级-001", question: "我___香港大學讀書。", options: ["喺","去","有","係"], answer: 0, explain: "\"喺\" is a preposition meaning \"at\" or \"in\" and is used to indicate the location where an action is performed.", language: "yue", level: "初级" },
   { id: "q-yue-初级-002", question: "佢___識講日文。", options: ["有","係","喺","唔"], answer: 3, explain: "\"唔\" negates the verb \"識\" (to know how to), indicating the inability to do something.", language: "yue", level: "初级" },
   { id: "q-yue-初级-003", question: "___係我妹妹。", options: ["呢個","佢","我","嗰個"], answer: 3, explain: "\"嗰個\" means \"that one\" and is used to refer to a person or object that is further away from the speaker.", language: "yue", level: "初级" },
@@ -724,6 +732,14 @@ export const GENERATED_QUIZZES: QuizItem[] = [
   { id: "q-yue-高级-010", question: "我哋想去超市買___嘢食，你哋有冇興趣一齊去？", options: ["啲","啲嘢","少少","好多"], answer: 1, explain: "「啲嘢」is a common Cantonese phrase meaning 'some things' or 'some stuff'. While '啲' can also mean 'some', '啲嘢' specifically refers to 'things'.", language: "yue", level: "高级" },
   { id: "q-yue-高级-011", question: "新聞報導：警方正___調查一宗可疑案件。", options: ["進行","做","處理","實行"], answer: 0, explain: "「進行」is a formal verb used in news or official reports, meaning 'to conduct' or 'to carry out', which is more appropriate in this context than the colloquial '做'.", language: "yue", level: "高级" },
   { id: "q-yue-高级-012", question: "你可唔可以幫我買___日用品返屋企？", options: ["啲","啲嘢","少量","好多"], answer: 0, explain: "「啲」is a common Cantonese particle used as a pluralizer or to indicate 'some' or 'a little bit' when referring to a quantity of items.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-013", question: "呢件案件已經交由法院___。", options: ["審理","審","睇","處理"], answer: 0, explain: "「審理」is a formal legal verb meaning 'to hear' or 'to try' a case, used in courts or news reports. It is more formal than the colloquial '審'.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-014", question: "公司業績超乎___，股價大幅上升。", options: ["預期","估計","諗到","諗法"], answer: 0, explain: "「超乎預期」is a formal written expression meaning 'beyond expectations', commonly used in business reports or news, more formal than the colloquial '估唔到'.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-015", question: "你估下佢做咗幾多年先___到經理個位？", options: ["晉升","任免","降職","離職"], answer: 0, explain: "「晉升」is a formal written verb meaning 'to be promoted', used in formal contexts or documents. The other options have different meanings: 任免 (appoint/dismiss), 降職 (demote), 離職 (resign).", language: "yue", level: "高级" },
+  { id: "q-yue-高级-016", question: "政府呼籲市民要___環境衞生。", options: ["保持","搞好","守","理"], answer: 0, explain: "「保持」is a formal verb meaning 'to maintain'. The collocation '保持衞生' is appropriate for official government announcements, more formal than the colloquial '搞好'.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-017", question: "佢飲到___大醉，要朋友扶返屋企。", options: ["酩酊","爛醉","醉酒","飲飽"], answer: 0, explain: "「酩酊大醉」is a formal Chinese idiom meaning 'dead drunk'. It is more elegant and literary than the colloquial '飲到醉晒', commonly used in written descriptions.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-018", question: "經過多年努力，佢終於___咗自己嘅夢想。", options: ["實現","達成","做到","完成"], answer: 0, explain: "「實現」is a formal verb commonly used with abstract nouns like '夢想' (dream) and '目標' (goal). It is the standard collocation in written Chinese, more formal than the colloquial '做到'.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-019", question: "呢篇文章用詞精煉，可謂___。", options: ["字字珠璣","詞詞精采","字字精彩","句句動人"], answer: 0, explain: "「字字珠璣」is a Chinese idiom meaning 'every word is a gem', used to praise well-written articles. It is more literary and formal than everyday expressions.", language: "yue", level: "高级" },
+  { id: "q-yue-高级-020", question: "學術會議上，教授___咗一篇重要論文。", options: ["發表","宣讀","寫","講"], answer: 0, explain: "「發表」is a formal verb used with '論文、演講' (paper, speech) in academic or formal contexts. It is more formal than the colloquial '講' or '寫'.", language: "yue", level: "高级" },
   // ── zh (70 items) ──
   { id: "q-zh-HSK1-001", question: "这是我___书。", options: ["的","了","吗","是"], answer: 0, explain: "'的' is a possessive particle, indicating ownership or a descriptive relationship between a noun and a modifier. Here, it shows that the book belongs to 'me'.", language: "zh", level: "HSK1" },
   { id: "q-zh-HSK1-002", question: "请给我一___水。", options: ["杯","个","本","瓶"], answer: 0, explain: "'杯' is a measure word used for drinks or liquids served in a cup or glass.", language: "zh", level: "HSK1" },

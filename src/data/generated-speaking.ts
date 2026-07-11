@@ -23,6 +23,18 @@ import type { SpeakingPhrase } from "../types";
   // zh-HSK1.json: 5 items
   // zh-HSK2.json: 5 items
   // zh-HSK3.json: 5 items
+  // fr-A1.json: 5 items
+  // fr-A2.json: 5 items
+  // fr-B1.json: 5 items
+  // de-A1.json: 5 items
+  // de-A2.json: 5 items
+  // de-B1.json: 5 items
+  // es-A1.json: 5 items
+  // es-A2.json: 5 items
+  // es-B1.json: 5 items
+  // ko-A1.json: 5 items
+  // ko-A2.json: 5 items
+  // ko-B1.json: 5 items
 
 export const GENERATED_SPEAKING: SpeakingPhrase[] = [
   // ── en (15 items) ──
@@ -121,4 +133,68 @@ export const GENERATED_SPEAKING: SpeakingPhrase[] = [
   { id: "s-zh-hsk3-gemini-3", phrase: "请问，去火车站怎么走？", translation: "Excuse me, how do I get to the train station?", phonetic: "Qǐngwèn, qù huǒchēzhàn zěnme zǒu?", language: "zh", level: "HSK3" },
   { id: "s-zh-hsk3-gemini-4", phrase: "这个多少钱？", translation: "How much is this?", phonetic: "Zhège duōshǎo qián?", language: "zh", level: "HSK3" },
   { id: "s-zh-hsk3-gemini-5", phrase: "我很喜欢吃中国菜。", translation: "I really like eating Chinese food.", phonetic: "Wǒ hěn xǐhuān chī Zhōngguócài.", language: "zh", level: "HSK3" },
+  // ── fr (15 items) ──
+  { id: "s-fr-A1-gemini-1", phrase: "Bonjour, comment allez-vous?", translation: "你好，您怎么样？", phonetic: "/bɔ̃ʒuʁ, kɔmɑ̃ tale vu/", language: "fr", level: "A1" },
+  { id: "s-fr-A1-gemini-2", phrase: "Un café, s'il vous plaît.", translation: "请给我一杯咖啡。", phonetic: "/œ̃ kafe, sil vu plɛ/", language: "fr", level: "A1" },
+  { id: "s-fr-A1-gemini-3", phrase: "Où est la gare?", translation: "火车站在哪里？", phonetic: "/u ɛ la ɡaʁ/", language: "fr", level: "A1" },
+  { id: "s-fr-A1-gemini-4", phrase: "Combien ça coûte?", translation: "这个多少钱？", phonetic: "/kɔ̃bjɛ̃ sa kut/", language: "fr", level: "A1" },
+  { id: "s-fr-A1-gemini-5", phrase: "Merci beaucoup.", translation: "非常感谢。", phonetic: "/mɛʁsi boku/", language: "fr", level: "A1" },
+  { id: "s-fr-A2-gemini-1", phrase: "Comment ça va aujourd'hui? Tu as des projets pour le week-end?", translation: "你今天怎么样？周末有什么计划吗？", phonetic: "/kɔmɑ̃ sa va oʒuʁdɥi? ty a de pʁɔʒɛ puʁ lə wikɛnd/", language: "fr", level: "A2" },
+  { id: "s-fr-A2-gemini-2", phrase: "Je voudrais un café et un croissant, s'il vous plaît.", translation: "我想要一杯咖啡和一个可颂，谢谢。", phonetic: "/ʒə vudʁɛ œ̃ kafe e œ̃ kʁwasɑ̃, sil vu plɛ/", language: "fr", level: "A2" },
+  { id: "s-fr-A2-gemini-3", phrase: "Excusez-moi, pour aller à la station la plus proche?", translation: "打扰一下，去最近的地铁站怎么走？", phonetic: "/ɛkskyze mwa, puʁ ale a la stasjɔ̃ la ply pʁɔʃ/", language: "fr", level: "A2" },
+  { id: "s-fr-A2-gemini-4", phrase: "Combien coûte ce t-shirt? Vous avez d'autres tailles?", translation: "这件T恤多少钱？还有其他尺码吗？", phonetic: "/kɔ̃bjɛ̃ kut sə ti ʃœʁt? vuz ave dotʁ tɑj/", language: "fr", level: "A2" },
+  { id: "s-fr-A2-gemini-5", phrase: "Ça te dit d'aller au cinéma ce soir?", translation: "今晚去看电影怎么样？", phonetic: "/sa tə di dale o sinema sə swaʁ/", language: "fr", level: "A2" },
+  { id: "s-fr-B1-gemini-1", phrase: "Comment vas-tu en ce moment? Tu as l'air fatigué.", translation: "你最近怎么样？你看起来很累。", phonetic: "/kɔmɑ̃ va ty ɑ̃ sə mɔmɑ̃? ty a lɛʁ fatiɡe/", language: "fr", level: "B1" },
+  { id: "s-fr-B1-gemini-2", phrase: "Je pourrais avoir une pizza margherita et une bouteille d'eau, s'il vous plaît?", translation: "请给我一份玛格丽特披萨和一瓶水，可以吗？", phonetic: "/ʒə puʁɛ avwaʁ yn pitsa maʁɡeʁita e yn butɛj do, sil vu plɛ/", language: "fr", level: "B1" },
+  { id: "s-fr-B1-gemini-3", phrase: "Pardon, pourriez-vous m'indiquer le chemin pour la gare, s'il vous plaît?", translation: "打扰一下，请问您能告诉我去火车站的路吗？", phonetic: "/paʁdɔ̃, puʁje vu mɛ̃dike lə ʃmɛ̃ puʁ la ɡaʁ, sil vu plɛ/", language: "fr", level: "B1" },
+  { id: "s-fr-B1-gemini-4", phrase: "Combien coûte cette veste? Est-ce qu'il y a une réduction?", translation: "这件外套多少钱？有折扣吗？", phonetic: "/kɔ̃bjɛ̃ kut sɛt vɛst? ɛs kil j a yn ʁedyksjɔ̃/", language: "fr", level: "B1" },
+  { id: "s-fr-B1-gemini-5", phrase: "Qu'est-ce que tu as envie de faire ce week-end?", translation: "你这周末想做什么？", phonetic: "/kɛs kə ty a ɑ̃vi də fɛʁ sə wikɛnd/", language: "fr", level: "B1" },
+  // ── de (15 items) ──
+  { id: "s-de-A1-gemini-1", phrase: "Hallo, wie geht es dir?", translation: "你好，你怎么样？", phonetic: "/ˈhalo, viː ɡeːt ɛs diːɐ/", language: "de", level: "A1" },
+  { id: "s-de-A1-gemini-2", phrase: "Einen Kaffee, bitte.", translation: "请给我一杯咖啡。", phonetic: "/ˈaɪ̯nən ˈkɐfeː, ˈbɪtə/", language: "de", level: "A1" },
+  { id: "s-de-A1-gemini-3", phrase: "Wo ist der Bahnhof?", translation: "火车站在哪里？", phonetic: "/voː ɪst deːɐ ˈbaːnhoːf/", language: "de", level: "A1" },
+  { id: "s-de-A1-gemini-4", phrase: "Wie viel kostet das?", translation: "这个多少钱？", phonetic: "/viː fiːl ˈkɔstət das/", language: "de", level: "A1" },
+  { id: "s-de-A1-gemini-5", phrase: "Vielen Dank.", translation: "非常感谢。", phonetic: "/ˈfiːlən daŋk/", language: "de", level: "A1" },
+  { id: "s-de-A2-gemini-1", phrase: "Wie geht es dir heute? Hast du am Wochenende etwas vor?", translation: "你今天怎么样？周末有什么计划吗？", phonetic: "/viː ɡeːt ɛs diːɐ ˈhɔɪ̯tə? hast du am vɔˈxɛndə ˈɛtvas foːɐ/", language: "de", level: "A2" },
+  { id: "s-de-A2-gemini-2", phrase: "Ich hätte gerne einen Kaffee und ein Croissant, bitte.", translation: "我想要一杯咖啡和一个可颂，谢谢。", phonetic: "/ɪç ˈhɛtə ˈɡɛʁnə ˈaɪ̯nən ˈkɐfeː ʊnt aɪ̯n kʁwaˈsɑ̃, ˈbɪtə/", language: "de", level: "A2" },
+  { id: "s-de-A2-gemini-3", phrase: "Entschuldigung, wie komme ich zur nächsten U-Bahn?", translation: "打扰一下，去最近的地铁站怎么走？", phonetic: "/ɛntˈʃʊldɪɡʊŋ, viː ˈkɔmə ɪç tsuːɐ̯ ˈnɛçstən ˈuːbaːn/", language: "de", level: "A2" },
+  { id: "s-de-A2-gemini-4", phrase: "Was kostet dieses T-Shirt? Haben Sie andere Größen?", translation: "这件T恤多少钱？还有其他尺码吗？", phonetic: "/vas ˈkɔstət ˈdiːzəs ˈtiːʃœʁt? ˈhaːbən ziː ˈandəʁə ˈɡʁøːsən/", language: "de", level: "A2" },
+  { id: "s-de-A2-gemini-5", phrase: "Hast du Lust, heute Abend ins Kino zu gehen?", translation: "今晚去看电影怎么样？", phonetic: "/hast du lʊst, ˈhɔɪ̯tə ˈaːbənt ɪns ˈkiːno tsuː ˈɡeːən/", language: "de", level: "A2" },
+  { id: "s-de-B1-gemini-1", phrase: "Wie geht es dir in letzter Zeit?", translation: "你最近怎么样？", phonetic: "/viː ɡeːt ɛs diːɐ ɪn ˈlɛtstɐ tsaɪ̯t/", language: "de", level: "B1" },
+  { id: "s-de-B1-gemini-2", phrase: "Ich hätte gerne eine Pizza Margherita und eine Flasche Wasser, bitte.", translation: "我想要一份玛格丽特披萨和一瓶水，谢谢。", phonetic: "/ɪç ˈhɛtə ˈɡɛʁnə ˈaɪ̯nə ˈpɪtsa maʁɡeˈʁiːta ʊnt ˈaɪ̯nə ˈflaʃə ˈvasɐ, ˈbɪtə/", language: "de", level: "B1" },
+  { id: "s-de-B1-gemini-3", phrase: "Entschuldigen Sie, könnten Sie mir bitte den Weg zum Bahnhof zeigen?", translation: "打扰一下，请问您能告诉我去火车站的路吗？", phonetic: "/ɛntˈʃʊldɪɡən ziː, ˈkœʁtn̩ ziː miːɐ ˈbɪtə deːn veːk tsʊm ˈbaːnhoːf ˈtsaɪ̯ɡn̩/", language: "de", level: "B1" },
+  { id: "s-de-B1-gemini-4", phrase: "Was kostet diese Jacke? Gibt es darauf einen Rabatt?", translation: "这件夹克多少钱？有折扣吗？", phonetic: "/vas ˈkɔstət ˈdiːzə ˈjakə? ɡiːpt ɛs daˈʁaʊ̯f ˈaɪ̯nən ˈʁabaːt/", language: "de", level: "B1" },
+  { id: "s-de-B1-gemini-5", phrase: "Was möchtest du am Wochenende machen?", translation: "你这周末想做什么？", phonetic: "/vas ˈmœçtɛst du am vɔˈxɛndə ˈmaxən/", language: "de", level: "B1" },
+  // ── es (15 items) ──
+  { id: "s-es-A1-gemini-1", phrase: "Hola, ¿cómo estás?", translation: "你好，你怎么样？", phonetic: "/ˈola, ˈkomo esˈtas/", language: "es", level: "A1" },
+  { id: "s-es-A1-gemini-2", phrase: "Un café, por favor.", translation: "请给我一杯咖啡。", phonetic: "/un ˈkafe, poɾ faˈβoɾ/", language: "es", level: "A1" },
+  { id: "s-es-A1-gemini-3", phrase: "¿Dónde está la estación de tren?", translation: "火车站在哪里？", phonetic: "/ˈonde esˈta la estaˈsjon de tɾen/", language: "es", level: "A1" },
+  { id: "s-es-A1-gemini-4", phrase: "¿Cuánto cuesta esto?", translation: "这个多少钱？", phonetic: "/ˈkwanto ˈkwesta ˈesto/", language: "es", level: "A1" },
+  { id: "s-es-A1-gemini-5", phrase: "Muchas gracias.", translation: "非常感谢。", phonetic: "/ˈmutʃas ˈɣɾasjas/", language: "es", level: "A1" },
+  { id: "s-es-A2-gemini-1", phrase: "¿Cómo estás hoy? ¿Tienes planes para el fin de semana?", translation: "你今天怎么样？周末有什么计划吗？", phonetic: "/ˈkomo esˈtas ọi? ˈtjenes ˈplanes ˈpaɾa el fin de ˈsemana/", language: "es", level: "A2" },
+  { id: "s-es-A2-gemini-2", phrase: "Quisiera un café y un croissant, por favor.", translation: "我想要一杯咖啡和一个可颂，谢谢。", phonetic: "/kiˈsjeɾa un ˈkafe i un kɾwaˈsan, poɾ faˈβoɾ/", language: "es", level: "A2" },
+  { id: "s-es-A2-gemini-3", phrase: "Disculpe, ¿cómo llego a la estación de metro más cercana?", translation: "打扰一下，去最近的地铁站怎么走？", phonetic: "/disˈkulpe, ˈkomo ˈʝeɣo a la estaˈsjon de ˈmetɾo mas seɾˈkana/", language: "es", level: "A2" },
+  { id: "s-es-A2-gemini-4", phrase: "¿Cuánto cuesta esta camiseta? ¿Tienen otras tallas?", translation: "这件T恤多少钱？还有其他尺码吗？", phonetic: "/ˈkwanto ˈkwesta ˈesta kamiˈseta? ˈtjeneŋ ˈotɾas ˈtaʝas/", language: "es", level: "A2" },
+  { id: "s-es-A2-gemini-5", phrase: "¿Te apetece ir al cine esta noche?", translation: "今晚去看电影怎么样？", phonetic: "/te aˈpeteθe iɾ al ˈθine ˈesta ˈnotʃe/", language: "es", level: "A2" },
+  { id: "s-es-B1-gemini-1", phrase: "¿Cómo has estado últimamente?", translation: "你最近怎么样？", phonetic: "/ˈkomo as esˈtaðo ˈultimaɾmente/", language: "es", level: "B1" },
+  { id: "s-es-B1-gemini-2", phrase: "Me gustaría pedir una pizza margherita y una botella de agua, por favor.", translation: "我想要点一份玛格丽特披萨和一瓶水，谢谢。", phonetic: "/me ɣustaˈɾia peˈðiɾ una ˈpitsa maɾɡeˈɾita i una boˈteʝa de ˈaɣwa, poɾ faˈβoɾ/", language: "es", level: "B1" },
+  { id: "s-es-B1-gemini-3", phrase: "Disculpe, ¿podría indicarme cómo llegar a la estación, por favor?", translation: "打扰一下，请问您能告诉我去火车站的路吗？", phonetic: "/disˈkulpe, poˈðɾi a indiˈkaɾme ˈkomo ʝeˈɣaɾ a la estaˈsjon, poɾ faˈβoɾ/", language: "es", level: "B1" },
+  { id: "s-es-B1-gemini-4", phrase: "¿Cuánto cuesta esta chaqueta? ¿Tienen algún descuento?", translation: "这件夹克多少钱？有折扣吗？", phonetic: "/ˈkwanto ˈkwesta ˈesta tʃaˈketa? ˈtjeneŋ alˈɣun desˈkwento/", language: "es", level: "B1" },
+  { id: "s-es-B1-gemini-5", phrase: "¿Qué te apetece hacer este fin de semana?", translation: "你这周末想做什么？", phonetic: "/ke te aˈpeteθe aˈθeɾ ˈeste fin de ˈsemana/", language: "es", level: "B1" },
+  // ── ko (15 items) ──
+  { id: "s-ko-A1-gemini-1", phrase: "안녕하세요, 잘 지내세요?", translation: "你好，您怎么样？", phonetic: "annyeonghaseyo, jal jinaeseyo?", language: "ko", level: "A1" },
+  { id: "s-ko-A1-gemini-2", phrase: "커피 한 잔 주세요.", translation: "请给我一杯咖啡。", phonetic: "keopi han jan juseyo.", language: "ko", level: "A1" },
+  { id: "s-ko-A1-gemini-3", phrase: "기차역이 어디예요?", translation: "火车站在哪里？", phonetic: "gichayeogi eodi-yeyo?", language: "ko", level: "A1" },
+  { id: "s-ko-A1-gemini-4", phrase: "이거 얼마예요?", translation: "这个多少钱？", phonetic: "igeo eolma-yeyo?", language: "ko", level: "A1" },
+  { id: "s-ko-A1-gemini-5", phrase: "감사합니다.", translation: "非常感谢。", phonetic: "gamsahamnida.", language: "ko", level: "A1" },
+  { id: "s-ko-A2-gemini-1", phrase: "오늘 어떻게 지내세요? 주말에 계획 있어요?", translation: "你今天怎么样？周末有什么计划吗？", phonetic: "oneul eotteoke jinaeseyo? jumare gyehoeg isseoyo?", language: "ko", level: "A2" },
+  { id: "s-ko-A2-gemini-2", phrase: "커피 한 잔이랑 크루아상 하나 주세요.", translation: "我想要一杯咖啡和一个可颂，谢谢。", phonetic: "keopi han janirang keuruasang hana juseyo.", language: "ko", level: "A2" },
+  { id: "s-ko-A2-gemini-3", phrase: "실례합니다, 가장 가까운 지하철역 어떻게 가요?", translation: "打扰一下，去最近的地铁站怎么走？", phonetic: "sillyehamnida, gajang gakkaun jihacheollyeok eotteoke gayo?", language: "ko", level: "A2" },
+  { id: "s-ko-A2-gemini-4", phrase: "이 티셔츠 얼마예요? 다른 사이즈 있어요?", translation: "这件T恤多少钱？还有其他尺码吗？", phonetic: "i tisyeocheu eolma-yeyo? dareun saijeu isseoyo?", language: "ko", level: "A2" },
+  { id: "s-ko-A2-gemini-5", phrase: "오늘 밤 영화 보러 갈까요?", translation: "今晚去看电影怎么样？", phonetic: "oneul bam yeonghwa boreo galkkayo?", language: "ko", level: "A2" },
+  { id: "s-ko-B1-gemini-1", phrase: "요즘 어떻게 지내요? 피곤해 보여요.", translation: "你最近怎么样？你看起来很累。", phonetic: "yojeum eotteoke jinaeyo? pigonhae boyeoyo.", language: "ko", level: "B1" },
+  { id: "s-ko-B1-gemini-2", phrase: "마르게리타 피자 한 판하고 물 한 병 주시겠어요?", translation: "请给我一份玛格丽特披萨和一瓶水，可以吗？", phonetic: "mareugerita pija han panhago mul han byeong jusigesseoyo?", language: "ko", level: "B1" },
+  { id: "s-ko-B1-gemini-3", phrase: "실례합니다, 기차역 가는 길 좀 알려주시겠어요?", translation: "打扰一下，请问您能告诉我去火车站的路吗？", phonetic: "sillyehamnida, gichayeok ganeun gil jom allyeojusigesseoyo?", language: "ko", level: "B1" },
+  { id: "s-ko-B1-gemini-4", phrase: "이 재킷 얼마예요? 할인 되나요?", translation: "这件夹克多少钱？有折扣吗？", phonetic: "i jaeket eolma-yeyo? harin doenayo?", language: "ko", level: "B1" },
+  { id: "s-ko-B1-gemini-5", phrase: "이번 주말에 뭐 하고 싶어요?", translation: "你这周末想做什么？", phonetic: "ibeon jumare mwo hago sipeoyo?", language: "ko", level: "B1" },
 ];
