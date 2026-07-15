@@ -1,6 +1,5 @@
-allowBuilds:
-  '@prisma/client': true
-  better-sqlite3: false
-  esbuild: true
-  prisma: true
-  wordnet-lmf-en: false
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - esbuild
+  - prisma
