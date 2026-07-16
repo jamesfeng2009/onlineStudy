@@ -8,6 +8,7 @@ import { useProgressStore } from "../store/progressStore";
 import type { PostResp } from "../lib/api";
 
 const TOPIC_KEYS = ["", "daily", "japanese", "kpop", "english", "help"] as const;
+const OFFICIAL_AUTHOR_NAMES = new Set(["LinguaVerse 官方", "LinguaVerse Official"]);
 
 const TOPIC_KEY_TO_VALUE: Record<string, string> = {
   daily: "每日一句",
@@ -177,7 +178,7 @@ export default function CommunityPage() {
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="font-semibold text-white">
-                        {p.authorName === "LinguaVerse 官方"
+                        {OFFICIAL_AUTHOR_NAMES.has(p.authorName)
                           ? t("community.official", { name: "LinguaVerse" })
                           : p.authorName}
                       </span>

@@ -162,7 +162,7 @@ export default function Header() {
                 <Flame className="h-4 w-4 text-orange-400" />
                 <span className="font-medium">{t("header.streak", { days: user.streak })}</span>
                 <span className="mx-1 h-3 w-px bg-white/10" />
-                <span className="text-brand-200">Lv.{user.level}</span>
+                <span className="text-brand-200">{t("header.level", { level: user.level })}</span>
               </div>
               <button
                 onClick={handleLogout}

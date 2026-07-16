@@ -64,7 +64,7 @@ export default function LevelMetaCard({ language, level, variant = "full" }: Pro
         <span className="rounded-full bg-sky-400/15 px-3 py-1 text-xs font-semibold text-sky-300">
           {meta.code}
         </span>
-        <span className="text-base font-semibold text-white">{meta.name}</span>
+        <span className="text-base font-semibold text-white">{t(meta.name)}</span>
         <span className="rounded-full bg-fuchsia-400/10 px-2.5 py-0.5 text-[11px] text-fuchsia-300">
           {t("levelMeta.alignment")} CEFR {cefr}
         </span>
@@ -90,7 +90,7 @@ export default function LevelMetaCard({ language, level, variant = "full" }: Pro
           {meta.learningGoals.map((g, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-brand-100/90">
               <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sky-400" />
-              <span>{g}</span>
+              <span>{t(g)}</span>
             </li>
           ))}
         </ul>
@@ -108,7 +108,7 @@ export default function LevelMetaCard({ language, level, variant = "full" }: Pro
               key={i}
               className="rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-brand-100/80"
             >
-              {g}
+              {t(g)}
             </span>
           ))}
         </div>
