@@ -1,5 +1,9 @@
 # Generate listening fill-in-the-blank + speaking phrases
-# via Gemini on GitHub's US-based runners.
+# via Gemini + DashScope on GitHub's US-based runners.
+#
+# P4-4: East Asian languages (zh/ja/ko/yue) use Qwen via DashScope,
+# other languages use Gemini. Both run on GitHub Actions (US-based)
+# to bypass mainland China region restrictions.
 #
 # Trigger manually from the Actions tab to (re)generate content
 # for any of: en, ja, zh, ko, es, fr, de, it, th, yue.
@@ -49,11 +53,11 @@ jobs:
 
       - name: Generate listening & speaking batches
         env:
-          LLM_PROVIDER: gemini
+          # P4-4: Per-language provider routing
+          # zh/ja/ko/yue → DashScope (Qwen), others → Gemini
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          LLM_MODEL: gemini-2.5-flash
-          # Gemini free tier: cost is $0, so set cost rates to 0 to
-          # avoid the script's cost cap aborting after batch 1.
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          # Cost rates set to 0 (free tier / covered by free quota)
           LLM_COST_PER_1M_IN: "0"
           LLM_COST_PER_1M_OUT: "0"
         run: |

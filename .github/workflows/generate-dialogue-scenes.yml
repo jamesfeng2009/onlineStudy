@@ -1,22 +1,23 @@
 name: Generate dialogue scenes
 
 # Manually triggered: batch-generate multi-turn dialogue scenes
-# for the conversation module via Google Gemini.
+# for the conversation module.
+#
+# P4-4: East Asian languages (zh/ja/ko/yue) use Qwen via DashScope,
+# other languages use Gemini. Both run on GitHub Actions (US-based)
+# to bypass mainland China region restrictions.
 #
 # Workflow:
-#   1. Generate 4 langs × 6 scenarios = 24 scenes (or filtered subset).
+#   1. Generate 10 langs × 6 scenarios = 60 scenes (or filtered subset).
 #   2. Validate each scene against the 4 defenses.
 #   3. Merge into src/data/dialogue-scenes.ts.
 #   4. Commit + push if anything changed.
-#
-# Trigger this workflow from the Actions tab after you've reviewed
-# the hand-authored scenes and want to expand coverage.
 
 on:
   workflow_dispatch:
     inputs:
       lang:
-        description: "Limit to a single language (en|zh|ja|yue) — leave empty for all"
+        description: "Limit to a single language (en|zh|ja|ko|es|fr|de|it|th|yue) — leave empty for all"
         required: false
         type: string
         default: ""
@@ -50,8 +51,9 @@ jobs:
 
       - name: Generate scenes
         env:
+          # P4-4: Per-language provider routing
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: "gemini-2.0-flash"
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
           # Expose inputs as env vars so the bash block can safely
           # test for empty values (GitHub renders ${{ inputs.x }}
           # to literal "" when empty, which breaks `[ -n "${{ x }}" ]`).
@@ -82,7 +84,7 @@ jobs:
           # Detect any change to dialogue-scenes.ts or generated/dialogues/.
           if [ -n "$(git status --porcelain -- src/data/dialogue-scenes.ts scripts/generated/dialogues/)" ]; then
             git add src/data/dialogue-scenes.ts scripts/generated/dialogues/
-            git commit -m "chore(dialogues): batch-generate via Gemini [skip ci]"
+            git commit -m "chore(dialogues): batch-generate via Gemini+DashScope [skip ci]"
             git push origin main
           else
             echo "No changes to commit."
