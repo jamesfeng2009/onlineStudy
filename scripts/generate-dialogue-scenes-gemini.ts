@@ -13,8 +13,9 @@
  *   pnpm tsx scripts/generate-dialogue-scenes-gemini.ts --scenario=hotel
  *
  * Env:
- *   GEMINI_API_KEY  — required
- *   GEMINI_MODEL    — default "gemini-2.0-flash"
+ *   GEMINI_API_KEY     — for en/es/fr/de/it/th (Gemini)
+ *   DASHSCOPE_API_KEY  — for zh/ja/ko/yue (Qwen via DashScope)
+ *   GEMINI_MODEL       — default "gemini-2.0-flash"
  *
  * The 4-defense filter (id 唯一 / turn id 引用合法 / 关键词非空 /
  * startTurnId 存在) is applied AFTER generation, in
@@ -40,13 +41,45 @@ function loadDotenv(file: string) {
 loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
-const API_KEY = process.env.GEMINI_API_KEY?.trim();
-if (!API_KEY) {
-  console.error("GEMINI_API_KEY is required");
-  process.exit(1);
+// ─── Provider router (per-language, P4-4) ───
+type Provider = "gemini" | "dashscope";
+const PROVIDER_BY_LANG: Record<string, Provider> = {
+  zh: "dashscope", ja: "dashscope", ko: "dashscope", yue: "dashscope",
+  en: "gemini", es: "gemini", fr: "gemini", de: "gemini", it: "gemini", th: "gemini",
+};
+const DEFAULT_MODEL: Record<Provider, string> = {
+  gemini: "gemini-2.0-flash",
+  dashscope: "qwen2.5-72b-instruct",
+};
+const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
+  gemini: {
+    url: (m) => `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent`,
+    auth: (k) => ({ "x-goog-api-key": k }),
+  },
+  dashscope: {
+    url: () => "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+};
+
+function getApiKey(provider: Provider): string | undefined {
+  return ({
+    gemini: process.env.GEMINI_API_KEY,
+    dashscope: process.env.DASHSCOPE_API_KEY,
+  }[provider])?.trim();
 }
-const MODEL = process.env.GEMINI_MODEL ?? "gemini-2.0-flash";
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+
+function getProviderForLang(lang: string) {
+  const provider = PROVIDER_BY_LANG[lang] ?? "gemini";
+  const apiKey = getApiKey(provider);
+  if (!apiKey) {
+    const envName = provider === "gemini" ? "GEMINI_API_KEY" : "DASHSCOPE_API_KEY";
+    console.error(`✗ ${envName} is empty (needed for provider "${provider}", lang=${lang}).`);
+    process.exit(1);
+  }
+  const model = process.env.GEMINI_MODEL?.trim() || DEFAULT_MODEL[provider];
+  return { provider, apiKey, model, endpoint: ENDPOINTS[provider] };
+}
 
 // ---- CLI args ----
 const argv = Object.fromEntries(
@@ -171,42 +204,72 @@ function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function callGemini(prompt: string, attempt = 0): Promise<unknown> {
-  const res = await fetch(`${ENDPOINT}?key=${encodeURIComponent(API_KEY!)}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
-      generationConfig: {
+async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unknown> {
+  const { provider, apiKey, model, endpoint } = getProviderForLang(lang);
+
+  let res: Response;
+  if (provider === "gemini") {
+    res = await fetch(`${endpoint.url(model)}?key=${encodeURIComponent(apiKey)}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...endpoint.auth(apiKey) },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.9,
+          topP: 0.95,
+          maxOutputTokens: 8192,
+          responseMimeType: "application/json",
+          responseSchema: RESPONSE_SCHEMA,
+        },
+      }),
+    });
+  } else {
+    // DashScope: OpenAI-compatible, no responseSchema support
+    const sysMsg = "You are a strict JSON generator for dialogue scenes. Output ONLY a JSON object matching the schema described in the user message — no prose, no markdown fences.";
+    res = await fetch(endpoint.url(model), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...endpoint.auth(apiKey) },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: "system", content: sysMsg },
+          { role: "user", content: prompt },
+        ],
         temperature: 0.9,
-        topP: 0.95,
-        maxOutputTokens: 8192,
-        responseMimeType: "application/json",
-        responseSchema: RESPONSE_SCHEMA,
-      },
-    }),
-  });
+        top_p: 0.95,
+        max_tokens: 8192,
+        response_format: { type: "json_object" },
+      }),
+    });
+  }
+
   if (res.status === 429 || res.status >= 500) {
     if (attempt < 4) {
       const wait = 4000 * Math.pow(2, attempt);
-      console.warn(`  HTTP ${res.status}, retry in ${wait}ms`);
+      console.warn(`  [${provider}] HTTP ${res.status}, retry in ${wait}ms`);
       await sleep(wait);
-      return callGemini(prompt, attempt + 1);
+      return callLLM(prompt, lang, attempt + 1);
     }
-    throw new Error(`HTTP ${res.status} after retries`);
+    throw new Error(`[${provider}] HTTP ${res.status} after retries`);
   }
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`HTTP ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`[${provider}] HTTP ${res.status}: ${text.slice(0, 400)}`);
   }
+
   const data: any = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  let text: string | undefined;
+  if (provider === "gemini") {
+    text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  } else {
+    text = data?.choices?.[0]?.message?.content;
+  }
   if (!text) {
     if (attempt < 2) {
       await sleep(2000);
-      return callGemini(prompt, attempt + 1);
+      return callLLM(prompt, lang, attempt + 1);
     }
-    throw new Error("empty response");
+    throw new Error(`[${provider}] empty response`);
   }
   return JSON.parse(text);
 }
@@ -227,7 +290,7 @@ async function main() {
     const prompt = buildPrompt(lang, scenario);
     process.stdout.write(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id} ... `);
     try {
-      const scene = await callGemini(prompt);
+      const scene = await callLLM(prompt, lang);
       fs.writeFileSync(file, JSON.stringify(scene, null, 2));
       console.log("ok");
     } catch (e) {

@@ -18,9 +18,10 @@
  *   pnpm tsx scripts/generate-listening-speaking-gemini.ts --count=10
  *
  * Env (loaded from .env / .env.local):
- *   GEMINI_API_KEY     — for LLM_PROVIDER=gemini
- *   OPENROUTER_API_KEY — for LLM_PROVIDER=openrouter
- *   DOUBAO_API_KEY     — for LLM_PROVIDER=doubao
+ *   GEMINI_API_KEY     — for en/es/fr/de/it/th (Gemini)
+ *   DASHSCOPE_API_KEY  — for zh/ja/ko/yue (Qwen via DashScope,东亚语言更优)
+ *   OPENROUTER_API_KEY — alternative (if LLM_PROVIDER=openrouter)
+ *   DOUBAO_API_KEY     — alternative (if LLM_PROVIDER=doubao)
  *   LLM_MODEL          — override model name
  *   LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT — cost cap accounting
  *   LLM_MAX_COST_USD   — abort once est. spend crosses this (default 1.00)
@@ -47,25 +48,32 @@ function loadDotenv(file: string) {
 loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
-// ─── Provider router ───
-type Provider = "gemini" | "openrouter" | "doubao";
-const PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
-const API_KEY =
-  (PROVIDER === "openrouter" ? process.env.OPENROUTER_API_KEY
-    : PROVIDER === "doubao" ? process.env.DOUBAO_API_KEY
-    : process.env.GEMINI_API_KEY
-  )?.trim();
+// ─── Provider router (per-language) ───
+// P4-4: 东亚语言(zh/ja/ko/yue)走 Qwen(DashScope),其他走 Gemini
+type Provider = "gemini" | "openrouter" | "doubao" | "dashscope";
+
+const PROVIDER_BY_LANG: Record<string, Provider> = {
+  zh: "dashscope",   // Qwen2.5-72B via DashScope
+  ja: "dashscope",
+  ko: "dashscope",
+  yue: "dashscope",
+  en: "gemini",
+  es: "gemini",
+  fr: "gemini",
+  de: "gemini",
+  it: "gemini",
+  th: "gemini",
+};
+
+// Fallback provider (when lang not in PROVIDER_BY_LANG)
+const FALLBACK_PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
+
 const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: "gemini-2.5-flash",
-  // Qwen 2.5 72B Instruct: $0.36/$0.40 per 1M tokens, 29+ languages
   openrouter: "qwen/qwen-2.5-72b-instruct",
   doubao: "doubao-seed-2.0-mini",
+  dashscope: "qwen2.5-72b-instruct",
 };
-const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
-
-const MAX_COST_USD = Number(process.env.LLM_MAX_COST_USD ?? "1.00");
-const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? (PROVIDER === "openrouter" ? "0.36" : "0.30"));
-const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? (PROVIDER === "openrouter" ? "0.40" : "2.50"));
 
 const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
   gemini: {
@@ -81,8 +89,45 @@ const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string
     url: () => "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
     auth: (k) => ({ Authorization: `Bearer ${k}` }),
   },
+  dashscope: {
+    url: () => "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
 };
-const ENDPOINT = ENDPOINTS[PROVIDER];
+
+function getApiKey(provider: Provider): string | undefined {
+  return ({
+    gemini: process.env.GEMINI_API_KEY,
+    openrouter: process.env.OPENROUTER_API_KEY,
+    doubao: process.env.DOUBAO_API_KEY,
+    dashscope: process.env.DASHSCOPE_API_KEY,
+  }[provider])?.trim();
+}
+
+interface ProviderConfig {
+  provider: Provider;
+  apiKey: string;
+  model: string;
+  endpoint: typeof ENDPOINTS[Provider];
+}
+
+function getProviderForLang(lang: string): ProviderConfig {
+  const provider = PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER;
+  const apiKey = getApiKey(provider);
+  if (!apiKey) {
+    throw new Error(
+      `API key not configured for provider "${provider}" (lang=${lang}). ` +
+      `Set ${provider.toUpperCase()}_API_KEY in .env`
+    );
+  }
+  const model = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[provider];
+  const endpoint = ENDPOINTS[provider];
+  return { provider, apiKey, model, endpoint };
+}
+
+const MAX_COST_USD = Number(process.env.LLM_MAX_COST_USD ?? "1.00");
+const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.30");
+const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "2.50");
 
 // ─── CLI args ───
 function arg(name: string, def?: string): string | undefined {
@@ -180,15 +225,17 @@ function repairJson(input: string): string {
 }
 
 // Unified LLM caller. Gemini uses native generateContent + responseSchema;
-// OpenRouter/Doubao use OpenAI-compatible chat/completions + response_format.
-async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any> {
+// OpenRouter/Doubao/DashScope use OpenAI-compatible chat/completions + response_format.
+async function callLLM(prompt: string, schema: object, lang: string, attempt = 0): Promise<any> {
+  const { provider, apiKey, model, endpoint } = getProviderForLang(lang);
+
   let url: string;
   let headers: Record<string, string>;
   let body: any;
 
-  if (PROVIDER === "gemini") {
-    url = `${ENDPOINT.url(MODEL)}?key=${encodeURIComponent(API_KEY!)}`;
-    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+  if (provider === "gemini") {
+    url = `${endpoint.url(model)}?key=${encodeURIComponent(apiKey)}`;
+    headers = { "Content-Type": "application/json", ...endpoint.auth(apiKey) };
     body = {
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig: {
@@ -200,12 +247,12 @@ async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any
       },
     };
   } else {
-    // OpenRouter / Doubao: OpenAI-compatible chat/completions
+    // openrouter / doubao / dashscope: OpenAI-compatible chat/completions
     const sysMsg = "You are a strict JSON generator. Output ONLY a JSON array — no prose, no markdown fences, no apologies. Match the schema requested in the user message.";
-    url = ENDPOINT.url(MODEL);
-    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    url = endpoint.url(model);
+    headers = { "Content-Type": "application/json", ...endpoint.auth(apiKey) };
     body = {
-      model: MODEL,
+      model,
       messages: [
         { role: "system", content: sysMsg },
         { role: "user", content: prompt },
@@ -223,9 +270,9 @@ async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any
   } catch (err) {
     if (attempt < 4) {
       const wait = 2000 * Math.pow(2, attempt);
-      console.warn(`  network error, retry in ${wait}ms: ${(err as Error).message}`);
+      console.warn(`  [${provider}] network error, retry in ${wait}ms: ${(err as Error).message}`);
       await sleep(wait);
-      return callLLM(prompt, schema, attempt + 1);
+      return callLLM(prompt, schema, lang, attempt + 1);
     }
     throw err;
   }
@@ -233,22 +280,22 @@ async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any
   if (res.status === 429 || res.status >= 500) {
     if (attempt < 4) {
       const wait = 4000 * Math.pow(2, attempt);
-      console.warn(`  HTTP ${res.status}, retry in ${wait}ms`);
+      console.warn(`  [${provider}] HTTP ${res.status}, retry in ${wait}ms`);
       await sleep(wait);
-      return callLLM(prompt, schema, attempt + 1);
+      return callLLM(prompt, schema, lang, attempt + 1);
     }
     const text = await res.text();
-    throw new Error(`${PROVIDER} ${res.status} after retries: ${text.slice(0, 200)}`);
+    throw new Error(`${provider} ${res.status} after retries: ${text.slice(0, 200)}`);
   }
 
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`${PROVIDER} ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`${provider} ${res.status}: ${text.slice(0, 400)}`);
   }
 
   const data: any = await res.json();
   let text: string | undefined;
-  if (PROVIDER === "gemini") {
+  if (provider === "gemini") {
     text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
   } else {
     text = data?.choices?.[0]?.message?.content;
@@ -256,9 +303,9 @@ async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any
   if (!text) {
     if (attempt < 2) {
       await sleep(2000);
-      return callLLM(prompt, schema, attempt + 1);
+      return callLLM(prompt, schema, lang, attempt + 1);
     }
-    throw new Error(`empty response: ${JSON.stringify(data).slice(0, 200)}`);
+    throw new Error(`empty response from ${provider}: ${JSON.stringify(data).slice(0, 200)}`);
   }
 
   // Clean + parse
@@ -279,7 +326,7 @@ async function callLLM(prompt: string, schema: object, attempt = 0): Promise<any
     }
   }
 
-  // OpenRouter/Doubao return an object (response_format=json_object)
+  // OpenRouter/Doubao/DashScope return an object (response_format=json_object)
   // but our prompt asked for an array. Unwrap if the model wrapped it.
   if (Array.isArray(parsed)) return parsed;
   if (Array.isArray(parsed.items)) return parsed.items;
@@ -334,7 +381,7 @@ ${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${
     },
   };
 
-  const data = await callLLM(prompt, schema);
+  const data = await callLLM(prompt, schema, lang);
   return Array.isArray(data) ? data : [];
 }
 
@@ -368,31 +415,43 @@ ${rules ? `- ${rules.replace(/\n/g, "\n- ")}\n` : ""}- Return a JSON array of ${
     },
   };
 
-  const data = await callLLM(prompt, schema);
+  const data = await callLLM(prompt, schema, lang);
   return Array.isArray(data) ? data : [];
 }
 
 // ── Main ──
 async function main() {
-  if (!API_KEY) {
-    const keyUrl: Record<Provider, string> = {
-      gemini: "https://aistudio.google.com/apikey",
-      openrouter: "https://openrouter.ai/keys",
-      doubao: "https://www.volcengine.com/product/ark",
-    };
-    const envName: Record<Provider, string> = {
-      gemini: "GEMINI_API_KEY",
-      openrouter: "OPENROUTER_API_KEY",
-      doubao: "DOUBAO_API_KEY",
-    };
-    console.error(
-      `✗ ${envName[PROVIDER]} is empty. Get one at ${keyUrl[PROVIDER]} and paste it into .env, or set LLM_PROVIDER=<gemini|openrouter|doubao>.`,
-    );
-    process.exit(1);
+  // P4-4: 检查所有需要用到的 provider 的 API key
+  const keyUrl: Record<Provider, string> = {
+    gemini: "https://aistudio.google.com/apikey",
+    openrouter: "https://openrouter.ai/keys",
+    doubao: "https://www.volcengine.com/product/ark",
+    dashscope: "https://dashscope.console.aliyun.com/apiKey",
+  };
+  const envName: Record<Provider, string> = {
+    gemini: "GEMINI_API_KEY",
+    openrouter: "OPENROUTER_API_KEY",
+    doubao: "DOUBAO_API_KEY",
+    dashscope: "DASHSCOPE_API_KEY",
+  };
+
+  // 确定本次运行涉及哪些语言,检查对应 provider 的 key
+  const langsToRun = onlyLang ? [onlyLang as LangKey] : LANGS;
+  const providersNeeded = new Set<Provider>();
+  for (const lang of langsToRun) {
+    providersNeeded.add(PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER);
+  }
+  for (const p of providersNeeded) {
+    if (!getApiKey(p)) {
+      console.error(
+        `✗ ${envName[p]} is empty (needed for provider "${p}"). Get one at ${keyUrl[p]} and paste it into .env.`,
+      );
+      process.exit(1);
+    }
   }
 
-  console.log(`✓ provider: ${PROVIDER}  model: ${MODEL}`);
   console.log(`✓ Per batch: ${perBatch} items`);
+  console.log(`✓ Providers: ${[...providersNeeded].map((p) => `${p}(${DEFAULT_MODEL[p]})`).join(", ")}`);
   console.log(`→ cost cap: $${MAX_COST_USD.toFixed(2)} (using $${COST_PER_1M_IN}/1M in, $${COST_PER_1M_OUT}/1M out)\n`);
 
   const listenDir = path.join(process.cwd(), "scripts", "generated", "listening");
@@ -468,8 +527,9 @@ async function main() {
       ok++;
       console.log(`✓ ${withMeta.length} items in ${ms}s (est. $${estCostUsd.toFixed(3)})`);
 
-      // Polite delay (Gemini free-tier: 15 RPM for Flash)
-      if (i < batches.length - 1) await sleep(PROVIDER === "gemini" ? 4500 : 1000);
+      // Polite delay (Gemini free-tier: 15 RPM for Flash, DashScope more lenient)
+      const batchProvider = PROVIDER_BY_LANG[batch.lang] ?? FALLBACK_PROVIDER;
+      if (i < batches.length - 1) await sleep(batchProvider === "gemini" ? 4500 : 1000);
     } catch (e: any) {
       console.error(`✗ ${e.message}`);
       fail++;
