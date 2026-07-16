@@ -375,7 +375,13 @@
       "reference": "参考原文",
       "showAfterFinish": "完成后显示。",
       "speechRate": "Speech rate",
-      "tip4": "After checking, read the script aloud to reinforce the sounds."
+      "tip4": "After checking, read the script aloud to reinforce the sounds.",
+      "speed": {
+        "slow": "慢",
+        "slower": "较慢",
+        "normal": "正常",
+        "faster": "较快"
+      }
     },
     "wordFamily": "Word Family",
     "totalNWords": "{{count}} words",
@@ -414,7 +420,16 @@
       "principle3": "Easy cards are pushed further out.",
       "principle4": "Consistency beats long sessions.",
       "thisSession": "This session",
-      "cardsRemaining": "cards remaining"
+      "cardsRemaining": "cards remaining",
+      "nextInterval": {
+        "now": "现在",
+        "day": "1天后",
+        "days": "{{count}}天后",
+        "week": "1周后",
+        "weeks": "{{count}}周后",
+        "month": "1个月后",
+        "months": "{{count}}个月后"
+      }
     },
     "conversation": {
       "unsupportedBrowser": "Speech recognition is not supported in this browser.",
@@ -883,7 +898,8 @@
       "processing": "正在完成登录…",
       "callbackNoToken": "登录失败：未收到 token。",
       "callbackFailed": "登录失败，请重试。"
-    }
+    },
+    "notLoggedIn": "未登录"
   },
   "admin": {
     "title": "管理后台",
@@ -1494,5 +1510,17 @@
     "lengthShort": "Len",
     "varietyShort": "Var",
     "keywordsShort": "Key"
+  },
+  "api": {
+    "errors": {
+      "notFound": "接口不存在（服务未部署）",
+      "serverError": "服务器内部错误",
+      "unauthorized": "未登录或登录已过期",
+      "forbidden": "没有权限执行该操作",
+      "conflict": "资源冲突",
+      "badRequest": "参数有误",
+      "requestFailed": "请求失败 ({{status}})",
+      "emptyResponse": "服务器返回空数据"
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { UserResp } from "../lib/api";
 import { api } from "../lib/api";
+import i18n from "../lib/i18n";
 
 type AuthStatus = "idle" | "loading" | "logged";
 
@@ -87,7 +88,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   },
 
   async refreshMe() {
-    if (!readToken()) return { ok: false, error: "未登录" };
+    if (!readToken()) return { ok: false, error: i18n.t("auth.notLoggedIn") };
     try {
       set({ status: "loading" });
       const res = await api.me();
@@ -100,7 +101,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   },
 
   async updateLanguage(lang) {
-    if (!readToken()) return { ok: false, error: "未登录" };
+    if (!readToken()) return { ok: false, error: i18n.t("auth.notLoggedIn") };
     try {
       const res = await api.updateMe({ targetLanguage: lang });
       set({ user: res.user });
@@ -111,7 +112,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   },
 
   async updateGoal(goal) {
-    if (!readToken()) return { ok: false, error: "未登录" };
+    if (!readToken()) return { ok: false, error: i18n.t("auth.notLoggedIn") };
     try {
       const res = await api.updateMe({ goalMinutesPerDay: Number(goal) });
       set({ user: res.user });
@@ -122,7 +123,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   },
 
   async updateProfile(patch) {
-    if (!readToken()) return { ok: false, error: "未登录" };
+    if (!readToken()) return { ok: false, error: i18n.t("auth.notLoggedIn") };
     try {
       const res = await api.updateMe(patch);
       set({ user: res.user });

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { useAuthStore } from "../store/authStore";
-import { LANGUAGES } from "../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../lib/i18n";
 
 export default function SettingsPage() {
@@ -83,7 +83,7 @@ export default function SettingsPage() {
                   }
                 >
                   <span className="flex items-center gap-2">
-                    {l?.flag ?? "🌐"} {l?.native ?? id}
+                    {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
                   </span>
                   {uiLang === id && <Check className="h-4 w-4 text-sky-300" />}
                 </button>
@@ -118,7 +118,7 @@ export default function SettingsPage() {
                   }
                 >
                   <span className="flex items-center gap-2">
-                    {l?.flag ?? "🌐"} {l?.native ?? id}
+                    {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
                   </span>
                   {nativeLang === id && <Check className="h-4 w-4 text-fuchsia-300" />}
                 </button>
@@ -149,7 +149,7 @@ export default function SettingsPage() {
                 }
               >
                 <span className="text-2xl">{l.flag}</span>
-                <span>{l.native}</span>
+                <span>{getLanguageDisplayName(l.id, i18n.language)}</span>
               </div>
             ))}
           </div>

@@ -890,7 +890,7 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
                           : "bg-white/5 text-brand-200/30")
                     }
                   >
-                    {p.label} {p.rate}×
+                    {t(p.labelKey)} {p.rate}×
                   </button>
                 );
               })}
@@ -1097,7 +1097,7 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
                   >
                     <span className="font-semibold">{q.label}</span>
                     <span className="text-[10px] opacity-70">
-                      {current ? describeNextInterval(q.key, current.srs) : ""}
+                      {current ? describeNextInterval(q.key, current.srs, t) : ""}
                     </span>
                   </button>
                 ))}

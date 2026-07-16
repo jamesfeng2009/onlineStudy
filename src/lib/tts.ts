@@ -92,10 +92,11 @@ export function isTTSSupported(): boolean {
 /** Default speed presets for the listening module. */
 export const DEFAULT_SPEEDS = [0.8, 1.0] as const;
 
-/** Speed options offered in the UI — slow / normal / fast. */
-export const SPEED_PRESETS: { rate: number; label: string }[] = [
-  { rate: 0.6, label: "慢" },
-  { rate: 0.8, label: "较慢" },
-  { rate: 1.0, label: "正常" },
-  { rate: 1.2, label: "较快" },
+/** Speed options offered in the UI — slow / normal / fast.
+ *  Labels are translation keys consumed by the listening module. */
+export const SPEED_PRESETS: { rate: number; labelKey: string }[] = [
+  { rate: 0.6, labelKey: "learn.listeningModule.speed.slow" },
+  { rate: 0.8, labelKey: "learn.listeningModule.speed.slower" },
+  { rate: 1.0, labelKey: "learn.listeningModule.speed.normal" },
+  { rate: 1.2, labelKey: "learn.listeningModule.speed.faster" },
 ];

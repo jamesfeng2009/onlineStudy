@@ -375,7 +375,13 @@
       "reference": "สคริปต์อ้างอิง",
       "showAfterFinish": "แสดงหลังทำเสร็จ",
       "speechRate": "Speech rate",
-      "tip4": "After checking, read the script aloud to reinforce the sounds."
+      "tip4": "After checking, read the script aloud to reinforce the sounds.",
+      "speed": {
+        "slow": "Slow",
+        "slower": "Slower",
+        "normal": "Normal",
+        "faster": "Faster"
+      }
     },
     "wordFamily": "Word Family",
     "totalNWords": "{{count}} words",
@@ -414,7 +420,16 @@
       "principle3": "Easy cards are pushed further out.",
       "principle4": "Consistency beats long sessions.",
       "thisSession": "This session",
-      "cardsRemaining": "cards remaining"
+      "cardsRemaining": "cards remaining",
+      "nextInterval": {
+        "now": "Now",
+        "day": "in 1 day",
+        "days": "in {{count}} days",
+        "week": "in 1 week",
+        "weeks": "in {{count}} weeks",
+        "month": "in 1 month",
+        "months": "in {{count}} months"
+      }
     },
     "conversation": {
       "unsupportedBrowser": "Speech recognition is not supported in this browser.",
@@ -1003,7 +1018,8 @@
       "processing": "กำลังเสร็จสิ้นการลงชื่อเข้าใช้…",
       "callbackNoToken": "ลงชื่อเข้าใช้ไม่สำเร็จ: ไม่ได้รับโทเค็น",
       "callbackFailed": "ลงชื่อเข้าใช้ไม่สำเร็จ กรุณาลองอีกครั้ง"
-    }
+    },
+    "notLoggedIn": "Not logged in"
   },
   "admin": {
     "title": "ผู้ดูแลระบบ",
@@ -1494,5 +1510,17 @@
     "lengthShort": "Len",
     "varietyShort": "Var",
     "keywordsShort": "Key"
+  },
+  "api": {
+    "errors": {
+      "notFound": "Endpoint not found (service not deployed)",
+      "serverError": "Server internal error",
+      "unauthorized": "Not logged in or session expired",
+      "forbidden": "No permission for this operation",
+      "conflict": "Resource conflict",
+      "badRequest": "Invalid parameters",
+      "requestFailed": "Request failed ({{status}})",
+      "emptyResponse": "Server returned empty data"
+    }
   }
 }

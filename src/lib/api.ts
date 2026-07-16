@@ -1,4 +1,5 @@
 import { getToken } from "./auth";
+import i18n from "./i18n";
 
 const API_BASE = import.meta.env.VITE_API_URL ?? "/api";
 
@@ -39,19 +40,19 @@ async function request<T = unknown>(
   if (!res.ok || body?.code !== "OK") {
     let msg = body?.message ?? null;
     if (!msg) {
-      if (res.status === 404) msg = "接口不存在（服务未部署）";
-      else if (res.status === 500) msg = "服务器内部错误";
-      else if (res.status === 401) msg = "未登录或登录已过期";
-      else if (res.status === 403) msg = "没有权限执行该操作";
-      else if (res.status === 409) msg = "资源冲突";
-      else if (res.status === 400) msg = "参数有误";
-      else msg = `请求失败 (${res.status})`;
+      if (res.status === 404) msg = i18n.t("api.errors.notFound");
+      else if (res.status === 500) msg = i18n.t("api.errors.serverError");
+      else if (res.status === 401) msg = i18n.t("api.errors.unauthorized");
+      else if (res.status === 403) msg = i18n.t("api.errors.forbidden");
+      else if (res.status === 409) msg = i18n.t("api.errors.conflict");
+      else if (res.status === 400) msg = i18n.t("api.errors.badRequest");
+      else msg = i18n.t("api.errors.requestFailed", { status: res.status });
     }
     throw new Error(msg);
   }
 
   if (body === null) {
-    throw new Error("服务器返回空数据");
+    throw new Error(i18n.t("api.errors.emptyResponse"));
   }
   return body.data as T;
 }

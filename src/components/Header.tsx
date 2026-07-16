@@ -21,11 +21,11 @@ import {
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
 import i18n, { buildLocalePath, extractLocaleFromPath, type SupportedLanguage } from "../lib/i18n";
-import { LANGUAGES } from "../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { LocaleLink, LocaleNavLink } from "./LocaleLink";
 
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const logout = useAuthStore((s) => s.logout);
@@ -141,7 +141,7 @@ export default function Header() {
                     )}
                   >
                     <span>{l.flag}</span>
-                    <span>{l.native}</span>
+                    <span>{getLanguageDisplayName(l.id, i18n.language)}</span>
                   </button>
                 ))}
               </div>

@@ -1,177 +1,171 @@
 import type { Badge } from "../types";
 
 export const BADGES: Badge[] = [
-  // ===== 连续学习 =====
+  // ===== Streak =====
   {
     id: "streak-3",
-    title: "三日坚持",
-    description: "连续学习 3 天，习惯养成中！",
+    title: "3-Day Streak",
+    description: "Study 3 days in a row to build a small habit",
     icon: "Flame",
     color: "from-orange-400 to-rose-500",
     requirement: { type: "streak", value: 3 },
   },
   {
     id: "streak-7",
-    title: "一周之星",
-    description: "连续学习 7 天，已形成稳定习惯。",
+    title: "Week Star",
+    description: "Study 7 days in a row",
     icon: "Zap",
     color: "from-amber-300 to-orange-500",
     requirement: { type: "streak", value: 7 },
   },
   {
     id: "streak-30",
-    title: "月度冠军",
-    description: "连续学习 30 天，你是真正的学习者！",
+    title: "Monthly Champion",
+    description: "Study 30 days in a row",
     icon: "Trophy",
     color: "from-yellow-300 to-amber-500",
     requirement: { type: "streak", value: 30 },
   },
-  // P2-2: 新增长程连续学习勋章
   {
     id: "streak-100",
-    title: "百日筑基",
-    description: "连续学习 100 天，自律已成为你的底色。",
+    title: "100-Day Foundation",
+    description: "Study 100 days in a row — discipline is now part of you.",
     icon: "Flame",
     color: "from-rose-500 to-red-700",
     requirement: { type: "streak", value: 100 },
   },
   {
     id: "streak-365",
-    title: "一年之约",
-    description: "连续学习满一年，时间是最高的奖赏。",
+    title: "One-Year Promise",
+    description: "Study for a full year — time is the highest reward.",
     icon: "Trophy",
     color: "from-amber-300 via-rose-400 to-fuchsia-500",
     requirement: { type: "streak", value: 365 },
   },
 
-  // ===== 词汇 =====
+  // ===== Words =====
   {
     id: "words-20",
-    title: "词汇新星",
-    description: "掌握 20 个新单词。",
+    title: "Vocabulary Rising Star",
+    description: "Master 20 new words",
     icon: "BookOpen",
     color: "from-sky-400 to-blue-600",
     requirement: { type: "words", value: 20 },
   },
   {
     id: "words-100",
-    title: "词汇达人",
-    description: "掌握 100 个新单词。",
+    title: "Vocabulary Master",
+    description: "Master 100 new words",
     icon: "BookMarked",
     color: "from-cyan-400 to-teal-600",
     requirement: { type: "words", value: 100 },
   },
-  // P2-2: 新增高阶词汇勋章
   {
     id: "words-500",
-    title: "词典编纂者",
-    description: "掌握 500 个新单词，已能聊大部分日常话题。",
+    title: "Vocabulary Builder",
+    description: "Master 500 new words — enough to talk about most everyday topics.",
     icon: "BookMarked",
     color: "from-emerald-400 to-cyan-600",
     requirement: { type: "words", value: 500 },
   },
   {
     id: "words-1000",
-    title: "词汇巨匠",
-    description: "掌握 1000 个新单词，词汇量迈入流利区间。",
+    title: "Vocabulary Giant",
+    description: "Master 1000 new words — your vocabulary is entering the fluent range.",
     icon: "BookOpen",
     color: "from-violet-400 to-fuchsia-600",
     requirement: { type: "words", value: 1000 },
   },
 
-  // ===== 语法 / 测验 =====
+  // ===== Grammar / Quizzes =====
   {
     id: "quizzes-10",
-    title: "语法练习生",
-    description: "完成 10 道语法练习题。",
+    title: "Grammar Trainee",
+    description: "Complete 10 grammar questions",
     icon: "Pencil",
     color: "from-emerald-400 to-green-600",
     requirement: { type: "quizzes", value: 10 },
   },
   {
     id: "quizzes-50",
-    title: "语法大师",
-    description: "完成 50 道语法练习题。",
+    title: "Grammar Master",
+    description: "Complete 50 grammar questions",
     icon: "GraduationCap",
     color: "from-lime-400 to-emerald-600",
     requirement: { type: "quizzes", value: 50 },
   },
-  // P2-2: 新增高阶语法勋章
   {
     id: "quizzes-200",
-    title: "语法宗师",
-    description: "完成 200 道语法练习题，已掌握体系化语法。",
+    title: "Grammar Grandmaster",
+    description: "Complete 200 grammar questions — you have mastered systematic grammar.",
     icon: "GraduationCap",
     color: "from-fuchsia-400 to-purple-700",
     requirement: { type: "quizzes", value: 200 },
   },
 
-  // ===== 口语 / 听力 =====
+  // ===== Speaking / Listening =====
   {
     id: "speaking-10",
-    title: "开口勇者",
-    description: "口语跟读累计 10 分钟。",
+    title: "Speaker",
+    description: "Repeat aloud for 10 minutes total",
     icon: "Mic",
     color: "from-rose-400 to-pink-600",
     requirement: { type: "speaking", value: 10 },
   },
-  // P2-2: 新增口语时长勋章
   {
     id: "speaking-60",
-    title: "舌灿莲花",
-    description: "口语跟读累计 60 分钟，敢说才会说。",
+    title: "Fluent Speaker",
+    description: "Repeat aloud for 60 minutes total — dare to speak and you will speak.",
     icon: "Mic",
     color: "from-rose-500 to-red-700",
     requirement: { type: "speaking", value: 60 },
   },
   {
     id: "listening-10",
-    title: "聆听者",
-    description: "听力训练累计 10 分钟。",
+    title: "Listener",
+    description: "Listen for 10 minutes total",
     icon: "Headphones",
     color: "from-violet-400 to-purple-600",
     requirement: { type: "listening", value: 10 },
   },
-  // P2-2: 新增听力时长勋章
   {
     id: "listening-60",
-    title: "耳濡目染",
-    description: "听力训练累计 60 分钟，耳朵已经习惯这门语言。",
+    title: "Attentive Listener",
+    description: "Listen for 60 minutes total — your ears are getting used to this language.",
     icon: "Headphones",
     color: "from-violet-500 to-indigo-700",
     requirement: { type: "listening", value: 60 },
   },
 
-  // ===== 等级 =====
+  // ===== Level =====
   {
     id: "level-5",
-    title: "步步进阶",
-    description: "达到等级 5。",
+    title: "Step by Step",
+    description: "Reach level 5",
     icon: "Sparkles",
     color: "from-fuchsia-400 to-rose-600",
     requirement: { type: "level", value: 5 },
   },
   {
     id: "level-10",
-    title: "登堂入室",
-    description: "达到等级 10。",
+    title: "Advanced",
+    description: "Reach level 10",
     icon: "Crown",
     color: "from-amber-300 to-yellow-500",
     requirement: { type: "level", value: 10 },
   },
-  // P2-2: 新增高等级勋章
   {
     id: "level-25",
-    title: "探索者",
-    description: "达到等级 25，已是一名成熟的探险家。",
+    title: "Explorer",
+    description: "Reach level 25 — you are a seasoned explorer.",
     icon: "Crown",
     color: "from-sky-400 via-cyan-400 to-emerald-500",
     requirement: { type: "level", value: 25 },
   },
   {
     id: "level-50",
-    title: "语言学者",
-    description: "达到等级 50，已可独当一面地使用这门语言。",
+    title: "Linguist",
+    description: "Reach level 50 — you can use this language independently.",
     icon: "Crown",
     color: "from-amber-300 via-fuchsia-400 to-violet-600",
     requirement: { type: "level", value: 50 },

@@ -39,16 +39,19 @@ const QUALITY_MAP: Record<ReviewQuality, number> = {
 
 /** Convert a quality (0-5) into the user-facing label. Used by the
  *  UI to show what each button "means" in SRS terms. */
-export function qualityToLabel(quality: ReviewQuality): string {
+export function qualityToLabel(
+  quality: ReviewQuality,
+  t: (key: string) => string,
+): string {
   switch (quality) {
     case "again":
-      return "不记得";
+      return t("learn.review.again");
     case "hard":
-      return "困难";
+      return t("learn.review.hard");
     case "good":
-      return "良好";
+      return t("learn.review.good");
     case "easy":
-      return "轻松";
+      return t("learn.review.easy");
   }
 }
 
@@ -119,16 +122,24 @@ export function isDue(srs: SrsState, now: number = Date.now()): boolean {
 
 /** Human-readable summary of "when do I see this again", e.g.
  *  "tomorrow", "in 3 days", "in 2 weeks". Used as button hint text. */
-export function describeNextInterval(quality: ReviewQuality, srs: SrsState): string {
+export function describeNextInterval(
+  quality: ReviewQuality,
+  srs: SrsState,
+  t: (key: string, options?: Record<string, unknown>) => string,
+): string {
   const next = scheduleNext(srs, quality);
   const days = next.interval;
-  if (days <= 0) return "立刻";
-  if (days === 1) return "1 天后";
-  if (days < 7) return `${days} 天后`;
+  if (days <= 0) return t("learn.review.nextInterval.now");
+  if (days === 1) return t("learn.review.nextInterval.day");
+  if (days < 7) return t("learn.review.nextInterval.days", { count: days });
   if (days < 30) {
     const w = Math.round(days / 7);
-    return w === 1 ? "1 周后" : `${w} 周后`;
+    return w === 1
+      ? t("learn.review.nextInterval.week")
+      : t("learn.review.nextInterval.weeks", { count: w });
   }
   const m = Math.round(days / 30);
-  return m === 1 ? "1 个月后" : `${m} 个月后`;
+  return m === 1
+    ? t("learn.review.nextInterval.month")
+    : t("learn.review.nextInterval.months", { count: m });
 }

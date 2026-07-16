@@ -4,7 +4,7 @@ import LocaleLink from "../../components/LocaleLink";
 import { Mail, Lock, UserCircle, ArrowRight, Sparkles, Monitor, MessageCircleQuestion } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
-import { LANGUAGES } from "../../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../../data/languages";
 import type { Language } from "../../types";
 import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../../lib/i18n";
 
@@ -78,8 +78,8 @@ export default function RegisterPage() {
               >
                 <div>
                   <div className="text-2xl">{l.flag}</div>
-                  <div className="mt-2 text-sm text-white">{l.native}</div>
-                  <div className="text-[10px] text-brand-200/60">{l.native}</div>
+                  <div className="mt-2 text-sm text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
+                  <div className="text-[10px] text-brand-200/60">{getLanguageDisplayName(l.id, i18n.language)}</div>
                 </div>
               </div>
             ))}
@@ -132,7 +132,7 @@ export default function RegisterPage() {
                       }
                     >
                       <Monitor className="h-3.5 w-3.5" />
-                      {l?.flag ?? "🌐"} {l?.native ?? id}
+                      {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
                     </button>
                   );
                 })}
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                       }
                     >
                       <MessageCircleQuestion className="h-3.5 w-3.5" />
-                      {l?.flag ?? "🌐"} {l?.native ?? id}
+                      {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
                     </button>
                   );
                 })}
@@ -179,7 +179,7 @@ export default function RegisterPage() {
                     }
                   >
                     <div className="text-xl">{l.flag}</div>
-                    <div className="mt-1">{l.native}</div>
+                    <div className="mt-1">{getLanguageDisplayName(l.id, i18n.language)}</div>
                   </button>
                 ))}
               </div>
