@@ -24,6 +24,9 @@ import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
 import { tokenize, computeScore } from "../lib/writing-score.js";
 import type { ScoreResult } from "../lib/writing-score.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("writing");
 
 // ============================================================
 // 缓存
@@ -281,7 +284,7 @@ const writingRoutes: FastifyPluginAsync = async (fastify) => {
 
     const prompt = await prisma.writingPrompt.findUnique({
       where: { id: writingId },
-      select: { id: true, minWords: true, maxWords: true, keywords: true },
+      select: { id: true, languageCode: true, type: true, minWords: true, maxWords: true, keywords: true },
     });
     if (!prompt) {
       return sendError(reply, "NOT_FOUND", "该写作题目不存在");
@@ -293,6 +296,8 @@ const writingRoutes: FastifyPluginAsync = async (fastify) => {
       maxWords: prompt.maxWords,
       keywords,
     });
+
+    log.info(request, "writing scored", { score: scoreResult.score, userId });
 
     const submission = await prisma.userWritingSubmission.create({
       data: {
@@ -314,6 +319,12 @@ const writingRoutes: FastifyPluginAsync = async (fastify) => {
       { userId, writingId, wordCount: scoreResult.wordCount, score: scoreResult.score },
       "writing/submit: saved"
     );
+
+    log.info(request, "writing submitted", {
+      language: prompt.languageCode,
+      promptType: prompt.type,
+      wordCount: scoreResult.wordCount,
+    });
 
     return sendSuccess(reply, {
       id: submission.id,

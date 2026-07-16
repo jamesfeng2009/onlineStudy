@@ -93,7 +93,23 @@
     },
     "lessons": "{{count}} 수업",
     "minutes": "{{count}}분",
-    "noResults": "조건에 맞는 코스가 없습니다. 다른 필터를 시도해 보세요."
+    "noResults": "조건에 맞는 코스가 없습니다. 다른 필터를 시도해 보세요.",
+    "progress": "진행도",
+    "disclaimer": "레벨 표기(CEFR / JLPT / HSK / TOPIK)는 체계 간 비교를 돕기 위한 참고용입니다. CEFR는 유럽 평의회의 상표, JLPT는 일본국제교류기금의 상표, HSK는 한판의 상표, TOPIK는 한국국립국제교육원의 상표입니다. 본 프로젝트는 이들 공식 기관의 인증이나 승인을 받지 않았으며, 레벨 달성 데이터는 프로젝트 내 추정치입니다.",
+    "entryCards": {
+      "placement": "어디서 시작할지 모르시나요? 레벨 테스트를 해보세요",
+      "placementDesc": "6문제 적응형 측정으로 시작 레벨을 특정 · 로그인 불필요",
+      "alphabet": "글자부터 시작: 아시아어 입문",
+      "alphabetDesc": "히라가나 / 가타카나 / 한글 / 병음 / 광동어 병음 / 태국어 · 글자를 탭하면 발음",
+      "reading": "독해 · CEFR 스킬 보완",
+      "readingDesc": "레벨별 독해 + 어휘 주석 + 이해 문제 · 최고 점수 자동 기록",
+      "league": "주간 리그 · 마스터 티어를 다투다",
+      "leagueDesc": "주간 XP 누적 · 브론즈 → 실버 → 골드 → 플래티넘 → 다이아 → 마스터 · 매주 월요일 승강강등",
+      "cefr": "CEFR 자기평가 · 내가 할 수 있는 것은?",
+      "cefrDesc": "Can-Do 항목으로 A1-C2 자기평가 · 레벨 테스트와 보완 · 레벨 자동 추정",
+      "writing": "라이팅 연습 · 즉시 채점 피드백",
+      "writingDesc": "논설문 / 이메일 / 요약 / 이야기 / 대화 · 단어 수 + 어휘 다양성 + 키워드 3차원 채점"
+    }
   },
   "learn": {
     "wordMemory": "단어 암기",
@@ -730,5 +746,44 @@
     "ctaTitle": "오늘부터 10분을 시작하세요",
     "ctaDesc": "무료 계정을 만들고 오늘부터 10분 루프를 시작하세요.",
     "cta": "학습 시작"
+  },
+  "placement": {
+    "title": "레벨 테스트",
+    "subtitle": "6문제로 시작 레벨을 빠르게 특정",
+    "seoTitle": "레벨 테스트 — LangOria",
+    "seoDescription": "적응형 레벨 테스트. 6문제로 시작 레벨을 특정합니다.",
+    "loginHint": "테스트는 로그인 불필요입니다. 로그인하면 결과를 저장할 수 있고, 다음에 들어올 때 해당 코스를 자동으로 추천합니다.",
+    "loading": "{{lang}} 문제를 준비 중…",
+    "loadingText": "불러오는 중…",
+    "questionTitle": "레벨 테스트 · 제 {{current}} / {{total}} 문제",
+    "questionSubtitle": "현재 레벨: {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(문제가 비어 있음)",
+    "reselectLang": "언어 다시 선택",
+    "submit": "제출",
+    "nextQuestion": "다음 문제…",
+    "resultTitle": "레벨 테스트 결과",
+    "resultSubtitle": "추천 시작 레벨: {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "레벨 테스트 결과 — LangOria",
+    "testComplete": "테스트 완료",
+    "correctCount": "맞힌 문제 수",
+    "recommendedLevel": "추천 레벨",
+    "cefrAlignment": "CEFR 대응",
+    "cefrRank": "CEFR 랭크",
+    "language": "언어",
+    "startCourse": "이 코스 시작",
+    "noCourseMatch": "{{level}}와 완전히 일치하는 코스를 찾지 못했습니다. 코스 목록에서 가까운 레벨을 직접 선택해 주세요.",
+    "saving": "저장 중…",
+    "saveResult": "결과 저장",
+    "saved": "계정에 저장되었습니다. 다음에 이 언어에 들어오면 이 레벨이 자동으로 추천됩니다.",
+    "loginToSave": "로그인 후 결과 저장",
+    "retake": "다시 풀기",
+    "errorOccurred": "문제가 발생했습니다.",
+    "restart": "다시 시작",
+    "errors": {
+      "noQuestions": "이 언어는 아직 레벨 테스트 문제가 없습니다. 다른 언어를 선택해 주세요.",
+      "noStartQuestion": "시작 문제를 선택할 수 없습니다.",
+      "fetchFailed": "문제 불러오기 실패",
+      "saveFailed": "결과 저장 실패"
+    }
   }
 }

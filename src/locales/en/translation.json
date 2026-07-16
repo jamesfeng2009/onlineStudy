@@ -98,7 +98,23 @@
     },
     "lessons": "{{count}} lessons",
     "minutes": "{{count}} min",
-    "noResults": "No courses match. Try a different filter."
+    "noResults": "No courses match. Try a different filter.",
+    "progress": "Progress",
+    "disclaimer": "Level labels (CEFR / JLPT / HSK / TOPIK) are for indicative alignment only, to facilitate cross-system comparison. CEFR is a trademark of the Council of Europe, JLPT is a trademark of the Japan Foundation, HSK is a trademark of Hanban, and TOPIK is a trademark of the National Institute for International Education of Korea. This project is not certified or authorized by any of these official organizations; level achievement data is an internal estimate.",
+    "entryCards": {
+      "placement": "Not sure where to start? Try the placement test",
+      "placementDesc": "6 adaptive questions to pinpoint your starting level · no login required",
+      "alphabet": "Start from letters: Asian language basics",
+      "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai · tap a character to hear it",
+      "reading": "Reading comprehension · complete your CEFR skills",
+      "readingDesc": "Graded reading + vocab notes + comprehension questions · auto-records your best score",
+      "league": "Weekly leaderboard · compete for Master tier",
+      "leagueDesc": "XP accumulates weekly · Bronze → Silver → Gold → Platinum → Diamond → Master · promotions and demotions settled every Monday",
+      "cefr": "CEFR self-assessment · what can I do?",
+      "cefrDesc": "Self-assess A1-C2 by Can-Do statements · complements the placement test · auto-infers your level",
+      "writing": "Writing practice · instant scoring feedback",
+      "writingDesc": "Essays / emails / summaries / stories / dialogues · three-dimensional scoring on word count + lexical diversity + keywords"
+    }
   },
   "learn": {
     "wordMemory": "Word Memory",
@@ -670,5 +686,44 @@
     "minutes": "min",
     "days": "days",
     "all": "All"
+  },
+  "placement": {
+    "title": "Placement Test",
+    "subtitle": "6 questions to quickly pinpoint your starting level",
+    "seoTitle": "Placement Test — LangOria",
+    "seoDescription": "Adaptive placement test: 6 questions to pinpoint your starting level.",
+    "loginHint": "No login required to take the test. Log in to save your result and get course recommendations next time you enter.",
+    "loading": "Preparing questions for {{lang}}…",
+    "loadingText": "Loading…",
+    "questionTitle": "Placement Test · Question {{current}} / {{total}}",
+    "questionSubtitle": "Current level: {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(Question is empty)",
+    "reselectLang": "Re-select language",
+    "submit": "Submit",
+    "nextQuestion": "Next question…",
+    "resultTitle": "Placement Test Result",
+    "resultSubtitle": "Recommended starting level: {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "Placement Test Result — LangOria",
+    "testComplete": "Test complete",
+    "correctCount": "Correct answers",
+    "recommendedLevel": "Recommended level",
+    "cefrAlignment": "CEFR alignment",
+    "cefrRank": "CEFR Rank",
+    "language": "Language",
+    "startCourse": "Start this course",
+    "noCourseMatch": "No course exactly matching {{level}} was found. Please go to the course list and pick a similar level yourself.",
+    "saving": "Saving…",
+    "saveResult": "Save result",
+    "saved": "Saved to your account. This level will be recommended automatically next time you enter this language.",
+    "loginToSave": "Log in to save result",
+    "retake": "Retake test",
+    "errorOccurred": "Something went wrong, please",
+    "restart": "Start over",
+    "errors": {
+      "noQuestions": "No placement test questions for this language yet. Please choose another language.",
+      "noStartQuestion": "Unable to pick a starting question.",
+      "fetchFailed": "Failed to fetch questions",
+      "saveFailed": "Failed to save result"
+    }
   }
 }

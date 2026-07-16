@@ -18,6 +18,9 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("placement");
 
 interface PlacementAnswer {
   level: string;
@@ -91,6 +94,8 @@ const placementRoutes: FastifyPluginAsync = async (fastify) => {
       })
     );
 
+    log.info(request, "placement questions fetched", { language, countPerLevel, count: questions.length });
+
     return sendSuccess(reply, {
       language,
       levels,
@@ -163,6 +168,13 @@ const placementRoutes: FastifyPluginAsync = async (fastify) => {
         },
       });
 
+      log.info(request, "placement result saved", {
+        language: body.language,
+        recommendedLevel: body.recommendedLevel,
+        correctCount: body.correctCount,
+        totalQuestions: body.totalQuestions,
+      });
+
       return sendSuccess(reply, saved);
     }
   );
@@ -180,6 +192,8 @@ const placementRoutes: FastifyPluginAsync = async (fastify) => {
       const result = await prisma.placementResult.findUnique({
         where: { userId_language: { userId, language } },
       });
+
+      log.info(request, "placement result fetched", { language });
 
       return sendSuccess(reply, result);
     }

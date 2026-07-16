@@ -133,8 +133,8 @@ export default function CoursesPage() {
             <Sparkles className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">不知道从哪开始？试试分级测试</div>
-            <div className="text-xs text-brand-200/70">6 道题自适应定位你的起始等级 · 免登录可测</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.placement")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.placementDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -150,8 +150,8 @@ export default function CoursesPage() {
             <Type className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">从字母开始：亚洲语入门</div>
-            <div className="text-xs text-brand-200/70">Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai · 点击字符即朗读</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.alphabet")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.alphabetDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -167,8 +167,8 @@ export default function CoursesPage() {
             <BookMarked className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">阅读理解 · 补齐 CEFR 技能</div>
-            <div className="text-xs text-brand-200/70">分级阅读 + 词汇注释 + 理解题 · 自动记录最佳成绩</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.reading")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.readingDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -184,8 +184,8 @@ export default function CoursesPage() {
             <Trophy className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">周度排行榜 · 争夺大师段位</div>
-            <div className="text-xs text-brand-200/70">按周累计 XP · 青铜 → 白银 → 黄金 → 铂金 → 钻石 → 大师 · 每周一结算升降级</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.league")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.leagueDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -201,8 +201,8 @@ export default function CoursesPage() {
             <ClipboardList className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">CEFR 自评 · 我能做什么？</div>
-            <div className="text-xs text-brand-200/70">按 Can-Do 条目自评 A1-C2 · 与分级测试互为补充 · 自动推断等级</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.cefr")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.cefrDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -218,8 +218,8 @@ export default function CoursesPage() {
             <Pen className="h-5 w-5" />
           </div>
           <div>
-            <div className="font-semibold text-white">写作训练 · 即时评分反馈</div>
-            <div className="text-xs text-brand-200/70">议论文 / 邮件 / 摘要 / 故事 / 对话 · 字数 + 词汇多样性 + 关键词三维评分</div>
+            <div className="font-semibold text-white">{t("courses.entryCards.writing")}</div>
+            <div className="text-xs text-brand-200/70">{t("courses.entryCards.writingDesc")}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-brand-200/60" />
@@ -263,7 +263,7 @@ export default function CoursesPage() {
             {showProgress && (
               <div className="mt-3">
                 <div className="mb-1 flex items-center justify-between text-[11px] text-brand-200/70">
-                  <span>进度</span>
+                  <span>{t("courses.progress")}</span>
                   <span>{completedLesson} / {c.lessons} · {pct}%</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
@@ -301,9 +301,7 @@ export default function CoursesPage() {
       <div className="mt-8 flex items-start gap-2 rounded-xl border border-white/5 bg-white/[0.02] p-4 text-[11px] leading-relaxed text-brand-200/50">
         <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-200/40" />
         <p>
-          等级标识（CEFR / JLPT / HSK / TOPIK）仅作参考性对齐，便于跨体系比较。
-          CEFR 为 Council of Europe 商标、JLPT 为日本国际交流基金会商标、HSK 为汉办商标、TOPIK 为韩国国立国际教育院商标。
-          本项目未获任何上述官方机构认证或授权，等级达成数据为项目内估算。
+          {t("courses.disclaimer")}
         </p>
       </div>
     </PageShell>

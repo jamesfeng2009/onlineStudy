@@ -98,7 +98,23 @@
     },
     "lessons": "{{count}} 課堂",
     "minutes": "{{count}} 分鐘",
-    "noResults": "冇符合條件嘅課程，換個篩選試吓啦。"
+    "noResults": "冇符合條件嘅課程，換個篩選試吓啦。",
+    "progress": "進度",
+    "disclaimer": "等級標識（CEFR / JLPT / HSK / TOPIK）只作參考性對齊，方便跨體系比較。CEFR 係歐洲理事會商標、JLPT 係日本國際交流基金會商標、HSK 係漢辦商標、TOPIK 係韓國國立國際教育院商標。呢個項目未獲任何上述官方機構認證或授權，等級達成數據為項目內估算。",
+    "entryCards": {
+      "placement": "唔知由邊度開始？試吓分級測試",
+      "placementDesc": "6 題自適應定位你嘅起始等級 · 免登入可測",
+      "alphabet": "由字母開始：亞洲語入門",
+      "alphabetDesc": "平假名 / 片假名 / 韓文 / 拼音 / 粵拼 / 泰文 · 撳字元即朗讀",
+      "reading": "閱讀理解 · 補齊 CEFR 技能",
+      "readingDesc": "分級閱讀 + 詞彙註釋 + 理解題 · 自動記錄最佳成績",
+      "league": "每週排行榜 · 爭奪大師段位",
+      "leagueDesc": "按週累計 XP · 青銅 → 白銀 → 黃金 → 鉑金 → 鑽石 → 大師 · 每週一結算升降級",
+      "cefr": "CEFR 自評 · 我可以做乜？",
+      "cefrDesc": "按 Can-Do 項目自評 A1-C2 · 與分級測試互為補充 · 自動推斷等級",
+      "writing": "寫作訓練 · 即時評分回饋",
+      "writingDesc": "議論文 / 電郵 / 摘要 / 故事 / 對話 · 字數 + 詞彙多樣性 + 關鍵詞三維評分"
+    }
   },
   "learn": {
     "wordMemory": "單詞記憶",
@@ -670,5 +686,44 @@
     "minutes": "分鐘",
     "days": "日",
     "all": "全部"
+  },
+  "placement": {
+    "title": "分級測試",
+    "subtitle": "6 題快速定位你嘅起始等級",
+    "seoTitle": "分級測試 — LangOria",
+    "seoDescription": "自適應分級測試，6 題定位你嘅起始等級。",
+    "loginHint": "測試無需登入；登入後可儲存結果，下次進入直接推薦對應課程。",
+    "loading": "正在為 {{lang}} 準備題目…",
+    "loadingText": "載入中…",
+    "questionTitle": "分級測試 · 第 {{current}} / {{total}} 題",
+    "questionSubtitle": "目前等級：{{level}}（CEFR {{cefr}}）",
+    "emptyQuestion": "（題目為空）",
+    "reselectLang": "揀過語言",
+    "submit": "遞交",
+    "nextQuestion": "下一題…",
+    "resultTitle": "分級測試結果",
+    "resultSubtitle": "推薦起始等級：{{level}}（CEFR {{cefr}}）",
+    "resultSeoTitle": "分級測試結果 — LangOria",
+    "testComplete": "測試完成",
+    "correctCount": "答啱題數",
+    "recommendedLevel": "推薦等級",
+    "cefrAlignment": "CEFR 對齊",
+    "cefrRank": "CEFR Rank",
+    "language": "語言",
+    "startCourse": "開始呢個課程",
+    "noCourseMatch": "暫未搵到同 {{level}} 完全匹配嘅課程，請前往課程列表自行揀相近等級。",
+    "saving": "儲存中…",
+    "saveResult": "儲存結果",
+    "saved": "已儲存到你嘅帳戶，下次進入呢個語言時將自動推薦此等級。",
+    "loginToSave": "登入後儲存結果",
+    "retake": "重做測試",
+    "errorOccurred": "出錯喇，請",
+    "restart": "重新開始",
+    "errors": {
+      "noQuestions": "呢個語言暫無分級測試題，請揀其他語言。",
+      "noStartQuestion": "無法選取起始題目。",
+      "fetchFailed": "拉取題目失敗",
+      "saveFailed": "儲存結果失敗"
+    }
   }
 }

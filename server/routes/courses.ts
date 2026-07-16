@@ -1,6 +1,9 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("courses");
 
 const coursesRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get<{
@@ -23,6 +26,8 @@ const coursesRoutes: FastifyPluginAsync = async (fastify) => {
       where,
       orderBy: [{ courseOrder: "asc" }, { title: "asc" }],
     });
+
+    log.info(request, "courses fetched", { language, level: levelGroup, count: courses.length });
 
     return sendSuccess(
       reply,

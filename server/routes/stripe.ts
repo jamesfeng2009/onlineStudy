@@ -3,6 +3,9 @@ import { prisma, Prisma } from "../lib/prisma.js";
 import { stripe, STRIPE_PUBLISHABLE_KEY } from "../lib/stripe.js";
 import { withStripeIdempotency } from "../lib/idempotency.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("stripe");
 
 type SessionCreateParams = import("stripe").Stripe.Checkout.SessionCreateParams;
 
@@ -106,7 +109,15 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
         : [{ price_data: priceInfo.priceData, quantity: 1 }],
     };
 
-    const session = await stripe.checkout.sessions.create(sessionParams);
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create(sessionParams);
+    } catch (err) {
+      log.error(request, "checkout session error", { tier, err });
+      throw err;
+    }
+
+    log.info(request, "checkout session created", { tier, userId });
 
     await prisma.$transaction(async (tx) => {
       await tx.subscription.upsert({
@@ -165,6 +176,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
         metadata?: Record<string, string>;
       };
       const userId = eventPayload.metadata?.userId;
+
+      log.info(request, "stripe webhook received", { type: event.type });
 
       const result = await withStripeIdempotency(
         eventId,
@@ -231,6 +244,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
               where: { id: userId },
               data: { role: tier === "vip" ? "vip" : "user" },
             });
+
+            log.info(request, "payment succeeded", { userId, tier, subscriptionId });
           } else if (eventType === "customer.subscription.updated") {
             const sub = eventPayload;
             const subscriptionId = sub.id as string;
@@ -264,6 +279,7 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
 
               if (status === "canceled" || status === "incomplete_expired" || status === "unpaid") {
                 await tx.user.update({ where: { id: existing.userId }, data: { role: "user" } });
+                log.warn(request, "payment failed", { userId: existing.userId, tier });
               } else if (status === "active") {
                 await tx.user.update({
                   where: { id: existing.userId },

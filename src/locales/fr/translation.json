@@ -93,7 +93,23 @@
     },
     "lessons": "{{count}} leçons",
     "minutes": "{{count}} min",
-    "noResults": "Aucun cours ne correspond. Essayez un autre filtre."
+    "noResults": "Aucun cours ne correspond. Essayez un autre filtre.",
+    "progress": "Progression",
+    "disclaimer": "Les indications de niveau (CEFR / JLPT / HSK / TOPIK) sont uniquement une alignement indicatif, pour faciliter la comparaison entre systèmes. CEFR est une marque du Conseil de l'Europe, JLPT est une marque de la Fondation du Japon, HSK est une marque de Hanban et TOPIK est une marque de l'Institut national d'éducation internationale de Corée. Ce projet n'est ni certifié ni autorisé par ces organismes officiels ; les données de réussite de niveau sont une estimation interne au projet.",
+    "entryCards": {
+      "placement": "Vous ne savez pas par où commencer ? Essayez le test de niveau",
+      "placementDesc": "6 questions adaptatives pour situer votre niveau de départ · sans connexion requise",
+      "alphabet": "Commencez par les lettres : introduction aux langues asiatiques",
+      "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thaï · touchez un caractère pour l'entendre",
+      "reading": "Compréhension écrite · complétez vos compétences CEFR",
+      "readingDesc": "Lecture par niveaux + notes de vocabulaire + questions de compréhension · enregistre automatiquement votre meilleur score",
+      "league": "Classement hebdomadaire · visez le rang Maître",
+      "leagueDesc": "XP cumulés par semaine · Bronze → Argent → Or → Platine → Diamant → Maître · promotions et relégations chaque lundi",
+      "cefr": "Auto-évaluation CEFR · que puis-je faire ?",
+      "cefrDesc": "Auto-évaluez-vous de A1 à C2 avec les énoncés Can-Do · complète le test de niveau · déduit automatiquement votre niveau",
+      "writing": "Entraînement à l'écrit · correction instantanée",
+      "writingDesc": "Essais / e-mails / résumés / histoires / dialogues · notation tridimensionnelle : nombre de mots + diversité lexicale + mots-clés"
+    }
   },
   "learn": {
     "wordMemory": "Mémorisation de mots",
@@ -763,5 +779,44 @@
     "ctaTitle": "Passez à la pratique",
     "ctaDesc": "Créez un compte gratuit et commencez votre boucle de 10 minutes dès aujourd'hui.",
     "cta": "Commencer à apprendre"
+  },
+  "placement": {
+    "title": "Test de niveau",
+    "subtitle": "6 questions pour situer rapidement votre niveau de départ",
+    "seoTitle": "Test de niveau — LangOria",
+    "seoDescription": "Test de niveau adaptatif : 6 questions pour situer votre niveau de départ.",
+    "loginHint": "Aucune connexion requise pour passer le test. Connectez-vous pour enregistrer votre résultat et recevoir des recommandations de cours la prochaine fois.",
+    "loading": "Préparation des questions pour {{lang}}…",
+    "loadingText": "Chargement…",
+    "questionTitle": "Test de niveau · Question {{current}} / {{total}}",
+    "questionSubtitle": "Niveau actuel : {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(Question vide)",
+    "reselectLang": "Rechoisir la langue",
+    "submit": "Envoyer",
+    "nextQuestion": "Question suivante…",
+    "resultTitle": "Résultat du test de niveau",
+    "resultSubtitle": "Niveau de départ recommandé : {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "Résultat du test de niveau — LangOria",
+    "testComplete": "Test terminé",
+    "correctCount": "Bonnes réponses",
+    "recommendedLevel": "Niveau recommandé",
+    "cefrAlignment": "Alignement CEFR",
+    "cefrRank": "Rang CEFR",
+    "language": "Langue",
+    "startCourse": "Commencer ce cours",
+    "noCourseMatch": "Aucun cours ne correspond exactement à {{level}}. Rendez-vous sur la liste des cours et choisissez un niveau proche.",
+    "saving": "Enregistrement…",
+    "saveResult": "Enregistrer le résultat",
+    "saved": "Enregistré sur votre compte. Ce niveau sera automatiquement recommandé la prochaine fois que vous ouvrirez cette langue.",
+    "loginToSave": "Connectez-vous pour enregistrer le résultat",
+    "retake": "Repasser le test",
+    "errorOccurred": "Une erreur est survenue,",
+    "restart": "Recommencer",
+    "errors": {
+      "noQuestions": "Aucune question de test de niveau pour cette langue pour le moment. Veuillez choisir une autre langue.",
+      "noStartQuestion": "Impossible de sélectionner une question de départ.",
+      "fetchFailed": "Échec de la récupération des questions",
+      "saveFailed": "Échec de l'enregistrement du résultat"
+    }
   }
 }

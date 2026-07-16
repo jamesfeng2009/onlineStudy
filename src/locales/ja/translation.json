@@ -93,7 +93,23 @@
     },
     "lessons": "{{count}} レッスン",
     "minutes": "{{count}} 分",
-    "noResults": "条件に合うコースがありません。別の絞り込みを試してください。"
+    "noResults": "条件に合うコースがありません。別の絞り込みを試してください。",
+    "progress": "進捗",
+    "disclaimer": "レベル表記（CEFR / JLPT / HSK / TOPIK）は参考的な目安であり、体系間比較のためのものです。CEFR は欧州評議会の商標、JLPT は国際交流基金の商標、HSK は漢弁の商標、TOPIK は韓国国立国際教育院の商標です。本プロジェクトはこれらの公式機関の認定や承認を受けておらず、レベル達成データはプロジェクト内の推定値です。",
+    "entryCards": {
+      "placement": "どこから始めればいい？プレースメントテストをお試しあれ",
+      "placementDesc": "6 問のアダプティブ測定で開始レベルを特定 · ログイン不要",
+      "alphabet": "文字から始める：アジア言語入門",
+      "alphabetDesc": "ひらがな / カタカナ / ハングル / ピンイン / 広東語ピンイン / タイ語 · 文字をタップで読み上げ",
+      "reading": "読解 · CEFR スキルを補完",
+      "readingDesc": "レベル別読解 + 語彙注釈 + 理解問題 · 最高スコアを自動記録",
+      "league": "週次ランキング · マスターを目指して争おう",
+      "leagueDesc": "週次 XP 累計 · ブロンズ → シルバー → ゴールド → プラチナ → ダイヤ → マスター · 毎週月曜に昇降格",
+      "cefr": "CEFR 自己評価 · 自分に何ができる？",
+      "cefrDesc": "Can-Do 項目で A1-C2 を自己評価 · プレースメントテストと補完関係 · レベルを自動推定",
+      "writing": "ライティング練習 · 即時採点フィードバック",
+      "writingDesc": "論説文 / メール / 要約 / 物語 / 対話 · 文字数 + 語彙多様性 + キーワードの 3 軸採点"
+    }
   },
   "learn": {
     "wordMemory": "単語記憶",
@@ -730,5 +746,44 @@
     "ctaTitle": "今日から 10 分を始めよう",
     "ctaDesc": "無料アカウントを作成し、今日から 10 分のループを始めましょう。",
     "cta": "学習を始める"
+  },
+  "placement": {
+    "title": "プレースメントテスト",
+    "subtitle": "6 問であなたの開始レベルを素早く特定",
+    "seoTitle": "プレースメントテスト — LangOria",
+    "seoDescription": "アダプティブプレースメントテスト。6 問であなたの開始レベルを特定します。",
+    "loginHint": "テストはログイン不要です。ログインすると結果を保存でき、次回以降該当コースが自動でおすすめされます。",
+    "loading": "{{lang}} の問題を準備中…",
+    "loadingText": "読み込み中…",
+    "questionTitle": "プレースメントテスト · 第 {{current}} / {{total}} 問",
+    "questionSubtitle": "現在のレベル：{{level}}（CEFR {{cefr}}）",
+    "emptyQuestion": "（問題が空です）",
+    "reselectLang": "言語を選び直す",
+    "submit": "送信",
+    "nextQuestion": "次の問題へ…",
+    "resultTitle": "プレースメントテスト結果",
+    "resultSubtitle": "推奨開始レベル：{{level}}（CEFR {{cefr}}）",
+    "resultSeoTitle": "プレースメントテスト結果 — LangOria",
+    "testComplete": "テスト完了",
+    "correctCount": "正解数",
+    "recommendedLevel": "推奨レベル",
+    "cefrAlignment": "CEFR 対応",
+    "cefrRank": "CEFR ランク",
+    "language": "言語",
+    "startCourse": "このコースを始める",
+    "noCourseMatch": "{{level}} に完全に一致するコースは見つかりませんでした。コースリストから近いレベルをお選びください。",
+    "saving": "保存中…",
+    "saveResult": "結果を保存",
+    "saved": "アカウントに保存しました。次回この言語を開くと、このレベルが自動でおすすめされます。",
+    "loginToSave": "ログインして結果を保存",
+    "retake": "やり直す",
+    "errorOccurred": "エラーが発生しました。",
+    "restart": "やり直す",
+    "errors": {
+      "noQuestions": "この言語にはプレースメントテストの問題がまだありません。別の言語をお選びください。",
+      "noStartQuestion": "開始問題を選択できませんでした。",
+      "fetchFailed": "問題の取得に失敗しました",
+      "saveFailed": "結果の保存に失敗しました"
+    }
   }
 }

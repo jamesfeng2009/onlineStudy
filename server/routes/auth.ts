@@ -3,6 +3,9 @@ import { prisma } from "../lib/prisma.js";
 import { registerUserIdempotent } from "../lib/idempotency.js";
 import { sendSuccess, sendError } from "../lib/response.js";
 import { computeStreakFromLastActive } from "../lib/level.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("auth");
 
 interface RegisterBody {
   email: string;
@@ -74,10 +77,12 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
 
     if (!result.isNew) {
       // 邮箱已存在，返回 409
+      log.warn(request, "register conflict: email exists", { email: normalizedEmail });
       return sendError(reply, "CONFLICT", "该邮箱已注册");
     }
 
     const user = result.user;
+    log.info(request, "user registered", { userId: user.id, email: normalizedEmail });
 
     // 签发 JWT
     const token = fastify.jwt.sign(
@@ -115,13 +120,19 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     const user = await prisma.user.findUnique({ where: { email: email.toLowerCase().trim() } });
-    if (!user || !user.passwordHash) {
+    if (!user) {
+      log.warn(request, "login failed: user not found", { email });
+      return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
+    }
+    if (!user.passwordHash) {
       // passwordHash 为 null 说明是纯 OAuth 用户，不允许用密码登录
+      log.warn(request, "login failed: user not found", { email });
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
     const isMatch = await fastify.bcrypt.compare(password, user.passwordHash);
     if (!isMatch) {
+      log.warn(request, "login failed: wrong password", { email });
       return sendError(reply, "UNAUTHORIZED", "邮箱或密码不正确");
     }
 
@@ -133,6 +144,8 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       where: { id: user.id },
       data: { lastActive, streak },
     });
+
+    log.info(request, "user logged in", { userId: user.id });
 
     const token = fastify.jwt.sign(
       { userId: updated.id, version: updated.jwtVersion },

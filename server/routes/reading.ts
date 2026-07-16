@@ -18,6 +18,9 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("reading");
 
 interface CacheEntry {
   data: unknown;
@@ -142,6 +145,8 @@ const readingRoutes: FastifyPluginAsync = async (fastify) => {
       return sendError(reply, "NOT_FOUND", "该阅读材料不存在");
     }
 
+    log.info(request, "reading passage fetched", { language: passage.languageCode, level: passage.level, passageId: id });
+
     const t = pickPassageTranslation(passage.translations, nativeLanguage);
     const result = {
       id: passage.id,
@@ -252,6 +257,8 @@ const readingRoutes: FastifyPluginAsync = async (fastify) => {
       { userId, readingId, correctCount, totalQuestions, accuracy, isCompleted },
       "reading/progress: saved"
     );
+
+    log.info(request, "reading answer submitted", { passageId: readingId, correct: correctCount });
 
     return sendSuccess(reply, saved);
   });

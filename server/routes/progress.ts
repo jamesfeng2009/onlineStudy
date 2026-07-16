@@ -9,6 +9,9 @@ import {
 } from "../lib/progress.js";
 import { clamp } from "../lib/utils.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("progress");
 
 type ReviewQuality = "again" | "hard" | "good" | "easy";
 
@@ -449,7 +452,13 @@ const progressRoutes: FastifyPluginAsync = async (fastify) => {
       }
 
       await prisma.user.update({ where: { id: userId }, data: update });
-      return sendSuccess(reply, await aggregateProgress(userId));
+      const updated = await aggregateProgress(userId);
+      log.info(request, "progress updated", {
+        userId,
+        wordsLearned: updated.wordsLearned,
+        streakDays: updated.streak,
+      });
+      return sendSuccess(reply, updated);
     }
   );
 };

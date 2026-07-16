@@ -16,6 +16,7 @@
 
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight, ArrowLeft, Check, X, Sparkles, Trophy, Loader2, RotateCcw,
 } from "lucide-react";
@@ -94,6 +95,7 @@ function computeRecommendation(state: TestState): string {
 }
 
 export default function PlacementTestPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const user = useAuthStore((s) => s.user);
@@ -122,7 +124,7 @@ export default function PlacementTestPage() {
         nativeLanguage,
       });
       if (!resp.questions.length) {
-        setError("该语言暂无分级测试题，请选择其他语言。");
+        setError(t("placement.errors.noQuestions"));
         setPhase("lang-pick");
         return;
       }
@@ -147,14 +149,14 @@ export default function PlacementTestPage() {
       };
       initialState.currentQuestion = pickNextQuestion(initialState);
       if (!initialState.currentQuestion) {
-        setError("无法选取起始题目。");
+        setError(t("placement.errors.noStartQuestion"));
         setPhase("lang-pick");
         return;
       }
       setState(initialState);
       setPhase("testing");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "拉取题目失败");
+      setError(e instanceof Error ? e.message : t("placement.errors.fetchFailed"));
       setPhase("lang-pick");
     }
   }
@@ -230,7 +232,7 @@ export default function PlacementTestPage() {
         recommendedCourseId: course?.id ?? null,
       });
     } catch (e) {
-      setError(e instanceof Error ? e.message : "保存结果失败");
+      setError(e instanceof Error ? e.message : t("placement.errors.saveFailed"));
     } finally {
       setSaving(false);
     }
@@ -248,8 +250,8 @@ export default function PlacementTestPage() {
   // ====== Render: language picker ======
   if (phase === "lang-pick") {
     return (
-      <PageShell title="分级测试" subtitle="6 道题快速定位你的起始等级">
-        <Seo title="分级测试 — LangOria" description="自适应分级测试，6 道题定位你的起始等级。" pathname="/placement" noindex />
+      <PageShell title={t("placement.title")} subtitle={t("placement.subtitle")}>
+        <Seo title={t("placement.seoTitle")} description={t("placement.seoDescription")} pathname="/placement" noindex />
         {error && (
           <div className="mb-4 rounded-xl border border-rose-400/30 bg-rose-400/10 p-3 text-sm text-rose-200">
             {error}
@@ -269,7 +271,7 @@ export default function PlacementTestPage() {
           ))}
         </div>
         <p className="mt-6 text-center text-[11px] text-brand-200/40">
-          测试无需登录；登录后可保存结果，下次进入直接推荐对应课程。
+          {t("placement.loginHint")}
         </p>
       </PageShell>
     );
@@ -278,10 +280,10 @@ export default function PlacementTestPage() {
   // ====== Render: loading ======
   if (phase === "loading") {
     return (
-      <PageShell title="分级测试" subtitle={`正在为 ${lang ?? ""} 准备题目…`}>
+      <PageShell title={t("placement.title")} subtitle={t("placement.loading", { lang: lang ?? "" })}>
         <div className="flex items-center justify-center py-20 text-brand-200/70">
           <Loader2 className="h-6 w-6 animate-spin" />
-          <span className="ml-3 text-sm">加载中…</span>
+          <span className="ml-3 text-sm">{t("placement.loadingText")}</span>
         </div>
       </PageShell>
     );
@@ -293,10 +295,10 @@ export default function PlacementTestPage() {
     const progressPct = Math.round(((state.questionNumber - 1) / MAX_QUESTIONS) * 100);
     return (
       <PageShell
-        title={`分级测试 · 第 ${state.questionNumber} / ${MAX_QUESTIONS} 题`}
-        subtitle={`当前等级：${q.level}（CEFR ${cefrEquivalent(lang ?? "en", q.level) ?? "?"}）`}
+        title={t("placement.questionTitle", { current: state.questionNumber, total: MAX_QUESTIONS })}
+        subtitle={t("placement.questionSubtitle", { level: q.level, cefr: cefrEquivalent(lang ?? "en", q.level) ?? "?" })}
       >
-        <Seo title="分级测试 — LangOria" pathname="/placement" noindex />
+        <Seo title={t("placement.seoTitle")} pathname="/placement" noindex />
         {/* 进度条 */}
         <div className="mb-6">
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
@@ -313,7 +315,7 @@ export default function PlacementTestPage() {
             {q.level}
           </div>
           <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-            {q.question || "（题目为空）"}
+            {q.question || t("placement.emptyQuestion")}
           </h2>
 
           <div className="mt-5 grid grid-cols-1 gap-2">
@@ -352,7 +354,7 @@ export default function PlacementTestPage() {
               onClick={() => navigate("/placement")}
               className="text-xs text-brand-200/60 hover:text-white"
             >
-              <ArrowLeft className="mr-1 inline h-3 w-3" />重新选语言
+              <ArrowLeft className="mr-1 inline h-3 w-3" />{t("placement.reselectLang")}
             </button>
             {!revealed ? (
               <button
@@ -364,10 +366,10 @@ export default function PlacementTestPage() {
                 }}
                 className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-sky-500/20 transition disabled:opacity-40 disabled:shadow-none"
               >
-                提交 <ArrowRight className="h-4 w-4" />
+                {t("placement.submit")} <ArrowRight className="h-4 w-4" />
               </button>
             ) : (
-              <span className="text-xs text-brand-200/60">下一题…</span>
+              <span className="text-xs text-brand-200/60">{t("placement.nextQuestion")}</span>
             )}
           </div>
         </GlassCard>
@@ -384,38 +386,38 @@ export default function PlacementTestPage() {
     const course = COURSES.find((c) => c.language === lang && c.level === recommendedLevel) ?? null;
     return (
       <PageShell
-        title="分级测试结果"
-        subtitle={`推荐起始等级：${recommendedLevel}（CEFR ${cefr}）`}
+        title={t("placement.resultTitle")}
+        subtitle={t("placement.resultSubtitle", { level: recommendedLevel, cefr })}
       >
-        <Seo title="分级测试结果 — LangOria" pathname="/placement" noindex />
+        <Seo title={t("placement.resultSeoTitle")} pathname="/placement" noindex />
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           {/* 左侧：分数摘要 */}
           <GlassCard className="flex flex-col items-start">
             <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-amber-400/10 px-3 py-1 text-[11px] font-medium text-amber-300">
               <Trophy className="h-3 w-3" />
-              测试完成
+              {t("placement.testComplete")}
             </div>
             <div className="font-display text-5xl font-bold text-white">
               {correctCount}<span className="text-2xl text-brand-200/50">/{state.answers.length}</span>
             </div>
-            <div className="mt-1 text-xs text-brand-200/60">答对题数</div>
+            <div className="mt-1 text-xs text-brand-200/60">{t("placement.correctCount")}</div>
 
             <div className="mt-5 w-full space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-brand-200/70">推荐等级</span>
+                <span className="text-brand-200/70">{t("placement.recommendedLevel")}</span>
                 <span className="font-semibold text-white">{recommendedLevel}</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-brand-200/70">CEFR 对齐</span>
+                <span className="text-brand-200/70">{t("placement.cefrAlignment")}</span>
                 <span className="rounded-full bg-sky-400/10 px-2 py-0.5 text-xs text-sky-300">{cefr}</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-brand-200/70">CEFR Rank</span>
+                <span className="text-brand-200/70">{t("placement.cefrRank")}</span>
                 <span className="text-white">{rank} / 6</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-brand-200/70">语言</span>
+                <span className="text-brand-200/70">{t("placement.language")}</span>
                 <span className="text-white">{LANGUAGES.find((l) => l.id === lang)?.native ?? lang}</span>
               </div>
             </div>
@@ -428,12 +430,12 @@ export default function PlacementTestPage() {
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5"
                 >
                   <Sparkles className="h-4 w-4" />
-                  开始这门课程 <ArrowRight className="h-4 w-4" />
+                  {t("placement.startCourse")} <ArrowRight className="h-4 w-4" />
                 </button>
               )}
               {!course && (
                 <div className="rounded-xl border border-amber-400/30 bg-amber-400/5 p-3 text-[11px] text-amber-200">
-                  暂未找到与 {recommendedLevel} 完全匹配的课程，请前往课程列表自行选择相近等级。
+                  {t("placement.noCourseMatch", { level: recommendedLevel })}
                 </div>
               )}
 
@@ -445,11 +447,11 @@ export default function PlacementTestPage() {
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-brand-100 transition hover:bg-white/10 disabled:opacity-50"
                   >
                     {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-                    {saving ? "保存中…" : "保存结果"}
+                    {saving ? t("placement.saving") : t("placement.saveResult")}
                   </button>
                 ) : (
                   <div className="rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-3 text-[11px] text-emerald-200">
-                    已保存到你的账户，下次进入该语言时将自动推荐此等级。
+                    {t("placement.saved")}
                   </div>
                 )
               ) : (
@@ -457,7 +459,7 @@ export default function PlacementTestPage() {
                   onClick={() => setShowLoginPrompt(true)}
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-brand-100 transition hover:bg-white/10"
                 >
-                  登录后保存结果
+                  {t("placement.loginToSave")}
                 </button>
               )}
 
@@ -465,7 +467,7 @@ export default function PlacementTestPage() {
                 onClick={reset}
                 className="inline-flex items-center justify-center gap-2 text-xs text-brand-200/60 hover:text-white"
               >
-                <RotateCcw className="h-3 w-3" /> 重新测试
+                <RotateCcw className="h-3 w-3" /> {t("placement.retake")}
               </button>
             </div>
 
@@ -487,9 +489,9 @@ export default function PlacementTestPage() {
 
   // Fallback (shouldn't reach here)
   return (
-    <PageShell title="分级测试">
+    <PageShell title={t("placement.title")}>
       <div className="py-20 text-center text-brand-200/60">
-        出错了，请 <button onClick={reset} className="text-sky-300 underline">重新开始</button>。
+        {t("placement.errorOccurred")} <button onClick={reset} className="text-sky-300 underline">{t("placement.restart")}</button>。
       </div>
     </PageShell>
   );

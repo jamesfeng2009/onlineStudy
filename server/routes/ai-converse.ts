@@ -21,6 +21,9 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("ai-converse");
 
 // ============================================================
 // Provider 路由(与 ai-explain.ts 一致,独立声明避免循环依赖)
@@ -359,6 +362,7 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
     history.push({ role: "user", content });
 
     // 调用 LLM
+    log.info(request, "AI converse request", { language: conv.languageCode, messageLength: content.length });
     const systemPrompt = buildSystemPrompt(conv.languageCode, conv.level ?? undefined);
     let assistantText = "";
     let tokensInput = 0;
@@ -371,6 +375,7 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
     } catch (err) {
       const msg = (err as Error).message;
       fastify.log.error({ err: msg, conversationId }, "ai-converse/send LLM failed");
+      log.error(request, "AI converse error", { err });
       // LLM 失败:回滚用户消息 + 配额计数(因为没产生 assistant 回复)
       await prisma.aiConversationMessage.delete({ where: { id: userMessage.id } });
       await prisma.aiUsageDaily.update({

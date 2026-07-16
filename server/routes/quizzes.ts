@@ -1,6 +1,9 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("quizzes");
 
 interface CacheEntry {
   data: unknown;
@@ -88,6 +91,8 @@ const quizzesRoutes: FastifyPluginAsync = async (fastify) => {
     });
 
     cache.set(cacheKey, { data: result, expiresAt: Date.now() + CACHE_TTL_MS });
+
+    log.info(request, "quizzes fetched", { language, level, count: result.length });
 
     reply.header("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
     return sendSuccess(reply, result);

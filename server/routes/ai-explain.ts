@@ -20,6 +20,9 @@ import type { FastifyPluginAsync } from "fastify";
 import crypto from "node:crypto";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("ai-explain");
 
 // ============================================================
 // Provider 路由（与 scripts/generate-* 一致）
@@ -443,6 +446,8 @@ const aiExplainRoutes: FastifyPluginAsync = async (fastify) => {
       let exampleSentence = body.exampleSentence;
       let languageCode = body.languageCode;
 
+      log.info(request, "AI explain request", { language: languageCode, wordId });
+
       if (!word) {
         const w = await prisma.wordBank.findUnique({
           where: { id: wordId },
@@ -482,6 +487,7 @@ const aiExplainRoutes: FastifyPluginAsync = async (fastify) => {
         return sendError(reply, "FORBIDDEN", `今日 AI 解释次数已用尽（限额 ${msg.split(":")[1]}）`);
       }
       fastify.log.error({ err: msg }, "ai-explain/word failed");
+      log.error(request, "AI explain error", { err });
       return sendError(reply, "INTERNAL_ERROR", "AI 解释服务暂时不可用，请稍后重试");
     }
   });

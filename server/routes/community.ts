@@ -2,6 +2,9 @@ import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { toggleLikeIdempotent, createCommentIdempotent } from "../lib/idempotency.js";
 import { sendSuccess, sendError } from "../lib/response.js";
+import { createRouteLogger } from "../lib/logger.js";
+
+const log = createRouteLogger("community");
 
 const communityRoutes: FastifyPluginAsync = async (fastify) => {
 
@@ -76,6 +79,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
       include: { author: { select: { id: true, username: true, avatar: true } } },
     });
 
+    log.info(request, "post created", { postId: post.id, topic });
+
     return sendSuccess(reply, {
       id: post.id,
       authorId: post.author.id,
@@ -104,6 +109,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
       return toggleLikeIdempotent(tx, postId, userId);
     });
 
+    log.info(request, "post like toggled", { postId, liked: result.liked });
+
     return sendSuccess(reply, { id: postId, likeCount: result.likeCount, likedByMe: result.liked });
   });
 
@@ -126,6 +133,8 @@ const communityRoutes: FastifyPluginAsync = async (fastify) => {
     const comment = await prisma.$transaction(async (tx) => {
       return createCommentIdempotent(tx, postId, userId, content.trim());
     });
+
+    log.info(request, "comment added", { postId, commentId: comment.id });
 
     return sendSuccess(reply, {
       id: comment.id,

@@ -93,7 +93,23 @@
     },
     "lessons": "{{count}} Lektionen",
     "minutes": "{{count}} Min.",
-    "noResults": "Keine Kurse passen. Probiere einen anderen Filter."
+    "noResults": "Keine Kurse passen. Probiere einen anderen Filter.",
+    "progress": "Fortschritt",
+    "disclaimer": "Niveaubezeichnungen (CEFR / JLPT / HSK / TOPIK) dienen nur als Orientierungshilfe für den systemübergreifenden Vergleich. CEFR ist eine Marke des Europarats, JLPT ist eine Marke der Japan Foundation, HSK ist eine Marke von Hanban und TOPIK ist eine Marke des Nationalen Instituts für internationale Bildung Südkoreas. Dieses Projekt ist von keiner dieser offiziellen Organisationen zertifiziert oder autorisiert; die Level-Daten sind projektinterne Schätzungen.",
+    "entryCards": {
+      "placement": "Kein Plan, wo du anfangen sollst? Mach den Einstufungstest",
+      "placementDesc": "6 adaptive Fragen, die dein Startniveau bestimmen · ohne Anmeldung",
+      "alphabet": "Beginne mit Buchstaben: Asiatische Sprachen-Einführung",
+      "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai · tippe ein Zeichen an, um es zu hören",
+      "reading": "Leseverstehen · ergänze deine CEFR-Fähigkeiten",
+      "readingDesc": "Niveaugelesenes Lesen + Vokabelnotizen + Verständnisfragen · speichert automatisch deine beste Punktzahl",
+      "league": "Wöchentliche Rangliste · kämpfe um den Meister-Rang",
+      "leagueDesc": "XP sammeln sich wöchentlich · Bronze → Silber → Gold → Platin → Diamant → Meister · Auf- und Abstieg jeden Montag",
+      "cefr": "CEFR-Selbsteinschätzung · was kann ich?",
+      "cefrDesc": "Schätze dich selbst von A1 bis C2 anhand von Can-Do-Aussagen ein · ergänzt den Einstufungstest · leitet dein Niveau automatisch ab",
+      "writing": "Schreibtraining · sofortige Bewertung",
+      "writingDesc": "Essays / E-Mails / Zusammenfassungen / Geschichten / Dialoge · dreidimensionale Bewertung: Wortzahl + lexikalische Vielfalt + Schlüsselwörter"
+    }
   },
   "learn": {
     "wordMemory": "Wort-Merkspiel",
@@ -763,5 +779,44 @@
     "ctaTitle": "Setze die Tipps in die Tat um",
     "ctaDesc": "Erstelle ein kostenloses Konto und starte heute deine 10-Minuten-Routine.",
     "cta": "Jetzt lernen"
+  },
+  "placement": {
+    "title": "Einstufungstest",
+    "subtitle": "6 Fragen, die schnell dein Startniveau bestimmen",
+    "seoTitle": "Einstufungstest — LangOria",
+    "seoDescription": "Adaptiver Einstufungstest: 6 Fragen, die dein Startniveau bestimmen.",
+    "loginHint": "Für den Test ist keine Anmeldung nötig. Melde dich an, um dein Ergebnis zu speichern und beim nächsten Mal passende Kurse empfohlen zu bekommen.",
+    "loading": "Fragen für {{lang}} werden vorbereitet…",
+    "loadingText": "Wird geladen…",
+    "questionTitle": "Einstufungstest · Frage {{current}} / {{total}}",
+    "questionSubtitle": "Aktuelles Niveau: {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(Frage ist leer)",
+    "reselectLang": "Sprache neu wählen",
+    "submit": "Absenden",
+    "nextQuestion": "Nächste Frage…",
+    "resultTitle": "Ergebnis des Einstufungstests",
+    "resultSubtitle": "Empfohlenes Startniveau: {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "Ergebnis des Einstufungstests — LangOria",
+    "testComplete": "Test abgeschlossen",
+    "correctCount": "Richtige Antworten",
+    "recommendedLevel": "Empfohlenes Niveau",
+    "cefrAlignment": "CEFR-Zuordnung",
+    "cefrRank": "CEFR-Rang",
+    "language": "Sprache",
+    "startCourse": "Diesen Kurs starten",
+    "noCourseMatch": "Es wurde kein Kurs gefunden, der genau zu {{level}} passt. Bitte wähle in der Kursliste selbst ein ähnliches Niveau.",
+    "saving": "Wird gespeichert…",
+    "saveResult": "Ergebnis speichern",
+    "saved": "Auf deinem Konto gespeichert. Beim nächsten Öffnen dieser Sprache wird dieses Niveau automatisch empfohlen.",
+    "loginToSave": "Anmelden, um Ergebnis zu speichern",
+    "retake": "Test wiederholen",
+    "errorOccurred": "Etwas ist schiefgelaufen,",
+    "restart": "Neu starten",
+    "errors": {
+      "noQuestions": "Für diese Sprache gibt es noch keine Einstufungstest-Fragen. Bitte wähle eine andere Sprache.",
+      "noStartQuestion": "Es konnte keine Startfrage ausgewählt werden.",
+      "fetchFailed": "Fehler beim Abrufen der Fragen",
+      "saveFailed": "Ergebnis konnte nicht gespeichert werden"
+    }
   }
 }

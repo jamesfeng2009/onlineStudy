@@ -31,6 +31,7 @@ import seoRoutes from "./routes/seo.js";
 import jwtPlugin from "./lib/jwt.js";
 import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
+import { generateTraceId, pinoSerializers, extractUserId } from "./lib/logger.js";
 
 declare module "fastify" {
   interface FastifyInstance {
@@ -61,7 +62,13 @@ const SECRET: string = JWT_SECRET;
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = fastify({
-    logger: process.env.NODE_ENV !== "production" ? { level: "info" } : { level: "warn" },
+    // 结构化日志：pino 内置，每条日志自动带 trace_id (reqId)
+    logger: {
+      level: process.env.LOG_LEVEL ?? (process.env.NODE_ENV !== "production" ? "info" : "warn"),
+      serializers: pinoSerializers,
+    },
+    // 为每个请求生成唯一 trace_id（16 位 UUID 前缀）
+    genReqId: () => generateTraceId(),
     requestTimeout: 30000,
   });
 
@@ -78,6 +85,31 @@ export async function buildApp(): Promise<FastifyInstance> {
     compare: (password: string, hash: string) => bcrypt.compare(password, hash),
   });
 
+  // ── 请求日志 hook ──
+  // onRequest: 记录请求入口（method + url + trace_id）
+  app.addHook("onRequest", async (request) => {
+    request.log.info(
+      { trace_id: request.id, method: request.method, url: request.url },
+      "→ request",
+    );
+  });
+
+  // onResponse: 记录请求出口（status + duration + trace_id + user_id）
+  app.addHook("onResponse", async (request, reply) => {
+    const durationMs = Math.round(reply.elapsedTime * 1000);
+    request.log.info(
+      {
+        trace_id: request.id,
+        user_id: extractUserId(request) ?? "-",
+        method: request.method,
+        url: request.url,
+        status: reply.statusCode,
+        duration_ms: durationMs,
+      },
+      "← response",
+    );
+  });
+
   // 全局错误处理：统一返回 { code, message, data }
   app.setErrorHandler((error, request, reply) => {
     const err = error as Error & { statusCode?: number };
@@ -89,12 +121,26 @@ export async function buildApp(): Promise<FastifyInstance> {
     else if (status === 404) code = "NOT_FOUND";
     else if (status === 409) code = "CONFLICT";
 
-    app.log.warn({ err, path: request.url }, "request error");
+    app.log.error(
+      {
+        err,
+        trace_id: request.id,
+        user_id: extractUserId(request) ?? "-",
+        method: request.method,
+        url: request.url,
+        status,
+      },
+      "request error",
+    );
     reply.status(status).send({ code, message: err.message || "服务器内部错误", data: null });
   });
 
   // 兜底 404
   app.setNotFoundHandler((request, reply) => {
+    request.log.warn(
+      { trace_id: request.id, method: request.method, url: request.url },
+      "route not found",
+    );
     reply.status(404).send({ code: "NOT_FOUND", message: "接口不存在", data: null });
   });
 
