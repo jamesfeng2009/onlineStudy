@@ -1,37 +1,33 @@
 /* eslint-disable no-console */
 /**
- * Batch-generate CEFR grammar quiz items via Google Gemini.
+ * Batch-generate CEFR/JLPT/HSK/TOPIK grammar quiz items via LLM.
  *
  * Output: scripts/generated/quizzes/{lang}-{level}.json
  * Each file is an array of QuizItem-compatible objects:
  *   { id, question, options[4], answer, explain, language, level }
  *
  * Usage:
- *   pnpm tsx scripts/generate-quizzes-gemini.ts            # all 28 batches
+ *   pnpm tsx scripts/generate-quizzes-gemini.ts            # all batches
  *   pnpm tsx scripts/generate-quizzes-gemini.ts --lang=ja   # one language
  *   pnpm tsx scripts/generate-quizzes-gemini.ts --lang=en --level=A1
  *   pnpm tsx scripts/generate-quizzes-gemini.ts --count=25  # override per batch
+ *   pnpm tsx scripts/generate-quizzes-gemini.ts --provider=gemini    # GH Actions
+ *   pnpm tsx scripts/generate-quizzes-gemini.ts --provider=dashscope # local CN
  *
- * Env (loaded from .env via dotenv):
- *   GEMINI_API_KEY  — required, get one at https://aistudio.google.com/apikey
- *   GEMINI_MODEL    — default "gemini-2.0-flash"
+ * Provider routing (P1, mirrors generate-listening-speaking-gemini.ts):
+ *   - zh/ja/ko/yue → DashScope (Qwen2.5-72B, China-direct, better CJK)
+ *   - en/es/fr/de/it/th/ms/id/vi → Gemini (run via GitHub Actions from CN)
+ * Pass --provider=<name> to filter (GitHub Actions uses --provider=gemini
+ * to skip DashScope languages whose key is absent on the runner).
  *
- * Why this design:
- *   - We use the native REST `generateContent` endpoint instead of
- *     pulling @google/generative-ai to keep deps light.
- *   - We pass a `responseSchema` so the model is forced to return
- *     valid JSON, eliminating the brittle "strip markdown fences"
- *     step. Gemini 1.5+/2.x supports this for any object schema.
- *   - Per-language level ladders (A1/A2/B1/B2 for European langs,
- *     N5-N2 for Japanese, HSK1-4 for Chinese, 초급/중급/고급/심화
- *     for Korean) match the levels already used in
- *     `src/data/content.ts` and `src/data/learn-content/*.ts` so
- *     the new quizzes slot straight in.
- *   - We retry 5× with exponential backoff on 429/5xx/network
- *     errors. Gemini free tier is ~15 RPM for Flash so we also
- *     sleep 4s between batches to stay under the limit.
- *   - We dedupe by question text across all batches and refuse
- *     to re-write an existing output unless --overwrite is set.
+ * Env (loaded from .env / .env.local):
+ *   GEMINI_API_KEY     — for en/es/fr/de/it/th/ms/id/vi
+ *   DASHSCOPE_API_KEY  — for zh/ja/ko/yue
+ *   OPENROUTER_API_KEY — alternative for any language
+ *   DOUBAO_API_KEY     — alternative (Volcano Ark)
+ *   LLM_MODEL          — override model name per provider
+ *   LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT — cost cap accounting
+ *   LLM_MAX_COST_USD   — abort once est. spend crosses this (default 1.00)
  */
 
 import fs from "node:fs";
@@ -41,9 +37,6 @@ import path from "node:path";
 // here so `tsx scripts/...` works without a flag. Precedence
 // matches Vite / Next.js / SvelteKit convention:
 //   shell  >  .env.local  >  .env
-// .env.local is the right place for secrets committed nowhere
-// (typical workflow: `vercel env pull .env.local` syncs the
-// team's shared Vercel env into a per-developer file).
 function loadDotenv(file: string) {
   if (!fs.existsSync(file)) return;
   for (const line of fs.readFileSync(file, "utf-8").split("\n")) {
@@ -58,58 +51,40 @@ function loadDotenv(file: string) {
 loadDotenv(path.join(process.cwd(), ".env.local"));
 loadDotenv(path.join(process.cwd(), ".env"));
 
-// ─── Provider router ──────────────────────────────────────────────
-// Gemini is restricted in mainland China ("User location is not
-// supported"). To keep this script usable for CN users, we route
-// the same request through OpenRouter when LLM_PROVIDER=openrouter.
-// OpenRouter serves the SAME model names (gemini-2.5-flash,
-// anthropic/claude-3.5-sonnet, openai/gpt-4o, …) and is reachable
-// from China. Doubao via Volcano Ark is also wired in for users
-// who want a domestic-only path.
-//
-// To switch:
-//   LLM_PROVIDER=openrouter LLM_MODEL=google/gemini-2.5-flash  pnpm tsx ...
-//   LLM_PROVIDER=doubao    LLM_MODEL=doubao-seed-2.0-mini     pnpm tsx ...
-//   LLM_PROVIDER=gemini    LLM_MODEL=gemini-2.5-flash         pnpm tsx ...
-type Provider = "gemini" | "openrouter" | "doubao";
-const PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
-const API_KEY =
-  (PROVIDER === "openrouter" ? process.env.OPENROUTER_API_KEY
-    : PROVIDER === "doubao" ? process.env.DOUBAO_API_KEY
-    : process.env.GEMINI_API_KEY
-  )?.trim();
+// ---------- CLI args ----------
+function arg(name: string, def?: string): string | undefined {
+  const m = process.argv.find((a) => a.startsWith(`--${name}=`));
+  return m ? m.split("=").slice(1).join("=") : def;
+}
+
+// ─── Provider router (per-language, mirrors listening-speaking script) ───
+type Provider = "gemini" | "openrouter" | "doubao" | "dashscope";
+
+const PROVIDER_BY_LANG: Record<string, Provider> = {
+  zh: "dashscope",   // Qwen2.5-72B via DashScope — better CJK
+  ja: "dashscope",
+  ko: "dashscope",
+  yue: "dashscope",
+  en: "gemini",
+  es: "gemini",
+  fr: "gemini",
+  de: "gemini",
+  it: "gemini",
+  th: "gemini",
+  ms: "gemini",
+  id: "gemini",
+  vi: "gemini",
+};
+
+const FALLBACK_PROVIDER: Provider = (process.env.LLM_PROVIDER as Provider) || "gemini";
+
 const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: "gemini-2.5-flash",
-  // Qwen 2.5 72B Instruct is the best price/multilingual trade-off
-  // on OpenRouter: $0.36/$0.40 per 1M tokens, official support for
-  // 29+ languages (incl. ja/ko/th/vi). For 28 batches × 20 items
-  // total cost is ~$0.40. Switch to `deepseek/deepseek-chat:free`
-  // for zero-cost runs (slower, weaker on th/yue).
   openrouter: "qwen/qwen-2.5-72b-instruct",
   doubao: "doubao-seed-2.0-mini",
+  dashscope: "qwen2.5-72b-instruct",
 };
-const MODEL = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[PROVIDER];
-// Hard cost cap. Pass --max-cost=0.50 (USD) to abort the run once
-// the *estimated* spend on completed batches crosses the threshold.
-// Estimated cost is conservative (we count output tokens including
-// reasoning tokens, and round up to the next 0.1 cent). This guards
-// against a retry storm on a paid-tier key silently burning through
-// your budget — a real risk because Gemini's same model alias
-// (`gemini-2.5-flash`) is used by both free and paid tiers, so there
-// is no "model name" way to opt out of billing.
-// Per-1M-token cost used by the cost cap. Defaults match Gemini
-// 2.5 Flash; override LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT
-// for the provider you're using.
-const MAX_COST_USD = Number(
-  arg("max-cost", process.env.LLM_MAX_COST_USD ?? "1.00"),
-);
-const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.36");
-const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "0.40");
 
-// Endpoints are provider-specific:
-//   gemini      → native Google AI Studio (not reachable from CN)
-//   openrouter  → unified OpenAI-compatible router (CN-accessible)
-//   doubao      → Volcano Ark (China-direct, real-name KYC required)
 const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
   gemini: {
     url: (m) =>
@@ -121,25 +96,75 @@ const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string
     auth: (k) => ({ Authorization: `Bearer ${k}` }),
   },
   doubao: {
-    url: (m) => "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+    url: () => "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+    auth: (k) => ({ Authorization: `Bearer ${k}` }),
+  },
+  dashscope: {
+    url: () => "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
     auth: (k) => ({ Authorization: `Bearer ${k}` }),
   },
 };
-const ENDPOINT = ENDPOINTS[PROVIDER];
 
-// ---------- CLI args ----------
-function arg(name: string, def?: string): string | undefined {
-  const m = process.argv.find((a) => a.startsWith(`--${name}=`));
-  return m ? m.split("=").slice(1).join("=") : def;
+function getApiKey(provider: Provider): string | undefined {
+  return ({
+    gemini: process.env.GEMINI_API_KEY,
+    openrouter: process.env.OPENROUTER_API_KEY,
+    doubao: process.env.DOUBAO_API_KEY,
+    dashscope: process.env.DASHSCOPE_API_KEY,
+  }[provider])?.trim();
 }
+
+interface ProviderConfig {
+  provider: Provider;
+  apiKey: string;
+  model: string;
+  endpoint: typeof ENDPOINTS[Provider];
+}
+
+function getProviderForLang(lang: string): ProviderConfig {
+  const provider = PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER;
+  const apiKey = getApiKey(provider);
+  if (!apiKey) {
+    const envName: Record<Provider, string> = {
+      gemini: "GEMINI_API_KEY",
+      openrouter: "OPENROUTER_API_KEY",
+      doubao: "DOUBAO_API_KEY",
+      dashscope: "DASHSCOPE_API_KEY",
+    };
+    const keyUrl: Record<Provider, string> = {
+      gemini: "https://aistudio.google.com/apikey",
+      openrouter: "https://openrouter.ai/keys",
+      doubao: "https://www.volcengine.com/product/ark",
+      dashscope: "https://dashscope.console.aliyun.com/apiKey",
+    };
+    throw new Error(
+      `${envName[provider]} is empty for provider "${provider}" (lang=${lang}). Get one at ${keyUrl[provider]}.`,
+    );
+  }
+  const model = process.env.LLM_MODEL?.trim() || DEFAULT_MODEL[provider];
+  const endpoint = ENDPOINTS[provider];
+  return { provider, apiKey, model, endpoint };
+}
+
+// Hard cost cap. Per-1M-token cost used by the cost cap. Defaults match
+// Gemini 2.5 Flash; override LLM_COST_PER_1M_IN / LLM_COST_PER_1M_OUT
+// for the provider you are using.
+const MAX_COST_USD = Number(
+  arg("max-cost", process.env.LLM_MAX_COST_USD ?? "1.00"),
+);
+const COST_PER_1M_IN = Number(process.env.LLM_COST_PER_1M_IN ?? "0.30");
+const COST_PER_1M_OUT = Number(process.env.LLM_COST_PER_1M_OUT ?? "2.50");
+
 const onlyLang = arg("lang");
 const onlyLevel = arg("level");
-// Gemini-2.5-flash (and a few other providers) occasionally
-// emits JSON with truncated strings when max_output_tokens
-// squeezes the response. 25 items × ~270 output chars pushes
-// the model close to the cap, so we default to 20 and let the
-// caller raise it via --count when they're on a model with a
-// larger budget (e.g. DeepSeek V3 on OpenRouter, 8K output).
+// P1: filter by provider so GitHub Actions can run only gemini languages
+// (en/es/fr/de/it/th/ms/id/vi) while DashScope languages (zh/ja/ko/yue)
+// run locally. Values: "gemini" | "dashscope" | "openrouter" | "doubao" | undefined (all).
+const onlyProvider = arg("provider") as Provider | undefined;
+// Gemini-2.5-flash occasionally emits JSON with truncated strings when
+// max_output_tokens squeezes the response. 25 items × ~270 output chars
+// pushes the model close to the cap, so we default to 20 and let the
+// caller raise it via --count.
 const DEFAULT_PER_BATCH = 20;
 const perBatch = Math.max(
   5,
@@ -152,7 +177,7 @@ const dryRun = process.argv.includes("--dry-run");
 // `target` is the human language the model writes the question + explain in.
 // `levelHint` is the extra context we feed the model so it knows what
 // grammar to test at that level.
-type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
+type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue" | "ms" | "id" | "vi";
 
 const LANG_NAMES: Record<LangKey, { native: string; english: string }> = {
   en: { native: "English", english: "English" },
@@ -165,47 +190,74 @@ const LANG_NAMES: Record<LangKey, { native: string; english: string }> = {
   it: { native: "Italiano", english: "Italian" },
   th: { native: "ภาษาไทย", english: "Thai" },
   yue: { native: "粵語", english: "Cantonese (traditional, Hong Kong)" },
+  ms: { native: "Bahasa Melayu", english: "Malay" },
+  id: { native: "Bahasa Indonesia", english: "Indonesian" },
+  vi: { native: "Tiếng Việt", english: "Vietnamese" },
 };
 
+// P1: full level ladder aligned with src/data/language-registry.ts and
+// the listening-speaking script. Post-P0 migration:
+//   - ko: TOPIK1/3/5/6 already exist (P0 migration); TOPIK2/4 are new.
+//   - yue: A1/B1/B2 already exist (P0 migration); A2 is new.
 const LEVELS: Record<LangKey, string[]> = {
-  en: ["A1", "A2", "B1", "B2"],
-  ja: ["N5", "N4", "N3", "N2"],
-  zh: ["HSK1", "HSK2", "HSK3", "HSK4"],
-  ko: ["초급", "중급", "고급", "심화"],
-  es: ["A1", "A2", "B1", "B2"],
-  fr: ["A1", "A2", "B1", "B2"],
-  de: ["A1", "A2", "B1", "B2"],
-  it: ["A1", "A2", "B1", "B2"],
-  th: ["A1", "A2", "B1", "B2"],
-  yue: ["初级", "中级", "高级"],
+  en: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  ja: ["N5", "N4", "N3", "N2", "N1"],
+  zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6", "HSK7", "HSK8", "HSK9"],
+  ko: ["TOPIK1", "TOPIK2", "TOPIK3", "TOPIK4", "TOPIK5", "TOPIK6"],
+  es: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  fr: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  de: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  it: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  th: ["A1", "A2", "B1", "B2", "C1"],
+  yue: ["A1", "A2", "B1", "B2"],
+  ms: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  id: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  vi: ["A1", "A2", "B1", "B2", "C1", "C2"],
 };
 
+// Level hints keyed by `${lang}:${level}` first, then bare `${level}`
+// as fallback (so yue:A1 doesn't collide with the CEFR A1 hint).
 const LEVEL_HINT: Record<string, string> = {
-  // English / European CEFR
-  A1: "A1 (absolute beginner): present tense of common verbs, basic articles, simple prepositions, singular/plural, common irregulars (be/have/go).",
-  A2: "A2 (elementary): past simple vs present perfect, common modals (can/should/must), comparatives, basic conjunctions (because/but/and).",
-  B1: "B1 (intermediate): present perfect vs past simple, conditionals (1st/2nd), reported speech basics, relative clauses, passive voice.",
-  B2: "B2 (upper-intermediate): mixed conditionals, subjunctive mood, advanced passive constructions, cleft sentences, nuanced modals.",
+  // English / European / SEA CEFR (shared by en/es/fr/de/it/ms/id/vi/th)
+  "A1": "A1 (absolute beginner): present tense of common verbs, basic articles, simple prepositions, singular/plural, common irregulars (be/have/go).",
+  "A2": "A2 (elementary): past simple vs present perfect, common modals (can/should/must), comparatives, basic conjunctions (because/but/and).",
+  "B1": "B1 (intermediate): present perfect vs past simple, conditionals (1st/2nd), reported speech basics, relative clauses, passive voice.",
+  "B2": "B2 (upper-intermediate): mixed conditionals, subjunctive mood, advanced passive constructions, cleft sentences, nuanced modals.",
+  "C1": "C1 (advanced): nuanced modality (would have/could have/might have), inversion for emphasis (Not only...but also, Rarely do...), formal register control, complex relativization, discourse markers (nevertheless, nonetheless, invariably), subtle presupposition.",
+  "C2": "C2 (mastery): idiomatic phrases and rare collocations, register-perfect discourse (legal/academic/literary), subtle implicature and entailment, advanced rhetorical devices (chiasmus, litotes, hyperbaton), play with pragmatics and presupposition.",
   // Japanese JLPT
-  N5: "JLPT N5: です/ます form, basic particles (は/が/を/に/で/へ/と/から/まで/の), て-form, ない-form, simple time/place expressions.",
-  N4: "JLPT N4: た-form, 辞書形/ない形, ている vs た, ことができる, 〜たら/〜ば/〜と conditional forms, basic keigo (です/ます).",
-  N3: "JLPT N3: 〜ようにする/〜ことになる, 〜てしまう, transitive/intransitive pairs, 〜ば〜ほど, 〜にしては, light honorifics (お/ご〜).",
-  N2: "JLPT N2: 〜にもかかわらず, 〜ところを, 〜っぱなし, 〜めく, 〜なら (vs たら/ば/と), formal written style, complex compound sentences.",
-  // Chinese HSK
-  HSK1: "HSK 1: 的/了/吗 basic particles, 是 + noun, 有 + noun, 这/那, simple numeral + measure word (个/本/杯), basic time words (今天/明天).",
-  HSK2: "HSK 2: 把-construction (basics), 了 indicating completion, 比较/最 comparisons, 因为/所以 cause-effect, modal verbs 会/能/可以, 还是/或者.",
-  HSK3: "HSK 3: passive 被, 把-construction advanced, 连...都/也, 越来越, 不但...而且, 虽然...但是, complex time expressions (自从/直到).",
-  HSK4: "HSK 4: conditional 如果...就, 与其...不如, 既然...就, complex complement of result (好/完/住/到), formal passive by 让, 是...的 construction.",
-  // Korean
-  초급: "Korean beginner (TOPIK I level 1-2): basic particles 은/는/이/가/을/를, present tense 아/어요, past tense 았/었어요, basic connective and, simple SOV sentences.",
-  중급: "Korean intermediate (TOPIK I level 3-4): -고 있다 vs -아/어 있다, -(으)니까, -(으)면, -(으)ㄹ 거예요 future, plain speech in narration, basic honorific 시/-(으)세요.",
-  고급: "Korean advanced (TOPIK II level 5-6): -(으)므로, -(으)ㄹ수록, -아/어도, complex connective -(으)며, double passive/causative (시키다/어떠하다), written register 요체 → 합쇼체.",
-  심화: "Korean mastery (TOPIK II level 6+): literary connective -(으)되, -거니와, -다기보다(는), complex honorifics (께서/드시다), -더라/-던 modifier nuance, news/article register.",
-  // Cantonese (no official CEFR; we use a 3-tier system)
-  初级: "Cantonese beginner (CEFR A1-equivalent): 喺/去/有 + place, 係 + noun (係學生), 唔 + verb negation, 嗰個/呢個 demonstratives, basic final particles (啦/㗎/喎), 咁 (then/so), numbers with 幾/點.",
-  中级: "Cantonese intermediate (CEFR A2-B1-equative): 緊 progressive (食緊飯), 咗 perfective (食咗), 過 experiential (見過), 唔通...咩 rhetorical, 緊要/最緊要, 所以/因為 cause-effect, 仲 (still/yet), 先 (first/before), 先...再 (first...then).",
-  高级: "Cantonese advanced (CEFR B2+): 落去/起上嚟 directional complements, 啲/啲嘢 partitive, 啲唔啲 contrastive, 咁...咁 (the more...the more), 連...都/都...連 focus, 唔止...仲 (not only...also), formal news Cantonese vs colloquial speech register shifts.",
+  "N5": "JLPT N5: です/ます form, basic particles (は/が/を/に/で/へ/と/から/まで/の), て-form, ない-form, simple time/place expressions.",
+  "N4": "JLPT N4: た-form, 辞書形/ない形, ている vs た, ことができる, 〜たら/〜ば/〜と conditional forms, basic keigo (です/ます).",
+  "N3": "JLPT N3: 〜ようにする/〜ことになる, 〜てしまう, transitive/intransitive pairs, 〜ば〜ほど, 〜にしては, light honorifics (お/ご〜).",
+  "N2": "JLPT N2: 〜にもかかわらず, 〜ところを, 〜っぱなし, 〜めく, 〜なら (vs たら/ば/と), formal written style, complex compound sentences.",
+  "N1": "JLPT N1: 〜ずにはいられない/〜ないではおかない, 〜とはいえ, 〜であれ〜であれ, 〜にしてみれば/〜にとっても, 〜たるもの, formal written discourse markers (換言すれば/然るに/率爾に), 文語残留 (〜つつある, 〜べし, 〜め), complex compound sentences with multiple subordinate clauses.",
+  // Chinese HSK (HSK 7-9 are the 2021 accelerated version)
+  "HSK1": "HSK 1: 的/了/吗 basic particles, 是 + noun, 有 + noun, 这/那, simple numeral + measure word (个/本/杯), basic time words (今天/明天).",
+  "HSK2": "HSK 2: 把-construction (basics), 了 indicating completion, 比较/最 comparisons, 因为/所以 cause-effect, modal verbs 会/能/可以, 还是/或者.",
+  "HSK3": "HSK 3: passive 被, 把-construction advanced, 连...都/也, 越来越, 不但...而且, 虽然...但是, complex time expressions (自从/直到).",
+  "HSK4": "HSK 4: conditional 如果...就, 与其...不如, 既然...就, complex complement of result (好/完/住/到), formal passive by 让, 是...的 construction.",
+  "HSK5": "HSK 5: 反而/况且/无论...都, 复杂结果补语 (成/在/给/到), 间接引语, 暗喻 (是...的 emphasis), 即使...也, 与其说...不如说, 复杂定语 (关于...的).",
+  "HSK6": "HSK 6: 进而/从而/因而, 复杂定语从句 (如...的 + noun), 文言色彩 (之/其/于/以), 转折让步 (尽管...却/纵然...亦), 隐喻与成语 (4-char idioms in formal writing), 间接指令.",
+  "HSK7": "HSK 7 (2021 accelerated): 学术性话题 (经济/社会/历史/文化论述), 正式书面语 register, 长复合句与多级修饰, 抽象词汇 (融合/折射/凸显/衍变), 论证连接词 (诚然/固然/反之/申言之).",
+  "HSK8": "HSK 8: 复杂逻辑论述 (因果多层嵌套/对比论证/驳论修辞), 文言与书面语交替使用, 抽象概念表达 (悖论/张力/互文性/语境), 长定语与多层定语从句, 跨段落衔接词 (综上/进而/反之/质言之).",
+  "HSK9": "HSK 9 (mastery): 文学/古汉语渗透 (之乎者也残留, 文白夹杂), 修辞手法 (排比/对偶/借代/反讽), 跨领域抽象表达, 极长复合句, 文化负载词 (典故/成语隐喻), 古今汉语切换与语体感.",
+  // Korean TOPIK (post-P0 migration: TOPIK I = 1-2, TOPIK II = 3-6)
+  "TOPIK1": "TOPIK 1 (beginner low): basic particles 은/는/이/가/을/를, present tense 아/어요, past tense 았/었어요, basic connective -고, simple SOV sentences, 이에요/예요.",
+  "TOPIK2": "TOPIK 2 (beginner high): -(으)려고, -(으)면 conditional, -(으)ㄹ 거예요 future, -아/어서 sequence, -(으)ㄹ 수 있다/없다 (can/cannot), basic honorific -(으)세요.",
+  "TOPIK3": "TOPIK 3 (intermediate low): -고 있다 vs -아/어 있다, -(으)니까 reason, -(으)면 conditional, -(으)ㄹ 거예요 future, plain speech in narration (-다/ㄴ다), basic honorific 시/-(으)세요, -(으)려고/-(으)러 purpose.",
+  "TOPIK4": "TOPIK 4 (intermediate high): -(으)ㄴ/는지 embedded question, -다고/냐고 indirect speech, -아/어도 concession, -느라고 reason (with effort), -(으)ㄹ 뻔하다 (almost), -기 때문에, -(이)라서.",
+  "TOPIK5": "TOPIK 5 (advanced low): -(으)므로 formal reason, -(으)ㄹ수록 proportional, -아/어도 strong concession, complex connective -(으)며, double passive/causative (시키다/어떠하다), written register 요체 → 합쇼체, -(으)려니와/-(으)렴.",
+  "TOPIK6": "TOPIK 6 (mastery): literary connective -(으)되, -거니와, -다기보다(는), complex honorifics (께서/드시다/말씀), -더라/-던 modifier nuance, news/article register, 문어체 종결 (-(으)노라, -리라, -(으)리), proverbs and four-character idioms (사자성어).",
+  // Cantonese (no official CEFR; A1/B1/B2 are lang-scoped to avoid colliding with CEFR hints above)
+  "yue:A1": "Cantonese beginner (CEFR A1-equivalent): 喺/去/有 + place, 係 + noun (係學生), 唔 + verb negation, 嗰個/呢個 demonstratives, basic final particles (啦/㗎/喎), 咁 (then/so), numbers with 幾/點.",
+  "yue:A2": "Cantonese elementary (CEFR A2-equivalent): 咗 perfective (食咗), 過 experiential (見過), 唔 + 唔 double negation, 咁 (so/then) as connective, 幾多 (how many), 點解 (why), 因為...所以.",
+  "yue:B1": "Cantonese intermediate (CEFR B1-equivalent): 緊 progressive (食緊飯), 唔通...咩 rhetorical, 緊要/最緊要, 所以/因為 cause-effect, 仲 (still/yet), 先 (first/before), 先...再 (first...then).",
+  "yue:B2": "Cantonese upper-intermediate (CEFR B2-equivalent): 落去/起上嚟 directional complements, 啲/啲嘢 partitive, 啲唔啲 contrastive, 咁...咁 (the more...the more), 連...都/都...連 focus, 唔止...仲 (not only...also), formal news Cantonese vs colloquial speech register shifts.",
 };
+
+function lookupLevelHint(lang: LangKey, level: string): string {
+  return LEVEL_HINT[`${lang}:${level}`] ?? LEVEL_HINT[level] ?? "";
+}
 
 // ---------- Schema ----------
 // Gemini's responseSchema is JSON-Schema-lite. We constrain to
@@ -291,7 +343,7 @@ function repairJson(input: string): string {
 
 function buildPrompt(lang: LangKey, level: string, count: number): string {
   const { native, english } = LANG_NAMES[lang];
-  const lvl = LEVEL_HINT[level] ?? "";
+  const lvl = lookupLevelHint(lang, level);
   const langSpecific: string[] = [];
   if (lang === "yue") {
     langSpecific.push(
@@ -300,6 +352,8 @@ function buildPrompt(lang: LangKey, level: string, count: number): string {
     );
   } else if (lang === "th") {
     langSpecific.push(`Script: Thai script only. Do not use romanization or transliteration in the question or options.`);
+  } else if (lang === "vi") {
+    langSpecific.push(`Script: Vietnamese with diacritics (Quốc Ngữ). Do not use romanization without diacritics.`);
   }
   return [
     `You are a senior ${english} language teacher writing a CEFR-level grammar drill.`,
@@ -341,13 +395,18 @@ interface GeneratedBatch {
   items: GeneratedItem[];
 }
 
-async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> {
+async function callGemini(
+  cfg: ProviderConfig,
+  prompt: string,
+  attempt = 0,
+): Promise<GeneratedBatch> {
   // Provider-specific request shape:
   //   gemini      → native generateContent with responseSchema
   //   openrouter  → OpenAI-compatible chat/completions, response_format json
   //   doubao      → OpenAI-compatible chat/completions (Ark)
+  //   dashscope   → OpenAI-compatible chat/completions (DashScope)
   //
-  // Both OpenRouter and Doubao honor `response_format: {type: "json_object"}`
+  // OpenRouter / Doubao / DashScope honor `response_format: {type: "json_object"}`
   // but cannot enforce the full Gemini responseSchema, so we rely on
   // the prompt to ask for the right shape and the parser to validate
   // it downstream.
@@ -355,9 +414,9 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
   let headers: Record<string, string>;
   let body: any;
 
-  if (PROVIDER === "gemini") {
-    url = `${ENDPOINT.url(MODEL)}?key=${encodeURIComponent(API_KEY!)}`;
-    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+  if (cfg.provider === "gemini") {
+    url = `${cfg.endpoint.url(cfg.model)}?key=${encodeURIComponent(cfg.apiKey)}`;
+    headers = { "Content-Type": "application/json", ...cfg.endpoint.auth(cfg.apiKey) };
     body = {
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig: {
@@ -369,7 +428,7 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       },
     };
   } else {
-    // OpenRouter / Doubao (OpenAI-compatible chat/completions).
+    // OpenRouter / Doubao / DashScope (OpenAI-compatible chat/completions).
     // The system message carries the JSON schema in plain English
     // because these providers do not accept a structured schema the
     // way Gemini does.
@@ -379,7 +438,7 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       "{",
       '  "items": [',
       "    {",
-      '      "question": "string (a single sentence with a blank or grammar choice)",',
+      '      "question": "string (a single sentence with a blank or grammar choice)"',
       '      "options": ["string", "string", "string", "string"],',
       '      "answer": 0,    // 0..3, index into options[]',
       '      "explain": "string (1-2 sentence grammar explanation)"',
@@ -387,10 +446,10 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       "  ]",
       "}",
     ].join("\n");
-    url = ENDPOINT.url(MODEL);
-    headers = { "Content-Type": "application/json", ...ENDPOINT.auth(API_KEY!) };
+    url = cfg.endpoint.url(cfg.model);
+    headers = { "Content-Type": "application/json", ...cfg.endpoint.auth(cfg.apiKey) };
     body = {
-      model: MODEL,
+      model: cfg.model,
       messages: [
         { role: "system", content: sysMsg },
         { role: "user", content: prompt },
@@ -410,7 +469,7 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       const wait = 2000 * Math.pow(2, attempt);
       console.warn(`  network error, retry in ${wait}ms: ${(err as Error).message}`);
       await sleep(wait);
-      return callGemini(prompt, attempt + 1);
+      return callGemini(cfg, prompt, attempt + 1);
     }
     throw err;
   }
@@ -420,22 +479,22 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
       const wait = 4000 * Math.pow(2, attempt);
       console.warn(`  HTTP ${res.status}, retry in ${wait}ms`);
       await sleep(wait);
-      return callGemini(prompt, attempt + 1);
+      return callGemini(cfg, prompt, attempt + 1);
     }
     const text = await res.text();
-    throw new Error(`${PROVIDER} ${res.status} after retries: ${text.slice(0, 200)}`);
+    throw new Error(`${cfg.provider} ${res.status} after retries: ${text.slice(0, 200)}`);
   }
 
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`${PROVIDER} ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`${cfg.provider} ${res.status}: ${text.slice(0, 400)}`);
   }
 
   const data: any = await res.json();
   // Gemini nests under candidates[0].content.parts[0].text; the
   // OpenAI-compatible shape returns choices[0].message.content.
   let text: string | undefined;
-  if (PROVIDER === "gemini") {
+  if (cfg.provider === "gemini") {
     text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
   } else {
     text = data?.choices?.[0]?.message?.content;
@@ -443,7 +502,7 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
   if (!text) {
     if (attempt < 2) {
       await sleep(2000);
-      return callGemini(prompt, attempt + 1);
+      return callGemini(cfg, prompt, attempt + 1);
     }
     throw new Error(`empty response: ${JSON.stringify(data).slice(0, 200)}`);
   }
@@ -472,7 +531,7 @@ async function callGemini(prompt: string, attempt = 0): Promise<GeneratedBatch> 
   if (!parsed || !Array.isArray(parsed.items)) {
     if (attempt < 2) {
       await sleep(2000);
-      return callGemini(prompt, attempt + 1);
+      return callGemini(cfg, prompt, attempt + 1);
     }
     throw new Error(`unexpected shape: ${JSON.stringify(parsed).slice(0, 200)}`);
   }
@@ -483,6 +542,7 @@ function validateAndId(
   raw: GeneratedItem[],
   lang: LangKey,
   level: string,
+  provider: Provider,
 ): { id: string; question: string; options: string[]; answer: number; explain: string; language: LangKey; level: string }[] {
   const seen = new Set<string>();
   const out: any[] = [];
@@ -557,7 +617,7 @@ function validateAndId(
     }
     seen.add(dedupeKey);
     out.push({
-      id: `q-${lang}-${level.toLowerCase()}-gemini-${i + 1}-${Date.now().toString(36)}`,
+      id: `q-${lang}-${level.toLowerCase()}-${provider}-${i + 1}-${Date.now().toString(36)}`,
       question: q,
       options: opts,
       answer: it.answer,
@@ -574,31 +634,24 @@ function validateAndId(
 
 // ---------- Main ----------
 async function main() {
-  if (!API_KEY) {
-    const keyUrl: Record<Provider, string> = {
-      gemini: "https://aistudio.google.com/apikey",
-      openrouter: "https://openrouter.ai/keys",
-      doubao: "https://www.volcengine.com/product/ark",
-    };
-    const envName: Record<Provider, string> = {
-      gemini: "GEMINI_API_KEY",
-      openrouter: "OPENROUTER_API_KEY",
-      doubao: "DOUBAO_API_KEY",
-    };
-    console.error(
-      `✗ ${envName[PROVIDER]} is empty. Get one at ${keyUrl[PROVIDER]} and paste it into .env, or set LLM_PROVIDER=<gemini|openrouter|doubao>.`,
-    );
-    process.exit(1);
-  }
-  console.log(`✓ provider: ${PROVIDER}  model: ${MODEL}`);
   console.log(`✓ Per batch: ${perBatch} questions`);
+  if (onlyProvider) console.log(`✓ Provider filter: ${onlyProvider}`);
 
   const outDir = path.join(process.cwd(), "scripts", "generated", "quizzes");
   if (!dryRun) fs.mkdirSync(outDir, { recursive: true });
 
+  // Build batch list, applying --lang / --level / --provider filters.
   const totalBatches: { lang: LangKey; level: string }[] = [];
   for (const lang of Object.keys(LEVELS) as LangKey[]) {
     if (onlyLang && onlyLang !== lang) continue;
+    // --provider filter: skip languages whose routed provider doesn't
+    // match. This lets GitHub Actions run with --provider=gemini and
+    // skip zh/ja/ko/yue (which need DASHSCOPE_API_KEY only available
+    // locally).
+    if (onlyProvider) {
+      const langProvider = PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER;
+      if (langProvider !== onlyProvider) continue;
+    }
     for (const level of LEVELS[lang]) {
       if (onlyLevel && onlyLevel !== level) continue;
       totalBatches.push({ lang, level });
@@ -641,9 +694,21 @@ async function main() {
     const prompt = buildPrompt(lang, level, perBatch);
     estTokensIn += prompt.length / 4; // ~4 chars per token, conservative
 
+    // Resolve provider per-language (throws if key is missing).
+    let cfg: ProviderConfig;
+    try {
+      cfg = getProviderForLang(lang);
+    } catch (err) {
+      failCount++;
+      console.error(`✗ ${(err as Error).message}`);
+      await sleep(2000);
+      continue;
+    }
+    console.log(`[${cfg.provider}/${cfg.model}] `);
+
     try {
       const t0 = Date.now();
-      const batch = await callGemini(prompt);
+      const batch = await callGemini(cfg, prompt);
       // Batch.usageMetadata is not in the public response shape for
       // every model; we estimate output tokens from the JSON size
       // (Gemini response includes thinking tokens in the count for
@@ -653,17 +718,17 @@ async function main() {
       estTokensOut += estOut;
       estCostUsd =
         (estTokensIn * COST_PER_1M_IN + estTokensOut * COST_PER_1M_OUT) / 1_000_000;
-      const items = validateAndId(batch.items, lang, level);
+      const items = validateAndId(batch.items, lang, level, cfg.provider);
       const ms = ((Date.now() - t0) / 1000).toFixed(1);
 
       if (items.length < Math.max(5, perBatch / 2)) {
         console.warn(`\n  ! only ${items.length}/${perBatch} valid items, retrying once…`);
-        const retry = await callGemini(prompt);
+        const retry = await callGemini(cfg, prompt);
         // Re-run validation with the existing dedupe keys so retry
         // items that duplicate the first batch are dropped too.
         // We do this by re-validating the combined raw list with a
         // fresh dedupe set, then taking only the new ones.
-        const retryAll = validateAndId([...batch.items, ...retry.items], lang, level);
+        const retryAll = validateAndId([...batch.items, ...retry.items], lang, level, cfg.provider);
         // Keep only items beyond the first batch's count (the retry's contribution)
         const retryItems = retryAll.slice(items.length);
         if (retryItems.length > 0) {
@@ -705,6 +770,9 @@ async function main() {
         outDir,
       )}/*.json files (or pass --overwrite) and re-run.`,
     );
+  }
+  if (failCount > 0 && successCount === 0) {
+    process.exit(1);
   }
 }
 

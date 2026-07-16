@@ -19,6 +19,15 @@ on:
         description: "Overwrite existing files? (true/false)"
         default: "false"
         required: false
+      provider:
+        description: "Provider filter (gemini=dashscope langs skip, dashscope=gemini langs skip, empty=all)"
+        default: "gemini"
+        required: false
+        type: choice
+        options:
+          - gemini
+          - dashscope
+          - all
 
   schedule:
     # Every Monday 02:00 UTC
@@ -51,11 +60,20 @@ jobs:
           # avoid the script's cost cap aborting after batch 1.
           LLM_COST_PER_1M_IN: "0"
           LLM_COST_PER_1M_OUT: "0"
+          # Optional: let DashScope languages (zh/ja/ko/yue) run on the
+          # GH runner too if you wire DASHSCOPE_API_KEY into Actions secrets.
+          # Default behaviour: --provider=gemini skips them so they run
+          # locally instead. Override via workflow_dispatch inputs.
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
         run: |
-          npx tsx scripts/generate-quizzes-gemini.ts \
-            --count=${{ inputs.count || '20' }} \
-            --max-cost=${{ inputs.max_cost || '1.00' }} \
-            ${{ inputs.overwrite == 'true' && '--overwrite' || '' }}
+          ARGS="--count=${{ inputs.count || '20' }} --max-cost=${{ inputs.max_cost || '1.00' }}"
+          if [ "${{ inputs.provider || 'gemini' }}" != "all" ]; then
+            ARGS="$ARGS --provider=${{ inputs.provider || 'gemini' }}"
+          fi
+          if [ "${{ inputs.overwrite }}" = "true" ]; then
+            ARGS="$ARGS --overwrite"
+          fi
+          npx tsx scripts/generate-quizzes-gemini.ts $ARGS
 
       - name: Validate generated quizzes
         continue-on-error: true
