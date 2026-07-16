@@ -27,7 +27,7 @@ const ROOT = path.resolve(__dirname, "..");
 const PUBLIC_DIR = path.join(ROOT, "public");
 
 const SITE_URL = "https://lang-oria.com";
-const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de"] as const;
+const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
 
 // ---------- minimal .env loader (avoid dotenv dep) ----------
 function loadDotenv() {
@@ -206,7 +206,7 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push("");
   lines.push("> LangOria is a multilingual learning platform with bite-sized lessons,");
   lines.push("> spaced-repetition vocabulary, listening practice, and speaking drills across");
-  lines.push("> English, Japanese, Korean, Chinese, Spanish, French and German.");
+  lines.push("> English, Japanese, Korean, Chinese, Spanish, French, German, Italian, Thai, and Cantonese.");
   lines.push("");
   lines.push("Site: " + SITE_URL);
   lines.push("Languages: " + SUPPORTED_LANGUAGES.join(", "));
@@ -224,7 +224,7 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push("");
   lines.push("## Vocabulary indexes");
   lines.push("One per supported language. Each page lists every level (CEFR / JLPT / HSK tier) with the actual word count, a sample of the vocabulary, and a link to the level detail page.");
-  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german"]) {
+  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german", "italian", "thai", "cantonese"]) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} vocabulary by level](${bare(`/languages/${slug}/vocabulary`)}): data-driven list of every ${name} vocabulary level in the library, with example sentences.`);
   }
@@ -250,7 +250,7 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push("");
   lines.push("## Scenario-based learning");
   lines.push("Real-world phrases for the 4 most-requested situations: travel, business, food, and small talk. Each (language, scenario) page is hand-written with 10 phrases, a sample dialogue, a culture tip, and study advice.");
-  for (const slug of ["english", "japanese", "chinese", "korean", "spanish"]) {
+  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german", "italian", "thai", "cantonese"]) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} scenarios](${bare(`/languages/${slug}/scenarios`)}): 4 high-leverage ${name} situations, each with 10 phrases and a sample dialogue.`);
     for (const scenario of ["travel", "business", "food", "small-talk"]) {

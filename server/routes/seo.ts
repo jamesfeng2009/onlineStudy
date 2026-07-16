@@ -30,7 +30,18 @@ const LANG_SLUGS: Record<string, string> = {
   it: "italian",
   th: "thai",
   yue: "cantonese",
+  ms: "malay",
+  id: "indonesian",
+  vi: "vietnamese",
 };
+
+/**
+ * Learn-only 语言 slug 列表（isUiLanguage=false，无 UI 翻译）。
+ * 这些语言有 language hub + 词汇数据 + 场景内容，需要进 sitemap，
+ * 但不进 hreflang（因为没有界面翻译，不存在 /ms/ /id/ /vi/ locale 变体）。
+ * sitemap 中这些页面仅声明 self + x-default。
+ */
+const EXTRA_LEARN_SLUGS = ["malay", "indonesian", "vietnamese"] as const;
 
 /** 生成带 locale 前缀的完整 URL */
 function localeUrl(locale: string, path: string): string {
@@ -143,6 +154,36 @@ ${hreflangLinks(page.path)}
   </url>`;
       });
 
+      // Learn-only 语言页面（ms/id/vi，无 UI 翻译 → 不进 hreflang，仅 self + x-default）
+      // 包含：language hub、词汇总览、词汇等级页、场景索引、场景详情
+      const extraLearnUrls = EXTRA_LEARN_SLUGS.flatMap((slug) => {
+        const pages: Array<{ path: string; changefreq: string; priority: string }> = [
+          { path: `/languages/${slug}`, changefreq: "monthly", priority: "0.8" },
+          { path: `/languages/${slug}/vocabulary`, changefreq: "weekly", priority: "0.7" },
+          { path: `/languages/${slug}/scenarios`, changefreq: "weekly", priority: "0.7" },
+          ...["travel", "business", "food", "small-talk"].map((s) => ({
+            path: `/languages/${slug}/scenarios/${s}`,
+            changefreq: "weekly",
+            priority: "0.7",
+          })),
+          ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+            path: `/languages/${slug}/vocabulary/${lvl}`,
+            changefreq: "weekly",
+            priority: "0.6",
+          })),
+        ];
+        return pages.map((page) => {
+          const loc = localeUrl(DEFAULT_LOCALE, page.path);
+          return `  <url>
+    <loc>${escapeXml(loc)}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc)}"/>
+  </url>`;
+        });
+      });
+
       // 博客文章 URL
       // 每篇文章只在 baseLanguageCode 对应的 locale 上存在（无翻译版），
       // 因此 hreflang 只声明该 locale + x-default，避免向 Google 提交
@@ -168,7 +209,7 @@ ${hreflangLinks(page.path)}
       const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${[...staticUrls, ...blogUrls].join("\n")}
+${[...staticUrls, ...extraLearnUrls, ...blogUrls].join("\n")}
 </urlset>`;
 
       reply.type("application/xml; charset=utf-8");
@@ -262,13 +303,26 @@ Allow: /`;
         localeUrl(DEFAULT_LOCALE, page.path)
       );
 
+      // Learn-only 语言 URL（ms/id/vi）
+      const extraLearnUrls = EXTRA_LEARN_SLUGS.flatMap((slug) => [
+        `/languages/${slug}`,
+        `/languages/${slug}/vocabulary`,
+        `/languages/${slug}/scenarios`,
+        ...["travel", "business", "food", "small-talk"].map(
+          (s) => `/languages/${slug}/scenarios/${s}`
+        ),
+        ...["a1", "a2", "b1", "b2", "c1", "c2"].map(
+          (lvl) => `/languages/${slug}/vocabulary/${lvl}`
+        ),
+      ]).map((path) => localeUrl(DEFAULT_LOCALE, path));
+
       // 博客文章 URL（按 baseLanguageCode 加 locale 前缀）
       const blogUrls = posts.map((post) => {
         const path = `/blog/${post.slug}`;
         return localeUrl(post.baseLanguageCode || DEFAULT_LOCALE, path);
       });
 
-      const allUrls = [...staticUrls, ...blogUrls];
+      const allUrls = [...staticUrls, ...extraLearnUrls, ...blogUrls];
       const statusCode = await submitToIndexNow(allUrls);
 
       return reply.send({

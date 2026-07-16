@@ -1357,6 +1357,384 @@ const SCENARIOS_YUE: Record<ScenarioKey, ScenarioContent> = {
 };
 
 // ---------------------------------------------------------------------------
+// Malay (Bahasa Melayu) scenarios. Written in the Latin script (Rumi), so
+// romanization is an empty string throughout. Culture notes cover the
+// right-hand rule, shoe removal, Ramadan etiquette, and Malay politeness
+// (budi bahasa). Phrasing is standard Malaysian Malay.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_MS: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Malay — airport, hotel, directions",
+    subtitle:
+      "The 10 Malay phrases that get you through 95% of any trip across Malaysia, Brunei, and Singapore, with audio and a sample dialogue.",
+    intro:
+      "Malay travel phrases punch far above their weight: standard Malay (Bahasa Melayu) is understood across Malaysia, Brunei, Singapore, and parts of Indonesia, and because it uses the Latin script (Rumi) and carries no tones, it is one of the fastest languages for an English speaker to start speaking. The same fifty phrases get you through KLIA, the KL Sentral station, a hotel check-in in Penang, a Grab ride in Kuala Lumpur, and a late-night mamak stall in Bangsar. LangOria's travel deck is built around the ten sentences you actually need at the airport, the hotel desk, the taxi rank, and the moment your phone has no signal and you have to ask a stranger for directions. Malaysian hospitality runs on 'tumpang tanya' (excuse me, may I ask) and 'terima kasih' (thank you) — two phrases that soften every interaction and signal that you respect the local rhythm. Beyond the airport, the same ten phrases carry you through bus terminals in Melaka, ferry piers in Langkawi, and the small emergencies of being a stranger: finding a clinic at midnight, asking which platform goes to Ipoh, or requesting a stranger to snap your photo at the Batu Caves. Master these ten and a week of travel becomes effortless.",
+    culture:
+      "In Malaysia, politeness is shown through soft speech and the right hand: give, receive, and eat with the right hand only — the left is considered unclean. Always remove your shoes before entering a Malay home or mosque; many homestays and even some small guesthouses expect it. Point with your right thumb, not your index finger, and never point at people. During Ramadan, avoid eating, drinking, or smoking in public during daylight hours out of respect for fasting Muslims — hotels and food courts stay open but screen their patrons. When greeting a Malay Muslim, women may extend their hand first; if they do not, a slight nod with the hand on the chest is the polite response. Tipping is not expected; a 10% service charge is often already added. Grab is the default ride-hailing app and avoids the haggling of street taxis. At the airport, the KLIA Ekspres train is faster than any taxi in peak traffic.",
+    howTo:
+      "Spend three to five days on the travel deck before you fly. Drill the ten phrases with spaced repetition until recall is automatic, then rehearse the four-line dialogue out loud with a partner or a recording — Malay pronunciation is forgiving but the rhythm matters. On the trip, try to use each phrase at least once in the wild; the muscle memory of speaking Malay to a stranger is built in the moment, not in the app. The ten-minute daily loop is enough. Layer three drills: (1) Morning — shadow the audio for two minutes, copying intonation rather than translating. (2) Midday — run the dialogue out loud, slotting in your real destination and hotel name. (3) Evening — write one sentence you would actually say tomorrow (e.g. 'Saya mahu ke KL Sentral') and rehearse it twice before bed. By day four you should produce all ten cold; by day seven use them with a stranger without translating first.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Tumpang tanya, di mana lapangan terbang?", romanization: "" },
+      { speaker: "B", en: "Take the KLIA Ekspres train. It's about 30 minutes.", tgt: "Naik KLIA Ekspres. Lebih kurang 30 minit.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Terima kasih. Berapa harga tiket?", romanization: "" },
+      { speaker: "B", en: "RM55. You can buy a ticket at the machine.", tgt: "RM55. Boleh beli tiket di mesin.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Tumpang tanya, di mana lapangan terbang?" },
+      { en: "I have a reservation under the name [X].", tgt: "Saya ada tempahan atas nama [X]." },
+      { en: "Could I have the bill, please?", tgt: "Boleh minta bil?" },
+      { en: "How do I get to [place]?", tgt: "Bagaimana saya boleh ke [tempat]?" },
+      { en: "Is there a train station nearby?", tgt: "Adakah stesen keretapi berdekatan?" },
+      { en: "I would like to check in.", tgt: "Saya mahu daftar masuk." },
+      { en: "What time does the flight leave?", tgt: "Pukul berapa penerbangan berlepas?" },
+      { en: "I'm lost. Can you help me?", tgt: "Saya sesat. Boleh tolong saya?" },
+      { en: "How much is a ticket to [place]?", tgt: "Berapa harga tiket ke [tempat]?" },
+      { en: "Where is the bathroom?", tgt: "Di mana tandas?" },
+    ],
+  },
+  business: {
+    title: "Business Malay — meetings, emails, follow-ups",
+    subtitle:
+      "Polite, professional Malay phrases for the working day: scheduling, agendas, status updates, and the deference Malaysian business culture expects.",
+    intro:
+      "Business Malay is the working language of the Malaysian government and of many Malaysian companies, and learning even a small set of formal phrases changes how you are perceived in a meeting room in Kuala Lumpur or Putrajaya. Bahasa Melayu is built on respect: the difference between 'awak' (you, casual) and 'Encik' / 'Puan' (Mr / Mrs) is the difference between sounding like a peer and sounding like a tourist. LangOria's business deck is built around the ten phrases that come up in every meeting and every follow-up email — scheduling, agendas, status updates, and the soft deference that Malaysian business culture expects. What separates professional Malay from conversational Malay is not grammar but register: the same idea said with 'saya' and 'Encik' sounds respectful; said with 'aku' and 'kau' it sounds like a family quarrel. Malaysian meetings open with small talk — ask about the family, the weekend, the food — before the agenda starts, and skipping this warm-up is heard as coldness. Master these ten phrases and you can walk into a Malaysian meeting and hold your weight even if the rest of your Malay is still at A2. The same phrases double as the opening lines of the follow-up email you send that evening.",
+    culture:
+      "Malaysian business culture runs on 'budi bahasa' — cultivated politeness — and hierarchy. Address older men as 'Encik' and older women as 'Puan' until invited to use first names; using 'awak' too early sounds presumptuous. Meetings rarely start on time and always open with five to ten minutes of personal small talk — family, health, food — before business; cutting straight to the agenda reads as rude. A direct 'no' is avoided; expect 'mungkin' (maybe) or 'kita tengok dulu' (let's see first) to mean a soft refusal, and learn to read the silence. Exchange business cards with the right hand or both hands, and study the card before pocketing it. Friday prayer time (12:30-14:30) is protected — do not schedule meetings then. If you are invited to a 'kenduri' (feast) after a deal, attendance is almost mandatory; declining without a strong reason damages the relationship. Emails open with 'Salam sejahtera' or 'Yang baik' and close with 'Terima kasih'.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Malay-language meeting. Review the ten phrases with spaced repetition until they come out cold, then drill the email templates out loud. In real life, listen for the register your colleagues use and mirror it — if they say 'kita semak', you say 'kita semak'. The ten-minute daily loop plus one real meeting per week is enough to reach working Malay in three months. Layer three habits: (1) Before each meeting, read the agenda once and underline the two phrases you will most likely need ('mari kita semak status ini', 'boleh kita tukar ke hari Khamis?') — this is your pre-rehearsal. (2) After each meeting, write the follow-up email in Malay, even if a colleague would accept an English draft — the register is locked in by writing. (3) Once a week, rewrite one email you would normally have written in English. By week two your email turnaround should be faster; by month three you should be the colleague who replies in Malay.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Selamat pagi. Terima kasih kerana hadir. Saya ada agenda ringkas.", romanization: "" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Baik, sila.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "Pertama, status pelancaran Q3. Kemudian, belanjawan. Akhir sekali, soalan.", romanization: "" },
+      { speaker: "B", en: "Understood. I'll send the agenda via email after this.", tgt: "Faham. Saya akan hantar agenda melalui e-mel selepas ini.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Mari jadualkan mesyuarat untuk hari Selasa hadapan." },
+      { en: "Could you send me the agenda?", tgt: "Boleh hantar agenda kepada saya?" },
+      { en: "I'll follow up via email.", tgt: "Saya akan susul melalui e-mel." },
+      { en: "Let's touch base next week.", tgt: "Mari kita berbincang semula minggu depan." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Saya cadangkan tarikh akhir [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "Boleh tukar mesyuarat ke [pukul]?" },
+      { en: "What's the status on the [project]?", tgt: "Apa status [projek]?" },
+      { en: "I have a question about the contract.", tgt: "Saya ada soalan tentang kontrak." },
+      { en: "Thank you for your time.", tgt: "Terima kasih atas masa anda." },
+      { en: "Let's circle back on this.", tgt: "Mari kembali ke perkara ini nanti." },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Malay",
+    subtitle:
+      "Ordering at mamak stalls, kopitiams, and banana-leaf restaurants, dietary restrictions, paying the bill, and complimenting the cook.",
+    intro:
+      "Food is the heart of Malaysian life and the fastest way to feel at home in Bahasa Melayu. The ten phrases in this deck cover the ninety-five-percent case: walking into a mamak stall, ordering nasi lemak, asking about sambal heat, flagging an allergy, and asking for the bill. Whether you are at a kopitiam in Ipoh, a hawker centre in Penang, a banana-leaf restaurant in Kuala Lumpur, or a warung on the east coast, the script is forgiving — Malaysian servers expect simple, direct questions and respond warmly to anyone who tries Malay. LangOria's food deck is built around the ten sentences that come up in every meal out, with a culture tip on halal dining and the right-hand rule, plus a sample dialogue so you can rehearse the whole encounter before you sit down. The same phrases get you from a roadside char kway teow stall to a hotel breakfast buffet, from 'pedas tak?' (is it spicy?) to 'sedap sangat' (very delicious). Food Malay is the most rewarding ten minutes of the course: you rehearse in the app, use it for dinner, and remember it for life the next morning.",
+    culture:
+      "Eating in Malaysia is communal and halal-aware: most Malay restaurants are halal and serve no pork; Chinese and Indian eateries are not. If you eat with your hands, use only the right — the left is reserved for hygiene. At a banana-leaf restaurant, fold the leaf away from you (top to bottom) to signal you are finished; folding towards you signals dissatisfaction. 'Pedas' means spicy hot, not temperature hot — for temperature say 'panas'. Mamak stalls run 24 hours and are the default late-night spot; order 'roti canai' and 'teh tarik' and you blend in instantly. During Ramadan, daytime dining is discreet — food courts stay open but are screened. Sharing is standard: order several dishes to the centre of the table and scoop onto your own plate. Tipping is not expected; a 10% service charge is usually added. Tap water is not always safe to drink — order 'air suam' (warm water) or bottled. Avoid asking for pork in a halal restaurant; it is not sold there.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit. Drill the dialogue out loud with a partner or a recording; restaurant Malay is muscle memory, not grammar. On the day, walk in with a clear script: 'Meja untuk dua orang' → 'Boleh lihat menu?' → 'Saya pesan nasi lemak' → 'Boleh minta bil?' → 'Sedap sangat, terima kasih.' The ten-minute daily loop is enough. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then close your eyes and reproduce all ten sentences in order. (2) Mid-meal — try one phrase you have not yet used in the wild, such as 'Pedas tak?' even when you do not plan to order sambal, just to break the ice with the server. (3) Post-meal — note the phrase that surprised you (the right-hand rule? the banana-leaf fold?) and add it to your spaced-repetition deck. By week one you should order, modify, and pay without translating.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Tumpang tanya, meja untuk dua orang.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Baik. Mari ikut saya. Ini menu.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Terima kasih. Apa yang anda cadangkan?", romanization: "" },
+      { speaker: "B", en: "The nasi lemak is excellent today. Are you allergic to anything?", tgt: "Nasi lemak hari ini sedap. Anda ada alahan?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Boleh lihat menu?" },
+      { en: "What do you recommend?", tgt: "Apa yang anda cadangkan?" },
+      { en: "I'm allergic to [X].", tgt: "Saya alah kepada [X]." },
+      { en: "Could I have the bill, please?", tgt: "Boleh minta bil?" },
+      { en: "Is this dish spicy?", tgt: "Makanan ini pedas?" },
+      { en: "I'll have [X], please.", tgt: "Saya mau [X]." },
+      { en: "Can I get this to go?", tgt: "Boleh bungkus?" },
+      { en: "Is the tip included?", tgt: "Servis caj termasuk?" },
+      { en: "I'm a vegetarian.", tgt: "Saya vegetarian." },
+      { en: "That was delicious, thank you.", tgt: "Sedap sangat, terima kasih." },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Malay",
+    subtitle:
+      "Greetings, introductions, the ritual 'dah makan?', and the small phrases that turn a stranger into a friend across Malaysia, Brunei, and Singapore.",
+    intro:
+      "Small talk is the front door of Malay fluency, and in Malaysia it is almost mandatory: every meeting, every Grab ride, every checkout counter opens with 'Apa khabar?' and a beat of personal warmth before anything else happens. The ten phrases in this deck cover the encounters that come up every day — introducing yourself, asking what someone does, the ritual 'dah makan?' (have you eaten?), and the gentle weather-and-weekend chat that lubricates Malaysian social life. Whether you are at a wedding in Johor, a conference in Kuala Lumpur, or a coffee shop in George Town, the script is the same, and the politeness register is well-tuned: Malay small talk is warm but not intrusive, and the ten phrases here keep you in the right zone. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant rather than a tourist. The opening minutes of any social encounter run on a predictable rhythm, and the people who know it are the ones who get invited to stay. Small talk is a habit, not a vocabulary — drill the dialogue out loud, and the habit transfers across Malaysia, Brunei, and Singapore.",
+    culture:
+      "The standard Malay greeting is 'Apa khabar?' (how are you?) answered with 'Khabar baik' (good); among Muslims, 'Salam' accompanies a light handshake. 'Dah makan?' (have you eaten?) is a greeting, not an invitation — answer 'dah' (yes) even if you have not, or you will be offered a meal. Use 'Encik' for older men and 'Puan' for older women; for peers, 'awak' is safe. Greet with the right hand; the left is impolite. Malaysian small talk favours family, food, hometowns, and weekend plans; avoid religion, race politics, and politics on first meeting — these are sensitive. Complimenting food is always welcome; asking someone's salary is not. At a Malay home, remove your shoes and wait to be shown a seat. Two light handshakes (one on meeting, one on leaving) are normal; a Muslim woman who does not extend her hand is greeted with a nod and the hand on the chest. Punctuality to social events is loose — arriving fifteen minutes late is normal.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to small talk is sounding natural, not correct. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'Apa khabar?' to the Grab driver. Small talk is a habit, and the habit transfers across Malaysia, Brunei, and Singapore. Layer three weekly habits: (1) At every social event, target one new opener — this week 'Dah lama kat sini?' (been here long?), next week 'Bawa keluarga sekali ke?' (did you bring family?). (2) In a Grab ride, open with 'Apa khabar?' instead of silence — drivers respond warmly in nine out of ten cases. (3) Once a week, message one person you met last month ('Gembira berkenalan dengan awak'). By month one you should have a default opener per context; by month three you should leave a room with new friends, not zero.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Hai, nama saya Sarah. Selamat berkenalan.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Sama-sama. Saya David. Awak buat apa?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Saya jurutera perisian. Awak?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you eaten yet?", tgt: "Saya kerja pemasaran. Dah makan?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Hai, nama saya [X]. Selamat berkenalan." },
+      { en: "What do you do for a living?", tgt: "Awak buat kerja apa?" },
+      { en: "Where are you from?", tgt: "Awak dari mana?" },
+      { en: "What are your hobbies?", tgt: "Apa hobi awak?" },
+      { en: "Have you eaten yet?", tgt: "Dah makan?" },
+      { en: "How was your weekend?", tgt: "Macam mana hujung minggu awak?" },
+      { en: "Do you have plans for the weekend?", tgt: "Ada plan hujung minggu?" },
+      { en: "What kind of music do you like?", tgt: "Awak suka muzik apa?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Hari ni cuaca elok, kan?" },
+      { en: "It was lovely talking to you.", tgt: "Gembira boleh berbual dengan awak." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Indonesian (Bahasa Indonesia) scenarios. Latin script; mutually
+// intelligible with Malay but with its own vocabulary flavour and culture.
+// Notes cover formality levels (Anda / Bapak-Ibu / kamu), jam karet,
+// bargaining, and warung / kaki lima street-food hygiene.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_ID: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Indonesian — airport, hotel, directions",
+    subtitle:
+      "The 10 Indonesian phrases that get you through 95% of any trip across the archipelago, with audio and a sample dialogue.",
+    intro:
+      "Indonesian travel phrases open up the world's largest archipelago: Bahasa Indonesia is the lingua franca across more than 17,000 islands and 700 living languages, and it is one of the most accessible languages on earth — Latin script, no tones, no verb conjugation, no grammatical gender. The same fifty phrases carry you from Jakarta's Soekarno-Hatta airport through a Grab ride in Bandung, a ferry to Bali, a hotel check-in in Yogyakarta, and a warung dinner in Lombok. LangOria's travel deck is built around the ten sentences you actually need at the airport, the station, the hotel desk, and the moment your phone dies and you must ask a stranger for directions. Indonesian hospitality runs on 'maaf' (excuse me) and 'terima kasih' (thank you), and the rhythm of 'jam karet' — rubber time — means schedules flex, so the phrase 'berapa lama?' (how long?) is your best friend. Beyond the airport, the same ten phrases handle bus terminals in Surabaya, harbour piers in Padang, and small emergencies: finding an apotek at midnight, asking which platform goes to Malang, or getting a stranger to take your photo at Borobudur. Master these ten and a month of island-hopping becomes effortless.",
+    culture:
+      "Indonesians point with the thumb or even the lips (a pursed-lip nod) rather than the index finger, and giving, receiving, and eating are done with the right hand. Always remove your shoes before entering a home or mosque. 'Jam karet' (rubber time) is real: buses, trains, and meetings often run fifteen to forty-five minutes late without anyone apologising, so build buffer time into every connection. Grab and Gojek are the default ride-hailing apps and are cheaper, safer, and more honest than street taxis — never accept the first price a Bandung taxi driver quotes at the airport. At the airport, the train (KA Bandara in Jakarta) is the fastest way into the city in peak traffic. During Ramadan, avoid eating and drinking in public during daylight out of respect, though restaurants stay open behind screens. Carry small cash: many warung and angkot minibuses are cash-only, and 50,000-rupiah notes are easier to break than 100,000s. Bargaining is expected at markets and for taxi fares, but not in modern restaurants or malls.",
+    howTo:
+      "Spend three to five days on the travel deck before you fly. Drill the ten phrases with spaced repetition until recall is automatic, then rehearse the four-line dialogue out loud — Indonesian pronunciation is highly regular, so what you read is what you say. On the trip, use each phrase at least once in the wild; speaking to a stranger is where the memory is built, not in the app. The ten-minute daily loop is enough. Layer three drills: (1) Morning — shadow the audio for two minutes, copying intonation rather than translating. (2) Midday — run the dialogue out loud, slotting in your real destination and hotel name (e.g. 'Saya mau ke Kuta'). (3) Evening — write one sentence you would actually say tomorrow ('Berapa ongkos ke bandara?') and rehearse it twice before bed. By day four you should produce all ten cold; by day seven use them with a stranger without translating first. Build buffer time into every connection to absorb jam karet.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Maaf, di mana bandara?", romanization: "" },
+      { speaker: "B", en: "Take the airport train. It's about 45 minutes.", tgt: "Naik kereta bandara. Sekitar 45 menit.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Terima kasih. Berapa harga tiketnya?", romanization: "" },
+      { speaker: "B", en: "70,000 rupiah. You can buy it at the counter.", tgt: "70 ribu rupiah. Bisa beli di loket.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Maaf, di mana bandara?" },
+      { en: "I have a reservation under the name [X].", tgt: "Saya punya reservasi atas nama [X]." },
+      { en: "Could I have the bill, please?", tgt: "Bisa minta bon-nya?" },
+      { en: "How do I get to [place]?", tgt: "Bagaimana cara ke [tempat]?" },
+      { en: "Is there a train station nearby?", tgt: "Ada stasiun kereta di dekat sini?" },
+      { en: "I would like to check in.", tgt: "Saya mau check in." },
+      { en: "What time does the flight leave?", tgt: "Pukul berapa pesawat berangkat?" },
+      { en: "I'm lost. Can you help me?", tgt: "Saya tersesat. Bisa bantu saya?" },
+      { en: "How much is a ticket to [place]?", tgt: "Berapa harga tiket ke [tempat]?" },
+      { en: "Where is the bathroom?", tgt: "Di mana toilet?" },
+    ],
+  },
+  business: {
+    title: "Business Indonesian — meetings, emails, follow-ups",
+    subtitle:
+      "Polite, professional Indonesian phrases for the working day: scheduling, agendas, status updates, and the relationship-first etiquette of Indonesian business.",
+    intro:
+      "Business Indonesian is the language of the world's fourth-most-populous nation and one of its fastest-growing economies, and a small set of formal phrases changes how you are read in a meeting room in Jakarta or Surabaya. Bahasa Indonesia is built on a hierarchy of respect: the difference between 'Anda' (formal you), 'Bapak / Ibu' (Mr / Mrs), and 'kamu' (informal you) is the difference between sounding professional and sounding casual. LangOria's business deck is built around the ten phrases that come up in every meeting and every follow-up email — scheduling, agendas, status updates, and the relationship-first etiquette that Indonesian business culture expects. What separates professional Indonesian from conversational Indonesian is not grammar but register: the same idea said with 'saya' and 'Bapak' sounds respectful; said with 'gue' and 'lu' it sounds like a Jakarta street argument. Indonesian meetings open with ten minutes of personal warmth — family, hometown, food — before the agenda, and skipping it reads as cold. Master these ten phrases and you can walk into an Indonesian meeting and carry your weight even at A2. The same phrases double as the opening lines of the follow-up email you send that night.",
+    culture:
+      "Indonesian business culture runs on 'gotong royong' (mutual cooperation) and hierarchy. Address older men as 'Pak' (Bapak) and older women as 'Bu' (Ibu) until invited to first names; 'Anda' is formal but can feel distant, so 'Bapak / Ibu' is safer. Meetings open with ten minutes of personal small talk — family, hometown, food — before business; jumping straight to the agenda reads as rude. 'Jam karet' applies to business too: a 10:00 meeting may start at 10:20 without apology. A direct refusal is avoided; 'nanti saja' (later) or 'mungkin' (maybe) often mean no — learn to read the silence. Exchange business cards with both hands or the right hand, and study the card before pocketing it. Friday prayer (12:00-13:30) is protected — avoid scheduling then. Relationships come before contracts; expect a coffee or meal before any deal is signed. Emails open with 'Yth. Bapak / Ibu' (to the honourable Mr / Mrs) and close with 'Hormat saya' (yours respectfully). Hierarchy is pronounced: the boss decides, and public disagreement causes loss of face.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Indonesian-language meeting. Review the ten phrases with spaced repetition until they come out cold, then drill the email templates out loud. In real life, listen for the register your colleagues use and mirror it — if they say 'kita diskusi', you say 'kita diskusi'. The ten-minute daily loop plus one real meeting per week is enough to reach working Indonesian in three months. Layer three habits: (1) Before each meeting, read the agenda once and underline the two phrases you will most likely need ('kita bahas status ini', 'bisa pindah ke hari Kamis?') — your pre-rehearsal. (2) After each meeting, write the follow-up email in Indonesian, even if a colleague would accept English — the register is locked in by writing. (3) Once a week, rewrite one email you would normally have written in English. By week two your email turnaround should be faster; by month three you should be the colleague who replies in Indonesian.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Selamat pagi. Terima kasih sudah hadir. Saya punya agenda singkat.", romanization: "" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Baik, silakan.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "Pertama, status peluncuran Q3. Lalu, anggaran. Terakhir, pertanyaan.", romanization: "" },
+      { speaker: "B", en: "Understood. I'll send the agenda via email after this.", tgt: "Mengerti. Saya akan kirim agenda lewat email.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Mari jadwalkan rapat untuk Selasa depan." },
+      { en: "Could you send me the agenda?", tgt: "Bisa kirim agendanya ke saya?" },
+      { en: "I'll follow up via email.", tgt: "Saya akan follow up lewat email." },
+      { en: "Let's touch base next week.", tgt: "Mari kita diskusi lagi minggu depan." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Saya usulkan tenggat waktu [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "Bisa pindah rapat ke [pukul]?" },
+      { en: "What's the status on the [project]?", tgt: "Bagaimana status [proyek]?" },
+      { en: "I have a question about the contract.", tgt: "Saya punya pertanyaan soal kontrak." },
+      { en: "Thank you for your time.", tgt: "Terima kasih atas waktunya." },
+      { en: "Let's circle back on this.", tgt: "Mari kita kembali ke hal ini nanti." },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Indonesian",
+    subtitle:
+      "Ordering at warung and Padang restaurants, dietary restrictions, paying the bill, and street-food hygiene at the kaki lima.",
+    intro:
+      "Food is the social glue of Indonesia and the fastest route into Bahasa Indonesia. The ten phrases in this deck cover the ninety-five-percent case: walking into a warung, ordering nasi goreng, asking about sambal heat, flagging an allergy, and asking for the bill. Whether you are at a Padang restaurant in Jakarta (where the server stacks ten small plates on your table and you pay only for what you touch), a sate stall in Bali, a bakso cart in Bandung, or a roadside warung in Yogyakarta, the script is forgiving — Indonesian servers expect simple, direct questions and respond warmly to anyone who tries. LangOria's food deck is built around the ten sentences that come up in every meal out, with a culture tip on street-food hygiene and the right-hand rule, plus a sample dialogue so you can rehearse the whole encounter before you sit down. The same phrases carry you from a kaki lima (street vendor) to a hotel buffet, from 'pedas tak?' (is it spicy?) to 'enak sekali' (very delicious). Food Indonesian is the most rewarding ten minutes of the course: rehearse in the app, use it for dinner, remember it for life.",
+    culture:
+      "Eating in Indonesia is communal and often halal; pork is served in Chinese and Balinese Hindu restaurants but rarely elsewhere. Eat with the right hand only if eating with your hands — the left is reserved for hygiene. Padang restaurants display many small dishes; you pay only for what you touch, and stacking rice is normal. Street food (kaki lima) is cheap and delicious — choose stalls with a long queue and high turnover for freshness, and watch that drinks use boiled or bottled water; avoid ice in remote areas. 'Pedas' means spicy hot; for temperature say 'panas'. Sambal is served with almost everything and is genuinely fiery — taste before adding more. Bakso (meatball soup) and nasi goreng are the national comfort foods. Tipping is not expected; a 10% service charge is sometimes added in upscale places. 'Bisa dibungkus?' (can it be wrapped?) works for leftovers. Carry hand wipes; many warung have no napkins. At a warung, you often pay at a counter, not at the table.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit. Drill the dialogue out loud with a partner or a recording; restaurant Indonesian is muscle memory, not grammar. On the day, walk in with a clear script: 'Meja untuk dua orang' → 'Bisa lihat menu-nya?' → 'Saya pesan nasi goreng' → 'Bisa minta bon-nya?' → 'Enak sekali, terima kasih.' The ten-minute daily loop is enough. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then close your eyes and reproduce all ten sentences in order. (2) Mid-meal — try one phrase you have not yet used in the wild, such as 'Pedas tak?' even when you do not plan to order sambal, just to break the ice with the server. (3) Post-meal — note the phrase that surprised you (the Padang pay-for-what-you-touch rule? the right-hand rule?) and add it to your spaced-repetition deck. By week one you should order, modify, and pay without translating.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Maaf, meja untuk dua orang.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Tentu. Silakan ikut. Ini menunya.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Terima kasih. Apa rekomendasi-nya?", romanization: "" },
+      { speaker: "B", en: "The nasi goreng is excellent today. Are you allergic to anything?", tgt: "Nasi goreng hari ini enak. Ada alergi?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Bisa lihat menu-nya?" },
+      { en: "What do you recommend?", tgt: "Apa rekomendasi-nya?" },
+      { en: "I'm allergic to [X].", tgt: "Saya alergi [X]." },
+      { en: "Could I have the bill, please?", tgt: "Bisa minta bon-nya?" },
+      { en: "Is this dish spicy?", tgt: "Makanan ini pedas?" },
+      { en: "I'll have [X], please.", tgt: "Saya pesan [X]." },
+      { en: "Can I get this to go?", tgt: "Bisa dibungkus?" },
+      { en: "Is the tip included?", tgt: "Servis sudah termasuk?" },
+      { en: "I'm a vegetarian.", tgt: "Saya vegetarian." },
+      { en: "That was delicious, thank you.", tgt: "Enak sekali, terima kasih." },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Indonesian",
+    subtitle:
+      "Greetings, introductions, the ritual 'sudah makan?', and the small phrases that turn a stranger into a friend across the archipelago.",
+    intro:
+      "Small talk is the front door of Indonesian fluency, and in Indonesia it is almost compulsory: every meeting, every Gojek ride, every checkout opens with 'Apa kabar?' and a beat of personal warmth before anything else happens. The ten phrases in this deck cover the encounters that come up every day — introducing yourself, asking what someone does, the ritual 'sudah makan?' (have you eaten?), and the gentle hometown-and-weekend chat that oils Indonesian social life. Whether you are at a wedding in Surabaya, a conference in Jakarta, or a coffee shop in Bandung, the script is the same, and the politeness register is well-tuned: Indonesian small talk is warm but not intrusive, and the ten phrases keep you in the right zone. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant rather than a tourist. Note that 'Mau ke mana?' (where are you going?) is a greeting, not a real question — the correct answer is 'jalan-jalan' (just walking) or a vague destination, never your actual itinerary. The opening minutes of any encounter run on a predictable rhythm; drill the dialogue and the habit transfers across the entire archipelago.",
+    culture:
+      "The standard greeting is 'Apa kabar?' answered 'Baik'; among Muslims, 'Assalamualaikum' accompanies a light handshake. 'Sudah makan?' (have you eaten?) is a greeting, not an invitation — answer 'sudah' (yes) even if you have not, or you will be fed. 'Mau ke mana?' (where are you going?) is likewise rhetorical; reply vaguely. Use 'Bapak' (Pak) for older men and 'Ibu' (Bu) for older women; 'Anda' is formal-you, 'kamu' is intimate — default to Pak / Bu with strangers. Greet and give with the right hand. Indonesian small talk favours family, hometown, food, and football; avoid the 1965 massacres, the 1998 riots, religion, and politics on first meeting — these are sensitive. Complimenting food is always welcome; asking salary is not. At an Indonesian home, remove your shoes and wait to be seated. Handshakes are soft and sometimes last through the first few seconds of conversation; a touch to the heart after shaking is a warm sign. Punctuality to social events is loose — arriving thirty minutes late is normal.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to small talk is sounding natural, not correct. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'Apa kabar?' to the Gojek driver. Small talk is a habit, and the habit transfers across the whole archipelago. Layer three weekly habits: (1) At every social event, target one new opener — this week 'Dari mana asalnya?' (where are you from?), next week 'Sudah lama di Jakarta?' (been in Jakarta long?). (2) In a Gojek ride, open with 'Apa kabar?' instead of silence — drivers respond warmly in nine of ten cases. (3) Once a week, message one person you met last month ('Senang kenal dengan Bapak'). By month one you should have a default opener per context; by month three you should leave a room with new connections, not zero.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Hai, nama saya Sarah. Salam kenal.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Salam kenal juga. Saya David. Kerja apa?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Saya programmer. Kalau Anda?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you eaten yet?", tgt: "Saya kerja di marketing. Sudah makan?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Hai, nama saya [X]. Salam kenal." },
+      { en: "What do you do for a living?", tgt: "Kerja apa?" },
+      { en: "Where are you from?", tgt: "Anda dari mana?" },
+      { en: "What are your hobbies?", tgt: "Hobi-nya apa?" },
+      { en: "Have you eaten yet?", tgt: "Sudah makan?" },
+      { en: "How was your weekend?", tgt: "Bagaimana akhir pekan-nya?" },
+      { en: "Do you have plans for the weekend?", tgt: "Ada rencana akhir pekan?" },
+      { en: "What kind of music do you like?", tgt: "Suka musik apa?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Cuaca hari ini enak, ya?" },
+      { en: "It was lovely talking to you.", tgt: "Senang bisa ngobrol dengan Anda." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Vietnamese scenarios. Latin script (quốc ngữ) with tone diacritics, so
+// romanization is an empty string throughout. Notes cover the pronoun
+// system (anh / chị / em), motorbike culture, phở etiquette, and the
+// sensitivity around ancestor worship.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_VI: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Vietnamese — airport, hotel, directions",
+    subtitle:
+      "The 10 Vietnamese phrases that get you through 95% of any trip, from Tân Sơn Nhất airport to Grab rides and overnight trains, with audio and a sample dialogue.",
+    intro:
+      "Vietnamese travel phrases open a country where English is patchy outside the tourist districts and a few words of Vietnamese unlock genuine warmth. Vietnamese uses the Latin alphabet (quốc ngữ) with diacritics that mark six tones, so reading is accessible even if the tones take practice — and the same fifty phrases carry you through Tân Sơn Nhất airport in Ho Chi Minh City, a Grab ride in Hanoi, a hotel check-in in Da Nang, and a phở stop in Huế. LangOria's travel deck is built around the ten sentences you actually need at the airport, the bus station, the hotel desk, and the moment you realise your phone is dead and you must ask a stranger for directions. Vietnamese hospitality runs on 'xin lỗi' (excuse me) and 'cảm ơn' (thank you), and the pronoun system — anh, chị, em — means that almost every sentence starts with choosing the right word for 'you'. Beyond the airport, the same ten phrases handle overnight train platforms in Hanoi, ferry piers in Hội An, and small emergencies: finding a nhà thuốc (pharmacy) at midnight, asking which bus goes to Sapa, or getting a stranger to take your photo at Hạ Long Bay. Master these ten and a fortnight in Vietnam becomes effortless.",
+    culture:
+      "Vietnam runs on the motorbike (xe máy): cities move in rivers of two-wheelers, and the trick to crossing the street is to walk at a steady, predictable pace without stopping — the riders flow around you like water, and sudden stops cause collisions. Point with your whole hand, not a finger jabbed at a person. Remove your shoes before entering a home or pagoda. The pronoun system is central: address a slightly older man as 'anh', an older woman as 'chị', a younger person as 'em', and much older people as 'ông' / 'bà' — using the wrong one is more awkward than a grammar mistake. Grab and Xanh SM are the default ride-hailing apps and avoid taxi-meter scams; insist on the meter if you take a street taxi. Bargaining is expected at markets and for cyclo rides, but not in restaurants. Carry small cash; many street vendors and small shops do not take cards, and 500,000-đồng notes are hard to break. Avoid public political discussion, and dress modestly at temples.",
+    howTo:
+      "Spend three to five days on the travel deck before you fly. Drill the ten phrases with spaced repetition until recall is automatic, then rehearse the four-line dialogue out loud — Vietnamese tones matter, so shadow the audio closely and copy the rise and fall rather than reading flatly. On the trip, use each phrase at least once in the wild; speaking to a stranger is where the memory is built, not in the app. The ten-minute daily loop is enough. Layer three drills: (1) Morning — shadow the audio for two minutes, copying the tones of the speaker rather than translating. (2) Midday — run the dialogue out loud, slotting in your real destination and hotel (e.g. 'Tôi muốn đi Phố cổ'). (3) Evening — write one sentence you would actually say tomorrow ('Xe máy thuê bao nhiêu?') and rehearse it twice before bed. By day four you should produce all ten cold; by day seven use them with a stranger without translating first.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the airport?", tgt: "Xin lỗi, sân bay ở đâu?", romanization: "" },
+      { speaker: "B", en: "Take a taxi. It's about 30 minutes.", tgt: "Đi taxi nhé. Khoảng 30 phút.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket?", tgt: "Cảm ơn. Vé bao nhiêu tiền?", romanization: "" },
+      { speaker: "B", en: "200,000 dong. You can pay by card.", tgt: "200 nghìn đồng. Có thể trả bằng thẻ.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the airport?", tgt: "Xin lỗi, sân bay ở đâu ạ?" },
+      { en: "I have a reservation under the name [X].", tgt: "Tôi đã đặt phòng tên [X]." },
+      { en: "Could I have the bill, please?", tgt: "Làm ơn tính tiền." },
+      { en: "How do I get to [place]?", tgt: "Làm sao để đến [nơi]?" },
+      { en: "Is there a train station nearby?", tgt: "Có ga tàu nào gần đây không?" },
+      { en: "I would like to check in.", tgt: "Tôi muốn nhận phòng." },
+      { en: "What time does the flight leave?", tgt: "Máy bay cất cánh lúc mấy giờ?" },
+      { en: "I'm lost. Can you help me?", tgt: "Tôi bị lạc rồi. Anh giúp tôi được không?" },
+      { en: "How much is a ticket to [place]?", tgt: "Vé đến [nơi] bao nhiêu tiền?" },
+      { en: "Where is the bathroom?", tgt: "Nhà vệ sinh ở đâu?" },
+    ],
+  },
+  business: {
+    title: "Business Vietnamese — meetings, emails, follow-ups",
+    subtitle:
+      "Polite, professional Vietnamese phrases for the working day: scheduling, agendas, status updates, and the pronoun etiquette of Vietnamese business.",
+    intro:
+      "Business Vietnamese is the language of one of Southeast Asia's fastest-growing economies, and a small set of formal phrases reshapes how you are read in a meeting room in Hanoi or Ho Chi Minh City. Vietnamese is built on a pronoun hierarchy that encodes age, gender, and status into every sentence — choosing between 'tôi-anh', 'tôi-chị', and 'em-anh' is not optional grammar but the social glue of the workplace. LangOria's business deck is built around the ten phrases that come up in every meeting and every follow-up email — scheduling, agendas, status updates, and the relationship-first etiquette that Vietnamese business culture expects. What separates professional Vietnamese from conversational Vietnamese is not grammar but register and pronoun choice: the same idea said with 'tôi' and 'anh' sounds respectful; said with 'mày' and 'tao' it sounds like a family quarrel. Vietnamese meetings open with ten minutes of personal warmth — family, hometown, food — before the agenda, and skipping it reads as cold. Master these ten phrases and you can walk into a Vietnamese meeting and hold your weight even at A2. The same phrases double as the opening lines of the follow-up email you send that night.",
+    culture:
+      "Vietnamese business culture runs on 'thể diện' (face) and hierarchy. Address an older man as 'anh', an older woman as 'chị', and a senior as 'ông' / 'bà'; 'tôi' is a safe neutral 'I'. Meetings open with ten minutes of personal small talk — family, hometown, food — before business; cutting to the agenda reads as rude. A direct refusal causes loss of face; expect 'để xem lại' (let's review) or silence to mean a soft no. Exchange business cards with both hands, receive with both hands, and study the card before pocketing it — do not slide it into a back pocket. Relationships come before contracts; expect coffee (cà phê) or a meal before any deal is signed. Hierarchy is pronounced: the boss decides, and public disagreement causes loss of face for everyone. Friday is a normal working day; lunch runs 12:00-13:30. Emails open with 'Kính gửi' (respectfully to) and close with 'Trân trọng' (sincerely). Red ink is for the dead — never write a name in red. Avoid the 1979 border war and politics in early conversation.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Vietnamese-language meeting. Review the ten phrases with spaced repetition until they come out cold, then drill the email templates out loud — pay attention to the pronoun pair in each, because 'tôi-anh' and 'tôi-chị' are not interchangeable. In real life, listen for the register your colleagues use and mirror it. The ten-minute daily loop plus one real meeting per week is enough to reach working Vietnamese in three months. Layer three habits: (1) Before each meeting, read the agenda once and underline the two phrases you will most likely need ('mình xem lại status nhé', 'dời sang thứ Năm được không?') — your pre-rehearsal. (2) After each meeting, write the follow-up email in Vietnamese, even if a colleague would accept English — the register is locked in by writing. (3) Once a week, rewrite one email you would normally have written in English. By week two your email turnaround should be faster; by month three you should reply in Vietnamese without translating.",
+    conversation: [
+      { speaker: "A", en: "Good morning. Thanks for joining. I have a brief agenda.", tgt: "Chào buổi sáng. Cảm ơn mọi người đã đến. Tôi có chương trình ngắn.", romanization: "" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "Vâng, mời anh.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "Đầu tiên, tình trạng ra mắt Q3. Sau đó, ngân sách. Cuối cùng, câu hỏi.", romanization: "" },
+      { speaker: "B", en: "Understood. I'll send the agenda via email.", tgt: "Đã rõ. Tôi sẽ gửi chương trình qua email.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Hãy lên lịch họp cho thứ Ba tuần sau." },
+      { en: "Could you send me the agenda?", tgt: "Anh gửi tôi chương trình họp được không?" },
+      { en: "I'll follow up via email.", tgt: "Tôi sẽ liên hệ lại qua email." },
+      { en: "Let's touch base next week.", tgt: "Tuần sau mình trao đổi lại nhé." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Tôi muốn đề xuất hạn chót là [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "Mình dời cuộc họp sang [giờ] được không?" },
+      { en: "What's the status on the [project]?", tgt: "Tình trạng [dự án] thế nào?" },
+      { en: "I have a question about the contract.", tgt: "Tôi có câu hỏi về hợp đồng." },
+      { en: "Thank you for your time.", tgt: "Cảm ơn anh đã dành thời gian." },
+      { en: "Let's circle back on this.", tgt: "Mình quay lại vấn đề này sau nhé." },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Vietnamese",
+    subtitle:
+      "Ordering at phở stalls and bún chả shops, dietary restrictions, paying the bill, and the shared-dish rhythm of a Vietnamese meal.",
+    intro:
+      "Food is the soul of Vietnamese life and the fastest way into the language. The ten phrases in this deck cover the ninety-five-percent case: walking into a phở stall, ordering bún chả, asking about chili, flagging an allergy, and asking for the bill. Whether you are at a street stall in Hanoi (sitting on a tiny plastic stool a foot off the ground), a bún bò Huế shop in Huế, a bánh mì cart in Ho Chi Minh City, or a seafood restaurant in Da Nang, the script is forgiving — Vietnamese servers expect simple, direct questions and respond warmly to anyone who tries. LangOria's food deck is built around the ten sentences that come up in every meal out, with a culture tip on phở etiquette and the shared-dish rhythm, plus a sample dialogue so you can rehearse the whole encounter before you sit down. The same phrases carry you from a roadside phở cart to a hotel breakfast buffet, from 'cay không?' (is it spicy?) to 'rất ngon' (very delicious). Food Vietnamese is the most rewarding ten minutes of the course: rehearse in the app, use it for dinner, remember it for life.",
+    culture:
+      "Eating in Vietnam is communal: dishes are shared to the centre of the table and scooped onto your own bowl of rice. Phở etiquette matters — eat with chopsticks and a soup spoon, sip the broth, and add herbs (rau thơm), bean sprouts, lime, and chili to taste; slurping is acceptable and signals enjoyment. Fish sauce (nước mắm) is on every table; add a little, not a lot. 'Cay' means spicy hot; for temperature say 'nóng'. Street food is safe at busy stalls with high turnover — watch for the queue and the vendor who cooks to order. Vietnamese coffee (cà phê) is strong, often served with sweetened condensed milk (cà phê sữa đá over ice); egg coffee (cà phê trứng) is a Hanoi specialty. Sitting on the low plastic stools is normal — do not ask for a chair. Tipping is not expected; a small rounding-up is appreciated in tourist areas. At a phở stall, you often pay at the stall after eating, not at the table. Chopsticks should rest on the holder, never stuck upright in rice — that resembles ancestor-worship incense.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit. Drill the dialogue out loud with a partner or a recording; restaurant Vietnamese is muscle memory, not grammar — focus on the tones of 'cho tôi' and 'cảm ơn' until they are automatic. On the day, walk in with a clear script: 'Cho bàn hai người' → 'Cho tôi xem thực đơn' → 'Cho tôi phở bò' → 'Làm ơn tính tiền' → 'Rất ngon, cảm ơn.' The ten-minute daily loop is enough. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then close your eyes and reproduce all ten sentences in order. (2) Mid-meal — try one phrase you have not yet used in the wild, such as 'Cay không?' even when you do not plan to order chili, just to break the ice with the server. (3) Post-meal — note the phrase that surprised you (the low stools? the phở herb plate?) and add it to your spaced-repetition deck. By week one you should order, modify, and pay without translating.",
+    conversation: [
+      { speaker: "A", en: "Hi, table for two, please.", tgt: "Xin chào, cho bàn hai người.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here's the menu.", tgt: "Vâng, mời bên này. Đây là thực đơn.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Cảm ơn. Anh giới thiệu món gì?", romanization: "" },
+      { speaker: "B", en: "The phở is excellent today. Are you allergic to anything?", tgt: "Phở hôm nay rất ngon. Anh có dị ứng gì không?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Cho tôi xem thực đơn được không?" },
+      { en: "What do you recommend?", tgt: "Anh giới thiệu món gì?" },
+      { en: "I'm allergic to [X].", tgt: "Tôi bị dị ứng [X]." },
+      { en: "Could I have the bill, please?", tgt: "Làm ơn tính tiền." },
+      { en: "Is this dish spicy?", tgt: "Món này có cay không?" },
+      { en: "I'll have [X], please.", tgt: "Cho tôi [X]." },
+      { en: "Can I get this to go?", tgt: "Mang đi được không?" },
+      { en: "Is the tip included?", tgt: "Tiền tip đã tính chưa?" },
+      { en: "I'm a vegetarian.", tgt: "Tôi ăn chay." },
+      { en: "That was delicious, thank you.", tgt: "Rất ngon, cảm ơn." },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Vietnamese",
+    subtitle:
+      "Greetings, introductions, the ritual 'anh ăn cơm chưa?', and the small phrases that turn a stranger into a friend across Vietnam.",
+    intro:
+      "Small talk is the front door of Vietnamese fluency, and in Vietnam it is nearly compulsory: every meeting, every Grab ride, every checkout opens with 'anh có khỏe không?' and a beat of personal warmth before anything else happens. The ten phrases in this deck cover the encounters that come up every day — introducing yourself, asking what someone does, the ritual 'anh ăn cơm chưa?' (have you eaten?), and the gentle hometown-and-weekend chat that oils Vietnamese social life. Whether you are at a wedding in Hanoi, a conference in Ho Chi Minh City, or a coffee shop in Da Nang, the script is the same, and the pronoun system makes every greeting a small choice: 'anh' for a slightly older man, 'chị' for an older woman, 'em' for a younger person. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant rather than a tourist. The opening minutes of any encounter run on a predictable rhythm, and the people who know it are the ones who get invited to stay. Small talk is a habit, not a vocabulary — drill the dialogue and the habit transfers across the whole country.",
+    culture:
+      "The standard greeting is 'Xin chào' plus the pronoun — 'chào anh', 'chào chị' — and a soft handshake; among men, a handshake is standard, and a slight bow of the head shows respect. 'Anh ăn cơm chưa?' (have you eaten rice?) is a greeting, not an invitation — answer 'rồi' (yes) even if you have not, or you will be fed. Use 'anh' for a slightly older man, 'chị' for an older woman, 'em' for a younger person, and 'ông' / 'bà' for elders; choosing the right pronoun matters more than grammar. Vietnamese small talk favours family, hometown, food, and work; avoid the 1979 border war, politics, and religion on first meeting — these are sensitive. Complimenting food is always welcome; asking salary is not. At a Vietnamese home, remove your shoes and wait to be seated; a small gift (fruit or tea) is appreciated. Ancestor worship is widespread — be respectful of altars in homes and shops, and never photograph an altar without permission. Punctuality to social events is loose.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to small talk is sounding natural, not correct — and in Vietnamese that means landing the pronoun as much as the tone. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'Cảm ơn anh' to the Grab driver. Small talk is a habit, and the habit transfers across the whole country. Layer three weekly habits: (1) At every social event, target one new opener — this week 'Anh quê ở đâu?' (where is your hometown?), next week 'Anh ở Hà Nội lâu chưa?' (been in Hanoi long?). (2) In a Grab ride, open with 'Anh có khỏe không?' instead of silence — drivers respond warmly in nine of ten cases. (3) Once a week, message one person you met last month ('Rất vui được gặp anh'). By month one you should have a default opener per context; by month three you should leave a room with new friends.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Chào anh, tôi tên là Sarah. Rất vui được gặp anh.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Tôi cũng vậy. Tôi là David. Anh làm nghề gì?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. How about you?", tgt: "Tôi là kỹ sư phần mềm. Còn anh?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you eaten yet?", tgt: "Tôi làm marketing. Anh ăn cơm chưa?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Chào anh, tôi tên là [X]. Rất vui được gặp anh." },
+      { en: "What do you do for a living?", tgt: "Anh làm nghề gì?" },
+      { en: "Where are you from?", tgt: "Anh đến từ đâu?" },
+      { en: "What are your hobbies?", tgt: "Sở thích của anh là gì?" },
+      { en: "Have you eaten yet?", tgt: "Anh ăn cơm chưa?" },
+      { en: "How was your weekend?", tgt: "Cuối tuần của anh thế nào?" },
+      { en: "Do you have plans for the weekend?", tgt: "Cuối tuần anh có kế hoạch gì không?" },
+      { en: "What kind of music do you like?", tgt: "Anh thích nhạc gì?" },
+      { en: "It's nice weather today, isn't it?", tgt: "Hôm nay thời tiết đẹp nhỉ?" },
+      { en: "It was lovely talking to you.", tgt: "Rất vui được nói chuyện với anh." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Public lookup: url-slug (lang, scenario) → content.
 // The lang param is the URL_SLUG_TO_DATA key (e.g. "english", "japanese").
 // ---------------------------------------------------------------------------
@@ -1372,6 +1750,9 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
   italian: SCENARIOS_IT,
   thai: SCENARIOS_TH,
   cantonese: SCENARIOS_YUE,
+  malay: SCENARIOS_MS,
+  indonesian: SCENARIOS_ID,
+  vietnamese: SCENARIOS_VI,
 };
 
 /** Languages that currently have scenario content shipped. */

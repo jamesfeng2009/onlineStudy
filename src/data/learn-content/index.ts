@@ -26,6 +26,9 @@ export const LEARN_CONTENT_LOADERS = {
   it: () => import("./it").then((m) => m.IT_WORDS),
   th: () => import("./th").then((m) => m.TH_WORDS),
   yue: () => import("./yue").then((m) => m.YUE_WORDS),
+  ms: () => import("./ms").then((m) => m.MS_WORDS),
+  id: () => import("./id").then((m) => m.ID_WORDS),
+  vi: () => import("./vi").then((m) => m.VI_WORDS),
 } as const;
 
 export type LearnLangSlug = keyof typeof LEARN_CONTENT_LOADERS;
@@ -57,6 +60,9 @@ export const LEARN_LANG_META: Record<
   it: { nativeName: "Italiano", englishName: "Italian", flag: "🇮🇹", dataShape: "sentence" },
   th: { nativeName: "ภาษาไทย", englishName: "Thai", flag: "🇹🇭", dataShape: "sentence" },
   yue: { nativeName: "粵語", englishName: "Cantonese", flag: "🇭🇰", dataShape: "sentence" },
+  ms: { nativeName: "Bahasa Melayu", englishName: "Malay", flag: "🇲🇾", dataShape: "sentence" },
+  id: { nativeName: "Bahasa Indonesia", englishName: "Indonesian", flag: "🇮🇩", dataShape: "sentence" },
+  vi: { nativeName: "Tiếng Việt", englishName: "Vietnamese", flag: "🇻🇳", dataShape: "sentence" },
 };
 
 /**

@@ -137,6 +137,11 @@ export const LEVEL_META: Record<string, LevelMetaMap> = {
   de: makeCefrLevelMeta(["A1", "A2", "B1", "B2", "C1", "C2"]),
   it: makeCefrLevelMeta(["A1", "A2", "B1", "B2", "C1", "C2"]),
 
+  // ── 东南亚语言（ms/id/vi，对齐 CEFR）──
+  ms: makeCefrLevelMeta(["A1", "A2", "B1", "B2", "C1", "C2"]),
+  id: makeCefrLevelMeta(["A1", "A2", "B1", "B2", "C1", "C2"]),
+  vi: makeCefrLevelMeta(["A1", "A2", "B1", "B2", "C1", "C2"]),
+
   // ── 日语（JLPT N5-N1）──
   ja: {
     N5: {

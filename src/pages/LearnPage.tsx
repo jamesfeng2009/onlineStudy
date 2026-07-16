@@ -81,6 +81,9 @@ const BCP47: Record<Language, string> = {
   it: "it-IT",
   th: "th-TH",
   yue: "zh-HK",
+  ms: "ms-MY",
+  id: "id-ID",
+  vi: "vi-VN",
 };
 
 export default function LearnPage() {

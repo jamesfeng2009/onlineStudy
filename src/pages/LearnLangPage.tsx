@@ -73,7 +73,7 @@ export default function LearnLangPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {ALL_URL_SLUGS.map(({ data, url }) => {
             const m = LEARN_LANG_META[data];
-            const wordCount = data === "en" ? "961" : data === "ja" ? "762" : data === "zh" ? "984" : data === "ko" || data === "es" || data === "fr" || data === "de" ? "200+" : "50";
+            const wordCount = data === "en" ? "961" : data === "ja" ? "762" : data === "zh" ? "984" : data === "ko" || data === "es" || data === "fr" || data === "de" ? "200+" : data === "ms" || data === "id" || data === "vi" ? "50" : "50";
             return (
               <Link
                 key={data}
@@ -331,6 +331,9 @@ const DESCRIPTIONS: Record<LearnLangSlug, string> = {
   it: "Practical sentence pairs from native Italian speakers, covering daily life, travel, and food.",
   th: "Practical sentence pairs in Thai script, covering greetings, shopping, and daily life in Thailand.",
   yue: "Practical Cantonese sentence pairs in traditional characters, covering food, travel, and daily life in Hong Kong.",
+  ms: "Practical sentence pairs from native Malay speakers, covering daily life, travel, and food across Malaysia, Singapore, and Brunei.",
+  id: "Practical sentence pairs from native Indonesian speakers, covering daily life, travel, and business across the Indonesian archipelago.",
+  vi: "Practical sentence pairs in chữ Quốc ngữ with full diacritics, covering greetings, food, and travel across Vietnam's three regions.",
 };
 
 function pickCopy(slug: LearnLangSlug) {
@@ -591,6 +594,93 @@ function pickCopy(slug: LearnLangSlug) {
         {
           q: "What is Jyutping?",
           a: "Jyutping (粤拼) is the standard romanization system for Cantonese, developed by the Linguistic Society of Hong Kong. It uses numbers to mark tones (1-9) and Latin letters for sounds. LangOria shows Jyutping for every sentence so you can pronounce Cantonese correctly even before you can read the characters.",
+        },
+      ],
+    };
+  }
+  if (slug === "ms") {
+    return {
+      title: "Learn Malay online — sentence-pair drills for Bahasa Melayu",
+      lead:
+        "Learn Malay on LangOria with practical sentence pairs from native speakers, spaced repetition scheduling, and audio shadowing for the natural rhythm of Malay.",
+      whoFor:
+        "Malay (Bahasa Melayu) is the official language of Malaysia, Brunei, and Singapore, and is mutually intelligible with Indonesian — giving it a reach of over 290 million speakers across the Malay world. It uses the Latin alphabet (Rumi), making it one of the most accessible Asian languages for English speakers to start reading from day one. Whether you are traveling in Southeast Asia, doing business in Kuala Lumpur, or connecting with family, LangOria's Malay course gives you authentic sentence pairs in the language people actually speak.",
+      method:
+        "We start with 50 hand-curated sentence pairs covering greetings, food, travel, and daily life. Spaced repetition keeps recall above 90%, and audio shadowing trains your ear to Malay's relatively flat intonation compared to other tonal Southeast Asian languages. The 10-minute daily loop fits into any morning routine.",
+      faq: [
+        {
+          q: "Is Malay hard to learn?",
+          a: "Malay is one of the easiest Asian languages for English speakers. It uses the Latin alphabet, has no tonal system, and has relatively simple grammar with no verb conjugations or gendered nouns. Most learners reach A2 conversational level in 2-3 months of consistent daily practice.",
+        },
+        {
+          q: "Are Malay and Indonesian the same language?",
+          a: "Malay and Indonesian (Bahasa Indonesia) are mutually intelligible — they share the same linguistic roots and most vocabulary. The differences are mainly in vocabulary choices, pronunciation, and some formal registers. If you learn Malay, you can communicate with Indonesian speakers and vice versa, though LangOria offers separate courses for each.",
+        },
+        {
+          q: "Which Malay does LangOria teach?",
+          a: "LangOria teaches standard Malay (Bahasa Melayu) as used in Malaysia, with content intelligible across Singapore and Brunei. The vocabulary is largely shared with Indonesian, so it also serves as a foundation for communicating across the Malay archipelago.",
+        },
+        {
+          q: "Do I need to learn Jawi script?",
+          a: "No — LangOria uses Rumi (the Latin alphabet), which is the standard writing system for Malay in Malaysia, Singapore, and Brunei. Jawi (Arabic-based script) is used in some religious and traditional contexts but is not required for everyday communication.",
+        },
+      ],
+    };
+  }
+  if (slug === "id") {
+    return {
+      title: "Learn Indonesian online — sentence-pair drills for Bahasa Indonesia",
+      lead:
+        "Learn Indonesian on LangOria with practical sentence pairs from native speakers, spaced repetition scheduling, and audio shadowing for the natural rhythm of Indonesian.",
+      whoFor:
+        "Indonesian (Bahasa Indonesia) is the official language of Indonesia, the world's fourth-most populous country with 270+ million people. It uses the Latin alphabet and has remarkably simple grammar — no tenses, no gender, no tonal system — making it one of the easiest Asian languages for English speakers to learn. Whether you are traveling to Bali, doing business in Jakarta, or connecting with family across the archipelago, LangOria's Indonesian course gives you authentic sentence pairs in the language people actually speak.",
+      method:
+        "We start with 50 hand-curated sentence pairs covering greetings, food, travel, and daily life. Spaced repetition keeps recall above 90%, and audio shadowing trains your ear to Indonesian's natural rhythm. The 10-minute daily loop fits into any morning routine.",
+      faq: [
+        {
+          q: "Is Indonesian easy to learn?",
+          a: "Indonesian is widely considered one of the easiest languages for English speakers. It uses the Latin alphabet, has no tonal system, no verb conjugations, no gendered nouns, and no complex tense systems. Most learners reach A2 conversational level in 2-3 months of consistent daily practice.",
+        },
+        {
+          q: "Are Indonesian and Malay the same?",
+          a: "Indonesian and Malay are mutually intelligible — they share the same linguistic roots. The differences are mainly in vocabulary choices (Indonesian uses 'Anda' for formal 'you', Malay uses 'awak' or 'kamu'), some Dutch vs English/Arabic loanwords, and pronunciation. LangOria offers separate courses for each to reflect these differences.",
+        },
+        {
+          q: "Which Indonesian does LangOria teach?",
+          a: "LangOria teaches standard Indonesian (Bahasa Indonesia) as used in Jakarta and understood across the archipelago. The vocabulary is intelligible from Sumatra to Papua, and the sentence pairs reflect how Indonesians actually speak in daily life.",
+        },
+        {
+          q: "Do I need to learn formal or casual Indonesian?",
+          a: "LangOria teaches both registers. Formal Indonesian (bahasa baku) is used in news, official documents, and education; casual Indonesian (bahasa gaul) is what people speak on the street. Our sentence pairs include both so you can navigate formal and informal situations.",
+        },
+      ],
+    };
+  }
+  if (slug === "vi") {
+    return {
+      title: "Learn Vietnamese online — sentence-pair drills with six tones",
+      lead:
+        "Learn Vietnamese on LangOria with practical sentence pairs in chữ Quốc ngữ, spaced repetition scheduling, and audio shadowing for the six tones of Vietnamese.",
+      whoFor:
+        "Vietnamese is the official language of Vietnam, spoken by 95+ million people in Vietnam and a global diaspora of 4+ million. It uses the Latin alphabet (chữ Quốc ngữ) with diacritical tone marks, so you can start reading from day one — but the six tones make pronunciation challenging. Whether you are traveling from Hanoi to Ho Chi Minh City, doing business in Vietnam, or connecting with family, LangOria's Vietnamese course gives you authentic sentence pairs in the language people actually speak.",
+      method:
+        "We start with 50 hand-curated sentence pairs in chữ Quốc ngữ with full diacritics. Spaced repetition keeps recall above 90%, and audio shadowing trains your ear to distinguish the six tones (ngang, huyền, hỏi, ngã, sắc, nặng) that change word meaning. The 10-minute daily loop fits into any morning routine.",
+      faq: [
+        {
+          q: "Is Vietnamese hard to learn?",
+          a: "Vietnamese is moderately challenging for English speakers. The Latin alphabet makes reading accessible, and grammar is relatively simple (no conjugations, no gender). The main challenge is the six tones — but with consistent audio shadowing practice, most learners reach A2 in 3-4 months.",
+        },
+        {
+          q: "Which Vietnamese dialect does LangOria teach?",
+          a: "LangOria teaches standard Vietnamese as used in Hanoi (northern dialect), which is the reference for media and education. The vocabulary is intelligible across Vietnam's three regions (north, central, south), with regional differences mainly in pronunciation and some vocabulary.",
+        },
+        {
+          q: "What are the six tones of Vietnamese?",
+          a: "Vietnamese has six tones: ngang (level), huyền (falling), hỏi ( dipping-rising), ngã (rising glottalized), sắc (rising), and nặng (falling glottalized). Each tone changes the meaning of a word — 'ma' means ghost, mother, rice seedling, tomb, horse, or code depending on the tone. LangOria's audio shadowing trains your ear to distinguish them.",
+        },
+        {
+          q: "Why does Vietnamese use the Latin alphabet?",
+          a: "Vietnamese uses chữ Quốc ngữ (national script), a Latin-based writing system developed by Portuguese and French missionaries in the 17th century. It replaced Chữ Nôm (Chinese-based characters) in the early 20th century and is now the universal writing system for Vietnamese. The tone marks are diacritics added to the Latin letters.",
         },
       ],
     };
