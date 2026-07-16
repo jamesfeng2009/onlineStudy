@@ -422,7 +422,10 @@ async function callGemini(
       generationConfig: {
         temperature: 0.9,
         topP: 0.95,
-        maxOutputTokens: 8192,
+        // C1/C2 levels in denser scripts (es/id) can exceed 8192 tokens
+        // for 20 items, causing mid-string truncation. 16384 matches
+        // the dialogue-scenes generator and leaves headroom.
+        maxOutputTokens: 16384,
         responseMimeType: "application/json",
         responseSchema: RESPONSE_SCHEMA,
       },
