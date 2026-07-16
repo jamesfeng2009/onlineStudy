@@ -979,6 +979,384 @@ const SCENARIOS_DE: Record<ScenarioKey, ScenarioContent> = {
 };
 
 // ---------------------------------------------------------------------------
+// Italian scenarios. The formal "Lei" register is the default with
+// strangers, staff and senior colleagues; the informal "tu" is used with
+// friends and after an explicit invitation ("Diamoci del tu"). Italian
+// uses the Latin script, so romanization is an empty string throughout.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_IT: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Italian — airport, hotel, directions",
+    subtitle:
+      "The 10 Italian phrases that get you through 95% of any trip to Italy, with audio and example dialogues.",
+    intro:
+      "Travel Italian is the highest-leverage Italian you will ever learn: the same fifty phrases get you through the airport in Rome, the hotel in Florence, the vaporetto in Venice, and the autostrada toll booth between Milan and Turin. Whether you are landing at Fiumicino, taking the Frecciarossa to Bologna, or renting a car to drive the Amalfi Coast, the practical Italian of travel is the same — and speaking even a little of it is the difference between being treated as a tourist and being welcomed as a guest. Italians do not expect fluency from foreigners, but they respond with noticeable warmth when you open with 'Buongiorno' instead of 'Hello.' LangOria's travel-phrase deck is built around the ten sentences you actually need at the airport, the hotel front desk, the train station, and the street corner where the GPS has failed you. Each phrase is paired with audio shadowing, an example dialogue, and a culture tip that tells you when 'Lei' (formal you) is required and when 'tu' (informal you) would be rude. The same ten phrases get you through taxi rides, museum tickets, pharmacy runs, and the small emergencies of being a stranger in a new city. If you only learn ten Italian sentences in your life, these are the ten. A week of the ten-minute daily loop is enough to internalise them — and that single week pays off every trip to Italy for the rest of your life.",
+    culture:
+      "In Italy, every interaction opens with a greeting — 'Buongiorno' (good morning) before noon, 'Buonasera' (good evening) after, and 'Buonanotte' only when someone is actually going to bed. Walking into a bar (the Italian word for café) without saying 'Buongiorno' first is the fastest way to get cold service. The formal 'Lei' is the default with strangers, staff, and anyone older than you; switching to 'tu' without being invited ('Diamoci del tu') is a social misstep. Tipping is not expected in Italy — a 'coperto' (cover charge) appears on every restaurant bill, and a 'servizio' (service charge) is often included too. Leave one or two euros for good service if you like, but 15-20% would be excessive. At coffee bars, you pay at the cassa first, then take the receipt to the barista — drinking your espresso standing at the bar costs €1, sitting at a table costs €3. Train tickets must be validated in the machine on the platform before boarding; an unvalidated ticket means a fine. Pharmacies (farmacia, marked by a green cross) are the first stop for minor illnesses.",
+    howTo:
+      "Spend three to five days on the travel deck before any trip to Italy. Review the ten phrases with spaced repetition until recall is automatic, then drill the example dialogue out loud with a partner or a recording. On the trip itself, try to use each phrase at least once in real life — the muscle memory of speaking Italian to a stranger is built in the moment, not in the app. The ten-minute daily loop is enough; travel Italian is a finite vocabulary you can master in a week. Three concrete drills to layer on top: (1) Morning — open the deck and shadow the audio for two minutes, copying the open vowel sounds of Roman Italian rather than translating in your head; (2) Midday — run the example dialogue out loud, swapping in your actual hotel name and destination; (3) Evening — write one sentence in a notebook that you will actually say tomorrow (e.g. 'Vorrei una stanza con vista') and rehearse it twice before bed. By day four you should produce all ten sentences cold; by day seven use them with a stranger without translating first.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the station?", tgt: "Scusi, dov'è la stazione?", romanization: "" },
+      { speaker: "B", en: "Straight ahead, then left. About five minutes on foot.", tgt: "Dritto, poi a sinistra. Cinque minuti a piedi.", romanization: "" },
+      { speaker: "A", en: "Thank you. How much is a ticket to Rome?", tgt: "Grazie. Quanto costa un biglietto per Roma?", romanization: "" },
+      { speaker: "B", en: "Twelve euros. You can buy it at the machine or at the counter.", tgt: "Dodici euro. Può comprarlo alla macchinetta o allo sportello.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the station?", tgt: "Scusi, dov'è la stazione?" },
+      { en: "I have a reservation under the name [X].", tgt: "Ho una prenotazione a nome [X]." },
+      { en: "Could I have the bill, please?", tgt: "Posso avere il conto, per favore?" },
+      { en: "How do I get to [place]?", tgt: "Come arrivo a [posto]?" },
+      { en: "Is there a train station nearby?", tgt: "C'è una stazione vicino?" },
+      { en: "I would like to check in.", tgt: "Vorrei fare il check-in." },
+      { en: "What time does the train leave?", tgt: "A che ora parte il treno?" },
+      { en: "I'm lost. Can you help me?", tgt: "Mi sono perso. Può aiutarmi?" },
+      { en: "How much is a ticket to [place]?", tgt: "Quanto costa un biglietto per [posto]?" },
+      { en: "Where is the bathroom?", tgt: "Dov'è il bagno?" },
+    ],
+  },
+  business: {
+    title: "Business Italian — meetings, emails, follow-ups",
+    subtitle:
+      "Professional phrases for the Italian workplace: scheduling, agendas, status updates, and the formal register that earns trust.",
+    intro:
+      "Business Italian is the difference between being understood at work and being trusted at work. Italian professional life runs on a small, finite set of formulas — the same fifty phrases cover ninety percent of emails, meetings, and follow-ups from Milan to Palermo. Whether you are writing a status update to a client in Turin, opening a video call with a supplier in Bologna, or following up on a contract with a Florentine partner, the right phrase in the right register is what makes you sound like a peer, not a foreigner. What separates business Italian from conversational Italian is not grammar — it is the formal 'Lei' register and the indirect, hedged phrasing that Italians expect in professional contexts. A direct 'No' becomes 'Forse è meglio valutare un'alternativa' (perhaps it would be better to consider an alternative); a blunt deadline becomes 'Possiamo ipotizzare una scadenza per venerdì?' (could we hypothesise a deadline for Friday?). LangOria's business-phrase deck is built around the ten sentences that come up in every meeting and every email chain, with politeness levels calibrated for northern corporate culture and southern relationship culture. Master these ten phrases and you can walk into any Italian-language meeting and carry your weight — even if the rest of your Italian is still B1. The phrases double as templates for the email lines you write the night before.",
+    culture:
+      "Italian business culture is relationship-first: a meeting often opens with two minutes of personal conversation before the agenda. Skipping the 'Come sta?' to dive into business reads as cold. The formal 'Lei' is the default with clients, senior colleagues, and anyone you have not met; switching to 'tu' is offered by the senior party ('Possiamo darci del tu?') and never assumed. Email subject lines should be specific — 'Verbale riunione Q3 — input entro venerdì' beats 'domanda veloce'. The lunch meeting (pranzo di lavoro) is an institution in Milan and Turin; budget two hours, order a full meal, and never raise business before the primo piatto arrives. Hierarchy matters: address the senior person as 'Dottore' or 'Dottoressa' (used for any graduate, not just PhDs) or 'Ingegnere' until invited otherwise. 'Saluti' is the standard professional sign-off; 'Cordiali saluti' is warmer, 'Distinti saluti' is formal. Follow up meetings with a 'Come concordato' (as agreed) email summarising decisions — Italians value the written record. Avoid 'Ciao' in emails to clients; reserve it for colleagues you are on 'tu' terms with.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Italian-language meeting. Review the ten phrases with spaced repetition until you produce them cold, then drill the email templates out loud. In real life, listen for the register your colleagues use and mirror it — if they say 'Lei', you say 'Lei'; if they offer 'tu', accept it. The ten-minute daily loop plus one real meeting per week is enough to reach professional working Italian in three months. Three habits to layer in: (1) Before every meeting, read the agenda once and underline the two phrases you will most likely need ('Possiamo rimandare a giovedì?', 'Riepiloghiamo i punti') — this is your pre-rehearsal; (2) After every meeting, write the follow-up email in Italian, even if your colleague would accept English — the writing is where the 'Lei' register locks in; (3) Once a week, pick one email thread you would normally write in English, re-read it, and rewrite the sentences you struggled with. By month three you should be the colleague who replies in Italian, not the one who needs a translator.",
+    conversation: [
+      { speaker: "A", en: "Thank you all for coming. I have a brief agenda for today.", tgt: "Grazie a tutti per essere qui. Ho una breve agenda per oggi.", romanization: "" },
+      { speaker: "B", en: "Sure, go ahead.", tgt: "Certo, vada avanti.", romanization: "" },
+      { speaker: "A", en: "First, the Q3 launch status. Then the budget. Finally, open questions.", tgt: "Prima, lo stato del lancio Q3. Poi, il budget. Infine, domande aperte.", romanization: "" },
+      { speaker: "B", en: "Perfect. I'll send the agenda and the pre-read by email.", tgt: "Perfetto. Invierò l'agenda e i materiali per email.", romanization: "" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "Fissiamo una riunione per martedì prossimo." },
+      { en: "Could you send me the agenda?", tgt: "Può inviarmi l'agenda?" },
+      { en: "I'll follow up via email.", tgt: "Faccio seguito per email." },
+      { en: "Let's touch base next week.", tgt: "Ci aggiorniamo la prossima settimana." },
+      { en: "I'd like to propose a deadline of [X].", tgt: "Vorrei proporre una scadenza per [X]." },
+      { en: "Can we move the meeting to [time]?", tgt: "Possiamo spostare la riunione alle [ora]?" },
+      { en: "What's the status on the [project]?", tgt: "Qual è lo stato del [progetto]?" },
+      { en: "I have a question about the contract.", tgt: "Ho una domanda sul contratto." },
+      { en: "Thank you for your time.", tgt: "Grazie per il suo tempo." },
+      { en: "Let's circle back on this.", tgt: "Torniamo sull'argomento più tardi." },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Italian",
+    subtitle:
+      "Ordering at a trattoria, asking about ingredients, paying il conto, and complimenting the chef — the 10 phrases every traveller needs.",
+    intro:
+      "Food is the fastest way to feel at home in Italy, and the phrases in this deck are the ones you will use at every meal. The Italian restaurant ritual is a four-act structure — antipasto, primo, secondo, dolce — and the script for ordering it is the same whether you are at a trattoria in Trastevere, a pizzeria in Naples, or an osteria in Verona. Servers in Italy do not hover; they expect you to know what you want and to ask when you are ready. LangOria's food-phrase deck is built around the ten sentences that cover walking in, ordering, asking about ingredients, paying, and leaving. Each phrase is paired with audio shadowing and a culture tip on the coperto, the servizio, and why you should never ask for a cappuccino after noon. Italian food vocabulary is regional — what Romans call 'saltimbocca', Florentines call their own, and Sicilians have an entirely different grammar of street food. But the ten phrases here work from the Alps to Sicily. The waiter will not expect you to speak Italian; they will be delighted that you tried. Food Italian is the most rewarding ten minutes of any language course: you rehearse in the app, you use it for lunch, and the next morning the barista remembers your order.",
+    culture:
+      "In Italy, the coperto (cover charge, €1-3 per person) appears on every restaurant bill — it covers bread, table service, and linen, and is not a tip. A servizio (service charge, often 10-15%) may also be added in tourist areas; check the menu footer. If servizio is not included, leaving 5-10% in cash is appreciated but never obligatory. Coffee culture has strict unwritten rules: cappuccino is a breakfast drink only — ordering one after lunch marks you instantly as a tourist; an espresso after a meal is correct. At the bar (standing), espresso costs €1; at a table, €3. 'Da portare via' means 'to go'. Bread on the table is for eating with the meal, not for mopping up sauce — though Italians do enjoy the 'scarpetta' (cleaning the plate with bread) in informal settings. Dietaries: 'Sono vegetariano/a' (I am vegetarian), 'Sono allergico/a a...' (I am allergic to...). 'Senza glutine' means gluten-free. Water comes as 'naturale' (still) or 'frizzante' (sparkling); tap water ('acqua di rubinetto') is rarely served — order a bottle. 'Il conto, per favore' asks for the bill; splitting it is 'dividere il conto'.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit in Italy. Drill the dialogue out loud with a partner or a recording; restaurant Italian is muscle memory, not grammar. On the day, walk in with a clear script: 'Buonasera, un tavolo per due' → 'Possiamo vedere il menù?' → 'Vorrei il... per favore' → 'Il conto, per favore' → 'Grazie, era delizioso.' The ten-minute daily loop is enough; food Italian is the most rewarding ten minutes of any course. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then close your eyes and reproduce all ten sentences from memory; (2) Mid-meal — try one phrase you have not yet used, e.g. 'È piccante questo piatto?' even if you are not ordering spicy food, just to build confidence with the server; (3) Post-meal — note the one phrase that surprised you (the coperto? the cappuccino rule?) and add it to your spaced-repetition deck. By month one, you should handle a server's curveball without freezing.",
+    conversation: [
+      { speaker: "A", en: "Good evening, a table for two, please.", tgt: "Buonasera, un tavolo per due, per favore.", romanization: "" },
+      { speaker: "B", en: "Of course. Right this way. Here is the menu.", tgt: "Certo. Prego, di qua. Ecco il menù.", romanization: "" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "Grazie. Cosa consiglia?", romanization: "" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "Il pesce è ottimo oggi. È allergico a qualcosa?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "Posso vedere il menù, per favore?" },
+      { en: "What do you recommend?", tgt: "Cosa consiglia?" },
+      { en: "I'm allergic to [X].", tgt: "Sono allergico a [X]." },
+      { en: "Could I have the bill, please?", tgt: "Posso avere il conto, per favore?" },
+      { en: "Is this dish spicy?", tgt: "È piccante questo piatto?" },
+      { en: "I'll have [X], please.", tgt: "Vorrei [X], per favore." },
+      { en: "Can I get this to go?", tgt: "Da portare via, per favore." },
+      { en: "Is service included?", tgt: "Il servizio è incluso?" },
+      { en: "I'm a vegetarian.", tgt: "Sono vegetariano." },
+      { en: "That was delicious, thank you.", tgt: "Era delizioso, grazie." },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Italian",
+    subtitle:
+      "Greetings, introductions, hobbies, and the everyday phrases that turn strangers into friends in Italy.",
+    intro:
+      "Small talk is the front door of Italian fluency, and in Italy that door opens wide. Italians are famously social — the five minutes you spend chatting with a barista, a taxi driver, or a neighbour on the balcony are not filler; they are the relationship. The ten phrases in this deck are the ones that come up in every elevator, every café line, every family gathering, and every first meeting: introducing yourself, asking what someone does, talking about where you are from, and finding common ground. Whether you are at a wedding in Puglia, a conference in Milan, or a train carriage to Florence, the script is the same — and the register is warmer than in northern Europe. Italian small talk leans personal: you will be asked about your family, your hometown, and your opinion of Italian food within minutes. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant, not a tourist. The first five minutes of any social encounter run on a predictable script, and the people who know that script are the ones who get invited to stay for dinner. Drill the dialogue out loud; the trick to Italian small talk is sounding warm, not correct.",
+    culture:
+      "Italian small talk follows a warm, personal pattern: greetings (warm), family (encouraged), hometown (always), food (the national religion), football (divisive — pick a side carefully), and politics (avoid on first meeting). 'Come stai?' (informal) or 'Come sta?' (formal) is the standard opener; the expected answer is 'Tutto bene, grazie' (all good, thanks), not a real update. 'Di dov'è?' or 'Di dove sei?' (where are you from?) is asked within minutes — have a one-line answer ready ('Sono di Londra, ma vivo a Roma da due anni'). Italians will compliment freely ('Che bello!' — how lovely!) and expect you to deflect modestly ('Figurati' — not at all). The double-cheek kiss (il bacio) is the standard greeting between friends and acquaintances of the opposite sex, starting with the left cheek; between men, a handshake is default, a hug is close friends. 'Piacere di conoscerla' (formal) or 'Piacere di conoscerti' (informal) means 'pleased to meet you'. Avoid leading with work — Italians build the relationship first. 'Allora...' (so, well) is the universal filler that buys thinking time. 'Magari' means 'maybe' but often means 'I wish'.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to Italian small talk is sounding warm, not correct. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'Buongiorno, come sta?' to the barista. Small talk is a habit, not a vocabulary, and the habit transfers across Italian regions. Three weekly habits: (1) At every social event, set yourself the target of using one new opener — this week 'Come mai conosce gli sposi?' (how do you know the couple?); (2) At the café or the taxi, lead with 'Buongiorno' and 'Come sta?' instead of silence — you will find Italians respond warmly; (3) Once a week, message someone you met in the last month ('È stato un piacere conoscerti — quando vuoi prendiamo un caffè') — the coffee invitation is the Italian equivalent of exchanging LinkedIn, and it converts an opener into a friendship. By month three, you should leave a gathering with new contacts.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "Ciao, mi chiamo Sarah. Piacere di conoscerti.", romanization: "" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "Piacere mio. Sono David. Di cosa ti occupi?", romanization: "" },
+      { speaker: "A", en: "I'm a software engineer. And you?", tgt: "Faccio l'ingegnere software. E tu?", romanization: "" },
+      { speaker: "B", en: "I work in marketing. Have you seen any good films lately?", tgt: "Lavoro nel marketing. Hai visto qualche bel film ultimamente?", romanization: "" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "Ciao, mi chiamo [X]. Piacere di conoscerti." },
+      { en: "What do you do for a living?", tgt: "Di cosa ti occupi?" },
+      { en: "Where are you from?", tgt: "Di dove sei?" },
+      { en: "What are your hobbies?", tgt: "Quali sono i tuoi hobby?" },
+      { en: "Have you seen any good films lately?", tgt: "Hai visto qualche bel film ultimamente?" },
+      { en: "How was your weekend?", tgt: "Com'è andato il fine settimana?" },
+      { en: "Do you have plans for the weekend?", tgt: "Hai programmi per il fine settimana?" },
+      { en: "What kind of music do you like?", tgt: "Che tipo di musica ti piace?" },
+      { en: "It's lovely weather today, isn't it?", tgt: "Fa bel tempo oggi, vero?" },
+      { en: "It was lovely talking to you.", tgt: "È stato un piacere parlare con te." },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Thai scenarios. Thai script throughout; romanization is phonetic
+// (approximate RTGS-style without tone marks, written lower-case with
+// spaces). The polite particle "khrap" (male speaker) is used throughout;
+// female speakers should substitute "kha".
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_TH: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Thai — airport, hotel, directions",
+    subtitle:
+      "The 10 Thai phrases that get you through 95% of any trip to Thailand, with audio and example dialogues.",
+    intro:
+      "Travel Thai is the highest-leverage Thai you will ever learn. The same fifty phrases get you through Suvarnabhumi Airport, the hotel in Sukhumvit, the tuk-tuk in Chiang Mai, and the night ferry to Koh Phangan. Whether you are landing in Bangkok, taking the BTS across the city, or renting a scooter on Koh Samui, the practical Thai of travel is the same — and speaking even a few words of it transforms the way Thais treat you. Thailand runs on a culture of smiles and service, but the smiles widen measurably when a foreigner opens with 'Sawasdee khrap' instead of 'Hello.' LangOria's travel-phrase deck is built around the ten sentences you actually need at the airport, the hotel front desk, the train station, and the street corner where the GPS has failed you. Each phrase is paired with audio shadowing, an example dialogue, and a culture tip that tells you when to add 'khrap' (male speaker) or 'kha' (female speaker) for politeness. The same ten phrases get you through taxi rides, market haggling, pharmacy runs, and the small emergencies of being a stranger in a new city. A week of the ten-minute daily loop is enough to internalise them — and that single week pays off every trip to Thailand for the rest of your life.",
+    culture:
+      "In Thailand, every interaction opens with 'Sawasdee' accompanied by the wai — palms pressed together at chest height, head bowed slightly. The wai is returned; ignoring one is rude. Add 'khrap' if you are male, 'kha' if you are female, to every sentence for politeness. The royal family is deeply revered — never joke about the King, and stand still when the national anthem plays (twice a day on TV, in cinemas, and at 8am in public spaces). Tipping is not expected but appreciated: leave 20-40 baht for good service; bellhops expect 20 baht per bag. Taxi meters are mandatory in Bangkok — insist on 'meter du' (use the meter); a driver refusing is overcharging. The head is sacred (do not touch anyone's head); the feet are the lowest part of the body (do not point them at people or Buddha images). Remove shoes before entering homes and some shops. Public displays of affection are frowned upon. 'Mai phet' means 'not spicy' — but Thai 'not spicy' is still spicy by Western standards; say 'mai phet nid noi' (not spicy at all) if you mean it.",
+    howTo:
+      "Spend three to five days on the travel deck before any trip to Thailand. Review the ten phrases with spaced repetition until recall is automatic, then drill the example dialogue out loud with a partner or a recording. Thai is a tonal language — five tones change meaning — so shadow the audio closely, copying the rise and fall rather than translating. On the trip itself, use each phrase at least once in real life; Thais are encouraging of any attempt. The ten-minute daily loop is enough; travel Thai is a finite vocabulary you can master in a week. Three concrete drills: (1) Morning — shadow the audio for two minutes, focusing on the mid-tone and falling tone, which carry most travel words; (2) Midday — run the dialogue out loud, swapping in your hotel name and destination; (3) Evening — write one sentence you will say tomorrow (e.g. 'phom tongkan ao nam' — I would like water) and rehearse it twice before bed. By day seven, use them with a stranger without translating first.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the station?", tgt: "สวัสดีครับ สถานีอยู่ที่ไหนครับ", romanization: "sawasdee khrap, sathani yu thi nai khrap" },
+      { speaker: "B", en: "Straight ahead, then left. About five minutes.", tgt: "ตรงไป แล้วเลี้ยวซ้าย ประมาณห้านาทีครับ", romanization: "trong pai, laew liew sai, praman ha nathi khrap" },
+      { speaker: "A", en: "Thank you. How much is a ticket to Bangkok?", tgt: "ขอบคุณครับ ตั๋วไปกรุงเทพเท่าไหร่ครับ", romanization: "khob khun khrap, tuai pai krungthep thao rai khrap" },
+      { speaker: "B", en: "Fifty baht. You can buy it at the counter.", tgt: "ห้าสิบบาทครับ ซื้อได้ที่เคาน์เตอร์", romanization: "ha sip bat khrap, sue dai thi counter" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the station?", tgt: "สถานีอยู่ที่ไหนครับ", romanization: "sathani yu thi nai khrap" },
+      { en: "I have a reservation under the name [X].", tgt: "ผมมีการจองชื่อ [X] ครับ", romanization: "phom mi kan jong chue [X] khrap" },
+      { en: "Could I have the bill, please?", tgt: "เช็กบิลด้วยครับ", romanization: "chek bin duai khrap" },
+      { en: "How do I get to [place]?", tgt: "ไป [place] ยังไงครับ", romanization: "pai [place] yang ngai khrap" },
+      { en: "Is there a train station nearby?", tgt: "ใกล้นี้มีสถานีรถไฟไหมครับ", romanization: "klai ni mi sathani rot fai mai khrap" },
+      { en: "I would like to check in.", tgt: "ผมอยากเช็คอินครับ", romanization: "phom yak chek in khrap" },
+      { en: "What time does the train leave?", tgt: "รถไฟออกกี่โมงครับ", romanization: "rot fai ok ki mong khrap" },
+      { en: "I'm lost. Can you help me?", tgt: "ผมหลงทางครับ ช่วยหน่อยได้ไหม", romanization: "phom long thang khrap, chuay noi dai mai" },
+      { en: "How much is a ticket to [place]?", tgt: "ตั๋วไป [place] เท่าไหร่ครับ", romanization: "tuai pai [place] thao rai khrap" },
+      { en: "Where is the bathroom?", tgt: "ห้องน้ำอยู่ที่ไหนครับ", romanization: "hong nam yu thi nai khrap" },
+    ],
+  },
+  business: {
+    title: "Business Thai — meetings, emails, follow-ups",
+    subtitle:
+      "Professional phrases for the Thai workplace: scheduling, agendas, status updates, and the polite register that earns trust.",
+    intro:
+      "Business Thai is the difference between being understood at work and being trusted at work. Thai professional life runs on hierarchy and harmony — the same fifty phrases cover ninety percent of emails, meetings, and follow-ups from Bangkok to Chiang Mai. Whether you are writing a status update to a client in Silom, opening a video call with a supplier in Rayong, or following up on a contract with a partner in Phuket, the right phrase in the right register is what makes you sound like a peer, not a foreigner. What separates business Thai from conversational Thai is not just vocabulary — it is the polite particles 'khrap' and 'kha', the formal pronouns, and the indirect, face-saving phrasing that Thai culture expects. A direct 'No' becomes 'Yom dai na khrap' (might be difficult); a blunt deadline is softened with 'Nai wa khao khun duai dai mai khrap' (could we consider within this timeframe?). LangOria's business-phrase deck is built around the ten sentences that come up in every meeting and every email chain, with politeness calibrated for Thai corporate culture where saving face matters more than speed. Master these ten phrases and you can walk into any Thai-language meeting and carry your weight — even at A2. The phrases double as templates for the email lines you write the night before.",
+    culture:
+      "Thai business culture is harmony-first: confrontation is avoided, and 'yes' may mean 'I heard you' rather than 'I agree'. Silence is not awkward — it is thinking. The wai greeting applies in business too; the junior person wais first, the senior returns it. Add 'khrap' (male) or 'kha' (female) to every sentence. Address senior colleagues as 'Khun' followed by their first name (e.g. 'Khun Somchai') — surnames are long and rarely used. Email subject lines should be clear and prefixed with the topic. The meeting often opens with personal pleasantries — skip them and you seem cold. Hierarchy is respected: the most senior person speaks first and last. 'Mai pen rai' (never mind) is the phrase that smooths over mistakes and delays — use it to show grace, not to dismiss concerns. Business cards are exchanged with the right hand or both hands, and given a moment of study before being pocketed. Avoid pointing with your feet or touching anyone's head. Friday afternoons are quiet; Buddhist holidays (especially in July) slow the calendar. Follow up meetings with a 'khop khun khrap' email summarising decisions.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Thai-language meeting. Review the ten phrases with spaced repetition until you produce them cold, then drill the email templates out loud. In real life, listen for the particles your colleagues use and mirror them — 'khrap' if you are male, 'kha' if you are female, attached to nearly every sentence. The ten-minute daily loop plus one real meeting per week is enough to reach professional working Thai in three months. Three habits to layer in: (1) Before every meeting, read the agenda once and underline the two phrases you will most likely need ('rao atan praroi pro [time]?' — can we meet at [time]?, 'chao kan ruang [project]' — update on [project]) — this is your pre-rehearsal; (2) After every meeting, write the follow-up email in Thai, even if your colleague would accept English — the writing is where the polite register locks in; (3) Once a week, rewrite in Thai one email you would normally send in English. By month three, you should reply in Thai without a translator.",
+    conversation: [
+      { speaker: "A", en: "Thank you for joining today. I have a brief agenda.", tgt: "ขอบคุณที่มาวันนี้ครับ วันนี้มีวาระสั้นๆ ครับ", romanization: "khob khun thi ma wan ni khrap, wan ni mi wara san-san khrap" },
+      { speaker: "B", en: "Sure, please go ahead.", tgt: "ครับ เชิญพูดครับ", romanization: "khrap, choen phut khrap" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "ก่อนสถานะเปิดตัว Q3 แล้วงบประมาณ สุดท้ายคำถามทั่วไปครับ", romanization: "gon sathana pet tua Q3, laew ngop praman, sutthai kham tham thang pai khrap" },
+      { speaker: "B", en: "Understood. I'll send the agenda and pre-read by email.", tgt: "เข้าใจแล้วครับ เดี๋ยวส่งวาระและเอกสารทางอีเมลครับ", romanization: "khao jai laew khrap, diao song wara lae ekkasan thang email khrap" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "เรานัดประชุมวันอังคารหน้าได้ไหมครับ", romanization: "rao nat prachum wan angkhan na dai mai khrap" },
+      { en: "Could you send me the agenda?", tgt: "ส่งวาระให้ผมได้ไหมครับ", romanization: "song wara hai phom dai mai khrap" },
+      { en: "I'll follow up via email.", tgt: "ผมจะติดตามทางอีเมลครับ", romanization: "phom cha tidtam thang email khrap" },
+      { en: "Let's touch base next week.", tgt: "สัปดาห์หน้าเราคุยกันอีกครั้งครับ", romanization: "sapda na rao khui kan ik khrang khrap" },
+      { en: "I'd like to propose a deadline of [X].", tgt: "ผมเสนอกำหนดส่ง [X] ครับ", romanization: "phom sanoe kamnon song [X] khrap" },
+      { en: "Can we move the meeting to [time]?", tgt: "ย้ายประชุมเป็นเวลา [time] ได้ไหมครับ", romanization: "yai prachum pen wela [time] dai mai khrap" },
+      { en: "What's the status on the [project]?", tgt: "โครงการ [project] เป็นยังไงบ้างครับ", romanization: "khongkan [project] pen yang ngai bang khrap" },
+      { en: "I have a question about the contract.", tgt: "ผมมีคำถามเรื่องสัญญาครับ", romanization: "phom mi kham tham rueang sanya khrap" },
+      { en: "Thank you for your time.", tgt: "ขอบคุณเวลาของคุณครับ", romanization: "khob khun wela khong khun khrap" },
+      { en: "Let's circle back on this.", tgt: "เรากลับมาคุยเรื่องนี้อีกครั้งครับ", romanization: "rao klap ma khui rueang ni ik khrang khrap" },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Thai",
+    subtitle:
+      "Ordering at a restaurant, asking about spice levels, paying the bill, and complimenting the cook — the 10 phrases every traveller needs.",
+    intro:
+      "Food is the fastest way to feel at home in Thailand, and the phrases in this deck are the ones you will use at every meal. Thai eating is social and shared — dishes arrive family-style at the centre of the table, and the script for ordering is the same whether you are at a street stall on Khao San Road, a riverside restaurant in Ayutthaya, or a mall food court in Siam Paragon. Servers in Thailand do not hover; they expect you to flag them down with a hand raised and a 'Khrap!' when you are ready. LangOria's food-phrase deck is built around the ten sentences that cover walking in, ordering, asking about spice, paying, and leaving. Each phrase is paired with audio shadowing and a culture tip on the spice scale, the sticky-rice etiquette, and why you should never pour your own drink. Thai food vocabulary is regional — what Isan calls 'som tam', the north calls its own, and the south has a curry grammar all to itself. But the ten phrases here work from Chiang Rai to Phuket. The vendor will not expect you to speak Thai; they will be delighted that you tried. Food Thai is the most rewarding ten minutes of any language course: you rehearse in the app, you use it for lunch, and the next morning the vendor remembers your order.",
+    culture:
+      "In Thailand, tipping is not expected but 20-40 baht is appreciated for good service; at street stalls, rounding up is enough. A 10% service charge is often added at hotel restaurants — check the bill. Spice levels are not optional: 'phet' means spicy, 'mai phet' means not spicy (but Thai 'not spicy' is still spicy); say 'mai phet nid noi' (not spicy at all) if you mean it, or 'phet nit noi' (a little spicy) if you are brave. Fork and spoon are the default utensils — the fork pushes food onto the spoon, which goes to the mouth; chopsticks are only for noodles. Sticky rice (khao niao) is eaten with the right hand in the north and Isan. 'Gin khao ryang?' (have you eaten yet?) is a greeting, not a question about hunger. Flag down the server with 'Khrap!' or 'Kha!' — no need to say 'excuse me'. 'chek bin duai khrap' asks for the bill. 'aroi' means delicious — complimenting the cook is warmly received. Remove shoes before entering some traditional restaurants. Never point your feet at anyone.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit in Thailand. Drill the dialogue out loud with a partner or a recording; restaurant Thai is muscle memory, not grammar. On the day, walk in with a clear script: 'sawasdee khrap' → 'to song thi nang khrap' (table for two) → 'mai phet khrap' (not spicy) → 'chek bin duai khrap' → 'aroi mak khrap' (very delicious). The ten-minute daily loop is enough; food Thai is the most rewarding ten minutes of any course. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then reproduce all ten sentences from memory; (2) Mid-meal — try one phrase you have not used, e.g. 'khao niao duai khrap' (sticky rice please) even if you are not sure what it is, to build confidence; (3) Post-meal — note the one phrase that surprised you (the spice scale? the utensil rules?) and add it to your spaced-repetition deck. By month one, handle a vendor's curveball without freezing.",
+    conversation: [
+      { speaker: "A", en: "Hello, a table for two, please.", tgt: "สวัสดีครับ โต๊ะสองที่นั่งครับ", romanization: "sawasdee khrap, to song thi nang khrap" },
+      { speaker: "B", en: "Of course. Right this way. Here is the menu.", tgt: "ครับ ทางนี้ครับ นี่เมนูครับ", romanization: "khrap, thang ni khrap, ni menu khrap" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "ขอบคุณครับ แนะนำอะไรดีครับ", romanization: "khob khun khrap, nae nam arai di khrap" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "ปลาวันนี้อร่อยมาก แพ้อะไรไหมครับ", romanization: "pla wan ni aroi mak, phae arai mai khrap" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "ขอเมนูด้วยครับ", romanization: "kho menu duai khrap" },
+      { en: "What do you recommend?", tgt: "แนะนำอะไรดีครับ", romanization: "nae nam arai di khrap" },
+      { en: "I'm allergic to [X].", tgt: "ผมแพ้ [X] ครับ", romanization: "phom phae [X] khrap" },
+      { en: "Could I have the bill, please?", tgt: "เช็กบิลด้วยครับ", romanization: "chek bin duai khrap" },
+      { en: "Is this dish spicy?", tgt: "อาหารจานนี้เผ็ดไหมครับ", romanization: "ahan chan ni phet mai khrap" },
+      { en: "I'll have [X], please.", tgt: "เอา [X] ครับ", romanization: "ao [X] khrap" },
+      { en: "Can I get this to go?", tgt: "ห่อกลับได้ไหมครับ", romanization: "ho klap dai mai khrap" },
+      { en: "Is service included?", tgt: "รวมค่าบริการแล้วหรือยังครับ", romanization: "ruam ka borikan laeo reu yang khrap" },
+      { en: "I'm a vegetarian.", tgt: "ผมกินเจครับ", romanization: "phom kin je khrap" },
+      { en: "That was delicious, thank you.", tgt: "อร่อยมากครับ ขอบคุณครับ", romanization: "aroi mak khrap, khob khun khrap" },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Thai",
+    subtitle:
+      "Greetings, introductions, hobbies, and the everyday phrases that turn strangers into friends in Thailand.",
+    intro:
+      "Small talk is the front door of Thai fluency, and in Thailand that door is always open. Thais are warm, social, and quick to smile — the five minutes you spend chatting with a tuk-tuk driver, a market vendor, or a neighbour are not filler; they are the relationship. The ten phrases in this deck are the ones that come up in every encounter: introducing yourself, asking where someone is from, talking about family, and finding common ground. Whether you are at a wedding in Chiang Mai, a conference in Bangkok, or a longboat to Koh Lipe, the script is the same — and the register is warmer than in the West. Thai small talk leans personal: you will be asked where you are from, whether you are married, and how old you are, all within minutes — none of it is rude; it is how Thais place you socially. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant, not a tourist. The first five minutes of any social encounter run on a predictable script, and the people who know that script are the ones who get invited to stay. Drill the dialogue out loud; the trick to Thai small talk is sounding warm, not perfect.",
+    culture:
+      "Thai small talk follows a warm, personal pattern: greetings (with wai), family (encouraged), hometown (always), food (the national topic), work (light), and politics (avoid — especially about Thai politics or the monarchy). 'sabai dee mai khrap?' (how are you?) is the standard opener; the expected answer is 'sabai dee khrap' (I am fine). 'khun ma jak nai khrap?' (where are you from?) is asked within minutes — have a one-line answer ready. Thais will compliment freely ('suay mak!' — very beautiful!) and you should deflect modestly ('mai chai khrap' — no, not really). The wai is the standard greeting — palms together at chest height; the junior wais first. Personal questions about age, salary, and marital status are normal, not rude — answer with grace. Avoid touching anyone's head (sacred) or pointing with your feet (lowest). 'mai pen rai' (never mind) smooths all awkwardness. 'yim' (smile) is the national currency — Thais smile for happiness, embarrassment, apology, and disagreement; learn to read the smile. Lead with 'khun' (Mr/Ms) plus first name.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to Thai small talk is sounding warm, not perfect. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'sawasdee khrap' to the cashier at 7-Eleven. Small talk is a habit, not a vocabulary, and the habit transfers across Thai regions. Three weekly habits: (1) At every social event, set the target of using one new opener — this week 'khun ma jak nai khrap?' (where are you from?), next week 'cheu arai khrap?' (what is your name?); (2) At the market or the taxi, lead with 'sawasdee khrap' and 'sabai dee mai khrap?' instead of silence — Thais respond warmly to any attempt; (3) Once a week, message someone you met recently ('pai gin khao duai gan mai?' — want to grab a meal together?) — the meal invitation is the Thai equivalent of exchanging contacts, and it converts an opener into a friendship. By month three, leave gatherings with new friends.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "สวัสดีครับ ผมชื่อ Sarah ยินดีที่ได้รู้จักครับ", romanization: "sawasdee khrap, phom chue Sarah, yin di thi dai ru jak khrap" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "ยินดีที่ได้รู้จักเช่นกัน ผม David ทำงานอะไรครับ", romanization: "yin di thi dai ru jak chen gan, phom David, tham ngan arai khrap" },
+      { speaker: "A", en: "I'm a software engineer. And you?", tgt: "ผมเป็นวิศวกรซอฟต์แวร์ แล้วคุณล่ะครับ", romanization: "phom pen witsawakan software, laew khun la khrap" },
+      { speaker: "B", en: "I work in marketing. Do you have any hobbies?", tgt: "ทำงานการตลาด มีงานอดิเรกอะไรไหมครับ", romanization: "tham ngan kan talat, mi ngan adirek arai mai khrap" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "สวัสดีครับ ผมชื่อ [X] ยินดีที่ได้รู้จักครับ", romanization: "sawasdee khrap, phom chue [X], yin di thi dai ru jak khrap" },
+      { en: "What do you do for a living?", tgt: "ทำงานอะไรครับ", romanization: "tham ngan arai khrap" },
+      { en: "Where are you from?", tgt: "คุณมาจากไหนครับ", romanization: "khun ma jak nai khrap" },
+      { en: "What are your hobbies?", tgt: "มีงานอดิเรกอะไรบ้างครับ", romanization: "mi ngan adirek arai bang khrap" },
+      { en: "Have you seen any good films lately?", tgt: "ช่วงนี้ดูหนังอะไรดีบ้างไหมครับ", romanization: "chuang ni du nang arai di bang mai khrap" },
+      { en: "How was your weekend?", tgt: "สุดสัปดาห์เป็นยังไงบ้างครับ", romanization: "sut sapda pen yang ngai bang khrap" },
+      { en: "Do you have plans for the weekend?", tgt: "สุดสัปดาห์นี้มีโปรแกรมอะไรไหมครับ", romanization: "sut sapda ni mi program arai mai khrap" },
+      { en: "What kind of music do you like?", tgt: "ชอบเพลงแนวไหนครับ", romanization: "chop pleng nae nai khrap" },
+      { en: "It's nice weather today, isn't it?", tgt: "วันนี้อากาศดีใช่ไหมครับ", romanization: "wan ni akat di chai mai khrap" },
+      { en: "It was lovely talking to you.", tgt: "คุยกับคุณสนุกดีครับ", romanization: "khui kap khun sanuk di khrap" },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Cantonese (Yue) scenarios. Traditional Chinese characters throughout;
+// romanization uses Jyutping with tone numbers (1-9, where 7-9 share the
+// contours of 1-3). Register is casual Hong Kong Cantonese with the
+// natural English code-switching that defines corporate Hong Kong speech.
+// ---------------------------------------------------------------------------
+
+const SCENARIOS_YUE: Record<ScenarioKey, ScenarioContent> = {
+  travel: {
+    title: "Travel phrases in Cantonese — airport, hotel, directions",
+    subtitle:
+      "The 10 Cantonese phrases that get you through 95% of any trip to Hong Kong or Guangdong, with audio and example dialogues.",
+    intro:
+      "Travel Cantonese is the highest-leverage Cantonese you will ever learn. The same fifty phrases get you through Hong Kong International Airport, the hotel in Central, the Star Ferry across Victoria Harbour, and the MTR from Kowloon to the New Territories. Whether you are landing in Chek Lap Kok, riding the Airport Express to Hong Kong Station, or taking the high-speed rail to Guangzhou, the practical Cantonese of travel is the same — and speaking even a few words of it changes the way Hongkongers treat you. Cantonese is not Mandarin; it has nine tones, a different vocabulary, and a culture of directness that catches visitors off guard. LangOria's travel-phrase deck is built around the ten sentences you actually need at the airport, the hotel front desk, the MTR station, and the street corner where the map has failed you. Each phrase is paired with audio shadowing, an example dialogue, and a culture tip that tells you when to add 'aa' for softness and when to be direct. The same ten phrases get you through taxi rides, market shopping, pharmacy runs, and the small emergencies of being a stranger in Hong Kong. A week of the ten-minute daily loop is enough to internalise them — and that single week pays off every trip for the rest of your life.",
+    culture:
+      "In Hong Kong, service is fast and interactions are brief — a nod and 'm4 goi1' (thank you / excuse me) is the social lubricant. Cantonese culture values efficiency; long pleasantries are not expected. Add 'aa3' at the end of sentences to soften them ('hai6 mai6 aa3' — isn't it). Tipping is not standard — restaurants add a 10% service charge; bellhops may expect HK$10-20. The MTR is the backbone of Hong Kong transport — get an Octopus card (baat3 daa3), tap in and out, and it works on buses, ferries, and convenience stores too. Hong Kong has a strong queueing culture — never cut a line. Red minibuses (red top) are fixed-route but you hail them and pay cash; green minibuses are scheduled. Restaurant water may be hot or cold; ask for 'bing1 seoi2' (ice water) if you want cold. Avoid the number four (sei3, homophone for 'death') in gifts. Street addresses use building names more than numbers. English is widely spoken in Central and tourist areas, but Cantonese wins warmth in local neighbourhoods, dai pai dong stalls, and wet markets. 'm4 goi1' is thank you for a service; 'do1 ze6' is thank you for a gift.",
+    howTo:
+      "Spend three to five days on the travel deck before any trip to Hong Kong or Guangdong. Review the ten phrases with spaced repetition until recall is automatic, then drill the example dialogue out loud with a partner or a recording. Cantonese is tonal — nine tones — so shadow the audio closely, copying the melody rather than reading the characters. On the trip itself, use each phrase at least once in real life; Hongkongers are encouraging of any attempt and often switch to English to help. The ten-minute daily loop is enough; travel Cantonese is a finite vocabulary you can master in a week. Three concrete drills: (1) Morning — shadow the audio for two minutes, focusing on the high-level and mid-rising tones, which carry most travel words; (2) Midday — run the dialogue out loud, swapping in your hotel name and MTR stop; (3) Evening — write one sentence you will say tomorrow (e.g. 'ngo5 soeng2 heoi3 [place]') and rehearse it twice before bed. By day seven, use them with a stranger without translating first.",
+    conversation: [
+      { speaker: "A", en: "Excuse me, where is the station?", tgt: "唔該,車站喺邊度呀?", romanization: "m4 goi1, ce1 zaam6 hai2 bin1 dou6 aa3" },
+      { speaker: "B", en: "Straight ahead, then left. About five minutes' walk.", tgt: "直行,然後轉左,行五分鐘到。", romanization: "zik6 haang4, jin4 hau6 zyun3 zo2, haang4 ng5 fan1 zung1 dou3" },
+      { speaker: "A", en: "Thank you. How much is a ticket to Central?", tgt: "唔該。去中環幾多錢呀?", romanization: "m4 goi1, heoi3 zung1 waan4 gei2 do1 cin4 aa3" },
+      { speaker: "B", en: "Fifteen dollars. You can buy it at the machine.", tgt: "十五蚊。喺部機度買到。", romanization: "sap6 ng5 man1, hai2 bou6 gei1 dou6 maai5 dou3" },
+    ],
+    phrases: [
+      { en: "Excuse me, where is the station?", tgt: "唔該,車站喺邊度呀?", romanization: "m4 goi1, ce1 zaam6 hai2 bin1 dou6 aa3" },
+      { en: "I have a reservation under the name [X].", tgt: "我訂咗房,名叫 [X]。", romanization: "ngo5 ding3 zo2 fong2, ming4 giu3 [X]" },
+      { en: "Could I have the bill, please?", tgt: "唔該埋單。", romanization: "m4 goi1 maai4 daan1" },
+      { en: "How do I get to [place]?", tgt: "去 [place] 點行呀?", romanization: "heoi3 [place] dim2 haang4 aa3" },
+      { en: "Is there a train station nearby?", tgt: "附近有冇車站呀?", romanization: "fu6 gan6 jau5 mou5 ce1 zaam6 aa3" },
+      { en: "I would like to check in.", tgt: "我想 check in。", romanization: "ngo5 soeng2 check in" },
+      { en: "What time does the train leave?", tgt: "火車幾點開呀?", romanization: "fo2 ce1 gei2 dim2 hoi1 aa3" },
+      { en: "I'm lost. Can you help me?", tgt: "我蕩失路,可唔可以幫我呀?", romanization: "ngo5 dong6 sat1 lou6, ho2 m4 ho2 ji5 bong1 ngo5 aa3" },
+      { en: "How much is a ticket to [place]?", tgt: "去 [place] 幾多錢呀?", romanization: "heoi3 [place] gei2 do1 cin4 aa3" },
+      { en: "Where is the bathroom?", tgt: "洗手間喺邊度呀?", romanization: "sai2 sau2 gaan1 hai2 bin1 dou6 aa3" },
+    ],
+  },
+  business: {
+    title: "Business Cantonese — meetings, emails, follow-ups",
+    subtitle:
+      "Professional phrases for the Hong Kong and Guangdong workplace: scheduling, agendas, status updates, and the direct register that earns trust.",
+    intro:
+      "Business Cantonese is the difference between being understood at work and being trusted at work. Hong Kong professional life runs on speed and directness — the same fifty phrases cover ninety percent of meetings, emails, and follow-ups from Central to Kwun Tong. Whether you are writing a status update to a client in Admiralty, opening a video call with a supplier in Shenzhen, or following up on a contract with a partner in Guangzhou, the right phrase in the right register is what makes you sound like a peer, not a foreigner. What separates business Cantonese from conversational Cantonese is not just vocabulary — it is the clipped, efficient phrasing that Hongkongers expect, and the English code-switching that defines corporate Cantonese (send email, follow up, meeting all enter the language as loanwords). A direct 'No' is acceptable in Cantonese culture; a blunt 'm4 dak1' (can't) is more respectful than a vague maybe. LangOria's business-phrase deck is built around the ten sentences that come up in every meeting and every email chain, with politeness calibrated for Hong Kong's fast-paced, mixed-language corporate culture. Master these ten phrases and you can walk into any Cantonese-language meeting and carry your weight — even at A2. The phrases double as templates for the email lines you write the night before.",
+    culture:
+      "Hong Kong business culture is fast and direct — clarity is a virtue, and small talk is brief. Meetings open with a quick 'saan1 zan1' (good morning) and dive into the agenda; long pleasantries read as time-wasting. Code-switching between Cantonese and English is the norm in corporate Hong Kong — 'send go email', 'follow up', 'meeting' all enter Cantonese sentences unchanged. Email subject lines should be specific and often include the action required. Hierarchy is respected but less rigid than in Japan; first names are common in foreign firms, 'sing1 saang1' (Mr) or 'neoi5 si2' (Ms) plus surname in local firms. Business cards are exchanged with both hands and a slight bow. The 10% service charge is standard at business lunches; tipping extra is not expected. Lunch is quick — 45 minutes to an hour, often at a cha chaan teng. Follow up meetings with a 'daam3 ting4' (as agreed) email — Hongkongers value the written record. 'm4 goi1' is thank you for service; 'do1 ze6' is thank you for a gift. Avoid the number four in pricing. Hong Kong runs on WhatsApp for business; WeChat is for Mainland contacts.",
+    howTo:
+      "Spend five to seven days on the business deck before your first Cantonese-language meeting. Review the ten phrases with spaced repetition until you produce them cold, then drill the email templates out loud. In real life, listen for the register your colleagues use and mirror it — code-switch to English for technical terms, as Hongkongers do. The ten-minute daily loop plus one real meeting per week is enough to reach professional working Cantonese in three months. Three habits to layer in: (1) Before every meeting, read the agenda once and underline the two phrases you will most likely need ('saan1 zan1, tau4 gaa1' — good morning, everyone; 'ngoi6 zyu6 follow up' — I'll follow up later) — this is your pre-rehearsal; (2) After every meeting, write the follow-up email in Cantonese (code-switched where natural), even if your colleague would accept English — the writing is where the register locks in; (3) Once a week, rewrite in Cantonese one email you would normally send in English. By month three, you should reply in Cantonese without a translator. Record yourself once a week to catch tone errors.",
+    conversation: [
+      { speaker: "A", en: "Thank you all for coming. I have a brief agenda today.", tgt: "多謝大家嚟。今日有個簡短議程。", romanization: "do1 ze6 daai6 gaa1 lai4, gam1 jat6 jau5 go3 gaan2 dyun5 ji5 cing4" },
+      { speaker: "B", en: "Sure, go ahead.", tgt: "好,你講啦。", romanization: "hou2, nei5 gong2 laa1" },
+      { speaker: "A", en: "First, the Q3 launch status. Then, the budget. Finally, open questions.", tgt: "首先,Q3 上線情況;然後,預算;最後,自由發問。", romanization: "sau2 sin1, Q3 soeng5 sin3 cing4 fong2, jin4 hau6, jyu6 syun3, zeoi3 hau6, zi6 jau4 faat3 man6" },
+      { speaker: "B", en: "Understood. I'll send the agenda and pre-read by email.", tgt: "明白。我會電郵議程同會前資料俾你。", romanization: "ming4 baak6, ngo5 wui5 din6 jau4 ji5 cing4 tung4 wui6 cin4 zi1 liu2 bei2 nei5" },
+    ],
+    phrases: [
+      { en: "Let's schedule a meeting for next Tuesday.", tgt: "我哋約下星期二開會啦。", romanization: "ngo5 dei6 joek3 haa6 sing1 kei4 ji6 hoi1 wui2 laa1" },
+      { en: "Could you send me the agenda?", tgt: "可唔可以傳個議程俾我?", romanization: "ho2 m4 ho2 ji5 cyun4 go3 ji5 cing4 bei2 ngo5" },
+      { en: "I'll follow up via email.", tgt: "我會電郵跟進。", romanization: "ngo5 wui5 din6 jau4 gan1 zeon3" },
+      { en: "Let's touch base next week.", tgt: "下星期我哋再傾。", romanization: "haa6 sing1 kei4 ngo5 dei6 zoi3 king1" },
+      { en: "I'd like to propose a deadline of [X].", tgt: "我想建議死線定喺 [X]。", romanization: "ngo5 soeng2 gin3 ji5 sei2 sin3 ding6 hai2 [X]" },
+      { en: "Can we move the meeting to [time]?", tgt: "會議可唔可以改到 [time]?", romanization: "wui6 ji5 ho2 m4 ho2 ji5 goi2 dou3 [time]" },
+      { en: "What's the status on the [project]?", tgt: "[project] 而家點呀?", romanization: "[project] ji4 gaa1 dim2 aa3" },
+      { en: "I have a question about the contract.", tgt: "我想問關於份合約嘅嘢。", romanization: "ngo5 soeng2 man6 gwaan1 jyu1 fan6 hap6 joek3 ge3 je5" },
+      { en: "Thank you for your time.", tgt: "多謝你嘅時間。", romanization: "do1 ze6 nei5 ge3 si4 gaan3" },
+      { en: "Let's circle back on this.", tgt: "我哋遲啲再傾呢件事。", romanization: "ngo5 dei6 ci4 di1 zoi3 king1 ni1 gin6 si6" },
+    ],
+  },
+  food: {
+    title: "Food & restaurant phrases in Cantonese",
+    subtitle:
+      "Ordering at a cha chaan teng, asking about ingredients, paying the bill, and complimenting the chef — the 10 phrases every traveller needs.",
+    intro:
+      "Food is the fastest way to feel at home in Hong Kong, and the phrases in this deck are the ones you will use at every meal. Cantonese food culture is legendary — from the cha chaan teng serving pineapple buns and milk tea to the dim sum cart steaming har gow and siu mai, the script for ordering is fast, direct, and unmistakably local. Servers in Hong Kong do not hover; they expect you to flag them down with a raised hand and a loud 'm4 goi1!' when you are ready, and they move at speed. LangOria's food-phrase deck is built around the ten sentences that cover walking in, ordering, asking about ingredients, paying, and leaving. Each phrase is paired with audio shadowing and a culture tip on yum cha etiquette, the tea-pouring ritual, and why you should never stick your chopsticks upright in your rice. Cantonese food vocabulary is specific — 'yum cha' (drink tea and eat dim sum) is not the same as lunch; 'dai pai dong' (open-air stall) is not the same as a restaurant. But the ten phrases here work from Central to Sham Shui Po. Food Cantonese is the most rewarding ten minutes of any language course: you rehearse in the app, you use it for lunch, and the next morning the cha chaan teng aunty remembers your order.",
+    culture:
+      "In Hong Kong, a 10% service charge is added to most restaurant bills; tipping extra is not expected but leaving small change is appreciated. At cha chaan tengs and dai pai dongs, no service charge — just pay the bill. Yum cha (dim sum) has its own ritual: the server marks your card with a stamp for each dish; tea is poured for others before yourself — tap two fingers on the table to say thank you without speaking. 'm4 goi1' is thank you for service; 'do1 ze6' is thank you for a gift or compliment. Flag down the server with 'm4 goi1!' — no need for 'excuse me'. 'maai4 daan1' asks for the bill. Chopsticks: never stick them upright in rice (a funeral offering); rest them on the chopstick rest. 'daai1 paau1' means takeaway. Hot water is provided to wash your utensils at many restaurants. Dietaries: 'ngo5 sik6 sou3' (I am vegetarian) — vegetarianism is less common in Cantonese cuisine, so be specific. 'bing1 seoi2' is ice water. 'hou2 mei6' means delicious — complimenting the cook is warmly received. Tea refills are free — just leave the lid of the teapot open to signal.",
+    howTo:
+      "Spend two to three days on the food deck before any restaurant visit in Hong Kong. Drill the dialogue out loud with a partner or a recording; restaurant Cantonese is muscle memory, not grammar. On the day, walk in with a clear script: 'm4 goi1, [X] wai2' (table for [X]) → 'ngo5 soeng2 jam2 caa4' (I want yum cha / dim sum) → 'ngo5 jiu3 [X]' (I'll have [X]) → 'maai4 daan1' (the bill) → 'hou2 mei6' (delicious). The ten-minute daily loop is enough; food Cantonese is the most rewarding ten minutes of any course. Three concrete drills: (1) Pre-meal — open the deck and listen to the audio twice, then reproduce all ten sentences from memory; (2) Mid-meal — try one phrase you have not used, e.g. 'ni1 go3 hai6 me1 aa3?' (what is this?) even if you can guess, to build confidence with the server; (3) Post-meal — note the one phrase that surprised you (the tea-tap? the chopstick rule?) and add it to your spaced-repetition deck. By month one, handle a server's curveball without freezing.",
+    conversation: [
+      { speaker: "A", en: "Hello, a table for two, please.", tgt: "唔該,兩位。", romanization: "m4 goi1, loeng5 wai2" },
+      { speaker: "B", en: "Of course. Right this way. Here is the menu.", tgt: "好,呢邊請。呢度係餐牌。", romanization: "hou2, ni1 bin1 cing2, ni1 dou6 hai6 caan1 paai4" },
+      { speaker: "A", en: "Thank you. What do you recommend?", tgt: "唔該。有咩好介紹?", romanization: "m4 goi1, jau5 me1 hou2 gaai3 siu6" },
+      { speaker: "B", en: "The fish is excellent today. Are you allergic to anything?", tgt: "今日條魚好好。有冇嘢食唔到呀?", romanization: "gam1 jat6 tiu4 jyu4 hou2 hou2, jau5 mou5 je5 sik6 m4 dou3 aa3" },
+    ],
+    phrases: [
+      { en: "Could I see the menu, please?", tgt: "唔該畀餐牌我睇。", romanization: "m4 goi1 bei2 caan1 paai4 ngo5 tai2" },
+      { en: "What do you recommend?", tgt: "有咩好介紹?", romanization: "jau5 me1 hou2 gaai3 siu6" },
+      { en: "I'm allergic to [X].", tgt: "我對 [X] 過敏。", romanization: "ngo5 deoi3 [X] gwo3 man5" },
+      { en: "Could I have the bill, please?", tgt: "唔該埋單。", romanization: "m4 goi1 maai4 daan1" },
+      { en: "Is this dish spicy?", tgt: "呢味辣唔辣呀?", romanization: "ni1 mei6 laat6 m4 laat6 aa3" },
+      { en: "I'll have [X], please.", tgt: "我要 [X]。", romanization: "ngo5 jiu3 [X]" },
+      { en: "Can I get this to go?", tgt: "可唔可以打包?", romanization: "ho2 m4 ho2 ji5 daai1 baau1" },
+      { en: "Is service included?", tgt: "包唔包服務費?", romanization: "baau1 m4 baau1 fuk6 mou6 fai3" },
+      { en: "I'm a vegetarian.", tgt: "我食素。", romanization: "ngo5 sik6 sou3" },
+      { en: "That was delicious, thank you.", tgt: "好好味,多謝。", romanization: "hou2 hou2 mei6, do1 ze6" },
+    ],
+  },
+  "small-talk": {
+    title: "Small talk & introductions in Cantonese",
+    subtitle:
+      "Greetings, introductions, hobbies, and the everyday phrases that turn strangers into friends in Hong Kong and Guangdong.",
+    intro:
+      "Small talk is the front door of Cantonese fluency, and in Hong Kong that door opens quickly. Hongkongers are social but efficient — the five minutes you spend chatting with a taxi driver, a market vendor, or a colleague are not filler; they are the relationship, but they run at Hong Kong speed. The ten phrases in this deck are the ones that come up in every encounter: introducing yourself, asking where someone is from, talking about work, and finding common ground. Whether you are at a wedding in Tsim Sha Tsui, a conference in Wan Chai, or a hike on Lantau Peak, the script is the same — and the register is direct, warm, and quick. Cantonese small talk leans practical: you will be asked what you do, where you live, and whether you have eaten — all within minutes. LangOria's small-talk deck is built around the ten sentences that make you sound like a participant, not a tourist. The first five minutes of any social encounter run on a predictable script, and the people who know that script are the ones who get invited to yum cha. Drill the dialogue out loud; the trick to Cantonese small talk is sounding direct, not formal.",
+    culture:
+      "Hong Kong small talk follows a quick, practical pattern: greetings (brief), work (allowed), hometown (always), food (the national topic), and money or politics (avoid — Hong Kong politics especially). 'sik6 zo2 mei6 aa3?' (have you eaten?) is a greeting, not a question about hunger — the answer is 'sik6 zo2 laa1' (yes, I have). 'nei5 hai2 bin1 dou6 lei4 ge3?' (where are you from?) is asked within minutes. Hongkongers compliment freely ('hou2 leng3 aa3!' — so pretty!) and you can accept with a quick 'm4 hai6 aa3' (not really) or 'do1 ze6' (thanks). Handshakes are standard in business; among friends, a nod or wave. Personal questions about salary are ruder than in Thailand but age is fine. 'dim2 aa3?' (how's it going?) is the universal opener. Weather is a safe topic — typhoons especially. Avoid the number four. 'loi4 daai6' (come again) is the warm sign-off. Code-switching to English is normal and not pretentious — 'anyway', 'actually', 'so' all enter Cantonese sentences. Lead with 'sing1 saang1' (Mr) or 'neoi5 si2' (Ms) plus surname in formal settings.",
+    howTo:
+      "Spend three to five days on the small-talk deck. Drill the dialogue out loud with a partner or a recording; the trick to Cantonese small talk is sounding direct, not formal. The ten-minute daily loop is enough — but use at least one phrase in real life every day, even if it is just 'saan1 zan1' (good morning) to the barista. Small talk is a habit, not a vocabulary, and the habit transfers across Hong Kong and Guangdong. Three weekly habits: (1) At every social event, set the target of using one new opener — this week 'nei5 hai2 bin1 dou6 lei4 ge3?' (where are you from?), next week 'nei5 zou6 me1 gung1 zok3 ge3?' (what do you do?); (2) At the taxi or the lift, lead with 'saan1 zan1' instead of silence — Hongkongers respond to a friendly opener; (3) Once a week, message someone you met recently ('hou2 hoi1 sam1 gin3 dou3 nei5 — gin1 zung1 jam2 caa4 aa3?' — nice to meet you, want to grab tea?) — the yum cha invitation is the Hong Kong equivalent of exchanging contacts. By month three, leave gatherings with new friends.",
+    conversation: [
+      { speaker: "A", en: "Hi, my name is Sarah. Nice to meet you.", tgt: "你好,我叫 Sarah,好高興認識你。", romanization: "nei5 hou2, ngo5 giu3 Sarah, hou2 gou1 hing3 jing6 sik1 nei5" },
+      { speaker: "B", en: "Nice to meet you too. I'm David. What do you do?", tgt: "我都係。我叫 David。你做咩㗎?", romanization: "ngo5 dou1 hai6, ngo5 giu3 David, nei5 zou6 me1 gaa3" },
+      { speaker: "A", en: "I'm a software engineer. And you?", tgt: "我做軟件工程師。你呢?", romanization: "ngo5 zou6 jyun5 gin6 gung1 cing4 si1, nei5 ne1" },
+      { speaker: "B", en: "I work in marketing. Have you seen any good films lately?", tgt: "我做市場。最近有冇睇咩好戲呀?", romanization: "ngo5 zou6 si5 coeng4, zeoi3 gan6 jau5 mou5 tai2 me1 hou2 hei3 aa3" },
+    ],
+    phrases: [
+      { en: "Hi, my name is [X]. Nice to meet you.", tgt: "你好,我叫 [X],好高興認識你。", romanization: "nei5 hou2, ngo5 giu3 [X], hou2 gou1 hing3 jing6 sik1 nei5" },
+      { en: "What do you do for a living?", tgt: "你做咩㗎?", romanization: "nei5 zou6 me1 gaa3" },
+      { en: "Where are you from?", tgt: "你喺邊度嚟㗎?", romanization: "nei5 hai2 bin1 dou6 lei4 gaa3" },
+      { en: "What are your hobbies?", tgt: "你有咩嗜好?", romanization: "nei5 jau5 me1 si3 hou3" },
+      { en: "Have you seen any good films lately?", tgt: "最近有冇睇咩好戲呀?", romanization: "zeoi3 gan6 jau5 mou5 tai2 me1 hou2 hei3 aa3" },
+      { en: "How was your weekend?", tgt: "週末過得點呀?", romanization: "zau1 mut6 gwo3 dak1 dim2 aa3" },
+      { en: "Do you have plans for the weekend?", tgt: "週末有咩安排呀?", romanization: "zau1 mut6 jau5 me1 on3 paai4 aa3" },
+      { en: "What kind of music do you like?", tgt: "你鍾意咩音樂?", romanization: "nei5 zung1 ji3 me1 jam1 ngok6" },
+      { en: "It's nice weather today, isn't it?", tgt: "今日天氣好好,係咪?", romanization: "gam1 jat6 tin1 hei3 hou2 hou2, hai6 mai6" },
+      { en: "It was lovely talking to you.", tgt: "同你傾偈好開心。", romanization: "tung4 nei5 king1 gai2 hou2 hoi1 sam1" },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
 // Public lookup: url-slug (lang, scenario) → content.
 // The lang param is the URL_SLUG_TO_DATA key (e.g. "english", "japanese").
 // ---------------------------------------------------------------------------
@@ -991,6 +1369,9 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
   spanish: SCENARIOS_ES,
   french: SCENARIOS_FR,
   german: SCENARIOS_DE,
+  italian: SCENARIOS_IT,
+  thai: SCENARIOS_TH,
+  cantonese: SCENARIOS_YUE,
 };
 
 /** Languages that currently have scenario content shipped. */

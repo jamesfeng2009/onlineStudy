@@ -66,14 +66,14 @@ export default function LearnLangPage() {
         subtitle="Pick a language to start learning. Each course is hand-curated with native-speaker audio and a 10-minute daily loop."
       >
         <Seo
-          title="Learn a Language Online — 7 Languages from A1 to C1 | LangOria"
-          description="Pick from English, Japanese, Chinese, Korean, Spanish, French, or German. Spaced-repetition vocabulary, native-speaker audio, and a 10-minute daily practice loop."
+          title="Learn a Language Online — 10 Languages from A1 to C2 | LangOria"
+          description="Pick from English, Japanese, Chinese, Korean, Spanish, French, German, Italian, Thai, or Cantonese. Spaced-repetition vocabulary, native-speaker audio, and a 10-minute daily practice loop."
           pathname="/languages"
         />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {ALL_URL_SLUGS.map(({ data, url }) => {
             const m = LEARN_LANG_META[data];
-            const wordCount = data === "en" ? "961" : data === "ja" ? "762" : data === "zh" ? "984" : "200+";
+            const wordCount = data === "en" ? "961" : data === "ja" ? "762" : data === "zh" ? "984" : data === "ko" || data === "es" || data === "fr" || data === "de" ? "200+" : "50";
             return (
               <Link
                 key={data}
@@ -328,6 +328,9 @@ const DESCRIPTIONS: Record<LearnLangSlug, string> = {
   es: "Practical sentence pairs from native Spanish speakers, with vocabulary organised by frequency.",
   fr: "Practical sentence pairs from native French speakers, with vocabulary organised by frequency.",
   de: "Practical sentence pairs from native German speakers, with vocabulary organised by frequency.",
+  it: "Practical sentence pairs from native Italian speakers, covering daily life, travel, and food.",
+  th: "Practical sentence pairs in Thai script, covering greetings, shopping, and daily life in Thailand.",
+  yue: "Practical Cantonese sentence pairs in traditional characters, covering food, travel, and daily life in Hong Kong.",
 };
 
 function pickCopy(slug: LearnLangSlug) {
@@ -501,6 +504,93 @@ function pickCopy(slug: LearnLangSlug) {
         {
           q: "Which German does LangOria teach?",
           a: "LangOria teaches Standard German (Hochdeutsch), which is the standard form used in Germany and understood across all German-speaking regions. If you need Austrian German or Swiss German specifically, supplement with region-specific listening practice.",
+        },
+      ],
+    };
+  }
+  if (slug === "it") {
+    return {
+      title: "Learn Italian online — sentence-pair drills from native speakers",
+      lead:
+        "Learn Italian on LangOria with practical sentence pairs from native speakers, spaced repetition scheduling, and audio shadowing for the natural melody of Italian.",
+      whoFor:
+        "Italian is the language of art, music, food, and design — spoken by 85 million people worldwide and the key to experiencing Italy beyond the tourist surface. Whether you are planning a trip to Rome, learning for heritage reasons, or drawn to Italian cinema and cuisine, LangOria's Italian course gives you the sentence patterns native speakers actually use in everyday conversation.",
+      method:
+        "We start with 50 hand-curated sentence pairs covering greetings, travel, food, and daily life, then layer in new vocabulary each week. Spaced repetition keeps recall above 90% across reviews, and audio shadowing trains you to match the musical intonation that makes Italian one of the most pleasant languages to listen to.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational Italian on LangOria?",
+          a: "Most beginners reach A2 (basic travel Italian) after about 2-3 months of consistent 10-minute daily practice. B1 (conversational Italian) typically takes 5-7 months. Italian is one of the easier languages for English speakers due to shared Latin vocabulary.",
+        },
+        {
+          q: "Which Italian dialect does LangOria teach?",
+          a: "LangOria teaches Standard Italian, the official language used in education, media, and business throughout Italy. All sentence pairs are in standard Italian, which is understood everywhere from Milan to Palermo.",
+        },
+        {
+          q: "Do I need to learn Italian grammar rules first?",
+          a: "LangOria's sentence-pair approach teaches grammar in context — you absorb verb conjugations and gendered articles naturally through exposure. For deeper grammar study, pair LangOria with a basic Italian grammar reference.",
+        },
+        {
+          q: "Is Italian useful outside of Italy?",
+          a: "Yes — Italian is an official language in Switzerland, San Marino, and Vatican City, and has significant speaker communities in Argentina, the US, and Canada. It is also the language of opera, classical music terminology, and culinary arts worldwide.",
+        },
+      ],
+    };
+  }
+  if (slug === "th") {
+    return {
+      title: "Learn Thai online — sentence-pair drills with Thai script and romanization",
+      lead:
+        "Learn Thai on LangOria with practical sentence pairs in Thai script, romanization for every sentence, and audio shadowing for the five tones of Thai.",
+      whoFor:
+        "Thai is the gateway to Southeast Asia — spoken by 60 million people in Thailand and understood across the region. Whether you are traveling to Bangkok, retiring in Chiang Mai, doing business in Thailand, or connecting with Thai family, LangOria's Thai course gives you the sentence patterns that matter in real Thai conversation, with romanization so you can start speaking before you master the script.",
+      method:
+        "We start with 50 hand-curated sentence pairs covering greetings, shopping, food, and travel — each with Thai script and romanization so you can read and pronounce every sentence from day one. Spaced repetition keeps recall above 90%, and audio shadowing trains your ear to the five tones that distinguish meaning in Thai.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational Thai on LangOria?",
+          a: "Most beginners reach A2 (basic travel Thai) after about 3-4 months of consistent 10-minute daily practice. Thai tones take extra practice — expect 6+ months for comfortable B1 conversation.",
+        },
+        {
+          q: "Do I need to learn Thai script?",
+          a: "LangOria shows both Thai script and romanization for every sentence, so you can start learning immediately without mastering the alphabet. However, learning Thai script (about 44 consonants and 32 vowels) will significantly improve your reading ability and is recommended after the first month.",
+        },
+        {
+          q: "Are Thai tones really that important?",
+          a: "Yes — Thai has five tones (mid, low, falling, high, rising) that change word meaning. For example, 'mai' can mean 'new', 'no', 'silk', 'burn', or 'wood' depending on the tone. LangOria's audio shadowing drills train your ear to distinguish tones naturally.",
+        },
+        {
+          q: "Which Thai does LangOria teach — formal or casual?",
+          a: "LangOria teaches Central Thai, the standard dialect used in Bangkok, media, and education. Sentence pairs include polite particles (khrap/kha) so you can adjust register naturally. The vocabulary is understood across all Thai dialects.",
+        },
+      ],
+    };
+  }
+  if (slug === "yue") {
+    return {
+      title: "Learn Cantonese online — sentence-pair drills with Jyutping romanization",
+      lead:
+        "Learn Cantonese on LangOria with practical sentence pairs in traditional Chinese characters, Jyutping romanization for every sentence, and audio shadowing for the nine tones of Cantonese.",
+      whoFor:
+        "Cantonese is the language of Hong Kong, Macau, and the global Cantonese diaspora — spoken by 85 million people worldwide. Whether you are doing business in Hong Kong, connecting with family, watching Hong Kong cinema, or exploring the food culture of Guangdong, LangOria's Cantonese course gives you authentic sentence pairs in the language people actually speak on the streets of Hong Kong.",
+      method:
+        "We start with 50 hand-curated sentence pairs covering greetings, food, travel, and daily life — each in traditional Chinese characters with Jyutping romanization so you can pronounce every sentence correctly from day one. Spaced repetition keeps recall above 90%, and audio shadowing trains your ear to the nine tones that give Cantonese its distinctive musical quality.",
+      faq: [
+        {
+          q: "How long does it take to reach conversational Cantonese on LangOria?",
+          a: "Most beginners reach A2 (basic travel Cantonese) after about 3-4 months of consistent 10-minute daily practice. Cantonese tones are challenging — expect 8+ months for comfortable B1 conversation.",
+        },
+        {
+          q: "Is Cantonese the same as Mandarin?",
+          a: "No — Cantonese and Mandarin are mutually unintelligible spoken languages that share the same writing system (with traditional vs simplified characters). Cantonese has nine tones (vs Mandarin's four), different vocabulary, and different grammar. If you already speak Mandarin, Cantonese is easier to learn but still requires significant study.",
+        },
+        {
+          q: "Does LangOria teach traditional or simplified characters?",
+          a: "LangOria teaches traditional Chinese characters (繁體字), which are used in Hong Kong, Macau, and Taiwan. This is the standard for Cantonese — Hong Kong signage, newspapers, and official documents all use traditional characters.",
+        },
+        {
+          q: "What is Jyutping?",
+          a: "Jyutping (粤拼) is the standard romanization system for Cantonese, developed by the Linguistic Society of Hong Kong. It uses numbers to mark tones (1-9) and Latin letters for sounds. LangOria shows Jyutping for every sentence so you can pronounce Cantonese correctly even before you can read the characters.",
         },
       ],
     };

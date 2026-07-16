@@ -244,7 +244,7 @@ export default function HomePage() {
       <section id="languages" className="mt-20">
         <div className="mb-8 max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-            <Globe2 className="h-3.5 w-3.5 text-sky-300" /> 7 languages
+            <Globe2 className="h-3.5 w-3.5 text-sky-300" /> 10 languages
           </div>
           <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
             {t("home.languages.choose")}

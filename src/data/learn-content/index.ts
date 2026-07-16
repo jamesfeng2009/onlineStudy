@@ -23,12 +23,15 @@ export const LEARN_CONTENT_LOADERS = {
   es: () => import("./es").then((m) => m.ES_WORDS),
   fr: () => import("./fr").then((m) => m.FR_WORDS),
   de: () => import("./de").then((m) => m.DE_WORDS),
+  it: () => import("./it").then((m) => m.IT_WORDS),
+  th: () => import("./th").then((m) => m.TH_WORDS),
+  yue: () => import("./yue").then((m) => m.YUE_WORDS),
 } as const;
 
 export type LearnLangSlug = keyof typeof LEARN_CONTENT_LOADERS;
 
 /**
- * UI labels for the 7 supported target languages. Two groups:
+ * UI labels for the 10 supported target languages. Two groups:
  *   - Word-level data (en, ja, zh) — from dictionary corpora
  *   - Sentence-pair data (ko, es, fr, de) — from Tatoeba, no word
  *     dictionary available. The "word" field for these is a short
@@ -51,6 +54,9 @@ export const LEARN_LANG_META: Record<
   es: { nativeName: "Español", englishName: "Spanish", flag: "🇪🇸", dataShape: "sentence" },
   fr: { nativeName: "Français", englishName: "French", flag: "🇫🇷", dataShape: "sentence" },
   de: { nativeName: "Deutsch", englishName: "German", flag: "🇩🇪", dataShape: "sentence" },
+  it: { nativeName: "Italiano", englishName: "Italian", flag: "🇮🇹", dataShape: "sentence" },
+  th: { nativeName: "ภาษาไทย", englishName: "Thai", flag: "🇹🇭", dataShape: "sentence" },
+  yue: { nativeName: "粵語", englishName: "Cantonese", flag: "🇭🇰", dataShape: "sentence" },
 };
 
 /**

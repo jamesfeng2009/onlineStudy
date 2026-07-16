@@ -155,12 +155,12 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
     levelSystem: "CEFR",
     levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
   },
-  // ── 以下为仅 UI 语言（Phase 1 保持现状，Phase 2 补全数据后升级）──
+  // ── 以下语言 Phase 2 起补全词汇+场景数据，已升级为 isLearnLanguage=true ──
   {
     code: "it",
     slug: "italian",
     isUiLanguage: true,
-    isLearnLanguage: false,
+    isLearnLanguage: true,
     name: "意大利语",
     englishName: "Italian",
     nativeName: "Italiano",
@@ -175,7 +175,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
     code: "th",
     slug: "thai",
     isUiLanguage: true,
-    isLearnLanguage: false,
+    isLearnLanguage: true,
     name: "泰语",
     englishName: "Thai",
     nativeName: "ภาษาไทย",
@@ -190,7 +190,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
     code: "yue",
     slug: "cantonese",
     isUiLanguage: true,
-    isLearnLanguage: false,
+    isLearnLanguage: true,
     name: "粤语",
     englishName: "Cantonese",
     nativeName: "粵語",

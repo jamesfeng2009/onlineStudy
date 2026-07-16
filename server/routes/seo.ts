@@ -16,7 +16,7 @@ import { submitToIndexNow } from "../lib/indexnow.js";
 const SITE_URL = "https://lang-oria.com";
 // ⚠️ LOCALES / LANG_SLUGS 应与 src/data/language-registry.ts 的 LEARN_LANG_CODES / LANG_CODE_TO_SLUG 保持一致。
 // Phase 2 将通过调整 server/tsconfig.json 或共享 registry 来消除此重复。
-const LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de"] as const;
+const LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
 const DEFAULT_LOCALE = "en";
 
 const LANG_SLUGS: Record<string, string> = {
@@ -27,6 +27,9 @@ const LANG_SLUGS: Record<string, string> = {
   es: "spanish",
   fr: "french",
   de: "german",
+  it: "italian",
+  th: "thai",
+  yue: "cantonese",
 };
 
 /** 生成带 locale 前缀的完整 URL */
