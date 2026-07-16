@@ -125,6 +125,9 @@ export default function AiConversationPage() {
     setError(null);
     setInput("");
 
+    // 生成 Idempotency-Key(每次发送唯一,用于防重复)
+    const idempotencyKey = crypto.randomUUID();
+
     // 乐观更新:立即显示用户消息
     const tempUserMsg: AiConversationMessage = {
       id: `temp-${Date.now()}`,
@@ -135,7 +138,7 @@ export default function AiConversationPage() {
     setMessages((prev) => [...prev, tempUserMsg]);
 
     try {
-      const r = await api.aiConverseSend(activeConvId, content);
+      const r = await api.aiConverseSend(activeConvId, content, idempotencyKey);
       // 替换临时消息 + 添加 AI 回复
       setMessages((prev) => [
         ...prev.filter((m) => m.id !== tempUserMsg.id),

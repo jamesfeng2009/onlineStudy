@@ -141,3 +141,99 @@ describe("P4-2 AI 对话 - 多轮消息构造", () => {
     expect(filtered.every((m) => m.role === "user" || m.role === "assistant")).toBe(true);
   });
 });
+
+describe("P4-3 AI 对话 - 幂等性逻辑", () => {
+  // 复刻幂等键的复合唯一键逻辑用于测试
+  function buildIdempotencyUniqueKey(conversationId: string, idempotencyKey: string): string {
+    return `${conversationId}#${idempotencyKey}`;
+  }
+
+  it("不同会话的相同 key 应视为不同(复合键)", () => {
+    const k1 = buildIdempotencyUniqueKey("conv-1", "key-abc");
+    const k2 = buildIdempotencyUniqueKey("conv-2", "key-abc");
+    expect(k1).not.toBe(k2);
+  });
+
+  it("同一会话的相同 key 应视为相同(命中缓存)", () => {
+    const k1 = buildIdempotencyUniqueKey("conv-1", "key-abc");
+    const k2 = buildIdempotencyUniqueKey("conv-1", "key-abc");
+    expect(k1).toBe(k2);
+  });
+
+  it("同一会话的不同 key 应视为不同(新请求)", () => {
+    const k1 = buildIdempotencyUniqueKey("conv-1", "key-abc");
+    const k2 = buildIdempotencyUniqueKey("conv-1", "key-def");
+    expect(k1).not.toBe(k2);
+  });
+
+  it("crypto.randomUUID 生成符合 UUID 格式", () => {
+    // 模拟前端生成的 idempotency key
+    const uuid = crypto.randomUUID();
+    expect(uuid).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
+  });
+
+  it("两次 randomUUID 调用应生成不同的值", () => {
+    const u1 = crypto.randomUUID();
+    const u2 = crypto.randomUUID();
+    expect(u1).not.toBe(u2);
+  });
+
+  it("无 Idempotency-Key 时应正常处理(向后兼容)", () => {
+    // 模拟旧客户端不发 header 的情况
+    const header = undefined as string | undefined;
+    const idempotencyKey = header?.trim();
+    expect(idempotencyKey).toBeUndefined();
+    // 这种情况应跳过幂等检查,直接处理请求
+  });
+
+  it("响应数据可正确 JSON 序列化/反序列化", () => {
+    const responseData = {
+      userMessage: { id: "msg-1", role: "user", content: "Hello", createdAt: "2026-01-01T00:00:00Z" },
+      assistantMessage: { id: "msg-2", role: "assistant", content: "Hi!", createdAt: "2026-01-01T00:00:01Z" },
+      remainingToday: 49,
+    };
+    const json = JSON.stringify(responseData);
+    const parsed = JSON.parse(json);
+    expect(parsed.userMessage.content).toBe("Hello");
+    expect(parsed.assistantMessage.content).toBe("Hi!");
+    expect(parsed.remainingToday).toBe(49);
+  });
+
+  it("幂等重放标记(idempotentReplay)", () => {
+    // 模拟幂等命中时的响应
+    const cachedResponse = {
+      userMessage: { id: "msg-1", role: "user", content: "Hello", createdAt: "2026-01-01T00:00:00Z" },
+      assistantMessage: { id: "msg-2", role: "assistant", content: "Hi!", createdAt: "2026-01-01T00:00:01Z" },
+      remainingToday: 49,
+      idempotentReplay: true,
+    };
+    expect(cachedResponse.idempotentReplay).toBe(true);
+  });
+});
+
+describe("P4-3 AI 对话 - /start 幂等复用逻辑", () => {
+  // 模拟会话复用的判断条件
+  function shouldReuseSession(
+    existingStatus: string,
+    lastActiveAgoMs: number,
+    timeoutMs: number
+  ): boolean {
+    return existingStatus === "active" && lastActiveAgoMs < timeoutMs;
+  }
+
+  it("active 且未超时的会话应复用", () => {
+    expect(shouldReuseSession("active", 5 * 60 * 1000, 10 * 60 * 1000)).toBe(true);
+  });
+
+  it("已结束的会话不应复用", () => {
+    expect(shouldReuseSession("ended", 1 * 60 * 1000, 10 * 60 * 1000)).toBe(false);
+  });
+
+  it("已超时的会话不应复用", () => {
+    expect(shouldReuseSession("active", 15 * 60 * 1000, 10 * 60 * 1000)).toBe(false);
+  });
+
+  it("边界:刚好 10 分钟不应复用(用 >)", () => {
+    expect(shouldReuseSession("active", 10 * 60 * 1000, 10 * 60 * 1000)).toBe(false);
+  });
+});

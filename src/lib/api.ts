@@ -957,10 +957,15 @@ export async function startAiConversation(params: {
 export async function sendAiMessage(
   conversationId: string,
   content: string,
+  idempotencyKey?: string,
 ): Promise<AiConverseSendResp> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (idempotencyKey) {
+    headers["Idempotency-Key"] = idempotencyKey;
+  }
   return request(
     `/ai-converse/${encodeURIComponent(conversationId)}/send`,
-    { method: "POST", body: JSON.stringify({ content }) },
+    { method: "POST", headers, body: JSON.stringify({ content }) },
     true,
   );
 }

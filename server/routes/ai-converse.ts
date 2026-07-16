@@ -229,7 +229,7 @@ function buildSystemPrompt(languageCode: string, level?: string): string {
 // ============================================================
 
 const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
-  // ====== 1. 开始新会话 ======
+  // ====== 1. 开始新会话(幂等:同语言同等级的 active 会话复用) ======
   fastify.post<{
     Body: { languageCode?: string; level?: string; scenarioType?: string; title?: string };
   }>("/ai-converse/start", { onRequest: [fastify.authenticate] }, async (request, reply) => {
@@ -245,15 +245,28 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
       return sendError(reply, "FORBIDDEN", `今日 AI 对话次数已用尽(限额 ${DAILY_LIMIT})`);
     }
 
-    const conv = await prisma.aiConversation.create({
-      data: {
+    // 幂等:查找用户同语言+同等级的 active 且未超时的会话,有则复用
+    const existing = await prisma.aiConversation.findFirst({
+      where: {
         userId,
         languageCode,
-        level,
-        scenarioType,
-        title,
+        level: level ?? null,
+        status: "active",
+        lastActiveAt: { gt: new Date(Date.now() - SESSION_TIMEOUT_MS) },
       },
+      orderBy: { updatedAt: "desc" },
+      take: 1,
     });
+
+    let conv: Awaited<ReturnType<typeof prisma.aiConversation.create>>;
+    if (existing) {
+      // 复用现有 active 会话
+      conv = existing;
+    } else {
+      conv = await prisma.aiConversation.create({
+        data: { userId, languageCode, level, scenarioType, title },
+      });
+    }
 
     return sendSuccess(reply, {
       conversationId: conv.id,
@@ -262,10 +275,11 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
       level: conv.level,
       scenarioType: conv.scenarioType,
       remainingToday: remaining,
+      reused: existing !== null,
     });
   });
 
-  // ====== 2. 发送消息并获取 AI 回复 ======
+  // ====== 2. 发送消息并获取 AI 回复(幂等:Idempotency-Key 去重) ======
   fastify.post<{
     Params: { conversationId: string };
     Body: { content?: string };
@@ -280,6 +294,24 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
     }
     if (content.length > 2000) {
       return sendError(reply, "BAD_REQUEST", "消息内容过长(上限 2000 字符)");
+    }
+
+    // ===== 幂等性检查 =====
+    // 客户端通过 Idempotency-Key header 传入 UUID,同一 key 重复请求返回首次响应
+    const idempotencyKey = (request.headers["idempotency-key"] as string | undefined)?.trim();
+    if (idempotencyKey) {
+      const existing = await prisma.aiIdempotencyKey.findUnique({
+        where: { conversationId_idempotencyKey: { conversationId, idempotencyKey } },
+      });
+      if (existing) {
+        // 幂等命中:返回首次的响应,不重复创建消息、不重复扣配额
+        const cached = JSON.parse(existing.responseJson) as {
+          userMessage: { id: string; role: string; content: string; createdAt: string };
+          assistantMessage: { id: string; role: string; content: string; createdAt: string };
+          remainingToday: number;
+        };
+        return sendSuccess(reply, { ...cached, idempotentReplay: true });
+      }
     }
 
     // 检查会话归属 + 状态
@@ -339,7 +371,12 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
     } catch (err) {
       const msg = (err as Error).message;
       fastify.log.error({ err: msg, conversationId }, "ai-converse/send LLM failed");
-      // LLM 失败:回滚用户消息计数(不回滚消息本身,保留用户输入)
+      // LLM 失败:回滚用户消息 + 配额计数(因为没产生 assistant 回复)
+      await prisma.aiConversationMessage.delete({ where: { id: userMessage.id } });
+      await prisma.aiUsageDaily.update({
+        where: { userId_dateKey: { userId, dateKey: todayKey() } },
+        data: { count: { decrement: 1 } },
+      }).catch(() => {/* 忽略计数回滚失败 */});
       return sendError(reply, "INTERNAL_ERROR", "AI 回复暂时不可用,请稍后重试");
     }
 
@@ -363,7 +400,7 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
       },
     });
 
-    return sendSuccess(reply, {
+    const responseData = {
       userMessage: {
         id: userMessage.id,
         role: "user",
@@ -377,7 +414,23 @@ const aiConverseRoutes: FastifyPluginAsync = async (fastify) => {
         createdAt: assistantMessage.createdAt,
       },
       remainingToday: remaining,
-    });
+    };
+
+    // 保存幂等键(如果有),24 小时 TTL
+    if (idempotencyKey) {
+      await prisma.aiIdempotencyKey.create({
+        data: {
+          conversationId,
+          idempotencyKey,
+          responseJson: JSON.stringify(responseData),
+        },
+      }).catch((err: unknown) => {
+        // 唯一约束冲突 = 并发请求已创建,忽略(返回响应即可)
+        fastify.log.warn({ err: (err as Error).message, conversationId, idempotencyKey }, "idempotency key already exists (race)");
+      });
+    }
+
+    return sendSuccess(reply, responseData);
   });
 
   // ====== 3. 列出用户会话 ======

@@ -939,6 +939,7 @@ model AiConversation {
 
   user     User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
   messages AiConversationMessage[]
+  idempotencyKeys AiIdempotencyKey[]
 
   @@index([userId, updatedAt])
   @@index([status, lastActiveAt])
@@ -958,5 +959,23 @@ model AiConversationMessage {
 
   @@index([conversationId, createdAt])
   @@map("ai_conversation_messages")
+}
+
+// ============================================================
+// P4-3: 幂等键表(Idempotency Keys)
+// ============================================================
+
+model AiIdempotencyKey {
+  id             String   @id @default(uuid())
+  conversationId String
+  idempotencyKey String   // 客户端生成的 UUID
+  responseJson   String   // 首次响应的 JSON
+  createdAt      DateTime @default(now())
+
+  conversation AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@unique([conversationId, idempotencyKey])
+  @@index([createdAt])
+  @@map("ai_idempotency_keys")
 }
 
