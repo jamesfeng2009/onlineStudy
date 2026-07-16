@@ -1,0 +1,195 @@
+{
+  "id": "dlg-fr-hotel",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bonjour ! Bienvenue à l'Hôtel Paris. Comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue à l'Hôtel Paris. Comment puis-je vous aider ?",
+      "promptTranslation": "Bonjour ! (bohn-ZHOOR!) Bienvenue à l'Hôtel Paris. (byan-vuh-NYEW a lo-TEL pah-REE) Comment puis-je vous aider ? (ko-MOHN pwish vooz ay-DAY?) — Hello! Welcome to Hotel Paris. How can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "chambre",
+            "réservation",
+            "enregistrer"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bonjour",
+            "salut"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "besoin",
+            "aide"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Quel est votre nom pour la réservation, s'il vous plaît ?",
+      "promptTranslation": "Très bien. (tray byan) Quel est votre nom pour la réservation, s'il vous plaît ? (kel ay vo-truh NOHM poor la ray-zair-vah-SYOHN, seel voo PLAY?) — Very good. What is your name for the reservation, please?",
+      "branches": [
+        {
+          "keywords": [
+            "dupont",
+            "martin",
+            "leblanc",
+            "monnomest",
+            "jenommemapelle"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasderéservation"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Merci, Monsieur/Madame. Puis-je avoir votre pièce d'identité, s'il vous plaît ?",
+      "promptTranslation": "Merci, Monsieur/Madame. (mair-SEE, muh-SYUH/mah-DAM) Puis-je avoir votre pièce d'identité, s'il vous plaît ? (pweezh ah-VWAHR vo-truh pyess dee-dahn-tee-TAY, seel voo PLAY?) — Thank you, Sir/Madam. May I have your ID, please?",
+      "branches": [
+        {
+          "keywords": [
+            "voilà",
+            "oui",
+            "carte",
+            "passeport"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "désolé",
+            "non",
+            "pas"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Parfait ! Et pour le paiement, souhaitez-vous payer par carte ou en espèces ?",
+      "promptTranslation": "Parfait ! (par-FAY!) Et pour le paiement, (ay poor luh pay-MAHN) souhaitez-vous payer par carte ou en espèces ? (soo-eh-TAY voo pay-YAY par kart oo ahn eh-SPESS?) — Perfect! And for payment, would you like to pay by card or in cash?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "crédit",
+            "débit"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "espèces",
+            "liquide"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien. Votre chambre est la 305. Le petit-déjeuner est servi de 7h à 10h. Y a-t-il autre chose ?",
+      "promptTranslation": "Très bien. Votre chambre est la 305. Le petit-déjeuner est servi de 7h à 10h. Y a-t-il autre chose ? — Very good. Your room is 305. Breakfast is served from 7 AM to 10 AM. Is there anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "nonmerci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "oui",
+            "question"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "promptTranslation": "Pardon ? (par-DOHN?) Pouvez-vous répéter, s'il vous plaît ? (poo-VAY voo ray-pay-TAY, seel voo PLAY?) — Sorry? Can you repeat, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Excellent séjour à l'Hôtel Paris ! Au revoir !",
+      "promptTranslation": "Excellent séjour à l'Hôtel Paris ! Au revoir ! — Have a great stay at Hotel Paris! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

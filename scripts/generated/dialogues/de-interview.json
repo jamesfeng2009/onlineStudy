@@ -1,0 +1,320 @@
+{
+  "id": "dlg-de-interview",
+  "language": "de",
+  "level": "A1",
+  "scenario": "interview",
+  "title": "Vorstellungsgespräch",
+  "opening": "Guten Tag! Willkommen zum Vorstellungsgespräch.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Willkommen zum Vorstellungsgespräch. Erzählen Sie uns bitte etwas über sich.",
+      "promptTranslation": "Guten Tag (GOO-ten tahk)! Willkommen zum Vorstellungsgespräch (FOR-stel-lungs-ge-shprech). Erzählen (er-TSE-len) Sie uns bitte etwas über sich. — Good day! Welcome to the job interview. Please tell us something about yourself.",
+      "branches": [
+        {
+          "keywords": [
+            "ich",
+            "name",
+            "heiße",
+            "bin",
+            "verkäufer",
+            "verkaeufer",
+            "student",
+            "schüler",
+            "arbeite"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "wohne",
+            "lebe",
+            "berlin",
+            "hamburg",
+            "muenchen",
+            "stadt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "deutschland",
+            "land",
+            "komme"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "hallo",
+            "ja",
+            "gern"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Interessant. Haben Sie Berufserfahrung oder eine Ausbildung?",
+      "promptTranslation": "Interessant (in-te-re-SANT). Haben Sie Berufserfahrung (be-RUFS-er-fa-rung) oder eine Ausbildung (OOS-bil-dung)? — Interesting. Do you have work experience or training?",
+      "branches": [
+        {
+          "keywords": [
+            "erfahrung",
+            "gearbeitet",
+            "job",
+            "beruf",
+            "jahr"
+          ],
+          "nextTurnId": "t3_experience"
+        },
+        {
+          "keywords": [
+            "ausbildung",
+            "gelernt",
+            "studium",
+            "schule",
+            "uni"
+          ],
+          "nextTurnId": "t3_education"
+        },
+        {
+          "keywords": [
+            "keine",
+            "nicht",
+            "neu",
+            "anfänger",
+            "anfaenger",
+            "erste"
+          ],
+          "nextTurnId": "t3_noexperience"
+        },
+        {
+          "keywords": [
+            "",
+            "ja",
+            "nein"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_experience": {
+      "id": "t3_experience",
+      "prompt": "Sehr gut. Welche Aufgaben hatten Sie in Ihrer letzten Position?",
+      "promptTranslation": "Sehr gut (zehr GOOT). Welche Aufgaben (OOF-ga-ben) hatten Sie in Ihrer letzten Position (po-zi-TSYON)? — Very good. What tasks did you have in your last position?",
+      "branches": [
+        {
+          "keywords": [
+            "kunden",
+            "beraten",
+            "verkauft",
+            "geholfen",
+            "service"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "organisiert",
+            "geplant",
+            "bearbeitet",
+            "koordinierte",
+            "daten"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "team",
+            "kollegen",
+            "zusammengearbeitet"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "viele",
+            "verschiedene"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_education": {
+      "id": "t3_education",
+      "prompt": "Sehr gut. Was haben Sie gelernt und wie können Sie das hier einsetzen?",
+      "promptTranslation": "Sehr gut (zehr GOOT). Was haben Sie gelernt (ge-LERNT) und wie können (KOEN-nen) Sie das hier einsetzen (EIN-zet-sen)? — Very good. What did you learn and how can you apply that here?",
+      "branches": [
+        {
+          "keywords": [
+            "kundenkontakt",
+            "kommunikation",
+            "sprachen"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "organisieren",
+            "planen",
+            "analyse",
+            "verwalten"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "computer",
+            "software",
+            "programme",
+            "technik"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "wissen",
+            "kenntnisse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_noexperience": {
+      "id": "t3_noexperience",
+      "prompt": "Verstehe. Was sind Ihre Stärken und warum möchten Sie bei uns arbeiten?",
+      "promptTranslation": "Verstehe (fer-SHTEH-e). Was sind Ihre Stärken (SHTER-ken) und warum möchten (MOECH-ten) Sie bei uns arbeiten (AR-bai-ten)? — I understand. What are your strengths and why would you like to work with us?",
+      "branches": [
+        {
+          "keywords": [
+            "motiviert",
+            "lerne",
+            "schnell",
+            "fleißig",
+            "fleissig"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "pünktlich",
+            "puenktlich",
+            "zuverlässig",
+            "zuverlaessig",
+            "genau"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "firma",
+            "unternehmen",
+            "gut",
+            "mag",
+            "interessant"
+          ],
+          "nextTurnId": "t4_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "weil",
+            "möchte",
+            "moechte"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4_strengths": {
+      "id": "t4_strengths",
+      "prompt": "Sehr gut. Nennen Sie uns bitte Ihre größte Stärke und Ihre größte Schwäche.",
+      "promptTranslation": "Sehr gut (zehr GOOT). Nennen (NEN-en) Sie uns bitte Ihre größte Stärke (SHTER-ke) und Ihre größte Schwäche (SHVE-che). — Very good. Please tell us your biggest strength and your biggest weakness.",
+      "branches": [
+        {
+          "keywords": [
+            "stärke",
+            "staerke",
+            "schwäche",
+            "schwaeche",
+            "gut",
+            "schlecht"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "teamarbeit",
+            "pünktlich",
+            "motiviert",
+            "ungeduld",
+            "perfektionist"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lernen",
+            "verbessern",
+            "fehler",
+            "deutsch",
+            "sprache"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ja",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "promptTranslation": "Entschuldigung (ent-SHUL-di-gung), könnten (KOEN-ten) Sie das bitte wiederholen (vee-der-HO-len)? — Sorry, could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte",
+            "nochmal"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für das Gespräch. Wir melden uns bald bei Ihnen.",
+      "promptTranslation": "Vielen Dank (FEE-len dank) für das Gespräch (ge-SHPRECH). Wir melden uns bald (BALT) bei Ihnen. — Thank you for the conversation. We will contact you soon.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

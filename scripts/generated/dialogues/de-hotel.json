@@ -1,0 +1,169 @@
+{
+  "id": "dlg-de-hotel",
+  "language": "de",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Guten Tag! Herzlich willkommen im Hotel Sonne. Wie ist Ihr Name bitte?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Herzlich willkommen im Hotel Sonne. Wie ist Ihr Name bitte?",
+      "promptTranslation": "Goo-ten Tahg! Hairts-lich veel-koh-men im Ho-tel Zon-ne. Vee ist Eer Nah-muh bit-tuh? — Good day! Welcome to Hotel Sonne. What is your name, please?",
+      "branches": [
+        {
+          "keywords": [
+            "meinname",
+            "nameist",
+            "ichbin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "reservierung"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "hallo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vielen Dank. Könnten Sie mir bitte Ihren Ausweis zeigen?",
+      "promptTranslation": "Fee-len Dahngk. Koen-ten zee meer bit-tuh ee-ren Ous-vice tsai-gen? — Thank you. Could you please show me your ID?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "hier",
+            "ausweis"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bitte",
+            "gerne",
+            "ok"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfekt, danke schön. Wie möchten Sie bezahlen?",
+      "promptTranslation": "Pair-fekt, dahng-kuh shurn. Vee murch-ten zee buh-tsah-len? — Perfect, thank you very much. How would you like to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "zahlen"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "In Ordnung. Möchten Sie ein Zimmer mit Blick zum Garten oder zur Straße? Und möchten Sie Frühstück?",
+      "promptTranslation": "In Ort-nung. Murch-ten zee ain tsim-mer mit blick tsum gar-ten oh-der tsur shstrah-ssuh? Oond murch-ten zee Froo-shtuuk? — Alright. Would you like a room with a garden view or street view? And would you like breakfast?",
+      "branches": [
+        {
+          "keywords": [
+            "garten",
+            "gartenblick",
+            "mitfrühstück"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "straße",
+            "straßenblick",
+            "ohnefrühstück"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "egal",
+            "beides",
+            "zimmer"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "promptTranslation": "Ent-shool-di-gung, koen-ten zee das bit-tuh vee-der-ho-len? — Excuse me, could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Wunderbar. Ihr Zimmer ist die Nummer 203. Hier ist Ihr Schlüssel. Wir wünschen Ihnen einen schönen Aufenthalt! Auf Wiedersehen!",
+      "promptTranslation": "Voon-der-bahr. Eer tsim-mer ist dee noom-mer ts-vai hoon-dert drai. Heer ist Eer shlyu-ssel. Veer vyun-shen ee-nen eye-nen shurn-en ouf-ent-halt! Ouf Vee-der-zain! — Wonderful. Your room is number 203. Here is your key. We wish you a pleasant stay! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

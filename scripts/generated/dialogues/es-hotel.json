@@ -1,0 +1,166 @@
+{
+  "id": "dlg-es-hotel",
+  "language": "es",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Registro en el hotel",
+  "opening": "¡Hola! Bienvenido al Hotel Sol. ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Bienvenido al Hotel Sol. ¿Tiene una reserva a su nombre?",
+      "promptTranslation": "Hello (OH-lah)! Welcome to Hotel Sol. Do you have a reservation under your name?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "reserva",
+            "mi nombre"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "De acuerdo. ¿Podría ver su documento de identidad, por favor?",
+      "promptTranslation": "Alright. Could I see your ID (ee-den-tee-DAHD), please?",
+      "branches": [
+        {
+          "keywords": [
+            "aquí",
+            "tiene",
+            "documento",
+            "pasaporte"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no tengo",
+            "olvidé"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto. ¿Cómo va a pagar? ¿Tarjeta o efectivo? ¿Y tiene alguna preferencia de habitación?",
+      "promptTranslation": "Perfect (pehr-FEK-toh). How will you pay? Card or cash? And do you have any room preference?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito",
+            "débito"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "efectivo",
+            "cash"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ventana",
+            "silenciosa",
+            "balcón",
+            "grande"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. La habitación 305 está lista. ¿Desea incluir el desayuno por 10 euros adicionales?",
+      "promptTranslation": "Understood (en-ten-DEE-doh). Room 305 is ready. Would you like to include breakfast for 10 extra euros?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "desayuno",
+            "quiero",
+            "por favor"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdone, no le he entendido. ¿Podría repetir, por favor?",
+      "promptTranslation": "Excuse me (pehr-DOH-neh), I didn't understand. Could you repeat, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Excelente! Que tenga una estancia maravillosa en el Hotel Sol. ¡Disfrute!",
+      "promptTranslation": "Excellent (eks-seh-LEN-teh)! Have a wonderful stay (es-TAHN-see-ah) at Hotel Sol. Enjoy (dees-FRU-teh)!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

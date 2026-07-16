@@ -1,0 +1,326 @@
+{
+  "id": "dlg-es-small-talk",
+  "language": "es",
+  "level": "A1",
+  "scenario": "small-talk",
+  "title": "Pequeña charla casual",
+  "opening": "¡Hola! ¿Qué tal el fin de semana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tal el fin de semana? (OH-lah! keh tahl el feen deh seh-MAH-nah?)",
+      "promptTranslation": "Hello! How was your weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "genial",
+            "fantástico"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mal",
+            "terrible"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "normal",
+            "nada",
+            "casa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "trabajo",
+            "trabajar"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Qué bien! Me alegro. ¿Qué hiciste? (keh BYEN! meh ah-LEH-groh. keh ee-SEES-teh?)",
+      "promptTranslation": "How nice! I'm glad. What did you do?",
+      "branches": [
+        {
+          "keywords": [
+            "película",
+            "cine"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "restaurante",
+            "comer"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "parque",
+            "pasear"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "familia",
+            "amigos",
+            "fiesta"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, lo siento. Espero que esta semana sea mejor. ¿Tienes planes?",
+      "promptTranslation": "Oh, I'm sorry. I hope this week is better. Do you have plans?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "muchos"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "pocos",
+            "descansar"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "trabajo",
+            "estudiar"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "enfermo",
+            "cansado"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¿Qué película/comida fue? ¿Te gustó?",
+      "promptTranslation": "What movie/food was it? Did you like it?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "mucho",
+            "excelente"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "no",
+            "poco",
+            "aburrido"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "nombre"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¡Qué bonito! ¿Con quién fuiste/estuviste? ¿Te divertiste?",
+      "promptTranslation": "How nice! Who did you go/were with? Did you have fun?",
+      "branches": [
+        {
+          "keywords": [
+            "amigos",
+            "familia"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "solo",
+            "sola"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "perro",
+            "mascota"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "¡Genial! ¿Qué harás esta semana? ¿Algo divertido?",
+      "promptTranslation": "Great! What will you do this week? Anything fun?",
+      "branches": [
+        {
+          "keywords": [
+            "cine",
+            "cena",
+            "amigos"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "trabajo",
+            "reuniones"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "viaje",
+            "deporte"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Vaya, espero que esta semana sea más tranquila y mejor. ¡Mucho ánimo!",
+      "promptTranslation": "Oh dear, I hope this week is calmer and better. Lots of encouragement!",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "esperemos"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sí",
+            "claro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "descansar",
+            "relajar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "¡Qué interesante! Me alegro que todo vaya bien. Bueno, tengo que seguir.",
+      "promptTranslation": "How interesting! I'm glad everything is going well. Well, I have to go on.",
+      "branches": [
+        {
+          "keywords": [
+            "adiós",
+            "hablamos"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "divertido"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Puedes repetir, por favor? (per-DON? PWEH-des reh-peh-TEER, por fah-VOR?)",
+      "promptTranslation": "Pardon? Can you repeat, please?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Nos vemos! ¡Que tengas un buen día! ¡Adiós!",
+      "promptTranslation": "See you! Have a good day! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

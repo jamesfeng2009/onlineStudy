@@ -1,0 +1,159 @@
+{
+  "id": "dlg-it-interview",
+  "language": "it",
+  "level": "A1",
+  "scenario": "interview",
+  "title": "Il mio primo colloquio di lavoro",
+  "opening": "Buongiorno! Benvenuto/a al nostro colloquio. Per iniziare, mi parli un po' di lei.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Benvenuto/a al nostro colloquio. Per iniziare, mi parli un po' di lei.",
+      "promptTranslation": "Good morning! (Bwon-jor-no!) Welcome (Ben-ve-nu-to/a) to our interview. To start, tell me a little (oon po) about yourself (mee par-lee oon po dee lay).",
+      "branches": [
+        {
+          "keywords": [
+            "mi chiamo",
+            "sono",
+            "presentarsi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Molto bene. Ha qualche esperienza lavorativa o competenze particolari?",
+      "promptTranslation": "Very good. Do you (ah kual-keh es-peh-ryen-tsa) have any work experience or particular skills (kom-peh-ten-tseh par-tee-ko-lah-ree)?",
+      "branches": [
+        {
+          "keywords": [
+            "si, ho",
+            "esperienza",
+            "lavoro"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no, non ho",
+            "nessuna",
+            "principiante"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ottimo! E quali sono i suoi punti di forza?",
+      "promptTranslation": "Great! (Ot-tee-mo!) And what (kual-ee so-no) are your strengths (ee soo-oy poon-tee dee for-tsa)?",
+      "branches": [
+        {
+          "keywords": [
+            "sono bravo",
+            "sono brava",
+            "responsabile",
+            "creativo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Capisco. È importante la voglia di imparare. E quali sono i suoi punti di forza?",
+      "promptTranslation": "I understand. (Kah-pees-ko!) The desire (vol-lya) to learn is important. And what are your strengths?",
+      "branches": [
+        {
+          "keywords": [
+            "sono bravo",
+            "sono brava",
+            "imparo",
+            "motivato"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Molto interessante. C'è qualcosa su cui le piacerebbe migliorare?",
+      "promptTranslation": "Very interesting. Is there something (kual-ko-za soo koo-ee) you would like to improve (mee-lyo-rah-re)?",
+      "branches": [
+        {
+          "keywords": [
+            "a volte",
+            "migliorare",
+            "imparare"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere per favore?",
+      "promptTranslation": "Excuse me, could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie mille per essere venuto/a. Le faremo sapere presto.",
+      "promptTranslation": "Thank you very much (Grah-tsee-eh meel-leh) for coming. We will let you know soon.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

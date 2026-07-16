@@ -1,0 +1,374 @@
+{
+  "id": "dlg-it-shopping-clothes",
+  "language": "it",
+  "level": "A1",
+  "scenario": "shopping-clothes",
+  "title": "Comprare vestiti",
+  "opening": "Buongiorno! Posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Posso aiutarla?",
+      "promptTranslation": "Buongiorno — Good morning! Posso aiutarla — Can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "camicia",
+            "maglietta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pantaloni",
+            "jeans"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "misura",
+            "taglia"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "solo guardare"
+          ],
+          "nextTurnId": "t1_browse"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t1_browse": {
+      "id": "t1_browse",
+      "prompt": "Certo, si guardi pure intorno. Se ha bisogno di qualcosa, chieda pure!",
+      "promptTranslation": "Certo — Of course, si guardi pure intorno — feel free to look around. Se ha bisogno di qualcosa, chieda pure — If you need anything, just ask!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "camicia",
+            "pantaloni",
+            "misura"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "domanda"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo! Che taglia desidera?",
+      "promptTranslation": "Certo — Of course! Che taglia desidera — What size would you like?",
+      "branches": [
+        {
+          "keywords": [
+            "piccola",
+            "s",
+            "40"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "media",
+            "m",
+            "42"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "grande",
+            "l",
+            "44"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "colore"
+          ],
+          "nextTurnId": "t3_color_first"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Abbiamo questa taglia. Che colore preferisce? Vuole provarla?",
+      "promptTranslation": "Abbiamo questa taglia — We have this size. Che colore preferisce — What color do you prefer? Vuole provarla — Do you want to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "provare",
+            "si"
+          ],
+          "nextTurnId": "t4_fitting"
+        },
+        {
+          "keywords": [
+            "rosso",
+            "blu",
+            "nero",
+            "bianco"
+          ],
+          "nextTurnId": "t3_color_confirm"
+        },
+        {
+          "keywords": [
+            "prezzo"
+          ],
+          "nextTurnId": "t4_price"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonora"
+          ],
+          "nextTurnId": "t5_no_buy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_color_first": {
+      "id": "t3_color_first",
+      "prompt": "Certo. Di che colore la vorrebbe? Poi possiamo vedere le taglie disponibili.",
+      "promptTranslation": "Certo — Of course. Di che colore la vorrebbe — What color would you like it? Poi possiamo vedere le taglie disponibili — Then we can see the available sizes.",
+      "branches": [
+        {
+          "keywords": [
+            "rosso",
+            "blu",
+            "nero",
+            "bianco"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "qualunquecolore"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_color_confirm": {
+      "id": "t3_color_confirm",
+      "prompt": "Ottima scelta! Il camerino è lì in fondo. Vuole provarla?",
+      "promptTranslation": "Ottima scelta — Excellent choice! Il camerino è lì in fondo — The fitting room is at the back. Vuole provarla — Do you want to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "provare"
+          ],
+          "nextTurnId": "t4_fitting"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonora"
+          ],
+          "nextTurnId": "t5_no_buy"
+        },
+        {
+          "keywords": [
+            "prezzo"
+          ],
+          "nextTurnId": "t4_price"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4_fitting": {
+      "id": "t4_fitting",
+      "prompt": "Come le sta? Le piace?",
+      "promptTranslation": "Come le sta — How does it fit? Le piace — Do you like it?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "prendo"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "no",
+            "troppopiccolo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "troppogrande"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t5_no_buy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4_price": {
+      "id": "t4_price",
+      "prompt": "Costa 25 euro. Le interessa?",
+      "promptTranslation": "Costa 25 euro — It costs 25 euros. Le interessa — Are you interested?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "prendo"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "no",
+            "troppocaro"
+          ],
+          "nextTurnId": "t5_no_buy"
+        },
+        {
+          "keywords": [
+            "provare"
+          ],
+          "nextTurnId": "t4_fitting"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5_pay": {
+      "id": "t5_pay",
+      "prompt": "Perfetto! Può pagare alla cassa. Ha bisogno d'altro?",
+      "promptTranslation": "Perfetto — Perfect! Può pagare alla cassa — You can pay at the cash register. Ha bisogno d'altro — Do you need anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cambio",
+            "reso"
+          ],
+          "nextTurnId": "t5_return_policy"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5_return_policy": {
+      "id": "t5_return_policy",
+      "prompt": "Certo, il cambio o reso è possibile entro 30 giorni con lo scontrino.",
+      "promptTranslation": "Certo — Of course, il cambio o reso è possibile entro 30 giorni con lo scontrino — exchange or return is possible within 30 days with the receipt.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "capito"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t5_no_buy": {
+      "id": "t5_no_buy",
+      "prompt": "Nessun problema. Forse trova qualcos'altro la prossima volta. Buona giornata!",
+      "promptTranslation": "Nessun problema — No problem. Forse trova qualcos'altro la prossima volta — Perhaps you'll find something else next time. Buona giornata — Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore?",
+      "promptTranslation": "Mi scusi — Excuse me, potrebbe ripetere per favore — could you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci! E grazie.",
+      "promptTranslation": "Arrivederci — Goodbye! E grazie — And thank you.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}
