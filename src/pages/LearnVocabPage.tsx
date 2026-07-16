@@ -55,6 +55,7 @@ export default function LearnVocabPage() {
   if (!valid) {
     return (
       <PageShell title="Language not found" subtitle="That language is not yet supported.">
+        <Seo noindex title="Language not found" />
         <p className="text-brand-200/80">
           <LocaleLink to="/languages" className="text-sky-300 hover:underline">
             ← Pick a language
@@ -76,6 +77,7 @@ export default function LearnVocabPage() {
     if (!levelEntry) {
       return (
         <PageShell title="Level not found" subtitle="That level is not available for this language.">
+          <Seo noindex title="Level not found" />
           <p className="text-brand-200/80">
             <Link
               to={`/languages/${slug}/vocabulary`}

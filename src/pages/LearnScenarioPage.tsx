@@ -52,6 +52,7 @@ export default function LearnScenarioPage() {
     if (!validLang) {
       return (
         <PageShell title="Language not found" subtitle="That language is not yet supported.">
+          <Seo noindex title="Language not found" />
           <p className="text-brand-200/80">
             <LocaleLink to="/languages" className="text-sky-300 hover:underline">
               ← Pick a language
@@ -66,6 +67,7 @@ export default function LearnScenarioPage() {
           title={`${meta.englishName} scenarios`}
           subtitle="Scenario lessons are coming soon for this language."
         >
+          <Seo noindex title={`${meta.englishName} scenarios`} />
           <p className="text-brand-200/80">
             <Link
               to={`/languages/${langSlug}`}
@@ -162,6 +164,7 @@ export default function LearnScenarioPage() {
         title="Scenario not available"
         subtitle="That language / scenario combination is not yet supported."
       >
+        <Seo noindex title="Scenario not available" />
         <p className="text-brand-200/80">
           <Link to={`/languages/${langSlug}`} className="text-sky-300 hover:underline">
             ← Back to {meta.englishName}
@@ -176,6 +179,7 @@ export default function LearnScenarioPage() {
         title="Scenario not found"
         subtitle="That scenario is not one of the four supported scenarios."
       >
+        <Seo noindex title="Scenario not found" />
         <p className="text-brand-200/80">
           <Link
             to={`/languages/${langSlug}/scenarios`}

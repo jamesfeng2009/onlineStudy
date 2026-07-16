@@ -5,7 +5,7 @@ import { buildLocalePath, extractLocaleFromPath, type SupportedLanguage } from "
  * Returns the active locale derived from the current URL pathname.
  *   "/"           → "en"
  *   "/zh/faq"     → "zh"
- *   "/jp/blog/.."  → "ja"
+ *   "/ja/blog/.."  → "ja"
  */
 export function useLocale(): SupportedLanguage {
   const { pathname } = useLocation();

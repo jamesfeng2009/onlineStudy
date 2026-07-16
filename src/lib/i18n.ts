@@ -34,7 +34,7 @@ export const DEFAULT_UI_LANGUAGE: SupportedLanguage = "en";
  * Locales that get a URL prefix (en is the default and stays prefix-free).
  *
  *   /              → en
- *   /jp/blog/...   → ja
+ *   /ja/blog/...   → ja
  *   /zh/courses    → zh
  *   ...
  */
@@ -46,8 +46,8 @@ const PREFIXED_LOCALES = SUPPORTED_LANGUAGES.filter(
  * Parse a URL pathname into a locale + the locale-stripped path.
  *
  *   "/"             → { locale: "en", strippedPath: "/" }
- *   "/jp"           → { locale: "ja", strippedPath: "/" }
- *   "/jp/blog"      → { locale: "ja", strippedPath: "/blog" }
+ *   "/ja"           → { locale: "ja", strippedPath: "/" }
+ *   "/ja/blog"      → { locale: "ja", strippedPath: "/blog" }
  *   "/fr/faq"       → { locale: "fr", strippedPath: "/faq" }
  *   "/zh/blog/abc"  → { locale: "zh", strippedPath: "/blog/abc" }
  */
@@ -69,7 +69,7 @@ export function extractLocaleFromPath(pathname: string): {
  * Build a locale-aware URL for a given language.
  *
  *   buildLocalePath("en", "/blog")     → "/blog"
- *   buildLocalePath("ja", "/blog")     → "/jp/blog"
+ *   buildLocalePath("ja", "/blog")     → "/ja/blog"
  *   buildLocalePath("fr", "/")         → "/fr"
  *   buildLocalePath("fr", "/blog/abc") → "/fr/blog/abc"
  */

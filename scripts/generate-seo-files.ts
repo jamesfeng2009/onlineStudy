@@ -3,21 +3,18 @@
  *
  *   pnpm tsx scripts/generate-seo-files.ts
  *
- * Generates three static files into ./public so that Vite copies them to
+ * Generates one static file into ./public so that Vite copies it to
  * ./dist on build:
  *
- *   - public/sitemap.xml   – lists all static pages + every published blog post
- *   - public/robots.txt    – crawl rules + sitemap location
  *   - public/llms.txt      – GEO: plain-text site summary for LLM crawlers
  *
- * Why build-time, not a Vercel Function?
- *   - Zero runtime overhead, served straight from Vercel's edge CDN.
- *   - No changes needed to vercel.json.
- *   - Database access during build is fine; Vercel exposes DATABASE_URL.
+ * sitemap.xml 与 robots.txt 已改由 server/routes/seo.ts 动态生成，
+ * 通过 vercel.json 的 rewrite 从 /sitemap.xml、/robots.txt 路由到
+ * /api/seo/sitemap、/api/seo/robots，保证内容与数据库实时同步。
  *
- * Safe to run without a database: it falls back to a sitemap with only
- * static pages, and prints a warning. That keeps `pnpm build` working
- * even when the build container can't reach Supabase.
+ * Safe to run without a database: llms.txt falls back to static pages
+ * only, and prints a warning. That keeps `pnpm build` working even
+ * when the build container can't reach Supabase.
  */
 
 import fs from "node:fs";
@@ -336,17 +333,14 @@ async function main() {
   const blogPosts = await loadBlogPosts();
   console.log(`[generate-seo-files] found ${blogPosts.length} published blog post(s)`);
 
-  const sitemap = buildSitemap(blogPosts);
-  const robots = buildRobots();
+  // sitemap.xml 与 robots.txt 现由 server/routes/seo.ts 动态生成
+  // （vercel.json rewrite 到 /api/seo/sitemap、/api/seo/robots）。
+  // 这里只生成 llms.txt。
   const llms = buildLlmsTxt(blogPosts);
 
-  fs.writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), sitemap, "utf8");
-  fs.writeFileSync(path.join(PUBLIC_DIR, "robots.txt"), robots, "utf8");
   fs.writeFileSync(path.join(PUBLIC_DIR, "llms.txt"), llms, "utf8");
 
   console.log(`[generate-seo-files] wrote:`);
-  console.log(`  ${path.relative(ROOT, path.join(PUBLIC_DIR, "sitemap.xml"))}  (${sitemap.length} bytes)`);
-  console.log(`  ${path.relative(ROOT, path.join(PUBLIC_DIR, "robots.txt"))}  (${robots.length} bytes)`);
   console.log(`  ${path.relative(ROOT, path.join(PUBLIC_DIR, "llms.txt"))}  (${llms.length} bytes)`);
 }
 

@@ -16,6 +16,12 @@ import { StatTile } from "../components/GlassCard";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildCourseLd, buildFaqLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { LANGUAGES } from "../data/languages";
+import { URL_SLUG_TO_DATA } from "../data/learn-content";
+
+// 语言 id → URL slug 反向映射（用于首页语言卡片内链到语言主页）
+const LANG_SLUG: Record<string, string> = Object.fromEntries(
+  Object.entries(URL_SLUG_TO_DATA).map(([slug, id]) => [id, slug])
+);
 import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
@@ -251,10 +257,12 @@ export default function HomePage() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-          {LANGUAGES.map((l) => (
+          {LANGUAGES.map((l) => {
+            const slug = LANG_SLUG[l.id];
+            return (
             <Link
               key={l.id}
-              to={`/learn?lang=${l.id}`}
+              to={slug ? `/languages/${slug}` : `/learn?lang=${l.id}`}
               className="glass group relative overflow-hidden rounded-2xl p-5 text-left transition hover:-translate-y-1"
             >
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
@@ -266,7 +274,8 @@ export default function HomePage() {
                 {t("home.languages.select")} <ArrowRight className="ml-1 h-3 w-3" />
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

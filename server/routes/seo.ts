@@ -63,7 +63,13 @@ const STATIC_PAGES = [
     changefreq: "weekly",
     priority: "0.7",
   })),
-  // 场景页
+  // 场景索引页 (/languages/:slug/scenarios)
+  ...LOCALES.map((l) => ({
+    path: `/languages/${LANG_SLUGS[l]}/scenarios`,
+    changefreq: "weekly" as const,
+    priority: "0.7",
+  })),
+  // 场景详情页
   ...LOCALES.flatMap((l) =>
     ["travel", "business", "food", "small-talk"].map((s) => ({
       path: `/languages/${LANG_SLUGS[l]}/scenarios/${s}`,
@@ -133,18 +139,24 @@ ${hreflangLinks(page.path)}
       });
 
       // 博客文章 URL
+      // 每篇文章只在 baseLanguageCode 对应的 locale 上存在（无翻译版），
+      // 因此 hreflang 只声明该 locale + x-default，避免向 Google 提交
+      // 不存在的其他 locale 变体（P2-9）。
       const blogUrls = posts.map((post) => {
+        const lang = post.baseLanguageCode || DEFAULT_LOCALE;
         const path = `/blog/${post.slug}`;
-        const loc = localeUrl(post.baseLanguageCode || DEFAULT_LOCALE, path);
+        const loc = localeUrl(lang, path);
         const lastmod = post.publishedAt
           ? post.publishedAt.toISOString().split("T")[0]
           : today;
+        const selfHref = localeUrl(lang, path);
         return `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-${hreflangLinks(path)}
+    <xhtml:link rel="alternate" hreflang="${lang}" href="${escapeXml(selfHref)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(selfHref)}"/>
   </url>`;
       });
 

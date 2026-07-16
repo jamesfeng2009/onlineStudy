@@ -54,17 +54,14 @@ interface SeoProps {
  * 构造 hreflang 列表。每个语言一条 <link rel="alternate" hreflang="...">，
  * 另加一条 x-default 指向默认语言（en）。
  *
- * 注意：D 阶段（URL 子目录 locale）上线后，这里需要拼 `/<locale>/...`。
- * 现阶段所有 locale 共享同一 pathname，hreflang 的 href 全部相同。
- */
-/**
- * Build hreflang alternates. Each supported locale gets one
- * `<link rel="alternate" hreflang="...">`, with the URL staying
- * the same as the current page (no UI-language prefixing).
+ * 每个 locale 的 URL 通过 buildLocalePath 加上对应前缀：
+ *   en → 无前缀（/languages/english）
+ *   zh → /zh/languages/english
+ *   ja → /ja/languages/english
+ *   ...
  *
- * If a localizedPaths mapping is provided, use that for each
- * language instead; otherwise all locales point to the current
- * URL (acceptable when content is the same across languages).
+ * 如果传入 localizedPaths（自定义每个语言的路径），则直接使用调用方
+ * 提供的路径（调用方负责前缀），适用于博客翻译等场景。
  */
 function buildAlternates(
   pathname: string,
@@ -74,11 +71,15 @@ function buildAlternates(
     (localizedPaths ?? []).map((p) => [p.lang, p.path])
   );
   return SUPPORTED_LANGUAGES.map((code) => {
-    const target = pathByLang.get(code) ?? pathname;
-    const cleanTarget = (target ?? "/").split("?")[0].split("#")[0] || "/";
+    const customPath = pathByLang.get(code);
+    if (customPath) {
+      return { lang: code, url: `${SITE_URL}${customPath}` };
+    }
+    const cleanTarget = (pathname ?? "/").split("?")[0].split("#")[0] || "/";
+    const prefixed = buildLocalePath(code, cleanTarget);
     return {
       lang: code,
-      url: `${SITE_URL}${cleanTarget}`,
+      url: `${SITE_URL}${prefixed}`,
     };
   });
 }
@@ -93,7 +94,7 @@ function buildAlternates(
  * user visiting a Japanese page) that don't exist in the app.
  *
  *   "/languages/japanese/vocabulary/n1" → "/languages/japanese/vocabulary/n1"
- *   "/jp/blog/abc"                      → "/jp/blog/abc"
+ *   "/ja/blog/abc"                      → "/ja/blog/abc"
  *   "/de"                               → "/de"
  */
 function resolveCanonical(

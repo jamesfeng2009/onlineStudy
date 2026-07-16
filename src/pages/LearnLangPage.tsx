@@ -108,6 +108,7 @@ export default function LearnLangPage() {
   if (!valid) {
     return (
       <PageShell title="Language not found" subtitle="That language is not yet supported.">
+        <Seo noindex title="Language not found" />
         <p className="text-brand-200/80">
           <LocaleLink to="/languages" className="text-sky-300 hover:underline">
             ← Pick a language
