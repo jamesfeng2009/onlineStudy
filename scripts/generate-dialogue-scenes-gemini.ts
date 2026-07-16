@@ -48,7 +48,7 @@ const PROVIDER_BY_LANG: Record<string, Provider> = {
   en: "gemini", es: "gemini", fr: "gemini", de: "gemini", it: "gemini", th: "gemini",
 };
 const DEFAULT_MODEL: Record<Provider, string> = {
-  gemini: "gemini-2.0-flash",
+  gemini: "gemini-2.5-flash",
   dashscope: "qwen2.5-72b-instruct",
 };
 const ENDPOINTS: Record<Provider, { url: (m: string) => string; auth: (k: string) => Record<string, string> }> = {
