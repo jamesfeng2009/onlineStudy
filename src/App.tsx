@@ -5,6 +5,12 @@ import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import CoursesPage from "./pages/CoursesPage";
+import PlacementTestPage from "./pages/PlacementTestPage";
+import AlphabetPage from "./pages/AlphabetPage";
+import ReadingPage from "./pages/ReadingPage";
+import LeaguePage from "./pages/LeaguePage";
+import CefrSelfAssessmentPage from "./pages/CefrSelfAssessmentPage";
+import WritingPage from "./pages/WritingPage";
 import LearnPage from "./pages/LearnPage";
 import DashboardPage from "./pages/DashboardPage";
 import RecommendPage from "./pages/RecommendPage";
@@ -54,6 +60,15 @@ const rootRoutes = (
   <>
     <Route path="/" element={<HomePage />} />
     <Route path="/courses" element={<CoursesPage />} />
+    <Route path="/placement" element={<PlacementTestPage />} />
+    <Route path="/alphabet" element={<AlphabetPage />} />
+    <Route path="/alphabet/:language" element={<AlphabetPage />} />
+    <Route path="/reading" element={<ReadingPage />} />
+    <Route path="/reading/:id" element={<ReadingPage />} />
+    <Route path="/league" element={<LeaguePage />} />
+    <Route path="/cefr-self-assessment" element={<CefrSelfAssessmentPage />} />
+    <Route path="/writing" element={<WritingPage />} />
+    <Route path="/writing/:id" element={<WritingPage />} />
     <Route path="/learn" element={<LearnPage />} />
     <Route path="/learn/:courseId" element={<LearnPage />} />
     <Route path="/languages" element={<LearnLangPage />} />
@@ -88,6 +103,15 @@ const localeRoutes = (
   <>
     <Route index element={<HomePage />} />
     <Route path="courses" element={<CoursesPage />} />
+      <Route path="placement" element={<PlacementTestPage />} />
+      <Route path="alphabet" element={<AlphabetPage />} />
+      <Route path="alphabet/:language" element={<AlphabetPage />} />
+      <Route path="reading" element={<ReadingPage />} />
+      <Route path="reading/:id" element={<ReadingPage />} />
+      <Route path="league" element={<LeaguePage />} />
+      <Route path="cefr-self-assessment" element={<CefrSelfAssessmentPage />} />
+      <Route path="writing" element={<WritingPage />} />
+      <Route path="writing/:id" element={<WritingPage />} />
     <Route path="learn" element={<LearnPage />} />
     <Route path="learn/:courseId" element={<LearnPage />} />
     <Route path="languages" element={<LearnLangPage />} />

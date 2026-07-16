@@ -4,7 +4,7 @@
  * Different languages use different level naming conventions:
  *   - en/es/fr/de/it/th:  CEFR (A1, A2, B1, B2, C1, C2)
  *   - ja:                  JLPT (N5, N4, N3, N2, N1)
- *   - zh:                  HSK (HSK1-HSK6)
+ *   - zh:                  HSK (HSK1-HSK9, HSK 3.0)
  *   - ko:                  중급/초급/고급/심화
  *   - yue:                 初级/中级/高级
  *
@@ -42,15 +42,25 @@ const LEVEL_MAP: Record<string, CefrLevel> = {
   "ja-N2": "B2",
   "ja-N1": "C1",
 
-  // Chinese HSK (new 6-level scale; HSK1=easiest)
+  // Chinese HSK 3.0 (9-level scale; HSK1=easiest, HSK7-9 都是 C2 级别)
   "zh-HSK1": "A1",
   "zh-HSK2": "A2",
   "zh-HSK3": "B1",
   "zh-HSK4": "B2",
   "zh-HSK5": "C1",
-  "zh-HSK6": "C2",
+  "zh-HSK6": "C1",
+  "zh-HSK7": "C2",
+  "zh-HSK8": "C2",
+  "zh-HSK9": "C2",
 
-  // Korean
+  // Korean (P0-2: ko 从 "初级/中级/高级/심화" 迁移到 TOPIK 1-6)
+  "ko-TOPIK1": "A1",
+  "ko-TOPIK2": "A2",
+  "ko-TOPIK3": "B1",
+  "ko-TOPIK4": "B2",
+  "ko-TOPIK5": "C1",
+  "ko-TOPIK6": "C2",
+  // 向后兼容旧 ko 等级映射（迁移期间老数据可能还用）
   "ko-초급": "A1",
   "ko-중급": "A2",
   "ko-고급": "B1",

@@ -52,7 +52,7 @@ function sanitizeLevel(level: string, languageCode: string): string {
   const knownLevels: Record<string, string[]> = {
     en: ["A1", "A2", "B1", "B2", "C1", "C2"],
     ja: ["N5", "N4", "N3", "N2", "N1"],
-    zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6"],
+    zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6", "HSK7", "HSK8", "HSK9"],
     // ko/es/fr/de/it 走 CEFR（generate_other.py 用 en 词频估算）
     ko: ["A1", "A2", "B1", "B2", "C1", "C2"],
     es: ["A1", "A2", "B1", "B2", "C1", "C2"],

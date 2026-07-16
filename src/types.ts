@@ -21,7 +21,34 @@ export interface LanguageMeta {
   native: string;
   flag: string;
   tagline: string;
+  /** 等级列表（字符串形式，向后兼容）。如 ["A1","A2","B1","B2","C1","C2"] */
   levels: string[];
+  /** 等级元数据（P0-2 新增，可选，向后兼容）。key = level code */
+  levelMeta?: Record<string, LevelMeta>;
+}
+
+/** 单个等级的元数据。对齐 CEFR/JLPT/HSK/TOPIK 等国际通用语言能力标准。
+ *  learningGoals 为本项目原创描述，不抄 CEFR Can-Do 原文（版权风险）。 */
+export interface LevelMeta {
+  /** 等级代码，如 "A1" / "N5" / "HSK1" / "TOPIK1" */
+  code: string;
+  /** 对齐的 CEFR 等级，用于跨语言比较。如 "A1" / "B2" */
+  cefrAlignment: import("./lib/level-utils").CefrLevel;
+  /** 人类可读名称，如 "Beginner" / "入门" */
+  name: string;
+  /** 本等级学完后能做的事（项目原创，非 CEFR 原文） */
+  learningGoals: string[];
+  /** 目标词汇量 */
+  vocabTarget: number;
+  /** 建议引导学习小时数 */
+  guidedHours: number;
+  /** 本等级应掌握的语法点清单 */
+  grammarPoints: string[];
+  /** 对齐的国际能力框架 */
+  frameworkAlignment?: {
+    framework: "CEFR" | "JLPT" | "HSK" | "TOPIK" | "ACTFL";
+    level: string;
+  };
 }
 
 export interface Course {
@@ -203,7 +230,7 @@ export interface ReviewItem {
   /** Stable id of the underlying word/quiz/listening item. */
   itemId: string;
   /** Discriminator for the ReviewModule UI. */
-  kind: "word" | "quiz";
+  kind: "word" | "quiz" | "listening" | "speaking";
   /** Snapshot of the word/phrase for quick display without re-fetching
    *  content. Front/back text the user actually reviews. */
   front: string;

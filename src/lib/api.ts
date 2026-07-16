@@ -183,6 +183,54 @@ export async function reviewQuiz(
   }, true);
 }
 
+// ====== P1-3: SRS for listening / speaking ======
+
+export async function getListeningReviews(params?: {
+  language?: string;
+  due?: boolean;
+}): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.due !== undefined) qs.set("due", String(params.due));
+  const query = qs.toString();
+  return request(`/user/listening-reviews${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function getSpeakingReviews(params?: {
+  language?: string;
+  due?: boolean;
+}): Promise<Record<string, unknown>[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.due !== undefined) qs.set("due", String(params.due));
+  const query = qs.toString();
+  return request(`/user/speaking-reviews${query ? `?${query}` : ""}`, {}, true);
+}
+
+/** Submit a listening item review (SM-2 write-through). */
+export async function reviewListening(
+  listeningId: string,
+  body: { quality: string; srsState: SrsStatePayload; accuracy?: number },
+): Promise<Record<string, unknown>> {
+  return request(
+    `/user/listening-reviews/${encodeURIComponent(listeningId)}/review`,
+    { method: "POST", body: JSON.stringify(body) },
+    true,
+  );
+}
+
+/** Submit a speaking item review (SM-2 write-through). */
+export async function reviewSpeaking(
+  speakingId: string,
+  body: { quality: string; srsState: SrsStatePayload; score?: number },
+): Promise<Record<string, unknown>> {
+  return request(
+    `/user/speaking-reviews/${encodeURIComponent(speakingId)}/review`,
+    { method: "POST", body: JSON.stringify(body) },
+    true,
+  );
+}
+
 // ====== User course progress (auth) ======
 export async function getCourseProgress(): Promise<Record<string, unknown>[]> {
   return request("/user/course-progress", {}, true);
@@ -196,6 +244,601 @@ export async function trackCourseProgress(
     method: "POST",
     body: JSON.stringify(body),
   }, true);
+}
+
+// ====== P0-1: Lesson hierarchy (units + lessons + player) ======
+
+export type LessonStatus = "locked" | "unlocked" | "in_progress" | "completed";
+
+export interface LessonSummary {
+  id: string;
+  title: string;
+  lessonOrder: number;
+  skillType: string;
+  durationMin: number;
+  isCheckpoint: boolean;
+  requiresLessonId: string | null;
+  status: LessonStatus;
+  bestScore: number | null;
+  attemptCount: number;
+}
+
+export interface UnitSummary {
+  id: string;
+  title: string;
+  description: string | null;
+  unitOrder: number;
+  skillFocus: string | null;
+  lessons: LessonSummary[];
+}
+
+export interface CourseUnitsResp {
+  course: {
+    id: string;
+    title: string;
+    language: string;
+    level: string;
+    totalLessons: number;
+  };
+  units: UnitSummary[];
+}
+
+/** Fetch the unit/lesson tree for a course. Includes derived status
+ *  for each lesson (auth-aware: logged-in users see their real
+ *  progress; logged-out users see the prerequisite-derived status). */
+export async function getCourseUnits(courseId: string): Promise<CourseUnitsResp> {
+  return request(`/courses/${encodeURIComponent(courseId)}/units`);
+}
+
+export interface LessonExerciseWord {
+  id: string;
+  language: string;
+  level: string;
+  word: string;
+  phonetic: string | null;
+  translation: string;
+  exampleTranslation: string | null;
+  exampleSentence: string;
+}
+
+export interface LessonExerciseQuiz {
+  id: string;
+  language: string;
+  level: string;
+  question: string;
+  options: string[];
+  answer: number;
+  explain: string;
+}
+
+export interface LessonExerciseListening {
+  id: string;
+  language: string;
+  level: string;
+  title: string;
+  script: string;
+  blanks: unknown;
+}
+
+export interface LessonExerciseSpeaking {
+  id: string;
+  language: string;
+  level: string;
+  phrase: string;
+  translation: string;
+  phonetic: string | null;
+}
+
+export interface LessonDetailResp {
+  id: string;
+  title: string;
+  skillType: string;
+  durationMin: number;
+  isCheckpoint: boolean;
+  requiresLessonId: string | null;
+  unit: { courseId: string; unitOrder: number; title: string };
+  course: { language: string; level: string } | null;
+  status: LessonStatus;
+  bestScore: number | null;
+  attemptCount: number;
+  exerciseIds: string[];
+  exercises: {
+    words: LessonExerciseWord[];
+    quizzes: LessonExerciseQuiz[];
+    listenings: LessonExerciseListening[];
+    speakings: LessonExerciseSpeaking[];
+  };
+}
+
+/** Fetch a single lesson with resolved exercises (words/quizzes/
+ *  listenings/speakings + translations). */
+export async function getLesson(lessonId: string): Promise<LessonDetailResp> {
+  return request(`/lessons/${encodeURIComponent(lessonId)}`);
+}
+
+/** Mark a lesson as in_progress. Validates the prerequisite is
+ *  completed. Increments attemptCount. Returns the new status. */
+export async function startLesson(lessonId: string): Promise<{
+  lessonId: string;
+  status: LessonStatus;
+  attemptCount: number;
+  startedAt: string | null;
+}> {
+  return request(`/lessons/${encodeURIComponent(lessonId)}/start`, {
+    method: "POST",
+  }, true);
+}
+
+/** Mark a lesson completed. Auto-unlocks the next lesson in the
+ *  chain. Optional `score` (for checkpoint lessons) is merged into
+ *  bestScore as max(prev, score). */
+export async function completeLesson(
+  lessonId: string,
+  body?: { score?: number },
+): Promise<{
+  lessonId: string;
+  status: LessonStatus;
+  bestScore: number | null;
+  attemptCount: number;
+  completedAt: string | null;
+  unlockedLessonId: string | null;
+}> {
+  return request(`/lessons/${encodeURIComponent(lessonId)}/complete`, {
+    method: "POST",
+    body: JSON.stringify(body ?? {}),
+  }, true);
+}
+
+// ====== P1-4: Crown progress (course-level) ======
+
+export interface CrownCheckpoint {
+  lessonId: string;
+  title: string;
+  unitTitle: string;
+  bestScore: number | null;
+  passed: boolean;
+  completedAt: string | null;
+}
+
+export interface CourseCrownsResp {
+  crowns: number;
+  totalCheckpoints: number;
+  passThreshold: number;
+  passedCheckpoints: CrownCheckpoint[];
+}
+
+export async function getCourseCrowns(courseId: string): Promise<CourseCrownsResp> {
+  return request(`/courses/${encodeURIComponent(courseId)}/crowns`, {}, true);
+}
+
+// ====== P0-3: Placement test (分级测试) ======
+
+export interface PlacementQuestion {
+  level: string;
+  id: string;
+  question: string;
+  options: string[];
+  answer: number;
+}
+
+export interface PlacementQuestionsResp {
+  language: string;
+  levels: string[];
+  questions: PlacementQuestion[];
+  totalQuestions: number;
+}
+
+/** Fetch placement-test question set for a language (no auth needed).
+ *  Returns ~countPerLevel questions per level; the frontend walks
+ *  through them adaptively (binary search on the level ladder). */
+export async function getPlacementQuestions(
+  language: string,
+  params?: { countPerLevel?: number; nativeLanguage?: string },
+): Promise<PlacementQuestionsResp> {
+  const qs = new URLSearchParams();
+  if (params?.countPerLevel) qs.set("countPerLevel", String(params.countPerLevel));
+  if (params?.nativeLanguage) qs.set("nativeLanguage", params.nativeLanguage);
+  const query = qs.toString();
+  return request(`/placement/questions/${encodeURIComponent(language)}${query ? `?${query}` : ""}`);
+}
+
+export interface PlacementAnswerPayload {
+  level: string;
+  itemId: string;
+  selectedOption: number;
+  correct: boolean;
+}
+
+export interface PlacementResultPayload {
+  language: string;
+  recommendedLevel: string;
+  recommendedCourseId?: string | null;
+  totalQuestions: number;
+  correctCount: number;
+  finalCefrRank: number;
+  answers?: PlacementAnswerPayload[];
+}
+
+export interface PlacementResultResp {
+  id: string;
+  userId: string;
+  language: string;
+  recommendedLevel: string;
+  recommendedCourseId: string | null;
+  totalQuestions: number;
+  correctCount: number;
+  finalCefrRank: number;
+  answers: unknown;
+  takenAt: string;
+}
+
+/** Save (upsert) the placement result for the current user.
+ *  Each (userId, language) keeps only the latest result. */
+export async function savePlacementResult(
+  body: PlacementResultPayload,
+): Promise<PlacementResultResp> {
+  return request("/placement/result", {
+    method: "POST",
+    body: JSON.stringify(body),
+  }, true);
+}
+
+/** Get the latest placement result for a language (auth). Returns null
+ *  if the user has never taken the test for that language. */
+export async function getPlacementResult(
+  language: string,
+): Promise<PlacementResultResp | null> {
+  return request(`/placement/result/${encodeURIComponent(language)}`, {}, true);
+}
+
+// ====== P1-2: Reading module ======
+
+export interface ReadingGlossaryEntry {
+  term: string;
+  reading?: string;
+  definition: string;
+  translation?: string;
+}
+
+export interface ReadingQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  answer: number;
+  explain?: string;
+  translations?: Record<string, string>;
+}
+
+export interface ReadingPassageSummary {
+  id: string;
+  language: string;
+  level: string;
+  title: string;
+  summary: string;
+  wordCount: number;
+  estMinutes: number;
+  source: string | null;
+}
+
+export interface ReadingPassageDetail extends ReadingPassageSummary {
+  body: string;
+  glossary: ReadingGlossaryEntry[];
+  questions: ReadingQuestion[];
+  nativeLanguage: string;
+}
+
+export interface ReadingProgressEntry {
+  readingId: string;
+  status: "not_started" | "in_progress" | "completed";
+  correctCount: number;
+  totalQuestions: number;
+  bestAccuracy: number;
+  attemptCount: number;
+  completedAt: string | null;
+  lastPracticedAt: string | null;
+}
+
+export async function getReadingPassages(params?: {
+  language?: string;
+  level?: string;
+  nativeLanguage?: string;
+}): Promise<ReadingPassageSummary[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  if (params?.nativeLanguage) qs.set("nativeLanguage", params.nativeLanguage);
+  const query = qs.toString();
+  return request(`/reading${query ? `?${query}` : ""}`);
+}
+
+export async function getReadingPassage(
+  id: string,
+  nativeLanguage?: string,
+): Promise<ReadingPassageDetail> {
+  const qs = new URLSearchParams();
+  if (nativeLanguage) qs.set("nativeLanguage", nativeLanguage);
+  const query = qs.toString();
+  return request(`/reading/${encodeURIComponent(id)}${query ? `?${query}` : ""}`);
+}
+
+export async function getReadingProgress(
+  language?: string,
+): Promise<ReadingProgressEntry[]> {
+  const qs = new URLSearchParams();
+  if (language) qs.set("language", language);
+  const query = qs.toString();
+  return request(`/reading/progress${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function submitReadingProgress(
+  readingId: string,
+  body: {
+    results: { questionId: string; selectedIndex: number; correct: boolean }[];
+    totalQuestions: number;
+    correctCount: number;
+  },
+): Promise<ReadingProgressEntry> {
+  return request(
+    `/reading/${encodeURIComponent(readingId)}/progress`,
+    { method: "POST", body: JSON.stringify(body) },
+    true,
+  );
+}
+
+// ====== League (P2-1) ======
+export type LeagueDivision =
+  | "bronze"
+  | "silver"
+  | "gold"
+  | "platinum"
+  | "diamond"
+  | "master";
+
+export interface LeagueDivisionMeta {
+  key: LeagueDivision;
+  label: string;
+  icon: string;
+  minExp: number;
+}
+
+export interface LeagueCurrentSeasonResp {
+  seasonKey: string;
+  startsAt: string;
+  endsAt: string;
+  totalPlayers: number;
+  divisions: LeagueDivisionMeta[];
+}
+
+export interface LeagueStandingEntry {
+  rank: number;
+  userId: string;
+  username: string;
+  avatar: string | null;
+  level: number;
+  division: LeagueDivision;
+  weekExp: number;
+  currentExp: number;
+  startingExp: number;
+  bestDivision: LeagueDivision | null;
+}
+
+export interface LeagueStandingsResp {
+  seasonKey: string;
+  division: string;
+  entries: LeagueStandingEntry[];
+}
+
+export interface LeagueMyStanding {
+  id: string;
+  division: LeagueDivision;
+  divisionLabel: string;
+  startingExp: number;
+  currentExp: number;
+  weekExp: number;
+  bestDivision: LeagueDivision | null;
+  rankInDivision: number;
+  divisionSize: number;
+  isPromotionZone: boolean;
+  isDemotionZone: boolean;
+  promotedAt: string | null;
+  demotedAt: string | null;
+}
+
+export interface LeagueMeResp {
+  seasonKey: string;
+  startsAt: string;
+  endsAt: string;
+  standing: LeagueMyStanding;
+  user: {
+    id: string;
+    username: string;
+    avatar: string | null;
+    level: number;
+    exp: number;
+  };
+}
+
+export async function getLeagueCurrentSeason(): Promise<LeagueCurrentSeasonResp> {
+  return request("/league/current-season");
+}
+
+export async function getLeagueStandings(params?: {
+  division?: LeagueDivision;
+  limit?: number;
+}): Promise<LeagueStandingsResp> {
+  const qs = new URLSearchParams();
+  if (params?.division) qs.set("division", params.division);
+  if (typeof params?.limit === "number") qs.set("limit", String(params.limit));
+  const query = qs.toString();
+  return request(`/league/standings${query ? `?${query}` : ""}`);
+}
+
+export async function getLeagueMe(): Promise<LeagueMeResp> {
+  return request("/league/me", {}, true);
+}
+
+export async function syncLeagueMe(): Promise<{
+  id: string;
+  division: LeagueDivision;
+  startingExp: number;
+  currentExp: number;
+  weekExp: number;
+  bestDivision: LeagueDivision | null;
+}> {
+  return request("/league/me/sync", { method: "POST" }, true);
+}
+
+// ====== CEFR 自评 (P2-2) ======
+export type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+export type CefrSkill = "listening" | "reading" | "speaking" | "writing";
+
+export interface CefrCanDoStatement {
+  key: string;
+  skill: CefrSkill;
+  text: string;
+}
+
+export interface CefrLevelMeta {
+  level: CefrLevel;
+  rank: number;
+  label: string;
+  description: string;
+  statements: CefrCanDoStatement[];
+}
+
+export interface CefrCanDoResp {
+  levels: CefrLevelMeta[];
+}
+
+export interface CefrSelfAssessmentEntry {
+  id: string;
+  language: string;
+  cefrLevel: CefrLevel;
+  cefrRank: number;
+  canDoKeys: string[];
+  note: string | null;
+  assessedAt: string;
+  updatedAt: string;
+}
+
+export async function getCefrCanDoStatements(): Promise<CefrCanDoResp> {
+  return request("/cefr-can-do-statements");
+}
+
+export async function getCefrSelfAssessment(language?: string): Promise<CefrSelfAssessmentEntry[]> {
+  const qs = new URLSearchParams();
+  if (language) qs.set("language", language);
+  const query = qs.toString();
+  return request(`/user/cefr-self-assessment${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function saveCefrSelfAssessment(body: {
+  language: string;
+  cefrLevel: CefrLevel;
+  canDoKeys?: string[];
+  note?: string;
+}): Promise<CefrSelfAssessmentEntry> {
+  return request("/user/cefr-self-assessment", {
+    method: "PUT",
+    body: JSON.stringify(body),
+  }, true);
+}
+
+// ====== 写作模块 (P2-3) ======
+export type WritingType = "essay" | "email" | "summary" | "story" | "dialogue";
+
+export interface WritingPromptSummary {
+  id: string;
+  language: string;
+  level: string;
+  type: WritingType;
+  title: string;
+  prompt: string;
+  tips: string[];
+  minWords: number;
+  maxWords: number;
+  estMinutes: number;
+}
+
+export interface WritingPromptDetail extends WritingPromptSummary {
+  sampleAnswer: string | null;
+  keywords: string[];
+  nativeLanguage: string;
+}
+
+export interface WritingSubmissionFeedback {
+  lengthHint: string;
+  varietyHint: string;
+  keywordHint: string;
+  matchedKeywords: string[];
+  missedKeywords: string[];
+  suggestions: string[];
+  [k: string]: unknown;
+}
+
+export interface WritingSubmissionEntry {
+  id: string;
+  writingId: string;
+  content: string;
+  wordCount: number;
+  score: number;
+  lengthScore: number;
+  varietyScore: number;
+  keywordScore: number;
+  feedback: WritingSubmissionFeedback;
+  status: string;
+  submittedAt: string;
+  reviewedAt: string | null;
+  prompt?: {
+    id: string;
+    title: string;
+    level: string;
+    type: WritingType;
+    languageCode: string;
+  };
+}
+
+export async function getWritingPrompts(params?: {
+  language?: string;
+  level?: string;
+  type?: WritingType;
+  nativeLanguage?: string;
+}): Promise<WritingPromptSummary[]> {
+  const qs = new URLSearchParams();
+  if (params?.language) qs.set("language", params.language);
+  if (params?.level) qs.set("level", params.level);
+  if (params?.type) qs.set("type", params.type);
+  if (params?.nativeLanguage) qs.set("nativeLanguage", params.nativeLanguage);
+  const query = qs.toString();
+  return request(`/writing${query ? `?${query}` : ""}`);
+}
+
+export async function getWritingPrompt(
+  id: string,
+  nativeLanguage?: string,
+): Promise<WritingPromptDetail> {
+  const qs = new URLSearchParams();
+  if (nativeLanguage) qs.set("nativeLanguage", nativeLanguage);
+  const query = qs.toString();
+  return request(`/writing/${encodeURIComponent(id)}${query ? `?${query}` : ""}`);
+}
+
+export async function getWritingSubmissions(language?: string): Promise<WritingSubmissionEntry[]> {
+  const qs = new URLSearchParams();
+  if (language) qs.set("language", language);
+  const query = qs.toString();
+  return request(`/writing/progress${query ? `?${query}` : ""}`, {}, true);
+}
+
+export async function submitWriting(
+  writingId: string,
+  content: string,
+): Promise<WritingSubmissionEntry> {
+  return request(
+    `/writing/${encodeURIComponent(writingId)}/submit`,
+    { method: "POST", body: JSON.stringify({ content }) },
+    true,
+  );
 }
 
 // ====== User achievements (auth) ======
@@ -510,10 +1153,37 @@ export const api = {
   speaking: getSpeaking,
   wordReviews: getWordReviews,
   quizReviews: getQuizReviews,
+  listeningReviews: getListeningReviews,
+  speakingReviews: getSpeakingReviews,
   reviewWord,
   reviewQuiz,
+  reviewListening,
+  reviewSpeaking,
   courseProgress: getCourseProgress,
   trackCourseProgress,
+  courseUnits: getCourseUnits,
+  lesson: getLesson,
+  startLesson,
+  completeLesson,
+  courseCrowns: getCourseCrowns,
+  placementQuestions: getPlacementQuestions,
+  savePlacementResult,
+  placementResult: getPlacementResult,
+  readingPassages: getReadingPassages,
+  readingPassage: getReadingPassage,
+  readingProgress: getReadingProgress,
+  submitReading: submitReadingProgress,
+  leagueSeason: getLeagueCurrentSeason,
+  leagueStandings: getLeagueStandings,
+  leagueMe: getLeagueMe,
+  leagueMeSync: syncLeagueMe,
+  cefrCanDo: getCefrCanDoStatements,
+  cefrSelfAssessment: getCefrSelfAssessment,
+  saveCefrSelfAssessment,
+  writingPrompts: getWritingPrompts,
+  writingPrompt: getWritingPrompt,
+  writingSubmissions: getWritingSubmissions,
+  submitWriting,
   achievements: getAchievements,
   unlockAchievement,
   markAchievementsRead,

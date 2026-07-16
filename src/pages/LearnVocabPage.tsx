@@ -353,7 +353,7 @@ export default function LearnVocabPage() {
 const LEVEL_ORDER: Record<LearnLangSlug, string[]> = {
   en: ["A1", "A2", "B1", "B2", "C1", "C2"],
   ja: ["N5", "N4", "N3", "N2", "N1"],
-  zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6"],
+  zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6", "HSK7", "HSK8", "HSK9"],
   ko: ["A1", "A2", "B1"],
   es: ["A1", "A2", "B1"],
   fr: ["A1", "A2", "B1"],

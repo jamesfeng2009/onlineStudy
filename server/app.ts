@@ -14,6 +14,12 @@ import speakingRoutes from "./routes/speaking.js";
 import progressRoutes from "./routes/progress.js";
 import userReviewsRoutes from "./routes/user-reviews.js";
 import courseProgressRoutes from "./routes/course-progress.js";
+import lessonsRoutes from "./routes/lessons.js";
+import placementRoutes from "./routes/placement.js";
+import readingRoutes from "./routes/reading.js";
+import leagueRoutes from "./routes/league.js";
+import cefrRoutes from "./routes/cefr-self-assessment.js";
+import writingRoutes from "./routes/writing.js";
 import achievementsRoutes from "./routes/achievements.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
@@ -102,6 +108,12 @@ export async function buildApp(): Promise<FastifyInstance> {
     progressRoutes,
     userReviewsRoutes,
     courseProgressRoutes,
+    lessonsRoutes,
+    placementRoutes,
+    readingRoutes,
+    leagueRoutes,
+    cefrRoutes,
+    writingRoutes,
     achievementsRoutes,
     communityRoutes,
     stripeRoutes,

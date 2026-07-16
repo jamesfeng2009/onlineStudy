@@ -23,6 +23,8 @@ model Language {
   quizzes   Quiz[]
   listening Listening[]
   speaking  Speaking[]
+  readingPassages ReadingPassage[]
+  writingPrompts  WritingPrompt[]
   users     User[]
 
   @@map("languages")
@@ -44,6 +46,7 @@ model Course {
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
   userProgress UserCourseProgress[]
+  units        Unit[]
 
   @@map("courses")
 }
@@ -123,6 +126,7 @@ model Listening {
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
   userProgress UserListeningProgress[]
+  userReviews  UserListeningReview[]
 
   @@map("listening")
   @@index([languageCode, level])
@@ -139,6 +143,7 @@ model Speaking {
 
   language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
   userProgress UserSpeakingProgress[]
+  userReviews  UserSpeakingReview[]
 
   @@map("speaking")
   @@index([languageCode, level])
@@ -182,6 +187,21 @@ model User {
   listeningProgress UserListeningProgress[]
   speakingProgress  UserSpeakingProgress[]
   achievements      UserAchievement[]
+  // P0-1: 课时进度
+  lessonProgress   UserLessonProgress[]
+  // P0-3: 分级测试结果（每语言一条最新记录）
+  placementResults PlacementResult[]
+  // P1-2: 阅读理解进度
+  readingProgress  UserReadingProgress[]
+  // P1-3: SM-2 复习队列（听力 / 口语）
+  listeningReviews UserListeningReview[]
+  speakingReviews  UserSpeakingReview[]
+  // P2-1: League 排行榜
+  leagueStandings LeagueStanding[]
+  // P2-2: CEFR 自评
+  cefrSelfAssessments CefrSelfAssessment[]
+  // P2-3: 写作提交记录
+  writingSubmissions UserWritingSubmission[]
 
   @@unique([oauthProvider, oauthId])
   @@map("users")
@@ -396,6 +416,68 @@ model UserCourseProgress {
   @@map("user_course_progress")
 }
 
+// ============================================================
+// P0-1: 课时层级结构（Course → Unit → Lesson → Exercise）
+// ============================================================
+
+// 课程单元（一个 Course 下多个 Unit，按 unitOrder 排序）
+model Unit {
+  id          String   @id @default(uuid())
+  courseId    String
+  title       String                          // "Unit 1: Greetings"
+  description String?
+  unitOrder   Int      @default(0)
+  skillFocus  String?                         // "vocabulary" | "grammar" | "listening" | "mixed"
+  createdAt   DateTime @default(now())
+
+  course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons Lesson[]
+
+  @@unique([courseId, unitOrder])
+  @@map("units")
+}
+
+// 单个课时（一个 Unit 下多个 Lesson，按 lessonOrder 排序）
+model Lesson {
+  id              String   @id @default(uuid())
+  unitId          String
+  title           String                          // "Lesson 1: Hello & Goodbye"
+  lessonOrder     Int      @default(0)
+  skillType       String                          // "vocab" | "grammar" | "listening" | "speaking" | "mixed"
+  exerciseIds     Json                            // string[]，指向 WordBank/Quiz/Listening/Speaking 的 id
+  durationMin     Int      @default(5)            // 预计耗时（分钟）
+  isCheckpoint    Boolean  @default(false)        // 是否单元通关测验
+  requiresLessonId String?                        // 前置课时（解锁条件）
+  createdAt       DateTime @default(now())
+
+  unit          Unit                @relation(fields: [unitId], references: [id], onDelete: Cascade)
+  userProgress  UserLessonProgress[]
+
+  @@unique([unitId, lessonOrder])
+  @@map("lessons")
+}
+
+// 用户课时进度（解锁 + 完成）
+model UserLessonProgress {
+  id            String    @id @default(uuid())
+  userId        String
+  lessonId      String
+  status        String    @default("locked")   // locked | unlocked | in_progress | completed
+  startedAt     DateTime?
+  completedAt   DateTime?
+  bestScore     Int?                            // 通关测验得分
+  attemptCount  Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@index([userId, status])
+  @@map("user_lesson_progress")
+}
+
 // 测验作答记录（SM2 + 错题本）
 model UserQuizReview {
   id              String    @id @default(uuid())
@@ -478,4 +560,316 @@ model UserAchievement {
   @@unique([userId, badgeKey])
   @@index([userId, isRead])
   @@map("user_achievements")
+}
+
+// ============================================================
+// P0-3: 分级测试结果（Placement Test）
+// ============================================================
+
+// 每个用户每个 (userId, language) 仅保留最近一次结果（upsert 覆盖）
+model PlacementResult {
+  id                  String   @id @default(uuid())
+  userId              String
+  language            String                                // "en" / "ja" / "ko" ...
+  recommendedLevel    String                                // "A1" / "TOPIK3" / "N4" ...
+  recommendedCourseId String?                               // 推荐起点的 course.id（可能为空）
+  totalQuestions      Int                                   // 总题数
+  correctCount        Int                                   // 答对数
+  finalCefrRank       Int                                   // 1-6 (A1-C2)，用于跨语言比较
+  answers             Json      @default("[]")              // [{level, itemId, correct}] 答题明细
+  takenAt             DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, language])
+  @@index([userId, takenAt])
+  @@map("placement_results")
+}
+
+// ============================================================
+// P1-2: 阅读模块（Reading Module）
+//
+// 与 Listening/Speaking/Quiz 平级，提供分级阅读理解材料。
+// 设计要点：
+//   * body 存纯文本正文（前端按段落渲染）；词汇注释 + 理解题
+//     放 JSONB 字段（glossary / questions），避免 join 爆炸
+//   * ReadingTranslation 仅翻译标题与摘要，题目本身在 questions
+//     JSON 内自带 translation 字段（与 QuizTranslation 模式不同但更简单）
+//   * UserReadingProgress 记录用户最佳作答，可重做
+// ============================================================
+
+model ReadingPassage {
+  id           String   @id @default(uuid())
+  languageCode String
+  level        String                                  // CEFR / JLPT / HSK / TOPIK level
+  title        String
+  body         String                                  // 正文（纯文本，按 \n\n 分段）
+  glossary     Json      @default("[]")                 // [{ term, reading?, definition, translation }]
+  questions    Json      @default("[]")                 // [{ id, question, options[], answer, explain?, translations? }]
+  wordCount    Int      @default(0)
+  estMinutes   Int      @default(3)                     // 预计阅读时长（分钟）
+  source       String?                                  // 来源署名（版权合规）
+  readOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  language     Language              @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  translations ReadingTranslation[]
+  userProgress UserReadingProgress[]
+
+  @@map("reading_passages")
+  @@index([languageCode, level])
+}
+
+model ReadingTranslation {
+  id               String @id @default(uuid())
+  readingId        String
+  baseLanguageCode String
+  title            String
+  summary          String  @default("")
+
+  passage ReadingPassage @relation(fields: [readingId], references: [id], onDelete: Cascade)
+
+  @@map("reading_translations")
+  @@unique([readingId, baseLanguageCode])
+  @@index([baseLanguageCode])
+}
+
+model UserReadingProgress {
+  id                   String    @id @default(uuid())
+  userId               String
+  readingId            String
+  status               String    @default("not_started") // not_started | in_progress | completed
+  comprehensionResults Json      @default("[]")            // [{ questionId, selectedIndex, correct }]
+  correctCount         Int       @default(0)
+  totalQuestions       Int       @default(0)
+  bestAccuracy         Int       @default(0)               // 最佳正确率 %
+  attemptCount         Int       @default(0)
+  completedAt          DateTime?
+  lastPracticedAt      DateTime?
+
+  user    User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  passage ReadingPassage @relation(fields: [readingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, readingId])
+  @@index([userId, lastPracticedAt])
+  @@map("user_reading_progress")
+}
+
+// ============================================================
+// P1-3: SM-2 复习队列（听力 / 口语）
+//
+// 与 UserWordReview / UserQuizReview 同构：每条记录持有一个
+// Listening / Speaking 项的 SM-2 状态，按 nextReviewAt 调度。
+//
+// 与 UserListeningProgress 的区别：
+//   * UserListeningProgress 记录"用户做过这个练习"（每次重做覆盖最佳）
+//   * UserListeningReview 记录"这条进入了 SM-2 复习队列"（按 SM-2 推进）
+// 用户答错 / 评分低 → 主动加入复习队列；答对 → 调度下次复习时间。
+// ============================================================
+
+model UserListeningReview {
+  id            String    @id @default(uuid())
+  userId        String
+  listeningId   String
+  easeFactor    Float     @default(2.5)
+  interval      Int       @default(1)
+  repetitions   Int       @default(0)
+  nextReviewAt  DateTime  @default(now())
+  lastReviewAt  DateTime?
+  lastRating    String?                       // again | hard | good | easy
+  lastAccuracy  Int       @default(0)
+  totalReviews  Int       @default(0)
+  goodReviews   Int       @default(0)
+  isMastered    Boolean   @default(false)
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listening Listening @relation(fields: [listeningId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listeningId])
+  @@index([userId, nextReviewAt])
+  @@index([userId, isMastered])
+  @@map("user_listening_reviews")
+}
+
+model UserSpeakingReview {
+  id            String    @id @default(uuid())
+  userId        String
+  speakingId    String
+  easeFactor    Float     @default(2.5)
+  interval      Int       @default(1)
+  repetitions   Int       @default(0)
+  nextReviewAt  DateTime  @default(now())
+  lastReviewAt  DateTime?
+  lastRating    String?
+  lastScore     Int       @default(0)           // 0-100
+  totalReviews  Int       @default(0)
+  goodReviews   Int       @default(0)
+  isMastered    Boolean   @default(false)
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  speaking Speaking @relation(fields: [speakingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, speakingId])
+  @@index([userId, nextReviewAt])
+  @@index([userId, isMastered])
+  @@map("user_speaking_reviews")
+}
+
+// ============================================================
+// P2-1: League 排行榜
+//
+// 设计：
+//   * LeagueSeason：按周生成一个全局 season（seasonKey 形如 "2026-W29"）
+//     isActive 通过 partial unique index 保证全局仅一条 active
+//   * LeagueStanding：每用户每 season 一条；startingExp 记录入 season
+//     时的用户总 XP，weekExp = currentExp - startingExp 用于排名
+//   * Division 划分：bronze/silver/gold/platinum/diamond/master
+//   * 排名（rankInDivision）由后端查询时即时计算，不物化
+// ============================================================
+
+model LeagueSeason {
+  id          String   @id @default(uuid())
+  seasonKey   String                                 // "2026-W29"
+  startsAt    DateTime
+  endsAt      DateTime
+  isActive    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  standings   LeagueStanding[]
+
+  @@unique([seasonKey])
+  @@map("league_seasons")
+}
+
+model LeagueStanding {
+  id              String    @id @default(uuid())
+  userId          String
+  seasonId        String
+  division        String    @default("bronze")       // bronze | silver | gold | platinum | diamond | master
+  startingExp     Int       @default(0)
+  currentExp      Int       @default(0)
+  weekExp         Int       @default(0)               // currentExp - startingExp
+  bestDivision    String?
+  promotedAt      DateTime?
+  demotedAt       DateTime?
+  updatedAt       DateTime  @default(now()) @updatedAt
+
+  user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  season LeagueSeason @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, seasonId])
+  @@index([seasonId, division, weekExp])
+  @@index([userId])
+  @@map("league_standings")
+}
+
+// ============================================================
+// P2-2: CEFR 自评（Cefr Self-Assessment）
+//
+// 设计：
+//   * 每用户每语言一条自评记录（upsert）
+//   * cefrLevel (A1-C2) + cefrRank (1-6) 双字段，前者用于展示，后者用于排序
+//   * canDoKeys 存用户勾选的 can-do 条目 key（项目原创描述，避免版权问题）
+//   * 与 PlacementResult 分离：自评是主观，分级测试是客观
+// ============================================================
+
+model CefrSelfAssessment {
+  id          String   @id @default(uuid())
+  userId      String
+  language    String                                 // "en" / "ja" / "ko" ...
+  cefrLevel   String                                 // "A1" / "A2" / "B1" / "B2" / "C1" / "C2"
+  cefrRank    Int                                    // 1-6 (A1=1 ... C2=6)
+  canDoKeys   Json      @default("[]")               // string[]，用户勾选的 can-do 条目 key
+  note        String?
+  assessedAt  DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, language])
+  @@index([userId])
+  @@index([language, cefrRank])
+  @@map("cefr_self_assessments")
+}
+
+// ============================================================
+// P2-3: 写作模块（Writing Module）
+//
+// 设计要点：
+//   * WritingPrompt：分级写作题目 + 提示词 + 范文 + 期望关键词
+//   * WritingTranslation：题目/范文的本地化翻译（与 ReadingTranslation 同构）
+//   * UserWritingSubmission：每次提交一条独立记录（保留全部历史，便于"作品集"展示）
+//     与 UserReadingProgress 不同：reading 用 upsert-by-best，writing 累加历史
+//
+// 评分策略：
+//   * 后端实现简单评分算法（字数 / 句子多样性 / 词汇多样性 / 关键词命中）
+//   * score = lengthScore * 0.3 + varietyScore * 0.3 + keywordScore * 0.4
+//   * 真正的 LLM 评分作为后续可插拔扩展（feedback 字段保留 rawFeedback 供回溯）
+// ============================================================
+
+model WritingPrompt {
+  id           String   @id @default(uuid())
+  languageCode String
+  level        String                                // CEFR / JLPT / HSK / TOPIK level
+  type         String   @default("essay")            // essay | email | summary | story | dialogue
+  title        String
+  prompt       String                                // 题目正文
+  tips         Json      @default("[]")              // string[]
+  minWords     Int      @default(50)
+  maxWords     Int      @default(200)
+  estMinutes   Int      @default(15)
+  sampleAnswer String?
+  keywords     Json      @default("[]")              // string[]，期望出现的关键词
+  writeOrder   Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  language     Language              @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+  translations WritingTranslation[]
+  submissions  UserWritingSubmission[]
+
+  @@map("writing_prompts")
+  @@index([languageCode, level])
+  @@index([type])
+}
+
+model WritingTranslation {
+  id               String  @id @default(uuid())
+  writingId        String
+  baseLanguageCode String
+  title            String
+  prompt           String
+  tips             Json    @default("[]")           // string[]
+  sampleAnswer     String?
+
+  prompt_ref WritingPrompt @relation(fields: [writingId], references: [id], onDelete: Cascade)
+
+  @@map("writing_translations")
+  @@unique([writingId, baseLanguageCode])
+  @@index([baseLanguageCode])
+}
+
+model UserWritingSubmission {
+  id            String    @id @default(uuid())
+  userId        String
+  writingId     String
+  content       String                              // 用户提交的写作文本
+  wordCount     Int       @default(0)
+  score         Int       @default(0)                // 0-100 综合评分
+  lengthScore   Int       @default(0)                // 字数得分 0-100
+  varietyScore  Int       @default(0)                // 词汇多样性 0-100
+  keywordScore  Int       @default(0)                // 关键词命中 0-100
+  feedback      Json      @default("{}")             // 结构化反馈
+  status        String    @default("submitted")      // submitted | reviewed | flagged
+  submittedAt   DateTime  @default(now())
+  reviewedAt    DateTime?
+
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompt WritingPrompt   @relation(fields: [writingId], references: [id], onDelete: Cascade)
+
+  @@map("user_writing_submissions")
+  @@index([userId, writingId])
+  @@index([userId, submittedAt])
+  @@index([writingId])
 }

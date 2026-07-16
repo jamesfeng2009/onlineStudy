@@ -83,6 +83,16 @@ const seedWords: SeedWordInput[] = [
   { languageCode: "zh", level: "HSK5", word: "成就", translation: "Achievement", phonetic: "chéng jiù", exampleSentence: "这是一项伟大的成就。" },
   { languageCode: "zh", level: "HSK5", word: "观点", translation: "Opinion", phonetic: "guān diǎn", exampleSentence: "我有不同的观点。" },
   { languageCode: "zh", level: "HSK6", word: "创造", translation: "Create", phonetic: "chuàng zào", exampleSentence: "创造美好的未来。" },
+  // HSK 3.0 高级（HSK7-9）
+  { languageCode: "zh", level: "HSK7", word: "洞察", translation: "Insight", phonetic: "dòng chá", exampleSentence: "他对这个问题有深刻的洞察。" },
+  { languageCode: "zh", level: "HSK7", word: "辩证", translation: "Dialectical", phonetic: "biàn zhèng", exampleSentence: "我们需要辩证地看待这个问题。" },
+  { languageCode: "zh", level: "HSK7", word: "阐释", translation: "Elucidate", phonetic: "chǎn shì", exampleSentence: "教授阐释了这一理论的内涵。" },
+  { languageCode: "zh", level: "HSK8", word: "渊博", translation: "Profound/Erudite", phonetic: "yuān bó", exampleSentence: "他学识渊博，令人敬仰。" },
+  { languageCode: "zh", level: "HSK8", word: "融会贯通", translation: "Integrate mastery", phonetic: "róng huì guàn tōng", exampleSentence: "学贵融会贯通，方能运用自如。" },
+  { languageCode: "zh", level: "HSK8", word: "洞见", translation: "Penetrating insight", phonetic: "dòng jiàn", exampleSentence: "这篇论文对经典文本提出了精当的洞见。" },
+  { languageCode: "zh", level: "HSK9", word: "高屋建瓴", translation: "Strategic overview", phonetic: "gāo wū jiàn líng", exampleSentence: "他的发言高屋建瓴，统揽全局。" },
+  { languageCode: "zh", level: "HSK9", word: "钩深致远", translation: "Probe depths, reach far", phonetic: "gōu shēn zhì yuǎn", exampleSentence: "做学问当钩深致远，不囿于表层。" },
+  { languageCode: "zh", level: "HSK9", word: "融通", translation: "Synthesize/harmonize", phonetic: "róng tōng", exampleSentence: "此论融通中西，自成一家之言。" },
 
   // 西班牙语
   { languageCode: "es", level: "A1", word: "hola", translation: "你好", phonetic: "/ˈola/", exampleSentence: "Hola, ¿cómo estás?" },
