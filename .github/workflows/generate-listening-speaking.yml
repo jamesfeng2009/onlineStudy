@@ -1,12 +1,16 @@
 # Generate listening fill-in-the-blank + speaking phrases
-# via Gemini + DashScope on GitHub's US-based runners.
+# via Gemini on GitHub's US-based runners.
 #
-# P4-4: East Asian languages (zh/ja/ko/yue) use Qwen via DashScope,
-# other languages use Gemini. Both run on GitHub Actions (US-based)
-# to bypass mainland China region restrictions.
+# P4-5: ONLY Gemini languages (en/es/fr/de/it/th) run here, because
+# Gemini is region-restricted in mainland China. East Asian languages
+# (zh/ja/ko/yue) use Qwen via DashScope and are run LOCALLY instead —
+# DashScope is China-direct, no region restriction.
+#
+# To generate zh/ja/ko/yue content, run on your local machine:
+#   pnpm tsx scripts/generate-listening-speaking-gemini.ts --lang=zh
 #
 # Trigger manually from the Actions tab to (re)generate content
-# for any of: en, ja, zh, ko, es, fr, de, it, th, yue.
+# for Gemini-served languages: en, es, fr, de, it, th.
 name: Generate Listening & Speaking
 
 on:
@@ -17,7 +21,7 @@ on:
         default: "5"
         required: false
       lang:
-        description: "Only run for this language code (en/ja/zh/ko/es/fr/de/it/th/yue). Empty = all."
+        description: "Only run for this language code. Empty = all Gemini languages (en/es/fr/de/it/th). For zh/ja/ko/yue run locally instead."
         default: ""
         required: false
       type:
@@ -27,6 +31,10 @@ on:
       overwrite:
         description: "Overwrite existing files? (true/false)"
         default: "false"
+        required: false
+      provider:
+        description: "Filter by provider (gemini/dashscope). Default: gemini. Set to 'dashscope' only if you've added DASHSCOPE_API_KEY secret."
+        default: "gemini"
         required: false
 
   schedule:
@@ -53,15 +61,18 @@ jobs:
 
       - name: Generate listening & speaking batches
         env:
-          # P4-4: Per-language provider routing
-          # zh/ja/ko/yue → DashScope (Qwen), others → Gemini
+          # P4-5: GitHub Actions only needs Gemini (US-based runner
+          # bypasses mainland China region restriction). DashScope
+          # languages are generated locally instead.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Optional: only required if provider input is set to 'dashscope'
           DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
           # Cost rates set to 0 (free tier / covered by free quota)
           LLM_COST_PER_1M_IN: "0"
           LLM_COST_PER_1M_OUT: "0"
         run: |
           ARGS="--count=${{ inputs.count || '5' }}"
+          ARGS="$ARGS --provider=${{ inputs.provider || 'gemini' }}"
           if [ -n "${{ inputs.lang }}" ]; then ARGS="$ARGS --lang=${{ inputs.lang }}"; fi
           if [ -n "${{ inputs.type }}" ]; then ARGS="$ARGS --type=${{ inputs.type }}"; fi
           if [ "${{ inputs.overwrite }}" = "true" ]; then ARGS="$ARGS --overwrite"; fi

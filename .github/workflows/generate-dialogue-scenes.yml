@@ -3,12 +3,16 @@ name: Generate dialogue scenes
 # Manually triggered: batch-generate multi-turn dialogue scenes
 # for the conversation module.
 #
-# P4-4: East Asian languages (zh/ja/ko/yue) use Qwen via DashScope,
-# other languages use Gemini. Both run on GitHub Actions (US-based)
-# to bypass mainland China region restrictions.
+# P4-5: ONLY Gemini languages (en/es/fr/de/it/th) run here, because
+# Gemini is region-restricted in mainland China. East Asian languages
+# (zh/ja/ko/yue) use Qwen via DashScope and are run LOCALLY instead —
+# DashScope is China-direct, no region restriction.
+#
+# To generate zh/ja/ko/yue scenes, run on your local machine:
+#   pnpm tsx scripts/generate-dialogue-scenes-gemini.ts --lang=zh
 #
 # Workflow:
-#   1. Generate 10 langs × 6 scenarios = 60 scenes (or filtered subset).
+#   1. Generate 6 langs × 6 scenarios = 36 scenes (or filtered subset).
 #   2. Validate each scene against the 4 defenses.
 #   3. Merge into src/data/dialogue-scenes.ts.
 #   4. Commit + push if anything changed.
@@ -17,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       lang:
-        description: "Limit to a single language (en|zh|ja|ko|es|fr|de|it|th|yue) — leave empty for all"
+        description: "Limit to a single language (en|es|fr|de|it|th for Gemini). For zh|ja|ko|yue run locally instead. Leave empty for all Gemini languages."
         required: false
         type: string
         default: ""
@@ -31,6 +35,11 @@ on:
         required: false
         type: boolean
         default: false
+      provider:
+        description: "Filter by provider (gemini/dashscope). Default: gemini. Set to 'dashscope' only if you've added DASHSCOPE_API_KEY secret."
+        required: false
+        type: string
+        default: "gemini"
 
 jobs:
   generate:
@@ -51,8 +60,11 @@ jobs:
 
       - name: Generate scenes
         env:
-          # P4-4: Per-language provider routing
+          # P4-5: GitHub Actions only needs Gemini (US-based runner
+          # bypasses mainland China region restriction). DashScope
+          # languages are generated locally instead.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Optional: only required if provider input is set to 'dashscope'
           DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
           # Expose inputs as env vars so the bash block can safely
           # test for empty values (GitHub renders ${{ inputs.x }}
@@ -60,8 +72,9 @@ jobs:
           INPUT_LANG: ${{ inputs.lang }}
           INPUT_SCENARIO: ${{ inputs.scenario }}
           INPUT_OVERWRITE: ${{ inputs.overwrite }}
+          INPUT_PROVIDER: ${{ inputs.provider }}
         run: |
-          ARGS=""
+          ARGS="--provider=${INPUT_PROVIDER:-gemini}"
           if [ -n "$INPUT_LANG" ]; then ARGS="$ARGS --lang=$INPUT_LANG"; fi
           if [ -n "$INPUT_SCENARIO" ]; then ARGS="$ARGS --scenario=$INPUT_SCENARIO"; fi
           if [ "$INPUT_OVERWRITE" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
@@ -84,7 +97,7 @@ jobs:
           # Detect any change to dialogue-scenes.ts or generated/dialogues/.
           if [ -n "$(git status --porcelain -- src/data/dialogue-scenes.ts scripts/generated/dialogues/)" ]; then
             git add src/data/dialogue-scenes.ts scripts/generated/dialogues/
-            git commit -m "chore(dialogues): batch-generate via Gemini+DashScope [skip ci]"
+            git commit -m "chore(dialogues): batch-generate via Gemini [skip ci]"
             git push origin main
           else
             echo "No changes to commit."

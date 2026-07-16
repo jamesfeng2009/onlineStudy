@@ -136,6 +136,10 @@ function arg(name: string, def?: string): string | undefined {
 }
 const onlyLang = arg("lang");
 const onlyType = arg("type"); // "listening" | "speaking" | undefined (both)
+// P4-5: filter by provider so GitHub Actions can run only gemini languages
+// (en/es/fr/de/it/th) while DashScope languages (zh/ja/ko/yue) run locally.
+// Values: "gemini" | "dashscope" | "openrouter" | "doubao" | undefined (all).
+const onlyProvider = arg("provider") as Provider | undefined;
 const perBatch = Math.max(3, Math.min(20, Number(arg("count", "5"))));
 const overwrite = process.argv.includes("--overwrite");
 const dryRun = process.argv.includes("--dry-run");
@@ -436,7 +440,15 @@ async function main() {
   };
 
   // 确定本次运行涉及哪些语言,检查对应 provider 的 key
-  const langsToRun = onlyLang ? [onlyLang as LangKey] : LANGS;
+  // P4-5: --provider 过滤(GitHub Actions 只跑 gemini,DashScope 语言本地跑)
+  let langsToRun = onlyLang ? [onlyLang as LangKey] : LANGS;
+  if (onlyProvider) {
+    langsToRun = langsToRun.filter((l) => (PROVIDER_BY_LANG[l] ?? FALLBACK_PROVIDER) === onlyProvider);
+    if (langsToRun.length === 0) {
+      console.log(`→ --provider=${onlyProvider} matched no languages; nothing to do.`);
+      process.exit(0);
+    }
+  }
   const providersNeeded = new Set<Provider>();
   for (const lang of langsToRun) {
     providersNeeded.add(PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER);
@@ -452,6 +464,7 @@ async function main() {
 
   console.log(`✓ Per batch: ${perBatch} items`);
   console.log(`✓ Providers: ${[...providersNeeded].map((p) => `${p}(${DEFAULT_MODEL[p]})`).join(", ")}`);
+  console.log(`✓ Languages: ${langsToRun.join(", ")}`);
   console.log(`→ cost cap: $${MAX_COST_USD.toFixed(2)} (using $${COST_PER_1M_IN}/1M in, $${COST_PER_1M_OUT}/1M out)\n`);
 
   const listenDir = path.join(process.cwd(), "scripts", "generated", "listening");
@@ -462,6 +475,8 @@ async function main() {
   const batches: { type: "listening" | "speaking"; lang: LangKey; level: string }[] = [];
   for (const lang of LANGS) {
     if (onlyLang && onlyLang !== lang) continue;
+    // P4-5: 按 provider 过滤
+    if (onlyProvider && (PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER) !== onlyProvider) continue;
     for (const level of LEVELS[lang]) {
       if (!onlyType || onlyType === "listening") batches.push({ type: "listening", lang, level });
       if (!onlyType || onlyType === "speaking") batches.push({ type: "speaking", lang, level });
@@ -528,7 +543,7 @@ async function main() {
       console.log(`✓ ${withMeta.length} items in ${ms}s (est. $${estCostUsd.toFixed(3)})`);
 
       // Polite delay (Gemini free-tier: 15 RPM for Flash, DashScope more lenient)
-      const batchProvider = PROVIDER_BY_LANG[batch.lang] ?? FALLBACK_PROVIDER;
+      const batchProvider = PROVIDER_BY_LANG[lang] ?? FALLBACK_PROVIDER;
       if (i < batches.length - 1) await sleep(batchProvider === "gemini" ? 4500 : 1000);
     } catch (e: any) {
       console.error(`✗ ${e.message}`);

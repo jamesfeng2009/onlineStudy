@@ -90,6 +90,9 @@ const argv = Object.fromEntries(
 );
 const ONLY_LANG = argv.lang as string | undefined;
 const ONLY_SCENARIO = argv.scenario as string | undefined;
+// P4-5: filter by provider so GitHub Actions can run only gemini languages
+// (en/es/fr/de/it/th) while DashScope languages (zh/ja/ko/yue) run locally.
+const ONLY_PROVIDER = argv.provider as Provider | undefined;
 
 // ---- Generation plan: per (language, scenario) one scene. ----
 // P4-1: 扩展到 10 语言 × 6 场景,语言等级对齐 languages.ts
@@ -119,7 +122,10 @@ const SCENARIOS: { id: string; title: string; description: string }[] = [
 
 function plan(): { lang: LangKey; scenario: typeof SCENARIOS[number] }[] {
   const out: { lang: LangKey; scenario: typeof SCENARIOS[number] }[] = [];
-  const langs = (Object.keys(LANG_META) as LangKey[]).filter((l) => !ONLY_LANG || l === ONLY_LANG);
+  const langs = (Object.keys(LANG_META) as LangKey[])
+    .filter((l) => !ONLY_LANG || l === ONLY_LANG)
+    // P4-5: 按 provider 过滤
+    .filter((l) => !ONLY_PROVIDER || PROVIDER_BY_LANG[l] === ONLY_PROVIDER);
   for (const lang of langs) {
     for (const sc of SCENARIOS) {
       if (ONLY_SCENARIO && sc.id !== ONLY_SCENARIO) continue;
@@ -186,12 +192,12 @@ Scenario: ${scenario.title} — ${scenario.description}
 Design a small directed graph of 4-8 turns. Each turn is one NPC line + matching branches.
 
 HARD RULES (output rejected otherwise):
-1. All NPC prompts MUST be in ${meta.native} (target language), not English. Translation fields go in `promptTranslation`.
+1. All NPC prompts MUST be in ${meta.native} (target language), not English. Translation fields go in 'promptTranslation'.
 2. Each turn MUST have 2-4 branches, each with 1-4 keywords (lowercase, no spaces inside one keyword).
 3. ONE terminal turn with "isTerminal": true and empty branches. Its prompt says goodbye.
 4. ONE fallback turn (usually a "please repeat" or "sorry?" line). Non-terminal turns should reference it in fallbackBranchId.
-5. startTurnId MUST exist as a key in `turns`.
-6. All branch.nextTurnId values MUST exist as keys in `turns`.
+5. startTurnId MUST exist as a key in 'turns'.
+6. All branch.nextTurnId values MUST exist as keys in 'turns'.
 7. The opening line and at least 2 follow-up turns must include romanization or pinyin/furigana where appropriate for ${meta.english}.
 8. Every branch MUST have non-empty keywords (no wildcards except the LAST branch of a turn, which can use [""] to mean "anything else" — but only as the last resort).
 9. Conversation should reach the terminal in 3-5 user replies (not too long).
