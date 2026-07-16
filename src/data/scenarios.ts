@@ -994,5 +994,7 @@ export const SCENARIO_CONTENT: Record<string, Record<ScenarioKey, ScenarioConten
 };
 
 /** Languages that currently have scenario content shipped. */
-export const SCENARIO_LANGS = ["english", "japanese", "chinese", "korean", "spanish", "french", "german"] as const;
+import { LEARN_LANG_SLUGS } from "./language-registry";
+
+export const SCENARIO_LANGS = LEARN_LANG_SLUGS as readonly string[];
 export type ScenarioLang = (typeof SCENARIO_LANGS)[number];

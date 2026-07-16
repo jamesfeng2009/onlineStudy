@@ -25,7 +25,9 @@ export const resources = {
   yue: { translation: yue },
 };
 
-export const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
+import { UI_LANGUAGES } from "../data/language-registry";
+
+export const SUPPORTED_LANGUAGES = UI_LANGUAGES;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const DEFAULT_UI_LANGUAGE: SupportedLanguage = "en";

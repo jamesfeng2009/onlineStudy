@@ -4,16 +4,12 @@ import { SUPPORTED_LANGUAGES, buildLocalePath, DEFAULT_UI_LANGUAGE, type Support
 // 生产域名（Vercel 上确认过是 lang-oria.com）
 const SITE_URL = "https://lang-oria.com";
 
+import { LEARN_LANGUAGES } from "../data/language-registry";
+
 // 站点支持的所有 locale，对应 og:locale 与 hreflang
-export const SITE_LOCALES = [
-  { code: "en", og: "en_US" },
-  { code: "zh", og: "zh_CN" },
-  { code: "ja", og: "ja_JP" },
-  { code: "ko", og: "ko_KR" },
-  { code: "es", og: "es_ES" },
-  { code: "fr", og: "fr_FR" },
-  { code: "de", og: "de_DE" },
-] as const;
+// 从 language-registry 派生（Phase 1 = 7 个 isLearnLanguage 语言，与现状一致）
+export const SITE_LOCALES: ReadonlyArray<{ code: string; og: string }> =
+  LEARN_LANGUAGES.map((e) => ({ code: e.code, og: e.ogLocale }));
 
 export type SiteLocaleCode = (typeof SITE_LOCALES)[number]["code"];
 

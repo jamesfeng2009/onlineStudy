@@ -59,15 +59,10 @@ export const LEARN_LANG_META: Record<
  * "german"); data keys are short codes used in chunk filenames and
  * JSON-LD language tags.
  */
-export const URL_SLUG_TO_DATA: Record<string, LearnLangSlug> = {
-  english: "en",
-  japanese: "ja",
-  chinese: "zh",
-  korean: "ko",
-  spanish: "es",
-  french: "fr",
-  german: "de",
-};
+import { LANG_SLUG_TO_CODE } from "../language-registry";
+
+export const URL_SLUG_TO_DATA: Record<string, LearnLangSlug> =
+  LANG_SLUG_TO_CODE as Record<string, LearnLangSlug>;
 
 export const ALL_LEARN_LANG_SLUGS = Object.keys(
   LEARN_CONTENT_LOADERS
