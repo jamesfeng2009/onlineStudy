@@ -38,7 +38,33 @@
 import { PrismaClient } from "../server/lib/prisma-generated/client/index.js";
 import { COURSES } from "../src/data/courses";
 
-const prisma = new PrismaClient();
+// 覆盖 connection_limit=1 → 5，提高容错
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL?.replace("connection_limit=1", "connection_limit=5"),
+    },
+  },
+});
+
+// P1001/P1017 (网络瞬时断连) 自动重试
+async function withRetry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      lastError = e;
+      const code = (e as { code?: string })?.code;
+      if ((code === "P1001" || code === "P1017") && i < retries - 1) {
+        await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw lastError;
+}
 
 /** Lessons per unit. Last unit absorbs the remainder so the total
  *  always equals `course.lessons`. */
@@ -75,30 +101,30 @@ async function fetchExercisePools(
   level: string
 ): Promise<ExercisePools> {
   const [words, quizzes, listenings, speakings] = await Promise.all([
-    prisma.wordBank.findMany({
+    withRetry(() => prisma.wordBank.findMany({
       where: { languageCode, level },
       orderBy: [{ vocabOrder: "asc" }, { id: "asc" }],
       take: 60,
       select: { id: true },
-    }),
-    prisma.quiz.findMany({
+    })),
+    withRetry(() => prisma.quiz.findMany({
       where: { languageCode, level },
       orderBy: [{ quizOrder: "asc" }, { id: "asc" }],
       take: 60,
       select: { id: true },
-    }),
-    prisma.listening.findMany({
+    })),
+    withRetry(() => prisma.listening.findMany({
       where: { languageCode, level },
       orderBy: [{ listenOrder: "asc" }, { id: "asc" }],
       take: 60,
       select: { id: true },
-    }),
-    prisma.speaking.findMany({
+    })),
+    withRetry(() => prisma.speaking.findMany({
       where: { languageCode, level },
       orderBy: [{ speakOrder: "asc" }, { id: "asc" }],
       take: 60,
       select: { id: true },
-    }),
+    })),
   ]);
 
   return {
@@ -158,7 +184,7 @@ async function seedCourse(course: (typeof COURSES)[number]): Promise<{
     );
     const isLastUnit = unitIdx === totalUnits - 1;
 
-    await prisma.unit.upsert({
+    await withRetry(() => prisma.unit.upsert({
       where: { id: unitId },
       update: {
         courseId: course.id,
@@ -175,7 +201,7 @@ async function seedCourse(course: (typeof COURSES)[number]): Promise<{
         unitOrder: unitNumber,
         skillFocus: "mixed",
       },
-    });
+    }));
 
     for (let lessonInUnit = 0; lessonInUnit < lessonsInUnit; lessonInUnit++) {
       globalIdx++;
@@ -212,7 +238,7 @@ async function seedCourse(course: (typeof COURSES)[number]): Promise<{
         ? `通关测验 · Unit ${unitNumber}`
         : `Lesson ${globalIdx} · ${skillTitle(slot.skillType, globalIdx)}`;
 
-      await prisma.lesson.upsert({
+      await withRetry(() => prisma.lesson.upsert({
         where: { id: lessonId },
         update: {
           unitId,
@@ -235,7 +261,7 @@ async function seedCourse(course: (typeof COURSES)[number]): Promise<{
           isCheckpoint: isLastLesson,
           requiresLessonId: prevLessonId,
         },
-      });
+      }));
 
       prevLessonId = lessonId;
     }

@@ -15,12 +15,57 @@
  *     (no question / explain columns — those live on QuizTranslation)
  *   - QuizTranslation: { id, quizId, baseLanguageCode, question, explain }
  */
-import { PrismaClient } from "../server/lib/prisma-generated/client/index.js";
+import { PrismaClient, Prisma } from "../server/lib/prisma-generated/client/index.js";
 import { GENERATED_LISTENING } from "../src/data/generated-listening.js";
 import { GENERATED_SPEAKING } from "../src/data/generated-speaking.js";
 import { GENERATED_QUIZZES } from "../src/data/generated-quizzes.js";
 
-const prisma = new PrismaClient();
+// 覆盖 connection_limit=1 → 5，提高 seed 容错
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL?.replace("connection_limit=1", "connection_limit=5"),
+    },
+  },
+});
+
+// P1001/P1017 (网络瞬时断连) 自动重试
+async function withRetry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      lastError = e;
+      const code = (e as { code?: string })?.code;
+      if ((code === "P1001" || code === "P1017") && i < retries - 1) {
+        await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw lastError;
+}
+
+// 并发执行器：最多 concurrency 个任务同时运行
+async function mapWithConcurrency<T>(
+  items: T[],
+  concurrency: number,
+  fn: (item: T) => Promise<void>,
+): Promise<void> {
+  let index = 0;
+  const workers = Array.from(
+    { length: Math.min(concurrency, items.length) },
+    async () => {
+      while (index < items.length) {
+        const i = index++;
+        await fn(items[i]);
+      }
+    },
+  );
+  await Promise.all(workers);
+}
 
 interface Blank {
   index: number;
@@ -28,16 +73,18 @@ interface Blank {
 }
 
 async function importListening(): Promise<number> {
-  let count = 0;
-  // 按 language+level 的索引决定 listenOrder
+  // 先顺序计算 listenOrder（避免并发时 orderMap 竞争）
   const orderMap = new Map<string, number>();
-  for (const item of GENERATED_LISTENING) {
+  const items = GENERATED_LISTENING.map((item) => {
     const key = `${item.language}#${item.level ?? ""}`;
     const order = orderMap.get(key) ?? 0;
     orderMap.set(key, order + 1);
-
     const blanks: Blank[] = Array.isArray(item.blanks) ? item.blanks : [];
-    await prisma.listening.upsert({
+    return { item, order, blanks: blanks as unknown as Prisma.InputJsonValue };
+  });
+  // 并发 upsert（5 路）
+  await mapWithConcurrency(items, 5, async ({ item, order, blanks }) => {
+    await withRetry(() => prisma.listening.upsert({
       where: { id: item.id },
       update: {
         languageCode: item.language,
@@ -56,21 +103,21 @@ async function importListening(): Promise<number> {
         blanks,
         listenOrder: order,
       },
-    });
-    count++;
-  }
-  return count;
+    }));
+  });
+  return items.length;
 }
 
 async function importSpeaking(): Promise<number> {
-  let count = 0;
   const orderMap = new Map<string, number>();
-  for (const item of GENERATED_SPEAKING) {
+  const items = GENERATED_SPEAKING.map((item) => {
     const key = `${item.language}#${item.level ?? ""}`;
     const order = orderMap.get(key) ?? 0;
     orderMap.set(key, order + 1);
-
-    await prisma.speaking.upsert({
+    return { item, order };
+  });
+  await mapWithConcurrency(items, 5, async ({ item, order }) => {
+    await withRetry(() => prisma.speaking.upsert({
       where: { id: item.id },
       update: {
         languageCode: item.language,
@@ -89,23 +136,24 @@ async function importSpeaking(): Promise<number> {
         phonetic: item.phonetic ?? null,
         speakOrder: order,
       },
-    });
-    count++;
-  }
-  return count;
+    }));
+  });
+  return items.length;
 }
 
 async function importQuizzes(): Promise<{ count: number; translations: number }> {
-  let count = 0;
-  let translations = 0;
   const orderMap = new Map<string, number>();
-  for (const item of GENERATED_QUIZZES) {
+  const items = GENERATED_QUIZZES.map((item) => {
     const key = `${item.language}#${item.level ?? ""}`;
     const order = orderMap.get(key) ?? 0;
     orderMap.set(key, order + 1);
-
+    return { item, order };
+  });
+  await mapWithConcurrency(items, 5, async ({ item, order }) => {
+    const question = item.question ?? "";
+    const explain = item.explain ?? "";
     // 1) upsert Quiz 表（只写 options/answer/quizOrder）
-    await prisma.quiz.upsert({
+    await withRetry(() => prisma.quiz.upsert({
       where: { id: item.id },
       update: {
         languageCode: item.language,
@@ -122,13 +170,9 @@ async function importQuizzes(): Promise<{ count: number; translations: number }>
         answer: item.answer,
         quizOrder: order,
       },
-    });
-    count++;
-
+    }));
     // 2) upsert QuizTranslation（写 question/explain，baseLanguageCode 用 "en"）
-    const question = item.question ?? "";
-    const explain = item.explain ?? "";
-    await prisma.quizTranslation.upsert({
+    await withRetry(() => prisma.quizTranslation.upsert({
       where: {
         quizId_baseLanguageCode: {
           quizId: item.id,
@@ -146,10 +190,9 @@ async function importQuizzes(): Promise<{ count: number; translations: number }>
         question,
         explain,
       },
-    });
-    translations++;
-  }
-  return { count, translations };
+    }));
+  });
+  return { count: items.length, translations: items.length };
 }
 
 async function main() {

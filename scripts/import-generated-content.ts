@@ -2,7 +2,53 @@ import fs from "node:fs";
 import path from "node:path";
 import { PrismaClient } from "../server/lib/prisma-generated/client/index.js";
 
-const prisma = new PrismaClient();
+// 批量导入需要更高并发：覆盖 URL 里的 connection_limit=1 → 10
+// （仅此脚本，不影响其他使用 Prisma 的地方）
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL?.replace("connection_limit=1", "connection_limit=10"),
+    },
+  },
+});
+
+// 并发执行器：最多 concurrency 个任务同时运行
+async function mapWithConcurrency<T>(
+  items: T[],
+  concurrency: number,
+  fn: (item: T) => Promise<void>,
+): Promise<void> {
+  let index = 0;
+  const workers = Array.from(
+    { length: Math.min(concurrency, items.length) },
+    async () => {
+      while (index < items.length) {
+        const i = index++;
+        await fn(items[i]);
+      }
+    },
+  );
+  await Promise.all(workers);
+}
+
+// P1017 (Server has closed the connection) 自动重试
+async function withRetry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      lastError = e;
+      const code = (e as { code?: string })?.code;
+      if (code === "P1017" && i < retries - 1) {
+        await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw lastError;
+}
 
 const OUTPUT_DIR = path.join(process.cwd(), "scripts", "generate-content", "output");
 
@@ -174,12 +220,11 @@ function generateQuizzes(words: WordBankInput[], maxPerLevel = 30): QuizInput[] 
 }
 
 async function importWords(inputs: WordBankInput[]) {
-  let count = 0;
-  for (const w of inputs) {
-    // WordBank 表不再存 translation（拆到 WordBankTranslation 表）；
-    // generated_*.json 的 translation 是英文释义（en↔tgt 句对的 en 一侧），
-    // 所以 baseLanguageCode="en"。
-    await prisma.wordBank.upsert({
+  // WordBank 表不再存 translation（拆到 WordBankTranslation 表）；
+  // generated_*.json 的 translation 是英文释义（en↔tgt 句对的 en 一侧），
+  // 所以 baseLanguageCode="en"。
+  await mapWithConcurrency(inputs, 5, async (w) => {
+    await withRetry(() => prisma.wordBank.upsert({
       where: { id: w.id },
       update: {
         languageCode: w.languageCode,
@@ -198,8 +243,8 @@ async function importWords(inputs: WordBankInput[]) {
         exampleSentence: w.exampleSentence,
         vocabOrder: w.vocabOrder,
       },
-    });
-    await prisma.wordBankTranslation.upsert({
+    }));
+    await withRetry(() => prisma.wordBankTranslation.upsert({
       where: { wordBankId_baseLanguageCode: { wordBankId: w.id, baseLanguageCode: "en" } },
       update: {
         baseLanguageCode: "en",
@@ -210,17 +255,15 @@ async function importWords(inputs: WordBankInput[]) {
         baseLanguageCode: "en",
         translation: w.translation,
       },
-    });
-    count++;
-  }
-  return count;
+    }));
+  });
+  return inputs.length;
 }
 
 async function importQuizzes(quizzes: QuizInput[]) {
-  let count = 0;
-  for (const q of quizzes) {
-    // Quiz 表只存 options/answer/quizOrder；question/explain 在 QuizTranslation
-    await prisma.quiz.upsert({
+  // Quiz 表只存 options/answer/quizOrder；question/explain 在 QuizTranslation
+  await mapWithConcurrency(quizzes, 5, async (q) => {
+    await withRetry(() => prisma.quiz.upsert({
       where: { id: q.id },
       update: {
         languageCode: q.languageCode,
@@ -237,8 +280,8 @@ async function importQuizzes(quizzes: QuizInput[]) {
         answer: q.answer,
         quizOrder: q.quizOrder,
       },
-    });
-    await prisma.quizTranslation.upsert({
+    }));
+    await withRetry(() => prisma.quizTranslation.upsert({
       where: { quizId_baseLanguageCode: { quizId: q.id, baseLanguageCode: "en" } },
       update: {
         baseLanguageCode: "en",
@@ -251,10 +294,9 @@ async function importQuizzes(quizzes: QuizInput[]) {
         question: q.question,
         explain: q.explain,
       },
-    });
-    count++;
-  }
-  return count;
+    }));
+  });
+  return quizzes.length;
 }
 
 async function main() {
