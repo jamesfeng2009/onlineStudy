@@ -100,16 +100,17 @@ type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "y
 const LANGS: LangKey[] = ["en", "ja", "zh", "ko", "es", "fr", "de", "it", "th", "yue"];
 
 const LEVELS: Record<LangKey, string[]> = {
-  en: ["A1", "A2", "B1"],
-  ja: ["N5", "N4", "N3"],
-  zh: ["HSK1", "HSK2", "HSK3"],
-  ko: ["초급", "중급", "고급"],
-  es: ["A1", "A2", "B1"],
-  fr: ["A1", "A2", "B1"],
-  de: ["A1", "A2", "B1"],
-  it: ["A1", "A2", "B1"],
-  th: ["A1", "A2", "B1"],
-  yue: ["初级", "中级", "高级"],
+  // P4-1: 扩展到完整等级体系,与 src/data/languages.ts 对齐
+  en: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  ja: ["N5", "N4", "N3", "N2", "N1"],
+  zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6", "HSK7", "HSK8", "HSK9"],
+  ko: ["TOPIK1", "TOPIK2", "TOPIK3", "TOPIK4", "TOPIK5", "TOPIK6"],
+  es: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  fr: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  de: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  it: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  th: ["A1", "A2", "B1", "B2", "C1"],
+  yue: ["A1", "A2", "B1", "B2"],
 };
 
 const LANG_NATIVE: Record<LangKey, string> = {

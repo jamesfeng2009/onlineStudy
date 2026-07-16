@@ -206,6 +206,8 @@ model User {
   // P3-1: AI 句子解释
   aiExplanations AiExplanation[]
   aiUsageDaily    AiUsageDaily[]
+  // P4-2: AI 对话
+  aiConversations AiConversation[]
 
   @@unique([oauthProvider, oauthId])
   @@map("users")
@@ -916,5 +918,45 @@ model AiUsageDaily {
 
   @@unique([userId, dateKey])
   @@map("ai_usage_daily")
+}
+
+// ============================================================
+// P4-2: AI 对话模块（多轮对话 session + messages）
+// ============================================================
+
+model AiConversation {
+  id           String   @id @default(uuid())
+  userId       String
+  languageCode String   // 学习的目标语言 zh/en/ja/...
+  level        String?  // 可选：HSK5 / N3 / B2 等
+  title        String?  // 自动生成的会话标题
+  scenarioType String   @default("free") // 'free' | 'roleplay' | 'topic'
+  status       String   @default("active") // 'active' | 'ended' | 'timeout'
+  turnCount    Int      @default(0)
+  lastActiveAt DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+
+  user     User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages AiConversationMessage[]
+
+  @@index([userId, updatedAt])
+  @@index([status, lastActiveAt])
+  @@map("ai_conversations")
+}
+
+model AiConversationMessage {
+  id             String   @id @default(uuid())
+  conversationId String
+  role           String   // 'user' | 'assistant' | 'system'
+  content        String
+  tokensInput    Int      @default(0)
+  tokensOutput   Int      @default(0)
+  createdAt      DateTime @default(now())
+
+  conversation AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@map("ai_conversation_messages")
 }
 

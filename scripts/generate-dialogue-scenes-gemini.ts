@@ -59,15 +59,20 @@ const ONLY_LANG = argv.lang as string | undefined;
 const ONLY_SCENARIO = argv.scenario as string | undefined;
 
 // ---- Generation plan: per (language, scenario) one scene. ----
-// Picked the 4 priority languages × 6 high-frequency scenarios.
-// Total 24 batches; ~3 minutes on Gemini Flash free tier.
-type LangKey = "en" | "zh" | "ja" | "yue";
+// P4-1: 扩展到 10 语言 × 6 场景,语言等级对齐 languages.ts
+type LangKey = "en" | "zh" | "ja" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
 
 const LANG_META: Record<LangKey, { native: string; english: string; level: string }> = {
-  en: { native: "English", english: "English", level: "A1" },
-  zh: { native: "Chinese (Simplified)", english: "Chinese", level: "HSK2" },
-  ja: { native: "Japanese", english: "Japanese", level: "N5" },
-  yue: { native: "Cantonese (Traditional, Hong Kong)", english: "Cantonese", level: "初级" },
+  en:  { native: "English",                          english: "English",    level: "A1" },
+  zh:  { native: "Chinese (Simplified)",             english: "Chinese",    level: "HSK2" },
+  ja:  { native: "Japanese",                          english: "Japanese",   level: "N5" },
+  ko:  { native: "Korean",                            english: "Korean",     level: "TOPIK1" },
+  es:  { native: "Spanish",                           english: "Spanish",    level: "A1" },
+  fr:  { native: "French",                             english: "French",     level: "A1" },
+  de:  { native: "German",                             english: "German",     level: "A1" },
+  it:  { native: "Italian",                            english: "Italian",    level: "A1" },
+  th:  { native: "Thai",                               english: "Thai",       level: "A1" },
+  yue: { native: "Cantonese (Traditional, Hong Kong)", english: "Cantonese",  level: "A1" },
 };
 
 const SCENARIOS: { id: string; title: string; description: string }[] = [

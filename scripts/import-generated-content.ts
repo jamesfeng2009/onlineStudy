@@ -126,7 +126,8 @@ function sanitizeLevel(level: string, languageCode: string): string {
   }
   if (languageCode === "zh") {
     const num = parseInt(upper.replace(/\D/g, ""), 10);
-    if (!isNaN(num) && num >= 1 && num <= 6) return `HSK${num}`;
+    // P4-1: 修复兜底逻辑,支持 HSK 3.0 完整 9 级(之前只到 HSK6,会丢 HSK7-9)
+    if (!isNaN(num) && num >= 1 && num <= 9) return `HSK${num}`;
     return "HSK1";
   }
   return level;

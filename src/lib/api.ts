@@ -912,6 +912,75 @@ export async function getAiUsage(): Promise<AiUsageResp> {
   return request("/ai-explain/usage", {}, true);
 }
 
+// ====== P4-2: AI Conversation (auth) ======
+
+export interface AiConversationSummary {
+  id: string;
+  languageCode: string;
+  level: string | null;
+  title: string | null;
+  scenarioType: string;
+  status: string;
+  turnCount: number;
+  lastActiveAt: string;
+  createdAt: string;
+}
+
+export interface AiConversationMessage {
+  id: string;
+  role: "user" | "assistant" | "system";
+  content: string;
+  createdAt: string;
+}
+
+export interface AiConversationDetail {
+  conversation: Omit<AiConversationSummary, "id"> & { id: string };
+  messages: AiConversationMessage[];
+  remainingToday: number;
+}
+
+export interface AiConverseSendResp {
+  userMessage: AiConversationMessage;
+  assistantMessage: AiConversationMessage;
+  remainingToday: number;
+}
+
+export async function startAiConversation(params: {
+  languageCode: string;
+  level?: string;
+  scenarioType?: string;
+  title?: string;
+}): Promise<{ conversationId: string; status: string; languageCode: string; level: string | null; scenarioType: string; remainingToday: number }> {
+  return request("/ai-converse/start", { method: "POST", body: JSON.stringify(params) }, true);
+}
+
+export async function sendAiMessage(
+  conversationId: string,
+  content: string,
+): Promise<AiConverseSendResp> {
+  return request(
+    `/ai-converse/${encodeURIComponent(conversationId)}/send`,
+    { method: "POST", body: JSON.stringify({ content }) },
+    true,
+  );
+}
+
+export async function listAiConversations(limit = 20): Promise<{ conversations: AiConversationSummary[] }> {
+  return request(`/ai-converse/list?limit=${limit}`, {}, true);
+}
+
+export async function getAiConversation(conversationId: string): Promise<AiConversationDetail> {
+  return request(`/ai-converse/${encodeURIComponent(conversationId)}`, {}, true);
+}
+
+export async function endAiConversation(conversationId: string): Promise<{ conversationId: string; status: string }> {
+  return request(
+    `/ai-converse/${encodeURIComponent(conversationId)}/end`,
+    { method: "POST" },
+    true,
+  );
+}
+
 
 // ====== User achievements (auth) ======
 export async function getAchievements(): Promise<Record<string, unknown>[]> {
@@ -1261,6 +1330,11 @@ export const api = {
   aiExplainLesson: explainLessonExercise,
   aiExplainWord: explainWord,
   aiUsage: getAiUsage,
+  aiConverseStart: startAiConversation,
+  aiConverseSend: sendAiMessage,
+  aiConverseList: listAiConversations,
+  aiConverseGet: getAiConversation,
+  aiConverseEnd: endAiConversation,
   achievements: getAchievements,
   unlockAchievement,
   markAchievementsRead,

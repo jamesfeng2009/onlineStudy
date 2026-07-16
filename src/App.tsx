@@ -11,6 +11,7 @@ import ReadingPage from "./pages/ReadingPage";
 import LeaguePage from "./pages/LeaguePage";
 import CefrSelfAssessmentPage from "./pages/CefrSelfAssessmentPage";
 import WritingPage from "./pages/WritingPage";
+import AiConversationPage from "./pages/AiConversationPage";
 import LearnPage from "./pages/LearnPage";
 import DashboardPage from "./pages/DashboardPage";
 import RecommendPage from "./pages/RecommendPage";
@@ -69,6 +70,7 @@ const rootRoutes = (
     <Route path="/cefr-self-assessment" element={<CefrSelfAssessmentPage />} />
     <Route path="/writing" element={<WritingPage />} />
     <Route path="/writing/:id" element={<WritingPage />} />
+    <Route path="/ai-conversation" element={<AiConversationPage />} />
     <Route path="/learn" element={<LearnPage />} />
     <Route path="/learn/:courseId" element={<LearnPage />} />
     <Route path="/languages" element={<LearnLangPage />} />
@@ -112,6 +114,7 @@ const localeRoutes = (
       <Route path="cefr-self-assessment" element={<CefrSelfAssessmentPage />} />
       <Route path="writing" element={<WritingPage />} />
       <Route path="writing/:id" element={<WritingPage />} />
+      <Route path="ai-conversation" element={<AiConversationPage />} />
     <Route path="learn" element={<LearnPage />} />
     <Route path="learn/:courseId" element={<LearnPage />} />
     <Route path="languages" element={<LearnLangPage />} />

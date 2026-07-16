@@ -21,6 +21,7 @@ import leagueRoutes from "./routes/league.js";
 import cefrRoutes from "./routes/cefr-self-assessment.js";
 import writingRoutes from "./routes/writing.js";
 import aiExplainRoutes from "./routes/ai-explain.js";
+import aiConverseRoutes from "./routes/ai-converse.js";
 import achievementsRoutes from "./routes/achievements.js";
 import communityRoutes from "./routes/community.js";
 import stripeRoutes from "./routes/stripe.js";
@@ -116,6 +117,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     cefrRoutes,
     writingRoutes,
     aiExplainRoutes,
+    aiConverseRoutes,
     achievementsRoutes,
     communityRoutes,
     stripeRoutes,
