@@ -198,7 +198,7 @@ HARD RULES (output rejected otherwise):
 4. ONE fallback turn (usually a "please repeat" or "sorry?" line). Non-terminal turns should reference it in fallbackBranchId.
 5. startTurnId MUST exist as a key in 'turns'.
 6. All branch.nextTurnId values MUST exist as keys in 'turns'.
-7. The opening line and at least 2 follow-up turns must include romanization or pinyin/furigana where appropriate for ${meta.english}.
+7. The opening line and at least 2 follow-up turns must include romanization or pinyin/furigana INSIDE the promptTranslation field (e.g. "Ni hao — Hello"). Do NOT add a separate "romanization" field — only use the fields shown in the JSON structure below.
 8. Every branch MUST have non-empty keywords (no wildcards except the LAST branch of a turn, which can use [""] to mean "anything else" — but only as the last resort).
 9. Conversation should reach the terminal in 3-5 user replies (not too long).
 10. Include cultural-natural phrases native speakers actually use (e.g. "能説慢啲嗎？" for Cantonese, "もう一度お願いします" for Japanese).
@@ -253,7 +253,7 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
         generationConfig: {
           temperature: 0.9,
           topP: 0.95,
-          maxOutputTokens: 8192,
+          maxOutputTokens: 16384,
           responseMimeType: "application/json",
         },
       }),
@@ -272,7 +272,7 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
         ],
         temperature: 0.9,
         top_p: 0.95,
-        max_tokens: 8192,
+        max_tokens: 16384,
         response_format: { type: "json_object" },
       }),
     });
@@ -306,7 +306,42 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
     }
     throw new Error(`[${provider}] empty response`);
   }
-  return JSON.parse(text);
+
+  // Strip markdown fences if present, then parse.
+  const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "").trim();
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    // Best-effort repair for truncated JSON: close open strings + braces.
+    let s = cleaned;
+    let inStr = false;
+    let escape = false;
+    for (let i = 0; i < s.length; i++) {
+      const ch = s[i];
+      if (escape) { escape = false; continue; }
+      if (ch === "\\") { escape = true; continue; }
+      if (ch === '"') inStr = !inStr;
+    }
+    if (inStr) s += '"';
+    inStr = false;
+    escape = false;
+    let opens = 0;
+    let closes = 0;
+    for (let i = 0; i < s.length; i++) {
+      const ch = s[i];
+      if (escape) { escape = false; continue; }
+      if (ch === "\\") { escape = true; continue; }
+      if (ch === '"') { inStr = !inStr; continue; }
+      if (inStr) continue;
+      if (ch === "{" || ch === "[") opens++;
+      else if (ch === "}" || ch === "]") closes++;
+    }
+    while (closes < opens) {
+      s += s.trimEnd().endsWith("[") ? "]" : "}";
+      closes++;
+    }
+    return JSON.parse(s);
+  }
 }
 
 async function main() {
