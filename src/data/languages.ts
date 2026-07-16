@@ -14,6 +14,7 @@ import { LANGUAGE_REGISTRY } from "./language-registry";
 export const LANGUAGES: LanguageMeta[] = LANGUAGE_REGISTRY.map((e) => ({
   id: e.code,
   name: e.name,
+  englishName: e.englishName,
   native: e.nativeName,
   flag: e.flag,
   tagline: e.tagline,
@@ -23,3 +24,18 @@ export const LANGUAGES: LanguageMeta[] = LANGUAGE_REGISTRY.map((e) => ({
 
 export const getLanguage = (id: string) =>
   LANGUAGES.find((l) => l.id === id) ?? LANGUAGES[0];
+
+/** 返回按当前界面语言本地化的语言名称（用于语言筛选、课程卡片等）。
+ *  回退顺序：Intl.DisplayNames → englishName → nativeName。 */
+export function getLanguageDisplayName(id: string, locale: string): string {
+  const lang = getLanguage(id);
+  try {
+    const dn = new Intl.DisplayNames([locale, "en"], { type: "language" });
+    const code = id === "yue" ? "yue" : id;
+    const name = dn.of(code);
+    if (name) return name;
+  } catch {
+    // 浏览器不支持时直接回退
+  }
+  return lang.englishName || lang.native;
+}

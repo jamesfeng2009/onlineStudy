@@ -18,6 +18,7 @@ export type Language = "en" | "ja" | "ko" | "zh" | "es" | "fr" | "de" | "it" | "
 export interface LanguageMeta {
   id: Language;
   name: string;
+  englishName: string;
   native: string;
   flag: string;
   tagline: string;

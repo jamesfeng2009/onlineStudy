@@ -9,13 +9,13 @@ import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd
 import LevelMetaCard from "../components/LevelMetaCard";
 import { COURSES } from "../data/courses";
 import { LANGUAGES } from "../data/languages";
-import { getLanguage } from "../data/languages";
+import { getLanguage, getLanguageDisplayName } from "../data/languages";
 import { api } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
 import type { Language } from "../types";
 
 export default function CoursesPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [lang, setLang] = useState<Language | "all">("all");
   const [lv, setLv] = useState<string>("all");
   const navigate = useNavigate();
@@ -111,7 +111,7 @@ export default function CoursesPage() {
         {LANGUAGES.map((l) => (
           <Pill key={l.id} active={lang === l.id} onClick={() => setLang(l.id)}>
             <span className="mr-1">{l.flag}</span>
-            {l.native}
+            {getLanguageDisplayName(l.id, i18n.language)}
           </Pill>
         ))}
         <div className="mx-3 h-5 w-px bg-white/10" />
@@ -249,7 +249,7 @@ export default function CoursesPage() {
                 {c.level}
               </span>
               <span className="rounded-full bg-fuchsia-400/10 px-2.5 py-1 text-[11px] font-medium text-fuchsia-300">
-                {getLanguage(c.language).flag} {getLanguage(c.language).native}
+                {getLanguage(c.language).flag} {getLanguageDisplayName(c.language, i18n.language)}
               </span>
               {c.tags.slice(0, 1).map((tag, i) => (
                 <span key={i} className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-200/70">

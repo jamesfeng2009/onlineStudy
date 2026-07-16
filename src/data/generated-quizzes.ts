@@ -83,7 +83,7 @@ import type { QuizItem } from "../types";
   // zh-HSK8.json: 20 items
   // zh-HSK9.json: 20 items
 
-export const GENERATED_QUIZZES: QuizItem[] = [
+export const GENERATED_QUIZZES = [
   // ── de (116 items) ──
   { id: "q-de-A1-001", question: "Ich ___ Student.", options: ["bist","ist","bin","sind"], answer: 2, explain: "The verb \"sein\" (to be) conjugates to \"bin\" for the first person singular pronoun \"ich\" (I).", language: "de", level: "A1" },
   { id: "q-de-A1-002", question: "Ich sehe ___ Mann.", options: ["der","die","den","das"], answer: 2, explain: "The verb \"sehen\" (to see) requires the accusative case. \"Mann\" (man) is masculine, so the definite article \"der\" changes to \"den\" in the accusative.", language: "de", level: "A1" },
@@ -1571,4 +1571,4 @@ export const GENERATED_QUIZZES: QuizItem[] = [
   { id: "q-zh-HSK9-018", question: "___，则金石为开；精诚所至，鬼神避之。", options: ["至诚感天","赤心贯日","忠魂动地","丹忱格物"], answer: 0, explain: "'至诚感天' is a classical idiom meaning 'utmost sincerity moves Heaven,' forming a parallel couplet with the following clause. The structure demands a four-character set phrase that matches the rhythm and semantic field of divine response.", language: "zh", level: "HSK9" },
   { id: "q-zh-HSK9-019", question: "观其行止，___可知其胸中丘壑。", options: ["大略","概莫","约略","仿佛"], answer: 0, explain: "'大略' (roughly, generally) functions adverbially here to indicate inference from observable behavior, a common pattern in classical descriptive prose. The other options either don't fit syntactically or alter the intended meaning.", language: "zh", level: "HSK9" },
   { id: "q-zh-HSK9-020", question: "___之交淡如水，小人之交甘若醴。", options: ["君子","仁者","贤士","高士"], answer: 0, explain: "This is a direct quote from the Zhuangzi, where '君子之交淡如水' contrasts genuine friendship with superficial sweetness. Only '君子' preserves the canonical wording and philosophical contrast.", language: "zh", level: "HSK9" },
-];
+] as unknown as QuizItem[];
