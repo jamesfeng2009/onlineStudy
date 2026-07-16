@@ -2,7 +2,10 @@ import { create } from "zustand";
 import type { Language, ReviewItem, ReviewQuality } from "../types";
 import { INITIAL_SRS_STATE, isDue, scheduleNext } from "../lib/sm2";
 import { getToken } from "../lib/auth";
-import { getWordReviews, getQuizReviews, reviewWord, reviewQuiz } from "../lib/api";
+import {
+  getWordReviews, getQuizReviews, getListeningReviews, getSpeakingReviews,
+  reviewWord, reviewQuiz, reviewListening, reviewSpeaking,
+} from "../lib/api";
 
 /**
  * Client-side SRS queue with backend write-through.
@@ -125,6 +128,67 @@ function mapApiQuizReview(raw: Record<string, unknown>): ReviewItem | null {
   };
 }
 
+/** P1-3: mapper for a listening-review row. front = title/script excerpt,
+ *  back = the same script (user must recall the blanks). */
+function mapApiListeningReview(raw: Record<string, unknown>): ReviewItem | null {
+  const itemId =
+    (raw.itemId as string) ??
+    (raw.listeningId as string) ??
+    (raw.id as string);
+  if (!itemId) return null;
+  // The API returns srs fields flat (easeFactor/interval/.../nextReviewAt)
+  // alongside the listening snapshot. Read both shapes.
+  const srsRaw = (raw.srsState ?? raw.srs ?? raw) as Record<string, unknown>;
+  const lang = (raw.language as Language) ?? "en";
+  const title = (raw.title as string) ?? "";
+  const script = (raw.script as string) ?? "";
+  return {
+    itemId,
+    kind: "listening",
+    front: title,
+    back: script,
+    hint: `lastAccuracy: ${num(raw.lastAccuracy, 0)}%`,
+    language: lang,
+    level: (raw.level as string) ?? undefined,
+    srs: {
+      easeFactor: num(srsRaw.easeFactor, 2.5),
+      interval: num(srsRaw.interval, 0),
+      repetitions: num(srsRaw.repetitions, 0),
+      nextReviewAt:
+        (srsRaw.nextReviewAt as string) ?? new Date(0).toISOString(),
+      lastReviewedAt: srsRaw.lastReviewedAt as string | undefined,
+    },
+  };
+}
+
+/** P1-3: mapper for a speaking-review row. front = phrase, back = translation. */
+function mapApiSpeakingReview(raw: Record<string, unknown>): ReviewItem | null {
+  const itemId =
+    (raw.itemId as string) ??
+    (raw.speakingId as string) ??
+    (raw.id as string);
+  if (!itemId) return null;
+  const srsRaw = (raw.srsState ?? raw.srs ?? raw) as Record<string, unknown>;
+  const lang = (raw.language as Language) ?? "en";
+  return {
+    itemId,
+    kind: "speaking",
+    front: (raw.phrase as string) ?? "",
+    back: (raw.translation as string) ?? "",
+    hint: (raw.phonetic as string) ?? undefined,
+    language: lang,
+    level: (raw.level as string) ?? undefined,
+    srs: {
+      easeFactor: num(srsRaw.easeFactor, 2.5),
+      interval: num(srsRaw.interval, 0),
+      repetitions: num(srsRaw.repetitions, 0),
+      nextReviewAt:
+        (srsRaw.nextReviewAt as string) ?? new Date(0).toISOString(),
+      lastReviewedAt: srsRaw.lastReviewedAt as string | undefined,
+    },
+  };
+}
+
 /** Merge API items on top of local: API wins on srs (when present);
  *  local display snapshots are kept when API doesn't supply them. */
 function mergeItems(
@@ -162,9 +226,11 @@ export const useReviewStore = create<ReviewState>()((set, get) => ({
     // to localStorage if the request fails (offline / backend down).
     if (getToken()) {
       try {
-        const [wordRows, quizRows] = await Promise.all([
+        const [wordRows, quizRows, listeningRows, speakingRows] = await Promise.all([
           getWordReviews().catch(() => [] as Record<string, unknown>[]),
           getQuizReviews().catch(() => [] as Record<string, unknown>[]),
+          getListeningReviews().catch(() => [] as Record<string, unknown>[]),
+          getSpeakingReviews().catch(() => [] as Record<string, unknown>[]),
         ]);
         const apiWordItems = wordRows
           .map(mapApiWordReview)
@@ -172,7 +238,18 @@ export const useReviewStore = create<ReviewState>()((set, get) => ({
         const apiQuizItems = quizRows
           .map(mapApiQuizReview)
           .filter((x): x is ReviewItem => x !== null);
-        const merged = mergeItems(localItems, [...apiWordItems, ...apiQuizItems]);
+        const apiListeningItems = listeningRows
+          .map(mapApiListeningReview)
+          .filter((x): x is ReviewItem => x !== null);
+        const apiSpeakingItems = speakingRows
+          .map(mapApiSpeakingReview)
+          .filter((x): x is ReviewItem => x !== null);
+        const merged = mergeItems(localItems, [
+          ...apiWordItems,
+          ...apiQuizItems,
+          ...apiListeningItems,
+          ...apiSpeakingItems,
+        ]);
         writeStore(merged);
         set({ items: merged, hydrated: true });
         return;
@@ -225,6 +302,14 @@ export const useReviewStore = create<ReviewState>()((set, get) => ({
       } else if (existing.kind === "quiz") {
         void reviewQuiz(itemId, body).catch((err) => {
           console.warn("reviewStore: reviewQuiz sync failed:", err);
+        });
+      } else if (existing.kind === "listening") {
+        void reviewListening(itemId, body).catch((err) => {
+          console.warn("reviewStore: reviewListening sync failed:", err);
+        });
+      } else if (existing.kind === "speaking") {
+        void reviewSpeaking(itemId, body).catch((err) => {
+          console.warn("reviewStore: reviewSpeaking sync failed:", err);
         });
       }
     } catch (err) {
@@ -290,6 +375,47 @@ export function trackQuizReview(opts: {
     front: opts.question,
     back: opts.answer,
     hint: opts.explain,
+    language: opts.language,
+    level: opts.level,
+  });
+}
+
+/** P1-3: Convenience helper: track a listening item after the user
+ *  gets a blank wrong (or accuracy below threshold). front = title,
+ *  back = full script for re-practice. */
+export function trackListeningReview(opts: {
+  itemId: string;
+  title: string;
+  script: string;
+  language: Language;
+  level?: string;
+}) {
+  useReviewStore.getState().trackItem({
+    itemId: opts.itemId,
+    kind: "listening",
+    front: opts.title,
+    back: opts.script,
+    language: opts.language,
+    level: opts.level,
+  });
+}
+
+/** P1-3: Convenience helper: track a speaking item after the user
+ *  scores below 60 (the speaking module's completion threshold). */
+export function trackSpeakingReview(opts: {
+  itemId: string;
+  phrase: string;
+  translation: string;
+  phonetic?: string;
+  language: Language;
+  level?: string;
+}) {
+  useReviewStore.getState().trackItem({
+    itemId: opts.itemId,
+    kind: "speaking",
+    front: opts.phrase,
+    back: opts.translation,
+    hint: opts.phonetic,
     language: opts.language,
     level: opts.level,
   });

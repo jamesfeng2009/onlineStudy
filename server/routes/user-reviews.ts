@@ -292,6 +292,272 @@ const userReviewsRoutes: FastifyPluginAsync = async (fastify) => {
       return sendSuccess(reply, updated);
     }
   );
+
+  // ====== P1-3: 列出听力复习队列 ======
+  fastify.get<{
+    Querystring: { language?: string; due?: string };
+  }>(
+    "/user/listening-reviews",
+    { onRequest: [fastify.authenticate] },
+    async (request, reply) => {
+      const { userId } = request.user;
+      const { language, due } = request.query;
+      const dueOnly = due === "true" || due === "1";
+
+      const where: Record<string, unknown> = { userId };
+      if (language) where.listening = { languageCode: language };
+      if (dueOnly) where.nextReviewAt = { lte: new Date() };
+
+      const reviews = await prisma.userListeningReview.findMany({
+        where,
+        orderBy: { nextReviewAt: "asc" },
+        include: {
+          listening: {
+            select: {
+              id: true,
+              languageCode: true,
+              level: true,
+              title: true,
+              script: true,
+              blanks: true,
+              listenOrder: true,
+            },
+          },
+        },
+      });
+
+      const result = reviews.map((r) => ({
+        id: r.id,
+        itemId: r.listeningId,
+        title: r.listening.title,
+        script: r.listening.script,
+        blanks: r.listening.blanks,
+        language: r.listening.languageCode,
+        level: r.listening.level,
+        easeFactor: r.easeFactor,
+        interval: r.interval,
+        repetitions: r.repetitions,
+        nextReviewAt: r.nextReviewAt,
+        lastReviewAt: r.lastReviewAt,
+        lastRating: r.lastRating,
+        lastAccuracy: r.lastAccuracy,
+        totalReviews: r.totalReviews,
+        goodReviews: r.goodReviews,
+        isMastered: r.isMastered,
+      }));
+
+      return sendSuccess(reply, result);
+    }
+  );
+
+  // ====== P1-3: 列出口语复习队列 ======
+  fastify.get<{
+    Querystring: { language?: string; due?: string };
+  }>(
+    "/user/speaking-reviews",
+    { onRequest: [fastify.authenticate] },
+    async (request, reply) => {
+      const { userId } = request.user;
+      const { language, due } = request.query;
+      const dueOnly = due === "true" || due === "1";
+
+      const where: Record<string, unknown> = { userId };
+      if (language) where.speaking = { languageCode: language };
+      if (dueOnly) where.nextReviewAt = { lte: new Date() };
+
+      const reviews = await prisma.userSpeakingReview.findMany({
+        where,
+        orderBy: { nextReviewAt: "asc" },
+        include: {
+          speaking: {
+            select: {
+              id: true,
+              languageCode: true,
+              level: true,
+              phrase: true,
+              translation: true,
+              phonetic: true,
+              speakOrder: true,
+            },
+          },
+        },
+      });
+
+      const result = reviews.map((r) => ({
+        id: r.id,
+        itemId: r.speakingId,
+        phrase: r.speaking.phrase,
+        translation: r.speaking.translation,
+        phonetic: r.speaking.phonetic,
+        language: r.speaking.languageCode,
+        level: r.speaking.level,
+        easeFactor: r.easeFactor,
+        interval: r.interval,
+        repetitions: r.repetitions,
+        nextReviewAt: r.nextReviewAt,
+        lastReviewAt: r.lastReviewAt,
+        lastRating: r.lastRating,
+        lastScore: r.lastScore,
+        totalReviews: r.totalReviews,
+        goodReviews: r.goodReviews,
+        isMastered: r.isMastered,
+      }));
+
+      return sendSuccess(reply, result);
+    }
+  );
+
+  // ====== P1-3: 提交听力复习 ======
+  fastify.post<{
+    Params: { listeningId: string };
+    Body: {
+      quality: ReviewQuality;
+      srsState: SrsStateInput;
+      accuracy?: number;     // 本次正确率 0-100
+    };
+  }>(
+    "/user/listening-reviews/:listeningId/review",
+    { onRequest: [fastify.authenticate] },
+    async (request, reply) => {
+      const { userId } = request.user;
+      const { listeningId } = request.params;
+      const { quality, srsState, accuracy } = request.body;
+
+      if (!quality || !srsState) {
+        return sendError(reply, "BAD_REQUEST", "缺少 quality 或 srsState");
+      }
+
+      const correct = quality !== "again";
+      const isMastered = correct && srsState.repetitions >= 3;
+      const now = new Date();
+      const gainedExp = correct ? 8 : 0;
+      const accuracyVal = typeof accuracy === "number" ? Math.max(0, Math.min(100, accuracy)) : 0;
+
+      request.log.info(
+        { userId, listeningId, quality, accuracy: accuracyVal, repetitions: srsState.repetitions },
+        "user/listening-reviews: review submit"
+      );
+
+      await updateProgressInTransaction(
+        userId,
+        () => {},
+        gainedExp,
+        async (tx) => {
+          await tx.userListeningReview.upsert({
+            where: { userId_listeningId: { userId, listeningId } },
+            update: {
+              easeFactor: srsState.easeFactor,
+              interval: srsState.interval,
+              repetitions: srsState.repetitions,
+              nextReviewAt: new Date(srsState.nextReviewAt),
+              lastReviewAt: now,
+              lastRating: quality,
+              lastAccuracy: accuracyVal,
+              totalReviews: { increment: 1 },
+              isMastered,
+              ...(correct ? { goodReviews: { increment: 1 } } : {}),
+            },
+            create: {
+              userId,
+              listeningId,
+              easeFactor: srsState.easeFactor,
+              interval: srsState.interval,
+              repetitions: srsState.repetitions,
+              nextReviewAt: new Date(srsState.nextReviewAt),
+              lastReviewAt: now,
+              lastRating: quality,
+              lastAccuracy: accuracyVal,
+              totalReviews: 1,
+              goodReviews: correct ? 1 : 0,
+              isMastered,
+            },
+          });
+        }
+      );
+
+      const updated = await prisma.userListeningReview.findUnique({
+        where: { userId_listeningId: { userId, listeningId } },
+      });
+
+      return sendSuccess(reply, updated);
+    }
+  );
+
+  // ====== P1-3: 提交口语复习 ======
+  fastify.post<{
+    Params: { speakingId: string };
+    Body: {
+      quality: ReviewQuality;
+      srsState: SrsStateInput;
+      score?: number;        // 本次发音评分 0-100
+    };
+  }>(
+    "/user/speaking-reviews/:speakingId/review",
+    { onRequest: [fastify.authenticate] },
+    async (request, reply) => {
+      const { userId } = request.user;
+      const { speakingId } = request.params;
+      const { quality, srsState, score } = request.body;
+
+      if (!quality || !srsState) {
+        return sendError(reply, "BAD_REQUEST", "缺少 quality 或 srsState");
+      }
+
+      const correct = quality !== "again";
+      const isMastered = correct && srsState.repetitions >= 3;
+      const now = new Date();
+      const gainedExp = correct ? 8 : 0;
+      const scoreVal = typeof score === "number" ? Math.max(0, Math.min(100, score)) : 0;
+
+      request.log.info(
+        { userId, speakingId, quality, score: scoreVal, repetitions: srsState.repetitions },
+        "user/speaking-reviews: review submit"
+      );
+
+      await updateProgressInTransaction(
+        userId,
+        () => {},
+        gainedExp,
+        async (tx) => {
+          await tx.userSpeakingReview.upsert({
+            where: { userId_speakingId: { userId, speakingId } },
+            update: {
+              easeFactor: srsState.easeFactor,
+              interval: srsState.interval,
+              repetitions: srsState.repetitions,
+              nextReviewAt: new Date(srsState.nextReviewAt),
+              lastReviewAt: now,
+              lastRating: quality,
+              lastScore: scoreVal,
+              totalReviews: { increment: 1 },
+              isMastered,
+              ...(correct ? { goodReviews: { increment: 1 } } : {}),
+            },
+            create: {
+              userId,
+              speakingId,
+              easeFactor: srsState.easeFactor,
+              interval: srsState.interval,
+              repetitions: srsState.repetitions,
+              nextReviewAt: new Date(srsState.nextReviewAt),
+              lastReviewAt: now,
+              lastRating: quality,
+              lastScore: scoreVal,
+              totalReviews: 1,
+              goodReviews: correct ? 1 : 0,
+              isMastered,
+            },
+          });
+        }
+      );
+
+      const updated = await prisma.userSpeakingReview.findUnique({
+        where: { userId_speakingId: { userId, speakingId } },
+      });
+
+      return sendSuccess(reply, updated);
+    }
+  );
 };
 
 export default userReviewsRoutes;
