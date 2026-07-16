@@ -2,7 +2,13 @@ import { PrismaClient } from "../server/lib/prisma-generated/client/index.js";
 import { LANGUAGES } from "../src/data/languages";
 import { COURSES } from "../src/data/courses";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL?.replace("connection_limit=1", "connection_limit=5"),
+    },
+  },
+});
 
 interface SeedWordInput {
   languageCode: string;
@@ -661,21 +667,35 @@ async function main() {
       update: {
         languageCode: "zh",
         level: q.level,
-        question: q.question,
         options: q.options,
         answer: q.answer,
-        explain: q.explain,
         quizOrder: 0,
       },
       create: {
         id: q.id,
         languageCode: "zh",
         level: q.level,
-        question: q.question,
         options: q.options,
         answer: q.answer,
-        explain: q.explain,
         quizOrder: 0,
+      },
+    });
+    await prisma.quizTranslation.upsert({
+      where: {
+        quizId_baseLanguageCode: {
+          quizId: q.id,
+          baseLanguageCode: "en",
+        },
+      },
+      update: {
+        question: q.question,
+        explain: q.explain,
+      },
+      create: {
+        quizId: q.id,
+        baseLanguageCode: "en",
+        question: q.question,
+        explain: q.explain,
       },
     });
   }
