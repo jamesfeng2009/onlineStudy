@@ -62,21 +62,18 @@ export default function HomePage() {
   }, []);
 
   const featureCourses = useMemo(() => {
-    if (courses.length > 0) return courses.slice(0, 4);
-    return COURSES.slice(0, 4).map((c) => ({
-      ...c,
-      id: c.id,
-      title: c.title,
-      language: c.language,
-      level: c.level,
-      levelGroup: c.levelGroup,
-      description: c.description,
-      lessons: c.lessons,
-      minutes: c.minutes,
-      cover: c.cover,
-      tags: c.tags,
-      vipOnly: false,
-    })) as CourseResp[];
+    const localMap = new Map(COURSES.map((c) => [c.id, c]));
+    if (courses.length > 0) {
+      return courses.slice(0, 4).map((c) => {
+        const local = localMap.get(c.id);
+        return {
+          ...c,
+          title: local?.title ?? c.title,
+          description: local?.description ?? c.description,
+        };
+      });
+    }
+    return COURSES.slice(0, 4).map((c) => ({ ...c, vipOnly: false })) as CourseResp[];
   }, [courses]);
 
   const today = useMemo(() => {
@@ -268,8 +265,7 @@ export default function HomePage() {
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
               <div className="text-4xl">{l.flag}</div>
               <div className="mt-4 font-display text-xl font-bold text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
-              <div className="text-xs text-brand-200/70">{l.name}</div>
-              <div className="mt-3 text-xs text-brand-200/60">{l.tagline}</div>
+              <div className="mt-3 text-xs text-brand-200/60">{t(`home.languages.taglines.${l.id}`)}</div>
               <div className="mt-4 inline-flex items-center text-xs text-sky-300 transition group-hover:text-sky-200">
                 {t("home.languages.select")} <ArrowRight className="ml-1 h-3 w-3" />
               </div>
