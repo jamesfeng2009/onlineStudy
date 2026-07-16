@@ -18,7 +18,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Clock, Pen, Lightbulb,
-  Loader2, RotateCcw, Send, Award, FileText, History,
+  Loader2, RotateCcw, Send, Award, FileText, History, Wand2,
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -308,6 +308,32 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
   const [history, setHistory] = useState<WritingSubmissionEntry[]>([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showSample, setShowSample] = useState(false);
+
+  // P3-1: AI 润色建议
+  const [aiPolish, setAiPolish] = useState<string | null>(null);
+  const [aiPolishLoading, setAiPolishLoading] = useState(false);
+  const [aiPolishError, setAiPolishError] = useState<string | null>(null);
+  const [aiRemaining, setAiRemaining] = useState<number | null>(null);
+
+  async function handleAiPolish() {
+    if (!user) {
+      setShowLogin(true);
+      return;
+    }
+    if (!result) return;
+    setAiPolish(null);
+    setAiPolishError(null);
+    setAiPolishLoading(true);
+    try {
+      const r = await api.aiExplainWriting(result.id);
+      setAiPolish(r.explanation);
+      setAiRemaining(r.remainingToday);
+    } catch (e) {
+      setAiPolishError(e instanceof Error ? e.message : "AI 润色失败");
+    } finally {
+      setAiPolishLoading(false);
+    }
+  }
 
   const nativeLanguage = (user?.nativeLanguage as string) ?? "en";
 
@@ -619,6 +645,39 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
               </ul>
             </div>
           )}
+
+          {/* P3-1: AI 润色建议 */}
+          <div className="mt-4 rounded-lg border border-fuchsia-400/30 bg-fuchsia-400/5 px-4 py-3">
+            <div className="flex items-center justify-between gap-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-fuchsia-200">
+                <Wand2 className="h-3.5 w-3.5" /> AI 润色建议
+              </div>
+              {!aiPolish && !aiPolishLoading && (
+                <button
+                  onClick={handleAiPolish}
+                  className="inline-flex items-center gap-1 rounded-full bg-fuchsia-400/20 px-3 py-1 text-[11px] font-semibold text-fuchsia-200 transition hover:bg-fuchsia-400/30"
+                >
+                  <Wand2 className="h-3 w-3" /> 请求 AI 润色
+                </button>
+              )}
+              {aiRemaining !== null && (aiPolish || aiPolishLoading) && (
+                <span className="text-[10px] text-fuchsia-300/60">今日剩余 {aiRemaining} 次</span>
+              )}
+            </div>
+            {aiPolishLoading && (
+              <div className="mt-2 flex items-center gap-2 text-xs text-fuchsia-200/70">
+                <Loader2 className="h-3.5 w-3.5 animate-spin" /> AI 正在润色你的写作…
+              </div>
+            )}
+            {aiPolishError && (
+              <div className="mt-2 text-xs text-rose-300">{aiPolishError}</div>
+            )}
+            {aiPolish && (
+              <div className="prose prose-invert prose-sm mt-2 max-w-none whitespace-pre-wrap text-sm text-brand-100">
+                {aiPolish}
+              </div>
+            )}
+          </div>
         </GlassCard>
       )}
 

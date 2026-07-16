@@ -203,6 +203,9 @@ model User {
   cefrSelfAssessments CefrSelfAssessment[]
   // P2-3: 写作提交记录
   writingSubmissions UserWritingSubmission[]
+  // P3-1: AI 句子解释
+  aiExplanations AiExplanation[]
+  aiUsageDaily    AiUsageDaily[]
 
   @@unique([oauthProvider, oauthId])
   @@map("users")
@@ -874,3 +877,44 @@ model UserWritingSubmission {
   @@index([userId, submittedAt])
   @@index([writingId])
 }
+
+// ============================================================
+// P3-1: AI 句子解释模块
+// ============================================================
+
+model AiExplanation {
+  id           String   @id @default(uuid())
+  userId       String
+  targetType   String   // 'reading' | 'writing' | 'lesson' | 'word'
+  targetId     String
+  languageCode String?
+  query        String   @default("")  // 用户原句或问题
+  promptHash   String   // SHA256(prompt 模板 + 上下文)，缓存键
+  response     String   // AI 返回的 Markdown
+  model        String   // gemini-2.5-flash 等
+  tokensInput  Int      @default(0)
+  tokensOutput Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([targetType, targetId, promptHash])
+  @@index([userId, createdAt])
+  @@index([targetType, targetId, createdAt])
+  @@map("ai_explanations")
+}
+
+model AiUsageDaily {
+  id          String   @id @default(uuid())
+  userId      String
+  dateKey     String   // 'YYYY-MM-DD'
+  count       Int      @default(0)
+  tokensUsed  Int      @default(0)
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, dateKey])
+  @@map("ai_usage_daily")
+}
+

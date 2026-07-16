@@ -841,6 +841,78 @@ export async function submitWriting(
   );
 }
 
+// ====== AI Explain (P3-1) ======
+
+export interface AiExplainResp {
+  explanation: string;
+  cached: boolean;
+  remainingToday: number;
+}
+
+export interface AiUsageResp {
+  used: number;
+  limit: number;
+  remaining: number;
+}
+
+export async function explainReadingSentence(
+  passageId: string,
+  sentence: string,
+): Promise<AiExplainResp> {
+  return request(
+    `/ai-explain/reading/${encodeURIComponent(passageId)}`,
+    { method: "POST", body: JSON.stringify({ sentence }) },
+    true,
+  );
+}
+
+export async function explainWritingSubmission(
+  submissionId: string,
+): Promise<AiExplainResp> {
+  return request(
+    `/ai-explain/writing/${encodeURIComponent(submissionId)}`,
+    { method: "POST" },
+    true,
+  );
+}
+
+export async function explainLessonExercise(
+  exerciseId: string,
+  payload: {
+    question: string;
+    options?: string[];
+    correctAnswer?: string;
+    userAnswer?: string;
+  },
+): Promise<AiExplainResp> {
+  return request(
+    `/ai-explain/lesson/${encodeURIComponent(exerciseId)}`,
+    { method: "POST", body: JSON.stringify(payload) },
+    true,
+  );
+}
+
+export async function explainWord(
+  wordId: string,
+  payload?: {
+    word?: string;
+    translation?: string;
+    exampleSentence?: string;
+    languageCode?: string;
+  },
+): Promise<AiExplainResp> {
+  return request(
+    `/ai-explain/word/${encodeURIComponent(wordId)}`,
+    { method: "POST", body: JSON.stringify(payload ?? {}) },
+    true,
+  );
+}
+
+export async function getAiUsage(): Promise<AiUsageResp> {
+  return request("/ai-explain/usage", {}, true);
+}
+
+
 // ====== User achievements (auth) ======
 export async function getAchievements(): Promise<Record<string, unknown>[]> {
   return request("/user/achievements", {}, true);
@@ -1184,6 +1256,11 @@ export const api = {
   writingPrompt: getWritingPrompt,
   writingSubmissions: getWritingSubmissions,
   submitWriting,
+  aiExplainReading: explainReadingSentence,
+  aiExplainWriting: explainWritingSubmission,
+  aiExplainLesson: explainLessonExercise,
+  aiExplainWord: explainWord,
+  aiUsage: getAiUsage,
   achievements: getAchievements,
   unlockAchievement,
   markAchievementsRead,
