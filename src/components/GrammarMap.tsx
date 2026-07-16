@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { GrammarPoint, Language, MistakeLogEntry } from "../types";
 import { cefrRank } from "../lib/level-utils";
 
@@ -36,6 +37,7 @@ const GAP_X = 30;
 const GAP_Y = 18;
 
 export default function GrammarMap({ language, points, mistakes, highlightId, onSelect }: GrammarMapProps) {
+  const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState<string | undefined>(highlightId);
 
   const mistakeMap = useMemo(() => {
@@ -75,7 +77,7 @@ export default function GrammarMap({ language, points, mistakes, highlightId, on
   if (points.length === 0) {
     return (
       <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-center text-xs text-brand-200/60">
-        此语言暂无语法依赖图数据
+        {t("grammarMap.noData")}
       </div>
     );
   }
@@ -181,7 +183,7 @@ export default function GrammarMap({ language, points, mistakes, highlightId, on
                   className="fill-brand-200"
                   style={{ fontSize: 9, opacity: 0.6 }}
                 >
-                  {p.level}{mistake ? ` · 错${mistake.wrongCount}` : ""}
+                  {p.level}{mistake ? t("grammarMap.wrongCount", { count: mistake.wrongCount }) : ""}
                 </text>
               </g>
             );
@@ -199,7 +201,7 @@ export default function GrammarMap({ language, points, mistakes, highlightId, on
           <div className="mt-1.5 text-brand-100/80">{selected.summary}</div>
           {selected.pitfalls.length > 0 && (
             <div className="mt-2">
-              <div className="text-[10px] uppercase tracking-wider text-rose-300/70">易混点</div>
+              <div className="text-[10px] uppercase tracking-wider text-rose-300/70">{t("grammarMap.pitfallsTitle")}</div>
               <ul className="mt-1 space-y-1">
                 {selected.pitfalls.map((p, i) => (
                   <li key={i} className="flex items-center gap-2">
@@ -214,9 +216,9 @@ export default function GrammarMap({ language, points, mistakes, highlightId, on
           )}
           {selected.prerequisites.length > 0 && (
             <div className="mt-2 text-[10px] text-brand-200/50">
-              依赖: {selected.prerequisites
+              {t("grammarMap.dependencies", { list: selected.prerequisites
                 .map((id) => points.find((p) => p.id === id)?.title ?? id)
-                .join(", ")}
+                .join(", ") })}
             </div>
           )}
         </div>

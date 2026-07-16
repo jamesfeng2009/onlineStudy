@@ -28,19 +28,11 @@ import type {
   LeagueDivision, LeagueCurrentSeasonResp, LeagueStandingsResp, LeagueMeResp,
 } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
+import { useTranslation } from "react-i18next";
 
 const DIVISIONS: LeagueDivision[] = [
   "bronze", "silver", "gold", "platinum", "diamond", "master",
 ];
-
-const DIVISION_LABEL: Record<LeagueDivision, string> = {
-  bronze: "青铜",
-  silver: "白银",
-  gold: "黄金",
-  platinum: "铂金",
-  diamond: "钻石",
-  master: "大师",
-};
 
 const DIVISION_ICON: Record<LeagueDivision, string> = {
   bronze: "🥉",
@@ -64,15 +56,15 @@ function isDivision(v: string | null): v is LeagueDivision {
   return !!v && (DIVISIONS as readonly string[]).includes(v);
 }
 
-function formatCountdown(endsAt: string): string {
+function formatCountdown(endsAt: string, t: (key: string, options?: Record<string, unknown>) => string): string {
   const end = new Date(endsAt).getTime();
   const now = Date.now();
   const diff = Math.max(0, end - now);
   const days = Math.floor(diff / (24 * 60 * 60 * 1000));
   const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-  if (days > 0) return `${days} 天 ${hours} 时`;
+  if (days > 0) return t("league.time.daysHours", { days, hours });
   const mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-  return `${hours} 时 ${mins} 分`;
+  return t("league.time.hoursMinutes", { hours, mins });
 }
 
 /** 显示用户头像（无头像时取 username 首字母） */
@@ -98,6 +90,7 @@ function Avatar({ username, avatar, size = 40 }: { username: string; avatar: str
 }
 
 export default function LeaguePage() {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [searchParams, setSearchParams] = useSearchParams();
   const divisionParam = searchParams.get("division");
@@ -134,7 +127,7 @@ export default function LeaguePage() {
       })
       .catch((err: Error) => {
         if (cancelled) return;
-        setError(err.message ?? "加载排行榜失败");
+        setError(err.message ?? t("league.loadFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -162,7 +155,7 @@ export default function LeaguePage() {
       setStandings(st);
       setMe(m);
     } catch (err) {
-      setError((err as Error).message ?? "刷新失败");
+      setError((err as Error).message ?? t("league.refreshFailed"));
     } finally {
       setRefreshing(false);
     }
@@ -170,13 +163,13 @@ export default function LeaguePage() {
 
   return (
     <PageShell
-      title="周度排行榜"
-      subtitle="按周赛季累计 XP，争夺大师段位 · 升降级每周一结算"
+      title={t("league.title")}
+      subtitle={t("league.subtitle")}
       action={
         <>
           <Seo
-            title="周度排行榜 · League"
-            description="按周赛季累计 XP，争夺大师段位"
+            title={t("league.seoTitle")}
+            description={t("league.seoDescription")}
             pathname="/league"
           />
           <button
@@ -185,7 +178,7 @@ export default function LeaguePage() {
             className="glass inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs text-brand-200/80 transition hover:text-white disabled:opacity-50"
           >
             {refreshing ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RefreshCw className="h-3.5 w-3.5" />}
-            刷新
+            {t("league.refresh")}
           </button>
         </>
       }
@@ -198,16 +191,16 @@ export default function LeaguePage() {
           </div>
           <div className="min-w-0 flex-1">
             <div className="font-display text-lg font-bold text-white">
-              {season ? `赛季 ${season.seasonKey}` : "加载中…"}
+              {season ? t("league.season", { key: season.seasonKey }) : t("common.loading")}
             </div>
             <div className="mt-0.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-brand-200/70">
               <span className="inline-flex items-center gap-1">
                 <Users className="h-3 w-3" />
-                {season?.totalPlayers ?? "—"} 名玩家参与
+                {t("league.players", { count: season?.totalPlayers ?? "—" })}
               </span>
               <span className="inline-flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
-                {season && `剩余 ${formatCountdown(season.endsAt)}`}
+                {season && t("league.timeRemaining", { time: formatCountdown(season.endsAt, t) })}
               </span>
             </div>
           </div>
@@ -216,10 +209,10 @@ export default function LeaguePage() {
               <span
                 key={d.key}
                 className="inline-flex items-center gap-1 rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-200/70"
-                title={`${d.label}：周 XP ≥ ${d.minExp}`}
+                title={t("league.divisionMinExp", { division: t(`league.division.${d.key}`), minExp: d.minExp })}
               >
                 <span>{d.icon}</span>
-                <span>{d.label}</span>
+                <span>{t(`league.division.${d.key}`)}</span>
                 <span className="text-white/30">{d.minExp}+</span>
               </span>
             ))}
@@ -235,7 +228,7 @@ export default function LeaguePage() {
       {loading && !me && (
         <GlassCard className="mb-4 p-5 text-center text-sm text-brand-200/70">
           <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
-          正在加载你的排名…
+          {t("league.loadingMyRank")}
         </GlassCard>
       )}
       {!loading && !user && (
@@ -245,16 +238,16 @@ export default function LeaguePage() {
               <Crown className="h-6 w-6" />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="font-semibold text-white">登录后查看你的排名</div>
+              <div className="font-semibold text-white">{t("league.loginCardTitle")}</div>
               <div className="mt-0.5 text-xs text-brand-200/70">
-                登录后将自动加入本周赛季，并根据你的 XP 总量定位段位
+                {t("league.loginCardDesc")}
               </div>
             </div>
             <button
               onClick={() => setShowLogin(true)}
               className="rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              立即登录
+              {t("league.loginButton")}
             </button>
           </div>
         </GlassCard>
@@ -268,7 +261,7 @@ export default function LeaguePage() {
               <div className="text-center">
                 <div className="text-2xl">{DIVISION_ICON[me.standing.division]}</div>
                 <div className="text-[10px] font-bold uppercase tracking-wide">
-                  {DIVISION_LABEL[me.standing.division]}
+                  {t(`league.division.${me.standing.division}`)}
                 </div>
               </div>
             </div>
@@ -284,29 +277,29 @@ export default function LeaguePage() {
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs">
                 <span className="text-brand-200/70">
-                  段位排名：
+                  {t("league.rankInDivision")}
                   <span className="ml-1 font-semibold text-white">
                     #{me.standing.rankInDivision}
                   </span>
                   <span className="text-brand-200/40"> / {me.standing.divisionSize}</span>
                 </span>
                 <span className="text-brand-200/70">
-                  本周 XP：
+                  {t("league.weekExp")}
                   <span className="ml-1 font-semibold text-emerald-300">
                     +{me.standing.weekExp}
                   </span>
                 </span>
                 <span className="text-brand-200/70">
-                  总 XP：
+                  {t("league.totalExp")}
                   <span className="ml-1 font-semibold text-white">
                     {me.standing.currentExp}
                   </span>
                 </span>
                 {me.standing.bestDivision && (
                   <span className="text-brand-200/70">
-                    历史最佳：
+                    {t("league.bestDivision")}
                     <span className="ml-1 font-semibold text-amber-300">
-                      {DIVISION_ICON[me.standing.bestDivision]} {DIVISION_LABEL[me.standing.bestDivision]}
+                      {DIVISION_ICON[me.standing.bestDivision]} {t(`league.division.${me.standing.bestDivision}`)}
                     </span>
                   </span>
                 )}
@@ -331,15 +324,15 @@ export default function LeaguePage() {
               )}
               <span>
                 {me.standing.isPromotionZone
-                  ? "已进入升级区！赛季结束时将晋升到下一段位。"
-                  : "当前处于降级区，赛季结束时可能降级。加油！"}
+                  ? t("league.promotionMsg")
+                  : t("league.demotionMsg")}
               </span>
             </div>
           )}
           <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-white/5 px-3 py-2 text-[11px] text-brand-200/60">
             <Info className="mt-0.5 h-3 w-3 flex-none" />
             <span>
-              升降级规则：每个段位前 10% 升级，后 10% 降级，赛季结束时（每周一）批量结算。
+              {t("league.rules")}
             </span>
           </div>
         </GlassCard>
@@ -361,7 +354,7 @@ export default function LeaguePage() {
               }
             >
               <span>{DIVISION_ICON[d]}</span>
-              <span>{DIVISION_LABEL[d]}</span>
+              <span>{t(`league.division.${d}`)}</span>
             </button>
           );
         })}
@@ -371,23 +364,23 @@ export default function LeaguePage() {
       <GlassCard className="overflow-hidden p-0">
         <div className="border-b border-white/5 px-5 py-3">
           <div className="font-display text-base font-bold text-white">
-            {DIVISION_ICON[activeDivision]} {DIVISION_LABEL[activeDivision]} 段位排行榜
+            {DIVISION_ICON[activeDivision]} {t(`league.division.${activeDivision}`)} {t("league.leaderboard")}
           </div>
           <div className="mt-0.5 text-xs text-brand-200/60">
-            按本周 XP 排序 · 每页最多 50 名
+            {t("league.leaderboardSubtitle")}
           </div>
         </div>
 
         {loading && !standings && (
           <div className="p-8 text-center text-sm text-brand-200/70">
             <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
-            正在加载排行榜…
+            {t("league.loadingStandings")}
           </div>
         )}
 
         {standings && standings.entries.length === 0 && (
           <div className="p-8 text-center text-sm text-brand-200/60">
-            本周该段位暂无玩家 — 努力刷 XP，第一个上榜吧！
+            {t("league.emptyDivision")}
           </div>
         )}
 
@@ -428,7 +421,7 @@ export default function LeaguePage() {
                       </span>
                       {isMe && (
                         <span className="rounded-full bg-sky-400/20 px-2 py-0.5 text-[10px] font-semibold text-sky-300">
-                          我
+                          {t("league.you")}
                         </span>
                       )}
                       <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] text-brand-200/60">
@@ -436,12 +429,12 @@ export default function LeaguePage() {
                       </span>
                     </div>
                     <div className="mt-0.5 text-[11px] text-brand-200/50">
-                      总 XP {entry.currentExp} · 周起始 {entry.startingExp}
+                      {t("league.totalXp", { total: entry.currentExp })} · {t("league.startingXp", { starting: entry.startingExp })}
                     </div>
                   </div>
                   <div className="flex-none text-right">
                     <div className="font-semibold text-emerald-300">+{entry.weekExp}</div>
-                    <div className="text-[10px] text-brand-200/50">本周 XP</div>
+                    <div className="text-[10px] text-brand-200/50">{t("league.weekXpLabel")}</div>
                   </div>
                 </div>
               );

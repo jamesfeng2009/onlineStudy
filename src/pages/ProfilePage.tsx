@@ -7,7 +7,7 @@ import { GlassCard } from "../components/GlassCard";
 import { useLocalePath } from "../components/LocaleLink";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
-import { LANGUAGES } from "../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../lib/i18n";
 
 export default function ProfilePage() {
@@ -171,7 +171,7 @@ export default function ProfilePage() {
                   >
                     <span className="flex items-center gap-2">
                       <Globe2 className="h-4 w-4" />
-                      {l.flag} {l.native}
+                      {l.flag} {getLanguageDisplayName(l.id, i18n.language)}
                     </span>
                     {lang === l.id && <Check className="h-4 w-4 text-sky-300" />}
                   </button>
@@ -197,7 +197,7 @@ export default function ProfilePage() {
                     >
                       <span className="flex items-center gap-2">
                         <Monitor className="h-4 w-4" />
-                        {l?.flag ?? "🌐"} {l?.native ?? id}
+                        {l?.flag ?? "🌐"} {getLanguageDisplayName(id, i18n.language)}
                       </span>
                       {uiLang === id && <Check className="h-4 w-4 text-sky-300" />}
                     </button>
@@ -224,7 +224,7 @@ export default function ProfilePage() {
                     >
                       <span className="flex items-center gap-2">
                         <MessageCircleQuestion className="h-4 w-4" />
-                        {l?.flag ?? "🌐"} {l?.native ?? id}
+                        {l?.flag ?? "🌐"} {getLanguageDisplayName(id, i18n.language)}
                       </span>
                       {nativeLang === id && <Check className="h-4 w-4 text-sky-300" />}
                     </button>

@@ -4,9 +4,9 @@
  *
  * Flow:
  *   1. Fetch lesson detail (GET /lessons/:id) → grouped exercises.
- *   2. User clicks "开始课时" → POST /lessons/:id/start (auth).
+ *   2. User clicks "Start" → POST /lessons/:id/start (auth).
  *   3. User works through words / quizzes / listenings / speakings.
- *   4. User clicks "完成课时" → POST /lessons/:id/complete (auth).
+ *   4. User clicks "Complete" → POST /lessons/:id/complete (auth).
  *   5. On success, shows the unlocked-next hint and calls onDone.
  *
  * The exercise rendering is intentionally compact (no full SM-2
@@ -15,6 +15,7 @@
  * lesson and record its completion.
  */
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   ArrowLeft,
   Check,
@@ -62,15 +63,8 @@ const SKILL_ICON: Record<string, React.ElementType> = {
   mixed: Trophy,
 };
 
-const SKILL_LABEL: Record<string, string> = {
-  vocab: "词汇",
-  grammar: "语法",
-  listening: "听力",
-  speaking: "口语",
-  mixed: "综合测验",
-};
-
 export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerProps) {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [lesson, setLesson] = useState<LessonDetailResp | null>(null);
   const [loading, setLoading] = useState(true);
@@ -103,7 +97,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
       })
       .catch((err) => {
         if (cancelled) return;
-        setError((err as Error).message ?? "加载课时失败");
+        setError((err as Error).message ?? t("lessonPlayer.loadFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -112,7 +106,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
       cancelled = true;
       stopSpeaking();
     };
-  }, [lessonId]);
+  }, [lessonId, t]);
 
   const handleStart = async () => {
     if (!user) {
@@ -123,7 +117,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
       await api.startLesson(lessonId);
       setStarted(true);
     } catch (err) {
-      setError((err as Error).message ?? "开始课时失败");
+      setError((err as Error).message ?? t("lessonPlayer.startFailed"));
     }
   };
 
@@ -148,7 +142,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
         unlockedLessonId: result.unlockedLessonId,
       });
     } catch (err) {
-      setError((err as Error).message ?? "完成课时失败");
+      setError((err as Error).message ?? t("lessonPlayer.completeFailed"));
     } finally {
       setCompleting(false);
     }
@@ -157,7 +151,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
   if (loading) {
     return (
       <GlassCard className="p-8 text-center text-sm text-brand-200/70">
-        正在加载课时…
+        {t("lessonPlayer.loading")}
       </GlassCard>
     );
   }
@@ -170,7 +164,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
           onClick={onBack}
           className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm text-brand-100 hover:bg-white/10"
         >
-          <ArrowLeft className="h-4 w-4" /> 返回路径
+          <ArrowLeft className="h-4 w-4" /> {t("lessonPlayer.backToPath")}
         </button>
       </GlassCard>
     );
@@ -191,7 +185,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
           <button
             onClick={onBack}
             className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-white/5 text-brand-200 transition hover:bg-white/10"
-            title="返回学习路径"
+            title={t("lessonPlayer.backToPath")}
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -207,18 +201,18 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2 text-xs text-brand-200/60">
-              <span>{SKILL_LABEL[lesson.skillType] ?? lesson.skillType}</span>
+              <span>{t(`lesson.skill.${lesson.skillType}`) ?? lesson.skillType}</span>
               <span>·</span>
               <span className="inline-flex items-center gap-0.5">
                 <Clock className="h-3 w-3" />
                 {lesson.durationMin}min
               </span>
               <span>·</span>
-              <span>{totalExercises} 个练习</span>
+              <span>{t("lessonPlayer.exerciseCount", { count: totalExercises })}</span>
               {lesson.bestScore !== null && (
                 <>
                   <span>·</span>
-                  <span className="text-amber-300">最佳 {lesson.bestScore}</span>
+                  <span className="text-amber-300">{t("lessonPlayer.bestScore", { score: lesson.bestScore })}</span>
                 </>
               )}
             </div>
@@ -232,7 +226,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
         {isLocked && (
           <div className="mt-4 flex items-center gap-2 rounded-lg border border-rose-400/30 bg-rose-500/10 px-3 py-2 text-xs text-rose-200">
             <Lock className="h-4 w-4" />
-            <span>该课时尚未解锁，请先完成前置课时。</span>
+            <span>{t("lessonPlayer.lockedHint")}</span>
           </div>
         )}
 
@@ -242,13 +236,13 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
             onClick={handleStart}
             className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
           >
-            <Play className="h-4 w-4" /> 开始课时
+            <Play className="h-4 w-4" /> {t("lessonPlayer.start")}
           </button>
         )}
         {!isLocked && started && !completeResult && (
           <div className="mt-4 flex items-center gap-2 text-xs text-amber-300">
             <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-amber-400" />
-            进行中 · 完成所有练习后点击下方"完成课时"
+            {t("lessonPlayer.inProgressHint")}
           </div>
         )}
       </GlassCard>
@@ -258,16 +252,16 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
         <GlassCard className="border-emerald-400/30 p-5 text-center">
           <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-400" />
           <div className="mt-2 font-display text-lg font-bold text-white">
-            课时完成！
+            {t("lessonPlayer.completed")}
           </div>
           {completeResult.bestScore !== null && (
             <div className="mt-1 text-sm text-amber-300">
-              本次得分 {completeResult.bestScore}
+              {t("lessonPlayer.scoreThisTime", { score: completeResult.bestScore })}
             </div>
           )}
           {completeResult.unlockedLessonId && (
             <div className="mt-1 text-xs text-brand-200/70">
-              下一课时已解锁
+              {t("lessonPlayer.nextUnlocked")}
             </div>
           )}
           <div className="mt-4 flex justify-center gap-2">
@@ -275,7 +269,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
               onClick={onBack}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              返回学习路径
+              {t("lessonPlayer.backToPath")}
             </button>
           </div>
           {completeResult.unlockedLessonId && (
@@ -283,7 +277,7 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
               onClick={() => onDone(completeResult.unlockedLessonId)}
               className="mt-2 text-xs text-sky-300 hover:underline"
             >
-              进入下一课时 →
+              {t("lessonPlayer.nextLesson")} →
             </button>
           )}
         </GlassCard>
@@ -292,9 +286,9 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
       {/* Empty exercises */}
       {!isLocked && !hasExercises && !completeResult && (
         <GlassCard className="p-5 text-center text-sm text-brand-200/70">
-          该课时暂无练习内容（题库可能尚未生成）。
+          {t("lessonPlayer.emptyExercises")}
           <br />
-          仍可点击下方"完成课时"记录进度。
+          {t("lessonPlayer.emptyExercisesHint")}
         </GlassCard>
       )}
 
@@ -338,10 +332,10 @@ export default function LessonPlayer({ lessonId, onBack, onDone }: LessonPlayerP
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-50"
             >
               <Check className="h-4 w-4" />
-              {completing ? "提交中…" : "完成课时"}
+              {completing ? t("lessonPlayer.submitting") : t("lessonPlayer.complete")}
             </button>
             <div className="mt-2 text-xs text-brand-200/50">
-              完成后自动解锁下一课时
+              {t("lessonPlayer.completeHint")}
             </div>
           </GlassCard>
         </>
@@ -368,6 +362,7 @@ function WordExercises({
   words: LessonExerciseWord[];
   language: Language | undefined;
 }) {
+  const { t } = useTranslation();
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState(0);
@@ -383,7 +378,7 @@ function WordExercises({
     <GlassCard>
       <div className="mb-3 flex items-center justify-between text-xs">
         <span className="inline-flex items-center gap-1.5 text-sky-300">
-          <BookOpen className="h-4 w-4" /> 词汇 · {words.length} 词
+          <BookOpen className="h-4 w-4" /> {t("lessonPlayer.vocabTitle", { count: words.length })}
         </span>
         <span className="text-brand-200/70">
           <span className="text-emerald-300">✓ {known}</span>{" "}
@@ -398,7 +393,7 @@ function WordExercises({
             style={{ cursor: "pointer" }}
           >
             <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 via-slate-900/20 to-fuchsia-500/20 p-8">
-              <div className="text-xs uppercase tracking-[0.3em] text-sky-300">单词</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-sky-300">{t("learn.word")}</div>
               <div className="mt-3 font-display text-4xl font-bold text-white">{card.word}</div>
               {card.phonetic && (
                 <div className="mt-2 text-sm text-brand-200/70">{card.phonetic}</div>
@@ -410,12 +405,12 @@ function WordExercises({
                 }}
                 className="mt-4 inline-flex items-center gap-1 rounded-lg bg-white/5 px-2.5 py-1 text-xs text-brand-100 hover:bg-white/10"
               >
-                <Volume2 className="h-3 w-3" /> 朗读
+                <Volume2 className="h-3 w-3" /> {t("lessonPlayer.readAloud")}
               </button>
-              <div className="mt-4 text-xs text-brand-200/50">点击卡片查看释义</div>
+              <div className="mt-4 text-xs text-brand-200/50">{t("lessonPlayer.tapToFlip")}</div>
             </div>
             <div className="card-face back glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-amber-500/20 via-slate-900/20 to-rose-500/20 p-8">
-              <div className="text-xs uppercase tracking-[0.3em] text-amber-300">释义</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-amber-300">{t("learn.translation")}</div>
               <div className="mt-3 font-display text-2xl font-bold text-white">{card.translation}</div>
               <div className="mt-4 max-w-md text-center text-sm italic text-brand-100/90">
                 "{card.exampleSentence}"
@@ -436,7 +431,7 @@ function WordExercises({
           }}
           className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-2.5 text-sm text-rose-200 hover:bg-rose-500/20"
         >
-          <X className="h-4 w-4" /> 不熟
+          <X className="h-4 w-4" /> {t("learn.notFamiliar")}
         </button>
         <button
           onClick={() => {
@@ -446,7 +441,7 @@ function WordExercises({
           }}
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 px-4 py-2.5 text-sm font-semibold text-slate-900 hover:-translate-y-0.5"
         >
-          <Check className="h-4 w-4" /> 认识
+          <Check className="h-4 w-4" /> {t("learn.remembered")}
         </button>
       </div>
     </GlassCard>
@@ -463,6 +458,7 @@ function QuizExercises({
   quizzes: LessonExerciseQuiz[];
   onProgress?: (stats: { correct: number; total: number }) => void;
 }) {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(0);
   const [pick, setPick] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
@@ -485,10 +481,10 @@ function QuizExercises({
     <GlassCard>
       <div className="mb-3 flex items-center justify-between text-xs">
         <span className="inline-flex items-center gap-1.5 text-fuchsia-300">
-          <Pen className="h-4 w-4" /> 语法 · {quizzes.length} 题
+          <Pen className="h-4 w-4" /> {t("lessonPlayer.grammarTitle", { count: quizzes.length })}
         </span>
         <span className="text-brand-200/70">
-          正确 <span className="text-emerald-300">{correct}</span> · 错误{" "}
+          {t("lessonPlayer.correct")} <span className="text-emerald-300">{correct}</span> · {t("lessonPlayer.wrong")}{" "}
           <span className="text-rose-300">{wrong}</span>
         </span>
       </div>
@@ -526,7 +522,7 @@ function QuizExercises({
       </div>
       {pick !== null && (
         <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-3 text-sm text-amber-50/90">
-          <span className="font-semibold">解析：</span>
+          <span className="font-semibold">{t("lessonPlayer.explanation")}</span>
           {q.explain}
         </div>
       )}
@@ -536,7 +532,7 @@ function QuizExercises({
           disabled={pick === null}
           className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-40"
         >
-          下一题 →
+          {t("lessonPlayer.next")} →
         </button>
       </div>
     </GlassCard>
@@ -557,6 +553,7 @@ function ListeningExercises({
   isLoggedIn: boolean;
   onNeedLogin: () => void;
 }) {
+  const { t } = useTranslation();
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   const item = listenings[i % Math.max(1, listenings.length)];
@@ -583,7 +580,7 @@ function ListeningExercises({
     <GlassCard>
       <div className="mb-3 flex items-center justify-between text-xs">
         <span className="inline-flex items-center gap-1.5 text-sky-300">
-          <Headphones className="h-4 w-4" /> 听力 · {listenings.length} 段
+          <Headphones className="h-4 w-4" /> {t("lessonPlayer.listeningTitle", { count: listenings.length })}
         </span>
         <span className="text-brand-200/70">{i + 1} / {listenings.length}</span>
       </div>
@@ -595,7 +592,7 @@ function ListeningExercises({
         {playing ? <Pause className="h-7 w-7" /> : <Play className="h-7 w-7" />}
       </button>
       <div className="mt-2 text-xs text-brand-200/70">
-        {playing ? "正在朗读…" : "点击播放"}
+        {playing ? t("lessonPlayer.playing") : t("lessonPlayer.tapToPlay")}
       </div>
       <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-brand-100/90">
         {item.script}
@@ -605,7 +602,7 @@ function ListeningExercises({
           onClick={() => setI((n) => n + 1)}
           className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-3 py-1.5 text-xs text-brand-100 hover:bg-white/10"
         >
-          下一段 →
+          {t("lessonPlayer.nextSegment")} →
         </button>
       </div>
     </GlassCard>
@@ -632,6 +629,7 @@ function SpeakingExercises({
   isLoggedIn: boolean;
   onNeedLogin: () => void;
 }) {
+  const { t } = useTranslation();
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   const p = speakings[i % Math.max(1, speakings.length)];
@@ -661,7 +659,7 @@ function SpeakingExercises({
     <GlassCard>
       <div className="mb-3 flex items-center justify-between text-xs">
         <span className="inline-flex items-center gap-1.5 text-amber-300">
-          <Mic className="h-4 w-4" /> 口语 · {speakings.length} 句
+          <Mic className="h-4 w-4" /> {t("lessonPlayer.speakingTitle", { count: speakings.length })}
         </span>
         <span className="text-brand-200/70">{i + 1} / {speakings.length}</span>
       </div>
@@ -673,7 +671,7 @@ function SpeakingExercises({
         <button
           onClick={play}
           className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white transition hover:-translate-y-1"
-          title="朗读示范"
+          title={t("lessonPlayer.readAloud")}
         >
           {playing ? <Pause className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
         </button>
@@ -681,11 +679,11 @@ function SpeakingExercises({
           onClick={() => setI((n) => n + 1)}
           className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
         >
-          下一句 →
+          {t("lessonPlayer.nextSentence")} →
         </button>
       </div>
       <div className="mt-2 text-center text-xs text-brand-200/50">
-        跟读示范后，尝试自己说出来
+        {t("lessonPlayer.speakingHint")}
       </div>
       <input
         type="hidden"

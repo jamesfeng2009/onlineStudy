@@ -20,7 +20,10 @@
     "profile": "我的",
     "login": "登录",
     "register": "注册",
-    "logout": "退出"
+    "logout": "退出",
+    "settings": "Settings",
+    "faq": "FAQ",
+    "blog": "Blog"
   },
   "header": {
     "streak": "{{days}} 天连续",
@@ -71,7 +74,8 @@
       "grammar": "语法",
       "listening": "听力",
       "speaking": "口语"
-    }
+    },
+    "keepGoing": "Keep going!"
   },
   "courses": {
     "title": "分级课程体系",
@@ -288,7 +292,9 @@
       "tones": "声调",
       "travel": "旅行",
       "film-tv": "影视"
-    }
+    },
+    "seoTitle": "Language Courses — A1 to C1 | LangOria",
+    "seoDescription": "Browse structured language courses from A1 to C2 across English, Japanese, Korean, Chinese, Spanish, French, German, Italian, Thai, and Cantonese. Spaced-repetition vocab, listening drills, and speaking practice."
   },
   "levelMeta": {
     "alignment": "对齐",
@@ -337,7 +343,8 @@
       "answered": "已作答 {{count}} 题",
       "tip1": "先读整句，再判断语法结构。",
       "tip2": "不确定时可先凭语感选一个。",
-      "tip3": "每一条解析都值得停下来读一遍。"
+      "tip3": "每一条解析都值得停下来读一遍。",
+      "pitfallOfThis": "Pitfalls for {{title}}"
     },
     "speakingModule": {
       "title": "跟读这句",
@@ -349,7 +356,8 @@
       "session": "本次练习",
       "count": "{{count}} 次",
       "times": "已跟读次数",
-      "otherSentences": "其他句子"
+      "otherSentences": "其他句子",
+      "loginToStart": "Log in to start speaking practice"
     },
     "listeningModule": {
       "title": "听力填空",
@@ -364,7 +372,65 @@
       "tip2": "再对照文本填空，识别弱读/连读。",
       "tip3": "反复播放时可以同步跟着念。",
       "reference": "参考原文",
-      "showAfterFinish": "完成后显示。"
+      "showAfterFinish": "完成后显示。",
+      "speechRate": "Speech rate",
+      "tip4": "After checking, read the script aloud to reinforce the sounds."
+    },
+    "wordFamily": "Word Family",
+    "totalNWords": "{{count}} words",
+    "commonRoot": "Common root",
+    "reviewLabel": "Review",
+    "reviewDesc": "Spaced repetition review",
+    "conversationLabel": "Conversation",
+    "conversationDesc": "Practice dialogue with AI",
+    "wordRoot": "Word Root",
+    "grammarMap": "Grammar Map",
+    "errorProneN": "{{count}} error-prone",
+    "path": "Path",
+    "modules": "Modules",
+    "review": {
+      "again": "Again",
+      "hard": "Hard",
+      "good": "Good",
+      "easy": "Easy",
+      "cardCounter": "{{current}} / {{total}}",
+      "queue": "Review queue",
+      "due": "Due",
+      "loginToStart": "Log in to start review",
+      "allDone": "All caught up!",
+      "noCardsForLang": "No cards due for this language.",
+      "addedAutomatically": "Cards are added automatically as you practice.",
+      "kindQuiz": "Grammar",
+      "kindListening": "Listening",
+      "kindSpeaking": "Speaking",
+      "kindWord": "Word",
+      "tapToShowAnswer": "Tap to show answer",
+      "answer": "Answer",
+      "tapToFlipBack": "Tap to flip back",
+      "principle": "How review works",
+      "principle1": "Review right before you forget.",
+      "principle2": "Hard cards come back sooner.",
+      "principle3": "Easy cards are pushed further out.",
+      "principle4": "Consistency beats long sessions.",
+      "thisSession": "This session",
+      "cardsRemaining": "cards remaining"
+    },
+    "conversation": {
+      "unsupportedBrowser": "Speech recognition is not supported in this browser.",
+      "didNotHear": "Didn't catch that. Please try again.",
+      "fallbackBranch": "No exact match — the AI will continue naturally.",
+      "completed": "Conversation completed!",
+      "restart": "Restart",
+      "inputPlaceholder": "Type your reply...",
+      "voiceInput": "Voice input",
+      "send": "Send",
+      "currentScene": "Current scene",
+      "sceneHint": "Reply naturally in the target language.",
+      "tipsTitle": "Tips",
+      "tip1": "Reply in the target language.",
+      "tip2": "Keep it short and natural.",
+      "tip3": "Use voice input to practice speaking.",
+      "tip4": "Don't worry about mistakes — just keep going."
     }
   },
   "home": {
@@ -381,13 +447,15 @@
       "streak": "连续天数",
       "level": "等级",
       "todaysGoal": "今日目标",
-      "minutesOfGoal": "{{minutes}}/{{goal}} 分钟"
+      "minutesOfGoal": "{{minutes}}/{{goal}} 分钟",
+      "learnMethod": "See How It Works"
     },
     "languages": {
       "choose": "选择你正在学习的语言",
       "current": "当前：{{language}}",
       "currentLanguage": "当前语言",
-      "select": "点击选择"
+      "select": "点击选择",
+      "standaloneDesc": "Pick the language you are learning. Each course is leveled, with spaced-repetition vocab, native-speaker audio, and a daily 10-minute loop."
     },
     "tasks": {
       "title": "今日推荐",
@@ -580,7 +648,16 @@
     "coursesTitle": "推荐课程 · {{flag}} {{name}}",
     "coursesDesc": "按分级体系精选，系统化学习不迷路。",
     "browseAll": "浏览全部课程 →",
-    "joinPlan": "加入学习计划 →"
+    "joinPlan": "加入学习计划 →",
+    "priorityLabel": "Priority",
+    "titles": {
+      "words": "Flashcard Memory Boost",
+      "grammar": "Grammar Drill",
+      "listening": "Daily Listening",
+      "speaking": "Speaking Shadowing"
+    },
+    "moduleTraining": "{{key}} module training",
+    "scoreHint": "Current score {{score}} / 100 · prioritize strengthening"
   },
   "achievements": {
     "title": "成就系统",
@@ -746,7 +823,32 @@
       "continueWithGoogle": "使用 Google 登录",
       "continueWithGitHub": "使用 GitHub 登录",
       "forgotPassword": "忘记密码？",
-      "forgotPasswordHint": "密码重置功能暂未开放，请联系客服。"
+      "forgotPasswordHint": "密码重置功能暂未开放，请联系客服。",
+      "heroTitle": "At your own pace",
+      "heroHighlight": "conquer a new language.",
+      "heroDesc": "Leveled courses, interactive exercises, and community motivation — turn learning into a habit, not a task.",
+      "features": [
+        {
+          "title": "Leveled Courses",
+          "desc": "From beginner to mastery",
+          "c": "from-sky-400/20 to-sky-500/0"
+        },
+        {
+          "title": "Multilingual",
+          "desc": "English · Japanese · Korean",
+          "c": "from-fuchsia-400/20 to-fuchsia-500/0"
+        },
+        {
+          "title": "Personalized Path",
+          "desc": "Smart recommendations from your data",
+          "c": "from-amber-400/20 to-amber-500/0"
+        },
+        {
+          "title": "Achievements",
+          "desc": "Badges · Levels · Points",
+          "c": "from-rose-400/20 to-rose-500/0"
+        }
+      ]
     },
     "register": {
       "badge": "沉浸式学语言",
@@ -759,7 +861,9 @@
       "button": "立即注册",
       "loading": "注册中...",
       "validation": "请填写用户名和邮箱，密码至少 4 位",
-      "errorDefault": "注册失败，请稍后再试"
+      "errorDefault": "注册失败，请稍后再试",
+      "usernamePlaceholder": "Choose a username",
+      "passwordPlaceholder": "Create a password"
     },
     "oauth": {
       "processing": "正在完成登录…",
@@ -866,7 +970,11 @@
       "invalidJson": "{{label}} 不是有效的 JSON"
     },
     "enabled": "是",
-    "disabled": "否"
+    "disabled": "否",
+    "addLabel": "Add {{label}}",
+    "editLabel": "Edit {{label}}",
+    "arrayPlaceholder": "One per line",
+    "jsonPlaceholder": "Valid JSON array"
   },
   "common": {
     "loading": "加载中...",
@@ -954,7 +1062,54 @@
     "empty": "暂时还没有文章，敬请期待。",
     "ctaTitle": "把方法落地到每天 10 分钟",
     "ctaDesc": "创建免费账户，从今天开始你的 10 分钟闭环。",
-    "cta": "开始学习"
+    "cta": "开始学习",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Why 10 minutes a day beats 2 hours on weekends",
+        "excerpt": "Spaced repetition is the most researched technique in learning science. Here is why shorter, more frequent sessions outperform long cramming.",
+        "tag": "Methods",
+        "readTime": "6 min read",
+        "date": "2026-06-10",
+        "content": [
+          "If you have ever crammed for an exam and forgotten everything two weeks later, you already know the problem with long, infrequent study sessions. The fix is not studying harder. The fix is studying more often.",
+          "Learning science has been clear on this for decades. Hermann Ebbinghaus discovered the forgetting curve in 1885: we lose newly learned information at a predictable rate unless we actively recall it at the right moment. The 'right moment' is just before you are about to forget.",
+          "This is exactly what spaced repetition does. LangOria schedules each word and grammar point for review at the moment you are most likely to forget it. Hit 'remembered' and the next review gets pushed further out. Hit 'not familiar' and the next review comes sooner.",
+          "The result: in 10 minutes a day, you cover more ground than 2 hours on Sunday, because every minute is spent on something your brain actually needs to recall. After 30 days, most learners have reviewed 600+ items — more than a single weekend cramming session could ever cover.",
+          "So if you have been telling yourself you don't have time to learn a language, you do. Ten minutes. Every day. That is the entire trick."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "How to remember 1000 words without burning out",
+        "excerpt": "A practical 8-week plan built on the 3-2-1 rule, with examples across English, Japanese, and Spanish.",
+        "tag": "Vocabulary",
+        "readTime": "8 min read",
+        "date": "2026-06-04",
+        "content": [
+          "Most language learners aim for 1000 words as a first milestone. The bad news: trying to memorize them all at once is a recipe for burnout. The good news: you do not need to memorize them. You need to meet them.",
+          "We use a simple 3-2-1 rule. Three encounters a day, two contexts per encounter, and one forced recall. That is it.",
+          "Day 1: learn 3 new words. See them in your flashcard, see them in a sentence, see them in a grammar example. Day 2: 3 more new words, plus 6 from yesterday. Day 7: 21 new words this week, but 80+ reviews. By the time a word has been reviewed 5 times, retention is over 90%.",
+          "Across 8 weeks, this adds up to 168 words at a pace of 3 per day. To hit 1000, you scale to 15 new words a day by month 3, when reviews are mostly cached. The 10-minute daily loop in LangOria handles this for you automatically.",
+          "The key insight: vocabulary is not a memory contest. It is a frequency game. Show up every day, trust the system, and the words will stick."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Shadowing: the speaking exercise that actually works",
+        "excerpt": "Why repeating native audio is the fastest way to fix pronunciation, and a 5-step routine you can start today.",
+        "tag": "Speaking",
+        "readTime": "5 min read",
+        "date": "2026-05-28",
+        "content": [
+          "If you can read a sentence but cannot say it, you are not alone. Most learners spend 90% of their time reading and listening, and 10% speaking. That ratio is backwards.",
+          "Shadowing is the practice of listening to a native speaker and repeating what they say in real time, mimicking rhythm, intonation, and stress. It is the technique professional interpreters use to maintain fluency, and it works for any language.",
+          "The 5-step routine: (1) Listen to a sentence at native speed. (2) Listen again with the transcript. (3) Repeat at native speed while recording. (4) Compare your recording to the original. (5) Repeat 3 times before moving on.",
+          "Do this for 5 minutes a day. Within a month, your accent will start to shift noticeably. Within three months, you will be able to produce sentences you could not read aloud before.",
+          "LangOria's Speaking module is built around this exact idea. Pick a sentence, listen, repeat, repeat, repeat. No judging, no feedback anxiety. Just your voice and the model."
+        ]
+      }
+    ]
   },
   "placement": {
     "title": "分级测试",
@@ -994,5 +1149,336 @@
       "fetchFailed": "拉取题目失败",
       "saveFailed": "保存结果失败"
     }
+  },
+  "lesson": {
+    "status": {
+      "locked": "Locked",
+      "unlocked": "Start",
+      "inProgress": "Continue",
+      "completed": "Completed",
+      "redo": "Redo",
+      "continue": "Continue"
+    },
+    "skill": {
+      "vocab": "Vocab",
+      "grammar": "Grammar",
+      "listening": "Listening",
+      "speaking": "Speaking",
+      "mixed": "Mixed"
+    },
+    "loadingPath": "Loading learning path…",
+    "loginToTrackProgress": "Log in to track lesson progress.",
+    "noLessons": "This course has no lessons configured yet.",
+    "courseProgress": "Course Progress",
+    "completedCount": "{{completed}} / {{total}} lessons completed",
+    "bestScore": "Best {{score}}",
+    "loadFailed": "Failed to load lessons"
+  },
+  "league": {
+    "title": "Weekly Leaderboard",
+    "subtitle": "Accumulate XP weekly, compete for Master tier · promotions and demotions settle every Monday",
+    "seoTitle": "Weekly Leaderboard · League | LangOria",
+    "seoDescription": "Compete in LangOria's weekly XP leaderboard. Climb from Bronze to Master across language leagues.",
+    "refresh": "Refresh",
+    "loadFailed": "Failed to load leaderboard",
+    "refreshFailed": "Refresh failed",
+    "season": "Season {{key}}",
+    "players": "{{count}} players",
+    "timeRemaining": "{{time}} remaining",
+    "time": {
+      "daysHours": "{{days}}d {{hours}}h",
+      "hoursMinutes": "{{hours}}h {{mins}}m"
+    },
+    "divisionMinExp": "{{division}}: weekly XP ≥ {{minExp}}",
+    "loginCardTitle": "Log in to see your rank",
+    "loginCardDesc": "After logging in you'll automatically join this week's season and be placed in a division based on your total XP.",
+    "loginButton": "Log in now",
+    "loadingMyRank": "Loading your rank…",
+    "rankInDivision": "Rank in division:",
+    "weekExp": "Weekly XP:",
+    "totalExp": "Total XP:",
+    "bestDivision": "Best ever:",
+    "promotionMsg": "You're in the promotion zone! You'll move up a division when the season ends.",
+    "demotionMsg": "You're in the demotion zone and may drop a division when the season ends. Keep going!",
+    "rules": "Promotion/demotion rules: top 10% of each division promote, bottom 10% demote. Settlements run in bulk every Monday when the season ends.",
+    "leaderboard": "Leaderboard",
+    "leaderboardSubtitle": "Sorted by weekly XP · up to 50 per page",
+    "loadingStandings": "Loading leaderboard…",
+    "emptyDivision": "No players in this division yet this week — grind XP and be the first on the board!",
+    "you": "You",
+    "totalXp": "Total XP {{total}}",
+    "startingXp": "Week start {{starting}}",
+    "weekXpLabel": "Weekly XP",
+    "division": {
+      "bronze": "Bronze",
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum",
+      "diamond": "Diamond",
+      "master": "Master"
+    }
+  },
+  "pronunciation": {
+    "excellent": "Excellent",
+    "great": "Great",
+    "okay": "Okay",
+    "practiceMore": "Keep practicing",
+    "errors": {
+      "noSpeech": "No speech detected. Please try again.",
+      "microphoneNotAllowed": "Please allow microphone access in your browser.",
+      "network": "Network error. Please check your connection and retry.",
+      "recognitionFailed": "Recognition failed ({{error}})",
+      "cannotStart": "Unable to start recording. Please retry."
+    },
+    "unsupportedBrowser": "Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.",
+    "repeatThis": "Repeat this",
+    "listening": "Listening… please read aloud",
+    "tapToStart": "Tap the microphone to start",
+    "toneHint": "Tip: this score is based on overall similarity; tone accuracy will be supported in a future version.",
+    "fullScore": "Out of 100",
+    "youSaid": "You said",
+    "target": "Target",
+    "noSpeechDetected": "(No speech detected)",
+    "tryAgain": "Try again"
+  },
+  "aiConversation": {
+    "title": "AI Conversation",
+    "loginPrompt": "Log in to start AI conversations.",
+    "loginButton": "Log in",
+    "subtitle": "Practice real-life dialogue with AI.",
+    "remainingToday": "{{count}} remaining today",
+    "newChat": "New chat",
+    "targetLanguage": "Target language",
+    "levelOptional": "Level (optional)",
+    "levelPlaceholder": "e.g. A1, N5",
+    "starting": "Starting...",
+    "startChat": "Start chat",
+    "history": "History",
+    "noHistory": "No conversations yet.",
+    "untitledChat": "Untitled {{language}} chat",
+    "turnCount": "{{count}} turns",
+    "active": "Active conversation",
+    "selectOrCreate": "Select or create a chat",
+    "endChat": "End chat",
+    "emptyTitle": "No messages yet",
+    "emptyHint": "Start the conversation above.",
+    "typing": "AI is typing...",
+    "inputPlaceholder": "Type your message...",
+    "sessionClosed": "Session closed · {{status}}",
+    "timeout": "Timed out",
+    "ended": "Ended",
+    "errors": {
+      "loadConversations": "Failed to load conversations",
+      "loadMessages": "Failed to load messages",
+      "createConversation": "Failed to create conversation",
+      "sendMessage": "Failed to send message",
+      "endConversation": "Failed to end conversation"
+    }
+  },
+  "alphabet": {
+    "title": "Alphabet",
+    "subtitle": "Learn the writing system and sounds.",
+    "seoTitle": "Alphabet & Pronunciation Basics | LangOria",
+    "seoDescription": "Learn Hiragana, Katakana, Hangul, Pinyin, Jyutping, Thai and more. Tap a character to hear it.",
+    "enter": "Enter",
+    "ttsDisclaimer": "Voice quality varies by browser and OS.",
+    "noLanguageSubtitle": "Choose a language to start.",
+    "switchLanguage": "Switch language",
+    "seoDescriptionLang": "{{language}} alphabet and pronunciation basics — LangOria",
+    "tapToSpeak": "Tap to hear pronunciation",
+    "tapDetailToScore": "Tap a card to practice shadowing",
+    "pronunciationHint": "Pronunciation",
+    "example": "Example",
+    "speakChar": "Listen",
+    "closeDetail": "Close detail",
+    "shadowing": "Shadowing",
+    "ttsDisclaimerDetail": "Pronunciation is generated by your browser's built-in text-to-speech. Results may vary by browser, operating system, and voice pack.",
+    "readyForCourses": "Ready for structured courses?",
+    "viewCourses": "View courses"
+  },
+  "cefr": {
+    "title": "CEFR Self-Assessment",
+    "subtitle": "Find your level with Can-Do statements.",
+    "seoTitle": "CEFR Self-Assessment — LangOria",
+    "seoDescription": "Self-assess your language level from A1 to C2 with Can-Do statements. Complements the placement test.",
+    "introTitle": "What is your level?",
+    "introText": "Check the Can-Do statements you can confidently do. We will infer your CEFR level automatically.",
+    "assessmentSubtitle": "Check what you can do",
+    "assessmentSeoDescription": "{{language}} CEFR self-assessment — check what you can do",
+    "backToSelection": "Back to language selection",
+    "currentInferred": "Inferred level",
+    "noneChecked": "None selected yet",
+    "manualOverride": "Manual override (auto: {{inferred}})",
+    "savedAssessment": "Saved assessment",
+    "guestHint": "Log in to save your self-assessment and get course recommendations.",
+    "loginButton": "Log in",
+    "loadingCanDo": "Loading Can-Do statements...",
+    "selectAtLeastOne": "Please select at least one statement to save.",
+    "saveSuccess": "Saved successfully",
+    "saveFailed": "Save failed",
+    "manualOverrideTitle": "Manual level override",
+    "manualOverrideHint": "Pick the level that best matches your ability.",
+    "auto": "Auto",
+    "noteTitle": "Note",
+    "noteHint": "Add context about your assessment (optional).",
+    "notePlaceholder": "e.g. I am comfortable speaking but weak at writing.",
+    "save": "Save",
+    "reset": "Reset",
+    "languageNotFound": "Language not found",
+    "languageNotFoundDetail": "No language data for {{lang}}."
+  },
+  "crown": {
+    "loadFailed": "Failed to load crown progress",
+    "loading": "Loading crown progress...",
+    "noCheckpoints": "No checkpoints in this course yet.",
+    "hint": "Pass checkpoint lessons with {{threshold}}% or higher to earn crowns.",
+    "completion": "Completion",
+    "earned": "Crown {{n}} earned",
+    "locked": "Crown {{n}} locked",
+    "passedCheckpoints": "Passed checkpoints",
+    "score": "Score {{score}}"
+  },
+  "grammarMap": {
+    "noData": "No grammar data for this language.",
+    "wrongCount": " · {{count}} wrong",
+    "pitfallsTitle": "Common mistakes",
+    "dependencies": "Prerequisites: {{list}}"
+  },
+  "lessonPlayer": {
+    "loadFailed": "Failed to load lesson",
+    "startFailed": "Failed to start lesson",
+    "completeFailed": "Failed to complete lesson",
+    "loading": "Loading lesson...",
+    "backToPath": "Back to path",
+    "exerciseCount": "{{count}} exercises",
+    "bestScore": "Best {{score}}",
+    "lockedHint": "Complete previous lessons to unlock this one.",
+    "start": "Start lesson",
+    "inProgressHint": "Lesson in progress",
+    "completed": "Lesson completed!",
+    "scoreThisTime": "Score this time: {{score}}",
+    "nextUnlocked": "Next lesson unlocked!",
+    "nextLesson": "Go to next lesson",
+    "emptyExercises": "No exercises in this lesson.",
+    "emptyExercisesHint": "Click Complete to finish.",
+    "submitting": "Submitting...",
+    "complete": "Complete lesson",
+    "completeHint": "Complete the lesson to save progress.",
+    "vocabTitle": "Vocabulary ({{count}})",
+    "readAloud": "Read aloud",
+    "tapToFlip": "Tap to flip",
+    "grammarTitle": "Grammar ({{count}})",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "explanation": "Explanation: ",
+    "next": "Next",
+    "listeningTitle": "Listening ({{count}})",
+    "playing": "Playing...",
+    "tapToPlay": "Tap to play",
+    "nextSegment": "Next segment",
+    "speakingTitle": "Speaking ({{count}})",
+    "nextSentence": "Next sentence",
+    "speakingHint": "Listen and repeat out loud."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "suggestion": "Check the URL for typos, or try one of these:",
+    "seoTitle": "Page not found — LangOria",
+    "seoDescription": "The page you're looking for doesn't exist on LangOria. Head back to the homepage to start learning languages.",
+    "goHome": "Home",
+    "browseCourses": "Browse courses",
+    "readBlog": "Read the blog"
+  },
+  "reading": {
+    "fetchFailed": "Failed to load reading passages",
+    "title": "Reading",
+    "subtitle": "Graded reading with comprehension questions",
+    "seoTitle": "Reading Comprehension — LangOria",
+    "seoDescription": "Graded reading passages with glossary and comprehension questions across English, Japanese, Korean, Chinese, and more.",
+    "disclaimer": "Passages are generated or curated for learners and may not reflect native-only content.",
+    "listSubtitle": "Choose a passage",
+    "switchLanguage": "Switch language",
+    "seoDescriptionLang": "{{language}} reading comprehension — LangOria",
+    "empty": "No passages yet.",
+    "emptyHint": "Try another level or language later.",
+    "completed": "Completed",
+    "bestAccuracy": "Best {{accuracy}}%",
+    "words": "{{count}} words",
+    "minutes": "{{count}} min",
+    "start": "Start",
+    "aiExplainFailed": "Failed to explain sentence",
+    "loadFailed": "Failed to load passage",
+    "loadingTitle": "Loading passage...",
+    "loadPassageFailed": "Could not load this passage.",
+    "backToList": "Back to list",
+    "passageMeta": "{{level}} {{cefr}} · {{words}} words · {{minutes}} min",
+    "accuracyThisTime": "{{correct}}/{{total}} correct ({{accuracy}}%)",
+    "passageCompleted": "Passage completed",
+    "attemptHistory": "Attempt {{count}} · best {{best}}%",
+    "redo": "Redo",
+    "aiExplaining": "Explaining...",
+    "aiExplain": "Explain",
+    "aiSentenceTitle": "AI Explanation",
+    "aiRemaining": "{{count}} left today",
+    "aiGenerating": "Generating explanation...",
+    "source": "Source: {{source}}",
+    "glossary": "Glossary",
+    "comprehensionTitle": "Comprehension ({{count}})",
+    "explanation": "Explanation: ",
+    "answered": "{{answered}}/{{total}} answered",
+    "submit": "Submit",
+    "submitFailed": "Failed to submit answers",
+    "correctCount": "{{correct}}/{{total}} correct"
+  },
+  "writing": {
+    "fetchFailed": "Failed to load prompts",
+    "title": "Writing",
+    "subtitle": "Practice writing with instant feedback",
+    "seoTitle": "Writing Practice — LangOria",
+    "seoDescription": "Essays, emails, summaries, stories and dialogues. Instant scoring on length, variety, and keywords.",
+    "allLanguages": "All languages",
+    "allLevels": "All levels",
+    "loading": "Loading prompts...",
+    "empty": "No writing prompts yet.",
+    "wordRange": "{{min}}–{{max}} words",
+    "bestScore": "Best {{score}}",
+    "start": "Start",
+    "aiPolishFailed": "Failed to get AI polish",
+    "emptyContent": "Please write something before submitting.",
+    "submitFailed": "Failed to submit writing",
+    "detailTitle": "Writing Prompt",
+    "loadFailed": "Failed to load prompt",
+    "backToList": "Back to list",
+    "targetWords": "{{min}}–{{max}} words",
+    "tips": "Tips",
+    "hideSample": "Hide sample",
+    "showSample": "Show sample",
+    "yourWriting": "Your writing",
+    "wordRangeCurrent": "{{current}} / {{min}}–{{max}} words",
+    "placeholder": "Write in {{language}} ({{min}}–{{max}} words)",
+    "charLimit": "{{current}} / 10000 characters",
+    "submit": "Submit",
+    "clear": "Clear",
+    "scoreResult": "Score",
+    "overall": "Overall",
+    "length": "Length",
+    "variety": "Variety",
+    "keywords": "Keywords",
+    "lengthFeedback": "Length",
+    "varietyFeedback": "Variety",
+    "keywordFeedback": "Keywords",
+    "matched": "Matched",
+    "missed": "Missed",
+    "suggestions": "Suggestions",
+    "aiPolishTitle": "AI Polish",
+    "requestAiPolish": "Polish with AI",
+    "aiRemaining": "{{count}} left today",
+    "aiPolishing": "Polishing...",
+    "historyTitle": "Submission History ({{count}})",
+    "historyMeta": "{{words}} words · {{date}}",
+    "lengthShort": "Len",
+    "varietyShort": "Var",
+    "keywordsShort": "Key"
   }
 }

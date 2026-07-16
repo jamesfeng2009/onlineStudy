@@ -29,7 +29,8 @@ import type {
   ReadingPassageSummary, ReadingPassageDetail, ReadingProgressEntry,
 } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
-import { LANGUAGES, getLanguage } from "../data/languages";
+import { useTranslation } from "react-i18next";
+import { LANGUAGES, getLanguage, getLanguageDisplayName } from "../data/languages";
 import { cefrEquivalent } from "../lib/level-utils";
 import type { Language } from "../types";
 
@@ -83,6 +84,7 @@ function ReadingList({
   onLevelChange: (level: string | null) => void;
   onOpen: (id: string) => void;
 }) {
+  const { t, i18n } = useTranslation();
   const [passages, setPassages] = useState<ReadingPassageSummary[]>([]);
   const [progressMap, setProgressMap] = useState<Record<string, ReadingProgressEntry>>({});
   const [loading, setLoading] = useState(false);
@@ -104,7 +106,7 @@ function ReadingList({
         if (!cancelled) setPassages(data);
       })
       .catch((e: unknown) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : "拉取阅读材料失败");
+        if (!cancelled) setError(e instanceof Error ? e.message : t("reading.fetchFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -139,10 +141,10 @@ function ReadingList({
   // ====== Render: language picker ======
   if (!lang) {
     return (
-      <PageShell title="阅读理解" subtitle="分级阅读材料 + 理解题，巩固 CEFR 技能">
+      <PageShell title={t("reading.title")} subtitle={t("reading.subtitle")}>
         <Seo
-          title="阅读理解 — LangOria"
-          description="分级阅读理解练习：选语言 → 读文章 → 答题目 → 看进度。"
+          title={t("reading.seoTitle")}
+          description={t("reading.seoDescription")}
           pathname="/reading"
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -153,13 +155,13 @@ function ReadingList({
               className="glass rounded-2xl p-4 text-center transition hover:-translate-y-0.5 hover:border-white/20"
             >
               <div className="text-4xl">{l.flag}</div>
-              <div className="mt-2 text-sm font-medium text-white">{l.native}</div>
-              <div className="text-[11px] text-brand-200/60">{l.name}</div>
+              <div className="mt-2 text-sm font-medium text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
+              <div className="text-[11px] text-brand-200/60">{getLanguageDisplayName(l.id, i18n.language)}</div>
             </button>
           ))}
         </div>
         <p className="mt-6 text-center text-[11px] text-brand-200/40">
-          阅读材料按官方等级（CEFR / JLPT / HSK / TOPIK）分级，可与课程进度配合使用。
+          {t("reading.disclaimer")}
         </p>
       </PageShell>
     );
@@ -167,22 +169,24 @@ function ReadingList({
 
   const langMeta = getLanguage(lang);
 
+  const langName = getLanguageDisplayName(lang, i18n.language);
+
   return (
     <PageShell
-      title={`${langMeta.flag} ${langMeta.native} · 阅读理解`}
-      subtitle="分级阅读 + 理解题"
+      title={`${langMeta.flag} ${langName} · ${t("reading.title")}`}
+      subtitle={t("reading.listSubtitle")}
       action={
         <button
           onClick={() => onLangChange(null)}
           className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-brand-100 transition hover:bg-white/10"
         >
-          <ArrowLeft className="h-4 w-4" /> 切换语言
+          <ArrowLeft className="h-4 w-4" /> {t("reading.switchLanguage")}
         </button>
       }
     >
       <Seo
-        title={`${langMeta.native} 阅读理解 — LangOria`}
-        description={`${langMeta.native} 分级阅读理解练习。`}
+        title={`${langName} ${t("reading.title")} — LangOria`}
+        description={t("reading.seoDescriptionLang", { language: langName })}
         pathname={`/reading?lang=${lang}`}
       />
 
@@ -198,7 +202,7 @@ function ReadingList({
                 : "border-white/10 bg-white/5 text-brand-200/80 hover:bg-white/10")
             }
           >
-            全部
+            {t("common.all")}
           </button>
           {levels.map((lv) => (
             <button
@@ -225,7 +229,7 @@ function ReadingList({
       {loading && (
         <div className="flex items-center justify-center py-20 text-brand-200/70">
           <Loader2 className="h-6 w-6 animate-spin" />
-          <span className="ml-3 text-sm">加载中…</span>
+          <span className="ml-3 text-sm">{t("common.loading")}</span>
         </div>
       )}
 
@@ -238,8 +242,8 @@ function ReadingList({
       {!loading && !error && passages.length === 0 && (
         <div className="rounded-2xl border border-dashed border-white/10 bg-white/5 p-10 text-center text-brand-200/70">
           <BookMarked className="mx-auto h-8 w-8 text-brand-200/40" />
-          <div className="mt-3">该筛选条件下暂无阅读材料</div>
-          <div className="mt-1 text-xs text-brand-200/50">后续会持续补充内容</div>
+          <div className="mt-3">{t("reading.empty")}</div>
+          <div className="mt-1 text-xs text-brand-200/50">{t("reading.emptyHint")}</div>
         </div>
       )}
 
@@ -262,12 +266,12 @@ function ReadingList({
                 </span>
                 {isCompleted && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2.5 py-1 text-[11px] font-medium text-emerald-300">
-                    <Check className="h-3 w-3" /> 已完成
+                    <Check className="h-3 w-3" /> {t("reading.completed")}
                   </span>
                 )}
                 {prog && !isCompleted && prog.attemptCount > 0 && (
                   <span className="rounded-full bg-amber-400/10 px-2.5 py-1 text-[11px] font-medium text-amber-300">
-                    最佳 {prog.bestAccuracy}%
+                    {t("reading.bestAccuracy", { accuracy: prog.bestAccuracy })}
                   </span>
                 )}
               </div>
@@ -278,14 +282,14 @@ function ReadingList({
               <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3 text-xs text-brand-200/70">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex items-center gap-1">
-                    <BookOpen className="h-3.5 w-3.5" /> {p.wordCount} 词
+                    <BookOpen className="h-3.5 w-3.5" /> {t("reading.words", { count: p.wordCount })}
                   </span>
                   <span className="inline-flex items-center gap-1">
-                    <Clock className="h-3.5 w-3.5" /> {p.estMinutes} 分钟
+                    <Clock className="h-3.5 w-3.5" /> {t("reading.minutes", { count: p.estMinutes })}
                   </span>
                 </div>
                 <span className="inline-flex items-center gap-1 text-sky-300">
-                  开始阅读 <ArrowRight className="h-3 w-3" />
+                  {t("reading.start")} <ArrowRight className="h-3 w-3" />
                 </span>
               </div>
             </GlassCard>
@@ -307,6 +311,7 @@ function ReadingList({
 // ============================================================
 
 function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const nativeLanguage = (user?.nativeLanguage as string) || "en";
 
@@ -348,7 +353,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       setAiExplanation(r.explanation);
       setAiRemaining(r.remainingToday);
     } catch (e) {
-      setAiError(e instanceof Error ? e.message : "AI 解释失败");
+      setAiError(e instanceof Error ? e.message : t("reading.aiExplainFailed"));
     } finally {
       setAiLoading(false);
     }
@@ -368,7 +373,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         }
       })
       .catch((e: unknown) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : "加载失败");
+        if (!cancelled) setError(e instanceof Error ? e.message : t("reading.loadFailed"));
       })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
@@ -412,7 +417,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       setSavedProgress(saved);
       setSubmitted(true);
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : "提交失败");
+      setError(e instanceof Error ? e.message : t("reading.submitFailed"));
     } finally {
       setSubmitting(false);
     }
@@ -426,10 +431,10 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
 
   if (loading) {
     return (
-      <PageShell title="阅读中…">
+      <PageShell title={t("reading.loadingTitle")}>
         <div className="flex items-center justify-center py-20 text-brand-200/70">
           <Loader2 className="h-6 w-6 animate-spin" />
-          <span className="ml-3 text-sm">加载中…</span>
+          <span className="ml-3 text-sm">{t("common.loading")}</span>
         </div>
       </PageShell>
     );
@@ -437,16 +442,16 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
 
   if (error || !passage) {
     return (
-      <PageShell title="阅读理解">
+      <PageShell title={t("reading.title")}>
         <div className="rounded-xl border border-rose-400/30 bg-rose-400/10 p-4 text-sm text-rose-200">
-          {error ?? "无法加载该文章"}
+          {error ?? t("reading.loadPassageFailed")}
         </div>
         <div className="mt-4">
           <button
             onClick={onBack}
             className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-brand-100 hover:bg-white/10"
           >
-            <ArrowLeft className="h-4 w-4" /> 返回列表
+            <ArrowLeft className="h-4 w-4" /> {t("reading.backToList")}
           </button>
         </div>
       </PageShell>
@@ -459,18 +464,23 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
   return (
     <PageShell
       title={passage.title}
-      subtitle={`${passage.level}${cefrEquivalent(lang, passage.level) ? ` · CEFR ${cefrEquivalent(lang, passage.level)}` : ""} · 约 ${passage.wordCount} 词 · ${passage.estMinutes} 分钟`}
+      subtitle={t("reading.passageMeta", {
+        level: passage.level,
+        cefr: cefrEquivalent(lang, passage.level) ? `CEFR ${cefrEquivalent(lang, passage.level)}` : "",
+        words: passage.wordCount,
+        minutes: passage.estMinutes,
+      })}
       action={
         <button
           onClick={onBack}
           className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-brand-100 hover:bg-white/10"
         >
-          <ArrowLeft className="h-4 w-4" /> 返回列表
+          <ArrowLeft className="h-4 w-4" /> {t("reading.backToList")}
         </button>
       }
     >
       <Seo
-        title={`${passage.title} — LangOria 阅读`}
+        title={`${passage.title} — LangOria ${t("reading.title")}`}
         description={passage.summary || passage.title}
         pathname={`/reading/${id}`}
         noindex
@@ -480,19 +490,19 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         <div className="mb-5 flex items-center gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-4">
           <Trophy className="h-5 w-5 flex-none text-emerald-300" />
           <div className="flex-1 text-sm text-emerald-100">
-            本次正确率 <strong>{accuracy}%</strong>（{correctCount} / {passage.questions.length}）
+            {t("reading.accuracyThisTime", { accuracy, correct: correctCount, total: passage.questions.length })}
             {savedProgress.status === "completed" && (
-              <span className="ml-2 text-emerald-300">· 已完成本篇</span>
+              <span className="ml-2 text-emerald-300">· {t("reading.passageCompleted")}</span>
             )}
             {savedProgress.attemptCount > 1 && (
-              <span className="ml-2 text-emerald-200/70">· 第 {savedProgress.attemptCount} 次尝试 · 历史最佳 {savedProgress.bestAccuracy}%</span>
+              <span className="ml-2 text-emerald-200/70">· {t("reading.attemptHistory", { count: savedProgress.attemptCount, best: savedProgress.bestAccuracy })}</span>
             )}
           </div>
           <button
             onClick={reset}
             className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 text-xs text-emerald-100 hover:bg-emerald-400/20"
           >
-            <RotateCcw className="h-3.5 w-3.5" /> 再做一次
+            <RotateCcw className="h-3.5 w-3.5" /> {t("reading.redo")}
           </button>
         </div>
       )}
@@ -523,7 +533,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
                 }
               >
                 <Wand2 className="h-3 w-3" />
-                {aiSentence === p && aiLoading ? "AI 解读中…" : "AI 解读"}
+                {aiSentence === p && aiLoading ? t("reading.aiExplaining") : t("reading.aiExplain")}
               </button>
             </div>
           ))}
@@ -534,11 +544,11 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           <div className="mt-4 rounded-2xl border border-fuchsia-400/30 bg-fuchsia-400/5 p-4">
             <div className="mb-2 flex items-center justify-between gap-2">
               <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-fuchsia-200">
-                <Wand2 className="h-3.5 w-3.5" /> AI 句子解读
+                <Wand2 className="h-3.5 w-3.5" /> {t("reading.aiSentenceTitle")}
               </div>
               {aiRemaining !== null && (
                 <span className="text-[10px] text-fuchsia-300/60">
-                  今日剩余 {aiRemaining} 次
+                  {t("reading.aiRemaining", { count: aiRemaining })}
                 </span>
               )}
             </div>
@@ -547,7 +557,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
             </p>
             {aiLoading && (
               <div className="flex items-center gap-2 text-sm text-fuchsia-200/70">
-                <Loader2 className="h-4 w-4 animate-spin" /> 正在生成解读…
+                <Loader2 className="h-4 w-4 animate-spin" /> {t("reading.aiGenerating")}
               </div>
             )}
             {aiError && (
@@ -563,7 +573,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
 
         {passage.source && (
           <p className="mt-4 border-t border-white/5 pt-3 text-[11px] text-brand-200/40">
-            来源：{passage.source}
+            {t("reading.source", { source: passage.source })}
           </p>
         )}
       </GlassCard>
@@ -573,7 +583,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         <GlassCard className="mt-5">
           <div className="mb-3 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-fuchsia-300" />
-            <h2 className="font-display text-base font-semibold text-white">词汇注释</h2>
+            <h2 className="font-display text-base font-semibold text-white">{t("reading.glossary")}</h2>
           </div>
           <ul className="space-y-2">
             {passage.glossary.map((g, i) => (
@@ -596,7 +606,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           <div className="mb-4 flex items-center gap-2">
             <Info className="h-4 w-4 text-sky-300" />
             <h2 className="font-display text-base font-semibold text-white">
-              阅读理解（{passage.questions.length} 题）
+              {t("reading.comprehensionTitle", { count: passage.questions.length })}
             </h2>
           </div>
 
@@ -641,7 +651,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
                 </div>
                 {submitted && q.explain && (
                   <div className="mt-3 rounded-lg border border-white/5 bg-white/[0.02] p-3 text-xs text-brand-200/70">
-                    解析：{q.explain}
+                    {t("reading.explanation")}{q.explain}
                   </div>
                 )}
               </div>
@@ -652,7 +662,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           {!submitted ? (
             <div className="mt-5 flex items-center justify-between gap-3">
               <div className="text-xs text-brand-200/60">
-                {Object.keys(answers).length} / {passage.questions.length} 已答
+                {t("reading.answered", { answered: Object.keys(answers).length, total: passage.questions.length })}
               </div>
               <button
                 onClick={submit}
@@ -665,7 +675,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
                 }
               >
                 {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-                提交答案
+                {t("reading.submit")}
               </button>
             </div>
           ) : (
@@ -673,7 +683,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
               <div className="text-sm">
                 <div className="font-display text-2xl font-bold text-white">{accuracy}%</div>
                 <div className="text-xs text-brand-200/60">
-                  {correctCount} / {passage.questions.length} 正确
+                  {t("reading.correctCount", { correct: correctCount, total: passage.questions.length })}
                 </div>
               </div>
               {!savedProgress && (
@@ -681,7 +691,7 @@ function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
                   onClick={reset}
                   className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-brand-100 hover:bg-white/10"
                 >
-                  <RotateCcw className="h-3.5 w-3.5" /> 重做
+                  <RotateCcw className="h-3.5 w-3.5" /> {t("reading.redo")}
                 </button>
               )}
             </div>

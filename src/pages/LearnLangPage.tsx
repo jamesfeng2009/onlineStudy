@@ -13,6 +13,7 @@ import {
   type LearnLangSlug,
   type LearnWord,
 } from "../data/learn-content";
+import { getLanguageDisplayName } from "../data/languages";
 
 /**
  * /languages/:langSlug — high-quality indexable overview page for one
@@ -25,7 +26,7 @@ import {
  */
 export default function LearnLangPage() {
   const { langSlug } = useParams<{ langSlug: string }>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [words, setWords] = useState<LearnWord[] | null>(null);
 
   // /languages/:langSlug — the URL slug is a human-friendly name
@@ -83,9 +84,8 @@ export default function LearnLangPage() {
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
                 <div className="text-5xl">{m.flag}</div>
                 <div className="mt-4 font-display text-2xl font-bold text-white">
-                  {m.englishName}
+                  {getLanguageDisplayName(data, i18n.language)}
                 </div>
-                <div className="text-sm text-brand-200/70">{m.nativeName}</div>
                 <p className="mt-4 text-sm leading-relaxed text-brand-100/80">
                   {DESCRIPTIONS[data]}
                 </p>
@@ -150,7 +150,7 @@ export default function LearnLangPage() {
       }
     >
       <Seo
-        title={`Learn ${meta.englishName} online — A1 to C1 | LangOria`}
+        title={`Learn ${getLanguageDisplayName(slug, i18n.language)} online — A1 to C1 | LangOria`}
         description={`${lead} ${whoFor.split(".")[0]}.`}
         pathname={`/languages/${slug}`}
       />
@@ -159,10 +159,10 @@ export default function LearnLangPage() {
           buildBreadcrumbLd([
             { name: "Home", url: `${siteUrl}/` },
             { name: "Languages", url: `${siteUrl}/languages` },
-            { name: meta.englishName, url: pageUrl },
+            { name: getLanguageDisplayName(slug, i18n.language), url: pageUrl },
           ]),
           buildCourseLd({
-            name: `Learn ${meta.englishName} online — A1 to C1`,
+            name: `Learn ${getLanguageDisplayName(slug, i18n.language)} online — A1 to C1`,
             description: lead,
             url: pageUrl,
             inLanguage: slug === "ja" ? "ja" : slug === "zh" ? "zh-Hans" : "en",
@@ -174,10 +174,10 @@ export default function LearnLangPage() {
       <article className="prose prose-invert max-w-none">
         <section className="glass rounded-3xl p-8 md:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-            <Globe2 className="h-3.5 w-3.5 text-sky-300" /> {meta.englishName} · {meta.flag}
+            <Globe2 className="h-3.5 w-3.5 text-sky-300" /> {getLanguageDisplayName(slug, i18n.language)} · {meta.flag}
           </div>
           <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
-            Why learn {meta.englishName}?
+            Why learn {getLanguageDisplayName(slug, i18n.language)}?
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-brand-100/90 md:text-base">
             {whoFor}
@@ -200,7 +200,7 @@ export default function LearnLangPage() {
               Native-speaker audio
             </h3>
             <p className="mt-2 text-sm text-brand-200/70">
-              Listen to {meta.englishName} as it's actually spoken, with shadowing drills.
+              Listen to {getLanguageDisplayName(slug, i18n.language)} as it's actually spoken, with shadowing drills.
             </p>
           </div>
           <div className="glass rounded-2xl p-6">
@@ -216,7 +216,7 @@ export default function LearnLangPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            How LangOria teaches {meta.englishName}
+            How LangOria teaches {getLanguageDisplayName(slug, i18n.language)}
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-brand-100/90 md:text-base">
             {method}
@@ -275,7 +275,7 @@ export default function LearnLangPage() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
               <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-                Browse {meta.englishName} vocabulary by level
+                Browse {getLanguageDisplayName(slug, i18n.language)} vocabulary by level
               </h2>
               <p className="mt-1 text-sm text-brand-100/80">
                 {levels.length} level{levels.length === 1 ? "" : "s"}, {words?.length ?? 0} curated {meta.dataShape === "sentence" ? "sentences" : "words"}.
@@ -295,7 +295,7 @@ export default function LearnLangPage() {
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div>
                 <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-                  Real-world {meta.englishName} scenarios
+                  Real-world {getLanguageDisplayName(slug, i18n.language)} scenarios
                 </h2>
                 <p className="mt-1 text-sm text-brand-100/80">
                   4 high-leverage situations — travel, business, food, and small talk — each with 10 phrases, a sample dialogue, and a culture tip.

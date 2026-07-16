@@ -22,6 +22,7 @@ import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
 import { api } from "../lib/api";
 import { cn } from "../lib/utils";
+import { getLanguageDisplayName } from "../data/languages";
 
 type FieldType = "text" | "number" | "boolean" | "textarea" | "array" | "json";
 
@@ -160,7 +161,7 @@ function useResources() {
 }
 
 export default function AdminPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const RESOURCES = useResources();
   const [me, setMe] = useState<Record<string, unknown> | null>(null);
   const [loadingMe, setLoadingMe] = useState(true);
@@ -243,7 +244,7 @@ export default function AdminPage() {
       </div>
 
       {config.custom ? (
-        <BlogPostPanel onError={setError} t={t} />
+        <BlogPostPanel onError={setError} t={t} i18n={i18n} />
       ) : (
         <ResourcePanel key={config.key} config={config} onError={setError} t={t} />
       )}
@@ -625,21 +626,23 @@ function FormInput({
 
 // ====== Blog Post Panel (custom) ======
 const BLOG_LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "zh", label: "中文" },
-  { code: "ja", label: "日本語" },
-  { code: "ko", label: "한국어" },
-  { code: "es", label: "Español" },
-  { code: "fr", label: "Français" },
-  { code: "de", label: "Deutsch" },
+  { code: "en" },
+  { code: "zh" },
+  { code: "ja" },
+  { code: "ko" },
+  { code: "es" },
+  { code: "fr" },
+  { code: "de" },
 ];
 
 function BlogPostPanel({
   onError,
   t,
+  i18n,
 }: {
   onError: (msg: string | null) => void;
   t: (key: string, options?: Record<string, unknown>) => string;
+  i18n: { language: string };
 }) {
   const [items, setItems] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(false);
@@ -827,7 +830,7 @@ function BlogPostPanel({
               <option value="">{t("admin.blog.allLanguages")}</option>
               {BLOG_LANGUAGES.map((l) => (
                 <option key={l.code} value={l.code}>
-                  {l.label}
+                  {getLanguageDisplayName(l.code, i18n.language)}
                 </option>
               ))}
             </select>
@@ -1002,7 +1005,7 @@ function BlogPostPanel({
                 >
                   {BLOG_LANGUAGES.map((l) => (
                     <option key={l.code} value={l.code}>
-                      {l.label}
+                      {getLanguageDisplayName(l.code, i18n.language)}
                     </option>
                   ))}
                 </select>

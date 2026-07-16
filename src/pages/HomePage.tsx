@@ -25,12 +25,12 @@ const LANG_SLUG: Record<string, string> = Object.fromEntries(
 import { COURSES } from "../data/courses";
 import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
-import { getLanguage } from "../data/languages";
+import { getLanguageDisplayName } from "../data/languages";
 import { api } from "../lib/api";
 import type { CourseResp } from "../lib/api";
 
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const progress = useProgressStore((s) => s.progress);
@@ -214,7 +214,7 @@ export default function HomePage() {
                     {c.level}
                   </span>
                   <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] text-white backdrop-blur">
-                    {getLanguage(c.language as string).native}
+                    {getLanguageDisplayName(c.language, i18n.language)}
                   </span>
                 </div>
                 <div className="p-5">
@@ -267,7 +267,7 @@ export default function HomePage() {
             >
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
               <div className="text-4xl">{l.flag}</div>
-              <div className="mt-4 font-display text-xl font-bold text-white">{l.native}</div>
+              <div className="mt-4 font-display text-xl font-bold text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
               <div className="text-xs text-brand-200/70">{l.name}</div>
               <div className="mt-3 text-xs text-brand-200/60">{l.tagline}</div>
               <div className="mt-4 inline-flex items-center text-xs text-sky-300 transition group-hover:text-sky-200">

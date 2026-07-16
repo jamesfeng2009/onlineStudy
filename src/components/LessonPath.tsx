@@ -12,8 +12,7 @@
  * so the parent (LearnPage) can switch to the LessonPlayer view.
  */
 import { useEffect, useState } from "react";
-import {
-  Lock,
+import { Lock,
   Check,
   Play,
   RotateCcw,
@@ -21,6 +20,7 @@ import {
   Trophy,
   ChevronRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { GlassCard } from "./GlassCard";
 import { api } from "../lib/api";
 import type { CourseUnitsResp, LessonSummary, LessonStatus } from "../lib/api";
@@ -35,12 +35,14 @@ interface LessonPathProps {
   onData?: (data: CourseUnitsResp | null) => void;
 }
 
-const STATUS_LABEL: Record<LessonStatus, string> = {
-  locked: "未解锁",
-  unlocked: "开始",
-  in_progress: "继续",
-  completed: "已完成",
-};
+function useStatusLabel(t: (key: string) => string): Record<LessonStatus, string> {
+  return {
+    locked: t("lesson.status.locked"),
+    unlocked: t("lesson.status.unlocked"),
+    in_progress: t("lesson.status.inProgress"),
+    completed: t("lesson.status.completed"),
+  };
+}
 
 function statusChipClass(status: LessonStatus): string {
   switch (status) {
@@ -55,18 +57,19 @@ function statusChipClass(status: LessonStatus): string {
   }
 }
 
-function skillLabel(skillType: string): string {
+function skillLabel(skillType: string, t: (key: string) => string): string {
   switch (skillType) {
-    case "vocab": return "词汇";
-    case "grammar": return "语法";
-    case "listening": return "听力";
-    case "speaking": return "口语";
-    case "mixed": return "综合";
+    case "vocab": return t("lesson.skill.vocab");
+    case "grammar": return t("lesson.skill.grammar");
+    case "listening": return t("lesson.skill.listening");
+    case "speaking": return t("lesson.skill.speaking");
+    case "mixed": return t("lesson.skill.mixed");
     default: return skillType;
   }
 }
 
 export default function LessonPath({ courseId, onSelectLesson, onData }: LessonPathProps) {
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [data, setData] = useState<CourseUnitsResp | null>(null);
   const [loading, setLoading] = useState(true);
@@ -85,7 +88,7 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
       })
       .catch((err) => {
         if (cancelled) return;
-        setError((err as Error).message ?? "加载课时失败");
+        setError((err as Error).message ?? t("lesson.loadFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -98,7 +101,7 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
   if (loading) {
     return (
       <GlassCard className="p-8 text-center text-sm text-brand-200/70">
-        正在加载学习路径…
+        {t("lesson.loadingPath")}
       </GlassCard>
     );
   }
@@ -109,7 +112,7 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
         <div className="text-sm text-rose-300">{error}</div>
         {!user && (
           <div className="mt-2 text-xs text-brand-200/60">
-            登录后可记录课时进度
+            {t("lesson.loginToTrackProgress")}
           </div>
         )}
       </GlassCard>
@@ -119,7 +122,7 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
   if (!data || data.units.length === 0) {
     return (
       <GlassCard className="p-8 text-center text-sm text-brand-200/70">
-        该课程暂未配置课时。请先运行 seed-lessons 脚本生成课时结构。
+        {t("lesson.noLessons")}
       </GlassCard>
     );
   }
@@ -139,13 +142,13 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
         <div className="flex items-center justify-between">
           <div>
             <div className="text-xs uppercase tracking-wider text-brand-200/60">
-              课程进度
+              {t("lesson.courseProgress")}
             </div>
             <div className="mt-1 font-display text-3xl font-bold text-white">
               {overallPct}%
             </div>
             <div className="text-xs text-brand-200/60">
-              已完成 {completedCount} / {totalLessons} 课时
+              {t("lesson.completedCount", { completed: completedCount, total: totalLessons })}
             </div>
           </div>
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white">
@@ -181,6 +184,7 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
                   key={lesson.id}
                   lesson={lesson}
                   onSelect={onSelectLesson}
+                  t={t}
                 />
               ))}
             </div>
@@ -194,12 +198,15 @@ export default function LessonPath({ courseId, onSelectLesson, onData }: LessonP
 function LessonChip({
   lesson,
   onSelect,
+  t,
 }: {
   lesson: LessonSummary;
   onSelect: (lessonId: string) => void;
+  t: (key: string, options?: Record<string, unknown>) => string;
 }) {
   const isLocked = lesson.status === "locked";
   const isCompleted = lesson.status === "completed";
+  const statusLabel = useStatusLabel(t);
 
   const Icon = isLocked
     ? Lock
@@ -209,12 +216,12 @@ function LessonChip({
 
   const cta =
     lesson.status === "locked"
-      ? STATUS_LABEL.locked
+      ? statusLabel.locked
       : lesson.status === "completed"
-        ? "重做"
+        ? t("lesson.status.redo")
         : lesson.status === "in_progress"
-          ? "继续"
-          : STATUS_LABEL.unlocked;
+          ? t("lesson.status.continue")
+          : statusLabel.unlocked;
 
   return (
     <button
@@ -245,7 +252,7 @@ function LessonChip({
           {lesson.title}
         </div>
         <div className="mt-0.5 flex items-center gap-2 text-[11px] text-brand-200/60">
-          <span>{skillLabel(lesson.skillType)}</span>
+          <span>{skillLabel(lesson.skillType, t)}</span>
           <span>·</span>
           <span className="inline-flex items-center gap-0.5">
             <Clock className="h-3 w-3" />
@@ -254,7 +261,7 @@ function LessonChip({
           {lesson.bestScore !== null && (
             <>
               <span>·</span>
-              <span className="text-amber-300">最佳 {lesson.bestScore}</span>
+              <span className="text-amber-300">{t("lesson.bestScore", { score: lesson.bestScore })}</span>
             </>
           )}
         </div>

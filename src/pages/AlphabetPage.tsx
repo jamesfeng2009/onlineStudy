@@ -16,13 +16,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Volume2, X, Type, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
 import AudioButton from "../components/AudioButton";
 import PronunciationScore from "../components/PronunciationScore";
 import { speak } from "../lib/tts";
-import { getLanguage } from "../data/languages";
+import { getLanguage, getLanguageDisplayName } from "../data/languages";
 import {
   ALPHABETS,
   LANGUAGES_WITH_ALPHABETS,
@@ -48,6 +49,7 @@ function isLanguageWithAlphabet(id: string): id is Language {
 }
 
 export default function AlphabetPage() {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { language } = useParams<{ language?: string }>();
   const [selectedLang, setSelectedLang] = useState<Language | null>(
@@ -89,10 +91,10 @@ export default function AlphabetPage() {
   // ====== Render: language picker (no language in URL) ======
   if (!selectedLang) {
     return (
-      <PageShell title="字母 / 发音基础" subtitle="从字母开始入门亚洲语言">
+      <PageShell title={t("alphabet.title")} subtitle={t("alphabet.subtitle")}>
         <Seo
-          title="字母 / 发音基础 — LangOria"
-          description="Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai 字母表与发音练习，点击字符即可朗读。"
+          title={t("alphabet.seoTitle")}
+          description={t("alphabet.seoDescription")}
           pathname="/alphabet"
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -110,8 +112,8 @@ export default function AlphabetPage() {
                     {meta.flag}
                   </div>
                   <div>
-                    <div className="font-display text-lg font-bold text-white">{meta.native}</div>
-                    <div className="text-xs text-brand-200/70">{meta.name}</div>
+                    <div className="font-display text-lg font-bold text-white">{getLanguageDisplayName(lang, i18n.language)}</div>
+                    <div className="text-xs text-brand-200/70">{getLanguageDisplayName(lang, i18n.language)}</div>
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-1.5">
@@ -125,14 +127,14 @@ export default function AlphabetPage() {
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-end border-t border-white/5 pt-3 text-xs text-sky-300">
-                  <Sparkles className="mr-1 h-3.5 w-3.5" /> 进入字母表 <ArrowRight className="ml-1 h-3 w-3" />
+                  <Sparkles className="mr-1 h-3.5 w-3.5" /> {t("alphabet.enter")} <ArrowRight className="ml-1 h-3 w-3" />
                 </div>
               </GlassCard>
             );
           })}
         </div>
         <p className="mt-6 text-center text-[11px] text-brand-200/40">
-          字母发音由浏览器 Web Speech API 合成，音质因操作系统而异；声调语言的声调准确性需后续版本支持。
+          {t("alphabet.ttsDisclaimer")}
         </p>
       </PageShell>
     );
@@ -140,22 +142,23 @@ export default function AlphabetPage() {
 
   // ====== Render: chart for a specific language ======
   const langMeta = getLanguage(selectedLang);
+  const langName = getLanguageDisplayName(selectedLang, i18n.language);
   return (
     <PageShell
-      title={`${langMeta.flag} ${langMeta.native} · 字母 / 发音基础`}
-      subtitle={activeAlphabet?.description ?? "点击任一字符即可朗读"}
+      title={`${langMeta.flag} ${langName} · ${t("alphabet.title")}`}
+      subtitle={activeAlphabet?.description ?? t("alphabet.noLanguageSubtitle")}
       action={
         <button
           onClick={() => navigate("/alphabet")}
           className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-brand-100 transition hover:bg-white/10"
         >
-          <ArrowLeft className="h-4 w-4" /> 切换语言
+          <ArrowLeft className="h-4 w-4" /> {t("alphabet.switchLanguage")}
         </button>
       }
     >
       <Seo
-        title={`${langMeta.native} 字母 / 发音基础 — LangOria`}
-        description={`${langMeta.native} 字母表与发音练习，点击字符即可朗读。`}
+        title={`${langName} ${t("alphabet.title")} — LangOria`}
+        description={t("alphabet.seoDescriptionLang", { language: langName })}
         pathname={`/alphabet/${selectedLang}`}
       />
 
@@ -195,7 +198,7 @@ export default function AlphabetPage() {
               <div className="mt-0.5 text-xs text-brand-200/70">{activeAlphabet.description}</div>
             </div>
             <div className="hidden text-right text-[11px] text-brand-200/50 sm:block">
-              点击字符 → 朗读<br />点击详情 → 跟读评分
+              {t("alphabet.tapToSpeak")}<br />{t("alphabet.tapDetailToScore")}
             </div>
           </div>
 
@@ -242,12 +245,12 @@ export default function AlphabetPage() {
                     <div className="text-sm font-semibold text-sky-300">{selectedChar.romaji}</div>
                     {selectedChar.sound && (
                       <div className="mt-0.5 text-xs text-brand-200/70">
-                        发音提示：{selectedChar.sound}
+                        {t("alphabet.pronunciationHint")}: {selectedChar.sound}
                       </div>
                     )}
                     {selectedChar.example && (
                       <div className="mt-2 text-xs text-brand-200/70">
-                        例：{selectedChar.example}
+                        {t("alphabet.example")}: {selectedChar.example}
                         {selectedChar.exampleTranslation && (
                           <span className="text-brand-200/50"> · {selectedChar.exampleTranslation}</span>
                         )}
@@ -256,11 +259,11 @@ export default function AlphabetPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AudioButton text={selectedChar.char} lang={bcp47} size="md" label="朗读字符" />
+                  <AudioButton text={selectedChar.char} lang={bcp47} size="md" label={t("alphabet.speakChar")} />
                   <button
                     onClick={() => setSelectedChar(null)}
                     className="rounded-full border border-white/10 bg-white/5 p-2 text-brand-200/70 transition hover:bg-white/10"
-                    aria-label="关闭详情"
+                    aria-label={t("alphabet.closeDetail")}
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -270,7 +273,7 @@ export default function AlphabetPage() {
               {/* Pronunciation practice */}
               <div className="mt-5 border-t border-white/5 pt-5">
                 <div className="mb-3 text-xs uppercase tracking-[0.3em] text-fuchsia-300">
-                  跟读练习
+                  {t("alphabet.shadowing")}
                 </div>
                 <PronunciationScore text={selectedChar.char} lang={bcp47} />
               </div>
@@ -279,19 +282,19 @@ export default function AlphabetPage() {
 
           {/* Disclaimer */}
           <p className="mt-6 border-t border-white/5 pt-4 text-[11px] leading-relaxed text-brand-200/40">
-            发音由浏览器 Web Speech API 合成，音质与覆盖范围因操作系统而异。声调语言（汉语普通话、粤语、泰语）的声调准确性需后续版本支持。如无法朗读，请在 Chrome / Edge 中安装对应语言的语音包。
+            {t("alphabet.ttsDisclaimerDetail")}
           </p>
         </GlassCard>
       )}
 
       {/* Cross-link back to courses */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-4 text-sm">
-        <div className="text-brand-200/70">准备好进入课程了？</div>
+        <div className="text-brand-200/70">{t("alphabet.readyForCourses")}</div>
         <button
           onClick={() => navigate(`/courses?lang=${selectedLang}`)}
           className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-fuchsia-500 px-4 py-2 text-white transition hover:opacity-90"
         >
-          查看课程 <ArrowRight className="h-4 w-4" />
+          {t("alphabet.viewCourses")} <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     </PageShell>

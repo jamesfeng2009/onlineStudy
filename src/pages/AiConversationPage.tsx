@@ -16,13 +16,13 @@ import { GlassCard } from "../components/GlassCard";
 import LoginPromptModal from "../components/LoginPromptModal";
 import { api, type AiConversationMessage, type AiConversationSummary } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
-import { LANGUAGES } from "../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 
 // GlassCard / LoginPromptModal 默认导入兼容
 // (GlassCard 是具名导出,这里改用类型正确的具名导入)
 
 export default function AiConversationPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
@@ -67,7 +67,7 @@ export default function AiConversationPage() {
         setActiveConvId(r.conversations[0].id);
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "加载会话失败");
+      setError(e instanceof Error ? e.message : t("aiConversation.errors.loadConversations"));
     }
   }
 
@@ -79,10 +79,13 @@ export default function AiConversationPage() {
       setMessages(r.messages);
       setRemaining(r.remainingToday);
       if (r.conversation.status !== "active") {
-        setError(`此会话已${r.conversation.status === "timeout" ? "超时" : "结束"},请开始新会话`);
+        const statusText = r.conversation.status === "timeout"
+          ? t("aiConversation.timeout")
+          : t("aiConversation.ended");
+        setError(t("aiConversation.sessionClosed", { status: statusText }));
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "加载消息失败");
+      setError(e instanceof Error ? e.message : t("aiConversation.errors.loadMessages"));
     } finally {
       setLoading(false);
     }
@@ -107,7 +110,7 @@ export default function AiConversationPage() {
       setActiveConvId(r.conversationId);
       await loadConversations();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "创建会话失败");
+      setError(e instanceof Error ? e.message : t("aiConversation.errors.createConversation"));
     } finally {
       setLoading(false);
     }
@@ -149,7 +152,7 @@ export default function AiConversationPage() {
     } catch (e) {
       // 回滚:移除临时消息
       setMessages((prev) => prev.filter((m) => m.id !== tempUserMsg.id));
-      setError(e instanceof Error ? e.message : "发送失败");
+      setError(e instanceof Error ? e.message : t("aiConversation.errors.sendMessage"));
       setInput(content); // 恢复输入
     } finally {
       setSending(false);
@@ -163,7 +166,7 @@ export default function AiConversationPage() {
       await loadConversations();
       await loadMessages(activeConvId);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "结束会话失败");
+      setError(e instanceof Error ? e.message : t("aiConversation.errors.endConversation"));
     }
   }
 
@@ -179,13 +182,13 @@ export default function AiConversationPage() {
       <div className="mx-auto max-w-4xl px-4 py-12">
         <GlassCard className="p-12 text-center">
           <MessageCircle className="mx-auto mb-4 h-12 w-12 text-fuchsia-400" />
-          <h1 className="mb-2 text-2xl font-bold">AI 对话练习</h1>
-          <p className="mb-6 text-brand-200/70">登录后即可与 AI 导师进行语言对话练习</p>
+          <h1 className="mb-2 text-2xl font-bold">{t("aiConversation.title")}</h1>
+          <p className="mb-6 text-brand-200/70">{t("aiConversation.loginPrompt")}</p>
           <button
             onClick={() => setShowLoginPrompt(true)}
             className="rounded-xl bg-fuchsia-500 px-6 py-3 font-semibold text-white transition hover:bg-fuchsia-400"
           >
-            立即登录
+            {t("aiConversation.loginButton")}
           </button>
         </GlassCard>
         {showLoginPrompt && <LoginPromptModal onClose={() => setShowLoginPrompt(false)} />}
@@ -199,16 +202,16 @@ export default function AiConversationPage() {
         <div>
           <h1 className="flex items-center gap-2 text-2xl font-bold">
             <MessageCircle className="h-7 w-7 text-fuchsia-400" />
-            AI 对话练习
+            {t("aiConversation.title")}
           </h1>
           <p className="mt-1 text-sm text-brand-200/70">
-            与 AI 导师用目标语言对话,提升口语和写作能力
+            {t("aiConversation.subtitle")}
           </p>
         </div>
         {remaining !== null && (
           <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm">
             <Clock className="h-4 w-4 text-fuchsia-400" />
-            <span>今日剩余 <span className="font-bold text-fuchsia-400">{remaining}</span> 次</span>
+            <span>{t("aiConversation.remainingToday", { count: remaining })}</span>
           </div>
         )}
       </div>
@@ -222,13 +225,13 @@ export default function AiConversationPage() {
               className="mb-3 flex w-full items-center justify-center gap-2 rounded-lg bg-fuchsia-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-fuchsia-400"
             >
               <Plus className="h-4 w-4" />
-              新对话
+              {t("aiConversation.newChat")}
             </button>
 
             {showNewForm && (
               <div className="mb-4 space-y-3 rounded-lg border border-white/10 bg-black/20 p-3">
                 <div>
-                  <label className="mb-1 block text-xs text-brand-200/70">目标语言</label>
+                  <label className="mb-1 block text-xs text-brand-200/70">{t("aiConversation.targetLanguage")}</label>
                   <select
                     value={newLang}
                     onChange={(e) => setNewLang(e.target.value)}
@@ -236,18 +239,18 @@ export default function AiConversationPage() {
                   >
                     {LANGUAGES.map((l) => (
                       <option key={l.id} value={l.id}>
-                        {l.flag} {l.native}
+                        {l.flag} {getLanguageDisplayName(l.id, i18n.language)}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs text-brand-200/70">等级(可选)</label>
+                  <label className="mb-1 block text-xs text-brand-200/70">{t("aiConversation.levelOptional")}</label>
                   <input
                     type="text"
                     value={newLevel}
                     onChange={(e) => setNewLevel(e.target.value)}
-                    placeholder="如 A1 / HSK3 / N5"
+                    placeholder={t("aiConversation.levelPlaceholder")}
                     className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm"
                   />
                 </div>
@@ -256,15 +259,15 @@ export default function AiConversationPage() {
                   disabled={loading}
                   className="w-full rounded-lg bg-fuchsia-500/80 px-4 py-2 text-sm font-semibold text-white transition hover:bg-fuchsia-500 disabled:opacity-50"
                 >
-                  {loading ? "创建中..." : "开始对话"}
+                  {loading ? t("aiConversation.starting") : t("aiConversation.startChat")}
                 </button>
               </div>
             )}
 
             <div className="space-y-1">
-              <div className="px-2 py-1 text-xs uppercase text-brand-200/50">历史会话</div>
+              <div className="px-2 py-1 text-xs uppercase text-brand-200/50">{t("aiConversation.history")}</div>
               {conversations.length === 0 && (
-                <div className="px-2 py-4 text-center text-xs text-brand-200/40">暂无会话</div>
+                <div className="px-2 py-4 text-center text-xs text-brand-200/40">{t("aiConversation.noHistory")}</div>
               )}
               {conversations.map((c) => (
                 <button
@@ -277,16 +280,16 @@ export default function AiConversationPage() {
                   <div className="flex w-full items-center justify-between">
                     <span className="text-sm font-medium">
                       {LANGUAGES.find((l) => l.id === c.languageCode)?.flag ?? "🌐"}{" "}
-                      {c.title ?? `${c.languageCode.toUpperCase()} 对话`}
+                      {c.title ?? t("aiConversation.untitledChat", { language: getLanguageDisplayName(c.languageCode, i18n.language) })}
                     </span>
                     {c.status !== "active" && (
                       <span className="text-[10px] text-brand-200/40">
-                        {c.status === "timeout" ? "超时" : "已结束"}
+                        {c.status === "timeout" ? t("aiConversation.timeout") : t("aiConversation.ended")}
                       </span>
                     )}
                   </div>
                   <span className="text-xs text-brand-200/50">
-                    {c.turnCount} 轮 · {new Date(c.lastActiveAt).toLocaleDateString()}
+                    {t("aiConversation.turnCount", { count: c.turnCount })} · {new Date(c.lastActiveAt).toLocaleDateString()}
                   </span>
                 </button>
               ))}
@@ -300,7 +303,7 @@ export default function AiConversationPage() {
             {/* 顶栏 */}
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
               <div className="text-sm font-medium">
-                {activeConvId ? "对话中" : "选择或创建会话"}
+                {activeConvId ? t("aiConversation.active") : t("aiConversation.selectOrCreate")}
               </div>
               {activeConvId && messages.length > 0 && (
                 <button
@@ -308,7 +311,7 @@ export default function AiConversationPage() {
                   className="flex items-center gap-1 rounded-lg px-3 py-1 text-xs text-red-400 transition hover:bg-red-500/10"
                 >
                   <Trash2 className="h-3 w-3" />
-                  结束会话
+                  {t("aiConversation.endChat")}
                 </button>
               )}
             </div>
@@ -323,8 +326,8 @@ export default function AiConversationPage() {
               {!loading && messages.length === 0 && (
                 <div className="flex h-full flex-col items-center justify-center text-center text-brand-200/50">
                   <MessageCircle className="mb-3 h-12 w-12 opacity-30" />
-                  <p className="text-sm">开始与 AI 导师对话吧</p>
-                  <p className="mt-1 text-xs">输入任何话题,AI 会用目标语言回复</p>
+                  <p className="text-sm">{t("aiConversation.emptyTitle")}</p>
+                  <p className="mt-1 text-xs">{t("aiConversation.emptyHint")}</p>
                 </div>
               )}
               {messages.map((m) => (
@@ -347,7 +350,7 @@ export default function AiConversationPage() {
                 <div className="mb-4 flex justify-start">
                   <div className="flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 text-sm text-brand-200/70">
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    AI 正在输入...
+                    {t("aiConversation.typing")}
                   </div>
                 </div>
               )}
@@ -368,7 +371,7 @@ export default function AiConversationPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="输入消息(Enter 发送,Shift+Enter 换行)..."
+                    placeholder={t("aiConversation.inputPlaceholder")}
                     rows={1}
                     disabled={sending}
                     className="flex-1 resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm focus:border-fuchsia-400/50 focus:outline-none disabled:opacity-50"

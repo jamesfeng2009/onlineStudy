@@ -21,7 +21,7 @@ import { describeNextInterval, scheduleNext, INITIAL_SRS_STATE } from "../lib/sm
 import { speak as ttsSpeak, stopSpeaking, SPEED_PRESETS } from "../lib/tts";
 import { WORDS, getWords, getQuizzes, getSpeaking, getListening } from "../data/content";
 import { COURSES } from "../data/courses";
-import { LANGUAGES, getLanguage } from "../data/languages";
+import { LANGUAGES, getLanguage, getLanguageDisplayName } from "../data/languages";
 import { getWordFamily } from "../data/word-families";
 import { getGrammarPoints, getGrammarPoint, matchGrammarPoint } from "../data/grammar-points";
 import GrammarMap from "../components/GrammarMap";
@@ -43,11 +43,12 @@ type View = "path" | "player" | "modules";
 
 /** Small chip showing the other words in a word family. */
 function WordFamilyChip({ family, currentWord }: { family: WordFamily; currentWord?: string }) {
+  const { t } = useTranslation();
   const others = family.members.filter((m) => m.word !== currentWord);
   if (others.length === 0) return null;
   return (
     <div className="mt-3 max-w-md rounded-lg border border-emerald-400/20 bg-emerald-400/5 px-3 py-2 text-center text-xs">
-      <div className="text-emerald-300">词族 · 共 {family.members.length} 词</div>
+      <div className="text-emerald-300">{t("learn.wordFamily")} · {t("learn.totalNWords", { count: family.members.length })}</div>
       <div className="mt-1.5 flex flex-wrap items-center justify-center gap-1.5">
         {others.slice(0, 6).map((m) => (
           <span
@@ -62,7 +63,7 @@ function WordFamilyChip({ family, currentWord }: { family: WordFamily; currentWo
       </div>
       {family.rootMeaning && (
         <div className="mt-1.5 text-[10px] text-brand-200/50">
-          共同词根: <span className="font-mono text-sky-300">{family.root}</span> = {family.rootMeaning}
+          {t("learn.commonRoot")}: <span className="font-mono text-sky-300">{family.root}</span> = {family.rootMeaning}
         </div>
       )}
     </div>
@@ -87,7 +88,7 @@ const BCP47: Record<Language, string> = {
 };
 
 export default function LearnPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const { courseId } = useParams<{ courseId?: string }>();
   const course = useMemo(() => {
@@ -100,8 +101,8 @@ export default function LearnPage() {
     { key: "grammar", label: t("learn.grammar"), icon: Pen, desc: t("learn.grammarDesc") },
     { key: "speaking", label: t("learn.speaking"), icon: Mic, desc: t("learn.speakingDesc") },
     { key: "listening", label: t("learn.listening"), icon: Headphones, desc: t("learn.listeningDesc") },
-    { key: "review", label: "复习", icon: RotateCcw, desc: "SM-2 间隔重复，巩固记忆" },
-    { key: "conversation", label: "对话", icon: MessageSquare, desc: "场景化多轮对话练习" },
+    { key: "review", label: t("learn.reviewLabel"), icon: RotateCcw, desc: t("learn.reviewDesc") },
+    { key: "conversation", label: t("learn.conversationLabel"), icon: MessageSquare, desc: t("learn.conversationDesc") },
   ];
 
   const [tab, setTab] = useState<Tab>("words");
@@ -139,7 +140,7 @@ export default function LearnPage() {
     ? t(course.title)
     : t("learn.wordMemory");
   const subtitle = course
-    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).native} · ${course.level} · ${t(course.description)}`
+    ? `${getLanguage(course.language).flag} ${getLanguageDisplayName(course.language, i18n.language)} · ${course.level} · ${t(course.description)}`
     : t("learn.wordMemoryDesc");
 
   return (
@@ -157,7 +158,7 @@ export default function LearnPage() {
           {locked ? (
             <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
               <span>{getLanguage(lang).flag}</span>
-              <span>{getLanguage(lang).native}</span>
+              <span>{getLanguageDisplayName(lang, i18n.language)}</span>
               <span className="text-white/30">|</span>
               <span>{course?.level}</span>
             </div>
@@ -172,7 +173,7 @@ export default function LearnPage() {
                   (lang === l.id ? "bg-white/15 text-white shadow-inner" : "text-brand-200/70 hover:text-white")
                 }
               >
-                {l.flag} {l.native}
+                {l.flag} {getLanguageDisplayName(l.id, i18n.language)}
               </button>
             ))}
           </div>
@@ -189,7 +190,7 @@ export default function LearnPage() {
           {(["path", "modules"] as const).map((v) => {
             const active = view === v || (v === "modules" && view === "player");
             const Icon = v === "path" ? MapIcon : LayoutGrid;
-            const label = v === "path" ? "学习路径" : "技能模块";
+            const label = v === "path" ? t("learn.path") : t("learn.modules");
             return (
               <button
                 key={v}
@@ -422,7 +423,7 @@ function WordsModule({ language, level, isLoggedIn, onNeedLogin }: { language: L
                   {/* Word root meaning (English / Latin roots) */}
                   {(card as { root?: string; rootMeaning?: string })?.rootMeaning && (
                     <div className="mt-4 max-w-md rounded-lg border border-sky-400/20 bg-sky-400/5 px-3 py-2 text-center text-xs">
-                      <span className="text-sky-300">词根 · </span>
+                      <span className="text-sky-300">{t("learn.wordRoot")} · </span>
                       <span className="font-mono text-white">{(card as { root?: string }).root}</span>
                       <span className="text-brand-200/70"> = {(card as { rootMeaning?: string }).rootMeaning}</span>
                     </div>
@@ -483,6 +484,7 @@ function WordsModule({ language, level, isLoggedIn, onNeedLogin }: { language: L
    语法练习
 ================================== */
 function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
+  const { t } = useTranslation();
   const recordQuiz = useProgressStore((s) => s.recordQuiz);
   const recordMistake = useMistakeStore((s) => s.recordWrong);
   const mistakes = useMistakeStore((s) => s.byLanguage(language));
@@ -555,10 +557,10 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
         <GlassCard>
           <div className="flex items-center justify-between text-xs">
             <span className="text-brand-200/70">
-              第 {(i % quizzes.length) + 1} / {quizzes.length} 题
+              {t("learn.grammarModule.question", { current: (i % quizzes.length) + 1, total: quizzes.length })}
             </span>
             <span className="text-brand-200/70">
-              正确 <span className="text-emerald-300">{correct}</span> · 错误{" "}
+              {t("learn.grammarModule.correct")} <span className="text-emerald-300">{correct}</span> · {t("learn.grammarModule.wrong")}{" "}
               <span className="text-rose-300">{wrong}</span>
             </span>
           </div>
@@ -598,7 +600,7 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
           {pick !== null && (
             <div className="mt-6 rounded-xl border border-amber-400/30 bg-amber-400/10 p-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-amber-200">
-                <Lightbulb className="h-4 w-4" /> 解析
+                <Lightbulb className="h-4 w-4" /> {t("learn.grammarModule.explain")}
               </div>
               <div className="mt-2 text-sm text-amber-50/90">{q.explain}</div>
             </div>
@@ -611,14 +613,14 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
                 disabled={pick === null && pick !== 0 && pick === null}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-40"
               >
-                提交答案 <ArrowRight className="h-4 w-4" />
+                {t("learn.grammarModule.submit")} <ArrowRight className="h-4 w-4" />
               </button>
             ) : (
               <button
                 onClick={next}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
-                下一题 <ArrowRight className="h-4 w-4" />
+                {t("learn.grammarModule.next")} <ArrowRight className="h-4 w-4" />
               </button>
             )}
           </div>
@@ -627,14 +629,14 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">正确率</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.grammarModule.accuracy")}</div>
           <div className="mt-2 font-display text-3xl font-bold text-white">{i === 0 ? "—" : `${Math.round((correct / i) * 100)}%`}</div>
-          <div className="text-xs text-brand-200/60">已作答 {i} 题</div>
+          <div className="text-xs text-brand-200/60">{t("learn.grammarModule.answered", { count: i })}</div>
         </GlassCard>
 
         {currentPoint && currentPoint.pitfalls.length > 0 && (
           <GlassCard className="p-5">
-            <div className="mb-2 text-xs uppercase tracking-wider text-rose-300/70">本题易混点 · {currentPoint.title}</div>
+            <div className="mb-2 text-xs uppercase tracking-wider text-rose-300/70">{t("learn.grammarModule.pitfallOfThis", { title: currentPoint.title })}</div>
             <ul className="space-y-1.5 text-sm">
               {currentPoint.pitfalls.map((p, idx) => (
                 <li key={idx} className="flex flex-wrap items-center gap-2">
@@ -651,9 +653,9 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
         {grammarPoints.length > 0 && (
           <GlassCard className="p-5">
             <div className="mb-3 flex items-center justify-between">
-              <div className="text-xs uppercase tracking-wider text-brand-200/60">语法依赖图</div>
+              <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.grammarMap")}</div>
               {mistakes.length > 0 && (
-                <span className="text-[10px] text-rose-300/70">易错 {mistakes.length} 点</span>
+                <span className="text-[10px] text-rose-300/70">{t("learn.errorProneN", { count: mistakes.length })}</span>
               )}
             </div>
             <GrammarMap
@@ -673,6 +675,7 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
    口语跟读
 ================================== */
 function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
+  const { t } = useTranslation();
   const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
   const phrases = useMemo(() => getSpeaking(language, level), [language, level]);
   const [i, setI] = useState(0);
@@ -708,7 +711,7 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
               >
                 <Mic className="h-10 w-10" />
               </button>
-              <div className="mt-4 text-sm text-brand-100">登录后开始跟读评分</div>
+              <div className="mt-4 text-sm text-brand-100">{t("learn.speakingModule.loginToStart")}</div>
             </div>
           )}
 
@@ -717,7 +720,7 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
               onClick={() => setI((n) => n + 1)}
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              下一句 <ArrowRight className="h-4 w-4" />
+              {t("learn.speakingModule.next")} <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </GlassCard>
@@ -725,12 +728,12 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">本次练习</div>
-          <div className="mt-2 font-display text-3xl font-bold text-white">{count} 次</div>
-          <div className="text-xs text-brand-200/60">已跟读次数</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.speakingModule.session")}</div>
+          <div className="mt-2 font-display text-3xl font-bold text-white">{t("learn.speakingModule.count", { count })}</div>
+          <div className="text-xs text-brand-200/60">{t("learn.speakingModule.times")}</div>
         </GlassCard>
         <GlassCard className="p-5">
-          <div className="mb-2 text-xs uppercase tracking-wider text-brand-200/60">其他句子</div>
+          <div className="mb-2 text-xs uppercase tracking-wider text-brand-200/60">{t("learn.speakingModule.otherSentences")}</div>
           <div className="space-y-2">
             {phrases.slice(0, 4).map((x, idx) => (
               <button
@@ -753,6 +756,7 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
    听力训练
 ================================== */
 function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
+  const { t } = useTranslation();
   const recordListening = useProgressStore((s) => s.recordListening);
   const allItems = useMemo(() => getListening(language, level), [language, level]);
   const [sceneFilter, setSceneFilter] = useState<string>("all");
@@ -835,7 +839,7 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
         <GlassCard>
           <div className="flex items-center justify-between">
             <div className="text-xs uppercase tracking-[0.3em] text-sky-300">{L.title}{L.accent ? ` · ${L.accent}` : ""}</div>
-            <span className="text-xs text-brand-200/60">第 {(i % items.length) + 1} / {items.length}</span>
+            <span className="text-xs text-brand-200/60">{t("learn.listeningModule.progress", { current: (i % items.length) + 1, total: items.length })}</span>
           </div>
 
           {/* Scene filter */}
@@ -850,7 +854,7 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
                     (sceneFilter === s ? "bg-sky-500/30 text-sky-100" : "bg-white/5 text-brand-200/60 hover:text-white")
                   }
                 >
-                  {s === "all" ? "全部" : s}
+                  {s === "all" ? t("common.all") : s}
                 </button>
               ))}
             </div>
@@ -862,11 +866,11 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
           >
             {playing ? <Pause className="h-9 w-9" /> : <Play className="h-9 w-9" />}
           </button>
-          <div className="mt-3 text-xs text-brand-200/70">{playing ? `正在朗读（${speed}×）…` : "点击播放音频"}</div>
+          <div className="mt-3 text-xs text-brand-200/70">{playing ? t("learn.listeningModule.playing", { speed }) : t("learn.listeningModule.playHint")}</div>
 
           {/* Speed selector */}
           <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 text-[11px] text-brand-200/60">语速:</span>
+            <span className="mr-1 text-[11px] text-brand-200/60">{t("learn.listeningModule.speechRate")}:</span>
             {SPEED_PRESETS
               .filter((p) => availableSpeeds.includes(p.rate))
               .concat(SPEED_PRESETS.filter((p) => !availableSpeeds.includes(p.rate)))
@@ -933,34 +937,34 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
                 onClick={check}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
-                检查答案 <Check className="h-4 w-4" />
+                {t("learn.listeningModule.check")} <Check className="h-4 w-4" />
               </button>
             ) : (
               <button
                 onClick={reset}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
-                下一段 <ArrowRight className="h-4 w-4" />
+                {t("learn.listeningModule.next")} <ArrowRight className="h-4 w-4" />
               </button>
             )}
-            <div className="text-xs text-brand-200/60">已完成 {sessions} 段听力练习</div>
+            <div className="text-xs text-brand-200/60">{t("learn.listeningModule.completed", { count: sessions })}</div>
           </div>
         </GlassCard>
       </div>
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">小贴士</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.tips")}</div>
           <ul className="mt-3 space-y-2 text-sm text-brand-100/90">
-            <li>· 先用「慢」速盲听一遍，看能听懂多少。</li>
-            <li>· 不懂再切「较慢」，最后用「正常」巩固。</li>
-            <li>· 连读/弱读听不出时，对照文本反复播放。</li>
-            <li>· 反复播放时可以同步跟着念。</li>
+            <li>· {t("learn.listeningModule.tip1")}</li>
+            <li>· {t("learn.listeningModule.tip2")}</li>
+            <li>· {t("learn.listeningModule.tip3")}</li>
+            <li>· {t("learn.listeningModule.tip4")}</li>
           </ul>
         </GlassCard>
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">参考原文</div>
-          <div className="mt-2 text-sm text-brand-100/80">{reveal ? L.script : "完成后显示。"}</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.listeningModule.reference")}</div>
+          <div className="mt-2 text-sm text-brand-100/80">{reveal ? L.script : t("learn.listeningModule.showAfterFinish")}</div>
         </GlassCard>
       </div>
     </div>
@@ -971,6 +975,7 @@ function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { languag
    复习 — SM-2 Spaced Repetition
 ================================== */
 function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { language: Language; isLoggedIn: boolean; onNeedLogin: () => void; dueCount: number }) {
+  const { t } = useTranslation();
   const items = useReviewStore((s) => s.items);
   const reviewItem = useReviewStore((s) => s.reviewItem);
 
@@ -1002,10 +1007,10 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
   };
 
   const QUALITIES: { key: ReviewQuality; label: string; cls: string }[] = [
-    { key: "again", label: "不记得", cls: "border-rose-400/40 bg-rose-500/10 text-rose-200 hover:bg-rose-500/20" },
-    { key: "hard", label: "困难", cls: "border-amber-400/40 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20" },
-    { key: "good", label: "良好", cls: "border-sky-400/40 bg-sky-500/10 text-sky-200 hover:bg-sky-500/20" },
-    { key: "easy", label: "轻松", cls: "border-emerald-400/40 bg-emerald-500/10 text-emerald-200 hover:bg-emerald-500/20" },
+    { key: "again", label: t("learn.review.again"), cls: "border-rose-400/40 bg-rose-500/10 text-rose-200 hover:bg-rose-500/20" },
+    { key: "hard", label: t("learn.review.hard"), cls: "border-amber-400/40 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20" },
+    { key: "good", label: t("learn.review.good"), cls: "border-sky-400/40 bg-sky-500/10 text-sky-200 hover:bg-sky-500/20" },
+    { key: "easy", label: t("learn.review.easy"), cls: "border-emerald-400/40 bg-emerald-500/10 text-emerald-200 hover:bg-emerald-500/20" },
   ];
 
   return (
@@ -1014,31 +1019,31 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
         <GlassCard className="flex min-h-[380px] flex-col">
           <div className="flex items-center justify-between text-xs">
             <span className="text-brand-200/70">
-              {queue.length > 0 ? `第 ${idx + 1} / ${queue.length} 张` : "复习队列"}
+              {queue.length > 0 ? t("learn.review.cardCounter", { current: idx + 1, total: queue.length }) : t("learn.review.queue")}
             </span>
             <span className="text-brand-200/70">
-              待复习 <span className="text-rose-300">{dueCount}</span>
+              {t("learn.review.due")} <span className="text-rose-300">{dueCount}</span>
             </span>
           </div>
 
           {!isLoggedIn ? (
             <div className="flex flex-1 flex-col items-center justify-center py-12">
               <RotateCcw className="h-12 w-12 text-brand-200/40" />
-              <div className="mt-4 text-sm text-brand-200/70">登录后开启间隔复习</div>
+              <div className="mt-4 text-sm text-brand-200/70">{t("learn.review.loginToStart")}</div>
               <button
                 onClick={onNeedLogin}
                 className="mt-4 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5"
               >
-                登录
+                {t("nav.login")}
               </button>
             </div>
           ) : queue.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center py-12">
               <Check className="h-12 w-12 text-emerald-300/60" />
               <div className="mt-4 text-sm text-brand-200/70">
-                {dueCount === 0 ? "现在没有需要复习的内容了，做得好！" : "此语言暂无待复习卡片"}
+                {dueCount === 0 ? t("learn.review.allDone") : t("learn.review.noCardsForLang")}
               </div>
-              <div className="mt-1 text-xs text-brand-200/50">在「单词」/「语法」里答错后会自动加入复习队列</div>
+              <div className="mt-1 text-xs text-brand-200/50">{t("learn.review.addedAutomatically")}</div>
             </div>
           ) : (
             <>
@@ -1058,27 +1063,27 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
                   <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-violet-500/20 via-slate-900/20 to-teal-500/20 p-10">
                     <div className="text-xs uppercase tracking-[0.3em] text-violet-300">
                       {current?.kind === "quiz"
-                        ? "题目"
+                        ? t("learn.review.kindQuiz")
                         : current?.kind === "listening"
-                          ? "听力"
+                          ? t("learn.review.kindListening")
                           : current?.kind === "speaking"
-                            ? "口语"
-                            : "单词"}
+                            ? t("learn.review.kindSpeaking")
+                            : t("learn.review.kindWord")}
                     </div>
                     <div className="mt-4 max-w-md text-center font-display text-3xl font-bold text-white md:text-4xl">
                       {current?.front}
                     </div>
-                    <div className="mt-8 text-xs text-brand-200/50">点击查看答案 ↻</div>
+                    <div className="mt-8 text-xs text-brand-200/50">{t("learn.review.tapToShowAnswer")} ↻</div>
                   </div>
                   <div className="card-face back glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 via-slate-900/20 to-sky-500/20 p-10">
-                    <div className="text-xs uppercase tracking-[0.3em] text-emerald-300">答案</div>
+                    <div className="text-xs uppercase tracking-[0.3em] text-emerald-300">{t("learn.review.answer")}</div>
                     <div className="mt-4 max-w-md text-center font-display text-3xl font-bold text-white md:text-4xl">
                       {current?.back}
                     </div>
                     {current?.hint && (
                       <div className="mt-4 max-w-md text-center text-sm text-brand-100/80">{current.hint}</div>
                     )}
-                    <div className="mt-6 text-xs text-brand-200/50">点击翻回 ↻</div>
+                    <div className="mt-6 text-xs text-brand-200/50">{t("learn.review.tapToFlipBack")} ↻</div>
                   </div>
                 </div>
               </div>
@@ -1104,18 +1109,18 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">复习原理</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.review.principle")}</div>
           <ul className="mt-3 space-y-2 text-sm text-brand-100/90">
-            <li>· SM-2 算法：根据你的回忆质量动态安排下次复习时间。</li>
-            <li>· 答错的卡片会自动进入队列，1 天后再次出现。</li>
-            <li>· 连续答对后间隔会指数增长（1 天 → 6 天 → 2 周…）。</li>
-            <li>· 数据保存在本地浏览器，换设备会重置。</li>
+            <li>· {t("learn.review.principle1")}</li>
+            <li>· {t("learn.review.principle2")}</li>
+            <li>· {t("learn.review.principle3")}</li>
+            <li>· {t("learn.review.principle4")}</li>
           </ul>
         </GlassCard>
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">本次复习</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.review.thisSession")}</div>
           <div className="mt-2 font-display text-3xl font-bold text-white">{queue.length}</div>
-          <div className="text-xs text-brand-200/60">剩余卡片</div>
+          <div className="text-xs text-brand-200/60">{t("learn.review.cardsRemaining")}</div>
         </GlassCard>
       </div>
     </div>
@@ -1149,6 +1154,7 @@ interface ChatBubble {
 }
 
 function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
+  const { t } = useTranslation();
   const scenes = useMemo(() => getDialogueScenes(language), [language]);
   const [sceneId, setSceneId] = useState<string>(scenes[0]?.id ?? "");
   const [bubbles, setBubbles] = useState<ChatBubble[]>([]);
@@ -1195,7 +1201,7 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
       (window as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtor }).SpeechRecognition ||
       (window as unknown as { webkitSpeechRecognition?: SRCtor }).webkitSpeechRecognition;
     if (!SR) {
-      setError("当前浏览器不支持语音识别，请用 Chrome/Edge，或直接打字。");
+      setError(t("learn.conversation.unsupportedBrowser"));
       return;
     }
     if (!isLoggedIn) { onNeedLogin(); return; }
@@ -1214,7 +1220,7 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
     };
     rec.onerror = () => {
       setListening(false);
-      setError("没听清，可以再说一遍或直接打字。");
+      setError(t("learn.conversation.didNotHear"));
     };
     rec.onend = () => setListening(false);
     rec.start();
@@ -1234,7 +1240,7 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
     setInput("");
     if (npcLine) speak(npcLine, language);
     if (!matched && !nextState.isDone) {
-      setError("没完全匹配，已切换到默认分支。可以尝试换种说法。");
+      setError(t("learn.conversation.fallbackBranch"));
     }
   }
 
@@ -1299,12 +1305,12 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
           {/* Input area */}
           {isDone ? (
             <div className="mt-4 flex items-center justify-between">
-              <span className="text-sm text-emerald-300">对话完成！</span>
+              <span className="text-sm text-emerald-300">{t("learn.conversation.completed")}</span>
               <button
                 onClick={() => scene && startScene(scene)}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
-                <RotateCcw className="h-4 w-4" /> 重新开始
+                <RotateCcw className="h-4 w-4" /> {t("learn.conversation.restart")}
               </button>
             </div>
           ) : (
@@ -1313,13 +1319,13 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") submitReply(input); }}
-                placeholder="输入回答，或点麦克风说话…"
+                placeholder={t("learn.conversation.inputPlaceholder")}
                 className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition focus:border-sky-400/50"
               />
               <button
                 onClick={startListening}
                 disabled={listening}
-                title="语音输入"
+                title={t("learn.conversation.voiceInput")}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white transition hover:-translate-y-0.5 disabled:opacity-50"
               >
                 <Mic className="h-4 w-4" />
@@ -1328,7 +1334,7 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
                 onClick={() => submitReply(input)}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
-                发送 <ArrowRight className="h-4 w-4" />
+                {t("learn.conversation.send")} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           )}
@@ -1337,21 +1343,20 @@ function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { lang
 
       <div className="space-y-4">
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">当前场景</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.conversation.currentScene")}</div>
           <div className="mt-2 font-display text-xl font-bold text-white">{scene?.title}</div>
           <div className="mt-1 text-xs text-brand-200/60">{scene?.scenario}</div>
           <div className="mt-3 text-xs text-brand-200/70">
-            这是一个场景化对话练习。NPC 会根据你的回答走向不同分支——
-            没匹配到关键词时会切到默认回复。试着用学过的词来应对。
+            {t("learn.conversation.sceneHint")}
           </div>
         </GlassCard>
         <GlassCard className="p-5">
-          <div className="text-xs uppercase tracking-wider text-brand-200/60">对话提示</div>
+          <div className="text-xs uppercase tracking-wider text-brand-200/60">{t("learn.conversation.tipsTitle")}</div>
           <ul className="mt-3 space-y-2 text-sm text-brand-100/90">
-            <li>· 用学过的关键词来触发分支。</li>
-            <li>· 语音输入需要 Chrome / Edge。</li>
-            <li>· 不确定时可以直接打字。</li>
-            <li>· 听不懂 NPC 可重看下方翻译。</li>
+            <li>· {t("learn.conversation.tip1")}</li>
+            <li>· {t("learn.conversation.tip2")}</li>
+            <li>· {t("learn.conversation.tip3")}</li>
+            <li>· {t("learn.conversation.tip4")}</li>
           </ul>
         </GlassCard>
       </div>

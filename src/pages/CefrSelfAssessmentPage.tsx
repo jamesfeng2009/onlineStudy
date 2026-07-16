@@ -27,8 +27,9 @@ import { api } from "../lib/api";
 import type {
   CefrLevel, CefrLevelMeta, CefrSelfAssessmentEntry,
 } from "../lib/api";
-import { LANGUAGES, getLanguage } from "../data/languages";
+import { LANGUAGES, getLanguage, getLanguageDisplayName } from "../data/languages";
 import { useAuthStore } from "../store/authStore";
+import { useTranslation } from "react-i18next";
 
 const CEFR_LEVELS: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
@@ -41,14 +42,14 @@ const CEFR_LEVEL_COLOR: Record<CefrLevel, string> = {
   C2: "from-rose-400 via-fuchsia-500 to-violet-700",
 };
 
-const SKILL_LABEL: Record<string, string> = {
-  listening: "听",
-  reading: "读",
-  speaking: "说",
-  writing: "写",
-};
+function skillLabel(skill: string, t: (key: string) => string): string {
+  const key = `cefr.skills.${skill}`;
+  const translated = t(key);
+  return translated === key ? skill : translated;
+}
 
 export default function CefrSelfAssessmentPage() {
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [searchParams, setSearchParams] = useSearchParams();
   const lang = searchParams.get("lang");
@@ -166,7 +167,7 @@ export default function CefrSelfAssessmentPage() {
     }
     if (!lang) return;
     if (!effectiveLevel) {
-      setSubmitMsg({ type: "err", text: "请至少勾选一条 Can-Do 条目，或手动选择一个等级" });
+      setSubmitMsg({ type: "err", text: t("cefr.selectAtLeastOne") });
       return;
     }
     setSubmitting(true);
@@ -180,9 +181,9 @@ export default function CefrSelfAssessmentPage() {
       });
       setSavedEntry(saved);
       setManualLevel(saved.cefrLevel);
-      setSubmitMsg({ type: "ok", text: "已保存自评结果" });
+      setSubmitMsg({ type: "ok", text: t("cefr.saveSuccess") });
     } catch (err) {
-      setSubmitMsg({ type: "err", text: (err as Error).message ?? "保存失败" });
+      setSubmitMsg({ type: "err", text: (err as Error).message ?? t("cefr.saveFailed") });
     } finally {
       setSubmitting(false);
     }
@@ -192,12 +193,12 @@ export default function CefrSelfAssessmentPage() {
   if (!lang) {
     return (
       <PageShell
-        title="CEFR 自评"
-        subtitle="按 Can-Do 条目自评语言能力等级（A1-C2）· 与分级测试互为补充"
+        title={t("cefr.title")}
+        subtitle={t("cefr.subtitle")}
         action={
           <Seo
-            title="CEFR 自评 · Can-Do 自测"
-            description="按 Can-Do 条目自评你的语言能力等级"
+            title={t("cefr.seoTitle")}
+            description={t("cefr.seoDescription")}
             pathname="/cefr-self-assessment"
           />
         }
@@ -208,11 +209,9 @@ export default function CefrSelfAssessmentPage() {
               <ClipboardList className="h-6 w-6" />
             </div>
             <div className="flex-1 text-sm text-brand-200/70">
-              <div className="font-semibold text-white">什么是 CEFR 自评？</div>
+              <div className="font-semibold text-white">{t("cefr.introTitle")}</div>
               <div className="mt-1 leading-relaxed">
-                欧洲共同语言参考标准（CEFR）将语言能力划分为 A1 至 C2 六个等级。
-                自评是主观判断"我能做什么"，与基于客观题目的分级测试互为补充 —
-                两者对比可发现你的真实水平与自我认知的差距。
+                {t("cefr.introText")}
               </div>
             </div>
           </div>
@@ -230,8 +229,8 @@ export default function CefrSelfAssessmentPage() {
               className="glass rounded-2xl p-4 text-left transition hover:-translate-y-0.5"
             >
               <div className="text-4xl">{l.flag}</div>
-              <div className="mt-2 font-display text-lg font-bold text-white">{l.native}</div>
-              <div className="text-xs text-brand-200/70">{l.name}</div>
+              <div className="mt-2 font-display text-lg font-bold text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
+              <div className="text-xs text-brand-200/70">{getLanguageDisplayName(l.id, i18n.language)}</div>
             </button>
           ))}
         </div>
@@ -242,28 +241,29 @@ export default function CefrSelfAssessmentPage() {
   const langMeta = getLanguage(lang);
   if (!langMeta) {
     return (
-      <PageShell title="CEFR 自评" subtitle="语言不存在">
+      <PageShell title={t("cefr.title")} subtitle={t("cefr.languageNotFound")}>
         <GlassCard className="p-6 text-center">
-          <div className="text-sm text-rose-300">未找到该语言：{lang}</div>
+          <div className="text-sm text-rose-300">{t("cefr.languageNotFoundDetail", { lang })}</div>
           <button
             onClick={() => setSearchParams(new URLSearchParams())}
             className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm text-brand-100 hover:bg-white/10"
           >
-            <ArrowLeft className="h-4 w-4" /> 返回选择
+            <ArrowLeft className="h-4 w-4" /> {t("cefr.backToSelection")}
           </button>
         </GlassCard>
       </PageShell>
     );
   }
 
+  const displayName = getLanguageDisplayName(lang, i18n.language);
   return (
     <PageShell
-      title={`CEFR 自评 · ${langMeta.flag} ${langMeta.native}`}
-      subtitle="勾选你能做到的 Can-Do 条目，系统自动推断等级 · 可手动覆盖"
+      title={`${t("cefr.title")} · ${langMeta.flag} ${displayName}`}
+      subtitle={t("cefr.assessmentSubtitle")}
       action={
         <Seo
-          title={`CEFR 自评 · ${langMeta.native}`}
-          description={`按 Can-Do 条目自评你的 ${langMeta.native} 能力等级`}
+          title={`${t("cefr.title")} · ${displayName}`}
+          description={t("cefr.assessmentSeoDescription", { language: displayName })}
           pathname={`/cefr-self-assessment?lang=${lang}`}
           noindex
         />
@@ -275,12 +275,12 @@ export default function CefrSelfAssessmentPage() {
           <button
             onClick={() => setSearchParams(new URLSearchParams())}
             className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-white/5 text-brand-200 transition hover:bg-white/10"
-            title="返回语言选择"
+            title={t("cefr.backToSelection")}
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
           <div className="min-w-0 flex-1">
-            <div className="text-xs text-brand-200/60">当前推断等级</div>
+            <div className="text-xs text-brand-200/60">{t("cefr.currentInferred")}</div>
             <div className="mt-1 flex items-center gap-3">
               {effectiveLevel ? (
                 <span
@@ -291,19 +291,19 @@ export default function CefrSelfAssessmentPage() {
                 </span>
               ) : (
                 <span className="text-sm text-brand-200/60">
-                  尚未勾选任何条目
+                  {t("cefr.noneChecked")}
                 </span>
               )}
               {manualLevel && manualLevel !== inferredLevel && (
                 <span className="rounded-full bg-white/5 px-2 py-0.5 text-[11px] text-brand-200/60">
-                  手动覆盖（自动推断：{inferredLevel ?? "—"}）
+                  {t("cefr.manualOverride", { inferred: inferredLevel ?? "—" })}
                 </span>
               )}
             </div>
           </div>
           {savedEntry && (
             <div className="text-right text-xs text-brand-200/60">
-              <div>已保存自评</div>
+              <div>{t("cefr.savedAssessment")}</div>
               <div className="mt-0.5 font-semibold text-amber-300">
                 {savedEntry.cefrLevel}
               </div>
@@ -321,13 +321,13 @@ export default function CefrSelfAssessmentPage() {
           <div className="flex items-center gap-3">
             <Sparkles className="h-5 w-5 flex-none text-sky-300" />
             <div className="flex-1 text-sm text-brand-200/70">
-              未登录也可以浏览 Can-Do 条目和试评，但保存需要登录。
+              {t("cefr.guestHint")}
             </div>
             <button
               onClick={() => setShowLogin(true)}
               className="rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-4 py-2 text-xs font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              立即登录
+              {t("cefr.loginButton")}
             </button>
           </div>
         </GlassCard>
@@ -337,7 +337,7 @@ export default function CefrSelfAssessmentPage() {
       {levelsLoading ? (
         <GlassCard className="p-8 text-center text-sm text-brand-200/70">
           <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
-          正在加载 Can-Do 条目…
+          {t("cefr.loadingCanDo")}
         </GlassCard>
       ) : (
         <div className="space-y-4">
@@ -405,7 +405,7 @@ export default function CefrSelfAssessmentPage() {
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
                             <span className="rounded-full bg-white/5 px-1.5 py-0.5 text-[10px] text-brand-200/70">
-                              {SKILL_LABEL[s.skill] ?? s.skill}
+                              {skillLabel(s.skill, t)}
                             </span>
                           </div>
                           <div className="mt-1 text-sm text-brand-100">{s.text}</div>
@@ -424,9 +424,9 @@ export default function CefrSelfAssessmentPage() {
       {!levelsLoading && (
         <GlassCard className="mt-4 p-5">
           <div className="mb-4">
-            <div className="text-sm font-semibold text-white">手动覆盖等级（可选）</div>
+            <div className="text-sm font-semibold text-white">{t("cefr.manualOverrideTitle")}</div>
             <div className="mt-1 text-xs text-brand-200/60">
-              若你认为自动推断不准，可在此手动指定一个等级
+              {t("cefr.manualOverrideHint")}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <button
@@ -438,7 +438,7 @@ export default function CefrSelfAssessmentPage() {
                     : "glass text-brand-200/70 hover:text-white")
                 }
               >
-                自动
+                {t("cefr.auto")}
               </button>
               {CEFR_LEVELS.map((lvl) => (
                 <button
@@ -458,15 +458,15 @@ export default function CefrSelfAssessmentPage() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-white">备注（可选）</div>
+            <div className="text-sm font-semibold text-white">{t("cefr.noteTitle")}</div>
             <div className="mt-1 text-xs text-brand-200/60">
-              最多 500 字 · 记录你自评的理由或特殊情况
+              {t("cefr.noteHint")}
             </div>
             <textarea
               value={note}
               onChange={(e) => setNote(e.target.value.slice(0, 500))}
               rows={3}
-              placeholder="例如：我能在商务会议中流利交流，但写作还停留在 B1 水平"
+              placeholder={t("cefr.notePlaceholder")}
               className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-brand-200/40 focus:border-sky-400/40 focus:outline-none"
             />
             <div className="mt-1 text-right text-[10px] text-brand-200/40">
@@ -498,7 +498,7 @@ export default function CefrSelfAssessmentPage() {
               ) : (
                 <Save className="h-4 w-4" />
               )}
-              保存自评
+              {t("cefr.save")}
             </button>
             <button
               onClick={handleReset}
@@ -506,7 +506,7 @@ export default function CefrSelfAssessmentPage() {
               className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2.5 text-sm text-brand-200 transition hover:bg-white/10 disabled:opacity-50"
             >
               <RotateCcw className="h-4 w-4" />
-              重置
+              {t("cefr.reset")}
             </button>
           </div>
         </GlassCard>

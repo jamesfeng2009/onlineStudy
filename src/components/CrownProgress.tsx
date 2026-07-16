@@ -12,6 +12,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Crown, Lock, Check, AlertCircle, Loader2 } from "lucide-react";
 import { GlassCard } from "./GlassCard";
 import { api } from "../lib/api";
@@ -24,6 +25,7 @@ export interface CrownProgressProps {
 }
 
 export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgressProps) {
+  const { t } = useTranslation();
   const [data, setData] = useState<CourseCrownsResp | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +37,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
     api.courseCrowns(courseId)
       .then((d) => { if (!cancelled) setData(d); })
       .catch((e: unknown) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : "拉取 Crown 进度失败");
+        if (!cancelled) setError(e instanceof Error ? e.message : t("crown.loadFailed"));
       })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
@@ -45,7 +47,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
     return (
       <GlassCard className="flex items-center gap-3 p-4">
         <Loader2 className="h-4 w-4 animate-spin text-brand-200/70" />
-        <span className="text-sm text-brand-200/70">加载 Crown 进度…</span>
+        <span className="text-sm text-brand-200/70">{t("crown.loading")}</span>
       </GlassCard>
     );
   }
@@ -66,7 +68,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
     return (
       <GlassCard className="flex items-center gap-3 p-4 text-xs text-brand-200/60">
         <Crown className="h-4 w-4 text-amber-300/70" />
-        <span>该课程暂无通关测验</span>
+        <span>{t("crown.noCheckpoints")}</span>
       </GlassCard>
     );
   }
@@ -87,13 +89,13 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
               <span className="ml-1 text-sm font-normal text-amber-300">Crown</span>
             </div>
             <div className="text-[11px] text-brand-200/60">
-              通过每个单元的通关测验（≥{data.passThreshold}分）即可获得 Crown
+              {t("crown.hint", { threshold: data.passThreshold })}
             </div>
           </div>
         </div>
         <div className="text-right">
           <div className="font-display text-2xl font-bold text-amber-300">{pct}%</div>
-          <div className="text-[10px] text-brand-200/50">完成度</div>
+          <div className="text-[10px] text-brand-200/50">{t("crown.completion")}</div>
         </div>
       </div>
 
@@ -118,7 +120,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
                   ? "bg-gradient-to-br from-amber-400 to-orange-500 text-slate-900"
                   : "border border-white/10 bg-white/5 text-brand-200/50")
               }
-              title={passed ? `Crown ${i + 1} 已获得` : `Crown ${i + 1} 未获得`}
+              title={passed ? t("crown.earned", { n: i + 1 }) : t("crown.locked", { n: i + 1 })}
             >
               {passed ? <Check className="h-3.5 w-3.5" /> : <Lock className="h-3 w-3" />}
             </div>
@@ -130,7 +132,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
       {data.passedCheckpoints.length > 0 && (
         <div className="mt-4 border-t border-white/5 pt-4">
           <div className="mb-2 text-[11px] uppercase tracking-wider text-brand-200/60">
-            已通过的通关测验
+            {t("crown.passedCheckpoints")}
           </div>
           <ul className="space-y-1.5">
             {data.passedCheckpoints.map((c) => {
@@ -142,7 +144,7 @@ export default function CrownProgress({ courseId, refreshKey = 0 }: CrownProgres
                   <span className="text-white">·</span>
                   <span className="text-white">{c.title}</span>
                   {c.bestScore !== null && (
-                    <span className="ml-auto text-amber-300">{c.bestScore} 分</span>
+                    <span className="ml-auto text-amber-300">{t("crown.score", { score: c.bestScore })}</span>
                   )}
                 </li>
               );

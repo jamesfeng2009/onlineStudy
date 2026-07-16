@@ -20,6 +20,7 @@ import {
   ArrowLeft, ArrowRight, Clock, Pen, Lightbulb,
   Loader2, RotateCcw, Send, Award, FileText, History, Wand2,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
@@ -29,25 +30,15 @@ import type {
   WritingPromptSummary, WritingPromptDetail, WritingSubmissionEntry, WritingType,
 } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
-import { LANGUAGES, getLanguage } from "../data/languages";
+import { LANGUAGES, getLanguage, getLanguageDisplayName } from "../data/languages";
 import type { Language } from "../types";
 
-const TYPE_LABEL: Record<WritingType, string> = {
-  essay: "议论文",
-  email: "邮件",
-  summary: "摘要",
-  story: "故事",
-  dialogue: "对话",
-};
+const TYPE_KEYS: (WritingType | "all")[] = ["all", "essay", "email", "summary", "story", "dialogue"];
 
-const TYPE_FILTERS: { key: WritingType | "all"; label: string }[] = [
-  { key: "all", label: "全部" },
-  { key: "essay", label: "议论文" },
-  { key: "email", label: "邮件" },
-  { key: "summary", label: "摘要" },
-  { key: "story", label: "故事" },
-  { key: "dialogue", label: "对话" },
-];
+function typeLabel(t: (key: string) => string, type: WritingType | "all"): string {
+  if (type === "all") return t("common.all");
+  return t(`writing.types.${type}`);
+}
 
 export default function WritingPage() {
   const navigate = useNavigate();
@@ -64,6 +55,7 @@ export default function WritingPage() {
 // ============================================================
 
 function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
+  const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const user = useAuthStore((s) => s.user);
   const selectedLang = searchParams.get("lang") as Language | null;
@@ -107,7 +99,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
       })
       .catch((err: Error) => {
         if (cancelled) return;
-        setError(err.message ?? "加载题目失败");
+        setError(err.message ?? t("writing.fetchFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -115,7 +107,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
     return () => {
       cancelled = true;
     };
-  }, [selectedLang, selectedLevel, selectedType, nativeLanguage, user]);
+  }, [selectedLang, selectedLevel, selectedType, nativeLanguage, user, t]);
 
   const updateParam = (key: string, value: string | null) => {
     const qs = new URLSearchParams(searchParams);
@@ -133,12 +125,12 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
 
   return (
     <PageShell
-      title="写作训练"
-      subtitle="按分级题目写作 · 即时评分反馈 · 补齐 CEFR 输出技能"
+      title={t("writing.title")}
+      subtitle={t("writing.subtitle")}
       action={
         <Seo
-          title="写作训练 · Writing"
-          description="分级写作题目 + 即时评分反馈"
+          title={t("writing.seoTitle")}
+          description={t("writing.seoDescription")}
           pathname="/writing"
         />
       }
@@ -152,7 +144,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
             (!selectedLang ? "bg-white/15 text-white" : "glass text-brand-200/70 hover:text-white")
           }
         >
-          全部语言
+          {t("writing.allLanguages")}
         </button>
         {LANGUAGES.map((l) => (
           <button
@@ -165,25 +157,25 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
                 : "glass text-brand-200/70 hover:text-white")
             }
           >
-            {l.flag} {l.native}
+            {l.flag} {getLanguageDisplayName(l.id, i18n.language)}
           </button>
         ))}
       </div>
 
       {/* 类型筛选 */}
       <div className="mb-4 flex flex-wrap gap-2">
-        {TYPE_FILTERS.map((f) => (
+        {TYPE_KEYS.map((key) => (
           <button
-            key={f.key}
-            onClick={() => updateParam("type", f.key === "all" ? null : f.key)}
+            key={key}
+            onClick={() => updateParam("type", key === "all" ? null : key)}
             className={
               "rounded-full px-3 py-1.5 text-xs transition " +
-              ((f.key === "all" ? !selectedType : selectedType === f.key)
+              ((key === "all" ? !selectedType : selectedType === key)
                 ? "bg-gradient-to-r from-sky-400 to-fuchsia-400 text-slate-900"
                 : "glass text-brand-200/70 hover:text-white")
             }
           >
-            {f.label}
+            {typeLabel(t, key)}
           </button>
         ))}
       </div>
@@ -198,7 +190,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
               (!selectedLevel ? "bg-white/15 text-white" : "glass text-brand-200/70 hover:text-white")
             }
           >
-            全部等级
+            {t("writing.allLevels")}
           </button>
           {availableLevels.map((lv) => (
             <button
@@ -220,7 +212,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
       {loading && (
         <GlassCard className="p-8 text-center text-sm text-brand-200/70">
           <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
-          正在加载题目…
+          {t("writing.loading")}
         </GlassCard>
       )}
 
@@ -230,7 +222,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
 
       {!loading && prompts.length === 0 && !error && (
         <GlassCard className="p-8 text-center text-sm text-brand-200/60">
-          暂无符合条件的写作题目，请稍后再来。
+          {t("writing.empty")}
         </GlassCard>
       )}
 
@@ -238,29 +230,30 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {prompts.map((p) => {
           const best = bestScoreMap[p.id];
+          const langMeta = getLanguage(p.language);
           return (
             <GlassCard key={p.id} className="flex flex-col">
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex flex-wrap items-center gap-2 text-xs">
                     <span className="rounded-full bg-sky-400/10 px-2 py-0.5 text-sky-300">
-                      {getLanguage(p.language).flag} {p.level}
+                      {langMeta.flag} {p.level}
                     </span>
                     <span className="rounded-full bg-fuchsia-400/10 px-2 py-0.5 text-fuchsia-300">
-                      {TYPE_LABEL[p.type] ?? p.type}
+                      {typeLabel(t, p.type)}
                     </span>
                     <span className="inline-flex items-center gap-0.5 text-brand-200/60">
                       <Clock className="h-3 w-3" /> {p.estMinutes}min
                     </span>
                     <span className="inline-flex items-center gap-0.5 text-brand-200/60">
-                      <Pen className="h-3 w-3" /> {p.minWords}-{p.maxWords} 字
+                      <Pen className="h-3 w-3" /> {t("writing.wordRange", { min: p.minWords, max: p.maxWords })}
                     </span>
                   </div>
                   <h3 className="mt-2 font-display text-lg font-bold text-white">{p.title}</h3>
                 </div>
                 {best !== undefined && (
                   <span className="flex-none rounded-full bg-amber-400/10 px-2 py-0.5 text-[11px] text-amber-300">
-                    最佳 {best}
+                    {t("writing.bestScore", { score: best })}
                   </span>
                 )}
               </div>
@@ -282,7 +275,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
                   onClick={() => onOpen(p.id)}
                   className="inline-flex items-center gap-1 text-sm font-semibold text-sky-300 transition hover:text-sky-200"
                 >
-                  开始写作 <ArrowRight className="h-4 w-4" />
+                  {t("writing.start")} <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
             </GlassCard>
@@ -298,6 +291,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
 // ============================================================
 
 function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
+  const { t, i18n } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const [prompt, setPrompt] = useState<WritingPromptDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -329,7 +323,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       setAiPolish(r.explanation);
       setAiRemaining(r.remainingToday);
     } catch (e) {
-      setAiPolishError(e instanceof Error ? e.message : "AI 润色失败");
+      setAiPolishError(e instanceof Error ? e.message : t("writing.aiPolishFailed"));
     } finally {
       setAiPolishLoading(false);
     }
@@ -354,7 +348,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       })
       .catch((err: Error) => {
         if (cancelled) return;
-        setError(err.message ?? "加载题目失败");
+        setError(err.message ?? t("writing.fetchFailed"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -362,7 +356,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
     return () => {
       cancelled = true;
     };
-  }, [id, nativeLanguage, user]);
+  }, [id, nativeLanguage, user, t]);
 
   // 简易字数计算（与后端 tokenize 一致：CJK 按字符，拉丁按空格）
   const wordCount = useMemo(() => {
@@ -386,7 +380,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       return;
     }
     if (!content.trim()) {
-      setError("请先写一些内容再提交");
+      setError(t("writing.emptyContent"));
       return;
     }
     setSubmitting(true);
@@ -396,7 +390,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       setResult(r);
       setHistory((prev) => [r, ...prev]);
     } catch (err) {
-      setError((err as Error).message ?? "提交失败");
+      setError((err as Error).message ?? t("writing.submitFailed"));
     } finally {
       setSubmitting(false);
     }
@@ -410,10 +404,10 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
 
   if (loading) {
     return (
-      <PageShell title="写作题目" subtitle="加载中…">
+      <PageShell title={t("writing.detailTitle")} subtitle={t("common.loading")}>
         <GlassCard className="p-8 text-center text-sm text-brand-200/70">
           <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
-          正在加载题目…
+          {t("writing.loading")}
         </GlassCard>
       </PageShell>
     );
@@ -421,14 +415,14 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
 
   if (error && !prompt) {
     return (
-      <PageShell title="写作题目" subtitle="加载失败">
+      <PageShell title={t("writing.detailTitle")} subtitle={t("writing.loadFailed")}>
         <GlassCard className="p-8 text-center">
           <div className="text-sm text-rose-300">{error}</div>
           <button
             onClick={onBack}
             className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm text-brand-100 hover:bg-white/10"
           >
-            <ArrowLeft className="h-4 w-4" /> 返回列表
+            <ArrowLeft className="h-4 w-4" /> {t("writing.backToList")}
           </button>
         </GlassCard>
       </PageShell>
@@ -444,11 +438,13 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
     wordCount < minWords ? "text-rose-300"
     : wordCount > maxWords * 1.5 ? "text-amber-300"
     : "text-emerald-300";
+  const promptLangName = getLanguageDisplayName(prompt.language, i18n.language);
+  const promptLangMeta = getLanguage(prompt.language);
 
   return (
     <PageShell
       title={prompt.title}
-      subtitle={`${getLanguage(prompt.language).flag} ${getLanguage(prompt.language).native} · ${prompt.level} · ${TYPE_LABEL[prompt.type] ?? prompt.type}`}
+      subtitle={`${promptLangMeta.flag} ${promptLangName} · ${prompt.level} · ${typeLabel(t, prompt.type)}`}
       action={
         <Seo
           title={prompt.title}
@@ -462,23 +458,23 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         onClick={onBack}
         className="mb-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm text-brand-100 transition hover:bg-white/10"
       >
-        <ArrowLeft className="h-4 w-4" /> 返回列表
+        <ArrowLeft className="h-4 w-4" /> {t("writing.backToList")}
       </button>
 
       {/* 题目卡片 */}
       <GlassCard className="mb-4 p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs text-brand-200/70">
           <span className="rounded-full bg-sky-400/10 px-2 py-0.5 text-sky-300">
-            {getLanguage(prompt.language).flag} {prompt.level}
+            {promptLangMeta.flag} {prompt.level}
           </span>
           <span className="rounded-full bg-fuchsia-400/10 px-2 py-0.5 text-fuchsia-300">
-            {TYPE_LABEL[prompt.type] ?? prompt.type}
+            {typeLabel(t, prompt.type)}
           </span>
           <span className="inline-flex items-center gap-0.5">
             <Clock className="h-3 w-3" /> {prompt.estMinutes}min
           </span>
           <span className="inline-flex items-center gap-0.5">
-            <Pen className="h-3 w-3" /> 目标 {minWords}-{maxWords} 字
+            <Pen className="h-3 w-3" /> {t("writing.targetWords", { min: minWords, max: maxWords })}
           </span>
         </div>
         <h2 className="mt-3 font-display text-xl font-bold text-white">{prompt.title}</h2>
@@ -487,7 +483,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         {prompt.tips.length > 0 && (
           <div className="mt-4 rounded-lg border border-amber-400/20 bg-amber-400/5 px-3 py-2">
             <div className="mb-1 flex items-center gap-1 text-xs font-semibold text-amber-300">
-              <Lightbulb className="h-3.5 w-3.5" /> 写作提示
+              <Lightbulb className="h-3.5 w-3.5" /> {t("writing.tips")}
             </div>
             <ul className="list-disc space-y-1 pl-5 text-xs text-brand-200/80">
               {prompt.tips.map((tip, idx) => (
@@ -504,7 +500,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
               className="inline-flex items-center gap-1 text-xs text-sky-300 transition hover:text-sky-200"
             >
               <FileText className="h-3.5 w-3.5" />
-              {showSample ? "隐藏范文" : "查看范文"}
+              {showSample ? t("writing.hideSample") : t("writing.showSample")}
             </button>
             {showSample && (
               <pre className="mt-2 whitespace-pre-wrap rounded-lg bg-white/5 px-3 py-2 text-xs text-brand-200/80">
@@ -518,10 +514,10 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
       {/* 写作区域 */}
       <GlassCard className="mb-4 p-5">
         <div className="mb-2 flex items-center justify-between">
-          <div className="text-sm font-semibold text-white">你的写作</div>
+          <div className="text-sm font-semibold text-white">{t("writing.yourWriting")}</div>
           <div className="flex items-center gap-3 text-xs">
             <span className={lengthColor}>
-              {wordCount} / {minWords}-{maxWords} 字
+              {t("writing.wordRangeCurrent", { current: wordCount, min: minWords, max: maxWords })}
             </span>
             <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/5">
               <div
@@ -542,12 +538,12 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           value={content}
           onChange={(e) => setContent(e.target.value.slice(0, 10000))}
           rows={12}
-          placeholder={`用 ${getLanguage(prompt.language).native} 写作，按题目要求展开。字数目标：${minWords}-${maxWords}`}
+          placeholder={t("writing.placeholder", { language: promptLangName, min: minWords, max: maxWords })}
           className="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-brand-200/40 focus:border-sky-400/40 focus:outline-none"
           disabled={submitting}
         />
         <div className="mt-1 text-right text-[10px] text-brand-200/40">
-          {content.length} / 10000 字符
+          {t("writing.charLimit", { current: content.length })}
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2">
@@ -557,7 +553,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 to-fuchsia-400 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
           >
             {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-            提交评分
+            {t("writing.submit")}
           </button>
           <button
             onClick={handleReset}
@@ -565,7 +561,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
             className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2.5 text-sm text-brand-200 transition hover:bg-white/10 disabled:opacity-50"
           >
             <RotateCcw className="h-4 w-4" />
-            清空
+            {t("writing.clear")}
           </button>
         </div>
 
@@ -581,12 +577,12 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         <GlassCard className="mb-4 border-emerald-400/30 p-5">
           <div className="flex items-center gap-2">
             <Award className="h-5 w-5 text-amber-300" />
-            <div className="font-display text-lg font-bold text-white">评分结果</div>
+            <div className="font-display text-lg font-bold text-white">{t("writing.scoreResult")}</div>
           </div>
 
           <div className="mt-4 flex items-center gap-6">
             <div className="text-center">
-              <div className="text-xs text-brand-200/60">综合</div>
+              <div className="text-xs text-brand-200/60">{t("writing.overall")}</div>
               <div
                 className={
                   "font-display text-4xl font-bold " +
@@ -601,19 +597,19 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
               </div>
             </div>
             <div className="grid flex-1 grid-cols-3 gap-3">
-              <ScoreBar label="字数" value={result.lengthScore} />
-              <ScoreBar label="词汇多样性" value={result.varietyScore} />
-              <ScoreBar label="关键词" value={result.keywordScore} />
+              <ScoreBar label={t("writing.length")} value={result.lengthScore} />
+              <ScoreBar label={t("writing.variety")} value={result.varietyScore} />
+              <ScoreBar label={t("writing.keywords")} value={result.keywordScore} />
             </div>
           </div>
 
           <div className="mt-4 space-y-2">
-            <FeedbackRow label="字数反馈" text={result.feedback.lengthHint} />
-            <FeedbackRow label="词汇反馈" text={result.feedback.varietyHint} />
-            <FeedbackRow label="关键词反馈" text={result.feedback.keywordHint} />
+            <FeedbackRow label={t("writing.lengthFeedback")} text={result.feedback.lengthHint} />
+            <FeedbackRow label={t("writing.varietyFeedback")} text={result.feedback.varietyHint} />
+            <FeedbackRow label={t("writing.keywordFeedback")} text={result.feedback.keywordHint} />
             {result.feedback.matchedKeywords.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5 text-xs">
-                <span className="text-emerald-300">✓ 已命中：</span>
+                <span className="text-emerald-300">✓ {t("writing.matched")}：</span>
                 {result.feedback.matchedKeywords.map((k) => (
                   <span key={k} className="rounded-md bg-emerald-400/10 px-1.5 py-0.5 text-emerald-200">
                     {k}
@@ -623,7 +619,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
             )}
             {result.feedback.missedKeywords.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5 text-xs">
-                <span className="text-rose-300">✗ 缺失：</span>
+                <span className="text-rose-300">✗ {t("writing.missed")}：</span>
                 {result.feedback.missedKeywords.map((k) => (
                   <span key={k} className="rounded-md bg-rose-400/10 px-1.5 py-0.5 text-rose-200">
                     {k}
@@ -636,7 +632,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           {result.feedback.suggestions.length > 0 && (
             <div className="mt-4 rounded-lg border border-sky-400/20 bg-sky-400/5 px-3 py-2">
               <div className="mb-1 flex items-center gap-1 text-xs font-semibold text-sky-300">
-                <Lightbulb className="h-3.5 w-3.5" /> 改进建议
+                <Lightbulb className="h-3.5 w-3.5" /> {t("writing.suggestions")}
               </div>
               <ul className="list-disc space-y-1 pl-5 text-xs text-brand-200/80">
                 {result.feedback.suggestions.map((s, idx) => (
@@ -650,23 +646,23 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
           <div className="mt-4 rounded-lg border border-fuchsia-400/30 bg-fuchsia-400/5 px-4 py-3">
             <div className="flex items-center justify-between gap-2">
               <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-fuchsia-200">
-                <Wand2 className="h-3.5 w-3.5" /> AI 润色建议
+                <Wand2 className="h-3.5 w-3.5" /> {t("writing.aiPolishTitle")}
               </div>
               {!aiPolish && !aiPolishLoading && (
                 <button
                   onClick={handleAiPolish}
                   className="inline-flex items-center gap-1 rounded-full bg-fuchsia-400/20 px-3 py-1 text-[11px] font-semibold text-fuchsia-200 transition hover:bg-fuchsia-400/30"
                 >
-                  <Wand2 className="h-3 w-3" /> 请求 AI 润色
+                  <Wand2 className="h-3 w-3" /> {t("writing.requestAiPolish")}
                 </button>
               )}
               {aiRemaining !== null && (aiPolish || aiPolishLoading) && (
-                <span className="text-[10px] text-fuchsia-300/60">今日剩余 {aiRemaining} 次</span>
+                <span className="text-[10px] text-fuchsia-300/60">{t("writing.aiRemaining", { count: aiRemaining })}</span>
               )}
             </div>
             {aiPolishLoading && (
               <div className="mt-2 flex items-center gap-2 text-xs text-fuchsia-200/70">
-                <Loader2 className="h-3.5 w-3.5 animate-spin" /> AI 正在润色你的写作…
+                <Loader2 className="h-3.5 w-3.5 animate-spin" /> {t("writing.aiPolishing")}
               </div>
             )}
             {aiPolishError && (
@@ -686,7 +682,7 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
         <GlassCard className="p-5">
           <div className="mb-3 flex items-center gap-2">
             <History className="h-4 w-4 text-brand-200/70" />
-            <div className="text-sm font-semibold text-white">历史提交（{history.length} 次）</div>
+            <div className="text-sm font-semibold text-white">{t("writing.historyTitle", { count: history.length })}</div>
           </div>
           <div className="space-y-2">
             {history.map((s) => (
@@ -709,15 +705,15 @@ function WritingDetail({ id, onBack }: { id: string; onBack: () => void }) {
                       {s.score}
                     </span>
                     <span className="text-brand-200/70">
-                      {s.wordCount} 字 · {new Date(s.submittedAt).toLocaleString()}
+                      {t("writing.historyMeta", { words: s.wordCount, date: new Date(s.submittedAt).toLocaleString() })}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-brand-200/50">
-                    <span>字数 {s.lengthScore}</span>
+                    <span>{t("writing.lengthShort")} {s.lengthScore}</span>
                     <span>·</span>
-                    <span>多样 {s.varietyScore}</span>
+                    <span>{t("writing.varietyShort")} {s.varietyScore}</span>
                     <span>·</span>
-                    <span>关键词 {s.keywordScore}</span>
+                    <span>{t("writing.keywordsShort")} {s.keywordScore}</span>
                   </div>
                 </div>
                 <div className="mt-1 line-clamp-2 text-brand-200/60">{s.content}</div>

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, Square, RotateCcw, Check, AlertCircle, Loader2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import AudioButton from "./AudioButton";
 
 /* ----------------------------------------------------------------
@@ -74,10 +75,10 @@ function isTonal(bcp47: string): boolean {
    Score → color + label
 ------------------------------------------------------------------ */
 function scoreStyle(s: number) {
-  if (s >= 90) return { ring: "text-emerald-400", bg: "from-emerald-500 to-teal-500", label: "优秀", text: "text-emerald-300" };
-  if (s >= 75) return { ring: "text-sky-400", bg: "from-sky-500 to-cyan-500", label: "很好", text: "text-sky-300" };
-  if (s >= 60) return { ring: "text-amber-400", bg: "from-amber-500 to-orange-500", label: "还行", text: "text-amber-300" };
-  return { ring: "text-rose-400", bg: "from-rose-500 to-fuchsia-600", label: "再练练", text: "text-rose-300" };
+  if (s >= 90) return { ring: "text-emerald-400", bg: "from-emerald-500 to-teal-500", labelKey: "pronunciation.excellent", text: "text-emerald-300" };
+  if (s >= 75) return { ring: "text-sky-400", bg: "from-sky-500 to-cyan-500", labelKey: "pronunciation.great", text: "text-sky-300" };
+  if (s >= 60) return { ring: "text-amber-400", bg: "from-amber-500 to-orange-500", labelKey: "pronunciation.okay", text: "text-amber-300" };
+  return { ring: "text-rose-400", bg: "from-rose-500 to-fuchsia-600", labelKey: "pronunciation.practiceMore", text: "text-rose-300" };
 }
 
 /* ----------------------------------------------------------------
@@ -95,6 +96,7 @@ export interface PronunciationScoreProps {
 type Phase = "idle" | "listening" | "scored";
 
 export default function PronunciationScore({ text, lang, onScored }: PronunciationScoreProps) {
+  const { t } = useTranslation();
   const [phase, setPhase] = useState<Phase>("idle");
   const [transcript, setTranscript] = useState("");
   const [score, setScore] = useState<number | null>(null);
@@ -154,10 +156,10 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
       if (settledRef.current) return;
       settledRef.current = true;
       const msg =
-        e.error === "no-speech" ? "没听到声音，请再试一次" :
-        e.error === "not-allowed" || e.error === "service-not-allowed" ? "请允许浏览器使用麦克风" :
-        e.error === "network" ? "网络错误，请检查连接后重试" :
-        `识别失败（${e.error}）`;
+        e.error === "no-speech" ? t("pronunciation.errors.noSpeech") :
+        e.error === "not-allowed" || e.error === "service-not-allowed" ? t("pronunciation.errors.microphoneNotAllowed") :
+        e.error === "network" ? t("pronunciation.errors.network") :
+        t("pronunciation.errors.recognitionFailed", { error: e.error });
       setError(msg);
       setPhase("idle");
     };
@@ -165,7 +167,7 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
       // If no result and no error fired, treat as no-speech.
       if (!settledRef.current) {
         settledRef.current = true;
-        setError("没听到声音，请再试一次");
+        setError(t("pronunciation.errors.noSpeech"));
         setPhase("idle");
       }
     };
@@ -173,7 +175,7 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
     try {
       rec.start();
     } catch {
-      setError("无法启动录音，请重试");
+      setError(t("pronunciation.errors.cannotStart"));
       setPhase("idle");
       return;
     }
@@ -198,7 +200,7 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
     return (
       <div className="flex items-center gap-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 text-sm text-amber-100">
         <AlertCircle className="h-5 w-5 flex-none text-amber-400" />
-        <span>当前浏览器不支持语音识别。请在 Chrome、Edge 或 Safari 中使用。</span>
+        <span>{t("pronunciation.unsupportedBrowser")}</span>
       </div>
     );
   }
@@ -212,7 +214,7 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
       <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <div className="text-xs uppercase tracking-[0.3em] text-fuchsia-300">跟读这句</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-fuchsia-300">{t("pronunciation.repeatThis")}</div>
             <div className="mt-2 break-words font-display text-2xl font-bold leading-snug text-white md:text-3xl">
               {text}
             </div>
@@ -239,11 +241,11 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
           )}
         </button>
         <div className="mt-4 text-sm text-brand-100">
-          {phase === "listening" ? "正在聆听，请大声朗读…" : "点击麦克风开始跟读"}
+          {phase === "listening" ? t("pronunciation.listening") : t("pronunciation.tapToStart")}
         </div>
         {tonal && phase === "idle" && (
           <div className="mt-1 max-w-sm text-center text-[11px] text-brand-200/50">
-            提示：此分数基于整体相似度，声调准确性需后续版本支持。
+            {t("pronunciation.toneHint")}
           </div>
         )}
       </div>
@@ -273,8 +275,8 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
               <div className="absolute font-display text-2xl font-bold text-white">{score}</div>
             </div>
             <div>
-              <div className={"font-display text-xl font-bold " + sty.text}>{sty.label}</div>
-              <div className="mt-0.5 text-xs text-brand-200/60">满分 100</div>
+              <div className={"font-display text-xl font-bold " + sty.text}>{t(sty.labelKey)}</div>
+              <div className="mt-0.5 text-xs text-brand-200/60">{t("pronunciation.fullScore")}</div>
             </div>
           </div>
 
@@ -282,12 +284,12 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4">
               <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-emerald-300">
-                <Check className="h-3.5 w-3.5" /> 你说了
+                <Check className="h-3.5 w-3.5" /> {t("pronunciation.youSaid")}
               </div>
-              <div className="break-words text-sm text-white">{transcript || "（未识别到语音）"}</div>
+              <div className="break-words text-sm text-white">{transcript || t("pronunciation.noSpeechDetected")}</div>
             </div>
             <div className="rounded-xl border border-sky-400/20 bg-sky-400/5 p-4">
-              <div className="mb-1 text-xs font-semibold text-sky-300">目标</div>
+              <div className="mb-1 text-xs font-semibold text-sky-300">{t("pronunciation.target")}</div>
               <div className="break-words text-sm text-white">{text}</div>
             </div>
           </div>
@@ -299,7 +301,7 @@ export default function PronunciationScore({ text, lang, onScored }: Pronunciati
               onClick={reset}
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-brand-100 hover:bg-white/10"
             >
-              <RotateCcw className="h-4 w-4" /> 再试一次
+              <RotateCcw className="h-4 w-4" /> {t("pronunciation.tryAgain")}
             </button>
           </div>
         </div>

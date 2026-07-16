@@ -30,7 +30,7 @@ import type {
   PlacementQuestion, PlacementQuestionsResp, PlacementAnswerPayload,
 } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
-import { LANGUAGES } from "../data/languages";
+import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { COURSES } from "../data/courses";
 import { cefrEquivalent, cefrRank } from "../lib/level-utils";
 import type { Language } from "../types";
@@ -95,7 +95,7 @@ function computeRecommendation(state: TestState): string {
 }
 
 export default function PlacementTestPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const user = useAuthStore((s) => s.user);
@@ -265,8 +265,8 @@ export default function PlacementTestPage() {
               className="glass rounded-2xl p-4 text-center transition hover:-translate-y-0.5 hover:border-white/20"
             >
               <div className="text-4xl">{l.flag}</div>
-              <div className="mt-2 text-sm font-medium text-white">{l.native}</div>
-              <div className="text-[11px] text-brand-200/60">{l.name}</div>
+              <div className="mt-2 text-sm font-medium text-white">{getLanguageDisplayName(l.id, i18n.language)}</div>
+              <div className="text-[11px] text-brand-200/60">{getLanguageDisplayName(l.id, i18n.language)}</div>
             </button>
           ))}
         </div>
@@ -418,7 +418,7 @@ export default function PlacementTestPage() {
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-brand-200/70">{t("placement.language")}</span>
-                <span className="text-white">{LANGUAGES.find((l) => l.id === lang)?.native ?? lang}</span>
+                <span className="text-white">{getLanguageDisplayName(lang, i18n.language)}</span>
               </div>
             </div>
 
@@ -491,7 +491,7 @@ export default function PlacementTestPage() {
   return (
     <PageShell title={t("placement.title")}>
       <div className="py-20 text-center text-brand-200/60">
-        {t("placement.errorOccurred")} <button onClick={reset} className="text-sky-300 underline">{t("placement.restart")}</button>。
+        {t("placement.errorOccurred")} <button onClick={reset} className="text-sky-300 underline">{t("placement.restart")}</button>
       </div>
     </PageShell>
   );
