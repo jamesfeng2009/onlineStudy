@@ -80,7 +80,7 @@ jobs:
           if [ "$INPUT_OVERWRITE" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
           pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS
 
-      - name: Validate (strict: warnings fail too)
+      - name: "Validate (strict: warnings fail too)"
         run: pnpm tsx scripts/validate-dialogue-scenes.ts --strict || echo "::warning::Some scenes have warnings — review before merging."
 
       - name: Merge into src/data/dialogue-scenes.ts
