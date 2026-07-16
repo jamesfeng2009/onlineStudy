@@ -139,12 +139,12 @@ export const COURSES: Course[] = [
     tags: ["专业", "高阶"],
   },
 
-  // 韩语
+  // 韩语 — P0-2: level 对齐 TOPIK（초급→TOPIK1, 중급→TOPIK3, 고급→TOPIK5）
   {
     id: "ko-beginner-1",
     title: "韩语初级：从 Hangeul 起步",
     language: "ko",
-    level: "初级",
+    level: "TOPIK1",
     levelGroup: "beginner",
     description: "掌握韩文字母与最常见日常句型。",
     lessons: 16,
@@ -156,7 +156,7 @@ export const COURSES: Course[] = [
     id: "ko-intermediate-1",
     title: "韩语中级：韩剧与流行文化",
     language: "ko",
-    level: "中级",
+    level: "TOPIK3",
     levelGroup: "intermediate",
     description: "通过韩剧、K-pop 学习鲜活韩语。",
     lessons: 24,
@@ -168,7 +168,7 @@ export const COURSES: Course[] = [
     id: "ko-advanced-1",
     title: "韩语高级：TOPIK 备考与专业表达",
     language: "ko",
-    level: "高级",
+    level: "TOPIK5",
     levelGroup: "advanced",
     description: "TOPIK 高级考试、学术与商务综合应用。",
     lessons: 30,

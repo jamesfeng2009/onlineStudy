@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightbulb, Play, Pause, MessageSquare } from "lucide-react";
+import { BookOpen, Pen, Mic, Headphones, Check, X, RotateCcw, ArrowRight, Lightbulb, Play, Pause, MessageSquare, Map as MapIcon, LayoutGrid } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
@@ -7,6 +7,10 @@ import { Seo } from "../components/Seo";
 import { GlassCard } from "../components/GlassCard";
 import LoginPromptModal from "../components/LoginPromptModal";
 import PronunciationScore from "../components/PronunciationScore";
+import LessonPath from "../components/LessonPath";
+import LessonPlayer from "../components/LessonPlayer";
+import LevelMetaCard from "../components/LevelMetaCard";
+import CrownProgress from "../components/CrownProgress";
 import { api } from "../lib/api";
 import type { WordResp } from "../lib/api";
 import { useAuthStore } from "../store/authStore";
@@ -27,6 +31,15 @@ import type { ConversationState } from "../lib/conversation";
 import type { Language, WordFamily, ReviewQuality, DialogueScene } from "../types";
 
 type Tab = "words" | "grammar" | "speaking" | "listening" | "review" | "conversation";
+
+/**
+ * P0-1: top-level view for a course.
+ *   - "path":    Unit → Lesson tree (default when a course is open)
+ *   - "player":  single-lesson guided walk-through (selected from path)
+ *   - "modules": the legacy tab-based skill modules (words/grammar/…)
+ * When no course is selected, only "modules" is available.
+ */
+type View = "path" | "player" | "modules";
 
 /** Small chip showing the other words in a word family. */
 function WordFamilyChip({ family, currentWord }: { family: WordFamily; currentWord?: string }) {
@@ -89,6 +102,10 @@ export default function LearnPage() {
   ];
 
   const [tab, setTab] = useState<Tab>("words");
+  const [view, setView] = useState<View>(course ? "path" : "modules");
+  const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
+  // P1-4: bumped after a lesson completes so CrownProgress refetches.
+  const [lessonRefreshKey, setLessonRefreshKey] = useState(0);
   const reviewHydrate = useReviewStore((s) => s.hydrate);
   const mistakeHydrate = useMistakeStore((s) => s.hydrate);
   const dueCount = useReviewStore((s) => s.dueCount());
@@ -102,9 +119,16 @@ export default function LearnPage() {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const onNeedLogin = () => setShowLoginPrompt(true);
 
+  // When the course changes (different /learn/:courseId route), reset
+  // to the path view and clear any active lesson. When the route has
+  // no courseId, fall back to the legacy modules view.
   useEffect(() => {
     if (course) {
+      setView("path");
+      setActiveLessonId(null);
       setLang(course.language as Language);
+    } else {
+      setView("modules");
     }
   }, [course]);
 
@@ -153,46 +177,114 @@ export default function LearnPage() {
         </>
       }
     >
-      {/* Tab switcher */}
-      <div className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {TABS.map((tabItem) => {
-          const Icon = tabItem.icon;
-          const active = tab === tabItem.key;
-          return (
-            <button
-              key={tabItem.key}
-              onClick={() => setTab(tabItem.key)}
-              className={
-                "glass relative overflow-hidden rounded-2xl p-4 text-left transition " +
-                (active
-                  ? "-translate-y-0.5 ring-1 ring-sky-400/40 shadow-lg shadow-sky-500/10"
-                  : "opacity-90 hover:-translate-y-0.5 hover:opacity-100")
-              }
-            >
-              <div className="flex items-center justify-between">
-                <div className={"flex h-10 w-10 items-center justify-center rounded-xl " + (active ? "bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white" : "bg-white/5 text-brand-200")}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                {active && <span className="text-[10px] text-sky-300">{t("learn.inUse")}</span>}
-              </div>
-              <div className="mt-3 font-semibold text-white">{tabItem.label}</div>
-              <div className="mt-1 text-xs text-brand-200/70">{tabItem.desc}</div>
-              {tabItem.key === "review" && dueCount > 0 && (
-                <span className="absolute right-3 top-3 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-rose-500 px-1.5 text-[10px] font-bold text-white">
-                  {dueCount}
-                </span>
-              )}
-            </button>
-          );
-        })}
-      </div>
+      {/* P0-1: view toggle — only shown when a course is open.
+          "path" shows the Unit/Lesson tree; "modules" shows the
+          legacy skill tabs. The "player" view is entered by clicking
+          a lesson in the path (no toggle button for it). */}
+      {locked && (
+        <div className="mb-6 flex items-center gap-2">
+          {(["path", "modules"] as const).map((v) => {
+            const active = view === v || (v === "modules" && view === "player");
+            const Icon = v === "path" ? MapIcon : LayoutGrid;
+            const label = v === "path" ? "学习路径" : "技能模块";
+            return (
+              <button
+                key={v}
+                onClick={() => setView(v)}
+                className={
+                  "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium transition " +
+                  (active
+                    ? "bg-gradient-to-r from-sky-400 to-fuchsia-500 text-white shadow-lg shadow-sky-500/20"
+                    : "glass text-brand-200/80 hover:text-white")
+                }
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
-      {tab === "words" && <WordsModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
-      {tab === "grammar" && <GrammarModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
-      {tab === "speaking" && <SpeakingModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
-      {tab === "listening" && <ListeningModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
-      {tab === "review" && <ReviewModule language={lang} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} dueCount={dueCount} />}
-      {tab === "conversation" && <ConversationModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+      {/* View: lesson player (single lesson guided walk-through) */}
+      {view === "player" && activeLessonId && (
+        <LessonPlayer
+          lessonId={activeLessonId}
+          onBack={() => setView("path")}
+          onDone={(unlockedLessonId) => {
+            // After completing, jump back to the path so the user
+            // sees the freshly-unlocked next lesson. If the unlocked
+            // lesson id is provided we could auto-open it, but
+            // returning to the path lets them choose.
+            setActiveLessonId(unlockedLessonId ?? null);
+            setView("path");
+            setLessonRefreshKey((k) => k + 1);
+          }}
+        />
+      )}
+
+      {/* View: lesson path (Unit → Lesson tree) */}
+      {view === "path" && course && (
+        <div className="space-y-6">
+          {/* P0-2: 课程等级元数据（学习目标 / 词汇量 / 学时 / 语法点 + 免责声明） */}
+          <LevelMetaCard language={course.language as Language} level={course.level} variant="full" />
+          {/* P1-4: Crown 进度（仅登录后展示，未登录时静默隐藏） */}
+          {user && <CrownProgress courseId={course.id} refreshKey={lessonRefreshKey} />}
+          <LessonPath
+            courseId={course.id}
+            onSelectLesson={(lessonId) => {
+              setActiveLessonId(lessonId);
+              setView("player");
+            }}
+          />
+        </div>
+      )}
+
+      {/* View: legacy skill modules (tab switcher + content) */}
+      {view === "modules" && (
+        <>
+          {/* Tab switcher */}
+          <div className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {TABS.map((tabItem) => {
+              const Icon = tabItem.icon;
+              const active = tab === tabItem.key;
+              return (
+                <button
+                  key={tabItem.key}
+                  onClick={() => setTab(tabItem.key)}
+                  className={
+                    "glass relative overflow-hidden rounded-2xl p-4 text-left transition " +
+                    (active
+                      ? "-translate-y-0.5 ring-1 ring-sky-400/40 shadow-lg shadow-sky-500/10"
+                      : "opacity-90 hover:-translate-y-0.5 hover:opacity-100")
+                  }
+                >
+                  <div className="flex items-center justify-between">
+                    <div className={"flex h-10 w-10 items-center justify-center rounded-xl " + (active ? "bg-gradient-to-br from-sky-400 to-fuchsia-500 text-white" : "bg-white/5 text-brand-200")}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    {active && <span className="text-[10px] text-sky-300">{t("learn.inUse")}</span>}
+                  </div>
+                  <div className="mt-3 font-semibold text-white">{tabItem.label}</div>
+                  <div className="mt-1 text-xs text-brand-200/70">{tabItem.desc}</div>
+                  {tabItem.key === "review" && dueCount > 0 && (
+                    <span className="absolute right-3 top-3 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-rose-500 px-1.5 text-[10px] font-bold text-white">
+                      {dueCount}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {tab === "words" && <WordsModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+          {tab === "grammar" && <GrammarModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+          {tab === "speaking" && <SpeakingModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+          {tab === "listening" && <ListeningModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+          {tab === "review" && <ReviewModule language={lang} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} dueCount={dueCount} />}
+          {tab === "conversation" && <ConversationModule language={lang} level={level} isLoggedIn={isLoggedIn} onNeedLogin={onNeedLogin} />}
+        </>
+      )}
 
       {showLoginPrompt && <LoginPromptModal onClose={() => setShowLoginPrompt(false)} />}
     </PageShell>
@@ -962,7 +1054,13 @@ function ReviewModule({ language, isLoggedIn, onNeedLogin, dueCount }: { languag
                 >
                   <div className="card-face glass flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-violet-500/20 via-slate-900/20 to-teal-500/20 p-10">
                     <div className="text-xs uppercase tracking-[0.3em] text-violet-300">
-                      {current?.kind === "quiz" ? "题目" : "单词"}
+                      {current?.kind === "quiz"
+                        ? "题目"
+                        : current?.kind === "listening"
+                          ? "听力"
+                          : current?.kind === "speaking"
+                            ? "口语"
+                            : "单词"}
                     </div>
                     <div className="mt-4 max-w-md text-center font-display text-3xl font-bold text-white md:text-4xl">
                       {current?.front}
