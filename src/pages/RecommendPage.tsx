@@ -167,8 +167,8 @@ export default function RecommendPage() {
                 <span className="text-6xl drop-shadow">{c.cover}</span>
               </div>
               <div className="p-5">
-                <div className="font-semibold text-white">{c.title}</div>
-                <div className="mt-1 text-xs text-brand-200/70">{c.description}</div>
+                <div className="font-semibold text-white">{t(c.title)}</div>
+                <div className="mt-1 text-xs text-brand-200/70">{t(c.description)}</div>
                 <div className="mt-4 text-xs text-sky-300 group-hover:text-sky-200">{t("recommend.joinPlan")}</div>
               </div>
             </LocaleLink>

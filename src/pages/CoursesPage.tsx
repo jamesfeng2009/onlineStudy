@@ -95,9 +95,9 @@ export default function CoursesPage() {
             name: "LangOria language courses",
             url: "https://lang-oria.com/courses",
             items: COURSES.map((c) => ({
-              name: c.title,
+              name: t(c.title),
               url: `https://lang-oria.com/learn/${c.id}`,
-              description: c.description,
+              description: t(c.description),
             })),
           }),
         ]}
@@ -253,12 +253,12 @@ export default function CoursesPage() {
               </span>
               {c.tags.slice(0, 1).map((tag, i) => (
                 <span key={i} className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-200/70">
-                  {tag}
+                  {t(tag)}
                 </span>
               ))}
             </div>
-            <h3 className="mt-3 font-display text-lg font-bold text-white">{c.title}</h3>
-            <p className="mt-1 text-sm text-brand-200/70">{c.description}</p>
+            <h3 className="mt-3 font-display text-lg font-bold text-white">{t(c.title)}</h3>
+            <p className="mt-1 text-sm text-brand-200/70">{t(c.description)}</p>
             <LevelMetaCard language={c.language} level={c.level} variant="compact" />
             {showProgress && (
               <div className="mt-3">

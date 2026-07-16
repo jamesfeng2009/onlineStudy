@@ -218,8 +218,8 @@ export default function HomePage() {
                   </span>
                 </div>
                 <div className="p-5">
-                  <div className="font-semibold text-white">{c.title}</div>
-                  <div className="mt-1 line-clamp-2 text-xs text-brand-200/70">{c.description}</div>
+                  <div className="font-semibold text-white">{t(c.title)}</div>
+                  <div className="mt-1 line-clamp-2 text-xs text-brand-200/70">{t(c.description)}</div>
                   <div className="mt-3 flex items-center justify-between text-xs text-brand-200/60">
                     <span>{t("home.courses.lessons", { count: c.lessons })}</span>
                     <span>{t("home.courses.minutes", { count: c.minutes })}</span>

@@ -136,10 +136,10 @@ export default function LearnPage() {
   }, [course]);
 
   const title = course
-    ? `${course.title}`
+    ? t(course.title)
     : t("learn.wordMemory");
   const subtitle = course
-    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).native} · ${course.level} · ${course.description}`
+    ? `${getLanguage(course.language).flag} ${getLanguage(course.language).native} · ${course.level} · ${t(course.description)}`
     : t("learn.wordMemoryDesc");
 
   return (

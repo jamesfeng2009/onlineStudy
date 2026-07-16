@@ -7,7 +7,24 @@ import { useAuthStore } from "../store/authStore";
 import { useProgressStore } from "../store/progressStore";
 import type { PostResp } from "../lib/api";
 
-const TOPIC_VALUES = ["", "每日一句", "日语学习心得", "韩语 K-pop 学习", "英语职场经验", "提问求助"] as const;
+const TOPIC_KEYS = ["", "daily", "japanese", "kpop", "english", "help"] as const;
+
+const TOPIC_KEY_TO_VALUE: Record<string, string> = {
+  daily: "每日一句",
+  japanese: "日语学习心得",
+  kpop: "韩语 K-pop 学习",
+  english: "英语职场经验",
+  help: "提问求助",
+};
+const VALUE_TO_TOPIC_KEY = Object.fromEntries(
+  Object.entries(TOPIC_KEY_TO_VALUE).map(([k, v]) => [v, k])
+);
+function getTopicKey(value: string): string {
+  return VALUE_TO_TOPIC_KEY[value] || value;
+}
+function getTopicValue(key: string): string {
+  return TOPIC_KEY_TO_VALUE[key] || key;
+}
 
 function formatDate(iso: string | number): string {
   if (!iso) return "";
@@ -35,29 +52,29 @@ export default function CommunityPage() {
 
   const topics = useMemo(
     () =>
-      TOPIC_VALUES.map((value, idx) => ({
-        value,
-        label: value ? t(`community.topics.${["daily", "japanese", "kpop", "english", "help"][idx - 1]}`) : t("community.topics.all"),
+      TOPIC_KEYS.map((key) => ({
+        value: key,
+        label: key ? t(`community.topics.${key}`) : t("community.topics.all"),
       })),
     [t]
   );
 
-  const [topic, setTopic] = useState("");
-  const [newTopic, setNewTopic] = useState<string>(TOPIC_VALUES[1]);
+  const [topic, setTopic] = useState<string>("");
+  const [newTopic, setNewTopic] = useState<string>(TOPIC_KEYS[1]);
   const [content, setContent] = useState("");
   const [commentMap, setCommentMap] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    refreshPosts(topic || undefined);
+    refreshPosts(getTopicValue(topic) || undefined);
   }, [topic, refreshPosts]);
 
   const filtered: PostResp[] =
-    topic && topic !== "" ? posts.filter((p) => p.topic === topic) : posts;
+    topic && topic !== "" ? posts.filter((p) => p.topic === getTopicValue(topic)) : posts;
 
   const submitPost = async () => {
     if (!user) return;
     if (content.trim().length < 5) return;
-    const ok = await createPost(newTopic, content.trim());
+    const ok = await createPost(getTopicValue(newTopic), content.trim());
     if (ok.ok) setContent("");
   };
 
@@ -159,9 +176,13 @@ export default function CommunityPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-semibold text-white">{p.authorName}</span>
+                      <span className="font-semibold text-white">
+                        {p.authorName === "LinguaVerse 官方"
+                          ? t("community.official", { name: "LinguaVerse" })
+                          : p.authorName}
+                      </span>
                       <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-brand-100">
-                        {p.topic}
+                        {t(`community.topics.${getTopicKey(p.topic)}`)}
                       </span>
                       <span className="text-xs text-brand-200/50">{formatDate(p.createdAt)}</span>
                     </div>
