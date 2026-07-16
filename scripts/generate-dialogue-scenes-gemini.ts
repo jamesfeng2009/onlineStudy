@@ -203,7 +203,34 @@ HARD RULES (output rejected otherwise):
 9. Conversation should reach the terminal in 3-5 user replies (not too long).
 10. Include cultural-natural phrases native speakers actually use (e.g. "能説慢啲嗎？" for Cantonese, "もう一度お願いします" for Japanese).
 
-Output ONLY the JSON object — no markdown fences, no commentary.`;
+Output ONLY the JSON object — no markdown fences, no commentary.
+
+JSON structure (follow exactly):
+{
+  "id": "dlg-${lang}-${scenario.id}",
+  "language": "${lang}",
+  "level": "${meta.level}",
+  "scenario": "${scenario.id}",
+  "title": "<title in target language>",
+  "opening": "<first NPC line in target language>",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "<NPC line in target language>",
+      "promptTranslation": "<English translation>",
+      "branches": [
+        { "keywords": ["keyword1", "keyword2"], "nextTurnId": "t2" },
+        { "keywords": [""], "nextTurnId": "t-repeat" }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": { "id": "t-repeat", "prompt": "...", "promptTranslation": "...", "branches": [{"keywords":[""],"nextTurnId":"t1"}], "fallbackBranchId": "t1", "isTerminal": false },
+    "t-end": { "id": "t-end", "prompt": "<goodbye>", "promptTranslation": "...", "branches": [], "fallbackBranchId": "t-end", "isTerminal": true }
+  }
+}`;
+
 }
 
 function sleep(ms: number) {
@@ -215,6 +242,9 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
 
   let res: Response;
   if (provider === "gemini") {
+    // Gemini's responseSchema does not support `additionalProperties`
+    // (used by the `turns` map), so we drop the schema and rely on
+    // responseMimeType + the prompt's explicit structure description.
     res = await fetch(`${endpoint.url(model)}?key=${encodeURIComponent(apiKey)}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", ...endpoint.auth(apiKey) },
@@ -225,7 +255,6 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
           topP: 0.95,
           maxOutputTokens: 8192,
           responseMimeType: "application/json",
-          responseSchema: RESPONSE_SCHEMA,
         },
       }),
     });
@@ -286,6 +315,8 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   console.log(`Planning ${tasks.length} (lang, scenario) batches...`);
+  let ok = 0;
+  let fail = 0;
   for (let i = 0; i < tasks.length; i++) {
     const { lang, scenario } = tasks[i];
     const file = path.join(outDir, `${lang}-${scenario.id}.json`);
@@ -299,13 +330,19 @@ async function main() {
       const scene = await callLLM(prompt, lang);
       fs.writeFileSync(file, JSON.stringify(scene, null, 2));
       console.log("ok");
+      ok++;
     } catch (e) {
       console.log("FAIL", (e as Error).message);
+      fail++;
     }
     // Stay under Gemini free-tier 15 RPM.
     await sleep(4500);
   }
-  console.log(`Done. ${tasks.length} scenes written to ${outDir}`);
+  console.log(`Done. ${ok} ok, ${fail} failed out of ${tasks.length}.`);
+  if (fail > 0 && ok === 0) {
+    console.error("All batches failed — see errors above.");
+    process.exit(1);
+  }
 }
 
 main().catch((e) => {
