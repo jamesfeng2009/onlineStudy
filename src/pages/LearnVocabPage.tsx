@@ -12,6 +12,7 @@ import {
   type LearnLangSlug,
   type LearnWord,
 } from "../data/learn-content";
+import { cefrEquivalent } from "../lib/level-utils";
 
 /**
  * /languages/:langSlug/vocabulary
@@ -356,7 +357,7 @@ const LEVEL_ORDER: Record<LearnLangSlug, string[]> = {
   en: ["A1", "A2", "B1", "B2", "C1", "C2"],
   ja: ["N5", "N4", "N3", "N2", "N1"],
   zh: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6", "HSK7", "HSK8", "HSK9"],
-  ko: ["A1", "A2", "B1"],
+  ko: ["TOPIK1", "TOPIK2", "TOPIK3", "TOPIK4", "TOPIK5", "TOPIK6"],
   es: ["A1", "A2", "B1"],
   fr: ["A1", "A2", "B1"],
   de: ["A1", "A2", "B1"],
@@ -439,8 +440,16 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
   const unit = dataShape === "sentence" ? "sentence" : "word";
   const unitPlural = dataShape === "sentence" ? "sentences" : "words";
 
+  // P0-4: ko uses TOPIK1-6 in the data, but the CEFR-aligned copy below
+  // (A1/A2/B1/...) reads better and is semantically equivalent via
+  // cefrEquivalent (TOPIK1→A1, TOPIK2→A2, TOPIK3→B1, ...). Normalise
+  // so TOPIK levels reuse the existing CEFR copy instead of hitting the
+  // generic fallback.
+  const cefrLevel = cefrEquivalent(slug, level);
+  const effLevel = cefrLevel || level;
+
   // Generic A-level copy used by all languages (CEFR shared)
-  if (level === "A1") {
+  if (effLevel === "A1") {
     return {
       summary: `${metaName(slug)} A1 ${unitPlural} — the survival-vocabulary tier covering greetings, directions, numbers, food, family, and the most common 500 ${unitPlural} you need to get by in everyday situations.`,
       about:
@@ -449,7 +458,7 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
         `Spend your first 4-6 weeks on A1 ${unitPlural}. The 10-minute daily loop is enough — review the A1 deck with spaced repetition until your recall rate is above 90%, then start adding A2 ${unitPlural} one batch per week. Pair the deck with a basic grammar primer for ${metaName(slug)} verb forms (or sentence-final particles, for languages like Korean and Japanese) so you can start producing your own sentences from day one.`,
     };
   }
-  if (level === "A2") {
+  if (effLevel === "A2") {
     return {
       summary: `${metaName(slug)} A2 ${unitPlural} — the everyday-conversation tier covering shopping, travel, work routines, and the ${unitPlural} you need to describe your day, your family, and your plans.`,
       about:
@@ -458,7 +467,7 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
         `A2 takes about 6-8 weeks on top of A1. Continue spaced-repetition review of the A1 deck (your recall should now be automatic) and add 30-50 new A2 ${unitPlural} per week. Start reading simple ${metaName(slug)} texts — children's books, news headlines, restaurant menus — and listening to slow podcasts. By the end of A2 you should be able to follow a basic ${metaName(slug)} conversation at natural speed.`,
     };
   }
-  if (level === "B1") {
+  if (effLevel === "B1") {
     return {
       summary: `${metaName(slug)} B1 ${unitPlural} — the working-language tier covering opinions, experiences, abstract topics, and the ${unitPlural} you need to express yourself in most professional and travel situations.`,
       about:
@@ -517,8 +526,8 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
     };
   }
 
-  // English B2 / C1 / C2
-  if (level === "B2") {
+  // English B2 / C1 / C2 (also reached via effLevel for TOPIK4/5/6)
+  if (effLevel === "B2") {
     return {
       summary: `${metaName("en")} B2 ${unitPlural} — the upper-intermediate tier covering nuanced opinions, abstract topics, and professional vocabulary.`,
       about:
@@ -527,7 +536,7 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
         "B2 takes 3-6 months on top of B1. Continue reviewing A1-B1 (5-minute daily) and add 50-100 new B2 words per week. Read English news and long-form journalism (The Atlantic, The New Yorker, The Economist), listen to English podcasts at natural speed, and try writing 500-1000 word essays for correction. By the end of B2 you should be able to debate any familiar topic in English and read most non-technical English text without a dictionary.",
     };
   }
-  if (level === "C1") {
+  if (effLevel === "C1") {
     return {
       summary: `${metaName("en")} C1 ${unitPlural} — the advanced tier covering academic, professional, and literary vocabulary.`,
       about:
@@ -536,7 +545,7 @@ function pickLevelCopy(slug: LearnLangSlug, level: string): LevelCopy {
         "C1 takes 6-12 months on top of B2. Continue reviewing A1-B2 (5-minute daily) and add 50-100 new C1 words per week. Read English literature, academic papers, and long-form journalism; listen to English lectures and documentaries; and try writing 1000-2000 word essays on complex topics. By the end of C1 you should be able to read any English text (including academic papers) and express yourself with near-native precision.",
     };
   }
-  if (level === "C2") {
+  if (effLevel === "C2") {
     return {
       summary: `${metaName("en")} C2 ${unitPlural} — the mastery tier covering the rarest academic, literary, and specialist vocabulary.`,
       about:
