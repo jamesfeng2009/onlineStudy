@@ -367,6 +367,16 @@ async function main() {
     process.stdout.write(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id} ... `);
     try {
       const scene = await callLLM(prompt, lang);
+      // Normalize: Gemini occasionally omits nextTurnId on branches.
+      // Fix by pointing them at the current turn's fallbackBranchId
+      // (keeps the graph valid; user repeats → same fallback path).
+      for (const turn of Object.values(scene.turns)) {
+        for (const branch of turn.branches) {
+          if (!branch.nextTurnId) {
+            branch.nextTurnId = turn.fallbackBranchId || turn.id;
+          }
+        }
+      }
       fs.writeFileSync(file, JSON.stringify(scene, null, 2));
       console.log("ok");
       ok++;
