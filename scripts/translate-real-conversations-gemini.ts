@@ -174,6 +174,7 @@ async function callGemini(
   prompt: string,
   attempt = 0,
 ): Promise<Translation[]> {
+  const MAX_ATTEMPTS = 4;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=${encodeURIComponent(GEMINI_API_KEY!)}`;
   const headers = {
     "Content-Type": "application/json",
@@ -184,7 +185,7 @@ async function callGemini(
     generationConfig: {
       temperature: 0.3,
       topP: 0.95,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 24576,
       responseMimeType: "application/json",
       responseSchema: RESPONSE_SCHEMA,
     },
@@ -194,7 +195,7 @@ async function callGemini(
   try {
     res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
   } catch (err) {
-    if (attempt < 4) {
+    if (attempt < MAX_ATTEMPTS) {
       const wait = 2000 * Math.pow(2, attempt);
       console.warn(`  network error, retry in ${wait}ms: ${(err as Error).message}`);
       await sleep(wait);
@@ -204,7 +205,7 @@ async function callGemini(
   }
 
   if (res.status === 429 || res.status >= 500) {
-    if (attempt < 4) {
+    if (attempt < MAX_ATTEMPTS) {
       const wait = 4000 * Math.pow(2, attempt);
       console.warn(`  HTTP ${res.status}, retry in ${wait}ms`);
       await sleep(wait);
@@ -222,7 +223,7 @@ async function callGemini(
   const data: any = await res.json();
   const text: string | undefined = data?.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!text) {
-    if (attempt < 2) {
+    if (attempt < MAX_ATTEMPTS) {
       await sleep(2000);
       return callGemini(prompt, attempt + 1);
     }
@@ -240,6 +241,12 @@ async function callGemini(
         .trim();
       parsed = JSON.parse(repairJson(cleaned));
     } catch (err) {
+      if (attempt < MAX_ATTEMPTS) {
+        const wait = 2000 * Math.pow(2, attempt);
+        console.warn(`  json parse failed, retry in ${wait}ms`);
+        await sleep(wait);
+        return callGemini(prompt, attempt + 1);
+      }
       throw new Error(
         `json parse failed: ${(err as Error).message} (text starts: ${text.slice(0, 80)}…)`,
       );
@@ -247,7 +254,7 @@ async function callGemini(
   }
 
   if (!parsed || !Array.isArray(parsed.translations)) {
-    if (attempt < 2) {
+    if (attempt < MAX_ATTEMPTS) {
       await sleep(2000);
       return callGemini(prompt, attempt + 1);
     }
@@ -315,8 +322,9 @@ function buildPrompt(
     `Utterances to translate:`,
     lines,
     ``,
-    `Return a JSON object with a "translations" array. Each item has "id" (matching the input exactly) and "text" (the translation).`,
+    `Return a JSON object with a "translations" array. Each item has "id" (matching the input exactly, including the "|SPEAKER" suffix if present) and "text" (the translation).`,
     `Every utterance must have exactly one translation in the output.`,
+    `CRITICAL: preserve the exact id string from the input, do not remove or alter the "|SPEAKER" part.`,
   ].join("\n");
 }
 
@@ -359,7 +367,7 @@ async function main() {
   let estTokensIn = 0;
   let estTokensOut = 0;
 
-  const BATCH_SIZE = 100;
+  const BATCH_SIZE = 50;
 
   for (const dom of DOMAINS) {
     if (domainArg && domainArg !== dom) continue;
@@ -436,7 +444,10 @@ async function main() {
         const ms = ((Date.now() - t0) / 1000).toFixed(1);
 
         for (const tr of translations) {
-          translationMap.set(tr.id, tr.text);
+          // Normalize id: LLM sometimes appends "|SPEAKER" to the id.
+          // Strip everything after the second "|" to recover the original key.
+          const id = tr.id.split("|").slice(0, 2).join("|");
+          translationMap.set(id, tr.text);
         }
 
         const outTextLen = JSON.stringify(translations).length;
