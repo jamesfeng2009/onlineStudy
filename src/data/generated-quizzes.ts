@@ -84,8 +84,7 @@ import type { QuizItem } from "../types";
   // zh-HSK8.json: 20 items
   // zh-HSK9.json: 20 items
 
-export const GENERATED_QUIZZES = [
-  // ── de (116 items) ──
+const de: QuizItem[] = [  // 116 items
   { id: "q-de-A1-001", question: "Ich ___ Student.", options: ["bist","ist","bin","sind"], answer: 2, explain: "The verb \"sein\" (to be) conjugates to \"bin\" for the first person singular pronoun \"ich\" (I).", language: "de", level: "A1" },
   { id: "q-de-A1-002", question: "Ich sehe ___ Mann.", options: ["der","die","den","das"], answer: 2, explain: "The verb \"sehen\" (to see) requires the accusative case. \"Mann\" (man) is masculine, so the definite article \"der\" changes to \"den\" in the accusative.", language: "de", level: "A1" },
   { id: "q-de-A1-003", question: "Er ___ Fahrrad.", options: ["fahre","fährt","fährst","fahren"], answer: 1, explain: "The irregular verb \"fahren\" (to drive/ride) conjugates to \"fährt\" for the third person singular pronoun \"er\" (he).", language: "de", level: "A1" },
@@ -202,7 +201,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-de-C2-018", question: "Der Antrag wurde mit der Begründung abgelehnt, dass er dem Geist des Gesetzes ___.", options: ["zuwiderläuft","entgegenkommt","widerstrebt","gegenübersteht"], answer: 0, explain: "The verb \"zuwiderlaufen\" (with dative) means 'to run contrary to' or 'to violate' something, often a principle, rule, or spirit. It implies opposition or contradiction.", language: "de", level: "C2" },
   { id: "q-de-C2-019", question: "Sie hat die Aufgabe mit bewundernswerter Präzision und einem hohen Maß an ___ erledigt.", options: ["Akribie","Sorgfalt","Genauigkeit","Fleiß"], answer: 0, explain: "\"Akribie\" refers to extreme meticulousness, thoroughness, and attention to detail, often in academic or scientific contexts. While \"Sorgfalt\" and \"Genauigkeit\" are similar, \"Akribie\" emphasizes an almost obsessive level of precision.", language: "de", level: "C2" },
   { id: "q-de-C2-020", question: "Die Wissenschaftler konnten die Hypothese durch umfangreiche empirische Studien ___.", options: ["untermauern","bestärken","unterstützen","bekräftigen"], answer: 0, explain: "The verb \"untermauern\" means 'to substantiate' or 'to buttress' a claim or hypothesis with evidence. It's a formal term often used in academic discourse to describe providing strong foundational support.", language: "de", level: "C2" },
-  // ── en (119 items) ──
+];
+
+const en: QuizItem[] = [  // 119 items
   { id: "q-en-A1-001", question: "My favorite color ___ blue.", options: ["am","is","are","be"], answer: 1, explain: "Use 'is' for singular subjects like 'My favorite color'. 'Am' is for 'I' and 'are' is for plural subjects or 'you'.", language: "en", level: "A1" },
   { id: "q-en-A1-002", question: "We ___ like cold weather.", options: ["does not","is not","do not","are not"], answer: 2, explain: "To form negative sentences in the simple present tense with 'I', 'you', 'we', 'they', use 'do not' before the base verb. 'Does not' is for 'he', 'she', 'it'.", language: "en", level: "A1" },
   { id: "q-en-A1-003", question: "He ___ play tennis.", options: ["do not","does not","is not","are not"], answer: 1, explain: "To form negative sentences in the simple present tense with 'he', 'she', 'it', use 'does not' before the base verb. 'Do not' is for 'I', 'you', 'we', 'they'.", language: "en", level: "A1" },
@@ -322,7 +323,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-en-C2-018", question: "His argument was so convoluted that it seemed deliberately designed to ___ rather than clarify the issue.", options: ["obfuscate","prevaricate","equivocate","conflate"], answer: 0, explain: "To 'obfuscate' means to make something obscure, unclear, or unintelligible. This implies a deliberate attempt to confuse rather than explain.", language: "en", level: "C2" },
   { id: "q-en-C2-019", question: "The ancient manuscript was discovered in a state of advanced ___, its pages barely legible.", options: ["decomposition","dilapidation","desiccation","disintegration"], answer: 2, explain: "'Desiccation' refers to the process of extreme drying, which would make old pages brittle and difficult to read. It's a specific form of deterioration suitable for manuscripts.", language: "en", level: "C2" },
   { id: "q-en-C2-020", question: "She was accused of political ___, prioritizing personal gain over the welfare of her constituents.", options: ["expediency","opportunism","Machiavellianism","realpolitik"], answer: 0, explain: "'Expediency' refers to actions that are convenient and practical, often at the expense of moral considerations. It fits the description of prioritizing self-interest over ethical duties.", language: "en", level: "C2" },
-  // ── es (115 items) ──
+];
+
+const es: QuizItem[] = [  // 115 items
   { id: "q-es-A1-001", question: "La biblioteca ___ al lado del parque.", options: ["es","está","son","están"], answer: 1, explain: "Use 'estar' to talk about the location of people or things, especially when referring to a temporary or specific position. 'Está' is the third-person singular form for 'la biblioteca'.", language: "es", level: "A1" },
   { id: "q-es-A1-002", question: "Hay muchos ___ en el parque.", options: ["árbol","árboles","arbole","arboles"], answer: 1, explain: "To make 'árbol' (tree) plural, you add -es because it ends in a consonant. The accent mark is also preserved over the 'a'.", language: "es", level: "A1" },
   { id: "q-es-A1-003", question: "Este es el coche ___ mi hermano.", options: ["en","a","con","de"], answer: 3, explain: "The preposition 'de' is used to show possession, similar to 'of' or 's' in English. Here it means 'of my brother'.", language: "es", level: "A1" },
@@ -438,7 +441,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-es-C2-018", question: "Su comportamiento fue ___ inaceptable y mereció una fuerte reprimenda.", options: ["a sabiendas","de sobra","a todas luces","en su fuero interno"], answer: 2, explain: "\"A todas luces\" is an adverbial phrase meaning \"evidently,\" \"clearly,\" or \"obviously,\" used to emphasize the undeniable nature of something.", language: "es", level: "C2" },
   { id: "q-es-C2-019", question: "La propuesta carece de financiación; ___, su viabilidad es cuestionable.", options: ["no obstante","empero","sin embargo","por ende"], answer: 3, explain: "\"Por ende\" is a formal conjunction meaning \"therefore\" or \"consequently,\" used to introduce a logical outcome or conclusion from a preceding statement.", language: "es", level: "C2" },
   { id: "q-es-C2-020", question: "En situaciones de crisis, siempre hay alguien que termina siendo ___.", options: ["la oveja negra","el eslabón débil","el chivo expiatorio","el ojo de la tormenta"], answer: 2, explain: "\"Ser el chivo expiatorio\" is an idiom meaning \"to be the scapegoat,\" referring to someone who is blamed for the mistakes of others.", language: "es", level: "C2" },
-  // ── fr (116 items) ──
+];
+
+const fr: QuizItem[] = [  // 116 items
   { id: "q-fr-A1-001", question: "Je ___ étudiant.", options: ["est","êtes","suis","sont"], answer: 2, explain: "The verb \"être\" (to be) is irregular. For the subject pronoun \"je\" (I), the correct conjugation is \"suis\".", language: "fr", level: "A1" },
   { id: "q-fr-A1-002", question: "Elle achète ___ nouvelle robe.", options: ["un","la","des","une"], answer: 3, explain: "\"Robe\" is a feminine singular noun. The indefinite article for feminine singular nouns is \"une\".", language: "fr", level: "A1" },
   { id: "q-fr-A1-003", question: "Nous voyons ___ oiseaux dans le jardin.", options: ["les","de","des","un"], answer: 2, explain: "\"Oiseaux\" is a plural noun. The indefinite article for plural nouns is \"des\".", language: "fr", level: "A1" },
@@ -555,7 +560,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-fr-C2-016", question: "Les chercheurs s'ingénient ___ trouver une solution durable à la crise énergétique.", options: ["à","de","pour","en"], answer: 0, explain: "'S'ingénier à faire quelque chose' is a formal expression meaning to strive ingeniously or painstakingly to do something. It requires the preposition 'à'.", language: "fr", level: "C2" },
   { id: "q-fr-C2-017", question: "L'annonce de la faillite a porté l'___ à la réputation déjà chancelante de l'entreprise.", options: ["coup fatal","estocade","atteinte","décisive"], answer: 1, explain: "'Porter l'estocade' is an idiom meaning to deliver the final, decisive blow, often used metaphorically in formal or literary contexts.", language: "fr", level: "C2" },
   { id: "q-fr-C2-018", question: "Les difficultés sont réelles ; ___ étant, nous ne devons pas baisser les bras.", options: ["cela","ceci","c'est","il"], answer: 0, explain: "'Cela étant' is a formal phrase used as a transition, meaning 'that being said' or 'however,' to introduce a nuance or a counter-argument.", language: "fr", level: "C2" },
-  // ── id (115 items) ──
+];
+
+const id: QuizItem[] = [  // 115 items
   { id: "q-id-A1-001", question: "Setiap pagi, saya ___ roti untuk sarapan.", options: ["makan","minum","baca","tidur"], answer: 0, explain: "'Makan' means 'to eat'. The sentence describes a daily action of eating bread for breakfast.", language: "id", level: "A1" },
   { id: "q-id-A1-002", question: "Saya ___ di Bandung sejak tahun lalu.", options: ["pergi","kerja","datang","tinggal"], answer: 3, explain: "'Tinggal' means 'to live' or 'to reside'. It indicates where someone lives.", language: "id", level: "A1" },
   { id: "q-id-A1-003", question: "Ayah saya ___ di kantor polisi setiap hari.", options: ["tidur","makan","kerja","minum"], answer: 2, explain: "'Kerja' means 'to work'. The father works at the police office every day.", language: "id", level: "A1" },
@@ -671,7 +678,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-id-C2-018", question: "Ia terkenal karena kemampuannya ___ setiap permasalahan dengan pendekatan yang unik dan inovatif.", options: ["mengurai","memecah","menyelesaikan","menjelaskan"], answer: 0, explain: "'Mengurai permasalahan' means to unravel or disentangle a problem, suggesting a detailed and analytical process to understand and solve it. It implies a deeper analysis than simply 'menyelesaikan'.", language: "id", level: "C2" },
   { id: "q-id-C2-019", question: "Pengambilan keputusan yang tergesa-gesa tanpa pertimbangan matang seringkali ___ konsekuensi yang tidak diinginkan.", options: ["menimbulkan","menciptakan","mengakibatkan","menyebabkan"], answer: 0, explain: "'Menimbulkan' (to cause, to give rise to) is the most natural and common verb to use when discussing the negative consequences of actions. While the others are similar, 'menimbulkan' carries a nuance of producing or generating something.", language: "id", level: "C2" },
   { id: "q-id-C2-020", question: "Kebijakan baru ini dinilai akan ___ lapisan masyarakat bawah, menambah beban ekonomi mereka.", options: ["mencekik","menjepit","menindas","menekan"], answer: 0, explain: "'Mencekik' (to choke/strangle) is used metaphorically here to describe an extreme economic burden that severely limits or oppresses, making it an idiomatic expression for severe financial strain.", language: "id", level: "C2" },
-  // ── it (117 items) ──
+];
+
+const it: QuizItem[] = [  // 117 items
   { id: "q-it-A1-001", question: "Io ___ uno studente italiano.", options: ["sei","siamo","sono","è"], answer: 2, explain: "The verb 'essere' (to be) conjugates as 'sono' for the first person singular pronoun 'io' (I).", language: "it", level: "A1" },
   { id: "q-it-A1-002", question: "___ chiavi sono sulla tavola.", options: ["Il","Lo","La","Le"], answer: 3, explain: "'Chiavi' (keys) is a feminine plural noun, so it takes the definite article 'le'.", language: "it", level: "A1" },
   { id: "q-it-A1-003", question: "Ho ___ zaino nuovo.", options: ["una","uno","un'","un"], answer: 3, explain: "'Zaino' (backpack) is a masculine singular noun starting with a consonant, so it takes the indefinite article 'un'.", language: "it", level: "A1" },
@@ -789,7 +798,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-it-C2-018", question: "Grande ___ fosse la sua reticenza, fu costretto a confessare la verità.", options: ["sebbene","per quanto","anche se","benché"], answer: 1, explain: "Per quanto followed by the subjunctive mood is a formal or literary way to express a concession, meaning 'however much' or 'no matter how much'.", language: "it", level: "C2" },
   { id: "q-it-C2-019", question: "Dopo l'affronto subito, era determinato a ___ pan per focaccia.", options: ["ricevere","rendere","ridare","restituire"], answer: 1, explain: "Rendere pan per focaccia is an Italian idiom meaning 'to give tit for tat' or 'to retaliate in kind'.", language: "it", level: "C2" },
   { id: "q-it-C2-020", question: "___ un anno di serrate trattative, l'accordo fu finalmente siglato.", options: ["Al termine di","In capo a","Dopo","Alla fine di"], answer: 1, explain: "In capo a is a formal expression meaning 'at the end of' or 'after a specified period of time'.", language: "it", level: "C2" },
-  // ── ja (98 items) ──
+];
+
+const ja: QuizItem[] = [  // 98 items
   { id: "q-ja-N1-001", question: "彼のスピーチは感動的で、涙を___いられないほどだった。", options: ["こらえずには","こらえては","こらえずに","こらえることなく"], answer: 0, explain: "「〜ずにはいられない」 expresses an uncontrollable urge or emotion. Here, the speaker couldn't help but hold back tears due to the moving speech.", language: "ja", level: "N1" },
   { id: "q-ja-N1-002", question: "環境問題は深刻化___いるため、早急な対応が求められている。", options: ["しつつ","しながら","して","するばかり"], answer: 0, explain: "「〜つつある」 indicates a gradual ongoing change, commonly seen in formal or journalistic contexts (a remnant of classical Japanese).", language: "ja", level: "N1" },
   { id: "q-ja-N1-003", question: "市民は政府に対し、透明性を___べきだと声を上げている。", options: ["求めよ","求む","求むべき","求めるべし"], answer: 3, explain: "「〜べし」 is a classical auxiliary expressing obligation or necessity, often retained in formal modern writing like editorials or speeches.", language: "ja", level: "N1" },
@@ -888,7 +899,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-ja-N5-018", question: "これは私___本です。", options: ["の","に","は","を"], answer: 0, explain: "The particle の (no) connects two nouns, often indicating possession or association. Here, it shows that the book belongs to 私 (me).", language: "ja", level: "N5" },
   { id: "q-ja-N5-019", question: "私は毎日コーヒーを___。", options: ["飲みません","飲みます","飲みました","飲まない"], answer: 1, explain: "飲みます (nomimasu) is the polite present affirmative form of the verb 'to drink', suitable for describing a daily habit.", language: "ja", level: "N5" },
   { id: "q-ja-N5-020", question: "このパンはあまり___。", options: ["おいしかった","おいしくないです","おいしいです","おいしくなかった"], answer: 1, explain: "おいしくないです (oishikunai desu) is the polite negative form for an i-adjective (おいしい), meaning 'is not delicious'.", language: "ja", level: "N5" },
-  // ── ko (117 items) ──
+];
+
+const ko: QuizItem[] = [  // 117 items
   { id: "q-ko-TOPIK1-001", question: "저는 학생___ 아니에요.", options: ["은","는","이","가"], answer: 1, explain: "'는' is a topic particle used after a noun ending in a vowel. It highlights the topic of the sentence.", language: "ko", level: "TOPIK1" },
   { id: "q-ko-TOPIK1-002", question: "저는 커피는 좋아해요. 차___ 안 좋아해요.", options: ["은","는","이","가"], answer: 1, explain: "'는' is used here for contrast, highlighting that while coffee is liked, tea is not.", language: "ko", level: "TOPIK1" },
   { id: "q-ko-TOPIK1-003", question: "저 사람___ 제 친구예요.", options: ["은","는","이","가"], answer: 2, explain: "'이' is a subject particle used after a noun ending in a consonant. It identifies the subject.", language: "ko", level: "TOPIK1" },
@@ -1006,7 +1019,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-ko-TOPIK6-015", question: "친구가 그 소식을 듣고 정말 놀라___", options: ["더라","던","더니","었지만"], answer: 0, explain: "-더라 is a retrospective ending used when the speaker directly observed or experienced something in the past and is now recalling or reporting it. It cannot be used for the speaker's own past actions or feelings.", language: "ko", level: "TOPIK6" },
   { id: "q-ko-TOPIK6-016", question: "정부는 새로운 정책을 발표___ 전했다.", options: ["했으니","한다고","함으로써","했다고"], answer: 3, explain: "In news reports, indirect quotation forms like -(으)ㄹ 것이라고/한다고/했다고 하다 are commonly used to convey information or statements made by others.", language: "ko", level: "TOPIK6" },
   { id: "q-ko-TOPIK6-017", question: "많은 시민들이 환경 보호의 중요성을 인식___ 나타났다.", options: ["했던 것으로","하는 대신","하는 것으로","하자"], answer: 2, explain: "The expression -(으)ㄴ/는 것으로 나타나다 is commonly used in news or academic reports to indicate that something has been revealed or observed.", language: "ko", level: "TOPIK6" },
-  // ── ms (115 items) ──
+];
+
+const ms: QuizItem[] = [  // 115 items
   { id: "q-ms-A1-001", question: "Ali ___ nasi lemak setiap pagi.", options: ["makan","minum","baca","tidur"], answer: 0, explain: "The verb 'makan' means 'to eat' and is used for consuming solid food like nasi lemak. 'Minum' is for drinking, 'baca' for reading, and 'tidur' for sleeping.", language: "ms", level: "A1" },
   { id: "q-ms-A1-002", question: "Di kelas itu ada ___ pelajar baharu.", options: ["seorang","sebiji","sebatang","sebuah"], answer: 0, explain: "'Seorang' is a classifier used specifically for people. It means 'a person' or 'one person', referring to a new student.", language: "ms", level: "A1" },
   { id: "q-ms-A1-003", question: "___ banyak orang di dalam bas itu.", options: ["Ada","Ini","Itu","Dia"], answer: 0, explain: "'Ada' means 'there is' or 'there are' and is used to state the existence of something. In this case, 'there are many people'.", language: "ms", level: "A1" },
@@ -1122,7 +1137,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-ms-C2-017", question: "Rakyat jelata sentiasa ___ titah perintah raja yang adil.", options: ["menjunjung","mematuhi","mengikuti","mendengar"], answer: 0, explain: "'Menjunjung titah' is a formal and respectful collocation specifically used for obeying a royal decree or command. It signifies deep reverence and compliance with the monarch's orders.", language: "ms", level: "C2" },
   { id: "q-ms-C2-018", question: "Untuk mencapai kemajuan, kita perlu ___ keringat dengan tekun.", options: ["memerah","menitiskan","mengeluarkan","mencurahkan"], answer: 0, explain: "'Memerah keringat' is an idiomatic collocation meaning 'to toil hard' or 'work diligently and strenuously.' It emphasizes the great effort expended to achieve a goal.", language: "ms", level: "C2" },
   { id: "q-ms-C2-019", question: "Sumbangannya kepada masyarakat ___ banyaknya.", options: ["tidak kurang","bukan kecil","tiada kecil","bukan sedikit"], answer: 0, explain: "'Tidak kurang' is a rhetorical device (litotes) used to affirm something strongly by stating its negative. It implies 'a lot' or 'significant,' rather than literally 'not less.'", language: "ms", level: "C2" },
-  // ── th (120 items) ──
+];
+
+const th: QuizItem[] = [  // 120 items
   { id: "q-th-A1-001", question: "คุณครู ___ คนไทย", options: ["อยู่","คือ","มี","เป็น"], answer: 3, explain: "\"เป็น\" is used to describe identity, nationality, or profession. The sentence means \"The teacher is Thai.\"", language: "th", level: "A1" },
   { id: "q-th-A1-002", question: "น้องสาวของฉัน ___ ที่ห้องนั่งเล่น", options: ["เป็น","คือ","มี","อยู่"], answer: 3, explain: "\"อยู่\" means \"to be\" and is used to indicate location or existence. The sentence means \"My younger sister is in the living room.\"", language: "th", level: "A1" },
   { id: "q-th-A1-003", question: "แมวสาม ___ กำลังเล่น", options: ["คน","ตัว","เล่ม","อัน"], answer: 1, explain: "\"ตัว\" is a classifier used for counting animals or certain pieces of furniture. The sentence means \"Three cats are playing.\"", language: "th", level: "A1" },
@@ -1243,7 +1260,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-th-C2-018", question: "การกระทำดังกล่าว___ผิดต่อหลักจริยธรรมอันดีงามของสังคม", options: ["อาจ","คง","น่าจะ","ย่อม"], answer: 3, explain: "“ย่อม” is a formal particle used to express certainty, inevitability, or a logical consequence, often translated as “certainly” or “necessarily”. It indicates that the action will definitely contradict ethical principles.", language: "th", level: "C2" },
   { id: "q-th-C2-019", question: "แม้จะตกอยู่ในสถานการณ์ที่___ เขาก็ยังคงรักษาความสงบและแก้ไขปัญหาได้อย่างชาญฉลาด", options: ["ลำบาก","เลวร้าย","วิกฤต","คับขัน"], answer: 3, explain: "“คับขัน” describes a critical, dire, or urgent situation. “สถานการณ์คับขัน” is a common collocation meaning a critical or difficult predicament that requires immediate and clever action.", language: "th", level: "C2" },
   { id: "q-th-C2-020", question: "การพัฒนาทรัพยากรมนุษย์เป็นสิ่งสำคัญ ___ ความก้าวหน้าของประเทศ", options: ["ที่จะนำไปสู่","เพื่อนำมาซึ่ง","ซึ่งจะนำไปสู่","อันจะนำมาซึ่ง"], answer: 3, explain: "“อันจะนำมาซึ่ง” is a formal and somewhat literary phrase meaning “which will bring about” or “that will result in”, often used in academic or formal writing to express cause and effect.", language: "th", level: "C2" },
-  // ── vi (119 items) ──
+];
+
+const vi: QuizItem[] = [  // 119 items
   { id: "q-vi-A1-001", question: "Lan ___ học sinh mới.", options: ["có","là","ở","đi"], answer: 1, explain: "Là is used to state identity or define something. It's similar to 'to be' in English when linking a subject to its complement.", language: "vi", level: "A1" },
   { id: "q-vi-A1-002", question: "Bây giờ, anh ấy ___ đọc sách.", options: ["sẽ","đang","đã","không"], answer: 1, explain: "Đang indicates an action that is currently happening, similar to the '-ing' form in English. It comes before the verb.", language: "vi", level: "A1" },
   { id: "q-vi-A1-003", question: "Đây là xe máy ___ chị gái tôi.", options: ["ở","là","và","của"], answer: 3, explain: "Của is used to show possession, meaning 'of' or 's. It usually comes after the possessed item and before the possessor.", language: "vi", level: "A1" },
@@ -1363,7 +1382,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-vi-C2-018", question: "Dù biết là khó khăn, nhưng ___ chúng ta vẫn phải thử.", options: ["dẫu vậy","tuy nhiên","nhưng","dẫu cho"], answer: 0, explain: "Dẫu vậy is a conjunction used to introduce a statement that contrasts with what has just been said, emphasizing that something is true or will happen despite a preceding difficulty or concession.", language: "vi", level: "C2" },
   { id: "q-vi-C2-019", question: "Cuộc chiến chống biến đổi khí hậu đòi hỏi những nỗ lực ___.", options: ["không ngừng nghỉ","bền bỉ","dài hơi","kinh niên"], answer: 2, explain: "Dài hơi is an idiomatic expression implying that something requires a long-term, sustained effort or commitment, often used for complex issues like climate change.", language: "vi", level: "C2" },
   { id: "q-vi-C2-020", question: "Nụ cười của cô ấy ___ như ánh nắng ban mai.", options: ["rạng rỡ","lấp lánh","chói chang","tỏa rạng"], answer: 3, explain: "Tỏa rạng describes something radiating light or brilliance, often used in a literary context to convey a gentle yet pervasive glow, such as a radiant smile.", language: "vi", level: "C2" },
-  // ── yue (64 items) ──
+];
+
+const yue: QuizItem[] = [  // 64 items
   { id: "q-yue-A1-001", question: "我___香港大學讀書。", options: ["喺","去","有","係"], answer: 0, explain: "\"喺\" is a preposition meaning \"at\" or \"in\" and is used to indicate the location where an action is performed.", language: "yue", level: "A1" },
   { id: "q-yue-A1-002", question: "佢___識講日文。", options: ["有","係","喺","唔"], answer: 3, explain: "\"唔\" negates the verb \"識\" (to know how to), indicating the inability to do something.", language: "yue", level: "A1" },
   { id: "q-yue-A1-003", question: "___係我妹妹。", options: ["呢個","佢","我","嗰個"], answer: 3, explain: "\"嗰個\" means \"that one\" and is used to refer to a person or object that is further away from the speaker.", language: "yue", level: "A1" },
@@ -1428,7 +1449,9 @@ export const GENERATED_QUIZZES = [
   { id: "q-yue-B2-010", question: "我哋想去超市買___嘢食，你哋有冇興趣一齊去？", options: ["啲","啲嘢","少少","好多"], answer: 1, explain: "「啲嘢」is a common Cantonese phrase meaning 'some things' or 'some stuff'. While '啲' can also mean 'some', '啲嘢' specifically refers to 'things'.", language: "yue", level: "B2" },
   { id: "q-yue-B2-011", question: "新聞報導：警方正___調查一宗可疑案件。", options: ["進行","做","處理","實行"], answer: 0, explain: "「進行」is a formal verb used in news or official reports, meaning 'to conduct' or 'to carry out', which is more appropriate in this context than the colloquial '做'.", language: "yue", level: "B2" },
   { id: "q-yue-B2-012", question: "你可唔可以幫我買___日用品返屋企？", options: ["啲","啲嘢","少量","好多"], answer: 0, explain: "「啲」is a common Cantonese particle used as a pluralizer or to indicate 'some' or 'a little bit' when referring to a quantity of items.", language: "yue", level: "B2" },
-  // ── zh (163 items) ──
+];
+
+const zh: QuizItem[] = [  // 163 items
   { id: "q-zh-HSK1-001", question: "这是我___书。", options: ["的","了","吗","是"], answer: 0, explain: "'的' is a possessive particle, indicating ownership or a descriptive relationship between a noun and a modifier. Here, it shows that the book belongs to 'me'.", language: "zh", level: "HSK1" },
   { id: "q-zh-HSK1-002", question: "请给我一___水。", options: ["杯","个","本","瓶"], answer: 0, explain: "'杯' is a measure word used for drinks or liquids served in a cup or glass.", language: "zh", level: "HSK1" },
   { id: "q-zh-HSK1-003", question: "___我去看电影。", options: ["明天","昨天","去年","晚上"], answer: 0, explain: "'明天' means 'tomorrow'. It is a common time word indicating the day after today.", language: "zh", level: "HSK1" },
@@ -1592,4 +1615,20 @@ export const GENERATED_QUIZZES = [
   { id: "q-zh-HSK9-018", question: "___，则金石为开；精诚所至，鬼神避之。", options: ["至诚感天","赤心贯日","忠魂动地","丹忱格物"], answer: 0, explain: "'至诚感天' is a classical idiom meaning 'utmost sincerity moves Heaven,' forming a parallel couplet with the following clause. The structure demands a four-character set phrase that matches the rhythm and semantic field of divine response.", language: "zh", level: "HSK9" },
   { id: "q-zh-HSK9-019", question: "观其行止，___可知其胸中丘壑。", options: ["大略","概莫","约略","仿佛"], answer: 0, explain: "'大略' (roughly, generally) functions adverbially here to indicate inference from observable behavior, a common pattern in classical descriptive prose. The other options either don't fit syntactically or alter the intended meaning.", language: "zh", level: "HSK9" },
   { id: "q-zh-HSK9-020", question: "___之交淡如水，小人之交甘若醴。", options: ["君子","仁者","贤士","高士"], answer: 0, explain: "This is a direct quote from the Zhuangzi, where '君子之交淡如水' contrasts genuine friendship with superficial sweetness. Only '君子' preserves the canonical wording and philosophical contrast.", language: "zh", level: "HSK9" },
-] as unknown as QuizItem[];
+];
+
+export const GENERATED_QUIZZES: QuizItem[] = [
+  ...de,
+  ...en,
+  ...es,
+  ...fr,
+  ...id,
+  ...it,
+  ...ja,
+  ...ko,
+  ...ms,
+  ...th,
+  ...vi,
+  ...yue,
+  ...zh,
+];

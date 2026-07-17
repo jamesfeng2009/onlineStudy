@@ -75,6 +75,9 @@ function main() {
   }
 
   // Emit TypeScript
+  // 拆成 per-language 子数组(每个独立 `: QuizItem[]` 注解)再 concat,
+  // 避免 1500+ 项字面量 union 触发 TS2590 "union type too complex to represent"。
+  const langOrder = Object.keys(byLang).sort();
   const lines: string[] = [
     "/**",
      " * AUTO-GENERATED — do not edit manually.",
@@ -85,11 +88,12 @@ function main() {
     "",
     ...fileLabels,
     "",
-    "export const GENERATED_QUIZZES: QuizItem[] = [",
   ];
 
-  for (const [lang, items] of Object.entries(byLang)) {
-    lines.push(`  // ── ${lang} (${items.length} items) ──`);
+  // 每个 language 一个独立 const 声明(类型注解 + ≤~200 items,安全)
+  for (const lang of langOrder) {
+    const items = byLang[lang];
+    lines.push(`const ${lang}: QuizItem[] = [  // ${items.length} items`);
     // Rewrite volatile ids (e.g. "q-en-a1-gemini-1-mr60t6zm") into
     // stable ones ("q-en-A1-001") so the SRS / mistake-log subsystem
     // can track cards across regenerations. Sort by original id first
@@ -105,8 +109,15 @@ function main() {
         `  { id: ${JSON.stringify(stableId)}, question: ${JSON.stringify(q.question)}, options: ${JSON.stringify(q.options)}, answer: ${q.answer}, explain: ${JSON.stringify(q.explain)}, language: ${JSON.stringify(q.language)}, level: ${JSON.stringify(q.level)} },`
       );
     }
+    lines.push("];");
+    lines.push("");
   }
 
+  // 最终 export 用 spread concat,不再有 1500-项字面量 union
+  lines.push("export const GENERATED_QUIZZES: QuizItem[] = [");
+  for (const lang of langOrder) {
+    lines.push(`  ...${lang},`);
+  }
   lines.push("];");
   lines.push("");
 
