@@ -1,0 +1,101 @@
+{
+  "id": "dlg-vi-hotel-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Thủ tục nhận phòng khách sạn",
+  "opening": "Chào quý khách, tôi có thể hỗ trợ gì ạ? Anh/chị vui lòng cho biết tên hoặc mã đặt phòng để tôi tiện kiểm tra.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách, tôi có thể hỗ trợ gì ạ? Anh/chị vui lòng cho biết tên hoặc mã đặt phòng để tôi tiện kiểm tra.",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "đặtphòng",
+            "mã",
+            "kiểmtra"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách (Chao quy khach), tôi có thể hỗ trợ gì ạ? Anh/chị vui lòng cho biết tên (ten) hoặc mã đặt phòng (ma dat phong) để tôi tiện kiểm tra."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn anh/chị. Tôi đã tìm thấy đặt phòng của anh/chị dưới tên [Tên khách]. Để tiếp tục thủ tục nhận phòng, phiền anh/chị xuất trình giấy tờ tùy thân như Căn cước công dân hoặc Hộ chiếu ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "chứngminh",
+            "cănước",
+            "hộchiếu",
+            "id"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn anh/chị. Tôi đã tìm thấy đặt phòng của anh/chị dưới tên [Guest Name]. Để tiếp tục thủ tục nhận phòng (thu tuc nhan phong), phiền anh/chị xuất trình (xuat trinh) giấy tờ tùy thân (giay to tuy than) như Căn cước công dân (Can cuoc cong dan) hoặc Hộ chiếu (Ho chieu) ạ."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, xin cảm ơn. Giấy tờ của anh/chị đã được ghi nhận. Về hình thức thanh toán, anh/chị muốn thanh toán toàn bộ chi phí phòng bằng tiền mặt, thẻ tín dụng, hay chuyển khoản ngân hàng ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "thẻ",
+            "tín",
+            "chuyểnkhoản"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, xin cảm ơn. Giấy tờ của anh/chị đã được ghi nhận. Về hình thức thanh toán (hinh thuc thanh toan), anh/chị muốn thanh toán (thanh toan) toàn bộ chi phí phòng (chi phi phong) bằng tiền mặt (tien mat), thẻ tín dụng (the tin dung), hay chuyển khoản (chuyen khoan) ngân hàng ạ?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Đã rõ. Chúng tôi sẽ xử lý thanh toán bằng [Hình thức]. Về phòng của anh/chị, là hạng Deluxe, anh/chị có yêu cầu đặc biệt nào về hướng nhìn, tầng lầu, hoặc các tiện nghi khác không ạ? Và anh/chị có muốn đăng ký bữa sáng tại khách sạn không?",
+      "branches": [
+        {
+          "keywords": [
+            "hướngbiển",
+            "tầngcao",
+            "khônghútthuốc",
+            "yênlặng"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đã rõ (Da ro). Chúng tôi sẽ xử lý thanh toán (xu ly thanh toan) bằng [Payment Method]. Về phòng của anh/chị, là hạng Deluxe, anh/chị có yêu cầu (yeu cau) đặc biệt (dac biet) nào về hướng nhìn (huong nhin), tầng lầu (tang lau), hoặc các tiện nghi (tien nghi) khác không ạ? Và anh/chị có muốn đăng ký bữa sáng (bua sang) tại khách sạn không?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Tuyệt vời. Vậy là anh/chị sẽ nhận phòng Deluxe ở tầng [X] với hướng nhìn [Y], và có/không đăng ký bữa sáng. Tổng cộng chi phí là [Số tiền]. Anh/chị vui lòng ký tên vào phiếu đăng ký này và nhận chìa khóa phòng ạ. Chúc anh/chị có một kỳ nghỉ thật tuyệt vời!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Tuyệt vời. Vậy là anh/chị sẽ nhận phòng Deluxe ở tầng [X] với hướng nhìn [Y], và có/không đăng ký bữa sáng. Tổng cộng chi phí là [Số tiền]. Anh/chị vui lòng ký tên (ky ten) vào phiếu đăng ký (phieu dang ky) này và nhận chìa khóa phòng (chia khoa phong) ạ. Chúc anh/chị có một kỳ nghỉ (ky nghi) thật tuyệt vời!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa rõ ý anh/chị lắm. Anh/chị có thể vui lòng nhắc lại hoặc diễn đạt theo cách khác được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "được"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), tôi chưa rõ ý anh/chị lắm. Anh/chị có thể vui lòng nhắc lại (nhac lai) hoặc diễn đạt (dien dat) theo cách khác được không ạ?"
+    }
+  }
+}

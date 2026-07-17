@@ -1,0 +1,252 @@
+{
+  "id": "dlg-en-transport-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Public Transport Assistance",
+  "opening": "Hi there! How can I help you navigate our public transport system today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! How can I help you navigate our public transport system today?",
+      "branches": [
+        {
+          "keywords": [
+            "destination",
+            "route",
+            "line",
+            "stop"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "fare",
+            "pass"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "delay",
+            "disruption",
+            "schedule",
+            "status"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hi there! How can I help you navigate our public transport system today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certainly. Which destination are you headed for, or which bus or train line are you interested in? Knowing that will help me guide you to the right platform or stop.",
+      "branches": [
+        {
+          "keywords": [
+            "citycenter",
+            "museum",
+            "station",
+            "line3",
+            "bus15"
+          ],
+          "nextTurnId": "t2a_info"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "connection",
+            "change"
+          ],
+          "nextTurnId": "t2b_transfer"
+        },
+        {
+          "keywords": [
+            "",
+            "dontknow"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Which destination are you headed for, or which bus or train line are you interested in? Knowing that will help me guide you to the right platform or stop."
+    },
+    "t2a_info": {
+      "id": "t2a_info",
+      "prompt": "Okay, for the City Centre, you'll need the Line 3 Metro from platform 4. A single journey is £2.80. Are you planning any transfers or concerned about peak hours?",
+      "branches": [
+        {
+          "keywords": [
+            "transfer",
+            "connection",
+            "change"
+          ],
+          "nextTurnId": "t2b_transfer"
+        },
+        {
+          "keywords": [
+            "peak",
+            "hours",
+            "busy",
+            "delay"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "buy",
+            "fare"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "thankyou"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, for the City Centre, you'll need the Line 3 Metro from platform 4. A single journey is £2.80. Are you planning any transfers or concerned about peak hours?"
+    },
+    "t2b_transfer": {
+      "id": "t2b_transfer",
+      "prompt": "Right, transfers can be a bit tricky. Which line are you starting from, and where do you need to go? I can help you figure out the best connection, bearing in mind any potential disruptions.",
+      "branches": [
+        {
+          "keywords": [
+            "line3",
+            "bus15",
+            "metro",
+            "starting",
+            "ending"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "fare",
+            "cost"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "dontknow"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, transfers can be a bit tricky. Which line are you starting from, and where do you need to go? I can help you figure out the best connection, bearing in mind any potential disruptions."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Right, are you looking for a single journey ticket, a day pass for unlimited travel, or perhaps a longer-term commuter pass? Each has its own benefits depending on your travel needs.",
+      "branches": [
+        {
+          "keywords": [
+            "single",
+            "journey"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "howmuch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, are you looking for a single journey ticket, a day pass for unlimited travel, or perhaps a longer-term commuter pass? Each has its own benefits depending on your travel needs."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Okay, I've checked for you. There are currently minor delays on Line 3 due to unexpected maintenance, so allow an extra 10-15 minutes. A day pass is indeed your best value for multiple trips today. Is there anything else I can assist you with regarding your journey, or are you ready to go?",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "no",
+            "finished",
+            "ready"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "map",
+            "schedule",
+            "hours",
+            "validate"
+          ],
+          "nextTurnId": "t4_followup"
+        },
+        {
+          "keywords": [
+            "",
+            "question"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I've checked for you. There are currently minor delays on Line 3 due to unexpected maintenance, so allow an extra 10-15 minutes. A day pass is indeed your best value for multiple trips today. Is there anything else I can assist you with regarding your journey, or are you ready to go?"
+    },
+    "t4_followup": {
+      "id": "t4_followup",
+      "prompt": "We have digital maps available at the information desk, and schedules are posted at each stop and online. Remember to validate your ticket before boarding! Anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "thankyou",
+            "finished"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anotherquestion"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We have digital maps available at the information desk, and schedules are posted at each stop and online. Remember to validate your ticket before boarding! Anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat or rephrase your question?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please repeat or rephrase your question?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, safe travels then! Have a good day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, safe travels then! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dlg-de-small-talk-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Ein Plausch auf der Party",
+  "opening": "Hallo! Ich bin Anna. Nett, Sie kennenzulernen! Wie geht es Ihnen heute Abend?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Ich bin Anna. Nett, Sie kennenzulernen! Wie geht es Ihnen heute Abend?",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "prima",
+            "sehrgut",
+            "ok",
+            "ganzgut",
+            "nichtso"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hallo! Ich bin Anna. Nett, Sie kennenzulernen! (Net-t, Sie ken-nen-zu-ler-nen!) Wie geht es Ihnen heute Abend? — Hi! I'm Anna. Nice to meet you! How are you this evening?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Das ist schön zu hören! Erzählen Sie doch mal, was machen Sie denn gerne in Ihrer Freizeit oder am Wochenende?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "bücher",
+            "romane",
+            "film",
+            "serien",
+            "fernsehen",
+            "kochen",
+            "backen",
+            "musik",
+            "entspannen"
+          ],
+          "nextTurnId": "t3_passive_hobby"
+        },
+        {
+          "keywords": [
+            "sport",
+            "wandern",
+            "fitness",
+            "freunde",
+            "familie",
+            "treffen",
+            "reisen",
+            "ausflug",
+            "aktiv"
+          ],
+          "nextTurnId": "t3_active_hobby"
+        },
+        {
+          "keywords": [
+            "arbeiten",
+            "lernen",
+            "projekt",
+            "studieren"
+          ],
+          "nextTurnId": "t3_work_related"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist schön zu hören! (Das shön tsoo hoe-ren!) Erzählen Sie doch mal, (Er-tseh-len Zee doch mal,) was machen Sie denn gerne in Ihrer Freizeit oder am Wochenende? — That's good to hear! Tell me, what do you like to do in your free time or on the weekend?"
+    },
+    "t3_passive_hobby": {
+      "id": "t3_passive_hobby",
+      "prompt": "Ah, das klingt entspannend! Gibt es da etwas Spezielles, das Sie besonders mögen? Zum Beispiel ein Lieblingsbuch oder eine Serie?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "nein",
+            "empfehlen",
+            "buch",
+            "serie",
+            "film"
+          ],
+          "nextTurnId": "t4_general_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, das klingt entspannend! (Ah, das klinkt ent-shpan-nend!) Gibt es da etwas Spezielles, (Gibpt es da et-vas Shpe-tzi-el-les,) das Sie besonders mögen? Zum Beispiel ein Lieblingsbuch oder eine Serie? — Ah, that sounds relaxing! Is there anything specific you particularly like? For example, a favorite book or a series?"
+    },
+    "t3_active_hobby": {
+      "id": "t3_active_hobby",
+      "prompt": "Oh, das klingt nach viel Energie! Welches Hobby machen Sie denn am liebsten oder wohin reisen Sie am liebsten?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sport",
+            "reise",
+            "wanderung",
+            "stadt",
+            "freunde"
+          ],
+          "nextTurnId": "t4_general_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, das klingt nach viel Energie! (Oh, das klinkt nach feel En-er-gee!) Welches Hobby machen Sie denn am liebsten (Vel-ches Hob-by ma-chen Zee den am leeb-sten) oder wohin reisen Sie am liebsten? — Oh, that sounds like a lot of energy! Which hobby do you like to do most, or where do you like to travel most?"
+    },
+    "t3_work_related": {
+      "id": "t3_work_related",
+      "prompt": "Verstehe, das ist manchmal unvermeidlich. Aber es ist auch gut, wenn man leidenschaftlich bei der Sache ist. Ich hoffe, Sie finden auch Zeit für sich.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "nein",
+            "stimmt"
+          ],
+          "nextTurnId": "t4_general_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstehe, das ist manchmal unvermeidlich. (Fer-stey-e, das ist manch-mal un-fer-myd-lich.) Aber es ist auch gut, wenn man leidenschaftlich bei der Sache ist. Ich hoffe, Sie finden auch Zeit für sich. — I understand, that's sometimes unavoidable. But it's also good when you're passionate about something. I hope you also find time for yourself."
+    },
+    "t4_general_closing": {
+      "id": "t4_general_closing",
+      "prompt": "Das klingt sehr interessant! Es war schön, etwas über Ihre Interessen zu erfahren.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "danke",
+            "ja",
+            "freut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt sehr interessant! (Das klinkt zer in-ter-es-sant!) Es war schön, etwas über Ihre Interessen zu erfahren. — That sounds very interesting! It was nice to learn about your interests."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung, ich habe Sie nicht ganz verstanden. (Ent-shul-di-gung, ich ha-be Sie nicht gants fer-stan-den.) Könnten Sie das bitte wiederholen? — Sorry, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Es war sehr nett, mit Ihnen zu plaudern! Ich wünsche Ihnen noch einen schönen Abend!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Es war sehr nett, mit Ihnen zu plaudern! (Es var zer net, mit Ih-nen tsoo plau-dern!) Ich wünsche Ihnen noch einen schönen Abend! — It was very nice chatting with you! I wish you a pleasant evening!",
+      "isTerminal": true
+    }
+  }
+}

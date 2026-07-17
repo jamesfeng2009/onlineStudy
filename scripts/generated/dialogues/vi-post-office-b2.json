@@ -1,0 +1,222 @@
+{
+  "id": "dlg-vi-post-office-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "Tại bưu điện: Gửi bưu kiện và các dịch vụ khác",
+  "opening": "Chào anh/chị, tôi có thể giúp gì cho anh/chị ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, tôi có thể giúp gì cho anh/chị ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi bưu kiện",
+            "gửi hàng"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mua tem",
+            "tem thư"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "thư bảo đảm",
+            "gửi thư bảo đảm"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị — Chào anh/chị — Hello sir/madam, how may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, anh/chị muốn gửi bưu kiện đi đâu và bên trong có gì ạ? Chúng tôi có thể tư vấn thêm về cách đóng gói.",
+      "branches": [
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "trong nước",
+            "nội địa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị muốn gửi bưu kiện đi đâu và bên trong có gì ạ? — Vâng, anh/chị muốn gửi bưu kiện đi đâu và bên trong có gì ạ? — Yes, where would you like to send the parcel and what's inside? We can advise more on packing."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anh/chị muốn mua loại tem nào ạ? Tem để gửi thư thông thường hay tem sưu tầm có giá trị đặc biệt?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi thư",
+            "thư"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn mua loại tem nào ạ? — Anh/chị muốn mua loại tem nào ạ? — Which type of stamps would you like to buy? Stamps for regular mail or special collector's stamps?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Để gửi thư bảo đảm, anh/chị cần điền vào mẫu đơn này và chúng tôi sẽ cung cấp mã theo dõi. Anh/chị muốn gửi đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "trong nước",
+            "nội địa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "theo dõi",
+            "tra cứu"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để gửi thư bảo đảm, anh/chị cần điền vào mẫu đơn này và chúng tôi sẽ cung cấp mã theo dõi. Anh/chị muốn gửi đi đâu ạ? — Để gửi thư bảo đảm, anh/chị cần điền vào mẫu đơn này và chúng tôi sẽ cung cấp mã theo dõi. Anh/chị muốn gửi đi đâu ạ? — To send registered mail, you need to fill out this form and we'll provide a tracking number. Where do you want to send it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Với bưu kiện/thư bảo đảm quốc tế, anh/chị cần điền tờ khai hải quan. Chúng tôi có các dịch vụ gửi nhanh và gửi tiết kiệm, đều có mã theo dõi. Anh/chị có muốn mua thêm bảo hiểm không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có bảo hiểm",
+            "mua bảo hiểm"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Với bưu kiện/thư bảo đảm quốc tế, anh/chị cần điền tờ khai hải quan. — Với bưu kiện/thư bảo đảm quốc tế, anh/chị cần điền tờ khai hải quan. — For international parcels/registered mail, you'll need to fill out a customs declaration form. We have express and economy services, both with tracking. Would you like to purchase additional insurance?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Với bưu kiện/thư bảo đảm trong nước, anh/chị vui lòng đảm bảo gói hàng đã được đóng gói cẩn thận. Chúng tôi sẽ cung cấp mã theo dõi để anh/chị tiện tra cứu tình trạng đơn hàng.",
+      "branches": [
+        {
+          "keywords": [
+            "sẵn sàng",
+            "được rồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "theo dõi",
+            "tra cứu"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Với bưu kiện/thư bảo đảm trong nước, anh/chị vui lòng đảm bảo gói hàng đã được đóng gói cẩn thận. — Với bưu kiện/thư bảo đảm trong nước, anh/chị vui lòng đảm bảo gói hàng đã được đóng gói cẩn thận. — For domestic parcels/registered mail, please ensure the package is securely packed. We will provide a tracking number for your convenience to check the status."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Vâng, anh/chị vui lòng cho tôi xin mã theo dõi ạ. Tôi sẽ kiểm tra thông tin giúp anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            "mã theo dõi",
+            "đây là mã"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị vui lòng cho tôi xin mã theo dõi ạ. — Vâng, anh/chị vui lòng cho tôi xin mã theo dõi ạ. — Yes, please give me the tracking number. I will check the information for you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói rõ hơn được không ạ? Tôi chưa nghe rõ hoặc chưa hiểu ý của anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, anh/chị có thể nói rõ hơn được không ạ? — Xin lỗi, anh/chị có thể nói rõ hơn được không ạ? — Sorry, could you please clarify? I didn't hear clearly or didn't understand what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Dạ vâng, cảm ơn anh/chị đã sử dụng dịch vụ. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dạ vâng, cảm ơn anh/chị đã sử dụng dịch vụ. — Dạ vâng, cảm ơn anh/chị đã sử dụng dịch vụ. — Yes, thank you for using our service. Wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

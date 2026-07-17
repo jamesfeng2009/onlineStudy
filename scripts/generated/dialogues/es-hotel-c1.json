@@ -1,0 +1,191 @@
+{
+  "id": "dlg-es-hotel-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Registro en el Hotel El Descanso",
+  "opening": "¡Bienvenido/a al Hotel El Descanso! ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Bienvenido/a al Hotel El Descanso! ¿Tiene una reserva a su nombre?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "reserva"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "no",
+            "sinreserva",
+            "todavía"
+          ],
+          "nextTurnId": "t2b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Bienvenido/a al Hotel El Descanso! (bee-en-veh-NEE-doh/dah al Oh-TEL El Des-CAN-soh!) ¿Tiene una reserva a su nombre? (TYEH-neh OO-nah reh-SER-vah ah soo NOHM-breh? — Welcome to Hotel El Descanso! Do you have a reservation under your name?)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Excelente. ¿Me podría indicar el nombre completo bajo el cual se realizó la reserva y un documento de identidad, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "pasaporte",
+            "dni",
+            "identidad",
+            "documento"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. (ek-seh-LEN-teh) ¿Me podría indicar el nombre completo (NOHM-breh kohm-PLEH-toh) bajo el cual se realizó la reserva (reh-ah-lee-SOH lah reh-SER-vah) y un documento de identidad (doh-koo-MEN-toh deh ee-den-tee-DAD), por favor? — Excellent. Could you please provide the full name under which the reservation was made and an ID, please?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "No hay problema, tenemos disponibilidad. ¿Para cuántas noches sería y qué tipo de habitación le gustaría?",
+      "branches": [
+        {
+          "keywords": [
+            "una",
+            "dos",
+            "tres",
+            "cuatro",
+            "noches"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No hay problema, (noh ahy pro-BLEH-mah) tenemos disponibilidad. (teh-NEH-mos dees-poh-nee-bee-lee-DAD) ¿Para cuántas noches sería (KWAHN-tas NOH-ches seh-REE-ah) y qué tipo de habitación le gustaría? (KAY TEE-poh deh ah-bee-ta-SYOHN leh goos-ta-REE-ah? — No problem, we have availability. How many nights would it be for, and what type of room would you like?)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Perfecto, Sr./Sra. [Nombre]. La reserva está confirmada. ¿Prefiere una habitación con vistas a la calle o al jardín? ¿Y para el pago, será con tarjeta o en efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "calle",
+            "vistascalle",
+            "jardín",
+            "vistasjardín"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, Sr./Sra. [Nombre]. (pehr-FEK-toh) La reserva está confirmada. (lah reh-SER-vah es-TAH kohn-feer-MAH-dah) ¿Prefiere una habitación con vistas a la calle (VEE-stas ah lah KAH-yeh) o al jardín? (ahr-DEEN) ¿Y para el pago, (pah-GOH) será con tarjeta (tar-HEH-tah) o en efectivo? (eh-fek-TEE-voh? — Perfect, Mr./Ms. [Name]. The reservation is confirmed. Do you prefer a room with a street view or garden view? And for payment, will it be by card or cash?)"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Entendido. Tenemos una habitación [tipo de habitación] disponible para [número] noches. El coste total es de [precio]. ¿Prefiere pagar con tarjeta o en efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito",
+            "débito"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. (en-ten-DEE-doh) Tenemos una habitación [tee-poh deh ah-bee-ta-SYOHN] disponible (dees-poh-NEE-bleh) para [NOO-meh-roh] noches. El coste total (KOS-teh toh-TAL) es de [PREH-syoh]. ¿Prefiere pagar (pah-GAR) con tarjeta (tar-HEH-tah) o en efectivo? (eh-fek-TEE-voh? — Understood. We have a [room type] room available for [number] nights. The total cost is [price]. Do you prefer to pay by card or cash?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excelente. Solo una cosa más: ¿desea incluir el desayuno buffet en su estancia? Nuestro restaurante lo sirve de 7:00 a 10:30.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "desayuno",
+            "incluir"
+          ],
+          "nextTurnId": "t-end-breakfast"
+        },
+        {
+          "keywords": [
+            "no",
+            "sindesayuno",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "precio",
+            "costo"
+          ],
+          "nextTurnId": "t5_price_breakfast"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. (ek-seh-LEN-teh) Solo una cosa más: (SOH-loh OO-nah KOH-sah MAS) ¿desea incluir el desayuno buffet (deh-sah-YOO-noh boo-FET) en su estancia? (es-TAN-syah) Nuestro restaurante (NWEHS-troh res-tau-RAN-teh) lo sirve de 7:00 a 10:30. (loh SIR-veh deh Syeh-teh ah Dyehs y Meh-dyah. — Excellent. Just one more thing: would you like to include the breakfast buffet with your stay? Our restaurant serves it from 7:00 to 10:30.)"
+    },
+    "t5_price_breakfast": {
+      "id": "t5_price_breakfast",
+      "prompt": "El desayuno tiene un coste adicional de 15 euros por persona. ¿Desea incluirlo entonces?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "incluir",
+            "adelante"
+          ],
+          "nextTurnId": "t-end-breakfast"
+        },
+        {
+          "keywords": [
+            "no",
+            "sindesayuno",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El desayuno (deh-sah-YOO-noh) tiene un coste adicional (KOHS-teh ah-dee-syoh-NAL) de 15 euros por persona. (KEEN-seh EH-oo-ros por pehr-SOH-nah) ¿Desea incluirlo entonces? (deh-SEH-ah een-kloo-EER-loh en-TON-ses? — Breakfast has an additional cost of 15 euros per person. Would you like to include it then?)"
+    },
+    "t-end-breakfast": {
+      "id": "t-end-breakfast",
+      "prompt": "Estupendo. Ya está todo listo con el desayuno incluido. Aquí tiene la llave de su habitación, la número [número], en la [planta] planta. Que tenga una feliz estancia.",
+      "branches": [],
+      "fallbackBranchId": "t-end-breakfast",
+      "promptTranslation": "Estupendo. (es-too-PEN-doh) Ya está todo listo (YAH es-TAH TOH-doh LEES-toh) con el desayuno incluido. (kohn el deh-sah-YOO-noh een-kloo-EE-doh) Aquí tiene la llave de su habitación, (AH-kee TYEH-neh lah YAH-veh deh soo ah-bee-ta-SYOHN) la número [NOO-meh-roh], en la [PLAN-tah] planta. Que tenga una feliz estancia. (keh TEN-gah OO-nah feh-LEEZ es-TAN-syah. — Great. Everything is ready with breakfast included. Here is your room key, number [number], on the [floor] floor. Have a pleasant stay.)",
+      "isTerminal": true
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Ya está todo listo. Aquí tiene la llave de su habitación, la número [número], en la [planta] planta. Que tenga una feliz estancia.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. (pehr-FEK-toh) Ya está todo listo. (YAH es-TAH TOH-doh LEES-toh) Aquí tiene la llave de su habitación, (AH-kee TYEH-neh lah YAH-veh deh soo ah-bee-ta-SYOHN) la número [NOO-meh-roh], en la [PLAN-tah] planta. Que tenga una feliz estancia. (keh TEN-gah OO-nah feh-LEEZ es-TAN-syah. — Perfect. Everything is ready. Here is your room key, number [number], on the [floor] floor. Have a pleasant stay.)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir? No le he entendido bien. Por favor, intente ser más claro.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "vale"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, (dees-KUL-peh) ¿podría repetir? (poh-DREE-ah reh-peh-TEER?) No le he entendido bien. (noh leh EH en-ten-DEE-doh bee-EN) Por favor, intente ser más claro. (por fah-VOR, een-TEN-teh ser MAS KLAH-roh. — Excuse me, could you repeat that? I didn't understand you well. Please try to be clearer.)"
+    }
+  }
+}

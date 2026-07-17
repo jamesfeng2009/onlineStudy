@@ -1,0 +1,159 @@
+{
+  "id": "dlg-fr-phone-call-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Appel téléphonique",
+  "opening": "Allô ? Dupont à l'appareil.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Allô ? Dupont à l'appareil.",
+      "branches": [
+        {
+          "keywords": [
+            "bonjour",
+            "parler",
+            "chercher"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A-llo ? (Hello?) Dyoo-pon a la-pa-rey. (Dupont speaking.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bonjour. Qui désirez-vous joindre ou c'est de la part de qui ?",
+      "branches": [
+        {
+          "keywords": [
+            "je suis",
+            "c'est",
+            "mon nom est",
+            "marie",
+            "luc",
+            "martin",
+            "dupont"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bon-jour. (Hello.) Kee day-zee-ray-voo jwan-dr uh oo seh duh la par duh kee ? (Who would you like to reach or who is calling?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Un instant s'il vous plaît, je regarde s'il est disponible.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "message",
+            "laisser"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un nan-stan seel voo pleh, zhuh ruh-gard seel eh dees-po-neebl. (One moment please, I'll see if he is available.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Je regrette, il/elle est en réunion. Souhaitez-vous laisser un message ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "message",
+            "laisser"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "rappeler"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zhuh ruh-gret, eel/el eh tan rey-nyon. Soo-et-eh-voo le-say un meh-sahzh? (I'm sorry, he/she is in a meeting. Would you like to leave a message?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien, je prends note de votre message. Au revoir.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "au revoir",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Treh byan, zhuh pran not duh vo-tr meh-sahzh. O ruh-vwar. (Very good, I'll take note of your message. Goodbye.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "répéter",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Zhuh nay pa kom-pree. Poo-ryay-voo rey-pay-tay, seel voo pleh ? (I didn't understand. Could you please repeat, please?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et bonne journée.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "O ruh-vwar eh bon joor-nay. (Goodbye and have a good day.)",
+      "isTerminal": true
+    }
+  }
+}

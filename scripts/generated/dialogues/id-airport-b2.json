@@ -1,0 +1,154 @@
+{
+  "id": "dlg-id-airport-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Bantuan di Bandara",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu, Bapak/Ibu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu, Bapak/Ibu? (Sa-la-mat pa-gi. A-da yang bi-sa sa-ya ban-tu, Ba-pak/I-bu?)",
+      "branches": [
+        {
+          "keywords": [
+            "check-in",
+            "boardingpass",
+            "tiket"
+          ],
+          "nextTurnId": "t2_checkin"
+        },
+        {
+          "keywords": [
+            "bagasi",
+            "koper",
+            "hilang"
+          ],
+          "nextTurnId": "t3_bagasi"
+        },
+        {
+          "keywords": [
+            "penundaan",
+            "jadwal",
+            "delay",
+            "informasi"
+          ],
+          "nextTurnId": "t4_delay"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning. Can I help you, Sir/Madam?"
+    },
+    "t2_checkin": {
+      "id": "t2_checkin",
+      "prompt": "Baik, untuk check-in. Boleh saya pinjam tiket atau kode pemesanan serta kartu identitas Anda? Dan mohon sebutkan tujuan penerbangan Bapak/Ibu. (Ba-ik, un-tuk check-in. Bo-leh sa-ya pin-jam ti-ket a-tau ko-de pe-me-sa-nan ser-ta kar-tu i-den-ti-tas An-da? Dan mo-hon se-but-kan tu-ju-an pe-ner-bang-an Ba-pak/I-bu.)",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "dokumen",
+            "identitas",
+            "tiket",
+            "kode"
+          ],
+          "nextTurnId": "t5_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, for check-in. May I borrow your ticket or booking code and your identification card? And please state your flight destination, Sir/Madam?"
+    },
+    "t3_bagasi": {
+      "id": "t3_bagasi",
+      "prompt": "Oh, bagasi hilang? Maaf sekali atas ketidaknyamanannya. Bisa ceritakan sedikit kronologinya dan tunjukkan label bagasi Anda, kalau ada? Kami akan bantu lacak.",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "label",
+            "tag",
+            "ada"
+          ],
+          "nextTurnId": "t5_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, lost luggage? I'm very sorry for the inconvenience. Could you tell me a bit about how it happened and show me your baggage tag, if you have one? We will help track it."
+    },
+    "t4_delay": {
+      "id": "t4_delay",
+      "prompt": "Tentu, Bapak/Ibu. Untuk informasi penundaan penerbangan, boleh saya tahu nomor penerbangan Anda? Mohon sebutkan dengan jelas ya, misalnya GA200 atau JT610.",
+      "branches": [
+        {
+          "keywords": [
+            "nomor",
+            "penerbangan",
+            "ga200",
+            "jt610",
+            "qz321",
+            "lionair",
+            "garuda"
+          ],
+          "nextTurnId": "t5_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, Sir/Madam. For flight delay information, may I know your flight number? Please state it clearly, for example GA200 or JT610."
+    },
+    "t5_confirm": {
+      "id": "t5_confirm",
+      "prompt": "Baik, semua informasi sudah kami terima. Mohon tunggu sebentar ya, kami akan segera proses/cek/bantu lebih lanjut. Terima kasih atas kesabaran Bapak/Ibu.",
+      "branches": [
+        {
+          "keywords": [
+            "tunggu",
+            "baiklah",
+            "siap"
+          ],
+          "nextTurnId": "t6_final_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, all information has been received. Please wait a moment, we will process/check/assist further shortly. Thank you for your patience, Sir/Madam."
+    },
+    "t6_final_info": {
+      "id": "t6_final_info",
+      "prompt": "Ini boarding pass Anda/Kami sudah mencatat laporan bagasi Anda/Penerbangan Anda tertunda hingga pukul [Waktu]. Mohon maaf atas ketidaknyamanan yang terjadi. (I-ni boarding pass An-da/Ka-mi su-dah men-ca-tat la-por-an ba-ga-si An-da/Pe-ner-bang-an An-da ter-tun-da hing-ga pu-kul [Wak-tu]. Mo-hon ma-af a-tas ke-ti-dak-nya-ma-nan yang ter-ja-di.)",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here is your boarding pass/We have noted your luggage report/Your flight is delayed until [Time]. We apologize for the inconvenience caused."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulang? Saya kurang jelas. Ada yang bisa saya bantu? (Mo-hon ma-af, bi-sa di-u-lang? Sa-ya ku-rang je-las. A-da yang bi-sa sa-ya ban-tu?)",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, could you please repeat that? I didn't quite catch it. Is there anything I can help you with?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas pengertian dan kerja samanya. Selamat melanjutkan perjalanan, semoga hari Anda menyenangkan! (Te-ri-ma ka-sih ba-nyak a-tas pen-ger-ti-an dan ker-ja sa-ma-nya. Sa-la-mat me-lan-jut-kan per-ja-la-nan, se-mo-ga ha-ri An-da me-nye-nang-kan!)",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your understanding and cooperation. Have a good journey, and have a pleasant day!",
+      "isTerminal": true
+    }
+  }
+}

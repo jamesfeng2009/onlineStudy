@@ -1,0 +1,219 @@
+{
+  "id": "dlg-es-bank-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Gestión bancaria avanzada",
+  "opening": "¡Buenos días! Diga, ¿en qué puedo asistirle hoy? ¿Viene por alguna gestión concreta o le gustaría explorar alguna de nuestras opciones de inversión?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! Diga, ¿en qué puedo asistirle hoy? ¿Viene por alguna gestión concreta o le gustaría explorar alguna de nuestras opciones de inversión?",
+      "branches": [
+        {
+          "keywords": [
+            "transferencia",
+            "envío",
+            "dinero"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "inversión",
+            "invertir",
+            "fondos"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "abrir",
+            "cuenta",
+            "nueva"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días — Good morning! Diga — Tell me, how can I assist you today? Are you here for a specific transaction or would you like to explore some of our investment options?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. ¿Se trata de una transferencia nacional o internacional? Y, por favor, indíqueme si ya ha realizado este tipo de operación con nosotros con anterioridad.",
+      "branches": [
+        {
+          "keywords": [
+            "internacional",
+            "extranjero",
+            "fuera"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nacional",
+            "dentro",
+            "aquí"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido — Understood. Is it a national or international transfer? And, please, tell me if you have previously performed this type of operation with us."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Excelente elección. Para poder orientarle mejor, ¿podría comentarme cuál es su perfil de riesgo y a qué plazo le gustaría invertir? ¿Busca algo más conservador o está dispuesto a asumir cierto riesgo en pos de una mayor rentabilidad?",
+      "branches": [
+        {
+          "keywords": [
+            "conservador",
+            "bajo",
+            "seguro"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "arriesgado",
+            "alto",
+            "rentabilidad"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente elección — Excellent choice. To better guide you, could you tell me your risk profile and for what term you would like to invest? Are you looking for something more conservative or are you willing to take some risk in pursuit of higher profitability?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Claro, sin problema. ¿Está buscando una cuenta corriente para el día a día, una cuenta de ahorro con cierta rentabilidad, o quizá algo más específico como una cuenta de valores?",
+      "branches": [
+        {
+          "keywords": [
+            "corriente",
+            "diario"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ahorro",
+            "rentabilidad"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "valores",
+            "acciones",
+            "inversión"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, sin problema — Of course, no problem. Are you looking for a checking account for daily use, a savings account with some profitability, or perhaps something more specific like a securities account?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. Para transferencias internacionales, es imprescindible que tenga a mano el código SWIFT/BIC del banco receptor y el IBAN completo del beneficiario. Tenga en cuenta que podría haber comisiones y que las regulaciones varían según el destino. ¿Quiere que revisemos eso ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "quiero",
+            "proceder"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto — Perfect. For international transfers, it is essential that you have the SWIFT/BIC code of the receiving bank and the full IBAN of the beneficiary. Keep in mind that there might be fees and regulations vary by destination. Do you want us to review that now?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "De acuerdo. Si es una transferencia nacional, con el número de cuenta o IBAN del beneficiario suele ser suficiente. Para una cuenta corriente, los requisitos son su DNI/NIE y un justificante de domicilio. ¿Le gustaría proceder con alguno de estos trámites?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "proceder",
+            "quiero"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo — Agreed. If it's a domestic transfer, the beneficiary's account number or IBAN is usually sufficient. For a checking account, the requirements are your DNI/NIE and proof of address. Would you like to proceed with any of these procedures?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Comprendo. Para un perfil conservador o una cuenta de ahorro, podríamos considerar depósitos a plazo fijo, fondos de inversión de renta fija o planes de ahorro garantizados. Ofrecen una rentabilidad moderada con un riesgo contenido. ¿Le interesa que le detalle alguno en particular?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "detalle",
+            "explicar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Comprendo — I understand. For a conservative profile or a savings account, we could consider fixed-term deposits, fixed-income investment funds, or guaranteed savings plans. They offer moderate profitability with contained risk. Are you interested in me detailing any in particular?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Magnífico. Para un perfil más arriesgado en busca de mayor rentabilidad, tenemos fondos de inversión de renta variable, productos estructurados o incluso la posibilidad de invertir directamente en bolsa. Implican un mayor riesgo, pero el potencial de ganancia es superior. ¿Querría que explorásemos alguna de estas opciones con más profundidad?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "explorar",
+            "profundidad"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Magnífico — Magnificent. For a riskier profile in search of higher profitability, we have equity investment funds, structured products, or even the possibility of investing directly in the stock market. They involve greater risk, but the potential for gain is higher. Would you like us to explore any of these options in more depth?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No he entendido bien. Por favor, dígame cómo puedo ayudarle.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, ¿podría repetir eso? — could you repeat that? I didn't understand well. Please tell me how I can help you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Quedo a su entera disposición para cualquier otra gestión que necesite. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. I remain at your complete disposal for any other service you may require. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

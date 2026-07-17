@@ -1,0 +1,204 @@
+{
+  "id": "dlg-es-weather-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Charlas climáticas: Entre caprichos y pronósticos",
+  "opening": "¡Qué día más revuelto tenemos hoy! Parece que el tiempo está de capricho. ¿Cómo lo llevas tú, te afecta mucho este vaivén climático?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Qué día más revuelto tenemos hoy! Parece que el tiempo está de capricho. ¿Cómo lo llevas tú, te afecta mucho este vaivén climático?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "mucho",
+            "meafecta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "nomucho",
+            "medaigual"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "quédía",
+            "quétiempo",
+            "vaya"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué día más revuelto tenemos hoy! (Kay DEE-ah mahs reh-VUEL-toh teh-NEM-ohs oy!) — What a turbulent day we're having today! Parece que el tiempo está de capricho. (Pah-REH-seh keh el TYEM-poh es-TAH deh kah-PREE-choh.) — It seems the weather is being whimsical. ¿Cómo lo llevas tú, te afecta mucho este vaivén climático? (KOH-moh loh YEH-vahs too, teh ah-FEK-tah MOO-choh ES-teh vah-ee-VEN klee-MAH-tee-koh?) — How are you coping, does this climatic fluctuation affect you much?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo, un tiempo tan cambiante puede ser un verdadero incordio. ¿Hay algo en particular que te moleste más, o planes que se te hayan ido al traste por culpa de la meteorología?",
+      "branches": [
+        {
+          "keywords": [
+            "planes",
+            "afectaplanes",
+            "cancelar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ánimo",
+            "salud",
+            "medeprime",
+            "cabezadolor"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "prefiero",
+            "megusta",
+            "quisiera"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo, un tiempo tan cambiante puede ser un verdadero incordio. (En-TYEN-doh, oon TYEM-poh tahn kahm-BYAHN-teh PWEH-deh ser oon ver-dah-DEH-roh een-KOR-dyoh.) — I understand, such changeable weather can be a real nuisance. ¿Hay algo en particular que te moleste más, o planes que se te hayan ido al traste por culpa de la meteorología? (Ay AHL-goh en par-tee-koo-LAR keh teh moh-LES-teh mahs, oh PLAH-nes keh seh teh AH-yahn EE-doh ahl TRAHS-teh por KUL-pah deh lah meh-teh-oh-roh-loh-HEE-ah?) — Is there anything in particular that bothers you more, or plans that have gone awry due to the meteorology?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¡Qué envidia sana! Me alegro de que no te afecte. A mí, personalmente, me descoloca un poco. ¿Eres de los que disfruta de la imprevisibilidad del clima o simplemente te adaptas con facilidad a los caprichos de la atmósfera?",
+      "branches": [
+        {
+          "keywords": [
+            "disfruto",
+            "megusta",
+            "sorprendeme"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "meadapto",
+            "flexible",
+            "sinproblema"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué envidia sana! (Kay en-VEE-dyah SAH-nah!) — I'm genuinely envious! Me alegro de que no te afecte. A mí, personalmente, me descoloca un poco. (Meh ah-LEH-groh deh keh noh teh ah-FEK-teh. Ah MEE, per-soh-nahl-MEN-teh, meh des-koh-LOH-kah oon POH-koh.) — I'm glad it doesn't affect you. Personally, it throws me off a bit. ¿Eres de los que disfruta de la imprevisibilidad del clima o simplemente te adaptas con facilidad a los caprichos de la atmósfera? (EH-res deh lohs keh dees-FRU-tah deh lah eem-preh-vee-see-bee-lee-DAHD del KLEE-mah oh seem-pleh-MEN-teh teh ah-DAHP-tahs kohn fah-see-lee-DAHD ah lohs kah-PREE-chohs deh lah aht-MOS-feh-rah?) — Are you one of those who enjoys the unpredictability of the climate or do you simply adapt easily to the whims of the atmosphere?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Totalmente de acuerdo, a veces el clima parece un personaje más en nuestra vida. ¿Has tenido la oportunidad de echar un vistazo al pronóstico? Dicen que la cosa podría ponerse interesante esta tarde.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "lluvia",
+            "malpronóstico",
+            "vientofuerte"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "novi",
+            "nomiré"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "esperosol",
+            "mejortiempo",
+            "ojalá"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Totally agree, sometimes the climate seems like another character in our lives. Have you had the chance to glance at the forecast? They say things might get interesting this afternoon."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, qué faena con esos planes truncados, o vaya con el pronóstico. A ver si mañana amanece con otra cara. Pero hablando de previsiones, ¿qué estación del año dirías que te sienta mejor o disfrutas más, independientemente de sus vaivenes?",
+      "branches": [
+        {
+          "keywords": [
+            "verano",
+            "sol",
+            "playa"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, what a hassle with those thwarted plans, or wow with the forecast. Let's see if tomorrow dawns with a different face. But speaking of forecasts, what season would you say suits you best or you enjoy most, regardless of its fluctuations?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Claro, es lógico que el ánimo se resienta con tanta inestabilidad. A veces, simplemente necesitamos un poco de sol o una brisa fresca para sentirnos renovados. ¿Hay algún tipo de clima que te evoque una sensación de paz o bienestar en particular?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "cálido",
+            "calor"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, it's logical for one's mood to suffer with so much instability. Sometimes, we simply need a bit of sun or a fresh breeze to feel renewed. Is there any particular type of weather that evokes a feeling of peace or well-being for you?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Me parece fascinante cómo cada uno tiene sus preferencias climáticas. Al final, no podemos controlar el tiempo, pero sí nuestra actitud ante él. Bueno, ha sido una charla muy amena sobre este tema tan… volátil. ¡Gracias por compartir tus ideas!",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "gracias",
+            "adiós"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I find it fascinating how everyone has their climate preferences. In the end, we can't control the weather, but we can control our attitude towards it. Well, it's been a very pleasant chat about this such... volatile topic. Thanks for sharing your thoughts!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, ¿podrías repetirlo o decirlo de otra forma? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that or say it differently? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Ha sido un placer charlar contigo! Que tengas un día excelente.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure chatting with you! Have an excellent day.",
+      "isTerminal": true
+    }
+  }
+}

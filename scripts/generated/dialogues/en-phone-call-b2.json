@@ -1,0 +1,195 @@
+{
+  "id": "dlg-en-phone-call-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "A Quick Call",
+  "opening": "Hello? This is Sarah speaking.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello? This is Sarah speaking.",
+      "branches": [
+        {
+          "keywords": [
+            "hello",
+            "hi",
+            "thisis",
+            "im"
+          ],
+          "nextTurnId": "t2_identified"
+        },
+        {
+          "keywords": [
+            "whoisthis",
+            "whoareyou"
+          ],
+          "nextTurnId": "t2_whoisthis"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello? This is Sarah speaking. (Standard English pronunciation)"
+    },
+    "t2_identified": {
+      "id": "t2_identified",
+      "prompt": "Oh, hi there. Thanks for calling. What can I do for you today?",
+      "branches": [
+        {
+          "keywords": [
+            "needtospeakto",
+            "wanttospeakto",
+            "talkto",
+            "is"
+          ],
+          "nextTurnId": "t3_check_availability"
+        },
+        {
+          "keywords": [
+            "leaveamessage",
+            "message",
+            "formark"
+          ],
+          "nextTurnId": "t3_leave_message_direct"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, hi there. Thanks for calling. What can I do for you today? (Standard English pronunciation)"
+    },
+    "t2_whoisthis": {
+      "id": "t2_whoisthis",
+      "prompt": "This is Sarah, as I just mentioned. Who are you, please?",
+      "branches": [
+        {
+          "keywords": [
+            "sorry",
+            "apologies",
+            "thisis",
+            "im"
+          ],
+          "nextTurnId": "t2_identified"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "This is Sarah, as I just mentioned. Who are you, please? (Standard English pronunciation)"
+    },
+    "t3_check_availability": {
+      "id": "t3_check_availability",
+      "prompt": "I'm afraid Mark isn't available at the moment. Would you like to leave a message or shall I ask him to call you back?",
+      "branches": [
+        {
+          "keywords": [
+            "leaveamessage",
+            "message"
+          ],
+          "nextTurnId": "t4_take_message"
+        },
+        {
+          "keywords": [
+            "callmeback",
+            "askhimtocall"
+          ],
+          "nextTurnId": "t4_callback"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanksanyway",
+            "thatsfine"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm afraid Mark isn't available at the moment. Would you like to leave a message or shall I ask him to call you back? (Standard English pronunciation)"
+    },
+    "t3_leave_message_direct": {
+      "id": "t3_leave_message_direct",
+      "prompt": "Certainly. What's the message for Mark?",
+      "branches": [
+        {
+          "keywords": [
+            "tellhim",
+            "itsabout",
+            "messageis",
+            "pleaselet"
+          ],
+          "nextTurnId": "t4_take_message"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. What's the message for Mark? (Standard English pronunciation)"
+    },
+    "t4_take_message": {
+      "id": "t4_take_message",
+      "prompt": "Alright, I'll make sure he gets the message. Is there anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "thatsall"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I'll make sure he gets the message. Is there anything else? (Standard English pronunciation)"
+    },
+    "t4_callback": {
+      "id": "t4_callback",
+      "prompt": "Okay, I'll let him know to call you back. What's the best number for him to reach you on?",
+      "branches": [
+        {
+          "keywords": [
+            "myphone",
+            "mycell",
+            "numberis",
+            "youcanreachme"
+          ],
+          "nextTurnId": "t4_confirm_callback_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I'll let him know to call you back. What's the best number for him to reach you on? (Standard English pronunciation)"
+    },
+    "t4_confirm_callback_end": {
+      "id": "t4_confirm_callback_end",
+      "prompt": "Got it. I'll pass that along. Thanks for calling!",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "goodbye",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Got it. I'll pass that along. Thanks for calling! (Standard English pronunciation)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat yourself?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat yourself?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Okay, thanks for calling. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, thanks for calling. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

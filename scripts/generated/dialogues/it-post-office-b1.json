@@ -1,0 +1,241 @@
+{
+  "id": "dlg-it-post-office-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "Ufficio Postale: Spedizione Internazionale",
+  "opening": "Buongiorno! Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "spedire",
+            "pacco",
+            "spedizione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "francobolli",
+            "francobollo"
+          ],
+          "nextTurnId": "t4_stamps"
+        },
+        {
+          "keywords": [
+            "informazioni"
+          ],
+          "nextTurnId": "t5_done"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! Come posso aiutarla oggi? — Good morning! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo. Deve spedire un pacco? Dove deve essere spedito?",
+      "branches": [
+        {
+          "keywords": [
+            "estero",
+            "internazionale",
+            "fuori"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "italia",
+            "nazionale",
+            "qui"
+          ],
+          "nextTurnId": "t5_done"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo. Deve spedire un pacco? Dove deve essere spedito? — Of course. Do you need to send a parcel? Where should it be sent?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Per le spedizioni internazionali, abbiamo diverse opzioni. C'è il servizio standard, la raccomandata con tracciabilità, o l'assicurata. Preferisce una raccomandata per avere la tracciabilità?",
+      "branches": [
+        {
+          "keywords": [
+            "raccomandata",
+            "tracciabilità",
+            "assicurata"
+          ],
+          "nextTurnId": "t4_customs"
+        },
+        {
+          "keywords": [
+            "standard",
+            "normale",
+            "no"
+          ],
+          "nextTurnId": "t5_done"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international shipments, we have several options. There's the standard service, registered mail with tracking, or insured mail. Do you prefer registered mail to have tracking?"
+    },
+    "t4_customs": {
+      "id": "t4_customs",
+      "prompt": "Ottima scelta. Dato che è una spedizione internazionale, dovrà compilare un modulo doganale. L'ha già compilato o le serve una mano?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "compilato",
+            "fatto"
+          ],
+          "nextTurnId": "t5_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "aiuto",
+            "mano"
+          ],
+          "nextTurnId": "t5_helpform_done"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottima scelta. Dato che è una spedizione internazionale, dovrà compilare un modulo doganale. L'ha già compilato o le serve una mano? — Excellent choice. Since it's an international shipment, you'll need to fill out a customs form. Have you already filled it out or do you need help?"
+    },
+    "t4_stamps": {
+      "id": "t4_stamps",
+      "prompt": "Certo. Che tipo di francobolli le servono? Per l'Italia o per l'estero?",
+      "branches": [
+        {
+          "keywords": [
+            "italia",
+            "nazionale"
+          ],
+          "nextTurnId": "t5_done"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. What kind of stamps do you need? For Italy or abroad?"
+    },
+    "t5_done": {
+      "id": "t5_done",
+      "prompt": "Perfetto. E le serve qualcos'altro oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "basta"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sì",
+            "altro",
+            "francobolli",
+            "buste"
+          ],
+          "nextTurnId": "t4_stamps"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. And do you need anything else today?"
+    },
+    "t5_helpform_done": {
+      "id": "t5_helpform_done",
+      "prompt": "Nessun problema, le spiego come compilare il modulo. Le serve qualcos'altro oltre a questo?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "basta"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sì",
+            "altro",
+            "francobolli",
+            "buste"
+          ],
+          "nextTurnId": "t4_stamps"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem, I'll explain how to fill out the form. Do you need anything else besides this?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Allora è tutto. Arrivederci e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Allora è tutto. Arrivederci e buona giornata! — That's all then. Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dlg-en-interview-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Job Interview",
+  "opening": "Good morning! Please tell me a little about yourself.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Please tell me a little about yourself.",
+      "branches": [
+        {
+          "keywords": [
+            "experience",
+            "background",
+            "work",
+            "studied"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "interests",
+            "hobbies",
+            "personality",
+            "myself"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! (Good morning!) Please tell me a little about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That's interesting. What specific skills or experiences do you have that relate to this role?",
+      "branches": [
+        {
+          "keywords": [
+            "skills",
+            "abilities",
+            "technical",
+            "communication"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's interesting. (That's interesting.) What specific skills or experiences do you have that relate to this role?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Thank you. What motivated you to apply for this position, and what do you hope to achieve here?",
+      "branches": [
+        {
+          "keywords": [
+            "motivation",
+            "goals",
+            "ambition",
+            "grow"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. (Thank you.) What motivated you to apply for this position, and what do you hope to achieve here?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "We're almost done. Could you tell me about your greatest strengths and perhaps one area you're working to improve?",
+      "branches": [
+        {
+          "keywords": [
+            "strengths",
+            "goodat",
+            "positive",
+            "skills"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We're almost done. (We are almost done.) Could you tell me about your greatest strengths and perhaps one area you're working to improve?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Thank you for sharing that. Do you have any questions for me about the role or the company?",
+      "branches": [
+        {
+          "keywords": [
+            "question",
+            "ask",
+            "details",
+            "about"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for sharing that. (Thank you for sharing that.) Do you have any questions for me about the role or the company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat your answer?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, (Sorry,) I didn't quite catch that. Could you please repeat your answer?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Great. It was a pleasure speaking with you. We'll be in touch soon. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Great. (Great.) It was a pleasure speaking with you. We'll be in touch soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

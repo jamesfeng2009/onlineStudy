@@ -1,0 +1,226 @@
+{
+  "id": "dlg-en-taxi-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "Taking a Taxi",
+  "opening": "Hello! Where would you like to go?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Where would you like to go?",
+      "branches": [
+        {
+          "keywords": [
+            "trainstation",
+            "station",
+            "airport",
+            "hotel",
+            "address",
+            "citycenter"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Where would you like to go?"
+    },
+    "t2_destination": {
+      "id": "t2_destination",
+      "prompt": "Okay, I know that place. Do you want the fastest way or the cheapest way?",
+      "branches": [
+        {
+          "keywords": [
+            "fastest",
+            "quick",
+            "hurry"
+          ],
+          "nextTurnId": "t3_fast"
+        },
+        {
+          "keywords": [
+            "cheapest",
+            "money",
+            "slow"
+          ],
+          "nextTurnId": "t3_cheap"
+        },
+        {
+          "keywords": [
+            "howmuch",
+            "price",
+            "fare"
+          ],
+          "nextTurnId": "t3_price"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I know that place. Do you want the fastest way or the cheapest way?"
+    },
+    "t3_fast": {
+      "id": "t3_fast",
+      "prompt": "The fastest way usually takes about 20 minutes, and costs around 15 pounds. Is that okay?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "fine",
+            "go"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "price",
+            "expensive",
+            "much"
+          ],
+          "nextTurnId": "t3_price"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The fastest way usually takes about 20 minutes, and costs around 15 pounds. Is that okay?"
+    },
+    "t3_cheap": {
+      "id": "t3_cheap",
+      "prompt": "The cheaper way is a bit longer, maybe 30 minutes, and costs around 12 pounds. Does that sound good?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "good",
+            "go"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "price",
+            "much",
+            "expensive"
+          ],
+          "nextTurnId": "t3_price"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The cheaper way is a bit longer, maybe 30 minutes, and costs around 12 pounds. Does that sound good?"
+    },
+    "t3_price": {
+      "id": "t3_price",
+      "prompt": "The price depends on traffic, but it's usually between 12 and 18 pounds. Which route do you prefer, faster or cheaper?",
+      "branches": [
+        {
+          "keywords": [
+            "fast",
+            "faster",
+            "quick"
+          ],
+          "nextTurnId": "t3_fast"
+        },
+        {
+          "keywords": [
+            "cheap",
+            "cheaper",
+            "less"
+          ],
+          "nextTurnId": "t3_cheap"
+        },
+        {
+          "keywords": [
+            "ok",
+            "any",
+            "either"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The price depends on traffic, but it's usually between 12 and 18 pounds. Which route do you prefer, faster or cheaper?"
+    },
+    "t4_confirm": {
+      "id": "t4_confirm",
+      "prompt": "Okay, great. Please put your luggage in the boot. We can go now.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thankyou",
+            "yes",
+            "ready"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, great. Please put your luggage in the boot. We can go now."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand that. Can you please say it again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand that. Can you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, we're here. That will be 15 pounds. Thank you for riding with us. Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, we're here. That will be 15 pounds. Thank you for riding with us. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dlg-es-doctor-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Consulta Médica",
+  "opening": "Buenos días. ¿Qué le trae por aquí hoy? Cuénteme con detalle, por favor.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días. ¿Qué le trae por aquí hoy? Cuénteme con detalle, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "me duele la cabeza",
+            "fiebre",
+            "malestar",
+            "garganta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días — Good morning. ¿Qué le trae por aquí hoy? — What brings you here today? Cuénteme con detalle, por favor. — Tell me in detail, please."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo. Para tener una perspectiva más completa, ¿podría especificar la intensidad del dolor o la fiebre y desde cuándo padece estos síntomas?",
+      "branches": [
+        {
+          "keywords": [
+            "dolor intenso",
+            "fiebre alta",
+            "mucho dolor"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo — I understand. Para tener una perspectiva más completa — To get a more complete picture, ¿podría especificar la intensidad del dolor o la fiebre y desde cuándo padece estos síntomas? — could you specify the intensity of the pain or fever and since when have you been suffering from these symptoms?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Muy bien. ¿Ha notado algún otro síntoma concomitante, como mareos, náuseas, o quizás alguna erupción cutánea? Y, por cierto, ¿es usted alérgico/a a algún medicamento o sustancia?",
+      "branches": [
+        {
+          "keywords": [
+            "mareos",
+            "náuseas",
+            "erupción",
+            "cansancio",
+            "dolor corporal"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien — Very well. ¿Ha notado algún otro síntoma concomitante, como mareos, náuseas, o quizás alguna erupción cutánea? — Have you noticed any other accompanying symptoms, such as dizziness, nausea, or perhaps a skin rash? Y, por cierto, ¿es usted alérgico/a a algún medicamento o sustancia? — And, by the way, are you allergic to any medication or substance?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "De acuerdo. Basándome en la descripción de sus síntomas, parece ser un caso de gripe estacional. Le voy a recetar un analgésico y un antipirético, además de recomendarle mucho reposo e hidratación. Evite el contacto con otras personas por unos días.",
+      "branches": [
+        {
+          "keywords": [
+            "entendido",
+            "gracias",
+            "de acuerdo",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo — Alright. Basándome en la descripción de sus síntomas — Based on the description of your symptoms, parece ser un caso de gripe estacional — it appears to be a case of seasonal flu. Le voy a recetar un analgésico y un antipirético — I'm going to prescribe you an analgesic and an antipyretic, además de recomendarle mucho reposo e hidratación — in addition to recommending a lot of rest and hydration. Evite el contacto con otras personas por unos días — Avoid contact with other people for a few days."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "síntomas",
+            "dolor"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Si los síntomas persisten o empeoran tras tres días, no dude en volver a visitarnos. Que se mejore pronto.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Si los síntomas persisten o empeoran tras tres días — If symptoms persist or worsen after three days, no dude en volver a visitarnos — do not hesitate to visit us again. Que se mejore pronto — Get well soon.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "dlg-vi-airport-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Tại Sân Bay",
+  "opening": "Chào anh/chị. Xin vui lòng cho tôi xem hộ chiếu và vé máy bay của anh/chị.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Xin vui lòng cho tôi xem hộ chiếu và vé máy bay của anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            "đây",
+            "củaem",
+            "củatôi",
+            "hộchiếu",
+            "vé"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao an/chi. Sin vuy long cho toy sem ho chieu va ve may bay cua an/chi — Hello sir/madam. Please show me your passport and flight ticket."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn. Anh/chị có hành lý ký gửi không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "hànhlýkýgửi",
+            "muốncýgửi"
+          ],
+          "nextTurnId": "t3_luggage"
+        },
+        {
+          "keywords": [
+            "không",
+            "khôngcó",
+            "chỉxáchtay"
+          ],
+          "nextTurnId": "t3_noluggage"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kam un. An/chi co hanh ly ky gui khong — Thank you. Do you have checked luggage?"
+    },
+    "t3_luggage": {
+      "id": "t3_luggage",
+      "prompt": "Vâng, xin đặt hành lý lên bàn cân. Anh/chị có hành lý xách tay nào khác không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "xáchtay",
+            "còn"
+          ],
+          "nextTurnId": "t4_carryon"
+        },
+        {
+          "keywords": [
+            "không",
+            "chỉcóthế"
+          ],
+          "nextTurnId": "t4_nocarryon"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, sin dat hanh ly len ban can. An/chi co hanh ly sach tay nao khac khong — Okay, please place the luggage on the scale. Do you have any other carry-on luggage?"
+    },
+    "t3_noluggage": {
+      "id": "t3_noluggage",
+      "prompt": "Không sao cả. Vậy anh/chị có hành lý xách tay không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "xáchtay",
+            "chỉxáchtay"
+          ],
+          "nextTurnId": "t4_carryon"
+        },
+        {
+          "keywords": [
+            "không",
+            "khôngcó"
+          ],
+          "nextTurnId": "t4_nocarryon"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khong sao ca. Vay an/chi co hanh ly sach tay khong — No problem at all. So, do you have any carry-on luggage?"
+    },
+    "t4_carryon": {
+      "id": "t4_carryon",
+      "prompt": "Vâng, anh/chị nhớ mang theo lên máy bay. Đây là thẻ lên máy bay của anh/chị, cổng ra là số G12. Chúc anh/chị có một chuyến bay tốt đẹp!",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmbiệt",
+            "hẹn gặp lại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, an/chi nho mang theo len may bay. Day la the len may bay cua an/chi, cong ra la so G12. Chuc an/chi co mot chuyen bay tot dep! — Okay, please remember to take it onto the plane. Here is your boarding pass, the gate is G12. Have a good flight!"
+    },
+    "t4_nocarryon": {
+      "id": "t4_nocarryon",
+      "prompt": "Tuyệt vời. Vậy đây là thẻ lên máy bay của anh/chị và cổng ra là số G12. Chúc anh/chị có một chuyến bay tốt đẹp!",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmbiệt",
+            "hẹn gặp lại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyet voi. Vay day la the len may bay cua an/chi va cong ra la so G12. Chuc an/chi co mot chuyen bay tot dep! — Great. So, here is your boarding pass and the gate is G12. Have a good flight!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói lại rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sin loy, an/chi co the noy lay ro hon duoc khong a? — Excuse me, could you please repeat that more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi. Chúc anh/chị có một chuyến đi vui vẻ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kam un quy khach da su dung dich vu cua chung toy. Chuc an/chi co mot chuyen di vui ve! — Thank you for using our services. Have a pleasant trip!",
+      "isTerminal": true
+    }
+  }
+}

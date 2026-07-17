@@ -1,0 +1,95 @@
+{
+  "id": "dlg-es-doctor-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Visita al Médico",
+  "opening": "¡Hola! Buenos días. Por favor, tome asiento. ¿Qué le trae por aquí hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Buenos días. Por favor, tome asiento. ¿Qué le trae por aquí hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "tengo dolor",
+            "me duele"
+          ],
+          "nextTurnId": "t2_sintomas"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! Buenos días. Por favor, tome asiento. ¿Qué le trae por aquí hoy? — Hello! Good morning. Please, take a seat. What brings you here today?"
+    },
+    "t2_sintomas": {
+      "id": "t2_sintomas",
+      "prompt": "Entiendo. ¿Y dónde le duele exactamente o qué otros síntomas tiene? ¿Desde cuándo tiene estos síntomas?",
+      "branches": [
+        {
+          "keywords": [
+            "en la cabeza",
+            "en la garganta",
+            "en el estómago",
+            "me duele la cabeza"
+          ],
+          "nextTurnId": "t3_alergias"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. ¿Y dónde le duele exactamente o qué otros síntomas tiene? ¿Desde cuándo tiene estos síntomas? — I understand. And where exactly does it hurt or what other symptoms do you have? Since when have you had these symptoms?"
+    },
+    "t3_alergias": {
+      "id": "t3_alergias",
+      "prompt": "De acuerdo. ¿Tiene alguna alergia conocida o está tomando algún medicamento actualmente?",
+      "branches": [
+        {
+          "keywords": [
+            "sí, tengo alergia",
+            "soy alérgico a"
+          ],
+          "nextTurnId": "t4_diagnostico"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. ¿Tiene alguna alergia conocida o está tomando algún medicamento actualmente? — Alright. Do you have any known allergies or are you currently taking any medication?"
+    },
+    "t4_diagnostico": {
+      "id": "t4_diagnostico",
+      "prompt": "Bien. Por lo que me cuenta, parece que tiene un resfriado o una gripe leve. Le voy a recetar un analgésico y le sugiero que descanse. Si los síntomas persisten, vuelva en tres días.",
+      "branches": [
+        {
+          "keywords": [
+            "muchas gracias",
+            "gracias doctor"
+          ],
+          "nextTurnId": "t5_terminal"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. From what you tell me, it seems like you have a cold or a mild flu. I'm going to prescribe a painkiller and suggest you rest. If symptoms persist, come back in three days."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he entendido bien. ¿Podría repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't understand you well. Could you please repeat it?"
+    },
+    "t5_terminal": {
+      "id": "t5_terminal",
+      "prompt": "De nada. Que se mejore pronto y cuídese. ¡Hasta luego!",
+      "branches": [],
+      "fallbackBranchId": "t5_terminal",
+      "promptTranslation": "You're welcome. Get well soon and take care. See you later!",
+      "isTerminal": true
+    }
+  }
+}

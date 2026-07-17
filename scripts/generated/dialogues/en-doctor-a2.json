@@ -1,0 +1,235 @@
+{
+  "id": "dlg-en-doctor-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Doctor Visit",
+  "opening": "Hello, please sit down. How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, please sit down. How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "stomachache",
+            "stomach hurts",
+            "stomach pain"
+          ],
+          "nextTurnId": "t2_stomach"
+        },
+        {
+          "keywords": [
+            "headache",
+            "head hurts",
+            "head pain"
+          ],
+          "nextTurnId": "t2_head"
+        },
+        {
+          "keywords": [
+            "cold",
+            "cough",
+            "sore throat",
+            "fever"
+          ],
+          "nextTurnId": "t2_cold"
+        },
+        {
+          "keywords": [
+            "sick",
+            "feel bad",
+            "not well"
+          ],
+          "nextTurnId": "t2_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello, please sit down. How can I help you today? - Hello, please sit down. How can I help you today?"
+    },
+    "t2_general": {
+      "id": "t2_general",
+      "prompt": "I see. Can you tell me more about what you are feeling?",
+      "branches": [
+        {
+          "keywords": [
+            "stomachache",
+            "stomach hurts",
+            "stomach pain"
+          ],
+          "nextTurnId": "t2_stomach"
+        },
+        {
+          "keywords": [
+            "headache",
+            "head hurts",
+            "head pain"
+          ],
+          "nextTurnId": "t2_head"
+        },
+        {
+          "keywords": [
+            "cold",
+            "cough",
+            "sore throat",
+            "fever"
+          ],
+          "nextTurnId": "t2_cold"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Can you tell me more about what you are feeling? - I see. Can you tell me more about what you are feeling?"
+    },
+    "t2_stomach": {
+      "id": "t2_stomach",
+      "prompt": "I see. How long have you had the stomach pain? Do you feel sick to your stomach or vomit?",
+      "branches": [
+        {
+          "keywords": [
+            "one day",
+            "two days",
+            "since yesterday",
+            "not long"
+          ],
+          "nextTurnId": "t3_prescription"
+        },
+        {
+          "keywords": [
+            "more than three days",
+            "a week",
+            "long time"
+          ],
+          "nextTurnId": "t3_checkup"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. How long have you had the stomach pain? Do you feel sick to your stomach or vomit? - I see. How long have you had the stomach pain? Do you feel sick to your stomach or vomit?"
+    },
+    "t2_head": {
+      "id": "t2_head",
+      "prompt": "How long have you had this headache? Is it very strong? Do you feel dizzy?",
+      "branches": [
+        {
+          "keywords": [
+            "today",
+            "not long",
+            "mild",
+            "not strong"
+          ],
+          "nextTurnId": "t3_prescription"
+        },
+        {
+          "keywords": [
+            "long time",
+            "strong",
+            "bad",
+            "very strong",
+            "dizzy",
+            "yes"
+          ],
+          "nextTurnId": "t3_checkup"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How long have you had this headache? Is it very strong? Do you feel dizzy? - How long have you had this headache? Is it very strong? Do you feel dizzy?"
+    },
+    "t2_cold": {
+      "id": "t2_cold",
+      "prompt": "Do you have a fever or a sore throat with your cold? Are you very tired?",
+      "branches": [
+        {
+          "keywords": [
+            "yes, fever",
+            "fever",
+            "sore throat",
+            "yes"
+          ],
+          "nextTurnId": "t3_prescription"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Do you have a fever or a sore throat with your cold? Are you very tired? - Do you have a fever or a sore throat with your cold? Are you very tired?"
+    },
+    "t3_prescription": {
+      "id": "t3_prescription",
+      "prompt": "Okay, I will give you some medicine. Take it three times a day. Drink water and rest.",
+      "branches": [
+        {
+          "keywords": [
+            "thank you",
+            "okay",
+            "understand"
+          ],
+          "nextTurnId": "t4_followup"
+        },
+        {
+          "keywords": [
+            "allergies",
+            "allergy",
+            "medicine allergy"
+          ],
+          "nextTurnId": "t3_allergies"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I will give you some medicine. Take it three times a day. Drink water and rest. - Okay, I will give you some medicine. Take it three times a day. Drink water and rest."
+    },
+    "t3_checkup": {
+      "id": "t3_checkup",
+      "prompt": "It sounds a bit serious. We need to do some tests to find the cause. Can you come back tomorrow morning?",
+      "branches": [
+        {
+          "keywords": [
+            "yes, tomorrow",
+            "okay",
+            "when can i come?"
+          ],
+          "nextTurnId": "t4_followup"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It sounds a bit serious. We need to do some tests to find the cause. Can you come back tomorrow morning? - It sounds a bit serious. We need to do some tests to find the cause. Can you come back tomorrow morning?"
+    },
+    "t3_allergies": {
+      "id": "t3_allergies",
+      "prompt": "Do you have any allergies to medicine, like penicillin or aspirin?",
+      "branches": [
+        {
+          "keywords": [
+            "yes, penicillin",
+            "allergy to aspirin",
+            "yes"
+          ],
+          "nextTurnId": "t4_followup"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Do you have any allergies to medicine, like penicillin or aspirin? - Do you have any allergies to medicine, like penicillin or aspirin?"
+    },
+    "t4_followup": {
+      "id": "t4_followup",
+      "prompt": "Good. If you feel worse, please call us. Take care and goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t4_followup",
+      "promptTranslation": "Good. If you feel worse, please call us. Take care and goodbye! - Good. If you feel worse, please call us. Take care and goodbye!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Can you say that again, please?",
+      "branches": [
+        {
+          "keywords": [
+            "repeat",
+            "again",
+            "sorry"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Can you say that again, please? - Sorry, I didn't understand. Can you say that again, please?"
+    }
+  }
+}

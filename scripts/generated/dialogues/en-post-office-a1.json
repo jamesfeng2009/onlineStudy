@@ -1,0 +1,123 @@
+{
+  "id": "dlg-en-post-office-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Post Office Visit",
+  "opening": "Hello. How can I help you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. How can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "send",
+            "parcel",
+            "package"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "buy",
+            "stamps"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ask",
+            "question"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. How can I help you? — Hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Okay. Where do you send the parcel?",
+      "branches": [
+        {
+          "keywords": [
+            "uk",
+            "unitedkingdom"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Where do you send the parcel? — Okay. Where do you send the parcel?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Okay. How many stamps do you need?",
+      "branches": [
+        {
+          "keywords": [
+            "one",
+            "1"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. How many stamps do you need? — Okay. How many stamps do you need?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "What is your question?",
+      "branches": [
+        {
+          "keywords": [
+            "tracking",
+            "track"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What is your question? — What is your question?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Okay. I can help you with that. Please wait here.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. I can help you with that. Please wait here. — Okay. I can help you with that. Please wait here."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Can you say that again, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? Can you say that again, please? — Sorry? Can you say that again, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you. Goodbye.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Goodbye. — Thank you. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

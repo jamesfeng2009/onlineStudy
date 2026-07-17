@@ -1,0 +1,113 @@
+{
+  "id": "dlg-ms-weather-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Bicara Cuaca Ekstrem: Perubahan Iklim Global",
+  "opening": "Cuaca akhir-akhir ini memang di luar jangkaan, ya? Selepas bahang terik beberapa hari, tiba-tiba hujan lebat mencurah-curah.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Cuaca akhir-akhir ini memang di luar jangkaan, ya? Selepas bahang terik beberapa hari, tiba-tiba hujan lebat mencurah-curah.",
+      "branches": [
+        {
+          "keywords": [
+            "betul",
+            "memang",
+            "takmenentu",
+            "pelik",
+            "luarjangkaan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cuaca akhir-akhir ini memang di luar jangkaan (choo-ah-chah ah-kheer ah-kheer ee-nee meh-mang dee loo-ar jang-kah-an), ya? Selepas bahang terik (seh-leh-pas bah-hang teh-reek) beberapa hari, tiba-tiba hujan lebat (tee-bah-tee-bah hoo-jan leh-bat) mencurah-curah."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Saya setuju, keadaan cuaca sekarang memang agak ekstrem dan sukar dijangka. Nampaknya kita dah tak boleh lari daripada hakikat perubahan iklim global, bukan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "betul",
+            "setuju",
+            "ketara",
+            "iklim",
+            "global"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya setuju (sah-yah seh-too-joo), keadaan cuaca sekarang memang agak ekstrem (ehk-streem) dan sukar dijangka (soo-kar dee-jang-kah). Nampaknya (nam-pak-nya) kita dah tak boleh lari daripada hakikat (ha-kee-kat) perubahan iklim global (glo-bal), bukan?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Memang, kesannya semakin dirasai oleh ramai. Kalau begitu, pada pandangan awak, apakah inisiatif yang paling mendesak yang perlu kita ambil untuk menghadapi ketidakpastian cuaca ini, baik dari segi adaptasi mahupun mitigasi?",
+      "branches": [
+        {
+          "keywords": [
+            "adaptasi",
+            "bersedia",
+            "struktur",
+            "infrastruktur"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Memang, kesannya (keh-san-nya) semakin dirasai (dee-rah-sa-ee) oleh ramai. Kalau begitu, pada pandangan awak, apakah inisiatif (ee-nee-see-ah-tif) yang paling mendesak (men-deh-sak) yang perlu kita ambil untuk menghadapi (meng-ha-da-pee) ketidakpastian (keh-tee-dak-pas-tee-an) cuaca ini, baik dari segi adaptasi (ah-dap-tah-see) mahupun mitigasi (mee-tee-gah-see)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Pandangan yang bernas! Jelas sekali ini adalah isu kompleks yang memerlukan pendekatan holistik dan kerjasama pelbagai pihak. Terima kasih banyak atas perbincangan yang bermanfaat ini. Selamat menjalani hari anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Pandangan yang bernas (pan-da-ngan yang ber-nas)! Jelas sekali ini adalah isu kompleks (kom-pleks) yang memerlukan pendekatan holistik (ho-lis-tik) dan kerjasama (ker-ja-sa-ma) pelbagai pihak (pel-ba-gai pee-hak). Terima kasih banyak atas perbincangan yang bermanfaat ini. Selamat menjalani hari anda!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang faham maksud awak.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I don't quite understand what you mean."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya rasa perbincangan kita cukup sampai di sini buat masa ini. Terima kasih banyak-banyak. Selamat tinggal!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I think our discussion is sufficient here for now. Thank you very much. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

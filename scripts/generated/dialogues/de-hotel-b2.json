@@ -1,0 +1,177 @@
+{
+  "id": "dlg-de-hotel-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Hotel-Check-in",
+  "opening": "Guten Tag! Herzlich willkommen im Hotel Sonnenblick. Haben Sie eine Reservierung auf einen Namen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Herzlich willkommen im Hotel Sonnenblick. Haben Sie eine Reservierung auf einen Namen?",
+      "branches": [
+        {
+          "keywords": [
+            "name",
+            "reservierung",
+            "ichhabe"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keine"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag! Herz-lich will-kom-men im Ho-tel Son-nen-blick. Hab-en Sie ei-ne Re-ser-vie-rung auf ei-nen Na-men? — Good day! Welcome to Hotel Sonnenblick. Do you have a reservation under a name?"
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "Verstehe. Wir können aber sicher trotzdem ein Zimmer für Sie finden. Könnten Sie mir bitte Ihren vollständigen Namen nennen?",
+      "branches": [
+        {
+          "keywords": [
+            "meinname",
+            "ichbin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ver-ste-he. Wir könn-en a-ber si-cher trotz-dem ein Zim-mer für Sie fin-den. Könn-ten Sie mir bit-te Ih-ren voll-stän-di-gen Na-men nen-nen? — I see. But I'm sure we can still find a room for you. Could you please tell me your full name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, ja, Herr/Frau [Name des Lernenden], ich sehe Ihre Reservierung. Für drei Nächte in einem Doppelzimmer. Das ist korrekt, nicht wahr? Dürfte ich bitte Ihren Ausweis sehen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "korrekt",
+            "stimmt",
+            "hier",
+            "ausweis",
+            "bitte"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nein",
+            "falsch",
+            "nichtstimmt"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, ja, Herr/Frau [Learner's Name], ich se-he Ih-re Re-ser-vie-rung. Für drei Näch-te in ei-nem Dop-pel-zim-mer. Das ist kor-rekt, nicht wahr? Dürf-te ich bit-te Ih-ren Aus-weis seh-en? — Ah, yes, Mr./Ms. [Learner's Name], I see your reservation. For three nights in a double room. That's correct, isn't it? May I please see your ID?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vielen Dank. Alles klar. Wie möchten Sie bezahlen? Direkt hier oder haben wir Ihre Kreditkartendaten bereits hinterlegt?",
+      "branches": [
+        {
+          "keywords": [
+            "kreditkarte",
+            "karte",
+            "hinterlegt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vie-len Dank. Al-les klar. Wie möch-ten Sie be-zah-len? Di-rekt hier o-der ha-ben wir Ih-re Kre-dit-kar-ten-da-ten be-reits hin-ter-legt? — Thank you. All clear. How would you like to pay? Directly here or do we already have your credit card details on file?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ausgezeichnet. Ihre Zahlung ist somit geregelt. Haben Sie Präferenzen bezüglich Ihres Zimmers? Zum Beispiel eine höhere Etage oder Blick zum Garten? Und möchten Sie unser Frühstücksbuffet in Anspruch nehmen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "frühstück",
+            "gartenblick",
+            "etage"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aus-ge-zeich-net. Ih-re Zah-lung ist so-mit ge-re-gelt. Ha-ben Sie Prä-fe-ren-zen be-züg-lich Ih-res Zim-mers? Zum Bei-spiel ei-ne hö-he-re E-ta-ge o-der Blick zum Gar-ten? Und möch-ten Sie un-ser Früh-stücks-buf-fet in An-spruch neh-men? — Excellent. Your payment is thus settled. Do you have any preferences regarding your room? For example, a higher floor or a garden view? And would you like to take advantage of our breakfast buffet?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Verstanden. Zimmer 305 ist bereit für Sie, im dritten Stock mit Blick auf den Stadtpark. Die Schlüsselkarte aktiviere ich Ihnen sofort. Das Frühstück wird täglich von 7:00 bis 10:30 Uhr im Restaurant serviert. Haben Sie sonst noch Fragen?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "allesklar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ver-stan-den. Zim-mer drei-hun-dert-fünf ist be-reit für Sie, im drit-ten Stock mit Blick auf den Stadt-park. Die Schlüs-sel-kar-te ak-ti-vie-re ich Ih-nen so-fort. Das Früh-stück wird täg-lich von sie-ben bis halb-elf Uhr im Re-stau-rant ser-viert. Ha-ben Sie sonst noch Fra-gen? — Understood. Room 305 is ready for you, on the third floor with a view of the city park. I'll activate your key card immediately. Breakfast is served daily from 7:00 to 10:30 in the restaurant. Do you have any other questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, das habe ich nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-schul-di-gen Sie, das ha-be ich nicht ganz ver-stan-den. Könn-ten Sie das bit-te wie-der-ho-len o-der an-ders for-mu-lie-ren? — Excuse me, I didn't quite understand that. Could you please repeat it or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Wunderbar! Dann wünsche ich Ihnen einen angenehmen Aufenthalt bei uns. Falls Sie etwas benötigen, zögern Sie nicht, uns zu kontaktieren.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wun-der-bar! Dann wün-sche ich Ih-nen ei-nen an-ge-neh-men Auf-ent-halt bei uns. Falls Sie et-was be-nö-ti-gen, zö-gern Sie nicht, uns zu kon-tak-tie-ren. — Wonderful! Then I wish you a pleasant stay with us. If you need anything, don't hesitate to contact us.",
+      "isTerminal": true
+    }
+  }
+}

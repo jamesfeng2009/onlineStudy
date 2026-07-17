@@ -1,0 +1,132 @@
+{
+  "id": "dlg-vi-doctor-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Khám bệnh tổng quát",
+  "opening": "Chào anh/chị. Mời anh/chị ngồi. Hôm nay anh/chị cảm thấy trong người thế nào, có gì không khỏe sao?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Mời anh/chị ngồi. Hôm nay anh/chị cảm thấy trong người thế nào, có gì không khỏe sao?",
+      "branches": [
+        {
+          "keywords": [
+            "bị sốt",
+            "sốt",
+            "đau họng",
+            "họng"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao anh/chi). Mời anh/chị ngồi (Moi anh/chi ngoi). Hôm nay anh/chị cảm thấy trong người thế nào, có gì không khỏe sao? (Hom nay anh/chi cam thay trong nguoi the nao, co gi khong khoe sao?) — Hello. Please have a seat. How are you feeling today, is something not well?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Anh/chị có thể nói rõ hơn về triệu chứng được không? Cơn đau/tình trạng này xuất hiện từ khi nào, kéo dài bao lâu rồi, và mức độ ra sao? Có kèm theo triệu chứng nào khác không?",
+      "branches": [
+        {
+          "keywords": [
+            "mấy ngày nay",
+            "hôm qua",
+            "tuần trước"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Could you describe the symptoms in more detail? When did this pain/condition appear, how long has it lasted, and what's its intensity? Are there any other accompanying symptoms?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, tôi đã nắm được tình hình sơ bộ. Anh/chị có tiền sử bệnh lý nền nào không, hay có dị ứng với loại thuốc hoặc thực phẩm nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "không có",
+            "không",
+            "không ạ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang), tôi đã nắm được tình hình sơ bộ (toi da nam duoc tinh hinh so bo). Anh/chị có tiền sử bệnh lý nền nào không (Anh/chi co tien su benh ly nen nao khong), hay có dị ứng với loại thuốc hoặc thực phẩm nào không? (hay co di ung voi loai thuoc hoac thuc pham nao khong?) — Alright, I have a preliminary understanding of the situation. Do you have any underlying medical conditions, or are you allergic to any medications or food?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dựa trên những gì anh/chị mô tả, có vẻ như đây là một trường hợp viêm đường hô hấp trên. Tôi sẽ kê đơn thuốc cho anh/chị. Anh/chị có muốn dùng thuốc tây y hay có nguyện vọng gì đặc biệt không?",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "bác sĩ kê đơn",
+            "tùy bác sĩ"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Based on what you've described, it seems like a case of upper respiratory infection. I will prescribe medication for you. Do you prefer Western medicine or do you have any specific requests?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Anh/chị hãy uống thuốc đúng liều lượng và giờ giấc. Nếu các triệu chứng không thuyên giảm sau ba ngày, hoặc có bất kỳ dấu hiệu bất thường nào, hãy quay lại tái khám ngay nhé. Nhớ kiêng khem đồ ăn lạnh và nhiều dầu mỡ.",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "cảm ơn bác sĩ",
+            "rõ rồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please take the medication at the correct dosage and time. If symptoms don't improve after three days, or if there are any unusual signs, please come back for a follow-up immediately. Remember to avoid cold and greasy foods."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể vui lòng nhắc lại hoặc nói rõ hơn được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi), tôi chưa nghe rõ (toi chua nghe ro). Anh/chị có thể vui lòng nhắc lại hoặc nói rõ hơn được không? (Anh/chi co the vui long nhac lai hoac noi ro hon duoc khong?) — Sorry, I didn't quite catch that. Could you please repeat or elaborate?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vậy nhé. Chúc anh/chị mau chóng bình phục! Tạm biệt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright then. I wish you a speedy recovery! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

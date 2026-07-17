@@ -1,0 +1,173 @@
+{
+  "id": "dlg-ms-small-talk-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Perbualan Ringkas di Parti",
+  "opening": "Hai, apa khabar? Seronok pula dapat berjumpa awak di sini malam ni! Bagaimana awak rasa parti ini setakat ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai, apa khabar? Seronok pula dapat berjumpa awak di sini malam ni! Bagaimana awak rasa parti ini setakat ini?",
+      "branches": [
+        {
+          "keywords": [
+            "best",
+            "menarik",
+            "meriah",
+            "seronok",
+            "okey",
+            "biasa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai, apa khabar? (Hai, apa khabar?) — Hi, how are you? It's nice to see you here tonight! What do you think of the party so far?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, faham. Saya pun rasa suasana malam ni agak meriah. Omong-omong, apa yang awak buat hujung minggu ni? Ada rancangan menarik?",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "santai",
+            "dudukrumah"
+          ],
+          "nextTurnId": "t3_leisure"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "belajar",
+            "kursus"
+          ],
+          "nextTurnId": "t3_workstudy"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, faham. (Oh, faham.) — Oh, I understand. I also think the atmosphere tonight is quite lively. By the way, what did you do this weekend? Any interesting plans?"
+    },
+    "t3_leisure": {
+      "id": "t3_leisure",
+      "prompt": "Bunyi macam syok je tu! Saya memang suka dengar orang ada masa untuk diri sendiri atau buat aktiviti yang menyeronokkan. Ada apa-apa filem, buku, atau tempat baru yang awak cadangkan?",
+      "branches": [
+        {
+          "keywords": [
+            "filem",
+            "tonton",
+            "movie",
+            "buku",
+            "baca",
+            "novel",
+            "tempat",
+            "jalan",
+            "melancong",
+            "ya",
+            "ada",
+            "cadang"
+          ],
+          "nextTurnId": "t4_closure"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bunyi macam syok je tu! (Bunyi macam syok je tu!) — Sounds like fun! I really like hearing about people having time for themselves or doing enjoyable activities. Any movies, books, or new places you'd recommend?"
+    },
+    "t3_workstudy": {
+      "id": "t3_workstudy",
+      "prompt": "Oh, faham. Kadang-kadang kerja atau belajar memang tak boleh elak. Harap-harap tak terlalu memenatkan. Apa yang awak buat untuk pastikan awak tak burnout atau untuk 'reward' diri?",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "tidur",
+            "santai",
+            "makan",
+            "jalan-jalan",
+            "jumpa",
+            "kawan",
+            "keluarga",
+            "sosial",
+            "ya",
+            "ada",
+            "reward"
+          ],
+          "nextTurnId": "t4_closure"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, faham. (Oh, faham.) — Oh, I understand. Sometimes work or study really can't be avoided. Hopefully, it wasn't too tiring. What do you do to make sure you don't burn out or to 'reward' yourself?"
+    },
+    "t4_closure": {
+      "id": "t4_closure",
+      "prompt": "Menarik sekali perbualan kita malam ni! Masa pun dah banyak berlalu, saya nak pergi ambil minuman sekejap. Harap kita dapat berborak lagi di lain masa, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "okey",
+            "baik",
+            "jumpa",
+            "nanti",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Menarik sekali perbualan kita malam ni! (Menarik sekali perbualan kita malam ni!) — Our conversation tonight has been really interesting! Time has passed quickly, I'm going to grab a drink. Hope we can chat again sometime, okay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tak berapa faham. Boleh ulang semula atau cuba guna perkataan lain?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, saya tak berapa faham. Boleh ulang semula atau cuba guna perkataan lain? — Sorry, I don't quite understand. Can you repeat or try using different words?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, jumpa lagi! Selamat menikmati parti ni!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, jumpa lagi! Selamat menikmati parti ni! — All right, see you again! Enjoy the party!",
+      "isTerminal": true
+    }
+  }
+}

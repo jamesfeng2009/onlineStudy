@@ -1,0 +1,108 @@
+{
+  "id": "dlg-id-airport-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Bagasi Hilang",
+  "opening": "Selamat siang, Pak/Bu. Ada yang bisa saya bantu? Kelihatannya Anda agak kebingungan.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang, Pak/Bu. Ada yang bisa saya bantu? Kelihatannya Anda agak kebingungan.",
+      "branches": [
+        {
+          "keywords": [
+            "bagasi",
+            "hilang",
+            "kehilangan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang (S'lamat siang), Pak/Bu. Ada yang bisa saya bantu? Kelihatannya Anda agak kebingungan (k'bingungan)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang kembali? Saya kurang menangkap maksud Anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma'af), bisa diulang kembali (bisa diulang k'mbali)? Saya kurang menangkap maksud Anda."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, jadi Anda kehilangan bagasi? Mohon maaf sekali atas ketidaknyamanan ini. Bisa ceritakan lebih detail, Pak/Bu? Penerbangan Anda dari mana dan nomor penerbangannya berapa?",
+      "branches": [
+        {
+          "keywords": [
+            "dari",
+            "nomor",
+            "penerbangan",
+            "pesawat"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, jadi Anda kehilangan bagasi? Mohon maaf sekali atas ketidaknyamanan ini. Bisa ceritakan lebih detail, Pak/Bu? Penerbangan Anda dari mana (p'nerbangan Anda dari mana) dan nomor penerbangannya berapa?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, saya mengerti. Situasi seperti ini memang menjengkelkan. Biasanya, ada beberapa kemungkinan: tertukar, tertinggal, atau salah kirim. Kami akan segera melacaknya. Ngomong-ngomong, bisa deskripsikan tas Anda? Warna, bentuk, ukuran, dan ciri-ciri khusus lainnya?",
+      "branches": [
+        {
+          "keywords": [
+            "koper",
+            "tas",
+            "warna",
+            "ukuran",
+            "ciri"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, saya mengerti. Situasi seperti ini memang menjengkelkan (m'njengkelkan). Biasanya (bi'asa-nya), ada beberapa kemungkinan: tertukar, tertinggal, atau salah kirim. Kami akan segera melacaknya. Ngomong-ngomong, bisa deskripsikan tas Anda? Warna, bentuk, ukuran, dan ciri-ciri khusus lainnya?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas informasinya. Jangan khawatir berlebihan, kami akan berupaya semaksimal mungkin untuk menemukannya. Kami akan membuat laporan resmi dan akan menghubungi Anda secepatnya setelah ada kabar. Mohon berikan nomor telepon atau alamat email yang bisa kami hubungi.",
+      "branches": [
+        {
+          "keywords": [
+            "nomor",
+            "telepon",
+            "email",
+            "hubungi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas informasinya. Jangan khawatir berlebihan, kami akan berupaya semaksimal mungkin untuk menemukannya. Kami akan membuat laporan resmi dan akan menghubungi Anda secepatnya setelah ada kabar. Mohon berikan nomor telepon atau alamat email yang bisa kami hubungi."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, sudah saya catat. Sekali lagi mohon maaf atas ketidaknyamanan ini. Kami akan segera menghubungi Anda. Terima kasih atas kesabarannya dan semoga hari Anda menyenangkan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, sudah saya catat. Sekali lagi mohon maaf atas ketidaknyamanan ini. Kami akan segera menghubungi Anda. Terima kasih atas kesabarannya dan semoga hari Anda menyenangkan.",
+      "isTerminal": true
+    }
+  }
+}

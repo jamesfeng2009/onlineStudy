@@ -1,0 +1,275 @@
+{
+  "id": "dlg-de-weather-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Wetter-Plausch",
+  "opening": "Na, wie ist das Wetterchen bei dir? Hier sieht's mal wieder nach einem typischen Aprilwetter aus, kaum zu glauben, dass wir schon Mai haben!",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Na, wie ist das Wetterchen bei dir? Hier sieht's mal wieder nach einem typischen Aprilwetter aus, kaum zu glauben, dass wir schon Mai haben!",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "sonne",
+            "schön",
+            "sonnig"
+          ],
+          "nextTurnId": "t2_gut"
+        },
+        {
+          "keywords": [
+            "schlecht",
+            "regen",
+            "grau",
+            "nass"
+          ],
+          "nextTurnId": "t2_schlecht"
+        },
+        {
+          "keywords": [
+            "wechselhaft",
+            "unbeständig",
+            "verrückt",
+            "gemischt"
+          ],
+          "nextTurnId": "t2_wechselhaft"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na, wie ist das Wetterchen bei dir? (Nah, vee ist das Vetterchen bye dear?) — So, what's the weather like where you are? Here it looks like typical April weather again, hard to believe it's already May!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t2_gut": {
+      "id": "t2_gut",
+      "prompt": "Ach, du Glückspilz! Hier können wir von Sonnenschein derzeit nur träumen. Manchmal habe ich das Gefühl, der Sommer verlegt seinen Wohnsitz direkt in den Süden, ohne uns auch nur einen Gruß zu hinterlassen.",
+      "branches": [
+        {
+          "keywords": [
+            "pläne",
+            "aktivitäten",
+            "genießen",
+            "draußen"
+          ],
+          "nextTurnId": "t3_pläne"
+        },
+        {
+          "keywords": [
+            "mitleid",
+            "schade",
+            "traurig",
+            "arme"
+          ],
+          "nextTurnId": "t3_hoffnung"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, du Glückspilz! (Ach, doo Glückspilz!) — Oh, you lucky dog! Here, we can only dream of sunshine at the moment. Sometimes I feel like summer is moving its residence directly to the south, without even leaving us a greeting."
+    },
+    "t2_schlecht": {
+      "id": "t2_schlecht",
+      "prompt": "Na, dann sitzen wir ja im selben Boot! Hier schüttet es wie aus Eimern und die Temperaturen machen auch keine Anstalten, frühlingshaft zu werden.",
+      "branches": [
+        {
+          "keywords": [
+            "drinnen",
+            "gemütlich",
+            "couch",
+            "haus"
+          ],
+          "nextTurnId": "t3_drinnen"
+        },
+        {
+          "keywords": [
+            "besser",
+            "sonne",
+            "warm",
+            "hoffnung"
+          ],
+          "nextTurnId": "t3_hoffnung"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na, dann sitzen wir ja im selben Boot! (Nah, dann sitzen veer yah im selben Boat!) — Well, then we're in the same boat! Here it's pouring rain and the temperatures aren't showing any signs of becoming spring-like either."
+    },
+    "t2_wechselhaft": {
+      "id": "t2_wechselhaft",
+      "prompt": "Das kenne ich nur zu gut! Ein wahres Potpourri der Wetterlagen, mal Sonne, mal Hagel, alles an einem Tag. Da weiß man ja gar nicht mehr, was man anziehen soll.",
+      "branches": [
+        {
+          "keywords": [
+            "anpassen",
+            "flexibel",
+            "strategie",
+            "vorbereitet"
+          ],
+          "nextTurnId": "t3_anpassung"
+        },
+        {
+          "keywords": [
+            "nervt",
+            "schwierig",
+            "frustrierend",
+            "komisch"
+          ],
+          "nextTurnId": "t3_hoffnung"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That I know only too well! (Das kenneh ich noor tsoo goot!) — I know that all too well! A true potpourri of weather conditions, sometimes sun, sometimes hail, all in one day. You don't even know what to wear anymore."
+    },
+    "t3_pläne": {
+      "id": "t3_pläne",
+      "prompt": "Das klingt herrlich! Da würde ich sofort mein Handtuch packen und an den nächsten See fahren. Genießen Sie es in vollen Zügen, solche Tage sind rar gesät!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "werdeich",
+            "klar"
+          ],
+          "nextTurnId": "t4_abschied"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds wonderful! I would immediately pack my towel and drive to the nearest lake. Enjoy it to the fullest, such days are few and far between!"
+    },
+    "t3_drinnen": {
+      "id": "t3_drinnen",
+      "prompt": "Genau! Da bleibt einem ja kaum etwas anderes übrig, als es sich drinnen gemütlich zu machen und die Zeit mit einem guten Buch oder Film zu vertreiben. Was sind Ihre Pläne für solche Tage?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "film",
+            "serie",
+            "buch"
+          ],
+          "nextTurnId": "t4_abschied"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactly! There's hardly anything else left to do but make yourself comfortable indoors and pass the time with a good book or film. What are your plans for such days?"
+    },
+    "t3_anpassung": {
+      "id": "t3_anpassung",
+      "prompt": "Da muss man flexibel sein, nicht wahr? Mit der richtigen Kleidung und einer Portion Optimismus lässt sich ja auch einem wechselhaften Wetter einiges abgewinnen. Oder sehen Sie das anders?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "stimmt",
+            "optimismus",
+            "positiv"
+          ],
+          "nextTurnId": "t4_abschied"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "One has to be flexible, right? With the right clothes and a dose of optimism, even changeable weather can be enjoyed quite a bit. Or do you see it differently?"
+    },
+    "t3_hoffnung": {
+      "id": "t3_hoffnung",
+      "prompt": "In der Tat! Man sehnt sich förmlich nach den langen, lauen Sommerabenden, wo man noch gemütlich draußen sitzen kann. Aber die Hoffnung stirbt ja bekanntlich zuletzt, oder? Wir halten die Daumen gedrückt!",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "hoffnung",
+            "stimmt",
+            "sicher"
+          ],
+          "nextTurnId": "t4_abschied"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Indeed! One literally longs for the long, mild summer evenings, where one can comfortably sit outside. But as we know, hope dies last, right? We'll keep our fingers crossed!"
+    },
+    "t4_abschied": {
+      "id": "t4_abschied",
+      "prompt": "Wie dem auch sei, ich wünsche Ihnen, dass Sie das Beste aus den Gegebenheiten machen können. Bleiben Sie wetterfest und optimistisch!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Be that as it may, I wish you that you can make the best of the circumstances. Stay weather-resistant and optimistic!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Es war schön, mit Ihnen über das Wetter zu plaudern. Ich wünsche Ihnen noch einen schönen Tag, egal, was das Wetter macht! Auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was nice chatting with you about the weather. I wish you a nice day, no matter what the weather does! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

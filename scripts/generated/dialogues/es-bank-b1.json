@@ -1,0 +1,148 @@
+{
+  "id": "dlg-es-bank-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Trámites Bancarios",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "abrircuenta",
+            "cuenta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cambiardinero",
+            "cambiar"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "problema",
+            "cajero",
+            "transferencia",
+            "pin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! (Booh-eh-nohs dee-ahs) — Good morning! ¿En qué puedo ayudarle hoy? (En keh pooh-eh-doh ah-yoo-dahr-leh oy) — How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro, para abrir una cuenta, ¿qué tipo de cuenta le interesa? ¿Una cuenta de ahorros o una cuenta corriente?",
+      "branches": [
+        {
+          "keywords": [
+            "ahorros",
+            "ahorro"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro (Klah-roh) — Of course, para abrir una cuenta (pah-rah ah-breer oo-nah koo-ehn-tah) — to open an account, ¿qué tipo de cuenta le interesa? (keh tee-poh deh koo-ehn-tah leh een-teh-reh-sah) — what type of account are you interested in? ¿Una cuenta de ahorros o una cuenta corriente? (Oo-nah koo-ehn-tah deh ah-oh-rrohs oh oo-nah koo-ehn-tah koh-rryehn-teh) — A savings account or a checking account?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Entendido. ¿Qué divisa desea cambiar y a qué divisa?",
+      "branches": [
+        {
+          "keywords": [
+            "eurusd",
+            "eurosdolares"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. What currency do you wish to exchange and to what currency?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "De acuerdo, para poder ayudarle mejor, ¿podría especificar cuál es el problema? ¿Es con el cajero, una transferencia o necesita reiniciar su PIN?",
+      "branches": [
+        {
+          "keywords": [
+            "cajero",
+            "atm"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, to help you better, could you specify what the problem is? Is it with the ATM, a transfer, or do you need to reset your PIN?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. Necesitaré algunos documentos/más detalles para proceder con eso. ¿Tiene alguna otra pregunta o desea continuar?",
+      "branches": [
+        {
+          "keywords": [
+            "continuar",
+            "si"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. I will need some documents/more details to proceed with that. Do you have any other questions or wish to continue?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdón, ¿podría repetirlo un poco más claro?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perdón (Pehr-dohn) — Sorry, ¿podría repetirlo un poco más claro? (Poh-dree-ah reh-peh-teer-loh oon poh-koh mahs klah-roh) — could you repeat that a bit clearer?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo, un placer atenderle. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, it was a pleasure to assist you. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "id": "dlg-es-restaurant-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Pedir en un restaurante",
+  "opening": "¡Hola! ¡Bienvenidos! ¿Ya saben qué quieren pedir o necesitan unos minutos más para ver el menú?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¡Bienvenidos! ¿Ya saben qué quieren pedir o necesitan unos minutos más para ver el menú?",
+      "branches": [
+        {
+          "keywords": [
+            "listos",
+            "pedir",
+            "listo",
+            "quiero"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "minutos",
+            "tiempo"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "recomiendas",
+            "sugieres"
+          ],
+          "nextTurnId": "t2c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! ¡Bienvenidos! (Oh-lah! Bee-en-veh-nee-dohs!) ¿Ya saben qué quieren pedir o necesitan unos minutos más para ver el menú? (Yah sah-ben keh kee-eh-ren peh-deer oh neh-seh-see-tahn oon-ohs mee-noo-tohs mahs pah-rah vehr el meh-noo?) — Hello! Welcome! Do you already know what you want to order or do you need a few more minutes to see the menu?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdone, no le he entendido muy bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perdone, no le he entendido muy bien. ¿Podría repetir, por favor? — Excuse me, I didn't understand you very well. Could you repeat, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Excelente! ¿Qué les gustaría pedir hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "quiero",
+            "pasta",
+            "pizza",
+            "ensalada",
+            "sopa",
+            "carne",
+            "pescado"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "vegetariano",
+            "vegano"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "recomiendas",
+            "sugieres"
+          ],
+          "nextTurnId": "t2c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Excelente! (Ek-seh-len-teh!) ¿Qué les gustaría pedir hoy? (Keh les goos-tah-ree-ah peh-deer oy?) — Excellent! What would you like to order today?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Claro, tómense su tiempo. Vuelvo en un momento. Cuando estén listos, por favor avísenme.",
+      "branches": [
+        {
+          "keywords": [
+            "listo",
+            "listos",
+            "pedir",
+            "quiero"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, tómense su tiempo. Vuelvo en un momento. Cuando estén listos, por favor avísenme. — Of course, take your time. I'll be back in a moment. When you're ready, please let me know."
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Hoy tenemos un salmón a la plancha muy fresco y nuestra paella es excelente. Son nuestras especialidades.",
+      "branches": [
+        {
+          "keywords": [
+            "salmón",
+            "paella",
+            "quiero",
+            "pedir"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "vegetariano",
+            "vegano"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "bien",
+            "perfecto"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hoy tenemos un salmón a la plancha muy fresco y nuestra paella es excelente. Son nuestras especialidades. — Today we have a very fresh grilled salmon and our paella is excellent. They are our specialties."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Entendido. ¿Y para beber, les gustaría algo? Tenemos agua, refrescos o vino de la casa.",
+      "branches": [
+        {
+          "keywords": [
+            "agua",
+            "refresco",
+            "vino",
+            "cerveza",
+            "zumo"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. (En-ten-dee-doh.) ¿Y para beber, les gustaría algo? Tenemos agua, refrescos o vino de la casa. (Ee pah-rah beh-behr, les goos-tah-ree-ah al-goh? Teh-neh-mohs ah-gwah, reh-fres-kohs oh vee-noh deh lah kah-sah.) — Understood. And to drink, would you like something? We have water, soft drinks, or house wine."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Sí, claro. Tenemos una ensalada de la casa muy completa o pasta con verduras frescas. ¿Qué prefieren?",
+      "branches": [
+        {
+          "keywords": [
+            "ensalada",
+            "pasta",
+            "quiero",
+            "pedir"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "ninguno"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sí, claro. Tenemos una ensalada de la casa muy completa o pasta con verduras frescas. ¿Qué prefieren? — Yes, of course. We have a very complete house salad or pasta with fresh vegetables. What do you prefer?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¿Todo bien con la comida? ¿Necesitan algo más o les traigo la cuenta?",
+      "branches": [
+        {
+          "keywords": [
+            "cuenta",
+            "factura",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "cafe",
+            "postre"
+          ],
+          "nextTurnId": "t4b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Todo bien con la comida? ¿Necesitan algo más o les traigo la cuenta? — Is everything good with the food? Do you need anything else or should I bring you the bill?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Claro. ¿Les gustaría un postre o un café?",
+      "branches": [
+        {
+          "keywords": [
+            "postre",
+            "cafe",
+            "quiero"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro. ¿Les gustaría un postre o un café? — Of course. Would you like a dessert or a coffee?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Aquí tienen la cuenta. ¡Muchas gracias por su visita! ¡Que tengan un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Aquí tienen la cuenta. ¡Muchas gracias por su visita! ¡Que tengan un buen día! — Here is your bill. Thank you very much for your visit! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "id": "dlg-th-restaurant-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "สั่งอาหารที่ร้านอาหาร",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีต้อนรับครับ/ค่ะ อยากรับอะไรดีครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ยินดีต้อนรับครับ/ค่ะ อยากรับอะไรดีครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอเมนู",
+            "ดูเมนู"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "แนะนำ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "พร้อมสั่ง",
+            "สั่งเลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Yindee tonrap krap/ka. Yak rap arai dee krap/ka? — Hello. Welcome. What would you like to order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "เมนูครับ/ค่ะ มีเมนูแนะนำหลายอย่างครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำอะไร",
+            "แนะนำหน่อย"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "อยากสั่ง",
+            "สั่งเลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maynoo krap/ka. Mee maynoo naenam lai yang krap/ka. — Here's the menu. We have many recommended dishes."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "วันนี้เรามีแกงเขียวหวานอร่อยมากครับ/ค่ะ หรือจะเป็นผัดกะเพราก็ดีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "แกงเขียวหวาน",
+            "เอาแกงเขียวหวาน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่เผ็ด"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wannee rao mee Gaeng Keow Wan aroy mak krap/ka. Reu ja bpen Pad Krapao gor dee krap/ka. — Today we have a very delicious Green Curry. Or Pad Krapao is also good."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ครับ/ค่ะ อยากสั่งอะไรดีครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "แกงเขียวหวาน",
+            "สั่งแกงเขียวหวาน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่เผ็ด"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Krap/ka. Yak sang arai dee krap/ka? — Yes. What would you like to order?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ได้ครับ/ค่ะ ไม่เผ็ดใช่ไหมครับ/คะ เรามีข้าวผัด หรือผักบุ้งไฟแดงที่ไม่เผ็ดครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าวผัด",
+            "เอาข้าวผัด"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai krap/ka. Mai pet chai mai krap/ka? Rao mee Khao Pad reu Pak Boong Fai Daeng tee mai pet krap/ka. — Okay. Not spicy, right? We have Fried Rice or Stir-fried Morning Glory that are not spicy."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "รับทราบครับ/ค่ะ มีอะไรเพิ่มไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "พอแล้ว",
+            "แค่นี้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า"
+          ],
+          "nextTurnId": "t5_add"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap sap krap/ka. Mee arai perm mai krap/ka? — Understood. Anything else?"
+    },
+    "t5_add": {
+      "id": "t5_add",
+      "prompt": "รับเพิ่มนะครับ/คะ มีอะไรเพิ่มอีกไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "พอแล้ว",
+            "แค่นี้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า",
+            "ข้าวเปล่า"
+          ],
+          "nextTurnId": "t5_add"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap perm na krap/ka. Mee arai perm eek mai krap/ka? — Understood for the addition. Anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่ค่อยเข้าใจเลยครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor tort krap/ka. Mai koy kao jai loey krap/ka. Poot eek krang dai mai krap/ka? — Sorry, I didn't quite understand. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณครับ/ค่ะ รอสักครู่นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kop khun krap/ka. Raw sak kroo na krap/ka. — Thank you. Please wait a moment.",
+      "isTerminal": true
+    }
+  }
+}

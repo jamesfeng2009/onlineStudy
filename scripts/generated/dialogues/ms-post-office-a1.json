@@ -1,0 +1,248 @@
+{
+  "id": "dlg-ms-post-office-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Di Pejabat Pos",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pos",
+            "parcel",
+            "kirim",
+            "hantar"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "setem",
+            "stamps"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "pulang",
+            "balik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi. Boleh saya bantu? — Good morning. How can I help you?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Parcel ini ke mana? Dalam negara atau luar negara?",
+      "branches": [
+        {
+          "keywords": [
+            "dalamnegara",
+            "tempatan",
+            "lokal"
+          ],
+          "nextTurnId": "t3_domestic"
+        },
+        {
+          "keywords": [
+            "luarnegara",
+            "antarabangsa",
+            "oversea"
+          ],
+          "nextTurnId": "t3_international"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpasti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parcel ini ke mana? Dalam negara atau luar negara? — Where is this parcel going? Domestic or international?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Berapa banyak setem yang anda mahu?",
+      "branches": [
+        {
+          "keywords": [
+            "satu",
+            "1"
+          ],
+          "nextTurnId": "t4_stamps_end"
+        },
+        {
+          "keywords": [
+            "banyak",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Berapa banyak setem yang anda mahu? — How many stamps do you want?"
+    },
+    "t3_domestic": {
+      "id": "t3_domestic",
+      "prompt": "Baik. Untuk pos dalam negara. Perlu nombor penjejakan?",
+      "branches": [
+        {
+          "keywords": [
+            "penjejakan",
+            "tracking",
+            "ya"
+          ],
+          "nextTurnId": "t4_tracking_confirm"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. For domestic post. Do you need a tracking number?"
+    },
+    "t3_international": {
+      "id": "t3_international",
+      "prompt": "Baik. Untuk pos luar negara. Perlu borang kastam dan nombor penjejakan?",
+      "branches": [
+        {
+          "keywords": [
+            "kastam",
+            "borang",
+            "form"
+          ],
+          "nextTurnId": "t4_customs_tracking_confirm"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. For international post. Do you need a customs form and a tracking number?"
+    },
+    "t4_tracking_confirm": {
+      "id": "t4_tracking_confirm",
+      "prompt": "Ini nombor penjejakan anda. Ada lagi boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here is your tracking number. Anything else I can help with?"
+    },
+    "t4_customs_tracking_confirm": {
+      "id": "t4_customs_tracking_confirm",
+      "prompt": "Sila isi borang kastam ini. Ini nombor penjejakan anda. Ada lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please fill this customs form. Here is your tracking number. Anything else?"
+    },
+    "t4_stamps_end": {
+      "id": "t4_stamps_end",
+      "prompt": "Baik. Ini setem anda. Terima kasih.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terimakasih",
+            "cukup",
+            "tidak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Here are your stamps. Thank you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "ya",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? — Sorry, can you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih, sila datang lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you, please come again.",
+      "isTerminal": true
+    }
+  }
+}

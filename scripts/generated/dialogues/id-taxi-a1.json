@@ -1,0 +1,121 @@
+{
+  "id": "dlg-id-taxi-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Naik Taksi",
+  "opening": "Halo. Mau ke mana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo. Mau ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "indah"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo — Hello. Mau ke mana? — Where to?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa ulang? Saya tidak dengar.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa ulang? — can you repeat? Saya tidak dengar — I didn't hear."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oke, ke sana. Lalu lintas ramai sekarang.",
+      "branches": [
+        {
+          "keywords": [
+            "berapa",
+            "harga"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke — Okay, ke sana — to there. Lalu lintas — Traffic ramai — is busy sekarang — now."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tarifnya lima puluh ribu rupiah. Ada barang?",
+      "branches": [
+        {
+          "keywords": [
+            "iya",
+            "ada",
+            "koper"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tarifnya — The fare is lima puluh ribu rupiah — fifty thousand rupiah. Ada barang? — Any luggage?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Kita sudah sampai. Mau bayar tunai atau kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "uang"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kita sudah sampai — We have arrived. Mau bayar — Want to pay tunai — cash atau — or kartu? — card?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Terima kasih. Hati-hati di jalan.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Terima kasih — Thank you. Hati-hati di jalan — Be careful on the road.",
+      "isTerminal": true
+    }
+  }
+}

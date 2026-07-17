@@ -1,0 +1,289 @@
+{
+  "id": "dlg-es-taxi-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Un viaje en taxi",
+  "opening": "¡Hola! ¿A dónde le llevo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿A dónde le llevo?",
+      "branches": [
+        {
+          "keywords": [
+            "al aeropuerto",
+            "aeropuerto"
+          ],
+          "nextTurnId": "t2_airport"
+        },
+        {
+          "keywords": [
+            "al centro",
+            "centro"
+          ],
+          "nextTurnId": "t2_center"
+        },
+        {
+          "keywords": [
+            "a la estación",
+            "estación"
+          ],
+          "nextTurnId": "t2_station"
+        },
+        {
+          "keywords": [
+            "otro lugar",
+            "dirección"
+          ],
+          "nextTurnId": "t2_other"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! ¿A dónde le llevo? (¡HOH-lah! ¿Ah DOHN-deh leh YEH-voh?) — Hello! Where can I take you?"
+    },
+    "t2_airport": {
+      "id": "t2_airport",
+      "prompt": "De acuerdo, al aeropuerto. ¿Tiene prisa o vamos por la ruta habitual?",
+      "branches": [
+        {
+          "keywords": [
+            "tengo prisa",
+            "rápido"
+          ],
+          "nextTurnId": "t3_traffic"
+        },
+        {
+          "keywords": [
+            "ruta habitual",
+            "normal"
+          ],
+          "nextTurnId": "t3_usualroute"
+        },
+        {
+          "keywords": [
+            "cuánto cuesta",
+            "precio"
+          ],
+          "nextTurnId": "t3_price"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo, al aeropuerto. ¿Tiene prisa o vamos por la ruta habitual? (Deh ah-KWER-doh, ahl ah-eh-roh-PWER-toh. ¿TYEH-neh PREE-sah oh VAH-mohs pohr lah ROO-tah ah-bee-TWAL?) — Okay, to the airport. Are you in a hurry or shall we take the usual route?"
+    },
+    "t2_center": {
+      "id": "t2_center",
+      "prompt": "Al centro. ¿Qué parte del centro? Hay mucho tráfico a esta hora.",
+      "branches": [
+        {
+          "keywords": [
+            "plaza mayor",
+            "plaza"
+          ],
+          "nextTurnId": "t3_traffic"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Al centro. ¿Qué parte del centro? Hay mucho tráfico a esta hora. — To the city center. What part of the center? There's a lot of traffic at this hour."
+    },
+    "t2_station": {
+      "id": "t2_station",
+      "prompt": "A la estación de tren. Entendido. ¿Prefiere ir por la autopista o por la ciudad?",
+      "branches": [
+        {
+          "keywords": [
+            "autopista",
+            "rápido"
+          ],
+          "nextTurnId": "t3_traffic"
+        },
+        {
+          "keywords": [
+            "ciudad",
+            "lento"
+          ],
+          "nextTurnId": "t3_usualroute"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A la estación de tren. Entendido. ¿Prefiere ir por la autopista o por la ciudad? — To the train station. Understood. Do you prefer to go by highway or through the city?"
+    },
+    "t2_other": {
+      "id": "t2_other",
+      "prompt": "Dígame la dirección exacta, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "calle",
+            "número"
+          ],
+          "nextTurnId": "t3_traffic"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dígame la dirección exacta, por favor. — Tell me the exact address, please."
+    },
+    "t3_traffic": {
+      "id": "t3_traffic",
+      "prompt": "Por aquí suele haber un poco de tráfico. Llegaremos en unos 30-40 minutos, dependiendo del tráfico. ¿Lleva equipaje en el maletero?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "llevo equipaje"
+          ],
+          "nextTurnId": "t4_luggage"
+        },
+        {
+          "keywords": [
+            "no",
+            "sin equipaje"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Por aquí suele haber un poco de tráfico. Llegaremos en unos 30-40 minutos, dependiendo del tráfico. ¿Lleva equipaje en el maletero? (Pohr ah-KEE SOO-eh-leh ah-BER oon POH-koh deh TRAH-fee-koh. Yeh-gah-REH-mohs en OO-nohs TREYN-tah ah-KWAH-ren-tah mee-NOO-tohs, deh-pen-DYEN-doh dehl TRAH-fee-koh. ¿YEH-vah eh-kee-PAH-heh en el mah-leh-TEH-roh?) — There's usually a bit of traffic around here. We'll arrive in about 30-40 minutes, depending on the traffic. Do you have luggage in the trunk?"
+    },
+    "t3_usualroute": {
+      "id": "t3_usualroute",
+      "prompt": "Perfecto, por la ruta habitual será más tranquilo, aunque tardaremos un poco más. ¿Lleva equipaje en el maletero?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "llevo equipaje"
+          ],
+          "nextTurnId": "t4_luggage"
+        },
+        {
+          "keywords": [
+            "no",
+            "sin equipaje"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, por la ruta habitual será más tranquilo, aunque tardaremos un poco más. ¿Lleva equipaje en el maletero? — Perfect, the usual route will be calmer, although it will take a little longer. Do you have luggage in the trunk?"
+    },
+    "t3_price": {
+      "id": "t3_price",
+      "prompt": "El precio estimado suele ser entre 25 y 30 euros, dependiendo del tráfico. ¿Es efectivo o con tarjeta?",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "cash"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El precio estimado suele ser entre 25 y 30 euros, dependiendo del tráfico. ¿Es efectivo o con tarjeta? — The estimated price is usually between 25 and 30 euros, depending on traffic. Is it cash or card?"
+    },
+    "t4_luggage": {
+      "id": "t4_luggage",
+      "prompt": "De acuerdo, ya le abro el maletero. Solo avíseme cuando lleguemos, ¿de acuerdo?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo, ya le abro el maletero. Solo avíseme cuando lleguemos, ¿de acuerdo? — Okay, I'll open the trunk for you now. Just let me know when we arrive, okay?"
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "Muy bien. Sin problema. Cuando lleguemos, le indico el total. ¿Algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nada más"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. Sin problema. Cuando lleguemos, le indico el total. ¿Algo más? — Very good. No problem. When we arrive, I'll tell you the total. Anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No le he entendido bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? I didn't understand you well. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Que tenga un buen día. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

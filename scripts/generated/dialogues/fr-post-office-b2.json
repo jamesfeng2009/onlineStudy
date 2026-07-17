@@ -1,0 +1,179 @@
+{
+  "id": "dlg-fr-post-office-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "À la Poste",
+  "opening": "Bonjour, comment puis-je vous être utile aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, comment puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "colis",
+            "envoyer",
+            "paquet"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "timbres",
+            "acheter",
+            "carnet"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "lettre",
+            "courrier"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, comment puis-je vous être utile aujourd'hui ? — Hello, how can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord, pour un colis. Quelle est la destination et souhaitez-vous un suivi ou un envoi recommandé ?",
+      "branches": [
+        {
+          "keywords": [
+            "national",
+            "france"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "international",
+            "étranger"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, pour un colis. Quelle est la destination et souhaitez-vous un suivi ou un envoi recommandé ? — All right, for a parcel. What is the destination and would you like tracking or registered mail?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr, pour quels types de timbres ? Des timbres verts (standard), rouges (prioritaire), internationaux, ou des carnets ?",
+      "branches": [
+        {
+          "keywords": [
+            "verts",
+            "standard"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr, pour quels types de timbres ? Des timbres verts (standard), rouges (prioritaire), internationaux, ou des carnets ? — Of course, what types of stamps? Green (standard), red (priority), international stamps, or books of stamps?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien. S'agit-il d'une lettre simple, suivie ou recommandée ?",
+      "branches": [
+        {
+          "keywords": [
+            "simple",
+            "normale"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. S'agit-il d'une lettre simple, suivie ou recommandée ? — Very well. Is it a standard, tracked or registered letter?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pour l'international, avez-vous déjà rempli la déclaration en douane ? C'est obligatoire pour tous les envois hors UE.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "déclaration",
+            "remplie",
+            "déjàfait"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour l'international, avez-vous déjà rempli la déclaration en douane ? C'est obligatoire pour tous les envois hors UE. — For international, have you already filled out the customs declaration? It's mandatory for all non-EU shipments."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Parfait, je peux procéder. Y a-t-il autre chose pour laquelle je puisse vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "cesttout"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "oui",
+            "timbres"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "colis",
+            "envoyer"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lettre",
+            "courrier"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait, je peux procéder. Y a-t-il autre chose pour laquelle je puisse vous aider ? — Perfect, I can proceed. Is there anything else I can help you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je suis désolé(e), pourriez-vous répéter s'il vous plaît ? Je n'ai pas bien compris.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "recommencer",
+            "réessayer"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Je suis désolé(e), pourriez-vous répéter s'il vous plaît ? Je n'ai pas bien compris. — I'm sorry, could you please repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! Je vous remercie. Passez une excellente journée et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait ! Je vous remercie. Passez une excellente journée et à bientôt ! — Perfect! Thank you. Have a great day and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

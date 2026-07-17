@@ -1,0 +1,174 @@
+{
+  "id": "dlg-de-taxi-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "Taxifahrt",
+  "opening": "Guten Tag, wohin möchten Sie?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, wohin möchten Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t2_route_fare_general"
+        },
+        {
+          "keywords": [
+            "adresse",
+            "straße"
+          ],
+          "nextTurnId": "t2_route_fare_address"
+        },
+        {
+          "keywords": [
+            "bitte",
+            "wiederholen",
+            "nochmal"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg, voh-hin mairsh-ten zee — Good day, where would you like to go?"
+    },
+    "t2_route_fare_general": {
+      "id": "t2_route_fare_general",
+      "prompt": "Verstanden. Das dauert etwa 15 Minuten und kostet ungefähr 15 Euro. Möchten Sie bar oder mit Karte zahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t3_arrival"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair-shtan-den. Das dau-ert ett-vah fünf-zehn Mee-noo-ten oond kos-tet oon-gef-fair fünf-zehn Oy-ro. Merch-ten zee bar oh-der mit Kar-te tsah-len? — Understood. That takes about 15 minutes and costs about 15 Euros. Would you like to pay cash or by card?"
+    },
+    "t2_route_fare_address": {
+      "id": "t2_route_fare_address",
+      "prompt": "Bitte sagen Sie mir die Straße und Hausnummer. Dann sind es etwa 10 Minuten und 12 Euro. Bar oder Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "straße",
+            "nummer",
+            "hauptstraße",
+            "zehn",
+            "elf"
+          ],
+          "nextTurnId": "t3_arrival_address"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bit-te zah-gen Zee meer dee Shtrah-sse oont Hows-noo-mer. Dann zind ess ett-vah zehn Mee-noo-ten oond zwölf Oy-ro. Bar oh-der Kar-te? — Please tell me the street and house number. Then it's about 10 minutes and 12 Euros. Cash or card?"
+    },
+    "t3_arrival": {
+      "id": "t3_arrival",
+      "prompt": "Alles klar. Wir sind angekommen. Das macht dann 15 Euro, bitte.",
+      "branches": [
+        {
+          "keywords": [
+            "20",
+            "zwanzig",
+            "geld",
+            "fünfzehn",
+            "hier"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah-less Klar. Veer zind an-ge-kom-men. Das macht dann fünf-zehn Oy-ro, bit-te. — All clear. We have arrived. That'll be 15 Euros, please."
+    },
+    "t3_arrival_address": {
+      "id": "t3_arrival_address",
+      "prompt": "Alles klar. Wir sind an Ihrer Adresse angekommen. Das macht dann 12 Euro, bitte.",
+      "branches": [
+        {
+          "keywords": [
+            "20",
+            "zwanzig",
+            "geld",
+            "zwölf",
+            "hier"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah-less Klar. Veer zind an Ee-rer Ah-dres-seh an-ge-kom-men. Das macht dann zwölf Oy-ro, bit-te. — All clear. We have arrived at your address. That'll be 12 Euros, please."
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "Vielen Dank für die Zahlung. Kommen Sie gut an!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "tschüss",
+            "aufwiedersehen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dank für dee Tsah-loong. Kom-men Zee goot an! — Thank you for the payment. Have a good journey/arrival!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-shool-dee-goong, könt-ten zee das bit-te vee-der-hoh-len — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Auf Wiedersehen und einen schönen Tag!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Owf Vee-der-zey-en oond ei-nen shö-nen Tahg! — Goodbye and have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

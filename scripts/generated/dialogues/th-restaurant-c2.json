@@ -1,0 +1,333 @@
+{
+  "id": "dlg-th-restaurant-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "สั่งอาหารที่ร้านอาหารหรู",
+  "opening": "สวัสดีค่ะ/ครับ ยินดีต้อนรับสู่ร้าน 'รสมือไทย' นะคะ/ครับ ไม่ทราบว่าได้จองโต๊ะไว้หรือเปล่าคะ/ครับ หรือจะรับกี่ท่านดีคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ยินดีต้อนรับสู่ร้าน 'รสมือไทย' นะคะ/ครับ ไม่ทราบว่าได้จองโต๊ะไว้หรือเปล่าคะ/ครับ หรือจะรับกี่ท่านดีคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "สอง",
+            "2",
+            "สองท่าน",
+            "คู่"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "จอง",
+            "จองแล้ว",
+            "มีจอง"
+          ],
+          "nextTurnId": "t2_reservation"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sà-wàt-dee kâ/kráp, yin-dee dtôn-ráp sùu ráan 'Rót-meu-Thai' ná ká/kráp. Mâi sâap wâa dâi jàwng dtó wái rĕu bplào ká/kráp rĕu jà ráp gèe tâan dee ká/kráp? — Hello/Welcome to 'Rót-meu-Thai' restaurant. Do you have a reservation, or how many people will be dining today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ค่ะ/ครับ เชิญทางนี้เลยค่ะ/ครับ โต๊ะนี้เหมาะสำหรับท่านค่ะ/ครับ นี่คือเมนูนะคะ/ครับ มีอะไรให้แนะนำเป็นพิเศษไหมคะ/ครับ หรือเคยมาที่นี่แล้วคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำ",
+            "ช่วยแนะนำ",
+            "อะไรอร่อย",
+            "ไม่เคย",
+            "ครั้งแรก"
+          ],
+          "nextTurnId": "t3_recommend"
+        },
+        {
+          "keywords": [
+            "ดูเมนู",
+            "ขอดู",
+            "พร้อมสั่ง"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kâ/kráp, chern taang née loey kâ/kráp. Dtó née mò tàp sàp tâan kâ/kráp. Nêe keu may-noo ná ká/kráp. Mee à-rai hâi náe-nam bpen pí-sèht mái ká/kráp rĕu koey maa têe née láew ká/kráp? — Yes/Sir/Madam, please this way. This table is suitable for you. Here is the menu. Is there anything you'd like me to recommend, or have you dined here before?"
+    },
+    "t2_reservation": {
+      "id": "t2_reservation",
+      "prompt": "ดีเลยค่ะ/ครับ ไม่ทราบว่าได้จองไว้ในชื่อของคุณ... หรือเปล่าคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "จองชื่อ",
+            "ชื่อของฉัน",
+            "ชื่อนี้"
+          ],
+          "nextTurnId": "t2_confirm_reservation"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee loey kâ/kráp. Mâi sâap wâa dâi jàwng wái nai chêu kǒng kun... rĕu bplào ká/kráp? — Excellent. May I know the name under which the reservation was made?"
+    },
+    "t2_confirm_reservation": {
+      "id": "t2_confirm_reservation",
+      "prompt": "ขอบคุณค่ะ/ครับ พบแล้วค่ะ/ครับ โต๊ะสำหรับ... ท่าน เชิญทางนี้เลยค่ะ/ครับ นี่คือเมนูนะคะ/ครับ มีอะไรให้แนะนำเป็นพิเศษไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำ",
+            "ช่วยแนะนำ",
+            "อะไรอร่อย",
+            "ไม่เคย",
+            "ครั้งแรก"
+          ],
+          "nextTurnId": "t3_recommend"
+        },
+        {
+          "keywords": [
+            "ดูเมนู",
+            "ขอดู",
+            "พร้อมสั่ง"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kòp kun kâ/kráp, póp láew kâ/kráp. Dtó sàp sâp... tâan. Chern taang née loey kâ/kráp. Nêe keu may-noo ná ká/kráp. Mee à-rai hâi náe-nam bpen pí-sèht mái ká/kráp? — Thank you, I've found it. A table for... people. Please this way. Here is the menu. Is there anything you'd like me to recommend?"
+    },
+    "t3_recommend": {
+      "id": "t3_recommend",
+      "prompt": "แน่นอนค่ะ/ครับ เมนูเด่นของเราที่ลูกค้าชื่นชอบและเป็นที่กล่าวขวัญถึงก็คือ 'แกงปูใบชะพลู' ที่รสชาติเข้มข้นจัดจ้าน กับ 'ปลากะพงทอดน้ำปลา' ที่กรอบนอกนุ่มในค่ะ/ครับ หรือถ้าชอบอะไรที่เบากว่านั้น 'ยำส้มโอ' ก็สดชื่นไม่แพ้กันเลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "แกงปู",
+            "ปลากะพง",
+            "ยำส้มโอ",
+            "เอาอันนั้น",
+            "ตกลง"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            "ภูมิแพ้",
+            "แพ้อาหาร",
+            "มีอะไรที่ไม่มี",
+            "ส่วนผสม"
+          ],
+          "nextTurnId": "t3_allergy"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâe-non kâ/kráp. May-noo dèn kǒng rao têe lôok-ká chêun chôp láe bpen têe glàao kwǎn tĕung gôr keu 'Gaeng Bpoo Bai Chá-ploo' têe rót-châat kêm-kôn jàt jâan gàp 'Bplaa-grà-pong Tôd Náam-bplaa' têe gròp nôk nûm nai kâ/kráp. Rĕu tâa chôp à-rai têe bào gwàa nân 'Yam Sôm-oh' gôr sòt-chêun mâi páe gan loey kâ/kráp. — Certainly. Our signature dishes that customers love and frequently talk about are 'Crab Curry with Betel Leaves,' which is rich and spicy, and 'Deep-fried Snapper with Fish Sauce,' which is crispy on the outside and tender on the inside. Or, if you prefer something lighter, 'Pomelo Salad' is equally refreshing."
+    },
+    "t3_allergy": {
+      "id": "t3_allergy",
+      "prompt": "แน่นอนค่ะ/ครับ สำหรับแกงปูมีส่วนผสมของเนื้อปูและกะทินะคะ/ครับ ปลากะพงมีส่วนผสมของปลาและซีอิ๊วค่ะ/ครับ ส่วนยำส้มโอไม่มีส่วนผสมของสัตว์ทะเลนะคะ/ครับ มีอะไรที่ต้องหลีกเลี่ยงเป็นพิเศษไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แพ้กุ้ง",
+            "ไม่กินเนื้อ",
+            "ไม่กินหมู",
+            "ไม่กินปลา",
+            "แพ้ถั่ว"
+          ],
+          "nextTurnId": "t4_order_allergy"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่แพ้",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâe-non kâ/kráp. Sàp sâp Gaeng Bpoo mee sùan pà-sǒm kǒng néu bpoo láe gà-tí ná ká/kráp. Bplaa-grà-pong mee sùan pà-sǒm kǒng bplaa láe see-éw kâ/kráp. Sùan Yam Sôm-oh mâi mee sùan pà-sǒm kǒng sàt tá-lay ná ká/kráp. Mee à-rai têe dtông lèek-lêang bpen pí-sèht mái ká/kráp? — Certainly. The crab curry contains crab meat and coconut milk. The snapper has fish and soy sauce. The pomelo salad does not contain seafood. Is there anything specific you need to avoid?"
+    },
+    "t4_order": {
+      "id": "t4_order",
+      "prompt": "รับอะไรดีคะ/ครับ ยินดีให้บริการค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "แกงปู",
+            "ปลากะพง",
+            "ยำส้มโอ",
+            "ข้าว",
+            "ผัดไทย",
+            "ขอเมนูอื่น",
+            "อาหาร"
+          ],
+          "nextTurnId": "t5_confirm_order"
+        },
+        {
+          "keywords": [
+            "ยังไม่สั่ง",
+            "ขอดูก่อน",
+            "ขอเวลา"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp à-rai dee kâ/kráp? Yin-dee hâi bò-rí-gaan kâ/kráp. — What would you like to order? Happy to serve you."
+    },
+    "t4_order_allergy": {
+      "id": "t4_order_allergy",
+      "prompt": "เข้าใจแล้วค่ะ/ครับ ทางเราจะแจ้งเชฟเป็นพิเศษค่ะ/ครับ นอกจากเมนูที่แนะนำไปแล้ว มีเมนูอื่นที่สนใจไหมคะ/ครับ หรือจะรับเมนูที่ไม่มีส่วนผสมที่คุณลูกค้าแพ้ดีคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แกงปู",
+            "ปลากะพง",
+            "ยำส้มโอ",
+            "ข้าว",
+            "ผัดไทย",
+            "ขอเมนูอื่น",
+            "อาหาร"
+          ],
+          "nextTurnId": "t5_confirm_order"
+        },
+        {
+          "keywords": [
+            "ยังไม่สั่ง",
+            "ขอดูก่อน",
+            "ขอเวลา"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kâo jai láew kâ/kráp. Taang rao jà jâeng chef bpen pí-sèht kâ/kráp. Nôk jàak may-noo têe náe-nam bpai láew, mee may-noo èun têe son jai mái ká/kráp? Rĕu jà ráp may-noo têe mâi mee sùan pà-sǒm têe kun lôok-ká páe dee ká/kráp? — Understood. We will inform the chef specifically. Besides the recommended dishes, are there any other menus you are interested in, or would you like a dish without the ingredients you are allergic to?"
+    },
+    "t5_confirm_order": {
+      "id": "t5_confirm_order",
+      "prompt": "รับเป็น... นะคะ/ครับ ทวนรายการหน่อยนะคะ/ครับ... มีอะไรเพิ่มเติมอีกไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "พอแล้ว",
+            "แค่นี้",
+            "เรียบร้อย",
+            "ไม่แล้ว"
+          ],
+          "nextTurnId": "t6_final_confirm"
+        },
+        {
+          "keywords": [
+            "น้ำ",
+            "เพิ่ม",
+            "อีก",
+            "ขอเพิ่ม"
+          ],
+          "nextTurnId": "t4_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp bpen... ná ká/kráp. Tuan rai-gaan nòy ná ká/kráp... Mee à-rai perm dtèrm èek mái ká/kráp? — So, you'll have... Just to confirm the order... Is there anything else?"
+    },
+    "t6_final_confirm": {
+      "id": "t6_final_confirm",
+      "prompt": "รับทราบค่ะ/ครับ รายการอาหารจะถูกจัดเตรียมและนำมาเสิร์ฟโดยเร็วที่สุดค่ะ/ครับ หากต้องการอะไรเพิ่มเติมเรียกได้ตลอดนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "รอ",
+            "เข้าใจ",
+            "ตกลง"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp sâap kâ/kráp. Rai-gaan aa-hăan jà tòok jàt dtriam láe nam maa sĕrp doy reo têe sùt kâ/kráp. Hàak dtông gaan à-rai perm dtèrm rîak dâi dtà-lòt ná ká/kráp. — Understood. Your food will be prepared and served as quickly as possible. Please feel free to call us if you need anything else."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ไม่แน่ใจว่าได้ยินชัดเจน รบกวนพูดซ้ำอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr à-pai kâ/kráp. Mâi nâe jai wâa dâi yin chát jen. Róp guan pôot sám èek kráng dâi mái ká/kráp? — I apologize. I'm not sure I heard that clearly. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบพระคุณที่มาอุดหนุนนะคะ/ครับ ขอให้มีความสุขกับมื้ออาหารค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kòp prá kun têe maa ùt nǔn ná ká/kráp. Kŏr hâi mee kwaam sùk gàp méu aa-hăan kâ/kráp. — Thank you for your patronage. Enjoy your meal!",
+      "isTerminal": true
+    }
+  }
+}

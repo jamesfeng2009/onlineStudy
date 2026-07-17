@@ -1,0 +1,167 @@
+{
+  "id": "dlg-es-hotel-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Check-in en el hotel",
+  "opening": "¡Hola! Bienvenido al Hotel Sol. ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Bienvenido al Hotel Sol. ¿Tiene una reserva a su nombre?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "reserva"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no"
+          ],
+          "nextTurnId": "t-no-reserva"
+        },
+        {
+          "keywords": [
+            "",
+            "hola"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-la!) — Hello! Welcome to Hotel Sol. Do you have a reservation under your name?"
+    },
+    "t-no-reserva": {
+      "id": "t-no-reserva",
+      "prompt": "Lo siento, ¿no tiene reserva? Permítame verificar si tenemos habitaciones disponibles.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "gracias",
+            "por favor"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry, you don't have a reservation? Let me check if we have rooms available."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfecto. ¿Podría decirme su nombre completo y mostrarme una identificación, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "mi nombre",
+            "soy",
+            "me llamo",
+            "apellido"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "sí"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. (Per-fek-toh.) — Perfect. Could you tell me your full name and show me an ID, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Gracias. Ya tengo sus datos. ¿Cómo le gustaría pagar? ¿Con tarjeta o en efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito",
+            "débito"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "pago"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias. (Grah-see-as.) — Thank you. I have your details. How would you like to pay? With card or cash?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. ¿Tiene alguna preferencia de habitación, por ejemplo, con vistas? ¿Y le gustaría incluir el desayuno?",
+      "branches": [
+        {
+          "keywords": [
+            "vistas",
+            "balcón",
+            "ventana",
+            "desayuno"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "sí"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. (En-ten-dee-doh.) — Understood. Do you have any room preference, for example, with a view? And would you like to include breakfast?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. Su habitación, la 305, estará lista en unos minutos. El desayuno se sirve de 7 a 10 de la mañana. Aquí tiene la llave.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "bien",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. (Per-fek-toh.) — Perfect. Your room, 305, will be ready in a few minutes. Breakfast is served from 7 to 10 AM. Here is the key."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "por favor"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. Que tenga una feliz estancia en nuestro hotel. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay. Have a pleasant stay at our hotel. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

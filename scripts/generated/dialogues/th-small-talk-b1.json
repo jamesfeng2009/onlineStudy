@@ -1,0 +1,133 @@
+{
+  "id": "dlg-th-small-talk-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "บทสนทนาเล็กๆ น้อยๆ",
+  "opening": "สวัสดีครับ/ค่ะ สุดสัปดาห์ที่ผ่านมาเป็นยังไงบ้างครับ/คะ ไปเที่ยวไหนมาหรือเปล่า?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ สุดสัปดาห์ที่ผ่านมาเป็นยังไงบ้างครับ/คะ ไปเที่ยวไหนมาหรือเปล่า?",
+      "branches": [
+        {
+          "keywords": [
+            "ไปเที่ยว",
+            "เดินทาง",
+            "นอกบ้าน"
+          ],
+          "nextTurnId": "t2_travel"
+        },
+        {
+          "keywords": [
+            "อยู่บ้าน",
+            "พักผ่อน",
+            "ในบ้าน"
+          ],
+          "nextTurnId": "t3_home"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii kráp/kâ. Sùt sàp-daa tîi pâan maa pen yang-ngai bâang kráp/kâ? Bpai tîaw nǎi maa rǔe bplàao? — Hello. How was your past weekend? Did you go anywhere?"
+    },
+    "t2_travel": {
+      "id": "t2_travel",
+      "prompt": "น่าสนใจจังเลยครับ/ค่ะ! ไปเที่ยวที่ไหนมาครับ/คะ? ชอบไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทะเล",
+            "ภูเขา",
+            "ธรรมชาติ",
+            "ต่างจังหวัด"
+          ],
+          "nextTurnId": "t4_general_activity"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâa sǒn-jai jang loei kráp/kâ! Bpai tîaw tîi nǎi maa kráp/kâ? Chôop mái kráp/kâ? — That sounds interesting! Where did you go? Did you like it?"
+    },
+    "t3_home": {
+      "id": "t3_home",
+      "prompt": "อ๋อ พักผ่อนอยู่บ้านก็ดีนะครับ/คะ ได้ทำอะไรสนุกๆ บ้างไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดูหนัง",
+            "ดูซีรีส์",
+            "ฟังเพลง"
+          ],
+          "nextTurnId": "t4_general_activity"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่มีอะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aaw, pák-pɔ̂n yùu bâan gôr dii ná kráp/kâ. Dâai tam a-rai sà-nùk-sà-nùk bâang mái kráp/kâ? — Oh, relaxing at home is good too. Did you do anything fun?"
+    },
+    "t4_general_activity": {
+      "id": "t4_general_activity",
+      "prompt": "ฟังดูน่าสนุกจังเลยนะครับ/คะ! ปกติชอบทำกิจกรรมแบบนี้บ่อยๆ ไหมครับ/คะ? หรือมีอะไรแนะนำบ้างไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บ่อย",
+            "เป็นประจำ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fang duu nâa sà-nùk jang loei ná kráp/kâ! Bpòk-gà-dtì chôop tam gìt-ja-gam bàep níi bɔ̀y-bɔ̀i mái kráp/kâ? Rǔe mii a-rai náe-nam bâang mái kráp/kâ? — That sounds really fun! Do you usually do these kinds of activities often? Or do you have any recommendations?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ เมื่อกี้พูดว่าอะไรนะครับ/คะ? ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ tôot ná kráp/kâ. Mûea-gîi pûut wâa a-rai ná kráp/kâ? Chûay pûut ìik kráng dâai mái kráp/kâ? — Excuse me. What did you say just now? Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีจังเลยครับ/ค่ะ! ได้คุยกันแล้วรู้สึกดีจังเลยครับ/ค่ะ ขอตัวก่อนนะครับ/คะ ไว้คุยกันใหม่นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dii jang loei kráp/kâ! Dâai kui gan láew rúu-sùek dii jang loei kráp/kâ. Kɔ̌ɔ dtua gɔ̀n ná kráp/kâ. Wái kui gan mài ná kráp/kâ. — That's great! It was nice talking to you. I'll take my leave now. Let's talk again sometime.",
+      "isTerminal": true
+    }
+  }
+}

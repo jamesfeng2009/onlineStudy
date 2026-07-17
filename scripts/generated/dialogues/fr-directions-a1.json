@@ -1,0 +1,218 @@
+{
+  "id": "dlg-fr-directions-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Demander son chemin",
+  "opening": "Bonjour ! Vous cherchez quelque chose ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Vous cherchez quelque chose ?",
+      "branches": [
+        {
+          "keywords": [
+            "gare",
+            "train"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "musée",
+            "exposition"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "poste",
+            "lettre"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! (Bohn-zhoor!) Vous cherchez quelque chose ? (Voo shair-shay kell-kuh shohz?) — Hello! Are you looking for something?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "La gare ? Oui, c'est tout droit. C'est loin d'ici.",
+      "branches": [
+        {
+          "keywords": [
+            "comment",
+            "yaller",
+            "transport",
+            "bus"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La gare ? (Lah gahr?) Oui, c'est tout droit. (Wee, seh too drwah.) C'est loin d'ici. (Seh lwahn dee-see.) — The station? Yes, it's straight ahead. It's far from here."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Le musée ? Oui, c'est facile. Tournez à droite, après la boulangerie.",
+      "branches": [
+        {
+          "keywords": [
+            "loin",
+            "distance",
+            "temps"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Le musée ? (Luh myu-zay?) Oui, c'est facile. (Wee, seh fah-seel.) Tournez à droite, après la boulangerie. (Toor-nay ah drwaht, ah-pray lah boo-lahn-zhuh-ree.) — The museum? Yes, it's easy. Turn right, after the bakery."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La poste ? Ah, c'est juste ici, à gauche. En face du parc.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "où",
+            "exactement"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La poste ? (Lah pohst?) Ah, c'est juste ici, à gauche. (Ah, seh joost ee-see, ah gohsh.) En face du parc. (Ahn fahs dyu pahrk.) — The post office? Ah, it's right here, to the left. Across from the park."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pour la gare, prenez le bus numéro sept. L'arrêt est là-bas.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "arrêt",
+            "où"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour la gare, prenez le bus numéro sept. L'arrêt est là-bas. — For the station, take bus number seven. The stop is over there."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Le musée n'est pas loin, c'est à cinq minutes à pied. La poste est juste devant vous.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Le musée n'est pas loin, c'est à cinq minutes à pied. La poste est juste devant vous. — The museum is not far, it's five minutes on foot. The post office is right in front of you."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "L'arrêt de bus est après le café, juste devant la banque.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "L'arrêt de bus est après le café, juste devant la banque. (Lah-reh duh byus eh ah-pray luh kah-fay, joost duh-vahn lah bahnk.) — The bus stop is after the cafe, right in front of the bank."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? (Pahr-dohn?) Pouvez-vous répéter, s'il vous plaît ? (Poo-vay-voo ray-pay-tay, seel voo play?) — Pardon? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien. Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien. (Duh ryahn.) Bonne journée ! (Bunn zhoor-nay!) — You're welcome. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

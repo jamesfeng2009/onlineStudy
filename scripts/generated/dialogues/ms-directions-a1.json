@@ -1,0 +1,200 @@
+{
+  "id": "dlg-ms-directions-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Mencari Lokasi",
+  "opening": "Selamat pagi! Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "cari",
+            "pergi",
+            "mana"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi! Boleh saya bantu? — Good morning! Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Anda mencari apa?",
+      "branches": [
+        {
+          "keywords": [
+            "bank"
+          ],
+          "nextTurnId": "t3_bank"
+        },
+        {
+          "keywords": [
+            "pasar"
+          ],
+          "nextTurnId": "t3_pasar"
+        },
+        {
+          "keywords": [
+            "stesenbas",
+            "bas"
+          ],
+          "nextTurnId": "t3_bus"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anda mencari apa? — What are you looking for?"
+    },
+    "t3_bank": {
+      "id": "t3_bank",
+      "prompt": "Oh, bank. Dari sini, jalan terus. Belok kiri di lampu isyarat.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "berapa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, bank. Dari sini, jalan terus. Belok kiri di lampu isyarat. — Oh, the bank. From here, walk straight. Turn left at the traffic lights."
+    },
+    "t3_pasar": {
+      "id": "t3_pasar",
+      "prompt": "Pasar. Dekat sini. Jalan ke sana, nampak masjid.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "berapa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pasar. Dekat sini. Jalan ke sana, nampak masjid. — The market. It's near here. Walk that way, you will see a mosque."
+    },
+    "t3_bus": {
+      "id": "t3_bus",
+      "prompt": "Stesen bas. Jalan terus, di sebelah kanan. Nombor bas tujuh.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "berapa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stesen bas. Jalan terus, di sebelah kanan. Nombor bas tujuh. — The bus station. Walk straight, on the right side. Bus number seven."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Lebih kurang lima minit jalan kaki.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lebih kurang lima minit jalan kaki. — Approximately five minutes walk."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang? Saya tidak faham. — Sorry, can you repeat? I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Hati-hati ya.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama. Hati-hati ya. — You're welcome. Be careful.",
+      "isTerminal": true
+    }
+  }
+}

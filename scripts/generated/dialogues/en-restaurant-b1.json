@@ -1,0 +1,207 @@
+{
+  "id": "dlg-en-restaurant-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Ordering at the Restaurant",
+  "opening": "Welcome! Are you ready to order, or do you need a few more minutes?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Welcome! Are you ready to order, or do you need a few more minutes?",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "order"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "menu",
+            "time",
+            "decide"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "water",
+            "drink"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome! (Well-kuhm!) Are you ready to order, or do you need a few more minutes?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent! What can I get for you today? Have you seen anything you like?",
+      "branches": [
+        {
+          "keywords": [
+            "recommend",
+            "suggest",
+            "what's good"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "allergies",
+            "restrictions",
+            "diet"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "i'llhave",
+            "the",
+            "i'dlike"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent! (Ex-uh-lent!) What can I get for you today? Have you seen anything you like?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "No problem at all. Take your time. I'll come back in a few minutes. Would you like a drink while you decide?",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "thanks",
+            "fine"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "water",
+            "coke",
+            "drink"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem at all. Take your time. I'll come back in a few minutes. (I'll be back soon.) Would you like a drink while you decide?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certainly! What can I get you to drink?",
+      "branches": [
+        {
+          "keywords": [
+            "water",
+            "juice",
+            "soda",
+            "coke"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly! (Sir-tuhn-lee!) What can I get you to drink?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Our special today is the grilled salmon, and the pasta primavera is always a popular choice. Which sounds better to you?",
+      "branches": [
+        {
+          "keywords": [
+            "salmon",
+            "grilled"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "somethingelse",
+            "notreally"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Our special today is the grilled salmon (Sal-muhn), and the pasta primavera is always a popular choice. Which sounds better to you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "No problem, we can accommodate most requests. Do you have any specific allergies or dietary needs I should know about?",
+      "branches": [
+        {
+          "keywords": [
+            "gluten",
+            "nuts",
+            "dairy",
+            "vegetarian"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "none",
+            "nothing"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem, we can accommodate most requests. Do you have any specific allergies or dietary needs (die-eh-tuh-ree needs) I should know about?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Excellent choice! And will that be all for you, or is there anything else I can get started for you?",
+      "branches": [
+        {
+          "keywords": [
+            "that'sall",
+            "finished",
+            "bill"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "another",
+            "more"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice! (Ex-uh-lent choys!) And will that be all for you, or is there anything else I can get started for you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat it, or tell me what you'd like to do?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. (I didn't understand.) Could you please repeat it, or tell me what you'd like to do?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for dining with us! Have a wonderful day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for dining with us! Have a wonderful day.",
+      "isTerminal": true
+    }
+  }
+}

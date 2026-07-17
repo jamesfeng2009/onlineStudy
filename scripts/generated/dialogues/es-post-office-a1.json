@@ -1,0 +1,167 @@
+{
+  "id": "dlg-es-post-office-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "En la oficina de correos",
+  "opening": "¡Hola! ¿En qué puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿En qué puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "paquete",
+            "enviar"
+          ],
+          "nextTurnId": "t2_parcel_info"
+        },
+        {
+          "keywords": [
+            "sellos",
+            "carta"
+          ],
+          "nextTurnId": "t2_stamps_info"
+        },
+        {
+          "keywords": [
+            "informacion",
+            "pregunta"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola (OH-lah)! ¿En (en) qué (KEH) puedo (PWEH-doh) ayudarle (ah-yoo-DAR-leh)? — Hello! How can I help you?"
+    },
+    "t2_parcel_info": {
+      "id": "t2_parcel_info",
+      "prompt": "¿Es un paquete para España o internacional? ¿Necesita envío registrado?",
+      "branches": [
+        {
+          "keywords": [
+            "españa",
+            "nacional",
+            "registrado"
+          ],
+          "nextTurnId": "t4_confirm_transaction"
+        },
+        {
+          "keywords": [
+            "internacional",
+            "extranjero"
+          ],
+          "nextTurnId": "t3_customs"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Es (ES) un (OON) paquete (pah-KEH-teh) para (PAH-rah) España (es-PAH-nya) o (OH) internacional (een-ter-nah-thyon-AHL)? ¿Necesita (neh-seh-SEE-tah) envío (en-VEE-oh) registrado (reh-hees-TRAH-doh)? — Is it a parcel for Spain or international? Do you need registered mail?"
+    },
+    "t2_stamps_info": {
+      "id": "t2_stamps_info",
+      "prompt": "¿Cuántos sellos necesita? ¿Y son para España o internacional?",
+      "branches": [
+        {
+          "keywords": [
+            "uno",
+            "dos",
+            "tres",
+            "cuatro",
+            "cinco"
+          ],
+          "nextTurnId": "t4_confirm_transaction"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Cuántos (KWAN-tos) sellos (SEH-yos) necesita (neh-seh-SEE-tah)? ¿Y (EE) son (SON) para (PAH-rah) España (es-PAH-nya) o (OH) internacional (een-ter-nah-thyon-AHL)? — How many stamps do you need? And are they for Spain or international?"
+    },
+    "t3_customs": {
+      "id": "t3_customs",
+      "prompt": "Para un paquete internacional, necesita un formulario de aduanas. ¿Lo tiene o lo necesita?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "ya"
+          ],
+          "nextTurnId": "t4_confirm_transaction"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Para (PAH-rah) un (OON) paquete (pah-KEH-teh) internacional (een-ter-nah-thyon-AHL), necesita (neh-seh-SEE-tah) un (OON) formulario (for-moo-LAH-ryo) de (DEH) aduanas (ah-DWAH-nas). ¿Lo (LOH) tiene (TYEH-neh) o (OH) lo (LOH) necesita (neh-seh-SEE-tah)? — For an international parcel, you need a customs form. Do you have it or do you need it?"
+    },
+    "t4_confirm_transaction": {
+      "id": "t4_confirm_transaction",
+      "prompt": "¡De acuerdo! ¿Es correcto? El total es [cantidad]. ¿Paga con tarjeta o efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "correcto",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡De (DEH) acuerdo (ah-KWER-doh)! ¿Es (ES) correcto (kor-REK-toh)? El (EL) total (toh-TAL) es (ES) [cantidad]. ¿Paga (PAH-gah) con (KON) tarjeta (tar-HEH-tah) o (OH) efectivo (ef-ek-TEE-voh)? — Okay! Is that correct? The total is [amount]. Do you pay with card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, ¿puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Lo (LOH) siento (SYEN-toh), ¿puede (PWEH-deh) repetir (reh-peh-TEER), por (POR) favor (fah-VOR)? — I'm sorry, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gracias por su visita. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gracias (GRAH-syas) por (POR) su (SOO) visita (vee-SEE-tah). ¡Adiós (ah-dee-OHS)! — Thank you for your visit. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

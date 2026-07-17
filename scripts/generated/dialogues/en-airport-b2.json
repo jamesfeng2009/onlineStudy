@@ -1,0 +1,196 @@
+{
+  "id": "dlg-en-airport-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Airport Assistance",
+  "opening": "Good morning, welcome to Terminal 5. How may I assist you today?",
+  "startTurnId": "t1_greeting",
+  "turns": {
+    "t1_greeting": {
+      "id": "t1_greeting",
+      "prompt": "Good morning, welcome to Terminal 5. How may I assist you today?",
+      "branches": [
+        {
+          "keywords": [
+            "checkin",
+            "check-in"
+          ],
+          "nextTurnId": "t2_checkin"
+        },
+        {
+          "keywords": [
+            "flight",
+            "question",
+            "info"
+          ],
+          "nextTurnId": "t2_flight"
+        },
+        {
+          "keywords": [
+            "lost",
+            "luggage",
+            "bag"
+          ],
+          "nextTurnId": "t2_lost"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, welcome to Terminal 5. How may I assist you today? — Good morning, welcome to Terminal 5. How may I assist you today?"
+    },
+    "t2_checkin": {
+      "id": "t2_checkin",
+      "prompt": "Certainly. Could I trouble you for your passport and booking reference, please?",
+      "branches": [
+        {
+          "keywords": [
+            "passport",
+            "reference"
+          ],
+          "nextTurnId": "t3_boardingpass"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Could I trouble you for your passport and booking reference, please? — Certainly. Could I trouble you for your passport and booking reference, please?"
+    },
+    "t2_flight": {
+      "id": "t2_flight",
+      "prompt": "Understood. Could you tell me your flight number or destination, so I can pull up the latest information?",
+      "branches": [
+        {
+          "keywords": [
+            "ba249",
+            "sãopaulo"
+          ],
+          "nextTurnId": "t3_flightinfo_ack"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Could you tell me your flight number or destination, so I can pull up the latest information? — Understood. Could you tell me your flight number or destination, so I can pull up the latest information?"
+    },
+    "t2_lost": {
+      "id": "t2_lost",
+      "prompt": "I'm truly sorry to hear that. Could you give me your flight details and a brief description of your bag so we can initiate a report?",
+      "branches": [
+        {
+          "keywords": [
+            "report",
+            "fileareport"
+          ],
+          "nextTurnId": "t3_lost_ack"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm truly sorry to hear that. Could you give me your flight details and a brief description of your bag so we can initiate a report?"
+    },
+    "t3_boardingpass": {
+      "id": "t3_boardingpass",
+      "prompt": "Excellent. Your boarding pass has been issued. Are you checking in any luggage, or just proceeding with carry-on?",
+      "branches": [
+        {
+          "keywords": [
+            "carryon",
+            "carry-on"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Your boarding pass has been issued. Are you checking in any luggage, or just proceeding with carry-on?"
+    },
+    "t3_flightinfo_ack": {
+      "id": "t3_flightinfo_ack",
+      "prompt": "Understood. For Flight BA249 to São Paulo, it's scheduled for a timely departure from Gate B32. Boarding will commence at 14:30. Is there anything else I can clarify?",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "understood"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. For Flight BA249 to São Paulo, it's scheduled for a timely departure from Gate B32. Boarding will commence at 14:30. Is there anything else I can clarify?"
+    },
+    "t3_lost_ack": {
+      "id": "t3_lost_ack",
+      "prompt": "Of course. You'll need to head to the Baggage Services office. It's located on the Arrivals level, just after you clear customs. They're equipped to handle lost and found reports there.",
+      "branches": [
+        {
+          "keywords": [
+            "gotit",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. You'll need to head to the Baggage Services office. It's located on the Arrivals level, just after you clear customs. They're equipped to handle lost and found reports there."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_greeting"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're all set then. Have a pleasant journey and thank you for flying with us!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're all set then. Have a pleasant journey and thank you for flying with us!",
+      "isTerminal": true
+    }
+  }
+}

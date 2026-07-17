@@ -1,0 +1,100 @@
+{
+  "id": "dlg-de-interview-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Vorstellungsgespräch",
+  "opening": "Guten Tag, Herr/Frau [Nachname]. Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns doch bitte etwas über sich und Ihre bisherige Berufserfahrung.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Nachname]. Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns doch bitte etwas über sich und Ihre bisherige Berufserfahrung.",
+      "branches": [
+        {
+          "keywords": [
+            "erfahrung",
+            "job",
+            "kenntnisse",
+            "position"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gooten Tahg, Hair/Frou [Nahkh-nah-meh]. Feelen Dahngk, dass zee hoy-teh heer zint. Air-tsay-len zee uns doch bit-teh et-vas ue-ber zikh unt ee-reh biz-he-ri-geh Be-roofs-er-fah-rung. — Good day, Mr./Ms. [Last name]. Thank you for being here today. Please tell us a bit about yourself and your previous professional experience."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gen Zee, ish hah-beh Zee nisht gahnts fer-stan-den. Kern-ten Zee das bit-teh vee-der-ho-len o-der an-ders for-moo-lee-ren? — Excuse me, I didn't quite understand you. Could you please repeat that or phrase it differently?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Das klingt vielversprechend. Kommen wir nun zu Ihren Stärken: Was zeichnet Sie Ihrer Meinung nach besonders aus und wie würden Sie diese im Arbeitsalltag einsetzen?",
+      "branches": [
+        {
+          "keywords": [
+            "teamfähig",
+            "teamarbeit",
+            "zusammenarbeit"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klinkt feel-feer-shpreh-shend. Kohm-men veer noon tsoo ee-ren Shtair-ken: Vas tsaykh-net Zee ee-rer my-noong nahkh be-zon-ders ows unt vee ver-den Zee dee-zeh im Ar-byts-ahl-tahg ayn-zet-sen? — That sounds promising. Let's move on to your strengths: What do you think particularly distinguishes you, and how would you apply these in your daily work?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vielen Dank für die ehrliche Einschätzung Ihrer Stärken. Nun aber zu einer vielleicht kniffligeren Frage: Wo sehen Sie Ihre Schwächen oder Bereiche, in denen Sie sich noch verbessern möchten?",
+      "branches": [
+        {
+          "keywords": [
+            "perfektionismus",
+            "detailorientiert",
+            "genau"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Feelen Dahngk fyur dee ay-er-li-geh Ayn-shat-tsung ee-rer Shtair-ken. Noon ah-ber tsoo ay-ner fee-laykh-t knif-fli-ge-ren Fra-geh: Voh zay-en Zee ee-reh Shvay-chen o-der Be-ry-cheh, in deh-nen Zee zikh nokh fer-bes-sern mer-sh-ten? — Thank you for the honest assessment of your strengths. Now for a perhaps trickier question: Where do you see your weaknesses or areas in which you would like to improve?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vielen Dank für Ihre Zeit und die offenen Antworten. Wir werden uns in Kürze bei Ihnen melden. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Feelen Dahngk fyur ee-reh Tsayt unt dee of-fe-nen Ant-vor-ten. Veer ver-den uns in Kyur-tseh by ee-nen mel-den. Ouf Vee-der-zay-en! — Thank you for your time and candid answers. We will get back to you shortly. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

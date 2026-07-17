@@ -1,0 +1,201 @@
+{
+  "id": "dlg-en-restaurant-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Dining Out: A Culinary Connoisseur's Chat",
+  "opening": "Good evening! Welcome to 'The Gilded Spoon'. A pleasure to have you. Have you had a chance to glance at our menu, or might I tempt you with our evening's specials?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good evening! Welcome to 'The Gilded Spoon'. A pleasure to have you. Have you had a chance to glance at our menu, or might I tempt you with our evening's specials?",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "order",
+            "no"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "specials",
+            "recommendations",
+            "tell"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "drinks",
+            "wine",
+            "beverage"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! Welcome to 'The Gilded Spoon'. A pleasure to have you. Have you had a chance to glance at our menu, or might I tempt you with our evening's specials? — Good evening! Welcome to our restaurant. It's nice to see you. Have you looked at the menu, or would you like to hear about today's special dishes?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Splendid! Are you leaning towards anything in particular, or would you like me to walk you through some of our standout dishes this evening?",
+      "branches": [
+        {
+          "keywords": [
+            "recommend",
+            "suggest",
+            "standout"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "know",
+            "ready",
+            "order",
+            "i'llhave",
+            "we'lltake"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "drinks",
+            "wine",
+            "beverage"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Splendid! Are you leaning towards anything in particular, or would you like me to walk you through some of our standout dishes this evening? — Great! Do you have something specific in mind, or would you like me to describe some of our best dishes tonight?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certainly. Many patrons rave about our Pan-Seared Scallops with Saffron Risotto – a real symphony of flavours. Alternatively, our Braised Lamb Shank, slow-cooked to perfection, is always a robust choice. What tickles your fancy?",
+      "branches": [
+        {
+          "keywords": [
+            "scallops",
+            "risotto",
+            "fancy"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "other",
+            "different",
+            "more"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Many patrons rave about our Pan-Seared Scallops with Saffron Risotto – a real symphony of flavours. Alternatively, our Braised Lamb Shank, slow-cooked to perfection, is always a robust choice. What tickles your fancy? — Of course. Many customers highly praise our Pan-Seared Scallops with Saffron Risotto – it's very flavorful. Or, our Braised Lamb Shank, cooked slowly until very tender, is always a strong and popular choice. What sounds good to you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certainly. We have an extensive wine list, artisanal cocktails, and a selection of non-alcoholic refreshments. Anything particular calling to you?",
+      "branches": [
+        {
+          "keywords": [
+            "wine",
+            "cocktail",
+            "water",
+            "juice"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "menu",
+            "seamenu"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. We have an extensive wine list, artisanal cocktails, and a selection of non-alcoholic refreshments. Anything particular calling to you? — Of course. We have a large wine list, handcrafted cocktails, and various non-alcoholic drinks. Is there anything specific you'd like?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Excellent. Please, let me know your full order and any specific requests, including any beverages. Our kitchen is adept at accommodating.",
+      "branches": [
+        {
+          "keywords": [
+            "order",
+            "i'llhave",
+            "we'lltake",
+            "main",
+            "dish",
+            "scallops",
+            "lamb",
+            "steak",
+            "wine",
+            "cocktail",
+            "water",
+            "starter",
+            "appetizer"
+          ],
+          "nextTurnId": "t-end-prepare"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Please, let me know your full order and any specific requests, including any beverages. Our kitchen is adept at accommodating. — Great. Tell me your complete order and any special requests, even for drinks. Our kitchen is skilled at making adjustments."
+    },
+    "t-end-prepare": {
+      "id": "t-end-prepare",
+      "prompt": "Splendid! Your order is in safe hands and will be with you in good time. Is there anything else at all I can get for you right now, or shall I leave you to your bon appétit?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "we'regood"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Splendid! Your order is in safe hands and will be with you in good time. Is there anything else at all I can get for you right now, or shall I leave you to your bon appétit? — Great! Your order is being handled well and will arrive soon. Is there anything else I can get for you immediately, or should I leave you to enjoy your meal?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or repeat what you said? — I apologize, I didn't understand. Can you say it again differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfect. Enjoy your meal and the rest of your evening! It's been a pleasure serving you. We hope to see you again soon.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Enjoy your meal and the rest of your evening! It's been a pleasure serving you. We hope to see you again soon. — Great. Have a good meal and evening! It was nice helping you. We hope you come back soon.",
+      "isTerminal": true
+    }
+  }
+}

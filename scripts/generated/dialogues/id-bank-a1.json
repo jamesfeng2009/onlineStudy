@@ -1,0 +1,142 @@
+{
+  "id": "dlg-id-bank-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "Di Bank",
+  "opening": "Selamat pagi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "buka",
+            "rekening"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "tukar",
+            "uang"
+          ],
+          "nextTurnId": "t3_exchange"
+        },
+        {
+          "keywords": [
+            "masalah",
+            "atm"
+          ],
+          "nextTurnId": "t4_atm"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "kirim"
+          ],
+          "nextTurnId": "t5_transfer"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi) — Good morning, ada yang bisa saya bantu? (a-da yang bi-sa sa-ya ban-tu?) — how can I help you?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Baik. Anda ingin buka rekening tabungan atau giro?",
+      "branches": [
+        {
+          "keywords": [
+            "tabungan"
+          ],
+          "nextTurnId": "t6_processing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik) — Okay. Anda ingin buka rekening (An-da i-ngin bu-ka re-ke-ning) — Do you want to open a tabungan (ta-bu-ngan) — savings account atau (a-tau) — or giro (gi-ro) — checking account?"
+    },
+    "t3_exchange": {
+      "id": "t3_exchange",
+      "prompt": "Mata uang apa yang ingin Anda tukar?",
+      "branches": [
+        {
+          "keywords": [
+            "dolar",
+            "usd"
+          ],
+          "nextTurnId": "t6_processing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mata uang (Ma-ta u-ang) — Which currency apa (a-pa) — what yang (yang) — that ingin (i-ngin) — you want to tukar (tu-kar) — exchange?"
+    },
+    "t4_atm": {
+      "id": "t4_atm",
+      "prompt": "Apa masalah ATM Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "kartu",
+            "tertelan"
+          ],
+          "nextTurnId": "t6_processing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apa (A-pa) — What masalah (ma-sa-lah) — problem ATM (A-T-M) — ATM Anda (An-da) — your?"
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "Transfer ke bank mana?",
+      "branches": [
+        {
+          "keywords": [
+            "mandiri",
+            "bca"
+          ],
+          "nextTurnId": "t6_processing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Transfer (Trans-fer) — Transfer ke (ke) — to bank (bank) — bank mana (ma-na) — which?"
+    },
+    "t6_processing": {
+      "id": "t6_processing",
+      "prompt": "Baik, mohon tunggu sebentar. Saya akan bantu Anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Ba-ik) — Okay, mohon tunggu (mo-hon tung-gu) — please wait sebentar (se-ben-tar) — a moment. Saya akan bantu (sa-ya a-kan ban-tu) — I will help Anda (An-da) — you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af) — Sorry, bisa diulang (bi-sa di-u-lang) — can you repeat? Saya kurang jelas (sa-ya ku-rang je-las) — I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah datang. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Te-ri-ma ka-sih) — Thank you sudah datang (su-dah da-tang) — for coming. Selamat jalan (Se-la-mat ja-lan) — Goodbye! (Said to someone leaving)",
+      "isTerminal": true
+    }
+  }
+}

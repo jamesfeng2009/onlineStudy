@@ -1,0 +1,200 @@
+{
+  "id": "dlg-vi-taxi-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Hành Trình Taxi",
+  "opening": "Chào quý khách, anh/chị muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách, anh/chị muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "sânbay",
+            "sân bay",
+            "tânsơnnhất",
+            "tân sơn nhất"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bệnhviện",
+            "bệnh viện",
+            "bv"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kháchsạn",
+            "khách sạn",
+            "ks"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách, anh/chị muốn đi đâu ạ? — Hello, where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, Sân bay Tân Sơn Nhất. Anh/chị muốn đến ga đi quốc nội hay quốc tế ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "quốcnội",
+            "quốc nội",
+            "nộiđịa",
+            "nội địa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, Sân bay Tân Sơn Nhất. Anh/chị muốn đến ga đi quốc nội hay quốc tế ạ? — Yes, Tan Son Nhat Airport. Would you like to go to the domestic or international terminal?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bệnh viện nào ạ? Ở thành phố mình có khá nhiều bệnh viện lớn đấy ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "chợrẫy",
+            "chợ rẫy",
+            "cr"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bệnh viện nào ạ? Ở thành phố mình có khá nhiều bệnh viện lớn đấy ạ. — Which hospital? There are quite a few major hospitals in our city."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Khách sạn nào vậy anh/chị? Ở khu vực trung tâm hay ngoại thành ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "caravelle",
+            "rex",
+            "parkhyatt",
+            "park hyatt",
+            "trungtâm",
+            "trung tâm"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khách sạn nào vậy anh/chị? Ở khu vực trung tâm hay ngoại thành ạ? — Which hotel, sir/madam? In the city center or outskirts?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, đường đó giờ này chắc cũng khá đông. Anh/chị có muốn đi đường tắt để tránh kẹt xe không ạ, tuy hơi xa hơn một chút nhưng sẽ nhanh hơn?",
+      "branches": [
+        {
+          "keywords": [
+            "đườngtắt",
+            "đường tắt",
+            "nhanhhơn",
+            "nhanh hơn"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, đường đó giờ này chắc cũng khá đông. Anh/chị có muốn đi đường tắt để tránh kẹt xe không ạ, tuy hơi xa hơn một chút nhưng sẽ nhanh hơn? — Okay, that road is probably quite crowded at this time. Would you like to take a shortcut to avoid traffic, even if it's a bit further, it will be faster?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vâng, chúng ta đã đến nơi rồi ạ. Tổng cộng là hai trăm hai mươi lăm nghìn đồng. Anh/chị thanh toán bằng tiền mặt hay chuyển khoản ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "tiền mặt"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, chúng ta đã đến nơi rồi ạ. Tổng cộng là hai trăm hai mươi lăm nghìn đồng. Anh/chị thanh toán bằng tiền mặt hay chuyển khoản ạ? — Okay, we've arrived. The total is two hundred twenty-five thousand dong. Would you like to pay by cash or bank transfer?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Dạ vâng, tôi đã nhận được tiền. Cảm ơn quý khách và chúc quý khách một ngày tốt lành ạ!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dạ vâng, tôi đã nhận được tiền. Cảm ơn quý khách và chúc quý khách một ngày tốt lành ạ! — Yes, I've received the payment. Thank you and have a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, hình như tôi nghe không rõ lắm. Anh/chị vui lòng lặp lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, hình như tôi nghe không rõ lắm. Anh/chị vui lòng lặp lại được không ạ? — Sorry, it seems I didn't hear very clearly. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã sử dụng dịch vụ. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn quý khách đã sử dụng dịch vụ. Chúc quý khách một ngày tốt lành! — Thank you for using our service. Wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

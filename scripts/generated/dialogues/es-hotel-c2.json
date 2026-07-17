@@ -1,0 +1,157 @@
+{
+  "id": "dlg-es-hotel-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Registro en el Hotel El Faro",
+  "opening": "¡Bienvenido al Hotel El Faro! ¿En qué puedo ayudarle hoy? ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Bienvenido al Hotel El Faro! ¿En qué puedo ayudarle hoy? ¿Tiene una reserva a su nombre?",
+      "branches": [
+        {
+          "keywords": [
+            "mi nombre",
+            "reserva a nombre de",
+            "soy",
+            "sí",
+            "tengo",
+            "aquí",
+            "llegué"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "disculpe",
+            "repetir",
+            "no entiendo",
+            "podría"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Bienvenido al Hotel El Faro! ¿En qué puedo ayudarle hoy? ¿Tiene una reserva a su nombre? (Byen-veh-NEE-doh al Oh-TEL el FAH-roh! En keh PWEH-doh ah-yoo-DAR-leh oy? Tyeh-NEH OO-nah reh-SER-vah ah soo NOHM-breh?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excelente. Y para completar el registro, ¿sería tan amable de mostrarme su documento de identidad o pasaporte, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "dni",
+            "pasaporte",
+            "identidad",
+            "documento",
+            "aquí tiene",
+            "claro",
+            "por supuesto"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "disculpe",
+            "repetir",
+            "no entiendo",
+            "qué dice"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. And to complete the check-in, would you be so kind as to show me your ID or passport, please? (Ek-seh-LEHN-teh. Ee pah-RAH kohm-pleh-TAR el re-HEES-troh, seh-REE-ah tahn ah-MAH-bleh deh mohs-TRAR-meh soo doh-koo-MEN-toh deh ee-dehn-tee-DAHD oh pah-sah-POR-teh, pohr fah-VOR?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto. Gracias. Ahora, en cuanto a la forma de pago, ¿prefiere cargar la estancia a una tarjeta de crédito o tiene alguna otra preferencia?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito",
+            "débito",
+            "efectivo",
+            "pago online",
+            "transferencia"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "disculpe",
+            "repetir",
+            "no comprendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Thank you. Now, regarding the payment method, do you prefer to charge the stay to a credit card or do you have any other preference? (Pehr-FEHK-toh. GRAH-syahs. Ah-OH-rah, ehn KWAHN-toh ah lah FOR-mah deh PAH-goh, pre-fyeh-REH kar-GAR lah ehs-TAHN-sya ah OO-nah tar-HEH-tah deh KREH-dee-toh oh tyen-EH AHL-goo-nah OH-trah pre-feh-REHN-sya?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Estupendo. Ya casi estamos. ¿Necesitará el desayuno incluido en su tarifa, o prefiere gestionarlo aparte? Y por último, ¿alguna preferencia en cuanto a la habitación, quizás vista a la calle o interior, cama doble o dos individuales?",
+      "branches": [
+        {
+          "keywords": [
+            "desayuno",
+            "incluido",
+            "sí",
+            "lo quiero",
+            "no desayuno",
+            "sin desayuno",
+            "aparte",
+            "vista",
+            "calle",
+            "interior",
+            "cama",
+            "doble",
+            "individuales",
+            "preferencia",
+            "no importa",
+            "da igual",
+            "no tengo",
+            "cualquiera"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "disculpe",
+            "repetir",
+            "no entiendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great. We're almost done. Will you need breakfast included in your rate, or do you prefer to arrange it separately? And finally, any room preferences, perhaps street view or interior, double bed or two singles?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? ¿Podría repetírmelo, por favor? No le he oído bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? Could you please repeat that? I didn't hear you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Su habitación está lista. Aquí tiene la llave y su tarjeta de acceso. Disfrute mucho de su estancia en el Hotel El Faro. ¡Que tenga un excelente día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Your room is ready. Here is your key and access card. Enjoy your stay at Hotel El Faro very much. Have an excellent day!",
+      "isTerminal": true
+    }
+  }
+}

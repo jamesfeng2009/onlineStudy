@@ -1,0 +1,158 @@
+{
+  "id": "dlg-ms-airport-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Daftar Masuk Penerbangan",
+  "opening": "Selamat pagi. Boleh saya lihat pasport dan tiket penerbangan anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya lihat pasport dan tiket penerbangan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "ini dia",
+            "pasport",
+            "tiket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "belum",
+            "jumpa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi) — Good morning. Boleh saya lihat (bo-leh sa-ya li-hat) — May I see your passport and flight ticket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. Adakah anda mempunyai bagasi untuk daftar masuk?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada",
+            "beg"
+          ],
+          "nextTurnId": "t3-with-luggage"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "tak"
+          ],
+          "nextTurnId": "t3-no-luggage"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Te-ri-ma ka-sih) — Thank you. Adakah anda mempunyai bagasi untuk daftar masuk (A-da-kah an-da mem-pu-nya-i ba-ga-si un-tuk daf-tar ma-suk)? — Do you have any luggage to check in?"
+    },
+    "t3-with-luggage": {
+      "id": "t3-with-luggage",
+      "prompt": "Sila letak bagasi anda di atas penimbang.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok",
+            "sudah",
+            "letak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "berat",
+            "mana",
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please put your luggage on the scale."
+    },
+    "t3-no-luggage": {
+      "id": "t3-no-luggage",
+      "prompt": "Baiklah. Pintu pelepasan anda nombor A12. Penerbangan akan berlepas pada pukul sepuluh pagi.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "faham",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ulang",
+            "lagi",
+            "nombor",
+            "pukul"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah (Bai-ke-lah) — Okay. Your departure gate is number A12. The flight will depart at ten AM."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih. Ini pas masuk dan maklumat penerbangan anda. Pintu pelepasan A12.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pintu",
+            "nombor",
+            "bila"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Te-ri-ma ka-sih) — Thank you. Here is your boarding pass and flight information. Gate A12."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af) — Sorry, can you repeat that (boleh ulang sekali lagi)? I don't understand (saya tidak faham)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Selamat jalan dan selamat menikmati penerbangan anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Have a good trip and enjoy your flight!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "id": "dlg-th-small-talk-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "คุยเล่นกับเพื่อนร่วมงาน",
+  "opening": "สวัสดีค่ะ/ครับ ไม่เจอกันนานเลยนะคะ/ครับ ช่วงนี้เป็นยังไงบ้างคะ/ครับ? สบายดีไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ไม่เจอกันนานเลยนะคะ/ครับ ช่วงนี้เป็นยังไงบ้างคะ/ครับ? สบายดีไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "สบายดี",
+            "ดีมาก",
+            "ก็ดี",
+            "สบาย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่ค่อยดี",
+            "เหนื่อย",
+            "ยุ่ง",
+            "เฉยๆ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawadee ka/krap. Mai jer gan nan loey na ka/krap. Chuang nee pen yang ngai bang ka/krap? Sabai dee mai ka/krap? — Hello! Long time no see. How have you been lately? Are you doing well?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ดีจังเลยค่ะ/ครับ! มีอะไรน่าสนใจเกิดขึ้นบ้างไหมคะ/ครับในช่วงที่ผ่านมา?",
+      "branches": [
+        {
+          "keywords": [
+            "ไปเที่ยว",
+            "พักผ่อน",
+            "เดินทาง",
+            "วันหยุด"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "งานยุ่ง",
+            "เรียนหนัก",
+            "โปรเจกต์ใหม่",
+            "ทำงาน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ดูหนัง",
+            "อ่านหนังสือ",
+            "ทำอาหาร",
+            "อยู่บ้าน"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่มี",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee jang loey ka/krap! Mee a-rai na son jai koed kuen bang mai ka/krap nai chuang tee pan ma? — That's great! Has anything interesting happened lately?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "อ้าว เป็นอะไรไปคะ/ครับ? เล่าให้ฟังหน่อยได้ไหมคะ/ครับ เผื่อมีอะไรที่พอจะช่วยได้บ้าง",
+      "branches": [
+        {
+          "keywords": [
+            "งานหนัก",
+            "เครียด",
+            "ป่วย",
+            "ไม่สบาย"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ปัญหา",
+            "เรื่องส่วนตัว",
+            "มีเรื่อง"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ก็เรื่อยๆ",
+            "ไม่มีอะไร",
+            "ปกติ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ao, pen a-rai pai ka/krap? Lao hai fang noi dai mai ka/krap, peua mee a-rai tee por ja chuay dai bang? — Oh, what happened? Can you tell me a bit, in case there's anything I can help with?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "โอ้โห น่าสนุกจังเลยค่ะ/ครับ! ไปที่ไหนมาคะ/ครับ? ชอบที่สุดตรงไหน?",
+      "branches": [
+        {
+          "keywords": [
+            "ธรรมชาติ",
+            "ทะเล",
+            "ภูเขา",
+            "ป่า"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-ho, na sa-nook jang loey ka/krap! Pai tee nai ma ka/krap? Chorp tee soot trong nai? — Wow, that sounds fun! Where did you go? What did you like most about it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ฟังดูเหนื่อยนะคะ/ครับ! อย่าหักโหมมากนะคะ/ครับ หาเวลาพักผ่อนบ้างก็ดีนะ แล้วได้ผ่อนคลายด้วยวิธีไหนบ้างคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดูหนัง",
+            "ฟังเพลง",
+            "เล่นเกม",
+            "อ่านหนังสือ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fang doo neuay na ka/krap! Ya hak hom mak na ka/krap. Ha wel-a pak-porn bang gor dee na. Laew dai porn klai duay wit-tee nai bang ka/krap? — That sounds tiring! Don't overdo it. It's good to find some time to relax. How do you usually unwind?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ดีจังเลยค่ะ/ครับ! การได้ทำอะไรที่เราชอบนี่แหละ ทำให้เรามีพลังกลับมาอีกครั้ง คุณมีงานอดิเรกอะไรที่ทำบ่อยๆ ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "อ่านหนังสือ",
+            "ดูซีรีส์",
+            "ฟังพอดแคสต์",
+            "ดูหนัง"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่มี",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee jang loey ka/krap! Garn dai tam a-rai tee rao chorp nee lae, tam hai rao mee palang glap ma eek krang. Khun mee ngan a-di-rek a-rai tee tam boy-boy mai ka/krap? — That's great! Doing something we love really recharges us. Do you have any hobbies you do often?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "เข้าใจเลยค่ะ/ครับ บางทีชีวิตมันก็มีเรื่องให้เราต้องเจอเยอะแยะไปหมด หวังว่าทุกอย่างจะคลี่คลายในเร็ววันนะคะ/ครับ มีอะไรให้ช่วยบอกได้เลยนะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ดีขึ้น",
+            "จะบอก"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khao jai loey ka/krap. Bang tee chee-wit man gor mee rueang hai rao tong jer yer yae pai mod. Wang wa took yang ja klee klai nai reo wan na ka/khrap. Mee a-rai hai chuay bok dai loey na. — I understand. Sometimes life throws a lot at us. I hope everything resolves soon. Let me know if there's anything I can help with."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "ฟังดูน่าสนใจมากๆ เลยค่ะ/ครับ! ว่าแต่พักหลังๆ นี้มีหนังหรือซีรีส์เรื่องไหนที่ประทับใจเป็นพิเศษบ้างไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดูหนัง",
+            "ดูซีรีส์",
+            "แนะนำ",
+            "มีเรื่อง"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fang doo na son jai mak mak loey ka/krap! Wa tae pak lang-lang nee mee nang rue series reuang nai tee pra-tap jai pen pi-set bang mai ka/krap? — That sounds very interesting! By the way, have there been any movies or series lately that particularly impressed you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ พูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ได้",
+            "แน่นอน"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho thot na kha/khrap. Phut ik khrang dai mai kha/khrap? — Sorry, could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีใจที่ได้คุยด้วยนะคะ/ครับ ไว้คุยกันใหม่ค่ะ/ครับ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dee jai tee dai kui duay na kha/khrap. Wai kui gan mai kha/khrap! — Nice talking to you. Talk to you again soon!",
+      "isTerminal": true
+    }
+  }
+}

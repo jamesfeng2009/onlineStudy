@@ -1,0 +1,179 @@
+{
+  "id": "dlg-de-shopping-clothes-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen: Eine C2-Konversation",
+  "opening": "Guten Tag! Darf es eine bestimmte Größe oder Farbe sein, oder möchten Sie sich erst einmal in Ruhe umschauen? Wir haben heute einige wirklich schicke Neuheiten hereinbekommen.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Darf es eine bestimmte Größe oder Farbe sein, oder möchten Sie sich erst einmal in Ruhe umschauen? Wir haben heute einige wirklich schicke Neuheiten hereinbekommen.",
+      "branches": [
+        {
+          "keywords": [
+            "umschauen",
+            "gucken"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "suche",
+            "brauche",
+            "kleid",
+            "anzug",
+            "hose",
+            "rock",
+            "hemd",
+            "hilfe",
+            "frage"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag! (Goo-ten Tahk!) — Good day! May it be a specific size or color, or would you like to browse in peace first? We've received some really chic new arrivals today."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstanden. Wenn Sie sich für ein bestimmtes Teil interessieren oder eine Frage haben, stehe ich Ihnen gerne mit Rat und Tat zur Seite. Gibt es vielleicht schon etwas, das Ihnen ins Auge gesprungen ist?",
+      "branches": [
+        {
+          "keywords": [
+            "kleid",
+            "hose",
+            "rock",
+            "hemd"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "anprobieren",
+            "umkleide"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstanden. (Fair-sh-tan-den.) — Understood. If you're interested in a particular item or have a question, I'm happy to assist you with advice and action. Is there perhaps something that has already caught your eye?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, ein Kleid also. Wundervolle Wahl! Suchen Sie etwas für einen besonderen Anlass, eher leger für den Alltag, oder schwebt Ihnen eine bestimmte Farbe oder ein Material vor?",
+      "branches": [
+        {
+          "keywords": [
+            "feierlich",
+            "abend",
+            "gala",
+            "business"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, ein Kleid also. (Ah, ine Klyde ahls-oh.) — Ah, a dress then. Wonderful choice! Are you looking for something for a special occasion, rather casual for everyday wear, or do you have a specific color or material in mind?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ausgezeichnet, ich habe da schon eine Idee, was Ihnen gefallen könnte. Und welche Größe hätten Sie gerne? Möchten Sie es direkt anprobieren, die Umkleiden sind gleich dort drüben.",
+      "branches": [
+        {
+          "keywords": [
+            "größe",
+            "38",
+            "m",
+            "s",
+            "l"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "erstmal",
+            "nochmal",
+            "anderes"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, I already have an idea what you might like. And what size would you like? Would you like to try it on right away, the changing rooms are right over there."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Und, wie gefällt es Ihnen? Passt es wie angegossen, oder gibt es vielleicht noch etwas zu beanstanden? Manchmal ist es ja wie verhext mit den Größen. Wenn Sie es nehmen möchten, bringe ich es Ihnen gerne zur Kasse.",
+      "branches": [
+        {
+          "keywords": [
+            "gefällt",
+            "nehme",
+            "perfekt",
+            "kaufen",
+            "ja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "passtnicht",
+            "groß",
+            "klein",
+            "anders"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "preis",
+            "kostet",
+            "was"
+          ],
+          "nextTurnId": "t-end-price"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "And, how do you like it? Does it fit like a glove, or is there perhaps something to complain about? Sometimes it's bewitched with sizes. If you'd like to take it, I'd be happy to bring it to the till for you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte noch einmal wiederholen? Ich habe Sie nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat that? I didn't quite catch you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ausgezeichnet! Ich wünsche Ihnen noch einen wunderschönen Tag und hoffe, wir sehen uns bald wieder. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent! I wish you a wonderful day and hope to see you again soon. Goodbye!",
+      "isTerminal": true
+    },
+    "t-end-price": {
+      "id": "t-end-price",
+      "prompt": "Das Kleid kostet 129 Euro. Eine Investition, die sich lohnt, würde ich sagen. Soll ich es Ihnen direkt zur Kasse bringen? Ich wünsche Ihnen noch einen wunderschönen Tag! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end-price",
+      "promptTranslation": "The dress costs 129 Euros. An investment that pays off, I would say. Shall I take it directly to the till for you? I wish you a wonderful day! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

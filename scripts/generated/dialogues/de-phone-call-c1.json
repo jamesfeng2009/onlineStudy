@@ -1,0 +1,180 @@
+{
+  "id": "dlg-de-phone-call-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Telefonat: Anrufe verwalten",
+  "opening": "Guten Tag, hier spricht [Name] von der [Firma XY]. Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, hier spricht [Name] von der [Firma XY]. Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "herr",
+            "frau",
+            "sprechen",
+            "verbinden"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "anliegen",
+            "frage",
+            "wegen",
+            "betrifft"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "wer",
+            "aparat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahk, heer shprisht [Nah-meh] fon der [Fear-mah XY]. Vee kahn ich een-en beh-hilf-lich zein? — Good day, this is [Name] from [Company XY]. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Einen Moment bitte. Bevor ich Sie verbinde, darf ich kurz erfahren, wer spricht und worum es geht?",
+      "branches": [
+        {
+          "keywords": [
+            "mein",
+            "name",
+            "ist",
+            "heisse",
+            "bin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ein-en Moh-ment bi-te. Beh-for ich zee fer-bin-de, darff ich koortz er-fahr-en, ver shprisht oont voh-room es geht? — One moment please. Before I connect you, may I briefly know who is speaking and what it's about?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Verstehe. Könnten Sie Ihr Anliegen präzisieren? Vielleicht kann ich Ihnen direkt weiterhelfen oder die zuständige Abteilung nennen.",
+      "branches": [
+        {
+          "keywords": [
+            "es",
+            "geht",
+            "um",
+            "details",
+            "information",
+            "brauche"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fer-stay-e. Kern-ten zee eer Ahn-lee-gen pray-tsee-zee-ren? Fye-lyscht kahn ich een-en dee-rekt vy-ter-hel-fen oh-der dee tsoo-shtan-di-ge Ap-ty-lung nen-nen? — I understand. Could you specify your concern? Perhaps I can help you directly or name the responsible department."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Es tut mir leid, Herr/Frau [Angabe] ist leider gerade in einer Besprechung/nicht am Platz. Möchten Sie eine Nachricht hinterlassen oder soll ich um einen Rückruf bitten?",
+      "branches": [
+        {
+          "keywords": [
+            "nachricht",
+            "hinterlassen",
+            "ja"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "rückruf",
+            "bitte",
+            "zurückrufen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Es toot meer lyde, Herr/Frow [Ahn-gah-beh] ist ly-der gah-rah-de in einer Beh-sprech-ung/nicht am Platz. Merch-ten zee ein-e Nahch-richt hin-ter-lass-en oh-der zol ich oom ein-en Ryk-roof bit-ten? — I'm sorry, Mr./Ms. [Information] is currently in a meeting/not at their desk. Would you like to leave a message or should I ask for a callback?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vielen Dank für die Information. Ich kann Sie gerne mit der entsprechenden Abteilung verbinden oder Ihre Frage direkt beantworten, wenn möglich. Worum geht es genau?",
+      "branches": [
+        {
+          "keywords": [
+            "verbinden",
+            "transfer",
+            "sprechen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dank fyoor dee In-for-maht-see-on. Ich kahn zee gern-e mit der ent-sprech-end-en Ap-ty-lung fer-bin-den oh-der ee-re Frah-ge dee-rekt be-ahnt-wor-ten, ven merg-lich. Voh-room geht es ge-now? — Thank you for the information. I can gladly connect you with the relevant department or answer your question directly, if possible. What exactly is it about?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gerne, ich notiere. Worum geht es denn konkret, damit ich die Nachricht präzise weitergeben kann? Oder gibt es eine Telefonnummer für den Rückruf?",
+      "branches": [
+        {
+          "keywords": [
+            "bitte",
+            "sagen",
+            "dass",
+            "grund"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-ne, ich noh-tee-re. Voh-room geht es den kon-kret, dah-mit ich dee Nahch-richt pray-tsee-zeh vy-ter-geh-ben kahn? Oh-der gibt es ein-e Teh-le-fon-num-mer fyoor den Ryk-roof? — Certainly, I'll take note. What exactly is it about, so I can pass on the message precisely? Or is there a phone number for the callback?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie bitte, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-dee-gen zee bi-te, ich ha-be zee ah-koos-tisch nicht gantz fer-stan-den. Kern-ten zee das bi-te vee-der-hoh-len oh-der an-ders for-moo-lee-ren? — Excuse me, I didn't quite catch that acoustically. Could you please repeat that or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Anruf und einen schönen Tag noch! Auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fyoor ee-ren Ahn-roof oont ein-en shern-en Tahk noch! Ouf Vee-der-her-en! — Thank you for your call and have a nice day! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "id": "dlg-id-taxi-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Perjalanan dengan Taksi",
+  "opening": "Selamat siang, Bapak/Ibu. Mau ke mana tujuan kita hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang, Bapak/Ibu. Mau ke mana tujuan kita hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "ke blitar",
+            "tujuan blitar",
+            "blitar",
+            "alamat blitar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ke sana",
+            "mana saja",
+            "kurang jelas"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "",
+            "ulangi",
+            "maaf"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang, Bapak/Ibu. Mau ke mana tujuan kita hari ini? — Good afternoon, sir/ma'am. Where are we headed today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Blitar. Baik. Biasa lewat mana nih, Pak/Bu? Atau mau saya ikut jalur biasa yang lumayan cepat?",
+      "branches": [
+        {
+          "keywords": [
+            "lewat tol",
+            "tol saja",
+            "yang cepat",
+            "lebih cepat"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "jalur biasa",
+            "terserah bapak",
+            "yang hemat"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "bagaimana",
+            "rute"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Blitar. Baik. Biasa lewat mana nih, Pak/Bu? Atau mau saya ikut jalur biasa yang lumayan cepat? — Oh, Blitar. Alright. Which way do you usually go, sir/ma'am? Or shall I take the usual route which is quite fast?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Maaf, Bapak/Ibu, bisa lebih spesifik? Blitar-nya di mana, ya? Atau ada patokan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "ke blitar",
+            "alamat blitar",
+            "patokan blitar",
+            "lokasi blitar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "tidak tahu",
+            "ulangi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf, Bapak/Ibu, bisa lebih spesifik? Blitar-nya di mana, ya? Atau ada patokan lain? — Sorry, sir/ma'am, could you be more specific? Where in Blitar is it? Or is there another landmark?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, lewat tol berarti. Memang agak memutar sedikit tapi dijamin lancar jaya, bebas hambatan. Estimasi biaya sekitar dua ratus ribu rupiah, tergantung titik akhir. Perjalanan kira-kira satu jam.",
+      "branches": [
+        {
+          "keywords": [
+            "baiklah",
+            "oke",
+            "setuju",
+            "tidak masalah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "mahal",
+            "terlalu mahal",
+            "hemat saja"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "bagaimana",
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, lewat tol berarti. Memang agak memutar sedikit tapi dijamin lancar jaya, bebas hambatan. Estimasi biaya sekitar dua ratus ribu rupiah, tergantung titik akhir. Perjalanan kira-kira satu jam. — Alright, via toll road then. It's a bit roundabout but guaranteed smooth sailing, traffic-free. Estimated fare is around two hundred thousand rupiah, depending on the final point. The journey will take about an hour."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Oke, lewat arteri ya. Siap-siap sedikit macet di beberapa titik, terutama jam sibuk, tapi lebih hemat ongkos. Estimasi ongkos mungkin seratus lima puluh ribu, dan waktu tempuh bisa sampai satu setengah jam. Insya Allah sampai.",
+      "branches": [
+        {
+          "keywords": [
+            "tidak apa",
+            "siap",
+            "oke",
+            "hemat saja"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "terlalu lama",
+            "terlalu macet",
+            "jangan macet"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apakah",
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke, lewat arteri ya. Siap-siap sedikit macet di beberapa titik, terutama jam sibuk, tapi lebih hemat ongkos. Estimasi ongkos mungkin seratus lima puluh ribu, dan waktu tempuh bisa sampai satu setengah jam. Insya Allah sampai. — Okay, via arterial road then. Be prepared for a bit of traffic at some points, especially during rush hour, but it's cheaper. Estimated fare might be one hundred fifty thousand, and travel time could be up to one and a half hours. God willing, we'll get there."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, mari kita berangkat kalau begitu. Kalau ada apa-apa di jalan, atau mau mampir sebentar, jangan sungkan memberitahu ya. Semoga perjalanan kita menyenangkan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "siap",
+            "baik",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "nanti",
+            "bagaimana"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, mari kita berangkat kalau begitu. Kalau ada apa-apa di jalan, atau mau mampir sebentar, jangan sungkan memberitahu ya. Semoga perjalanan kita menyenangkan. — Alright, let's get going then. If there's anything on the way, or if you want to stop for a bit, don't hesitate to let me know. Hope we have a pleasant journey."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, bisa diulang? Saya kurang jelas tadi. — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Nah, sudah sampai tujuan, Bapak/Ibu. Totalnya dua ratus ribu rupiah. Terima kasih banyak sudah naik taksi saya. Hati-hati di jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nah, sudah sampai tujuan, Bapak/Ibu. Totalnya dua ratus ribu rupiah. Terima kasih banyak sudah naik taksi saya. Hati-hati di jalan! — Well, we've arrived at the destination, sir/ma'am. The total is two hundred thousand rupiah. Thank you very much for taking my taxi. Be careful on your way!",
+      "isTerminal": true
+    }
+  }
+}

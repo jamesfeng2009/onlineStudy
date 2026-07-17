@@ -1,0 +1,236 @@
+{
+  "id": "dlg-es-bank-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "En el Banco",
+  "opening": "Buenos días. ¿Cómo puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días. ¿Cómo puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "abrir",
+            "cuenta"
+          ],
+          "nextTurnId": "t2_cuenta"
+        },
+        {
+          "keywords": [
+            "cambiar",
+            "dinero",
+            "euros",
+            "dolares"
+          ],
+          "nextTurnId": "t2_cambiar"
+        },
+        {
+          "keywords": [
+            "cajero",
+            "tarjeta",
+            "pin",
+            "problema"
+          ],
+          "nextTurnId": "t2_problema"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días (BWEH-nos DEE-ahs). ¿Cómo puedo ayudarle (KOH-moh PWEH-doh ah-yoo-DAHR-leh)? — Good morning. How can I help you?"
+    },
+    "t2_cuenta": {
+      "id": "t2_cuenta",
+      "prompt": "Excelente. Para abrir una cuenta, necesito su nombre completo y su número de identificación, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "nombre",
+            "dni",
+            "identificacion"
+          ],
+          "nextTurnId": "t3_cuenta_confirm"
+        },
+        {
+          "keywords": [
+            "no",
+            "entender"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente (ek-seh-LEN-teh). Para abrir una cuenta, necesito su nombre completo y su número de identificación (ee-den-tee-fee-kah-SYOHN), por favor (poh-r fah-VOR). — Excellent. To open an account, I need your full name and your ID number, please."
+    },
+    "t2_cambiar": {
+      "id": "t2_cambiar",
+      "prompt": "¿Qué moneda desea cambiar y cuánto, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "euros",
+            "dolares",
+            "cien",
+            "veinte",
+            "cincuenta"
+          ],
+          "nextTurnId": "t3_cambiar_confirm"
+        },
+        {
+          "keywords": [
+            "no",
+            "saber"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué moneda (moh-NEH-dah) desea cambiar (deh-SEH-ah kam-bee-AHR) y cuánto (KWAN-toh), por favor? — What currency do you wish to exchange and how much, please?"
+    },
+    "t2_problema": {
+      "id": "t2_problema",
+      "prompt": "Entiendo. ¿El problema es con el cajero automático o con su tarjeta?",
+      "branches": [
+        {
+          "keywords": [
+            "cajero",
+            "automatico"
+          ],
+          "nextTurnId": "t3_cajero_info"
+        },
+        {
+          "keywords": [
+            "tarjeta",
+            "pin"
+          ],
+          "nextTurnId": "t3_tarjeta_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo (en-TYEN-doh). ¿El problema (proh-BLEH-mah) es con el cajero automático (kah-HEH-roh ow-toh-MAH-tee-koh) o con su tarjeta (tar-HEH-tah)? — I understand. Is the problem with the ATM or with your card?"
+    },
+    "t3_cuenta_confirm": {
+      "id": "t3_cuenta_confirm",
+      "prompt": "Gracias. Su cuenta está casi lista. Un momento, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok",
+            "esperar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias (GRAH-see-ahs). Su cuenta está casi lista (KAH-see LEES-tah). Un momento, por favor. — Thank you. Your account is almost ready. One moment, please."
+    },
+    "t3_cambiar_confirm": {
+      "id": "t3_cambiar_confirm",
+      "prompt": "Perfecto. Aquí tiene su dinero. ¿Necesita algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "si",
+            "ayuda"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto (per-FEK-toh). Aquí tiene su dinero (dee-NEH-roh). ¿Necesita algo más? — Perfect. Here is your money. Do you need anything else?"
+    },
+    "t3_cajero_info": {
+      "id": "t3_cajero_info",
+      "prompt": "De acuerdo. ¿La tarjeta está dentro o fuera del cajero?",
+      "branches": [
+        {
+          "keywords": [
+            "dentro",
+            "atascada"
+          ],
+          "nextTurnId": "t4_cajero_solution"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo (deh ah-KWER-doh). ¿La tarjeta está dentro (DEN-troh) o fuera (FWEH-rah) del cajero? — Alright. Is the card inside or outside the ATM?"
+    },
+    "t3_tarjeta_info": {
+      "id": "t3_tarjeta_info",
+      "prompt": "Comprendo. Para el PIN, ¿necesita un nuevo PIN o un recordatorio?",
+      "branches": [
+        {
+          "keywords": [
+            "nuevo",
+            "cambiar"
+          ],
+          "nextTurnId": "t4_tarjeta_solution"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Comprendo (kom-PREN-doh). Para el PIN, ¿necesita un nuevo (NOO-eh-voh) PIN o un recordatorio (reh-kor-dah-TOH-ryoh)? — I understand. For the PIN, do you need a new PIN or a reminder?"
+    },
+    "t4_cajero_solution": {
+      "id": "t4_cajero_solution",
+      "prompt": "Vamos a revisar el cajero. Espere un momento, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vamos a revisar (reh-vee-SAR) el cajero. Espere un momento, por favor. — We are going to check the ATM. Please wait a moment."
+    },
+    "t4_tarjeta_solution": {
+      "id": "t4_tarjeta_solution",
+      "prompt": "Necesito su identificación para ayudarle con el PIN. Por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "aqui",
+            "identificacion"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Necesito su identificación (ee-den-tee-fee-kah-SYOHN) para ayudarle con el PIN. Por favor. — I need your ID to help you with the PIN. Please."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe (dees-KOOL-peh), ¿puede repetir (reh-peh-TEER), por favor? — Excuse me, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gracias por visitar nuestro banco. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gracias por visitar nuestro banco. ¡Adiós (ah-dee-OHS)! — Thank you for visiting our bank. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "id": "dlg-ms-weather-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Bual Cuaca",
+  "opening": "Selamat pagi! Cuaca hari ini nampak cerah, kan? Atau awak rasa nak hujan?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Cuaca hari ini nampak cerah, kan? Atau awak rasa nak hujan?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "terik"
+          ],
+          "nextTurnId": "t2_sunny"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "mendung",
+            "gelap"
+          ],
+          "nextTurnId": "t3_rainy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi! (Good morning!) Cuaca hari ini nampak cerah, kan? (The weather today looks bright, doesn't it?) Atau awak rasa nak hujan? (Or do you think it's going to rain?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? (Sorry, could you repeat that?) Saya kurang jelas. (I'm not very clear.)"
+    },
+    "t2_sunny": {
+      "id": "t2_sunny",
+      "prompt": "Betul tu, panas terik hari ini! Apa plan awak nanti dengan cuaca macam ni? Nak keluar ke atau duduk rumah saja?",
+      "branches": [
+        {
+          "keywords": [
+            "keluar",
+            "jalan",
+            "aktiviti"
+          ],
+          "nextTurnId": "t4_plan"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Betul tu, panas terik hari ini! (That's right, it's scorching hot today!) Apa plan awak nanti dengan cuaca macam ni? (What are your plans later with this kind of weather?) Nak keluar ke atau duduk rumah saja? (Going out or just staying home?)"
+    },
+    "t3_rainy": {
+      "id": "t3_rainy",
+      "prompt": "Oh, awak rasa nak hujan? Mungkinlah. Kalau hujan, biasanya apa yang awak suka buat? Duduk rumah atau ada hal di luar?",
+      "branches": [
+        {
+          "keywords": [
+            "dudukrumah",
+            "dalam",
+            "baca"
+          ],
+          "nextTurnId": "t4_plan"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, awak rasa nak hujan? (Oh, you think it's going to rain?) Mungkinlah. (Maybe.) Kalau hujan, biasanya apa yang awak suka buat? (If it rains, what do you usually like to do?) Duduk rumah atau ada hal di luar? (Stay home or have things outside?)"
+    },
+    "t4_plan": {
+      "id": "t4_plan",
+      "prompt": "Faham. Cuaca memang boleh pengaruhi rancangan kita. Apa pun yang awak buat, harap seronok ya. Ada apa-apa nak kongsi lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "lagi",
+            "sambung"
+          ],
+          "nextTurnId": "t5_morechat"
+        },
+        {
+          "keywords": [
+            "cukup",
+            "terimakasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham. (Understood.) Cuaca memang boleh pengaruhi rancangan kita. (Weather can really influence our plans.) Apa pun yang awak buat, harap seronok ya. (Whatever you do, hope it's fun.) Ada apa-apa nak kongsi lagi? (Anything else to share?)"
+    },
+    "t5_morechat": {
+      "id": "t5_morechat",
+      "prompt": "Tentu, saya suka berbual tentang cuaca. Adakah awak lebih suka cuaca panas, atau sejuk dan hujan?",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "cerah",
+            "terik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu, saya suka berbual tentang cuaca. (Certainly, I enjoy chatting about the weather.) Adakah awak lebih suka cuaca panas, (Do you prefer hot weather,) atau sejuk dan hujan? (or cool and rainy?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih banyak kerana berbual tentang cuaca. Selamat tinggal!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, (Alright,) terima kasih banyak kerana berbual tentang cuaca. (thank you very much for chatting about the weather.) Selamat tinggal! (Goodbye!)",
+      "isTerminal": true
+    }
+  }
+}

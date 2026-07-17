@@ -1,0 +1,215 @@
+{
+  "id": "dlg-en-airport-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Airport Check-in",
+  "opening": "Good morning! Welcome to the check-in desk. May I see your passport and ticket, please?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Welcome to the check-in desk. May I see your passport and ticket, please?",
+      "branches": [
+        {
+          "keywords": [
+            "passport",
+            "ticket",
+            "boardingpass"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "luggage",
+            "bag",
+            "lost"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "delay",
+            "flight",
+            "late"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! Welcome to the check-in desk. May I see your passport and ticket, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Thank you. And do you have any checked luggage today?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "one",
+            "two",
+            "bag",
+            "bags"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "carry-on",
+            "cabinbag",
+            "handluggage"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "none"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. And do you have any checked luggage today?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "I see. If your luggage is lost, you'll need to go to the 'Lost and Found' office. They can help you file a report.",
+      "branches": [
+        {
+          "keywords": [
+            "where",
+            "office",
+            "find"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. If your luggage is lost, you'll need to go to the 'Lost and Found' office. They can help you file a report."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "I understand. Let me check the system for you. It seems there's a slight delay for your flight due to air traffic control.",
+      "branches": [
+        {
+          "keywords": [
+            "howlong",
+            "when",
+            "newtime"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Let me check the system for you. It seems there's a slight delay for your flight due to air traffic control."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Please place your bag on the scale. Hmm, it looks like it's slightly over the weight limit. There will be an extra charge.",
+      "branches": [
+        {
+          "keywords": [
+            "howmuch",
+            "cost"
+          ],
+          "nextTurnId": "t9"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please place your bag on the scale. Hmm, it looks like it's slightly over the weight limit. There will be an extra charge."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Certainly. For carry-on, you're allowed one bag that fits in the overhead locker or under the seat, plus one personal item.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "alright",
+            "understood"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. For carry-on, you're allowed one bag that fits in the overhead locker or under the seat, plus one personal item."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Alright, your boarding pass is here. Your gate number is A12 and boarding will begin in about 30 minutes. The Lost and Found office is on the ground floor, near baggage claim. Is there anything else I can help you with?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "yes",
+            "question",
+            "another"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, your boarding pass is here. Your gate number is A12 and boarding will begin in about 30 minutes. The Lost and Found office is on the ground floor, near baggage claim. Is there anything else I can help you with?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "The new estimated departure time is 2:30 PM. Unfortunately, for minor delays due to air traffic, airlines usually don't offer direct compensation, but you can check with the airline's customer service desk.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "thanks"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The new estimated departure time is 2:30 PM. Unfortunately, for minor delays due to air traffic, airlines usually don't offer direct compensation, but you can check with the airline's customer service desk."
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "The extra charge will be £25. Alternatively, you can remove some items until your bag is within the weight limit.",
+      "branches": [
+        {
+          "keywords": [
+            "pay",
+            "charge"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The extra charge will be £25. Alternatively, you can remove some items until your bag is within the weight limit."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, thank you for your patience. Have a safe flight!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for your patience. Have a safe flight!",
+      "isTerminal": true
+    }
+  }
+}

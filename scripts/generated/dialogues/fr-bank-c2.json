@@ -1,0 +1,184 @@
+{
+  "id": "dlg-fr-bank-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Au Guichet de la Banque : Résolution d'Incidents",
+  "opening": "Bonjour ! Comment puis-je vous être utile aujourd'hui ? On dirait que vous avez un petit tracas, non ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment puis-je vous être utile aujourd'hui ? On dirait que vous avez un petit tracas, non ?",
+      "branches": [
+        {
+          "keywords": [
+            "compte",
+            "problème",
+            "accès"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "virement",
+            "transfert",
+            "envoyer"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "renseignement",
+            "question",
+            "juste",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! (Bon-zhoor!) How can I help you today? It looks like you have a small concern, no?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, un souci avec votre compte ou un désagrément lié au distributeur, je vois. Est-ce un blocage, une erreur de transaction, un code oublié, ou la carte avalée ?",
+      "branches": [
+        {
+          "keywords": [
+            "bloqué",
+            "accèsimpossible",
+            "carteavalée",
+            "codeoublié",
+            "pin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "erreurtransaction",
+            "débitincorrect",
+            "pasargent",
+            "montant"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "autre",
+            "spécifique",
+            "pasça"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, un souci avec votre compte ou un désagrément lié au distributeur, je vois. (Ah, uhn soo-see ah-vek voh-truh kohn-tuh oo uhn day-zah-gray-mahng lyay oh dee-stree-boo-teur, zhuh vwah.) Is it a block, a transaction error, a forgotten PIN, or was the card swallowed?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Un virement, d'accord. S'agit-il d'un transfert national ou international ? Et avez-vous déjà toutes les informations du bénéficiaire à portée de main ?",
+      "branches": [
+        {
+          "keywords": [
+            "national",
+            "domestique",
+            "france",
+            "international",
+            "étranger",
+            "horsfrance"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "informations",
+            "bénéficiaire",
+            "pasprêt",
+            "connais"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un virement, d'accord. S'agit-il d'un transfert national ou international ? (Uhn veer-mahng, dah-kor. Sa-zhee-teel duh-n uhn trahns-fair nah-syo-nahl oo ehn-ter-nah-syo-nahl ?) And do you already have all the beneficiary's information at hand?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien, donc un souci lié à la sécurité ou à l'accès. Pourriez-vous me présenter une pièce d'identité valide, s'il vous plaît ? Nous allons régler ça prestement.",
+      "branches": [
+        {
+          "keywords": [
+            "carteidentité",
+            "passeport",
+            "valide",
+            "permis"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, so an issue related to security or access. Could you please show me a valid ID? We'll sort this out swiftly."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "D'accord, une anomalie de transaction. Avez-vous le relevé de compte ou la date et l'heure approximative de l'opération en question ? Cela nous aiderait à démêler l'écheveau.",
+      "branches": [
+        {
+          "keywords": [
+            "relevé",
+            "relevédecompte",
+            "historique",
+            "dateheure",
+            "approximative",
+            "mémoire"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, a transaction anomaly. Do you have the account statement or the approximate date and time of the operation in question? That would help us untangle the skein."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Très bien. Que ce soit national ou international, nous aurons besoin des coordonnées bancaires du bénéficiaire (RIB/IBAN, SWIFT/BIC si international), du montant et de la devise. Avez-vous tout cela ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "tout",
+            "informations",
+            "coordonnées",
+            "montant",
+            "devise"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Whether it's national or international, we'll need the beneficiary's bank details (RIB/IBAN, SWIFT/BIC if international), the amount, and the currency. Do you have all of that?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous reformuler ou être plus précis, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please rephrase or be more specific?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien, nous allons prendre le relais et nous occuper de cela. N'hésitez pas si vous avez d'autres questions. Au revoir et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, we'll take over from here and take care of that. Don't hesitate if you have any other questions. Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

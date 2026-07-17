@@ -1,0 +1,136 @@
+{
+  "id": "dlg-id-airport-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Di Bandara: Proses Check-in",
+  "opening": "Selamat pagi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "check-in",
+            "penerbangan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "masalah",
+            "tiket",
+            "perubahan"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), ada yang bisa saya bantu (how can I help you)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, bisa saya lihat paspor dan tiket elektroniknya?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "paspor",
+            "tiket"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), bisa saya lihat (may I see) paspor (your passport) dan tiket elektroniknya (and e-ticket)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Berapa banyak bagasi yang akan Anda check-in?",
+      "branches": [
+        {
+          "keywords": [
+            "satu",
+            "1",
+            "koper",
+            "saja"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Berapa banyak (How much) bagasi (luggage) yang akan Anda check-in (will you check-in)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, ini boarding pass Anda. Gerbang (gate) 15, waktu boarding pukul 09.30. Selamat jalan!",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), ini boarding pass Anda (here's your boarding pass). Gerbang 15, waktu boarding pukul 09.30. Selamat jalan (Have a good trip)!"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Oh, masalahnya apa ya? Mungkin saya bisa bantu.",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "salahnama"
+          ],
+          "nextTurnId": "t4a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, masalahnya apa ya (Oh, what's the problem)? Mungkin saya bisa bantu (Maybe I can help)."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Mohon tunggu sebentar, saya akan cek. Jika ini masalah teknis, Anda mungkin perlu ke konter layanan pelanggan.",
+      "branches": [
+        {
+          "keywords": [
+            "baiklah",
+            "oke",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon tunggu sebentar (Please wait a moment), saya akan cek (I will check). Jika ini masalah teknis (If this is a technical issue), Anda mungkin perlu ke konter layanan pelanggan (you might need to go to the customer service counter)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), bisa diulang (can you repeat)? Saya kurang jelas (I didn't quite catch that)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih telah menggunakan layanan kami. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Thank you) telah menggunakan layanan kami (for using our service). Semoga perjalanan Anda menyenangkan (Have a pleasant journey)!",
+      "isTerminal": true
+    }
+  }
+}

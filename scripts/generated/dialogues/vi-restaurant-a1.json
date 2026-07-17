@@ -1,0 +1,172 @@
+{
+  "id": "dlg-vi-restaurant-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Tại nhà hàng",
+  "opening": "Chào bạn! Mời bạn ngồi.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Bạn muốn gọi món gì?",
+      "branches": [
+        {
+          "keywords": [
+            "thựcđơn",
+            "menu"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gìngon",
+            "đặcbiệt",
+            "gọimón"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn! (Chao ban!) - Hello! Bạn muốn gọi món gì? (Ban muon goi mon gi?) - What do you want to order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Đây là thực đơn. Bạn cần tôi giúp gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đây là thực đơn. (Day la thuc don.) - Here is the menu. Bạn cần tôi giúp gì không? (Ban can toi giup gi khong?) - Do you need my help?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bạn muốn món gì? Phở ở đây rất ngon.",
+      "branches": [
+        {
+          "keywords": [
+            "phở",
+            "có",
+            "vâng"
+          ],
+          "nextTurnId": "t4_drink"
+        },
+        {
+          "keywords": [
+            "khôngbiết",
+            "mónkhác"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn muốn món gì? (Ban muon mon gi?) - What dish do you want? Phở ở đây rất ngon. (Pho o day rat ngon.) - Phở here is very delicious."
+    },
+    "t4_drink": {
+      "id": "t4_drink",
+      "prompt": "Được rồi. Bạn muốn uống gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "nước",
+            "nướclọc",
+            "càphê",
+            "trà"
+          ],
+          "nextTurnId": "t5_serve"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được rồi. (Duoc roi.) - Okay. Bạn muốn uống gì không? (Ban muon uong gi khong?) - Do you want anything to drink?"
+    },
+    "t5_serve": {
+      "id": "t5_serve",
+      "prompt": "Đồ ăn và đồ uống của bạn sẽ đến ngay.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn"
+          ],
+          "nextTurnId": "t6_bill"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đồ ăn và đồ uống của bạn sẽ đến ngay. (Do an va do uong cua ban se den ngay.) - Your food and drink will be here soon."
+    },
+    "t6_bill": {
+      "id": "t6_bill",
+      "prompt": "Đây là hóa đơn của bạn.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "thanhtoán",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Đây là hóa đơn của bạn. (Day la hoa don cua ban.) - Here is your bill."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, (Sin loi,) - Excuse me, bạn có thể nói lại không? (ban co the noi lai khong?) - Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn. Chúc bạn một ngày tốt lành! Tạm biệt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn. (Cam on ban.) - Thank you. Chúc bạn một ngày tốt lành! (Chuc ban mot ngay tot lanh!) - Have a good day! Tạm biệt. (Tam biet.) - Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "dlg-en-directions-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Asking for directions",
+  "opening": "Hello! Can I help you with something?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Can I help you with something?",
+      "branches": [
+        {
+          "keywords": [
+            "directions",
+            "museum",
+            "howtoget",
+            "history"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "justlooking"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Can I help you with something?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, the Natural History Museum! Of course. It's not too far from here, about a 15-minute walk, or you can take the number 42 bus.",
+      "branches": [
+        {
+          "keywords": [
+            "walk",
+            "walking",
+            "onfoot"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bus",
+            "number42"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the Natural History Museum! Of course. It's not too far from here, about a 15-minute walk, or you can take the number 42 bus."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Okay, if you want to walk, just go straight down this street for about five minutes until you see a big park on your right. Then turn left at the traffic lights, and you'll see the museum entrance straight ahead.",
+      "branches": [
+        {
+          "keywords": [
+            "park",
+            "landmark",
+            "where",
+            "turn",
+            "left",
+            "right",
+            "lights"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "clear",
+            "understood"
+          ],
+          "nextTurnId": "t6_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, if you want to walk, just go straight down this street for about five minutes until you see a big park on your right. Then turn left at the traffic lights, and you'll see the museum entrance straight ahead."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "If you prefer the bus, cross the street here and wait at the bus stop. The number 42 comes every ten minutes. Get off at the third stop, which is right in front of the museum.",
+      "branches": [
+        {
+          "keywords": [
+            "busstop",
+            "where",
+            "stops",
+            "third",
+            "howmany"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "clear",
+            "understood"
+          ],
+          "nextTurnId": "t6_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you prefer the bus, cross the street here and wait at the bus stop. The number 42 comes every ten minutes. Get off at the third stop, which is right in front of the museum."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sure, let me try to explain that again. For walking, you'll see a big park on your right, then turn left at the traffic lights. For the bus, cross the street to the bus stop and get off at the third stop.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "clear",
+            "understood"
+          ],
+          "nextTurnId": "t6_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sure, let me try to explain that again. For walking, you'll see a big park on your right, then turn left at the traffic lights. For the bus, cross the street to the bus stop and get off at the third stop."
+    },
+    "t6_confirm_end": {
+      "id": "t6_confirm_end",
+      "prompt": "No problem at all! I hope you have a good time at the museum.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "No problem at all! I hope you have a good time at the museum."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you say it again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're very welcome! Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're very welcome! Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

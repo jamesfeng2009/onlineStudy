@@ -1,0 +1,368 @@
+{
+  "id": "dlg-th-taxi-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "การสนทนาในแท็กซี่",
+  "opening": "สวัสดีครับ/ค่ะ ไปไหนดีครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ไปไหนดีครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "สยามพารากอน",
+            "พารากอน",
+            "สยาม"
+          ],
+          "nextTurnId": "t2_siam"
+        },
+        {
+          "keywords": [
+            "สถานีรถไฟหัวลำโพง",
+            "หัวลำโพง",
+            "รถไฟ"
+          ],
+          "nextTurnId": "t2_hualamphong"
+        },
+        {
+          "keywords": [
+            "สนามบินสุวรรณภูมิ",
+            "สุวรรณภูมิ",
+            "สนามบิน"
+          ],
+          "nextTurnId": "t2_suvarnabhumi"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī khrạb/khà — Hello. Where would you like to go?"
+    },
+    "t2_siam": {
+      "id": "t2_siam",
+      "prompt": "สยามพารากอนนะครับ/คะ พอดีช่วงนี้รถติดพอสมควรเลยครับ/ค่ะ จะให้ขึ้นทางด่วนเลยไหมครับ/คะ หรือจะไปทางปกติครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            "ค่าทางด่วนเท่าไหร่",
+            "ราคาต่างกันไหม",
+            "เท่าไหร่",
+            "กี่บาท"
+          ],
+          "nextTurnId": "t3_fare_siam"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄yām Phārākxn nâ khráp/khâ? Phxdī ch̀wng nī̂ rót tìd phx s̄mkhwr ley khráp/khâ. Cà hâi k̄hụ̂n thāngd̀wn ley mị khráp/khâ? H̄rụ̄x cà pị thāng pkrati khráp/khâ? — Siam Paragon, right? Traffic is quite heavy around this time. Shall we take the expressway, or the regular route?"
+    },
+    "t2_hualamphong": {
+      "id": "t2_hualamphong",
+      "prompt": "สถานีรถไฟหัวลำโพงนะครับ/คะ ช่วงนี้แถวนั้นมีการก่อสร้างถนน อาจจะติดบ้างนะครับ/คะ จะให้ไปทางไหนดีครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            "ค่าทางด่วนเท่าไหร่",
+            "ราคาต่างกันไหม",
+            "เท่าไหร่",
+            "กี่บาท"
+          ],
+          "nextTurnId": "t3_fare_hualamphong"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄t̄hānī rótfai H̄ạw lảphong nâ khráp/khâ? Ch̀wng nī̂ t̄hæw nán mī kār k̀x s̄r̂āng t̄hnn xāc cà tìd bâng nâ khráp/khâ. Cà hâi pị thāng h̄nị dī khráp/khâ? — Hua Lamphong Railway Station, right? There's road construction around there lately, so it might be a bit congested. Which way would you like to go?"
+    },
+    "t2_suvarnabhumi": {
+      "id": "t2_suvarnabhumi",
+      "prompt": "สนามบินสุวรรณภูมิใช่ไหมครับ/คะ จะให้ขึ้นทางด่วนเลยหรือเปล่าครับ/คะ หรือจะไปทางปกติครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            "ค่าทางด่วนเท่าไหร่",
+            "ราคาต่างกันไหม",
+            "เท่าไหร่",
+            "กี่บาท"
+          ],
+          "nextTurnId": "t3_fare_suvarnabhumi"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄nām bin Suwannaphum chı̀ mị khráp/khâ? Cà hâi k̄hụ̂n thāngd̀wn ley h̄rụ̄x pl̀āw khráp/khâ? H̄rụ̄x cà pị thāng pkrati khráp/khâ? — Suvarnabhumi Airport, right? Would you like to take the expressway or the regular route?"
+    },
+    "t3_express": {
+      "id": "t3_express",
+      "prompt": "รับทราบครับ/ค่ะ ถ้าอย่างนั้นผม/ดิฉันจะขึ้นทางด่วนนะครับ/คะ ค่าผ่านทางลูกค้าออกเองนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ได้ครับ",
+            "ได้เลย",
+            "โอเค"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rạb sāb khráp/khâ — Understood. If so, I'll take the expressway then. The toll fee is to be paid by the customer."
+    },
+    "t3_regular": {
+      "id": "t3_regular",
+      "prompt": "ได้ครับ/ค่ะ งั้นไปทางปกติก็ได้ครับ/ค่ะ แต่ช่วงนี้รถติดมาก อาจจะถึงช้าหน่อยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ช้าหน่อยก็ได้",
+            "ได้ครับ",
+            "โอเค"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi khráp/khâ — Okay. We can take the regular route. But traffic is very heavy now, so we might arrive a bit late."
+    },
+    "t3_fare_siam": {
+      "id": "t3_fare_siam",
+      "prompt": "ค่าทางด่วนไปสยามพารากอนประมาณ 50-70 บาทครับ/ค่ะ แต่ถ้าไม่ขึ้น อาจจะเสียเวลาเพิ่มประมาณ 15-20 นาทีเลยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khâ thāngd̀wn pị S̄yām Phārākxn pra māṇ hâ̄ s̄ib-cĕd s̄ib bāth khráp/khâ. Tæ̀ t̄ĥā mị̀ k̄hụ̂n, xāc cà s̄eīy welā pheìm pra māṇ s̄ib h̄â-yī̀ s̄ib nāthī ley nâ khráp/khâ. — The expressway toll to Siam Paragon is about 50-70 baht. But if we don't take it, it might add about 15-20 minutes to the travel time."
+    },
+    "t3_fare_hualamphong": {
+      "id": "t3_fare_hualamphong",
+      "prompt": "ค่าทางด่วนไปหัวลำโพงประมาณ 40-60 บาทครับ/ค่ะ แต่ถ้าไม่ขึ้น อาจจะติดตรงก่อสร้างนานหน่อยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khâ thāngd̀wn pị H̄ạw lảphong pra māṇ s̄ī̀ s̄ib-h̄ok s̄ib bāth khráp/khâ. Tæ̀ t̄ĥā mị̀ k̄hụ̂n, xāc cà tìd trng k̀x s̄r̂āng nān h̄ǹxy nâ khráp/khâ. — The expressway toll to Hua Lamphong is about 40-60 baht. But if we don't take it, we might get stuck in construction for a while."
+    },
+    "t3_fare_suvarnabhumi": {
+      "id": "t3_fare_suvarnabhumi",
+      "prompt": "ค่าทางด่วนไปสนามบินสุวรรณภูมิประมาณ 70-100 บาทครับ/ค่ะ ขึ้นอยู่กับด่านที่ขึ้นและลงนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ไปทางด่วน"
+          ],
+          "nextTurnId": "t3_express"
+        },
+        {
+          "keywords": [
+            "ทางปกติ",
+            "ไม่ขึ้นทางด่วน",
+            "ไม่เอาทางด่วน"
+          ],
+          "nextTurnId": "t3_regular"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khâ thāngd̀wn pị s̄nām bin Suwannaphum pra māṇ cĕd s̄ib-r̂xy bāth khráp/khâ. K̄hụ̂n xyū̀ kạb d̀ān thī̀ k̄hụ̂n læa long nâ khráp/khâ. — The expressway toll to Suvarnabhumi Airport is about 70-100 baht, depending on the entry and exit points."
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "ใกล้ถึงแล้วนะครับ/คะ ประมาณอีก 5 นาทีครับ/ค่ะ คุณลูกค้าจะจ่ายด้วยเงินสดหรือแอปธนาคารดีครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "เงินสด",
+            "จ่ายเงินสด",
+            "สด"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "เท่าไหร่",
+            "ราคา",
+            "มิเตอร์"
+          ],
+          "nextTurnId": "t-end_fare_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Klâi t̄hụng læ̂w nâ khráp/khâ. Pra māṇ xīk hâ̄ nāthī khráp/khâ. Khun lūkkĥā cà c̀āy dûay ngin s̄od h̄rụ̄x xæp t̄hạnākhār dī khráp/khâ? — We're almost there, about 5 more minutes. Would you like to pay with cash or via banking app?"
+    },
+    "t-end_fare_query": {
+      "id": "t-end_fare_query",
+      "prompt": "ตามมิเตอร์เลยครับ/ค่ะ เดี๋ยวถึงแล้วค่อยดูกันอีกทีนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tām mitexr̒ ley khráp/khâ. Dī̌yw t̄hụng læ̂w kĥxy dū kan xīk thī nâ khráp/khâ. — It's according to the meter. We'll check it again when we arrive."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ ไม่ค่อยได้ยินเลยครับ/ค่ะ ช่วยพูดซ้ำอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hxthot nâ khráp/khâ? Mị̀ kh̀xy dâiyin ley khráp/khâ. Ch̀wy pū̂d s̄ả xīk khrậng dâi mị khráp/khâ? — Sorry, I didn't quite hear that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ถึงที่หมายแล้วครับ/ค่ะ เดินทางปลอดภัยนะครับ/คะ หวังว่าจะได้ใช้บริการอีกครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "T̄hụng thī̀ h̄māy læ̂w khráp/khâ. Doenthāng plxdp̣hạy nâ khráp/khâ. H̄wạng wâ cà dâi chı̂ brikār xīk khráp/khâ. — We've arrived. Have a safe journey. Hope to see you again!",
+      "isTerminal": true
+    }
+  }
+}

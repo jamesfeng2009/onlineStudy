@@ -1,0 +1,215 @@
+{
+  "id": "dlg-es-small-talk-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Charla informal",
+  "opening": "¡Hola! Me alegra verte aquí. ¿Qué tal tu semana hasta ahora?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Me alegra verte aquí. ¿Qué tal tu semana hasta ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "genial",
+            "fantástico"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! Me alegra verte aquí. ¿Qué tal tu semana hasta ahora? — Hi! I'm glad to see you here. How's your week been so far?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo. ¿Y tienes planes para el fin de semana? ¿Algo divertido en mente?",
+      "branches": [
+        {
+          "keywords": [
+            "viajar",
+            "viaje",
+            "escapada"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "relajarme",
+            "casa",
+            "nada"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "amigos",
+            "fiesta",
+            "social"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "hobby",
+            "deporte",
+            "leer"
+          ],
+          "nextTurnId": "t3d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. ¿Y tienes planes para el fin de semana? ¿Algo divertido en mente? — I understand. And do you have plans for the weekend? Anything fun in mind?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "¡Qué envidia! ¿A dónde vas o fuiste? Me encanta viajar, ¿qué tipo de destinos prefieres?",
+      "branches": [
+        {
+          "keywords": [
+            "playa",
+            "sol",
+            "mar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué envidia! ¿A dónde vas o fuiste? Me encanta viajar, ¿qué tipo de destinos prefieres? — How envious! Where are you going or did you go? I love traveling, what kind of destinations do you prefer?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "A veces es lo mejor, ¿verdad? ¿Y qué te gusta hacer para relajarte en casa? ¿Ver series, leer un libro, cocinar?",
+      "branches": [
+        {
+          "keywords": [
+            "series",
+            "películas",
+            "ver"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A veces es lo mejor, ¿verdad? ¿Y qué te gusta hacer para relajarte en casa? ¿Ver series, leer un libro, cocinar? — Sometimes that's the best, right? And what do you like to do to relax at home? Watch series, read a book, cook?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "¡Genial! Siempre es bueno pasar tiempo con amigos. ¿Tienes algún restaurante o bar favorito para reunirte con ellos?",
+      "branches": [
+        {
+          "keywords": [
+            "restaurante",
+            "comer",
+            "cena"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Genial! Siempre es bueno pasar tiempo con amigos. ¿Tienes algún restaurante o bar favorito para reunirte con ellos? — Great! It's always good to spend time with friends. Do you have a favorite restaurant or bar to meet up with them?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "¡Excelente! Siempre es bueno tener pasiones. ¿Qué tipo de hobbies tienes? ¿Practicas algún deporte o lees mucho?",
+      "branches": [
+        {
+          "keywords": [
+            "deporte",
+            "ejercicio",
+            "gimnasio"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Excelente! Siempre es bueno tener pasiones. ¿Qué tipo de hobbies tienes? ¿Practicas algún deporte o lees mucho? — Excellent! It's always good to have passions. What kind of hobbies do you have? Do you practice any sport or read a lot?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Eso suena muy bien. Por cierto, ¿hay alguna película o serie que hayas visto últimamente y que me recomiendes?",
+      "branches": [
+        {
+          "keywords": [
+            "película",
+            "cine",
+            "film"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eso suena muy bien. Por cierto, ¿hay alguna película o serie que hayas visto últimamente y que me recomiendes? — That sounds really good. By the way, is there any movie or series you've seen lately that you recommend?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¡Gracias por la charla! Ha sido un placer conocerte. ¡Que tengas una buena noche!",
+      "branches": [
+        {
+          "keywords": [
+            "adiós",
+            "gracias",
+            "chao"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Gracias por la charla! Ha sido un placer conocerte. ¡Que tengas una buena noche! — Thanks for the chat! It's been a pleasure meeting you. Have a good night!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No te he entendido muy bien. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón? No te he entendido muy bien. ¿Podrías repetirlo, por favor? — Pardon? I didn't understand you very well. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Adiós! ¡Hasta la próxima!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "¡Adiós! ¡Hasta la próxima! — Goodbye! Until next time!",
+      "isTerminal": true
+    }
+  }
+}

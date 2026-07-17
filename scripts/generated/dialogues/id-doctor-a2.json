@@ -1,0 +1,158 @@
+{
+  "id": "dlg-id-doctor-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Kunjungan Dokter",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "tidakbadan",
+            "kurangfit"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "halo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Ada yang bisa saya bantu? — How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, apa keluhannya? Sudah berapa lama Anda merasa sakit?",
+      "branches": [
+        {
+          "keywords": [
+            "sakitkepala",
+            "demam",
+            "batuk",
+            "flu",
+            "pilek"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay. Apa keluhannya? — What are your complaints? Sudah berapa lama Anda merasa sakit? — How long have you been feeling sick?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Saya mengerti. Apakah Anda punya alergi obat-obatan atau makanan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "punya",
+            "ada"
+          ],
+          "nextTurnId": "t4_allergies"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tidakada",
+            "bukan"
+          ],
+          "nextTurnId": "t4_noallergies"
+        },
+        {
+          "keywords": [
+            "",
+            "apaalergi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya mengerti — I understand. Apakah Anda punya alergi obat-obatan atau makanan? — Do you have any medication or food allergies?"
+    },
+    "t4_allergies": {
+      "id": "t4_allergies",
+      "prompt": "Baik, tolong sebutkan alergi apa saja yang Anda miliki.",
+      "branches": [
+        {
+          "keywords": [
+            "penisilin",
+            "antibiotik",
+            "obat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpasti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay. Tolong sebutkan alergi apa saja yang Anda miliki — Please mention what allergies you have."
+    },
+    "t4_noallergies": {
+      "id": "t4_noallergies",
+      "prompt": "Bagus. Saya akan memberikan resep. Anda bisa menebusnya di apotek terdekat.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "baik",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apotekmana"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagus — Good. Saya akan memberikan resep — I will give you a prescription. Anda bisa menebusnya di apotek terdekat — You can get it at the nearest pharmacy."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa diulang? — Can you repeat that? Saya kurang jelas — I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Semoga cepat sembuh. Sampai jumpa!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Semoga cepat sembuh — I hope you get well soon. Sampai jumpa! — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

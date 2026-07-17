@@ -1,0 +1,214 @@
+{
+  "id": "dlg-en-taxi-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Taxi Ride Discussion",
+  "opening": "Good morning! Where are we headed today? Just so I can map out the quickest route, traffic permitting, of course.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Where are we headed today? Just so I can map out the quickest route, traffic permitting, of course.",
+      "branches": [
+        {
+          "keywords": [
+            "airport",
+            "hotel",
+            "station",
+            "address"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "fare",
+            "cost",
+            "estimate",
+            "price"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "hello",
+            "hi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! Where are we headed today? Just so I can map out the quickest route, traffic permitting, of course. — Good morning! Where are you going today? I'll plan the fastest way, traffic allowing."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, the airport. Not a problem. Are you in a rush, or would you prefer to take the scenic route today? We could skirt around the city centre to avoid the usual congestion, or brave it for a more direct path.",
+      "branches": [
+        {
+          "keywords": [
+            "rush",
+            "quickest",
+            "fastest",
+            "direct",
+            "hurry"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "fare",
+            "cost",
+            "estimate",
+            "price"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "any",
+            "route"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, the airport. Not a problem. Are you in a rush, or would you prefer to take the scenic route today? We could skirt around the city centre to avoid the usual congestion, or brave it for a more direct path. — Okay, the airport. No problem. Are you in a hurry, or do you want the scenic route? We can go around the city to avoid traffic, or go through it for a faster way."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Well, for that distance, typically you're looking at around £35-£40, give or take, depending on traffic and the precise route we take. With peak hour surcharges, it could nudge a little higher. We can certainly go via the bypass if you're keen.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "fine",
+            "soundsgood",
+            "agreed",
+            "proceed"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "thanks",
+            "that's"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, for that distance, typically you're looking at around £35-£40, give or take, depending on traffic and the precise route we take. With peak hour surcharges, it could nudge a little higher. We can certainly go via the bypass if you're keen. — For that distance, it's usually about £35-£40, but it might change due to traffic or route. Extra charges during peak times could make it slightly more. We can take the bypass if you want."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excellent. So, the airport via the quickest route. Just buckle up, and we'll be off in a jiffy. Any luggage to pop in the boot, or are we good to roll?",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "good",
+            "start",
+            "go",
+            "let'sgo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "payment",
+            "howtopay",
+            "card",
+            "cash"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "yes",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. So, the airport via the quickest route. Just buckle up, and we'll be off in a jiffy. Any luggage to pop in the boot, or are we good to roll? — Great. So, the airport by the fastest route. Just fasten your seatbelt, and we'll leave quickly. Do you have any luggage for the trunk, or are we ready to go?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alright, here we go. Looks like we're hitting a bit of a bottleneck on the bypass, so it might add a few minutes to our estimated arrival, but we should still make good time. Hopefully, it clears up shortly.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "understood",
+            "fine",
+            "traffic"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "payment",
+            "howtopay",
+            "card",
+            "cash"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ah",
+            "oh"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, here we go. Looks like we're hitting a bit of a bottleneck on the bypass, so it might add a few minutes to our estimated arrival, but we should still make good time. Hopefully, it clears up shortly. — Okay, we're off. There's some traffic on the bypass, so we might be a little late, but we should still arrive reasonably soon. Hopefully, it will clear up soon."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "No worries at all. I accept all major credit cards, cash, or if you prefer, I've got a QR code for mobile payments. Whatever's easiest for you when we pull up.",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "currency",
+            "notes",
+            "coins"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No worries at all. I accept all major credit cards, cash, or if you prefer, I've got a QR code for mobile payments. Whatever's easiest for you when we pull up. — No problem. I take credit cards, cash, or mobile payments (QR code). Whatever is easiest for you when we arrive."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "And here we are, right on cue despite that slight snag. That'll be £38, please. Thanks for riding with me, have a splendid day!",
+      "branches": [],
+      "fallbackBranchId": "t7",
+      "promptTranslation": "And here we are, right on cue despite that slight snag. That'll be £38, please. Thanks for riding with me, have a splendid day! — We've arrived, exactly on time despite that small problem. The fare is £38, please. Thank you for the ride, have a great day!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you possibly rephrase or speak a little clearer?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you possibly rephrase or speak a little clearer? — Sorry, I didn't understand. Could you say that again, or more clearly?"
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "id": "dlg-it-doctor-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Visita Medica: Sintomi e Diagnosi",
+  "opening": "Buongiorno, si accomodi. Mi dica, cosa la porta qui oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, si accomodi. Mi dica, cosa la porta qui oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "malessere",
+            "dolore",
+            "sento",
+            "sto",
+            "male",
+            "nonbene"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "febbre",
+            "tosse",
+            "raffreddore",
+            "sintomi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "domanda",
+            "chiedo",
+            "voglio"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno, si accomodi. Mi dica, cosa la porta qui oggi? — Good morning, please sit down. Tell me, what brings you here today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato. Potrebbe ripetere, magari con un linguaggio meno ermetico?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you repeat, perhaps in simpler terms?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ottimo, le prescrivo la terapia e le fisso un appuntamento per un controllo tra dieci giorni. Si rimetta presto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent, I'll prescribe the therapy and schedule a follow-up appointment in ten days. Get well soon!",
+      "isTerminal": true
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Capisco. Potrebbe essere più specifico riguardo al tipo di malessere o dove si localizza il dolore? È acuto, sordo, pulsante?",
+      "branches": [
+        {
+          "keywords": [
+            "testa",
+            "stomaco",
+            "gola",
+            "petto",
+            "schiena",
+            "gambe"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "stanchezza",
+            "debolezza",
+            "affaticamento",
+            "svogliato"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Could you be more specific about the type of discomfort or where the pain is located? Is it sharp, dull, throbbing?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accordo, e da quanto tempo accusa questi sintomi? Ci sono altri disturbi associati, magari febbre o astenia?",
+      "branches": [
+        {
+          "keywords": [
+            "giorni",
+            "settimane",
+            "ieri",
+            "tre",
+            "quattro",
+            "dieci",
+            "due"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accordo, e da quanto tempo accusa questi sintomi? Ci sono altri disturbi associati, magari febbre o astenia? — All right, and for how long have you been experiencing these symptoms? Are there other associated disturbances, perhaps fever or asthenia?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Grazie per le precisazioni. Dai sintomi che mi descrive, sembrerebbe una condizione virale piuttosto comune in questo periodo. Ha per caso avuto contatti recenti con persone malate o è stato esposto a sbalzi di temperatura?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "contatto",
+            "esposto",
+            "ufficio",
+            "famiglia"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grazie per le precisazioni. Dai sintomi che mi descrive, sembrerebbe una condizione virale piuttosto comune in questo periodo. Ha per caso avuto contatti recenti con persone malate o è stato esposto a sbalzi di temperatura? — Thanks for the clarifications. From the symptoms you describe, it would seem to be a viral condition quite common at this time. Have you by chance had recent contact with sick people or been exposed to sudden temperature changes?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Bene. Le consiglio riposo, idratazione abbondante e, per alleviare i sintomi, le prescrivo un antinfiammatorio e un mucolitico. Ha allergie particolari o sta assumendo altri farmaci?",
+      "branches": [
+        {
+          "keywords": [
+            "allergie",
+            "allergico",
+            "penicillina",
+            "farmaci"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. I recommend rest, abundant hydration and, to relieve symptoms, I'm prescribing an anti-inflammatory and a mucolytic. Do you have any particular allergies or are you taking other medications?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfetto. In quel caso, le darò le indicazioni specifiche su dosaggio e modalità d'uso, tenendo conto di quanto mi ha riferito. Se i sintomi non dovessero migliorare entro 3-4 giorni, non esiti a richiamare.",
+      "branches": [
+        {
+          "keywords": [
+            "capito",
+            "grazie",
+            "bene",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. In that case, I will give you specific instructions on dosage and method of use, taking into account what you told me. If the symptoms do not improve within 3-4 days, do not hesitate to call again."
+    }
+  }
+}

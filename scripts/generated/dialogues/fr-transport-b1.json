@@ -1,0 +1,183 @@
+{
+  "id": "dlg-fr-transport-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Achat de billet de bus",
+  "opening": "Bonjour ! Puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "billet",
+            "ticket",
+            "bus"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bohn-zhoor! Pwee-zhuh voo zay-day? — Hello! Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oui, bien sûr. Où souhaitez-vous aller ?",
+      "branches": [
+        {
+          "keywords": [
+            "louvre",
+            "musée"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "adresse",
+            "ici"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wee, byehn soor. Oo soo-eht-ay voo zah-lay? — Yes, of course. Where do you wish to go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Pour le Louvre, c'est direct avec la ligne 4. Le ticket coûte 2 euros. Vous avez besoin d'un aller simple ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "simple",
+            "aller"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "non",
+            "retour"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "correspondance",
+            "changement"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Poor luh Loovr, seh dee-rekt ah-vek lah leen kahtr. Luh tee-keh koot duhr-oh. Voo zah-vay buh-zwan duh nan ah-lay sampl? — For the Louvre, it's direct with line 4. The ticket costs 2 euros. Do you need a single ticket?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord. Vous payez par carte ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "bleue",
+            "cb"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "prochain",
+            "quand"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dah-kor. Voo pay-yay par kart oo ahn ehs-pess? — Okay. Do you pay by card or in cash?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, vous voulez un aller-retour ou plusieurs tickets ? Précisez, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "aller-retour",
+            "retour"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, voo voo-lay uhn ah-lay ruh-toor oo ploo-zyehr tee-keh? Pray-see-zay, seel voo pleh. — Ah, you want a return ticket or several tickets? Please specify."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Merci. Voici votre ticket. Le bus arrive dans 5 minutes, à l'arrêt juste là. Bonne journée !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir",
+            "bonnejournée"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "retard",
+            "attendre",
+            "prochain"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mehr-see. Vwa-see vohtr tee-keh. Luh boos ah-reev dahns sank mee-noot, ah lah-reh joost lah. Bonn zhoor-nay! — Thank you. Here's your ticket. The bus arrives in 5 minutes, at the stop right there. Have a good day!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Normalement, il n'y a pas de retard à cette heure-ci. Mais vérifiez toujours l'affichage digital. Bon voyage !",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nor-mal-mong, eel nee yah pah duh ruh-tar ah set uhr see. Meh vay-ree-fyay too-joor lah-fee-shaz dee-zhee-tal. Bonn vwa-yahj! — Normally, there are no delays at this time. But always check the digital display. Have a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé, je n'ai pas bien compris. Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Day-zo-lay, zhuh nay pah byehn kohn-pree. Poo-vay voo ray-pay-tay, seel voo pleh? — Sorry, I didn't quite understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et bon voyage !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Oh ruh-vwar ay bon vwa-yahj! — Goodbye and have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

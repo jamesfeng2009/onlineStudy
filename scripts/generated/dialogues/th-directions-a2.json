@@ -1,0 +1,176 @@
+{
+  "id": "dlg-th-directions-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "ถามทาง",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตลาด",
+            "ไปตลาด",
+            "ตลาดอยู่ไหน"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Mee arai hai chuay mai krap/ka? — Hello. Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ เข้าใจแล้วครับ/ค่ะ เดินตรงไปข้างหน้าครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "เลี้ยว",
+            "ทางไหน",
+            "ไปทางไหน"
+          ],
+          "nextTurnId": "t3_turn"
+        },
+        {
+          "keywords": [
+            "ไกลไหม",
+            "ไกล",
+            "นานไหม"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "รถเมล์",
+            "เดิน",
+            "ไปยังไง"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or, khao-jai laew krap/ka. Dern trong pai khang-nah krap/ka. — Ah, I understand. Go straight ahead."
+    },
+    "t3_turn": {
+      "id": "t3_turn",
+      "prompt": "เดินตรงไปถึงสี่แยก แล้วเลี้ยวขวาครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าง",
+            "ข้างอะไร",
+            "มีอะไร"
+          ],
+          "nextTurnId": "t4_landmark"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dern trong pai teung see-yaek laew liaw kwaa krap/ka. — Go straight to the intersection, then turn right."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "ไม่ไกลมากครับ/ค่ะ เดินประมาณสิบนาทีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าง",
+            "ข้างอะไร",
+            "มีอะไร"
+          ],
+          "nextTurnId": "t4_landmark"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mai glai maak krap/ka. Dern pra-maan sip na-tee gor teung krap/ka. — It's not very far. About ten minutes walk."
+    },
+    "t3_transport": {
+      "id": "t3_transport",
+      "prompt": "เดินไปได้ครับ/ค่ะ ไม่ต้องนั่งรถเมล์",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าง",
+            "ข้างอะไร",
+            "มีอะไร"
+          ],
+          "nextTurnId": "t4_landmark"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dern pai dai krap/ka. Mai tong nang rot-may. — You can walk. No need to take a bus."
+    },
+    "t4_landmark": {
+      "id": "t4_landmark",
+      "prompt": "จะอยู่ตรงข้ามร้านกาแฟใหญ่ๆ ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค",
+            "เข้าใจแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja yoo trong kham raan gaa-fae yai-yai krap/ka. — It will be opposite a big coffee shop."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจ ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-toht krap/ka. Mai kao-jai. Chuay poot eek krang dai mai krap/ka? — Excuse me, I don't understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีครับ/ค่ะ เดินทางปลอดภัยนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin-dee krap/ka. Dern taang plort-pai na krap/ka. — You're welcome. Have a safe trip.",
+      "isTerminal": true
+    }
+  }
+}

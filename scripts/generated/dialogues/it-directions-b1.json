@@ -1,0 +1,174 @@
+{
+  "id": "dlg-it-directions-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Chiedere indicazioni stradali",
+  "opening": "Mi scusi, può aiutarmi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Certo! Dimmi pure, dove devi andare?",
+      "branches": [
+        {
+          "keywords": [
+            "stazione",
+            "treno"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "museo",
+            "galleria"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "farmacia",
+            "medicina"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "altro",
+            "nonso"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "CHAIR-toh! DEEM-mee POO-reh, DOH-veh DEH-vee an-DAH-reh? — Of course! Tell me, where do you need to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "La stazione non è lontana. Vai sempre dritto per circa duecento metri, superi la piazza principale con la fontana e poi giri a sinistra. La vedrai subito.",
+      "branches": [
+        {
+          "keywords": [
+            "bus",
+            "mezzi",
+            "autobus",
+            "trasporto"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lah stah-TSYOH-neh non eh lon-TAH-nah. Vahy SEM-preh DREET-toh per CHEER-kah doo-eh-CHEN-toh MEH-tree, SOO-peh-ree lah PYAT-tsah preen-chee-PAH-leh kon lah fon-TAH-nah eh poy JEE-ree ah see-NEES-trah. Lah veh-DRAI SOO-bee-toh. — The station isn't far. Go straight for about two hundred meters, pass the main square with the fountain, and then turn left. You'll see it immediately."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "C'è il Museo Civico, non molto lontano. Ti consiglio di prendere il tram numero 1. La fermata è dietro l'angolo, di fronte alla chiesa antica. Scendi alla terza fermata, si chiama 'Porta Romana'.",
+      "branches": [
+        {
+          "keywords": [
+            "tram",
+            "biglietto",
+            "dovecomprare"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "chiaro",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cheh eel moo-ZEH-oh CHEE-vee-koh, non MOL-toh lon-TAH-noh. Tee kon-SEE-lyoh dee PREN-deh-reh eel tram NOO-meh-roh OO-noh. Lah fer-MAH-tah eh DYET-roh LAN-go-loh, dee FRON-teh ah-llah KEE-eh-zah an-TEE-kah. SHEN-dee ah-llah TER-tsah fer-MAH-tah, see KYA-mah 'POR-tah roh-MAH-nah'. — There's the Civic Museum, not far. I recommend taking tram number 1. The stop is around the corner, in front of the old church. Get off at the third stop, it's called 'Porta Romana'."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "C'è una farmacia aperta 24 ore su 24 vicino all'ospedale. Devi prendere la terza strada a destra e proseguire per un isolato. La troverai sul lato sinistro.",
+      "branches": [
+        {
+          "keywords": [
+            "ospedale",
+            "dove"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cheh OO-nah far-mah-CHEE-ah ah-PER-tah venti-QUAHT-troh OH-reh soo venti-QUAHT-troh vee-CHEE-noh ah-llohs-peh-DAH-leh. DEH-vee PREN-deh-reh lah TER-tsah STRAH-dah ah DES-trah eh proh-seh-GWEE-reh per oon ee-zoh-LAH-toh. Lah troh-veh-RAI sool LAH-toh see-NEES-troh. — There's a 24-hour pharmacy near the hospital. You need to take the third street on the right and go straight for one block. You'll find it on the left side."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "L'ospedale è proprio lì, sulla stessa via della farmacia, un po' più avanti. È un edificio grande, non puoi sbagliare.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Loh-speh-DAH-leh eh PRO-pryoh lee, SOO-llah STES-sah VEE-ah DEH-llah far-mah-CHEE-ah, oon poh pyoo ah-VAN-tee. Eh oon eh-dee-FEE-choh GRAN-deh, non pwoy zba-LYAH-reh. — The hospital is right there, on the same street as the pharmacy, a little further on. It's a large building, you can't miss it."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Per l'autobus o il tram, puoi comprare i biglietti in qualsiasi tabaccheria o edicola. Ce n'è una proprio qui di fronte, accanto al bar.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "tuttochiaro",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per LOW-toh-boos oh eel tram, pwoy kom-PRAH-reh ee bee-LYET-tee een kwal-SYAH-zee tah-bak-keh-REE-ah oh eh-DEE-koh-lah. Cheh neh OO-nah PRO-pryoh kwee dee FRON-teh, ah-KAN-toh al bar. — For the bus or tram, you can buy tickets in any tobacconist or newsstand. There's one right here in front, next to the bar."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "SKOO-zah, poh-TRES-tee ree-PEH-teh-reh per fah-VOH-reh? Non oh kah-PEE-toh BEH-neh. — Excuse me, could you please repeat? I didn't understand well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Figurati! Buona giornata e buon proseguimento!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-goo-RAH-tee! BWOH-nah jor-NAH-tah eh bwon proh-seh-GWEE-men-toh! — You're welcome! Have a good day and good journey!",
+      "isTerminal": true
+    }
+  }
+}

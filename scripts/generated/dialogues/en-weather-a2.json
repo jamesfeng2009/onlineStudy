@@ -1,0 +1,87 @@
+{
+  "id": "dlg-en-weather-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Weather Chat",
+  "opening": "Hello! How's the weather today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How's the weather today?",
+      "branches": [
+        {
+          "keywords": [
+            "sunny",
+            "nice",
+            "good",
+            "warm"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! How's the weather today? — Hello! How's the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That's interesting! Do you have any plans for today?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "outside",
+            "park",
+            "shopping",
+            "work"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's interesting! Do you have any plans for today? — That's interesting! Do you have any plans for today?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Sounds good! What's your favourite season or type of weather?",
+      "branches": [
+        {
+          "keywords": [
+            "summer",
+            "hot",
+            "sunny"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sounds good! What's your favourite season or type of weather? — Sounds good! What's your favourite season or type of weather?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Could you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "no",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Could you please say that again? — Sorry, I didn't understand. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "That's a nice choice! Thanks for chatting about the weather. Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "That's a nice choice! Thanks for chatting about the weather. Have a great day! — That's a nice choice! Thanks for chatting about the weather. Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

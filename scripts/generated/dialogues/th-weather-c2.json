@@ -1,0 +1,295 @@
+{
+  "id": "dlg-th-weather-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "คุยเรื่องสภาพอากาศ",
+  "opening": "นี่มันหน้าร้อนชัดๆ เลยนะเนี่ย ร้อนตับแตกจริงๆ ครับ/ค่ะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "นี่มันหน้าร้อนชัดๆ เลยนะเนี่ย ร้อนตับแตกจริงๆ ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ร้อนมาก",
+            "ร้อนสุดๆ",
+            "เห็นด้วย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เมื่อไหร่จะหมดหน้าร้อน",
+            "อยากให้ฝนตก"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "อากาศดี",
+            "ไม่ร้อนเท่าไหร่"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nîi man nâa-ráawn chát-chát loei ná nîa, ráawn tàp tàek jing-jing kráp/kà – This is clearly summer, isn't it? It's scorching hot, truly liver-bursting hot!"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ใช่ครับ/ค่ะ ผม/ดิฉันก็ว่างั้น หวังว่าฝนจะตกมาให้ชื่นใจบ้างเร็วๆ นี้ พอฝนมาก็จะเริ่มเข้าสู่ฤดูฝนเต็มตัวแล้ว",
+      "branches": [
+        {
+          "keywords": [
+            "ฤดูฝน",
+            "อยากให้ฝนตก",
+            "เบื่อหน้าร้อน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ฝนตกหนัก",
+            "น้ำท่วม"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "ชอบหน้าฝน",
+            "อากาศเย็น"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "เรื่องอื่น"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Châi kráp/kà. Phǒm/Dì-chǎn gôr wâa ngân. Wǎng wâa fǒn jà tòk maa hâi chûen-jai bâang rew-rew níi. Paw fǒn maa gôr jà rêrm khâo sùu rúe-doo fǒn tem-tua láew – Yes, I think so too. I hope the rain comes to refresh us soon. Once the rain arrives, we'll fully enter the rainy season."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "อ้อ แสดงว่าคุณ/เธอชอบอากาศแบบนี้สินะครับ/คะ บางคนก็ชอบแดดจัดๆ เนาะ ส่วนตัวผม/ดิฉันก็ขอให้ลมพัดมาบ้างก็ยังดี",
+      "branches": [
+        {
+          "keywords": [
+            "ลมพัด",
+            "ไม่ร้อนมาก"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "แดดแรง",
+            "ผิวไหม้"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "อากาศร้อน",
+            "เหงื่อออก"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Âw, sà-daeng wâa khun/ther châwp aa-gàat bâep níi sǐ ná kráp/ká. Baang khon gôr châwp daet jàt-jàt nɔ́. Sùan tua phǒm/dì-chǎn gôr khɔ̌ɔ hâi lom phát maa bâang gôr yang dee – Oh, so you like this kind of weather, huh? Some people do like strong sunlight. Personally, I'd at least appreciate some breeze."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ใช่ครับ/ค่ะ พอเข้าหน้าฝนทีไรก็อดกังวลเรื่องการเดินทางไม่ได้ ถนนหนทางก็เฉอะแฉะ บางทีน้ำก็ท่วมขัง นึกแล้วก็ถอนหายใจเฮือกใหญ่เลย",
+      "branches": [
+        {
+          "keywords": [
+            "การเดินทาง",
+            "รถติด",
+            "น้ำท่วม"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "ชอบหน้าฝน",
+            "อากาศเย็น",
+            "ต้นไม้เขียว"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "พกร่ม",
+            "เสื้อกันฝน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้จะพูดอะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Châi kráp/kà. Paw khâo nâa fǒn thee-rai gôr ɔ̀t gang-won rûeang gaan deun-taang mâi dâai. Thà-nǒn hon-taang gôr chə̀-cháe. Baang thee náam gôr thûam kǎng. Núk láew gôr thɔ̌ɔn hǎai-jai hûeak yài loei – Yes, whenever the rainy season starts, I can't help but worry about travel. The roads get muddy and soggy. Sometimes there's even flooding. Just thinking about it makes me sigh deeply."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "นั่นสิครับ/ค่ะ โดยเฉพาะถ้าเป็นช่วงเทศกาลหรือวันหยุดยาวนี่ แผนที่วางไว้พังไม่เป็นท่าเลย บางทีก็ต้องจำใจอยู่บ้านยาวๆ",
+      "branches": [
+        {
+          "keywords": [
+            "แผนพัง",
+            "อดเที่ยว",
+            "เบื่ออยู่บ้าน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "อากาศดีๆ",
+            "อยากไปเที่ยว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nân sì kráp/kà. Dooi chà-phɔ́ thâa pen chûang thêt-sà-gaan rǔue wan yùt yaao nîi, phâen thîi waang wái phang mâi pen thâa loei. Baang thee gôr tông jam-jai yùu bâan yaao-yaao – Exactly. Especially during festivals or long holidays, all the plans we made just fall apart. Sometimes we're forced to stay home for extended periods."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "จริงครับ/ค่ะ หน้าฝนก็มีเสน่ห์ไปอีกแบบ อากาศเย็นสบาย ต้นไม้ใบหญ้าก็เขียวชอุ่มชื่นตาดีนะครับ/คะ อย่างน้อยก็ดีกว่าร้อนอบอ้าวเป็นไหนๆ",
+      "branches": [
+        {
+          "keywords": [
+            "เห็นด้วย",
+            "สดชื่น",
+            "ชอบธรรมชาติ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ฝนตกหนัก",
+            "ไม่ชอบฝน"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jing kráp/kà. Nâa fǒn gôr mee sà-nèe pai eek bâep. Aa-gàat yen sà-baai, tôn-mái bai yâa gôr khǐeow chɔɔ-ùmy chûen taa dee ná kráp/ká. Yàang náwy gôr dee gwàa ráawn ɔ̀p-âao pen nǎi-nǎi – That's true. The rainy season has its own charm. The weather is cool and comfortable, and the trees and grass are lush green and pleasant to the eye. At least it's much better than the sweltering heat."
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "ใช่เลยครับ/ค่ะ แดดเมืองไทยนี่ขึ้นชื่อเรื่องความร้อนแรงจริงๆ ออกไปข้างนอกไม่ทาครีมกันแดดนี่ผิวคล้ำเสียได้ง่ายๆ เลยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครีมกันแดด",
+            "หมวก",
+            "แว่นกันแดด"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ชอบผิวแทน",
+            "ไม่กลัวแดด"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไรนะ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Châi loei kráp/kà. Daet mueang Thai nîi khûen chêu rûeang khwaam ráawn raeng jing-jing. ɔ̀ɔk pai khâang nɔ̂k mâi thaa khreem gan-daet nîi phǐw khlâm sǐa dâi ngâi-ngâi loei ná kráp/ká – That's right. The Thai sun is really famous for its intensity. If you go outside without sunscreen, your skin can easily get dark and damaged."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ไม่ว่าจะร้อนหรือฝนตก สุดท้ายก็ต้องปรับตัวให้อยู่รอดไปวันๆ เนาะ หวังว่าอากาศช่วงนี้จะเอื้อให้คุณ/เธอทำกิจกรรมต่างๆ ได้อย่างที่ตั้งใจนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ปรับตัว",
+            "สู้ๆ",
+            "ดูแลตัวเอง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ตกลง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mâi wâa jà ráawn rǔue fǒn tòk, sùt-táai gôr tông pràp-tua hâi yùu rôot pai wan-wan nɔ́. Wǎng wâa aa-gàat chûang níi jà êue hâi khun/ther tham gìt-jà-gam tàang-tàang dâi yàang thîi tâng-jai ná kráp/ká – Whether it's hot or rainy, ultimately we just have to adapt to survive day by day, right? I hope the weather currently allows you to do various activities as you intended."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจที่คุณ/เธอพูด รบกวนพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khɔ̌̌o thôot kráp/kà. Mâi khâo jai thîi khun/ther phûut. Róp-guan phûut ìik khráng dâi mái kráp/ká – Sorry. I didn't understand what you said. Could you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ ที่มาร่วมพูดคุยกัน! ดูแลสุขภาพด้วยนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khɔ̀p-khun mâak kráp/kà. Thîi maa rûam phûut khuy gan! Duu-lae sùk-khà-phâap dûai ná kráp/ká – Thank you very much for chatting! Please take care of your health!",
+      "isTerminal": true
+    }
+  }
+}

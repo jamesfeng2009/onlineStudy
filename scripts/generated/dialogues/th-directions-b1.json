@@ -1,0 +1,226 @@
+{
+  "id": "dlg-th-directions-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "การถามทาง",
+  "opening": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ ดูเหมือนคุณกำลังมองหาอะไรอยู่หรือเปล่า",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ ดูเหมือนคุณกำลังมองหาอะไรอยู่หรือเปล่า",
+      "branches": [
+        {
+          "keywords": [
+            "สถานีรถไฟฟ้า",
+            "ตลาด",
+            "โรงพยาบาล",
+            "ไปที่ไหน",
+            "ไป"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ไม่",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sàwạsdī k̄hâ/khráb. Mī xarị h̄ı̂ chûay mị k̄hâ/khráb? Dū h̄mụ̄xn khuṇ kảlạng mxng h̄ā xarị xyū̀ h̄rụ̄x pl̀āw? — Hello. Can I help you with anything? You look like you're looking for something."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ สถานีรถไฟฟ้าเหรอคะ/ครับ สถานีนี้มีหลายสถานีเลยค่ะ/ครับ คุณจะไปสถานีไหนเป็นพิเศษคะ/ครับ หรือจะให้แนะนำวิธีไปสถานีที่ใกล้ที่สุด",
+      "branches": [
+        {
+          "keywords": [
+            "อโศก",
+            "สยาม",
+            "พร้อมพงษ์",
+            "สุทธิสาร",
+            "ไปอโศก",
+            "ไปสยาม"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ที่ใกล้ที่สุด",
+            "ใกล้สุด",
+            "ใกล้ๆ"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "เดินทางยังไง",
+            "ไปยังไง"
+          ],
+          "nextTurnId": "t4_transport_specific"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ǫw̄ s̄t̄hānī rt̄hfịf̂ā h̄ēx r̂x k̄hâ/khráb? S̄t̄hānī nī̂ mī h̄lāy s̄t̄hānī loey k̄hâ/khráb. Khuṇ ca pị s̄t̄hānī h̄nị pen phiṣ̄eṣ̄ k̄hâ/khráb? H̄rụ̄x ca h̄ı̂ nạe nả wiṭhī pị s̄t̄hānī thī̀ klị̂ thī̀s̄ud? — Oh, the BTS/MRT station? There are many stations around here. Which specific station are you going to? Or would you like me to recommend the nearest one?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "ถ้าจะไปสถานีอโศก คุณต้องเดินตรงไปเรื่อยๆ ประมาณ 500 เมตรนะคะ/นะครับ พอถึงสี่แยกไฟแดง เลี้ยวขวาเดินตรงไปอีกนิดก็จะเห็นสถานีแล้วค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ไกลไหม",
+            "นานไหม",
+            "ประมาณ",
+            "เดิน"
+          ],
+          "nextTurnId": "t4a_clarify_dist"
+        },
+        {
+          "keywords": [
+            "แท็กซี่",
+            "มอเตอร์ไซค์",
+            "รถเมล์",
+            "รถประจำทาง"
+          ],
+          "nextTurnId": "t4_transport_specific"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̄ĥā ca pị s̄t̄hānī xoṣ̄ok, khuṇ t̂xng dein trng pị rư̄̀xy rư̄̀xy pramāṇ h̄â r̂xy metrnạkhê/ná khráb. Phx t̄hụng s̄ī̀ yæk fị dæng, lîeẃ k̄hwā dein trng pị xīk níd k̆ ca h̄ĕn s̄t̄hānī læ̂w k̄hâ/khráb. — If you want to go to Asok Station, you need to walk straight for about 500 meters. When you reach the traffic light intersection, turn right and walk a little further, and you'll see the station."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "สถานีที่ใกล้ที่สุดจากตรงนี้คือสถานีพร้อมพงษ์ค่ะ/ครับ เดินไปทางซ้ายมือประมาณ 300 เมตร ผ่านร้านสะดวกซื้อไปนิดเดียวก็จะถึงแล้วค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ไกลไหม",
+            "นานไหม",
+            "ประมาณ",
+            "เดิน"
+          ],
+          "nextTurnId": "t4a_clarify_dist"
+        },
+        {
+          "keywords": [
+            "แท็กซี่",
+            "มอเตอร์ไซค์",
+            "รถเมล์",
+            "รถประจำทาง"
+          ],
+          "nextTurnId": "t4_transport_specific"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄t̄hānī thī̀ klị̂ thī̀s̄ud cāk trng nī̂ khụ̄x s̄t̄hānī phr̂xm phngṣ̒ k̄hâ/khráb. Dein pị thāng ŝāy mụ̄x pramāṇ s̄ām r̂xy metrm, p̄h̀ān r̂ān s̄adwk sụ̄́x pị níd deīyw k̆ ca t̄hụng læ̂w k̄hâ/khráb. — The nearest station from here is Phrom Phong Station. Walk to your left for about 300 meters, just past the convenience store, and you'll arrive."
+    },
+    "t4a_clarify_dist": {
+      "id": "t4a_clarify_dist",
+      "prompt": "เดินประมาณ 5-7 นาทีก็ถึงแล้วค่ะ/ครับ ไม่ไกลเลยค่ะ/ครับ ถ้าเดินเร็วกว่านั้นก็อาจจะถึงเร็วกว่านี้อีกนิดหน่อย",
+      "branches": [
+        {
+          "keywords": [
+            "แท็กซี่",
+            "มอเตอร์ไซค์",
+            "รถเมล์",
+            "รถประจำทาง"
+          ],
+          "nextTurnId": "t4_transport_specific"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dein pramāṇ h̄â-cĕd nāthī k̆ t̄hụng læ̂w k̄hâ/khráb. Mị̀ klị lery k̄hâ/khráb. T̄ĥā dein rew kẁā nận k̆ xāc ca t̄hụng rew kẁā nī̂ xīk níd h̄ǹxy. — It's about a 5-7 minute walk. Not far at all. If you walk faster, you might get there a little sooner."
+    },
+    "t4_transport_specific": {
+      "id": "t4_transport_specific",
+      "prompt": "ถ้าไม่อยากเดิน คุณสามารถขึ้นวินมอเตอร์ไซค์หรือแท็กซี่ได้ค่ะ/ครับ ตรงหัวมุมถนนก็มีคิวอยู่แล้วค่ะ/ครับ วินมอเตอร์ไซค์ไปสถานีอโศก/พร้อมพงษ์น่าจะประมาณ 20-30 บาทค่ะ/ครับ ส่วนแท็กซี่ก็แล้วแต่ระยะทางนะคะ/นะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̄ĥā mị̀ yāk dein, khuṇ s̄āmārt̄h k̄hụ̂n win mōt̄texr̒ sịkh̒ h̄rụ̄x thǽk sî dị̂ k̄hâ/khráb. Trng h̄ạw mum t̄hnn k̆ mī khīw xyū̀ læ̂w k̄hâ/khráb. Win mōt̄texr̒ sịkh̒ pị s̄t̄hānī xoṣ̄ok/phr̂xm phngṣ̒ nā̀ ca pramāṇ yīs̄ib-s̄ām s̄ib bāth k̄hâ/khráb. S̄̀wn thǽk sî k̆ læ̂w tæ̀ raya thāng nạkhê/ná khráb. — If you don't want to walk, you can take a motorbike taxi or a regular taxi. There's a queue right at the street corner. A motorbike taxi to Asok/Phrom Phong station should be around 20-30 baht. For a regular taxi, it depends on the distance."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ/ครับ เมื่อกี้ไม่ค่อยได้ยินค่ะ/ครับ ช่วยพูดอีกทีได้ไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hxthot k̄hâ/khráb, mư̄̀x kī̂ mị̀ khòy dâiyin k̄hâ/khráb. Chûay phûut xīk thī dị̂ mị khâ/khráb? — Sorry, I didn't quite hear that. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากค่ะ/ครับ ขอให้เดินทางปลอดภัยนะคะ/นะครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "K̄hxbkhuṇ māk k̄hâ/khráb. K̄hx h̄ı̂ deinthāng plxdp̣hạy nạkhê/ná khráb. — Thank you very much. Have a safe trip!",
+      "isTerminal": true
+    }
+  }
+}

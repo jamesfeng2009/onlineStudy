@@ -1,0 +1,171 @@
+{
+  "id": "dlg-ms-post-office-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "Di Pejabat Pos",
+  "opening": "Selamat datang ke pejabat pos. Ada apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke pejabat pos. Ada apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "parcel",
+            "bungkusan",
+            "kirim"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "setem",
+            "beli"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tanya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke pejabat pos (Welcome to the post office). Ada apa yang boleh saya bantu? (How can I help you?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, encik/cik. Mahu hantar bungkusan ke mana? Dalam Malaysia atau luar negara?",
+      "branches": [
+        {
+          "keywords": [
+            "malaysia",
+            "dalam"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "luar",
+            "negara",
+            "antarabangsa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, encik/cik (Okay, sir/madam). Mahu hantar bungkusan ke mana? (Where do you want to send the parcel?) Dalam Malaysia (Within Malaysia) atau luar negara? (or overseas?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Puan/Encik mahu setem untuk poskad atau surat?",
+      "branches": [
+        {
+          "keywords": [
+            "poskad"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Puan/Encik (Madam/Sir) mahu setem untuk poskad (do you want stamps for a postcard) atau surat? (or a letter?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Untuk bungkusan dalam Malaysia, mahu pos biasa atau Pos Laju (daftar)? Pos Laju lebih cepat dan ada nombor jejak.",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "normal"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk bungkusan dalam Malaysia (For parcels within Malaysia), mahu pos biasa (do you want regular post) atau Pos Laju (daftar)? (or Pos Laju (registered)? Pos Laju (Pos Laju) lebih cepat (is faster) dan ada nombor jejak (and has a tracking number)."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Untuk bungkusan ke luar negara, Puan/Encik perlu isi borang kastam. Sila ke kaunter 2 untuk bantuan.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "borang",
+            "kastam"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk bungkusan ke luar negara (For parcels overseas), Puan/Encik perlu isi borang kastam (you need to fill out a customs form). Sila ke kaunter 2 (Please go to counter 2) untuk bantuan (for assistance)."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik, Puan/Encik. Sila ke kaunter pembayaran di sana.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "pergi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, Puan/Encik (Okay, Madam/Sir). Sila ke kaunter pembayaran di sana (Please go to the payment counter over there)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh ulang sekali lagi? (can you repeat that?) Saya tidak faham (I don't understand)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih dan jumpa lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Thank you) dan jumpa lagi (and see you again).",
+      "isTerminal": true
+    }
+  }
+}

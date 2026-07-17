@@ -1,0 +1,181 @@
+{
+  "id": "dlg-fr-taxi-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Course en Taxi",
+  "opening": "Bonjour, monsieur/madame. Où puis-je vous conduire aujourd'hui ? La circulation semble déjà bien dense pour une heure matinale.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, monsieur/madame. Où puis-je vous conduire aujourd'hui ? La circulation semble déjà bien dense pour une heure matinale.",
+      "branches": [
+        {
+          "keywords": [
+            "gare",
+            "hotel",
+            "aéroport",
+            "adresse",
+            "rue",
+            "centreville",
+            "travail"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, monsieur/madame. [bohn-zhoor, muh-syuh/mah-dahm] Où puis-je vous conduire aujourd'hui ? [oo pwee-zhuh voo kohn-dweer oh-zhoor-dwee] La circulation semble déjà bien dense pour une heure matinale. — Hello, sir/madam. Where can I take you today? The traffic already seems quite heavy for this morning hour."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord, vers [votre destination]. Pourriez-vous me préciser si vous préférez passer par le périphérique, quitte à faire un petit détour, ou tenter le centre-ville avec le risque d'y être pris dans les embouteillages monstres ?",
+      "branches": [
+        {
+          "keywords": [
+            "périphérique",
+            "detour",
+            "vite",
+            "plusrapide"
+          ],
+          "nextTurnId": "t3_periph"
+        },
+        {
+          "keywords": [
+            "centre-ville",
+            "embouteillages",
+            "vue",
+            "direct",
+            "pluscourt"
+          ],
+          "nextTurnId": "t3_centre"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, vers [votre destination]. [dah-kor, vair voh-truh dehs-tih-na-syohn] Pourriez-vous me préciser si vous préférez passer par le périphérique, quitte à faire un petit détour, ou tenter le centre-ville avec le risque d'y être pris dans les embouteillages monstres ? [poo-ryay-voo muh pray-see-zay see voo pray-fay-ray pah-say par luh pay-ree-fay-reek, keet ah fayr uh puh-tee day-toor, oo tahn-tay luh sahn-truh-veel ah-vek luh reesk dee etr pree dahn lay ahn-boo-tyahzh mohn-struh] — Okay, towards [your destination]. Could you specify if you prefer to go via the ring road, even if it means a small detour, or try the city center with the risk of being caught in monstrous traffic jams?"
+    },
+    "t3_periph": {
+      "id": "t3_periph",
+      "prompt": "Entendu pour le périphérique. C'est souvent l'option la plus sûre pour éviter les affres de la circulation urbaine, même si cela rallonge un peu le trajet. Le compteur tourne déjà, mais au moins on avancera. Ça vous convient ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "convient",
+            "ok",
+            "daccord",
+            "prix",
+            "combien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "non",
+            "changer",
+            "centre"
+          ],
+          "nextTurnId": "t3_centre"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood for the ring road. It's often the safest option to avoid the woes of urban traffic, even if it lengthens the journey a bit. The meter is already running, but at least we'll make progress. Does that suit you?"
+    },
+    "t3_centre": {
+      "id": "t3_centre",
+      "prompt": "Ah, le centre-ville... c'est un choix audacieux à cette heure-ci. On va devoir faire preuve de patience et de ruse pour se frayer un chemin. Attendez-vous à quelques arrêts prolongés, le temps que le flot reprenne. Le prix pourrait s'en ressentir. Toujours d'accord ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "daccord",
+            "ok",
+            "prix",
+            "combien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "non",
+            "changer",
+            "périphérique"
+          ],
+          "nextTurnId": "t3_periph"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, le centre-ville... [ah, luh sahn-truh-veel] c'est un choix audacieux à cette heure-ci. On va devoir faire preuve de patience et de ruse pour se frayer un chemin. Attendez-vous à quelques arrêts prolongés, le temps que le flot reprenne. Le prix pourrait s'en ressentir. Toujours d'accord ? — Ah, the city center... that's a bold choice at this hour. We'll have to show patience and cunning to make our way through. Expect a few prolonged stops, while the flow resumes. The price might be affected. Still agree?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Voilà, nous y sommes. Le compteur affiche [montant]. Pour le paiement, vous préférez régler par carte bancaire ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "bancaire",
+            "cb",
+            "mastercard",
+            "visa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here we are, we've arrived. The meter shows [amount]. For payment, do you prefer to pay by card or in cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci pour ce trajet et bonne continuation ! Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thanks for the ride and have a good continuation! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

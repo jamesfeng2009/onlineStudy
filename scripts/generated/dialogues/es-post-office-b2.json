@@ -1,0 +1,241 @@
+{
+  "id": "dlg-es-post-office-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "En la Oficina de Correos",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "paquete",
+            "envío",
+            "mandar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sellos",
+            "estampillas",
+            "comprar"
+          ],
+          "nextTurnId": "t-stamps"
+        },
+        {
+          "keywords": [
+            "información",
+            "horario",
+            "servicio"
+          ],
+          "nextTurnId": "t-info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! (Buenos días) — Good morning! ¿En qué puedo ayudarle? (En qué puedo ayudarle) — How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. ¿Su envío es nacional o internacional? Y, ¿tiene alguna prisa particular?",
+      "branches": [
+        {
+          "keywords": [
+            "internacional",
+            "extranjero",
+            "fuera"
+          ],
+          "nextTurnId": "t3_int"
+        },
+        {
+          "keywords": [
+            "nacional",
+            "dentro",
+            "aquí"
+          ],
+          "nextTurnId": "t3_nat"
+        },
+        {
+          "keywords": [
+            "urgente",
+            "prisa",
+            "rapido"
+          ],
+          "nextTurnId": "t4_shipping_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido (Entendido) — Understood. ¿Su envío es nacional o internacional? (Su envío es nacional o internacional) — Is your shipment national or international? Y, ¿tiene alguna prisa particular? (Y, tiene alguna prisa particular) — And, do you have any particular hurry?"
+    },
+    "t3_int": {
+      "id": "t3_int",
+      "prompt": "Perfecto. Para un envío internacional, es imprescindible rellenar una declaración de aduanas. ¿Qué tipo de artículos contiene el paquete y hay alguna urgencia?",
+      "branches": [
+        {
+          "keywords": [
+            "aduanas",
+            "formulario",
+            "declaracion"
+          ],
+          "nextTurnId": "t4_shipping_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto (Perfecto) — Perfect. Para un envío internacional (Para un envío internacional) — For an international shipment, es imprescindible rellenar (es imprescindible rellenar) — it's essential to fill out una declaración de aduanas. ¿Qué tipo de artículos contiene el paquete y hay alguna urgencia? — What kind of items does the package contain and is there any urgency?"
+    },
+    "t3_nat": {
+      "id": "t3_nat",
+      "prompt": "De acuerdo. Para un envío nacional, ¿quiere que sea urgente o prefiere un envío certificado con seguimiento?",
+      "branches": [
+        {
+          "keywords": [
+            "urgente",
+            "prisa",
+            "rapido"
+          ],
+          "nextTurnId": "t4_shipping_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. — Alright. For a national shipment, do you want it to be urgent or do you prefer a certified shipment with tracking?"
+    },
+    "t4_shipping_options": {
+      "id": "t4_shipping_options",
+      "prompt": "Entendido. Con los detalles que me ha proporcionado, ¿desea un envío certificado con seguimiento y seguro básico, o prefiere la opción estándar sin estas coberturas?",
+      "branches": [
+        {
+          "keywords": [
+            "certificado",
+            "seguimiento",
+            "seguro"
+          ],
+          "nextTurnId": "t5_quote"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. With the details you've provided, do you want a certified shipment with tracking and basic insurance, or do you prefer the standard option without these coverages?"
+    },
+    "t5_quote": {
+      "id": "t5_quote",
+      "prompt": "Excelente. Para su envío, el coste total estimado sería de X euros, incluyendo todas las tasas y el servicio elegido. ¿Le parece bien? ¿Desea proceder?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "proceder",
+            "aceptar",
+            "adelante"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. For your shipment, the estimated total cost would be X euros, including all fees and the chosen service. Does that seem fine? Do you wish to proceed?"
+    },
+    "t-stamps": {
+      "id": "t-stamps",
+      "prompt": "Claro, tenemos una gran variedad. ¿Qué tipo de sellos necesita? ¿Para cartas nacionales o internacionales, o quizás para colección?",
+      "branches": [
+        {
+          "keywords": [
+            "nacionales",
+            "cartas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, we have a wide variety. What kind of stamps do you need? For national or international letters, or perhaps for collection?"
+    },
+    "t-info": {
+      "id": "t-info",
+      "prompt": "Por supuesto. ¿Qué información necesita? ¿Sobre nuestros horarios, servicios específicos, o la ubicación de otra oficina de Correos?",
+      "branches": [
+        {
+          "keywords": [
+            "horario",
+            "abrir",
+            "cerrar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. What information do you need? About our hours, specific services, or the location of another Post Office branch?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podría repetir eso, por favor? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón? (Perdón) — Sorry? ¿Podría repetir eso, por favor? (Podría repetir eso, por favor) — Could you repeat that, please? No le he entendido bien. — I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Ha sido un placer atenderle. ¡Que tenga un buen día! ¡Hasta pronto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. It's been a pleasure assisting you. Have a good day! See you soon!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "id": "dlg-de-bank-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Bankgeschäfte souverän meistern",
+  "opening": "Guten Tag, wie kann ich Ihnen heute behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, wie kann ich Ihnen heute behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "kontoeröffnen",
+            "neueskonto"
+          ],
+          "nextTurnId": "t2_konto"
+        },
+        {
+          "keywords": [
+            "überweisungtätigen",
+            "geldüberweisen"
+          ],
+          "nextTurnId": "t2_überweisung"
+        },
+        {
+          "keywords": [
+            "bankautomatproblem",
+            "automatstörung"
+          ],
+          "nextTurnId": "t2_automat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day, wie kann ich Ihnen heute behilflich sein? — how can I help you today?"
+    },
+    "t2_konto": {
+      "id": "t2_konto",
+      "prompt": "Gerne. Möchten Sie ein Girokonto für den täglichen Zahlungsverkehr oder eher ein Sparkonto zur Geldanlage eröffnen?",
+      "branches": [
+        {
+          "keywords": [
+            "girokonto",
+            "alltagskonto"
+          ],
+          "nextTurnId": "t3_konto_details"
+        },
+        {
+          "keywords": [
+            "fragen",
+            "informationsbedarf"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gerne. — Certainly. Möchten Sie ein Girokonto für den täglichen Zahlungsverkehr — Would you like a checking account for daily transactions, oder eher ein Sparkonto zur Geldanlage eröffnen? — or rather a savings account for investment?"
+    },
+    "t2_überweisung": {
+      "id": "t2_überweisung",
+      "prompt": "Selbstverständlich. Handelt es sich um eine Inlands- oder Auslandsüberweisung und um welchen Betrag geht es ungefähr?",
+      "branches": [
+        {
+          "keywords": [
+            "inland",
+            "inlandsüberweisung"
+          ],
+          "nextTurnId": "t3_überweisung_details"
+        },
+        {
+          "keywords": [
+            "gebühren",
+            "kosten"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selbstverständlich. — Of course. Handelt es sich um eine Inlands- oder Auslandsüberweisung — Is it a domestic or international transfer, und um welchen Betrag geht es ungefähr? — and approximately what amount is involved?"
+    },
+    "t2_automat": {
+      "id": "t2_automat",
+      "prompt": "Das ist ärgerlich. Können Sie mir bitte genau beschreiben, was passiert ist? Wurde die Karte eingezogen oder wurde kein Geld ausgezahlt?",
+      "branches": [
+        {
+          "keywords": [
+            "karteingezogen",
+            "karteverschluckt"
+          ],
+          "nextTurnId": "t3_automat_sperren"
+        },
+        {
+          "keywords": [
+            "geldnichtausgezahlt",
+            "keingeldausgabe"
+          ],
+          "nextTurnId": "t3_automat_reklamation"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist ärgerlich. — That's annoying. Können Sie mir bitte genau beschreiben, was passiert ist? — Can you please describe exactly what happened? Wurde die Karte eingezogen oder wurde kein Geld ausgezahlt? — Was the card swallowed or was no money dispensed?"
+    },
+    "t3_konto_details": {
+      "id": "t3_konto_details",
+      "prompt": "Für die Kontoeröffnung benötige ich Ihren gültigen Personalausweis und einen Adressnachweis. Haben Sie diese Unterlagen dabei, damit wir den Antrag direkt bearbeiten können?",
+      "branches": [
+        {
+          "keywords": [
+            "jadabei",
+            "allesdabei"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For account opening, I need your valid ID and proof of address. Do you have these documents with you so we can process the application directly?"
+    },
+    "t3_überweisung_details": {
+      "id": "t3_überweisung_details",
+      "prompt": "Gut. Für die Abwicklung benötige ich die vollständigen Empfängerdaten, einschließlich IBAN/BIC. Soll ich Ihnen die weiteren Schritte oder mögliche Gebühren erläutern?",
+      "branches": [
+        {
+          "keywords": [
+            "dateneingeben",
+            "informationengeben"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. For processing, I need the complete recipient data, including IBAN/BIC. Shall I explain the further steps or possible fees?"
+    },
+    "t3_automat_sperren": {
+      "id": "t3_automat_sperren",
+      "prompt": "In diesem Fall müssen wir die Karte sofort sperren und eine neue bestellen. Das dauert in der Regel 5-7 Werktage. Soll ich die Sperrung jetzt veranlassen?",
+      "branches": [
+        {
+          "keywords": [
+            "jasperren",
+            "kartenochsperren"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In this case, we need to block the card immediately and order a new one. This usually takes 5-7 business days. Shall I initiate the blocking now?"
+    },
+    "t3_automat_reklamation": {
+      "id": "t3_automat_reklamation",
+      "prompt": "Wir leiten umgehend eine Reklamation ein. Bitte notieren Sie sich die genaue Uhrzeit und den Standort des Automaten. Haben Sie noch den Beleg?",
+      "branches": [
+        {
+          "keywords": [
+            "beleg",
+            "belegvorhanden"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We will initiate a complaint immediately. Please note the exact time and location of the ATM. Do you still have the receipt?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, das habe ich leider nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "wiederholen",
+            "andersformulieren",
+            "nochmal"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand that. Could you please repeat it or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch und auf Wiedersehen! Bei weiteren Fragen stehe ich Ihnen gerne zur Verfügung.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your visit and goodbye! If you have any further questions, I'm happy to help.",
+      "isTerminal": true
+    }
+  }
+}

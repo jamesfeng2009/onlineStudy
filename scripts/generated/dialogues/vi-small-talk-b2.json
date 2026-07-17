@@ -1,0 +1,179 @@
+{
+  "id": "dlg-vi-small-talk-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Trò chuyện xã giao cuối tuần",
+  "opening": "Chào bạn, cuối tuần của bạn thế nào? Hy vọng bạn đã có thời gian thư giãn!",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, cuối tuần của bạn thế nào? Hy vọng bạn đã có thời gian thư giãn!",
+      "branches": [
+        {
+          "keywords": [
+            "tuyệtvời",
+            "vui",
+            "thúvị",
+            "thưgiãn",
+            "tốt"
+          ],
+          "nextTurnId": "t2_good"
+        },
+        {
+          "keywords": [
+            "bậnrộn",
+            "mệtmỏi",
+            "làmviệc"
+          ],
+          "nextTurnId": "t3_busy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban) — Hi there, how was your weekend? Hope you had time to relax!"
+    },
+    "t2_good": {
+      "id": "t2_good",
+      "prompt": "Nghe tuyệt quá! Bạn có làm gì đặc biệt hay khám phá được điều gì thú vị không? Tôi rất tò mò về sở thích của bạn.",
+      "branches": [
+        {
+          "keywords": [
+            "dulịch",
+            "đichơi",
+            "khámphá",
+            "dãngoại"
+          ],
+          "nextTurnId": "t4_travel_hobbies"
+        },
+        {
+          "keywords": [
+            "gặpgỡ",
+            "bạnbè",
+            "giađình"
+          ],
+          "nextTurnId": "t4_social_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe tuyệt quá! (Nghe tuyet qua!) — Sounds wonderful! Did you do anything special or discover anything interesting? I'm very curious about your hobbies."
+    },
+    "t3_busy": {
+      "id": "t3_busy",
+      "prompt": "À, vậy hả? Nghe có vẻ bạn đã có một cuối tuần khá bận rộn. Có vẻ bạn đang rất tâm huyết với dự án/công việc của mình, hay là việc gia đình chiếm hết thời gian?",
+      "branches": [
+        {
+          "keywords": [
+            "làmviệc",
+            "dựán",
+            "côngviệc",
+            "học"
+          ],
+          "nextTurnId": "t4_work_chores"
+        },
+        {
+          "keywords": [
+            "khôngcó",
+            "mệt",
+            "ítthờiđiểm"
+          ],
+          "nextTurnId": "t4_social_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, vậy hả? (A, vay ha?) — Oh, really? Sounds like you had quite a busy weekend. It seems you're very passionate about your project/job, or did family matters take up all your time?"
+    },
+    "t4_travel_hobbies": {
+      "id": "t4_travel_hobbies",
+      "prompt": "Tuyệt vời! Tôi cũng thích những hoạt động đó. Bạn có thể gợi ý một địa điểm hay một cuốn sách/bộ phim hay không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "gợiý",
+            "tên",
+            "sách",
+            "phim",
+            "địađiểm"
+          ],
+          "nextTurnId": "t5_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wonderful! I also enjoy those activities. Can you suggest a place or a good book/movie?"
+    },
+    "t4_social_general": {
+      "id": "t4_social_general",
+      "prompt": "Ồ, dành thời gian cho người thân/bạn bè hoặc tự chăm sóc bản thân là điều quan trọng nhất nhỉ. Bạn có thường xuyên tụ họp hay có bí quyết gì để giữ cân bằng không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thườngxuyên",
+            "bíquyết",
+            "yoga",
+            "thiền"
+          ],
+          "nextTurnId": "t5_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, spending time with family/friends or taking care of yourself is the most important thing, isn't it? Do you meet up often or have any secrets to maintaining balance?"
+    },
+    "t4_work_chores": {
+      "id": "t4_work_chores",
+      "prompt": "Hiểu mà, công việc/gia đình đôi khi cuốn mình đi thật. Có vẻ bạn là người rất có trách nhiệm. Bạn có thấy hứng thú với công việc hiện tại không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thích",
+            "hứngthú",
+            "đammê"
+          ],
+          "nextTurnId": "t5_closing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand, work/family can really consume us sometimes. You seem like a very responsible person. Do you find your current job interesting?"
+    },
+    "t5_closing": {
+      "id": "t5_closing",
+      "prompt": "Nghe bạn chia sẻ thấy rất thú vị. Cảm ơn bạn đã chia sẻ nhé. Bây giờ tôi phải đi rồi, rất vui được nói chuyện với bạn!",
+      "branches": [
+        {
+          "keywords": [
+            "tạmbiệt",
+            "chào",
+            "hẹngặplại"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe bạn chia sẻ thấy rất thú vị. (Nghe ban chia se thay rat thu vi.) — It was very interesting to hear your sharing. Thank you for sharing. I have to go now, it was nice talking to you!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe chưa rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn có thể nhắc lại không? (Xin loi, ban co the nhac lai khong?) — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt bạn nhé! Chúc bạn một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tạm biệt bạn nhé! (Tam biet ban nhe!) — Goodbye! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

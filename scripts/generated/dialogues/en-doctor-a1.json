@@ -1,0 +1,153 @@
+{
+  "id": "dlg-en-doctor-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Doctor Visit",
+  "opening": "Hello. What is wrong?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. What is wrong?",
+      "branches": [
+        {
+          "keywords": [
+            "headache",
+            "head",
+            "pain"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "feelbad",
+            "sick",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. - What is wrong?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "How long have you felt bad? One day? Two days?",
+      "branches": [
+        {
+          "keywords": [
+            "one",
+            "day"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How long have you felt bad? - One day? Two days?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Okay. I will give you medicine. Take one pill now.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "ok",
+            "good"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "medicine",
+            "pill",
+            "what"
+          ],
+          "nextTurnId": "t4_allergies"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. - I will give you medicine. Take one pill now."
+    },
+    "t4_allergies": {
+      "id": "t4_allergies",
+      "prompt": "This medicine is for pain. Do you have allergies?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "none"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "yes",
+            "allergy"
+          ],
+          "nextTurnId": "t5_allergy_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "This medicine is for pain. - Do you have allergies?"
+    },
+    "t5_allergy_details": {
+      "id": "t5_allergy_details",
+      "prompt": "What allergy do you have?",
+      "branches": [
+        {
+          "keywords": [
+            "penicillin",
+            "milk",
+            "food"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What allergy do you have? - What allergy do you have?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Please say that again.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "say"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? - Please say that again."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Goodbye. Feel better soon.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye. - Feel better soon.",
+      "isTerminal": true
+    }
+  }
+}

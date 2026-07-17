@@ -1,0 +1,240 @@
+{
+  "id": "dlg-de-directions-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Wegbeschreibung in der Stadt",
+  "opening": "Guten Tag! Kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Entschuldigen Sie, kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "helfen",
+            "suchen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "was"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me (Ent-shool-dee-gen Zee), can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wohin möchten Sie gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "bahnhof",
+            "zug"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "markt",
+            "einkaufen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "museum",
+            "kunst"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "wohin"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Where (Voh-hin) would you like to go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Gehen Sie geradeaus bis zur Ampel, dann biegen Sie links ab. Der Bahnhof ist direkt dort.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "super"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "minuten"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "wasnoch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Go (Gay-en Zee) straight (geradeaus) until the traffic light, then turn left. The train station is right there."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gehen Sie diese Straße entlang und biegen Sie an der zweiten Kreuzung rechts ab. Der Markt ist auf der linken Seite, gegenüber der Kirche.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "toll"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "minuten"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "wasnoch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Go along this street and turn right at the second intersection. The market is on the left side, opposite the church."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das Museum ist etwas weiter weg. Nehmen Sie am besten die Buslinie 3, zwei Haltestellen. Es ist direkt am Park.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "prima"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "laufen",
+            "zu fuß",
+            "gehen"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "wasnoch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The museum is a bit further away. It's best to take (Nay-men Zee) bus line 3, two stops. It is right by the park."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Zu Fuß sind das etwa zehn bis fünfzehn Minuten. Es ist nicht sehr weit.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "verstanden",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot that is about ten to fifteen minutes. It is not very far."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Zu Fuß wäre das ein längerer Spaziergang, etwa fünfundzwanzig bis dreißig Minuten. Der Bus ist schneller.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot that would be a longer walk, about twenty-five to thirty minutes. The bus is faster."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "verstanden"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me (Ent-shool-dee-gung), I did not understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen! Ich wünsche Ihnen einen schönen Tag!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome (Gern ge-sheh-en)! I wish you a nice day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "dlg-de-restaurant-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Im Restaurant bestellen",
+  "opening": "Guten Abend! Haben Sie schon gewählt?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend! Haben Sie schon gewählt?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "fertig",
+            "bestellen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "noch nicht",
+            "speisekarte",
+            "moment"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Ah-bent! — Good evening! Hah-ben Zee shon geh-vählt? — Have you already chosen?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sehr gut! Was möchten Sie bestellen?",
+      "branches": [
+        {
+          "keywords": [
+            "nudeln",
+            "pasta",
+            "spaghetti",
+            "nudelgericht"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "empfehlung",
+            "empfehlen",
+            "was"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zayr goot! — Very good! Vass merkh-ten Zee beh-shtell-en? — What would you like to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kein Problem. Möchten Sie die Speisekarte sehen oder brauchen Sie noch einen Moment?",
+      "branches": [
+        {
+          "keywords": [
+            "speisekarte",
+            "karte",
+            "ja"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "moment",
+            "zeit",
+            "noch"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kine Prob-lem. — No problem. Merkh-ten Zee dee Shpice-eh-kar-teh zay-en o-der brao-khen Zee nokh ine-en Mo-ment? — Would you like to see the menu or do you need another moment?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Eine gute Wahl! Haben Sie Allergien oder besondere Wünsche?",
+      "branches": [
+        {
+          "keywords": [
+            "keine",
+            "nein",
+            "nicht",
+            "nope"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A good choice! Do you have allergies or special requests?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ich empfehle Ihnen unser Tagesgericht: Gebratenes Hähnchen mit Kartoffelsalat. Es ist sehr beliebt!",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gut",
+            "nehme",
+            "gerne",
+            "das"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "doch nicht",
+            "lieber"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I recommend our daily special: Roasted chicken with potato salad. It's very popular!"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Hier ist die Speisekarte. Ich komme gleich wieder.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here is the menu. I'll be right back."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Alles klar. Und etwas zu trinken?",
+      "branches": [
+        {
+          "keywords": [
+            "wasser",
+            "saft",
+            "bier",
+            "cola",
+            "wein",
+            "limonade"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "All right. And something to drink?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihre Bestellung. Das Essen kommt gleich!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your order. The food will be right away!",
+      "isTerminal": true
+    }
+  }
+}

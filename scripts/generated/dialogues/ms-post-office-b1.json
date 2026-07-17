@@ -1,0 +1,151 @@
+{
+  "id": "dlg-ms-post-office-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "Di Pejabat Pos",
+  "opening": "Selamat datang ke Pejabat Pos. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Pejabat Pos. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "hantar",
+            "parcel",
+            "bungkusan"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "beli",
+            "setem",
+            "pos"
+          ],
+          "nextTurnId": "t2_simple_farewell"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Pejabat Pos. (Selamat datang ke Pejabat Pos. - Welcome to the Post Office.) Boleh saya bantu? (Boleh saya bantu? - How can I help you?)"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Baik, apa jenis perkhidmatan yang anda inginkan dan ke mana destinasi bungkusan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "antarabangsa",
+            "luarnegara",
+            "berdaftar",
+            "penjejakan"
+          ],
+          "nextTurnId": "t3_intl_registered"
+        },
+        {
+          "keywords": [
+            "domestik",
+            "tempatan",
+            "berdaftar"
+          ],
+          "nextTurnId": "t2_simple_farewell"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, (Baik, - Okay,) apa jenis perkhidmatan yang anda inginkan (apa jenis perkhidmatan yang anda inginkan - what kind of service do you want) dan ke mana destinasi bungkusan ini? (dan ke mana destinasi bungkusan ini? - and what is the destination of this parcel?)"
+    },
+    "t2_simple_farewell": {
+      "id": "t2_simple_farewell",
+      "prompt": "Untuk perkhidmatan itu, sila ke kaunter nombor dua untuk pembayaran dan proses selanjutnya. Ada apa-apa lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima",
+            "kasih",
+            "tiada"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk perkhidmatan itu, sila ke kaunter nombor dua untuk pembayaran dan proses selanjutnya. Ada apa-apa lagi? — For that service, please proceed to counter number two for payment and further processing. Is there anything else?"
+    },
+    "t3_intl_registered": {
+      "id": "t3_intl_registered",
+      "prompt": "Baik. Untuk penghantaran antarabangsa berdaftar, anda perlu mengisi borang kastam untuk mengisytiharkan kandungan bungkusan anda. Kami boleh bantu jika anda perlukan.",
+      "branches": [
+        {
+          "keywords": [
+            "borang",
+            "kastam",
+            "tolong",
+            "bantu",
+            "isi"
+          ],
+          "nextTurnId": "t4_final_direction"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik. (Baik. - Okay.) Untuk penghantaran antarabangsa berdaftar, (Untuk penghantaran antarabangsa berdaftar, - For international registered shipping,) anda perlu mengisi borang kastam untuk mengisytiharkan kandungan bungkusan anda. (anda perlu mengisi borang kastam untuk mengisytiharkan kandungan bungkusan anda. - you need to fill a customs form to declare the contents of your parcel.) Kami boleh bantu jika anda perlukan. (Kami boleh bantu jika anda perlukan. - We can help if you need.)"
+    },
+    "t4_final_direction": {
+      "id": "t4_final_direction",
+      "prompt": "Baiklah, sila ke kaunter nombor satu untuk proses pembayaran dan jika memerlukan bantuan mengisi borang. Terima kasih.",
+      "branches": [
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah, sila ke kaunter nombor satu untuk proses pembayaran dan jika memerlukan bantuan mengisi borang. Terima kasih. — Alright, please proceed to counter number one for the payment process and if you need help filling the form. Thank you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang semula apa yang anda katakan?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh anda ulang semula apa yang anda katakan? — Sorry, could you please repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak dan selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak dan selamat jalan! — Thank you very much and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

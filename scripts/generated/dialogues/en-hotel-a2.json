@@ -1,0 +1,135 @@
+{
+  "id": "dlg-en-hotel-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Hello! Welcome to the Grand Hotel. Do you have a reservation?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Welcome to the Grand Hotel. Do you have a reservation?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i do"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "i don't"
+          ],
+          "nextTurnId": "t2a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Welcome to the Grand Hotel. Do you have a reservation? (English - no romanization needed)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Great! What name is the reservation under?",
+      "branches": [
+        {
+          "keywords": [
+            "my",
+            "name",
+            "is"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! What name is the reservation under? (English - no romanization needed)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "No problem. We have rooms available. What is your name?",
+      "branches": [
+        {
+          "keywords": [
+            "my",
+            "name",
+            "is"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. We have rooms available. What is your name? (English - no romanization needed)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Thank you. Could I please see your ID or passport?",
+      "branches": [
+        {
+          "keywords": [
+            "here",
+            "you",
+            "go"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Could I please see your ID or passport?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thank you. Everything looks good. How will you pay today? Card or cash?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "creditcard"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Everything looks good. How will you pay today? Card or cash?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Okay. Your room is 205. Do you prefer a room with a view, and would you like breakfast?",
+      "branches": [
+        {
+          "keywords": [
+            "view",
+            "breakfast",
+            "both",
+            "yes"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Your room is 205. Do you prefer a room with a view, and would you like breakfast?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Excellent! Here is your key card. Enjoy your stay!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent! Here is your key card. Enjoy your stay!",
+      "isTerminal": true
+    }
+  }
+}

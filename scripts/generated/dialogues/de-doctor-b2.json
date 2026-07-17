@@ -1,0 +1,134 @@
+{
+  "id": "dlg-de-doctor-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Arztbesuch: Symptome beschreiben",
+  "opening": "Guten Tag, Herr/Frau [Nachname]. Was führt Sie heute zu mir?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Nachname]. Was führt Sie heute zu mir?",
+      "branches": [
+        {
+          "keywords": [
+            "ichfühle",
+            "nichtwohl",
+            "schlecht",
+            "krank"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "erkältung",
+            "husten",
+            "fieber",
+            "schnupfen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "anliegen",
+            "frage"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag (Good day), Herr/Frau [Surname]. Was führt Sie heute zu mir (What brings you to me today)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "können",
+            "wiederholen",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung (Sorry), ich habe Sie nicht ganz verstanden (I didn't quite understand you). Könnten Sie das bitte wiederholen (Could you please repeat that) oder anders formulieren (or phrase it differently)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstehe. Könnten Sie die Beschwerden etwas genauer beschreiben? Seit wann haben Sie die Symptome und wo genau spüren Sie die Schmerzen?",
+      "branches": [
+        {
+          "keywords": [
+            "seit",
+            "woche",
+            "tagen",
+            "monat",
+            "gestern"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstehe (I understand). Könnten Sie die Beschwerden (Could you describe the complaints) etwas genauer beschreiben (a bit more precisely)? Seit wann (Since when) haben Sie die Symptome (have you had the symptoms) und wo genau (and where exactly) spüren Sie die Schmerzen (do you feel the pain)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Alles klar. Treten die Schmerzen nur in bestimmten Situationen auf oder gibt es Begleitsymptome wie Fieber, Übelkeit oder Schwindel? Und wie würden Sie die Schmerzintensität auf einer Skala von 1 bis 10 einschätzen?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "keine",
+            "nichts",
+            "nur",
+            "schmerzen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alles klar (Alright). Treten die Schmerzen (Do the pains occur) nur in bestimmten Situationen auf (only in specific situations) oder gibt es Begleitsymptome (or are there accompanying symptoms) wie Fieber (like fever), Übelkeit (nausea) oder Schwindel (dizziness)? Und wie würden Sie die Schmerzintensität (And how would you rate the pain intensity) auf einer Skala von 1 bis 10 (on a scale of 1 to 10) einschätzen (estimate)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Danke für die Informationen. Bevor wir über die weiteren Schritte sprechen, haben Sie bekannte Allergien oder nehmen Sie regelmäßig Medikamente ein, die ich wissen sollte?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "allergie",
+            "medikamente",
+            "penicillin",
+            "blutverdünner"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Danke (Thanks) für die Informationen (for the information). Bevor wir über die weiteren Schritte sprechen (Before we talk about the next steps), haben Sie bekannte Allergien (do you have any known allergies) oder nehmen Sie regelmäßig Medikamente ein (or do you take any regular medication), die ich wissen sollte (that I should know)?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gut, ich werde Ihnen ein Rezept ausstellen und wir vereinbaren einen Folgetermin, falls die Beschwerden nicht innerhalb weniger Tage besser werden. Alles Gute und gute Besserung!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gut (Okay), ich werde Ihnen ein Rezept ausstellen (I will write you a prescription) und wir vereinbaren einen Folgetermin (and we'll arrange a follow-up appointment), falls die Beschwerden (in case the complaints) nicht innerhalb weniger Tage besser werden (don't improve within a few days). Alles Gute (All the best) und gute Besserung (and get well soon)!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "id": "dlg-vi-transport-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Mua vé xe buýt/tàu",
+  "opening": "Chào bạn, bạn muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, bạn muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "chợbếnthành",
+            "bếnthành",
+            "chợ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao ban, ban muon di dau a? — Hello, where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bạn muốn mua vé một chiều hay khứ hồi để đi đến đó ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtchiều",
+            "motchieu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "thẻngày",
+            "thẻđilại",
+            "thẻ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ban muon mua ve mot chieu hay khu hoi de di den do a? — Do you want a one-way or round-trip ticket to go there?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Giá vé là 15.000 đồng. Bạn có cần biết mất bao lâu không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "baolâu",
+            "thờigian"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "khôngcần",
+            "không"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gia ve la muoi lam nghin dong. Ban co can biet mat bao lau khong a? — The ticket price is 15,000 VND. Do you need to know how long it takes?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thẻ đi lại trong ngày giá 50.000 đồng. Bạn có muốn biết thêm về cách dùng không?",
+      "branches": [
+        {
+          "keywords": [
+            "cáchdùng",
+            "sửdụng",
+            "dùngthếnào"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "khôngcần",
+            "không"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The di lai trong ngay gia nam muoi nghin dong. Ban co muon biet them ve cach dung khong? — The daily travel card costs 50,000 VND. Do you want to know more about how to use it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Chuyến đi mất khoảng 30 phút / Bạn chỉ cần chạm thẻ khi lên và xuống xe. Bạn đã sẵn sàng mua chưa?",
+      "branches": [
+        {
+          "keywords": [
+            "mua",
+            "sẵnsàng",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cóthắcmắc",
+            "hỏi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chuyen di mat khoang ba muoi phut / Ban chi can cham the khi len va xuong xe. Ban da san sang mua chua? — The trip takes about 30 minutes / You just need to tap the card when getting on and off. Are you ready to buy?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "nhắclại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin loi, ban co the noi lai khong a? — Sorry, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn. Chúc bạn một chuyến đi vui vẻ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cam on ban. Chuc ban mot chuyen di vui ve! — Thank you. Have a pleasant trip!",
+      "isTerminal": true
+    }
+  }
+}

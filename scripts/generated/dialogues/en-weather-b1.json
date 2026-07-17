@@ -1,0 +1,174 @@
+{
+  "id": "dlg-en-weather-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Weather Chat",
+  "opening": "Hi there! How's the weather looking where you are today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! How's the weather looking where you are today?",
+      "branches": [
+        {
+          "keywords": [
+            "sunny",
+            "clear",
+            "warm",
+            "hot"
+          ],
+          "nextTurnId": "t2_reaction"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: Hi there! How's the weather looking where you are today? (A common, informal way to ask about the current weather conditions)."
+    },
+    "t2_reaction": {
+      "id": "t2_reaction",
+      "prompt": "Oh, interesting! Is that typical for this time of year, or is it a bit unusual? Do you have any plans for the weekend, regardless of the weather?",
+      "branches": [
+        {
+          "keywords": [
+            "typical",
+            "usual",
+            "season"
+          ],
+          "nextTurnId": "t3_season_chat"
+        },
+        {
+          "keywords": [
+            "yes",
+            "plans",
+            "going",
+            "activity"
+          ],
+          "nextTurnId": "t3_plans_chat"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "staying",
+            "relax"
+          ],
+          "nextTurnId": "t3_no_plans_chat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: Oh, interesting! Is that typical for this time of year, or is it a bit unusual? Do you have any plans for the weekend, regardless of the weather? (Using 'interesting' to acknowledge varied input, 'this time of year' is a common temporal phrase)."
+    },
+    "t3_season_chat": {
+      "id": "t3_season_chat",
+      "prompt": "I see! What's your favourite season, then, and why? I'm always torn between spring and autumn myself.",
+      "branches": [
+        {
+          "keywords": [
+            "spring",
+            "summer",
+            "warm",
+            "flowers"
+          ],
+          "nextTurnId": "t4_wrap_up"
+        },
+        {
+          "keywords": [
+            "goodbye",
+            "bye",
+            "later"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: I see! What's your favourite season, then, and why? I'm always torn between spring and autumn myself. ('Torn between' is a common idiom meaning undecided)."
+    },
+    "t3_plans_chat": {
+      "id": "t3_plans_chat",
+      "prompt": "Sounds fun! I hope the weather turns out perfect for you then. Enjoy whatever you're doing!",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "you",
+            "too",
+            "great"
+          ],
+          "nextTurnId": "t4_wrap_up"
+        },
+        {
+          "keywords": [
+            "goodbye",
+            "bye",
+            "later"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: Sounds fun! I hope the weather turns out perfect for you then. Enjoy whatever you're doing! ('Turns out perfect' is a common idiom for a desired outcome)."
+    },
+    "t3_no_plans_chat": {
+      "id": "t3_no_plans_chat",
+      "prompt": "Sometimes it's nice to just relax at home, isn't it? Especially when the weather isn't cooperating. Maybe catch up on some reading!",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "agree",
+            "relax"
+          ],
+          "nextTurnId": "t4_wrap_up"
+        },
+        {
+          "keywords": [
+            "goodbye",
+            "bye",
+            "later"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: Sometimes it's nice to just relax at home, isn't it? Especially when the weather isn't cooperating. Maybe catch up on some reading! ('Weather isn't cooperating' is a natural expression)."
+    },
+    "t4_wrap_up": {
+      "id": "t4_wrap_up",
+      "prompt": "Well, it was lovely chatting about the weather with you! Have a great day!",
+      "branches": [
+        {
+          "keywords": [
+            "you",
+            "too",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "English: Well, it was lovely chatting about the weather with you! Have a great day! ('Lovely chatting' is a polite closing phrase)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you please repeat that? I didn't quite catch it.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "English: Sorry, could you please repeat that? I didn't quite catch it. (A common phrase to ask for clarification)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, it was nice chatting with you! Take care!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "English: Alright, it was nice chatting with you! Take care! (A common, friendly goodbye).",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "id": "dlg-es-phone-call-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Llamada Telefónica: Dejar un Mensaje",
+  "opening": "Hola, buenas tardes. Habla [Nombre del Asistente]. ¿En qué puedo ayudarte?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenas tardes. Habla [Nombre del Asistente]. ¿En qué puedo ayudarte?",
+      "branches": [
+        {
+          "keywords": [
+            "hablar",
+            "con",
+            "está",
+            "podría",
+            "señor",
+            "señora",
+            "nombre"
+          ],
+          "nextTurnId": "t2_ask_person"
+        },
+        {
+          "keywords": [
+            "soy",
+            "llamo",
+            "para",
+            "necesito",
+            "pregunta",
+            "asunto"
+          ],
+          "nextTurnId": "t2_purpose"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hola (Hello), buenas tardes (good afternoon). Habla [Nombre del Asistente] (This is [Assistant's Name]). ¿En qué puedo ayudarte (How can I help you)?"
+    },
+    "t2_ask_person": {
+      "id": "t2_ask_person",
+      "prompt": "¿De parte de quién, por favor? ¿Y con quién desea hablar exactamente?",
+      "branches": [
+        {
+          "keywords": [
+            "soy",
+            "llamo",
+            "mi",
+            "nombre",
+            "señor",
+            "señora"
+          ],
+          "nextTurnId": "t3_unavailable"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿De parte de quién (Who's calling), por favor? ¿Y con quién desea hablar (And who do you wish to speak with) exactamente?"
+    },
+    "t2_purpose": {
+      "id": "t2_purpose",
+      "prompt": "Entiendo. ¿Cuál es el motivo de su llamada?",
+      "branches": [
+        {
+          "keywords": [
+            "problema",
+            "cita",
+            "información",
+            "reservar",
+            "consulta",
+            "solicitar"
+          ],
+          "nextTurnId": "t3_resolve_or_transfer"
+        },
+        {
+          "keywords": [
+            "hablar",
+            "con",
+            "señor",
+            "señora",
+            "persona"
+          ],
+          "nextTurnId": "t3_unavailable"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo (I understand). ¿Cuál es el motivo de su llamada (What is the reason for your call)?"
+    },
+    "t3_unavailable": {
+      "id": "t3_unavailable",
+      "prompt": "Lo siento, [Nombre de la Persona] no está disponible en este momento. ¿Quisiera dejarle un mensaje o prefiere volver a llamar más tarde?",
+      "branches": [
+        {
+          "keywords": [
+            "mensaje",
+            "dejar",
+            "sí",
+            "favor"
+          ],
+          "nextTurnId": "t4_leave_message"
+        },
+        {
+          "keywords": [
+            "llamar",
+            "volver",
+            "luego",
+            "más tarde",
+            "no",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cuándo",
+            "disponible",
+            "estará",
+            "horario"
+          ],
+          "nextTurnId": "t4_availability"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry, [Person's Name] is not available at the moment. Would you like to leave a message or prefer to call back later?"
+    },
+    "t3_resolve_or_transfer": {
+      "id": "t3_resolve_or_transfer",
+      "prompt": "De acuerdo. ¿Podría explicarme brevemente el motivo de su llamada para ver si yo puedo ayudarle o le redirijo con alguien?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "explicar",
+            "problema",
+            "es",
+            "sobre",
+            "detalles",
+            "resolver"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "preferiría",
+            "hablar",
+            "con",
+            "otra",
+            "persona"
+          ],
+          "nextTurnId": "t3_unavailable"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Could you briefly explain the reason for your call to see if I can help you or redirect you to someone?"
+    },
+    "t4_leave_message": {
+      "id": "t4_leave_message",
+      "prompt": "Claro, dígame. Anotaré su mensaje y me aseguraré de que lo reciba. ¿Hay algo más en lo que pueda ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "diga",
+            "que",
+            "llame",
+            "solicito",
+            "informe",
+            "mi",
+            "número",
+            "favor"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, tell me. I'll write down your message and make sure he/she receives it. Is there anything else I can help you with?"
+    },
+    "t4_availability": {
+      "id": "t4_availability",
+      "prompt": "Suele estar disponible por la tarde a partir de las tres, pero le recomiendo que llame mañana por la mañana para confirmar.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adiós",
+            "vale",
+            "entendido",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "mensaje",
+            "dejar",
+            "aún",
+            "así"
+          ],
+          "nextTurnId": "t4_leave_message"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "He/She is usually available in the afternoon from three o'clock, but I recommend you call tomorrow morning to confirm."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdona, no te he entendido bien. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir",
+            "decir",
+            "otra",
+            "vez"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand you well. Could you repeat it, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gracias por su llamada y que tenga un buen día. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thanks for your call and have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

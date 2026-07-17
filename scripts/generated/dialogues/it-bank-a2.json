@@ -1,0 +1,198 @@
+{
+  "id": "dlg-it-bank-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "In banca",
+  "opening": "Buongiorno, come posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, come posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "aprireconto",
+            "conto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cambiaresoldi",
+            "scambiare",
+            "valuta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bancomat",
+            "atm",
+            "problema"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pin",
+            "resettare"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwon-jor-no), come posso aiutarla (koh-meh pos-soh eye-oo-tar-la)? — Good morning, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, per aprire un conto. Ha già un appuntamento o vuole farlo ora?",
+      "branches": [
+        {
+          "keywords": [
+            "ora",
+            "adesso"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (cher-toh), per aprire un conto. Ha già un appuntamento (app-poon-tah-men-toh) o vuole farlo ora? — Of course, to open an account. Do you already have an appointment or do you want to do it now?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Per cambiare soldi, che valuta ha e in quale valuta vuole cambiarla?",
+      "branches": [
+        {
+          "keywords": [
+            "euro",
+            "dollari",
+            "sterline"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per cambiare (kam-bee-ah-reh) soldi, che valuta (vah-loo-tah) ha e in quale valuta vuole cambiarla? — To exchange money, what currency do you have and into which currency do you want to change it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mi dica il problema con il bancomat, per favore. La sua carta è bloccata o non escono i soldi?",
+      "branches": [
+        {
+          "keywords": [
+            "bloccata",
+            "carta"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dica il problema con il bancomat (ban-koh-mat), per favore. La sua carta è bloccata (blok-kah-tah) o non escono i soldi? — Tell me the problem with the ATM, please. Is your card blocked or is no money coming out?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Capisco, ha bisogno di resettare il suo PIN. Ha con sé un documento d'identità valido?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "si",
+            "ho"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonho"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco, ha bisogno di resettare il suo PIN. Ha con sé un documento d'identità (doc-oo-men-toh dee-ee-den-tee-tah) valido? — I understand, you need to reset your PIN. Do you have a valid ID document with you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Molto bene. Mi segua, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Molto bene (mol-toh beh-neh). Mi segua (seh-goo-ah), per favore (per fah-voh-reh). — Very well. Follow me, please."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Mi dispiace, senza un documento d'identità non possiamo procedere con il reset del PIN.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Mi dispiace, senza un documento d'identità non possiamo procedere con il reset del PIN. — I'm sorry, without an ID document we cannot proceed with the PIN reset."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee skoo-zee), non ho capito (non oh kah-pee-toh). Può ripetere (poo-oh ree-peh-teh-reh), per favore? — Excuse me, I didn't understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. Buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfetto (per-fet-toh). Buona giornata (bwoh-nah jor-nah-tah)! — Perfect. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

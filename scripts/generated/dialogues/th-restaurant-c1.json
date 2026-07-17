@@ -1,0 +1,166 @@
+{
+  "id": "dlg-th-restaurant-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "การสั่งอาหารในภัตตาคารหรู",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่ร้านของเราครับ/ค่ะ วันนี้อยากรับประทานอะไรดีครับ/คะ หรือต้องการคำแนะนำพิเศษจากเชฟไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่ร้านของเราครับ/ค่ะ วันนี้อยากรับประทานอะไรดีครับ/คะ หรือต้องการคำแนะนำพิเศษจากเชฟไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำ",
+            "ขอแนะนำ",
+            "คำแนะนำ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สั่งเลย",
+            "พร้อมสั่ง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอดูก่อน",
+            "ขอเวลา"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee krub/ka. Yindee t̂xnrạb s̄ū̀ r̂ān k̄hxng reā krub/ka. Wan nī̂ yāk rạbprathān xarị dī krub/ka rụ̄x t̂xngkār khamnænam phis̄es̄ʹ cāk chéf mị krub/ka? — Hello, welcome to our restaurant. What would you like to eat today, or would you like a special recommendation from the chef?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ถ้าอย่างนั้น ผม/ดิฉันขอแนะนำ 'ต้มยำกุ้งมังกร' ครับ/ค่ะ เป็นเมนูซิกเนเจอร์ที่ได้รับความนิยมอย่างล้นหลาม ด้วยรสชาติจัดจ้านถึงเครื่องและวัตถุดิบคุณภาพเยี่ยม มีความเผ็ดร้อนกำลังดี ไม่ทราบว่าท่านทานเผ็ดได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทานได้",
+            "ชอบเผ็ด",
+            "เอาเลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไม่เผ็ด",
+            "เผ็ดน้อย",
+            "ขอไม่เผ็ด"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thâ yàng nán, p̄hm/dichạn k̄hx nænam 'Tôm Yam Kûng Mangkr' krub/ka. Pen menū siknecœr̒ thī̀ dâyrạb khwām niyom yàng lônlāhm. D̂wy rs̄chāti cạdcân t̄hụng khrụ̄̀xng læa wạtdib khuṇp̣hāph yîyem. Mī khwām p̄hĕd r̂xn kamlạng dī. Mị̀s̄āph wâ thàn thān p̄hĕd dâymị krub/ka? — In that case, I would recommend 'Lobster Tom Yum Goong'. It's our signature dish that is overwhelmingly popular. With its intense and rich flavors and excellent quality ingredients, it has just the right amount of spiciness. May I ask if you can handle spicy food?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "เข้าใจครับ/ค่ะ หากไม่ทานเผ็ด หรือมีข้อจำกัดเรื่องอาหาร เรามี 'แกงเขียวหวานเนื้อวากิว' ที่รสชาติกลมกล่อม หอมมันกะทิสด หรือจะเป็น 'ปลากะพงนึ่งมะนาว' ที่เน้นรสเปรี้ยวอมเค็ม สดชื่นดีต่อสุขภาพครับ/ค่ะ ท่านสนใจเมนูไหนเป็นพิเศษไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "แกงเขียวหวาน",
+            "เนื้อวากิว",
+            "เอาแกงเขียวหวาน"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ขอคิดก่อน",
+            "ยังไม่แน่ใจ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เอา"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kêācị krub/ka. H̄āk mị̀ thān p̄hĕd rụ̄x mī k̄ĥx c̄ảkạd rụ̄̂xng xāh̄ār, reā mī 'Kæng K̄hīyw H̄wān Nụ̄̂x Wākwiw' thī̀ rs̄chāti klmkl̀xm h̄xm mạn kathi s̄d, rụ̄x c̄ha pen 'Plā Kraphng Nụ̂ng Manāw' thī̀ nén rs̄ prîeṣ̄w xom k̄hĕm s̄dcḥụ̄̀n dī t̀x s̄uk̄hp̣hāph krub/ka. Thân s̄ncı menū h̄nı pen phis̄es̄ʹ mị krub/ka? — I understand. If you don't eat spicy food or have dietary restrictions, we have 'Wagyu Beef Green Curry' with a rich, creamy fresh coconut milk flavor, or 'Steamed Sea Bass with Lime and Chili' which emphasizes a sour-salty taste, fresh and healthy. Are you particularly interested in any of these dishes?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ยอดเยี่ยมเลยครับ/ค่ะ งั้นขอทวนรายการนะครับ/คะ เป็นอาหารที่ท่านเลือกหนึ่งที่ มีอะไรเพิ่มเติม หรือต้องการเปลี่ยนแปลงอะไรไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "ถูกต้อง",
+            "ยืนยัน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "เพิ่ม",
+            "สั่งเพิ่ม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ỳxd yîyam lery krub/ka. Ngán k̄hx thwn rāykār nà krub/ka. Pen xāh̄ār thī̀ thàn lụ̄xk nụ̀ng thī̀. Mī xarị pheìmteim rụ̄x t̂xngkār plī̀ynplæng xarị mị krub/ka? — Excellent. So, let me confirm the order: one dish of your choice. Is there anything else, or would you like to make any changes?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "รับทราบครับ/ค่ะ อาหารจะจัดเตรียมให้โดยเร็วที่สุดครับ/ค่ะ หากต้องการอะไรเพิ่มเติม หรือต้องการเช็คบิล แจ้งพนักงานได้เลยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "เช็คบิล",
+            "จ่ายเงิน",
+            "ขอใบเสร็จ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rạb sāb krub/ka. Xāh̄ār c̄ha cạd trīam h̄ı̂ doy re็ว thī̀s̄ud krub/ka. H̄āk t̂xngkār xarị pheìmteim rụ̄x t̂xngkār chék bil, ĉæng phnạkngān dâylery nà krub/ka. — Understood. Your food will be prepared as quickly as possible. If you need anything else or wish to get the bill, please inform the staff."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ไม่ค่อยเข้าใจชัดเจน รบกวนพูดซ้ำอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ใช่",
+            "ตกลง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khx ʻaphạy krub/ka. Mị̀khôy k̄hêācị chạdcen. Robkwn phūd s̄am xīk khrậng dâymị krub/ka? — I'm sorry, I didn't quite catch that. Could you please repeat it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "รับทราบครับ/ค่ะ ขอบคุณที่มาอุดหนุนร้านของเรานะครับ/คะ หวังว่าจะได้บริการท่านอีกในโอกาสหน้าครับ/คะ สวัสดีครับ/ค่ะ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rạb sāb krub/ka. K̄hxbkhuṇ thī̀ mā xùnh̄nu r̂ān k̄hxng reā nà krub/ka. H̄wạng wâ c̄ha dâyrạb borikār thàn xīk nı okās̄ h̄nâ krub/ka. S̄wạs̄dī krub/ka! — Understood. Thank you for your patronage at our restaurant. We hope to serve you again next time. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

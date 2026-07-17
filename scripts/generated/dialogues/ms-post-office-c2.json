@@ -1,0 +1,208 @@
+{
+  "id": "dlg-ms-post-office-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Urusan di Pejabat Pos",
+  "opening": "Selamat pagi, ada apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, ada apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pos",
+            "parcel",
+            "bungkusan",
+            "kiriman"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "setem",
+            "poskad"
+          ],
+          "nextTurnId": "t-stamps-end"
+        },
+        {
+          "keywords": [
+            "melberdaftar",
+            "registered"
+          ],
+          "nextTurnId": "t-registered-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, ada apa yang boleh saya bantu? — Se-la-mat pa-gi, a-da a-pa yang bo-leh sa-ya ban-tu? — Good morning, how may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, untuk kiriman bungkusan, ke mana destinasinya dan apa kandungan utamanya, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "antarabangsa",
+            "luarnegara",
+            "luar",
+            "oversea"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "domestik",
+            "tempatan",
+            "dalamnegara"
+          ],
+          "nextTurnId": "t-domestic-parcel-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un-tuk ki-ri-man bung-ku-san, ke ma-na des-ti-na-si-nya dan a-pa kan-du-ngan u-ta-ma-nya, ya? — Okay, for a parcel shipment, what's the destination and what's its main content, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Jika ke luar negara, Puan/Encik perlu mengisi borang kastam. Adakah ia dokumen atau barangan?",
+      "branches": [
+        {
+          "keywords": [
+            "barang",
+            "barangan",
+            "hadiah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "dokumen",
+            "surat"
+          ],
+          "nextTurnId": "t-document-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ji-ka ke lu-ar ne-ga-ra, Pu-an/En-cik per-lu me-ngi-si bo-rang kas-tam. A-da-kah i-a do-ku-men a-tau ba-ra-ngan? — If it's overseas, Madam/Sir needs to fill a customs form. Is it documents or goods?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Untuk barangan, pastikan anda mengisytiharkan nilai sebenar dan jenis barangan untuk tujuan kastam. Ada sebarang keutamaan perkhidmatan, ekspres atau biasa?",
+      "branches": [
+        {
+          "keywords": [
+            "ekspres",
+            "cepat",
+            "segera"
+          ],
+          "nextTurnId": "t-express-end"
+        },
+        {
+          "keywords": [
+            "biasa",
+            "standard",
+            "ekonomi"
+          ],
+          "nextTurnId": "t-standard-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For goods, please ensure you declare the actual value and type of goods for customs purposes. Do you have a service preference, express or regular?"
+    },
+    "t-stamps-end": {
+      "id": "t-stamps-end",
+      "prompt": "Baik, untuk setem, sila beritahu kami jenis dan kuantiti yang diperlukan. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, for stamps, please tell us the type and quantity needed. Thank you.",
+      "isTerminal": true
+    },
+    "t-registered-end": {
+      "id": "t-registered-end",
+      "prompt": "Untuk mel berdaftar, sila isi borang ini dan nyatakan nilai diinsuranskan jika ada. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "For registered mail, please fill this form and state the insured value if any. Thank you.",
+      "isTerminal": true
+    },
+    "t-domestic-parcel-end": {
+      "id": "t-domestic-parcel-end",
+      "prompt": "Untuk kiriman domestik, tiada borang kastam diperlukan. Sila berikan bungkusan anda untuk timbangan. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "For domestic parcels, no customs form is required. Please hand over your parcel for weighing. Thank you.",
+      "isTerminal": true
+    },
+    "t-document-end": {
+      "id": "t-document-end",
+      "prompt": "Untuk dokumen ke luar negara, borang kastam ringkas mungkin diperlukan. Sila serahkan dokumen anda. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "For international documents, a simple customs form might be required. Please hand over your documents. Thank you.",
+      "isTerminal": true
+    },
+    "t-express-end": {
+      "id": "t-express-end",
+      "prompt": "Baik, kami akan uruskan kiriman ekspres anda. Totalnya RM[harga]. Sila ambil resit dan nombor penjejakan ini. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, we will arrange your express shipment. The total is RM[price]. Please take this receipt and tracking number. Thank you.",
+      "isTerminal": true
+    },
+    "t-standard-end": {
+      "id": "t-standard-end",
+      "prompt": "Baik, kiriman standard akan diuruskan. Totalnya RM[harga]. Sila ambil resit dan nombor penjejakan ini. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, the standard shipment will be arranged. The total is RM[price]. Please take this receipt and tracking number. Thank you.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya kurang jelas. Boleh Puan/Encik ulang semula atau nyatakan dengan lebih terperinci?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I'm not very clear. Could you please repeat or state it more precisely?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana berurusan dengan Pos Malaysia. Selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for doing business with Pos Malaysia. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

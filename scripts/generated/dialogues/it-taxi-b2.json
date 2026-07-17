@@ -1,0 +1,154 @@
+{
+  "id": "dlg-it-taxi-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Corsa in Taxi",
+  "opening": "Buonasera! Dove la porto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Dove la porto?",
+      "branches": [
+        {
+          "keywords": [
+            "stazione",
+            "aeroporto",
+            "centro",
+            "hotel",
+            "albergo",
+            "indirizzo",
+            "via"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera! Dove la porto? — (bwoh-nah-seh-rah! doh-veh lah por-toh?) Good evening! Where can I take you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Capisco. Per la Stazione Centrale. C'è un po' di traffico in questo momento, ma faremo la tangenziale esterna che è più scorrevole. Dovremmo essere lì in circa venti minuti. Le va bene come percorso?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ok",
+            "bene",
+            "perfetto"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "costo",
+            "prezzo",
+            "quanto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. Per la Stazione Centrale. C'è un po' di traffico in questo momento, ma faremo la tangenziale esterna che è più scorrevole. Dovremmo essere lì in circa venti minuti. Le va bene come percorso? — (kah-pee-skoh. pehr lah stah-tsee-oh-neh chen-trah-leh. cheh oon poh dee traf-fee-koh een kweh-stoh moh-men-toh, mah fah-reh-moh lah tan-jen-tsyah-leh es-tehr-nah keh eh pyoo skor-reh-voh-leh. doh-vrem-moh es-seh-reh lee een chee-rkah ven-tee mee-noo-tee. leh vah beh-neh koh-meh pehr-kor-soh?) I understand. To the Central Station. There's a bit of traffic right now, but we'll take the outer ring road which is smoother. We should be there in about twenty minutes. Is this route okay for you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ottimo. Per quanto riguarda il costo, salvo imprevisti, il tassametro dovrebbe segnare circa 25-30 euro. Accetta?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "accetto",
+            "ok",
+            "bene"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certo. Il costo per la Stazione Centrale si aggirerà sui 25-30 euro, a seconda del traffico e senza supplementi. Va bene per lei?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "accetto",
+            "ok",
+            "bene"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Siamo arrivati, proprio davanti all'ingresso principale. Preferisce pagare in contanti o con carta?",
+      "branches": [
+        {
+          "keywords": [
+            "contanti",
+            "soldi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusi, potrebbe ripetere per favore? Non ho capito bene. — (skoo-zee, poh-treb-beh ree-peh-teh-reh pehr fah-voh-reh? non oh kah-pee-toh beh-neh.) Excuse me, could you please repeat? I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. Ecco a lei il resto/lo scontrino. Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfetto. Ecco a lei il resto/lo scontrino. Grazie e arrivederci! — (pehr-fet-toh. ek-koh ah leh-ee eel res-toh/loh skon-tree-noh. grah-tsee-eh eh ar-ree-veh-dehr-chee!) Perfect. Here's your change/receipt. Thank you and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

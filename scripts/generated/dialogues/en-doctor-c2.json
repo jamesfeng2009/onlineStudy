@@ -1,0 +1,283 @@
+{
+  "id": "dlg-en-doctor-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "A Consult with Dr. Eleanor Vance",
+  "opening": "Good morning, come on in. What seems to be the trouble today? Don't hold back, give me the whole nine yards.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning, come on in. What seems to be the trouble today? Don't hold back, give me the whole nine yards.",
+      "branches": [
+        {
+          "keywords": [
+            "pain",
+            "ache",
+            "soreness",
+            "discomfort"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "fever",
+            "illness",
+            "sickness",
+            "unwell"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "checkup",
+            "routine",
+            "annual"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "hello",
+            "hi",
+            "doc"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, come on in. What seems to be the trouble today? Don't hold back, give me the whole nine yards."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, so you're experiencing some pain. Could you elaborate on its nature, intensity, and where exactly it's making itself felt? Is it a dull ache, a sharp stab, or something else entirely?",
+      "branches": [
+        {
+          "keywords": [
+            "sharp",
+            "stabbing",
+            "sudden",
+            "acute"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "dull",
+            "aching",
+            "constant",
+            "throbbing"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "intermittent",
+            "comesandgoes",
+            "sporadic"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, so you're experiencing some pain. Could you elaborate on its nature, intensity, and where exactly it's making itself felt? Is it a dull ache, a sharp stab, or something else entirely?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "I see. Beyond the general feeling of being unwell, have you noticed any other tell-tale symptoms? Perhaps a cough, persistent fatigue, or anything else out of the ordinary?",
+      "branches": [
+        {
+          "keywords": [
+            "cough",
+            "sorethroat",
+            "congestion",
+            "sneezing"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "fatigue",
+            "tiredness",
+            "weakness",
+            "lethargy"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nausea",
+            "vomiting",
+            "diarrhea",
+            "stomachache"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Beyond the general feeling of being unwell, have you noticed any other tell-tale symptoms? Perhaps a cough, persistent fatigue, or anything else out of the ordinary?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alright, a routine check-up then. Even so, is there anything specific that's been on your mind lately, any little niggle you wanted to bring up while you're here?",
+      "branches": [
+        {
+          "keywords": [
+            "bloodpressure",
+            "cholesterol",
+            "diabetes"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "screening",
+            "prevention",
+            "vaccination"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "nothing",
+            "fine",
+            "nomatter"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, a routine check-up then. Even so, is there anything specific that's been on your mind lately, any little niggle you wanted to bring up while you're here?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "That sounds like something we need to get to the bottom of promptly. Let's do a quick examination and then we can discuss potential avenues for relief or further investigation. Any relevant medical history or allergies I should be aware of before we proceed?",
+      "branches": [
+        {
+          "keywords": [
+            "allergies",
+            "medication",
+            "sensitivities"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds like something we need to get to the bottom of promptly. Let's do a quick examination and then we can discuss potential avenues for relief or further investigation. Any relevant medical history or allergies I should be aware of before we proceed?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "I appreciate you sharing that. Given the nature of what you're describing, it would be immensely helpful if you could walk me through your medical history, any ongoing medications, or family predispositions. We want to leave no stone unturned.",
+      "branches": [
+        {
+          "keywords": [
+            "medication",
+            "prescriptions",
+            "drugs"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I appreciate you sharing that. Given the nature of what you're describing, it would be immensely helpful if you could walk me through your medical history, any ongoing medications, or family predispositions. We want to leave no stone unturned."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Understood. Sometimes these things can be tricky to pin down. Have there been any recent changes in your diet, lifestyle, or stress levels that might be contributing? We might also consider some baseline tests to rule out anything obvious.",
+      "branches": [
+        {
+          "keywords": [
+            "diet",
+            "lifestyle",
+            "habits"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Sometimes these things can be tricky to pin down. Have there been any recent changes in your diet, lifestyle, or stress levels that might be contributing? We might also consider some baseline tests to rule out anything obvious."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Perfectly fine, noted. We'll proceed with the standard physical examination then. Do let me know if anything comes to mind during the process. We're all ears.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "ready",
+            "proceed"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfectly fine, noted. We'll proceed with the standard physical examination then. Do let me know if anything comes to mind during the process. We're all ears."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm not quite catching your drift. Could you rephrase that for me, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm not quite catching your drift. Could you rephrase that for me, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, that gives me a much clearer picture. We'll take it from here. Thanks for coming in, and we'll be in touch with the next steps.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, that gives me a much clearer picture. We'll take it from here. Thanks for coming in, and we'll be in touch with the next steps.",
+      "isTerminal": true
+    }
+  }
+}

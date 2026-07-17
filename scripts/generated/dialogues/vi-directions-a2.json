@@ -1,0 +1,257 @@
+{
+  "id": "dlg-vi-directions-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Hỏi đường đi",
+  "opening": "Chào bạn. Bạn cần giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "À, bưu điện à. Nó không xa lắm đâu.",
+      "branches": [
+        {
+          "keywords": [
+            "đithế nào",
+            "đườngđi"
+          ],
+          "nextTurnId": "t2_walk"
+        },
+        {
+          "keywords": [
+            "cònxakhông",
+            "xakhông"
+          ],
+          "nextTurnId": "t2_distance"
+        },
+        {
+          "keywords": [
+            "xebuýt",
+            "phươngtiện"
+          ],
+          "nextTurnId": "t2_bus"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, bưu điện à. (Ah, buu dien a.) Nó không xa lắm đâu. (No khong xa lam dau.) — Oh, the post office. It's not very far."
+    },
+    "t2_walk": {
+      "id": "t2_walk",
+      "prompt": "Bạn cứ đi thẳng khoảng 200 mét, rồi rẽ phải ở ngã tư.",
+      "branches": [
+        {
+          "keywords": [
+            "cógì",
+            "dấuvết",
+            "địadanh"
+          ],
+          "nextTurnId": "t3_landmark"
+        },
+        {
+          "keywords": [
+            "hướngnào",
+            "phíanào"
+          ],
+          "nextTurnId": "t3_clarify"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn cứ đi thẳng (Ban cu di thang) khoảng 200 mét, rồi rẽ phải (roi re phai) ở ngã tư. (o nga tu.) — Just go straight for about 200 meters, then turn right at the intersection."
+    },
+    "t2_distance": {
+      "id": "t2_distance",
+      "prompt": "Không xa lắm đâu. Bạn có thể đi bộ khoảng 5 phút.",
+      "branches": [
+        {
+          "keywords": [
+            "đithế nào",
+            "đườngđi"
+          ],
+          "nextTurnId": "t2_walk"
+        },
+        {
+          "keywords": [
+            "xebuýt",
+            "phươngtiện"
+          ],
+          "nextTurnId": "t2_bus"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Không xa lắm đâu. (Khong xa lam dau.) Bạn có thể đi bộ khoảng 5 phút. (Ban co the di bo khoang nam phut.) — It's not very far. You can walk for about 5 minutes."
+    },
+    "t2_bus": {
+      "id": "t2_bus",
+      "prompt": "Bạn có thể bắt xe buýt số 10. Trạm xe buýt ở ngay kia.",
+      "branches": [
+        {
+          "keywords": [
+            "dừngđâu",
+            "trạm"
+          ],
+          "nextTurnId": "t3_bus_stop"
+        },
+        {
+          "keywords": [
+            "nhanhhơn",
+            "nhanh"
+          ],
+          "nextTurnId": "t3_bus_speed"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn có thể bắt xe buýt (Ban co the bat xe buyt) số 10. Trạm xe buýt (Tram xe buyt) ở ngay kia. (o ngay kia.) — You can take bus number 10. The bus stop is right there."
+    },
+    "t3_landmark": {
+      "id": "t3_landmark",
+      "prompt": "Khi bạn rẽ phải, bạn sẽ thấy một nhà sách lớn bên tay trái.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn",
+            "cảmơnrất nhiều"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khi bạn rẽ phải, (Khi ban re phai,) bạn sẽ thấy một nhà sách lớn (ban se thay mot nha sach lon) bên tay trái. (ben tay trai.) — When you turn right, you will see a big bookstore on your left."
+    },
+    "t3_clarify": {
+      "id": "t3_clarify",
+      "prompt": "Bạn cứ đi thẳng về phía có đèn giao thông.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn",
+            "cảmơnrất nhiều"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sauđó",
+            "tiếp"
+          ],
+          "nextTurnId": "t2_walk"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn cứ đi thẳng (Ban cu di thang) về phía có đèn giao thông. (ve phia co den giao thong.) — Just go straight towards the traffic light."
+    },
+    "t3_bus_stop": {
+      "id": "t3_bus_stop",
+      "prompt": "Nó sẽ dừng ngay trước bưu điện.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn",
+            "cảmơnrất nhiều"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nó sẽ dừng ngay (No se dung ngay) trước bưu điện. (truoc buu dien.) — It will stop right in front of the post office."
+    },
+    "t3_bus_speed": {
+      "id": "t3_bus_speed",
+      "prompt": "Có, đi xe buýt sẽ nhanh hơn một chút và không phải đi bộ nhiều.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbạn",
+            "cảmơnrất nhiều"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Có, (Co,) đi xe buýt sẽ nhanh hơn một chút (di xe buyt se nhanh hon mot chut) và không phải đi bộ nhiều. (va khong phai di bo nhieu.) — Yes, taking the bus will be a little faster and you won't have to walk much."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, (Xin loi,) bạn có thể nói lại không? (ban co the noi lai khong?) — Excuse me, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc bạn một ngày tốt lành! Tạm biệt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chúc bạn một ngày tốt lành! (Chuc ban mot ngay tot lanh!) Tạm biệt. (Tam biet.) — Have a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

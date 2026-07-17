@@ -1,0 +1,143 @@
+{
+  "id": "dlg-fr-weather-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Discussion Météo",
+  "opening": "Quelle grisaille aujourd'hui, n'est-ce pas ? On dirait que le ciel nous tombe sur la tête. Comment abordez-vous ces caprices météorologiques ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Quelle grisaille aujourd'hui, n'est-ce pas ? On dirait que le ciel nous tombe sur la tête. Comment abordez-vous ces caprices météorologiques ?",
+      "branches": [
+        {
+          "keywords": [
+            "grisaille",
+            "déprime",
+            "pluie",
+            "dommage"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "annulé",
+            "projet",
+            "sortie",
+            "maison"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What gloomy weather today (kɛl ɡrizaj oʒuʁdɥi), isn't it? It's as if the sky is falling on our heads (le sjɛl nu tɔ̃b syʁ la tɛt). How do you approach these weather whims (kapʁis meteɔʁɔloʒik)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oui, c'est vrai qu'un temps pareil peut vite saper le moral. Vous êtes plutôt du genre à aimer le soleil à tout prix, ou bien chaque saison a son charme pour vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "soleil",
+            "été",
+            "chaleur",
+            "vacances"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pluie",
+            "froid",
+            "gris",
+            "mauvais"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, it's true that such weather can quickly undermine morale (sapeʁ lə mɔʁal). Are you more the type to love the sun at all costs (so.lɛj a tu pʁi), or does each season have its charm for you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, les aléas de la météo... C'est toujours frustrant quand ça chamboule nos projets. Avez-vous un plan B ou est-ce que vous improvisez selon l'humeur du ciel ?",
+      "branches": [
+        {
+          "keywords": [
+            "planb",
+            "intérieur",
+            "livre",
+            "film"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the vagaries of the weather (le.z‿a.le.a d(ə) la me.te.o)... It's always frustrating when it upsets our plans (ʃɑ̃.bul no pʁɔ.ʒɛ). Do you have a plan B (plɑ̃ be) or do you improvise according to the sky's mood (l‿y.mœʁ dy sjɛl)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "C'est une sage philosophie, en effet. Qu'il vente, qu'il pleuve ou qu'il fasse soleil, on finit toujours par s'en accommoder. J'espère que le beau temps ne tardera pas à pointer le bout de son nez pour vous. On verra bien ce que la journée nous réserve !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "espérons",
+            "j'espère",
+            "peut-être"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a wise philosophy, indeed. Whether it's windy, rainy, or sunny, we always end up adapting. I hope the good weather won't take long to show its face for you (pwɛ̃.te lə bu d(ə) sɔ̃ ne). We'll see what the day holds for us!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi votre propos.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? Could you please repeat, please? I didn't quite catch what you said."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Exactement ! Gardons le moral. Merci pour cette discussion fort agréable et passez une excellente journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Exactly! Let's keep our spirits up. Thank you for this very pleasant discussion and have an excellent day!",
+      "isTerminal": true
+    }
+  }
+}

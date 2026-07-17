@@ -1,0 +1,157 @@
+{
+  "id": "dlg-en-taxi-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "A Cab to the Airport",
+  "opening": "Right then, where are we off to today, guv'nor?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Right then, where are we off to today, guv'nor?",
+      "branches": [
+        {
+          "keywords": [
+            "airport",
+            "heathrow",
+            "gatwick",
+            "stansted"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "howmuch",
+            "fare",
+            "cost"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, where are we going today, sir/madam?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Heathrow, got it. Any particular terminal, or just drop you at departures? And fancy the M4 or are we taking the scenic route to avoid the usual snarl-ups?",
+      "branches": [
+        {
+          "keywords": [
+            "terminal5",
+            "terminal3",
+            "terminal2"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "scenic",
+            "avoidtraffic",
+            "backroads"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Heathrow. Which terminal, or just departures? Do you want to take the M4 motorway, or a longer, less congested route to avoid traffic jams?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Well, the M4's a bit of a car park at this hour, honestly. We're looking at a good hour and a half, maybe more, if we stick to the motorway. The back roads might add a bit to the mileage but could shave off some time.",
+      "branches": [
+        {
+          "keywords": [
+            "backroads",
+            "scenic",
+            "avoid"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "howmuch",
+            "fare",
+            "cost"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The M4 motorway is very congested (a 'car park') right now. It would take at least 90 minutes. The back roads might be slightly longer in distance but could be faster ('shave off some time')."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "For Heathrow, it's usually around £60-£70 on the meter, depending on the exact route and traffic, of course. Cash or card, by the way?",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "card"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "toomuch",
+            "expensive",
+            "negotiate"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To Heathrow, it's typically £60-£70, depending on the route and traffic. Will you be paying with cash or card?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Right, so Heathrow Terminal 5 via the back roads then. Just buckle up, and we'll be there before you know it. Cash is fine, pay at the destination. Let's get this show on the road!",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "great"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Heathrow Terminal 5 using the back roads. Please put on your seatbelt; we'll arrive soon. You can pay with cash when we get there. Let's go ('get this show on the road')!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, didn't quite catch that. Could you say that again, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, I didn't understand. Could you please repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, here we are. Thanks for riding with me! Have a good one.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, we've arrived. Thank you for choosing my taxi! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

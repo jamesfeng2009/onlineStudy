@@ -1,0 +1,211 @@
+{
+  "id": "dlg-en-post-office-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "At the Post Office",
+  "opening": "Good morning! How may I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! How may I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "parcel",
+            "send",
+            "post"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "stamps",
+            "buy",
+            "envelope"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "registered",
+            "tracking"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "",
+            "other"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! How may I help you today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please rephrase or repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please rephrase or repeat?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certainly. Is this parcel for a domestic or international destination, and what service are you looking for – standard, express, or registered mail perhaps?",
+      "branches": [
+        {
+          "keywords": [
+            "international",
+            "abroad",
+            "overseas"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "domestic",
+            "local",
+            "uk"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Is this parcel for a domestic or international destination, and what service are you looking for – standard, express, or registered mail perhaps?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "For international parcels, we'll need to complete a customs declaration form. Can you tell me briefly what the contents are and their approximate value?",
+      "branches": [
+        {
+          "keywords": [
+            "clothes",
+            "books",
+            "gift",
+            "documents"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international parcels, we'll need to complete a customs declaration form. Can you tell me briefly what the contents are and their approximate value?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Registered mail provides a tracking number and requires a signature upon delivery, offering extra security. Would you like to add this service, or are you ready to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "registered",
+            "add"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Registered mail provides a tracking number and requires a signature upon delivery, offering extra security. Would you like to add this service, or are you ready to pay?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Are you looking to send something via registered mail, or track an existing item? If it's for sending, we can add it to your parcel.",
+      "branches": [
+        {
+          "keywords": [
+            "send",
+            "parcel"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "track",
+            "item"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Are you looking to send something via registered mail, or track an existing item? If it's for sending, we can add it to your parcel."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alright, stamps it is. How many would you like, and for what class of mail – first or second class?",
+      "branches": [
+        {
+          "keywords": [
+            "first",
+            "1st",
+            "class"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, stamps it is. How many would you like, and for what class of mail – first or second class?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Excellent. Your total comes to £15.75. How would you like to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "credit",
+            "debit"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. Your total comes to £15.75. How would you like to pay?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, thank you for your visit. Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for your visit. Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

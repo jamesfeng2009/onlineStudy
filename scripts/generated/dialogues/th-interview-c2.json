@@ -1,0 +1,108 @@
+{
+  "id": "dlg-th-interview-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "สัมภาษณ์งาน",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่ [ชื่อบริษัท] ครับ/ค่ะ ก่อนอื่นเลย ช่วยแนะนำตัวเองพอสังเขปให้เราทราบได้ไหมครับ/คะ ว่าภูมิหลังและประสบการณ์ของคุณสอดคล้องกับตำแหน่งนี้อย่างไรบ้าง",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่ [ชื่อบริษัท] ครับ/ค่ะ ก่อนอื่นเลย ช่วยแนะนำตัวเองพอสังเขปให้เราทราบได้ไหมครับ/คะ ว่าภูมิหลังและประสบการณ์ของคุณสอดคล้องกับตำแหน่งนี้อย่างไรบ้าง",
+      "branches": [
+        {
+          "keywords": [
+            "ภูมิหลัง",
+            "ประสบการณ์",
+            "แนะนำตัว",
+            "ประวัติ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "อะไรก่อน"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Yin dee tawn rab soo [Company Name] krap/ka. Gaawn eun loey, chuay nae nam dtua paw sang-kep hai rao saap dai mai krap/ka wa poom-lang lae pra-sohp-gaan khong khoon sawd-klawng gup dtam-naeng nee yang rai baang? — Hello and welcome to [Company Name]. First, could you briefly introduce yourself and tell us how your background and experience align with this position?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขอบคุณครับ/ค่ะ ที่แบ่งปันข้อมูลเบื้องต้นได้ละเอียดทีเดียว จากที่คุณกล่าวมาเกี่ยวกับประสบการณ์ด้าน [ระบุประเภทงาน/ทักษะ] น่าสนใจเป็นพิเศษ อยากทราบว่าคุณเคยมีส่วนร่วมในโครงการหรืองานลักษณะใดที่แสดงให้เห็นถึงความเชี่ยวชาญในด้านนี้บ้างครับ/คะ และผลลัพธ์ที่จับต้องได้คืออะไร",
+      "branches": [
+        {
+          "keywords": [
+            "โครงการ",
+            "ผลลัพธ์",
+            "ความเชี่ยวชาญ",
+            "โปรเจกต์"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khoon krap/ka tee baeng pan khaw moon beung ton dai la-iat tee deow. Jaak tee khoon glaao maa giow gup pra-sohp-gaan daan [Job Type/Skill] naa son jai bpen pi-set. Yaak saap wa khoon koey mee suan ruam nai krohng-gaan reu ngaan luk-sa-na dai tee sa-daeng hai hen teung kwaam chiao-chaan nai daan nee baang krap/ka lae pon lup tee jap taawng dai keu a-rai? — Thank you for sharing such detailed initial information. What you mentioned about your experience in [job type/skill] is particularly interesting. I'd like to know what kind of projects or work you've been involved in that demonstrate your expertise in this area, and what were the tangible results?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ยอดเยี่ยมครับ/ค่ะ เห็นได้ชัดว่าคุณมีประสบการณ์และความเข้าใจในงานเป็นอย่างดี หากจะให้สรุป คุณคิดว่าจุดแข็งที่โดดเด่นที่สุดของคุณ ซึ่งจะนำมาต่อยอดและสร้างคุณค่าให้กับทีมของเราได้อย่างเป็นรูปธรรมคืออะไรครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "จุดแข็ง",
+            "คุณค่า",
+            "ต่อยอด",
+            "ศักยภาพ"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yaawt yiam krap/ka. Hen dai chat wa khoon mee pra-sohp-gaan lae kwaam kao jai nai ngaan bpen yang dee. Haak ja hai sa-loop, khoon kit wa joot khaeng tee doh den tee soot khong khoon, seung ja nam maa taw yaawt lae saang khoon-kaa hai gup team khong rao dai yang bpen roop-pra-tam keu a-rai krap/ka? — Excellent. It's clear you have good experience and understanding of the work. If you were to summarize, what do you think are your most prominent strengths that could be further developed and tangibly contribute value to our team?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เป็นมุมมองที่ดีมากครับ/ค่ะ การรู้จักจุดแข็งของตัวเองเป็นสิ่งสำคัญไม่น้อยไปกว่าการเข้าใจในจุดที่ต้องพัฒนา ในทางกลับกัน คุณมีจุดใดที่คิดว่ายังต้องปรับปรุงแก้ไข หรือมองเห็นว่าเป็นความท้าทายที่พร้อมจะเรียนรู้และพัฒนาให้ดีขึ้นบ้างไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "จุดอ่อน",
+            "พัฒนา",
+            "ปรับปรุง",
+            "เรียนรู้"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpen mum mawng tee dee maak krap/ka. Gaan roo jak joot khaeng khong dtua eng bpen sing sam-kan mai nawy bpai gwaa gaan kao jai nai joot tee tawng pat-ta-na. Nai taang glap gan, khoon mee joot dai tee kit wa yang tawng plap-prung kae-kai reu mawng hen wa bpen kwaam taa-taai tee praawm ja rian-roo lae pat-ta-na hai dee kuen baang mai krap/ka? — That's a very good perspective. Knowing your strengths is just as important as understanding areas for development. On the other hand, are there any areas you feel you still need to improve or see as challenges you're ready to learn from and develop further?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ พอดีสัญญาณไม่ค่อยชัดเจน รบกวนคุณช่วยพูดใหม่อีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khaw a-pai krap/ka. Paw dee san-yaan mai koy chat-jen. Roob-guan khoon chuay poot mai eek krang dai mai krap/ka? — I apologize. The signal wasn't very clear. Could you please repeat that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ/ค่ะ วันนี้พอแค่นี้ก่อนนะครับ/คะ ขอบคุณมากครับ/ค่ะที่สละเวลามาพูดคุยกับเรา ทางเราจะแจ้งผลการพิจารณาให้ทราบโดยเร็วที่สุดครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Krap/ka. Wan nee paw kae nee gaawn na krap/ka. Khop khoon maak krap/ka tee sa-la we-la maa poot koo-ee gup rao. Taang rao ja jaeng pon gaan pi-ja-ra-na hai saap doy reo tee soot krap/ka. — Alright. That's all for today. Thank you very much for taking the time to speak with us. We will inform you of the decision as soon as possible.",
+      "isTerminal": true
+    }
+  }
+}

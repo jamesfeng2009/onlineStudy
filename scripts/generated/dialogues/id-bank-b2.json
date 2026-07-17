@@ -1,0 +1,180 @@
+{
+  "id": "dlg-id-bank-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Masalah Kartu ATM",
+  "opening": "Selamat siang. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kartu",
+            "atm",
+            "pin",
+            "terblokir",
+            "tertelan",
+            "masalah"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "buka",
+            "rekening",
+            "akun"
+          ],
+          "nextTurnId": "t-not_covered"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang (Suh-lah-maht see-ahng) — Good afternoon. Ada yang bisa saya bantu (Ah-dah yahng bee-sah sah-yah bahn-too)? — Is there anything I can help you with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, bisa jelaskan lebih detail masalahnya? Apakah kartu Anda tertelan atau PIN Anda terblokir?",
+      "branches": [
+        {
+          "keywords": [
+            "tertelan",
+            "kartu",
+            "hilang",
+            "macet"
+          ],
+          "nextTurnId": "t3-swallowed"
+        },
+        {
+          "keywords": [
+            "terblokir",
+            "pin",
+            "salah"
+          ],
+          "nextTurnId": "t3-blocked"
+        },
+        {
+          "keywords": [
+            "bukan",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik) — All right. Bisa jelaskan lebih detail masalahnya (Bee-sah je-las-kan le-bih de-ta-il ma-sa-lah-nya)? — Could you explain the problem in more detail? Apakah kartu Anda tertelan atau PIN Anda terblokir (Ah-pa-kah kar-too Ahn-dah ter-te-lan ah-tau PIN Ahn-dah ter-blok-ir)? — Was your card swallowed or is your PIN blocked?"
+    },
+    "t3-swallowed": {
+      "id": "t3-swallowed",
+      "prompt": "Mohon maaf atas ketidaknyamanannya. Untuk proses selanjutnya, boleh saya pinjam KTP atau paspor serta nomor rekening Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "berikut",
+            "ada",
+            "siap"
+          ],
+          "nextTurnId": "t4-process"
+        },
+        {
+          "keywords": [
+            "belum",
+            "tidakada",
+            "cari"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf atas ketidaknyamanannya (Moh-hon ma-af ah-tas ke-ti-dak-nya-ma-nan-nya) — I apologize for the inconvenience. Untuk proses selanjutnya, boleh saya pinjam KTP atau paspor serta nomor rekening Anda? — For the next step, may I borrow your ID card or passport and your account number?"
+    },
+    "t3-blocked": {
+      "id": "t3-blocked",
+      "prompt": "Mengerti. Untuk membuka blokir PIN, kami memerlukan verifikasi identitas Anda. Boleh saya lihat KTP atau paspor serta nomor rekeningnya?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "berikut",
+            "ada",
+            "siap"
+          ],
+          "nextTurnId": "t4-process"
+        },
+        {
+          "keywords": [
+            "belum",
+            "tidakada",
+            "cari"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mengerti (Men-ger-tee) — Understood. Untuk membuka blokir PIN (Un-tuk me-mem-bu-ka blok-ir PIN), — To unblock the PIN, kami memerlukan verifikasi identitas Anda. — we need to verify your identity. Boleh saya lihat KTP atau paspor serta nomor rekeningnya? — May I see your ID card or passport and account number?"
+    },
+    "t4-process": {
+      "id": "t4-process",
+      "prompt": "Terima kasih. Kami akan segera memprosesnya. Untuk kartu yang tertelan, kami akan bantu penerbitan kartu baru. Jika PIN Anda terblokir, kami akan bantu reset PIN Anda. Proses ini akan memakan waktu sekitar 5-10 menit.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "oke",
+            "siap",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih. Kami akan segera memprosesnya. Untuk kartu yang tertelan, kami akan bantu penerbitan kartu baru. Jika PIN Anda terblokir, kami akan bantu reset PIN Anda. Proses ini akan memakan waktu sekitar 5-10 menit."
+    },
+    "t-not_covered": {
+      "id": "t-not_covered",
+      "prompt": "Mohon maaf, untuk hal itu Anda bisa menuju ke konter layanan pelanggan di sebelah sana.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "I apologize, for that you can proceed to the customer service counter over there."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af) — Sorry, bisa diulang lagi (bee-sah di-oo-lang lah-gee)? — could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ada lagi yang bisa saya bantu? Kalau tidak, terima kasih dan selamat beraktivitas kembali.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Is there anything else I can help you with? If not, thank you and have a good day.",
+      "isTerminal": true
+    }
+  }
+}

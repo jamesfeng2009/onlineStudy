@@ -1,0 +1,185 @@
+{
+  "id": "dlg-th-bank-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "ที่ธนาคาร",
+  "opening": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เปิดบัญชี"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "แลกเงิน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เอทีเอ็ม",
+            "ตู้เอทีเอ็ม"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii khâ. Mii a-rai hâi chûay mái khâ? — Hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "คุณมีบัตรประชาชนไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "มี",
+            "ใช่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun mii bàt prà-chaa-chon mái khâ? — Do you have your ID card?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ต้องการแลกเงินสกุลอะไรคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดอลลาร์"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tông-gaan lâek ngern sà-gun a-rai khâ? — Which currency do you want to exchange?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "มีปัญหาอะไรกับตู้เอทีเอ็มคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "รหัส",
+            "pin"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mii pan-hǎa a-rai gàp tûu ee-tee-em khâ? — Is there any problem with the ATM?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ดีค่ะ รอสักครู่นะคะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dii khâ. Raw sàk khrûu ná khâ. — Okay. Please wait a moment."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ไม่เป็นไรค่ะ ครั้งหน้ากรุณานำบัตรประชาชนมาด้วยนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Mài pen rai khâ. Kráng nâa gà-rú-naa nam bàt prà-chaa-chon maa dûay ná khâ. — No problem. Please bring your ID card next time."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "รับทราบค่ะ รอสักครู่นะคะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ráp sâap khâ. Raw sàk khrûu ná khâ. — Understood. Please wait a moment."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "เข้าใจค่ะ จะช่วยดำเนินการให้นะคะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kâo-jai khâ. Ja chûay dam-nern gaan hâi ná khâ. — I understand. I will help you with this."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ กรุณาพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khǒo tôht khâ. Gà-rú-naa pûut ìik kráng dâi mái khâ? — Excuse me. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณค่ะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

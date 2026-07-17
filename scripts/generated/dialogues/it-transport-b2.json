@@ -1,0 +1,248 @@
+{
+  "id": "dlg-it-transport-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Informazioni sui Trasporti",
+  "opening": "Buongiorno! Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "biglietto",
+            "comprare",
+            "andare"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "fermata",
+            "linea",
+            "quale"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ritardo",
+            "informazioni"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! (Bwon-jor-no!) Come posso aiutarla oggi? (Koh-meh pohs-soh ah-yoo-tar-lah oh-jee?) — Good morning! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, mi dica pure. Qual è la sua destinazione o di quale tipo di biglietto ha bisogno?",
+      "branches": [
+        {
+          "keywords": [
+            "centro",
+            "stazione",
+            "duomo",
+            "via",
+            "destinazione"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "giornaliero",
+            "corsa",
+            "singolo",
+            "prezzo",
+            "costo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo, mi dica pure. (Cher-toh, mee dee-kah poo-reh.) Qual è la sua destinazione o di quale tipo di biglietto ha bisogno? (Kwal eh lah soo-ah des-tee-nah-tsee-oh-neh oh dee kwah-leh tee-poh dee bee-lyet-toh ah bee-zoh-nyoh?) — Certainly, tell me. What is your destination or what kind of ticket do you need?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accordo. Per quale linea o fermata desidera informazioni? Oppure, dove vorrebbe andare?",
+      "branches": [
+        {
+          "keywords": [
+            "linea",
+            "numero",
+            "autobus",
+            "centro",
+            "stazione",
+            "duomo",
+            "via",
+            "destinazione"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "cambio",
+            "trasbordo"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accordo. (Dahk-kor-doh.) Per quale linea o fermata desidera informazioni? (Per kwah-leh lee-neh-ah oh fer-mah-tah deh-zee-deh-rah een-for-mah-tsee-oh-nee?) Oppure, dove vorrebbe andare? (Op-poo-reh, doh-veh vor-reb-beh an-dah-reh?) — All right. For which line or stop do you want information? Or, where would you like to go?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Certo. Per raggiungere la sua destinazione, ad esempio, dovrebbe prendere la linea 12 e scendere alla quinta fermata. Ci vorranno circa 15-20 minuti, traffico permettendo. Ha altre domande su questo percorso o vuole sapere del biglietto?",
+      "branches": [
+        {
+          "keywords": [
+            "ritardo",
+            "puntuale"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cambio",
+            "trasbordo"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "va bene"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo. (Cher-toh.) Per raggiungere la sua destinazione, ad esempio, (per rag-joon-jeh-reh lah soo-ah des-tee-nah-tsee-oh-neh, ahd eh-zem-pee-oh,) dovrebbe prendere la linea 12 e scendere alla quinta fermata. (doh-vreb-beh pren-deh-reh lah lee-neh-ah doh-dee-chee eh shen-deh-reh al-lah kween-tah fer-mah-tah.) Ci vorranno circa 15-20 minuti, traffico permettendo. (Chee voh-ran-noh cheer-kah kween-dee-chee-ven-tee mee-noo-tee, traf-fee-koh per-met-ten-doh.) Ha altre domande su questo percorso o vuole sapere del biglietto? — Certainly. To reach your destination, for example, you should take line 12 and get off at the fifth stop. It will take about 15-20 minutes, traffic permitting. Do you have any other questions about this route or do you want to know about the ticket?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Un biglietto singolo costa 1,50 euro ed è valido per 90 minuti su tutta la rete. Per quanto riguarda i ritardi, al momento non ne sono previsti di significativi sulla maggior parte delle linee. Vuole procedere con l'acquisto o ha altre domande?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "prendo",
+            "acquisto"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "solo",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single ticket costs 1.50 euros and is valid for 90 minutes on the entire network. As for delays, currently no significant ones are expected on most lines. Do you want to proceed with the purchase or do you have any other questions?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Sì, per alcune destinazioni potrebbe essere necessario un cambio. Ad esempio, se va al museo, dovrà cambiare dalla linea 12 alla linea 3 alla fermata 'Garibaldi'. Il biglietto singolo è valido anche per i cambi entro i 90 minuti.",
+      "branches": [
+        {
+          "keywords": [
+            "ritardo",
+            "puntuale"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "va bene"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, for some destinations a transfer might be necessary. For example, if you're going to the museum, you'll need to change from line 12 to line 3 at the 'Garibaldi' stop. The single ticket is also valid for transfers within 90 minutes."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto. Può pagare con carta di credito, bancomat o in contanti. Accettiamo anche pagamenti contactless. Desidera una ricevuta?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ricevuta"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. You can pay by credit card, debit card, or cash. We also accept contactless payments. Would you like a receipt?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere o formulare la domanda in un altro modo, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, (Mee skoo-zee,) non ho capito bene. (non oh kah-pee-toh beh-neh.) Potrebbe ripetere o formulare la domanda in un altro modo, per favore? (Poh-treb-beh ree-peh-teh-reh oh for-moo-lah-reh lah doh-man-dah een oon al-troh moh-doh, per fah-voh-reh?) — Excuse me, I didn't quite understand. Could you please repeat or phrase the question differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto! Le auguro una buona giornata e un buon viaggio!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfetto! (Per-fet-toh!) Le auguro una buona giornata e un buon viaggio! (Leh ow-goo-roh oo-nah bwoh-nah jor-nah-tah eh oon bwon vee-ahj-joh!) — Perfect! I wish you a good day and a good journey!",
+      "isTerminal": true
+    }
+  }
+}

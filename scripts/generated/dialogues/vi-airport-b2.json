@@ -1,0 +1,190 @@
+{
+  "id": "dlg-vi-airport-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Kiểm tra hành lý tại sân bay",
+  "opening": "Chào anh/chị. Vui lòng cho tôi xem vé và hộ chiếu ạ.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Vui lòng cho tôi xem vé và hộ chiếu ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "đây",
+            "vé",
+            "hộchiếu",
+            "củatôi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao anh/chi) — Hello, sir/madam. Please show me your ticket and passport."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn. Chuyến bay của anh/chị là VN321 đến Bangkok, khởi hành lúc 10 giờ 30. Tuy nhiên, tôi thấy hành lý xách tay của anh/chị hình như hơi quá cân một chút. Anh/chị có muốn ký gửi nó không?",
+      "branches": [
+        {
+          "keywords": [
+            "kýgửi",
+            "gửi",
+            "đồngý"
+          ],
+          "nextTurnId": "t3_fragile"
+        },
+        {
+          "keywords": [
+            "khôngkýgửi",
+            "bỏbớt",
+            "giảmcân"
+          ],
+          "nextTurnId": "t4_remove"
+        },
+        {
+          "keywords": [
+            "phíbaonhiêu",
+            "giábaonhiêu",
+            "giá"
+          ],
+          "nextTurnId": "t5_fee"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn (Cam on). Chuyến bay của anh/chị là VN321 đến Bangkok, khởi hành lúc 10 giờ 30. Tuy nhiên, tôi thấy hành lý xách tay của anh/chị hình như hơi quá cân một chút (hinh nhu hoi qua can mot chut). Anh/chị có muốn ký gửi nó không? (Anh/chi co muon ky gui no khong?) — Thank you. Your flight is VN321 to Bangkok, departing at 10:30. However, I see your carry-on luggage seems a bit overweight. Would you like to check it in?"
+    },
+    "t3_fragile": {
+      "id": "t3_fragile",
+      "prompt": "Được thôi. Vậy tôi sẽ ký gửi chiếc vali này cho anh/chị. Anh/chị có đồ dễ vỡ hoặc đồ giá trị bên trong không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "dễvỡ",
+            "giátrị"
+          ],
+          "nextTurnId": "t6_boardingpass"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được thôi (Duoc thoi). Vậy tôi sẽ ký gửi chiếc vali này cho anh/chị. Anh/chị có đồ dễ vỡ hoặc đồ giá trị bên trong không ạ? — Okay. I will check this suitcase for you. Do you have any fragile or valuable items inside?"
+    },
+    "t4_remove": {
+      "id": "t4_remove",
+      "prompt": "Vâng, vậy anh/chị vui lòng bỏ bớt một số đồ ra để đạt trọng lượng tiêu chuẩn. Sau đó tôi sẽ cân lại giúp anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            "đãxong",
+            "xongrồi",
+            "ổnrồi"
+          ],
+          "nextTurnId": "t6_boardingpass"
+        },
+        {
+          "keywords": [
+            "còncânkhông",
+            "kiểmtralại"
+          ],
+          "nextTurnId": "t4_remove"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang), vậy anh/chị vui lòng bỏ bớt một số đồ ra để đạt trọng lượng tiêu chuẩn. Sau đó tôi sẽ cân lại giúp anh/chị. — Okay, please remove some items to meet the standard weight. Then I will re-weigh it for you."
+    },
+    "t5_fee": {
+      "id": "t5_fee",
+      "prompt": "Nếu ký gửi hành lý quá cân sẽ có phụ phí là 100.000 VNĐ cho mỗi kilogram vượt quá. Anh/chị có muốn thanh toán hoặc bỏ bớt đồ không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thanh toán",
+            "trảtiền",
+            "đồngýtrả"
+          ],
+          "nextTurnId": "t6_boardingpass"
+        },
+        {
+          "keywords": [
+            "bỏbớt",
+            "khôngtrả"
+          ],
+          "nextTurnId": "t4_remove"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nếu ký gửi hành lý quá cân sẽ có phụ phí là 100.000 VNĐ (mot tram nghin dong) cho mỗi kilogram vượt quá. Anh/chị có muốn thanh toán hoặc bỏ bớt đồ không ạ? — If you check overweight luggage, there will be an additional fee of 100,000 VND per kilogram over. Would you like to pay or remove some items?"
+    },
+    "t6_boardingpass": {
+      "id": "t6_boardingpass",
+      "prompt": "Tuyệt vời. Hành lý của anh/chị đã được xử lý xong. Đây là thẻ lên máy bay của anh/chị. Cổng ra số G12 và thời gian lên máy bay là 10 giờ 00. Chúc anh/chị có một chuyến đi vui vẻ!",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmbiệt",
+            "chúccô"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tuyệt vời (Tuyet voi). Hành lý của anh/chị đã được xử lý xong. Đây là thẻ lên máy bay của anh/chị. Cổng ra số G12 và thời gian lên máy bay là 10 giờ 00. Chúc anh/chị có một chuyến đi vui vẻ! — Excellent. Your luggage has been processed. Here is your boarding pass. Gate G12 and boarding time is 10:00. Have a pleasant trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nhắc lại hoặc nói rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), anh/chị có thể nhắc lại hoặc nói rõ hơn được không ạ? — Sorry, could you please repeat or clarify?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị. Chúc anh/chị có một chuyến bay tốt đẹp!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị (Cam on anh/chi). Chúc anh/chị có một chuyến bay tốt đẹp! — Thank you. Have a good flight!",
+      "isTerminal": true
+    }
+  }
+}

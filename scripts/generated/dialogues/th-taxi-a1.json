@@ -1,0 +1,217 @@
+{
+  "id": "dlg-th-taxi-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "แท็กซี่",
+  "opening": "สวัสดีครับ ไปไหนครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ ไปไหนครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "ไปสยาม",
+            "สยามค่ะ",
+            "สยามครับ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-wat-dee krap. Pai nai krap? — Hello. Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "สยามใช่ไหมครับ? หรือไปทางไหนครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "ใช่ค่ะ",
+            "ใช่ครับ",
+            "ตรงไป"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เท่าไหร่",
+            "ราคา"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไม่รู้",
+            "ไม่ทราบ"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-yam chai mai krap? Reu pai taang nai krap? — Siam, right? Or which way are you going?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "โอเคครับ ตรงไปนะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "ไป",
+            "ตกลง"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-ke krap. Trong pai na krap. — Okay. Straight ahead, please."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "โอเค ผมรู้จักครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ไป",
+            "โอเค"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "เท่าไหร่",
+            "ราคา"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-ke, phom roo-jak krap. — Okay, I know (the way)."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ประมาณหนึ่งร้อยบาทครับ",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "ไป",
+            "ตกลง"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่ไป",
+            "แพง",
+            "ไม่เอา"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pra-maan neung roi baht krap — About 100 Baht."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ไปเลยนะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ขอบคุณครับ",
+            "ขอบคุณค่ะ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai loei na krap — Let's go!"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ถึงแล้วครับ หนึ่งร้อยบาทครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เงิน",
+            "นี่ครับ",
+            "นี่ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Teung laew krap. Neung roi baht krap. — We're here. 100 Baht."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ พูดอีกครั้งได้ไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor thot na krap, phuut eek krang dai mai krap? — Excuse me, could you say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณครับ ลาก่อน",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kop kun krap, la gon — Thank you, goodbye.",
+      "isTerminal": true
+    }
+  }
+}

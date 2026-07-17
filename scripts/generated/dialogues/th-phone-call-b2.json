@@ -1,0 +1,200 @@
+{
+  "id": "dlg-th-phone-call-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "โทรศัพท์: การระบุตัวตนและฝากข้อความ",
+  "opening": "สวัสดีครับ/ค่ะ ที่นี่บริษัท แสงอรุณ ครับ/ค่ะ ไม่ทราบว่าโทรมาจากไหนครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ที่นี่บริษัท แสงอรุณ ครับ/ค่ะ ไม่ทราบว่าโทรมาจากไหนครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "สวัสดี",
+            "ชื่อ",
+            "โทรมา"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "คุณ",
+            "ขอสาย",
+            "อยากคุย"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sà-wàt-dee kráp/kâ. Têe-nêe bor-rí-sàt Saeng-à-roon kráp/kâ. Mâi-trâap wâa toh maa jàak năi kráp/kâ? — Hello. This is Saeng Arun Company. May I ask who's calling?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ ครับ/ค่ะ คุณ [ชื่อผู้โทร] ไม่ทราบว่าต้องการติดต่อแผนกไหน หรือต้องการพูดคุยกับใครเป็นพิเศษหรือเปล่าครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "คุณ",
+            "ขอสาย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "แผนก",
+            "เรื่อง"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or kráp/kâ. Khun [Caller's Name]. Mâi-trâap wâa tông-gaan dtìt-dtòt paen-nàek năi rěu tông-gaan pôot-kuy gàp krai bpen pí-sèht rěu bplào kráp/kâ? — Oh, okay. [Caller's Name]. May I ask which department you'd like to contact, or if you wish to speak with someone specific?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "รบกวนขอทราบชื่อผู้โทรด้วยครับ/ค่ะ ไม่ทราบว่าคุณชื่ออะไรครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "ผม",
+            "ดิฉัน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ส่วนตัว",
+            "ด่วน"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Róop-guan kŏr trâap chêu pôo toh dûay kráp/kâ. Mâi-trâap wâa khun chêu à-rai kráp/kâ? — May I please know the caller's name? What is your name?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ขออภัยครับ/ค่ะ ตอนนี้คุณ [ชื่อคนที่ถูกเรียก] ไม่สะดวกรับสาย ไม่ทราบว่าต้องการฝากข้อความไว้หรือเปล่าครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ฝาก",
+            "ข้อความ",
+            "ได้"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "โทรกลับ",
+            "ติดต่อใหม่"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kŏr a-pai kráp/kâ. Dton-née khun [Name] mâi sà-dùak ráp sǎai. Mâi-trâap wâa tông-gaan fàak kôr-kwam wái rěu bplào kráp/kâ? — I apologize. [Name of person requested] is not available to take your call right now. Would you like to leave a message?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ได้ครับ/ค่ะ รบกวนแจ้งรายละเอียดเพิ่มเติมได้ไหมครับ/คะ ว่าต้องการติดต่อเรื่องอะไร จะได้โอนสายไปยังแผนกที่เกี่ยวข้องได้ถูกต้องครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "เรื่อง",
+            "เกี่ยวกับ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "คุณ",
+            "ขอสาย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâai kráp/kâ. Róop-guan jâeng raai-lá-ìat pêrm-dtĕm dâai mái kráp/kâ wâa tông-gaan dtìt-dtòt rêuang à-rai. Jà dâai ohn sǎai bpai yang paen-nàek têe gîao-kôrng dâai tòok-dtôrng kráp/kâ. — Okay. Could you please provide more details about what you want to contact them about, so I can transfer your call to the correct department?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ได้ครับ/ค่ะ รบกวนฝากข้อความไว้ได้เลยครับ/ค่ะ ผม/ดิฉันจะแจ้งให้ทราบทันทีที่เขา/เธอว่างครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ได้ครับ",
+            "ได้ค่ะ",
+            "เรียบร้อย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâai kráp/kâ. Róop-guan fàak kôr-kwam wái dâai loey kráp/kâ. Pŏm/Dì-chăn jà jâeng hâi trâap tan-tee têe káo/têr wâang kráp/kâ. — Okay. Please leave your message. I will inform him/her as soon as they are available."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ไม่ค่อยได้ยิน รบกวนพูดใหม่อีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr a-pai kráp/kâ. Mâi kôi dâai yin. Róop-guan pôot mài èek kráng dâai mái kráp/kâ? — I apologize. I couldn't quite hear you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kòp-kun mâak kráp/kâ. Sà-wàt-dee kráp/kâ. — Thank you very much. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

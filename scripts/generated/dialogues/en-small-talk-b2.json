@@ -1,0 +1,189 @@
+{
+  "id": "dlg-en-small-talk-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Party Chat",
+  "opening": "Hi there! How are you enjoying the evening?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! How are you enjoying the evening?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "fine",
+            "enjoying"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hi there! How are you enjoying the evening?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you say that again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "It was great chatting with you! Enjoy the rest of the evening!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was great chatting with you! Enjoy the rest of the evening!",
+      "isTerminal": true
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That's good to hear! So, anything interesting on the horizon? Perhaps some exciting weekend plans, or a hobby you're really into lately?",
+      "branches": [
+        {
+          "keywords": [
+            "weekend",
+            "plans",
+            "travel",
+            "friends"
+          ],
+          "nextTurnId": "t3_weekend"
+        },
+        {
+          "keywords": [
+            "hobby",
+            "passion",
+            "sport",
+            "reading",
+            "art"
+          ],
+          "nextTurnId": "t3_hobby"
+        },
+        {
+          "keywords": [
+            "work",
+            "project",
+            "career",
+            "busy"
+          ],
+          "nextTurnId": "t3_work"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's good to hear! So, anything interesting on the horizon? Perhaps some exciting weekend plans, or a hobby you're really into lately?"
+    },
+    "t3_weekend": {
+      "id": "t3_weekend",
+      "prompt": "Sounds great! It's always good to have something to look forward to. What kind of activities do you typically gravitate towards – anything from relaxing at home to adventurous outings?",
+      "branches": [
+        {
+          "keywords": [
+            "relax",
+            "home",
+            "movies",
+            "chill"
+          ],
+          "nextTurnId": "t4_wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sounds great! It's always good to have something to look forward to. What kind of activities do you typically gravitate towards – anything from relaxing at home to adventurous outings?"
+    },
+    "t3_hobby": {
+      "id": "t3_hobby",
+      "prompt": "That's fantastic! Hobbies are such a vital part of life. What is it about that you find most engaging, and how long have you been at it?",
+      "branches": [
+        {
+          "keywords": [
+            "creative",
+            "art",
+            "music",
+            "writing"
+          ],
+          "nextTurnId": "t4_wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's fantastic! Hobbies are such a vital part of life. What is it about that you find most engaging, and how long have you been at it?"
+    },
+    "t3_work": {
+      "id": "t3_work",
+      "prompt": "Ah, the daily grind! Is it something you're passionate about, or more of a means to an end? It's always interesting to hear what people do.",
+      "branches": [
+        {
+          "keywords": [
+            "passion",
+            "love",
+            "enjoy",
+            "challenging"
+          ],
+          "nextTurnId": "t4_wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the daily grind! Is it something you're passionate about, or more of a means to an end? It's always interesting to hear what people do."
+    },
+    "t4_wrapup": {
+      "id": "t4_wrapup",
+      "prompt": "That's really interesting! It was a pleasure getting to know a bit about what makes you tick. I should probably mingle a bit more, but it was genuinely nice speaking with you.",
+      "branches": [
+        {
+          "keywords": [
+            "you",
+            "too",
+            "likewise"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's really interesting! It was a pleasure getting to know a bit about what makes you tick. I should probably mingle a bit more, but it was genuinely nice speaking with you."
+    }
+  }
+}

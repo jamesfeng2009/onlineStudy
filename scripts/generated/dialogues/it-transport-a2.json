@@ -1,0 +1,388 @@
+{
+  "id": "dlg-it-transport-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Trasporto Pubblico",
+  "opening": "Buongiorno, posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "biglietto",
+            "comprare",
+            "prendere"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "treno",
+            "linea",
+            "informazioni"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "salve"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "(Bwon-JUR-no, POS-soh ay-YOO-tar-la?) — Good morning, can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, per dove desidera il biglietto?",
+      "branches": [
+        {
+          "keywords": [
+            "centro",
+            "stazione",
+            "piazza",
+            "museo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "costa",
+            "prezzo",
+            "quanto"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "solo",
+            "uno",
+            "normale"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "(CHER-toh, per DOH-veh de-SEE-deh-ra il bee-LYET-toh?) — Certainly, where do you want the ticket for?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Quale linea o destinazione cerca?",
+      "branches": [
+        {
+          "keywords": [
+            "linea",
+            "numero",
+            "autobus",
+            "treno"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ritardo",
+            "arrivo",
+            "quando"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "fermata",
+            "prossima",
+            "dove"
+          ],
+          "nextTurnId": "t6b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Which line or destination are you looking for?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Un biglietto per il centro costa 1 euro e 50 centesimi.",
+      "branches": [
+        {
+          "keywords": [
+            "pago",
+            "prendo",
+            "sì",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "carta",
+            "bancomat",
+            "pos",
+            "carte"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "(Oon bee-LYET-toh per il CHEN-tro KOS-ta oon EH-oo-roh eh chin-KWAN-ta chen-TEH-zee-mee.) — A ticket for the center costs 1 euro and 50 cents."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Un biglietto normale costa 1 euro e 50 centesimi.",
+      "branches": [
+        {
+          "keywords": [
+            "pago",
+            "prendo",
+            "sì",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "carta",
+            "bancomat",
+            "pos",
+            "carte"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A normal ticket costs 1 euro and 50 cents."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dipende dalla destinazione. Per esempio, per il centro costa 1 euro e 50.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "prendo",
+            "sì",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "carta",
+            "bancomat",
+            "pos",
+            "carte"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It depends on the destination. For example, for the center it costs 1 euro and 50."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Il bus numero 12 va in quella direzione. Passa ogni 10 minuti.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "fermate",
+            "quante",
+            "dove"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "costa",
+            "prendere"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bus number 12 goes in that direction. It passes every 10 minutes."
+    },
+    "t6b": {
+      "id": "t6b",
+      "prompt": "La prossima fermata è Piazza Italia.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "costa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The next stop is Piazza Italia."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "No, al momento non ci sono ritardi significativi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "bene"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "costa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "(No, al mo-MEN-toh non chee SOH-no ree-TAR-dee see-nyee-fee-ka-TEE-vee.) — No, at the moment there are no significant delays."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Sì, accettiamo pagamenti con carta.",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "pago",
+            "ottimo",
+            "ok",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, we accept card payments."
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Fa diverse fermate importanti, inclusa la stazione e il centro.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "capisco"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "costa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It makes several important stops, including the station and the center."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci e buon viaggio!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye and have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

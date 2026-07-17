@@ -1,0 +1,193 @@
+{
+  "id": "dlg-fr-airport-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Un Contretemps à l'Aéroport",
+  "opening": "Bonjour, Madame/Monsieur. Puis-je avoir votre passeport et votre billet, s'il vous plaît ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, Madame/Monsieur. Puis-je avoir votre passeport et votre billet, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "voici",
+            "passeport",
+            "billet"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "enregistrer",
+            "bagages",
+            "valise"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, Madame/Monsieur. (Bohn-zhoor, Mah-dahm/Muh-syuh) May I have your passport and ticket, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord, votre vol pour Montréal, le numéro AF345, est bien prévu pour 15h30. Ah, un instant... Il semble qu'il y ait eu un petit contretemps. Votre vol est malheureusement retardé d'environ deux heures. Nous sommes désolés pour la gêne occasionnée.",
+      "branches": [
+        {
+          "keywords": [
+            "raison",
+            "retard",
+            "pourquoi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nouveau",
+            "horaire",
+            "faire",
+            "attendre"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, your flight to Montreal, flight number AF345, is indeed scheduled for 3:30 PM. Ah, one moment... It seems there's been a slight hitch (petit contretemps — puh-tee kohn-truh-tahn). Your flight is unfortunately delayed by about two hours. We apologize for the inconvenience (gêne occasionnée — zhehn oh-kah-zyoh-nay) caused."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr. Avez-vous des bagages à main ou des bagages en soute ? N'oubliez pas que les liquides de plus de 100 ml ne sont pas autorisés en cabine et que le poids maximal est de 23 kg pour la soute.",
+      "branches": [
+        {
+          "keywords": [
+            "valise",
+            "enregistrer",
+            "sac"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Do you have carry-on or checked luggage? Don't forget that liquids over 100ml are not allowed in the cabin and the maximum weight is 23 kg for checked luggage."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Il s'agit d'un problème technique imprévu sur l'appareil. Nos équipes de maintenance travaillent activement à le résoudre. Nous espérons un départ vers 17h30, au lieu de 15h30. Votre patience est grandement appréciée.",
+      "branches": [
+        {
+          "keywords": [
+            "compensation",
+            "indemnisation",
+            "prévu"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "porte",
+            "embarquement",
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's an unforeseen technical issue with the aircraft. Our maintenance teams are actively working to resolve it. We hope for a departure around 5:30 PM, instead of 3:30 PM. Your patience is greatly appreciated."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Le nouvel horaire de départ est estimé à 17h30. Pour patienter, vous pouvez profiter des salons si vous êtes éligible, ou nous pouvons vous offrir un bon pour une boisson et une collation au café de l'aérogare.",
+      "branches": [
+        {
+          "keywords": [
+            "bon",
+            "boisson",
+            "collation",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The new estimated departure time is 5:30 PM. To wait (patienter — pah-syahn-tay), you can use the lounges if you're eligible, or we can offer you a voucher for a drink and a snack at the airport café."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Pour un retard de cette durée, la politique de la compagnie prévoit un bon repas. Vous recevrez une notification par SMS avec les détails et les options disponibles. Nous vous remercions de votre compréhension et de votre flexibilité.",
+      "branches": [
+        {
+          "keywords": [
+            "noté",
+            "compris",
+            "espérons",
+            "réglé"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a delay of this duration, the airline's policy provides a meal voucher. You will receive an SMS notification with the details and available options. We thank you for your understanding and flexibility."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ? (Pahr-dohn, zhuh nah pah byahn seh-zee. Poo-ryeh-voo reh-peh-tay, seel voo pleh?)",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Nous vous souhaitons un agréable vol malgré ce contretemps. Merci de votre patience et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "We wish you a pleasant flight despite this setback. Thank you for your patience and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

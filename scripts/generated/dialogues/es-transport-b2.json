@@ -1,0 +1,214 @@
+{
+  "id": "dlg-es-transport-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Transporte Público - Billetes e Información",
+  "opening": "¡Hola! ¿En qué puedo ayudarle hoy? ¿Necesita comprar un billete, información sobre alguna ruta, o quizás preguntar por algún retraso?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿En qué puedo ayudarle hoy? ¿Necesita comprar un billete, información sobre alguna ruta, o quizás preguntar por algún retraso?",
+      "branches": [
+        {
+          "keywords": [
+            "comprar",
+            "billete",
+            "ticket"
+          ],
+          "nextTurnId": "t2_ticket_details"
+        },
+        {
+          "keywords": [
+            "ruta",
+            "informacion",
+            "parada",
+            "cómo"
+          ],
+          "nextTurnId": "t3_route_details"
+        },
+        {
+          "keywords": [
+            "retraso",
+            "demora",
+            "incidencia"
+          ],
+          "nextTurnId": "t4_delay_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "¡Hola! ¿En qué puedo ayudarle hoy? (Oh-lah! Ehng keh pweh-doh ah-yoo-dahr-leh oy?) — Hello! How can I help you today? Do you need to buy a ticket, information about a route, or perhaps ask about any delays?"
+    },
+    "t2_ticket_details": {
+      "id": "t2_ticket_details",
+      "prompt": "Perfecto. ¿Para qué destino y qué tipo de billete necesita? ¿De ida, de ida y vuelta, o un abono diario?",
+      "branches": [
+        {
+          "keywords": [
+            "ida",
+            "sencillo",
+            "vuelta",
+            "abono",
+            "destino",
+            "plaza",
+            "sol"
+          ],
+          "nextTurnId": "t5_confirm_buy"
+        },
+        {
+          "keywords": [
+            "pregunta",
+            "sobre",
+            "ruta",
+            "transbordo"
+          ],
+          "nextTurnId": "t3_route_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Perfecto. ¿Para qué destino y qué tipo de billete necesita? (Paihr-fehk-toh. Pah-rah keh dehs-tee-noh ee keh tee-poh deh bee-yeh-teh neh-seh-see-tah?) — Perfect. For which destination and what type of ticket do you need? One-way, return, or a daily pass?"
+    },
+    "t3_route_details": {
+      "id": "t3_route_details",
+      "prompt": "¿A qué destino o parada le gustaría ir? Para llegar a la Plaza Mayor, por ejemplo, deberá tomar la línea 1 y hacer un transbordo a la línea 3 en Sol. El trayecto dura unos 20 minutos. ¿Tiene alguna otra pregunta o le gustaría comprar un billete para esta ruta?",
+      "branches": [
+        {
+          "keywords": [
+            "comprar",
+            "billete",
+            "sí"
+          ],
+          "nextTurnId": "t5_confirm_buy"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "entendido",
+            "otra"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "¿A qué destino o parada le gustaría ir? (Ah keh dehs-tee-noh oh pah-rah-dah leh goo-stah-ree-ah eer?) — Which destination or stop would you like to go to? To get to Plaza Mayor, for example, you should take line 1 and transfer to line 3 at Sol. The journey takes about 20 minutes. Do you have any other questions or would you like to buy a ticket for this route?"
+    },
+    "t4_delay_info": {
+      "id": "t4_delay_info",
+      "prompt": "Lamentablemente, hay una incidencia en la línea 6, causando retrasos de aproximadamente 15 minutos. Le sugerimos tomar la línea 2 como alternativa, aunque el trayecto es un poco más largo. ¿Cómo prefiere proceder?",
+      "branches": [
+        {
+          "keywords": [
+            "línea 2",
+            "alternativa",
+            "otra",
+            "sugerencia"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Unfortunately, there's an incident on line 6, causing delays of approximately 15 minutes. We suggest taking line 2 as an alternative, although the journey is a bit longer. How do you prefer to proceed?"
+    },
+    "t5_confirm_buy": {
+      "id": "t5_confirm_buy",
+      "prompt": "De acuerdo. El billete solicitado tiene un coste de X euros. ¿Desea proceder con la compra o ha cambiado de opinión?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "comprar",
+            "proceder"
+          ],
+          "nextTurnId": "t6_payment"
+        },
+        {
+          "keywords": [
+            "no",
+            "caro",
+            "demasiado",
+            "cancelar"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Okay. The requested ticket costs X euros. Do you wish to proceed with the purchase or have you changed your mind?"
+    },
+    "t6_payment": {
+      "id": "t6_payment",
+      "prompt": "Perfecto. ¿Cómo desea abonar? Aceptamos efectivo o tarjeta. La máquina de billetes también está disponible si prefiere autoservicio.",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito",
+            "débito"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Perfect. How would you like to pay? We accept cash or card. The ticket machine is also available if you prefer self-service."
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "¿Podría repetirlo, por favor? No le he entendido bien. O quizás, ¿podría expresarlo de otra manera?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Podría repetirlo, por favor? (Poh-dree-ah reh-peh-teer-loh, por fah-vor?) No le he entendido bien. O quizás, ¿podría expresarlo de otra manera? — Could you repeat that, please? I didn't understand you well. Or perhaps, could you phrase it differently?"
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "De nada. Que tenga un buen día y disfrute de su viaje. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "You're welcome. Have a good day and enjoy your trip. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "id": "dlg-th-hotel-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "เช็คอินโรงแรม",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเรานะคะ ไม่ทราบว่าคุณลูกค้าได้จองห้องพักไว้ในชื่อใดคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเรานะคะ ไม่ทราบว่าคุณลูกค้าได้จองห้องพักไว้ในชื่อใดคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดิฉันชื่อ",
+            "ผมชื่อ",
+            "ชื่อ",
+            "จองไว้ในชื่อ",
+            "จองชื่อ",
+            "smith",
+            "johnson"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka. Yindee tawnrap soo rohng-raem khao na ka. Mai traap waa khun look-kaa dai jawng hawng-pak wai nai chue dai ka? — Hello, welcome to our hotel. May I know under what name you made the reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "รับทราบค่ะ รบกวนขอบัตรประชาชนหรือหนังสือเดินทางพร้อมกับบัตรเครดิตเพื่อดำเนินการเช็คอินด้วยนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "ได้ค่ะ",
+            "บัตรประชาชน",
+            "หนังสือเดินทาง",
+            "บัตรเครดิต",
+            "เอกสาร"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "จ่ายเงินสด",
+            "เงินสด",
+            "ช่องทางอื่น",
+            "โอนเงิน"
+          ],
+          "nextTurnId": "t_payment_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rab saap ka. Rop-kuan kaw bat prachachon reuu nang-sue duern-tang praum gap bat credit puea dam-nuen garn check-in duay na ka. — Understood. Could I please have your ID card or passport along with a credit card to proceed with the check-in?"
+    },
+    "t_payment_options": {
+      "id": "t_payment_options",
+      "prompt": "สำหรับช่องทางการชำระเงิน นอกเหนือจากบัตรเครดิต เรายินดีรับเงินสดหรือการโอนผ่านธนาคารก็ได้ค่ะ คุณลูกค้าสะดวกแบบไหนคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เงินสด",
+            "จ่ายสด"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sam-rap chawng-tang garn cham-ra ngern, nawk nuea jak bat credit, rao yindee rab ngern sod reuu garn oan paan ta-na-karn gaw dai ka. Khun look-kaa sa-duak baep nai ka? — Regarding payment methods, besides credit card, we also accept cash or bank transfer. Which one is more convenient for you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอบคุณค่ะ ขออนุญาตสอบถามเพิ่มเติมนะคะ พอจะมีห้องพักที่ต้องการเป็นพิเศษไหมคะ เช่น วิวทะเล หรือชั้นสูงๆ และคุณลูกค้าสนใจแพ็กเกจอาหารเช้าของเราไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "วิวทะเล",
+            "ทะเล",
+            "วิวแม่น้ำ",
+            "แม่น้ำ",
+            "ชั้นสูง",
+            "ชั้นล่าง"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun ka. Kaw anuyaat sawp-taam perm-term na ka. Paw ja mee hawng-pak tee tawng-karn pen piseht mai ka? Chayn wiew talay reuu chan soong-soong lae khun look-kaa son-jai package a-harn chao khao rao mai ka? — Thank you. May I ask for some additional preferences? Do you have any specific room requests, such as a sea view or a high floor? And are you interested in our breakfast package?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ไม่ทราบว่าคุณลูกค้าพูดว่าอะไรนะคะ รบกวนพูดซ้ำอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kaw a-pai ka. Mai saap waa khun look-kaa poot waa a-rai na ka? Rop-kuan poot sam eek krang dai mai ka? — I apologize. I'm not sure what you said. Could you please repeat it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เรียบร้อยแล้วค่ะ นี่คีย์การ์ดสำหรับห้องพักหมายเลข [หมายเลขห้อง] อยู่ที่ชั้น [ชั้น] นะคะ หากมีสิ่งใดให้เราบริการเพิ่มเติม สามารถแจ้งพนักงานได้ตลอด 24 ชั่วโมงค่ะ ขอให้มีความสุขกับการเข้าพักนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Riap roy laew ka. Nee keycard sam-rap hawng-pak mai lek [room number] yoo tee chan [floor number] na ka. Hak mee sing dai hai rao borikarn perm-term, samart jaeng pak-na-ngan dai talot 24 chua-mong ka. Kaw hai mee kwam suk gap karn khao-pak na ka. — Everything is set. Here is your key card for room number [room number] on floor [floor number]. If you need any further assistance, please feel free to inform our staff 24 hours a day. We wish you a pleasant stay!",
+      "isTerminal": true
+    }
+  }
+}

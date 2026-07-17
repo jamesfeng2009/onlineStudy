@@ -1,0 +1,198 @@
+{
+  "id": "dlg-fr-transport-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Périple Urbain en Transport en Commun",
+  "opening": "Bonjour ! Comment puis-je vous être utile ce matin ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment puis-je vous être utile ce matin ?",
+      "branches": [
+        {
+          "keywords": [
+            "billet",
+            "destination",
+            "aller"
+          ],
+          "nextTurnId": "t2_ask_need"
+        },
+        {
+          "keywords": [
+            "retard",
+            "perturbation",
+            "incident"
+          ],
+          "nextTurnId": "t3_delays_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Comment puis-je vous être utile ce matin ? — [bɔ̃ʒuʁ ! kɔmɑ̃ pɥiʒə vu ɛtʁə ytil sə matɛ̃ ?] — Hello! How can I help you this morning?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi. — Sorry? Could you please repeat? I didn't quite catch that."
+    },
+    "t2_ask_need": {
+      "id": "t2_ask_need",
+      "prompt": "Bien sûr. Quelle est votre destination finale, ou quel type de titre de transport recherchez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "louvre",
+            "eiffel",
+            "gare",
+            "saint-lazare",
+            "montparnasse"
+          ],
+          "nextTurnId": "t4_route_and_ticket"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "simple",
+            "unitaire",
+            "pass",
+            "carnet",
+            "journalier",
+            "hebdomadaire"
+          ],
+          "nextTurnId": "t4_ticket_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr. Quelle est votre destination finale, ou quel type de titre de transport recherchez-vous ? — [bjɛ̃ syʁ. kɛl ɛ vɔtʁə dɛstinasjɔ̃ final, u kɛl tip də titʁə də tʁɑ̃spɔʁ ʁəʃɛʁʃe vu ?] — Of course. What is your final destination, or what type of ticket are you looking for?"
+    },
+    "t3_delays_info": {
+      "id": "t3_delays_info",
+      "prompt": "Alors, la ligne A connaît quelques perturbations ce matin, comptez une bonne quinzaine de minutes de délai. Les autres lignes semblent fonctionner normalement. Autre chose que je puisse faire pour vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "c'esttout"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "oui",
+            "autre",
+            "ligne",
+            "question"
+          ],
+          "nextTurnId": "t2_ask_need"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alors, la ligne A connaît quelques perturbations ce matin, comptez une bonne quinzaine de minutes de délai. Les autres lignes semblent fonctionner normalement. Autre chose que je puisse faire pour vous ? — So, Line A is experiencing some disruptions this morning, expect a good fifteen minutes delay. Other lines seem to be operating normally. Anything else I can do for you?"
+    },
+    "t4_route_and_ticket": {
+      "id": "t4_route_and_ticket",
+      "prompt": "Pour le Louvre, il vous faudra emprunter la ligne 1 jusqu'à Châtelet, puis la 7. Un ticket T+ unitaire suffira, à moins que vous ne prévoyiez de multiples trajets aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "simple",
+            "unitaire",
+            "prendre"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "multiples",
+            "plusieurs",
+            "pass",
+            "non"
+          ],
+          "nextTurnId": "t4_ticket_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour le Louvre, il vous faudra emprunter la ligne 1 jusqu'à Châtelet, puis la 7. Un ticket T+ unitaire suffira, à moins que vous ne prévoyiez de multiples trajets aujourd'hui ? — [puʁ lə luvʁ, il vu fodʁa ɑ̃pʁœ̃te la liɲ œ̃ ʒysk a ʃɑtlɛ, pɥi la sɛt. œ̃ tikɛ tɛ ply ynityɛʁ sufiʁa, a mwɛ̃ kə vu nə pʁevwɑje də myltiplə tʁaʒɛ oʒuʁdɥi ?] — For the Louvre, you'll need to take Line 1 to Châtelet, then Line 7. A single T+ ticket will suffice, unless you plan multiple journeys today?"
+    },
+    "t4_ticket_options": {
+      "id": "t4_ticket_options",
+      "prompt": "Nous avons des tickets T+ unitaires (2,15€), des carnets de 10 (17,30€), des forfaits journaliers (8,45€) ou hebdomadaires (28,20€). Lequel vous conviendrait le mieux pour finaliser votre achat ?",
+      "branches": [
+        {
+          "keywords": [
+            "simple",
+            "unitaire",
+            "carnet",
+            "10",
+            "dizaine",
+            "journalier",
+            "quotidien",
+            "hebdomadaire",
+            "semaine"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "non",
+            "autre",
+            "question"
+          ],
+          "nextTurnId": "t2_ask_need"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nous avons des tickets T+ unitaires (2,15€), des carnets de 10 (17,30€), des forfaits journaliers (8,45€) ou hebdomadaires (28,20€). Lequel vous conviendrait le mieux pour finaliser votre achat ? — We have single T+ tickets (€2.15), booklets of 10 (€17.30), daily passes (€8.45) or weekly passes (€28.20). Which one would suit you best to finalize your purchase?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! Je vous souhaite une excellente journée et un bon voyage !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait ! Je vous souhaite une excellente journée et un bon voyage ! — Perfect! I wish you an excellent day and a good journey!",
+      "isTerminal": true
+    }
+  }
+}

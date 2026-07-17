@@ -1,0 +1,286 @@
+{
+  "id": "dlg-vi-airport-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Sự Cố Chuyến Bay",
+  "opening": "Chào quý khách (Chao quy khach), tôi có một thông báo quan trọng liên quan đến chuyến bay của quý khách. (I have an important announcement regarding your flight.)",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách, xin thông báo chuyến bay VN302 đi Singapore lúc 10 giờ sáng nay sẽ bị hoãn ít nhất 3 tiếng do sự cố kỹ thuật đột xuất. Chúng tôi thành thật xin lỗi vì sự bất tiện này.",
+      "branches": [
+        {
+          "keywords": [
+            "tại sao",
+            "lýdo",
+            "gì đã xảyra"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hoãn baolâu",
+            "thôngtin chi tiết"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "thật khóchịu",
+            "bồithường"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách (Chao quy khach), xin thông báo chuyến bay VN302 đi Singapore lúc 10 giờ sáng nay sẽ bị hoãn ít nhất 3 tiếng do sự cố kỹ thuật đột xuất. Chúng tôi thành thật xin lỗi vì sự bất tiện này. (We sincerely apologize for this inconvenience.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ vâng, lý do chính là do một bộ phận động cơ cần được kiểm tra và thay thế khẩn cấp để đảm bảo an toàn tối đa cho quý khách. Chúng tôi đang nỗ lực hết sức để khắc phục. Hiện tại, quý khách có thể chọn chờ đợi tại sân bay hoặc chúng tôi sẽ hỗ trợ quý khách đổi sang chuyến bay khác trong ngày với các hãng đối tác, tùy thuộc vào tình trạng ghế trống.",
+      "branches": [
+        {
+          "keywords": [
+            "đổi chuyến",
+            "chuyến khác",
+            "baykhác"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chờđợi",
+            "ởlại đây"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "thôngtin bồithường",
+            "chínhsách bồithường"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng (Ya vâng), the main reason is that a part of the engine needs urgent inspection and replacement to ensure maximum safety for our esteemed passengers. We are working hard to resolve this. Currently, you can choose to wait at the airport, or we can assist you in changing to another flight on the same day with our partner airlines, subject to seat availability."
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Theo thông tin cập nhật mới nhất, dự kiến chuyến bay sẽ cất cánh không sớm hơn 13 giờ trưa nay. Chúng tôi hiểu rằng sự chậm trễ này gây ra nhiều phiền toái, đặc biệt nếu quý khách có các lịch trình quan trọng phía trước. Chúng tôi rất mong quý khách thông cảm.",
+      "branches": [
+        {
+          "keywords": [
+            "tôi phải làm gì",
+            "lựachọn nào"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bồithường",
+            "quyềnlợi"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "có chỗ nào chờ không",
+            "phòng chờ"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ảnhhưởng chuyếnnối",
+            "kếtnối"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "According to the latest updated information, the flight is expected to depart no earlier than 1 PM today. We understand that this delay causes a lot of inconvenience, especially if you have important schedules ahead. We sincerely hope for your understanding."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Để đổi chuyến, quý khách vui lòng mang theo thẻ lên máy bay và giấy tờ tùy thân đến quầy hỗ trợ khách hàng số 3 ngay phía bên kia sảnh. Nhân viên của chúng tôi sẽ tận tình tư vấn về các chuyến bay thay thế và hỗ trợ điều chỉnh lịch trình tiếp theo của quý khách, bao gồm cả các chuyến nối chuyến nếu có.",
+      "branches": [
+        {
+          "keywords": [
+            "hànhlý",
+            "valy",
+            "kiệnhànhlý"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "tôi sẽđi",
+            "được rồi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tôi không hàilòng",
+            "thấtvọng"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "bồithường",
+            "quyềnlợi"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để đổi chuyến (De doi chuyen), quý khách vui lòng mang theo thẻ lên máy bay và giấy tờ tùy thân đến quầy hỗ trợ khách hàng số 3 ngay phía bên kia sảnh. Our staff will enthusiastically advise you on alternative flights and assist in adjusting your onward itinerary, including any connecting flights you may have."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Nếu quý khách chọn chờ đợi, chúng tôi có khu vực phòng chờ riêng dành cho quý khách bị hoãn chuyến, có cung cấp đồ ăn nhẹ và thức uống miễn phí. Quý khách có thể đến cổng số 15 để được hướng dẫn thêm. Chúng tôi sẽ cập nhật thông tin về tình trạng chuyến bay định kỳ.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tôi sẽchờ",
+            "được rồi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hànhlý",
+            "valy"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bồithường",
+            "quyềnlợi"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "tôi vẫn muốn đổi chuyến",
+            "có thể đổi chuyến không"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you choose to wait, we have a dedicated lounge area for passengers with delayed flights, offering complimentary snacks and beverages. You can proceed to Gate 15 for further assistance. We will provide regular updates on the flight status."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Theo quy định của hãng, đối với các chuyến bay bị hoãn trên 3 tiếng do lỗi kỹ thuật, quý khách sẽ được hỗ trợ bữa ăn và tùy trường hợp có thể được sắp xếp chỗ nghỉ. Để biết chi tiết về chính sách bồi thường và các quyền lợi khác, quý khách vui lòng giữ lại vé và liên hệ với bộ phận chăm sóc khách hàng trực tuyến sau chuyến đi. Chúng tôi rất tiếc về sự cố này.",
+      "branches": [
+        {
+          "keywords": [
+            "hiểu rồi",
+            "cảmơn",
+            "tôi sẽlàm theo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "vậy còn đổi chuyến",
+            "có thể đổi không"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "hànhlý",
+            "valy"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "thật không côngbằng",
+            "quáít"
+          ],
+          "nextTurnId": "t4c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "According to airline regulations, for flights delayed over 3 hours due to technical issues, passengers will be provided with meals and, in some cases, accommodation. For details on the compensation policy and other entitlements, please retain your ticket and contact our online customer service department after your trip. We deeply regret this incident."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Quý khách không cần lo lắng về hành lý ký gửi. Toàn bộ hành lý đã được kiểm soát an ninh và sẽ được chuyển lên chuyến bay thay thế của quý khách hoặc giữ an toàn tại kho của hãng nếu quý khách chọn chờ đợi. Chúng tôi sẽ đảm bảo hành lý của quý khách đến đúng nơi.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tôi yên tâm rồi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tôi sẽ đếnquầy",
+            "đổi chuyến"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You do not need to worry about checked luggage. All luggage has undergone security screening and will be transferred to your alternative flight or kept safely in the airline's storage if you choose to wait. We will ensure your luggage reaches its correct destination."
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Chúng tôi hiểu sự thất vọng của quý khách và xin lỗi một lần nữa vì trải nghiệm không mong muốn này. Chúng tôi luôn cố gắng mang lại dịch vụ tốt nhất và sẽ ghi nhận mọi phản hồi để cải thiện trong tương lai. Rất mong quý khách thông cảm cho sự cố ngoài ý muốn này.",
+      "branches": [
+        {
+          "keywords": [
+            "thôiđược",
+            "được rồi",
+            "tôi sẽ chấpnhận"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "vậy tôi nênlàm gì",
+            "tôi phải điđâu"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We understand your disappointment and apologize once again for this undesirable experience. We always strive to provide the best service and will take note of all feedback for future improvement. We sincerely hope for your understanding regarding this unforeseen incident."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Cảm ơn quý khách đã thông cảm và hợp tác. Chúc quý khách có một chuyến đi an toàn và thuận lợi, dù có chút trục trặc ban đầu.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Cảm ơn quý khách đã thông cảm và hợp tác. (Cam on quy khach da thong cam va hop tac - Thank you for your understanding and cooperation.) Chúc quý khách có một chuyến đi an toàn và thuận lợi, dù có chút trục trặc ban đầu. (We wish you a safe and pleasant journey, despite the initial inconvenience.)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa rõ ý quý khách. Phiền quý khách nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch your meaning. Could you please repeat that?"
+    }
+  }
+}

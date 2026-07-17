@@ -1,0 +1,179 @@
+{
+  "id": "dlg-it-shopping-clothes-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Comprare vestiti",
+  "opening": "Buongiorno! Posso aiutarla?",
+  "startTurnId": "t1_greeting",
+  "turns": {
+    "t1_greeting": {
+      "id": "t1_greeting",
+      "prompt": "Buongiorno! Posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "cerco",
+            "vorrei",
+            "compro"
+          ],
+          "nextTurnId": "t2_whatitem"
+        },
+        {
+          "keywords": [
+            "stoguardando",
+            "soloaguardare",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwon-johr-noh! Pohs-soh ah-yoo-TAR-lah? — Good morning! Can I help you?"
+    },
+    "t2_whatitem": {
+      "id": "t2_whatitem",
+      "prompt": "Certo! Che cosa cerca?",
+      "branches": [
+        {
+          "keywords": [
+            "maglietta",
+            "camicia",
+            "pantaloni",
+            "vestito",
+            "giacca",
+            "gonna"
+          ],
+          "nextTurnId": "t3_itemfound"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "CHER-toh! Keh KOH-zah CHER-kah? — Certainly! What are you looking for?"
+    },
+    "t3_itemfound": {
+      "id": "t3_itemfound",
+      "prompt": "Abbiamo questo modello. Che taglia o colore desidera?",
+      "branches": [
+        {
+          "keywords": [
+            "s",
+            "m",
+            "l",
+            "xl",
+            "taglia",
+            "media",
+            "piccola",
+            "grande"
+          ],
+          "nextTurnId": "t4_tryon"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ab-BYAH-moh KWES-toh moh-DEL-loh. Keh TAH-l’yah oh koh-LOH-reh deh-SEE-deh-rah? — We have this model. What size or color would you like?"
+    },
+    "t4_tryon": {
+      "id": "t4_tryon",
+      "prompt": "Certo. La cabina di prova è lì in fondo. Le va bene?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "prendo",
+            "compro",
+            "perfetto"
+          ],
+          "nextTurnId": "t5_checkout"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonvabene",
+            "troppopiccolo",
+            "troppogrande",
+            "un'altrataaglia",
+            "unaltrocolore"
+          ],
+          "nextTurnId": "t3_itemfound"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "cippnso"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "CHER-toh. Lah kah-BEE-nah dee PRO-vah eh LEE een FON-doh. Leh vah BEH-neh? — Certainly. The changing room is at the back. Is it okay for you?"
+    },
+    "t5_checkout": {
+      "id": "t5_checkout",
+      "prompt": "Ottimo! Può pagare alla cassa. È la prima a destra.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "dovè",
+            "dovelacassa"
+          ],
+          "nextTurnId": "t5_checkout"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "OT-tee-moh! Pwoh pah-GAH-reh AL-lah KAS-sah. Eh lah PREE-mah ah DES-trah. — Great! You can pay at the checkout. It's the first one on the right."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi, potrebbe ripetere? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_greeting"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting",
+      "promptTranslation": "SKOO-zee, poh-TREB-beh ree-PEH-teh-reh? Non oh kah-PEE-toh BEH-neh. — Excuse me, could you repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "GRAH-tsee-eh eh ahr-ree-veh-DER-chee! — Thank you and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

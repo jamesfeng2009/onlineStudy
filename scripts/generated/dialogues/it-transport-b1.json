@@ -1,0 +1,144 @@
+{
+  "id": "dlg-it-transport-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "In Stazione: Biglietti e Informazioni",
+  "opening": "Buongiorno! Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "biglietto",
+            "comprare",
+            "prendere"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! (Buon-Jor-no!) — Good morning! Come posso aiutarla oggi? (Ko-me pos-so a-yu-tar-la od-ji?) — How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo. Per che destinazione le serve il biglietto, o di quale linea vorrebbe informazioni?",
+      "branches": [
+        {
+          "keywords": [
+            "roma",
+            "milano",
+            "firenze"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "linea10",
+            "bus10",
+            "tram5"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo. (Cher-to) — Certainly. Per che destinazione le serve il biglietto, o di quale linea vorrebbe informazioni? (Per ke des-ti-na-tsio-ne le ser-ve il bee-lyet-to, o di kwa-le lee-ne-a vor-reb-be in-for-ma-tsio-ni?) — For what destination do you need the ticket, or about which line would you like information?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Un biglietto per quella destinazione, perfetto. Vuole un biglietto di sola andata o andata e ritorno?",
+      "branches": [
+        {
+          "keywords": [
+            "andata",
+            "soloandata"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A ticket for that destination, perfect. Do you want a one-way or round-trip ticket?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La linea 10 è quella che va verso il centro. Cerca informazioni sugli orari o sulle fermate?",
+      "branches": [
+        {
+          "keywords": [
+            "orari",
+            "quando"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Line 10 is the one that goes towards the city center. Are you looking for information on schedules or stops?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Non ci sono ritardi previsti al momento e il prossimo mezzo è tra 15 minuti. C'è qualcos'altro in cui posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nientaltro",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No delays are expected at the moment and the next vehicle is in 15 minutes. Is there anything else I can help you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, (Mee scoo-zee) — Excuse me, non ho capito. (Non o ka-pee-to) — I didn't understand. Potrebbe ripetere, per favore? (Po-treb-be ree-peh-te-re, per fa-vo-re?) — Could you please repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto! Buona giornata e buon viaggio!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect! Have a good day and a good trip!",
+      "isTerminal": true
+    }
+  }
+}

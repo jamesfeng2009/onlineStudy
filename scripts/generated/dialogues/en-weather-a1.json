@@ -1,0 +1,159 @@
+{
+  "id": "dlg-en-weather-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Weather Talk",
+  "opening": "Hello! How is the weather today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How is the weather today?",
+      "branches": [
+        {
+          "keywords": [
+            "sunny",
+            "hot",
+            "warm",
+            "good",
+            "nice"
+          ],
+          "nextTurnId": "t2_sunny_plan"
+        },
+        {
+          "keywords": [
+            "rainy",
+            "cold",
+            "cloudy",
+            "bad"
+          ],
+          "nextTurnId": "t3_bad_weather_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! — Hello! How is the weather today? — What is the weather like now?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Can you say that again, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? — Pardon me? Can you say that again, please? — Please repeat what you said."
+    },
+    "t2_sunny_plan": {
+      "id": "t2_sunny_plan",
+      "prompt": "Oh, nice! What do you like to do on a sunny day?",
+      "branches": [
+        {
+          "keywords": [
+            "park",
+            "walk",
+            "outside",
+            "play"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, nice! — Oh, good! What do you like to do? — What activities do you prefer? On a sunny day? — When the sun is shining?"
+    },
+    "t3_bad_weather_info": {
+      "id": "t3_bad_weather_info",
+      "prompt": "Oh, I see. Is it cold, or is it rainy?",
+      "branches": [
+        {
+          "keywords": [
+            "cold"
+          ],
+          "nextTurnId": "t4_cold_activity"
+        },
+        {
+          "keywords": [
+            "rainy",
+            "rain"
+          ],
+          "nextTurnId": "t5_rainy_activity"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, I see. — I understand. Is it cold? — Is the temperature low? Or is it rainy? — Is it raining?"
+    },
+    "t4_cold_activity": {
+      "id": "t4_cold_activity",
+      "prompt": "It is cold. Do you stay home?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "home",
+            "stay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It is cold. — The air temperature is low. Do you stay home? — Do you remain inside your house?"
+    },
+    "t5_rainy_activity": {
+      "id": "t5_rainy_activity",
+      "prompt": "It is rainy. Do you use an umbrella?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "umbrella"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It is rainy. — Water is falling from the sky. Do you use an umbrella? — Do you hold a device that protects you from rain?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Okay, thank you! Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, thank you! — Alright, I appreciate it! Have a good day! — I wish you a pleasant day!",
+      "isTerminal": true
+    }
+  }
+}

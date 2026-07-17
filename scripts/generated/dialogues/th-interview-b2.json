@@ -1,0 +1,133 @@
+{
+  "id": "dlg-th-interview-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "การสัมภาษณ์งานเบื้องต้น",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่การสัมภาษณ์งานนะครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "ก่อนอื่น รบกวนช่วยแนะนำตัวเองสั้นๆ ให้ฟังหน่อยได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "การศึกษา",
+            "เรียนจบ",
+            "จบใหม่"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "จุดแข็ง",
+            "ความสามารถ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̀x n xụ̄̀n, rbx kwn ch̀wy næa nả tạw xeng s̄â n s̄â n h̄ı̂ fạng h̄ǹxy dâ y mị̂ khrạb/khá? — First, could you please briefly introduce yourself?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "น่าสนใจมากครับ/ค่ะ จากประสบการณ์ที่คุณเล่ามา คุณคิดว่าอะไรคือความสำเร็จที่โดดเด่นที่สุดของคุณครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "โปรเจกต์",
+            "งานสำเร็จ",
+            "ประสบความสำเร็จ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâ s̄n cı māk khrạb/khà. Cāk pra s̄op kārṇ thī̀ khuṇ lâw mā, khuṇ khid wâ xarị khụ̄x khwām s̄ả re c̄h thī̀ do d de ̀n thī̀ s̄ùd k̄hx ng khuṇ khrạb/khá? — That's very interesting. Based on your experience, what do you consider your most significant achievement?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ยอดเยี่ยมเลยครับ/ค่ะ ถ้าอย่างนั้น ขอถามถึงเรื่องจุดแข็งและจุดอ่อนบ้างครับ/ค่ะ คุณคิดว่าจุดแข็งอะไรที่สำคัญที่สุดสำหรับตำแหน่งนี้ และมีจุดอ่อนอะไรที่คุณกำลังพัฒนาอยู่บ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "จุดแข็ง",
+            "จุดอ่อน",
+            "พัฒนา"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yx d yêym ley khrạb/khà. T̄ĥā yàng nắn, k̄hx t̄hām t̄hụng rụ̄̀x ng cud k̄hæ̆ng læa cud xx̀n bâ ng khrạb/khà. Khuṇ khid wâ cud k̄hæ̆ng xarị thī̀ s̄ả khạỵ thī̀ s̄ùd s̄ả h̄rạb tả h̄æǹng nī̂, læa mī cud xx̀n xarị thī̀ khuṇ kả lạng phát t̄hnā xỳū bâ ng khrạb/khá? — Excellent. In that case, let's talk about strengths and weaknesses. What do you think is your most important strength for this position, and what weakness are you currently working on improving?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ขอบคุณสำหรับคำตอบที่ตรงไปตรงมานะครับ/คะ สุดท้ายนี้ มีอะไรที่คุณอยากจะถามเพิ่มเติมเกี่ยวกับตำแหน่งงานหรือบริษัทของเราไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "คำถาม",
+            "อยากถาม",
+            "อยากรู้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̄hx bkhuṇ s̄ả h̄rạb kả khả txb thī̀ tro ng pị tro ng mā ná khrạb/khá. S̄ùd tĥāy nī̂, mī xarị thī̀ khuṇ yā k cạa t̄hām pheìm teim keī̀y w kạb tả h̄æǹng ngān h̄rụ̄x bris̄ʹạth k̄hx ng rao mị̂ khrạb/khá? — Thank you for your straightforward answers. Finally, do you have any further questions about this position or our company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ รบกวนช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hx t̄hōt ná khrạb/khá. Rọb kwn ch̀wy phūd xīk khrậ ng dâ y mị̂ khrạb/khá? — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ ทางเราจะติดต่อกลับไปภายในหนึ่งสัปดาห์นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "K̄hx bkhuṇ māk khrạb/khà. Tāng rao cạa tid t̀x klạb pị p̣hāy nı h̄nụ̀ng s̄ạp dā h̄n̂ā ná khrạb/khá. — Thank you very much. We will contact you within one week.",
+      "isTerminal": true
+    }
+  }
+}

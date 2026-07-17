@@ -1,0 +1,230 @@
+{
+  "id": "dlg-vi-weather-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Trò chuyện về thời tiết",
+  "opening": "Chào bạn! Thời tiết hôm nay thế nào nhỉ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Thời tiết hôm nay thế nào nhỉ?",
+      "branches": [
+        {
+          "keywords": [
+            "nắngđẹp",
+            "nóng",
+            "nắngnóng"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mưa",
+            "mưarào",
+            "ẩmuớt"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "mátmẻ",
+            "dễchịu",
+            "se_lạnh"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "thường",
+            "bìnhthường",
+            "khôngtệ",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn! — Hi there! Thời tiết hôm nay thế nào nhỉ? — How's the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ừ nhỉ, trời nắng đẹp nhưng cũng khá oi bức. Nghe nói chiều nay có khả năng có mưa rào đấy, bạn có kế hoạch gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "đi_chơi",
+            "ngoài_trời",
+            "đi_dạo",
+            "tham_quan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ở_nhà",
+            "trong_nhà",
+            "làm_việc",
+            "nghỉ_ngơi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ừ nhỉ, trời nắng đẹp nhưng cũng khá oi bức. — Yeah, it's sunny and nice but quite muggy. Nghe nói chiều nay có khả năng có mưa rào đấy, bạn có kế hoạch gì không? — I heard there's a chance of a shower this afternoon, do you have any plans?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Đúng là thời tiết thất thường quá. Mấy hôm nay cứ mưa mãi, làm mình cảm thấy hơi u ám. Bạn có thấy vậy không?",
+      "branches": [
+        {
+          "keywords": [
+            "u_ám",
+            "buồn",
+            "ảnh_hưởng",
+            "đồng_ý"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đúng là thời tiết thất thường quá. — The weather is really unpredictable. Mấy hôm nay cứ mưa mãi, làm mình cảm thấy hơi u ám. — It's been raining for days, making me feel a bit gloomy. Bạn có thấy vậy không? — Do you feel the same way?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ôi, nghe thích quá! Mình thì lại thích tiết trời mát mẻ như thế này hơn là nắng nóng. Tiết trời này rất lý tưởng để làm gì nhỉ?",
+      "branches": [
+        {
+          "keywords": [
+            "đi_chơi",
+            "cafe",
+            "ngoài_trời",
+            "dã_ngoại"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "đọc_sách",
+            "ngủ",
+            "làm_việc",
+            "ở_nhà"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ôi, nghe thích quá! — Oh, that sounds lovely! Mình thì lại thích tiết trời mát mẻ như thế này hơn là nắng nóng. — I prefer cool weather like this over hot sun. Tiết trời này rất lý tưởng để làm gì nhỉ? — What's this kind of weather ideal for?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vậy thì bạn nên cập nhật dự báo thời tiết thường xuyên nhé. Hy vọng cơn mưa không làm ảnh hưởng đến kế hoạch của bạn. Dù sao thì, chúng ta cũng không thể thay đổi được thời tiết, chỉ có thể thích nghi thôi, đúng không?",
+      "branches": [
+        {
+          "keywords": [
+            "đúng_vậy",
+            "thích_nghi",
+            "chuẩn_bị",
+            "chấp_nhận"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy thì bạn nên cập nhật dự báo thời tiết thường xuyên nhé. — In that case, you should check the weather forecast regularly. Hy vọng cơn mưa không làm ảnh hưởng đến kế hoạch của bạn. — I hope the rain won't affect your plans. Dù sao thì, chúng ta cũng không thể thay đổi được thời tiết, chỉ có thể thích nghi thôi, đúng không? — Anyway, we can't change the weather, we can only adapt, right?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Đúng vậy, có lẽ ở nhà đọc sách hoặc xem phim là lựa chọn tuyệt vời trong những ngày thời tiết khó chịu. Dù sao thì, chúng ta cũng không thể thay đổi được thời tiết, chỉ có thể thích nghi thôi, đúng không?",
+      "branches": [
+        {
+          "keywords": [
+            "đúng_vậy",
+            "thích_nghi",
+            "chuẩn_bị",
+            "chấp_nhận"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đúng vậy, có lẽ ở nhà đọc sách hoặc xem phim là lựa chọn tuyệt vời trong những ngày thời tiết khó chịu. — That's right, maybe staying home to read or watch movies is a great choice on unpleasant weather days. Dù sao thì, chúng ta cũng không thể thay đổi được thời tiết, chỉ có thể thích nghi thôi, đúng không? — Anyway, we can't change the weather, we can only adapt, right?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Mình hiểu mà. Thời tiết ảnh hưởng đến tâm trạng khá nhiều. Hy vọng trời sẽ sớm quang đãng để chúng ta có thể tận hưởng những ngày đẹp trời hơn.",
+      "branches": [
+        {
+          "keywords": [
+            "hy_vọng",
+            "sớm_quang_đãng",
+            "tâm_trạng",
+            "đồng_ý"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mình hiểu mà. — I understand. Thời tiết ảnh hưởng đến tâm trạng khá nhiều. — Weather affects mood quite a bit. Hy vọng trời sẽ sớm quang đãng để chúng ta có thể tận hưởng những ngày đẹp trời hơn. — I hope it clears up soon so we can enjoy better weather days."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, mình chưa nghe rõ lắm. Bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, mình chưa nghe rõ lắm. — Sorry, I didn't quite catch that. Bạn có thể nói lại không? — Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã trò chuyện! Chúc bạn một ngày tốt lành nhé!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn đã trò chuyện! — Thanks for the chat! Chúc bạn một ngày tốt lành nhé! — Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

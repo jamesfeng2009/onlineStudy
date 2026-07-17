@@ -1,0 +1,168 @@
+{
+  "id": "dlg-vi-taxi-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Cuộc trò chuyện taxi: Thảo luận lộ trình và giá cước",
+  "opening": "Chào anh/chị. Anh/chị muốn đi đâu ạ? Có vẻ trời sắp mưa rồi.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị muốn đi đâu ạ? Có vẻ trời sắp mưa rồi.",
+      "branches": [
+        {
+          "keywords": [
+            "sânbay",
+            "tânsơnnhất",
+            "sânbaytânsơnnhất"
+          ],
+          "nextTurnId": "t2_airport"
+        },
+        {
+          "keywords": [
+            "kháchsạn",
+            "trungtâm",
+            "địachỉ",
+            "đến"
+          ],
+          "nextTurnId": "t2_other"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao anh/chi) — Hello sir/madam. Anh/chị muốn đi đâu ạ (Anh/chi muon di dau a)? — Where would you like to go? Có vẻ trời sắp mưa rồi. — It looks like it's about to rain."
+    },
+    "t2_airport": {
+      "id": "t2_airport",
+      "prompt": "Vâng, sân bay Tân Sơn Nhất ạ. Hiện tại tuyến đường ra sân bay đang có vẻ hơi kẹt xe do giờ cao điểm. Anh/chị muốn đi đường vành đai hay đi xuyên qua trung tâm để xem xét thời gian?",
+      "branches": [
+        {
+          "keywords": [
+            "vànhđai",
+            "đườngvànhđai",
+            "tránhkẹt",
+            "đỡtắc",
+            "đườngnào",
+            "anhthấy",
+            "tùyanh"
+          ],
+          "nextTurnId": "t3_fare_estimate"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, sân bay Tân Sơn Nhất ạ (Vang, san bay Tan Son Nhat a). — Yes, Tan Son Nhat Airport. Hiện tại tuyến đường ra sân bay đang có vẻ hơi kẹt xe do giờ cao điểm (Hien tai tuyen duong ra san bay dang co ve hoi ket xe do gio cao diem). — Currently, the route to the airport seems a bit congested due to rush hour. Anh/chị muốn đi đường vành đai hay đi xuyên qua trung tâm để xem xét thời gian? — Would you prefer the bypass or going through the city center to consider the time?"
+    },
+    "t2_other": {
+      "id": "t2_other",
+      "prompt": "Vâng, anh/chị vui lòng cho tôi xin địa chỉ cụ thể hơn một chút được không ạ? Để tôi tiện tra cứu lộ trình tối ưu nhất và ước lượng giá cước.",
+      "branches": [
+        {
+          "keywords": [
+            "đường",
+            "số",
+            "địachỉ",
+            "tạisố",
+            "khoảngbao",
+            "ướcchừng",
+            "đồnghồ"
+          ],
+          "nextTurnId": "t3_fare_estimate"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang) — Yes, anh/chị vui lòng cho tôi xin địa chỉ cụ thể hơn một chút được không ạ (anh/chi vui long cho toi xin dia chi cu the hon mot chut duoc khong a)? — Could you please give me a slightly more specific address? Để tôi tiện tra cứu lộ trình tối ưu nhất và ước lượng giá cước. — So I can easily look up the optimal route and estimate the fare."
+    },
+    "t3_fare_estimate": {
+      "id": "t3_fare_estimate",
+      "prompt": "Được thôi, theo lộ trình dự kiến, chuyến đi sẽ mất khoảng 30-45 phút và giá cước dao động từ 250 đến 350 nghìn đồng. Anh/chị có muốn chốt giá này hoặc đi theo đồng hồ không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "chốtgiá",
+            "giánày",
+            "đồngý",
+            "ok",
+            "được"
+          ],
+          "nextTurnId": "t4_depart"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được thôi (Duoc thoi), — Alright, theo lộ trình dự kiến, chuyến đi sẽ mất khoảng 30-45 phút và giá cước dao động từ 250 đến 350 nghìn đồng. — according to the estimated route, the trip will take about 30-45 minutes and the fare will range from 250 to 350 thousand VND. Anh/chị có muốn chốt giá này hoặc đi theo đồng hồ không ạ? — Would you like to fix this price or go by the meter?"
+    },
+    "t4_depart": {
+      "id": "t4_depart",
+      "prompt": "Tuyệt vời. Vậy mình khởi hành luôn nhé. Anh/chị có hành lý cần giúp không hay cứ để đồ phía sau ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "khôngcó",
+            "tựmang",
+            "đểsau",
+            "điđi",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời (Tuyet voi). — Great. Vậy mình khởi hành luôn nhé (Vay minh khoi hanh luon nhe). — So let's depart right away. Anh/chị có hành lý cần giúp không hay cứ để đồ phía sau ạ? — Do you have any luggage that needs help, or should we just leave it in the back?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể vui lòng nhắc lại hoặc nói rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "có",
+            "vâng",
+            "làmơn"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi), — Excuse me, tôi chưa nghe rõ. — I didn't hear clearly. Anh/chị có thể vui lòng nhắc lại hoặc nói rõ hơn được không ạ? — Could you please repeat or speak more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Đến nơi rồi ạ. Tổng cộng là 320 nghìn đồng. Cảm ơn anh/chị đã sử dụng dịch vụ của chúng tôi và chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Đến nơi rồi ạ (Den noi roi a). — We've arrived. Tổng cộng là 320 nghìn đồng. — The total is 320,000 VND. Cảm ơn anh/chị đã sử dụng dịch vụ của chúng tôi và chúc anh/chị một ngày tốt lành! — Thank you for using our service and wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

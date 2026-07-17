@@ -1,0 +1,261 @@
+{
+  "id": "dlg-fr-weather-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Discuter de la météo",
+  "opening": "Bonjour ! Comment allez-vous ? Quel temps fait-il aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment allez-vous ? Quel temps fait-il aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "beau",
+            "soleil",
+            "chaud",
+            "doux"
+          ],
+          "nextTurnId": "t2_mood_good"
+        },
+        {
+          "keywords": [
+            "pleut",
+            "nuageux",
+            "mauvais",
+            "vent",
+            "gris"
+          ],
+          "nextTurnId": "t2_mood_bad"
+        },
+        {
+          "keywords": [
+            "froid",
+            "gel",
+            "neige"
+          ],
+          "nextTurnId": "t2_mood_cold"
+        },
+        {
+          "keywords": [
+            "ça",
+            "vas",
+            "bien",
+            "pasmal",
+            "fatigué",
+            "saispas",
+            "trop"
+          ],
+          "nextTurnId": "t1_rephrase_weather"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! (Bohn-zhoor!) Comment allez-vous ? (Koh-moh tah-lay voo?) Quel temps fait-il aujourd'hui ? (Kell tahn fay-teel oh-zhoor-dwee?) — Hello! How are you? What's the weather like today?"
+    },
+    "t1_rephrase_weather": {
+      "id": "t1_rephrase_weather",
+      "prompt": "D'accord. Mais la météo alors ? Quel temps fait-il aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "beau",
+            "soleil",
+            "chaud",
+            "doux"
+          ],
+          "nextTurnId": "t2_mood_good"
+        },
+        {
+          "keywords": [
+            "pleut",
+            "nuageux",
+            "mauvais",
+            "vent",
+            "gris"
+          ],
+          "nextTurnId": "t2_mood_bad"
+        },
+        {
+          "keywords": [
+            "froid",
+            "gel",
+            "neige"
+          ],
+          "nextTurnId": "t2_mood_cold"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. But what about the weather then? What's the weather like today?"
+    },
+    "t2_mood_good": {
+      "id": "t2_mood_good",
+      "prompt": "Ah, c'est super ! J'adore quand il fait beau. Vous préférez quel temps en général ?",
+      "branches": [
+        {
+          "keywords": [
+            "chaud",
+            "soleil",
+            "été",
+            "vacances"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, c'est super ! (Ah, seh soo-pair!) I love it when the weather is nice. What kind of weather do you generally prefer?"
+    },
+    "t2_mood_bad": {
+      "id": "t2_mood_bad",
+      "prompt": "Oh, dommage ! Le mauvais temps, ce n'est pas toujours agréable. Et vous, vous préférez quel temps ?",
+      "branches": [
+        {
+          "keywords": [
+            "chaud",
+            "soleil",
+            "été"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, that's a pity! Bad weather isn't always pleasant. And you, what weather do you prefer?"
+    },
+    "t2_mood_cold": {
+      "id": "t2_mood_cold",
+      "prompt": "Brrr, il fait froid ! C'est difficile de sortir quand il fait froid. Vous aimez ça, ou vous préférez un temps plus doux ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'aime",
+            "neige",
+            "hiver"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Brrr, il fait froid ! (Brrr, eel fay frwah!) It's hard to go out when it's cold. Do you like it, or do you prefer milder weather?"
+    },
+    "t3_plans": {
+      "id": "t3_plans",
+      "prompt": "D'accord, je comprends. Et pour aujourd'hui, avec ce temps, avez-vous des projets ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "promenade",
+            "parc",
+            "sport",
+            "dehors",
+            "terrasse",
+            "extérieur"
+          ],
+          "nextTurnId": "t4_closing_outdoor"
+        },
+        {
+          "keywords": [
+            "non",
+            "maison",
+            "rien",
+            "repos",
+            "lire",
+            "travail",
+            "intérieur"
+          ],
+          "nextTurnId": "t4_closing_indoor"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I understand. And for today, with this weather, do you have any plans?"
+    },
+    "t4_closing_outdoor": {
+      "id": "t4_closing_outdoor",
+      "prompt": "Génial ! Profitez bien de cette journée et de vos activités. J'espère que le temps sera parfait pour vous.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great! Enjoy your day and your activities. I hope the weather will be perfect for you."
+    },
+    "t4_closing_indoor": {
+      "id": "t4_closing_indoor",
+      "prompt": "C'est bien aussi de rester au calme et de se reposer. L'important est d'être à l'aise. Bonne journée !",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's also good to stay calm and rest. The important thing is to be comfortable. Have a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup pour cette discussion sur la météo ! Passez une excellente fin de journée. Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for this weather chat! Have a great rest of your day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

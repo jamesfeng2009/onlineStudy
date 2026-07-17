@@ -1,0 +1,147 @@
+{
+  "id": "dlg-es-taxi-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "En el taxi",
+  "opening": "¡Hola! ¿A dónde vamos hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿A dónde vamos hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "alojamiento"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) — Hello! ¿A dónde vamos hoy? (Ah DON-deh VAH-mos OY?) — Where are we going today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. ¿Me puede dar la dirección exacta, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "calle",
+            "avenida",
+            "número",
+            "piso"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido (En-ten-DEE-doh) — Understood. ¿Me puede dar la dirección exacta, por favor? (Meh POO-eh-deh dar la dee-rek-SYON ek-SAK-tah, por fah-VOR?) — Can you give me the exact address, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vale. Hasta allí son unos diez euros y tardaremos unos quince minutos, sin mucho tráfico. ¿Le parece bien?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "bien",
+            "perfecto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vale (VAH-leh) — Okay. Hasta allí son unos diez euros y tardaremos unos quince minutos, sin mucho tráfico (As-tah ah-YEE son OO-nos DYEEZ EH-oo-ros ee tar-dah-REH-mos OO-nos KEEN-seh mee-NOO-tos, seen MOO-cho TRA-fee-ko). ¿Le parece bien? (Leh pah-REH-seh BYEN?) — It's about 10 euros and we'll take about 15 minutes, without much traffic. Does that seem okay to you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ya casi llegamos a su destino. ¿Cómo prefiere pagar?",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "dinero"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ya casi llegamos (Yah KAH-see yeh-GAH-mos) — We're almost there. a su destino. ¿Cómo prefiere pagar? (ah soo des-TEE-no. KOH-mo preh-FYEH-reh pah-GAR?) — at your destination. How do you prefer to pay?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Aquí estamos. Son 10 euros. ¿Necesita cambio?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "cambio"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aquí estamos (Ah-KEE es-TAH-mos) — Here we are. Son diez euros (Son DYEEZ EH-oo-ros) — It's 10 euros. ¿Necesita cambio? (Neh-seh-SEE-tah KAHM-byoh?) — Do you need change?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso, por favor? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that, please? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. Muchas gracias y que tenga un buen día. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay. Thank you very much and have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

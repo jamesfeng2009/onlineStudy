@@ -1,0 +1,168 @@
+{
+  "id": "dlg-th-small-talk-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "การสนทนาทั่วไป",
+  "opening": "สวัสดีครับ/ค่ะ สุดสัปดาห์ที่ผ่านมาเป็นยังไงบ้างครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ สุดสัปดาห์ที่ผ่านมาเป็นยังไงบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดี",
+            "สนุก",
+            "เยี่ยม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เหนื่อย",
+            "เฉยๆ",
+            "พักผ่อน",
+            "สบายๆ"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka — Hello. Sood-sap-daa tee paan maa pen yang-ngai baang krap/ka? — How was your past weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ดีจังเลยครับ/ค่ะ! คุณทำอะไรมาบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เที่ยว",
+            "ไปเที่ยว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ดูหนัง",
+            "อ่านหนังสือ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ทำอาหาร",
+            "เล่นกีฬา",
+            "ออกกำลังกาย"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee jang loei krap/ka! — That's great! Khun tam a-rai maa baang krap/ka? — What did you do?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "อ๋อเหรอครับ/คะ? หวังว่าสัปดาห์นี้จะดีขึ้นนะครับ/คะ คุณมีงานอดิเรกอะไรบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดูหนัง",
+            "อ่านหนังสือ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ทำอาหาร",
+            "ทำขนม"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "เล่นกีฬา",
+            "ออกกำลังกาย"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Orr roe krap/ka? — Oh really? Wang waa sap-daa nee ja dee keun na krap/ka — I hope this week gets better. Khun mee ngaan a-di-rek a-rai baang krap/ka? — What are your hobbies?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "น่าสนใจจังเลยครับ/ค่ะ! ไปเที่ยวที่ไหนมา หรือชอบเล่นกีฬาอะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทะเล",
+            "ภูเขา",
+            "ในเมือง",
+            "ต่างประเทศ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Naa son-jai jang loei krap/ka! — That's very interesting! Pai tiao tee nai maa rue chorb len gee-laa a-rai krap/ka? — Where did you go or what sport do you like to play?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ดูหนัง/อ่านหนังสือเรื่องอะไรมาครับ/คะ? น่าสนใจไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สนุก",
+            "ตลก",
+            "ดีมาก",
+            "น่ารัก"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Doo nang/aan nang-sue rueang a-rai maa krap/ka? — What movie/book did you watch/read? Naa son-jai mai krap/ka? — Was it interesting?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "คุณชอบทำอาหารอะไรเป็นพิเศษครับ/คะ? ผม/ดิฉันชอบทานอาหารไทยมากครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "อาหารไทย",
+            "ผัดไทย",
+            "แกงเขียวหวาน",
+            "ต้มยำ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun chorb tam aa-haan a-rai pen pi-set krap/ka? — What kind of food do you especially like to cook? Pom/di-chan chorb taan aa-haan Thai maak krap/ka — I really like to eat Thai food."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีจังเลยครับ/ค่ะ! วันนี้คุยสนุกมากเลยครับ/ค่ะ ไว้คุยกันใหม่นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dee jang loei krap/ka! — That's great! Wan-nee kui sanook maak loei krap/ka — It was fun talking today. Wai kui gan mai na krap/ka — Let's talk again soon!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-tode krap/ka — Excuse me. Poot eek krang dai mai krap/ka? — Could you please say that again?"
+    }
+  }
+}

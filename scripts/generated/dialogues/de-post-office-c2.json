@@ -1,0 +1,243 @@
+{
+  "id": "dlg-de-post-office-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Auf der Post – Ein Paket versenden",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "senden",
+            "verschicken"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "briefmarken",
+            "kaufen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "frage",
+            "information",
+            "auskunft"
+          ],
+          "nextTurnId": "t-inquiry"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gooten Tahg! Vee kahn ihkh Ee-nen beh-hilf-likh zyn? — Good day! How can I assist you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gerne, wohin soll's denn gehen und soll es als Einschreiben oder mit Sendungsverfolgung verschickt werden? Das macht preislich einen Unterschied, wissen Sie ja.",
+      "branches": [
+        {
+          "keywords": [
+            "international",
+            "ausland",
+            "einschreiben",
+            "verfolgung"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "national",
+            "inland",
+            "standard",
+            "normal"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "preise",
+            "kosten",
+            "teuer"
+          ],
+          "nextTurnId": "t-inquiry"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gehr-neh, voh-hin zol's den geh-hen oont zol es als Ayn-shry-ben oh-der mit Zen-doongs-fer-fol-goong fer-shikt vehr-den? Das mahkt pry-slikh ay-nen Oon-ter-sheet, vis-sen Zee yah. — Certainly, where should it go and should it be sent as registered mail or with tracking? That makes a price difference, as you know."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, Briefmarken. Für Postkarten oder Briefe, und sollen die ins In- oder Ausland gehen? Wir haben da eine ganz ansehnliche Auswahl, auch für Sammler, falls das von Interesse ist.",
+      "branches": [
+        {
+          "keywords": [
+            "postkarten",
+            "ausland"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "sammler",
+            "motivmarken"
+          ],
+          "nextTurnId": "t-inquiry"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, Breef-mar-ken. Fyoor Post-kar-ten oh-der Bree-feh, oont zol-len dee ins In- oh-der Ows-lant geh-hen? Veer hah-ben dah ay-neh gants ahn-zehn-likh-eh Ows-wahl, owkh fyoor Zam-ler, fahlss das fon In-ter-res-seh ist. — Ah, stamps. For postcards or letters, and should they go domestically or internationally? We have quite a considerable selection, also for collectors, if that's of interest."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Für den internationalen Versand als Einschreiben benötigen wir noch das Zollformular. Haben Sie das bereits ausgefüllt oder benötigen Sie dabei Hilfe? Da müssen die Inhalte ganz genau deklariert werden, das ist unerlässlich.",
+      "branches": [
+        {
+          "keywords": [
+            "ausgefüllt",
+            "fertig",
+            "erledigt"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hilfe",
+            "brauche",
+            "helfen"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fyoor den in-ter-naht-syoh-nahl-en Fer-zand als Ayn-shry-ben beh-nyoh-tee-gen veer nokh das Tsoll-for-moo-lar. Hah-ben Zee das beh-ryts ows-geh-fyllt oh-der beh-nyoh-tee-gen Zee dah-by Hil-feh? Dah myoo-sen dee In-halt-eh gants geh-now deh-klah-ree-ehrt vehr-den, das ist oon-er-less-likh. — For international registered mail, we still need the customs form. Have you already filled it out or do you need help with it? The contents must be declared very precisely, that is essential."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "In Ordnung. Das macht dann 12,50 Euro. Wie möchten Sie bezahlen? Bar oder mit Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "karte",
+            "ec-karte",
+            "kreditkarte"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Or-dnoong. Das mahkt dann twölf Fyoonf-tsikh Oy-roh. Vee myoosh-ten Zee beh-tsah-len? Bahr oh-der mit Kar-teh? — Alright. That will be 12.50 Euros. How would you like to pay? Cash or card?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Selbstverständlich helfe ich Ihnen gerne dabei. Es ist wichtig, dass alle Angaben korrekt sind, um Verzögerungen beim Zoll zu vermeiden. Was genau bereitet Ihnen Schwierigkeiten?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "bitte"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zelbst-fer-shtend-likh hel-feh ihkh Ee-nen gehr-neh dah-by. Es ist vikh-tikh, das al-leh Ahn-gah-ben kor-rekt zint, oom Fer-tsyoh-geh-roo-gen bym Tsoll tsoo fer-my-den. Vas geh-now beh-ry-tet Ee-nen Shvee-rig-ky-ten? — Of course, I'd be glad to help you with that. It is important that all information is correct to avoid delays at customs. What exactly is causing you difficulties?"
+    },
+    "t-inquiry": {
+      "id": "t-inquiry",
+      "prompt": "Verstehe. Könnten Sie Ihre Frage präziser formulieren, damit ich Ihnen gezielt weiterhelfen kann? Manchmal sind die Dinge hier etwas komplexer, als man denkt.",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "briefmarken",
+            "einschreiben",
+            "zoll"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "egal",
+            "danke",
+            "keinefrage"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fer-shtay-eh. Kyoon-ten Zee Ee-reh Frah-geh preh-tsee-zer for-moo-lee-reh-ren, dah-mit ihkh Ee-nen geh-tseelt vy-ter-hel-fen kahn? Mahnkh-mahl zint dee Ding-eh heer et-vas kom-plek-ser, als mahn denkt. — I see. Could you formulate your question more precisely so I can help you specifically? Sometimes things here are a bit more complex than one might think."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Könnten Sie das noch einmal sagen? Ich habe Sie nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Vee bit-teh? Kyoon-ten Zee das nokh ayn-mahl zah-gen? Ihkh hah-beh Zee nikht gants fer-shtahn-den. — Pardon? Could you say that again? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch. Einen schönen Tag noch!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dahngk fyoor Ee-ren Beh-zook. Ay-nen shyo-nen Tahg nokh! — Thank you very much for your visit. Have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "id": "dlg-fr-post-office-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Expédier un colis sans tracas",
+  "opening": "Bonjour ! Comment puis-je vous être utile aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "colis",
+            "envoyer",
+            "expédier"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "timbres",
+            "acheter"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "question",
+            "information"
+          ],
+          "nextTurnId": "t_info"
+        },
+        {
+          "keywords": [
+            "celuici",
+            "j'ai",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! — Hello! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. S'agit-il d'un envoi national ou international ? Et avez-vous une préférence pour un service avec suivi ou un recommandé avec accusé de réception ?",
+      "branches": [
+        {
+          "keywords": [
+            "international",
+            "étranger",
+            "monde"
+          ],
+          "nextTurnId": "t4_inter"
+        },
+        {
+          "keywords": [
+            "national",
+            "france",
+            "métropole"
+          ],
+          "nextTurnId": "t4_nat"
+        },
+        {
+          "keywords": [
+            "suivi",
+            "simple",
+            "standard"
+          ],
+          "nextTurnId": "t4_clarify_dest"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. — Very well. Is it a national or international shipment? And do you have a preference for a service with tracking or a registered mail with delivery receipt?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr. Des timbres pour quel usage : lettres nationales, internationales, ou peut-être un carnet à collectionner ?",
+      "branches": [
+        {
+          "keywords": [
+            "national",
+            "lettres",
+            "courrier"
+          ],
+          "nextTurnId": "t5_stamps_details"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr. — Of course. Stamps for what use: national letters, international, or perhaps a collectible booklet?"
+    },
+    "t4_clarify_dest": {
+      "id": "t4_clarify_dest",
+      "prompt": "D'accord, un service spécifique. Est-ce pour un envoi national ou international ?",
+      "branches": [
+        {
+          "keywords": [
+            "national",
+            "france"
+          ],
+          "nextTurnId": "t4_nat"
+        },
+        {
+          "keywords": [
+            "international",
+            "étranger"
+          ],
+          "nextTurnId": "t4_inter"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, — Okay, a specific service. Is this for a national or international shipment?"
+    },
+    "t4_inter": {
+      "id": "t4_inter",
+      "prompt": "Pour l'international, une déclaration en douane est indispensable. Avez-vous déjà rempli le formulaire CN23 ou avez-vous besoin d'aide pour décrire le contenu et sa valeur ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "prêt",
+            "fait"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour l'international, — For international, a customs declaration is essential. Have you already filled out form CN23 or do you need help describing the content and its value?"
+    },
+    "t4_nat": {
+      "id": "t4_nat",
+      "prompt": "Pour un envoi national, le Colissimo est notre service standard avec suivi. Si c'est urgent, nous avons Chronopost. Quel service vous intéresse ?",
+      "branches": [
+        {
+          "keywords": [
+            "colissimo",
+            "standard",
+            "suivi"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "indifférent"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour un envoi national, — For a national shipment, Colissimo is our standard tracked service. If it's urgent, we have Chronopost. Which service interests you?"
+    },
+    "t5_stamps_details": {
+      "id": "t5_stamps_details",
+      "prompt": "Très bien. Je prépare cela. Combien de timbres ou de carnets désirez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "deux",
+            "dix",
+            "plusieurs"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "beaucoup"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. — Very well. I'll prepare that. How many stamps or booklets would you like?"
+    },
+    "t_info": {
+      "id": "t_info",
+      "prompt": "Quel type d'information recherchez-vous précisément ? Un suivi de colis, les tarifs, ou autre ?",
+      "branches": [
+        {
+          "keywords": [
+            "suivi",
+            "colis",
+            "où est"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quel type d'information recherchez-vous précisément ? — What type of information are you looking for precisely? Parcel tracking, tariffs, or something else?"
+    },
+    "t_processing": {
+      "id": "t_processing",
+      "prompt": "Parfait. Passez votre colis sur la balance s'il vous plaît pour que nous puissions calculer le coût et finaliser l'envoi.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ok",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait. — Perfect. Please place your parcel on the scale so we can calculate the cost and finalize the shipment."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "oui",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Je n'ai pas bien compris. — I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait. Merci de votre visite et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait. — Perfect. Thank you for your visit and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

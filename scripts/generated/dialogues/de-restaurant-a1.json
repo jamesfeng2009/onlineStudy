@@ -1,0 +1,135 @@
+{
+  "id": "dlg-de-restaurant-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Im Restaurant",
+  "opening": "Guten Tag! Haben Sie eine Reservierung?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Haben Sie eine Reservierung?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "habe"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gooten Tahg! Hahben Zee eyeneh Rezervatseeohn? — Good day! Do you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Kein Problem. Wie viele Personen?",
+      "branches": [
+        {
+          "keywords": [
+            "eine",
+            "ein"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. How many people?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Hier ist die Speisekarte. Was möchten Sie trinken?",
+      "branches": [
+        {
+          "keywords": [
+            "wasser",
+            "ein",
+            "wasser"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Heer ist dee Shpyzehkartuh. Vas mörsh-ten Zee trink-en? — Here is the menu. What would you like to drink?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Und was möchten Sie essen?",
+      "branches": [
+        {
+          "keywords": [
+            "schnitzel",
+            "ein",
+            "schnitzel"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "And what would you like to eat?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das macht fünfzehn Euro. Möchten Sie Trinkgeld geben?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "zwei",
+            "euro"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das maḥt foonf-tsehn Oy-ro. Mörsh-ten Zee Trink-gelt geh-ben? — That's fifteen Euros. Would you like to give a tip?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, wie bitte?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, what please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Many thanks and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

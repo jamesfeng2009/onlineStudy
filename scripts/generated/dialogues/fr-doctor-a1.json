@@ -1,0 +1,182 @@
+{
+  "id": "dlg-fr-doctor-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Chez le médecin",
+  "opening": "Bonjour. Comment allez-vous ? Quel est le problème ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Comment allez-vous ? Quel est le problème ?",
+      "branches": [
+        {
+          "keywords": [
+            "mal",
+            "douleur",
+            "problème",
+            "pasbien",
+            "fatigué"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (Bohn-zhoor). Comment allez-vous (Koh-mah tah-lay voo)? Quel est le problème (Kell eh luh proh-blehm)? — Hello. How are you? What is the problem?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Où avez-vous mal ?",
+      "branches": [
+        {
+          "keywords": [
+            "tête",
+            "estomac",
+            "ventre",
+            "gorge"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Où avez-vous mal (Oo ah-vay voo mahl)? — Where do you have pain?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Depuis quand avez-vous mal ?",
+      "branches": [
+        {
+          "keywords": [
+            "hier",
+            "matin",
+            "aujourd'hui"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Depuis quand avez-vous mal (Deh-pwee kahn ah-vay voo mahl)? — Since when do you have pain?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord, je comprends. Avez-vous des allergies à des médicaments ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "allergies",
+            "penicilline",
+            "aspirine"
+          ],
+          "nextTurnId": "t5_allergies"
+        },
+        {
+          "keywords": [
+            "non",
+            "aucune"
+          ],
+          "nextTurnId": "t5_noallergies"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor), je comprends (zhuh kohn-prahn). Avez-vous des allergies (Ah-vay voo day zah-ler-zhee) à des médicaments (ah day may-dee-kah-mahn)? — Okay, I understand. Do you have allergies to any medicine?"
+    },
+    "t5_allergies": {
+      "id": "t5_allergies",
+      "prompt": "D'accord, je note pour les allergies. Voici une ordonnance pour des médicaments. Prenez-les trois fois par jour. Revenez la semaine prochaine, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "compris",
+            "au revoir",
+            "médicament",
+            "ordonnance"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor), je note pour les allergies (zhuh noht poor lay zah-ler-zhee). Voici une ordonnance (Vwah-see oon or-doh-nahns) pour des médicaments (poor day may-dee-kah-mahn). Prenez-les (Preh-nay-lay) trois fois (trwah fwah) par jour (par zhoor). Revenez (Ruh-vuh-nay) la semaine prochaine (lah suh-men proh-shen), s'il vous plaît (seel voo pleh). — Okay, I note for the allergies. Here is a prescription for medicine. Take them three times a day. Come back next week, please."
+    },
+    "t5_noallergies": {
+      "id": "t5_noallergies",
+      "prompt": "D'accord. Voici une ordonnance pour des médicaments. Prenez-les trois fois par jour. Revenez la semaine prochaine, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "compris",
+            "au revoir",
+            "médicament",
+            "ordonnance"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor). Voici une ordonnance (Vwah-see oon or-doh-nahns) pour des médicaments (poor day may-dee-kah-mahn). Prenez-les (Preh-nay-lay) trois fois (trwah fwah) par jour (par zhoor). Revenez (Ruh-vuh-nay) la semaine prochaine (lah suh-men proh-shen), s'il vous plaît (seel voo pleh). — Okay. Here is a prescription for medicine. Take them three times a day. Come back next week, please."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (Par-dohn)? Pouvez-vous répéter (Poo-vay voo ray-pay-tay), s'il vous plaît (seel voo pleh)? — Pardon? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et bon rétablissement.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Au revoir (Oh ruh-vwahr) et bon rétablissement (eh bohn ray-tah-blee-ss-mahn). — Goodbye and get well soon.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "id": "dlg-th-post-office-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ซื้อแสตมป์"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krap. Mee a-rai hai chuay mai ka/krap? — Hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "จะส่งไปที่ไหนคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ในประเทศ",
+            "ในไทย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ต่างประเทศ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja song pai tee nai ka/krap? — Where will you send it?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ต้องการแสตมป์ราคาเท่าไหร่คะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ห้าบาท",
+            "5บาท"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-karn sa-taem ra-kaa tao-rai ka/krap? — What value stamp do you need?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ต้องการแบบธรรมดา หรือ ลงทะเบียนคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ธรรมดา"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-karn baep tam-ma-daa reuu long-ta-bian ka/krap? — Do you want standard or registered?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ถ้าส่งต่างประเทศ ต้องกรอกแบบฟอร์มศุลกากรนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ได้ค่ะ",
+            "ได้ครับ",
+            "ตกลง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "แบบฟอร์มอะไร"
+          ],
+          "nextTurnId": "t5_1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Taa song tang-pra-tet, tong grok baep-form sun-la-ga-gon na ka/krap. — If sending internationally, you need to fill out a customs form."
+    },
+    "t5_1": {
+      "id": "t5_1",
+      "prompt": "เป็นแบบฟอร์มสำหรับศุลกากรค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "ได้ค่ะ",
+            "ได้ครับ",
+            "ตกลง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pen baep-form sam-rap sun-la-ga-gon ka/krap. — It's a form for customs."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ได้ค่ะ/ครับ ชำระเงินตรงนี้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "จ่าย",
+            "ชำระ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai ka/krap. Cham-ra ngern trong-nee loey ka/krap. — Okay. Please pay here."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออีกครั้งนะคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor eek krang na ka/krap? — Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณค่ะ/ครับ สวัสดีค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kop koon ka/krap. Sawatdee ka/krap. — Thank you. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

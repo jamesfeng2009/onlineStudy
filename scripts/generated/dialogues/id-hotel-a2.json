@@ -1,0 +1,137 @@
+{
+  "id": "dlg-id-hotel-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Check-in Hotel",
+  "opening": "Selamat datang di Hotel Bahagia. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang di Hotel Bahagia. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "check-in",
+            "pesan",
+            "kamar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "informasi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Səlamat datang) di Hotel Bahagia. Ada yang bisa saya bantu? — Welcome to Hotel Bahagia. How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik. Atas nama siapa reservasi Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "david",
+            "anna",
+            "budi",
+            "siti"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "belumreservasi",
+            "belumpesan"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik). Atas nama siapa reservasi Anda? — Okay. Under what name is your reservation?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih, Bapak/Ibu [nama]. Boleh saya lihat kartu identitas Anda seperti KTP atau paspor?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "ktp",
+            "paspor",
+            "silakan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lupa",
+            "tidakada"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Terima kasih), Bapak/Ibu [nama]. Boleh saya lihat kartu identitas Anda seperti KTP atau paspor? — Thank you, Sir/Madam [name]. May I see your identification card like KTP or passport?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, terima kasih. Apakah pembayaran sudah lunas atau Anda ingin membayar sekarang? Ada preferensi kamar?",
+      "branches": [
+        {
+          "keywords": [
+            "sudahlunas",
+            "sudahbayar"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, thank you. Has the payment been settled or would you like to pay now? Do you have any room preferences?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oke, Bapak/Ibu. Kamar Anda nomor 305 di lantai tiga. Sarapan gratis tersedia mulai jam 7 pagi. Ini kunci kamar Anda. Selamat menikmati waktu Anda di sini.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Sir/Madam. Your room is number 305 on the third floor. Complimentary breakfast is available from 7 AM. Here is your room key. Enjoy your stay here."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Maaf), bisa diulang (diulang)? — Sorry, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih (Terima kasih) telah memilih Hotel Bahagia. Semoga Anda senang menginap di sini!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing Hotel Bahagia. We hope you enjoy your stay here!",
+      "isTerminal": true
+    }
+  }
+}

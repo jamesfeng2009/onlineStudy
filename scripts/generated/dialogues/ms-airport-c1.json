@@ -1,0 +1,223 @@
+{
+  "id": "dlg-ms-airport-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Isu Bagasi dan Penerbangan",
+  "opening": "Selamat pagi, encik/cik. Ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik/cik. Selamat datang ke kaunter daftar masuk. Bolehkah saya lihat pasport dan tiket penerbangan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pasport",
+            "tiket",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "beratbagasi",
+            "elaunbagasi",
+            "berapa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "statuspenerbangan",
+            "lambat",
+            "tunda"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, encik/cik (Selamat pagi, en.cik) — Good morning, sir/madam. Selamat datang ke kaunter daftar masuk (Selamat datang ke kaunter daftar masuk) — Welcome to the check-in counter. Bolehkah saya lihat pasport dan tiket penerbangan anda? (Bolehkah saya lihat pasport dan tiket penerbangan anda?) — May I see your passport and flight ticket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. Sila letakkan bagasi anda di atas penimbang. Nampaknya penerbangan anda, MH123 ke London, dijadualkan berlepas dalam dua jam lagi.",
+      "branches": [
+        {
+          "keywords": [
+            "lebihberat",
+            "bagasi",
+            "bayaran"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "masaberlepas",
+            "bila",
+            "boarding"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "baik",
+            "tiadamasalah"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Terima kasih) — Thank you. Sila letakkan bagasi anda di atas penimbang (Sila letakkan bagasi anda di atas penimbang) — Please place your luggage on the scale. Nampaknya penerbangan anda, MH123 ke London, dijadualkan berlepas dalam dua jam lagi (Nampaknya penerbangan anda, MH satu dua tiga ke London, dijadualkan berlepas dalam dua jam lagi) — It appears your flight, MH123 to London, is scheduled to depart in two hours."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk kelas ekonomi, elaun bagasi berdaftar adalah 20kg. Jika melebihi had ini, akan ada caj tambahan. Adakah anda mempunyai bagasi yang lebih berat?",
+      "branches": [
+        {
+          "keywords": [
+            "lebihberat",
+            "ya",
+            "terlebih"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "dalamhad"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagasikabin",
+            "tangan",
+            "hadberat"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For economy class, the checked baggage allowance is 20kg. If it exceeds this limit, there will be an additional charge. Do you have heavier luggage?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sekejap ya, saya semak status penerbangan anda. Ah, MH123 ke London... nampaknya ada sedikit kelewatan selama 30 minit disebabkan isu teknikal. Masa berlepas baharu adalah jam 10:30 pagi.",
+      "branches": [
+        {
+          "keywords": [
+            "penerbanganbersambung",
+            "sambungan",
+            "kesan"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "pintu",
+            "gate",
+            "boarding"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "faham",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sekejap ya (Sekejap ya) — Just a moment, saya semak status penerbangan anda (saya semak status penerbangan anda) — let me check your flight status. Ah, MH123 ke London... (Ah, MH satu dua tiga ke London...) — Ah, MH123 to London... nampaknya ada sedikit kelewatan selama 30 minit disebabkan isu teknikal (nampaknya ada sedikit kelewatan selama tiga puluh minit disebabkan isu teknikal) — it seems there's a slight delay of 30 minutes due to a technical issue. Masa berlepas baharu adalah jam 10:30 pagi (Masa berlepas baharu adalah jam sepuluh tiga puluh pagi) — The new departure time is 10:30 AM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, jika melebihi 20kg, caj tambahan adalah RM15 setiap kilogram. Adakah anda ingin mengurangkan berat atau teruskan dengan pembayaran?",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "terusbayar",
+            "tiadapilihan"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, if it exceeds 20kg, the additional charge is RM15 per kilogram. Would you like to reduce the weight or proceed with payment?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Masa menaiki pesawat akan bermula jam 9:45 pagi, iaitu 45 minit sebelum waktu berlepas baharu. Sila pastikan anda berada di pintu pelepasan Pintu A12 tepat pada masanya.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "faham",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boarding will commence at 9:45 AM, which is 45 minutes before the new departure time. Please ensure you are at departure gate A12 on time."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Untuk bagasi kabin, anda dibenarkan membawa satu beg tidak melebihi 7kg dan satu barangan peribadi kecil. Pastikan ia muat di dalam ruang simpanan di atas kepala atau di bawah tempat duduk.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "faham",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For cabin baggage, you are allowed one bag not exceeding 7kg and one small personal item. Please ensure it fits in the overhead compartment or under the seat."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Kelewatan 30 minit ini sepatutnya tidak menjejaskan penerbangan sambungan anda jika tempoh transit anda melebihi dua jam. Namun, sila semak sekali lagi di papan maklumat atau dengan kakitangan di destinasi pertama.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "faham",
+            "maklumat"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "This 30-minute delay should not affect your connecting flight if your transit period is more than two hours. However, please double-check on the information board or with staff at your first destination."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak begitu faham. Bolehkah anda ulang atau jelaskan dengan lebih lanjut?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Maaf) — Sorry, saya tidak begitu faham (saya tidak begitu faham) — I don't quite understand. Bolehkah anda ulang atau jelaskan dengan lebih lanjut? (Bolehkah anda ulang atau jelaskan dengan lebih lanjut?) — Could you repeat or elaborate further?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya harap perjalanan anda lancar. Sila teruskan ke pintu pelepasan. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I hope you have a smooth journey. Please proceed to the departure gate. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

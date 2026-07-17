@@ -1,0 +1,211 @@
+{
+  "id": "dlg-es-shopping-clothes-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "De compras: ropa",
+  "opening": "¡Hola! ¿En qué puedo ayudarte hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿En qué puedo ayudarte hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "busco",
+            "necesito",
+            "quiero",
+            "buscando"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mirando",
+            "solo",
+            "echarunvistazo",
+            "soloestoymirando"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) — Hello! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro, ¿qué tipo de prenda buscas y qué talla sueles usar?",
+      "branches": [
+        {
+          "keywords": [
+            "pantalones",
+            "camisa",
+            "falda",
+            "camiseta",
+            "vestido",
+            "talla",
+            "M",
+            "L",
+            "S",
+            "XL",
+            "azul",
+            "negro",
+            "rojo",
+            "vaqueros",
+            "chaqueta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "noestoyseguro",
+            "soloquierover"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro (Klah-roh) — Of course, what type of garment are you looking for and what size do you usually wear?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Entendido. No hay problema, echa un vistazo con calma y si necesitas algo, no dudes en avisarme.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "vale",
+            "perfecto",
+            "genial"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "enrealidad",
+            "sí",
+            "busco",
+            "ahoraque",
+            "cambiodeparecer"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. No problem, take a calm look around and if you need anything, don't hesitate to let me know."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Tenemos este modelo en tu talla, ¿te gustaría probártelo?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "probar",
+            "probármelo",
+            "dóndeestán"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "otro",
+            "color",
+            "estilo",
+            "diferente",
+            "no",
+            "quizásno"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tenemos (Teh-neh-mos) este modelo en tu talla — We have this model in your size, would you like to try it on?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto, los probadores están al fondo a la derecha. ¿Qué tal te ha quedado? ¿Te lo llevas o prefieres ver algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "mequeda",
+            "comprar",
+            "llevar",
+            "meloquedo",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "nocomprar",
+            "vermas",
+            "otro",
+            "buscar"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect! The changing rooms are at the back on the right. How did it fit? Are you taking it, or would you prefer to see something else?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Entendido. No te preocupes, no siempre encontramos lo que buscamos a la primera. ¿Hay algo más en lo que pueda ayudarte hoy, o prefieres mirar por tu cuenta un rato más?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "busco",
+            "otro",
+            "prenda",
+            "ayuda",
+            "síporfavor"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "solo",
+            "mirar",
+            "otro",
+            "momento"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Don't worry, we don't always find what we're looking for on the first try. Is there anything else I can help you with today, or would you prefer to look around on your own for a while?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdona, ¿podrías repetirlo? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir",
+            "otravez"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Genial! Si necesitas algo más, no dudes en preguntar. ¡Que tengas un buen día y gracias por tu visita!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great! If you need anything else, don't hesitate to ask. Have a good day and thanks for your visit!",
+      "isTerminal": true
+    }
+  }
+}

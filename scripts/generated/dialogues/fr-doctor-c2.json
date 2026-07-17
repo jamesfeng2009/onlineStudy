@@ -1,0 +1,53 @@
+{
+  "id": "dlg-fr-doctor-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Consultation médicale",
+  "opening": "Bonjour, je vous en prie. Qu'est-ce qui vous amène aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, je vous en prie. Qu'est-ce qui vous amène aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "mal",
+            "douleur",
+            "tête",
+            "migraine"
+          ],
+          "nextTurnId": "t2_headache"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, je vous en prie. (bɔ̃.ʒuʁ, ʒə vu zɑ̃ pʁi.) — Hello, please come in. What brings you here today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien saisi. Pourriez-vous reformuler, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter",
+            "quoi",
+            "pardon"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Je n'ai pas bien saisi. (ʒə nɛ pa bjɛ̃ sa.zi.) Pourriez-vous reformuler, s'il vous plaît ? (pu.ʁje.vu ʁə.fɔʁ.my.le, sil vu plɛ?) — I didn't quite catch that. Could you rephrase, please?"
+    },
+    "t2_headache": {
+      "id": "t2_headache",
+      "prompt": "D'accord, et cette céphalée est-elle pulsatile, accompagnée de nausées, ou sensible à la lumière et au bruit ?",
+      "branches": [],
+      "fallbackBranchId": "t2_headache",
+      "promptTranslation": "D'accord, et cette céphalée est-elle pulsatile, (da.kɔʁ, e sɛt se.fa.le ɛ.tɛl pyl.sa.til,) accompagnée de nausées, (a.kɔ̃.pa.ɲe də no.ze,) ou sensible à la lumière et au bruit ? (u sɑ̃.sibl a la ly.mjɛʁ e o bʁɥi?) — Alright, and is this headache throbbing,",
+      "isTerminal": true
+    }
+  }
+}

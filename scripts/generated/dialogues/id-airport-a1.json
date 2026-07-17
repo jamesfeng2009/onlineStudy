@@ -1,0 +1,216 @@
+{
+  "id": "dlg-id-airport-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Di Bandara: Check-in",
+  "opening": "Selamat pagi. Tiket Anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Tiket Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "apa",
+            "maaf"
+          ],
+          "nextTurnId": "t1_clarify"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-la-mat pa-gi. Ti-ket An-da? — Good morning. Your ticket?"
+    },
+    "t1_clarify": {
+      "id": "t1_clarify",
+      "prompt": "Tiket pesawat Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "ini",
+            "ya"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "bukan"
+          ],
+          "nextTurnId": "t-end_no_ticket"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ti-ket pe-sa-wat An-da? — Your flight ticket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Koper Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "koper",
+            "ini",
+            "satu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "ada"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ko-per An-da? — Your suitcase?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Ini boarding pass Anda. Gerbang sepuluh.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "gerbang",
+            "berapa",
+            "lagi"
+          ],
+          "nextTurnId": "t3_repeat_gate"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik. I-ni bor-ding pass An-da. Ger-bang se-pu-luh. — Okay. Here is your boarding pass. Gate ten."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Baik, tidak ada koper. Ini boarding pass Anda. Gerbang sepuluh.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "gerbang",
+            "berapa",
+            "lagi"
+          ],
+          "nextTurnId": "t3_repeat_gate"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, ti-dak a-da ko-per. I-ni bor-ding pass An-da. Ger-bang se-pu-luh. — Okay, no suitcase. Here is your boarding pass. Gate ten."
+    },
+    "t3_repeat_gate": {
+      "id": "t3_repeat_gate",
+      "prompt": "Gerbang sepuluh. Gerbang S-E-P-U-L-U-H.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "mohon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-bang se-pu-luh. Ger-bang S-E-P-U-L-U-H. — Gate ten. Gate T-E-N."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bi-sa di-u-lang? — Sorry, can you repeat?"
+    },
+    "t-end_no_ticket": {
+      "id": "t-end_no_ticket",
+      "prompt": "Maaf, tidak bisa. Mohon ke loket informasi.",
+      "branches": [],
+      "fallbackBranchId": "t-end_no_ticket",
+      "promptTranslation": "Ma-af, ti-dak bi-sa. Mo-hon ke lo-ket in-for-ma-si. — Sorry, I cannot. Please go to the information desk.",
+      "isTerminal": true
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Te-ri-ma ka-sih. Se-la-mat ja-lan! — Thank you. Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

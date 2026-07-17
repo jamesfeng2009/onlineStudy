@@ -1,0 +1,363 @@
+{
+  "id": "dlg-es-post-office-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "En la oficina de correos",
+  "opening": "¡Buenos días! Dígame, ¿en qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! Dígame, ¿en qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "enviar",
+            "paquete",
+            "carta",
+            "mandar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "comprar",
+            "sellos",
+            "franqueo"
+          ],
+          "nextTurnId": "t_sellos_a"
+        },
+        {
+          "keywords": [
+            "recoger",
+            "envío"
+          ],
+          "nextTurnId": "t_recoger_a"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! — Good morning! Dígame, ¿en qué puedo ayudarle hoy? — Tell me, how can I help you today?"
+    },
+    "t_sellos_a": {
+      "id": "t_sellos_a",
+      "prompt": "¿Para qué destino son los sellos? ¿Nacional o internacional?",
+      "branches": [
+        {
+          "keywords": [
+            "nacional",
+            "dentro"
+          ],
+          "nextTurnId": "t_sellos_b"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Para qué destino son los sellos? — For what destination are the stamps? ¿Nacional o internacional? — National or international?"
+    },
+    "t_sellos_b": {
+      "id": "t_sellos_b",
+      "prompt": "De acuerdo. ¿Cuántos necesita? Puede ir a la caja directamente para pagar.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adiós"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De acuerdo. — Alright. ¿Cuántos necesita? — How many do you need? Puede ir a la caja directamente para pagar. — You can go directly to the cash register to pay."
+    },
+    "t_recoger_a": {
+      "id": "t_recoger_a",
+      "prompt": "Necesito su DNI o pasaporte y el aviso de llegada, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "aquí",
+            "tengo",
+            "dni",
+            "pasaporte"
+          ],
+          "nextTurnId": "t_recoger_b"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Necesito su DNI o pasaporte y el aviso de llegada, por favor. — I need your ID or passport and the arrival notice, please."
+    },
+    "t_recoger_b": {
+      "id": "t_recoger_b",
+      "prompt": "Gracias. En un momento le traigo su paquete. Que tenga un buen día.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adiós"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gracias. — Thank you. En un momento le traigo su paquete. — I'll bring your package in a moment. Que tenga un buen día. — Have a good day."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Muy bien. ¿Es un envío nacional o internacional? ¿Y qué tipo de artículo desea enviar?",
+      "branches": [
+        {
+          "keywords": [
+            "internacional",
+            "fuera",
+            "extranjero",
+            "otro país"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nacional",
+            "dentro",
+            "españa"
+          ],
+          "nextTurnId": "t3_nacional"
+        },
+        {
+          "keywords": [
+            "carta",
+            "documento"
+          ],
+          "nextTurnId": "t2_carta"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. — Very good. ¿Es un envío nacional o internacional? — Is it a national or international shipment? ¿Y qué tipo de artículo desea enviar? — And what type of item do you wish to send?"
+    },
+    "t2_carta": {
+      "id": "t2_carta",
+      "prompt": "De acuerdo, una carta. ¿Es urgente o certificada, y es nacional o internacional?",
+      "branches": [
+        {
+          "keywords": [
+            "urgente",
+            "rápido"
+          ],
+          "nextTurnId": "t4_carta"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo, una carta. — Alright, a letter. ¿Es urgente o certificada, y es nacional o internacional? — Is it urgent or certified, and is it national or international?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto, un envío internacional. Para la aduana, necesito saber el contenido exacto del paquete. ¿Qué contiene?",
+      "branches": [
+        {
+          "keywords": [
+            "ropa",
+            "regalo",
+            "libro",
+            "documentos",
+            "juguetes"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "electrónica",
+            "baterías",
+            "líquidos",
+            "alimentos"
+          ],
+          "nextTurnId": "t4_especial"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, un envío internacional. — Perfect, an international shipment. Para la aduana, necesito saber el contenido exacto del paquete. — For customs, I need to know the exact content of the package. ¿Qué contiene? — What does it contain?"
+    },
+    "t3_nacional": {
+      "id": "t3_nacional",
+      "prompt": "Un envío nacional, de acuerdo. ¿Necesita que sea certificado, con seguimiento, o un envío estándar?",
+      "branches": [
+        {
+          "keywords": [
+            "certificado",
+            "seguimiento",
+            "rastreo",
+            "registrado"
+          ],
+          "nextTurnId": "t5_nacional"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un envío nacional, de acuerdo. — A national shipment, alright. ¿Necesita que sea certificado, con seguimiento, o un envío estándar? — Do you need it to be certified, with tracking, or a standard shipment?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gracias por la información del contenido. Ahora, ¿necesita que el envío sea certificado o con seguimiento? ¿O prefiere un envío estándar?",
+      "branches": [
+        {
+          "keywords": [
+            "certificado",
+            "seguimiento",
+            "rastreo",
+            "registrado"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias por la información del contenido. — Thank you for the content information. Ahora, ¿necesita que el envío sea certificado o con seguimiento? — Now, do you need the shipment to be certified or with tracking? ¿O prefiere un envío estándar? — Or do you prefer a standard shipment?"
+    },
+    "t4_especial": {
+      "id": "t4_especial",
+      "prompt": "Ah, con esos artículos hay restricciones. Necesitaré un formulario de aduanas específico y seguramente haya que embalarlo de una forma especial.",
+      "branches": [
+        {
+          "keywords": [
+            "de acuerdo",
+            "entendido",
+            "sí"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "quiero",
+            "cambiar",
+            "otro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "otro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, con esos artículos hay restricciones. — Ah, with those items there are restrictions. Necesitaré un formulario de aduanas específico y seguramente haya que embalarlo de una forma especial. — I will need a specific customs form and it will probably need to be packed in a special way."
+    },
+    "t4_carta": {
+      "id": "t4_carta",
+      "prompt": "Entendido. Para su carta, el precio dependerá del peso y la urgencia. Puede pagar en la caja. ¿Algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Entendido. — Understood. Para su carta, el precio dependerá del peso y la urgencia. — For your letter, the price will depend on the weight and urgency. Puede pagar en la caja. — You can pay at the cash register. ¿Algo más? — Anything else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Muy bien. Si es certificado o con seguimiento, necesitará rellenar un pequeño formulario y le daré un número de seguimiento. El coste será X euros. ",
+      "branches": [
+        {
+          "keywords": [
+            "de acuerdo",
+            "sí",
+            "rellenar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Muy bien. — Very good. Si es certificado o con seguimiento, necesitará rellenar un pequeño formulario — If it's certified or with tracking, you'll need to fill out a small form — y le daré un número de seguimiento. — and I'll give you a tracking number. El coste será X euros. — The cost will be X euros."
+    },
+    "t5_nacional": {
+      "id": "t5_nacional",
+      "prompt": "Perfecto. Si elige certificado o con seguimiento, el coste será X euros y le daré un justificante. Puede pasar por la caja.",
+      "branches": [
+        {
+          "keywords": [
+            "de acuerdo",
+            "sí",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. — Perfect. Si elige certificado o con seguimiento, el coste será X euros — If you choose certified or with tracking, the cost will be X euros — y le daré un justificante. — and I'll give you a receipt. Puede pasar por la caja. — You can go to the cash register."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetirlo? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Que tenga un buen día. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

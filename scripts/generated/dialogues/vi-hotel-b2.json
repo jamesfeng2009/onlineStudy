@@ -1,0 +1,181 @@
+{
+  "id": "dlg-vi-hotel-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Thủ tục nhận phòng khách sạn",
+  "opening": "Chào mừng quý khách đến với khách sạn của chúng tôi. Quý khách vui lòng cho biết tên đặt phòng ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách đến với khách sạn của chúng tôi. Quý khách vui lòng cho biết tên đặt phòng ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "tôi là",
+            "đặt phòng",
+            "dưới tên"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "xin chào",
+            "tôi muốn",
+            "kiểm tra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào mừng quý khách (Chao mung quy khach) đến với khách sạn của chúng tôi. Quý khách vui lòng cho biết tên đặt phòng ạ? (Welcome to our hotel. Could you please tell me the name for the reservation?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ vâng, tôi đã tìm thấy đặt phòng của quý khách dưới tên đó. Phiền quý khách cho tôi mượn giấy tờ tùy thân để xác nhận ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "căn cước",
+            "chứng minh",
+            "hộ chiếu",
+            "đây ạ",
+            "đây là"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "loại gì",
+            "giấy tờ nào",
+            "là gì"
+          ],
+          "nextTurnId": "t2_1"
+        },
+        {
+          "keywords": [
+            "",
+            "tôi quên",
+            "tôi không có"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng (Ya vang), tôi đã tìm thấy đặt phòng của quý khách dưới tên đó. Phiền quý khách cho tôi mượn giấy tờ tùy thân (giay to tuy than) để xác nhận ạ? (Yes, I've found your reservation under that name. May I please see your ID to confirm?)"
+    },
+    "t2_1": {
+      "id": "t2_1",
+      "prompt": "Quý khách có thể dùng căn cước công dân, chứng minh thư, hoặc hộ chiếu đều được ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "đây ạ",
+            "tôi có",
+            "căn cước",
+            "chứng minh",
+            "hộ chiếu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "không có",
+            "tôi không mang"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách có thể dùng căn cước công dân (can cuoc cong dan), chứng minh thư (chung minh thu), hoặc hộ chiếu (ho chieu) đều được ạ. (You can use a national ID card, identity card, or passport, any is fine.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Cảm ơn quý khách. Đặt phòng của quý khách là phòng Superior có ăn sáng. Quý khách muốn thanh toán bằng tiền mặt hay thẻ tín dụng ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thẻ",
+            "thẻ tín dụng",
+            "quẹt thẻ",
+            "bằng thẻ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ăn sáng",
+            "bữa sáng",
+            "phòng",
+            "view",
+            "chi tiết"
+          ],
+          "nextTurnId": "t3_1"
+        },
+        {
+          "keywords": [
+            "",
+            "thanh toán",
+            "cách nào"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn quý khách. Đặt phòng của quý khách là phòng Superior có ăn sáng. Quý khách muốn thanh toán bằng tiền mặt (tien mat) hay thẻ tín dụng (the tin dung) ạ? (Thank you. Your reservation is for a Superior room with breakfast. Would you like to pay by cash or credit card?)"
+    },
+    "t3_1": {
+      "id": "t3_1",
+      "prompt": "Bữa sáng được phục vụ từ 6h30 đến 9h30 tại nhà hàng tầng trệt ạ. Phòng của quý khách có cửa sổ nhìn ra thành phố. Vậy quý khách muốn thanh toán bằng cách nào ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thẻ",
+            "thẻ tín dụng",
+            "quẹt thẻ",
+            "bằng thẻ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "vậy thì"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bữa sáng được phục vụ từ 6h30 đến 9h30 tại nhà hàng tầng trệt ạ. Phòng của quý khách có cửa sổ nhìn ra thành phố. Vậy quý khách muốn thanh toán bằng cách nào ạ? (Breakfast is served from 6:30 AM to 9:30 AM at the ground floor restaurant. Your room has a city view. So, how would you like to pay?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Tuyệt vời. Đây là chìa khóa phòng 502 của quý khách. Mong quý khách có một kỳ nghỉ thật thoải mái tại khách sạn của chúng tôi. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Tuyệt vời (Tuyet voi). Đây là chìa khóa phòng 502 của quý khách. Mong quý khách có một kỳ nghỉ thật thoải mái tại khách sạn của chúng tôi. Chúc quý khách một ngày tốt lành! (Excellent. Here is your key for room 502. We hope you have a very comfortable stay at our hotel. Have a good day!)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe chưa rõ. Quý khách vui lòng nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "có",
+            "vâng",
+            "được"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi (Sin loi), tôi nghe chưa rõ. Quý khách vui lòng nhắc lại được không ạ? (Sorry, I didn't hear that clearly. Could you please repeat?)"
+    }
+  }
+}

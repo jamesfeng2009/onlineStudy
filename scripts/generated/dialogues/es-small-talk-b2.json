@@ -1,0 +1,215 @@
+{
+  "id": "dlg-es-small-talk-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Charla informal: El fin de semana",
+  "opening": "¡Hola! ¿Qué tal tu fin de semana? Espero que lo hayas disfrutado mucho.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tal tu fin de semana? Espero que lo hayas disfrutado mucho.",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "genial",
+            "excelente",
+            "disfruté",
+            "divertido"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ocupado",
+            "movido",
+            "así_así",
+            "no_mucho",
+            "cansado",
+            "normal",
+            "regular"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! How was your weekend? I hope you enjoyed it a lot."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Me alegra oír eso. ¿Hiciste algo interesante o simplemente te dedicaste a relajarte?",
+      "branches": [
+        {
+          "keywords": [
+            "actividad",
+            "hice",
+            "fui",
+            "visité",
+            "viajé",
+            "excursión",
+            "salí",
+            "fiesta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "relajé",
+            "descansé",
+            "nada_especial",
+            "tranquilidad"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Glad to hear that. Did you do anything interesting or did you just relax?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vaya, qué pena. Espero que esta semana sea mejor. Cambiando de tema, ¿hay alguna película o serie que hayas visto últimamente y te haya enganchado?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "vi",
+            "película",
+            "serie",
+            "documental",
+            "televisión"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "ninguna",
+            "no_he_visto"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, what a shame. I hope this week is better. Changing the subject, is there any movie or series you've watched lately that really hooked you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¡Qué bien! Cuéntame más, ¿qué tal estuvo / con quiénes estuviste? Suena interesante.",
+      "branches": [
+        {
+          "keywords": [
+            "bueno",
+            "genial",
+            "divertido",
+            "gustó",
+            "disfruté_mucho"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How nice! Tell me more, how was it / who were you with? Sounds interesting."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Entiendo. Y en tu tiempo libre, ¿qué sueles hacer? ¿Eres más de leer, ver películas, o tienes algún hobby en particular?",
+      "branches": [
+        {
+          "keywords": [
+            "películas",
+            "series",
+            "cine",
+            "ver_tele",
+            "plataformas"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "leer",
+            "libros",
+            "lectura",
+            "novelas",
+            "poesía"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. And in your free time, what do you usually do? Are you more into reading, watching movies, or do you have a particular hobby?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "¡Fantástico! Pues, ya que hablamos de eso, ¿tienes alguna recomendación reciente? Me encantaría descubrir algo nuevo.",
+      "branches": [
+        {
+          "keywords": [
+            "recomiendo",
+            "es_buena",
+            "tienes_que_ver",
+            "me_gustó",
+            "nombre_serie",
+            "nombre_película",
+            "documentales",
+            "comedia",
+            "drama"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fantastic! Well, since we're talking about that, do you have any recent recommendations? I'd love to discover something new."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Qué interesante. ¿Qué tipo de libros te gustan o cuál es tu actividad favorita de ese hobby? Siempre me ha parecido fascinante.",
+      "branches": [
+        {
+          "keywords": [
+            "género",
+            "autor",
+            "me_gusta",
+            "suelo_hacer",
+            "mi_favorita",
+            "historia",
+            "ficción",
+            "aventura",
+            "ciencia_ficción",
+            "fotografía",
+            "pintura",
+            "senderismo",
+            "instrumento"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How interesting. What type of books do you like or what's your favorite activity for that hobby? I've always found it fascinating."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, no te he entendido muy bien. ¿Podrías repetirlo o decirlo de otra manera, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite understand you. Could you repeat it or say it differently, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ha sido un placer charlar contigo. ¡Que tengas un buen día/tarde/noche!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure chatting with you. Have a good day/afternoon/evening!",
+      "isTerminal": true
+    }
+  }
+}

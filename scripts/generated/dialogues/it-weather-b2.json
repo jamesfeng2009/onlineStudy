@@ -1,0 +1,232 @@
+{
+  "id": "dlg-it-weather-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Chiacchierando del tempo",
+  "opening": "Ciao! Com'è il tempo da te oggi? Spero non sia troppo brutto da rovinare i tuoi piani.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Com'è il tempo da te oggi? Spero non sia troppo brutto da rovinare i tuoi piani.",
+      "branches": [
+        {
+          "keywords": [
+            "bello",
+            "sole",
+            "caldo",
+            "sereno",
+            "splendido",
+            "perfetto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "brutto",
+            "pioggia",
+            "freddo",
+            "nuvole",
+            "vento",
+            "coperto"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! Come'è il tempo da te oggi? Spero non sia troppo brutto da rovinare i tuoi piani. — Hi! How's the weather where you are today? I hope it's not too bad to ruin your plans."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, che fortuna! Qui invece è un po' incerto. Ma se da te c'è bel tempo, potresti approfittarne per fare una passeggiata o magari un picnic. Non trovi?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "certo",
+            "bellaidea",
+            "magari",
+            "farei",
+            "adoro",
+            "fantastico"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonposso",
+            "dubbioso",
+            "però",
+            "preferisco",
+            "purtroppo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, che fortuna! Qui invece è un po' incerto. Ma se da te c'è bel tempo, potresti approfittarne per fare una passeggiata o magari un picnic. Non trovi? — Ah, how lucky! Here, on the other hand, it's a bit uncertain. But if you have good weather, you could take advantage of it for a walk or perhaps a picnic. Don't you think?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Che peccato, mi dispiace sentirlo. Il maltempo può davvero rovinare la giornata e i piani. Da me la situazione non è molto diversa, c'è una pioggerella fastidiosa da stamattina. Speriamo si rimetta presto.",
+      "branches": [
+        {
+          "keywords": [
+            "verogià",
+            "frustrante",
+            "speriamo",
+            "odio",
+            "concordo",
+            "situazione",
+            "annoiato"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "niente",
+            "casapreferisco",
+            "libri",
+            "film",
+            "alternativa",
+            "interno"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Che peccato, mi dispiace sentirlo. Il maltempo può davvero rovinare la giornata e i piani. Da me la situazione non è molto diversa, c'è una pioggerella fastidiosa da stamattina. Speriamo si rimetta presto. — What a pity, I'm sorry to hear that. Bad weather can really ruin the day and plans. Here, the situation isn't much different, there's been an annoying drizzle since this morning. Let's hope it gets better soon."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Già, è fondamentale adattarsi. A me piace molto l'autunno, per esempio, quando l'aria è frizzante ma non ancora troppo fredda e i colori sono spettacolari. Qual è la tua stagione preferita per le attività all'aperto?",
+      "branches": [
+        {
+          "keywords": [
+            "primavera",
+            "estate",
+            "autunno",
+            "inverno",
+            "sole",
+            "caldo",
+            "freddo",
+            "colori"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nonso",
+            "dipende",
+            "previsioni",
+            "futuro",
+            "domani",
+            "cambia"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Indeed, it's essential to adapt. I really like autumn, for example, when the air is crisp but not yet too cold and the colors are spectacular. What's your favorite season for outdoor activities?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Hai ragione, guardare le previsioni è d'obbligo. Per i prossimi giorni qui sembra migliorare, ma d'altra parte, il tempo di marzo è sempre un po' pazzerello, non si sa mai cosa aspettarsi. Speriamo in bene!",
+      "branches": [
+        {
+          "keywords": [
+            "speriamo",
+            "meno male",
+            "infatti",
+            "verità",
+            "meglio",
+            "finalmente"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You're right, checking the forecast is a must. For the next few days here it seems to be improving, but on the other hand, March weather is always a bit crazy, you never know what to expect. Let's hope for the best!"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Assolutamente! C'è un vecchio proverbio che dice \"Non c'è brutto tempo, ma solo cattivo equipaggiamento\", ma a volte, diciamocelo, un po' di sole non guasterebbe. È sempre interessante scambiare quattro chiacchiere sul tempo che fa, no?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "interessante",
+            "verissimo",
+            "grazie",
+            "piacere",
+            "certo",
+            "concordo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolutely! There's an old proverb that says \"There's no bad weather, only bad equipment,\" but sometimes, let's face it, a little sun wouldn't hurt. It's always interesting to chat about the weather, isn't it?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ho capito bene. Oppure, dimmi qualcosa come \"Che bello!\" o \"Che peccato!\"",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat? I didn't quite understand. Or, tell me something like \"How lovely!\" or \"What a pity!\""
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare! Spero che il tempo sia sempre a tuo favore. Ciao!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was a pleasure chatting! I hope the weather is always in your favor. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

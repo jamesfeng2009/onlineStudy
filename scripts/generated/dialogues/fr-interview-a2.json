@@ -1,0 +1,146 @@
+{
+  "id": "dlg-fr-interview-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Entretien d'embauche",
+  "opening": "Bonjour, bienvenue. Je suis le responsable du recrutement. Asseyez-vous, je vous en prie.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Pour commencer, pouvez-vous vous présenter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "expérience",
+            "travail",
+            "poste"
+          ],
+          "nextTurnId": "t2_experience_details"
+        },
+        {
+          "keywords": [
+            "motivation",
+            "entreprise",
+            "pourquoi"
+          ],
+          "nextTurnId": "t2_motivation_details"
+        },
+        {
+          "keywords": [
+            "parler",
+            "présenter",
+            "moi",
+            "suis"
+          ],
+          "nextTurnId": "t2_general_followup"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour. (bon-zhoor) Pour commencer, pouvez-vous vous présenter, s'il vous plaît ? (poor koh-mahn-say, poo-vay-voo voo preh-zahn-tay, seel voo pleh) — Hello. To begin, can you introduce yourself, please?"
+    },
+    "t2_experience_details": {
+      "id": "t2_experience_details",
+      "prompt": "Très bien. Pouvez-vous détailler vos expériences les plus importantes ?",
+      "branches": [
+        {
+          "keywords": [
+            "responsabilités",
+            "projets",
+            "missions"
+          ],
+          "nextTurnId": "t3_strengths"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Can you detail your most important experiences?"
+    },
+    "t2_motivation_details": {
+      "id": "t2_motivation_details",
+      "prompt": "C'est intéressant. Qu'est-ce qui vous attire le plus dans ce poste ?",
+      "branches": [
+        {
+          "keywords": [
+            "opportunité",
+            "apprendre",
+            "défis"
+          ],
+          "nextTurnId": "t3_strengths"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's interesting. What attracts you most to this position?"
+    },
+    "t2_general_followup": {
+      "id": "t2_general_followup",
+      "prompt": "Merci. Quelles sont vos principales qualités pour ce rôle ?",
+      "branches": [
+        {
+          "keywords": [
+            "qualités",
+            "forces",
+            "compétences"
+          ],
+          "nextTurnId": "t3_strengths"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. What are your main qualities for this role?"
+    },
+    "t3_strengths": {
+      "id": "t3_strengths",
+      "prompt": "Parfait. Pouvez-vous me donner un exemple de situation où vous avez utilisé une de ces qualités ?",
+      "branches": [
+        {
+          "keywords": [
+            "exemple",
+            "situation",
+            "projet"
+          ],
+          "nextTurnId": "t4_questions"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait. (par-fay) Pouvez-vous me donner un exemple de situation où vous avez utilisé une de ces qualités ? (poo-vay-voo muh doh-nay un ek-zahn-pluh duh see-twa-syohn oo vooz ah-vay yoo-tee-lee-zay oon duh say ka-lee-tay) — Perfect. Can you give me an example of a situation where you used one of these qualities?"
+    },
+    "t4_questions": {
+      "id": "t4_questions",
+      "prompt": "Merci beaucoup. Avez-vous des questions pour nous ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "question",
+            "demande"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci beaucoup. (mer-see boh-koo) Avez-vous des questions pour nous ? (ah-vay-voo day kes-tyohn poor noo) — Thank you very much. Do you have any questions for us?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? (par-dohn) Pourriez-vous répéter, s'il vous plaît ? (poo-rye-voo reh-peh-tay, seel voo pleh) — Pardon? Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup pour votre temps. Nous vous contacterons bientôt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci beaucoup pour votre temps. (mer-see boh-koo poor vo-truh tahn) Nous vous contacterons bientôt. (noo voo kohn-tak-teh-rohn byain-toh) — Thank you very much for your time. We will contact you soon.",
+      "isTerminal": true
+    }
+  }
+}

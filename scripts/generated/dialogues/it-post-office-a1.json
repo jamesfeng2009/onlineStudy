@@ -1,0 +1,278 @@
+{
+  "id": "dlg-it-post-office-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Alla Posta",
+  "opening": "Buongiorno! Posso aiutarLa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Posso aiutarLa?",
+      "branches": [
+        {
+          "keywords": [
+            "pacco",
+            "spedire"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "francobolli",
+            "comprare"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "solo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! (bwon-JOR-no) Posso (POS-so) aiutarLa? (a-yu-TAR-la) — Good morning! Can I help you (formal)?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Certo. Il pacco va in Italia o all'estero?",
+      "branches": [
+        {
+          "keywords": [
+            "italia",
+            "qui"
+          ],
+          "nextTurnId": "t3_italy_parcel"
+        },
+        {
+          "keywords": [
+            "estero",
+            "fuori"
+          ],
+          "nextTurnId": "t3_abroad_parcel"
+        },
+        {
+          "keywords": [
+            "nonso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo. (CHER-to) Il pacco (PALK-ko) va in Italia (ee-TAH-lya) o all'estero (al-ES-te-ro)? — Certainly. Does the parcel go to Italy or abroad?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Quanti francobolli Le servono? Per lettere o cartoline?",
+      "branches": [
+        {
+          "keywords": [
+            "lettere",
+            "lettera"
+          ],
+          "nextTurnId": "t4_stamps_count"
+        },
+        {
+          "keywords": [
+            "nonso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quanti (KWAN-tee) francobolli (fran-ko-BOL-lee) Le servono? (Le SER-vo-no) Per lettere (LET-te-re) o cartoline (kar-to-LEE-ne)? — How many stamps do you need? For letters or postcards?"
+    },
+    "t3_italy_parcel": {
+      "id": "t3_italy_parcel",
+      "prompt": "Bene. Vuole spedire un pacco normale o raccomandato?",
+      "branches": [
+        {
+          "keywords": [
+            "normale",
+            "standard"
+          ],
+          "nextTurnId": "t4_parcel_normal"
+        },
+        {
+          "keywords": [
+            "raccomandato",
+            "raccomandata"
+          ],
+          "nextTurnId": "t4_parcel_registered"
+        },
+        {
+          "keywords": [
+            "cos'è"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bene. Vuole (VWO-le) spedire un pacco (PALK-ko) normale (nor-MAH-le) o raccomandato (rak-ko-man-DAH-to)? — Good. Do you want to send a normal or registered parcel?"
+    },
+    "t3_abroad_parcel": {
+      "id": "t3_abroad_parcel",
+      "prompt": "Per l'estero serve un modulo doganale.",
+      "branches": [
+        {
+          "keywords": [
+            "vabene",
+            "ok",
+            "sì"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "cos'è",
+            "modulo",
+            "cosa"
+          ],
+          "nextTurnId": "t4_customs_explain"
+        },
+        {
+          "keywords": [
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per l'estero (per l'ES-te-ro) serve (SER-ve) un modulo (MO-du-lo) doganale (do-ga-NAH-le). — For abroad, a customs form is needed."
+    },
+    "t4_parcel_normal": {
+      "id": "t4_parcel_normal",
+      "prompt": "Ok. Lo pesiamo qui. C'è altro?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "niente"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "costa",
+            "prezzo"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "sì",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ok. Lo pesiamo (lo pe-ZYAH-mo) qui. C'è altro? (che AL-tro) — Okay. We weigh it here. Anything else?"
+    },
+    "t4_parcel_registered": {
+      "id": "t4_parcel_registered",
+      "prompt": "Con il servizio raccomandato, c'è il codice di tracciamento.",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "bene",
+            "sì"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Con il servizio (ser-VEE-tzyo) raccomandato (rak-ko-man-DAH-to), c'è il codice (KO-di-che) di tracciamento (trach-a-MEN-to). — With registered service, there is a tracking code."
+    },
+    "t4_customs_explain": {
+      "id": "t4_customs_explain",
+      "prompt": "È un documento con i dettagli del contenuto del pacco.",
+      "branches": [
+        {
+          "keywords": [
+            "capisco",
+            "ok",
+            "vabene"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "È un documento (do-ku-MEN-to) con i dettagli (de-TAH-lyi) del contenuto (kon-te-NOO-to) del pacco. — It is a document with the details of the parcel's contents."
+    },
+    "t4_stamps_count": {
+      "id": "t4_stamps_count",
+      "prompt": "Ok. Quanti francobolli vuole?",
+      "branches": [
+        {
+          "keywords": [
+            "uno",
+            "1"
+          ],
+          "nextTurnId": "t5_pay"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ok. Quanti (KWAN-tee) francobolli (fran-ko-BOL-lee) vuole (VWO-le)? — Okay. How many stamps do you want?"
+    },
+    "t5_pay": {
+      "id": "t5_pay",
+      "prompt": "Sono otto euro. Prego.",
+      "branches": [
+        {
+          "keywords": [
+            "carta",
+            "bancomat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pagare"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sono otto (OT-to) euro (EH-u-ro). Prego (PRE-go). — It is eight euros. Please/You're welcome."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), non ho (non O) capito (ka-PEE-to). Può (PWO) ripetere (ree-PE-te-re), per favore (per fa-VO-re)? — Excuse me, I didn't understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Arrivederci (ar-ree-ve-DER-chee) e buona giornata (BWOH-na jor-NAH-ta)! — Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "id": "dlg-it-shopping-clothes-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "Acquisto di vestiti: Una conversazione in negozio",
+  "opening": "Buongiorno! Posso aiutarla in qualche modo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Posso aiutarla in qualche modo?",
+      "branches": [
+        {
+          "keywords": [
+            "cerco",
+            "vorrei",
+            "necessito"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sto",
+            "guardando",
+            "solo",
+            "occhiata"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! Posso aiutarla in qualche modo? — Good morning! Can I help you in any way?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo! Ha in mente qualcosa di particolare, magari una taglia o un colore specifico?",
+      "branches": [
+        {
+          "keywords": [
+            "taglia",
+            "colore",
+            "vestito",
+            "camicia",
+            "pantaloni",
+            "giacca"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "vedere",
+            "opzioni",
+            "modelli"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo! Ha in mente qualcosa di particolare, magari una taglia o un colore specifico? — Certainly! Do you have something particular in mind, perhaps a specific size or color?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Nessun problema, si senta pure libera/o di dare un'occhiata. Se avesse bisogno di consigli o di provare qualcosa, sono qui a sua disposizione.",
+      "branches": [
+        {
+          "keywords": [
+            "provare",
+            "camerino",
+            "sì",
+            "volerei"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "basta"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nessun problema, si senta pure libera/o di dare un'occhiata. Se avesse bisogno di consigli o di provare qualcosa, sono qui a sua disposizione. — No problem, feel free to browse. If you need advice or want to try something on, I'm here at your disposal."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Capisco. Abbiamo diversi modelli in quella taglia e colore. Le piacerebbe provarne qualcuno? I camerini sono in fondo a destra.",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "provare",
+            "volentieri",
+            "certo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "solo",
+            "guardare",
+            "vedere"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. We have several models in that size and color. Would you like to try some on? The fitting rooms are at the back, on the right."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Allora, come le stanno? Ha trovato qualcosa che le piace?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "prendo",
+            "compro",
+            "perfetto"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "forse",
+            "altro",
+            "diversa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, how do they fit? Did you find something you like?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottimo! Se desidera procedere con l'acquisto, possiamo andare alla cassa. Ha bisogno di informazioni sul reso o vuole pagare direttamente?",
+      "branches": [
+        {
+          "keywords": [
+            "pago",
+            "direttamente",
+            "cassa",
+            "carta",
+            "contanti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "reso",
+            "cambiare",
+            "cambio"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! If you wish to proceed with the purchase, we can go to the till. Do you need information on returns or would you like to pay directly?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Certo, nessun problema. Può cambiare idea entro 30 giorni presentando lo scontrino, purché il capo non sia stato indossato e abbia ancora l'etichetta. Va bene così, desidera pagare?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "pago",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, no problem. You can change your mind within 30 days by presenting the receipt, provided the item hasn't been worn and still has the tag. Is that okay, would you like to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "La ringrazio e le auguro una splendida giornata! Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and I wish you a wonderful day! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

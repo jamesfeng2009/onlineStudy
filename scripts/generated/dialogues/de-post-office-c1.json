@@ -1,0 +1,189 @@
+{
+  "id": "dlg-de-post-office-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Im Postamt: Paketversand und mehr",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "päckchen",
+            "versenden"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "briefmarken",
+            "marken",
+            "brauche"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "frage",
+            "information",
+            "anliegen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good day! How can I help you? (Guten Tag! Wie kann ich Ihnen behilflich sein?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gerne. Geht es um ein Paket innerhalb Deutschlands oder ins Ausland? Und welche Versandart schwebt Ihnen vor – Standard, Express, oder vielleicht Einschreiben?",
+      "branches": [
+        {
+          "keywords": [
+            "deutschland",
+            "inland"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "ausland",
+            "international"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "express",
+            "einschreiben",
+            "priorität"
+          ],
+          "nextTurnId": "t2c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Is it a parcel within Germany or abroad? And which shipping method do you have in mind – standard, express, or perhaps registered mail? (Gerne. Geht es um ein Paket innerhalb Deutschlands oder ins Ausland?)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Für Sendungen innerhalb Deutschlands bieten wir verschiedene Optionen an. Möchten Sie eine Sendungsverfolgung und eventuell eine zusätzliche Versicherung?",
+      "branches": [
+        {
+          "keywords": [
+            "sendungsverfolgung",
+            "tracking"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For shipments within Germany, we offer various options. Would you like tracking and possibly additional insurance?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Bei Auslandssendungen benötigen wir zwingend eine Zollerklärung. Haben Sie das Formular bereits ausgefüllt oder benötigen Sie Unterstützung dabei?",
+      "branches": [
+        {
+          "keywords": [
+            "ausgefüllt",
+            "fertig",
+            "habe"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international shipments, we absolutely require a customs declaration. Have you already filled out the form, or do you need assistance with it? (Bei Auslandssendungen benötigen wir zwingend eine Zollerklärung.)"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Verstehe, eine schnellere oder besonders sichere Versandart also. Das ist sowohl im Inland als auch ins Ausland möglich, mit entsprechenden Zuschlägen. Soll ich Ihnen die Konditionen für eine bestimmte Destination nennen?",
+      "branches": [
+        {
+          "keywords": [
+            "inland",
+            "deutschland"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see, a faster or particularly secure shipping method then. That's possible both domestically and internationally, with corresponding surcharges. Should I tell you the conditions for a specific destination?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Selbstverständlich. Benötigen Sie Briefmarken für Standardbriefe, Postkarten oder spezielle Marken für Großbriefe oder den internationalen Versand? Und wie viele dürfen es sein?",
+      "branches": [
+        {
+          "keywords": [
+            "standardbrief",
+            "briefe"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. Do you need stamps for standard letters, postcards, or special stamps for large letters or international shipping? And how many would you like?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gerne, ich bin ganz Ohr. Worum genau geht es Ihnen? Vielleicht um eine Postfach-Anmeldung, die Abholung eines avisierten Pakets oder etwas ganz anderes?",
+      "branches": [
+        {
+          "keywords": [
+            "postfach",
+            "mieten"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, I'm all ears. What exactly is your concern? Perhaps a post office box registration, the pickup of an announced parcel, or something entirely different?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Verstanden. Dann lassen Sie uns das entsprechende Formular ausfüllen / die Marken heraussuchen / die Sendung wiegen und die Versandkosten ermitteln. Kommen Sie bitte kurz mit zum Schalter.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "gerne",
+            "ja",
+            "bitte",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Then let's fill out the appropriate form / find the stamps / weigh the shipment and determine the shipping costs. Please come with me to the counter."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Könnten Sie das bitte wiederholen oder anders formulieren? Ich habe Sie leider nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you please repeat that or phrase it differently? Unfortunately, I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und einen schönen Tag noch!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much and have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

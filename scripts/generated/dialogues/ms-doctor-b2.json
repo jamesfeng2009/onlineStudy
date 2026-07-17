@@ -1,0 +1,147 @@
+{
+  "id": "dlg-ms-doctor-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Lawatan Doktor",
+  "opening": "Selamat pagi, encik/cik. Apa yang boleh saya bantu hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik/cik. Apa yang boleh saya bantu hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "tidaksihat",
+            "demam",
+            "selesema"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), encik/cik (sir/madam). Apa yang boleh saya bantu (How may I help) hari ini (today)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baiklah. Boleh encik/cik huraikan dengan lebih lanjut mengenai gejala yang anda alami? Sejak bila ia bermula?",
+      "branches": [
+        {
+          "keywords": [
+            "sakitkepala",
+            "migrain",
+            "sakitperut",
+            "cirit-birit",
+            "batuk"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah (Alright). Boleh encik/cik huraikan (Could you describe) dengan lebih lanjut (in more detail) mengenai gejala (the symptoms) yang anda alami (you're experiencing)? Sejak bila (When did) ia bermula (they start)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Faham. Adakah sakit itu berterusan atau datang dan pergi? Pada skala satu hingga sepuluh, berapa teruk sakitnya?",
+      "branches": [
+        {
+          "keywords": [
+            "berterusan",
+            "sentiasa",
+            "takhenti"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (Understood). Adakah sakit itu berterusan (Is the pain constant) atau datang dan pergi (or does it come and go)? Pada skala satu hingga sepuluh (On a scale of one to ten), berapa teruk sakitnya (how severe is the pain)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas maklumat itu. Adakah encik/cik mempunyai sebarang alahan kepada ubat-ubatan tertentu atau sedang mengambil sebarang preskripsi lain?",
+      "branches": [
+        {
+          "keywords": [
+            "alahan",
+            "alergi",
+            "penicillin",
+            "sulfur"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas maklumat itu. Do you have any allergies to certain medications or are you currently taking any other prescriptions?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Berdasarkan gejala yang anda huraikan, saya akan berikan preskripsi untuk ubat penahan sakit dan mungkin antibiotik. Jika tidak reda dalam beberapa hari, sila datang semula untuk pemeriksaan lanjut.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "setuju",
+            "terimakasihdoktor"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Based on the symptoms you described, I will prescribe pain medication and possibly antibiotics. If it doesn't subside in a few days, please come back for a further check-up."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh encik/cik ulang semula apa yang anda katakan? Saya tidak berapa jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh encik/cik ulang semula (could you repeat) apa yang anda katakan (what you said)? Saya tidak berapa jelas (I didn't quite catch that)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga cepat sembuh. Jaga diri.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (You're welcome). Semoga cepat sembuh (Get well soon). Jaga diri (Take care).",
+      "isTerminal": true
+    }
+  }
+}

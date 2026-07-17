@@ -1,0 +1,193 @@
+{
+  "id": "dlg-es-directions-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Cómo llegar al museo",
+  "opening": "¡Hola! ¿Necesita ayuda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Necesita ayuda?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "ayuda",
+            "museo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡OH-lah! ¿Neh-seh-SEE-tah ah-YOO-dah? — Hello! Do you need help?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, el museo. Está cerca de aquí. Camine todo recto por esta calle.",
+      "branches": [
+        {
+          "keywords": [
+            "cuanto",
+            "recto",
+            "lejos"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bus",
+            "autobus",
+            "transporte"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, el moo-SEH-oh. Eh-STAH SEHR-kah deh ah-KEE. Kah-MEE-neh TOH-doh REHK-toh por EH-stah KAH-yeh. — Ah, the museum. It's close to here. Walk straight along this street."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Camine dos o tres minutos, hasta la panadería. Después, gire a la derecha.",
+      "branches": [
+        {
+          "keywords": [
+            "panaderia",
+            "derecha",
+            "luego",
+            "despues"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "bus",
+            "parada"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Walk two or three minutes, until the bakery. After, turn right."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La parada de bus está al final de esta calle, a la izquierda. Tome el bus número 5.",
+      "branches": [
+        {
+          "keywords": [
+            "donde",
+            "bajar",
+            "parada"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "pie",
+            "caminar",
+            "andando"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bus stop is at the end of this street, to the left. Take bus number 5."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sí, gire a la derecha después de la panadería. El museo está en la esquina.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "amable"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lejos",
+            "distancia"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, turn right after the bakery. The museum is on the corner."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baje en la tercera parada. El museo está enfrente.",
+      "branches": [
+        {
+          "keywords": [
+            "perfecto",
+            "gracias",
+            "bien"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "enfrente",
+            "que",
+            "donde"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Get off at the third stop. The museum is opposite."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Dis-KUL-peh, ¿PWEH-deh reh-peh-TEER, por fah-VOR? — Excuse me, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. ¡Que tenga un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Deh NAH-dah. ¡Keh TEN-gah oon BWEN DEE-ah! — You're welcome. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

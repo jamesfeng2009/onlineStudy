@@ -1,0 +1,225 @@
+{
+  "id": "dlg-vi-directions-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Hỏi đường",
+  "opening": "Chào bạn, bạn cần giúp gì không ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, bạn cần giúp gì không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "bưudien",
+            "bưu điện",
+            "tìm bưu điện"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chợ",
+            "chợbếnthành",
+            "tìm chợ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban), bạn cần giúp gì không ạ? (Hello, do you need any help?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bưu điện hả? À vâng, bưu điện nằm ở cuối con đường này, ngay cạnh nhà hát lớn. Bạn cứ đi thẳng khoảng 500 mét là thấy.",
+      "branches": [
+        {
+          "keywords": [
+            "đi bộ",
+            "xe buýt",
+            "phương tiện"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "gần đó",
+            "gần đây",
+            "quán cà phê"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ rồi",
+            "hiểu rồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bưu điện (Buu dien) hả? À vâng, bưu điện nằm ở cuối con đường này, ngay cạnh nhà hát lớn. Bạn cứ đi thẳng khoảng 500 mét là thấy. (Post office? Oh yes, the post office is at the end of this street, right next to the Grand Opera House. Just go straight for about 500 meters and you'll see it.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Chợ Bến Thành à? Chắc bạn phải đi ngược lại một chút rồi rẽ phải vào đường Lê Lợi. Chợ nằm đối diện với công viên.",
+      "branches": [
+        {
+          "keywords": [
+            "đi bộ",
+            "xe buýt",
+            "phương tiện"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ rồi",
+            "hiểu rồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chợ Bến Thành (Cho Ben Thanh) à? Chắc bạn phải đi ngược lại một chút rồi rẽ phải vào đường Lê Lợi. Chợ nằm đối diện với công viên. (Ben Thanh Market? You'll probably have to go back a bit and then turn right onto Le Loi Street. The market is opposite the park.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Khoảng 500 mét thì bạn đi bộ cũng được, hoặc nếu muốn nhanh hơn thì bắt xe buýt số 3 hoặc số 19 nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "đi bộ",
+            "cảm ơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "xe buýt",
+            "số mấy"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khoảng 500 mét (Khoang nam tram met) thì bạn đi bộ cũng được, hoặc nếu muốn nhanh hơn thì bắt xe buýt số 3 hoặc số 19 nhé. (About 500 meters, you can walk, or if you want to be faster, take bus number 3 or 19.)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Chợ Bến Thành không xa lắm đâu, đi bộ khoảng 10-15 phút là tới.",
+      "branches": [
+        {
+          "keywords": [
+            "đi bộ",
+            "cảm ơn",
+            "rõ rồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chợ Bến Thành (Cho Ben Thanh) không xa lắm đâu, đi bộ khoảng 10-15 phút là tới. (Ben Thanh Market is not too far, it's about a 10-15 minute walk.)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gần bưu điện có một quán cà phê rất đẹp tên là \"Góc Phố\", bạn có thể ghé qua đó.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ rồi",
+            "tuyệt vời"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gần bưu điện có một quán cà phê (quan ca phe) rất đẹp tên là \"Góc Phố\", bạn có thể ghé qua đó. (Near the post office, there's a very nice cafe called \"Goc Pho\", you can stop by there.)"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Xe buýt số 3 hoặc số 19 đều đi qua đó.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ rồi",
+            "tuyệt vời"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xe buýt (Xe buyt) số 3 hoặc số 19 đều đi qua đó. (Bus number 3 or 19 both go there.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại rõ hơn không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), bạn có thể nói lại rõ hơn không ạ? (Sorry, could you please repeat that more clearly?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Không có gì, chúc bạn một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Không có gì, chúc bạn một ngày tốt lành! (You're welcome, have a good day!)",
+      "isTerminal": true
+    }
+  }
+}

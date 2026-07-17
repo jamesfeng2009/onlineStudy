@@ -1,0 +1,186 @@
+{
+  "id": "dlg-it-post-office-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Alla Posta: Spedizioni e Servizi Avanzati",
+  "opening": "Buongiorno, benvenuto/a alle Poste Italiane. In cosa posso esserle utile oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto/a alle Poste Italiane. In cosa posso esserle utile oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "spedire",
+            "pacco",
+            "plico"
+          ],
+          "nextTurnId": "t2_parcel_start"
+        },
+        {
+          "keywords": [
+            "francobolli",
+            "francobollo"
+          ],
+          "nextTurnId": "t5_stamps_start"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "domanda",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwon-jor-no, ben-veh-noo-to/ah ahl-leh Pohs-teh Ee-tah-lee-ah-neh. Eeng koh-zah pohs-soh es-seh-reh-leh oo-tee-leh oh-jee? — Good morning, welcome to Italian Post. How can I help you today?"
+    },
+    "t2_parcel_start": {
+      "id": "t2_parcel_start",
+      "prompt": "Certo. Si tratta di una spedizione nazionale o internazionale? E desidera un servizio base, raccomandato o espresso?",
+      "branches": [
+        {
+          "keywords": [
+            "nazionale",
+            "italia"
+          ],
+          "nextTurnId": "t4_parcel_final"
+        },
+        {
+          "keywords": [
+            "internazionale",
+            "estero",
+            "all'estero"
+          ],
+          "nextTurnId": "t3_international_parcel"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Is it a national or international shipment? And do you want a basic, registered, or express service?"
+    },
+    "t3_international_parcel": {
+      "id": "t3_international_parcel",
+      "prompt": "Capisco. Per le spedizioni internazionali, la compilazione della dichiarazione doganale è imprescindibile. L'ha già preparata o le occorre il modulo CN22/CN23?",
+      "branches": [
+        {
+          "keywords": [
+            "modulo",
+            "serve",
+            "dichiarazione",
+            "dogana"
+          ],
+          "nextTurnId": "t4_parcel_final"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kah-pees-koh. Per leh speh-dee-tsyo-nee een-ter-nah-tsyo-nah-lee, lah kohm-pee-lah-tsyo-neh del-lah dee-kyah-rah-tsyo-neh doh-gah-nah-leh eh eem-preh-sheen-dee-bee-leh. Lah yah preh-pah-rah-tah oh leh ohk-koh-reh eel moh-doo-loh Chee-Enne-Ven-tee-doo/Chee-Enne-Ven-tee-treh? — I see. For international shipments, filling out the customs declaration is essential. Have you already prepared it, or do you need the CN22/CN23 form?"
+    },
+    "t4_parcel_final": {
+      "id": "t4_parcel_final",
+      "prompt": "Ottimo. Procediamo quindi con la pesatura e il calcolo del costo. Desidera integrare la spedizione con servizi aggiuntivi, come un'assicurazione sul valore o la notifica di avvenuta consegna tramite SMS/email?",
+      "branches": [
+        {
+          "keywords": [
+            "assicurazione",
+            "valore",
+            "assicurare"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oht-tee-moh. Proh-cheh-dee-ah-moh kween-dee kohn lah peh-zah-too-rah eh eel kal-koh-loh del kohs-toh. Deh-zee-deh-rah een-teh-grah-reh lah speh-dee-tsyo-neh kohn ser-vee-tsee ahj-joon-tee-vee, koh-meh oon-ah-see-koo-rah-tsyo-neh sool vah-loh-reh oh lah noh-tee-fee-kah dee ahv-veh-noo-tah kohn-seh-nyah trah-mee-teh ehs-seh-em-mehs/ee-meh-il? — Excellent. We will therefore proceed with weighing and cost calculation. Do you wish to supplement the shipment with additional services, such as value insurance or delivery notification via SMS/email?"
+    },
+    "t5_stamps_start": {
+      "id": "t5_stamps_start",
+      "prompt": "Certo, abbiamo un vasto campionario di francobolli. Le occorrono per corrispondenza nazionale, internazionale, o magari le interessano francobolli da collezione?",
+      "branches": [
+        {
+          "keywords": [
+            "nazionale",
+            "lettera"
+          ],
+          "nextTurnId": "t6_stamps_final"
+        },
+        {
+          "keywords": [
+            "collezione",
+            "collezionista"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, we have a wide range of stamps. Do you need them for national or international correspondence, or perhaps you're interested in collector's stamps?"
+    },
+    "t6_stamps_final": {
+      "id": "t6_stamps_final",
+      "prompt": "Perfetto. E quanti francobolli le occorrono in totale? Per quelli internazionali, ha una destinazione specifica o un peso da indicare?",
+      "branches": [
+        {
+          "keywords": [
+            "dieci",
+            "cinque",
+            "tre",
+            "quantità",
+            "numero"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. And how many stamps do you need in total? For international ones, do you have a specific destination or weight to indicate?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe riformulare la sua richiesta, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti",
+            "scusa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you rephrase your request, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. Siamo a sua disposizione per concludere l'operazione. Arrivederci e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. We are at your disposal to conclude the operation. Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "id": "dlg-it-doctor-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Visita dal Dottore",
+  "opening": "Buongiorno, Dottoressa/Dottore. Mi dica, cosa la porta qui oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, Dottoressa/Dottore. Mi dica, cosa la porta qui oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "schiena",
+            "maldischiena",
+            "dolorealla schiena"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gola",
+            "maldisgola",
+            "raffreddore",
+            "tosse"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "febbre",
+            "malessere",
+            "nonmisentobene"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "altro",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (buon-Jorn-no), Dottoressa/Dottore. Mi dica (mee DEE-kah), cosa la porta qui oggi? — Good morning, Doctor. Tell me, what brings you here today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Capisco. Da quanto tempo ha questo dolore alla schiena e può descrivermelo? È costante o va e viene?",
+      "branches": [
+        {
+          "keywords": [
+            "daqualchegiorno",
+            "unagiornata",
+            "daieri",
+            "recentemente",
+            "sordo",
+            "leggero",
+            "diffuso",
+            "vaeviene"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "datempo",
+            "dacircaunmese",
+            "cronico",
+            "daunasettimana",
+            "acuto",
+            "forte",
+            "lancinante",
+            "costante"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (kah-PEE-skoh). Da quanto tempo ha questo dolore alla schiena e può descrivermelo? È costante o va e viene? — I understand. How long have you had this back pain, and can you describe it for me? Is it constant or does it come and go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Mi dispiace sentirlo. Ha anche febbre, tosse o altri sintomi influenzali?",
+      "branches": [
+        {
+          "keywords": [
+            "sì,febbre",
+            "febbre",
+            "stanca",
+            "spossata",
+            "starnuti"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "solo tosse",
+            "solo maldigola",
+            "senzafebbre",
+            "no"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dispiace (mee dee-SPYAH-che) sentirlo. Ha anche febbre, tosse (TOS-seh) o altri sintomi influenzali? — I'm sorry to hear that. Do you also have a fever, cough, or other flu symptoms?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La febbre è alta? Ha preso qualcosa per abbassarla? Sente altri dolori o malessere generale?",
+      "branches": [
+        {
+          "keywords": [
+            "sì,alta",
+            "oltre38",
+            "nonpassa",
+            "moltoalta",
+            "preso tachipirina",
+            "medicinale",
+            "paracetamolo",
+            "malditesta",
+            "nausea",
+            "doloreagliocchi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no,bassa",
+            "nonmolto",
+            "nonho",
+            "leggere",
+            "nientedolori"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La febbre è alta? Ha preso qualcosa per abbassarla? Sente altri dolori (doh-LOH-ree) o malessere generale? — Is the fever high? Have you taken anything to lower it? Do you feel any other pains or general malaise?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Va bene. Per il momento le consiglio riposo e un antidolorifico da banco. Se i sintomi persistono o peggiorano, torni pure a trovarmi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "va bene",
+            "faròcosì",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Va bene. Per il momento le consiglio (leh kon-SEE-lyoh) riposo e un antidolorifico da banco. Se i sintomi persistono o peggiorano, torni pure a trovarmi. — Alright. For now, I recommend rest and an over-the-counter painkiller. If symptoms persist or worsen, please come back to see me."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "In questo caso, data la durata, potrebbe essere utile fare una radiografia o un'ecografia per escludere complicazioni. Le darò un'impegnativa.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "va bene",
+            "perfetto",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "In questo caso, data la durata, potrebbe essere utile fare una radiografia o un'ecografia per escludere complicazioni. Le darò un'impegnativa (eem-peh-nya-TEE-vah). — In this case, given the duration, it might be useful to have an X-ray or ultrasound to rule out complications. I will give you a referral."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Prenda questo sciroppo per la tosse e paracetamolo per la febbre. Beva molti liquidi e stia a riposo. Dovrebbe sentirsi meglio in pochi giorni.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "va bene",
+            "capisco",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Prenda questo sciroppo per la tosse e paracetamolo per la febbre. Beva molti liquidi e stia a riposo. Dovrebbe sentirsi meglio in pochi giorni. — Take this cough syrup and paracetamol for the fever. Drink plenty of fluids and rest. You should feel better in a few days."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), non ho capito. Potrebbe ripetere (poh-TRES-beh re-PE-te-re), per favore? — Excuse me, I didn't understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie, arrivederci.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie (GRAH-tsee-eh), arrivederci (ah-ree-ve-DER-chee). — Thank you, goodbye.",
+      "isTerminal": true
+    }
+  }
+}

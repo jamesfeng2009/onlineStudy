@@ -1,0 +1,201 @@
+{
+  "id": "dlg-id-phone-call-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Panggilan Telepon: Meninggalkan Pesan",
+  "opening": "Halo, selamat pagi. Dengan Dewi dari PT Maju Jaya. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo, selamat pagi. Dengan Dewi dari PT Maju Jaya. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin",
+            "bicara",
+            "dengan",
+            "pak",
+            "bu"
+          ],
+          "nextTurnId": "t2_ask_for_person"
+        },
+        {
+          "keywords": [
+            "siapa",
+            "ini",
+            "dengan",
+            "siapa"
+          ],
+          "nextTurnId": "t2_who_is_calling"
+        },
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "adalah"
+          ],
+          "nextTurnId": "t2_identify_self"
+        },
+        {
+          "keywords": [
+            "",
+            "halo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo, selamat pagi (hah-loh, seh-lah-maht pah-gee). Dengan Dewi dari PT Maju Jaya (deh-ngahn deh-wee dah-ree peh-teh mah-joo jah-yah). Ada yang bisa saya bantu (ah-dah yahng bee-sah sah-yah bahn-too)? — Hello, good morning. This is Dewi from PT Maju Jaya. How can I help you?"
+    },
+    "t2_ask_for_person": {
+      "id": "t2_ask_for_person",
+      "prompt": "Boleh saya tahu dengan siapa saya berbicara?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "dari",
+            "pt"
+          ],
+          "nextTurnId": "t3_connect_or_message"
+        },
+        {
+          "keywords": [
+            "",
+            "tidak"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boleh saya tahu (boh-leh sah-yah tah-hoo) dengan siapa saya berbicara (deh-ngahn see-ah-pah sah-yah ber-bee-chah-rah)? — May I know who's calling?"
+    },
+    "t2_who_is_calling": {
+      "id": "t2_who_is_calling",
+      "prompt": "Saya Dewi dari PT Maju Jaya. Anda ingin berbicara dengan siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin",
+            "bicara",
+            "dengan",
+            "pak",
+            "bu"
+          ],
+          "nextTurnId": "t3_connect_or_message"
+        },
+        {
+          "keywords": [
+            "",
+            "maaf"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya Dewi dari PT Maju Jaya (sah-yah deh-wee dah-ree peh-teh mah-joo jah-yah). Anda ingin berbicara dengan siapa (ahn-dah ee-ngin ber-bee-chah-rah deh-ngahn see-ah-pah)? — I am Dewi from PT Maju Jaya. Who would you like to speak with?"
+    },
+    "t2_identify_self": {
+      "id": "t2_identify_self",
+      "prompt": "Baik, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin",
+            "bicara",
+            "dengan",
+            "pak",
+            "bu"
+          ],
+          "nextTurnId": "t3_connect_or_message"
+        },
+        {
+          "keywords": [
+            "",
+            "terima"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (bah-eek), ada yang bisa saya bantu (ah-dah yahng bee-sah sah-yah bahn-too)? — Okay, how can I help you?"
+    },
+    "t3_connect_or_message": {
+      "id": "t3_connect_or_message",
+      "prompt": "Mohon maaf, Bapak/Ibu yang Anda cari sedang tidak ada di tempat atau sedang dalam rapat. Apakah Anda ingin meninggalkan pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "iya",
+            "mohon",
+            "tinggalkan",
+            "pesan"
+          ],
+          "nextTurnId": "t4_take_message"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "nanti",
+            "telepon",
+            "lagi"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "",
+            "kapan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf (moh-hon mah-ahf), Bapak/Ibu yang Anda cari (bah-pak/ee-boo yahng ahn-dah chah-ree) sedang tidak ada di tempat atau sedang dalam rapat (seh-dahng tee-dak ah-dah dee tem-pat ah-tau seh-dahng dah-lam rah-pat). Apakah Anda ingin meninggalkan pesan (ah-pah-kah ahn-dah ee-ngin meh-ning-gal-kan peh-san)? — I'm sorry, Mr./Ms. you're looking for is not available or is in a meeting. Would you like to leave a message?"
+    },
+    "t4_take_message": {
+      "id": "t4_take_message",
+      "prompt": "Baik, saya akan sampaikan pesan Anda. Ada lagi yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (bah-eek), saya akan sampaikan pesan Anda (sah-yah ah-kan sam-pai-kan peh-san ahn-dah). Ada lagi yang bisa saya bantu (ah-dah lah-gee yahng bee-sah sah-yah bahn-too)? — Okay, I will deliver your message. Is there anything else I can help you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, suara Anda kurang jelas. Bisa diulang kembali?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "tolong"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf (moh-hon mah-ahf), suara Anda kurang jelas (soo-ah-rah ahn-dah koo-rang jeh-las). Bisa diulang kembali (bee-sah dee-oo-lang kem-bah-lee)? — I'm sorry, your voice is unclear. Could you repeat that?"
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Baik, terima kasih sudah menghubungi. Selamat pagi/siang/sore.",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Baik, terima kasih sudah menghubungi. Selamat pagi/siang/sore. — Okay, thank you for calling. Good morning/afternoon/evening.",
+      "isTerminal": true
+    }
+  }
+}

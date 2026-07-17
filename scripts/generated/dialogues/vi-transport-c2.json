@@ -1,0 +1,217 @@
+{
+  "id": "dlg-vi-transport-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Hỏi đường và mua vé xe buýt",
+  "opening": "Chào anh/chị. Anh/chị đi đâu ạ? Có cần giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị đi đâu ạ? Có cần giúp gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "đi",
+            "đến",
+            "tới",
+            "ga",
+            "hỏi",
+            "tuyến",
+            "vé",
+            "mua"
+          ],
+          "nextTurnId": "t2_dest"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. Anh/chị đi đâu ạ? Có cần giúp gì không? (Chao anh/chi. Anh/chi di dau a? Co can giup gi khong? - Hello. Where are you going? Can I help you?)"
+    },
+    "t2_dest": {
+      "id": "t2_dest",
+      "prompt": "Vâng, anh/chị muốn đến khu vực nào cụ thể ạ? Ví dụ Bến Thành, Suối Tiên hay một địa điểm khác? Tùy nơi mà có tuyến thẳng hay phải chuyển đổi. Anh/chị cho biết điểm đến nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "bếnthành",
+            "suốitiên",
+            "côngviên",
+            "chợ",
+            "trườnghọc",
+            "kháchsạn"
+          ],
+          "nextTurnId": "t3_route_options"
+        },
+        {
+          "keywords": [
+            "địađiểmkhác",
+            "khác",
+            "tênđường",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t3_route_alt"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị muốn đến khu vực nào cụ thể ạ? Ví dụ Bến Thành, Suối Tiên hay một địa điểm khác? Tùy nơi mà có tuyến thẳng hay phải chuyển đổi. Anh/chị cho biết điểm đến nhé. (Vang, anh/chi muon den khu vuc nao cu the a? Vi du Ben Thanh, Suoi Tien hay mot dia diem khac? Tuy noi ma co tuyen thang hay phai chuyen doi. Anh/chi cho biet diem den nhe. - Yes, which specific area do you want to go to? For example, Ben Thanh, Suoi Tien, or another location? Depending on the place, there might be a direct route or you might need to transfer. Please tell me your destination.)"
+    },
+    "t3_route_options": {
+      "id": "t3_route_options",
+      "prompt": "À, đến Bến Thành thì có tuyến thẳng số 109 (12.000đ/lượt) mất khoảng 45-60 phút tùy giao thông, hoặc tuyến 152 rồi chuyển sang 03 (7.000đ/lượt) có thể nhanh hơn nhưng phải đi bộ một đoạn. Anh/chị muốn chọn tuyến nào?",
+      "branches": [
+        {
+          "keywords": [
+            "thẳng",
+            "109",
+            "trựctiếp",
+            "khôngchuyển"
+          ],
+          "nextTurnId": "t4_buy_direct"
+        },
+        {
+          "keywords": [
+            "chuyển",
+            "152",
+            "03",
+            "nhanhhơn",
+            "ghép"
+          ],
+          "nextTurnId": "t4_buy_transfer"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, đến Bến Thành thì có tuyến thẳng số 109 (12.000đ/lượt) mất khoảng 45-60 phút tùy giao thông, hoặc tuyến 152 rồi chuyển sang 03 (7.000đ/lượt) có thể nhanh hơn nhưng phải đi bộ một đoạn. Anh/chị muốn chọn tuyến nào? (A, den Ben Thanh thi co tuyen thang so mot linh chin (muoi hai nghin dong mot luot) mat khoang bon lam-sau muoi phut tuy giao thong, hoac tuyen mot tram nam hai roi chuyen sang khong ba (bay nghin dong mot luot) co the nhanh hon nhung phai di bo mot doan. Anh/chi muon chon tuyen nao? - Oh, to Ben Thanh there's direct route 109 (12,000 VND/trip) taking about 45-60 minutes depending on traffic, or route 152 then transferring to 03 (7,000 VND/trip) which might be faster but requires a short walk. Which route would you like to choose?)"
+    },
+    "t3_route_alt": {
+      "id": "t3_route_alt",
+      "prompt": "Nếu vậy, anh/chị có thể cho tôi biết quận/huyện hoặc một địa điểm nổi bật gần đó được không ạ? Tôi sẽ tra cứu cho anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "quận",
+            "huyện",
+            "gần"
+          ],
+          "nextTurnId": "t2_dest"
+        },
+        {
+          "keywords": [
+            "không",
+            "thôi",
+            "bỏqua"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nếu vậy, anh/chị có thể cho tôi biết quận/huyện hoặc một địa điểm nổi bật gần đó được không ạ? (Neu vay, anh/chi co the cho toi biet quan/huyen hoac mot dia diem noi bat gan do duoc khong a? - In that case, could you tell me the district/ward or a prominent nearby landmark? I will look it up for you.)"
+    },
+    "t4_buy_direct": {
+      "id": "t4_buy_direct",
+      "prompt": "Vâng, vé tuyến 109 là 12.000đ/lượt. Anh/chị thanh toán bằng gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "tiền mặt",
+            "cash"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, vé tuyến 109 là 12.000đ/lượt. Anh/chị thanh toán bằng gì ạ? (Vang, ve tuyen mot linh chin la muoi hai nghin dong mot luot. Anh/chi thanh toan bang gi a? - Yes, a single trip on route 109 is 12,000 VND. How would you like to pay?)"
+    },
+    "t4_buy_transfer": {
+      "id": "t4_buy_transfer",
+      "prompt": "Vâng, vé chuyển tuyến là 7.000đ/lượt. Hay anh/chị muốn mua vé ngày 30.000đ dùng cho cả hai tuyến và các tuyến khác trong ngày luôn ạ? Anh/chị thanh toán bằng gì?",
+      "branches": [
+        {
+          "keywords": [
+            "lượt",
+            "mộtchiều",
+            "7000",
+            "tiềnmặt"
+          ],
+          "nextTurnId": "t5_pay"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, vé chuyển tuyến là 7.000đ/lượt. Hay anh/chị muốn mua vé ngày 30.000đ dùng cho cả hai tuyến và các tuyến khác trong ngày luôn ạ? Anh/chị thanh toán bằng gì? (Vang, ve chuyen tuyen la bay nghin dong mot luot. Hay anh/chi muon mua ve ngay ba muoi nghin dong dung cho ca hai tuyen va cac tuyen khac trong ngay luon a? Anh/chi thanh toan bang gi? - Yes, a transfer ticket is 7,000 VND/trip. Or would you like to buy a day pass for 30,000 VND, usable for both routes and other routes all day? How would you like to pay?)"
+    },
+    "t5_pay": {
+      "id": "t5_pay",
+      "prompt": "Vâng, đã nhận đủ tiền/thanh toán thành công. Đây là vé của anh/chị. Chúc anh/chị có một chuyến đi thuận lợi và vui vẻ!",
+      "branches": [],
+      "fallbackBranchId": "t5_pay",
+      "promptTranslation": "Vâng, đã nhận đủ tiền/thanh toán thành công. Đây là vé của anh/chị. Chúc anh/chị có một chuyến đi thuận lợi và vui vẻ! (Vang, da nhan du tien/thanh toan thanh cong. Day la ve cua anh/chi. Chuc anh/chi co mot chuyen di thuan loi va vui ve! - Yes, payment received/successful. Here is your ticket. Wish you a smooth and pleasant journey!)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nói lại được không? (Sin loi, toi chua nghe ro. Anh/chi co the noi lai duoc khong? - Sorry, I didn't hear clearly. Could you please repeat?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, vậy anh/chị cứ cân nhắc nhé. Chúc anh/chị một ngày tốt lành và hy vọng sẽ được phục vụ anh/chị lần tới!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, vậy anh/chị cứ cân nhắc nhé. Chúc anh/chị một ngày tốt lành và hy vọng sẽ được phục vụ anh/chị lần tới! (Vang, vay anh/chi cu can nhac nhe. Chuc anh/chi mot ngay tot lanh va hy vong se duoc phuc vu anh/chi lan toi! - Okay, please consider it. Wish you a good day and hope to serve you next time!)",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "dlg-es-airport-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Facturación en el aeropuerto",
+  "opening": "Hola. Buenos días. ¿Puedo ver su pasaporte y billete, por favor?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola. Buenos días. ¿Puedo ver su pasaporte y billete, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "aqui",
+            "aqui tiene",
+            "tenga",
+            "si",
+            "claro"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no entiendo",
+            "que"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. Good morning. Can I see your passport (pah-sah-POHR-teh) and ticket (bee-YEH-teh), please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gracias. ¿Va a Madrid? ¿Tiene equipaje para facturar?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "madrid",
+            "voy a madrid",
+            "tengo maleta",
+            "una maleta"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "no",
+            "no tengo",
+            "solo equipaje de mano",
+            "barcelona"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Are you going to Madrid (mah-DRID)? Do you have luggage (eh-kee-PAH-heh) to check?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Muy bien. Ponga su maleta aquí, por favor. ¿Lleva equipaje de mano?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "mochila",
+            "una mochila",
+            "equipaje de mano"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Place your suitcase (mah-LEH-tah) here, please. Do you have hand luggage (eh-kee-PAH-heh deh MAH-no)?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "De acuerdo. Aquí tiene su tarjeta de embarque. Su puerta es la B23.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "muchas gracias",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Here (ah-KEE) is your boarding pass (tar-HEH-tah deh em-BAR-keh). Your gate (PWER-tah) is B23."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfecto. Aquí tiene su tarjeta de embarque. La puerta de embarque es la B23 y el embarque empieza a las diez.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "muchas gracias",
+            "entendido",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Here is your boarding pass. The boarding (em-BAR-keh) gate is B23 and boarding starts at ten."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? ¿Puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? Can you repeat (reh-peh-TEER), please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un buen viaje.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a good trip.",
+      "isTerminal": true
+    }
+  }
+}

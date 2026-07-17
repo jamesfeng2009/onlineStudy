@@ -1,0 +1,128 @@
+{
+  "id": "dlg-de-doctor-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Arztbesuch: Symptombeschreibung",
+  "opening": "Guten Tag. Was führt Sie heute zu mir? Erzählen Sie mir bitte, was Ihnen auf dem Herzen liegt.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Was führt Sie heute zu mir? Erzählen Sie mir bitte, was Ihnen auf dem Herzen liegt.",
+      "branches": [
+        {
+          "keywords": [
+            "schmerzen",
+            "unwohlsein",
+            "beschwerden",
+            "krankheit"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "vorsorge",
+            "routine"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good day. What brings you to me today? Please tell me what's on your mind. (Goo-ten Tahg. Vahs fürt Zee hoy-tuh tsoo meer? Ehr-tsäh-len Zee meer bit-tuh, vahs ee-nen owf dem Hehr-tsen leekt.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ich verstehe. Könnten Sie die Symptome genauer beschreiben? Seit wann bestehen sie, wo genau empfinden Sie Schmerzen oder Unwohlsein und wie würden Sie die Intensität einschätzen?",
+      "branches": [
+        {
+          "keywords": [
+            "seit",
+            "dauer",
+            "tage",
+            "wochen",
+            "monate"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Could you describe the symptoms more precisely? How long have you had them, where exactly do you feel pain or discomfort, and how would you rate the intensity?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vielen Dank für die präzise Beschreibung. Treten weitere Begleitsymptome auf, wie beispielsweise Fieber, Übelkeit oder Schwindel? Und ganz wichtig: Nehmen Sie bereits Medikamente ein oder sind Allergien bekannt, die ich unbedingt wissen sollte?",
+      "branches": [
+        {
+          "keywords": [
+            "fieber",
+            "übelkeit",
+            "schwindel",
+            "erbrechen",
+            "husten",
+            "begleitsymptome"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for the precise description. Are there any other accompanying symptoms, such as fever, nausea, or dizziness? And very important: Are you already taking any medication or are there any known allergies that I should definitely be aware of? (Fee-len Dahngk für dee pray-tsee-zuh Beh-shry-bung. Treh-ten vy-tuh-ruh Beh-glyt-symp-toh-muh owf, vee by-shpeel-zah-yuh Fee-ber, Ü-bel-kyte oh-der Shvin-del? Oond gahntz vich-tich: Neh-men Zee beh-rayts Meh-dee-kah-men-tuh ayn oh-der zint Ah-lehr-gee-en beh-kannt, dee ich oon-beh-dingt vis-sen zoll-tuh?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Besten Dank für diese umfassenden Informationen. Das hilft mir sehr, mir ein Bild zu machen. Um nun eine fundierte Diagnose stellen zu können und die bestmögliche Behandlung einzuleiten, ist eine körperliche Untersuchung unerlässlich. Anschließend besprechen wir das weitere Vorgehen und eventuelle Therapiemöglichkeiten.",
+      "branches": [
+        {
+          "keywords": [
+            "einverstanden",
+            "gerne",
+            "ja",
+            "untersuchung"
+          ],
+          "nextTurnId": "t5_follow_up"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you very much for this comprehensive information. That helps me a lot to get a clear picture. To be able to make a well-founded diagnosis now and initiate the best possible treatment, a physical examination is essential. Afterwards, we will discuss the further procedure and possible therapy options."
+    },
+    "t5_follow_up": {
+      "id": "t5_follow_up",
+      "prompt": "Ausgezeichnet. Dann folgen Sie mir bitte kurz ins Behandlungszimmer. Dort können wir alles Weitere in Ruhe besprechen. Ich bin zuversichtlich, dass wir die Ursache finden und Ihnen helfen können.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "danke",
+            "folgen"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Please follow me into the examination room. There we can calmly discuss everything else. I am confident that we will find the cause and be able to help you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie bitte, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it or phrase it differently?"
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Vielen Dank für Ihr Vertrauen. Wir kümmern uns darum. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Thank you for your trust. We will take care of it. Goodbye! (Fee-len Dahngk für Ihr Fehr-trow-en. Veer küm-mern oons dah-room. Owf Vee-der-zeen!)",
+      "isTerminal": true
+    }
+  }
+}

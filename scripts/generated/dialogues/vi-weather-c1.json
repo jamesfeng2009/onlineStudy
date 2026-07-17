@@ -1,0 +1,280 @@
+{
+  "id": "dlg-vi-weather-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Trò chuyện về thời tiết",
+  "opening": "Hôm nay thời tiết có vẻ hơi thất thường nhỉ? Lúc nắng, lúc mưa, đúng là khó đoán thật.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hôm nay thời tiết có vẻ hơi thất thường nhỉ? Lúc nắng, lúc mưa, đúng là khó đoán thật.",
+      "branches": [
+        {
+          "keywords": [
+            "khóđoán",
+            "thấtthường",
+            "thayđổi",
+            "đúngvậy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "dựbáo",
+            "baothời",
+            "sắpmưa",
+            "sắpnắng"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "thích",
+            "ghét",
+            "kiểu",
+            "mongmuốn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hôm nay thời tiết có vẻ hơi thất thường nhỉ? (Hôm nay thời tiết có vẻ hơi thất thường nhỉ?) Lúc nắng, lúc mưa, đúng là khó đoán thật. (Today the weather seems a bit unpredictable, doesn't it? Sunny one moment, rainy the next, truly hard to guess.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Đúng vậy, thời tiết 'sáng nắng chiều mưa' thế này khiến kế hoạch của tôi cũng bị đảo lộn ít nhiều. Bạn có bị ảnh hưởng gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "hoạtđộngngoàitrời",
+            "dãngoại",
+            "đichơi",
+            "tậpthểthao",
+            "buồn",
+            "chán",
+            "khôngthể"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ởnhà",
+            "trongnhà",
+            "thoảimái",
+            "làmviệc",
+            "đọcsách",
+            "xemphim"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "kếhoạch",
+            "thayđổi",
+            "dựbáo",
+            "thờigian"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đúng vậy, thời tiết 'sáng nắng chiều mưa' (sáng nắng chiều mưa - morning sun, afternoon rain, an idiom for unpredictable weather) thế này khiến kế hoạch của tôi cũng bị đảo lộn ít nhiều. (That's right, this 'morning sun, afternoon rain' weather has messed up my plans quite a bit.) Bạn có bị ảnh hưởng gì không? (Has it affected you at all?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Theo dự báo thì tình hình này có vẻ còn kéo dài thêm vài ngày nữa đấy. Bạn có theo dõi dự báo thời tiết thường xuyên không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thườngxuyên",
+            "cậpnhật",
+            "quantrọng"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "không",
+            "ítkhi",
+            "khôngtin",
+            "bấtngờ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "mưa",
+            "nắng",
+            "nhiệtđộ",
+            "gió"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Theo dự báo thì tình hình này có vẻ còn kéo dài thêm vài ngày nữa đấy. (According to the forecast, this situation seems to be lasting a few more days.) Bạn có theo dõi dự báo thời tiết thường xuyên không? (Do you follow the weather forecast regularly?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "À, vậy bạn thích kiểu thời tiết như thế nào nhất? Riêng tôi thì mê những ngày nắng ráo, se se lạnh của mùa thu Hà Nội.",
+      "branches": [
+        {
+          "keywords": [
+            "nắng",
+            "ấmáp",
+            "tronglành",
+            "mátmẻ",
+            "khôrão",
+            "tươiđẹp"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "mưa",
+            "lạnh",
+            "mùsương",
+            "mùađông",
+            "dịudàng"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "mùa",
+            "xuân",
+            "hè",
+            "thu",
+            "đông",
+            "thờiđiểm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, vậy bạn thích kiểu thời tiết như thế nào nhất? (Ah, so what kind of weather do you like best?) Riêng tôi thì mê những ngày nắng ráo, se se lạnh của mùa thu Hà Nội (mùa thu Hà Nội - Hanoi autumn) (Personally, I love the clear, slightly chilly sunny days of Hanoi autumn.)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Nghe hấp dẫn thật! Với thời tiết như vậy thì hẳn bạn sẽ có nhiều hoạt động thú vị để làm nhỉ? Chẳng hạn như...",
+      "branches": [
+        {
+          "keywords": [
+            "đi dạo",
+            "chạy bộ",
+            "café",
+            "chụp ảnh",
+            "du lịch",
+            "thư giãn",
+            "tận hưởng",
+            "dã ngoại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "nhưng",
+            "hiệntại",
+            "khôngthích",
+            "chán",
+            "buồn"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe hấp dẫn thật! (Sounds fascinating!) Với thời tiết như vậy thì hẳn bạn sẽ có nhiều hoạt động thú vị để làm nhỉ? (With weather like that, you must have many interesting activities to do, right?) Chẳng hạn như... (Such as...)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tôi hiểu. Đôi khi thời tiết không chiều lòng người thì mình cũng phải linh hoạt điều chỉnh thôi. Có cách nào bạn 'đối phó' với nó không?",
+      "branches": [
+        {
+          "keywords": [
+            "ở nhà",
+            "đọc sách",
+            "xem phim",
+            "nấu ăn",
+            "nghe nhạc",
+            "ngủ",
+            "chơigame",
+            "làmviệc"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "mong",
+            "ước",
+            "giá mà",
+            "muốn"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tôi hiểu. (I understand.) Đôi khi thời tiết không chiều lòng người (thời tiết không chiều lòng người - weather doesn't favor people, an idiom for uncooperative weather) thì mình cũng phải linh hoạt điều chỉnh thôi. (Sometimes when the weather doesn't cooperate, one just has to be flexible and adjust.) Có cách nào bạn 'đối phó' với nó không? (Is there any way you 'deal with' it?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa nghe rõ. (Sorry, I didn't hear clearly.) Bạn có thể nói lại không? (Could you repeat that?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Được rồi, cảm ơn bạn đã chia sẻ nhé! Chúc bạn một ngày tốt lành và hy vọng thời tiết sẽ ủng hộ bạn.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Được rồi, cảm ơn bạn đã chia sẻ nhé! (Alright, thank you for sharing!) Chúc bạn một ngày tốt lành và hy vọng thời tiết sẽ ủng hộ bạn. (I wish you a good day and hope the weather cooperates with you.)",
+      "isTerminal": true
+    }
+  }
+}

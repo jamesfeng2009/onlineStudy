@@ -1,0 +1,246 @@
+{
+  "id": "dlg-id-small-talk-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Obrolan Santai di Pesta",
+  "opening": "Halo! Apa kabar? Lama tidak bertemu, ya? Bagaimana hari-harimu akhir-akhir ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo! Apa kabar? Lama tidak bertemu, ya? Bagaimana hari-harimu akhir-akhir ini?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "bagus",
+            "sehat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo! (hah-lo) Apa kabar? (ah-pah kah-bar) Lama tidak bertemu, ya? (lah-mah tee-dak ber-teh-moo, yah?) Bagaimana hari-harimu akhir-akhir ini? (bah-gai-mah-nah hah-ree-hah-ree-moo ah-keer-ah-keer ee-nee?) — Hello! How are you? Long time no see, right? How have your days been lately?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Syukurlah kalau begitu. Ngomong-ngomong, akhir pekan kemarin kamu melakukan apa? Atau, apa hobi barumu?",
+      "branches": [
+        {
+          "keywords": [
+            "bersantai",
+            "istirahat",
+            "rumah",
+            "tidur"
+          ],
+          "nextTurnId": "t3_relax"
+        },
+        {
+          "keywords": [
+            "baca",
+            "menonton",
+            "film",
+            "musik",
+            "menggambar"
+          ],
+          "nextTurnId": "t3_hobbies"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Syukurlah kalau begitu. (shoo-koor-lah kah-lau beh-gee-too) Ngomong-ngomong, (ngoh-mong-ngoh-mong) akhir pekan kemarin kamu melakukan apa? (ah-keer peh-kan keh-mah-reen kah-moo meh-lah-koo-kan ah-pah?) Atau, apa hobi barumu? (ah-tau, ah-pah hoh-bee bah-roo-moo?) — That's good then. By the way, what did you do last weekend? Or, what's your new hobby?"
+    },
+    "t3_relax": {
+      "id": "t3_relax",
+      "prompt": "Oh, santai di rumah itu memang paling enak! Biasanya kamu melakukan apa kalau bersantai? Menonton film, membaca buku, atau mungkin masak sesuatu yang lezat?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "seri",
+            "nonton",
+            "buku",
+            "novel",
+            "baca"
+          ],
+          "nextTurnId": "t4_media_books"
+        },
+        {
+          "keywords": [
+            "masak",
+            "makan",
+            "kuliner",
+            "resep"
+          ],
+          "nextTurnId": "t4_food"
+        },
+        {
+          "keywords": [
+            "tidur",
+            "istirahat",
+            "santai"
+          ],
+          "nextTurnId": "t5_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, santai di rumah itu memang paling enak! (oh, sahn-tai dee roo-mah ee-too meh-mang pah-ling eh-nahk!) Biasanya kamu melakukan apa kalau bersantai? (bee-ah-sah-nya kah-moo meh-lah-koo-kan ah-pah kah-lau ber-sahn-tai?) Menonton film, membaca buku, atau mungkin masak sesuatu yang lezat? (meh-non-ton film, mem-bah-cha boo-koo, ah-tau moong-kin mah-sak seh-soo-ah-too yang leh-zat?) — Oh, it's truly the best to relax at home! What do you usually do when you relax? Watch movies, read books, or maybe cook something delicious?"
+    },
+    "t3_hobbies": {
+      "id": "t3_hobbies",
+      "prompt": "Menarik sekali! Apa yang paling kamu nikmati dari hobi itu? Apakah ada rekomendasi film, buku, tempat wisata, atau makanan tertentu dari hobimu itu?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "seri",
+            "buku",
+            "novel",
+            "nonton",
+            "baca"
+          ],
+          "nextTurnId": "t4_media_books"
+        },
+        {
+          "keywords": [
+            "olahraga",
+            "lari",
+            "renang",
+            "gunung",
+            "pantai",
+            "travel",
+            "jalan-jalan"
+          ],
+          "nextTurnId": "t4_active_travel"
+        },
+        {
+          "keywords": [
+            "masak",
+            "makan",
+            "kuliner",
+            "resep"
+          ],
+          "nextTurnId": "t4_food"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali! (meh-nah-rik seh-kah-lee!) Apa yang paling kamu nikmati dari hobi itu? (ah-pah yang pah-ling kah-moo nee-kmah-tee dah-ree hoh-bee ee-too?) Apakah ada rekomendasi film, buku, tempat wisata, atau makanan tertentu dari hobimu itu? (ah-pah-kah ah-dah reh-koh-men-dah-see film, boo-koo, tem-pat wee-sah-tah, ah-tau mah-kah-nan ter-ten-too dah-ree hoh-bee-moo ee-too?) — That's very interesting! What do you enjoy most about that hobby? Are there any movie, book, tourist destination, or specific food recommendations from your hobby?"
+    },
+    "t4_media_books": {
+      "id": "t4_media_books",
+      "prompt": "Oh, saya juga pernah mendengar tentang itu! Bagaimana menurutmu? Layak ditonton/dibaca, kah?",
+      "branches": [
+        {
+          "keywords": [
+            "bagus",
+            "menarik",
+            "suka",
+            "rekomendasi"
+          ],
+          "nextTurnId": "t5_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, saya juga pernah mendengar tentang itu! (oh, sah-yah joo-gah per-nah men-den-gar ten-tang ee-too!) Bagaimana menurutmu? (bah-gai-mah-nah meh-noo-root-moo?) Layak ditonton/dibaca, kah? (lah-yak dee-ton-ton/dee-bah-cha, kah?) — Oh, I've heard about that too! What do you think? Is it worth watching/reading?"
+    },
+    "t4_active_travel": {
+      "id": "t4_active_travel",
+      "prompt": "Wah, kedengarannya seru sekali! Apa yang paling berkesan dari pengalamanmu itu? Atau, ada tips untuk pemula?",
+      "branches": [
+        {
+          "keywords": [
+            "pemandangan",
+            "alam",
+            "orang",
+            "pengalaman",
+            "seru"
+          ],
+          "nextTurnId": "t5_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, kedengarannya seru sekali! (wah, keh-den-ga-ran-nya seh-roo seh-kah-lee!) Apa yang paling berkesan dari pengalamanmu itu? (ah-pah yang pah-ling ber-keh-san dah-ree peh-nga-lah-mu-moo ee-too?) Atau, ada tips untuk pemula? (ah-tau, ah-dah tips oon-took peh-moo-lah?) — Wow, that sounds really exciting! What was the most memorable part of your experience? Or, any tips for beginners?"
+    },
+    "t4_food": {
+      "id": "t4_food",
+      "prompt": "Pasti enak sekali! Ada makanan atau restoran favorit yang bisa kamu rekomendasikan?",
+      "branches": [
+        {
+          "keywords": [
+            "makanan",
+            "masakan",
+            "kuliner",
+            "resep"
+          ],
+          "nextTurnId": "t5_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pasti enak sekali! (pas-tee eh-nahk seh-kah-lee!) Ada makanan atau restoran favorit yang bisa kamu rekomendasikan? (ah-dah mah-kah-nan ah-tau res-toh-ran fah-fo-rit yang bee-sah kah-moo reh-koh-men-dah-see-kan?) — That must be delicious! Any favorite food or restaurant you can recommend?"
+    },
+    "t5_end": {
+      "id": "t5_end",
+      "prompt": "Baiklah, senang sekali mengobrol denganmu! Semoga kita bisa bertemu lagi lain waktu, ya. Selamat menikmati pestanya!",
+      "branches": [],
+      "fallbackBranchId": "t5_end",
+      "promptTranslation": "Baiklah, (bai-klah) senang sekali mengobrol denganmu! (seh-nang seh-kah-lee meh-ngo-brol den-gan-moo!) Semoga kita bisa bertemu lagi lain waktu, ya. (seh-moh-gah kee-tah bee-sah ber-teh-moo lah-gee lain wak-too, yah.) Selamat menikmati pestanya! (seh-lah-mat meh-ni-kmah-tee pes-tah-nya!) — Alright, it was great chatting with you! Hope we can meet again sometime. Enjoy the party!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas. Apa yang kamu katakan tadi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (mah-ahf) bisa diulang? (bee-sah dee-oo-lang?) Saya kurang jelas. (sah-yah koo-rang jeh-las.) Apa yang kamu katakan tadi? (ah-pah yang kah-moo kah-tah-kan tah-dee?) — Sorry, could you repeat? I didn't quite catch that. What did you say just now?"
+    }
+  }
+}

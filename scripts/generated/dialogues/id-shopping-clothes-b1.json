@@ -1,0 +1,215 @@
+{
+  "id": "dlg-id-shopping-clothes-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Belanja Pakaian",
+  "opening": "Selamat siang! Ada yang bisa saya bantu hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang! Ada yang bisa saya bantu hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "cari",
+            "butuh",
+            "kemeja",
+            "baju",
+            "celana",
+            "rok",
+            "pakaian"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lihat-lihat",
+            "saja",
+            "belum"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "tidak",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang — Good afternoon! Ada yang bisa saya bantu hari ini? — Is there anything I can help you with today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu, Anda mencari kemeja seperti apa? Ukuran dan warna apa yang Anda inginkan?",
+      "branches": [
+        {
+          "keywords": [
+            "ukuran",
+            "warna",
+            "m",
+            "l",
+            "xl",
+            "s",
+            "merah",
+            "biru",
+            "hitam",
+            "putih",
+            "hijau",
+            "kuning"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "model",
+            "lain",
+            "beda",
+            "lainnya",
+            ""
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly, Anda mencari kemeja seperti apa? — What kind of shirt are you looking for? Ukuran dan warna apa yang Anda inginkan? — What size and color would you like?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, kami punya kemeja katun biru ukuran M yang bagus ini. Mau coba di ruang pas?",
+      "branches": [
+        {
+          "keywords": [
+            "iya",
+            "mau",
+            "coba",
+            "ya"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "beda",
+            "warna",
+            "ukuran",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "terima kasih"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, kami punya kemeja katun biru ukuran M yang bagus ini — We have this nice blue cotton shirt in size M. Mau coba di ruang pas? — Would you like to try it on in the fitting room?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bagaimana? Pas di badan Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pas",
+            "cocok",
+            "ambil",
+            "iya"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "kebesaran",
+            "kekecilan",
+            "besar",
+            "kecil",
+            "sempit"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagaimana? — How is it? Pas di badan Anda? — Does it fit you well?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oke, mau langsung bayar di kasir atau ada lagi yang ingin Anda lihat? Kami juga ada kebijakan penukaran barang dalam 7 hari.",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "kasir",
+            "ambil"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lihat-lihat",
+            "lagi",
+            "tidak",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tukar",
+            "kembali",
+            "kebijakan"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke — Okay, mau langsung bayar di kasir — would you like to pay at the cashier right away, atau ada lagi yang ingin Anda lihat? — or is there anything else you'd like to see? Kami juga ada kebijakan penukaran barang dalam 7 hari — We also have a 7-day exchange policy."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tentu, Anda bisa menukar barang ini dalam waktu 7 hari dengan struk pembelian dan kondisi barang masih bagus.",
+      "branches": [
+        {
+          "keywords": [
+            "mengerti",
+            "oke",
+            "baik",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly, Anda bisa menukar barang ini dalam waktu 7 hari — you can exchange this item within 7 days, dengan struk pembelian — with the purchase receipt, dan kondisi barang masih bagus — and the item is still in good condition."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa diulang? — Could you please repeat that? Saya kurang jelas — I'm not clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak sudah berbelanja di sini! Selamat hari!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak sudah berbelanja di sini! — Thank you very much for shopping here! Selamat hari! — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

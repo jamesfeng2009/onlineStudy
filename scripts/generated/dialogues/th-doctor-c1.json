@@ -1,0 +1,121 @@
+{
+  "id": "dlg-th-doctor-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "การตรวจรักษาโรค",
+  "opening": "สวัสดีค่ะ/ครับ คุณ ____ มีอะไรให้ดิฉัน/ผมช่วยวันนี้คะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ คุณ ____ มีอะไรให้ดิฉัน/ผมช่วยวันนี้คะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ปวดหัว",
+            "เป็นไข้",
+            "ตัวร้อน",
+            "มีไข้สูง"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī khâ/khrạb, khuṇ ____. Mī xarị h̄ı̂ dichạn/p̄hm ch̀wy wạn nī̂ khâ/khrạb? — Hello, Mr./Ms. ____. How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "พอจะเล่ารายละเอียดเพิ่มเติมได้ไหมคะ/ครับว่าอาการเริ่มเมื่อไหร่ และมีความรุนแรงแค่ไหนในระดับ 1 ถึง 10 โดย 10 คือรุนแรงที่สุด?",
+      "branches": [
+        {
+          "keywords": [
+            "สามวันแล้ว",
+            "เมื่อวาน",
+            "อาทิตย์ที่แล้ว",
+            "สองวัน"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Px ca lâw rāy la xeīyd pheìmteim dâymị khâ/khrạb wā xākār rœ̀m meụ̄̀x rị læa mī khwām runræng k̄hæ̀ nı h̄ælng nı radạb h̄nụ̀ng t̄hụng s̄ib doy s̄ib khụ̄x runræng thī̀s̄ud? — Could you elaborate on when the symptoms started and how severe they are on a scale of 1 to 10, where 10 is the most severe?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ก่อนหน้านี้เคยมีอาการแบบนี้มาก่อนไหมคะ/ครับ? และมีโรคประจำตัว แพ้ยา หรือกำลังทานยาอะไรอยู่ตอนนี้บ้างคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่เคย",
+            "ครั้งแรก",
+            "ไม่มี",
+            "ไม่เคยเป็น"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̀xn h̄n̂ā nī̂ khey mī xākār bæb nī̂ mā k̀xn mị khâ/khrạb? Læa mī ròkh pracả tạw, phæ̂ yā, h̄rụ̄x kamlạng thān yā xarị xyū̀ txn nī̂ bāng khâ/khrạb? — Have you experienced these symptoms before? And do you have any underlying conditions, drug allergies, or are you currently taking any medication?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จากข้อมูลที่คุณให้มา อาการของคุณน่าจะเกิดจากการติดเชื้อไวรัสทั่วไปค่ะ/ครับ ดิฉัน/ผมจะจัดยาบรรเทาอาการให้ และอาจต้องเฝ้าระวังอาการสักระยะ มีข้อสงสัยอะไรไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "มีคำถาม",
+            "อยากทราบ",
+            "ยาอะไร",
+            "ผลข้างเคียง",
+            "รักษายังไง"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cāk k̄ĥxmūl thī̀ khuṇ h̄ı̂ mā, xākār k̄hxng khuṇ ǹā ca kerd cāk kār tid cheụ̄̂x wịrạs̄ thạ̀w pị khâ/khrạb. Dichạn/p̄hm ca cạd yā banthao xākār h̄ı̂ læa xāc t̂xng f̄êā rawạng xākār s̄ạk raya. Mī k̄ĥx s̄ngs̄ạy xarị mị khâ/khrạb? — Based on the information you've provided, your symptoms likely stem from a common viral infection. I will prescribe medication to relieve the symptoms, and we may need to monitor your condition for a period. Do you have any questions?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ไม่ว่าจะอย่างไร คุณควรทานยาตามที่ระบุอย่างเคร่งครัดนะคะ/ครับ และหากอาการไม่ดีขึ้นภายใน 2-3 วัน หรือมีอาการผิดปกติอื่นๆ ให้กลับมาพบแพทย์ทันทีค่ะ/ครับ พักผ่อนให้เพียงพอและดื่มน้ำเยอะๆ นะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เข้าใจแล้ว",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mị̂ wâ ca xỳāng rị, khuṇ khwr thān yā tām thī̀ rabu xỳāng khrêngthrạd ná khâ/khrạb. Læa h̄āk xākār mị̀ dī k̄hụ̂n p̄hịn nı s̄xng-s̄ām wạn h̄rụ̄x mī xākār p̄hid pkati xụ̄̀n ๆ h̄ı̂ klạb mā phb phæthy̒ thạnthī khâ/khrạb. Phạkph̀xn h̄ı̂ pheīyngphx læa dụ̄̀m n̂ả yêx yêx ná khâ/khrạb. — Regardless, you should take the medication exactly as prescribed. And if your symptoms don't improve within 2-3 days, or if you experience any other unusual symptoms, please return to see a doctor immediately. Get enough rest and drink plenty of water."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ไม่ทราบว่าคุณต้องการจะสื่ออะไรคะ/ครับ รบกวนช่วยพูดให้ชัดเจนขึ้นอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "เริ่มใหม่"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄x xaphạy khà/khrạb. Mị̀ thrāb wā khuṇ t̂xngkār ca s̄ụ̄̀x xarị khâ/khrạb? Rbnkwn ch̀wy phūd h̄ı̂ chạdcen k̄hụ̂n xīk khrậng dâymị khâ/khrạb? — I'm sorry. I'm not sure what you mean. Could you please clarify or repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ค่ะ/ครับ หวังว่าคุณจะอาการดีขึ้นในเร็ววันนะคะ/ครับ หากมีข้อสงสัยหรืออาการแย่ลง โปรดติดต่อกลับมาได้ตลอดค่ะ/ครับ ดูแลตัวเองด้วยนะคะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khâ/khrạb. H̄wạng wā khuṇ ca xākār dī k̄hụ̂n nı rew wan ná khâ/khrạb. H̄āk mī k̄ĥx s̄ngs̄ạy h̄rụ̄x xākār yæ̀ lng, proḍ tidt̀x klạb mā dâytlxd khâ/khrạb. Dūlæ tạw xeng d̂wy ná khâ/khrạb. — Yes. I hope you feel better soon. If you have any questions or if your symptoms worsen, please don't hesitate to contact us. Take care of yourself.",
+      "isTerminal": true
+    }
+  }
+}

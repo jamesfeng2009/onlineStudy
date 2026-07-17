@@ -1,0 +1,181 @@
+{
+  "id": "dlg-en-airport-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Airport Check-in",
+  "opening": "Hello. Do you have your passport and ticket ready?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. Do you have your passport and ticket ready?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i have",
+            "ready"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "not yet",
+            "where are they"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. Do you have your passport and ticket ready? — Hello. Do you have your passport and ticket ready?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Great. Please place your bag on the scale.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "sure",
+            "i will"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "it is heavy",
+            "too heavy"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "where",
+            "which one"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great. Please place your bag on the scale. — Great. Please place your bag on the scale."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Please find your passport and ticket. We need them to check you in.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "i will find",
+            "here they are"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "i cannot find",
+            "i lost them"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please find your passport and ticket. We need them to check you in. — Please find your passport and ticket. We need them to check you in."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Your bag is fine. Here is your boarding pass. Please go to Gate B7.",
+      "branches": [
+        {
+          "keywords": [
+            "thank you",
+            "okay",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "where is gate",
+            "gate b7",
+            "how to get there"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your bag is fine. Here is your boarding pass. Please go to Gate B7."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Your bag is a little heavy. Please remove some items or pay a fee.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "i will remove",
+            "i have removed"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "i cannot",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your bag is a little heavy. Please remove some items or pay a fee."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gate B7 is straight ahead, after security. Follow the signs.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "thank you",
+            "got it"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "can you repeat",
+            "again"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gate B7 is straight ahead, after security. Follow the signs."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Can you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Can you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you, have a safe flight!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you, have a safe flight!",
+      "isTerminal": true
+    }
+  }
+}

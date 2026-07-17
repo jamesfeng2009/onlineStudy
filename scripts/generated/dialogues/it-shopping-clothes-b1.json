@@ -1,0 +1,237 @@
+{
+  "id": "dlg-it-shopping-clothes-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Acquisto di Vestiti: Camicie e Sconti",
+  "opening": "Buongiorno! Posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "camicia",
+            "maglietta",
+            "pantaloni",
+            "vestito"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "guardare",
+            "occhiata",
+            "solo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! (Buongiorno!) Can I help you? (Posso aiutarla?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo! Cerca una camicia elegante o più casual? E che colore preferisce?",
+      "branches": [
+        {
+          "keywords": [
+            "casual",
+            "blu",
+            "nera",
+            "verde"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course! (Certo!) Are you looking for (Cerca) an elegant shirt (una camicia elegante) or (o) more casual? (più casual?) And (E) what color (che colore) do you prefer? (preferisce?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certo, si guardi pure intorno. Se ha bisogno di qualcosa, mi chiami.",
+      "branches": [
+        {
+          "keywords": [
+            "sconti",
+            "offerte",
+            "promozioni"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "mi piace",
+            "questa",
+            "provare"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, (Certo,) feel free to look around. (si guardi pure intorno.) If you need anything, (Se ha bisogno di qualcosa,) just call me. (mi chiami.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Abbiamo questo modello. Che taglia porta? Vuole provarlo?",
+      "branches": [
+        {
+          "keywords": [
+            "taglia",
+            "s",
+            "m",
+            "l",
+            "xl",
+            "proviamo"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "altro",
+            "colore",
+            "modello"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We have this model. What size do you wear? Do you want to try it on?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sì, abbiamo sconti del 20% su tutti gli articoli non in nuova collezione. C'è qualcosa che la interessa in particolare?",
+      "branches": [
+        {
+          "keywords": [
+            "camicia",
+            "pantaloni",
+            "vestito",
+            "guardare"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "solo",
+            "ok",
+            "niente"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, we have 20% discounts on all items not from the new collection. Is there anything in particular that interests you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Lo spogliatoio è in fondo a destra. Mi faccia sapere come va! Allora, le sta bene?",
+      "branches": [
+        {
+          "keywords": [
+            "bene",
+            "perfetto",
+            "prendo"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "grande",
+            "piccolo",
+            "altra",
+            "taglia"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The fitting room is at the back on the right. Let me know how it goes! So, does it fit you well?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ottimo! Allora, desidera acquistarlo? La cassa è lì, a destra. Per i resi, può cambiarlo o restituirlo entro 30 giorni con lo scontrino.",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "acquisto",
+            "prendo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! So, do you wish to buy it? The cash register is over there, to the right. For returns, you can exchange or return it within 30 days with the receipt."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, (Mi scusi,) I didn't quite understand. (non ho capito bene.) Could you repeat? (Potrebbe ripetere?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie mille e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much (Grazie mille) and have a good day! (e buona giornata!)",
+      "isTerminal": true
+    }
+  }
+}

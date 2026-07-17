@@ -1,0 +1,200 @@
+{
+  "id": "dlg-de-interview-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Bewerbungsgespräch C1: Vorstellung und Kompetenzen",
+  "opening": "Guten Tag, Herr/Frau [Name]. Herzlich willkommen bei uns.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Name]. Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns doch bitte ein wenig über sich und Ihren bisherigen Werdegang.",
+      "branches": [
+        {
+          "keywords": [
+            "erfahrung",
+            "werdegang",
+            "lebenslauf",
+            "studium"
+          ],
+          "nextTurnId": "t2_experience"
+        },
+        {
+          "keywords": [
+            "motivation",
+            "interessen",
+            "persönlichkeit",
+            "leidenschaft"
+          ],
+          "nextTurnId": "t2b_motivation"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gooten Tahg, Hair/Frow [Name]. Feelen Dahngk, dass zee hoy-tuh heer zint. Air-tsay-len zee oons doch bit-tuh ine vay-neeg oo-bair zich oond ee-ren biz-he-ree-gen Vair-guh-gang. — Good day, Mr./Ms. [Name]. Thank you for being here today. Please tell us a little bit about yourself and your career path so far."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-dee-gen zee, ich hah-buh zee ah-koos-tish nicht gants fair-stan-den. Kern-ten zee dass bit-tuh vee-dair-ho-len oh-der an-ders for-moo-lee-ren? — Excuse me, I didn't quite catch that. Could you please repeat it or phrase it differently?"
+    },
+    "t2_experience": {
+      "id": "t2_experience",
+      "prompt": "Das klingt vielversprechend. Könnten Sie uns ein konkretes Beispiel nennen, wo Sie diese Fähigkeiten erfolgreich eingesetzt oder welche Herausforderung Sie besonders gut gemeistert haben?",
+      "branches": [
+        {
+          "keywords": [
+            "projekt",
+            "erfolg",
+            "herausforderung",
+            "beispiel"
+          ],
+          "nextTurnId": "t3_strengths_weaknesses_a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dass klingkt feel-fair-shprech-end. Kern-ten zee oons ine kon-kray-tes bye-shpeel nen-nen, voh zee dee-zuh fay-eech-ky-ten air-folg-rysch ine-get-setst oh-der vel-chuh he-row-for-de-roong zee bez-on-ders goot my-ster-t hah-ben? — That sounds promising. Could you give us a concrete example of where you successfully applied these skills or which challenge you mastered particularly well?"
+    },
+    "t2b_motivation": {
+      "id": "t2b_motivation",
+      "prompt": "Interessant. Was reizt Sie denn besonders an unserem Unternehmen oder dieser spezifischen Position? Wir suchen jemanden, der sich proaktiv einbringt.",
+      "branches": [
+        {
+          "keywords": [
+            "unternehmen",
+            "position",
+            "herausforderung",
+            "entwicklung"
+          ],
+          "nextTurnId": "t3_strengths_weaknesses_b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In-ter-es-sant. Vass ryts zee den bez-on-ders an oon-ze-rem oon-ter-nay-men oh-der dee-zer spe-zee-fi-schen po-zee-tsyon? Ve-er zoo-chen ye-man-den, dair zich pro-ak-tiv ine-bringt. — Interesting. What particularly attracts you to our company or this specific position? We're looking for someone who actively contributes."
+    },
+    "t3_strengths_weaknesses_a": {
+      "id": "t3_strengths_weaknesses_a",
+      "prompt": "Sehr gut. Wenn Sie Ihre größten Stärken und vielleicht auch eine Schwäche, an der Sie arbeiten, beschreiben müssten, welche wären das?",
+      "branches": [
+        {
+          "keywords": [
+            "stärken",
+            "eigenschaften",
+            "kompetenzen"
+          ],
+          "nextTurnId": "t4_conclusion"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zair goot. Ven zee ee-ruh grer-sten shtair-ken oond fee-lyscht owch ee-nuh shve-chuh, an dair zee ar-by-ten, be-shry-ben moos-ten, vel-chuh vay-ren dass? — Very good. If you had to describe your greatest strengths and perhaps also a weakness you're working on, what would those be?"
+    },
+    "t3_strengths_weaknesses_b": {
+      "id": "t3_strengths_weaknesses_b",
+      "prompt": "Vielen Dank für die Einblicke. Nun, um das Bild abzurunden: Wo sehen Sie Ihre größten Stärken, und gibt es auch Bereiche, in denen Sie sich noch weiterentwickeln möchten?",
+      "branches": [
+        {
+          "keywords": [
+            "stärken",
+            "eigenschaften",
+            "kompetenzen"
+          ],
+          "nextTurnId": "t4_conclusion"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dahngk fyoor dee ine-bli-kuh. Noon, oom dass bild ab-tsoo-roon-den: Voh zay-en zee ee-ruh grer-sten shtair-ken, oond gipt ess owch bay-ry-chuh, in day-nen zee zich noch vy-ter-ent-vik-keln merch-ten? — Thank you for the insights. Now, to complete the picture: Where do you see your greatest strengths, and are there also areas in which you would like to develop further?"
+    },
+    "t4_conclusion": {
+      "id": "t4_conclusion",
+      "prompt": "Vielen Dank für die umfassenden Antworten. Das gibt uns einen guten Überblick. Wir werden uns in Kürze mit Ihnen in Verbindung setzen. Haben Sie noch Fragen an uns?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "frage",
+            "fragen",
+            "interessiert"
+          ],
+          "nextTurnId": "t5_questions"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keine",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dahngk fyoor dee oom-fas-sen-den ant-vor-ten. Dass gipt oons ee-nen goo-ten oo-ber-blick. Ve-er vayr-den oons in koor-tsuh mit ee-nen in fair-bin-doong zet-sen. Hah-ben zee noch frah-gen an oons? — Thank you for your comprehensive answers. That gives us a good overview. We will contact you shortly. Do you have any questions for us?"
+    },
+    "t5_questions": {
+      "id": "t5_questions",
+      "prompt": "Gerne. Stellen Sie Ihre Fragen. Wir sind offen für alles, was Sie wissen möchten.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gair-nuh. Shtel-len zee ee-ruh frah-gen. Ve-er zint of-fen fyoor al-les, vass zee vis-sen merch-ten. — Gladly. Ask your questions. We are open to anything you'd like to know."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank noch einmal für Ihr Kommen und das angenehme Gespräch. Wir melden uns dann bei Ihnen. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dahngk noch ine-mal fyoor eer kom-men oond dass an-ge-nay-me gesh-präch. Ve-er mel-den oons dann by ee-nen. Owf vee-dair-zay-en! — Thank you once again for coming and for the pleasant conversation. We will then get back to you. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

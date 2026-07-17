@@ -1,0 +1,229 @@
+{
+  "id": "dlg-es-hotel-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Registro en el Hotel",
+  "opening": "¡Hola! Bienvenido al Hotel La Perla. ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Bienvenido al Hotel La Perla. ¿Tiene una reserva a su nombre?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "reserva",
+            "mi",
+            "nombre",
+            "es",
+            "soy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "sin",
+            "reserva",
+            "quería",
+            "reservar"
+          ],
+          "nextTurnId": "t-no-reservation"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) Bienvenido (Bee-en-veh-NEE-doh) al Hotel La Perla. ¿Tiene una reserva a su nombre? (Tee-EH-neh OO-nah reh-SER-vah ah soo NOHM-breh?) — Hello! Welcome to Hotel La Perla. Do you have a reservation under your name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excelente. ¿Podría deletrear su apellido, por favor? Y también necesitaría su documento de identidad o pasaporte.",
+      "branches": [
+        {
+          "keywords": [
+            "aquí",
+            "tiene",
+            "documento",
+            "pasaporte",
+            "identidad",
+            "mi",
+            "apellido",
+            "es",
+            "deletreo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente (Ex-the-LEN-teh). ¿Podría deletrear (deh-leh-treh-AR) su apellido, por favor? Y también (ee tam-bee-EN) necesitaría (neh-seh-see-tah-REE-ah) su documento de identidad o pasaporte. — Excellent. Could you spell your last name, please? And I would also need your ID or passport."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Gracias. Ahora, sobre el pago, ¿va a usar la tarjeta registrada o prefiere otra forma de pago? ¿Y le gustaría una habitación con vistas al mar o prefiere una interior más tranquila?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "pago",
+            "otra",
+            "efectivo",
+            "cuenta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "vista",
+            "mar",
+            "interior",
+            "tranquila",
+            "habitación",
+            "balcón"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias (GRAH-see-as). Ahora, sobre el pago (AH-oh-rah, SOH-breh el PAH-goh), ¿va a usar la tarjeta registrada (tar-HEH-tah reh-hees-TRAH-dah) o prefiere otra forma de pago? ¿Y le gustaría (gohs-tah-REE-ah) una habitación (ah-bee-tah-SYON) con vistas al mar o prefiere una interior más tranquila? — Thank you. Now, regarding payment, are you going to use the registered card or do you prefer another form of payment? And would you like a room with a sea view or do you prefer a quieter interior one?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. Si desea usar otra tarjeta o pagar en efectivo, podemos procesarlo ahora. Para la habitación, ¿prefiere la vista al mar o una interior?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "efectivo",
+            "pagar",
+            "sí",
+            "otra",
+            "preferiría"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. If you wish to use another card or pay in cash, we can process it now. For the room, do you prefer the sea view or an interior one?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. Su habitación será la número 305 con vistas al mar. Una última cosa: ¿querrá incluir el desayuno buffet durante su estancia? Tiene un coste adicional de 15 euros por persona y día.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "desayuno",
+            "incluir",
+            "quiero",
+            "buffet",
+            "porfavor"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Your room will be number 305 with a sea view. One last thing: will you want to include the breakfast buffet during your stay? It has an additional cost of 15 euros per person per day."
+    },
+    "t-no-reservation": {
+      "id": "t-no-reservation",
+      "prompt": "Entiendo. En este momento, la única habitación disponible es una interior. ¿Le gustaría reservarla?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "quiero",
+            "reservar",
+            "aceptar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "buscaremos",
+            "otro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "perdón",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. At this moment, the only available room is an interior one. Would you like to book it?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podría repetir eso, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "claro",
+            "repito"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Estupendo! Todo está listo entonces. Aquí tiene la llave de su habitación. Que tenga una feliz estancia en el Hotel La Perla. ¡Disfrute!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great! Everything is ready then. Here is your room key. Have a pleasant stay at Hotel La Perla. Enjoy!",
+      "isTerminal": true
+    }
+  }
+}

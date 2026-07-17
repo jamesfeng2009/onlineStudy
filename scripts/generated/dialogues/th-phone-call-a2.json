@@ -1,0 +1,215 @@
+{
+  "id": "dlg-th-phone-call-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "โทรศัพท์",
+  "opening": "สวัสดีครับ บริษัท ABC ครับ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ บริษัท ABC ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "คุณสมศักดิ์",
+            "สมศักดิ์",
+            "อยู่ไหม",
+            "คุย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ฉันชื่อ",
+            "ชื่อมาเรีย",
+            "มาเรีย"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ฮัลโหล",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī khrạb. Bòriṣ̌ạth ABC khrạb — Hello, ABC Company."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขอโทษครับ/ค่ะ คุณสมศักดิ์ไม่อยู่ครับ/ค่ะ จะฝากข้อความไว้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ฝาก",
+            "ข้อความ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "โทรมาใหม่",
+            "โทรใหม่",
+            "เดี๋ยว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "โทรกลับ",
+            "ให้โทรกลับ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̄hŏthos̄ khrạb/khâ. Khuṇ S̄oms̄ạk mị̀yū̀ khrạb/khâ. Ca f̄āk k̄ĥxkhwām wị̂ mị khrạb/khá? — Sorry, Somsak is not here. Would you like to leave a message?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "สวัสดีครับ/ค่ะ คุณมาเรีย ต้องการคุยกับใครครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "คุณสมศักดิ์",
+            "สมศักดิ์",
+            "อยากคุย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "จะบอกว่า",
+            "จะสอบถาม",
+            "เรื่อง"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī khrạb/khâ khuṇ Mārīa. T̂xngkār khuy kạb k̄hır khrạb/khá? — Hello Maria. Who would you like to speak to?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จะให้ฝากอะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บอกว่าฉันโทรมา",
+            "ฉันโทรมา",
+            "โทรมา"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ให้โทรกลับ",
+            "โทรกลับ",
+            "บอกให้โทรกลับ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ca hâi f̄āk xarị khrạb/khá? — What would you like me to tell them?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ได้ครับ/ค่ะ เบอร์โทรศัพท์ของคุณคืออะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เบอร์",
+            "โทรศัพท์",
+            "08",
+            "09"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่ต้อง",
+            "โทรใหม่",
+            "เดี๋ยวโทรมา"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi khrạb/khâ. Bœr thoroṣ̄ạphth̒ k̄hxng khuṇ khụ̄x xarị khrạb/khá? — Okay. What is your phone number?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "รับทราบครับ/ค่ะ เดี๋ยวจะจัดการให้ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ค่ะ",
+            "ครับ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rạb s̄āp khrạb/khâ. Deeloo ca cạdkār hâi khrạb/khâ — Noted. I'll arrange it."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่ค่อยได้ยินเลยครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hŏthos̄ khrạb/khâ. Mị̀kh̀xydị̂yiny ley khrạb/khâ. Phūd xīk khrậng dị̂ mị khrạb/khá? — Excuse me, I didn't quite hear you. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "K̄hxbkhuṇ khrạb/khâ. S̄wạs̄dī khrạb/khâ — Thank you. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

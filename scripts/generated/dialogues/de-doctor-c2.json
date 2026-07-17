@@ -1,0 +1,125 @@
+{
+  "id": "dlg-de-doctor-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Arztbesuch: Symptome und Diagnose",
+  "opening": "Guten Tag, Herr/Frau [Nachname]. Nehmen Sie doch Platz. Was führt Sie denn heute zu mir? Erzählen Sie mal, was Ihnen auf dem Herzen liegt.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Nachname]. Nehmen Sie doch Platz. Was führt Sie denn heute zu mir? Erzählen Sie mal, was Ihnen auf dem Herzen liegt.",
+      "branches": [
+        {
+          "keywords": [
+            "schmerzen",
+            "weh",
+            "unwohl",
+            "problem"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "kontrolle",
+            "vorsorge",
+            "untersuchung"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahk, Hair/Frou [Nachname]. Neh-men Zee dohch Plahtz. Vahs fyooht Zee den hoy-te tsoo meer? Ehr-tsay-len Zee mahl, vahs Ee-nen ouf dem Hair-tsen leegt. — Good day, Mr./Ms. [Last Name]. Please take a seat. What brings you to me today? Tell me, what's on your mind?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstehe. Könnten Sie die Beschwerden etwas präziser beschreiben? Seit wann plagen sie Sie denn schon und wo genau lokalisieren Sie den Schmerz?",
+      "branches": [
+        {
+          "keywords": [
+            "kopfschmerzen",
+            "migräne",
+            "pulsierend"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair-shtay-e. Kern-ten Zee dee Be-shver-den et-vahs pray-tsee-ser be-shry-ben? Zait vahn plah-gen zee Zee den shohn oond voh ge-nau lo-kah-lee-zee-ren Zee den Shmairts? — I see. Could you describe the complaints a bit more precisely? How long have they been bothering you and where exactly do you locate the pain?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Gibt es weitere Begleiterscheinungen, beispielsweise Fieber, Schwindel oder Übelkeit? Und hat Ihnen irgendetwas Linderung verschafft oder die Symptome gar verschlimmert?",
+      "branches": [
+        {
+          "keywords": [
+            "fieber",
+            "schwindel",
+            "übelkeit",
+            "erbrechen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Are there any other accompanying symptoms, such as fever, dizziness, or nausea? And has anything provided you with relief or even worsened the symptoms?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bevor wir über die nächsten Schritte sprechen, habe ich noch eine wichtige Frage: Leiden Sie an bekannten Allergien oder nehmen Sie regelmäßig Medikamente ein, die ich berücksichtigen müsste?",
+      "branches": [
+        {
+          "keywords": [
+            "allergie",
+            "penicillin",
+            "heuschnupfen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Before we talk about the next steps, I have one important question: Do you suffer from any known allergies or do you regularly take medication that I would need to consider?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alles klar. Basierend auf Ihren Angaben vermute ich..., und würde Ihnen folgendes empfehlen/verschreiben... Wir sehen uns dann zur Kontrolle, falls keine Besserung eintritt. Gute Besserung und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Al-less klar. Bah-see-rend ouf Ee-ren Ahn-gah-ben fair-moo-te eech..., oond voor-de Ee-nen fol-gen-des emp-fay-len/fair-shry-ben... Veer zay-en oons dahn tsoor Kon-trol-le, fahs ky-ne Bes-se-rung een-tritt. Goo-te Bes-se-rung oond ouf Vee-der-zay-en! — Alright. Based on your information, I suspect..., and would recommend/prescribe the following... We'll see each other for a check-up if there's no improvement. Get well soon and goodbye!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte noch einmal wiederholen? Ich habe Sie akustisch nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat that? I didn't quite catch what you said."
+    }
+  }
+}

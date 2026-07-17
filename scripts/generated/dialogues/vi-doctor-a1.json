@@ -1,0 +1,172 @@
+{
+  "id": "dlg-vi-doctor-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Đi khám bác sĩ",
+  "opening": "Chào bạn. Bạn bị làm sao?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn. Bạn bị làm sao?",
+      "branches": [
+        {
+          "keywords": [
+            "tôiđauđầu",
+            "đauđầu"
+          ],
+          "nextTurnId": "t2_head"
+        },
+        {
+          "keywords": [
+            "tôiđaubụng",
+            "đaubụng"
+          ],
+          "nextTurnId": "t2_stomach"
+        },
+        {
+          "keywords": [
+            "tôibịsốt",
+            "sốt"
+          ],
+          "nextTurnId": "t2_fever"
+        },
+        {
+          "keywords": [
+            "",
+            "tôimệt"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn. Bạn bị làm sao? — Hello. (Chow ban. Ban bee lam sao?) What's wrong with you?"
+    },
+    "t2_head": {
+      "id": "t2_head",
+      "prompt": "Bạn đau đầu ở đâu? Đau nhiều không?",
+      "branches": [
+        {
+          "keywords": [
+            "đâutrước",
+            "trước"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "tôikhôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn đau đầu ở đâu? Đau nhiều không? — (Ban dau dau uh dau? Dau nyee-oh khong?) Where does your head hurt? Does it hurt a lot?"
+    },
+    "t2_stomach": {
+      "id": "t2_stomach",
+      "prompt": "Bạn đau bụng ở đâu? Đau nhiều không?",
+      "branches": [
+        {
+          "keywords": [
+            "đauởrốn",
+            "rốn"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "tôikhôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn đau bụng ở đâu? Đau nhiều không? — (Ban dau boong uh dau? Dau nyee-oh khong?) Where does your stomach hurt? Does it hurt a lot?"
+    },
+    "t2_fever": {
+      "id": "t2_fever",
+      "prompt": "Bạn sốt bao nhiêu độ? Có mệt không?",
+      "branches": [
+        {
+          "keywords": [
+            "38độ",
+            "39độ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "tôikhôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn sốt bao nhiêu độ? Có mệt không? — (Ban sot bao nyoo doh? Koh met khong?) How high is your fever? Are you tired?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bạn bị bao lâu rồi?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtngày",
+            "1ngày"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn bị bao lâu rồi? — (Ban bee bao lao roy?) How long have you had it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bạn uống thuốc này và nghỉ ngơi nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnbácsĩ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn uống thuốc này và nghỉ ngơi nhé. — (Ban oong thook nay va nyee ngoy nyay.) Please take this medicine and rest."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Bạn nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Bạn nói lại được không? — Can you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chào bạn. Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chào bạn. Hẹn gặp lại. — Goodbye. See you again.",
+      "isTerminal": true
+    }
+  }
+}

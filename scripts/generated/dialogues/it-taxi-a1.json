@@ -1,0 +1,171 @@
+{
+  "id": "dlg-it-taxi-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "In taxi",
+  "opening": "Buongiorno! Dove andiamo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Dove andiamo?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "albergo",
+            "centro"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "stazione",
+            "aeroporto"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwon-jor-no)! Dove (Doh-veh) andiamo (ahn-DYAH-moh)? — Good morning! Where are we going?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Va bene, all'hotel. C'è traffico oggi.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "si",
+            "va",
+            "bene",
+            "capisco"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "quanto",
+            "costa",
+            "prezzo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene (Vah BEH-neh), all'hotel. C'è (Cheh) traffico (TRAF-fee-koh) oggi (OD-jee). — Okay, to the hotel. There is traffic today."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Ok, alla stazione. Andiamo subito.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "si",
+            "va",
+            "bene"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "quanto",
+            "costa",
+            "prezzo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ok, alla stazione (stah-TSYOH-neh). Andiamo (ahn-DYAH-moh) subito (SOO-bee-toh). — Okay, to the station. We go immediately."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Arriviamo presto. Il costo è venti euro.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "va",
+            "bene",
+            "pago"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Arriviamo (Ah-ree-VYAH-moh) presto (PRES-toh). Il costo (Eel KOS-toh) è venti (VEN-tee) euro (EH-oo-roh). — We arrive soon. The cost is twenty euros."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sono venti euro.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "va",
+            "bene",
+            "pago"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sono (SOH-noh) venti (VEN-tee) euro (EH-oo-roh). — It's twenty euros."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Grazie (GRAHT-syee) e (eh) arrivederci (ah-rree-veh-DER-chee)! — Thank you and goodbye!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi, può ripetere? Non ho capito.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusi (SKOO-zee), può (pwoh) ripetere (ree-PEH-teh-reh)? Non (non) ho (oh) capito (kah-PEE-toh). — Excuse me, can you repeat? I did not understand."
+    }
+  }
+}

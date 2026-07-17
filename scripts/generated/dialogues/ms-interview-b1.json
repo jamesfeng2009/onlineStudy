@@ -1,0 +1,143 @@
+{
+  "id": "dlg-ms-interview-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Temu Duga Kerja",
+  "opening": "Selamat pagi. Sila duduk.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Sila duduk. Terima kasih kerana hadir temu duga hari ini. Boleh ceritakan sedikit tentang diri anda?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "latarbelakang",
+            "pendidikan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Sila duduk (Please sit down). Terima kasih kerana hadir temu duga hari ini (Thank you for coming for the interview today). Boleh ceritakan sedikit tentang diri anda? (Could you tell me a little about yourself?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bagus. Saya lihat anda ada pengalaman kerja. Boleh terangkan lebih lanjut tentang pengalaman kerja anda sebelum ini dan kemahiran yang anda kuasai?",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "kemahiran",
+            "projek"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagus (Good). Saya lihat anda ada pengalaman kerja (I see you have work experience). Boleh terangkan lebih lanjut tentang pengalaman kerja anda sebelum ini dan kemahiran yang anda kuasai? (Could you elaborate more on your previous work experience and the skills you have mastered?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Menarik. Setiap individu pasti ada kekuatan dan kelemahan. Apakah kekuatan utama anda dan kelemahan yang anda sedang usahakan untuk perbaiki?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "kelebihan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik (Interesting). Setiap individu pasti ada kekuatan dan kelemahan (Everyone definitely has strengths and weaknesses). Apakah kekuatan utama anda dan kelemahan yang anda sedang usahakan untuk perbaiki? (What are your main strengths and weaknesses that you are currently working to improve?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas kejujuran anda. Mengapa anda berminat dengan jawatan ini dan syarikat kami?",
+      "branches": [
+        {
+          "keywords": [
+            "minat",
+            "sesuai",
+            "sumbangan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas kejujuran anda (Thank you for your honesty). Mengapa anda berminat dengan jawatan ini dan syarikat kami? (Why are you interested in this position and our company?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baiklah. Ada apa-apa soalan yang ingin anda tanyakan kepada kami?",
+      "branches": [
+        {
+          "keywords": [
+            "soalan",
+            "bertanya"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah (Alright). Ada apa-apa soalan yang ingin anda tanyakan kepada kami? (Do you have any questions you'd like to ask us?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "ok"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh ulang sekali lagi? (could you repeat that once more?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana datang hari ini. Kami akan menghubungi anda tidak lama lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih kerana datang hari ini. Kami akan menghubungi anda tidak lama lagi.",
+      "isTerminal": true
+    }
+  }
+}

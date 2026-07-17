@@ -1,0 +1,96 @@
+{
+  "id": "dlg-th-doctor-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "นัดพบคุณหมอ",
+  "opening": "สวัสดีครับ/ค่ะ วันนี้มีอาการอะไรให้หมอช่วยดูครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ วันนี้มีอาการอะไรให้หมอช่วยดูครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ปวดหัว",
+            "ไมเกรน"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii kráp/kâ. Wan-níi mii aa-gaan a-rai hâi mɔ̌ɔ chûay duu kráp/kâ? — Hello. What symptoms can I help you with today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อาการที่คุณว่ามาเป็นมานานแค่ไหนแล้วครับ/คะ และมีลักษณะเฉพาะเจาะจงอย่างไรบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สองสามวัน",
+            "อาทิตย์นึง",
+            "ไม่กี่วัน"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aa-gaan thîi khun wâa maa pen maa naan khâe nǎi láew kráp/kâ? Láe mii lák-sà-nà chà-phɔ́ chɔ̌ɔ-cōng yàang rai bâang kráp/kâ? — How long have you had these symptoms, and what are their specific characteristics?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "นอกจากอาการหลักแล้ว มีอาการอื่นร่วมด้วยไหมครับ/คะ? หรือมีประวัติแพ้ยาอะไรเป็นพิเศษรึเปล่าครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่แพ้",
+            "ปกติ"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâwk-jàak aa-gaan làk láew mii aa-gaan ùen rûam dûay mái kráp/kâ? Rǔue mii prà-wàt pâae yaa a-rai pen phí-sèet rûe plàaw kráp/kâ? — Besides the main symptom, are there any other accompanying symptoms? Or do you have any specific drug allergies?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ฟังดูแล้ว หมอคิดว่าน่าจะเป็น... (pause) เดี๋ยวหมอจะจัดยาให้ทานนะครับ/คะ และถ้าอาการไม่ดีขึ้นหรือแย่ลง ให้กลับมาพบหมออีกครั้งนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "ขอบคุณครับ",
+            "ขอบคุณค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fang duu láew, mɔ̌ɔ khít wâa nâa jà pen... (pause) Dǐao mɔ̌ɔ jà jàt yaa hâi thaan ná kráp/kâ. Láe thâa aa-gaan mâi dii khûen rǔue yâae long, hâi glàp maa phóp mɔ̌ɔ ìik khráng ná kráp/kâ. — From what I hear, I think it might be... (pause) I'll prescribe some medication for you. And if your symptoms don't improve or worsen, please come back to see me again."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ ไม่แน่ใจว่าได้ยินชัดเจน รบกวนพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khɔ̌ɔ-thôot ná kráp/kâ. Mâi nâe jai wâa dâai yin chát-jen. Róp-kuan phûut ìik khráng dâai mái kráp/kâ? — Excuse me. I'm not sure I heard clearly. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดูแลสุขภาพด้วยนะครับ/คะ หวังว่าจะดีขึ้นในเร็ววันครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Duu-laae súk-khà-phâap dûay ná kráp/kâ. Wǎng wâa jà dii khûen nai reo wan kráp/kâ. — Take care of your health. I hope you get better soon.",
+      "isTerminal": true
+    }
+  }
+}

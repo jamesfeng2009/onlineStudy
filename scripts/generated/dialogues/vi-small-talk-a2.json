@@ -1,0 +1,178 @@
+{
+  "id": "dlg-vi-small-talk-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Trò chuyện xã giao",
+  "opening": "Chào bạn! Cuối tuần của bạn thế nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Cuối tuần của bạn thế nào?",
+      "branches": [
+        {
+          "keywords": [
+            "tốt",
+            "thư giãn",
+            "vui"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bận",
+            "bình thường",
+            "không có gì"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn! (Chao ban!) Cuối tuần của bạn thế nào? (Cuoi tuan cua ban the nao?) — Hello! How was your weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ồ, nghe hay đấy! Bạn đã làm gì?",
+      "branches": [
+        {
+          "keywords": [
+            "xem phim",
+            "đọc sách",
+            "nghỉ ngơi"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "đi chơi",
+            "đi mua sắm",
+            "ăn uống",
+            "gặp bạn bè"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, nghe hay đấy! (O, nghe hay day!) Bạn đã làm gì? (Ban da lam gi?) — Oh, that sounds nice! What did you do?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "À, vậy à. Có vẻ bạn bận rộn nhỉ. Công việc có ổn không?",
+      "branches": [
+        {
+          "keywords": [
+            "tốt",
+            "ổn",
+            "được"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, vậy à. (A, vay a.) Có vẻ bạn bận rộn nhỉ. (Co ve ban ban ron nhi.) Công việc có ổn không? (Cong viec co on khong?) — Ah, I see. You seem busy. Is work going well?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Thích thật! Bạn thích thể loại phim hoặc sách nào?",
+      "branches": [
+        {
+          "keywords": [
+            "phim",
+            "hành động",
+            "hài hước",
+            "tình cảm"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thích thật! (Thich that!) Bạn thích thể loại phim hoặc sách nào? (Ban thich the loai phim hoac sach nao?) — That's great! What kind of movies or books do you like?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Tuyệt vời! Bạn có muốn kể thêm về chuyến đi chơi/mua sắm/ăn uống không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "kể",
+            "được",
+            "vâng"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời! (Tuyet voi!) Bạn có muốn kể thêm về chuyến đi chơi/mua sắm/ăn uống không? (Ban co muon ke them ve chuyen di choi/mua sam/an uong khong?) — Wonderful! Would you like to tell me more about your outing/shopping/meal?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, rất vui được nghe về cuối tuần của bạn. Hy vọng tuần này của bạn cũng tốt đẹp nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "bạn cũng vậy",
+            "tôi cũng vậy"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, rất vui được nghe về cuối tuần của bạn. (Vang, rat vui duoc nghe ve cuoi tuan cua ban.) Hy vọng tuần này của bạn cũng tốt đẹp nhé. (Hy vong tuan nay cua ban cung tot dep nhe.) — Yes, it was nice to hear about your weekend. I hope your week is also good."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại không? Tôi không nghe rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn có thể nói lại không? (Xin loi, ban co the noi lai khong?) Tôi không nghe rõ. (Toi khong nghe ro.) — Excuse me, could you please repeat that? I didn't hear clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt bạn! Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tạm biệt bạn! (Tam biet ban!) Hẹn gặp lại. (Hen gap lai.) — Goodbye! See you again.",
+      "isTerminal": true
+    }
+  }
+}

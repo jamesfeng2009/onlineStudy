@@ -1,0 +1,224 @@
+{
+  "id": "dlg-es-restaurant-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Cena en La Fonda Española",
+  "opening": "¡Buenas noches! ¿Ya han decidido qué les apetece beber o prefieren que les explique los especiales del día y las sugerencias del chef?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas noches! ¿Ya han decidido qué les apetece beber o prefieren que les explique los especiales del día y las sugerencias del chef?",
+      "branches": [
+        {
+          "keywords": [
+            "bebida",
+            "beber",
+            "pedirbebida",
+            "parami"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "especiales",
+            "sugerencias",
+            "recomendaciones",
+            "quéhay"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "carta",
+            "menú",
+            "vermenú",
+            "eltiempo"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenas noches! (bweh-nahs noh-chehs) — Good evening! Have you decided what you'd like to drink, or would you prefer I explain today's specials and the chef's recommendations?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? No le he entendido bien. ¿Podría repetírmelo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? I didn't quite understand you. Could you please repeat it?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro, por supuesto. ¿Qué les sirvo?",
+      "branches": [
+        {
+          "keywords": [
+            "agua",
+            "refresco",
+            "vino",
+            "cerveza",
+            "zumo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "todavía",
+            "aunno",
+            "necesitotiempo",
+            "demomento"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "recomendación",
+            "sugerencia",
+            "quémeaconseja"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. What can I get you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Hoy tenemos un carpaccio de pulpo con reducción de Pedro Ximénez como entrante, y de plato principal, un solomillo de cerdo ibérico con salsa de higos o una merluza a la sidra. Todo un manjar, la verdad.",
+      "branches": [
+        {
+          "keywords": [
+            "pulpo",
+            "carpaccio",
+            "entrante",
+            "primerplato"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "pensar",
+            "unmomento",
+            "verlacarta"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hoy (oy) tenemos un carpaccio de pulpo con reducción de Pedro Ximénez como entrante, y de plato principal, un solomillo de cerdo ibérico con salsa de higos o una merluza a la sidra. Todo un manjar, la verdad. — Today we have an octopus carpaccio with Pedro Ximénez reduction as a starter, and for the main course, an Iberian pork tenderloin with fig sauce or hake in cider. A true delicacy, honestly."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "No hay problema. Aquí tienen la carta. Vuelvo en un par de minutos para tomarles nota.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok",
+            "perfecto",
+            "esperamos"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "otrapregunta",
+            "duda",
+            "aclaración"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No hay problema. Aquí (ah-kee) tienen la carta. Vuelvo en un par de minutos para tomarles nota. — No problem. Here is the menu. I'll be back in a couple of minutes to take your order."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¿Han decidido ya qué les gustaría para empezar o pasamos directamente a los platos principales?",
+      "branches": [
+        {
+          "keywords": [
+            "entrante",
+            "empezar",
+            "primerplato",
+            "aperitivo"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "aunno",
+            "necesitounmomento",
+            "todavía"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Have you decided what you'd like to start with, or shall we go straight to the main courses?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Excelente elección. ¿Y para el plato principal, tienen alguna preferencia o restricción dietética que deba saber?",
+      "branches": [
+        {
+          "keywords": [
+            "alergia",
+            "vegetariano",
+            "vegano",
+            "sinlactosa",
+            "singluten"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice. And for the main course, do you have any preferences or dietary restrictions I should be aware of?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Perfecto. Tomo nota. Entonces, un [plato confirmado] y de segundo... ¿qué les apetece?",
+      "branches": [
+        {
+          "keywords": [
+            "solomillo",
+            "merluza",
+            "platoespecial",
+            "paella",
+            "yaestá"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "duda",
+            "otrapregunta",
+            "aclaración"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. I'll note that down. So, a [confirmed dish] and for the second course... what would you like?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Muy bien, la comanda está lista. Que disfruten de la velada. ¡Buen provecho!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, the order is ready. Enjoy your evening. Bon appétit!",
+      "isTerminal": true
+    }
+  }
+}

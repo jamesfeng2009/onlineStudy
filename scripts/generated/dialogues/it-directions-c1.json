@@ -1,0 +1,339 @@
+{
+  "id": "dlg-it-directions-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Chiedere indicazioni stradali avanzate",
+  "opening": "Buongiorno! Posso esserle d'aiuto? Sembra stia cercando qualcosa.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Posso esserle d'aiuto? Sembra stia cercando qualcosa.",
+      "branches": [
+        {
+          "keywords": [
+            "biblioteca",
+            "museo",
+            "posta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "perso",
+            "strada",
+            "aiuto"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "stazione",
+            "ospedale",
+            "mercato"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! — Good morning! Posso esserle d'aiuto? — Can I help you? Sembra stia cercando qualcosa. — You look like you're looking for something."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, la Biblioteca Civica 'Falcone e Borsellino'? Non è proprio dietro l'angolo, ma con le giuste indicazioni ci arriva in un baleno. Sa, molti si perdono con quella svolta.",
+      "branches": [
+        {
+          "keywords": [
+            "piedi",
+            "camminare",
+            "apiedi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "mezzi",
+            "trasporto"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "lontano",
+            "distanza",
+            "quanto"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, la Biblioteca Civica 'Falcone e Borsellino'? — Ah, the 'Falcone e Borsellino' Civic Library? Non è proprio dietro l'angolo, — It's not exactly around the corner, ma con le giuste indicazioni ci arriva in un baleno. — but with the right directions, you'll get there in a flash. Sa, molti si perdono con quella svolta. — You know, many people get lost at that turn."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. Beh, non si preoccupi, siamo qui per questo. Dove avrebbe voluto dirigersi originariamente? Magari posso darle una dritta.",
+      "branches": [
+        {
+          "keywords": [
+            "centro",
+            "piazza",
+            "duomo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "specifico",
+            "posto",
+            "indirizzo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nulla",
+            "solo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. — I understand. Beh, non si preoccupi, siamo qui per questo. — Well, don't worry, we're here for that. Dove avrebbe voluto dirigersi originariamente? — Where were you originally trying to go? Magari posso darle una dritta. — Perhaps I can give you a tip."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certo, la Stazione Centrale è abbastanza semplice da raggiungere. Dipende da quanto tempo ha e se preferisce passeggiare o prendere un mezzo.",
+      "branches": [
+        {
+          "keywords": [
+            "camminare",
+            "piedi",
+            "passeggiare"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "tram",
+            "taxi"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo, la Stazione Centrale è abbastanza semplice da raggiungere. — Of course, the Central Station is quite easy to reach. Dipende da quanto tempo ha — It depends on how much time you have e se preferisce passeggiare o prendere un mezzo. — and if you prefer to walk or take transport."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottimo! Allora, da qui, deve proseguire dritto per circa due isolati, fino al semaforo. Lì vedrà un'edicola storica. Gira a destra e la biblioteca sarà sulla sua sinistra, subito dopo la chiesa sconsacrata. Non può sbagliare.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ripetere",
+            "lento",
+            "chiarire"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            "quanto",
+            "tempo",
+            "minuti"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo! — Excellent! Allora, da qui, — So, from here, deve proseguire dritto per circa due isolati, — you need to go straight for about two blocks, fino al semaforo. — until the traffic light. Lì vedrà un'edicola storica. — There you'll see a historic newsstand. Gira a destra — Turn right e la biblioteca sarà sulla sua sinistra, — and the library will be on your left, subito dopo la chiesa sconsacrata. — immediately after the deconsecrated church. Non può sbagliare. — You can't miss it."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfetto. Per la Biblioteca, il modo più pratico è prendere l'autobus numero 27. La fermata è proprio lì, di fronte al bar con l'insegna rossa. Scende alla quarta fermata, 'Via Garibaldi', poi attraversa la strada e la trova. Ci mette una decina di minuti, traffico permettendo.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "chiaro",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "costo",
+            "dove"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "fermata",
+            "quante",
+            "prossima"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto. — Perfect. Per la Biblioteca, — For the Library, il modo più pratico è prendere l'autobus numero 27. — the most practical way is to take bus number 27. La fermata è proprio lì, — The stop is right there, di fronte al bar con l'insegna rossa. — in front of the bar with the red sign. Scende alla quarta fermata, 'Via Garibaldi', — You get off at the fourth stop, 'Via Garibaldi', poi attraversa la strada e la trova. — then cross the road and you'll find it. Ci mette una decina di minuti, traffico permettendo. — It takes about ten minutes, traffic permitting."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Allora, a piedi ci vorranno circa quindici, venti minuti, passo svelto. In autobus, come le dicevo, una decina. Non è una distanza eccessiva, ma è un po' tortuoso. Vorrebbe che le ripetessi i passaggi a piedi o in autobus?",
+      "branches": [
+        {
+          "keywords": [
+            "piedi",
+            "camminare",
+            "apiedi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "mezzi",
+            "trasporto"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tutto",
+            "chiaro",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Allora, a piedi ci vorranno circa quindici, venti minuti, passo svelto. — So, on foot it will take about fifteen, twenty minutes, brisk pace. In autobus, come le dicevo, una decina. — By bus, as I was saying, about ten. Non è una distanza eccessiva, — It's not an excessive distance, ma è un po' tortuoso. — but it's a bit winding. Vorrebbe che le ripetessi i passaggi a piedi o in autobus? — Would you like me to repeat the walking or bus directions?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Ah, sì, il biglietto! Può acquistarlo qui all'edicola accanto, o anche direttamente a bordo, ma è più caro. Un singolo viaggio costa 1,50€ se lo prende prima, 2€ se lo fa sull'autobus. Valido per 90 minuti su tutta la rete urbana.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "informazioni",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "tornare",
+            "dove"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, sì, il biglietto! — Ah yes, the ticket! Può acquistarlo qui all'edicola accanto, — You can buy it here at the newsstand next door, o anche direttamente a bordo, — or even directly on board, ma è più caro. — but it's more expensive. Un singolo viaggio costa 1,50€ se lo prende prima, — A single journey costs €1.50 if you buy it beforehand, 2€ se lo fa sull'autobus. — €2 if you buy it on the bus. Valido per 90 minuti su tutta la rete urbana. — Valid for 90 minutes on the entire urban network."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore? Oppure formulare la domanda in un altro modo?",
+      "branches": [
+        {
+          "keywords": [
+            "biblioteca",
+            "museo",
+            "posta",
+            "perso",
+            "strada",
+            "aiuto",
+            "stazione",
+            "ospedale",
+            "mercato",
+            "acquisti",
+            "negozio",
+            "piedi",
+            "camminare",
+            "apiedi",
+            "autobus",
+            "mezzi",
+            "trasporto",
+            "lontano",
+            "distanza",
+            "quanto",
+            "taxi",
+            "veloce",
+            "centro",
+            "piazza",
+            "duomo",
+            "hotel",
+            "alloggio",
+            "specifico",
+            "posto",
+            "indirizzo",
+            "nulla",
+            "solo",
+            "camminare",
+            "passeggiare",
+            "tram",
+            "velocemente",
+            "rapido",
+            "fretta",
+            "indifferente",
+            "nonimporta",
+            "grazie",
+            "capito",
+            "perfetto",
+            "ripetere",
+            "lento",
+            "chiarire",
+            "tempo",
+            "minuti",
+            "altro",
+            "dubbi",
+            "chiaro",
+            "biglietto",
+            "costo",
+            "dove",
+            "fermata",
+            "quante",
+            "prossima",
+            "orari",
+            "quando",
+            "tutto",
+            "non",
+            "no",
+            "informazioni",
+            "comprare",
+            "edicola",
+            "subito",
+            "tornare",
+            "fine"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, non ho capito bene. — Excuse me, I didn't quite catch that. Potrebbe ripetere, per favore? — Could you please repeat? Oppure formulare la domanda in un altro modo? — Or phrase your question differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Figurati! L'importante è arrivare a destinazione senza intoppi. Buona giornata e in bocca al lupo con la ricerca!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Figurati! — Don't mention it! L'importante è arrivare a destinazione senza intoppi. — The important thing is to reach your destination smoothly. Buona giornata e in bocca al lupo con la ricerca! — Have a good day and good luck with your search!",
+      "isTerminal": true
+    }
+  }
+}

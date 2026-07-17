@@ -1,0 +1,194 @@
+{
+  "id": "dlg-id-small-talk-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Obrolan Santai di Akhir Pekan",
+  "opening": "Hai, apa kabar? Lama tak jumpa! Gimana akhir pekanmu kemarin? Semoga menyenangkan, ya.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai, apa kabar? Lama tak jumpa! Gimana akhir pekanmu kemarin? Semoga menyenangkan, ya.",
+      "branches": [
+        {
+          "keywords": [
+            "menyenangkan",
+            "asyik",
+            "seru",
+            "santai",
+            "liburan",
+            "indah"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sibuk",
+            "capek",
+            "kerja",
+            "beres-beres",
+            "urusan",
+            "padat"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai, apa kabar? (Hi, how are you?) Lama tak jumpa! (Long time no see!) Gimana akhir pekanmu kemarin? (How was your weekend?) Semoga menyenangkan, ya. (Hope it was pleasant.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wah, syukurlah kalau begitu! Aku ikut senang mendengarnya. Memangnya apa yang membuat akhir pekanmu begitu berkesan?",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "nonton",
+            "hobi",
+            "me time",
+            "kuliner",
+            "tiduran",
+            "rebahan",
+            "istirahat",
+            "santai"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "keluarga",
+            "teman",
+            "jalan-jalan",
+            "piknik",
+            "luarkota",
+            "berkunjung",
+            "liburan"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, syukurlah kalau begitu! (Oh, that's good then!) Aku ikut senang mendengarnya. (I'm glad to hear that.) Memangnya apa yang membuat akhir pekanmu begitu berkesan? (So what exactly made your weekend so memorable?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, begitu ya. Kedengarannya cukup menguras tenaga. Semoga saja penatmu sudah sedikit berkurang. Ada cerita menarik dari kesibukanmu itu?",
+      "branches": [
+        {
+          "keywords": [
+            "proyek",
+            "deadline",
+            "kantor",
+            "lembur",
+            "tugas",
+            "pekerjaan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ingin",
+            "butuh",
+            "santai",
+            "liburan",
+            "istirahat",
+            "capek"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu ya. (Oh, I see.) Kedengarannya cukup menguras tenaga. (That sounds quite draining.) Semoga saja penatmu sudah sedikit berkurang. (Hope your fatigue has somewhat lessened.) Ada cerita menarik dari kesibukanmu itu? (Any interesting stories from your busyness?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Menarik sekali! Kadang kita memang butuh waktu untuk memanjakan diri dengan hal-hal yang kita sukai, ya kan? Kalau boleh tahu, hobi apa yang sedang kamu geluti akhir-akhir ini atau buku/film apa yang sedang menarik perhatianmu?",
+      "branches": [
+        {
+          "keywords": [
+            "membaca",
+            "buku",
+            "penulis",
+            "literasi",
+            "novel",
+            "komik"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali! (Very interesting!) Kadang kita memang butuh waktu untuk memanjakan diri dengan hal-hal yang kita sukai, ya kan? (Sometimes we really need time to indulge ourselves with things we like, don't we?) Kalau boleh tahu, hobi apa yang sedang kamu geluti akhir-akhir ini atau buku/film apa yang sedang menarik perhatianmu? (If I may ask, what hobby have you been pursuing lately, or what book/film has caught your attention?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Aku paham. Memang terkadang kewajiban sosial atau pekerjaan bisa sangat menyita waktu dan energi. Tapi pasti ada hikmah atau pelajaran yang bisa dipetik dari semua itu, kan? Bagaimana rasanya setelah semua itu tuntas?",
+      "branches": [
+        {
+          "keywords": [
+            "lega",
+            "plong",
+            "puas",
+            "akhirnya",
+            "selesai",
+            "bahagia"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "masih",
+            "belum",
+            "lanjut",
+            "tanggung",
+            "susah",
+            "berat"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aku paham. (I understand.) Memang terkadang kewajiban sosial atau pekerjaan bisa sangat menyita waktu dan energi. (Indeed, sometimes social obligations or work can really consume time and energy.) Tapi pasti ada hikmah atau pelajaran yang bisa dipetik dari semua itu, kan? (But there must be wisdom or lessons to be learned from all of it, right?) Bagaimana rasanya setelah semua itu tuntas? (How does it feel after all that is done?)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, aku juga pernah dengar tentang itu/penulis itu/film itu! Sepertinya menarik. Kalau ada waktu luang, mungkin aku akan mencobanya. Ngomong-ngomong, setelah semua obrolan ini, apa rencanamu untuk nanti malam atau besok?",
+      "branches": [
+        {
+          "keywords": [
+            "santai",
+            "istirahat",
+            "rumah",
+            "tidur",
+            "rebahan"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, aku juga pernah dengar tentang itu/penulis itu/film itu! (Oh, I've also heard about that/that author/that film!) Sepertinya menarik. (It seems interesting.) Kalau ada waktu luang, mungkin aku akan mencobanya. (If I have free time, maybe I'll try it.) Ngomong-ngomong, setelah semua obrolan ini, apa rencanamu untuk nanti malam atau besok? (By the way, after all this chat, what are your plans for tonight or tomorrow?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that? It wasn't very clear."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baiklah, kelihatannya kamu punya rencana yang cukup padat/menyenangkan. Senang sekali bisa ngobrol santai begini. Semoga harimu menyenangkan dan sampai jumpa lagi, ya!",
+      "branches": [],
+      "fallbackBranchId": "t7",
+      "promptTranslation": "Baiklah, kelihatannya kamu punya rencana yang cukup padat/menyenangkan. (Alright, it seems you have quite a busy/pleasant plan.) Senang sekali bisa ngobrol santai begini. (It was really nice to chat casually like this.) Semoga harimu menyenangkan dan sampai jumpa lagi, ya! (Have a pleasant day and see you again!)",
+      "isTerminal": true
+    }
+  }
+}

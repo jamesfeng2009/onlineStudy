@@ -1,0 +1,36 @@
+{
+  "id": "dlg-th-shopping-clothes-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "เลือกซื้อเสื้อผ้าสไตล์หรู",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ ไม่ทราบว่าคุณลูกค้ากำลังมองหาเสื้อผ้าแนวไหนเป็นพิเศษอยู่คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ ไม่ทราบว่าคุณลูกค้ากำลังมองหาเสื้อผ้าแนวไหนเป็นพิเศษอยู่คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เสื้อเชิ้ต",
+            "เสื้อทำงาน",
+            "ทางการ",
+            "เสื้อผ้า"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t2",
+      "promptTranslation": "Sawasdee ka, yindee tawn-rap ka. Mai saap wâa kun lôok-kâa gam-lang mawng-hǎa sêuua-pâa naew nǎi bpen pí-sèet yòo ká? — Hello, welcome. May I ask what kind of clothes you are particularly looking for?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ยินดีค่ะ ทางเรามีเสื้อผ้าหลากหลายสไตล์เลยค่ะ ไม่ทราบว่าคุณลูกค้าสนใจเสื้อผ้าแบบไหนเป็นพิเศษคะ เช่น ดีไซน์เรียบหรูสำหรับทำงาน ชุดเดรสสำหรับออกงาน หรือเพียงแค่ต้องการเดินชมสินค้าไปพลางๆ ก่อนคะ? หากมีขนาดและสีที่ต้องการในใจ แจ้งได้เลยนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t2",
+      "promptTranslation": "Yindee ka. Taang rao mee sêuua-pâa lâak-láai sà-tai loey ka. Mai saap wâa kun lôok-kâa son-jai sêuua-pâa baep nǎi bpen pí-sèet ka? Chên dee-sai rîap-rǔu sǎm-ràp gam-ngaan, chút drês sǎm-ràp awk ngaan rĕuu piang kâe dtâwng-gaan dern chom sǐn-káa bpai plaang-",
+      "isTerminal": true
+    }
+  }
+}

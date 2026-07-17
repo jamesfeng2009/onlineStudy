@@ -1,0 +1,235 @@
+{
+  "id": "dlg-es-shopping-clothes-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Compras de ropa",
+  "opening": "¡Hola! ¿Necesitas ayuda con algo o solo estás mirando?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Necesitas ayuda con algo o solo estás mirando?",
+      "branches": [
+        {
+          "keywords": [
+            "buscar",
+            "necesito",
+            "quiero",
+            "ver"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mirando",
+            "solo"
+          ],
+          "nextTurnId": "t_looking"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (HOH-lah!) ¿Necesitas ayuda con algo o solo estás mirando? (neh-SEH-see-tahs ah-YOO-dah kohn AHL-goh oh SOH-loh eh-STAHS mee-RAHN-doh?) — Hello! Do you need help with anything or are you just looking?"
+    },
+    "t_looking": {
+      "id": "t_looking",
+      "prompt": "Claro, tómate tu tiempo. Si necesitas algo, no dudes en preguntar.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro (KLAH-roh), tómate tu tiempo. Si necesitas algo, no dudes en preguntar. — Sure, take your time. If you need anything, don't hesitate to ask."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. ¿Buscas algo en particular? ¿Quizás una camisa, unos pantalones? ¿Y qué talla sueles usar?",
+      "branches": [
+        {
+          "keywords": [
+            "camisa",
+            "blusa",
+            "vestido",
+            "pantalones",
+            "falda",
+            "chaqueta"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido (Ehn-tehn-DEE-doh). ¿Buscas algo en particular? ¿Kee-SAHS OO-nah kah-MEE-sah, OO-nohs pahn-tah-LOH-nehs? ¿Y qué talla sueles usar? (Ee keh TAH-yah SUE-lehs oo-SAR?) — Understood. Are you looking for something in particular? Perhaps a shirt, some pants? And what size do you usually wear?"
+    },
+    "t3_show_item": {
+      "id": "t3_show_item",
+      "prompt": "Tengo esta camisa en talla M que creo que podría gustarte. ¿Te gustaría probártela?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "probar",
+            "probármelo",
+            "vestidor"
+          ],
+          "nextTurnId": "t4_fitting_room"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "otro",
+            "color",
+            "talla"
+          ],
+          "nextTurnId": "t3b_another_option"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tengo esta camisa en talla M que creo que podría gustarte. (TEHN-goh EH-stah kah-MEE-sah ehn TAH-yah EM keh KREH-oh keh poh-DRY-ah goos-TAR-teh.) ¿Te gustaría probártela? — I have this shirt in size M that I think you might like. Would you like to try it on?"
+    },
+    "t3b_another_option": {
+      "id": "t3b_another_option",
+      "prompt": "No hay problema. ¿Buscas otra talla o prefieres otro color? ¿Quizás algo diferente?",
+      "branches": [
+        {
+          "keywords": [
+            "talla",
+            "pequeña",
+            "grande",
+            "mas"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "gracias",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No hay problema. (Noh AI pro-BLEH-mah.) ¿Buscas otra talla o prefieres otro color? ¿Quizás algo diferente? — No problem. Are you looking for another size or do you prefer another color? Perhaps something different?"
+    },
+    "t4_fitting_room": {
+      "id": "t4_fitting_room",
+      "prompt": "El probador está por aquí, al fondo a la derecha. Avísame si necesitas otra cosa o si te queda bien.",
+      "branches": [
+        {
+          "keywords": [
+            "queda",
+            "bien",
+            "perfecto",
+            "me gusta"
+          ],
+          "nextTurnId": "t5_buy"
+        },
+        {
+          "keywords": [
+            "mal",
+            "grande",
+            "pequeño",
+            "cambiar",
+            "otro"
+          ],
+          "nextTurnId": "t3b_another_option"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El probador (El pro-bah-DOR) está por aquí, al fondo a la derecha. Avísame si necesitas otra cosa o si te queda bien (see teh KEH-dah BYEHN). — The fitting room is over here, at the back on the right. Let me know if you need anything else or if it fits well."
+    },
+    "t5_buy": {
+      "id": "t5_buy",
+      "prompt": "¡Qué bien! Me alegro de que te quede bien. ¿Te lo llevas?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "llevar",
+            "comprar",
+            "pagar"
+          ],
+          "nextTurnId": "t_payment_or_end"
+        },
+        {
+          "keywords": [
+            "no",
+            "pensar",
+            "mirar",
+            "otro"
+          ],
+          "nextTurnId": "t3b_another_option"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bien! (Keh BYEN!) Me alegro de que te quede bien. ¿Te lo llevas? (Teh loh YEH-vas?) — Great! I'm glad it fits you well. Are you taking it?"
+    },
+    "t_payment_or_end": {
+      "id": "t_payment_or_end",
+      "prompt": "Perfecto. La caja está al fondo a la izquierda. Cuando estés listo/a.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "voy",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. (Per-FEHK-toh.) La caja está al fondo a la izquierda. Cuando estés listo/a. — Perfect. The checkout is at the back on the left. Whenever you're ready."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podrías repetir eso, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "si"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón? (Per-DON?) ¿Podrías repetir eso, por favor? — Sorry? Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. ¡Que tengas un buen día y hasta pronto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De acuerdo. (Deh ah-KWEHR-doh.) ¡Que tengas un buen día y hasta pronto! — Alright. Have a good day and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

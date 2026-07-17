@@ -1,0 +1,189 @@
+{
+  "id": "dlg-ms-weather-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Sembang Cuaca",
+  "opening": "Hai! Cuaca hari ini macam mana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai! Cuaca hari ini macam mana?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "baik",
+            "cantik"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "mendung",
+            "buruk",
+            "berangin"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "biasa",
+            "okey",
+            "sederhana"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai! (Hi!) Cuaca hari ini (the weather today) macam mana? (how is it?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, baguslah! Saya suka cuaca cerah. Ada rancangan untuk hujung minggu?",
+      "branches": [
+        {
+          "keywords": [
+            "jalan-jalan",
+            "berkelah",
+            "aktiviti",
+            "keluar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "dudukrumah",
+            "rehat",
+            "tidur",
+            "santai"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "kerja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, baguslah! (Oh, that's good!) Saya suka (I like) cuaca cerah (sunny weather). Ada rancangan (Any plans) untuk hujung minggu? (for the weekend?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, ya ke? Hujan ke? Suhu macam mana?",
+      "branches": [
+        {
+          "keywords": [
+            "hujan",
+            "sejuk",
+            "dingin"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "taksejuk",
+            "panas"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ya ke? (Oh, really?) Hujan ke? (Is it raining?) Suhu (the temperature) macam mana? (how is it?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Wah, seronoknya! Nak pergi mana?",
+      "branches": [
+        {
+          "keywords": [
+            "taman",
+            "pantai",
+            "gunung",
+            "airterjun"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, seronoknya! (Wow, how fun!) Nak pergi mana? (Where do you want to go?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Saya faham. Kadang-kadang duduk rumah lebih selesa. Awak rasa sejuk tak?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sejuk",
+            "dingin"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya faham. (I understand.) Kadang-kadang (Sometimes) duduk rumah (staying home) lebih selesa. (is more comfortable.) Awak rasa sejuk tak? (Do you feel cold?)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baiklah. Biasalah tu, hujan di Malaysia jarang sejuk. Mungkin sekejap je.",
+      "branches": [
+        {
+          "keywords": [
+            "harapbegitu",
+            "semoga"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah. (Alright.) Biasalah tu, (That's normal,) hujan di Malaysia (rain in Malaysia) jarang sejuk. (is rarely cold.) Mungkin sekejap je. (Maybe just for a moment.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tak berapa faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (Sorry,) boleh ulang (can you repeat) sekali lagi? (once again?) Saya tak berapa faham. (I don't quite understand.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih kerana berkongsi! Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, (Alright,) terima kasih (thank you) kerana berkongsi! (for sharing!) Selamat tinggal. (Goodbye.)",
+      "isTerminal": true
+    }
+  }
+}

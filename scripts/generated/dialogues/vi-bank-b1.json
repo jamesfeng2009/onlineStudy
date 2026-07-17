@@ -1,0 +1,267 @@
+{
+  "id": "dlg-vi-bank-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Giao dịch ngân hàng",
+  "opening": "Chào quý khách. Tôi có thể giúp gì cho quý khách hôm nay ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách. Tôi có thể giúp gì cho quý khách hôm nay ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "motaikhoan",
+            "taikhoanmoi"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "doitien",
+            "chuyendoingoai"
+          ],
+          "nextTurnId": "t2_exchange"
+        },
+        {
+          "keywords": [
+            "mayatm",
+            "ruttien"
+          ],
+          "nextTurnId": "t2_atm"
+        },
+        {
+          "keywords": [
+            "khac",
+            "van_de_khac",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách. Tôi có thể giúp gì cho quý khách hôm nay ạ? (Chao quy khach. Toi co the giup gi cho quy khach hom nay a?) - Hello, how may I help you today?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Vâng, quý khách muốn mở loại tài khoản nào ạ? Tài khoản thanh toán, tài khoản tiết kiệm hay tài khoản có thẻ ghi nợ?",
+      "branches": [
+        {
+          "keywords": [
+            "thanhtoan",
+            "ghino"
+          ],
+          "nextTurnId": "t3_account_docs"
+        },
+        {
+          "keywords": [
+            "loai_khac",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách muốn mở loại tài khoản nào ạ? Tài khoản thanh toán, tài khoản tiết kiệm hay tài khoản có thẻ ghi nợ? (Vang, quy khach muon mo loai tai khoan nao a? Tai khoan thanh toan, tai khoan tiet kiem hay tai khoan co the ghi no?) - Yes, what type of account would you like to open? A checking account, savings account, or an account with a debit card?"
+    },
+    "t2_exchange": {
+      "id": "t2_exchange",
+      "prompt": "Quý khách muốn đổi từ loại tiền tệ nào sang tiền Việt Nam Đồng ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "do_la_my"
+          ],
+          "nextTurnId": "t3_exchange_rate"
+        },
+        {
+          "keywords": [
+            "tien_khac",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách muốn đổi từ loại tiền tệ nào sang tiền Việt Nam Đồng ạ? - Which currency would you like to exchange to Vietnamese Dong?"
+    },
+    "t2_atm": {
+      "id": "t2_atm",
+      "prompt": "Xin lỗi, quý khách đang gặp vấn đề gì với máy ATM ạ? Thẻ bị kẹt, quên mã PIN hay không rút được tiền?",
+      "branches": [
+        {
+          "keywords": [
+            "the_ket",
+            "ket_the"
+          ],
+          "nextTurnId": "t3_atm_solution"
+        },
+        {
+          "keywords": [
+            "van_de_khac",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi, quý khách đang gặp vấn đề gì với máy ATM ạ? Thẻ bị kẹt, quên mã PIN hay không rút được tiền? - Excuse me, what is the problem you're having with the ATM? Card stuck, forgotten PIN, or unable to withdraw money?"
+    },
+    "t3_account_docs": {
+      "id": "t3_account_docs",
+      "prompt": "Để mở tài khoản, quý khách cần có chứng minh nhân dân hoặc hộ chiếu còn hiệu lực. Quý khách vui lòng điền vào mẫu đơn này.",
+      "branches": [
+        {
+          "keywords": [
+            "giay_to",
+            "chung_minh_thu"
+          ],
+          "nextTurnId": "t4_account_proceed"
+        },
+        {
+          "keywords": [
+            "tiep_theo",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để mở tài khoản, quý khách cần có chứng minh nhân dân hoặc hộ chiếu còn hiệu lực. Quý khách vui lòng điền vào mẫu đơn này. - To open an account, you need a valid ID card or passport. Please fill out this form."
+    },
+    "t3_exchange_rate": {
+      "id": "t3_exchange_rate",
+      "prompt": "Tỷ giá hối đoái hiện tại là (ví dụ: 24.500 VND cho 1 USD). Quý khách muốn đổi bao nhiêu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "bao_nhieu",
+            "so_tien"
+          ],
+          "nextTurnId": "t4_exchange_confirm"
+        },
+        {
+          "keywords": [
+            "ty_gia",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tỷ giá hối đoái hiện tại là (ví dụ: 24.500 VND cho 1 USD). Quý khách muốn đổi bao nhiêu ạ? - The current exchange rate is (example: 24,500 VND for 1 USD). How much would you like to exchange?"
+    },
+    "t3_atm_solution": {
+      "id": "t3_atm_solution",
+      "prompt": "Vâng, xin quý khách vui lòng mang giấy tờ tùy thân đến quầy dịch vụ khách hàng để chúng tôi hỗ trợ ạ. Chúng tôi sẽ kiểm tra và giải quyết vấn đề cho quý khách.",
+      "branches": [
+        {
+          "keywords": [
+            "giay_to",
+            "chung_minh_thu"
+          ],
+          "nextTurnId": "t4_atm_confirm"
+        },
+        {
+          "keywords": [
+            "lam_gi",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, xin quý khách vui lòng mang giấy tờ tùy thân đến quầy dịch vụ khách hàng để chúng tôi hỗ trợ ạ. Chúng tôi sẽ kiểm tra và giải quyết vấn đề cho quý khách. (Vang, xin quy khach vui long mang giay to tuy than den quay dich vu khach hang de chung toi ho tro a. Chung toi se kiem tra va giai quyyet van de cho quy khach.) - Yes, please bring your identification documents to the customer service counter so we can assist you. We will check and resolve the issue for you."
+    },
+    "t4_account_proceed": {
+      "id": "t4_account_proceed",
+      "prompt": "Sau khi điền xong, quý khách vui lòng nộp lại cho tôi cùng với giấy tờ tùy thân. Tôi sẽ hướng dẫn quý khách sang quầy giao dịch để hoàn tất thủ tục.",
+      "branches": [
+        {
+          "keywords": [
+            "hoan_tat",
+            "thu_tuc"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sau khi điền xong, quý khách vui lòng nộp lại cho tôi cùng với giấy tờ tùy thân. Tôi sẽ hướng dẫn quý khách sang quầy giao dịch để hoàn tất thủ tục. - After filling it out, please submit it back to me along with your ID. I will direct you to the transaction counter to complete the procedure."
+    },
+    "t4_exchange_confirm": {
+      "id": "t4_exchange_confirm",
+      "prompt": "Vậy quý khách muốn đổi số tiền này sang VND đúng không ạ? Vui lòng xác nhận lại số tiền và loại tiền tệ.",
+      "branches": [
+        {
+          "keywords": [
+            "xac_nhan",
+            "dung_vay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "doi_lai",
+            "thay_doi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy quý khách muốn đổi số tiền này sang VND đúng không ạ? Vui lòng xác nhận lại số tiền và loại tiền tệ. - So you want to exchange this amount to VND, correct? Please reconfirm the amount and currency type."
+    },
+    "t4_atm_confirm": {
+      "id": "t4_atm_confirm",
+      "prompt": "Vâng, quý khách cứ đến đó và trình bày vấn đề. Nhân viên sẽ giúp quý khách giải quyết ngay lập tức. Cần hỗ trợ thêm gì không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "cam_on",
+            "duoc_roi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "con_gi",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách cứ đến đó và trình bày vấn đề. Nhân viên sẽ giúp quý khách giải quyết ngay lập tức. Cần hỗ trợ thêm gì không ạ? - Yes, just go there and explain the problem. The staff will help you resolve it immediately. Do you need any further assistance?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nhắc lại rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, quý khách có thể nhắc lại rõ hơn được không ạ? - Excuse me, could you please repeat more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã sử dụng dịch vụ của ngân hàng chúng tôi. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn quý khách đã sử dụng dịch vụ của ngân hàng chúng tôi. Chúc quý khách một ngày tốt lành! - Thank you for using our bank's services. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

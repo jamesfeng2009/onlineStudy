@@ -1,0 +1,221 @@
+{
+  "id": "dlg-de-airport-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Flugverspätung: Optionen und Entschädigung",
+  "opening": "Guten Tag. Ich muss Ihnen leider mitteilen, dass Ihr Flug LH456 nach München aufgrund einer technischen Störung auf unbestimmte Zeit verschoben wurde. Es tut mir aufrichtig leid für die Unannehmlichkeiten.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Ich muss Ihnen leider mitteilen, dass Ihr Flug LH456 nach München aufgrund einer technischen Störung auf unbestimmte Zeit verschoben wurde. Es tut mir aufrichtig leid für die Unannehmlichkeiten.",
+      "branches": [
+        {
+          "keywords": [
+            "wasjetzt",
+            "wiegehtesweiter",
+            "nächsterschritt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "entschädigung",
+            "anspruch",
+            "erstattung"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "unglaublich",
+            "unverschämtheit",
+            "ärgerlich"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag. — Good day. Ich muss Ihnen leider mitteilen, dass Ihr Flug LH456 nach München aufgrund einer technischen Störung auf unbestimmte Zeit verschoben wurde. Es tut mir aufrichtig leid für die Unannehmlichkeiten. — I regret to inform you that your flight LH456 to Munich has been indefinitely postponed due to a technical malfunction. I am truly sorry for the inconvenience."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wir arbeiten fieberhaft daran, alle Passagiere umzubuchen. Aktuell können wir Ihnen einen Platz auf dem LH458 anbieten, der in vier Stunden startet, oder eine alternative Verbindung morgen früh via Frankfurt.",
+      "branches": [
+        {
+          "keywords": [
+            "vierstunden",
+            "derfrühereflug",
+            "lh458",
+            "akzeptiere"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "morgenfrüh",
+            "frankfurtistkeineoption",
+            "nichtviafrankfurt",
+            "zuspaet"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wir arbeiten fieberhaft daran, alle Passagiere umzubuchen. — We are feverishly working to rebook all passengers. Aktuell können wir Ihnen einen Platz auf dem LH458 anbieten, der in vier Stunden startet, oder eine alternative Verbindung morgen früh via Frankfurt. — Currently, we can offer you a seat on LH458, which departs in four hours, or an alternative connection tomorrow morning via Frankfurt."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Selbstverständlich haben Sie Anspruch auf Betreuungsleistungen gemäß EU-Verordnung 261/2004, sofern die Verspätung drei Stunden überschreitet. Dazu gehören Mahlzeiten, Erfrischungen und gegebenenfalls eine Hotelübernachtung. Bezüglich einer finanziellen Entschädigung müssen wir den genauen Grund der Störung noch evaluieren, aber Sie können dies online beantragen.",
+      "branches": [
+        {
+          "keywords": [
+            "hotelübernachtung",
+            "mahlzeiten",
+            "gutscheine",
+            "betreuungsleistungen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "wasistmitderumbuchung",
+            "umbgebucht",
+            "flug"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selbstverständlich haben Sie Anspruch auf Betreuungsleistungen gemäß EU-Verordnung 261/2004, sofern die Verspätung drei Stunden überschreitet. — Of course, you are entitled to care services according to EU Regulation 261/2004, provided the delay exceeds three hours. Dazu gehören Mahlzeiten, Erfrischungen und gegebenenfalls eine Hotelübernachtung. — This includes meals, refreshments, and, if necessary, an overnight hotel stay. Bezüglich einer finanziellen Entschädigung müssen wir den genauen Grund der Störung noch evaluieren, aber Sie können dies online beantragen. — Regarding financial compensation, we still need to evaluate the exact cause of the malfunction, but you can apply for this online."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ich kann Ihren Ärger gut nachvollziehen. Es tut uns leid, dass dies Ihre Reisepläne durchkreuzt. Lassen Sie uns schauen, welche Optionen wir haben. Wir könnten Sie auf den LH458 umbuchen, der in etwa vier Stunden geht, oder eine Verbindung morgen früh über Frankfurt.",
+      "branches": [
+        {
+          "keywords": [
+            "derfrühereflug",
+            "vierstundensindakzeptabel",
+            "lh458"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "frankfurtistkeineoption",
+            "morgenfrühgehtnicht",
+            "nichtviafrankfurt"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "wasistmitentschädigung",
+            "geld",
+            "anspruch"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I can well understand your anger. We are sorry that this is disrupting your travel plans. Let's see what options we have. We could rebook you on LH458, which departs in about four hours, or a connection tomorrow morning via Frankfurt."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alles klar, ich buche Sie dann auf den Flug LH458 um. Bitte begeben Sie sich in etwa zwei Stunden zum Gate B12. Ihre neue Bordkarte können Sie am Automaten ausdrucken oder in unserer App abrufen. Für die Betreuungsleistungen erhalten Sie Gutscheine hier am Schalter.",
+      "branches": [
+        {
+          "keywords": [
+            "dankeschön",
+            "verstanden",
+            "gut",
+            "allesklar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I'll rebook you on flight LH458. Please proceed to Gate B12 in about two hours. You can print your new boarding pass at the self-service machine or retrieve it in our app. For the care services, you will receive vouchers here at the counter."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ich verstehe, dass dies nicht ideal ist. Lassen Sie mich kurz prüfen, ob es noch andere, eventuell indirektere Verbindungen gibt, die heute noch gehen würden, auch wenn sie etwas länger dauern könnten.",
+      "branches": [
+        {
+          "keywords": [
+            "japitteprüfendas",
+            "andereverbindungen",
+            "längererdaueristegal"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ichnehmedochdenlh458",
+            "dochdenersten",
+            "umbuchen"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand that this is not ideal. Let me quickly check if there are any other, perhaps more indirect connections that would still depart today, even if they might take a bit longer."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ich habe eine Verbindung über Leipzig gefunden, die heute Abend um 20:30 Uhr geht, Ankunft in München um Mitternacht. Alternativ gibt es einen ICE um 18:00 Uhr vom Hauptbahnhof, der ca. 3,5 Stunden dauert. Was wäre Ihnen lieber?",
+      "branches": [
+        {
+          "keywords": [
+            "derzug",
+            "iceklingtgut",
+            "bahn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "flugüberleipzig",
+            "leipzigistokay",
+            "umbuchen"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I found a connection via Leipzig that departs tonight at 8:30 PM, arriving in Munich at midnight. Alternatively, there's an ICE train at 6:00 PM from the main station, which takes approximately 3.5 hours. Which would you prefer?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "bitterepeat",
+            "wiederholen",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sehr gern geschehen. Ich wünsche Ihnen eine angenehme Weiterreise und entschuldige mich nochmals für die Unannehmlichkeiten. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're very welcome. I wish you a pleasant onward journey and apologize again for the inconvenience. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

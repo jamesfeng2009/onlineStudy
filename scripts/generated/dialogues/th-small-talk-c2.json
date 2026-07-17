@@ -1,0 +1,178 @@
+{
+  "id": "dlg-th-small-talk-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "คุยกันสบายๆ",
+  "opening": "สวัสดีครับ/ค่ะ ไม่ได้เจอกันนานเลยนะครับ/คะ สบายดีไหมครับ/คะ ช่วงนี้ยุ่งๆ หรือเปล่า",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ไม่ได้เจอกันนานเลยนะครับ/คะ สบายดีไหมครับ/คะ ช่วงนี้ยุ่งๆ หรือเปล่า",
+      "branches": [
+        {
+          "keywords": [
+            "สบายดี",
+            "ดีครับ",
+            "ไม่ยุ่ง",
+            "เรื่อยๆ",
+            "พอใช้",
+            "งั้นๆ"
+          ],
+          "nextTurnId": "t2_leisure"
+        },
+        {
+          "keywords": [
+            "ยุ่งมาก",
+            "เหนื่อย",
+            "วุ่นๆ"
+          ],
+          "nextTurnId": "t2_busy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-wat-dee krap/ka. Mai dai jer gan naan loey na krap/ka. Sa-bai dee mai krap/ka? Chuang nee yung-yung reu plao? (Hello. Long time no see. How are you? Have you been busy lately?)"
+    },
+    "t2_leisure": {
+      "id": "t2_leisure",
+      "prompt": "ดีจังเลยครับ/ค่ะ ถ้าอย่างนั้นช่วงนี้มีอะไรน่าสนใจทำบ้างไหมครับ/คะ หรือมีแพลนจะไปเที่ยวไหนเป็นพิเศษหรือเปล่า",
+      "branches": [
+        {
+          "keywords": [
+            "ดูหนัง",
+            "อ่านหนังสือ",
+            "งานอดิเรก",
+            "เที่ยว",
+            "เดินทาง"
+          ],
+          "nextTurnId": "t3_detailed_topic"
+        },
+        {
+          "keywords": [
+            "อยู่บ้าน",
+            "ไม่ได้ทำอะไร",
+            "ปกติ",
+            "ไม่มี"
+          ],
+          "nextTurnId": "t4_closing_prep"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee jang loey krap/ka. Ta yaang nan chuang nee mee a-rai naa-son-jai tam baang mai krap/ka? Reu mee plan ja pai tiao nai pen pi-set reu plao? (That's great! So, anything interesting you've been up to lately? Or any special travel plans?)"
+    },
+    "t2_busy": {
+      "id": "t2_busy",
+      "prompt": "ฟังดูเหนื่อยแย่เลยนะครับ/คะ ต้องหาเวลาพักผ่อนบ้างนะครับ/คะ งานเยอะขนาดนี้พอมีเวลาผ่อนคลายตัวเองบ้างไหมเอ่ย",
+      "branches": [
+        {
+          "keywords": [
+            "พักผ่อน",
+            "หาเวลา",
+            "ทำกิจกรรม",
+            "ดูหนัง",
+            "อ่านหนังสือ"
+          ],
+          "nextTurnId": "t3_detailed_topic"
+        },
+        {
+          "keywords": [
+            "ไม่มีเวลา",
+            "ยุ่งตลอด",
+            "ยังไม่ได้พัก",
+            "ไม่เป็นไร",
+            "ยังไหว"
+          ],
+          "nextTurnId": "t4_closing_prep"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fang doo neuay yae loey krap/ka. Tong hah we-lah pak-pon baang na krap/ka. Ngaan yer ka-naat nee por mee we-lah pon-klai dtua-eng baang mai oey? (That sounds exhausting. You should really find some time to rest. With so much work, do you manage to find any time to relax?)"
+    },
+    "t3_detailed_topic": {
+      "id": "t3_detailed_topic",
+      "prompt": "ดีเลยครับ/ค่ะ การได้ผ่อนคลายสำคัญมาก ว่าแต่มีอะไรที่ติดลมบนเป็นพิเศษช่วงนี้ไหมครับ/คะ หรือถ้าเป็นเรื่องเที่ยว มีที่ไหนน่าสนใจบ้างครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "หนัง",
+            "ซีรีส์",
+            "หนังสือ",
+            "เกม",
+            "กีฬา",
+            "ภูเขา",
+            "ทะเล",
+            "ต่างประเทศ"
+          ],
+          "nextTurnId": "t4_closing_prep"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee loey krap/ka. Gaan dai pon-klai sam-kan maak. Wa tae mee a-rai tee dtit-lom-bon pen pi-set chuang nee mai krap/ka? Reu ta pen reuang tiao, mee tee nai naa-son-jai baang krap/ka? (That's good. Relaxation is very important. By the way, is there anything you're particularly into ['ติดลมบน' - meaning 'hooked on' or 'very popular/trendy'] lately? Or if it's about travel, are there any interesting places?)"
+    },
+    "t4_closing_prep": {
+      "id": "t4_closing_prep",
+      "prompt": "อืมมม... ชีวิตช่วงนี้ก็เป็นอย่างที่เห็นแหละครับ/ค่ะ ว่าแต่จะว่าไปก็คุยกันเพลินเลยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "ครับ",
+            "ค่ะ",
+            "เพลิน",
+            "สนุก",
+            "จริง",
+            "เห็นด้วย"
+          ],
+          "nextTurnId": "t5_goodbye_lead"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eummm... Chee-wit chuang nee gor pen yaang tee hen lae krap/ka. Wa tae ja waa pai gor kuy gan plern loey na krap/ka. (Hmm... Life these days is just as you see it. By the way, I've really enjoyed chatting with you.)"
+    },
+    "t5_goodbye_lead": {
+      "id": "t5_goodbye_lead",
+      "prompt": "ครับ/ค่ะ แต่ตอนนี้ผม/ดิฉันคงต้องขอตัวไปทักทายคนอื่นก่อนนะครับ/คะ ไว้เจอกันใหม่นะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ได้เลย",
+            "เช่นกัน",
+            "ยินดี",
+            "ไว้คุยกันใหม่",
+            "ครับ",
+            "ค่ะ",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Krap/ka. Dtae dton nee pom/di-chan kong tong kor dtua pai tak-taai kon eun gon na krap/ka. Wai jer gan mai na krap/ka. (Okay. But now I should probably excuse myself to go say hi to other people. Let's meet again sometime.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ เมื่อกี้ไม่ได้ยินชัดเจนเลยครับ/ค่ะ รบกวนพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อะไรก็ได้",
+            "ลองอีกครั้ง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor-tode na krap/ka. Meua-gee mai dai yin chat-jen loey krap/ka. Roob-guan poot eek krang dai mai krap/ka? (I'm sorry, I didn't hear that clearly. Could you please repeat it?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ/ค่ะ ไว้โอกาสหน้าค่อยคุยกันใหม่นะครับ/คะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Krap/ka. Wai o-gaat naa koy kuy gan mai na krap/ka. Sa-wat-dee krap/ka. (Okay, let's chat again next time. Goodbye!)",
+      "isTerminal": true
+    }
+  }
+}

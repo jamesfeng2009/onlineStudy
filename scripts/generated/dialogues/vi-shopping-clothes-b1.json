@@ -1,0 +1,151 @@
+{
+  "id": "dlg-vi-shopping-clothes-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Mua sắm quần áo",
+  "opening": "Chào anh/chị, tôi có thể giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, tôi có thể giúp gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "tìm",
+            "mua",
+            "cần",
+            "áo",
+            "quần",
+            "váy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chỉxem",
+            "đangxem"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào ahn-chee, tôi có thể giúp gì không? — Hello, can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, anh/chị muốn tìm loại áo, quần hay váy? Size và màu gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "áo",
+            "sơmi",
+            "phông",
+            "sizem",
+            "màuxanh"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, ahn-chee muốn tìm loại áo, quần hay váy? Size và màu gì ạ? — Yes, what kind of shirt, pants, or dress are you looking for? What size and color?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tôi có một chiếc áo sơ mi màu xanh, size M, rất hợp với anh/chị đấy. Anh/chị có muốn thử không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thử"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "không",
+            "khác",
+            "màu"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tôi có một chiếc áo sơ mi màu xanh, size M, rất hợp với ahn-chee đấy. Ahn-chee có muốn thử không? — I have a blue shirt, size M, it would suit you very well. Would you like to try it on?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Cái áo vừa không ạ? Anh/chị thấy thế nào? Nếu ưng ý, anh/chị muốn thanh toán bằng tiền mặt hay thẻ ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "vừa",
+            "đẹp",
+            "mua",
+            "tiềnmặt",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "khôngvừa",
+            "chật",
+            "rộng",
+            "đổi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cái áo vừa không ạ? Ahn-chee thấy thế nào? Nếu ưng ý, ahn-chee muốn thanh toán bằng tiền mặt hay thẻ ạ? — Does the shirt fit? How do you like it? If you're satisfied, would you like to pay by cash or card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu ý anh/chị lắm. Anh/chị có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa hiểu ý ahn-chee lắm. Ahn-chee có thể nói lại không? — Sorry, I don't quite understand you. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành và hẹn gặp lại!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn ahn-chee. Chúc ahn-chee một ngày tốt lành và hẹn gặp lại! — Thank you. Have a good day and see you again!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "id": "dlg-de-hotel-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Guten Tag, herzlich willkommen im Hotel 'Zur Sonne'! Haben Sie eine Reservierung auf einen Namen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, herzlich willkommen im Hotel 'Zur Sonne'! Haben Sie eine Reservierung auf einen Namen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "meinnameist",
+            "reservierung",
+            "ichhabe"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg, hairts-lich vil-kom-men im Ho-tel 'Tsur Zonn-e'! Hah-ben Zee ah-ee-ne Re-zair-vee-roong owf ah-ee-nen Nah-men? — Good day, welcome to Hotel 'Zur Sonne'! Do you have a reservation under a name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vielen Dank. Könnten Sie mir bitte Ihren Nachnamen nennen und einen Ausweis zeigen?",
+      "branches": [
+        {
+          "keywords": [
+            "ausweis",
+            "personalausweis",
+            "reisepass",
+            "hierist"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dahngk. Kern-ten Zee meer bit-te ee-ren Nahk-nah-men nen-nen oond ah-ee-nen Ows-vice tsai-gen? — Thank you. Could you please tell me your surname and show an ID?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfekt, vielen Dank. Wir haben ein Doppelzimmer für Sie reserviert. Haben Sie eine Präferenz bezüglich der Aussicht – zum Garten oder zur Straße? Und wie möchten Sie die Rechnung begleichen?",
+      "branches": [
+        {
+          "keywords": [
+            "gartenblick",
+            "garten",
+            "ruhig",
+            "grün"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pair-fekt, fee-len dahngk. Veer hah-ben ah-ee-ne Dop-pel-tsim-mer fuer Zee re-zair-veert. Hah-ben Zee ah-ee-ne Pray-fay-rents be-tsueg-lich dair Owss-zicht – tsum Gar-ten oh-der tsoor Shtrah-se? Oond vee muerch-ten Zee dee Re-shnoong be-gly-chen? — Perfect, thank you. We have a double room reserved for you. Do you have a preference regarding the view – towards the garden or the street? And how would you like to settle the bill?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "In Ordnung, das notiere ich. Unser Frühstücksbuffet wird von 7:00 bis 10:00 Uhr im Restaurant serviert. Ist das für Sie in Ordnung? Hier ist Ihre Zimmerkarte.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "passt",
+            "gut",
+            "frühstück"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Ord-noong, das noh-tee-re ish. Oon-zer Froo-stuecks-boo-fay vird fon zee-ben bis tsehn oor im Res-toh-rahng sair-veert. Ist das fuer Zee in Ord-noong? Heer ist Ee-re Tsim-mer-kar-te. — All right, I'll make a note of that. Our breakfast buffet is served from 7:00 to 10:00 AM in the restaurant. Is that okay for you? Here is your room card."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gibt es sonst noch etwas, womit ich Ihnen behilflich sein kann, oder haben Sie noch Fragen?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "keine"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ja",
+            "frage",
+            "wo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gibbt es zonst nohch ett-vas, voh-mit ish Ee-nen be-hilf-lich za-een kahn, oh-der hah-ben Zee nohch Frah-gen? — Is there anything else I can help you with, or do you have any more questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gen Zee, kern-ten Zee das bit-te vee-der-hoh-len oh-der an-ders for-moo-lee-ren? — Excuse me, could you please repeat that or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und einen schönen Aufenthalt in unserem Hotel! Wir hoffen, Sie genießen Ihren Aufenthalt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dahngk oond ah-ee-nen shern-en Owf-ent-halt in oon-ze-rem Ho-tel! Veer hohf-fen, Zee gen-ee-sen Ee-ren Owf-ent-halt. — Thank you very much and have a pleasant stay in our hotel! We hope you enjoy your stay.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "id": "dlg-vi-directions-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Hỏi đường",
+  "opening": "Xin chào! Bạn cần gì?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào! Bạn cần gì?",
+      "branches": [
+        {
+          "keywords": [
+            "nhàhàng",
+            "bưuđiện",
+            "ngânhàng"
+          ],
+          "nextTurnId": "t2_dir_general"
+        },
+        {
+          "keywords": [
+            "mua",
+            "tìm"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào — Hello! Bạn cần gì? — What do you need?"
+    },
+    "t2_dir_general": {
+      "id": "t2_dir_general",
+      "prompt": "À, bạn tìm nhà hàng à? Nhà hàng ở đây. Bạn đi thẳng, sau đó rẽ trái.",
+      "branches": [
+        {
+          "keywords": [
+            "xa",
+            "baoxa"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "rẽphải",
+            "thẳng",
+            "rẽ"
+          ],
+          "nextTurnId": "t4_clarify_turn"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À — Oh, bạn tìm nhà hàng à? — Are you looking for a restaurant? Nhà hàng ở đây — The restaurant is here. Bạn đi thẳng — You go straight, sau đó — then rẽ trái — turn left."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "Không xa lắm. Khoảng hai trăm mét.",
+      "branches": [
+        {
+          "keywords": [
+            "đi",
+            "điều"
+          ],
+          "nextTurnId": "t5_transport"
+        },
+        {
+          "keywords": [
+            "gần",
+            "ởđâu"
+          ],
+          "nextTurnId": "t6_landmark"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn",
+            "nhanh"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Không xa lắm — Not too far. Khoảng — About hai trăm mét — two hundred meters."
+    },
+    "t4_clarify_turn": {
+      "id": "t4_clarify_turn",
+      "prompt": "Không, rẽ trái. Không phải rẽ phải.",
+      "branches": [
+        {
+          "keywords": [
+            "xa",
+            "baoxa"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ok",
+            "được",
+            "rõ"
+          ],
+          "nextTurnId": "t2_dir_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Không — No, rẽ trái — turn left. Không phải — Not rẽ phải — turn right."
+    },
+    "t5_transport": {
+      "id": "t5_transport",
+      "prompt": "Bạn có thể đi bộ. Rất gần.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn có thể — You can đi bộ — walk. Rất gần — Very close."
+    },
+    "t6_landmark": {
+      "id": "t6_landmark",
+      "prompt": "Nhà hàng đó gần công viên.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nhà hàng đó — That restaurant gần — is near công viên — the park."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            "nhàhàng",
+            "bưuđiện",
+            "ngânhàng",
+            "kháchsạn",
+            "chợ",
+            "tìm",
+            "hỏi"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "xa",
+            "baoxa",
+            "đi",
+            "gần",
+            "ởđâu",
+            "rẽ",
+            "phải",
+            "trái",
+            "thẳng"
+          ],
+          "nextTurnId": "t2_dir_general"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi — Sorry, bạn nói lại được không? — could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Không có gì. Chúc bạn một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Không có gì — You're welcome. Chúc bạn một ngày tốt lành! — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

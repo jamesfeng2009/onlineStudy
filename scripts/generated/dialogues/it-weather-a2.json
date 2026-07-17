@@ -1,0 +1,120 @@
+{
+  "id": "dlg-it-weather-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Chiacchierata sul tempo",
+  "opening": "Ciao! Come sta oggi il tempo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Come sta oggi il tempo? Che tempo fa?",
+      "branches": [
+        {
+          "keywords": [
+            "sole",
+            "bello",
+            "sereno"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! (Chow!) How is the weather today? What's the weather like?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Capisco. E che temperatura c'è? Fa caldo, fa freddo, o è mite?",
+      "branches": [
+        {
+          "keywords": [
+            "caldo",
+            "calda",
+            "fa caldo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. (Kah-PEES-koh) I understand. And what's the temperature? Is it hot, cold, or mild?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, d'accordo. E hai dei piani per oggi, con questo tempo?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ho piani",
+            "esco",
+            "vado fuori"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, d'accordo. (Ah, dah-KOR-doh) Okay. And do you have plans for today, with this weather?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Capisco. Spero che il tempo sia adatto per quello che devi fare. È sempre bello chiacchierare del tempo!",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ok",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "I understand. I hope the weather is suitable for what you need to do. It's always nice to chat about the weather!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, non ho capito. Potresti ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Could you repeat please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Bene! Grazie per la chiacchierata sul tempo. Ciao e a presto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Good! Thanks for the chat about the weather. Bye and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

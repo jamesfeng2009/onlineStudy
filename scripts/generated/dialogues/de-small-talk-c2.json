@@ -1,0 +1,138 @@
+{
+  "id": "dlg-de-small-talk-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Plauderei auf der Party",
+  "opening": "Na, wie läuft's? Hast du ein schönes Wochenende gehabt oder steht noch etwas Spannendes an?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Na, wie läuft's? Hast du ein schönes Wochenende gehabt oder steht noch etwas Spannendes an?",
+      "branches": [
+        {
+          "keywords": [
+            "wochenende",
+            "erholung",
+            "entspannt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "arbeit",
+            "stress",
+            "nichts"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na, wie läuft's? [nah vee LOYFT es] Hast du ein schönes Wochenende gehabt oder steht noch etwas Spannendes an? [HAST doo ayn SHUH-nes WOH-chen-en-de ge-HAHT O-der SHTAYT nok ET-vas SHPAN-en-des an] — Hey, how's it going? Did you have a nice weekend or is there something exciting still coming up?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ach, das klingt doch herrlich! Gab es denn ein besonderes Highlight, das du erleben durftest, oder war es eher die Kunst, einfach mal die Seele baumeln zu lassen?",
+      "branches": [
+        {
+          "keywords": [
+            "highlight",
+            "besonderes",
+            "erlebnis"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "entspannung",
+            "ruhe",
+            "seele"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, das klingt doch herrlich! [akh das KLINGT dok HER-likh] Gab es denn ein besonderes Highlight, das du erleben durftest, [GAHP es den ayn be-SON-der-es HY-lyt, das doo er-LAY-ben DURF-test] oder war es eher die Kunst, einfach mal die Seele baumeln zu lassen? [O-der VAHR es AY-er dee KUNST, AYN-fach mahl dee ZAY-le BAU-meln tsoo LAH-sen] — Oh, that sounds wonderful! Was there a particular highlight you experienced, or was it more about the art of simply relaxing and letting your hair down?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Das kenne ich nur zu gut! Manchmal wünschte ich, die Woche hätte ein paar Stunden mehr, um den Kopf so richtig freizubekommen. Gibt's denn wenigstens etwas, worauf du dich in den nächsten Tagen freuen kannst, vielleicht ein gutes Buch oder ein Kinobesuch?",
+      "branches": [
+        {
+          "keywords": [
+            "buch",
+            "lesen",
+            "literatur"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nichts",
+            "keine"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das kenne ich nur zu gut! Manchmal wünschte ich, die Woche hätte ein paar Stunden mehr, um den Kopf so richtig freizubekommen. Gibt's denn wenigstens etwas, worauf du dich in den nächsten Tagen freuen kannst, vielleicht ein gutes Buch oder ein Kinobesuch? — I know that all too well! Sometimes I wish the week had a few more hours to really clear my head. Is there at least something you can look forward to in the next few days, perhaps a good book or a trip to the cinema?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Reisen ist immer eine Bereicherung! Wo hat es dich denn diesmal hinverschlagen? Oder wenn es ein anderes Highlight war – erzähl mal, was hat dich so begeistert?",
+      "branches": [
+        {
+          "keywords": [
+            "europa",
+            "städtetrip",
+            "eu"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Reisen ist immer eine Bereicherung! Wo hat es dich denn diesmal hinverschlagen? Oder wenn es ein anderes Highlight war – erzähl mal, was hat dich so begeistert? — Traveling is always enriching! Where did it take you this time? Or if it was another highlight - tell me, what excited you so much?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das klingt nach einer wohlverdienten Auszeit! Manchmal sind es ja gerade die ruhigen Momente, die am nachhaltigsten wirken. Hast du denn bei der Gelegenheit vielleicht auch etwas Neues entdeckt – einen Film, ein Buch, oder ein kleines Café, das du empfehlen könntest?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "serie",
+            "kino"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt nach einer wohlverdienten Auszeit! [das KLINGT nakh AY-ner vohl-ver-DEEN-ten AUS-tsayt] Manchmal sind es ja gerade die ruhigen Momente, die am nachhaltigsten wirken. [MANKH-mahl ZINT es yah ge-RAH-de dee ROO-i-gen mo-MEN-te, dee am NAHK-halt-ig-sten VIR-ken] Hast du denn bei der Gelegenheit vielleicht auch etwas Neues entdeckt – einen Film, ein Buch, oder ein kleines Café, das du empfehlen könntest? [HAST doo den by der ge-LAY-gen-hayt fee-LYCHT okh ET-vas NOY-es ent-DECKT – AY-nen FILM, ayn BOOKH, O-der ayn KLY-nes ka-FAY, das doo emp-FEE-len KUN-test] — That sounds like a well-deserved break! Sometimes it's precisely the quiet moments that have the most lasting effect. Did you perhaps discover something new on that occasion – a film, a book, or a small café you could recommend?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldige, das habe ich akustisch nicht ganz verstanden. Könntest du das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "bitte",
+            "wiederholen"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldige, das habe ich akustisch nicht ganz verstanden. Könntest du das bitte noch einmal wiederholen? — Sorry, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ach, interessant! Da hast du ja einiges erlebt/vor. Schön, dass wir uns darüber austauschen konnten. Ich muss mich jetzt leider verabschieden, aber vielleicht sehen wir uns ja bald wieder! Mach's gut!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ach, interessant! Da hast du ja einiges erlebt/vor. Schön, dass wir uns darüber austauschen konnten. Ich muss mich jetzt leider verabschieden, aber vielleicht sehen wir uns ja bald wieder! Mach's gut! — Oh, interesting! You've experienced/have a lot planned. It was nice that we could chat about it. I unfortunately have to say goodbye now, but maybe we'll see each other again soon! Take care!",
+      "isTerminal": true
+    }
+  }
+}

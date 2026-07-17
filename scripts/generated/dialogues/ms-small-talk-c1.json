@@ -1,0 +1,192 @@
+{
+  "id": "dlg-ms-small-talk-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Perbualan Santai: Hujung Minggu",
+  "opening": "Hai! Apa khabar? Saya tak sangka kita akan bersua di sini. Macam mana hujung minggu awak?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai! Apa khabar? Saya tak sangka kita akan bersua di sini. Macam mana hujung minggu awak?",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "rumah",
+            "santai"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "aktiviti",
+            "luar",
+            "sukan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "sibuk",
+            "urusan"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai! Apa khabar? (Ah-pah kah-bar) — Hi! How are you? I didn't expect us to meet here. How was your weekend?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh awak ulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (mah-af) — Sorry, could you please repeat that? I didn't quite catch it."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, begitu ya? Kadang-kadang, berehat di rumah itu nikmatnya lain macam. Ada buat apa-apa yang menarik tak, atau sekadar membiarkan masa berlalu begitu saja?",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "buku",
+            "filem",
+            "tonton"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "masak",
+            "makan",
+            "cuba"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "santai",
+            "rehat"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, (oh) — Oh, is that so? Sometimes, relaxing at home is a different kind of pleasure. Did you do anything interesting, or just let time pass by?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Menarik sekali! Saya memang kagum dengan orang yang aktif macam awak. Awak terlibat dalam aktiviti apa? Mendaki, berbasikal, atau ada sukan lain yang jadi kegemaran?",
+      "branches": [
+        {
+          "keywords": [
+            "mendaki",
+            "gunung",
+            "alam"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali! (Meh-na-rik seh-ka-li) — How interesting! I'm really impressed with active people like you. What activities are you involved in? Hiking, cycling, or is there another sport you're passionate about?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Fahamlah, kadang-kadang hujung minggu pun terasa singkat bila ada urusan. Harap awak dapat sedikit ruang untuk diri sendiri. Tapi, jangan risau, ada masanya kita perlu 'charge' semula, kan?",
+      "branches": [
+        {
+          "keywords": [
+            "betul",
+            "perlu",
+            "recharge"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand, sometimes weekends feel short when there are errands. I hope you got some space for yourself. But don't worry, there are times we need to 'recharge', right?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, senario yang ideal! Ada apa-apa buku atau filem yang baru awak tonton dan ingin dicadangkan? Saya selalu mencari sesuatu yang boleh 'mencabar minda' atau sekadar hiburan ringan.",
+      "branches": [
+        {
+          "keywords": [
+            "cadang",
+            "baca",
+            "tonton"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, an ideal scenario! Are there any books or movies you've recently watched and would recommend? I'm always looking for something that can 'challenge the mind' or just light entertainment."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, saya memang penggemar makanan! Ada resipi baru yang awak cuba, atau awak cuma menikmati hidangan istimewa di luar? Saya selalu ingin tahu tempat makan 'hidden gem'.",
+      "branches": [
+        {
+          "keywords": [
+            "resipi",
+            "masak",
+            "cuba"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, I'm a big food lover! Did you try a new recipe, or did you just enjoy a special meal out? I'm always curious about 'hidden gem' eateries."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Bagusnya! Memang satu kepuasan bila dapat 'melepaskan lelah' dengan aktiviti fizikal. Pernah terfikir untuk menyertai mana-mana komuniti atau acara berkaitan hobi awak tu?",
+      "branches": [
+        {
+          "keywords": [
+            "sertai",
+            "komuniti",
+            "rancang"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's great! It's truly satisfying to 'release fatigue' with physical activity. Have you ever thought about joining any community or events related to your hobby?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Nampaknya kita ada banyak persamaan, atau sekurang-kurangnya, topik menarik untuk dibincangkan! Saya rasa masa pun dah semakin suntuk. Seronok bersembang dengan awak.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It seems we have a lot in common, or at least, interesting topics to discuss! I think time is running short. It was nice chatting with you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya kena bergerak dulu. Harap kita dapat berbual lagi lain kali. Selamat malam!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I have to go now. I hope we can chat again sometime. Good night!",
+      "isTerminal": true
+    }
+  }
+}

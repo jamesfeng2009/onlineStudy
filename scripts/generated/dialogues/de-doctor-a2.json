@@ -1,0 +1,166 @@
+{
+  "id": "dlg-de-doctor-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Arztbesuch",
+  "opening": "Guten Tag. Was führt Sie zu mir?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Was führt Sie zu mir?",
+      "branches": [
+        {
+          "keywords": [
+            "kopfschmerzen",
+            "kopfweh",
+            "schmerzen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "husten",
+            "erkältung",
+            "schnupfen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bauchschmerzen",
+            "übelkeit",
+            "schlechtfühlen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag. Vas fyrt Zee tsoo meer? — Good day. What brings you to me?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstehe. Wo genau tut es weh und seit wann haben Sie die Schmerzen?",
+      "branches": [
+        {
+          "keywords": [
+            "kopf",
+            "stirn",
+            "schläfe",
+            "seitgestern"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair-shtay-eh. Voh geh-now toot ess veh oont zyt vahn hah-ben Zee dee Shmerz-en? — I understand. Where exactly does it hurt and since when have you had the pain?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Haben Sie Fieber oder tut Ihnen der Hals weh?",
+      "branches": [
+        {
+          "keywords": [
+            "fieber",
+            "halsweh",
+            "schlucken"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hah-ben Zee Fee-ber oh-der toot Een-en der Hahls veh? — Do you have a fever or does your throat hurt?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sind die Schmerzen stark? Haben Sie auch Übelkeit oder Durchfall?",
+      "branches": [
+        {
+          "keywords": [
+            "stark",
+            "übelkeit",
+            "durchfall",
+            "erbrechen"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zint dee Shmerz-en shtark? Hah-ben Zee owkh Ybel-kigh-t oh-der Doorch-fahl? — Is the pain strong? Do you also have nausea or diarrhea?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Okay, ich verstehe. Nehmen Sie schon Medikamente dagegen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "tabletten",
+            "schmerzmittel"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-kay, ikh fair-shtay-eh. Neh-men Zee shohn Meh-dee-kah-men-tuh dah-ge-gen? — Okay, I understand. Are you already taking medication for it?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Wie lange haben Sie schon diese Symptome? Haben Sie Allergien?",
+      "branches": [
+        {
+          "keywords": [
+            "zweitage",
+            "drei",
+            "eine",
+            "letzte"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vee lahng-eh hah-ben Zee shohn dee-zuh Zym-toh-muh? Hah-ben Zee Ahl-ler-gee-en? — How long have you had these symptoms? Do you have allergies?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Gut. Ich werde Ihnen ein Rezept ausstellen. Bitte ruhen Sie sich aus und trinken Sie viel Tee.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "rezept",
+            "fragen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot. Ikh ver-duh Een-en ayn Reh-zept ows-shtel-len. Bit-tuh roo-en Zee zikh ows oont tring-ken Zee feel Teh. — Good. I will issue you a prescription. Please rest and drink a lot of tea."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Könnten Sie das wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Vee bit-tuh? Kern-ten Zee das vee-der-hoh-len? — How please? Could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gute Besserung und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goo-tuh Bess-eh-rung oont owf Vee-der-zeh-en! — Get well soon and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

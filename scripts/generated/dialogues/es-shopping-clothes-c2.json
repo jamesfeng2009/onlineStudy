@@ -1,0 +1,251 @@
+{
+  "id": "dlg-es-shopping-clothes-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Compras de Ropa: Asesoramiento de Estilo",
+  "opening": "¡Buenas tardes! ¿En qué puedo ayudarle? ¿Busca algo en particular o está echando un vistazo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas tardes! ¿En qué puedo ayudarle? ¿Busca algo en particular o está echando un vistazo?",
+      "branches": [
+        {
+          "keywords": [
+            "busco",
+            "necesito",
+            "quiero",
+            "asesoramiento",
+            "ayuda",
+            "sí"
+          ],
+          "nextTurnId": "t2_specific_item"
+        },
+        {
+          "keywords": [
+            "solo miro",
+            "echando un vistazo",
+            "nada",
+            "gracias"
+          ],
+          "nextTurnId": "t3_browsing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good afternoon! How can I help you? Are you looking for something specific or just browsing?"
+    },
+    "t2_specific_item": {
+      "id": "t2_specific_item",
+      "prompt": "Perfecto. Dígame, ¿qué tipo de prenda tiene en mente? ¿O quizás busca algo para una ocasión específica, como un evento formal, o para el día a día?",
+      "branches": [
+        {
+          "keywords": [
+            "camisa",
+            "pantalones",
+            "vestido",
+            "falda",
+            "americana",
+            "jersey",
+            "blusa",
+            "abrigo"
+          ],
+          "nextTurnId": "t4_offer_item_specific"
+        },
+        {
+          "keywords": [
+            "otro",
+            "diferente",
+            "no estoy seguro",
+            ""
+          ],
+          "nextTurnId": "t2_specific_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Tell me, what type of garment do you have in mind? Or perhaps you're looking for something for a specific occasion, like a formal event, or for everyday wear?"
+    },
+    "t3_browsing": {
+      "id": "t3_browsing",
+      "prompt": "Entendido. No hay prisa. Si surge alguna pregunta o encuentra algo que le interese, estaré por aquí. Las últimas colecciones están al fondo y las rebajas, a la entrada.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "vale",
+            "bien",
+            "miraré",
+            "adiós"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "novedades",
+            "colecciones",
+            "últimas"
+          ],
+          "nextTurnId": "t4_offer_item_general"
+        },
+        {
+          "keywords": [
+            "ayuda",
+            "preguntar",
+            "sí",
+            "necesito"
+          ],
+          "nextTurnId": "t2_specific_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. No rush. If any questions arise or you find something that interests you, I'll be around. Our latest collections are at the back, and the sales are right at the entrance."
+    },
+    "t4_offer_item_specific": {
+      "id": "t4_offer_item_specific",
+      "prompt": "Basándome en lo que me comenta, creo que esta camisa de algodón orgánico le podría interesar. Tiene un corte contemporáneo y está disponible en varios tonos neutros. ¿Le gustaría verla de cerca o quizás probársela?",
+      "branches": [
+        {
+          "keywords": [
+            "probar",
+            "sí",
+            "me la pruebo",
+            "apetece"
+          ],
+          "nextTurnId": "t5_fitting"
+        },
+        {
+          "keywords": [
+            "otro",
+            "diferente",
+            "no",
+            "no me convence",
+            "buscar"
+          ],
+          "nextTurnId": "t2_specific_item"
+        },
+        {
+          "keywords": [
+            "qué colores",
+            "otras tallas",
+            "material",
+            "precio"
+          ],
+          "nextTurnId": "t4_offer_item_specific"
+        },
+        {
+          "keywords": [
+            "gracias",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Based on what you're telling me, I think this organic cotton shirt might interest you. It has a contemporary cut and is available in several neutral shades. Would you like to see it up close or perhaps try it on?"
+    },
+    "t4_offer_item_general": {
+      "id": "t4_offer_item_general",
+      "prompt": "Claro. Por ejemplo, de las nuevas colecciones, nos acaba de llegar este blazer de lino que está siendo un éxito. ¿Le gustaría verlo de cerca o quizás probarse algo similar?",
+      "branches": [
+        {
+          "keywords": [
+            "ver",
+            "sí",
+            "probar",
+            "me lo pruebo"
+          ],
+          "nextTurnId": "t5_fitting"
+        },
+        {
+          "keywords": [
+            "no",
+            "otro",
+            "no me convence",
+            "buscar"
+          ],
+          "nextTurnId": "t2_specific_item"
+        },
+        {
+          "keywords": [
+            "gracias",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. For example, from the new collections, we've just received this linen blazer which is proving to be a success. Would you like to see it up close or perhaps try on something similar?"
+    },
+    "t5_fitting": {
+      "id": "t5_fitting",
+      "prompt": "Qué tal, ¿le ha convencido? ¿Le sienta bien o buscamos otra cosa? Si se la lleva, le informo que ahora mismo tenemos una promoción de un 10% de descuento en la segunda prenda.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "me la llevo",
+            "comprar"
+          ],
+          "nextTurnId": "t6_buy"
+        },
+        {
+          "keywords": [
+            "no",
+            "no me convence",
+            "buscar",
+            "queda mal"
+          ],
+          "nextTurnId": "t2_specific_item"
+        },
+        {
+          "keywords": [
+            "otra prenda",
+            "oferta",
+            "descuento"
+          ],
+          "nextTurnId": "t4_offer_item_specific"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How was it, did it convince you? Does it fit well or should we look for something else? If you take it, I inform you that right now we have a 10% discount promotion on the second garment."
+    },
+    "t6_buy": {
+      "id": "t6_buy",
+      "prompt": "¡Excelente elección! La caja está al fondo a la derecha. Le preparo la prenda. ¿Desea pagar en efectivo o con tarjeta? Y, por si acaso, nuestra política de devoluciones permite cambios o reembolsos durante 30 días con el tique de compra.",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "efectivo",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice! The checkout is at the back on the right. I'll prepare the garment for you. Do you wish to pay in cash or by card? And, just in case, our return policy allows exchanges or refunds for 30 days with the receipt."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir lo que ha dicho? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat what you said? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ha sido un placer atenderle. ¡Que tenga un buen día y esperamos verle de nuevo!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure to assist you. Have a good day and we hope to see you again!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "id": "dlg-it-shopping-clothes-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Acquisti di Moda: L'Atelier Esclusivo",
+  "opening": "Buongiorno! Benvenuto/a nel nostro atelier. Cerchi qualcosa di specifico o ti stai solo dando un'occhiata in giro?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Benvenuto/a nel nostro atelier. Cerchi qualcosa di specifico o ti stai solo dando un'occhiata in giro?",
+      "branches": [
+        {
+          "keywords": [
+            "cercare",
+            "specifico",
+            "giacca",
+            "vestito",
+            "pantaloni",
+            "camicia",
+            "gonna"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "solo",
+            "guardare",
+            "occhiata",
+            "sfogliare"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! (Bwon-JUR-noh) Benvenuto/a (Ben-veh-NOO-toh/tah) nel nostro atelier (ah-teh-LYAY). Cerchi qualcosa di specifico (speh-CHEE-fee-koh) o ti stai solo dando un'occhiata (ok-KYAH-tah) in giro? — Good morning! Welcome to our boutique. Are you looking for something specific, or just browsing around?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, un'ottima scelta! Abbiamo appena ricevuto una collezione strepitosa. Per caso, avevi in mente un taglio, un colore o un tessuto particolare? E, già che ci siamo, quale taglia indossi di solito?",
+      "branches": [
+        {
+          "keywords": [
+            "taglia",
+            "misura",
+            "colore",
+            "blu",
+            "nero",
+            "rosso",
+            "verde",
+            "cotone",
+            "seta",
+            "lana",
+            "provare"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "non",
+            "ancora",
+            "indeciso",
+            "vedere",
+            "consiglio",
+            "suggerimento"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, un'ottima scelta (OT-tee-mah SHKEL-tah)! Abbiamo appena ricevuto una collezione strepitosa (streh-pee-TOH-zah). Per caso, avevi in mente un taglio (TAH-lyoh), un colore o un tessuto (tes-SOO-toh) particolare? E, già che ci siamo, quale taglia (TAH-lyah) indossi di solito? — Ah, an excellent choice! We've just received a dazzling collection. By any chance, did you have a particular cut, color, or fabric in mind? And, while we're at it, what size do you usually wear?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto! Credo di avere giusto quello che fa per te. C'è un modello che è un vero gioiellino, in quel blu notte che tanto va di moda quest'anno. Se mi segui, ti accompagno ai camerini, sono proprio in fondo a destra. Ti porto la taglia che mi hai detto.",
+      "branches": [
+        {
+          "keywords": [
+            "provare",
+            "camerino",
+            "grazie",
+            "sì"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiare",
+            "altro",
+            "idea",
+            "ripensarci"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto! (Per-FET-toh) Credo di avere giusto quello che fa per te (keh FAH per TEH). C'è un modello che è un vero gioiellino (joy-el-LEE-noh), in quel blu notte che tanto va di moda (VAH dee MOH-dah) quest'anno. Se mi segui, ti accompagno (ak-kom-PAH-nyoh) ai camerini (kah-meh-REE-nee), sono proprio in fondo a destra. Ti porto la taglia che mi hai detto. — Perfect! I think I have just the thing for you. There's a particular style that's a real gem, in that midnight blue that's so fashionable this year. If you follow me, I'll take you to the fitting rooms, they're right at the back on the right. I'll bring you the size you mentioned."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Allora, come procede? Se hai bisogno di un'altra taglia, un colore diverso, o magari vuoi dare un'occhiata a qualcos'altro, non esitare a chiedere. Siamo qui per aiutarti a trovare il capo perfetto.",
+      "branches": [
+        {
+          "keywords": [
+            "prendere",
+            "comprare",
+            "questo",
+            "mi piace",
+            "sì",
+            "acquisto"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "altro",
+            "vedere",
+            "pensarci",
+            "non"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, how's it going? If you need another size, a different color, or perhaps want to take a look at something else, don't hesitate to ask. We're here to help you find the perfect item."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottima scelta! Sarà un acquisto azzeccatissimo, ne sono certa. Vienimi pure alla cassa, facciamo subito. Accettiamo tutte le principali carte, oppure contanti, come preferisci.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sì",
+            "cassa",
+            "carta",
+            "contanti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent choice! It will be a perfect purchase, I'm sure. Come to the cash register, we'll do it right away. We accept all major cards, or cash, whichever you prefer."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ti ho capito bene. Oppure, dimmi cosa stai cercando.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sì",
+            "ripetere"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch that. Or tell me what you're looking for."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie mille per averci scelto e a presto! Spero ti sia trovato/a bene.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for choosing us and see you soon! I hope you had a good experience.",
+      "isTerminal": true
+    }
+  }
+}

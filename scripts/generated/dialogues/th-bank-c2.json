@@ -1,0 +1,245 @@
+{
+  "id": "dlg-th-bank-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "บริการธนาคาร",
+  "opening": "สวัสดีค่ะ/ครับ ยินดีให้บริการค่ะ/ครับ มีอะไรให้ดิฉัน/ผมช่วยดูแลในวันนี้คะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ยินดีให้บริการค่ะ/ครับ มีอะไรให้ดิฉัน/ผมช่วยดูแลในวันนี้คะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตู้เอทีเอ็ม",
+            "บัตร",
+            "โอนเงิน",
+            "โอน"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "เปิดบัญชี",
+            "บัญชีใหม่"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "รหัส",
+            "พิน"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "แลกเงิน",
+            "เงินตราต่างประเทศ"
+          ],
+          "nextTurnId": "t2d"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee ka/krub, yindee hai borikarn ka/krub. Mee arai hai dichan/pom chuay doolae nai wan nee ka/krub? — Hello, welcome. How may I assist you today?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "อ๋อ...เรื่องตู้เอทีเอ็มหรือการโอนเงินนี่เองค่ะ/ครับ พอจะเล่ารายละเอียดเพิ่มได้ไหมคะ/ครับว่าติดขัดตรงไหน หรือเกิดเหตุการณ์ลักษณะใดคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "เงินไม่ออก",
+            "เครื่องยึดบัตร",
+            "บัตรค้าง",
+            "ระบบล่ม"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "โอนไม่สำเร็จ",
+            "โอนผิด",
+            "เงินไม่เข้า"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh... ruang too ATM rue gaan ohn ngoen nee aeng ka/krub. Paw ja lao raai-la-iad perm dai mai ka/krub wa tid-khat trong nai rue koed het-gaan laksana dai ka/krub? — Oh, it's about an ATM or money transfer then. Could you elaborate a bit more on what the problem is, or what kind of incident occurred?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "สำหรับการเปิดบัญชีใหม่ ดิฉัน/ผมรบกวนคุณลูกค้าเตรียมเอกสารประกอบการเปิดบัญชีให้พร้อมนะคะ/ครับ แล้วเรียนเชิญที่เคาน์เตอร์บริการลูกค้าใหม่ได้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เอกสารพร้อม"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sam-rap gaan perd ban-chee mai, dichan/pom rob-kuan khun look-kaa triam ek-ga-sarn pra-kob gaan perd ban-chee hai prom na ka/krub. Laew rian-chern tee kown-ter bor-ri-gaan look-kaa mai dai loey ka/krub. — For opening a new account, I kindly request you prepare the necessary documents. Then, please proceed to the new customer service counter."
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "หากต้องการเปลี่ยนหรือตั้งรหัส PIN ใหม่ ดิฉัน/ผมต้องรบกวนคุณลูกค้าแสดงบัตรประชาชนและบัตรเดบิต/เครดิตที่เคาน์เตอร์นะคะ/ครับ เพื่อยืนยันตัวตนและดำเนินการตามขั้นตอนค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "บัตรประชาชน",
+            "ไปเคาน์เตอร์"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Haak tong-gaan plian rue tang ra-hat PIN mai, dichan/pom tong rob-kuan khun look-kaa sa-daeng bat pra-cha-chon lae bat debit/kred-dit tee kown-ter na ka/krub. Pue yuen-yan tua-ton lae dam-nern gaan taam khan-ton ka/krub. — If you wish to change or set a new PIN, I must ask you to present your ID card and debit/credit card at the counter for identity verification and to proceed with the steps."
+    },
+    "t2d": {
+      "id": "t2d",
+      "prompt": "สำหรับการแลกเปลี่ยนเงินตราต่างประเทศ ดิฉัน/ผมขอแจ้งว่าอัตราแลกเปลี่ยนอาจมีการเปลี่ยนแปลงตลอดเวลานะคะ/ครับ รบกวนคุณลูกค้าแจ้งสกุลเงินและจำนวนที่ต้องการได้เลยค่ะ/ครับ หรือเรียนเชิญที่เคาน์เตอร์แลกเปลี่ยนเงินโดยตรงได้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "แลก",
+            "สกุลเงิน",
+            "จำนวน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sam-rap gaan laek-plian ngoen-traa taang-pra-tet, dichan/pom khor jaeng wa at-traa laek-plian aat mee gaan plian-plaeng ta-lod we-laa na ka/krub. Rob-kuan khun look-kaa jaeng sa-kun ngoen lae jam-nuan tee tong-gaan dai loey ka/krub rue rian-chern tee kown-ter laek-plian ngoen doy-trong dai loey ka/krub. — For foreign currency exchange, I would like to inform you that exchange rates may change constantly. Please tell me the currency and amount you require, or you may proceed directly to the currency exchange counter."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "เข้าใจเลยค่ะ/ครับ สถานการณ์แบบนี้ใคร ๆ ก็กังวลทั้งนั้นนะคะ/ครับ ไม่ต้องห่วงค่ะ/ครับ ทางเราจะช่วยดำเนินการตรวจสอบให้โดยเร็วที่สุด รบกวนขอทราบสาขาที่เกิดเหตุการณ์ และช่วงเวลาคร่าว ๆ ที่ทำรายการได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "สาขา",
+            "แจ้งเวลา",
+            "บอกเวลา",
+            "ประมาณ"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kao jai loey ka/krub. Sa-taa-na-gaan baeb nee krai krai gor gang-won tung nan na ka/krub. Mai tong huang ka/krub, taang rao ja chuay dam-nern gaan troj-sop hai doy reo tee soot. Rob-kuan kor saap sa-kaa tee koed het-gaan lae chuang welah krao krao tee tam ra-gaan dai mai ka/krub? — I understand perfectly. Anyone would be concerned in such a situation. Don't worry, we'll expedite the investigation for you. Could you please tell me which branch the incident occurred at, and roughly what time the transaction took place?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "เรื่องการโอนเงินที่ติดขัดนี่เองค่ะ/ครับ ไม่เป็นไรนะคะ/ครับ ดิฉัน/ผมจะช่วยประสานงานตรวจสอบให้ ขอทราบรายละเอียดรายการโอนเงิน เช่น วันที่ จำนวนเงิน และบัญชีปลายทางพอสังเขปได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "วันที่",
+            "จำนวน",
+            "บัญชีปลายทาง",
+            "รายละเอียด"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ruang gaan ohn ngoen tee tid-khat nee aeng ka/krub. Mai bpen rai na ka/krub. Dichan/pom ja chuay pra-saan-ngaan troj-sop hai. Khor saap raai-la-iad raai-gaan ohn ngoen chen wan tee, jam-nuan ngoen, lae ban-chee plaai-taang paw sang-khep dai mai ka/krub? — Oh, it's about a transfer issue. No problem. I will help coordinate the investigation. Could I briefly get details of the transfer, such as the date, amount, and destination account?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "ขอบคุณสำหรับข้อมูลค่ะ/ครับ เพื่อให้กระบวนการตรวจสอบและแก้ไขปัญหาเป็นไปอย่างคล่องตัวและรวดเร็วที่สุด ดิฉัน/ผมรบกวนคุณลูกค้าเรียนเชิญที่เคาน์เตอร์บริการพิเศษนะคะ/ครับ ทางเจ้าหน้าที่ผู้เชี่ยวชาญจะช่วยดูแลและให้คำแนะนำเพิ่มเติมค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ตกลง",
+            "ไปค่ะ",
+            "ไปครับ",
+            "ค่ะ",
+            "ครับ",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun sam-rap kho-moon ka/krub. Pue hai gra-buan gaan troj-sop lae kae-kai bpan-haa bpen pai yang khlaung-tua lae ruat-reo tee soot, dichan/pom rob-kuan khun look-kaa rian chern tee kown-ter bor-ri-kaan pi-set na ka/krub. Taang jao-na-tee phoo chieo-chaan ja chuay doo-lae lae hai kam-naa-nam perm-term ka/krub. — Thank you for the information. To ensure the investigation and problem-solving process is as smooth and swift as possible, I kindly request you proceed to the special service counter. Our specialist staff will assist you further and provide additional advice."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ดิฉัน/ผมฟังไม่ค่อยถนัด รบกวนคุณลูกค้าพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor apai ka/krub. Dichan/pom fang mai khoi ta-nat. Rob-kuan khun look-kaa phuut eek krung dai mai ka/krub? — I apologize, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีให้บริการค่ะ/ครับ หากมีข้อสงสัยหรือต้องการความช่วยเหลือเพิ่มเติม สามารถสอบถามได้เลยนะคะ/ครับ ขอบคุณที่ใช้บริการธนาคารของเราค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yindee hai borikarn ka/krub. Haak mee khor-song-sai rue tong-gaan kwaam chuay-leua perm-term, saa-maart sawb-taam dai loey na ka/krub. Khop khun tee chai borikarn ta-na-kaan khong rao ka/krub. — Happy to be of service. If you have any further questions or need additional assistance, please feel free to ask. Thank you for using our bank's services.",
+      "isTerminal": true
+    }
+  }
+}

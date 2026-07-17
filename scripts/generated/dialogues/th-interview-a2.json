@@ -1,0 +1,124 @@
+{
+  "id": "dlg-th-interview-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "สัมภาษณ์งานเบื้องต้น",
+  "opening": "สวัสดีครับ/ค่ะ แนะนำตัวหน่อยครับ/ค่ะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ แนะนำตัวหน่อยครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "ฉัน",
+            "ผม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii kráp/kâ, nae-nam dtua nòi kráp/kâ? — Hello, please introduce yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "คุณเคยทำงานอะไรมาบ้างครับ/คะ หรือมีความสามารถอะไรบ้าง?",
+      "branches": [
+        {
+          "keywords": [
+            "ทำงาน",
+            "เคยทำ",
+            "ประสบการณ์"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun koey tam ngaan a-rai maa bâang kráp/ká? Reu mee kwaam saa-mâat a-rai bâang? — What kind of work have you done, or what skills do you have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "จุดแข็งของคุณคืออะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ขยัน",
+            "ตั้งใจ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jùt kǎeng kǒng khun keu a-rai kráp/ká? — What are your strengths?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "มีอะไรอยากถามไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "งาน",
+            "ทำอะไร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "คำถาม"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee a-rai yàak tǎam mái kráp/ká? — Do you have any questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจค่ะ พูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "พูดใหม่"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khǎw-tôht kráp/ká, mâi kâo-jai kâ. Pôot ìik kráng dâi mái ká? — Excuse me, I don't understand. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ เราจะติดต่อกลับไปนะครับ/คะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khòp khun mâak kráp/ká. Rao jà dtìt-dtòr glàp bpai ná kráp/ká. Sawatdii kráp/ká. — Thank you very much. We will contact you back. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

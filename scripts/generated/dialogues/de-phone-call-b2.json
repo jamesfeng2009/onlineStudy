@@ -1,0 +1,247 @@
+{
+  "id": "dlg-de-phone-call-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Telefonat: Eine Nachricht hinterlassen",
+  "opening": "Meier, guten Tag.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Meier, guten Tag.",
+      "branches": [
+        {
+          "keywords": [
+            "herr",
+            "frau",
+            "schmidt",
+            "müller",
+            "sprechen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "meinnameist",
+            "hierist",
+            "hallo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mai-er, goo-ten tahg — Meier, good day."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wen möchten Sie denn sprechen?",
+      "branches": [
+        {
+          "keywords": [
+            "herr schmidt",
+            "frau müller",
+            "lehmann",
+            "direktor"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "esgehtum",
+            "projekt",
+            "frage"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ven mörkh-ten zee den shprekh-en? — Whom would you like to speak to?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, [Name]! Womit kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "termin",
+            "projekt",
+            "frage",
+            "anliegen"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "herr schmidt",
+            "frau müller",
+            "lehmann",
+            "sprechen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, [Nah-meh]! Voh-mit kan eekh ee-nen beh-hilf-likh zyn? — Ah, [Name]! How can I help you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Herr/Frau [Nachname der angefragten Person] ist leider gerade nicht erreichbar. Möchten Sie ihm/ihr eine Nachricht hinterlassen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "nachricht",
+            "bitte"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nein",
+            "später",
+            "rückruf",
+            "ich rufe nochmal an"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Herr/Frahv [Nahkh-nah-meh der an-ge-frahg-ten Per-zohn] ist ly-der ge-rah-de nikht er-rykh-bar. Mörkh-ten zee eem/eer y-ne Nahkh-rikht hin-ter-lahs-en? — Mr./Ms. [Last name of person asked for] is unfortunately not available right now. Would you like to leave him/her a message?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Ich verstehe. Herr/Frau Meier ist derzeit in einer Besprechung. Soll ich ihm/ihr ausrichten, dass Sie angerufen haben und worum es geht?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "nachricht",
+            "bitte"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nein",
+            "später",
+            "rückruf",
+            "ich rufe nochmal an"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ikh fer-shte-e. Herr/Frahv My-er ist der-tsyt in y-ner Beh-shprekh-ung. Zol ikh eem/eer ows-rikh-ten, das zee an-ge-roo-fen hah-ben unt voh-rum es gayt? — I understand. Mr./Ms. Meier is currently in a meeting. Shall I tell him/her that you called and what it's about?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Könnten Sie das Anliegen etwas genauer beschreiben, damit ich weiß, wer Ihnen am besten helfen kann?",
+      "branches": [
+        {
+          "keywords": [
+            "termin",
+            "projekt",
+            "problem",
+            "informationen",
+            "vertrag"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "ich rufe später an",
+            "nicht wichtig"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kern-ten zee das An-lee-gen et-vas ge-now-er beh-shry-ben, dah-mit ikh vys, ver ee-nen am bes-ten hel-fen kan? — Could you describe the matter in more detail, so I know who can best help you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gerne. Was genau soll ich ihm/ihr ausrichten?",
+      "branches": [
+        {
+          "keywords": [
+            "er soll anrufen",
+            "termin verschieben",
+            "informationen",
+            "projekt x",
+            "bitte melden"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-ne. Vas ge-now zol ikh eem/eer ows-rikh-ten? — Certainly. What exactly should I tell him/her?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Alles klar, ich werde es ihm/ihr ausrichten. Er/Sie wird sich dann bei Ihnen melden. Gibt es sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "daswärealles",
+            "aufwiederhören"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "wann",
+            "erreichbar",
+            "rückrufzeit"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Al-les klar, ikh ver-de es eem/eer ows-rikh-ten. Er/Zee virt zikh dan by ee-nen mel-den. Gipt es zonst nokh et-vas? — All right, I'll pass it on to him/her. He/She will then get back to you. Is there anything else?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Ich denke, er/sie wird sich melden, sobald er/sie verfügbar ist, wahrscheinlich noch heute Nachmittag oder morgen früh.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "aufwiederhören",
+            "alles klar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ikh den-ke, er/zee virt zikh mel-den, zoh-balt er/zee fer-füg-bar ist, vahr-shayn-likh nokh hoy-te Nahkh-mit-tahg oh-der mor-gen frü. — I think he/she will get in touch as soon as he/she is available, probably this afternoon or tomorrow morning."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Vee bit-tuh? Kern-ten zee das bit-tuh vee-der-hoh-len? — Sorry? Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, danke für den Anruf! Auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Al-les klar, dan-ke für den An-ruf! Owf Vee-der-hör-en! — All right, thanks for the call! Goodbye! (on the phone)",
+      "isTerminal": true
+    }
+  }
+}

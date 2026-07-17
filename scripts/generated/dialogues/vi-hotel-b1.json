@@ -1,0 +1,121 @@
+{
+  "id": "dlg-vi-hotel-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Nhận phòng khách sạn",
+  "opening": "Xin chào quý khách. Quý khách đã đặt phòng trước chưa ạ? Tên của quý khách là gì?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào quý khách. Quý khách đã đặt phòng trước chưa ạ? Tên của quý khách là gì?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "đặt",
+            "tên"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào quý khách (sin chao quy khach) — Welcome, esteemed guest. Have you made a reservation? What is your name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, xin lỗi quý khách, tôi xác nhận lại một chút. Quý khách vui lòng cho tôi xin giấy tờ tùy thân hoặc hộ chiếu để hoàn tất thủ tục nhận phòng.",
+      "branches": [
+        {
+          "keywords": [
+            "đây",
+            "id",
+            "hộ chiếu",
+            "giấy tờ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, xin lỗi quý khách (vang, sin loi quy khach) — Yes, excuse me, let me just confirm. Could you please provide your ID or passport to complete the check-in procedure?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Cảm ơn quý khách. Tiếp theo, quý khách muốn thanh toán bằng hình thức nào ạ? Tiền mặt hay thẻ tín dụng?",
+      "branches": [
+        {
+          "keywords": [
+            "thẻ",
+            "tín dụng"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn quý khách (cam on quy khach) — Thank you. Next, how would you like to pay? Cash or credit card?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng. Phòng của quý khách là phòng tiêu chuẩn có tầm nhìn thành phố. Quý khách có muốn thêm bữa sáng vào gói phòng không ạ? Bữa sáng buffet sẽ được phục vụ từ 6h đến 10h sáng.",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thêm",
+            "muốn"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, sir/madam. Your room is a standard city-view room. Would you like to add breakfast to your room package? The buffet breakfast will be served from 6 AM to 10 AM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, đã hoàn tất. Đây là thẻ phòng của quý khách, phòng 501 ở tầng 5. Thang máy ở phía bên trái. Chúc quý khách có một kỳ nghỉ vui vẻ tại khách sạn chúng tôi!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Yes, it's all complete. Here is your room card, room 501 on the 5th floor. The elevator is on the left. We wish you a pleasant stay at our hotel!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, could you please repeat that?"
+    }
+  }
+}

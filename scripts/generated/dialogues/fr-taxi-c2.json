@@ -1,0 +1,192 @@
+{
+  "id": "dlg-fr-taxi-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Course en taxi à Paris",
+  "opening": "Bonjour, où puis-je vous emmener ce matin ? Il semble que les rues soient déjà un peu embouteillées.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Où puis-je vous déposer ce matin ? Les rues de la capitale semblent déjà bouillonner d'activité.",
+      "branches": [
+        {
+          "keywords": [
+            "gare",
+            "aéroport",
+            "nord",
+            "est",
+            "lyon",
+            "montparnasse",
+            "roissy",
+            "charlesdegaulle",
+            "orly"
+          ],
+          "nextTurnId": "t2_route_fare_options"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Où puis-je vous déposer ce matin ? Les rues de la capitale semblent déjà bouillonner d'activité. — Hello! Where can I drop you off this morning? The capital's streets already seem to be buzzing with activity."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous reformuler, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, je n'ai pas bien saisi. Pourriez-vous reformuler, s'il vous plaît ? — Pardon, I didn't quite catch that. Could you rephrase, please?"
+    },
+    "t2_route_fare_options": {
+      "id": "t2_route_fare_options",
+      "prompt": "Bien reçu. En cette heure de pointe, on risque de patauger un peu dans les embouteillages. Avez-vous une contrainte horaire particulière pour que je privilégie la voie rapide, ou préféreriez-vous un itinéraire plus fluide et pittoresque, quitte à faire un léger détour ? Ou bien, souhaitez-vous d'abord connaître une estimation du tarif ?",
+      "branches": [
+        {
+          "keywords": [
+            "urgent",
+            "rapide",
+            "vite",
+            "train",
+            "vol",
+            "voie",
+            "direct"
+          ],
+          "nextTurnId": "t3_route_fast_chosen"
+        },
+        {
+          "keywords": [
+            "pasurgent",
+            "calme",
+            "pittoresque",
+            "peuimporte",
+            "fluidité",
+            "detour"
+          ],
+          "nextTurnId": "t3_route_calm_chosen"
+        },
+        {
+          "keywords": [
+            "prix",
+            "combien",
+            "coût",
+            "tarif",
+            "argent"
+          ],
+          "nextTurnId": "t3_fare_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien reçu. En cette heure de pointe, on risque de patauger un peu dans les embouteillages. Avez-vous une contrainte horaire particulière pour que je privilégie la voie rapide, ou préféreriez-vous un itinéraire plus fluide et pittoresque, quitte à faire un léger détour ? Ou bien, souhaitez-vous d'abord connaître une estimation du tarif ? — Understood. At this rush hour, we might get bogged down a bit in traffic jams. Do you have a particular time constraint so I prioritize the fast lane, or would you prefer a more fluid and scenic route, even if it means a slight detour? Or, would you like to know a fare estimate first?"
+    },
+    "t3_route_fast_chosen": {
+      "id": "t3_route_fast_chosen",
+      "prompt": "Entendu, pas de quartier avec le chrono ! On va privilégier la voie rapide, quitte à contourner les points noirs habituels. Accrochez-vous, ça risque de secouer un peu !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "parfait",
+            "allonsy",
+            "bien",
+            "ok"
+          ],
+          "nextTurnId": "t4_confirm_start"
+        },
+        {
+          "keywords": [
+            "combien",
+            "coût",
+            "prix",
+            "tarif",
+            "argent"
+          ],
+          "nextTurnId": "t3_fare_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendu, pas de quartier avec le chrono ! On va privilégier la voie rapide, quitte à contourner les points noirs habituels. Accrochez-vous, ça risque de secouer un peu ! — Understood, no quarter with the clock! We're going to prioritize the fast lane, even if it means bypassing the usual hotspots. Hold on tight, it might be a bit bumpy!"
+    },
+    "t3_route_calm_chosen": {
+      "id": "t3_route_calm_chosen",
+      "prompt": "Parfait, prenons notre temps alors. Je connais quelques raccourcis charmants et moins encombrés. On pourra même profiter de quelques monuments au passage, si le cœur vous en dit.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "parfait",
+            "allonsy",
+            "bien",
+            "ok"
+          ],
+          "nextTurnId": "t4_confirm_start"
+        },
+        {
+          "keywords": [
+            "combien",
+            "coût",
+            "prix",
+            "tarif",
+            "argent"
+          ],
+          "nextTurnId": "t3_fare_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait, prenons notre temps alors. Je connais quelques raccourcis charmants et moins encombrés. On pourra même profiter de quelques monuments au passage, si le cœur vous en dit. — Perfect, let's take our time then. I know some charming, less congested shortcuts. We can even enjoy some monuments along the way, if you feel like it."
+    },
+    "t3_fare_info": {
+      "id": "t3_fare_info",
+      "prompt": "Pour le tarif, difficile de donner un chiffre exact avec la circulation. On est sur une fourchette de X à Y euros pour une course à cette heure, en fonction de l'itinéraire choisi par le taximètre. Cela vous convient-il ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "clair",
+            "merci",
+            "compris",
+            "ok"
+          ],
+          "nextTurnId": "t4_confirm_start"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour le tarif, difficile de donner un chiffre exact avec la circulation. On est sur une fourchette de X à Y euros pour une course à cette heure, en fonction de l'itinéraire choisi par le taximètre. Cela vous convient-il ? — For the fare, it's hard to give an exact figure with the traffic. We're looking at a range of X to Y euros for a ride at this hour, depending on the route chosen by the taximeter. Does that suit you?"
+    },
+    "t4_confirm_start": {
+      "id": "t4_confirm_start",
+      "prompt": "Très bien, direction votre destination alors ! Avec la circulation actuelle, je dirais qu'on est sur une bonne vingtaine de minutes. Le paiement par carte ou espèces sera possible à l'arrivée. On y va ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "allonsy",
+            "merci",
+            "parfait",
+            "bien",
+            "ok",
+            "super",
+            "genial",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, direction votre destination alors ! Avec la circulation actuelle, je dirais qu'on est sur une bonne vingtaine de minutes. Le paiement par carte ou espèces sera possible à l'arrivée. On y va ? — Alright, heading to your destination then! With the current traffic, I'd say we're looking at a good twenty minutes. Payment by card or cash will be possible on arrival. Shall we go?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Voilà, nous y sommes. Le compteur affiche X euros. Je vous souhaite une excellente journée et bon courage pour la suite !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Voilà, nous y sommes. Le compteur affiche X euros. Je vous souhaite une excellente journée et bon courage pour la suite ! — Here we are. The meter shows X euros. I wish you an excellent day and good luck with what's next!",
+      "isTerminal": true
+    }
+  }
+}

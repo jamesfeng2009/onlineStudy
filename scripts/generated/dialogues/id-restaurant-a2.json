@@ -1,0 +1,240 @@
+{
+  "id": "dlg-id-restaurant-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat malam, Bapak/Ibu. Apakah sudah siap memesan atau ingin melihat menu dulu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam, Bapak/Ibu. Apakah sudah siap memesan atau ingin melihat menu dulu?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "menu",
+            "lihat"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "rekomendasi"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat malam (se-LA-mat MA-lam), Bapak/Ibu (BA-pak E-boo). Apakah (a-PA-kah) sudah siap (SOO-dah see-AP) memesan (me-ME-san) atau ingin (A-tau E-ngin) melihat (me-LEE-hat) menu dulu (ME-noo DOO-loo)? — Good evening, Sir/Madam. Are you ready to order or would you like to see the menu first?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, ada yang bisa saya bantu? Mau pesan apa?",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng",
+            "soto",
+            "ayam",
+            "gado-gado"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "spesial",
+            "favorit",
+            "unggulan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "sayur"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (BA-ik), ada (A-da) yang (YANG) bisa (BEE-sa) saya (SA-ya) bantu (BAN-too)? Mau (MA-oo) pesan (PE-san) apa (A-pa)? — Okay, how can I help you? What would you like to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu, ini menu kami. Silakan lihat-lihat dulu. Ada pertanyaan?",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "siap",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "apa",
+            "nasi",
+            "goreng",
+            "itu"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "rekomendasi"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (TEN-too), ini (E-nee) menu (ME-noo) kami (KA-mee). Silakan (SEE-la-kan) lihat-lihat (LEE-hat-LEE-hat) dulu (DOO-loo). Ada (A-da) pertanyaan (per-TAN-ya-an)? — Of course, here is our menu. Please take a look first. Any questions?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Kami punya Nasi Goreng atau Soto Ayam yang sangat populer. Keduanya enak.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng",
+            "mau",
+            "itu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "lain",
+            "apa",
+            "lagi"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kami (KA-mee) punya (POO-nya) Nasi Goreng (NA-see GO-reng) atau (A-tau) Soto Ayam (SO-to A-yam) yang (YANG) sangat (SA-ngat) populer (PO-poo-ler). Keduanya (ke-DOO-a-nya) enak (E-nak). — We have Nasi Goreng or Soto Ayam which are very popular. Both are delicious."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, jadi pesanan Anda sudah benar. Mau pesan minuman juga?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "benar",
+            "mau",
+            "minum",
+            "air"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "bukan",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (BA-ik), jadi (JA-dee) pesanan (pe-SA-nan) Anda (AN-da) sudah (SOO-dah) benar (BE-nar). Mau (MA-oo) pesan (PE-san) minuman (ME-noo-man) juga (JOO-ga)? — Okay, so your order is correct. Would you like to order a drink too?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tentu, kami punya Gado-gado atau tumis sayuran. Keduanya tanpa daging.",
+      "branches": [
+        {
+          "keywords": [
+            "gado-gado",
+            "mau",
+            "itu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "lain",
+            "apa"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (TEN-too), kami (KA-mee) punya (POO-nya) Gado-gado (GA-do-GA-do) atau (A-tau) tumis (TOO-mis) sayuran (SA-yoo-ran). Keduanya (ke-DOO-a-nya) tanpa (TAN-pa) daging (DA-ging). — Of course, we have Gado-gado or stir-fried vegetables. Both are without meat."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Nasi Goreng itu nasi yang digoreng dengan bumbu, telur, dan sayuran. Enak sekali.",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "itu",
+            "baik"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "terima",
+            "kasih",
+            "lain"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nasi Goreng (NA-see GO-reng) itu (E-too) nasi (NA-see) yang (YANG) digoreng (dee-GO-reng) dengan (DE-ngan) bumbu (BOOM-boo), telur (TE-loor), dan (DAN) sayuran (SA-yoo-ran). Enak (E-nak) sekali (se-KA-lee). — Nasi Goreng is rice fried with spices, egg, and vegetables. It's very delicious."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Baik. Pesanan Anda akan segera disiapkan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (BA-ik). Pesanan (pe-SA-nan) Anda (AN-da) akan (A-kan) segera (se-GE-ra) disiapkan (dee-SEE-ap-kan). — Okay. Your order will be prepared soon."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (MA-af), bisa (BEE-sa) diulang (dee-OO-lang)? — Sorry, can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah datang. Selamat menikmati makanan Anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima (TE-ree-ma) kasih (KA-sih) sudah (SOO-dah) datang (DA-tang). Selamat (se-LA-mat) menikmati (me-NIK-ma-tee) makanan (MA-ka-nan) Anda (AN-da)! — Thank you for coming. Enjoy your meal!",
+      "isTerminal": true
+    }
+  }
+}

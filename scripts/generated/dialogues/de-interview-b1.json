@@ -1,0 +1,159 @@
+{
+  "id": "dlg-de-interview-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Bewerbungsgespräch",
+  "opening": "Guten Tag. Herzlich willkommen zu unserem Bewerbungsgespräch.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Herzlich willkommen zu unserem Bewerbungsgespräch. Erzählen Sie uns doch bitte etwas über sich.",
+      "branches": [
+        {
+          "keywords": [
+            "selbst",
+            "mich",
+            "erzählen",
+            "vorstellen",
+            "hintergrund"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg. Hairts-lich vil-kom-men tsoo oon-zer-em Beh-vair-boongs-geh-shpräkh. Air-tsay-len Zee uns dokh bit-te et-vas yoo-ber zikh. — Good day. Welcome to our job interview. Please tell us a bit about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Danke. Könnten Sie uns bitte mehr über Ihre bisherige Berufserfahrung erzählen?",
+      "branches": [
+        {
+          "keywords": [
+            "erfahrung",
+            "beruf",
+            "gearbeitet",
+            "kenntnisse"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dank-eh. Kern-ten Zee uns bit-te mair yoo-ber Ee-reh bis-hair-ee-geh Beh-roofs-air-fah-roonk air-tsay-len? — Thank you. Could you please tell us more about your previous work experience?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Verstehe. Was würden Sie als Ihre größten Stärken bezeichnen und gibt es auch Bereiche, in denen Sie sich noch entwickeln möchten?",
+      "branches": [
+        {
+          "keywords": [
+            "stärken",
+            "fähigkeiten",
+            "gut",
+            "kompetenzen",
+            "schwächen",
+            "entwickeln",
+            "verbesserung",
+            "herausforderungen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair-shtay-eh. Vas vir-den Zee als Ee-reh grer-sten Shtairk-en beh-tsai-shnen oont gipt es aukh Beh-rai-sheh, in den-en Zee zikh nokh ent-vik-keln merkh-ten? — I understand. What would you describe as your greatest strengths and are there also areas in which you would like to develop further?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vielen Dank für Ihre Antworten. Haben Sie zum Schluss noch Fragen an uns?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "frage",
+            "fragen",
+            "jafrage"
+          ],
+          "nextTurnId": "t-end-question"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keine",
+            "keinefrage"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dank fyur Ee-reh Ant-vor-ten. Hah-ben Zee tsum Shluss nokh Frah-gen an uns? — Thank you for your answers. Finally, do you have any questions for us?"
+    },
+    "t-end-question": {
+      "id": "t-end-question",
+      "prompt": "Vielen Dank für Ihre Fragen. Das war es von unserer Seite.",
+      "branches": [
+        {
+          "keywords": [
+            "verstanden",
+            "gut",
+            "ok",
+            "danke",
+            "ja"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fyur Ee-reh Frah-gen. Das vahr es fon oon-zer-er Zai-teh. — Thank you for your questions. That's all from our side."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "ok",
+            "verstanden"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-dee-gen Zee, ikh hah-beh Zee nikht gants fair-shtan-den. Kern-ten Zee das bit-te vee-der-hoh-len? — Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihr Kommen. Wir werden uns bei Ihnen melden.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fyur Eer Kom-men. Veer vair-den uns bai Ee-nen mel-den. — Thank you for coming. We will get back to you.",
+      "isTerminal": true
+    }
+  }
+}

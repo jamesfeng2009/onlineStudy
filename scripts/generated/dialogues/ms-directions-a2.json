@@ -1,0 +1,171 @@
+{
+  "id": "dlg-ms-directions-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Bertanya Arah",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pejabatpos",
+            "pos",
+            "poslaju"
+          ],
+          "nextTurnId": "t2_post"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi. Boleh saya bantu? (Se-la-mat pah-gee. Boh-leh sa-ya ban-too?) — Good morning. Can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? (Mah-af, boh-leh oo-lang se-ka-li la-gee?) — Sorry, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama. Selamat jalan! (Sah-ma sah-ma. Se-la-mat jah-lan!) — You're welcome. Have a good journey!",
+      "isTerminal": true
+    },
+    "t2_post": {
+      "id": "t2_post",
+      "prompt": "Oh, pejabat pos. Jalan terus saja, nanti ada lampu isyarat. Belok kiri di lampu isyarat itu.",
+      "branches": [
+        {
+          "keywords": [
+            "berapa",
+            "jauh"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "selepas",
+            "mana",
+            "seterusnya"
+          ],
+          "nextTurnId": "t3_nextstep"
+        },
+        {
+          "keywords": [
+            "terimakasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tolong"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, pejabat pos. Jalan terus saja, nanti ada lampu isyarat. Belok kiri di lampu isyarat itu. (Oh, pe-ja-bat pos. Jah-lan te-rus sa-ja, nan-tee ah-da lam-pu ee-sha-rat. Be-lok kee-ree dee lam-pu ee-sha-rat ee-too.) — Oh, the post office. Just go straight, later there will be a traffic light. Turn left at that traffic light."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "Tidak jauh. Lebih kurang lima minit jalan kaki dari sini.",
+      "branches": [
+        {
+          "keywords": [
+            "bas",
+            "naikbas"
+          ],
+          "nextTurnId": "t4_bus"
+        },
+        {
+          "keywords": [
+            "ok",
+            "terimakasih",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lagi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tidak jauh. Lebih kurang lima minit jalan kaki dari sini. (Tee-dak ja-ooh. Le-beh koo-rang lee-ma mee-nit jah-lan ka-kee da-ree see-nee.) — Not far. Approximately five minutes walk from here."
+    },
+    "t3_nextstep": {
+      "id": "t3_nextstep",
+      "prompt": "Selepas belok kiri, terus lagi dalam dua ratus meter. Pejabat pos ada di sebelah kanan.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terimakasih",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "jelas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selepas belok kiri, terus lagi dalam dua ratus meter. Pejabat pos ada di sebelah kanan. (Se-le-pas be-lok kee-ree, te-rus la-gee da-lam doo-a ra-tus me-ter. Pe-ja-bat pos ah-da dee se-be-lah ka-nan.) — After turning left, go straight for about two hundred meters. The post office is on your right."
+    },
+    "t4_bus": {
+      "id": "t4_bus",
+      "prompt": "Ya, boleh naik bas nombor 10. Perhentian bas ada di seberang jalan sana.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ya, boleh naik bas nombor sepuluh. Perhentian bas ada di seberang jalan sana. (Yah, boh-leh na-ik bas nom-bor se-poo-looh. Per-hen-tee-an bas ah-da dee se-be-rang jah-lan sa-na.) — Yes, you can take bus number 10. The bus stop is across the road over there."
+    }
+  }
+}

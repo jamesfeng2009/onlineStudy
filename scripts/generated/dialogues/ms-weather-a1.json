@@ -1,0 +1,238 @@
+{
+  "id": "dlg-ms-weather-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Cuaca Hari Ini",
+  "opening": "Selamat pagi! Cuaca hari ini bagaimana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Cuaca hari ini bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "cerah",
+            "panas"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidakbaik",
+            "mendung",
+            "hujan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi! Cuaca hari ini bagaimana? — Good morning! How is the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, bagus! Adakah panas atau sejuk?",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "suam"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "sejuk",
+            "nyaman"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, bagus! Adakah panas atau sejuk? — Oh, good! Is it hot or cold?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, begitu. Adakah hujan sekarang?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "hujan"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "belum"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu. Adakah hujan sekarang? — Oh, I see. Is it raining now?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Cuaca panas. Adakah anda ada rancangan di luar?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tiada"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The weather is hot. Do you have plans outside?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Cuaca nyaman. Ini bagus untuk berjalan-jalan, kan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "bagus"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "malas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pleasant weather. It's good for walking, right?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, hujan. Mungkin kita perlu duduk di rumah hari ini.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, it's raining. Maybe we need to stay home today."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Bagus! Mungkin hujan akan berhenti. Adakah anda ada rancangan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tiada"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good! Maybe the rain will stop. Do you have plans?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Oh, menarik! Selamat berseronok dengan rancangan anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, interesting! Have fun with your plans."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang? — Sorry, can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih! Jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih! Jumpa lagi! — Thank you! See you again!",
+      "isTerminal": true
+    }
+  }
+}

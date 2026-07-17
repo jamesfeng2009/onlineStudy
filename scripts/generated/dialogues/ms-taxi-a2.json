@@ -1,0 +1,235 @@
+{
+  "id": "dlg-ms-taxi-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "Naik Teksi",
+  "opening": "Selamat pagi, encik. Ke mana kita hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik. Ke mana kita hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "ke",
+            "pergi",
+            "hantar",
+            "alamat",
+            "destinasi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "kos",
+            "tambang",
+            "harga"
+          ],
+          "nextTurnId": "t3_fare_inquiry"
+        },
+        {
+          "keywords": [
+            "boleh"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning, encik — sir. Ke mana kita hari ini? — Where are we going today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, ke sana. Tambang biasanya RM20. Setuju, encik?",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "ya",
+            "ok",
+            "boleh"
+          ],
+          "nextTurnId": "t4_payment_info"
+        },
+        {
+          "keywords": [
+            "mahal",
+            "kurang",
+            "diskaun",
+            "tawar"
+          ],
+          "nextTurnId": "t3b_bargain_response"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "laluan",
+            "peta",
+            "trafik"
+          ],
+          "nextTurnId": "t3_route_traffic"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, ke sana — to there. Tambang biasanya RM20 — The fare is usually RM20. Setuju, encik? — Do you agree, sir?"
+    },
+    "t3_fare_inquiry": {
+      "id": "t3_fare_inquiry",
+      "prompt": "Untuk ke sana, tambang biasanya RM20. Mahu pergi sekarang?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ok",
+            "setuju",
+            "mahu"
+          ],
+          "nextTurnId": "t4_payment_info"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "batal"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk ke sana — To go there, tambang biasanya RM20 — the fare is usually RM20. Mahu pergi sekarang? — Want to go now?"
+    },
+    "t3_route_traffic": {
+      "id": "t3_route_traffic",
+      "prompt": "Kita akan ikut jalan utama. Mungkin ada sedikit sesak di waktu puncak, tapi cepat saja sampai.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "setuju",
+            "jalan"
+          ],
+          "nextTurnId": "t4_payment_info"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "lama",
+            "masa"
+          ],
+          "nextTurnId": "t3c_duration"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kita akan ikut jalan utama — We will take the main road. Mungkin ada sedikit sesak di waktu puncak — There might be a little traffic during peak hours, tapi cepat saja sampai — but we will arrive quickly."
+    },
+    "t3b_bargain_response": {
+      "id": "t3b_bargain_response",
+      "prompt": "Maaf, encik. Itu harga tetap untuk ke sana. Kami ikut meter.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "setuju"
+          ],
+          "nextTurnId": "t4_payment_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf — Sorry, encik — sir. Itu harga tetap untuk ke sana — That is the fixed price to go there. Kami ikut meter — We follow the meter."
+    },
+    "t3c_duration": {
+      "id": "t3c_duration",
+      "prompt": "Biasanya dalam 20 hingga 30 minit, bergantung pada trafik.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "faham"
+          ],
+          "nextTurnId": "t4_payment_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Biasanya dalam 20 hingga 30 minit — Usually within 20 to 30 minutes, bergantung pada trafik — depending on traffic."
+    },
+    "t4_payment_info": {
+      "id": "t4_payment_info",
+      "prompt": "Kita sudah sampai, encik. Jumlahnya RM22.50.",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "duit",
+            "bayar",
+            "wang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kita sudah sampai — We have arrived, encik — sir. Jumlahnya RM22.50 — The total is RM22.50."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, encik. Boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, encik — sir. Boleh ulang sekali lagi? — Can you repeat it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Terima kasih dan jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama — You're welcome. Terima kasih — Thank you, dan jumpa lagi! — and see you again!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "id": "dlg-vi-bank-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "Giao dịch ngân hàng",
+  "opening": "Xin chào. Tôi có thể giúp gì bạn?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào. Tôi có thể giúp gì bạn?",
+      "branches": [
+        {
+          "keywords": [
+            "mởtài khoản",
+            "tài khoản"
+          ],
+          "nextTurnId": "t2_open"
+        },
+        {
+          "keywords": [
+            "đổitiền",
+            "tiền"
+          ],
+          "nextTurnId": "t2_exchange"
+        },
+        {
+          "keywords": [
+            "atm",
+            "thẻ"
+          ],
+          "nextTurnId": "t2_atm_issue"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào (Sin chao) — Hello. Tôi có thể giúp gì bạn? (Toi co the giup gi ban?) — How can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi) — Sorry, bạn nói lại được không? (Ban noi lai duoc khong?) — Can you repeat that?"
+    },
+    "t2_open": {
+      "id": "t2_open",
+      "prompt": "Bạn muốn mở tài khoản? Bạn có giấy tờ tùy thân không?",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "có",
+            "cógiấytờ"
+          ],
+          "nextTurnId": "t3_id_ok"
+        },
+        {
+          "keywords": [
+            "không",
+            "khôngcó"
+          ],
+          "nextTurnId": "t3_id_no"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn muốn mở tài khoản? (Ban muon mo tai khoan?) — You want to open an account? Bạn có giấy tờ tùy thân không? (Ban co giay to tuy than khong?) — Do you have ID?"
+    },
+    "t2_exchange": {
+      "id": "t2_exchange",
+      "prompt": "Bạn muốn đổi tiền? Bạn muốn đổi tiền gì?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "đôla",
+            "đôlamỹ"
+          ],
+          "nextTurnId": "t3_exchange_usd"
+        },
+        {
+          "keywords": [
+            "eur",
+            "euro"
+          ],
+          "nextTurnId": "t3_exchange_eur"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn muốn đổi tiền? (Ban muon doi tien?) — You want to exchange money? Bạn muốn đổi tiền gì? (Ban muon doi tien gi?) — What currency do you want to exchange?"
+    },
+    "t2_atm_issue": {
+      "id": "t2_atm_issue",
+      "prompt": "Bạn có vấn đề với thẻ ATM? Bạn muốn làm gì?",
+      "branches": [
+        {
+          "keywords": [
+            "khóarút",
+            "mấthẻ"
+          ],
+          "nextTurnId": "t3_card_lost"
+        },
+        {
+          "keywords": [
+            "đặclại mã pin",
+            "quênmãpin"
+          ],
+          "nextTurnId": "t3_pin_reset"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn có vấn đề với thẻ ATM? (Ban co van de voi the ATM?) — Do you have an issue with your ATM card? Bạn muốn làm gì? (Ban muon lam gi?) — What do you want to do?"
+    },
+    "t3_id_ok": {
+      "id": "t3_id_ok",
+      "prompt": "Vâng, bạn điền vào mẫu này nhé. Cảm ơn bạn.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "xong"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, please fill this form. Thank you."
+    },
+    "t3_id_no": {
+      "id": "t3_id_no",
+      "prompt": "Xin lỗi, bạn cần giấy tờ tùy thân. Vui lòng quay lại sau.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, you need ID. Please come back later."
+    },
+    "t3_exchange_usd": {
+      "id": "t3_exchange_usd",
+      "prompt": "Vâng, bạn đưa tôi đô la Mỹ.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, please give me US dollars."
+    },
+    "t3_exchange_eur": {
+      "id": "t3_exchange_eur",
+      "prompt": "Vâng, bạn đưa tôi euro.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, please give me Euros."
+    },
+    "t3_card_lost": {
+      "id": "t3_card_lost",
+      "prompt": "Vâng, chúng tôi sẽ khóa thẻ của bạn. Vui lòng chờ một chút.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, we will block your card. Please wait a moment."
+    },
+    "t3_pin_reset": {
+      "id": "t3_pin_reset",
+      "prompt": "Để đặt lại mã PIN, bạn cần điền mẫu đơn này. Cảm ơn.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To reset your PIN, you need to fill out this form. Thank you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn. Tạm biệt!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

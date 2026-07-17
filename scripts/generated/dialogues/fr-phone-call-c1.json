@@ -1,0 +1,209 @@
+{
+  "id": "dlg-fr-phone-call-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Appel téléphonique professionnel",
+  "opening": "Société Dubois & Fils, bonjour. Sophie Martin à l'appareil.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Société Dubois & Fils, bonjour. Sophie Martin à l'appareil.",
+      "branches": [
+        {
+          "keywords": [
+            "bonjour",
+            "c'est",
+            "suis",
+            "monsieur",
+            "madame",
+            "dupont",
+            "marc"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "je",
+            "voudrais",
+            "parler",
+            "monsieur",
+            "madame",
+            "durand"
+          ],
+          "nextTurnId": "t2_ask_identity"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Société Dubois & Fils, bonjour. Sophie Martin à l'appareil. (So-syé-té Dü-bwa é Fis, bon-jour. So-fi Mar-tan a l'ap-pa-reil.) — Dubois & Son Company, hello. Sophie Martin speaking."
+    },
+    "t2_ask_identity": {
+      "id": "t2_ask_identity",
+      "prompt": "Je crains que Monsieur/Madame Durand ne soit pas disponible pour l'instant. Pourriez-vous me dire qui vous êtes, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "je",
+            "suis",
+            "mon",
+            "nom",
+            "c'est",
+            "dupont",
+            "marc"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "je",
+            "préfère",
+            "pas",
+            "dire",
+            "qui",
+            "suis"
+          ],
+          "nextTurnId": "t5_no_name"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je crains que Monsieur/Madame Durand ne soit pas disponible pour l'instant. Pourriez-vous me dire qui vous êtes, s'il vous plaît ? (Je krain ke Mon-syö/Ma-dam Dü-ran ne swa pa dis-po-nibl pour l'in-stan. Pou-ryé-vou me dir ki vou zêt, sil vou plé?) — I'm afraid Mr./Ms. Durand is not available at the moment. Could you tell me who you are, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Très bien, Monsieur/Madame. En quoi puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "j'appelle",
+            "concernant",
+            "projet",
+            "dossier",
+            "rendez-vous",
+            "urgence"
+          ],
+          "nextTurnId": "t4_message_offer"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, Monsieur/Madame. En quoi puis-je vous être utile aujourd'hui ? (Tré byan, Mon-syö/Ma-dam. An kwa pwi-je vou zêt u-til o-jour-dwi?) — Very well, Sir/Madam. How can I help you today?"
+    },
+    "t4_message_offer": {
+      "id": "t4_message_offer",
+      "prompt": "Je comprends. Malheureusement, la personne concernée est actuellement en réunion et ne pourra pas prendre votre appel. Souhaiteriez-vous lui laisser un message ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "volontiers",
+            "laisser",
+            "message",
+            "bien",
+            "sûr"
+          ],
+          "nextTurnId": "t5_take_message"
+        },
+        {
+          "keywords": [
+            "non",
+            "rappeler",
+            "plus",
+            "tard",
+            "pas",
+            "maintenant"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je comprends. Malheureusement, la personne concernée est actuellement en réunion et ne pourra pas prendre votre appel. Souhaiteriez-vous lui laisser un message ? (Je kô-pran. Ma-lë-rë-z-mã, la per-son kô-ser-né é ak-tü-el-mã an ré-ü-nyon é ne pou-ra pa prã-dr votr ap-pel. Swé-të-ryé-vou lwi lé-sé un mes-saj?) — I understand. Unfortunately, the person concerned is currently in a meeting and won't be able to take your call. Would you like to leave them a message?"
+    },
+    "t5_take_message": {
+      "id": "t5_take_message",
+      "prompt": "Très bien, je prends note. De quoi s'agit-il exactement, et y a-t-il un numéro où elle pourrait vous joindre ?",
+      "branches": [
+        {
+          "keywords": [
+            "dites-lui",
+            "rappeler",
+            "urgence",
+            "projet",
+            "dossier",
+            "information",
+            "mon",
+            "numéro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, je prends note. De quoi s'agit-il exactement, et y a-t-il un numéro où elle pourrait vous joindre ? (Tré byan, je prã not. De kwa sa-jit-il egz-ak-të-mã, é i a-t-il un nü-mé-ro u el pou-ré vou jwã-dr?) — Very well, I'll make a note. What is it about exactly, and is there a number where she could reach you?"
+    },
+    "t5_no_name": {
+      "id": "t5_no_name",
+      "prompt": "Je comprends. Sans identification, je crains de ne pas pouvoir vous aider davantage. Je vous invite à rappeler ultérieurement.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Je comprends. Sans identification, je crains de ne pas pouvoir vous aider davantage. Je vous invite à rappeler ultérieurement. (Je kô-pran. San idã-ti-fi-ka-syô, je krain de ne pa pou-vwar vou zé-dé da-vã-taj. Je vou zinvit a rap-le ül-té-ryë-rë-mã.) — I understand. Without identification, I'm afraid I cannot assist you further. I invite you to call back later."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien. Dans tous les cas, merci de votre appel et bonne journée.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très bien. Dans tous les cas, merci de votre appel et bonne journée. (Tré byan. Dan tou lé ka, mer-si de votr ap-pel é bon-ne jour-né.) — Very well. In any case, thank you for your call and have a good day.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi. (Par-don? Pou-ryé-vou ré-pé-té, sil vou plé? Je n'é pa byan sai-zi.) — Sorry? Could you repeat, please? I didn't quite catch that."
+    }
+  }
+}

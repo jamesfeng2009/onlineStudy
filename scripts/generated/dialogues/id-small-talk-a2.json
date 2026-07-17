@@ -1,0 +1,155 @@
+{
+  "id": "dlg-id-small-talk-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Obrolan Santai",
+  "opening": "Halo, apa kabar? Bagaimana akhir pekanmu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo, apa kabar? Bagaimana akhir pekanmu?",
+      "branches": [
+        {
+          "keywords": [
+            "santai",
+            "istirahat",
+            "rumah"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "pergi",
+            "sibuk",
+            "aktivitas"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo, apa kabar? — Hello, how are you? Bagaimana akhir pekanmu? — How was your weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, begitu. Kamu melakukan apa di rumah?",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "buku"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nonton",
+            "film",
+            "tv"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu. — Oh, I see. Kamu melakukan apa di rumah? — What did you do at home?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Wah, kedengarannya seru! Kamu pergi kemana atau melakukan apa?",
+      "branches": [
+        {
+          "keywords": [
+            "jalan",
+            "liburan",
+            "mengunjungi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "makan",
+            "restoran",
+            "kuliner"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, kedengarannya seru! — Wow, that sounds fun! Kamu pergi kemana atau melakukan apa? — Where did you go or what did you do?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Membaca buku? Buku apa yang kamu baca?",
+      "branches": [
+        {
+          "keywords": [
+            "novel",
+            "fiksi",
+            "sejarah",
+            "cerita"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Membaca buku? — Reading a book? Buku apa yang kamu baca? — What book did you read?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Menarik sekali! Film apa yang kamu tonton?",
+      "branches": [
+        {
+          "keywords": [
+            "aksi",
+            "komedi",
+            "drama",
+            "horor"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali! — Very interesting! Film apa yang kamu tonton? — What movie did you watch?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Wah, kemana kamu pergi? Atau siapa yang kamu kunjungi?",
+      "branches": [
+        {
+          "keywords": [
+            "kota",
+            "tempat",
+            "daerah"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, kemana kamu pergi? — Wow, where did you go? Atau siapa yang kamu kunjungi? — Or who did you visit?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang mengerti.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf, bisa diulang? — Sorry, could you repeat that? Saya kurang mengerti. — I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih sudah berbagi. Senang berbicara denganmu. Sampai jumpa!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, terima kasih sudah berbagi. — Alright, thanks for sharing. Senang berbicara denganmu. — Nice talking to you. Sampai jumpa! — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

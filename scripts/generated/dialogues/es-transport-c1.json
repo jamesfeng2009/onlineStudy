@@ -1,0 +1,187 @@
+{
+  "id": "dlg-es-transport-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Asistencia en la Estación",
+  "opening": "¡Hola! ¿En qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿En qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "billete",
+            "tren",
+            "autobús",
+            "destino",
+            "comprar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "información",
+            "horarios",
+            "conexiones",
+            "precios"
+          ],
+          "nextTurnId": "t3_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-lah! En keh pweh-doh ah-yoo-dahr-leh oy? — Hello! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro, ¿a qué destino se dirige y para cuándo sería el billete? Así puedo buscarle la mejor opción.",
+      "branches": [
+        {
+          "keywords": [
+            "granada",
+            "sevilla",
+            "madrid",
+            "barcelona"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, what destination are you heading to and for when would the ticket be? That way I can find the best option for you."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Para Granada, tenemos el tren AVE de alta velocidad, un viaje directo que suele durar unas tres horas. El billete de ida tiene un coste de 75 euros. ¿Lo querría de ida y vuelta?",
+      "branches": [
+        {
+          "keywords": [
+            "ida",
+            "solo ida",
+            "sencillo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pah-rah Grah-nah-dah, teh-neh-mos el tren Ah-veh deh ahl-tah veh-loh-see-dahd, oon vee-ah-heh dee-rek-toh keh soo-eh-leh doo-rahr oo-nahs trehs oh-rahs. El bee-yeh-teh deh ee-dah tee-eh-neh oon kohs-teh deh seh-ten-tah ee theen-koh eh-oo-ros. Loh keh-rree-ah deh ee-dah ee voo-ehl-tah? — For Granada, we have the high-speed AVE train, a direct trip that usually lasts about three hours. A one-way ticket costs 75 euros. Would you like a round trip?"
+    },
+    "t3_info": {
+      "id": "t3_info",
+      "prompt": "Para consultar conexiones y horarios sin un destino fijo, le sugiero usar las pantallas informativas o nuestra aplicación móvil, donde puede ver todo al instante. ¿Hay alguna ruta en particular que le interese explorar o prefiere que le ayude con la compra de un billete concreto?",
+      "branches": [
+        {
+          "keywords": [
+            "comprar",
+            "billete",
+            "sí",
+            "destino"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "solo información",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To check connections and timetables without a fixed destination, I suggest using the information screens or our mobile application, where you can see everything instantly. Is there any particular route you're interested in exploring, or would you prefer I help you with a specific ticket purchase?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfecto. Confirmo que el billete está disponible. ¿Hay alguna conexión de transporte urbano que le interese verificar a su llegada, o le preocupa sobremanera la puntualidad de los trenes en esta ruta?",
+      "branches": [
+        {
+          "keywords": [
+            "conexión",
+            "transbordo",
+            "autobús"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per-fek-toh. Kon-feer-moh keh el bee-yeh-teh es-tah dees-poh-nee-bleh. Ay ahl-goo-nah koh-nek-syohn deh trans-por-teh oor-bah-noh keh leh een-teh-reh-seh veh-ree-fee-kahr ah soo yeh-gah-dah, oh leh preh-oh-koo-pah soh-breh-mah-neh-rah lah poon-too-ah-lee-dahd deh los treh-nes en es-tah roo-tah? — Perfect. I confirm that the ticket is available. Is there any urban transport connection you'd like to check upon arrival, or are you particularly concerned about train punctuality on this route?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Entendido. No hay retrasos significativos previstos para hoy en esa ruta y tampoco conexiones urbanas obligatorias desde la estación de Granada. El tren sale del andén 4 a las 10:30. ¿Desea proceder con la compra del billete?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "comprar",
+            "adelante",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. No significant delays are expected today on that route, nor are there any mandatory urban connections from Granada station. The train leaves from platform 4 at 10:30 AM. Shall we proceed with the ticket purchase?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría ser más explícito? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you be more explicit? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. ¡Que tenga un buen viaje!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright. Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

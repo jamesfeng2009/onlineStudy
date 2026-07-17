@@ -1,0 +1,198 @@
+{
+  "id": "dlg-en-transport-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Bus Ticket Inquiry",
+  "opening": "Good morning! Where are you headed today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Where are you headed today?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "citycentre",
+            "station",
+            "airport"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "whichbus",
+            "howtoget",
+            "bestway"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! [ˈɡʊd ˈmɔːrnɪŋ!] Where are you headed today? (Idiomatic 'headed' means 'going', a common informal opening to ask for destination)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. (Common idiom for 'I didn't hear/understand'). Could you please rephrase or speak a little clearer?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Alright, for the City Centre, you'll want the number 22 bus. It leaves from Stand B. A single fare is £2.80. The journey usually takes about 30 minutes, roughly 8 stops, alighting at 'Grand Avenue'. What's your preference regarding the ticket?",
+      "branches": [
+        {
+          "keywords": [
+            "buy",
+            "ticket",
+            "single",
+            "fare"
+          ],
+          "nextTurnId": "t4_standard"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "thatsall",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, for the City Centre, you'll want the number 22 bus. (Natural phrasing 'you'll want' implies recommendation). It leaves from Stand B. A single fare is £2.80. The journey usually takes about 30 minutes, roughly 8 stops, alighting at 'Grand Avenue'. (Formal verb 'alight' for disembarking, used in public transport announcements). What's your preference regarding the ticket? (Common way to ask for choice)."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Right, there are a few ways to get around. Whereabouts are you hoping to reach, or is there a particular landmark you're aiming for? We can sort out the quickest route for you.",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "citycentre",
+            "station",
+            "airport"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "fastest",
+            "quickest"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, there are a few ways to get around. (Common informal agreement/acknowledgement). Whereabouts are you hoping to reach, or is there a particular landmark you're aiming for? We can sort out the quickest route for you. ('Sort out' is idiomatic for 'arrange/figure out')."
+    },
+    "t4_standard": {
+      "id": "t4_standard",
+      "prompt": "Excellent choice. One single fare coming right up. That'll be £2.80. Are you paying by cash or card?",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "card"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice. One single fare coming right up. (Idiom: 'coming right up' means preparing immediately). That'll be £2.80. Are you paying by cash or card?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "If you're looking for the quickest way to the city centre, the express bus service, route 100, is your best bet. It runs every 15 minutes from Stand C and gets you there in about 20 minutes, non-stop. A single fare is £3.50. Does that sound suitable?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "soundsgood",
+            "ok",
+            "suitable"
+          ],
+          "nextTurnId": "t4_express"
+        },
+        {
+          "keywords": [
+            "anotheroption",
+            "cheaper",
+            "different"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you're looking for the quickest way to the city centre, the express bus service, route 100, is your best bet. (Idiom: 'best bet' means best option). It runs every 15 minutes from Stand C and gets you there in about 20 minutes, non-stop. A single fare is £3.50. Does that sound suitable? (Polite check for agreement)."
+    },
+    "t4_express": {
+      "id": "t4_express",
+      "prompt": "Right then, one express single fare for £3.50. Cash or card?",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "card"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right then, (Common conversational filler, means 'okay then') one express single fare for £3.50. Cash or card?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're all set! Have a pleasant journey and enjoy your day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're all set! (Idiom: 'all set' means ready to go/finished). Have a pleasant journey and enjoy your day! (Standard polite closing).",
+      "isTerminal": true
+    }
+  }
+}

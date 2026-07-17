@@ -1,0 +1,101 @@
+{
+  "id": "dlg-it-weather-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Chiacchierata sul meteo",
+  "opening": "Che tempo inclemente oggi, non trovi? Sembra che il sole si sia preso una licenza incondizionata. Speravo di fare una passeggiata in montagna, ma a quanto pare i miei piani sono andati a farsi benedire. Tu avevi qualche intenzione per oggi, magari all'aperto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Che tempo inclemente oggi, non trovi? Sembra che il sole si sia preso una licenza incondizionata. Speravo di fare una passeggiata in montagna, ma a quanto pare i miei piani sono andati a farsi benedire. Tu avevi qualche intenzione per oggi, magari all'aperto?",
+      "branches": [
+        {
+          "keywords": [
+            "passeggiata",
+            "montagna",
+            "allaperto",
+            "avevointezioni"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What inclement weather today, don't you think? It seems the sun has taken an indefinite leave. I was hoping to go for a walk in the mountains, but apparently my plans have gone to hell. Did you have any intentions for today, maybe outdoors?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, capisco. Beh, forse è meglio così, dato il grigiore persistente. Non so tu, ma io trovo che questo clima umido e piovigginoso stia iniziando a influire anche sull'umore, per non parlare della produttività. Che ne pensi, ti condiziona più di quanto vorresti ammettere?",
+      "branches": [
+        {
+          "keywords": [
+            "umore",
+            "tristezza",
+            "depressione",
+            "sì"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I understand. Well, perhaps it's for the best, given the persistent gloom. I don't know about you, but I find this humid and drizzly weather is starting to affect my mood too, not to mention productivity. What do you think, does it affect you more than you'd like to admit?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capita, è una reazione piuttosto comune, in effetti. Spero solo che non si protragga a lungo; le previsioni per la settimana non sembrano promettenti, purtroppo. Si parla di un'onda di maltempo che dovrebbe stazionare da noi per un bel po'. Cosa ti aspetti dalle prossime giornate? Sei un tipo che consulta assiduamente i bollettini meteorologici?",
+      "branches": [
+        {
+          "keywords": [
+            "previsioni",
+            "maltempo",
+            "pioggia",
+            "nonbuone"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It happens, it's a quite common reaction, in fact. I just hope it doesn't drag on too long; the forecasts for the week don't look promising, unfortunately. They're talking about a wave of bad weather that should linger here for quite some time. What do you expect from the next few days? Are you someone who regularly consults weather reports?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ah, quindi preferisci lasciarti sorprendere! Un approccio interessante, se non altro ti risparmia l'ansia dell'attesa. Beh, speriamo che, nonostante le fosche previsioni, il tempo ci regali qualche sprazzo di sereno. Dopotutto, si dice che 'dopo il temporale viene il sereno', no? Magari è solo questione di pazienza.",
+      "branches": [
+        {
+          "keywords": [
+            "speriamo",
+            "pazienza",
+            "sereno",
+            "concordo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, so you prefer to be surprised! An interesting approach, if nothing else it saves you the anxiety of waiting. Well, let's hope that, despite the grim forecasts, the weather grants us some clear spells. After all, they say 'after the storm comes the calm', don't they? Maybe it's just a matter of patience."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ho afferrato bene. Oppure prova a usare parole diverse.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch it. Or try using different words."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare del più e del meno. Speriamo in un tempo migliore per le nostre prossime avventure! A presto.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure chatting about this and that. Let's hope for better weather for our next adventures! See you soon.",
+      "isTerminal": true
+    }
+  }
+}

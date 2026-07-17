@@ -1,0 +1,164 @@
+{
+  "id": "dlg-en-weather-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "A Change in the Air",
+  "opening": "Well, this weather is certainly something, isn't it? Bit of a mixed bag lately.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Well, this weather is certainly something, isn't it? Bit of a mixed bag lately – one minute it's glorious sunshine, the next it's absolutely tipping it down. What's your take on it?",
+      "branches": [
+        {
+          "keywords": [
+            "unpredictable",
+            "crazy",
+            "changeable",
+            "wild",
+            "frustrating",
+            "annoying"
+          ],
+          "nextTurnId": "t2_reaction"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Well, this weather is certainly something, isn't it? A bit unpredictable lately – one minute it's glorious sunshine, the next it's absolutely pouring rain. What's your opinion on it?"
+    },
+    "t2_reaction": {
+      "id": "t2_reaction",
+      "prompt": "I hear you! Whether it's the sheer unpredictability, the glorious sunshine, or the relentless grey, this weather certainly makes itself known. How does it typically influence your day-to-day life or mood?",
+      "branches": [
+        {
+          "keywords": [
+            "mood",
+            "energy",
+            "feeling",
+            "gloomy",
+            "happy",
+            "tired",
+            "uplifting",
+            "draining"
+          ],
+          "nextTurnId": "t3_mood_focus"
+        },
+        {
+          "keywords": [
+            "plans",
+            "activities",
+            "work",
+            "routine",
+            "cancel",
+            "change",
+            "outdoors",
+            "indoors"
+          ],
+          "nextTurnId": "t3_plans_activities_focus"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t2_reaction",
+      "promptTranslation": "I hear you! Whether it's the sheer unpredictability, the glorious sunshine, or the relentless grey, this weather certainly makes itself known. How does it typically influence your day-to-day life or mood?"
+    },
+    "t3_mood_focus": {
+      "id": "t3_mood_focus",
+      "prompt": "It's true, the weather can really get under your skin, or conversely, lift your spirits! Do you have particular strategies to manage your mood when the skies aren't cooperating, or ways you capitalize on the good days?",
+      "branches": [
+        {
+          "keywords": [
+            "coping",
+            "strategies",
+            "indoors",
+            "comfort",
+            "friends",
+            "distraction",
+            "exercise",
+            "read"
+          ],
+          "nextTurnId": "t4_conclude"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t3_mood_focus",
+      "promptTranslation": "It's true, the weather can really upset you, or conversely, make you feel happy! Do you have particular strategies to manage your mood when the skies aren't cooperating, or ways you take advantage of the good days?"
+    },
+    "t3_plans_activities_focus": {
+      "id": "t3_plans_activities_focus",
+      "prompt": "That's the rub, isn't it? Our daily lives are so intertwined with the weather. Are you someone who meticulously checks the forecast and plans accordingly, or do you prefer to just embrace spontaneity and adjust on the fly?",
+      "branches": [
+        {
+          "keywords": [
+            "forecast",
+            "check",
+            "plan",
+            "meticulous",
+            "organised",
+            "always",
+            "app"
+          ],
+          "nextTurnId": "t4_conclude"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t3_plans_activities_focus",
+      "promptTranslation": "That's the difficulty, isn't it? Our daily lives are so connected with the weather. Are you someone who carefully checks the forecast and plans based on it, or do you prefer to just be spontaneous and adjust as things happen?"
+    },
+    "t4_conclude": {
+      "id": "t4_conclude",
+      "prompt": "Well, it's certainly been a fascinating chat about the weather's whims and our various ways of dealing with them. It’s always interesting to hear different perspectives on something so universal. Thanks for sharing your insights!",
+      "branches": [
+        {
+          "keywords": [
+            "agree",
+            "thanks",
+            "interesting",
+            "yes",
+            "indeed",
+            "you'retooright"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t4_conclude",
+      "promptTranslation": "Well, it's certainly been a fascinating conversation about the weather's unpredictable changes and our different ways of dealing with them. It’s always interesting to hear different perspectives on something so universal. Thanks for sharing your insights!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you rephrase your thought on the weather?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase your thought on the weather?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Well, it's been a pleasure chatting about the weather's whims and vagaries. Take care, whatever the skies may bring!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Well, it's been a pleasure chatting about the weather's unpredictable changes and variations. Take care, whatever the skies may bring!",
+      "isTerminal": true
+    }
+  }
+}

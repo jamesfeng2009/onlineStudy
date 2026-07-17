@@ -1,0 +1,184 @@
+{
+  "id": "dlg-en-transport-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Buying a Bus Ticket",
+  "opening": "Hello, how can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, how can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "bus"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello — Hello, how can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Where are you going?",
+      "branches": [
+        {
+          "keywords": [
+            "citycenter",
+            "downtown"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Where are you going?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "A single ticket to the city center is £2.50. Is that okay?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "buy"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "toomuch",
+            "expensive"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single ticket to the city center is two pounds fifty. Is that okay?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Okay, here is your ticket. The bus to the city center leaves from Platform 3. It's the number 14 bus.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "stops",
+            "howmany"
+          ],
+          "nextTurnId": "t5_stops"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "changebus"
+          ],
+          "nextTurnId": "t5_transfer"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here is your ticket — Here is your ticket. The bus to the city center leaves from Platform 3. It's the number 14 bus."
+    },
+    "t5_stops": {
+      "id": "t5_stops",
+      "prompt": "It's about 5 stops to the city center, around 15 minutes.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "understand",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's about 5 stops to the city center, around 15 minutes."
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "No, you don't need to transfer for the city center. It's a direct bus.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "understand",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No, you don't need to transfer for the city center. It's a direct bus."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, can you say that again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry — Sorry, can you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Okay, have a good trip! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye — Goodbye! Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

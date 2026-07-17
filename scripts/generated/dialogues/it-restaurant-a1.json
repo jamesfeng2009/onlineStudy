@@ -1,0 +1,163 @@
+{
+  "id": "dlg-it-restaurant-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Al Ristorante",
+  "opening": "Buongiorno! Prego, si accomodi. Cosa desidera ordinare?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Prego, si accomodi. Cosa desidera ordinare?",
+      "branches": [
+        {
+          "keywords": [
+            "menu",
+            "carta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "consiglia",
+            "suggerisci"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pasta",
+            "pizza",
+            "acqua",
+            "birra",
+            "vino"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno — Good morning! Prego — Please, si accomodi — take a seat. Cosa desidera ordinare? — What do you wish to order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, ecco il menu. Ha già deciso?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "deciso"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "ancora"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo — Of course, ecco il menu — here is the menu. Ha già deciso? — Have you already decided?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oggi abbiamo una buona pasta al pomodoro o una pizza margherita. Cosa preferisce?",
+      "branches": [
+        {
+          "keywords": [
+            "pasta",
+            "pomodoro"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "menu",
+            "altro"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oggi — Today, abbiamo — we have, una buona pasta al pomodoro — a good pasta with tomato, o — or, una pizza margherita — a pizza margherita. Cosa preferisce? — What do you prefer?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Molto bene! E da bere?",
+      "branches": [
+        {
+          "keywords": [
+            "acqua",
+            "birra",
+            "vino"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "niente"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Molto bene! — Very good! E da bere? — And to drink?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto. Desidera altro o il conto?",
+      "branches": [
+        {
+          "keywords": [
+            "conto",
+            "pagare"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto — Perfect. Desidera altro — Do you wish anything else, o — or, il conto? — the bill?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Va bene. Il conto adesso?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "adesso",
+            "conto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene — Okay. Il conto — The bill, adesso? — now?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi? Può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie — Thank you, e — and, arrivederci! — goodbye!",
+      "isTerminal": true
+    }
+  }
+}

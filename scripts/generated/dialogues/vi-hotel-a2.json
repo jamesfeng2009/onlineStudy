@@ -1,0 +1,143 @@
+{
+  "id": "dlg-vi-hotel-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Nhận phòng khách sạn",
+  "opening": "Chào quý khách. Quý khách có đặt phòng trước không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách. Quý khách có đặt phòng trước không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "rồi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "không",
+            "chưa"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách (Chà-o quý khách) — Hello, esteemed guest. Do you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, xin quý khách cho biết tên đặt phòng ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "nguyễn",
+            "trần",
+            "lê",
+            "phạm",
+            "hoàng",
+            "phan",
+            "vũ",
+            "bùi",
+            "đỗ",
+            "đặng",
+            "dương"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vâng) — Yes, please tell me the name on the reservation."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ồ, vậy quý khách muốn đặt phòng ngay bây giờ ạ? Quý khách muốn phòng đơn hay phòng đôi?",
+      "branches": [
+        {
+          "keywords": [
+            "phòngđơn",
+            "đơn"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, so you want to book a room now? Do you want a single or double room?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vâng. Xin quý khách vui lòng cho xem căn cước công dân hoặc hộ chiếu ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "đây",
+            "của",
+            "tôi",
+            "được"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes. Please show your national ID card or passport."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Cảm ơn quý khách. Quý khách muốn thanh toán bằng tiền mặt hay thẻ tín dụng?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "tiền"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Do you want to pay by cash or credit card?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vâng. Bữa sáng được phục vụ từ 6 giờ đến 9 giờ. Quý khách có dùng bữa sáng không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Breakfast is served from 6 AM to 9 AM. Will you have breakfast?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "lại",
+            "nói"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin lỗi) — Sorry, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, phòng của quý khách là phòng 205. Chúc quý khách có một kỳ nghỉ vui vẻ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, your room is 205. We wish you a pleasant stay!",
+      "isTerminal": true
+    }
+  }
+}

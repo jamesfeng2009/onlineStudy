@@ -1,0 +1,180 @@
+{
+  "id": "dlg-en-restaurant-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "A Refined Dining Experience",
+  "opening": "Good evening, welcome to 'The Gilded Spoon'. Do you have a reservation, or may I seat you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good evening, welcome to 'The Gilded Spoon'. Do you have a reservation, or may I seat you?",
+      "branches": [
+        {
+          "keywords": [
+            "reservation",
+            "booked",
+            "yes",
+            "under"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening, welcome to 'The Gilded Spoon'. Do you have a reservation, or may I seat you? — [ɡʊd ˈiːvnɪŋ, ˈwɛlkəm tuː ðə ˈɡɪldɪd spuːn. duː juː hæv ə ˌrɛzərˈveɪʃən, ɔːr meɪ aɪ siːt juː?]"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I beg your pardon? Could you articulate that a little more clearly for me, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I beg your pardon? Could you articulate that a little more clearly for me, please? — (A polite, formal way to ask for repetition, equivalent to 'Sorry, what did you say?' but more refined.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent. Right this way, please. Here is your table. Have you had a chance to peruse our menu, or would you like a moment to settle in before I take your drink order?",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "order",
+            "drinks",
+            "starters"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "moment",
+            "time",
+            "later",
+            "not yet"
+          ],
+          "nextTurnId": "t2_wait"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Right this way, please. Here is your table. Have you had a chance to peruse our menu, or would you like a moment to settle in before I take your drink order? — (To 'peruse' [pəˈruːz] means to read or examine carefully. To 'settle in' means to get comfortable in a new place.)"
+    },
+    "t2_wait": {
+      "id": "t2_wait",
+      "prompt": "Certainly, take all the time you need. I'll circle back in a few minutes to see if you're ready to place your order, perhaps starting with some appetizers or a beverage.",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "now",
+            "what",
+            "recommendations",
+            "dietary"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, take all the time you need. I'll circle back in a few minutes to see if you're ready to place your order, perhaps starting with some appetizers or a beverage. — ('Circle back' [ˈsɜːrkl bæk] is an idiomatic expression meaning to return to a topic or person later.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfect. Are you ready to dive into the main course options, or perhaps you're pondering some of our chef's specials? Do let me know if you have any dietary restrictions or require recommendations.",
+      "branches": [
+        {
+          "keywords": [
+            "recommendations",
+            "suggest",
+            "what's good"
+          ],
+          "nextTurnId": "t4_take_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Are you ready to dive into the main course options, or perhaps you're pondering some of our chef's specials? Do let me know if you have any dietary restrictions or require recommendations. — ('Pondering' [ˈpɒndərɪŋ] means thinking deeply about. 'Dietary restrictions' are specific food requirements due to health or belief.)"
+    },
+    "t4_take_order": {
+      "id": "t4_take_order",
+      "prompt": "Splendid. For recommendations, I'd highly suggest the Pan-Seared Scallops or the Braised Lamb Shank, both perennial favourites. Regarding dietary needs, our kitchen is adept at accommodating most requests, from gluten-free to vegan. What can I get for you this evening?",
+      "branches": [
+        {
+          "keywords": [
+            "scallops",
+            "lamb",
+            "i'll have",
+            "that one",
+            "order"
+          ],
+          "nextTurnId": "t5_confirm_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Splendid. For recommendations, I'd highly suggest the Pan-Seared Scallops or the Braised Lamb Shank, both perennial favourites. Regarding dietary needs, our kitchen is adept at accommodating most requests, from gluten-free to vegan. What can I get for you this evening? — ('Perennial favourites' [pəˈrɛniəl ˈfeɪvərɪts] are dishes consistently popular year after year. 'Adept at accommodating' means skilled at adjusting to meet needs.)"
+    },
+    "t5_confirm_order": {
+      "id": "t5_confirm_order",
+      "prompt": "So, you'll be having the Pan-Seared Scallops, an excellent choice. Is there anything else I can fetch for you this evening, perhaps a dessert menu or another round of drinks, or are we all set?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "that's all",
+            "just the bill"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, you'll be having the Pan-Seared Scallops, an excellent choice. Is there anything else I can fetch for you this evening, perhaps a dessert menu or another round of drinks, or are we all set? — ('All set' [ɔːl sɛt] is a common informal phrase meaning 'finished' or 'ready to proceed'.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Very good. Enjoy your meal, and thank you for dining with us at 'The Gilded Spoon'. Have a splendid evening!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Very good. Enjoy your meal, and thank you for dining with us at 'The Gilded Spoon'. Have a splendid evening! — (A formal and polite farewell, wishing the customer well.)",
+      "isTerminal": true
+    }
+  }
+}

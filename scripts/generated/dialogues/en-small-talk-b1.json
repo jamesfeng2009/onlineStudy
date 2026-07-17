@@ -1,0 +1,257 @@
+{
+  "id": "dlg-en-small-talk-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Casual Chat at a Party",
+  "opening": "Hi there! How was your weekend?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! How was your weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "fun",
+            "amazing"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "busy",
+            "tiring",
+            "okay",
+            "alright"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hi there! How was your weekend?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "That sounds nice! Did you do anything interesting or watch any good movies?",
+      "branches": [
+        {
+          "keywords": [
+            "movies",
+            "film",
+            "watched",
+            "series"
+          ],
+          "nextTurnId": "t3a_movie"
+        },
+        {
+          "keywords": [
+            "hobby",
+            "read",
+            "sports",
+            "cooking",
+            "garden",
+            "walked"
+          ],
+          "nextTurnId": "t3b_hobby"
+        },
+        {
+          "keywords": [
+            "nothing",
+            "just",
+            "stayed",
+            "home"
+          ],
+          "nextTurnId": "t3c_nothing"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds nice! Did you do anything interesting or watch any good movies?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Oh, I understand. Weekends can be like that. Do you have any favorite hobbies or TV shows you're following?",
+      "branches": [
+        {
+          "keywords": [
+            "tv",
+            "shows",
+            "series",
+            "watched"
+          ],
+          "nextTurnId": "t3a_movie"
+        },
+        {
+          "keywords": [
+            "hobby",
+            "sports",
+            "reading",
+            "cooking",
+            "gaming"
+          ],
+          "nextTurnId": "t3b_hobby"
+        },
+        {
+          "keywords": [
+            "no",
+            "not really",
+            "nothing"
+          ],
+          "nextTurnId": "t3c_nothing"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, I understand. Weekends can be like that. Do you have any favorite hobbies or TV shows you're following?"
+    },
+    "t3a_movie": {
+      "id": "t3a_movie",
+      "prompt": "Oh really? What have you watched recently? Anything you'd recommend?",
+      "branches": [
+        {
+          "keywords": [
+            "movie",
+            "film",
+            "series",
+            "watched",
+            "recommend",
+            "seen"
+          ],
+          "nextTurnId": "t4a_movie_detail"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh really? What have you watched recently? Anything you'd recommend?"
+    },
+    "t3b_hobby": {
+      "id": "t3b_hobby",
+      "prompt": "That's cool! Tell me more about it. What do you enjoy most about it?",
+      "branches": [
+        {
+          "keywords": [
+            "enjoy",
+            "like",
+            "passion",
+            "fun",
+            "relaxing"
+          ],
+          "nextTurnId": "t4b_hobby_detail"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's cool! Tell me more about it. What do you enjoy most about it?"
+    },
+    "t3c_nothing": {
+      "id": "t3c_nothing",
+      "prompt": "No worries, sometimes it's good to just relax. Do you have any plans for the next weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "plans",
+            "going",
+            "seeing",
+            "visiting"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No worries, sometimes it's good to just relax. Do you have any plans for the next weekend?"
+    },
+    "t4a_movie_detail": {
+      "id": "t4a_movie_detail",
+      "prompt": "Sounds interesting! I'll have to add it to my watch list. Anyway, it was nice chatting with you!",
+      "branches": [
+        {
+          "keywords": [
+            "you",
+            "too",
+            "likewise",
+            "thanks",
+            "nice"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sounds interesting! I'll have to add it to my watch list. Anyway, it was nice chatting with you!"
+    },
+    "t4b_hobby_detail": {
+      "id": "t4b_hobby_detail",
+      "prompt": "That's really cool, I can see why you enjoy it. I've always wanted to try something like that. Well, it was nice chatting with you!",
+      "branches": [
+        {
+          "keywords": [
+            "you",
+            "too",
+            "likewise",
+            "thanks",
+            "nice"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's really cool, I can see why you enjoy it. I've always wanted to try something like that. Well, it was nice chatting with you!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "It was nice chatting with you! I hope you have a great rest of your day. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was nice chatting with you! I hope you have a great rest of your day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

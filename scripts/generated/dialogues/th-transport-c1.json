@@ -1,0 +1,241 @@
+{
+  "id": "dlg-th-transport-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "การเดินทางโดยระบบขนส่งสาธารณะ",
+  "opening": "สวัสดีค่ะ/ครับ จะไปที่ไหนคะ/ครับ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ จะไปที่ไหนคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "สีลม",
+            "อโศก",
+            "เพลินจิต"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เส้นทาง",
+            "ไปทางไหน",
+            "สายไหน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī k̀hâ/krạb, ca pị thī̀ h̄ịn khâ/krạb? — Hello, where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ สยาม/สีลม/อโศก เหรอคะ/ครับ ต้องต่อรถที่สถานีอโศก หรือจะไปตรงเลยคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ตรงไป",
+            "ไม่ต่อ",
+            "ไม่เปลี่ยน"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ต่อรถ",
+            "เปลี่ยนสาย",
+            "ต้องต่อ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ล่าช้าไหม",
+            "มีปัญหา",
+            "รถเสีย"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "X̌x S̄yām/S̄īlom/As̄ōk h̄r̄x khâ/krạb? T̂xng t̀x rk̄h thī̀ s̄t̄hānī As̄ōk h̄r̄ụ̄x ca pị trng ley khâ/krạb? — Oh, Siam/Silom/Asok, really? Do you need to transfer at Asok station or go directly?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "สนใจเส้นทางไหนเป็นพิเศษไหมคะ/ครับ หรืออยากทราบเกี่ยวกับจุดจอดสำคัญ",
+      "branches": [
+        {
+          "keywords": [
+            "สถานีไหน",
+            "จอดที่ไหน",
+            "ผ่านอะไร"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "แผนที่",
+            "ทั้งสาย",
+            "เส้นทางทั้งหมด"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "แนะนำ",
+            "ไปง่ายๆ",
+            "ดีที่สุด"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄ncı s̄ênthāng h̄ịn pĕn phis̄es̄ʹ mị k̄hâ/krạb h̄r̄ụ̄x yāk thrāb keī̀yw kạb c̄hud cxḍ s̄ảkhạỵ? — Are you interested in any particular route, or would you like to know about major stops?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ถ้าอย่างนั้นก็ไม่ต้องต่อรถค่ะ/ครับ ราคาตั๋วอยู่ที่ 45 บาทนะคะ/ครับ ขึ้นขบวนที่ชานชาลา 3 ได้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ล่าช้า",
+            "รอนานไหม"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ตกลง",
+            "เอาตั๋ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̄ĥā yàng nận k̆ mị̀ t̂xng t̀x rk̄h khâ/krạb. Rākā tạ̀w xyū̀ thī̀ s̄ī̀s̄ib-h̄â bāt ná khâ/krạb. K̄hụ̂n k̄hbuan thī̀ chānchālā s̄ām dâyl ley khâ/krạb. — In that case, no need to transfer. The ticket price is 45 baht. You can board the train on platform 3."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ถ้าต้องการต่อรถหรือดูแผนที่ เส้นทางหลักจะผ่านสถานีอโศกค่ะ/ครับ จากนั้นสามารถเปลี่ยนสายไปยังสุขุมวิทหรือสีลมได้ค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ราคา",
+            "กี่บาท",
+            "ตั๋ว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ล่าช้า",
+            "รอนานไหม"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ตกลง",
+            "เข้าใจแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̄ĥā t̂xngkār t̀x rk̄h h̄r̄ụ̄x dū p̄hænt̄hī̀ s̄ênthāng h̄lạk ca p̄h̀ān s̄t̄hānī As̄ōk khâ/krạb. Cāk nận s̄āmārt̄h pelī̀yn s̄āy pị yạng Suk̄humwith h̄r̄ụ̄x S̄īlom dâyl ley khâ/krạb. — If you need to transfer or see the map, the main route passes Asok station. From there, you can change lines to Sukhumvit or Silom."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ตอนนี้ยังไม่มีรายงานความล่าช้าที่สำคัญค่ะ/ครับ การเดินรถเป็นไปตามปกติ แต่ก็อาจมีเหตุสุดวิสัยบ้างเป็นบางครั้งนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ตกลง",
+            "งั้นเอา"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "เอาตั๋ว",
+            "ซื้อตั๋ว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̂xn nī̂ yạng mị̀ mī rāyngān khwām l̀āchá thī̀ s̄ảkhạỵ khâ/krạb. Kār deinn rk̄h pĕn pị tām paktati tæ̀ k̆ xāc mī h̄et̄u s̄ud wis̄ạy bâng pĕn bāng khrậng ná khâ/krạb. — Currently, there are no significant delays reported. Train operations are normal, but unforeseen circumstances can occur sometimes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่ค่อยได้ยินค่ะ/ครับ ช่วยพูดอีกครั้งได้ไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hx thos̄ʹ ná khâ/krạb, mị̀ kh̀xy dị̂yin khâ/krạb. Ch̀wy phūd xīk khrậng dâyl mị k̄hâ/krạb? — Excuse me, I didn't quite hear that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณค่ะ/ครับ ขอให้เดินทางโดยสวัสดิภาพนะคะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "K̄hx bkkhuṇ khâ/krạb, k̄hx h̄ı̂ deintāng doy s̄wạs̄diphāph ná khâ/krạb. — Thank you, have a safe journey.",
+      "isTerminal": true
+    }
+  }
+}

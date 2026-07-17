@@ -1,0 +1,329 @@
+{
+  "id": "dlg-vi-bank-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Giao dịch ngân hàng",
+  "opening": "Chào buổi sáng. Quý khách có thể cho biết hôm nay muốn thực hiện giao dịch gì tại ngân hàng chúng tôi ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào buổi sáng. Quý khách có thể cho biết hôm nay muốn thực hiện giao dịch gì tại ngân hàng chúng tôi ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "mở tài khoản",
+            "mở thẻ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chuyển tiền",
+            "gửi tiền"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "đổi tiền",
+            "ngoại tệ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lỗi atm",
+            "quên mã pin",
+            "kẹt thẻ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào buổi sáng (Chao buoi sang). Quý khách (Quy khach) có thể cho biết (co the cho biet) hôm nay (hom nay) muốn thực hiện (muon thuc hien) giao dịch (giao dich) gì tại ngân hàng (gi tai ngan hang) chúng tôi (chung toi) ạ? - Good morning. Could you please let us know what transaction you wish to perform at our bank today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, quý khách muốn mở tài khoản thanh toán thông thường hay tài khoản tiết kiệm có kỳ hạn? Chúng tôi có nhiều gói ưu đãi hấp dẫn, phù hợp với nhu cầu đa dạng của khách hàng.",
+      "branches": [
+        {
+          "keywords": [
+            "tài khoản thanh toán",
+            "tk thanh toán",
+            "thanh toán"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tài khoản tiết kiệm",
+            "tk tiết kiệm",
+            "tiết kiệm"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "tư vấn",
+            "chi tiết"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, would you like to open a regular current account or a term savings account? We have many attractive preferential packages, suitable for diverse customer needs."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ vâng, quý khách muốn chuyển tiền trong nước hay quốc tế? Và quý khách đã có thông tin tài khoản người nhận chưa ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "trong nước",
+            "nội địa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "phí chuyển",
+            "phí giao dịch",
+            "phí"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, would you like to transfer money domestically or internationally? And do you already have the recipient's account information?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Quý khách muốn đổi từ loại tiền nào sang loại tiền nào, và với số lượng khoảng bao nhiêu ạ? Tỷ giá hiện tại của chúng tôi khá cạnh tranh trên thị trường.",
+      "branches": [
+        {
+          "keywords": [
+            "usd sang vnd",
+            "đô sang việt",
+            "đô la"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "khác",
+            "ngoại tệ khác",
+            "ngoại tệ"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "tỷ giá",
+            "xem tỷ giá"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách (Quy khach) muốn đổi (muon doi) từ loại tiền nào (tu loai tien nao) sang loại tiền nào (sang loai tien nao), và với số lượng (va voi so luong) khoảng bao nhiêu (khoang bao nhieu) ạ? - Which currency would you like to exchange from and to, and approximately how much? Our current exchange rates are quite competitive in the market."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Với vấn đề về ATM hay mã PIN, quý khách vui lòng mô tả cụ thể hơn ạ. Quý khách đang gặp sự cố rút tiền, nuốt thẻ, hay cần cấp lại mã PIN?",
+      "branches": [
+        {
+          "keywords": [
+            "quên pin",
+            "cấp lại pin",
+            "đổi pin"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Regarding ATM or PIN issues, could you please describe it more specifically? Are you experiencing a cash withdrawal issue, card retention, or do you need a PIN reissuance?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Dạ vâng, để tiến hành, quý khách vui lòng xuất trình giấy tờ tùy thân và điền vào mẫu đơn này ạ. Nếu có bất kỳ thắc mắc nào, đừng ngần ngại hỏi nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "đã hiểu",
+            "vâng",
+            "xong"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "hỏi",
+            "thắc mắc",
+            "câu hỏi"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, to proceed, please present your identification documents and fill out this form. If you have any questions, don't hesitate to ask."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Để tư vấn kỹ lưỡng hơn, tôi cần quý khách cung cấp thêm một vài thông tin chi tiết. Vui lòng cho biết kỳ hạn mong muốn/quốc gia nhận/loại tiền muốn đổi ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "kỳ hạn",
+            "quốc gia",
+            "loại tiền",
+            "thông tin"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "hỏi",
+            "thắc mắc",
+            "câu hỏi"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To advise more thoroughly, I need you to provide a few more specific details. Please let me know your desired term/recipient country/currency you wish to exchange."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Quý khách có thể vui lòng nói rõ hơn về điều quý khách muốn tìm hiểu không ạ? Tôi sẽ giải đáp tận tình.",
+      "branches": [
+        {
+          "keywords": [
+            "chi tiết",
+            "cụ thể",
+            "giải thích"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "quay lại",
+            "giao dịch khác",
+            "menu"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Could you please clarify what you'd like to know more about? I will answer thoroughly."
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Đối với trường hợp này, quý khách vui lòng mang theo giấy tờ tùy thân đến quầy giao dịch để chúng tôi xác minh và hỗ trợ xử lý trực tiếp. Quy trình này thường mất khoảng 10-15 phút.",
+      "branches": [
+        {
+          "keywords": [
+            "đã rõ",
+            "vâng",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "mất bao lâu",
+            "thời gian",
+            "bao lâu"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For this situation, please bring your identification documents to the counter for us to verify and assist with direct processing. This process usually takes about 10-15 minutes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu rõ ý của quý khách. Quý khách có thể nhắc lại hoặc nói rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), tôi chưa hiểu rõ (toi chua hieu ro) ý của quý khách (y cua quy khach). Quý khách (Quy khach) có thể nhắc lại (co the nhac lai) hoặc nói rõ hơn (hoac noi ro hon) được không ạ (duoc khong a)? - Sorry, I didn't quite understand what you meant. Could you please repeat or elaborate?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ của ngân hàng chúng tôi. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn (Cam on) quý khách (quy khach) đã tin tưởng (da tin tuong) và sử dụng (va su dung) dịch vụ (dich vu) của ngân hàng (cua ngan hang) chúng tôi (chung toi). Chúc quý khách (Chuc quy khach) một ngày tốt lành (mot ngay tot lanh)! - Thank you for trusting and using our bank's services. Wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

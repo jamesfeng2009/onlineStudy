@@ -1,0 +1,122 @@
+{
+  "id": "dlg-vi-doctor-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Khám bác sĩ",
+  "opening": "Chào anh/chị. Hôm nay anh/chị cảm thấy không khỏe chỗ nào ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Hôm nay anh/chị cảm thấy không khỏe chỗ nào ạ? (Chào anh/chị — Chào anh/chị. Hôm nay anh/chị cảm thấy không khỏe chỗ nào ạ?)",
+      "branches": [
+        {
+          "keywords": [
+            "đauđầu",
+            "sốt",
+            "đauhọng"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. What's bothering you today? (Chào anh/chị — chao anh/chị. Hôm nay anh/chị cảm thấy không khỏe chỗ nào ạ? — hom nay anh/chị cam thay khong khoe cho nao a?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói rõ hơn một chút được không ạ? Tôi chưa nghe rõ. (Xin lỗi — Xin lỗi, anh/chị có thể nói rõ hơn một chút được không ạ? Tôi chưa nghe rõ.)",
+      "branches": [
+        {
+          "keywords": [
+            "cólẽ",
+            "vâng"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you elaborate a bit more? I didn't hear clearly. (Xin lỗi — sin loi, anh/chị co the noi ro hon mot chut duoc khong a? Toi chua nghe ro.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tôi hiểu rồi. Anh/chị đã bị như vậy bao lâu rồi và mức độ khó chịu/đau đớn như thế nào ạ? (Tôi hiểu rồi — Toi hieu roi. Anh/chị đã bị như vậy bao lâu rồi và mức độ khó chịu/đau đớn như thế nào ạ?)",
+      "branches": [
+        {
+          "keywords": [
+            "vàingày",
+            "mộttuần",
+            "vớimứcđộnhẹ"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. How long have you been experiencing this, and what's the level of discomfort/pain? (Tôi hiểu rồi — toi hieu roi. Anh/chị đã bị như vậy bao lâu rồi — anh/chị da bi nhu vay bao lau roi — và mức độ khó chịu/đau đớn như thế nào ạ?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ngoài triệu chứng chính đó, anh/chị có gặp thêm biểu hiện nào khác không, ví dụ như ho, sổ mũi, hay mệt mỏi toàn thân? Đặc biệt, anh/chị có tiền sử dị ứng thuốc hay mắc bệnh mãn tính nào không ạ? (Ngoài triệu chứng chính — Ngoai trieu chung chinh do, anh/chi co gap them bieu hien nao khac khong?)",
+      "branches": [
+        {
+          "keywords": [
+            "khôngcó",
+            "khônggìkhác",
+            "khôngdịứng"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Besides that main symptom, are you experiencing any other manifestations, such as coughing, runny nose, or general fatigue? Specifically, do you have any history of drug allergies or chronic diseases? (Ngoài triệu chứng chính — ngoai trieu chung chinh do, anh/chị co gap them bieu hien nao khac khong? — are you experiencing any other manifestations?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Cảm ơn anh/chị đã cung cấp thông tin chi tiết. Dựa trên những gì anh/chị mô tả, có vẻ như anh/chị đang mắc phải một tình trạng nhiễm trùng nhẹ. Tôi sẽ kê đơn thuốc hạ sốt, giảm đau và vitamin. Anh/chị nhớ uống thuốc đúng liều và nghỉ ngơi đầy đủ nhé. Nếu các triệu chứng không thuyên giảm sau 3 ngày, anh/chị nên tái khám. (Cảm ơn anh/chị — Cam on anh/chi da cung cap thong tin chi tiet. Neu cac trieu chung — Neu cac trieu chung khong thuyen giam sau 3 ngay, anh/chi nen tai kham.)",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "vângạ",
+            "tôisẽuống"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "táikhám",
+            "câuhỏi",
+            "thắcmắc"
+          ],
+          "nextTurnId": "t4a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for providing detailed information. Based on what you described, it seems you're suffering from a mild infection. I will prescribe fever reducers, pain relievers, and vitamins. Please remember to take the medication as prescribed and get plenty of rest. If symptoms don't improve after 3 days, you should come back for a follow-up. (Cảm ơn anh/chị — cam on anh/chi. Neu cac trieu chung — neu cac trieu chung khong thuyen giam sau ba ngay, anh/chi nen tai kham.)"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Nếu có bất kỳ thắc mắc nào khác về đơn thuốc hoặc tình trạng sức khỏe, anh/chị đừng ngần ngại hỏi lại. Còn bây giờ, anh/chị cứ nghỉ ngơi và uống thuốc đúng giờ nhé. (Thắc mắc — Thac mac nao khac ve don thuoc hoac tinh trang suc khoe, anh/chi dung ngan ngai hoi lai.)",
+      "branches": [
+        {
+          "keywords": [
+            "khôngcòn",
+            "hiểu",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "If you have any other questions about the prescription or your health condition, please don't hesitate to ask again. For now, just rest and take your medication on time. (Thắc mắc — thac mac nao khac ve don thuoc hoac tinh trang suc khoe, anh/chi dung ngan ngai hoi lai. — any other questions about the prescription or health condition, please don't hesitate to ask again.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc anh/chị chóng khỏe. Hẹn gặp lại nếu cần thiết.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "I wish you a speedy recovery. See you again if necessary.",
+      "isTerminal": true
+    }
+  }
+}

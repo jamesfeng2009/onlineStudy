@@ -1,0 +1,265 @@
+{
+  "id": "dlg-vi-directions-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Dẫn Lối Đến Bảo Tàng Dân Tộc Học",
+  "opening": "Chào bạn, trông bạn có vẻ đang tìm kiếm gì đó. Tôi có thể giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, trông bạn có vẻ đang tìm kiếm gì đó. Tôi có thể giúp gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "giúp",
+            "vâng",
+            "cần"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "không",
+            "cảm ơn",
+            "ổn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tôi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban) — Hello, you seem to be looking for something. Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À vâng, đúng rồi. Tôi đang muốn tìm đường đến Bảo tàng Dân tộc học Việt Nam. Bạn có biết đường đi không?",
+      "branches": [
+        {
+          "keywords": [
+            "bảo tàng",
+            "dân tộc học",
+            "việt nam"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "xa",
+            "khó",
+            "làm sao"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "cảm ơn"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, vâng (ah vang), đúng rồi — Yes, that's right. I'm trying to find my way to the Vietnam Museum of Ethnology. Do you know the way?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "À, Bảo tàng Dân tộc học ư? Không khó lắm đâu. Bạn cứ đi thẳng con đường này khoảng 500 mét, đến ngã tư đầu tiên có đèn tín hiệu giao thông thì rẽ trái. Đi thêm chừng 200 mét nữa là thấy cổng bảo tàng bên tay phải.",
+      "branches": [
+        {
+          "keywords": [
+            "xa",
+            "bao nhiêu",
+            "đèn tín hiệu",
+            "ngã tư",
+            "mốc"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "xe buýt",
+            "phương tiện",
+            "taxi",
+            "đi lại"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ rồi",
+            "đã hiểu"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "nhắc lại"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the Museum of Ethnology? It's not too difficult. Just go straight down this road for about 500 meters, then at the first intersection with a traffic light, turn left. Go another 200 meters or so and you'll see the museum gate on your right."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Vậy là khoảng hơn nửa cây số, rồi rẽ trái ở ngã tư có đèn tín hiệu, đúng không? Có mốc nào dễ nhận biết hơn ở ngã tư đó không bạn?",
+      "branches": [
+        {
+          "keywords": [
+            "mốc",
+            "dễ nhận biết",
+            "đúng rồi",
+            "chính xác"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "rõ",
+            "vậy thôi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "không rõ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, it's about over half a kilometer, then turn left at the intersection with the traffic light, right? Is there any easier-to-recognize landmark at that intersection?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Nghe có vẻ hơi xa một chút nhỉ. Liệu có tuyến xe buýt nào đi qua đó không? Tôi ngại đi bộ đường dài.",
+      "branches": [
+        {
+          "keywords": [
+            "xe buýt",
+            "tuyến",
+            "có không"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "thôi được"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "nói lại"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds a bit far, doesn't it? Is there any bus route that goes past there? I'm reluctant to walk long distances."
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Đúng rồi bạn. Ngay góc ngã tư đó có một cửa hàng tiện lợi Circle K khá lớn và một cây ATM của Vietcombank. Cứ thấy hai thứ đó là bạn rẽ trái nhé. Không thể nhầm được đâu.",
+      "branches": [
+        {
+          "keywords": [
+            "rõ rồi",
+            "cảm ơn",
+            "đã hiểu",
+            "tuyệt"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "nhắc lại"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's right. Right at that intersection, there's a fairly large Circle K convenience store and a Vietcombank ATM. As soon as you see those two, turn left. You can't miss it."
+    },
+    "t5b": {
+      "id": "t5b",
+      "prompt": "Có chứ. Bạn có thể bắt tuyến xe buýt số 14 hoặc 38 ngay tại trạm đối diện đây. Hai tuyến này đều đi qua cổng bảo tàng. Xuống ở trạm 'Bảo tàng Dân tộc học' là được. Đi xe buýt thì khoảng 15-20 phút thôi.",
+      "branches": [
+        {
+          "keywords": [
+            "xe buýt",
+            "số 14",
+            "số 38",
+            "cảm ơn",
+            "tuyệt vời"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "lộ trình"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, there is. You can catch bus route number 14 or 38 right at the station opposite here. Both these routes go past the museum gate. Get off at the 'Vietnam Museum of Ethnology' stop. It only takes about 15-20 minutes by bus."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tuyệt vời quá! Cảm ơn bạn rất nhiều vì đã chỉ dẫn tận tình. Tôi đã hình dung ra rồi.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "tuyệt vời",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "That's great! Thank you so much for your detailed directions. I've got a good picture of it now."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe chưa rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "lặp lại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loy), bạn có thể nhắc lại không? (ban co the nhac lai khong?) — Sorry, could you repeat that? I didn't hear you clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Không có gì đâu bạn. Chúc bạn có một chuyến tham quan vui vẻ nhé!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "No problem at all. Have a pleasant visit!",
+      "isTerminal": true
+    }
+  }
+}

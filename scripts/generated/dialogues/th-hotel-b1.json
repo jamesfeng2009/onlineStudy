@@ -1,0 +1,136 @@
+{
+  "id": "dlg-th-hotel-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "การเช็คอินโรงแรม",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเราค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเราค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เช็คอิน",
+            "จองห้อง",
+            "เข้าพัก"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawàtdee kâ. Yin-dee tôn-ráp sùu rohng-raem kâ. Mee à-rai hâi chûay mái ká? — Hello. Welcome to our hotel. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ได้เลยค่ะ คุณลูกค้าได้จองห้องไว้ภายใต้ชื่ออะไรคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "นามสกุล",
+            "ของฉัน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi loey kâ. Koon lôok-káa dâi jawng hâwng wái paai-tâi chêu à-rai ká? — All right. Under what name did you reserve the room, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอบคุณค่ะ รบกวนขอพาสปอร์ตหรือบัตรประชาชนของคุณลูกค้าด้วยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ได้ค่ะ",
+            "ได้ครับ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khòp-koon kâ. Róp-kuan kŏr páat-bpòrt rĕu bàt prà-chaa-chon kŏng koon lôok-káa dûay kâ. — Thank you. May I please have your passport or ID card?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เรียบร้อยค่ะ สำหรับการชำระเงิน คุณลูกค้าสะดวกเป็นบัตรเครดิตหรือเงินสดคะ? และรวมอาหารเช้าด้วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรเครดิต",
+            "บัตร",
+            "เงินสด",
+            "สด"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rîap-rói kâ. Săm-ràp gaan cham-rá ngern, koon lôok-káa sà-dùak bpen bàt-kre-dìt rĕu ngern-sòt ká? Láew ruam aa-hăan cháo dûay mái ká? — Done. For payment, would you prefer credit card or cash? And does it include breakfast?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ขอบคุณค่ะ/ครับ ทุกอย่างเรียบร้อยแล้วนะคะ/ครับ นี่คีย์การ์ดห้องพักค่ะ ห้องของคุณลูกค้าอยู่ชั้น 5 หมายเลข 503 ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ดีมาก"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khòp-koon kâ/kráp. Túk yàang rîap-rói láew ná ká/kráp. Nêe kee-gâat hâwng-pák kâ. Hâwng kŏng koon lôok-káa yùu chán hâa máai-láyk hâa-sŏng-sǎam kâ. — Thank you. Everything is settled. Here is your room key card. Your room is on the 5th floor, number 503."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ คุณลูกค้ากรุณาพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khŏr-tôht ná ká/kráp. Koon lôok-káa gà-rú-naa pôot èek kráng dâi mái ká/kráp? — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "หวังว่าคุณลูกค้าจะมีความสุขกับการเข้าพักที่โรงแรมของเรานะคะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wăng wâa koon lôok-káa jà mee kwaam-sùk gàp gaan kâo-pák têe rohng-raem kŏng rao ná ká/kráp. — We hope you enjoy your stay at our hotel.",
+      "isTerminal": true
+    }
+  }
+}

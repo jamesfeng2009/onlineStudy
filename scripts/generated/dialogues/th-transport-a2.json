@@ -1,0 +1,198 @@
+{
+  "id": "dlg-th-transport-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "การเดินทางด้วยรถโดยสาร",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตั๋ว",
+            "ไป",
+            "อยากไป",
+            "ซื้อตั๋ว"
+          ],
+          "nextTurnId": "t2_ask_dest"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii kráp/kâ. Mii à-rai hâi chûay mái kráp/ká? — Hello, how can I help you?"
+    },
+    "t2_ask_dest": {
+      "id": "t2_ask_dest",
+      "prompt": "จะไปที่ไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "siam"
+          ],
+          "nextTurnId": "t3_info_siam"
+        },
+        {
+          "keywords": [
+            "สีลม",
+            "silom"
+          ],
+          "nextTurnId": "t3_info_silom"
+        },
+        {
+          "keywords": [
+            "สถานีรถไฟฟ้า",
+            "bts"
+          ],
+          "nextTurnId": "t3_info_bts"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja bpai têe năi kráp/ká? — Where are you going?"
+    },
+    "t3_info_siam": {
+      "id": "t3_info_siam",
+      "prompt": "ไปสยาม รถเมล์สาย 25 ค่าโดยสาร 15 บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ซื้อ",
+            "ตั๋ว",
+            "จ่าย",
+            "นี่ครับ",
+            "นี่ค่ะ"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpai Sa-yăam. Rót-may săai yêe-sìp hâa. Kâa doi săan síp-hâa bâat kráp/ká. — To Siam, bus number 25, the fare is 15 baht."
+    },
+    "t3_info_silom": {
+      "id": "t3_info_silom",
+      "prompt": "ไปสีลม รถเมล์สาย 77 ค่าโดยสาร 20 บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ซื้อ",
+            "ตั๋ว",
+            "จ่าย",
+            "นี่ครับ",
+            "นี่ค่ะ"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpai Sĕe-lom. Rót-may săai jèt-jèt. Kâa doi săan yêe-sìp bâat kráp/ká. — To Silom, bus number 77, the fare is 20 baht."
+    },
+    "t3_info_bts": {
+      "id": "t3_info_bts",
+      "prompt": "ไปสถานีรถไฟฟ้า รถเมล์สาย 36 ค่าโดยสาร 25 บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ซื้อ",
+            "ตั๋ว",
+            "จ่าย",
+            "นี่ครับ",
+            "นี่ค่ะ"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpai Sa-tăa-nee rót-fai-fáa. Rót-may săai săam-sìp hòk. Kâa doi săan yêe-sìp hâa bâat kráp/ká. — To the Skytrain station, bus number 36, the fare is 25 baht."
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "นี่ครับ/ค่ะ ตั๋ว ขอให้เดินทางปลอดภัยครับ/ค่ะ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nêe kráp/ká. Dtǔa. Kŏr hâi dern taang bplòt pai kráp/ká! — Here's your ticket. Have a safe journey!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจ ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr tôht kráp/ká. Mâi kâo jai. Chûay pôot èek kráng dâi mái kráp/ká? — Sorry, I don't understand. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณครับ/ค่ะ ขอให้เดินทางปลอดภัยครับ/ค่ะ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kòp kun kráp/ká. Kŏr hâi dern taang bplòt pai kráp/ká! — Thank you. Have a safe journey!",
+      "isTerminal": true
+    }
+  }
+}

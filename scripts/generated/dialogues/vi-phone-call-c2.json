@@ -1,0 +1,186 @@
+{
+  "id": "dlg-vi-phone-call-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Cuộc gọi điện thoại: Xác định danh tính và để lại lời nhắn",
+  "opening": "A lô, Văn phòng Kiến trúc Hoàng Gia nghe đây. Xin lỗi, tôi có thể giúp gì cho anh/chị?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "A lô, Văn phòng Kiến trúc Hoàng Gia nghe đây. Xin lỗi, tôi có thể giúp gì cho anh/chị?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi",
+            "là",
+            "gọi",
+            "muốn",
+            "nói",
+            "gặp"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nhầm",
+            "số"
+          ],
+          "nextTurnId": "t-wrong-number"
+        },
+        {
+          "keywords": [
+            "",
+            "xin",
+            "chào"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A lô — Hello, Văn phòng Kiến trúc Hoàng Gia nghe đây — Hoàng Gia Architecture Office speaking. Xin lỗi, tôi có thể giúp gì cho anh/chị? — Excuse me, how may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ vâng, tôi đã rõ. Anh/chị vui lòng cho biết mình cần liên hệ với ai và về vấn đề gì để tôi tiện chuyển lời hoặc sắp xếp cuộc hẹn ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gặp",
+            "nói",
+            "việc",
+            "gấp",
+            "liênhệ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "đểlại",
+            "tinnhắn",
+            "nhắn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, tôi đã rõ — Yes, I understand. Anh/chị vui lòng cho biết mình cần liên hệ với ai và về vấn đề gì để tôi tiện chuyển lời hoặc sắp xếp cuộc hẹn ạ? — Could you please let me know who you need to contact and regarding what matter, so I can conveniently convey the message or arrange an appointment?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, tôi hiểu sự gấp rút của anh/chị. Tuy nhiên, hiện tại anh/chị [Tên người] đang trong một cuộc họp quan trọng/đã ra ngoài. Anh/chị có muốn tôi ghi lại lời nhắn hoặc đặt lịch hẹn lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "nhắn",
+            "tin",
+            "lời",
+            "nhắn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "hẹn",
+            "lịch",
+            "sắpxếp"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "vậy"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, tôi hiểu sự gấp rút của anh/chị — Yes, I understand your urgency. Tuy nhiên, hiện tại anh/chị [Tên người] đang trong một cuộc họp quan trọng/đã ra ngoài — However, [Name] is currently in an important meeting/out of the office. Anh/chị có muốn tôi ghi lại lời nhắn hoặc đặt lịch hẹn lại không ạ? — Would you like me to take a message or reschedule the appointment?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng, anh/chị cứ nói ạ. Tôi sẽ ghi lại cẩn thận và chuyển lời ngay khi có thể.",
+      "branches": [
+        {
+          "keywords": [
+            "đãxong",
+            "xong",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dạ vâng, anh/chị cứ nói ạ — Yes, please go ahead. Tôi sẽ ghi lại cẩn thận và chuyển lời ngay khi có thể — I will note it down carefully and pass on the message as soon as possible."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, anh/chị muốn tôi sắp xếp lại vào lúc nào thì tiện ạ? Hay anh/chị muốn tôi bảo anh/chị ấy gọi lại cho mình?",
+      "branches": [
+        {
+          "keywords": [
+            "gọilại",
+            "gọi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tùy"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị muốn tôi sắp xếp lại vào lúc nào thì tiện ạ? — Yes, when would be convenient for me to reschedule? Hay anh/chị muốn tôi bảo anh/chị ấy gọi lại cho mình? — Or would you prefer I ask them to call you back?"
+    },
+    "t-wrong-number": {
+      "id": "t-wrong-number",
+      "prompt": "À vâng, vậy chắc anh/chị gọi nhầm số rồi. Chúc anh/chị một ngày tốt lành nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "À vâng — Oh, I see, vậy chắc anh/chị gọi nhầm số rồi — then you must have dialed the wrong number. Chúc anh/chị một ngày tốt lành nhé — Have a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe không rõ lắm. Anh/chị vui lòng nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "vâng"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi — Sorry, tôi nghe không rõ lắm — I didn't hear that clearly. Anh/chị vui lòng nói lại được không ạ? — Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, tôi đã ghi nhận. Cảm ơn anh/chị đã gọi. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, tôi đã ghi nhận — Yes, I've noted it. Cảm ơn anh/chị đã gọi — Thank you for calling. Chúc anh/chị một ngày tốt lành! — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

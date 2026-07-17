@@ -1,0 +1,210 @@
+{
+  "id": "dlg-de-directions-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Wegbeschreibung in Berlin",
+  "opening": "Entschuldigen Sie die Störung, aber Sie sehen etwas verloren aus. Kann ich Ihnen vielleicht behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Entschuldigen Sie die Störung, aber Sie sehen etwas verloren aus. Kann ich Ihnen vielleicht behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "brandenburgertor",
+            "weg",
+            "richtung"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "café",
+            "kaffee",
+            "empfehlung"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "brauchekeinehilfe"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entschuldigen Sie die Störung, aber Sie sehen etwas verloren aus. Kann ich Ihnen vielleicht behilflich sein? — Excuse the interruption, but you look a bit lost. Can I perhaps help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, zum Brandenburger Tor! Das ist ein Katzensprung von hier. Laufen Sie einfach diese Straße hier geradeaus, die Wilhelmstraße. Da können Sie es kaum verfehlen.",
+      "branches": [
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "fuß",
+            "gehen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ubahn",
+            "bus",
+            "öffis",
+            "transport"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, zum Brandenburger Tor! Das ist ein Katzensprung von hier. Laufen Sie einfach diese Straße hier geradeaus, die Wilhelmstraße. Da können Sie es kaum verfehlen. — Ah, to the Brandenburg Gate! That's a stone's throw from here. Just walk straight down this street here, Wilhelmstraße. You can barely miss it."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Für einen guten Kaffee kann ich Ihnen das 'Café Einstein Stammhaus' empfehlen, das ist hier gleich um die Ecke in der Kurfürstenstraße. Ein echter Klassiker für Berliner Kaffeehauskultur!",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "danke",
+            "ja",
+            "höretsichgutan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Für einen guten Kaffee kann ich Ihnen das 'Café Einstein Stammhaus' empfehlen, das ist hier gleich um die Ecke in der Kurfürstenstraße. Ein echter Klassiker für Berliner Kaffeehauskultur! — For good coffee, I can recommend 'Café Einstein Stammhaus', it's just around the corner here on Kurfürstenstraße. A real classic for Berlin coffee house culture!"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Zu Fuß benötigen Sie etwa 15 bis 20 Minuten, je nach Tempo. Es ist ein schöner Spaziergang, der Sie direkt zum Pariser Platz führt.",
+      "branches": [
+        {
+          "keywords": [
+            "schneller",
+            "alternative",
+            "ubahn",
+            "bus"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "danke",
+            "verstanden",
+            "allesklar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zu Fuß benötigen Sie etwa 15 bis 20 Minuten, je nach Tempo. Es ist ein schöner Spaziergang, der Sie direkt zum Pariser Platz führt. — On foot, you'll need about 15 to 20 minutes, depending on your pace. It's a nice walk that will lead you directly to Pariser Platz."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ja, die U-Bahn ist hier die beste Wahl, wenn es schneller gehen soll. Nehmen Sie die U5 von der Station 'Unter den Linden', die ist direkt hier vorn. Eine Station bis zum Brandenburger Tor, oder zwei bis 'Bundestag' und dann über den Pariser Platz laufen.",
+      "branches": [
+        {
+          "keywords": [
+            "ubahnstation",
+            "wo",
+            "station"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "danke",
+            "verstanden",
+            "allesklar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja, die U-Bahn ist hier die beste Wahl, wenn es schneller gehen soll. Nehmen Sie die U5 von der Station 'Unter den Linden', die ist direkt hier vorn. Eine Station bis zum Brandenburger Tor, oder zwei bis 'Bundestag' und dann über den Pariser Platz laufen. — Yes, the subway is the best choice here if you want to be faster. Take the U5 from 'Unter den Linden' station, which is right up front here. One stop to the Brandenburg Gate, or two to 'Bundestag' and then walk across Pariser Platz."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Die U-Bahn-Station 'Unter den Linden' ist nur etwa hundert Meter von hier. Folgen Sie einfach der Straße geradeaus, und Sie sehen den Eingang auf der linken Seite. Sie können sie wirklich kaum übersehen.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "allesklar",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Die U-Bahn-Station 'Unter den Linden' ist nur etwa hundert Meter von hier. Folgen Sie einfach der Straße geradeaus, und Sie sehen den Eingang auf der linken Seite. Sie können sie wirklich kaum übersehen. — The 'Unter den Linden' subway station is only about a hundred meters from here. Just follow the street straight ahead, and you'll see the entrance on the left side. You can really hardly miss it."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Wie bitte? Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte wiederholen? — Pardon? Excuse me, I didn't quite catch what you said. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen! Ich wünsche Ihnen noch einen schönen Tag und viel Spaß in Berlin!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern geschehen! Ich wünsche Ihnen noch einen schönen Tag und viel Spaß in Berlin! — You're welcome! I wish you a pleasant day and a lot of fun in Berlin!",
+      "isTerminal": true
+    }
+  }
+}

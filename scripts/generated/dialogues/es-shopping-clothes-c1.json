@@ -1,0 +1,311 @@
+{
+  "id": "dlg-es-shopping-clothes-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Asesoramiento de Estilo y Compras",
+  "opening": "¡Bienvenido/a a nuestra boutique! ¿En qué puedo asesorarle hoy? Estamos a su entera disposición.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Bienvenido/a a nuestra boutique! ¿En qué puedo asesorarle hoy? Estamos a su entera disposición.",
+      "branches": [
+        {
+          "keywords": [
+            "mirar",
+            "echarunvistazo",
+            "navegar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "buscar",
+            "necesito",
+            "quiero"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "talla",
+            "medida",
+            "probador"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Bienvenido/a (Byehn-veh-NEE-doh/dah) a nuestra boutique! ¿En qué (ehn keh) puedo asesorarle (ah-seh-soh-RAHR-leh) hoy? Estamos a su entera disposición."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Magnífico! Le invito a que se sienta como en casa. No dude en llamarme si surge alguna pregunta o si necesita que le eche una mano con alguna prenda en particular.",
+      "branches": [
+        {
+          "keywords": [
+            "chaqueta",
+            "vestido",
+            "pantalones",
+            "camisa",
+            "zona",
+            "sección"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "moda",
+            "tendencia",
+            "estilo",
+            "novedades"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "seguir",
+            "mirando",
+            "gracias",
+            "ok"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Magnífico (Mahg-NEE-fee-koh)! Le invito (leh een-VEE-toh) a que se sienta (seh SYEHN-tah) como en casa. No dude en llamarme si surge alguna pregunta o si necesita que le eche una mano con alguna prenda en particular."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Claro, ¿qué tipo de prenda o artículo específico busca? Así podré orientarle con mayor precisión.",
+      "branches": [
+        {
+          "keywords": [
+            "vestido",
+            "pantalones",
+            "camisa",
+            "falda",
+            "americana"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro (KLAH-roh), ¿qué tipo (keh TEE-poh) de prenda o artículo específico busca? Así podré orientarle con mayor precisión."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¿Qué talla suele usar habitualmente? Tenemos una tabla de equivalencias y nuestro personal está a su disposición para cualquier medida.",
+      "branches": [
+        {
+          "keywords": [
+            "s",
+            "m",
+            "l",
+            "xl",
+            "38",
+            "40",
+            "42"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What size do you usually wear? We have a conversion chart, and our staff is at your disposal for any measurements."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pues mire, esta temporada la tendencia se inclina por los tonos tierra y los tejidos naturales, con un toque de sofisticación desenfadada. ¿Le apetece que le muestre algo de la nueva colección?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "mostrar",
+            "ver",
+            "interesa"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "mirar",
+            "prefiero",
+            "gracias"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, this season the trend leans towards earth tones and natural fabrics, with a touch of relaxed sophistication. Would you like me to show you something from the new collection?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfecto, tómese su tiempo. Si necesita cualquier cosa, no tiene más que buscarme. Estoy por aquí cerca.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adiós",
+            "vale",
+            "listo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pregunta",
+            "duda",
+            "otra",
+            "algo"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Take your time. If you need anything, just look for me. I'll be around here."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "¡Excelente! Permítame que le acompañe a la sección correspondiente o que le traiga algunas opciones para que se las pruebe. ¿Desea probarse algo de inmediato?",
+      "branches": [
+        {
+          "keywords": [
+            "probarme",
+            "probador",
+            "sí",
+            "probar"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "másopciones",
+            "otro",
+            "vermas"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "pensar",
+            "mirar",
+            "luego",
+            "ahora",
+            "no"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent! Allow me to accompany you to the relevant section or bring you some options for you to try on. Do you wish to try something on immediately?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Estupendo. Los probadores están al fondo a la derecha. Le espero por aquí por si necesita otra talla o una segunda opinión. Tómese su tiempo.",
+      "branches": [
+        {
+          "keywords": [
+            "comprar",
+            "llevar",
+            "meencanta",
+            "sí",
+            "quiero"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "otratalla",
+            "otrocolor",
+            "diferente",
+            "noqueda"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "mirar",
+            "pensar"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great. The fitting rooms are at the back on the right. I'll wait around here in case you need another size or a second opinion. Take your time."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetirlo con un poco más de claridad? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that a little more clearly? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Ha sido un placer atenderle! Esperamos verle de nuevo muy pronto. Que tenga un día espléndido.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure serving you! We hope to see you again very soon. Have a splendid day.",
+      "isTerminal": true
+    }
+  }
+}

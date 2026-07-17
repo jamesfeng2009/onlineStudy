@@ -1,0 +1,161 @@
+{
+  "id": "dlg-ms-bank-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Urusan Bank",
+  "opening": "Selamat datang ke Bank Maju. Bagaimana kami boleh membantu anda hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Bank Maju. Bagaimana kami boleh membantu anda hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "buka akaun",
+            "akaunbaru"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pindahan",
+            "transfer"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "atm",
+            "masalahkad"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tukarmatawang",
+            "tukarduit"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Bank Maju — Welcome to Bank Maju. Bagaimana kami boleh membantu anda hari ini? — How can we help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, untuk pembukaan akaun. Jenis akaun simpanan atau akaun semasa yang anda inginkan?",
+      "branches": [
+        {
+          "keywords": [
+            "simpanan",
+            "saving"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, untuk pembukaan akaun — for account opening. Jenis akaun simpanan — What type of savings account or akaun semasa — current account yang anda inginkan — do you want?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Pindahan wang. Adakah ini pindahan tempatan atau antarabangsa?",
+      "branches": [
+        {
+          "keywords": [
+            "tempatan",
+            "lokal"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pindahan wang — Money transfer. Adakah ini pindahan tempatan — Is this a local transfer or antarabangsa — international?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Saya faham. Apa masalah spesifik yang anda hadapi dengan ATM?",
+      "branches": [
+        {
+          "keywords": [
+            "kadtersekat",
+            "tersekat"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya faham — I understand. Apa masalah spesifik — What specific issue yang anda hadapi — are you facing dengan ATM — with the ATM?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Untuk penukaran mata wang, mata wang asing apakah yang ingin anda tukarkan?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "dolaramerika"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For currency exchange, which foreign currency would you like to exchange?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Faham. Untuk meneruskan urusan anda, boleh saya minta kad pengenalan atau pasport anda, serta dokumen berkaitan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "tentu",
+            "ini"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. To proceed with your transaction, may I please have your ID card or passport, and relevant documents?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Terima kasih. Sila tunggu sebentar sementara saya semak butiran anda.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "okey",
+            "saya tunggu"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Sila tunggu sebentar — Please wait a moment sementara saya semak butiran anda — while I check your details."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang semula? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat? I didn't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana berurusan dengan kami. Selamat hari anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for banking with us. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "id": "dlg-es-airport-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Facturación en el aeropuerto",
+  "opening": "¡Hola! Bienvenido al mostrador de facturación. ¿En qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Bienvenido al mostrador de facturación. ¿En qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "tengo un vuelo",
+            "voy a volar",
+            "facturar"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) Bienvenido al mostrador de facturación. (Bee-en-veh-nee-doh al mohs-trah-dor deh fak-too-rah-syohn.) ¿En qué puedo ayudarle hoy? (En keh pweh-doh ah-yoo-dahr-leh oy? — Hello! Welcome to the check-in counter. How can I help you today?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfecto. ¿Podría mostrarme su pasaporte y su billete, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "aquí tiene",
+            "aquí están",
+            "claro",
+            "tenga"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "un momento",
+            "buscando"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. (Perr-fek-toh.) ¿Podría mostrarme su pasaporte y su billete, por favor? (Poh-dree-ah mohs-trahr-meh soo pah-sah-por-teh ee soo bee-yeh-teh, por fah-vor? — Perfect. Could you show me your passport and your ticket, please?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¿Va a facturar alguna maleta?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "una",
+            "dos",
+            "maletas"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "no",
+            "solo equipaje de mano",
+            "nada"
+          ],
+          "nextTurnId": "t4b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Va a facturar (Vah ah fak-too-rahr) alguna maleta? (ahl-goo-nah mah-leh-tah? — Are you checking any luggage?)"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "De acuerdo. Colóquela en la cinta, por favor. Su tarjeta de embarque está lista. Su puerta es la B12 y su vuelo sale a las 10:30.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adios",
+            "hasta luego"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De acuerdo. (Deh ah-kwer-doh.) Colóquela en la cinta, por favor. (Koh-loh-keh-lah en lah seen-tah, por fah-vor.) Su tarjeta de embarque (soo tar-heh-tah deh em-bahr-keh) está lista. Su puerta es la B12 y su vuelo sale a las 10:30. (Soo pwer-tah es lah Beh doh-theh ee soo bweh-loh sah-leh ah lahs dyeh-th treh-een-tah. — Alright. Place it on the conveyor belt, please. Your boarding pass is ready. Your gate is B12 and your flight departs at 10:30.)"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Perfecto. Entonces ya puede dirigirse a seguridad. Su tarjeta de embarque está lista. Su puerta es la B12 y su vuelo sale a las 10:30.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adios",
+            "hasta luego"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. (Perr-fek-toh.) Entonces ya puede dirigirse a seguridad. (En-ton-ses yah pweh-deh dee-ree-heers-eh ah seh-goo-ree-dad.) Su tarjeta de embarque (soo tar-heh-tah deh em-bahr-keh) está lista. Su puerta es la B12 y su vuelo sale a las 10:30. (Soo pwer-tah es lah Beh doh-theh ee soo bweh-loh sah-leh ah lahs dyeh-th treh-een-tah. — Perfect. Then you can now head to security. Your boarding pass is ready. Your gate is B12 and your flight departs at 10:30.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? ¿Podría repetirlo, por favor? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? Could you repeat that, please? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un buen viaje. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a good trip. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

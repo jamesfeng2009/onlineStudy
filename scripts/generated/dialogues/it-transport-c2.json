@@ -1,0 +1,152 @@
+{
+  "id": "dlg-it-transport-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Disavventura in Stazione",
+  "opening": "Buon pomeriggio! Le posso essere d'aiuto per qualcosa, magari con l'acquisto di un biglietto o informazioni sui treni?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buon pomeriggio! Le posso essere d'aiuto per qualcosa, magari con l'acquisto di un biglietto o informazioni sui treni?",
+      "branches": [
+        {
+          "keywords": [
+            "biglietto",
+            "comprare",
+            "acquistare"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "treno",
+            "orario",
+            "ritardo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buon pomeriggio! (Bwon pom-eh-REE-joh!) Le posso essere d'aiuto per qualcosa, (Le POS-soh ES-seh-reh da-YOO-toh per kwal-KOH-za,) magari con l'acquisto di un biglietto o informazioni sui treni? (mah-GAH-ree kon la-KWEE-sto dee oon bee-LYEH-toh oh een-for-ma-TSYO-nee swee TREH-nee?) — Good afternoon! Can I help you with anything, perhaps with buying a ticket or train information?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, volentieri. Per quale destinazione? E di che tipo di biglietto ha bisogno, singolo, andata e ritorno, o forse un abbonamento?",
+      "branches": [
+        {
+          "keywords": [
+            "roma",
+            "milano",
+            "firenze",
+            "napoli",
+            "venezia",
+            "andataeritorno",
+            "singolo",
+            "soloandata"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "consiglio",
+            "nonso",
+            "quale",
+            "aiuto"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo, (CHER-toh,) volentieri. (vo-len-TYEH-ree.) Per quale destinazione? (Per KWAH-leh des-tee-na-TSYO-neh?) E di che tipo di biglietto ha bisogno, (Eh dee kee TEE-po dee bee-LYEH-toh ah bee-ZOH-nyo,) singolo, (SING-go-lo,) andata e ritorno, (an-DAH-ta eh ree-TOR-no,) o forse un abbonamento? (oh FOR-seh oon ab-bo-na-MEN-to?) — Certainly, with pleasure. For which destination? And what type of ticket do you need, single, round-trip, or perhaps a pass?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certo, dimmi pure. Riguardo a cosa in particolare? Orari, ritardi, binari, o magari qualche informazione su coincidenze?",
+      "branches": [
+        {
+          "keywords": [
+            "ritardo",
+            "ritardi"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, tell me. Regarding what in particular? Schedules, delays, platforms, or perhaps some information about connections?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Capisco. Per esempio, un biglietto di andata e ritorno per Milano. Preferisce prima o seconda classe? E per quando, oggi stesso o una data specifica?",
+      "branches": [
+        {
+          "keywords": [
+            "prima",
+            "classeprima"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. For example, a round-trip ticket to Milan. Do you prefer first or second class? And for when, today or a specific date?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dipende dalle sue esigenze. Se viaggia spesso su questa tratta, un abbonamento potrebbe convenire. Altrimenti, per un viaggio occasionale, il singolo o l'andata e ritorno sono le opzioni più logiche.",
+      "branches": [
+        {
+          "keywords": [
+            "abbonamento",
+            "spesso",
+            "mensile",
+            "annuale"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It depends on your needs. If you travel often on this route, a pass might be convenient. Otherwise, for an occasional trip, a single or round-trip ticket are the most logical options."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Certo. Per poterti aiutare in modo più preciso, potresti indicarmi il numero del treno o la destinazione che ti interessa?",
+      "branches": [
+        {
+          "keywords": [
+            "treno",
+            "numero",
+            "frecciarossa",
+            "intercity"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. To help you more precisely, could you tell me the train number or the destination you are interested in?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe ripetere, magari con altre parole?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (Mee SKOO-zee), non ho afferrato bene. (non oh af-fer-RAH-toh BEH-neh.) Potrebbe ripetere, (po-TREB-beh ree-PEH-teh-reh,) magari con altre parole? (mah-GAH-ree kon AL-treh pa-RO-leh?) — Excuse me, I didn't quite catch that. Could you repeat, perhaps with different words?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Perfetto, allora procedo con l'emissione. Sarà pronto in un attimo. Grazie e buon viaggio!",
+      "branches": [],
+      "fallbackBranchId": "t7",
+      "promptTranslation": "Perfect, then I'll proceed with the issuance. It will be ready in a moment. Thank you and have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

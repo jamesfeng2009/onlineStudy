@@ -1,0 +1,166 @@
+{
+  "id": "dlg-en-taxi-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Taxi Ride",
+  "opening": "Hello. Where do you want to go?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. Where do you want to go?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "hospital"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "",
+            "please",
+            "yes"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello - Hello. Where do you want to go?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Please say again.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "ok"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry - Sorry? Please say again."
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Okay. Do you have luggage?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "one",
+            "two",
+            "bag"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "please"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay - Okay. Do you have luggage?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Okay. The fare is ten dollars. Is this okay?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "okay",
+            "good"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "please"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay - Okay. The fare is ten dollars. Is this okay?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "How do you want to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "money"
+          ],
+          "nextTurnId": "t5_cash"
+        },
+        {
+          "keywords": [
+            "card",
+            "creditcard"
+          ],
+          "nextTurnId": "t5_card"
+        },
+        {
+          "keywords": [
+            "",
+            "please"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How do you want to pay - How do you want to pay?"
+    },
+    "t5_cash": {
+      "id": "t5_cash",
+      "prompt": "Thank you. Here is your change.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you - Thank you. Here is your change."
+    },
+    "t5_card": {
+      "id": "t5_card",
+      "prompt": "Thank you. Payment complete.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you - Thank you. Payment complete."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Goodbye. Have a good day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye - Goodbye. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

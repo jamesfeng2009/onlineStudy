@@ -1,0 +1,550 @@
+{
+  "id": "dlg-fr-weather-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Discussion météo : entre averses et éclaircies",
+  "opening": "Dis-moi, tu as jeté un œil à la météo ce matin ? On dirait que le temps ne sait plus sur quel pied danser ces derniers jours.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Dis-moi, tu as jeté un œil à la météo ce matin ? On dirait que le temps ne sait plus sur quel pied danser ces derniers jours.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "exact",
+            "mauvais",
+            "pluie",
+            "gris"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "oui",
+            "beau",
+            "soleil",
+            "chaud"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "regardé"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dis-moi, tu as jeté un œil à la météo ce matin ? On dirait que le temps ne sait plus sur quel pied danser ces derniers jours. (Dee-mwah, tyoo ah zhe-tay uhn euy ah lah may-tay-oh suh mah-tan? On dee-ray kuh luh tahn nuh say ploo syoor kel pyay dahn-say say der-nyay zhoor. — Tell me, did you glance at the weather forecast this morning? It seems the weather can't make up its mind these past few days.)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Ah oui, c'est vrai qu'il fait un temps à ne pas mettre un chien dehors, surtout avec ces averses inopinées. Tu avais prévu quelque chose en extérieur ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "annulé",
+            "changé",
+            "impossible"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "intérieur",
+            "dehors"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "déprimant",
+            "fatigant",
+            "moral"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah oui, c'est vrai qu'il fait un temps à ne pas mettre un chien dehors (ah wee, say vray keel fay uhn tahn ah nuh pah mehtr uhn shyan duh-or), surtout avec ces averses inopinées. Tu avais prévu quelque chose en extérieur? — Oh yes, it's true that it's dreadful weather (literally 'weather not to put a dog out in'), especially with these unexpected downpours. Did you have something planned outdoors?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Tu as raison, le soleil est agréable quand il daigne montrer le bout de son nez. Mais gare aux apparences, les prévisions annoncent un rafraîchissement. Tu en profites pour sortir ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "profite",
+            "sortir",
+            "balade"
+          ],
+          "nextTurnId": "t3d"
+        },
+        {
+          "keywords": [
+            "non",
+            "reste",
+            "maison",
+            "frais"
+          ],
+          "nextTurnId": "t3e"
+        },
+        {
+          "keywords": [
+            "changeant",
+            "rafraîchissement",
+            "trompeur"
+          ],
+          "nextTurnId": "t3f"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tu as raison, le soleil est agréable quand il daigne montrer le bout de son nez (tyoo ah ray-zohn, luh soh-lay ee tah-gray-yabl kahn-tee dayn moh-tray luh boo duh sohn nay). Mais gare aux apparences, les prévisions annoncent un rafraîchissement. Tu en profites pour sortir? — You're right, the sun is pleasant when it deigns to show its face. But beware of appearances, the forecast announces a cooling down. Are you taking advantage of it to go out?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Eh bien, pour faire court, c'est un peu la loterie. Des éclaircies timides par-ci, des averses soudaines par-là. Il vaudrait mieux avoir un parapluie à portée de main, juste au cas où. Tu as des projets pour la journée ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "extérieur",
+            "parc",
+            "promenade"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "oui",
+            "intérieur",
+            "maison",
+            "travail"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "non",
+            "rien",
+            "spécial"
+          ],
+          "nextTurnId": "t3e"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eh bien, pour faire court (eh byan, poor fair koor), c'est un peu la loterie. Des éclaircies timides par-ci, des averses soudaines par-là. Il vaudrait mieux avoir un parapluie à portée de main, juste au cas où. Tu as des projets pour la journée? — Well, to make a long story short, it's a bit of a lottery. Timid clear spells here and there, sudden showers there. It would be better to have an umbrella handy, just in case. Do you have plans for the day?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "C'est frustrant, n'est-ce pas ? On a l'impression que la météo nous dicte nos vies parfois. J'espère que tu as pu trouver une solution de repli. On se croirait en automne !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "solution",
+            "adapté",
+            "trouvé"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "non",
+            "dommage",
+            "déçu",
+            "pas"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "automne",
+            "saison",
+            "changé"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est frustrant, n'est-ce pas? On a l'impression que la météo nous dicte nos vies parfois. J'espère que tu as pu trouver une solution de repli. On se croirait en automne ! — It's frustrating, isn't it? It feels like the weather dictates our lives sometimes. I hope you were able to find a backup plan. One would think it's autumn!"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Tant mieux si tes projets ne dépendent pas des caprices du ciel. Il y a un certain confort à rester au chaud et au sec quand il fait grise mine dehors, n'est-ce pas ? Par contre, on annonce des températures un peu plus clémentes en fin de semaine.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "confort",
+            "sec",
+            "chaud"
+          ],
+          "nextTurnId": "t4d"
+        },
+        {
+          "keywords": [
+            "mieux",
+            "finsemaine",
+            "espère"
+          ],
+          "nextTurnId": "t4e"
+        },
+        {
+          "keywords": [
+            "hiver",
+            "été",
+            "printemps"
+          ],
+          "nextTurnId": "t4f"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tant mieux si tes projets ne dépendent pas des caprices du ciel. Il y a un certain confort à rester au chaud et au sec quand il fait grise mine dehors, n'est-ce pas? Par contre, on annonce des températures un peu plus clémentes en fin de semaine. — All the better if your plans don't depend on the whims of the sky. There's a certain comfort in staying warm and dry when it's looking gloomy outside, isn't there? However, slightly milder temperatures are announced for the end of the week."
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Je comprends tout à fait. Ce temps maussade a tendance à peser sur le moral. On a presque l'impression d'être en plein hiver ! J'espère que quelques rayons de soleil parviendront à percer la grisaille bientôt pour nous remonter le moral.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "soleil",
+            "moral",
+            "besoin"
+          ],
+          "nextTurnId": "t4e"
+        },
+        {
+          "keywords": [
+            "hiver",
+            "froid",
+            "gris"
+          ],
+          "nextTurnId": "t4f"
+        },
+        {
+          "keywords": [
+            "comment",
+            "faire",
+            "habitude"
+          ],
+          "nextTurnId": "t4g"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je comprends tout à fait. Ce temps maussade a tendance à peser sur le moral. On a presque l'impression d'être en plein hiver ! J'espère que quelques rayons de soleil parviendront à percer la grisaille bientôt pour nous remonter le moral. — I completely understand. This gloomy weather tends to weigh on one's spirits. It almost feels like the middle of winter! I hope some sunbeams manage to break through the greyness soon to lift our spirits."
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "Profites-en bien ! C'est toujours un plaisir d'être dehors quand il fait beau, même si c'est de courte durée. Tu as une destination particulière ou juste une balade spontanée ?",
+      "branches": [
+        {
+          "keywords": [
+            "destination",
+            "parc",
+            "ville"
+          ],
+          "nextTurnId": "t4h"
+        },
+        {
+          "keywords": [
+            "spontanée",
+            "balade",
+            "hasard"
+          ],
+          "nextTurnId": "t4i"
+        },
+        {
+          "keywords": [
+            "court",
+            "dommage",
+            "éphémère"
+          ],
+          "nextTurnId": "t4j"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Profites-en bien ! C'est toujours un plaisir d'être dehors quand il fait beau, même si c'est de courte durée. Tu as une destination particulière ou juste une balade spontanée ? — Enjoy it thoroughly! It's always a pleasure to be outside when the weather's nice, even if it's short-lived. Do you have a specific destination or just a spontaneous stroll?"
+    },
+    "t3e": {
+      "id": "t3e",
+      "prompt": "Effectivement, parfois, même avec un rayon de soleil, on préfère cocooner. C'est aussi une façon de recharger les batteries. Tu as des lectures ou des films au programme pour cette journée à l'abri ?",
+      "branches": [
+        {
+          "keywords": [
+            "lecture",
+            "livre",
+            "roman"
+          ],
+          "nextTurnId": "t4k"
+        },
+        {
+          "keywords": [
+            "film",
+            "série",
+            "regarder"
+          ],
+          "nextTurnId": "t4l"
+        },
+        {
+          "keywords": [
+            "cuisine",
+            "ménage",
+            "travailler"
+          ],
+          "nextTurnId": "t4m"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Effectivement, parfois, même avec un rayon de soleil, on préfère cocooner. C'est aussi une façon de recharger les batteries. Tu as des lectures ou des films au programme pour cette journée à l'abri ? — Indeed, sometimes, even with a ray of sunshine, one prefers to cocoon. It's also a way to recharge one's batteries. Do you have any books or movies planned for this day indoors?"
+    },
+    "t3f": {
+      "id": "t3f",
+      "prompt": "Oui, c'est le propre des saisons intermédiaires. On ne sait jamais trop à quoi s'attendre. Ce qui est sûr, c'est qu'il faut toujours prévoir un petit lainage et un parapluie en France ! As-tu des projets qui dépendent de cette instabilité ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "affecte",
+            "dépend"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "non",
+            "indépendant",
+            "pas"
+          ],
+          "nextTurnId": "t4d"
+        },
+        {
+          "keywords": [
+            "france",
+            "vrai",
+            "changement"
+          ],
+          "nextTurnId": "t4n"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, c'est le propre des saisons intermédiaires. On ne sait jamais trop à quoi s'attendre. Ce qui est sûr, c'est qu'il faut toujours prévoir un petit lainage et un parapluie en France ! As-tu des projets qui dépendent de cette instabilité ? — Yes, that's typical of transitional seasons. You never quite know what to expect. What's certain is that you should always plan for a light wool garment and an umbrella in France! Do you have any plans that depend on this instability?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "C'est l'essentiel, savoir rebondir ! On ne va pas se laisser abattre par quelques gouttes. En tout cas, merci d'avoir partagé tes impressions. Je dois y aller. À bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "C'est l'essentiel, savoir rebondir ! On ne va pas se laisser abattre par quelques gouttes. En tout cas, merci d'avoir partagé tes impressions. Je dois y aller. À bientôt ! — That's the main thing, knowing how to bounce back! We're not going to let a few drops get us down. Anyway, thanks for sharing your thoughts. I have to go. See you soon!",
+      "isTerminal": true
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Je comprends ta déception. C'est toujours un peu frustrant quand la météo contrarie nos envies. J'espère que le temps sera plus clément pour tes prochaines sorties. Il faut que je te laisse. Bonne continuation !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Je comprends ta déception. C'est toujours un peu frustrant quand la météo contrarie nos envies. J'espère que le temps sera plus clément pour tes prochaines sorties. Il faut que je te laisse. Bonne continuation ! — I understand your disappointment. It's always a bit frustrating when the weather thwarts our desires. I hope the weather will be kinder for your next outings. I have to leave you. All the best!",
+      "isTerminal": true
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Oui, on est souvent surpris par ces changements brusques. Il n'y a plus vraiment de saison ! Mais c'est aussi ce qui fait le charme des discussions sur la météo, n'est-ce pas ? Allez, je file. Au plaisir de te revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Oui, on est souvent surpris par ces changements brusques. Il n'y a plus vraiment de saison ! Mais c'est aussi ce qui fait le charme des discussions sur la météo, n'est-ce pas ? Allez, je file. Au plaisir de te revoir ! — Yes, we're often surprised by these sudden changes. There aren't really seasons anymore! But that's also what makes discussions about the weather charming, isn't it? Alright, I'm off. Hope to see you again!",
+      "isTerminal": true
+    },
+    "t4d": {
+      "id": "t4d",
+      "prompt": "Absolument ! Un bon livre, une boisson chaude, et le monde peut bien faire ce qu'il veut dehors. C'est aussi ça, le bonheur simple. Je dois te quitter maintenant. À très bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Absolument ! Un bon livre, une boisson chaude, et le monde peut bien faire ce qu'il veut dehors. C'est aussi ça, le bonheur simple. Je dois te quitter maintenant. À très bientôt ! — Absolutely! A good book, a hot drink, and the world can do what it wants outside. That's simple happiness too. I have to leave you now. See you very soon!",
+      "isTerminal": true
+    },
+    "t4e": {
+      "id": "t4e",
+      "prompt": "On croise les doigts pour que les prévisions soient justes et que le soleil revienne vite ! Un peu de lumière ne fera de mal à personne. Pour ma part, je dois filer. Excellente journée à toi !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "On croise les doigts pour que les prévisions soient justes et que le soleil revienne vite ! Un peu de lumière ne fera de mal à personne. Pour ma part, je dois filer. Excellente journée à toi ! — Let's cross our fingers that the forecasts are accurate and the sun returns quickly! A little light won't hurt anyone. As for me, I have to run. Have a great day!",
+      "isTerminal": true
+    },
+    "t4f": {
+      "id": "t4f",
+      "prompt": "Chacun ses préférences, c'est bien normal ! L'important est de trouver son bonheur, peu importe la saison. En tout cas, j'ai été ravi de discuter avec toi. Je te laisse. À la prochaine !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chacun ses préférences, c'est bien normal ! L'important est de trouver son bonheur, peu importe la saison. En tout cas, j'ai été ravi de discuter avec toi. Je te laisse. À la prochaine ! — To each their own preferences, that's quite normal! The important thing is to find happiness, no matter the season. Anyway, I was delighted to chat with you. I'll leave you. Until next time!",
+      "isTerminal": true
+    },
+    "t4g": {
+      "id": "t4g",
+      "prompt": "C'est une bonne question ! Souvent, c'est en se créant une ambiance douillette à la maison, avec des activités plaisantes, que l'on parvient à contrer la grisaille. J'espère que tu trouveras ta recette. Je dois y aller. Portes-toi bien !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "C'est une bonne question ! Souvent, c'est en se créant une ambiance douillette à la maison, avec des activités plaisantes, que l'on parvient à contrer la grisaille. J'espère que tu trouveras ta recette. Je dois y aller. Portes-toi bien ! — That's a good question! Often, it's by creating a cozy atmosphere at home, with pleasant activities, that one manages to counter the gloom. I hope you find your recipe. I have to go. Take care!",
+      "isTerminal": true
+    },
+    "t4h": {
+      "id": "t4h",
+      "prompt": "Ah, c'est parfait ! Profite bien de ta balade. J'espère que le temps tiendra le coup pour que tu puisses profiter pleinement de ta destination. Pour ma part, je dois te laisser. Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah, c'est parfait ! Profite bien de ta balade. J'espère que le temps tiendra le coup pour que tu puisses profiter pleinement de ta destination. Pour ma part, je dois te laisser. Bonne journée ! — Ah, that's perfect! Enjoy your stroll. I hope the weather holds up so you can fully enjoy your destination. As for me, I have to leave you. Have a good day!",
+      "isTerminal": true
+    },
+    "t4i": {
+      "id": "t4i",
+      "prompt": "Le meilleur moyen de découvrir de nouveaux horizons ! La spontanéité a du bon. J'espère que tu feras de belles découvertes. Je dois y aller. À bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Le meilleur moyen de découvrir de nouveaux horizons ! La spontanéité a du bon. J'espère que tu feras de belles découvertes. Je dois y aller. À bientôt ! — The best way to discover new horizons! Spontaneity has its advantages. I hope you make some beautiful discoveries. I have to go. See you soon!",
+      "isTerminal": true
+    },
+    "t4j": {
+      "id": "t4j",
+      "prompt": "Oui, c'est le revers de la médaille, ces belles éclaircies sont souvent éphémères. Mais il faut les saisir quand elles se présentent ! Je dois te laisser maintenant. Au plaisir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Oui, c'est le revers de la médaille, ces belles éclaircies sont souvent éphémères. Mais il faut les saisir quand elles se présentent ! Je dois te laisser maintenant. Au plaisir ! — Yes, that's the flip side, these beautiful clear spells are often ephemeral. But you have to seize them when they appear! I have to leave you now. My pleasure!",
+      "isTerminal": true
+    },
+    "t4k": {
+      "id": "t4k",
+      "prompt": "Ah, la lecture, un excellent programme pour ces journées ! Je te souhaite de passer un très bon moment en compagnie de tes livres. Je dois te laisser. Bonne lecture !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah, la lecture, un excellent programme pour ces journées ! Je te souhaite de passer un très bon moment en compagnie de tes livres. Je dois te laisser. Bonne lecture ! — Ah, reading, an excellent program for these days! I wish you a very good time in the company of your books. I have to leave you. Happy reading!",
+      "isTerminal": true
+    },
+    "t4l": {
+      "id": "t4l",
+      "prompt": "Rien de tel qu'un bon film ou une série pour s'évader quand il fait maussade. Profite bien de ton écran ! Je dois te laisser. À la prochaine !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rien de tel qu'un bon film ou une série pour s'évader quand il fait maussade. Profite bien de ton écran ! Je dois te laisser. À la prochaine ! — Nothing beats a good movie or series to escape when the weather is gloomy. Enjoy your screen time! I have to leave you. Until next time!",
+      "isTerminal": true
+    },
+    "t4m": {
+      "id": "t4m",
+      "prompt": "C'est bien aussi de s'occuper l'esprit et les mains ! J'espère que tu auras une journée productive et agréable. Je dois te laisser. Excellente journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "C'est bien aussi de s'occuper l'esprit et les mains ! J'espère que tu auras une journée productive et agréable. Je dois te laisser. Excellente journée ! — It's also good to keep your mind and hands busy! I hope you have a productive and pleasant day. I have to leave you. Have a great day!",
+      "isTerminal": true
+    },
+    "t4n": {
+      "id": "t4n",
+      "prompt": "C'est une constante, n'est-ce pas ? La météo en France, c'est toujours un sujet de conversation intarissable ! J'ai été ravi d'en discuter avec toi. Je te laisse. Au plaisir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "C'est une constante, n'est-ce pas ? La météo en France, c'est toujours un sujet de conversation intarissable ! J'ai été ravi d'en discuter avec toi. Je te laisse. Au plaisir ! — That's a constant, isn't it? The weather in France is always an inexhaustible topic of conversation! I was delighted to discuss it with you. I'll leave you. My pleasure!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Excuse-moi, je n'ai pas bien compris. Pourrais-tu répéter ou reformuler, s'il te plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter",
+            "reformuler"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse-moi, je n'ai pas bien compris. Pourrais-tu répéter ou reformuler, s'il te plaît? (ek-skyz-mwah, zhuh nay pah byan kohn-pree. poor-ray-tyoo ray-pay-tay oo ruh-for-myoo-lay, seel tuh play? — Excuse me, I didn't quite understand. Could you please repeat or rephrase?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci pour cette discussion enrichissante. À bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci pour cette discussion enrichissante. À bientôt ! — Thanks for this enriching discussion. See you soon!",
+      "isTerminal": true
+    }
+  }
+}

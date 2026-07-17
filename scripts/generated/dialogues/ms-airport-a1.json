@@ -1,0 +1,135 @@
+{
+  "id": "dlg-ms-airport-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Di Lapangan Terbang",
+  "opening": "Selamat datang ke lapangan terbang. Ke mana anda mahu pergi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke lapangan terbang. Ke mana anda mahu pergi?",
+      "branches": [
+        {
+          "keywords": [
+            "kualalumpur",
+            "kl"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke lapangan terbang (Selamat datang ke lapangan terbang). — Welcome to the airport. Ke mana anda mahu pergi (Ke mana anda mahu pergi)? — Where do you want to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, bagus. Boleh saya lihat pas masuk dan pasport anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "pasmasuk",
+            "pasport",
+            "saya"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "dimana",
+            "pasmasuk",
+            "pasport"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, bagus. (Oh, bagus.) — Oh, good. Boleh saya lihat pas masuk dan pasport anda? (Boleh saya lihat pas masuk dan pasport anda?) — May I see your boarding pass and passport?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Pintu pagar anda nombor tiga. Masa berlepas pukul satu petang.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "dimana",
+            "pintu",
+            "pagar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih. (Terima kasih.) — Thank you. Pintu pagar anda nombor tiga. (Pintu pagar anda nombor tiga.) — Your gate is number three. Masa berlepas pukul satu petang. (Masa berlepas pukul satu petang.) — Departure time is one PM."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Pintu pagar tiga di sana, selepas pemeriksaan keselamatan. Sila ikut tanda.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gate three is over there, after security check. Please follow the signs."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Maaf (Maaf) — Sorry, boleh ulang sekali lagi (boleh ulang sekali lagi)? — can you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Selamat jalan dan selamat menikmati penerbangan anda.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a safe journey and enjoy your flight.",
+      "isTerminal": true
+    }
+  }
+}

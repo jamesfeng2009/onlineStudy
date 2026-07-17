@@ -1,0 +1,182 @@
+{
+  "id": "dlg-th-directions-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "ขอเส้นทาง",
+  "opening": "สวัสดีครับ/ค่ะ พอดีเห็นคุณดูเหมือนกำลังมองหาอะไรอยู่หรือเปล่าครับ/คะ ให้ผม/ดิฉันช่วยอะไรได้บ้างไหมครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ พอดีเห็นคุณดูเหมือนกำลังมองหาอะไรอยู่หรือเปล่าครับ/คะ ให้ผม/ดิฉันช่วยอะไรได้บ้างไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "อยากไป",
+            "ไป",
+            "ทางไป",
+            "หา"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdi khrap/kha. Pho di hen khun du muean kamlang mong ha arai yu rue plao khrap/kha? Hai phom/dichan chuai arai dai bang mai khrap/kha? — Hello. I noticed you seem to be looking for something. Can I help you with anything?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ วัดอรุณราชวรารามราชวรมหาวิหารนี่เองครับ/ค่ะ จากตรงนี้ ถ้าจะไปทางเรือโดยสารจะสะดวกที่สุดครับ เดินไปทางท่าเรือเทเวศร์ประมาณสิบนาที แล้วนั่งเรือด่วนเจ้าพระยาไปลงท่าเตียน หรือจะไม่เน้นความประหยัดก็เรียกแท็กซี่/ตุ๊กตุ๊กไปเลยก็ได้ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เรือ",
+            "เรือด่วน",
+            "ท่าเรือ"
+          ],
+          "nextTurnId": "t3_boat"
+        },
+        {
+          "keywords": [
+            "แท็กซี่",
+            "ตุ๊กตุ๊ก",
+            "รถ"
+          ],
+          "nextTurnId": "t3_taxi"
+        },
+        {
+          "keywords": [
+            "ไกลไหม",
+            "ใช้เวลา"
+          ],
+          "nextTurnId": "t3_time"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O Wat Arun Ratchawararam Ratchaworamahawihan ni eng khrap/kha. Chak trong ni, tha cha pai thang ruea doisan cha saduak thi sut khrap. Doen pai thang tha ruea Thewet praman sip nathi laeo nang ruea duan Chao Phraya pai long tha Tian. Ruea cha mai nen khwam prayat ko riak taxi/tuk-tuk pai loei ko dai khrap. — Ah, Wat Arun Ratchawararam Ratchaworamahawihan. From here, going by passenger boat would be the most convenient. Walk to Thewet Pier for about ten minutes, then take a Chao Phraya Express Boat to Tha Tien Pier. Or, if you're not focused on saving money, you could just take a taxi/tuk-tuk directly."
+    },
+    "t3_boat": {
+      "id": "t3_boat",
+      "prompt": "ถ้าทางเรือ คุณต้องนั่งเรือด่วนเจ้าพระยาธงส้มหรือธงเขียวก็ได้ครับ ไปลงที่ท่าเตียน จากนั้นก็เดินไปที่ท่าเรือข้ามฟาก แล้วขึ้นเรือข้ามฟากไปฝั่งตรงข้ามก็จะถึงวัดอรุณฯ เลยครับ ไม่ซับซ้อนอย่างที่คิด",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "ชัดเจน",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t4_nearby"
+        },
+        {
+          "keywords": [
+            "แล้วแท็กซี่",
+            "รถดีกว่าไหม"
+          ],
+          "nextTurnId": "t3_taxi"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tha thang ruea, khun tong nang ruea duan Chao Phraya thong som rue thong khiao ko dai khrap. Pai long thi tha Tian, chak nan ko doen pai thi tha ruea kham fak laeo khuen ruea kham fak pai fang trong kham ko cha thueng Wat Arun loei khrap. Mai sapson yang thi khit. — If by boat, you need to take either the orange or green flag Chao Phraya Express Boat. Get off at Tha Tien Pier, then walk to the cross-river ferry pier and take the ferry across to the opposite bank, and you'll arrive at Wat Arun. It's not as complicated as you might think."
+    },
+    "t3_taxi": {
+      "id": "t3_taxi",
+      "prompt": "ถ้าเป็นแท็กซี่หรือตุ๊กตุ๊ก ก็บอกเขาไปเลยครับว่า 'ไปวัดอรุณราชวรารามฯ' คนขับส่วนใหญ่รู้ทางดีครับ แต่ก็ต้องเผื่อเวลาเรื่องรถติดไว้บ้างนะครับ โดยเฉพาะช่วงเวลาเร่งด่วนอาจจะใช้เวลานานพอสมควร",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "ขอบคุณ",
+            "โอเค"
+          ],
+          "nextTurnId": "t4_nearby"
+        },
+        {
+          "keywords": [
+            "แล้วเรือ",
+            "ทางเรือ",
+            "เรือดีกว่าไหม"
+          ],
+          "nextTurnId": "t3_boat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tha pen taxi rue tuk-tuk, ko bok khao pai loei khrap wa 'pai Wat Arun Ratchawararam'. Khon khap suan yai ru thang di khrap, tae ko tong phuea wela rueang rot tit wai bang na khrap, doi chaphaw rong wela reng duan at cha chai wela nan pho somkhuan. — If it's a taxi or tuk-tuk, just tell them 'to Wat Arun Ratchawararam'. Most drivers know the way, but you should also factor in traffic, especially during rush hour, it might take a fair amount of time."
+    },
+    "t3_time": {
+      "id": "t3_time",
+      "prompt": "เรื่องเวลานี่ขึ้นอยู่กับวิธีการเดินทางเลยครับ ถ้าเรือด่วนก็จะประมาณ 30-40 นาทีรวมเดินไปท่าเรือและรอเรือ แต่ถ้าแท็กซี่นี่ประเมินยากหน่อยครับ ถ้าช่วงรถไม่ติดก็อาจจะ 20-30 นาที แต่ถ้าเจอช่วงรถติดหนักๆ อาจจะนานเป็นชั่วโมงก็เป็นได้ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ดีเลย",
+            "รับทราบ"
+          ],
+          "nextTurnId": "t4_nearby"
+        },
+        {
+          "keywords": [
+            "เรือ",
+            "ไปเรือ"
+          ],
+          "nextTurnId": "t3_boat"
+        },
+        {
+          "keywords": [
+            "แท็กซี่",
+            "ไปรถ"
+          ],
+          "nextTurnId": "t3_taxi"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rueang wela ni khuen yu kap withi kan doen thang loei khrap. Tha ruea duan ko cha praman sam sip - si sip nathi ruam doen pai tha ruea lae ro ruea. Tae tha taxi ni pramoen yak noi khrap. Tha chuang rot mai tit ko at cha yi sip - sam sip nathi tae tha choe chuang rot tit nak nak at cha nan pen chua mong ko pen dai khrap. — Regarding time, it really depends on the mode of transport. If by express boat, it's about 30-40 minutes including walking to the pier and waiting for the boat. But for a taxi, it's a bit harder to estimate. If there's no traffic, it might be 20-30 minutes, but if you hit heavy traffic, it could even take an hour."
+    },
+    "t4_nearby": {
+      "id": "t4_nearby",
+      "prompt": "แถวนั้นมีร้านอาหารอร่อยๆ หลายร้านเลยครับ โดยเฉพาะแถวท่าเตียนกับมิวเซียมสยาม ถ้าเดินสำรวจดูรับรองไม่ผิดหวังครับ หรือจะลองเดินเล่นตลาดนัดเล็กๆ แถวนั้นก็ได้บรรยากาศดีครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณมาก",
+            "ดีเลย",
+            "เยี่ยมมาก",
+            "ไปได้เลย"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thaeo nan mi ran ahan aroi aroi lai ran loei khrap. Doi chaphaw thaeo Tha Tian kap Museum Siam. Tha doen samruat du rap rong mai phit wang khrap. Ruea cha long doen len talat nat lek lek thaeo nan ko dai banyakat di khrap. — There are many delicious restaurants around there, especially near Tha Tien and Museum Siam. If you explore, I guarantee you won't be disappointed. Or you can try walking through the small markets nearby for a good atmosphere."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ผม/ดิฉันไม่ค่อยเข้าใจที่คุณพูดเมื่อสักครู่ รบกวนช่วยพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho aphai khrap/kha. Phom/dichan mai khoi khao chai thi khun phut muea sak khru. Rop kuan chuai phut ik khrang dai mai khrap/kha? — Sorry, I didn't quite understand what you said just now. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีที่ได้ช่วยเหลือครับ/ค่ะ ขอให้สนุกกับการเดินทางนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin di thi dai chuai luea khrap/kha. Kho hai sanuk kap kan doen thang na khrap/kha. — Glad to help. Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

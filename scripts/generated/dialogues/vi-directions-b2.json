@@ -1,0 +1,192 @@
+{
+  "id": "dlg-vi-directions-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Hỏi đường trên phố",
+  "opening": "Chào bạn, bạn có vẻ đang tìm gì đó phải không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, bạn có vẻ đang tìm gì đó phải không?",
+      "branches": [
+        {
+          "keywords": [
+            "tìmđường",
+            "hỏiđường",
+            "đến"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "đidạo",
+            "xemthôi",
+            "khôngthôi",
+            "không"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "gìđó"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban) — Hello, you seem to be looking for something, aren't you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À vậy bạn muốn đi đâu? Tôi có thể giúp gì được?",
+      "branches": [
+        {
+          "keywords": [
+            "chợbếnthành",
+            "bưuđiện",
+            "nhàhát",
+            "bảotàng"
+          ],
+          "nextTurnId": "t_specific_dir"
+        },
+        {
+          "keywords": [
+            "ngânhàng",
+            "nhàhàng",
+            "trạmxebuýt",
+            "bệnhviện"
+          ],
+          "nextTurnId": "t_general_dir"
+        },
+        {
+          "keywords": [
+            "",
+            "địađiểm",
+            "chỗnào"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À vậy bạn muốn đi đâu (Ah vay ban muon di dau) — Oh, so where do you want to go? How can I help?"
+    },
+    "t_specific_dir": {
+      "id": "t_specific_dir",
+      "prompt": "Ồ, chợ Bến Thành (Chợ Bến Thành) hả? Nó không quá xa đâu. Bạn cứ đi thẳng khoảng 500 mét, sẽ thấy nó bên tay phải.",
+      "branches": [
+        {
+          "keywords": [
+            "thẳnglà",
+            "rẽ",
+            "hướngnào",
+            "đibộ",
+            "xa"
+          ],
+          "nextTurnId": "t_follow_up_details"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn",
+            "đượcrồi",
+            "hiểu"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "gìkhác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, chợ Bến Thành (Cho Ben Thanh) hả? — Oh, Bến Thành Market? It's not too far. Just go straight for about 500 meters, you'll see it on your right."
+    },
+    "t_general_dir": {
+      "id": "t_general_dir",
+      "prompt": "Ngân hàng (Ngân hàng) hả? Có một chi nhánh BIDV ở ngay góc đường bên kia, đi bộ chừng 2 phút là tới. Bạn băng qua đường rồi rẽ trái là thấy ngay.",
+      "branches": [
+        {
+          "keywords": [
+            "băngđường",
+            "rẽtrái",
+            "dễtìm",
+            "ATM"
+          ],
+          "nextTurnId": "t_follow_up_details"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn",
+            "đượcrồi",
+            "hiểu"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "gìkhác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ngân hàng (Ngan hang) hả? — A bank? There's a BIDV branch right on the corner of that street, about a 2-minute walk. You just cross the road and turn left, you'll see it immediately."
+    },
+    "t_follow_up_details": {
+      "id": "t_follow_up_details",
+      "prompt": "À, bạn muốn hỏi về phương tiện hay chi tiết hơn về đường đi? Nếu đi bộ khoảng 500 mét thì mất tầm 5-7 phút. Hoặc bạn có thể đón xe buýt tuyến số 3 ngay trạm đối diện, chỉ hai trạm là tới. Nếu tìm ATM, có rất nhiều ở các cửa hàng tiện lợi đó.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cámơn",
+            "đượcrồi",
+            "hiểu"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "cụthể",
+            "gìkhác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, bạn muốn hỏi về phương tiện (Ah, ban muon hoi ve phuong tien) — Oh, you want to ask about transport or more details about the way? If walking about 500 meters, it takes about 5-7 minutes. Or you can catch bus route number 3 right at the opposite stop, it's only two stops away. If you're looking for an ATM, there are many in convenience stores."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe chưa rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "nhắclại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi) — Sorry, could you repeat that? I didn't hear very clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, vậy là được rồi phải không? Chúc bạn có một ngày vui vẻ và đi đường thuận lợi nhé!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, vậy là được rồi phải không? (Vang, vay la duoc roi phai khong?) — Yes, that should be all then, right? I wish you a pleasant day and a smooth journey!",
+      "isTerminal": true
+    }
+  }
+}

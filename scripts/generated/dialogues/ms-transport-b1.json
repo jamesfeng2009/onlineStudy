@@ -1,0 +1,253 @@
+{
+  "id": "dlg-ms-transport-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Pembelian Tiket Pengangkutan Awam",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "klsentral",
+            "ke klsentral",
+            "tiket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagaimana",
+            "maklumat",
+            "laluan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Boleh saya bantu? — Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "KL Sentral, ya? Tiket sehala atau pergi balik?",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satu hala"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "KL Sentral, ya? — KL Sentral, right? Tiket sehala atau pergi balik? — One-way or return ticket?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anda ingin ke mana? Saya boleh terangkan laluan untuk anda.",
+      "branches": [
+        {
+          "keywords": [
+            "klsentral",
+            "ke klsentral"
+          ],
+          "nextTurnId": "t4_route_klsentral"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anda ingin ke mana? — Where would you like to go? Saya boleh terangkan laluan untuk anda. — I can explain the route for you."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, tiket ke KL Sentral berharga RM5.50. Perjalanan mengambil masa kira-kira 20 minit.",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "wang"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "pindah",
+            "pertukaran"
+          ],
+          "nextTurnId": "t6_transfer"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, a ticket to KL Sentral costs RM5.50. The journey takes about 20 minutes."
+    },
+    "t4_route_klsentral": {
+      "id": "t4_route_klsentral",
+      "prompt": "Untuk ke KL Sentral, anda perlu menaiki LRT Laluan Kelana Jaya dan turun di stesen KL Sentral. Tiada pertukaran diperlukan.",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "beli"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "berapa lama",
+            "masa"
+          ],
+          "nextTurnId": "t7_duration"
+        },
+        {
+          "keywords": [
+            "ok",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To get to KL Sentral, you need to take the Kelana Jaya LRT Line and get off at KL Sentral station. No transfers are needed."
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "Sila masukkan RM5.50 ke dalam slot atau gunakan kad Touch 'n Go anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima kasih",
+            "bayar",
+            "kad"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please insert RM5.50 into the slot or use your Touch 'n Go card."
+    },
+    "t6_transfer": {
+      "id": "t6_transfer",
+      "prompt": "Tidak perlu pertukaran untuk laluan ini. Ia adalah laluan terus.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bayar"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No transfers needed for this route. It is a direct route."
+    },
+    "t7_duration": {
+      "id": "t7_duration",
+      "prompt": "Perjalanan dijangka mengambil masa lebih kurang 20 minit sahaja. Sangat cepat!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tiket",
+            "beli"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The journey is expected to take only about 20 minutes. Very fast!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang semula? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, can you repeat? I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih dan selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and have a good journey!",
+      "isTerminal": true
+    }
+  }
+}

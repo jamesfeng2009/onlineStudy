@@ -1,0 +1,112 @@
+{
+  "id": "dlg-fr-interview-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Entretien d'embauche",
+  "opening": "Bonjour et bienvenue. Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours professionnel ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour et bienvenue. Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours professionnel ?",
+      "branches": [
+        {
+          "keywords": [
+            "parcours",
+            "expérience",
+            "formation"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour et bienvenue. (bon-zhoor eh byehn-vuh-noo) To start, could you please introduce yourself and tell us a bit about your professional background?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Merci. Votre parcours semble intéressant. Pourriez-vous nous donner un exemple concret de la manière dont votre expérience antérieure serait un atout pour ce poste ?",
+      "branches": [
+        {
+          "keywords": [
+            "projet",
+            "mission",
+            "réalisation"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci. (mehr-see) Your background seems interesting. Could you give us a concrete example of how your previous experience would be an asset for this position?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Très bien. Si vous deviez décrire votre principale force professionnelle, quelle serait-elle et pourquoi la considérez-vous comme telle ?",
+      "branches": [
+        {
+          "keywords": [
+            "adaptabilité",
+            "flexibilité",
+            "apprentissage"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. (treh byang) Very good. If you had to describe your main professional strength, what would it be and why do you consider it so?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nous avons évoqué vos points forts. Pour être tout à fait transparent, y a-t-il une faiblesse sur laquelle vous travaillez activement pour vous améliorer ?",
+      "branches": [
+        {
+          "keywords": [
+            "délégation",
+            "perfectionnisme"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nous avons évoqué vos points forts. Pour être tout à fait transparent, (noo-z av-on eh-vo-keh vos pwan for. poor eh-truh too-t ah feh trahn-spah-rahn) We've touched upon your strengths. To be completely transparent, is there a weakness you are actively working on to improve?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Je vous remercie pour votre franchise. Avez-vous des questions pour nous concernant ce poste ou notre entreprise ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "question",
+            "certainement"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for your candor. Do you have any questions for us regarding this position or our company?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Très bien. Merci beaucoup d'être venu(e) aujourd'hui. Nous vous recontacterons très prochainement.",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Very good. Thank you very much for coming today. We will contact you very soon.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé(e), je n'ai pas bien saisi. Pourriez-vous reformuler ou répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase or repeat, please?"
+    }
+  }
+}

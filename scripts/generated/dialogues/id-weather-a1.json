@@ -1,0 +1,133 @@
+{
+  "id": "dlg-id-weather-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Cuaca Hari Ini",
+  "opening": "Halo! Bagaimana cuaca hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo! Bagaimana cuaca hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "matahari"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "gerimis"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "berawan",
+            "mendung"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo! (Hah-loh!) Bagaimana cuaca hari ini? (Bah-gah-ee-mah-nah choo-ah-chah hah-ree ee-nee? — Hello! How is the weather today?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, cerah! Bagus. Apakah panas?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "panas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, cerah! (Oh, chuh-rah! — Oh, sunny!) Bagus. (Bah-goos. — Good.) Apakah panas? (Ah-pah-kah pah-nas? — Is it hot?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Hujan. Suka hujan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "suka"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hujan. (Hoo-jahn. — Rainy.) Suka hujan? (Soo-kah hoo-jahn? — Do you like rain?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Berawan. Apakah sejuk?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sejuk"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Berawan. (Buh-rah-wahn. — Cloudy.) Apakah sejuk? (Ah-pah-kah suh-jook? — Is it cool?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa ulang lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "lagi",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (Mah-ahf, — Sorry,) bisa ulang lagi? (bee-sah oo-lahng lah-gee? — Can you repeat that?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih! Sampai jumpa!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, (Bah-ik, — Okay,) terima kasih! (Tuh-ree-mah kah-see! — Thank you!) Sampai jumpa! (Sahm-pai joom-pah! — Goodbye!)",
+      "isTerminal": true
+    }
+  }
+}

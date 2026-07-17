@@ -1,0 +1,219 @@
+{
+  "id": "dlg-it-restaurant-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Ordinare al Ristorante",
+  "opening": "Buonasera! Avete già scelto o posso prendere la vostra ordinazione?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Avete già scelto o posso prendere la vostra ordinazione?",
+      "branches": [
+        {
+          "keywords": [
+            "siamo pronti",
+            "ordinare"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "non ancora",
+            "menu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "consigliare",
+            "raccomandare"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera! (BWO-nah-SEH-rah!) Avete già scelto o posso prendere la vostra ordinazione? (Ah-VEH-teh JAH SHAYL-toh oh POHS-soh PREN-deh-reh lah VOHS-trah or-dee-nah-TZYOH-neh?) — Good evening! Have you already chosen or can I take your order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo! Cosa desiderate ordinare?",
+      "branches": [
+        {
+          "keywords": [
+            "pasta",
+            "pizza",
+            "carne",
+            "pesce",
+            "insalata"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "vegetariano",
+            "senzaglutine"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo! (CHEHR-toh!) Cosa desiderate ordinare? (KOH-sah deh-see-deh-RAH-teh or-dee-NAH-reh?) — Of course! What would you like to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Nessun problema. Le porto subito il menu. Vuole anche qualche consiglio?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "consiglio",
+            "consigliare"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "menu"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. I'll bring you the menu right away. Do you also want some advice?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certo! Oggi abbiamo un'ottima pasta al pesto e un eccellente filetto di manzo. Cosa ne pensate?",
+      "branches": [
+        {
+          "keywords": [
+            "pesto",
+            "pasta"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "altro",
+            "indeciso"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo! (CHEHR-toh!) Oggi abbiamo un'ottima pasta al pesto e un eccellente filetto di manzo. (OH-jee ahb-BYAH-moh oon OH-tee-mah PAHS-tah ahl PEHS-toh eh oon ech-cheh-LEN-teh fee-LET-toh dee MAHN-tzo.) Cosa ne pensate? (KOH-sah neh pen-SAH-teh?) — Of course! Today we have excellent pesto pasta and an excellent beef fillet. What do you think?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Capisco. Abbiamo diverse opzioni vegetariane o senza glutine. Posso suggerirle qualcosa dal menu o preferisce sfogliare il menu?",
+      "branches": [
+        {
+          "keywords": [
+            "suggerire",
+            "consigliare"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "sfogliare",
+            "menu"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. We have several vegetarian or gluten-free options. Can I suggest something from the menu or would you prefer to browse the menu?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottima scelta! E da bere? O c'è qualcos'altro che desidera?",
+      "branches": [
+        {
+          "keywords": [
+            "acqua",
+            "vino",
+            "birra",
+            "caffe"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "conto"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice! And to drink? Or is there anything else you'd like?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Perfetto, l'ordinazione è completa. Arriva subito. C'è qualcos'altro per ora o le porto il conto?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "basta",
+            "nientaltro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "conto",
+            "pagare"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect, the order is complete. It's coming right away. Is there anything else for now or shall I bring you the bill?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Certo, le porto subito il conto. Vuole pagare con carta o in contanti?",
+      "branches": [
+        {
+          "keywords": [
+            "carta",
+            "bancomat"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, I'll bring you the bill right away. Would you like to pay by card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "si",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e buona serata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and have a good evening!",
+      "isTerminal": true
+    }
+  }
+}

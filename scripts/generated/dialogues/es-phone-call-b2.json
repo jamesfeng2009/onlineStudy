@@ -1,0 +1,243 @@
+{
+  "id": "dlg-es-phone-call-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Llamada Telefónica: Dejar un Mensaje",
+  "opening": "Hola, buenos días, habla Sofía de la oficina de admisiones. ¿En qué puedo ayudarte?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenos días, habla Sofía de la oficina de admisiones. ¿En qué puedo ayudarte?",
+      "branches": [
+        {
+          "keywords": [
+            "buscar",
+            "hablarcon",
+            "hablar"
+          ],
+          "nextTurnId": "t2_ask_person"
+        },
+        {
+          "keywords": [
+            "es",
+            "confirmar",
+            "este"
+          ],
+          "nextTurnId": "t2_confirm_place"
+        },
+        {
+          "keywords": [
+            "equivocada",
+            "equivocarse",
+            "numer",
+            "numero"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-lah, bweh-nohs dee-ahs, ah-blah Soh-fee-ah deh lah oh-fee-see-nah deh ahd-mee-see-oh-nehs. En ke pweh-doh ah-yoo-dar-teh? — Hello, good morning, Sofía from the admissions office speaking. How can I help you?"
+    },
+    "t2_ask_person": {
+      "id": "t2_ask_person",
+      "prompt": "¿Con quién deseas hablar? Y, ¿de parte de quién?",
+      "branches": [
+        {
+          "keywords": [
+            "busco",
+            "hablarcon",
+            "señor",
+            "señora",
+            "licenciado",
+            "licenciada",
+            "nombre"
+          ],
+          "nextTurnId": "t3_person_unavailable"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kohn kee-en deh-seh-as ah-blar? Ee, deh par-teh deh kee-en? — Who would you like to speak with? And, who's calling?"
+    },
+    "t2_confirm_place": {
+      "id": "t2_confirm_place",
+      "prompt": "Sí, esta es la oficina de admisiones de la Universidad Central. ¿Con quién tengo el gusto?",
+      "branches": [
+        {
+          "keywords": [
+            "busco",
+            "queria",
+            "hablar",
+            "cita",
+            "pregunta"
+          ],
+          "nextTurnId": "t3_person_unavailable"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "See, eh-stah es lah oh-fee-see-nah deh ahd-mee-see-oh-nehs deh lah Oo-nee-ver-see-dahd Sen-tral. Kohn kee-en ten-goh el goo-stoh? — Yes, this is the Central University admissions office. With whom do I have the pleasure?"
+    },
+    "t3_person_unavailable": {
+      "id": "t3_person_unavailable",
+      "prompt": "Lo siento, el Lic. Gómez no se encuentra en su oficina en este momento. ¿Te gustaría dejarle un mensaje o prefieres que te devuelva la llamada?",
+      "branches": [
+        {
+          "keywords": [
+            "mensaje",
+            "dejar",
+            "si"
+          ],
+          "nextTurnId": "t4_take_message"
+        },
+        {
+          "keywords": [
+            "devolver",
+            "llamar",
+            "prefiero",
+            "llame"
+          ],
+          "nextTurnId": "t4_request_callback"
+        },
+        {
+          "keywords": [
+            "cuando",
+            "disponible",
+            "estara"
+          ],
+          "nextTurnId": "t4_ask_availability"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Loh see-en-toh, el Lee-sen-see-ah-doh Goh-mez noh seh en-koo-en-trah en soo oh-fee-see-nah en eh-steh moh-men-toh. Te goo-stah-ree-ah deh-har-leh oon men-sah-heh oh pre-fee-eh-res keh te deh-voo-el-vah lah yah-mah-dah? — I'm sorry, Mr. Gómez is not in his office at the moment. Would you like to leave him a message or would you prefer him to call you back?"
+    },
+    "t4_take_message": {
+      "id": "t4_take_message",
+      "prompt": "De acuerdo, tomaré nota. ¿Cuál sería el mensaje?",
+      "branches": [
+        {
+          "keywords": [
+            "es",
+            "porfavor",
+            "dile",
+            "quisiera",
+            "necesito",
+            "informar"
+          ],
+          "nextTurnId": "t5_confirm_message"
+        },
+        {
+          "keywords": [
+            "volver",
+            "mas tarde",
+            "llamo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Deh ah-kwer-doh, toh-mah-reh noh-tah. Kwahl seh-ree-ah el men-sah-heh? — Okay, I'll take note. What would be the message?"
+    },
+    "t4_request_callback": {
+      "id": "t4_request_callback",
+      "prompt": "Entendido. ¿Podrías darme tu nombre completo y un número de teléfono donde te pueda localizar?",
+      "branches": [
+        {
+          "keywords": [
+            "mi nombre",
+            "es",
+            "soy",
+            "mi numero"
+          ],
+          "nextTurnId": "t5_confirm_callback"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "luego"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-ten-dee-doh. Poh-dree-as dar-meh too nom-breh kohm-pleh-toh ee oon noo-meh-roh deh teh-leh-foh-noh don-deh teh pweh-dah loh-kah-lee-zar? — Understood. Could you give me your full name and a phone number where I can reach you?"
+    },
+    "t4_ask_availability": {
+      "id": "t4_ask_availability",
+      "prompt": "No sabría decirte con exactitud, pero suele regresar después del mediodía. ¿Intentas más tarde o quieres que le deje un aviso para que te llame?",
+      "branches": [
+        {
+          "keywords": [
+            "intentar",
+            "mas tarde",
+            "luego"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "aviso",
+            "mensaje",
+            "llame"
+          ],
+          "nextTurnId": "t4_request_callback"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Noh sah-bree-ah deh-seer-teh kohn ek-sahk-tee-tood, peh-roh sweh-leh reh-greh-sar des-poo-es del meh-dee-oh-dee-ah. Een-ten-tas mas tar-deh oh kee-eh-res keh leh deh-heh oon ah-vee-soh pah-rah keh teh yah-meh? — I couldn't tell you exactly, but he usually returns after noon. Will you try later or would you like me to leave him a message to call you?"
+    },
+    "t5_confirm_message": {
+      "id": "t5_confirm_message",
+      "prompt": "Perfecto, le transmitiré el mensaje tan pronto como llegue. Gracias por la información.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per-fek-toh, leh trans-mee-tee-reh el men-sah-heh tan pron-toh koh-moh yeh-geh. Grah-see-as por lah een-for-mah-see-on. — Perfect, I will convey the message to him as soon as he arrives. Thanks for the information."
+    },
+    "t5_confirm_callback": {
+      "id": "t5_confirm_callback",
+      "prompt": "Muy bien, le haré llegar tu información para que te contacte a la brevedad posible. Gracias por llamar.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mwee bee-en, leh ah-reh yeh-gar too een-for-mah-see-on pah-rah keh teh kohn-tak-teh ah lah breh-veh-dad poh-see-bleh. Grah-see-as por yah-mar. — Very good, I will send him your information so he can contact you as soon as possible. Thank you for calling."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, no te he entendido bien. ¿Podrías repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Loh see-en-toh, noh teh eh en-ten-dee-doh bee-en. Poh-dree-as reh-peh-teer, por fah-vor? — I'm sorry, I didn't understand you well. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gracias por llamar. Que tengas un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grah-see-as por yah-mar. Ke ten-gahs oon bwen dee-ah. — Thanks for calling. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

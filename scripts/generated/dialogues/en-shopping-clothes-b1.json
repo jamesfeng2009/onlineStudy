@@ -1,0 +1,196 @@
+{
+  "id": "dlg-en-shopping-clothes-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Shopping for New Clothes",
+  "opening": "Hi there! Can I help you find anything today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! Can I help you find anything today?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "looking for",
+            "need help"
+          ],
+          "nextTurnId": "t2_item_type"
+        },
+        {
+          "keywords": [
+            "browsing",
+            "just looking",
+            "no thanks"
+          ],
+          "nextTurnId": "t_browse"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hi there! Can I help you find anything today?"
+    },
+    "t_browse": {
+      "id": "t_browse",
+      "prompt": "Alright, feel free to look around! Let me know if you change your mind or need any assistance.",
+      "branches": [
+        {
+          "keywords": [
+            "thank you",
+            "okay",
+            "will do"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, feel free to look around! Let me know if you change your mind or need any assistance."
+    },
+    "t2_item_type": {
+      "id": "t2_item_type",
+      "prompt": "Okay, what kind of item are you looking for? We have shirts, dresses, jackets, and pants.",
+      "branches": [
+        {
+          "keywords": [
+            "shirt",
+            "t-shirt",
+            "top"
+          ],
+          "nextTurnId": "t3_size_color_try"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, what kind of item are you looking for? We have shirts, dresses, jackets, and pants."
+    },
+    "t3_size_color_try": {
+      "id": "t3_size_color_try",
+      "prompt": "Great! Do you have a size and color in mind? I have a lovely blue medium one in stock. Would you like to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "try on",
+            "i'll try it"
+          ],
+          "nextTurnId": "t4_after_try"
+        },
+        {
+          "keywords": [
+            "no",
+            "different",
+            "another",
+            "not this"
+          ],
+          "nextTurnId": "t3b_suggest_another"
+        },
+        {
+          "keywords": [
+            "think about it",
+            "maybe later",
+            "not now"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! Do you have a size and color in mind? I have a lovely blue medium one in stock. Would you like to try it on?"
+    },
+    "t3b_suggest_another": {
+      "id": "t3b_suggest_another",
+      "prompt": "No problem. How about a red large one? Or would you prefer to see something else entirely?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "try on",
+            "i'll try that"
+          ],
+          "nextTurnId": "t4_after_try"
+        },
+        {
+          "keywords": [
+            "no",
+            "not that",
+            "nothing else"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. How about a red large one? Or would you prefer to see something else entirely?"
+    },
+    "t4_after_try": {
+      "id": "t4_after_try",
+      "prompt": "How did it fit? Did you like it?",
+      "branches": [
+        {
+          "keywords": [
+            "fits well",
+            "perfect",
+            "i like it",
+            "it's good"
+          ],
+          "nextTurnId": "t5_payment_returns"
+        },
+        {
+          "keywords": [
+            "too small",
+            "too big",
+            "not right",
+            "not quite"
+          ],
+          "nextTurnId": "t3b_suggest_another"
+        },
+        {
+          "keywords": [
+            "no",
+            "don't like it",
+            "not for me"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How did it fit? Did you like it?"
+    },
+    "t5_payment_returns": {
+      "id": "t5_payment_returns",
+      "prompt": "Wonderful! I'll ring that up for you. Will you be paying by card or cash? Our return policy allows exchanges or full refunds within 30 days with the receipt. Just make sure it's unworn.",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "cash",
+            "pay"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wonderful! I'll ring that up for you. Will you be paying by card or cash? Our return policy allows exchanges or full refunds within 30 days with the receipt. Just make sure it's unworn."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you please repeat that? I didn't quite catch it.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Great! Have a wonderful day and enjoy your new clothes!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great! Have a wonderful day and enjoy your new clothes!",
+      "isTerminal": true
+    }
+  }
+}

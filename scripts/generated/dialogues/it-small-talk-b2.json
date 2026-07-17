@@ -1,0 +1,137 @@
+{
+  "id": "dlg-it-small-talk-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Chiacchiere al party",
+  "opening": "Ciao! Come va la serata? Spero ti stia divertendo.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Come va la serata? Spero ti stia divertendo.",
+      "branches": [
+        {
+          "keywords": [
+            "bene",
+            "ottimo",
+            "divertente"
+          ],
+          "nextTurnId": "t2_fun"
+        },
+        {
+          "keywords": [
+            "cosìcosì",
+            "normale",
+            "nientemale"
+          ],
+          "nextTurnId": "t2_soso"
+        },
+        {
+          "keywords": [
+            "impegnato",
+            "stanco",
+            "stressato"
+          ],
+          "nextTurnId": "t2_busy"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! Come va la serata? (Hello! How's the evening going?) Spero ti stia divertendo. (I hope you're having fun.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ho capito bene. Oppure puoi provare a riformulare?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch it. Or you could try rephrasing?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Bene, è stato davvero un piacere fare quattro chiacchiere! Ci vediamo in giro. Ciao!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Well, it was really a pleasure to chat for a bit! See you around. Bye!",
+      "isTerminal": true
+    },
+    "t2_fun": {
+      "id": "t2_fun",
+      "prompt": "Che bello! Sono contento/a. E dimmi, che progetti hai per il fine settimana, o magari hai qualche hobby interessante di cui mi vuoi parlare?",
+      "branches": [
+        {
+          "keywords": [
+            "hobby",
+            "leggere",
+            "sport",
+            "cucinare",
+            "viaggiare"
+          ],
+          "nextTurnId": "t3_hobby"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Che bello! (That's great!) Sono contento/a. (I'm happy.) E dimmi, che progetti hai per il fine settimana (And tell me, what plans do you have for the weekend), o magari hai qualche hobby interessante di cui mi vuoi parlare? (or maybe you have some interesting hobbies you'd like to tell me about?)"
+    },
+    "t2_soso": {
+      "id": "t2_soso",
+      "prompt": "Ah, capisco. A volte le serate sono un po' così. C'è qualcosa in particolare che ti preoccupa o che ti tiene impegnato/a in questo periodo?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, capisco. (Ah, I see.) A volte le serate sono un po' così. (Sometimes evenings are a bit like that.) C'è qualcosa in particolare che ti preoccupa (Is there something in particular that's worrying you) o che ti tiene impegnato/a in questo periodo? (or keeping you busy lately?)"
+    },
+    "t2_busy": {
+      "id": "t2_busy",
+      "prompt": "Ah, capisco benissimo! Anche io a volte mi sento così. Cosa ti tiene così impegnato/a, se posso chiedere?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, capisco benissimo! (Ah, I understand perfectly!) Anche io a volte mi sento così. (I also feel that way sometimes.) Cosa ti tiene così impegnato/a, se posso chiedere? (What's keeping you so busy, if I may ask?)"
+    },
+    "t3_hobby": {
+      "id": "t3_hobby",
+      "prompt": "Che interessante! Parlami un po' di più. Ad esempio, se ti piace leggere, che genere prediligi? Oppure, se viaggi, qual è il posto più affascinante che hai visitato?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Che interessante! (How interesting!) Parlami un po' di più. (Tell me a bit more.) Ad esempio, se ti piace leggere, che genere prediligi? (For example, if you like reading, what genre do you prefer?) Opp"
+    }
+  }
+}

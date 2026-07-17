@@ -1,0 +1,193 @@
+{
+  "id": "dlg-fr-doctor-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Consultation Médicale Avancée",
+  "opening": "Bonjour, entrez, je vous en prie. Asseyez-vous. Dites-moi ce qui vous amène.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, entrez, je vous en prie. Asseyez-vous. Dites-moi ce qui vous amène.",
+      "branches": [
+        {
+          "keywords": [
+            "douleur",
+            "mal",
+            "gêne"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello, come in, please. Sit down. Tell me what brings you here. (bon-zhoor, an-tray, zhuh vooz on pree. ah-say-ay-voo. deet-mwa suh kee vooz ah-men.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Je vois. Pouvez-vous me décrire plus précisément la nature de cette gêne ou de cette douleur ? Est-elle aiguë, sourde, pulsatile ? Et depuis quand la ressentez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "ventre",
+            "estomac",
+            "abdominal",
+            "crampes",
+            "brûlure",
+            "depuisdeuxjours"
+          ],
+          "nextTurnId": "t3_ventre"
+        },
+        {
+          "keywords": [
+            "tête",
+            "céphalée",
+            "pulsatile",
+            "derrièrelesyeux",
+            "depuis3jours"
+          ],
+          "nextTurnId": "t3_tete"
+        },
+        {
+          "keywords": [
+            "poitrine",
+            "dos",
+            "aiguë",
+            "depuisquelquesheures"
+          ],
+          "nextTurnId": "t3_autres"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Can you describe more precisely the nature of this discomfort or pain for me? Is it acute, dull, throbbing? And since when have you been feeling it? (zhuh vwah. poo-vay-voo muh day-kreer ploose pray-see-zay-mon lah nah-toor duh set zhen oo duh set doo-ler? et-el ay-goo, soord, pool-sah-teel? ay duh-pwee kahn lah ruh-son-tay-voo?)"
+    },
+    "t3_ventre": {
+      "id": "t3_ventre",
+      "prompt": "D'accord, une douleur abdominale avec des crampes et une sensation de brûlure, c'est noté. Y a-t-il des facteurs qui l'aggravent ou la soulagent ? Avez-vous eu des nausées, des vomissements, ou des changements de transit intestinal ?",
+      "branches": [
+        {
+          "keywords": [
+            "nausées",
+            "vomissements",
+            "diarrhée",
+            "pireaprèslesrepas"
+          ],
+          "nextTurnId": "t4_diag"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, abdominal pain with cramps and a burning sensation, noted. Are there any factors that worsen or relieve it? Have you had nausea, vomiting, or changes in bowel movements?"
+    },
+    "t3_tete": {
+      "id": "t3_tete",
+      "prompt": "Une céphalée pulsatile derrière les yeux depuis trois jours, je comprends. Est-elle accompagnée de troubles visuels, de sensibilité à la lumière ou au bruit ? Prenez-vous des médicaments habituellement pour ce genre de maux de tête ?",
+      "branches": [
+        {
+          "keywords": [
+            "lumière",
+            "bruit",
+            "visionfloue",
+            "migraine"
+          ],
+          "nextTurnId": "t4_diag"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A throbbing headache behind the eyes for three days, I understand. Is it accompanied by visual disturbances, sensitivity to light or noise? Do you usually take medication for this kind of headache? (oon say-fah-lay pool-sah-teel day-ryehr lay zyuh duh-pwee trwah zhoor, zhuh kom-prahn. et-el ak-kom-pah-nyay duh troo-bluh vee-zoo-el, duh son-see-bee-lee-tay ah lah loo-myair oo oh broo-ee? pruh-nay-voo day may-dee-kah-mon ah-bee-too-el-mon poor suh zhon-ruh duh moh duh tet?)"
+    },
+    "t3_autres": {
+      "id": "t3_autres",
+      "prompt": "Une douleur aiguë à la poitrine ou au dos, c'est un symptôme à prendre au sérieux. Y a-t-il eu un choc, un effort particulier, ou est-ce apparu sans raison apparente ? Ressentez-vous des irradiations ?",
+      "branches": [
+        {
+          "keywords": [
+            "choc",
+            "effort",
+            "irradiations",
+            "bras"
+          ],
+          "nextTurnId": "t4_diag"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Acute pain in the chest or back, that's a symptom to take seriously. Was there an impact, a particular effort, or did it appear without apparent reason? Do you feel any radiating pain?"
+    },
+    "t4_diag": {
+      "id": "t4_diag",
+      "prompt": "Bien. Y a-t-il des antécédents médicaux pertinents, des allergies connues, ou prenez-vous d'autres traitements actuellement ? C'est important pour établir un diagnostic éclairé et sûr.",
+      "branches": [
+        {
+          "keywords": [
+            "allergies",
+            "antécédents",
+            "asthme",
+            "hypertension",
+            "diabète",
+            "traitement"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Are there any relevant medical history, known allergies, or are you currently taking any other treatments? This is important for establishing an informed and safe diagnosis."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi votre réponse.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? Could you repeat, please? I didn't quite catch your answer."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci pour toutes ces précisions. Je dispose maintenant d'une vision plus claire. Je vais procéder à un examen et nous discuterons des options de traitement. Au revoir et à bientôt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for all these details. I now have a clearer picture. I will proceed with an examination and we will discuss treatment options. Goodbye and see you soon.",
+      "isTerminal": true
+    }
+  }
+}

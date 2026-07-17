@@ -1,0 +1,169 @@
+{
+  "id": "dlg-vi-transport-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Đi xe buýt",
+  "opening": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "trungtâm",
+            "thànhphố"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chà-o anh/chị. Anh/chị muốn đi đâu ạ? — Hello sir/madam. Where do you want to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vé là 7.000 đồng. Anh/chị mua vé luôn không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "mua",
+            "dạ"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "không",
+            "chưa",
+            "hỏi"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vé là bảy nghìn đồng. Anh/chị mua vé luôn không ạ? — The ticket is 7,000 VND. Do you want to buy the ticket now?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Dạ đây vé của anh/chị. Anh/chị lên xe buýt số 03 ở phía kia nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmnhiệt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "dừng ở đâu",
+            "đi mấy trạm",
+            "mấy giờ",
+            "khi nào",
+            "chậmtrễ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ đây vé của anh/chị. Anh/chị lên xe buýt số không ba ở phía kia nhé. — Here is your ticket. Please take bus number 03 over there."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Vậy anh/chị còn câu hỏi gì khác không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "dừng ở đâu",
+            "đi mấy trạm",
+            "mấy giờ",
+            "khi nào",
+            "chậmtrễ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "không",
+            "hết rồi",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy anh/chị còn câu hỏi gì khác không ạ? — So, do you have any other questions?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Xe buýt số 03 sẽ dừng ở Trạm Bưu điện Thành phố. Chuyến tiếp theo khoảng 15 phút nữa, nhưng có thể trễ một chút vì kẹt xe.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmnhiệt",
+            "tạmbiệt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xe buýt số không ba sẽ dừng ở Trạm Bưu điện Thành phố. Chuyến tiếp theo khoảng mười lăm phút nữa, nhưng có thể trễ một chút vì kẹt xe. — Bus number 03 will stop at the City Post Office Station. The next trip is in about 15 minutes, but it might be a little late due to traffic."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi không hiểu. Anh/chị có thể nói lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi không hiểu. Anh/chị có thể nói lại không ạ? — Sorry, I don't understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị! Chúc một ngày tốt lành.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị! Chúc một ngày tốt lành. — Thank you! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

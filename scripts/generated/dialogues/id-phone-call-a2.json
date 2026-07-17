@@ -1,0 +1,176 @@
+{
+  "id": "dlg-id-phone-call-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Panggilan Telepon",
+  "opening": "Halo, dengan siapa saya bicara?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo, dengan siapa saya bicara?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mencari",
+            "ingin",
+            "bicara",
+            "pak",
+            "bu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apa",
+            "siapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo (Hah-lo) — Hello, dengan siapa saya bicara? — who am I speaking with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, baik. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "mau",
+            "ingin",
+            "minta",
+            "perlu",
+            "tentang"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "titip",
+            "pesan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "ada",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, baik (Oh, bah-ik) — Oh, okay. Ada yang bisa saya bantu? — How can I help you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Maaf, boleh tahu ini dari siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "penting",
+            "masalah",
+            "urgent"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "nanti",
+            "telepon",
+            "kembali"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (Mah-af) — Sorry, boleh tahu ini dari siapa? — may I know who this is?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sebentar ya, saya cek. Atau mau tinggalkan pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "tinggalkan",
+            "pesan",
+            "mau"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tunggu",
+            "baik",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sebentar ya (Seh-ben-tar yah) — Hold on, saya cek — I'll check. Atau mau tinggalkan pesan? — Or would you like to leave a message?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, pesan Anda akan saya sampaikan. Ada lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bah-ik) — Okay, pesan Anda akan saya sampaikan — I will pass on your message. Ada lagi? — Anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi? Saya tidak jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (Mah-af) — Sorry, bisa diulang lagi? — could you repeat that? Saya tidak jelas. — I didn't catch it clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih sudah menelepon. Selamat siang/sore.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik — Okay, terima kasih sudah menelepon — thank you for calling. Selamat siang/sore — Good day/afternoon.",
+      "isTerminal": true
+    }
+  }
+}

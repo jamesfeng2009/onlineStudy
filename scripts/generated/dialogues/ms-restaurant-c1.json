@@ -1,0 +1,217 @@
+{
+  "id": "dlg-ms-restaurant-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat datang ke Santapan Rasa. Adakah anda sudah bersedia untuk membuat pesanan, atau perlukan cadangan istimewa daripada kami?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Santapan Rasa. Adakah anda sudah bersedia untuk membuat pesanan, atau perlukan cadangan istimewa daripada kami?",
+      "branches": [
+        {
+          "keywords": [
+            "sedia",
+            "pesan",
+            "order"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cadangan",
+            "rekomendasi",
+            "syorkan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "belum",
+            "fikir"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Santapan Rasa (Welcome to Santapan Rasa). Are you ready to place your order, or would you like some special recommendations from us?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baiklah. Apa yang ingin anda santap hari ini? Ada sebarang alahan atau pantang larang makanan yang perlu kami tahu?",
+      "branches": [
+        {
+          "keywords": [
+            "alahan",
+            "pantang",
+            "alergi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "belum"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "menu",
+            "lihat"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. What would you like to savor today? Are there any allergies or dietary restrictions we should be aware of?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu sekali. Untuk hidangan utama, kami amat mengesyorkan 'Nasi Lemak Istimewa' kami yang tersohor, atau 'Laksa Sarawak' yang sungguh memikat selera. Mana satu yang berkenan di hati?",
+      "branches": [
+        {
+          "keywords": [
+            "nasi lemak",
+            "nasi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "lain",
+            "lain-lain",
+            "lainnya"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu sekali (Certainly). For the main course, we amat mengesyorkan (highly recommend) our famous 'Nasi Lemak Istimewa', or the 'Laksa Sarawak' which is sungguh memikat selera (truly captivating). Which one appeals to you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Faham. Sila maklumkan kepada kami butiran lanjut mengenai alahan atau pantang larang anda agar chef kami dapat membuat penyesuaian yang sewajarnya.",
+      "branches": [
+        {
+          "keywords": [
+            "pedas",
+            "gluten",
+            "telur",
+            "kacang"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (Understood). Please inform us of the further details regarding your allergies or restrictions so our chef can make the necessary adjustments."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, kami akan pastikan hidangan anda disediakan dengan teliti. Apa lagi yang ingin dipesan, mungkin minuman atau pencuci mulut?",
+      "branches": [
+        {
+          "keywords": [
+            "minuman",
+            "air"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay), we will ensure your dish is disediakan dengan teliti (prepared carefully). What else would you like to order, perhaps drinks or dessert?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Pilihan yang sangat baik! Kedua-duanya adalah kegemaran ramai. Adakah anda ingin menambahkan sebarang minuman atau pencuci mulut untuk melengkapkan hidangan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "minuman",
+            "air"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pilihan yang sangat baik (An excellent choice)! Both are crowd favorites. Would you like to add any drinks or desserts to complete your meal?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baik, pesanan anda sudah lengkap. Kami akan sediakan hidangan anda secepat mungkin. Harap bersabar sebentar ya.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay), your order is complete. We will prepare your dishes secepat mungkin (as soon as possible). Harap bersabar sebentar ya (Please wait for a moment)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulangi atau perjelaskan? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, could you repeat or clarify? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana memilih Santapan Rasa. Selamat menjamu selera!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih kerana memilih Santapan Rasa (Thank you for choosing Santapan Rasa). Selamat menjamu selera (Enjoy your meal)!",
+      "isTerminal": true
+    }
+  }
+}

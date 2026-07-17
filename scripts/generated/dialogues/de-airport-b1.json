@@ -1,0 +1,177 @@
+{
+  "id": "dlg-de-airport-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Am Check-in-Schalter",
+  "opening": "Guten Tag! Kann ich bitte Ihren Reisepass und Ihr Ticket sehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich bitte Ihren Reisepass und Ihr Ticket sehen?",
+      "branches": [
+        {
+          "keywords": [
+            "hier",
+            "bitte",
+            "pass",
+            "ticket",
+            "meiner"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "vergessen",
+            "woist",
+            "habeichnicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Kann ich bi-tte Ih-ren Rei-se-pass und Ihr Ti-cket seh-en? — Good day! May I please see your passport and ticket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vielen Dank. Haben Sie Gepäck aufzugeben?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gepäck",
+            "koffer",
+            "einen"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nichts",
+            "nurhandgepäck"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "wasbedeutet",
+            "erklären"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-len Dank. Ha-ben Sie Ge-päck auf-zu-ge-ben? — Thank you very much. Do you have any luggage to check in?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Alles klar. Ist etwas Zerbrechliches in Ihrem Koffer?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "zerbrechlich",
+            "vorsicht",
+            "glas"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nichtszerbrechliches",
+            "nicht"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "wasistzerbrechlich",
+            "bedeutet"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Al-les klar. Ist et-was Zer-brech-li-ches in Ih-rem Kof-fer? — Alright. Is there anything fragile in your suitcase?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "In Ordnung. Dann geben Sie Ihr Handgepäck einfach am Gate ab oder nehmen es mit an Bord. Ihr Gate ist B23 und das Boarding beginnt um 14:30 Uhr.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gutereise",
+            "verstanden",
+            "okay"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Ord-nung. Dann ge-ben Sie Ihr Hand-ge-päck ein-fach am Gate ab o-der neh-men es mit an Bord. Ihr Gate ist Bee-drei-und-zwan-zig und das Boa-rding be-ginnt um vier-zehn Uhr drei-ßig. — All right. Then simply drop off your hand luggage at the gate or take it on board. Your gate is B23 and boarding starts at 2:30 PM."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Verstanden. Wir werden ein 'Fragile'-Etikett anbringen. Ihr Gate ist B23 und das Boarding beginnt um 14:30 Uhr.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gutereise",
+            "verstanden",
+            "okay"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ver-stan-den. Wir wer-den ein 'Fra-gile'-Eti-kett an-brin-gen. Ihr Gate ist Bee-drei-und-zwan-zig und das Boa-rding be-ginnt um vier-zehn Uhr drei-ßig. — Understood. We will attach a 'Fragile' label. Your gate is B23 and boarding starts at 2:30 PM."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Okay, dann nicht. Ihr Gate ist B23 und das Boarding beginnt um 14:30 Uhr.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gutereise",
+            "verstanden",
+            "okay"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-kay, dann nicht. Ihr Gate ist Bee-drei-und-zwan-zig und das Boa-rding be-ginnt um vier-zehn Uhr drei-ßig. — Okay, then not. Your gate is B23 and boarding starts at 2:30 PM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gern geschehen. Wir wünschen Ihnen einen angenehmen Flug und eine gute Reise!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Gern ge-sche-hen. Wir wün-schen Ih-nen ei-nen an-ge-neh-men Flug und ei-ne gu-te Rei-se! — You're welcome. We wish you a pleasant flight and a good journey!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "wiederholen",
+            "anders",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-schul-di-gen Sie, ich ha-be Sie nicht ganz ver-stan-den. Könn-ten Sie das bi-tte wie-der-ho-len o-der an-ders for-mu-lie-ren? — Excuse me, I didn't quite understand you. Could you please repeat that or rephrase it?"
+    }
+  }
+}

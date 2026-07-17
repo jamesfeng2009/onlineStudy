@@ -1,0 +1,221 @@
+{
+  "id": "dlg-de-taxi-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Taxi Fahrt",
+  "opening": "Guten Tag! Wohin möchten Sie fahren?",
+  "startTurnId": "t1_greeting",
+  "turns": {
+    "t1_greeting": {
+      "id": "t1_greeting",
+      "prompt": "Guten Tag! Wohin möchten Sie fahren?",
+      "branches": [
+        {
+          "keywords": [
+            "bahnhof",
+            "zum bahnhof"
+          ],
+          "nextTurnId": "t2_bahnhof_price"
+        },
+        {
+          "keywords": [
+            "hotel",
+            "zum hotel"
+          ],
+          "nextTurnId": "t2_hotel_ask"
+        },
+        {
+          "keywords": [
+            "flughafen",
+            "zum flughafen"
+          ],
+          "nextTurnId": "t2_flughafen_ask"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Goo-ten Tahg! Voh-hin mörkh-ten Zee fah-ren? — Good day! Where would you like to go?"
+    },
+    "t2_bahnhof_price": {
+      "id": "t2_bahnhof_price",
+      "prompt": "Zum Bahnhof, verstanden. Das kostet zwölf Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "ja",
+            "gut"
+          ],
+          "nextTurnId": "t4_payment_12"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tsoom Bahn-hohf, fair-shtan-den. Das kos-tet zwölf Oy-ro. — To the train station, understood. That costs twelve Euros."
+    },
+    "t2_hotel_ask": {
+      "id": "t2_hotel_ask",
+      "prompt": "Zum Hotel. Welches Hotel meinen Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "sonne",
+            "hotel sonne"
+          ],
+          "nextTurnId": "t3_hotel_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tsoom Hoh-tel. Vel-ches Hoh-tel my-nen Zee? — To the hotel. Which hotel do you mean?"
+    },
+    "t2_flughafen_ask": {
+      "id": "t2_flughafen_ask",
+      "prompt": "Zum Flughafen, ja. Haben Sie viel Gepäck?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "viel"
+          ],
+          "nextTurnId": "t3_flughafen_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tsoom Floog-hah-fen, yah. Hah-ben Zee feel Ge-peck? — To the airport, yes. Do you have much luggage?"
+    },
+    "t3_hotel_price": {
+      "id": "t3_hotel_price",
+      "prompt": "Okay, Hotel. Das macht fünfzehn Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "ja",
+            "gut"
+          ],
+          "nextTurnId": "t4_payment_15"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Oh-kay, Hoh-tel. Das makht fünf-tsen Oy-ro. — Okay, Hotel. That makes fifteen Euros."
+    },
+    "t3_flughafen_price": {
+      "id": "t3_flughafen_price",
+      "prompt": "In Ordnung. Zum Flughafen kostet es zwanzig Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "ja",
+            "gut"
+          ],
+          "nextTurnId": "t4_payment_20"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "In Ord-nung. Tsoom Floog-hah-fen kos-tet es tswan-tsig Oy-ro. — Alright. To the airport it costs twenty Euros."
+    },
+    "t4_payment_12": {
+      "id": "t4_payment_12",
+      "prompt": "Danke schön! Das macht zwölf Euro. Hier ist Ihr Wechselgeld: acht Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "dankeschön"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Dank-e shön! Das makht zwölf Oy-ro. Heer ist Eer Vek-sel-gelt: akht Oy-ro. — Thank you! That makes twelve Euros. Here is your change: eight Euros."
+    },
+    "t4_payment_15": {
+      "id": "t4_payment_15",
+      "prompt": "Danke schön! Das macht fünfzehn Euro. Hier ist Ihr Wechselgeld: fünf Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "dankeschön"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Dank-e shön! Das makht fünf-tsen Oy-ro. Heer ist Eer Vek-sel-gelt: fünf Oy-ro. — Thank you! That makes fifteen Euros. Here is your change: five Euros."
+    },
+    "t4_payment_20": {
+      "id": "t4_payment_20",
+      "prompt": "Danke schön! Das macht zwanzig Euro. Hier ist Ihr Wechselgeld: fünf Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "dankeschön"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Dank-e shön! Das makht tswan-tsig Oy-ro. Heer ist Eer Vek-sel-gelt: fünf Oy-ro. — Thank you! That makes twenty Euros. Here is your change: five Euros."
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_greeting"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting",
+      "promptTranslation": "En-shool-di-goong, eekh hah-be Zee neekht fair-shtan-den. Kön-nen Zee das bit-te vee-der-hoh-len? — Excuse me, I didn't understand you. Can you please repeat that?"
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Gute Fahrt und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Goo-te Fahrt oont owf Vee-der-zeh-en! — Have a good trip and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

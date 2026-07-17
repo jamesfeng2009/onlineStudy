@@ -1,0 +1,206 @@
+{
+  "id": "dlg-it-post-office-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "All'Ufficio Postale",
+  "opening": "Buongiorno, come posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, come posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "pacco",
+            "spedire"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "francobolli",
+            "lettera"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "domanda"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwon-JUR-no, KOH-meh POS-soh ai-oo-TAR-la? — Good morning, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo. Dove vuole spedire il pacco? In Italia o all'estero?",
+      "branches": [
+        {
+          "keywords": [
+            "italia",
+            "nazionale"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "estero",
+            "internazionale"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "nonso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "CHAIR-toh. DOH-veh VWO-leh speh-DEE-reh eel PAK-koh? Een ee-TAH-lyah oh al-LES-teh-roh? — Certainly. Where do you want to send the parcel? In Italy or abroad?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Quanti francobolli le servono? Per l'Italia o per l'estero?",
+      "branches": [
+        {
+          "keywords": [
+            "italia",
+            "due",
+            "tre"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "nonso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "KWAN-tee fran-koh-BOL-lee leh SER-voh-noh? Per lee-TAH-lyah oh per al-LES-teh-roh? — How many stamps do you need? For Italy or abroad?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vuole una spedizione normale o raccomandata con tracciamento?",
+      "branches": [
+        {
+          "keywords": [
+            "normale",
+            "nonurgente"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "nonso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Do you want a normal shipment or registered mail with tracking?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Per l'estero, è necessario compilare un modulo doganale. Ha già il modulo?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ho",
+            "già"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For abroad, it's necessary to fill out a customs form. Do you already have the form?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfetto. Il totale per i francobolli è X euro. Desidera altro?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sì",
+            "altro",
+            "ancora"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. The total for the stamps is X euros. Do you need anything else?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ottimo. Il costo per il pacco è Y euro. C'è qualcos'altro che posso fare per lei?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sì",
+            "altro",
+            "ancora"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. The cost for the parcel is Y euros. Is there anything else I can do for you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

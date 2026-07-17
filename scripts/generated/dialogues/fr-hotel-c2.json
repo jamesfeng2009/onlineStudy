@@ -1,0 +1,109 @@
+{
+  "id": "dlg-fr-hotel-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bonjour et bienvenue à l'Hôtel Magnifique. Aviez-vous une réservation sous quel nom, s'il vous plaît?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour et bienvenue à l'Hôtel Magnifique. Aviez-vous une réservation sous quel nom, s'il vous plaît?",
+      "branches": [
+        {
+          "keywords": [
+            "monnomest",
+            "suis",
+            "je",
+            "lemienne"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bonjour"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour et bienvenue à l'Hôtel Magnifique. Aviez-vous une réservation sous quel nom, s'il vous plaît? (Bohn-zhoor ay byahn-vuh-nyoo ah LOH-tel Mah-gnee-feek. Ah-vyay-voo yoon ray-zer-vah-syohn soo kel nohm, seel voo play? — Hello and welcome to the Magnificent Hotel. Did you have a reservation under what name, please?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, je vois. Pourriez-vous me présenter une pièce d'identité en cours de validité, s'il vous plaît?",
+      "branches": [
+        {
+          "keywords": [
+            "voici",
+            "carte",
+            "passeport",
+            "identité"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, je vois. Pourriez-vous me présenter une pièce d'identité en cours de validité, s'il vous plaît? (Ah, zhuh vwah. Poo-ryay-voo muh pray-zahn-tay oon pyess dee-dahn-tee-tay ahn koor duh vah-lee-dee-tay, seel voo play? — Ah, I see. Could you please show me a valid form of identification?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Parfait. Et concernant le règlement, souhaitez-vous utiliser la carte enregistrée lors de la réservation, ou bien préférez-vous un autre moyen de paiement? Au fait, avez-vous des préférences particulières pour votre chambre, par exemple un étage élevé ou une vue spécifique?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "enregistrée",
+            "même",
+            "oui"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait. Et concernant le règlement, souhaitez-vous utiliser la carte enregistrée lors de la réservation, ou bien préférez-vous un autre moyen de paiement? Au fait, avez-vous des préférences particulières pour votre chambre, par exemple un étage élevé ou une vue spécifique? (Par-fay. Ay kohn-ser-nahn luh reh-gluh-mahn, soo-eh-tay-voo oo-tee-lee-zay lah kart ahn-ruh-zhee-stray lor duh lah ray-zer-vah-syohn, oo byahn pray-fay-ray-voo uhn oh-truh mwah-yahng duh pay-mahn? Oh fet, ah-vay-voo day pray-fay-rahn-suh par-tee-kyoo-lyayr poor voh-truh shahm-bruh, par ehg-zahn-pluh uhn ay-tahzh el-uh-vay oo yoon vyoo speh-see-feek? — Perfect. And regarding payment, would you like to use the card registered during the reservation, or do you prefer another payment method? By the way, do you have any particular preferences for your room, for example a high floor or a specific view?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excellent. Votre chambre est prête. Un dernier point: prendrez-vous le petit-déjeuner chez nous demain matin? Il est servi au restaurant de 7h00 à 10h30. Voici votre clé, votre chambre est la 502, au cinquième étage. L'ascenseur se trouve juste derrière vous.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "petit-déjeuner",
+            "petitdejeuner",
+            "prendrai"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Votre chambre est prête. Un dernier point: prendrez-vous le petit-déjeuner chez nous demain matin? Il est servi au restaurant de 7h00 à 10h30. Voici votre clé, votre chambre est la 502, au cinquième étage. L'ascenseur se trouve juste derrière vous. (Ek-seh-lahn. Voh-truh shahm-bruh ay prett. Uhn dehr-nyay pwan: prahn-dray-voo luh puh-tee-day-zhuh-nay shay noo duh-mahn mah-tahn? Eel ay ser-vee oh res-toh-rahn duh set-uh-reh ah dee-zuh-ruh trahnt. Vwah-see voh-truh klay, voh-truh shahm-bruh ay lah sahng-suh-doo, oh sank-kee-yem ay-tahzh. Lah-sahn-ser suh troov joost deh-ryehr voo. — Excellent. Your room is ready. One last point: will you be having breakfast with us tomorrow morning? It's served in the restaurant from 7:00 AM to 10:30 AM. Here is your key, your room is 502, on the fifth floor. The elevator is right behind you.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, pourriez-vous répéter, s'il vous plaît? Je n'ai pas bien saisi votre requête.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "pardon",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, pourriez-vous répéter, s'il vous plaît? Je n'ai pas bien saisi votre requête. (Par-dohn, poo-ryay-voo ray-pay-tay, seel voo play? Zhuh nay pah byahn say-zee voh-truh ruh-ket. — Excuse me, could you repeat, please? I didn't quite catch your request.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien. Nous vous souhaitons un excellent séjour parmi nous. N'hésitez pas à solliciter la réception si vous avez la moindre question.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très bien. Nous vous souhaitons un excellent séjour parmi nous. N'hésitez pas à solliciter la réception si vous avez la moindre question. (Treh byahn. Noo voo soo-eh-tongs uhn ek-seh-lahn say-zhoor par-mee noo. Nay-zee-tay pah ah soh-lee-see-tay lah ray-sep-syohn see voo za-vay lah mwahn-druh kes-tyohn. — Very good. We wish you an excellent stay with us. Don't hesitate to contact reception if you have any questions.)",
+      "isTerminal": true
+    }
+  }
+}

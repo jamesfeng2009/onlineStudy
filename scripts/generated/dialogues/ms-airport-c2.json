@@ -1,0 +1,166 @@
+{
+  "id": "dlg-ms-airport-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Daftar Masuk Penerbangan",
+  "opening": "Selamat pagi/petang, boleh saya bantu? Pasport dan tiket penerbangan, sila.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/petang, boleh saya bantu? Pasport dan tiket penerbangan, sila.",
+      "branches": [
+        {
+          "keywords": [
+            "pasport",
+            "tiket",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagasi",
+            "muatan"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi/petang — Good morning/afternoon, may I help you? Pasport — Passport and tiket penerbangan — flight ticket, please."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, terima kasih. Ada bagasi untuk daftar masuk?",
+      "branches": [
+        {
+          "keywords": [
+            "ada",
+            "ya",
+            "dua",
+            "satu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "bawaan"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, thank you. Do you have any luggage to daftar masuk — check-in?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Oh, ya. Berapa banyak bagasi yang ingin anda daftar masuk? Atau ada apa-apa pertanyaan spesifik?",
+      "branches": [
+        {
+          "keywords": [
+            "berat",
+            "had",
+            "berapa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, yes. How many bags would you like to check in? Or do you have any specific questions?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk penerbangan anda, had bagasi daftar masuk ialah 20kg. Jika melebihi, akan ada caj tambahan. Ada apa-apa barang istimewa nak daftar?",
+      "branches": [
+        {
+          "keywords": [
+            "melebihi",
+            "lebih",
+            "caj"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk penerbangan anda, had bagasi — the checked baggage allowance is 20kg. If it melebihi — exceeds, there will be a caj tambahan — additional charge. Do you have any special items to check in?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baiklah. Segala-galanya kelihatan teratur. Ada lagi apa-apa yang boleh saya bantu? Mungkin pertanyaan tentang pintu berlepas atau waktu penerbangan?",
+      "branches": [
+        {
+          "keywords": [
+            "gate",
+            "pintu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Everything seems in order. Is there anything else I can help you with? Perhaps a question about the departure gate or flight time?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pintu berlepas anda di A7, dan kami menjangkakan penerbangan anda akan berlepas mengikut jadual. Sila pastikan anda berada di pintu A7 sekurang-kurangnya 45 minit sebelum waktu berlepas.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your departure gate is A7, and we expect your flight to depart on schedule. Please ensure you are at gate A7 at least 45 minutes before departure time."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tidak begitu faham.",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "ya",
+            "tolong"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih. Selamat jalan dan selamat menikmati penerbangan anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you. Have a safe trip and enjoy your flight!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "dlg-vi-taxi-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "Đi taxi",
+  "opening": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "kháchsạn",
+            "trungtâmthươngmại",
+            "sânbay"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao anh/chi) — Hello sir/madam. Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ, đến đó. Chuyến đi sẽ mất khoảng 15 phút và giá khoảng 120.000 đồng. Anh/chị đồng ý không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đồngý",
+            "được",
+            "vâng",
+            "đi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ (Ya), đến đó (den do) — Yes, to there. The trip will take about 15 minutes and cost around 120,000 VND. Do you agree?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, vậy mình đi nhé. Anh/chị muốn thanh toán bằng tiền mặt hay thẻ ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vung), vậy mình đi nhé (minh di nhe) — Okay, let's go. Do you want to pay by cash or card?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng. Cảm ơn anh/chị đã sử dụng dịch vụ. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Dạ vâng (Ya vung) — Yes. Thank you for using our service. Wish you a good day!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị nói lại giúp được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loy), anh/chị nói lại (noi lai) giúp được không ạ? — Sorry, could you please repeat that?"
+    }
+  }
+}

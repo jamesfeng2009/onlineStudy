@@ -1,0 +1,164 @@
+{
+  "id": "dlg-id-interview-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Wawancara Pekerjaan",
+  "opening": "Selamat pagi. Terima kasih sudah datang. Bisakah Anda perkenalkan diri Anda dan ceritakan sedikit tentang latar belakang Anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Terima kasih sudah datang. Bisakah Anda perkenalkan diri Anda dan ceritakan sedikit tentang latar belakang Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pendidikan",
+            "kuliah",
+            "latar",
+            "diri"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pengalaman",
+            "kerja",
+            "magang",
+            "proyek"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Seh-lah-mat pah-gee). Terima kasih sudah datang (Teh-ree-mah kah-sih soo-dah dah-tang). Bisakah Anda perkenalkan diri Anda dan ceritakan sedikit tentang latar belakang Anda (Bih-sah-kah An-dah pehr-keh-nahl-kan dee-ree An-dah dahn ceh-ree-tah-kan seh-dih-kit ten-tang lah-tar bah-kahng An-dah)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, bisa Anda jelaskan lebih lanjut mengenai pendidikan atau pengalaman relevan yang Anda miliki?",
+      "branches": [
+        {
+          "keywords": [
+            "kuliah",
+            "studi",
+            "jurusan",
+            "kampus"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pengalaman",
+            "proyek",
+            "magang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik), bisa Anda jelaskan lebih lanjut mengenai pendidikan atau pengalaman relevan yang Anda miliki (bih-sah An-dah jeh-las-kan leh-bih lan-jut meh-nge-na-i pehn-dih-dih-kan ah-tau pehn-gah-lah-man reh-leh-van yang An-dah mih-lih-ki)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Menarik. Bisakah Anda berbagi tentang proyek atau tanggung jawab utama yang pernah Anda tangani dalam pekerjaan sebelumnya, dan apa hasilnya?",
+      "branches": [
+        {
+          "keywords": [
+            "proyek",
+            "tanggungjawab",
+            "tugas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik (Meh-na-rik). Bisakah Anda berbagi tentang proyek atau tanggung jawab utama yang pernah Anda tangani dalam pekerjaan sebelumnya (Bih-sah-kah An-dah behr-ba-gi ten-tang pro-yek ah-tau tang-gung ja-wab u-ta-ma yang pehr-nah An-dah ta-nga-ni dah-lam peh-ker-ja-an seh-beh-lum-nya), dan apa hasilnya?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas penjelasannya. Sekarang, bisakah Anda ceritakan apa kelebihan utama Anda yang membuat Anda cocok untuk posisi ini?",
+      "branches": [
+        {
+          "keywords": [
+            "kerja",
+            "tim",
+            "kolaborasi",
+            "komunikasi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas penjelasannya (Teh-ree-mah kah-sih ah-tas pehn-jeh-las-an-nya). Sekarang (Seh-ka-rang), bisakah Anda ceritakan apa kelebihan utama Anda yang membuat Anda cocok untuk posisi ini (bih-sah-kah An-dah ceh-ree-tah-kan ah-pa keh-leh-bih-an u-ta-ma An-dah yang mem-bu-at An-dah co-cok un-tuk po-sih-si ih-ni)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik. Setiap orang memiliki area untuk dikembangkan. Bisakah Anda sebutkan satu kelemahan Anda dan bagaimana Anda mengatasinya?",
+      "branches": [
+        {
+          "keywords": [
+            "kelemahan",
+            "mengatasi",
+            "memperbaiki",
+            "berkembang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik). Setiap orang memiliki area untuk dikembangkan (Seh-tiap o-rang me-mi-li-ki ah-reh-a un-tuk di-kem-bang-kan). Bisakah Anda sebutkan satu kelemahan Anda dan bagaimana Anda mengatasinya (Bih-sah-kah An-dah seh-but-kan sa-tu keh-leh-mah-han An-dah dahn ba-gai-ma-na An-dah meh-nga-ta-si-nya)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisakah Anda mengulanginya? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisakah Anda mengulanginya (bih-sah-kah An-dah meh-ngu-lang-i-nya)? Saya kurang jelas (Sa-ya ku-rang jeh-las)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih banyak atas waktu dan informasi yang Anda berikan. Kami akan menghubungi Anda kembali dalam beberapa hari ke depan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Ba-ik), terima kasih banyak atas waktu dan informasi yang Anda berikan (teh-ree-mah kah-sih ba-nyak ah-tas wak-tu dahn in-for-ma-si yang An-dah beh-ri-kan). Kami akan menghubungi Anda kembali dalam beberapa hari ke depan (Ka-mi ah-kan meh-ngu-bung-i An-dah kem-ba-li dah-lam beh-beh-ra-pa ha-ri keh deh-pan).",
+      "isTerminal": true
+    }
+  }
+}

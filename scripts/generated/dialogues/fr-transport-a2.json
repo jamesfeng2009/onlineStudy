@@ -1,0 +1,174 @@
+{
+  "id": "dlg-fr-transport-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Achat de ticket de transport",
+  "opening": "Bonjour. Comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Comment puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "billet",
+            "acheter",
+            "information",
+            "transport"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. How can I help you? (bon-zhoor. koh-mahn pwee-zhuh voo zay-day?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord. Pour quelle destination, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "garedunord",
+            "nord",
+            "centre-ville"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. For which destination, please? (dah-kor. poor kel dess-tin-ah-syohn, seel voo play?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Un ticket pour la Gare du Nord coûte 2 euros 10. Vous en voulez un ou avez-vous besoin d'autres informations ?",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "oui",
+            "acheter"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "correspondance",
+            "changement"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A ticket for Gare du Nord costs 2 euros 10. Do you want one or do you need other information? (uhn tee-keh poor lah gahr doo nor koot duh-zuh-roh dee. voo zahn voo-lay uhn oo ah-vay voo buh-zwahn dohtr an-for-mah-syohn?)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Oui, ce ticket est valable pour une correspondance dans les 90 minutes.",
+      "branches": [
+        {
+          "keywords": [
+            "acheter",
+            "oui",
+            "bien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, this ticket is valid for a transfer within 90 minutes."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien. Voilà votre ticket. Le bus numéro 42 est juste devant l'arrêt.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "beaucoup"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "retard",
+            "temps"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Here is your ticket. Bus number 42 is right at the stop in front."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Non, il n'y a pas de retards annoncés pour le moment. Le bus arrive dans 5 minutes.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "bien",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No, there are no announced delays for the moment. The bus arrives in 5 minutes."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien. Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a good day!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas compris. Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Can you repeat, please?"
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "id": "dlg-es-airport-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "En el aeropuerto: Facturación",
+  "opening": "Hola. ¿Su pasaporte y billete, por favor?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola. ¿Su pasaporte y billete, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "aquí",
+            "está",
+            "aquíestá",
+            "aquiestá",
+            "tengo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "tengo",
+            "notengo"
+          ],
+          "nextTurnId": "t-problem"
+        },
+        {
+          "keywords": [
+            "",
+            "porfavor"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. Your passport and ticket, please? (OH-lah. Soo pah-sah-POHR-teh ee bee-YEH-teh, pohr fah-VOHR?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gracias. ¿Tiene equipaje para facturar?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "si",
+            "una",
+            "maleta",
+            "un"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "no",
+            "tengo",
+            "equipaje",
+            "noequipaje",
+            "notengo"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "cuántas",
+            "cuantas",
+            "maletas",
+            "cuántasmaletas",
+            "numero"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "",
+            "porfavor"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Do you have luggage to check in? (GRAH-see-ahs. TYEH-neh eh-kee-PAH-heh pah-rah fahk-too-RAHR?)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Bien. Aquí está su tarjeta de embarque.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "gracia",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "puerta",
+            "dónde",
+            "donde",
+            "puerta?",
+            "dondeestá",
+            "número"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "porfavor"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. Here is your boarding pass. (BYEN. Ah-KEE es-TAH soo tar-HEH-tah deh em-BAR-keh.)"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Perfecto. Aquí está su tarjeta de embarque.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "gracia",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "puerta",
+            "dónde",
+            "donde",
+            "puerta?",
+            "dondeestá",
+            "número"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "porfavor"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Here is your boarding pass."
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Ah, ¿cuántas maletas tiene?",
+      "branches": [
+        {
+          "keywords": [
+            "una",
+            "un"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ninguna",
+            "no",
+            "cero"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "porfavor"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, how many bags do you have?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "De nada. Que tenga un buen viaje.",
+      "branches": [
+        {
+          "keywords": [
+            "adiós",
+            "adios",
+            "hasta",
+            "luego"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a good trip."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Su puerta es la A3. El vuelo sale a las diez.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "gracia",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Your gate is A3. The flight leaves at ten."
+    },
+    "t-problem": {
+      "id": "t-problem",
+      "prompt": "Necesita su pasaporte y billete. Vaya a información, por favor.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "gracia",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You need your passport and ticket. Go to information, please."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, ¿puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Adiós. Buen viaje.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye. Have a good trip.",
+      "isTerminal": true
+    }
+  }
+}

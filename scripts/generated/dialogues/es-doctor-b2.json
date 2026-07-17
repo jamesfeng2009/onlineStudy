@@ -1,0 +1,146 @@
+{
+  "id": "dlg-es-doctor-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Visita al Médico",
+  "opening": "¡Hola! Buenos días. Cuénteme, ¿qué le trae por aquí hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Buenos días. Cuénteme, ¿qué le trae por aquí hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "dolor",
+            "mal",
+            "siento",
+            "enfermo",
+            "problema"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "revisión",
+            "cita",
+            "chequeo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! Buenos días. Cuénteme, ¿qué le trae por aquí hoy? — Hello! Good morning. Tell me, what brings you here today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo. ¿Podría especificar un poco más? ¿Dónde le duele exactamente y desde cuándo lo experimenta?",
+      "branches": [
+        {
+          "keywords": [
+            "cabeza",
+            "garganta",
+            "tos",
+            "fiebre",
+            "migraña"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. ¿Podría especificar un poco más? ¿Dónde le duele exactamente y desde cuándo lo experimenta? — I understand. Could you specify a bit more? Where does it hurt exactly and since when have you been experiencing it?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, una revisión de rutina. Perfecto. Aunque sea un chequeo general, ¿hay algo en particular que le preocupe o algún síntoma nuevo que haya notado últimamente?",
+      "branches": [
+        {
+          "keywords": [
+            "preocupa",
+            "cansado",
+            "estrés",
+            "sueño",
+            "algo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nada",
+            "bien",
+            "ninguno",
+            "todo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, una revisión de rutina. Perfecto. Aunque sea un chequeo general, ¿hay algo en particular que le preocupe o algún síntoma nuevo que haya notado últimamente? — Ah, a routine check-up. Perfect. Even if it's a general check-up, is there anything specific that worries you or any new symptom you've noticed lately?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gracias por la información. Parece que necesitamos indagar un poco más. Le propongo hacerle un breve examen físico y, si lo veo necesario, prescribirle alguna medicación o solicitar alguna prueba complementaria. ¿Le parece bien?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "bien",
+            "parece",
+            "claro",
+            "deacuerdo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias por la información. Parece que necesitamos indagar un poco más. Le propongo hacerle un breve examen físico y, si lo veo necesario, prescribirle alguna medicación o solicitar alguna prueba complementaria. ¿Le parece bien? — Thank you for the information. It seems we need to delve a bit deeper. I propose to give you a brief physical exam and, if I deem it necessary, prescribe some medication or request some complementary tests. Does that sound good to you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, ¿podría repetir eso de otra manera? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, could you repeat that in another way? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Muy bien, espero que se recupere pronto. Nos vemos en la próxima consulta.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Very well, I hope you recover soon. See you at the next consultation.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "id": "dlg-en-post-office-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "At the Post Office",
+  "opening": "Hello! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "parcel",
+            "package",
+            "send"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "stamps",
+            "buy"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "registered",
+            "mail",
+            "tracking"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "anythingelse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Alright, is your parcel going domestically or internationally? If it's international, you'll also need a customs declaration form.",
+      "branches": [
+        {
+          "keywords": [
+            "domestic",
+            "inuk",
+            "within"
+          ],
+          "nextTurnId": "t-ready"
+        },
+        {
+          "keywords": [
+            "customs",
+            "form",
+            "whatis"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, is your parcel going domestically or internationally? If it's international, you'll also need a customs declaration form."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certainly. Are you looking for stamps for standard letters, large letters, or parcels?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "letter",
+            "small"
+          ],
+          "nextTurnId": "t-ready"
+        },
+        {
+          "keywords": [
+            "",
+            "anythingelse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Are you looking for stamps for standard letters, large letters, or parcels?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "We do offer registered mail, yes. It provides extra security and proof of postage. Would you like to use it?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "want",
+            "registered"
+          ],
+          "nextTurnId": "t-ready"
+        },
+        {
+          "keywords": [
+            "",
+            "anythingelse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We do offer registered mail, yes. It provides extra security and proof of postage. Would you like to use it?"
+    },
+    "t-ready": {
+      "id": "t-ready",
+      "prompt": "Excellent. Please place your item on the scale or bring your forms to the counter, and I can process that for you.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thankyou",
+            "ok",
+            "alright"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. Please place your item on the scale or bring your forms to the counter, and I can process that for you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please rephrase or repeat?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please rephrase or repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for visiting the post office! Have a good day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for visiting the post office! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

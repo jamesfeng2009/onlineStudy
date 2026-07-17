@@ -1,0 +1,161 @@
+{
+  "id": "dlg-id-directions-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Mencari Arah",
+  "opening": "Maaf, boleh saya bantu? Kelihatannya Anda sedang mencari sesuatu, ya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Maaf, boleh saya bantu? Kelihatannya Anda sedang mencari sesuatu, ya? — Excuse me, may I help you? It looks like you're looking for something, right?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "galeri",
+            "bank",
+            "kantorpos",
+            "restoran"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa",
+            "ya",
+            "bantu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, may I help you? It looks like you're looking for something, right?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, suara saya kurang jelas tadi? Bisa diulang lagi, mungkin? — Sorry, was my voice unclear just now? Could you repeat it, perhaps?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, was my voice unclear just now? Could you repeat it, perhaps?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Anda mencari itu, ya? Kalau begitu, Anda lurus saja ke arah sana, nanti akan ketemu gedung tinggi dengan menara jam. Patokannya itu. Mau jalan kaki atau naik transportasi umum? — Oh, you're looking for that, are you? In that case, just go straight in that direction, later you'll find a tall building with a clock tower. That's the landmark. Do you want to walk or take public transport?",
+      "branches": [
+        {
+          "keywords": [
+            "jalankaki",
+            "jalan"
+          ],
+          "nextTurnId": "t3_walk"
+        },
+        {
+          "keywords": [
+            "transportasi",
+            "umum",
+            "bis",
+            "angkot"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "menarajam",
+            "gedungtinggi",
+            "patokan"
+          ],
+          "nextTurnId": "t3_clarify_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, you're looking for that, are you? In that case, just go straight in that direction, later you'll find a tall building with a clock tower. That's the landmark. Do you want to walk or take public transport?"
+    },
+    "t3_walk": {
+      "id": "t3_walk",
+      "prompt": "Kalau jalan kaki, sekitar sepuluh sampai lima belas menit dari sini. Setelah lewati gedung menara jam itu, tempatnya ada di gang kecil sebelah kanan. Cukup jelas, ya? — If walking, it's about ten to fifteen minutes from here. After passing the clock tower building, the place is in a small alley on the right. Clear enough, right?",
+      "branches": [
+        {
+          "keywords": [
+            "jelas",
+            "iya",
+            "terimakasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "If walking, it's about ten to fifteen minutes from here. After passing the clock tower building, the place is in a small alley on the right. Clear enough, right?"
+    },
+    "t3_transport": {
+      "id": "t3_transport",
+      "prompt": "Kalau naik transportasi umum, paling mudah naik angkot jalur A. Haltenya ada di seberang jalan, persis di depan toko swalayan. Turunnya nanti di perempatan pertama setelah menara jam. Sudah cukup informasinya? — If taking public transport, it's easiest to take angkot line A. The bus stop is across the street, right in front of the supermarket. Get off at the first intersection after the clock tower. Is the information sufficient?",
+      "branches": [
+        {
+          "keywords": [
+            "cukup",
+            "iya",
+            "terimakasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "If taking public transport, it's easiest to take angkot line A. The bus stop is across the street, right in front of the supermarket. Get off at the first intersection after the clock tower. Is the information sufficient?"
+    },
+    "t3_clarify_landmark": {
+      "id": "t3_clarify_landmark",
+      "prompt": "Iya, gedung menara jam itu ikonik sekali di kota ini. Nanti dari situ, tujuan Anda sudah dekat. Mau dilanjutkan dengan jalan kaki atau naik angkot? — Yes, that clock tower building is very iconic in this city. From there, your destination will be close. Do you want to continue by walking or taking an angkot?",
+      "branches": [
+        {
+          "keywords": [
+            "jalankaki",
+            "jalan"
+          ],
+          "nextTurnId": "t3_walk"
+        },
+        {
+          "keywords": [
+            "angkot",
+            "transportasi",
+            "umum"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, that clock tower building is very iconic in this city. From there, your destination will be close. Do you want to continue by walking or taking an angkot?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga lancar perjalanan Anda, ya. Hati-hati di jalan! — You're welcome. I hope your journey goes smoothly. Be careful on the road!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. I hope your journey goes smoothly. Be careful on the road!",
+      "isTerminal": true
+    }
+  }
+}

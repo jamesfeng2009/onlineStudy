@@ -1,0 +1,377 @@
+{
+  "id": "dlg-de-directions-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Nach dem Weg fragen",
+  "opening": "Entschuldigen Sie, kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Entschuldigen Sie, kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t2_hbf"
+        },
+        {
+          "keywords": [
+            "museum",
+            "altesmuseum"
+          ],
+          "nextTurnId": "t2b_museum"
+        },
+        {
+          "keywords": [
+            "bushaltestelle",
+            "haltestelle",
+            "bus"
+          ],
+          "nextTurnId": "t2c_bus_stop"
+        },
+        {
+          "keywords": [
+            "wiederholen",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entschuldigen Sie — Excuse me, kann ich Ihnen helfen? — can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung, — Sorry, könnten Sie das bitte wiederholen? — could you please repeat that?"
+    },
+    "t2_hbf": {
+      "id": "t2_hbf",
+      "prompt": "Ja klar! Der Hauptbahnhof ist nicht weit von hier. Gehen Sie diese Straße geradeaus bis zur Ampel und biegen Sie dann links ab.",
+      "branches": [
+        {
+          "keywords": [
+            "wie",
+            "weit",
+            "lange",
+            "minuten",
+            "zeit"
+          ],
+          "nextTurnId": "t3_hbf_details"
+        },
+        {
+          "keywords": [
+            "bus",
+            "alternative",
+            "schneller"
+          ],
+          "nextTurnId": "t4_hbf_bus_option"
+        },
+        {
+          "keywords": [
+            "danke",
+            "verstanden",
+            "klar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja klar! — Yes, of course! Der Hauptbahnhof — The main station ist nicht weit von hier. Gehen Sie diese Straße geradeaus — Go straight down this street bis zur Ampel — until the traffic light und biegen Sie dann links ab. — then turn left."
+    },
+    "t2b_museum": {
+      "id": "t2b_museum",
+      "prompt": "Das Museum ist etwas weiter. Nehmen Sie am besten die U-Bahn, Linie 3. Die Haltestelle ist hier gleich um die Ecke.",
+      "branches": [
+        {
+          "keywords": [
+            "wo",
+            "genau",
+            "haltestelle",
+            "eingang"
+          ],
+          "nextTurnId": "t3b_museum_details"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das Museum — The museum ist etwas weiter. Nehmen Sie am besten — You best take die U-Bahn, — the subway, Linie 3. Die Haltestelle — The stop ist hier gleich um die Ecke. — is just around the corner here."
+    },
+    "t2c_bus_stop": {
+      "id": "t2c_bus_stop",
+      "prompt": "Die nächste Bushaltestelle ist gleich hier vorne. Gehen Sie einfach 50 Meter geradeaus, dann sehen Sie sie auf der linken Seite.",
+      "branches": [
+        {
+          "keywords": [
+            "welche",
+            "linie",
+            "busnummer",
+            "wohin"
+          ],
+          "nextTurnId": "t3c_bus_line"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The next bus stop is right up ahead. Just go 50 meters straight, then you'll see it on the left side."
+    },
+    "t3_hbf_details": {
+      "id": "t3_hbf_details",
+      "prompt": "Von der Ampel aus sind es noch etwa fünf Minuten zu Fuß. Sie sehen dann ein großes, modernes Gebäude auf der rechten Seite. Das ist der Bahnhof.",
+      "branches": [
+        {
+          "keywords": [
+            "bus",
+            "schneller",
+            "andere",
+            "möglichkeit"
+          ],
+          "nextTurnId": "t4_hbf_bus_option"
+        },
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "klar",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "From the traffic light, it's about another five minutes on foot. You'll then see a large, modern building on the right side. That's the station."
+    },
+    "t3b_museum_details": {
+      "id": "t3b_museum_details",
+      "prompt": "Gehen Sie diese Straße entlang, die U-Bahn-Station ist auf der linken Seite. Sie müssen in Richtung 'Stadtmitte' fahren.",
+      "branches": [
+        {
+          "keywords": [
+            "wie",
+            "viele",
+            "haltestellen",
+            "aussteigen"
+          ],
+          "nextTurnId": "t5b_museum_stops"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Go along this street, the U-Bahn station is on the left side. You need to go in direction 'City Centre'."
+    },
+    "t3c_bus_line": {
+      "id": "t3c_bus_line",
+      "prompt": "Dort fahren die Linien 10 und 12 ab. Wohin möchten Sie denn?",
+      "branches": [
+        {
+          "keywords": [
+            "zentrum",
+            "innenstadt"
+          ],
+          "nextTurnId": "t4c_bus_line_details"
+        },
+        {
+          "keywords": [
+            "egal",
+            "nurso",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lines 10 and 12 depart there. Where do you want to go?"
+    },
+    "t4_hbf_bus_option": {
+      "id": "t4_hbf_bus_option",
+      "prompt": "Alternativ könnten Sie auch den Bus nehmen. Die Haltestelle ist gleich um die Ecke, gegenüber vom Café.",
+      "branches": [
+        {
+          "keywords": [
+            "welcher",
+            "bus",
+            "nummer",
+            "linie"
+          ],
+          "nextTurnId": "t5_hbf_bus_line"
+        },
+        {
+          "keywords": [
+            "lieber",
+            "gehen",
+            "danke",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alternatively, you could also take the bus. The stop is just around the corner, opposite the café."
+    },
+    "t4c_bus_line_details": {
+      "id": "t4c_bus_line_details",
+      "prompt": "Für das Zentrum nehmen Sie am besten die Linie 10. Die fährt direkt zum Marktplatz.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "gut",
+            "klar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the city center, you best take line 10. It goes directly to the market square."
+    },
+    "t5_hbf_bus_line": {
+      "id": "t5_hbf_bus_line",
+      "prompt": "Für den Hauptbahnhof nehmen Sie die Linie 15. Die fährt direkt vor den Eingang.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "gut",
+            "klar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the main station, take line 15. It goes directly to the entrance."
+    },
+    "t5b_museum_stops": {
+      "id": "t5b_museum_stops",
+      "prompt": "Das sind ungefähr drei Stationen. Steigen Sie am 'Königsplatz' aus, dann ist es nur ein kurzer Spaziergang zum Museum.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "gut",
+            "klar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "entschuldigung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's about three stops. Get off at 'Königsplatz', then it's just a short walk to the museum."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen! Ich hoffe, Sie finden es gut. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome! I hope you find it easily. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

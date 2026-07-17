@@ -1,0 +1,236 @@
+{
+  "id": "dlg-it-directions-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Chiedere indicazioni",
+  "opening": "Mi scusi, le serve aiuto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Mi scusi, le serve aiuto?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "certo",
+            "grazie"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "sto",
+            "bene"
+          ],
+          "nextTurnId": "t3-polite-exit"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi scusi, le SEHR-veh ah-YOO-toh? — Excuse me, do you need help?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, mi dica pure. Cosa cerca?",
+      "branches": [
+        {
+          "keywords": [
+            "galleria",
+            "d'arte"
+          ],
+          "nextTurnId": "t4-gallery"
+        },
+        {
+          "keywords": [
+            "stazione",
+            "treno"
+          ],
+          "nextTurnId": "t4-station"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cher-toh, mi DEE-kah POO-reh. COH-zah CHER-kah? — Of course, tell me. What are you looking for?"
+    },
+    "t3-polite-exit": {
+      "id": "t3-polite-exit",
+      "prompt": "D'accordo, nessun problema. Spero che trovi ciò che cerca comunque! Buona giornata.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "anchelei"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dahk-KOR-doh, nes-SUN pro-BLEH-mah. Sper-oh keh TRO-vee choh keh CHER-kah com-OON-kweh! BWOH-nah gior-NAH-tah. — All right, no problem. I hope you find what you're looking for anyway! Have a good day."
+    },
+    "t4-gallery": {
+      "id": "t4-gallery",
+      "prompt": "Ah, la Galleria Civica! Non è lontana, ma ci vuole una certa dimestichezza con i vicoli del centro storico. Le do un'indicazione spiccia: prenda la prima a destra in fondo a questa strada, poi prosegua dritto finché non vede la chiesa di San Paolo. Lì giri a sinistra, e la galleria sarà sulla sua destra, proprio di fronte a un'antica fontana. È tutto chiaro?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "chiaro",
+            "grazie"
+          ],
+          "nextTurnId": "t6-farewell"
+        },
+        {
+          "keywords": [
+            "ripetere",
+            "nonho",
+            "capito",
+            "dubbi"
+          ],
+          "nextTurnId": "t5-clarify-gallery"
+        },
+        {
+          "keywords": [
+            "mezzi",
+            "trasporto",
+            "autobus"
+          ],
+          "nextTurnId": "t5-transport-info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, la Gal-leh-REE-ah CHEE-vee-kah! Non è lon-TAH-nah, ma chee VWOH-leh OO-nah CHER-tah dee-mes-TEH-tsa con ee VEE-koh-lee del CHEN-troh STOH-ree-koh. Leh do oon een-dee-kah-TSYOH-neh SPEECH-chah: pren-DAH la PREE-mah ah DES-trah in FON-doh ah KWES-tah STRAH-dah, poy pro-SEH-goo-ah DRIT-toh fin-KÉ non VE-deh la KYEH-zah dee San PAO-loh. Lì GEE-ree ah see-NEES-trah, e la gal-leh-REE-ah sah-RÀ sool-lah SOO-ah DES-trah, pro-prio dee FRON-teh ah oon an-TEE-kah fon-TAH-nah. È TOO-ttoh KYAH-roh? — Ah, the Civic Gallery! It's not far, but you need some familiarity with the alleys of the historic center. I'll give you quick directions: take the first right at the end of this street, then go straight until you see the Church of San Paolo. There turn left, and the gallery will be on your right, right in front of an ancient fountain. Is everything clear?"
+    },
+    "t4-station": {
+      "id": "t4-station",
+      "prompt": "La stazione centrale? Quella è un po' un'altra faccenda. Se ha fretta, le converrebbe prendere l'autobus numero 12, la fermata è proprio lì dietro l'angolo, di fronte alla panetteria. Altrimenti, a piedi ci vorrebbero una buona ventina di minuti, tagliando per il parco. Dipende da quanto tempo ha a disposizione e dalla sua voglia di scarpinare.",
+      "branches": [
+        {
+          "keywords": [
+            "autobus",
+            "biglietto",
+            "fermata"
+          ],
+          "nextTurnId": "t5-transport-info"
+        },
+        {
+          "keywords": [
+            "piedi",
+            "parco",
+            "camminare"
+          ],
+          "nextTurnId": "t6-farewell"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La stah-TSYOH-neh chen-TRAH-leh? Quel-lah è un poh oon AL-trah fah-CHEN-dah. Se ah FRET-tah, leh con-ver-REB-beh PREN-deh-reh L'OW-toh-boos NOO-meh-roh dod-ee-chee, lah fer-MAH-tah è pro-prio lì DYEH-troh LAN-go-lo, dee FRON-teh al-lah pah-net-teh-REE-ah. Al-tree-MEN-tee, ah PYEH-dee chi voh-RER-beh-roh OO-nah BWOH-nah ven-TEE-nah dee mee-NOO-tee, tal-LYAN-doh per eel PAR-koh. Dee-PEN-deh dah KWAN-toh TEM-poh ah ah dees-poh-zee-TSYOH-neh e dal-lah SOO-ah VOH-lya dee skar-pee-NAH-reh. — The central station? That's a bit of another matter. If you're in a hurry, you'd better take bus number 12, the stop is right around the corner, in front of the bakery. Otherwise, on foot it would take a good twenty minutes, cutting through the park. It depends on how much time you have available and your desire to walk."
+    },
+    "t5-clarify-gallery": {
+      "id": "t5-clarify-gallery",
+      "prompt": "Certo, mi scusi se sono stato troppo sbrigativo. Allora, ricapitoliamo con calma: In fondo a questa strada, a destra. Poi dritto fino alla chiesa di San Paolo. Lì, a sinistra. La galleria è sulla destra, di fronte alla fontana. Ci siamo adesso?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "meglio",
+            "grazie",
+            "chiaro"
+          ],
+          "nextTurnId": "t6-farewell"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cher-toh, mi scu-SI, se SONO sta-toh TROP-po sbree-gah-TEE-vo. Al-LOH-rah, ree-kah-pee-toh-LYAH-moh con CAL-mah: In FON-doh ah KWES-tah STRAH-dah, ah DES-trah. Poy DRIT-toh FEE-noh al-lah KYEH-zah dee San PAO-loh. Lì, ah see-NEES-trah. La gal-leh-REE-ah è SOOL-lah DES-trah, dee FRON-teh al-lah fon-TAH-nah. Chi SYAH-moh ad-DES-soh? — Of course, forgive me if I was too hasty. So, let's recap calmly: At the end of this street, to the right. Then straight until the church of San Paolo. There, to the left. The gallery is on the right, in front of the fountain. Are we good now?"
+    },
+    "t5-transport-info": {
+      "id": "t5-transport-info",
+      "prompt": "Per la Galleria, in effetti, non ci sono mezzi pubblici che ci arrivano proprio davanti, dato che è in una zona pedonale, quindi la miglior cosa è a piedi. Per la stazione invece, l'autobus 12 è il suo, la fermata è dietro l'angolo, il biglietto può farlo a bordo, ma conviene prenderlo prima in tabaccheria.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "biglietto"
+          ],
+          "nextTurnId": "t6-farewell"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per la Gal-leh-REE-ah, in ef-FET-ti, non chi sono MET-tsi PUB-blee-chee keh chi AR-ree-vah-no pro-prio dah-VAN-ti, DAH-toh keh è in OO-nah ZOH-nah peh-doh-NAH-leh, KWIN-dee la mee-LYOR COH-sah è ah PYEH-dee. Per la stah-TSYOH-neh in-VEH-cheh, L'OW-toh-boos DOD-ee-chee è eel SOO-oh, la fer-MAH-tah è DYEH-troh LAN-go-lo, eel beel-YET-toh PWOH FAR-lo ah BOR-doh, ma con-VYEH-neh pren-DER-lo PREE-mah in tah-bak-keh-REE-ah. — For the Gallery, in fact, there are no public transports that arrive right in front, as it's in a pedestrian area, so the best thing is on foot. For the station instead, bus 12 is yours, the stop is around the corner, you can buy the ticket on board, but it's better to get it first at a tobacconist's."
+    },
+    "t6-farewell": {
+      "id": "t6-farewell",
+      "prompt": "Perfetto, spero di averle fornito tutte le indicazioni del caso. Le auguro una buona prosecuzione e in bocca al lupo!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "lei",
+            "buonagiornata"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Per-FET-toh, SPER-oh dee ah-VER-le for-NEE-toh TOO-tteh le een-dee-kah-TSYOH-nee del CAH-zoh. Leh ah-OO-goo-roh OO-nah BWOH-nah pro-seh-koo-TSYOH-neh e een BOK-kah al LOO-poh! — Perfect, I hope I've given you all the necessary directions. I wish you a good continuation and good luck!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato. Potrebbe ripetersi, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scu-SI, non oh af-fer-RAH-toh. Poh-TREB-beh ree-pe-TER-si, per cor-te-SEE-ah? — Excuse me, I didn't catch that. Could you please repeat yourself?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Figurati, è stato un piacere. Buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-goo-RAH-tee, è STA-toh un pya-CHEH-reh. BWOH-nah gior-NAH-tah! — You're welcome, it was a pleasure. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

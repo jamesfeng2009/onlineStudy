@@ -1,0 +1,211 @@
+{
+  "id": "dlg-ms-hotel-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Daftar Masuk Hotel",
+  "opening": "Selamat datang ke Hotel Cemerlang! Ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Cemerlang! (Selamat datang ke Hotel Cemerlang! — Welcome to Hotel Cemerlang!) Adakah anda ada tempahan di bawah nama tertentu? (Adakah anda ada tempahan di bawah nama tertentu? — Do you have a reservation under a specific name?)",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "tempahan",
+            "atas"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "boleh",
+            "bantu",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome to Hotel Cemerlang! Do you have a reservation under a specific name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. (Terima kasih. — Thank you.) Bolehkah saya lihat kad pengenalan atau pasport anda untuk pengesahan? (Bolehkah saya lihat kad pengenalan atau pasport anda untuk pengesahan? — May I see your ID card or passport for verification?)",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "kad",
+            "pengenalan",
+            "pasport"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kenapa",
+            "perlu",
+            "dokumen"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. May I see your ID card or passport for verification?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Ia adalah prosedur standard hotel untuk tujuan keselamatan dan rekod. Terima kasih atas kerjasama anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "faham",
+            "baik"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It is a standard hotel procedure for security and record-keeping purposes. Thank you for your cooperation."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, Puan/Encik. Semua sudah teratur. Untuk pembayaran, adakah anda ingin menggunakan kad kredit atau tunai? Dan, adakah anda mempunyai sebarang keutamaan bilik (contohnya, pemandangan laut atau tingkat tinggi)?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "kredit",
+            "pemandangan",
+            "tingkat"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tunai",
+            "cash",
+            "tiada",
+            "keutamaan"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, Ma'am/Sir. Everything is in order. For payment, would you like to use credit card or cash? And, do you have any room preferences (e.g., sea view or high floor)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Faham. Bilik anda di tingkat 10 dengan pemandangan laut. Adakah anda ingin menambah sarapan pagi untuk penginapan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ingin",
+            "sarapan",
+            "tambah"
+          ],
+          "nextTurnId": "t-end-breakfast"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "taknak"
+          ],
+          "nextTurnId": "t-end-nobf"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Your room is on the 10th floor with a sea view. Would you like to add breakfast for your stay?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Baik, kami akan berikan bilik yang selesa untuk anda. Adakah anda ingin menambah sarapan pagi untuk penginapan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ingin",
+            "sarapan",
+            "tambah"
+          ],
+          "nextTurnId": "t-end-breakfast"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "taknak"
+          ],
+          "nextTurnId": "t-end-nobf"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, we will give you a comfortable room. Would you like to add breakfast for your stay?"
+    },
+    "t-end-breakfast": {
+      "id": "t-end-breakfast",
+      "prompt": "Sarapan pagi akan termasuk dalam pakej anda. Ini kad kunci bilik anda, bilik 1012. Harap anda menikmati penginapan di sini. (Harap anda menikmati penginapan di sini. — We hope you enjoy your stay here.) Selamat bercuti! (Selamat bercuti! — Happy holidays!)",
+      "branches": [],
+      "fallbackBranchId": "t-end-breakfast",
+      "promptTranslation": "Breakfast will be included in your package. Here is your room key card, room 1012. We hope you enjoy your stay here. Happy holidays!",
+      "isTerminal": true
+    },
+    "t-end-nobf": {
+      "id": "t-end-nobf",
+      "prompt": "Baiklah. Ini kad kunci bilik anda, bilik 805. Harap anda menikmati penginapan di sini. (Harap anda menikmati penginapan di sini. — We hope you enjoy your stay here.) Selamat bercuti! (Selamat bercuti! — Happy holidays!)",
+      "branches": [],
+      "fallbackBranchId": "t-end-nobf",
+      "promptTranslation": "Alright. Here is your room key card, room 805. We hope you enjoy your stay here. Happy holidays!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak begitu faham. Bolehkah anda ulang atau jelaskan dengan lebih lanjut? (Maaf, saya tidak begitu faham. — Sorry, I don't quite understand.) (Bolehkah anda ulang atau jelaskan dengan lebih lanjut? — Could you repeat or explain further?)",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I don't quite understand. Could you repeat or explain further?"
+    }
+  }
+}

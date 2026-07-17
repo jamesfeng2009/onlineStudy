@@ -1,0 +1,214 @@
+{
+  "id": "dlg-id-transport-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Beli Tiket Kereta",
+  "opening": "Selamat pagi/siang/sore. Mau ke mana, Mas/Mbak?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/siang/sore. Mau ke mana, Mas/Mbak?",
+      "branches": [
+        {
+          "keywords": [
+            "manggarai",
+            "stasiunmanggarai"
+          ],
+          "nextTurnId": "t2_ask_ticket_type"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi/siang/sore (Sĕ-la-mat pa-gi/siang/so-re). Mau ke mana (Ma-u kĕ ma-na), Mas/Mbak (Mas/Mbak)? — Good morning/afternoon/evening. Where are you going, Sir/Madam?"
+    },
+    "t2_ask_ticket_type": {
+      "id": "t2_ask_ticket_type",
+      "prompt": "Baik. Tiketnya mau sekali jalan atau pulang-pergi?",
+      "branches": [
+        {
+          "keywords": [
+            "sekalijalan",
+            "sekali",
+            "satuarah"
+          ],
+          "nextTurnId": "t3_price_oneway"
+        },
+        {
+          "keywords": [
+            "pulangpergi",
+            "pulang",
+            "pergi"
+          ],
+          "nextTurnId": "t3_price_return"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik). Tiketnya mau sekali jalan (Ti-ket-nya ma-u sĕ-ka-li ja-lan) atau pulang-pergi (a-tau pu-lang-pĕr-gi)? — Okay. Do you want a one-way or return ticket?"
+    },
+    "t3_price_oneway": {
+      "id": "t3_price_oneway",
+      "prompt": "Baik, satu tiket sekali jalan harganya Rp 5.000. Pembayarannya pakai tunai atau kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "uangtunai"
+          ],
+          "nextTurnId": "t4_complete_transaction"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, satu tiket sekali jalan harganya Rp 5.000 (Li-ma ri-bu). Pembayarannya (Pĕm-ba-ya-ran-nya) pakai tunai (pa-kai tu-nai) atau kartu (a-tau kar-tu)? — Okay, one one-way ticket costs Rp 5,000. Payment by cash or card?"
+    },
+    "t3_price_return": {
+      "id": "t3_price_return",
+      "prompt": "Baik, satu tiket pulang-pergi harganya Rp 10.000. Pembayarannya pakai tunai atau kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "uangtunai"
+          ],
+          "nextTurnId": "t4_complete_transaction"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, satu tiket pulang-pergi harganya Rp 10.000 (Sĕ-pu-luh ri-bu). Pembayarannya pakai tunai atau kartu? — Okay, one return ticket costs Rp 10,000. Payment by cash or card?"
+    },
+    "t4_complete_transaction": {
+      "id": "t4_complete_transaction",
+      "prompt": "Terima kasih. Ini tiket Anda. Ada lagi yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "tidakada"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "peron",
+            "jalur",
+            "platform"
+          ],
+          "nextTurnId": "t5_info_platform"
+        },
+        {
+          "keywords": [
+            "keterlambatan",
+            "delay"
+          ],
+          "nextTurnId": "t5_info_delay"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Tĕ-ri-ma ka-sih). Ini tiket Anda (I-ni ti-ket An-da). Ada lagi yang bisa saya bantu (A-da la-gi yang bi-sa sa-ya ban-tu)? — Thank you. Here is your ticket. Is there anything else I can help with?"
+    },
+    "t5_info_platform": {
+      "id": "t5_info_platform",
+      "prompt": "Untuk kereta tujuan Anda, Anda bisa naik dari peron 3.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "makasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk kereta tujuan Anda (Un-tuk kĕ-re-ta tu-ju-an An-da), Anda bisa naik dari peron 3 (An-da bi-sa na-ik da-ri pĕ-ron ti-ga). — For your train, you can board from platform 3."
+    },
+    "t5_info_delay": {
+      "id": "t5_info_delay",
+      "prompt": "Mohon maaf, tidak ada keterlambatan untuk saat ini. Kereta berangkat sesuai jadwal.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "makasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf (Mo-hon ma-af), tidak ada keterlambatan (ti-dak a-da kĕ-tĕr-lam-ba-tan) untuk saat ini. Kereta berangkat sesuai jadwal. — I apologize, there are no delays at the moment. The train departs on schedule."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulang (bi-sa di-u-lang)? Saya kurang jelas (Sa-ya ku-rang jĕ-las). — Sorry, can you repeat that? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Hati-hati di jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (Sa-ma-sa-ma). Hati-hati di jalan (Ha-ti-ha-ti di ja-lan)! — You're welcome. Be careful on your journey!",
+      "isTerminal": true
+    }
+  }
+}

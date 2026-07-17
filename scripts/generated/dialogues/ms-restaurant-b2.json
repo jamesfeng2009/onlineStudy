@@ -1,0 +1,228 @@
+{
+  "id": "dlg-ms-restaurant-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat datang ke Restoran Rasa Malaysia. Sudah bersedia untuk memesan, atau perlukan cadangan istimewa kami?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Restoran Rasa Malaysia. Sudah bersedia untuk memesan, atau perlukan cadangan istimewa kami?",
+      "branches": [
+        {
+          "keywords": [
+            "sedia",
+            "memesan",
+            "order"
+          ],
+          "nextTurnId": "t3_direct_order"
+        },
+        {
+          "keywords": [
+            "cadangan",
+            "istimewa",
+            "rekomendasi",
+            "spesial"
+          ],
+          "nextTurnId": "t2_reco"
+        },
+        {
+          "keywords": [
+            "menu",
+            "lihat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Selamat datang ke Restoran Rasa Malaysia (Welcome to Rasa Malaysia Restaurant). Sudah bersedia untuk memesan (Are you ready to order), atau perlukan cadangan istimewa kami (or would you like our special recommendations)?"
+    },
+    "t2_reco": {
+      "id": "t2_reco",
+      "prompt": "Tentu. Untuk hari ini, kami ada Nasi Lemak Royale dengan ayam goreng berempah yang memang menjadi kegemaran ramai, atau Laksa Sarawak asli. Mana satu yang berkenan di hati?",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "lemak",
+            "royale"
+          ],
+          "nextTurnId": "t4_order_main"
+        },
+        {
+          "keywords": [
+            "diet",
+            "alergi",
+            "pantang"
+          ],
+          "nextTurnId": "t3_diet"
+        },
+        {
+          "keywords": [
+            "lain",
+            "pilihan",
+            "ada"
+          ],
+          "nextTurnId": "t3_more_options"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tentu (Certainly). Untuk hari ini, kami ada Nasi Lemak Royale dengan ayam goreng berempah (today we have Nasi Lemak Royale with spiced fried chicken) yang memang menjadi kegemaran ramai (which is a crowd favourite), atau Laksa Sarawak asli (or authentic Sarawak Laksa). Mana satu yang berkenan di hati (Which one takes your fancy)?"
+    },
+    "t3_diet": {
+      "id": "t3_diet",
+      "prompt": "Sudah tentu. Kami boleh sesuaikan kebanyakan hidangan kami. Ada sebarang alahan atau pantang larang makanan tertentu yang perlu kami tahu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "bukan"
+          ],
+          "nextTurnId": "t2_reco"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "halal",
+            "pedas",
+            "gluten"
+          ],
+          "nextTurnId": "t3_more_options"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Sudah tentu (Certainly). We can customize most of our dishes. Are there any specific allergies or dietary restrictions we should know about?"
+    },
+    "t3_direct_order": {
+      "id": "t3_direct_order",
+      "prompt": "Baiklah, apa yang ingin anda pesan hari ini? Kami ada pelbagai hidangan tempatan dan Barat.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng",
+            "mee",
+            "roti"
+          ],
+          "nextTurnId": "t4_order_main"
+        },
+        {
+          "keywords": [
+            "cadangan",
+            "rekomendasi",
+            "istimewa"
+          ],
+          "nextTurnId": "t2_reco"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "pedas",
+            "alergi"
+          ],
+          "nextTurnId": "t3_diet"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Alright, what would you like to order today? We have a variety of local and Western dishes."
+    },
+    "t3_more_options": {
+      "id": "t3_more_options",
+      "prompt": "Faham. Selain hidangan yang kami cadangkan tadi, kami juga ada Mee Goreng Mamak, Chicken Chop sos cendawan, atau set sayuran campur untuk pilihan vegetarian. Mana satu yang sesuai?",
+      "branches": [
+        {
+          "keywords": [
+            "mee",
+            "goreng",
+            "mamak"
+          ],
+          "nextTurnId": "t4_order_main"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Understood. Besides the dishes we recommended earlier, we also have Mee Goreng Mamak, Mushroom Sauce Chicken Chop, or a mixed vegetable set for vegetarian options. Which one is suitable?"
+    },
+    "t4_order_main": {
+      "id": "t4_order_main",
+      "prompt": "Pilihan yang sangat baik! Jadi, pesanan anda (mentions selected dish). Ada apa-apa lagi yang ingin dipesan, mungkin minuman atau pencuci mulut?",
+      "branches": [
+        {
+          "keywords": [
+            "minuman",
+            "air"
+          ],
+          "nextTurnId": "t5_drinks_dessert"
+        },
+        {
+          "keywords": [
+            "itu",
+            "sahaja",
+            "cukup",
+            "tidak"
+          ],
+          "nextTurnId": "t6_final_confirm_bill"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Pilihan yang sangat baik (Excellent choice)! So, your order is (mentions selected dish). Ada apa-apa lagi yang ingin dipesan (Is there anything else you'd like to order), mungkin minuman atau pencuci mulut (perhaps drinks or dessert)?"
+    },
+    "t5_drinks_dessert": {
+      "id": "t5_drinks_dessert",
+      "prompt": "Faham. Untuk minuman, kami ada pelbagai pilihan seperti Teh Tarik, Kopi 'O', jus buah-buahan segar. Ada yang berkenan?",
+      "branches": [
+        {
+          "keywords": [
+            "teh",
+            "tarik",
+            "kopi",
+            "jus"
+          ],
+          "nextTurnId": "t6_final_confirm_bill"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Understood. For drinks, we have various options like Teh Tarik, Kopi 'O', fresh fruit juices. Do any appeal to you?"
+    },
+    "t6_final_confirm_bill": {
+      "id": "t6_final_confirm_bill",
+      "prompt": "Baik, pesanan anda akan disediakan sebentar lagi. Jika anda memerlukan apa-apa lagi atau ingin bil, jangan segan untuk memanggil saya. Selamat menjamu selera!",
+      "branches": [
+        {
+          "keywords": [
+            "bil",
+            "bayar",
+            "kira"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Alright, your order will be prepared shortly. If you need anything else or would like the bill, don't hesitate to call me. Enjoy your meal!"
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't understand."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Terima kasih banyak. Sila datang lagi!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Thank you very much. Please come again!",
+      "isTerminal": true
+    }
+  }
+}

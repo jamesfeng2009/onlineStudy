@@ -1,0 +1,150 @@
+{
+  "id": "dlg-de-hotel-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Hotel-Check-in: Fortgeschritten",
+  "opening": "Guten Tag! Herzlich willkommen im Grand Hotel Berlin. Haben Sie eine Reservierung bei uns?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Herzlich willkommen im Grand Hotel Berlin. Haben Sie eine Reservierung bei uns?",
+      "branches": [
+        {
+          "keywords": [
+            "müller",
+            "schmidt",
+            "meier",
+            "reservierung",
+            "ja",
+            "habe"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "entschuldigen",
+            "wiederholen",
+            "nichtverstanden"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good day! (Goo-ten Tahg!) Welcome to the Grand Hotel Berlin. Do you have a reservation with us?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bestens, Herr/Frau [Nachname] (oder einfach Ihr Name). Könnten Sie mir bitte Ihren Ausweis oder Reisepass zur Registrierung aushändigen?",
+      "branches": [
+        {
+          "keywords": [
+            "ausweis",
+            "pass",
+            "hier",
+            "gerne",
+            "natürlich"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "entschuldigen",
+            "wiederholen",
+            "nichtverstanden"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, Mr./Ms. [Last Name] (or simply your name). (Beh-stenz, Herr/Frahw [Nahkh-nah-meh].) Could you please hand me your ID card or passport for registration?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vielen Dank. Benötigen wir noch eine Kreditkarte für die Kaution oder haben Sie bereits alles online beglichen?",
+      "branches": [
+        {
+          "keywords": [
+            "kreditkarte",
+            "karte",
+            "kaution",
+            "hier",
+            "bar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "entschuldigen",
+            "wiederholen",
+            "nichtverstanden"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you very much. (Fee-len Dank.) Do we still need a credit card for the deposit, or have you already settled everything online?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Prima. Haben Sie eine Präferenz bezüglich der Zimmerlage – lieber mit Blick zum Hof für mehr Ruhe oder zur Straße hin, falls Sie das Stadtleben bevorzugen? Und ist das Frühstück für Sie inbegriffen oder möchten Sie es noch hinzufügen?",
+      "branches": [
+        {
+          "keywords": [
+            "hof",
+            "ruhig",
+            "courtyard",
+            "straße",
+            "blick",
+            "street",
+            "egal",
+            "keinepräferenz",
+            "frühstück",
+            "ja",
+            "hinzufügen",
+            "nein",
+            "keinfrühstück"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "entschuldigen",
+            "wiederholen",
+            "nichtverstanden"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. (Pree-mah.) Do you have a preference regarding the room's location – rather facing the courtyard for more quiet, or towards the street if you prefer city life? And is breakfast included for you, or would you like to add it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alles klar. Ihre Schlüsselkarte ist hier. Ihr Zimmer befindet sich im dritten Stock. Ich hoffe, Sie finden sich gut zurecht und wünsche Ihnen einen angenehmen Aufenthalt bei uns! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "All clear. Your key card is here. Your room is on the third floor. I hope you'll find your way around well and wish you a pleasant stay with us! Goodbye! (Owf Vee-der-zeh-en!)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "wiederholen",
+            "nochmal",
+            "bitte",
+            "ja",
+            "verstanden"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand you. Could you please repeat that or phrase it differently?"
+    }
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "id": "dlg-id-doctor-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Konsultasi Dokter Lanjut",
+  "opening": "Selamat pagi/siang/sore, Bapak/Ibu. Silakan duduk. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/siang/sore, Bapak/Ibu. Silakan duduk. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pusing",
+            "sakitkepala",
+            "migrain"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "demam",
+            "flu",
+            "batuk",
+            "pilek"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "nyeri",
+            "sakit",
+            "tidakenakbadan"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi/siang/sore, Bapak/Ibu. Silakan duduk. Ada yang bisa saya bantu? — Good morning/afternoon/evening, Sir/Madam. Please have a seat. How can I help you?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Baik, sakit kepala seperti apa yang Anda rasakan? Sudah berapa lama keluhan ini menghantui Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "berdenyut",
+            "berat",
+            "menusuk",
+            "sepanjanghari",
+            "beberapahari",
+            "seminggu"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "tiba-tiba",
+            "belumlama",
+            "mendadak"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, sakit kepala seperti apa yang Anda rasakan? Sudah berapa lama keluhan ini menghantui Anda? — Alright, what kind of headache are you experiencing? How long has this complaint been bothering you?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Demamnya sudah berapa hari? Apakah disertai gejala lain seperti batuk berdahak atau nyeri tenggorokan?",
+      "branches": [
+        {
+          "keywords": [
+            "duahari",
+            "tigahari",
+            "disertaibatuk",
+            "tenggorokan",
+            "berdahak"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "hanyademam",
+            "tanpabatuk",
+            "biasasaja",
+            "tidakada"
+          ],
+          "nextTurnId": "t3d"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Demamnya sudah berapa hari? Apakah disertai gejala lain seperti batuk berdahak atau nyeri tenggorokan? — How many days have you had a fever? Is it accompanied by other symptoms like a productive cough or sore throat?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Bisa lebih spesifik, Bapak/Ibu? Di bagian mana Anda merasakan nyeri atau ketidaknyamanan tersebut? Dan bagaimana karakteristik nyerinya?",
+      "branches": [
+        {
+          "keywords": [
+            "perut",
+            "dada",
+            "sendi",
+            "otot",
+            "menusuk",
+            "tertekan"
+          ],
+          "nextTurnId": "t3e"
+        },
+        {
+          "keywords": [
+            "seluruhbadan",
+            "letih",
+            "lesu",
+            "pegal"
+          ],
+          "nextTurnId": "t3f"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bisa lebih spesifik, Bapak/Ibu? Di bagian mana Anda merasakan nyeri atau ketidaknyamanan tersebut? Dan bagaimana karakteristik nyerinya? — Could you be more specific, Sir/Madam? Where exactly do you feel the pain or discomfort? And what are its characteristics?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Apakah ada faktor pemicu yang memperburuk atau meredakan sakit kepala Anda? Misalnya, cahaya terang atau suara bising?",
+      "branches": [
+        {
+          "keywords": [
+            "cahaya",
+            "suara",
+            "stres",
+            "istirahat",
+            "obat",
+            "tidur"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah ada faktor pemicu yang memperburuk atau meredakan sakit kepala Anda? Misalnya, cahaya terang atau suara bising? — Are there any triggering factors that worsen or alleviate your headache? For example, bright light or loud noises?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Apakah ada gejala lain yang menyertai seperti mual, muntah, atau pandangan kabur? Apakah Anda punya riwayat tekanan darah tinggi?",
+      "branches": [
+        {
+          "keywords": [
+            "mual",
+            "muntah",
+            "pandangankabur",
+            "darah",
+            "tekanan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah ada gejala lain yang menyertai seperti mual, muntah, atau pandangan kabur? Apakah Anda punya riwayat tekanan darah tinggi? — Are there any other accompanying symptoms such as nausea, vomiting, or blurred vision? Do you have a history of high blood pressure?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Apakah batuknya produktif, dan seberapa parah nyeri tenggorokannya? Apakah Anda kesulitan menelan?",
+      "branches": [
+        {
+          "keywords": [
+            "produktif",
+            "dahak",
+            "parah",
+            "sulitmenelan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah batuknya produktif, dan seberapa parah nyeri tenggorokannya? Apakah Anda kesulitan menelan? — Is the cough productive, and how severe is the sore throat? Do you have difficulty swallowing?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "Apakah Anda baru bepergian atau melakukan kontak dengan orang yang sakit? Ada riwayat alergi obat?",
+      "branches": [
+        {
+          "keywords": [
+            "bepergian",
+            "kontak",
+            "alergi",
+            "obat"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah Anda baru bepergian atau melakukan kontak dengan orang yang sakit? Ada riwayat alergi obat? — Have you recently traveled or been in contact with sick individuals? Do you have a history of drug allergies?"
+    },
+    "t3e": {
+      "id": "t3e",
+      "prompt": "Apakah nyerinya menjalar ke area lain? Apakah nyeri ini muncul secara tiba-tiba atau bertahap?",
+      "branches": [
+        {
+          "keywords": [
+            "menjalar",
+            "tiba-tiba",
+            "bertahap",
+            "tidak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah nyerinya menjalar ke area lain? Apakah nyeri ini muncul secara tiba-tiba atau bertahap? — Does the pain radiate to other areas? Did this pain appear suddenly or gradually?"
+    },
+    "t3f": {
+      "id": "t3f",
+      "prompt": "Bagaimana dengan pola tidur dan nafsu makan Anda belakangan ini? Apakah ada perubahan signifikan?",
+      "branches": [
+        {
+          "keywords": [
+            "tidur",
+            "nafsumakan",
+            "berubah",
+            "berkurang",
+            "sulit"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagaimana dengan pola tidur dan nafsu makan Anda belakangan ini? Apakah ada perubahan signifikan? — How about your sleep patterns and appetite recently? Have there been any significant changes?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Berdasarkan gejala yang Anda sampaikan, kemungkinan ini adalah kondisi indikasi flu atau kelelahan biasa. Saya akan meresepkan Paracetamol untuk meredakan gejala Anda. Jika tidak ada perbaikan dalam tiga hari, atau muncul gejala baru, mohon segera kembali.",
+      "branches": [
+        {
+          "keywords": [
+            "resep",
+            "obat",
+            "efeksamping",
+            "dosis",
+            "cara"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "terimakasih",
+            "baik",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Berdasarkan gejala yang Anda sampaikan, kemungkinan ini adalah kondisi indikasi flu atau kelelahan biasa. Saya akan meresepkan Paracetamol untuk meredakan gejala Anda. Jika tidak ada perbaikan dalam tiga hari, atau muncul gejala baru, mohon segera kembali. — Based on the symptoms you've described, this is likely an indication of flu or common fatigue. I will prescribe Paracetamol to alleviate your symptoms. If there's no improvement within three days, or if new symptoms appear, please come back immediately."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Tentu, Paracetamol adalah analgesik dan antipiretik yang bekerja untuk meredakan nyeri dan demam. Dosisnya adalah 500 mg dan diminum 3 kali sehari setelah makan. Efek samping umumnya ringan, namun jika ada keluhan serius, segera hentikan.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "jelas",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu, Paracetamol adalah analgesik dan antipiretik yang bekerja untuk meredakan nyeri dan demam. Dosisnya adalah 500 mg dan diminum 3 kali sehari setelah makan. Efek samping umumnya ringan, namun jika ada keluhan serius, segera hentikan. — Certainly, Paracetamol is an analgesic and antipyretic that works to relieve pain and fever. The dosage is 500 mg and it should be taken 3 times a day after meals. Side effects are generally mild, but if you experience any serious complaints, stop immediately."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisakah Anda mengulanginya? Saya kurang jelas. Atau mungkin ada yang ingin Anda tanyakan?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf, bisakah Anda mengulanginya? Saya kurang jelas. Atau mungkin ada yang ingin Anda tanyakan? — I apologize, could you please repeat that? I didn't quite catch it. Or perhaps there's something you'd like to ask?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, kalau begitu. Semoga lekas sembuh, Bapak/Ibu. Jangan sungkan untuk datang kembali jika ada kekhawatiran.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, kalau begitu. Semoga lekas sembuh, Bapak/Ibu. Jangan sungkan untuk datang kembali jika ada kekhawatiran. — Alright then. I hope you recover quickly, Sir/Madam. Don't hesitate to come back if you have any concerns.",
+      "isTerminal": true
+    }
+  }
+}

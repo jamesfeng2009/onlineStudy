@@ -1,0 +1,354 @@
+{
+  "id": "dlg-th-bank-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "ที่ธนาคาร",
+  "opening": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เปิดบัญชี",
+            "บัญชี"
+          ],
+          "nextTurnId": "t2_open"
+        },
+        {
+          "keywords": [
+            "แลกเงิน",
+            "แลก"
+          ],
+          "nextTurnId": "t2_exchange"
+        },
+        {
+          "keywords": [
+            "เอทีเอ็ม",
+            "โอนเงิน",
+            "พิน"
+          ],
+          "nextTurnId": "t2_atm"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee ka. Mee a-rai hai chuay mai ka? — Hello. How can I help you?"
+    },
+    "t2_open": {
+      "id": "t2_open",
+      "prompt": "ต้องการเปิดบัญชีประเภทไหนคะ? บัญชีออมทรัพย์หรือบัญชีกระแสรายวันคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ออมทรัพย์",
+            "ออม"
+          ],
+          "nextTurnId": "t3_savings"
+        },
+        {
+          "keywords": [
+            "กระแสรายวัน",
+            "กระแส"
+          ],
+          "nextTurnId": "t3_current"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t3_info_needed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-garn pert ban-chee pra-pate nai ka? Ban-chee aom-sap rue ban-chee gra-sae-rai-wan ka? — What type of account would you like to open? A savings account or a current account?"
+    },
+    "t2_exchange": {
+      "id": "t2_exchange",
+      "prompt": "ต้องการแลกเงินสกุลอะไรคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดอลลาร์",
+            "ยูเอสดี"
+          ],
+          "nextTurnId": "t4_exchange_proceed"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-garn laek ngern sa-gun a-rai ka? — What currency would you like to exchange?"
+    },
+    "t2_atm": {
+      "id": "t2_atm",
+      "prompt": "มีปัญหาเกี่ยวกับเอทีเอ็ม โอนเงิน หรือเปลี่ยนพินใช่ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เอทีเอ็ม",
+            "บัตร"
+          ],
+          "nextTurnId": "t5_cannot_proceed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee pan-ha gee-o-gub eh-tee-em ohn ngern rue plian pin chai mai ka? — Is it an issue with ATM, money transfer, or PIN change?"
+    },
+    "t3_savings": {
+      "id": "t3_savings",
+      "prompt": "บัญชีออมทรัพย์ดีสำหรับการเก็บเงินค่ะ ต้องใช้บัตรประชาชนในการเปิดบัญชีค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "มีบัตร",
+            "พร้อม"
+          ],
+          "nextTurnId": "t4_id_request"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ลืม"
+          ],
+          "nextTurnId": "t4_no_id"
+        },
+        {
+          "keywords": [
+            "คำถาม",
+            "สงสัย"
+          ],
+          "nextTurnId": "t3_info_needed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ban-chee aom-sap dee sam-rap geb ngern ka. Tong chai bat-pra-cha-chon nai garn pert ban-chee ka. — A savings account is good for saving money. You need your ID card to open an account."
+    },
+    "t3_current": {
+      "id": "t3_current",
+      "prompt": "บัญชีกระแสรายวันเหมาะสำหรับธุรกิจค่ะ ต้องใช้บัตรประชาชนในการเปิดบัญชีค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "มีบัตร",
+            "พร้อม"
+          ],
+          "nextTurnId": "t4_id_request"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ลืม"
+          ],
+          "nextTurnId": "t4_no_id"
+        },
+        {
+          "keywords": [
+            "คำถาม",
+            "สงสัย"
+          ],
+          "nextTurnId": "t3_info_needed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ban-chee gra-sae-rai-wan mor sam-rap tur-a-kit ka. Tong chai bat-pra-cha-chon nai garn pert ban-chee ka. — A current account is suitable for business. You need your ID card to open an account."
+    },
+    "t3_info_needed": {
+      "id": "t3_info_needed",
+      "prompt": "บัญชีออมทรัพย์เหมาะสำหรับเก็บเงิน ส่วนบัญชีกระแสรายวันเหมาะสำหรับธุรกิจค่ะ คุณต้องการแบบไหนคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ออมทรัพย์",
+            "ออม"
+          ],
+          "nextTurnId": "t3_savings"
+        },
+        {
+          "keywords": [
+            "กระแสรายวัน",
+            "กระแส"
+          ],
+          "nextTurnId": "t3_current"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "ยังไม่ตัดสินใจ"
+          ],
+          "nextTurnId": "t5_cannot_proceed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ban-chee aom-sap mor sam-rap geb ngern suan ban-chee gra-sae-rai-wan mor sam-rap tur-a-kit ka. Khun tong-garn baep nai ka? — A savings account is suitable for saving money, and a current account is suitable for business. Which one would you like?"
+    },
+    "t4_id_request": {
+      "id": "t4_id_request",
+      "prompt": "กรุณายื่นบัตรประชาชนให้ด้วยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "ยื่นให้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ถามต่อ",
+            "คำถาม"
+          ],
+          "nextTurnId": "t3_info_needed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ga-ru-na yuen bat-pra-cha-chon hai duay ka. — Please hand over your ID card."
+    },
+    "t4_no_id": {
+      "id": "t4_no_id",
+      "prompt": "ขออภัยค่ะ ต้องมีบัตรประชาชนในการเปิดบัญชีค่ะ คุณสะดวกกลับมาใหม่วันหลังไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ได้ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kor a-pai ka. Tong mee bat-pra-cha-chon nai garn pert ban-chee ka. Khun sa-duak glap ma mai wan lang mai ka? — I apologize. You must have an ID card to open an account. Would you be able to return another day?"
+    },
+    "t4_exchange_proceed": {
+      "id": "t4_exchange_proceed",
+      "prompt": "รับทราบค่ะ กรุณากรอกแบบฟอร์มแลกเงินได้เลยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "พร้อม"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "คำถาม",
+            "สงสัย"
+          ],
+          "nextTurnId": "t5_cannot_proceed"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rup-sab ka. Ga-ru-na grok baep-form laek ngern dai loey ka. — Understood. Please fill out the exchange form."
+    },
+    "t5_cannot_proceed": {
+      "id": "t5_cannot_proceed",
+      "prompt": "ไม่เป็นไรค่ะ หากมีคำถามเพิ่มเติมหรือตัดสินใจได้แล้ว เชิญมาที่นี่อีกครั้งนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ลา"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Mai pen rai ka. Hak mee kam-tam perm-term rue tat-sin-jai dai laew, chern ma tee nee eek krang na ka. — No problem. If you have more questions or have decided, please come back here again."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ กรุณาพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "พูดอีกครั้ง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor a-pai ka. Ga-ru-na poot eek krang dai mai ka? — I apologize. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khop khun tee chai bo-ri-garn ka. — Thank you for your service.",
+      "isTerminal": true
+    }
+  }
+}

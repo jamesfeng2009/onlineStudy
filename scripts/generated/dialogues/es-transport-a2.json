@@ -1,0 +1,297 @@
+{
+  "id": "dlg-es-transport-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Transporte Público",
+  "opening": "Hola, ¿en qué puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, ¿en qué puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "billete",
+            "ticket",
+            "comprar",
+            "necesito"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "parada",
+            "ruta",
+            "linea",
+            "donde",
+            "como"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "retraso",
+            "tarde",
+            "demora",
+            "hay"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hola (OH-lah), ¿en qué puedo (PWEH-doh) ayudarle (ah-yoo-DAR-leh)? — Hello, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro. ¿A dónde va? ¿Solo ida o ida y vuelta?",
+      "branches": [
+        {
+          "keywords": [
+            "destino",
+            "a",
+            "hacia",
+            "ida",
+            "soloida"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "precio",
+            "cuesta",
+            "es"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro (KLAH-roh). ¿A dónde va (VAH)? ¿Solo ida (EE-dah) o ida y vuelta (VWEHL-tah)? — Sure. Where are you going? One way or round trip?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¿Qué línea de autobús o tren busca?",
+      "branches": [
+        {
+          "keywords": [
+            "linea",
+            "numero",
+            "autobus",
+            "tren"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "noentiendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué línea (LEE-neh-ah) de autobús (ah-oo-toh-BOOS) o tren (TREN) busca (BOOS-kah)? — Which bus or train line are you looking for?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ahora mismo no hay retrasos importantes. ¿Necesita un billete o información de ruta?",
+      "branches": [
+        {
+          "keywords": [
+            "billete",
+            "ticket",
+            "comprar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ruta",
+            "parada",
+            "linea",
+            "informacion"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right now there are no significant delays. Do you need a ticket or route information?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "El billete cuesta 2 euros. ¿Paga con tarjeta o en efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "credito",
+            "debito",
+            "con"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "precio",
+            "cuanto",
+            "cuesta"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El billete (bee-YEH-teh) cuesta (KWEHS-tah) dos (DOHS) euros. ¿Paga (PAH-gah) con tarjeta (tar-HEH-tah) o en efectivo (eh-fek-TEE-voh)? — The ticket costs 2 euros. Do you pay by card or cash?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "El precio depende del destino. ¿A dónde va?",
+      "branches": [
+        {
+          "keywords": [
+            "destino",
+            "a",
+            "hacia",
+            "ida",
+            "soloida"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The price depends on the destination. Where are you going?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "La línea que busca le llevará allí. ¿Necesita saber sobre transbordos o el tiempo de viaje?",
+      "branches": [
+        {
+          "keywords": [
+            "transbordo",
+            "cambiar",
+            "otro"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "tiempo",
+            "duracion",
+            "tarda",
+            "cuanto"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La línea (LEE-neh-ah) que busca (BOOS-kah) le llevará (yeh-vah-RAH) allí. ¿Necesita (neh-seh-SEE-tah) saber (sah-BEHR) sobre transbordos (trans-BOR-dohs) o el tiempo (TYEM-poh) de viaje (VYA-heh)? — The line you're looking for will take you there. Do you need to know about transfers or travel time?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Sí, tendrá que hacer un transbordo en la estación central. El siguiente autobús/tren sale en 10 minutos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok",
+            "perfecto",
+            "entendido",
+            "bien"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, you will have to make a transfer at the central station. The next bus/train leaves in 10 minutes."
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "El viaje durará aproximadamente 30 minutos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok",
+            "perfecto",
+            "entendido",
+            "bien"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The trip will last approximately 30 minutes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. Que tenga un buen viaje. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright. Have a good trip. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

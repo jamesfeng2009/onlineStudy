@@ -1,0 +1,193 @@
+{
+  "id": "dlg-id-transport-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Informasi dan Pembelian Tiket Kereta Api",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "beli",
+            "tiket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "jadwal",
+            "kereta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi). Ada yang bisa saya bantu? (A-da yang bi-sa sa-ya ban-tu?) — Good morning. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, mau tujuan ke mana dan untuk berapa orang? Kami juga punya promo untuk keberangkatan pagi, lho.",
+      "branches": [
+        {
+          "keywords": [
+            "jakarta",
+            "satu",
+            "promo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik), mau tujuan ke mana dan untuk berapa orang? Kami juga punya promo untuk keberangkatan pagi, lho. — Okay, where are you going and for how many people? We also have promotions for morning departures, you know."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anda mencari jadwal keberangkatan atau kedatangan kereta tujuan mana? Atau mungkin rute dengan transit?",
+      "branches": [
+        {
+          "keywords": [
+            "keberangkatan",
+            "jakarta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Are you looking for departure or arrival schedule for which destination train? Or perhaps a route with transfers?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Oke. Untuk keberangkatan ke Jakarta, ada kereta Argo Bromo Anggrek jam 09.00 pagi dengan harga mulai dari 400 ribu rupiah. Anda mau kelas ekonomi, bisnis, atau eksekutif? Atau ada pertanyaan spesifik tentang keterlambatan atau bagasi?",
+      "branches": [
+        {
+          "keywords": [
+            "ekonomi",
+            "bisnis",
+            "eksekutif"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "keterlambatan",
+            "delay"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. For departure to Jakarta, there's the Argo Bromo Anggrek train at 09:00 AM with prices starting from 400 thousand rupiah. Do you want economy, business, or executive class? Or do you have specific questions about delays or luggage?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, untuk kelas eksekutif, harganya 650 ribu rupiah per orang. Totalnya 1.3 juta rupiah untuk dua orang. Mau langsung saya proses tiketnya?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "proses",
+            "bayar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "delay",
+            "keterlambatan"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, for executive class, the price is 650 thousand rupiah per person. The total is 1.3 million rupiah for two people. Shall I process the tickets now?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Untuk keterlambatan, biasanya kami akan menginformasikan melalui pengeras suara di stasiun. Sejauh ini tidak ada indikasi penundaan. Untuk bagasi, maksimal 20 kg per penumpang. Apakah ada hal lain yang perlu dikonfirmasi sebelum Anda membeli tiket?",
+      "branches": [
+        {
+          "keywords": [
+            "cukup",
+            "jelas",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lanjut",
+            "beli",
+            "proses"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Regarding delays, we usually inform via public address system at the station. So far there are no indications of postponement. For luggage, maximum 20 kg per passenger. Is there anything else you need to confirm before you buy the ticket?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas apa yang Anda maksud.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulang? (Bi-sa di-u-lang?) Saya kurang jelas apa yang Anda maksud. — Sorry, could you repeat that? I didn't quite catch what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih sudah berkunjung. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, thank you for visiting. Have a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

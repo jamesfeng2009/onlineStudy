@@ -1,0 +1,214 @@
+{
+  "id": "dlg-es-restaurant-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "En el restaurante: Pedir comida",
+  "opening": "¡Buenas noches! ¿Ya están listos para pedir o necesitan unos minutos más?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas noches! ¿Ya están listos para pedir o necesitan unos minutos más?",
+      "branches": [
+        {
+          "keywords": [
+            "listos",
+            "pedir",
+            "ordenar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "minutos",
+            "tiempo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! (bweh-nas noh-ches) Are you (ustedes) ready to order or do you need a few more minutes?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfecto. ¿Qué les apetece hoy? ¿Tenemos algunas especialidades del día si quieren una recomendación?",
+      "branches": [
+        {
+          "keywords": [
+            "recomendaciones",
+            "especialidades"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pedir",
+            "ordenar",
+            "menú"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. What are you in the mood for today? (keh les ah-peh-TEH-seh oy) We have some daily specials if you'd like a recommendation?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Claro, sin problema. Me acerco en unos minutos. ¿Hay alguna pregunta sobre el menú mientras tanto?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "gracias"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "sí",
+            "pregunta"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "listos",
+            "pedir"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, no problem. I'll come back in a few minutes. Are there any questions about the menu in the meantime?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nuestra especialidad hoy es el 'Lomo Saltado', un plato peruano delicioso, o si prefieren algo más ligero, la 'Ensalada Mediterránea' es muy popular. ¿Tienen alguna preferencia o restricción dietética?",
+      "branches": [
+        {
+          "keywords": [
+            "lomo",
+            "saltado",
+            "ensalada",
+            "mediterránea"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "restricciones",
+            "dieta"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "otro",
+            "más",
+            "menú"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Our special today is 'Lomo Saltado', a delicious Peruvian dish, or if you prefer something lighter, the 'Mediterranean Salad' is very popular. Do you have any preferences or dietary restrictions? (di-eh-TEH-tee-kah)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¿Qué les gustaría pedir entonces? O si tienen alguna pregunta sobre un plato en particular.",
+      "branches": [
+        {
+          "keywords": [
+            "pedir",
+            "ordenar"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What would you like to order then? Or if you have any questions about a particular dish."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Entendido. ¿Algo más, o eso sería todo por ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "todo",
+            "no"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "sí",
+            "más"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cuenta",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Anything else, or would that be all for now?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "De acuerdo, ¿hay algo que no puedan comer, como gluten, lácteos, o son vegetarianos?",
+      "branches": [
+        {
+          "keywords": [
+            "gluten",
+            "sin gluten"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, is there anything you can't eat, like gluten, dairy, or are you vegetarian?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Disculpen, ¿todo está a su gusto? ¿Les gustaría algo más, quizás un postre o un café?",
+      "branches": [
+        {
+          "keywords": [
+            "todo",
+            "bien"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, is everything to your liking? Would you like anything else, perhaps a dessert or a coffee?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Ha sido un placer atenderle! Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure serving you! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

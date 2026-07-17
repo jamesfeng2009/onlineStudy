@@ -1,0 +1,246 @@
+{
+  "id": "dlg-es-small-talk-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Pequeña charla en español",
+  "opening": "¡Hola! ¿Qué tal tu fin de semana? Espero que haya sido bueno.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tal tu fin de semana? Espero que haya sido bueno.",
+      "branches": [
+        {
+          "keywords": [
+            "muybien",
+            "genial",
+            "fantástico"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "normal",
+            "tranquilo",
+            "bien"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah) ¿Qué tal tu fin de semana? (Keh tal too feen deh seh-mah-nah) Espero que haya sido bueno. (Es-peh-roh keh ah-yah see-doh bweh-noh) — Hello! How was your weekend? I hope it was good."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Qué bueno! Me alegra oír eso. ¿Hiciste algo interesante?",
+      "branches": [
+        {
+          "keywords": [
+            "película",
+            "cine",
+            "ver"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "deporte",
+            "ejercicio",
+            "correr",
+            "nadar"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "familia",
+            "amigos",
+            "visitar"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "",
+            "nada especial"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bueno! (Keh bweh-noh) Me alegra oír eso. (Meh ah-leh-grah oh-eer eh-soh) ¿Hiciste algo interesante? (Ee-sees-teh ahl-goh een-teh-reh-sahn-teh) — How good! I'm glad to hear that. Did you do anything interesting?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, entiendo. El mío fue bastante relajado. ¿Tienes algún pasatiempo favorito?",
+      "branches": [
+        {
+          "keywords": [
+            "leer",
+            "libros"
+          ],
+          "nextTurnId": "t4d"
+        },
+        {
+          "keywords": [
+            "cocinar",
+            "comida"
+          ],
+          "nextTurnId": "t4e"
+        },
+        {
+          "keywords": [
+            "música",
+            "escuchar"
+          ],
+          "nextTurnId": "t4f"
+        },
+        {
+          "keywords": [
+            "",
+            "otros",
+            "no sé"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, (Ah) entiendo. (En-tyen-doh) El mío fue bastante relajado. (El mee-oh fweh bas-tahn-teh reh-lah-hah-doh) ¿Tienes algún pasatiempo favorito? (Tyeh-nes ahl-goon pah-sah-tyem-poh fah-boh-ree-toh) — Ah, I understand. Mine was quite relaxed. Do you have a favorite hobby?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "¡Qué bien! A mí también me gusta mucho el cine. ¿Hay alguna película que quieras recomendar?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "recomiendo",
+            "vi"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How good! I also really like cinema. Is there any movie you want to recommend?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "¡Qué activo! El deporte es muy bueno para la salud. ¿Qué tipo de deporte te gusta hacer?",
+      "branches": [
+        {
+          "keywords": [
+            "fútbol",
+            "baloncesto",
+            "correr"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How active! Sport is very good for health. What kind of sport do you like to do?"
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "¡Qué bonito! Es importante pasar tiempo con la familia o los amigos. ¿Qué suelen hacer juntos?",
+      "branches": [
+        {
+          "keywords": [
+            "comer",
+            "cenar",
+            "hablar"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How nice! It's important to spend time with family or friends. What do you usually do together?"
+    },
+    "t4d": {
+      "id": "t4d",
+      "prompt": "¡Leer es fantástico! ¿Qué tipo de libros te interesan más?",
+      "branches": [
+        {
+          "keywords": [
+            "novelas",
+            "ciencia ficción",
+            "fantasía"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Reading is fantastic! What kind of books interest you most?"
+    },
+    "t4e": {
+      "id": "t4e",
+      "prompt": "¡Qué interesante! A mí me encanta probar platos nuevos. ¿Hay alguna receta que te guste mucho?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "paella",
+            "pasta"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How interesting! I love trying new dishes. Is there any recipe you really like?"
+    },
+    "t4f": {
+      "id": "t4f",
+      "prompt": "¡La música es genial! ¿Qué géneros musicales sueles escuchar?",
+      "branches": [
+        {
+          "keywords": [
+            "pop",
+            "rock",
+            "electrónica"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Music is great! What musical genres do you usually listen to?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, ya veo. Ha sido un placer conversar contigo. Tengo que irme ahora, pero quizás hablamos más tarde.",
+      "branches": [
+        {
+          "keywords": [
+            "adiós",
+            "hasta luego"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah, I see. It's been a pleasure talking with you. I have to go now, but maybe we'll talk later."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No te he entendido bien. ¿Podrías repetirlo?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón? (Per-don) No te he entendido bien. (Noh teh eh en-ten-dee-doh byehn) ¿Podrías repetirlo? (Poh-dree-as reh-peh-teer-loh) — Sorry? I didn't understand you well. Could you repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Adiós! Que tengas un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "¡Adiós! (Ah-dee-os) Que tengas un buen día. (Keh ten-gas oon bwehn dee-ah) — Goodbye! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

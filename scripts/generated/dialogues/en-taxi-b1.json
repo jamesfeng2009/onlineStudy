@@ -1,0 +1,164 @@
+{
+  "id": "dlg-en-taxi-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Taxi Ride in the City",
+  "opening": "Hello! Where are you headed today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Where are you headed today?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "airport",
+            "station",
+            "park"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            "fare",
+            "cost",
+            "howmuch"
+          ],
+          "nextTurnId": "t3_fare_inquiry"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Where are you headed today?"
+    },
+    "t2_destination": {
+      "id": "t2_destination",
+      "prompt": "Okay, so you're going to [Destination/Address]. I'll take the quickest route, which is usually via [Main Road]. Traffic looks clear today. Does that sound good?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "soundsgood",
+            "fine"
+          ],
+          "nextTurnId": "t4_payment_approach"
+        },
+        {
+          "keywords": [
+            "different",
+            "other",
+            "route",
+            "traffic",
+            "faster"
+          ],
+          "nextTurnId": "t3_route_discussion"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, so you're going to [Destination/Address]. I'll take the quickest route, which is usually via [Main Road]. Traffic looks clear today. Does that sound good?"
+    },
+    "t3_fare_inquiry": {
+      "id": "t3_fare_inquiry",
+      "prompt": "I can give you an estimate, but I need to know your destination first. Where would you like to go?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "airport",
+            "station",
+            "park"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I can give you an estimate, but I need to know your destination first. Where would you like to go?"
+    },
+    "t3_route_discussion": {
+      "id": "t3_route_discussion",
+      "prompt": "There's an alternative route, but it sometimes takes longer. The usual way is generally the most reliable. Shall we stick to the usual, or try the alternative?",
+      "branches": [
+        {
+          "keywords": [
+            "usual",
+            "stick",
+            "yes",
+            "ok"
+          ],
+          "nextTurnId": "t4_payment_approach"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "There's an alternative route, but it sometimes takes longer. The usual way is generally the most reliable. Shall we stick to the usual, or try the alternative?"
+    },
+    "t4_payment_approach": {
+      "id": "t4_payment_approach",
+      "prompt": "We're almost there. The fare comes to twenty-five pounds. How would you like to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "cash",
+            "money"
+          ],
+          "nextTurnId": "t5_payment_complete"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We're almost there. The fare comes to twenty-five pounds. How would you like to pay?"
+    },
+    "t5_payment_complete": {
+      "id": "t5_payment_complete",
+      "prompt": "Thank you. Here's your change and receipt. Let me help you with your luggage. Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t5_payment_complete",
+      "promptTranslation": "Thank you. Here's your change and receipt. Let me help you with your luggage. Have a great day!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat that?"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "dlg-de-bank-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Bankgeschäfte",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "konto",
+            "eröffnen",
+            "neu"
+          ],
+          "nextTurnId": "t2_konto"
+        }
+      ],
+      "fallbackBranchId": "t2_konto",
+      "promptTranslation": "Goo-ten Tahg! Vee kahn ich ee-nen beh-hilf-lich zyn? — Good day! How can I help you?"
+    },
+    "t2_konto": {
+      "id": "t2_konto",
+      "prompt": "Möchten Sie ein Girokonto oder ein Sparkonto eröffnen? Dafür benötige ich Ihren gültigen Personalausweis und eventuell eine Meldebescheinigung. Haben Sie diese Dokumente dabei?",
+      "branches": [],
+      "fallbackBranchId": "t2_konto",
+      "promptTranslation": "Møch-ten See ain Gee-ro-kon-to o-der ain Spar-kon-to er-øff-nen? Da-fuer beh-nø-ti-ge ich ee-ren gül-ti-gen Per-so-nal-aus-vais unt e-ven-tu-ell ai-ne Mel-de-be-shei-ni-gung? Ha-ben See dee-ze Do-ku-men-te da-bai? — Would you like to open a checking account or a savings account? For that, I need your valid ID card and possibly a registration certificate. Do you have these documents with you?",
+      "isTerminal": true
+    }
+  }
+}

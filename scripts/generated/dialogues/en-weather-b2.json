@@ -1,0 +1,85 @@
+{
+  "id": "dlg-en-weather-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Weather Woes and Wonders",
+  "opening": "Morning! How's the weather shaping up for you today? It looks a bit gloomy here, might rain later.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Morning! How's the weather shaping up for you today? It looks a bit gloomy here, might rain later.",
+      "branches": [
+        {
+          "keywords": [
+            "gloomy",
+            "rain",
+            "bad",
+            "awful"
+          ],
+          "nextTurnId": "t2_response"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Morning! How's the weather shaping up for you today? It looks a bit gloomy here, might rain later."
+    },
+    "t2_response": {
+      "id": "t2_response",
+      "prompt": "Ah, I see. It seems the weather's quite a topic for us today! Mine's a bit unpredictable, keeps me on my toes. Does it often affect your daily plans, or do you just roll with it?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "affect",
+            "plans",
+            "ruin"
+          ],
+          "nextTurnId": "t3_conclusions"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I see. It seems the weather's quite a topic for us today! Mine's a bit unpredictable, keeps me on my toes. Does it often affect your daily plans, or do you just roll with it?"
+    },
+    "t3_conclusions": {
+      "id": "t3_conclusions",
+      "prompt": "I hear you. It's frustrating when the weather dictates your day. Still, a bit of sunshine really does lift everyone's spirits, doesn't it? Anyway, I should probably get going. It was great chatting!",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "agree",
+            "true",
+            "sunshine",
+            "spirits"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I hear you. It's frustrating when the weather dictates your day. Still, a bit of sunshine really does lift everyone's spirits, doesn't it? Anyway, I should probably get going. It was great chatting!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you rephrase your last point?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase your last point?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, it was lovely chatting with you about the weather! Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, it was lovely chatting with you about the weather! Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

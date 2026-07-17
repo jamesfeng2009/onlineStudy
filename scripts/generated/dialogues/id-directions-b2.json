@@ -1,0 +1,235 @@
+{
+  "id": "dlg-id-directions-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Mencari Arah di Jalan",
+  "opening": "Permisi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Oh, Museum Nasional. Dari sini Anda tinggal lurus saja sekitar dua ratus meter, nanti ada perempatan besar, belok kiri.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "berapa",
+            "jarak"
+          ],
+          "nextTurnId": "t2_distance"
+        },
+        {
+          "keywords": [
+            "patokan",
+            "tanda",
+            "lain"
+          ],
+          "nextTurnId": "t2_landmark"
+        },
+        {
+          "keywords": [
+            "bis",
+            "transjakarta",
+            "transportasi"
+          ],
+          "nextTurnId": "t2_transport"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, the Museum Nasional (National Museum). From here, just go lurus saja (straight) for about two hundred meters, then there's a perempatan besar (big intersection), belok kiri (turn left)."
+    },
+    "t2_distance": {
+      "id": "t2_distance",
+      "prompt": "Tidak terlalu jauh kok, sekitar 5-7 menit jalan kaki. Kalau naik ojek mungkin cuma 2 menit.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cepat",
+            "lebihcepat",
+            "ojek"
+          ],
+          "nextTurnId": "t2_transport"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's not too far, about 5-7 minutes walk. If you take a motorcycle taxi, maybe only 2 minutes."
+    },
+    "t2_landmark": {
+      "id": "t2_landmark",
+      "prompt": "Setelah belok kiri di perempatan itu, Anda akan melihat gedung berwarna merah dengan logo besar Bank XYZ di sebelah kanan jalan. Museumnya persis di seberang Bank XYZ itu.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "paham",
+            "mengerti",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "makan",
+            "dekat",
+            "sekitar",
+            "kafe"
+          ],
+          "nextTurnId": "t3_nearby_places"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "After belok kiri (turning left) at that intersection, you will see a gedung berwarna merah (red building) with a large Bank XYZ logo on the sebelah kanan jalan (right side of the road). The museum is persis di seberang (exactly opposite) Bank XYZ."
+    },
+    "t2_transport": {
+      "id": "t2_transport",
+      "prompt": "Kalau mau cepat, Anda bisa naik TransJakarta dari halte di seberang sana, turun di halte Monas. Dari situ tinggal jalan sedikit ke Museum Nasional. Atau pakai ojek online juga gampang.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "coba",
+            "sip"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "nomor",
+            "berapa",
+            "bus",
+            "halte"
+          ],
+          "nextTurnId": "t3_bus_details"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you want to be fast, you can take TransJakarta from the halte (bus stop) across the street, turun (get off) at Monas stop. From there it's just a short walk to the National Museum. Or using ojek online (online motorcycle taxi) is also easy."
+    },
+    "t3_nearby_places": {
+      "id": "t3_nearby_places",
+      "prompt": "Tentu, di sekitar sana ada banyak warung makan dan juga kafe kekinian. Anda bisa coba cari di aplikasi peta.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "baik",
+            "informasi",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "rekomendasi",
+            "favorit",
+            "mana"
+          ],
+          "nextTurnId": "t4_specific_recommendation"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, around there are many food stalls and also trendy cafes. You can try searching on a map app."
+    },
+    "t3_bus_details": {
+      "id": "t3_bus_details",
+      "prompt": "Untuk ke halte Monas, Anda bisa naik koridor 1 atau 2. Halte di seberang sana ada petugas yang bisa membantu.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "jelas",
+            "paham",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "petugas",
+            "tanya",
+            "bertanya",
+            "bantu"
+          ],
+          "nextTurnId": "t4_officer_location"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To Monas bus stop, you can take corridor 1 or 2. There's an officer at the bus stop across the street who can help."
+    },
+    "t4_specific_recommendation": {
+      "id": "t4_specific_recommendation",
+      "prompt": "Ada banyak kafe di Jalan Sabang yang populer, tidak jauh dari sana. Anda bisa coba cari di sana.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "sip",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "kaki",
+            "jauh",
+            "berapa"
+          ],
+          "nextTurnId": "t2_distance"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "There are many popular cafes on Sabang Street, not far from there. You can try looking there."
+    },
+    "t4_officer_location": {
+      "id": "t4_officer_location",
+      "prompt": "Biasanya mereka berdiri di dekat pintu masuk atau di dalam halte. Cukup cari seragam warna biru atau merah TransJakarta.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "paham",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Usually they stand near the entrance or inside the bus stop. Just look for the blue or red TransJakarta uniform."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, can you repeat? It wasn't clear earlier."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Hope you have a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

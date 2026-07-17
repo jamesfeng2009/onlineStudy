@@ -1,0 +1,156 @@
+{
+  "id": "dlg-en-airport-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Airport Check-in",
+  "opening": "Hello. Your boarding pass, please?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. Your boarding pass, please?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "here",
+            "pass"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "where",
+            "have"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. — Hello. Your boarding pass, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Thank you. Flight BA249 to New York. Is this correct?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "correct"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "wrong",
+            "not"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. — Thank you. Flight BA249 to New York. Is this correct?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "No boarding pass? Okay. What is your name, please?",
+      "branches": [
+        {
+          "keywords": [
+            "myname",
+            "name"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "help"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No boarding pass? — No boarding pass? Okay. What is your name, please?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Oh, wrong flight? What is your flight number, please?",
+      "branches": [
+        {
+          "keywords": [
+            "flight",
+            "number"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "dontknow",
+            "idontknow"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, wrong flight? — Oh, wrong flight? What is your flight number, please?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Thank you. I see your flight. Please go to Gate 5.",
+      "branches": [
+        {
+          "keywords": [
+            "gate",
+            "ok",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. — Thank you. I see your flight. Please go to Gate 5."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Great. Please go to Gate 5. Thank you.",
+      "branches": [
+        {
+          "keywords": [
+            "gate",
+            "ok",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great. — Great. Please go to Gate 5. Thank you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Please say that again.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry? — Sorry? Please say that again."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Goodbye. Have a good flight!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye. — Goodbye. Have a good flight!",
+      "isTerminal": true
+    }
+  }
+}

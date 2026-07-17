@@ -1,0 +1,178 @@
+{
+  "id": "dlg-de-transport-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Fahrkartenkauf und Linieninformation",
+  "opening": "Guten Tag, wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof",
+            "zentralstation",
+            "zug"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "hilfe"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Hello, wie kann ich Ihnen behilflich sein? — how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Zum Hauptbahnhof? Ja, da nehmen Sie die Linie 14. Benötigen Sie eine Einzelfahrkarte, oder wollen Sie den ganzen Tag mit unseren Linien unterwegs sein?",
+      "branches": [
+        {
+          "keywords": [
+            "einzelfahrkarte",
+            "einzeln",
+            "einefahrt"
+          ],
+          "nextTurnId": "t3_einzel"
+        },
+        {
+          "keywords": [
+            "tagesticket",
+            "ganzertag",
+            "mehrmals",
+            "viel"
+          ],
+          "nextTurnId": "t3_tagesticket"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zum Hauptbahnhof? — To the main station? Ja, da nehmen Sie die Linie 14. — Yes, you take line 14. Benötigen Sie eine Einzelfahrkarte, oder wollen Sie den ganzen Tag mit unseren Linien unterwegs sein? — Do you need a single ticket, or do you want to travel all day with our lines?"
+    },
+    "t3_einzel": {
+      "id": "t3_einzel",
+      "prompt": "Eine Einzelfahrkarte ist für eine Fahrt gültig. Beachten Sie, dass Umsteigen innerhalb einer Zone erlaubt ist, solange Sie die Fahrt nicht unterbrechen oder in die Gegenrichtung fahren. Haben Sie vor, direkt durchzufahren?",
+      "branches": [
+        {
+          "keywords": [
+            "umsteigen",
+            "transfer",
+            "umsteigenregeln"
+          ],
+          "nextTurnId": "t4_umsteigen"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eine Einzelfahrkarte ist für eine Fahrt gültig. — A single ticket is valid for one journey. Beachten Sie, dass Umsteigen innerhalb einer Zone erlaubt ist, solange Sie die Fahrt nicht unterbrechen oder in die Gegenrichtung fahren. — Please note that transfers within a zone are allowed as long as you do not interrupt the journey or travel in the opposite direction. Haben Sie vor, direkt durchzufahren? — Do you intend to go directly through?"
+    },
+    "t3_tagesticket": {
+      "id": "t3_tagesticket",
+      "prompt": "Ein Tagesticket ist ideal, wenn Sie mehrere Fahrten planen. Es gilt bis 3 Uhr morgens des Folgetages im gesamten Stadtgebiet. Gibt es bestimmte Attraktionen, die Sie besuchen möchten, oder benötigen Sie Informationen zu den Geltungsbereichen?",
+      "branches": [
+        {
+          "keywords": [
+            "gültigkeitsbereich",
+            "zonen",
+            "gültig"
+          ],
+          "nextTurnId": "t4_gültigkeit"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A day ticket is ideal if you plan several journeys. It is valid until 3 AM the following day throughout the entire city area. Are there specific attractions you wish to visit, or do you need information about the validity areas?"
+    },
+    "t4_umsteigen": {
+      "id": "t4_umsteigen",
+      "prompt": "Genau. Sie können innerhalb von 90 Minuten umsteigen, um Ihr Ziel zu erreichen, aber bitte keine Rundfahrten oder Fahrtunterbrechungen. Wünschen Sie die Einzelfahrkarte dann direkt hier?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "kaufen",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactly. You can transfer within 90 minutes to reach your destination, but please no round trips or journey interruptions. Would you like the single ticket directly here then?"
+    },
+    "t4_gültigkeit": {
+      "id": "t4_gültigkeit",
+      "prompt": "Der Geltungsbereich umfasst alle öffentlichen Verkehrsmittel innerhalb des Stadtgebiets, also Bus, Tram und U-Bahn. Wenn Sie möchten, kann ich Ihnen das Tagesticket direkt ausdrucken.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "kaufen",
+            "bitte"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The validity area includes all public transport within the city area, meaning bus, tram, and subway. If you wish, I can print the day ticket for you directly."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich konnte Sie akustisch nicht ganz verstehen. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I couldn't quite understand you acoustically. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar. Eine gute Fahrt wünsche ich Ihnen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright. I wish you a good journey!",
+      "isTerminal": true
+    }
+  }
+}

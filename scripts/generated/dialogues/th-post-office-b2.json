@@ -1,0 +1,213 @@
+{
+  "id": "dlg-th-post-office-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีค่ะ ไม่ทราบว่าจะให้ช่วยอะไรดีคะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ไม่ทราบว่าจะให้ช่วยอะไรดีคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ",
+            "พัสดุ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ซื้อแสตมป์",
+            "แสตมป์"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "สอบถาม",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka. Mai saap wa ja hai chuay arai dee ka? — Hello, how may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "จะส่งไปที่ไหนคะ และต้องการบริการแบบไหนคะ เช่น ส่งธรรมดา ลงทะเบียน หรือ EMS",
+      "branches": [
+        {
+          "keywords": [
+            "ต่างประเทศ",
+            "ระหว่างประเทศ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ในประเทศ",
+            "ภายในประเทศ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja song pai tee nai ka? Lae tong-karn bor-ri-karn baep nai ka? Chen song tam-ma-da, long-ta-bian rue EMS? — Where are you sending it to, and what kind of service would you like? For example, standard, registered, or EMS?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ถ้าส่งไปต่างประเทศ จะต้องกรอกใบศุลกากรด้วยนะคะ คุณลูกค้ากรอกมาแล้วหรือยังคะ หรือต้องการให้เจ้าหน้าที่แนะนำวิธีกรอกคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ยังไม่ได้กรอก",
+            "วิธีกรอก",
+            "ช่วยกรอก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "กรอกแล้ว",
+            "เรียบร้อย"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Taa song pai dtang-prathet, ja dtong grok bai sun-la-ga-gorn duay na ka. Khun look-kaa grok maa laew rue yang ka? Rue tong-karn hai jao-naa-tee nae-nam wi-tee grok ka? — If you're sending it internationally, you'll need to fill out a customs declaration form. Have you filled it out already, or would you like an officer to guide you on how to fill it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ค่ะ ไม่เป็นไรค่ะ เดี๋ยวทางเราจะอธิบายให้ฟังนะคะ สำหรับพัสดุลงทะเบียนหรือ EMS คุณลูกค้าสามารถติดตามสถานะได้จากหมายเลขพัสดุค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "โอเค",
+            "ดำเนินการ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "มีคำถาม",
+            "สงสัย"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kha, mai pen rai ka. Diaw taang rao ja a-ti-bai hai fang na ka. Sam-rab pat-sa-du long-ta-bian rue EMS, khun look-kaa saa-mart dtit-dtam sa-taa-na dai jak maai-lek pat-sa-du ka. — No problem, we'll explain it to you. For registered mail or EMS, you can track its status using the tracking number."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เมื่อพัสดุเข้าระบบแล้ว คุณลูกค้าจะได้รับหมายเลขเพื่อใช้ตรวจสอบสถานะได้ทางเว็บไซต์ของเราค่ะ มีอะไรให้ช่วยเพิ่มเติมอีกไหมคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่แล้ว",
+            "พอแล้ว",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muea pat-sa-du khao ra-bop laew, khun look-kaa ja dai rab maai-lek peua chai dtruat-sop sa-taa-na dai taang web-site ka. Mee a-rai hai chuay perm-term eek mai ka? — Once the parcel enters the system, you'll receive a tracking number to check its status on our website. Is there anything else I can help you with?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ต้องการแสตมป์แบบไหนคะ แสตมป์ทั่วไป หรือแสตมป์ที่ระลึกคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ทั่วไป",
+            "ปกติ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-karn staem baep nai ka? Staem tua-pai rue staem tee ra-leuk ka? — What kind of stamps would you like? General or commemorative stamps?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "ต้องการสอบถามเกี่ยวกับเรื่องใดเป็นพิเศษคะ",
+      "branches": [
+        {
+          "keywords": [
+            "เวลาทำการ",
+            "เปิดปิด"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong-karn sawp-taam gi-ao-gab reuang dai pen pi-set ka? — What specific matter would you like to inquire about?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ไม่ค่อยเข้าใจที่คุณลูกค้าพูดเมื่อสักครู่นี้ รบกวนพูดอีกครั้งได้ไหมคะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor a-pai ka. Mai khoi khao jai tee khun look-kaa poot muea sak-kroo-nee. Rob-guan poot eek krang dai mai ka? — Excuse me, I didn't quite understand what you said just now. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีให้บริการค่ะ ขอให้มีวันดีๆ นะคะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin-dee hai bor-ri-karn ka. Khor hai mee wan dee dee na ka. Sawatdee ka. — Happy to be of service. Have a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

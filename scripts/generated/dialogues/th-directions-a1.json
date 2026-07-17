@@ -1,0 +1,244 @@
+{
+  "id": "dlg-th-directions-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "ถามทาง",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ธนาคาร",
+            "ตลาด",
+            "ห้องน้ำ",
+            "ไป",
+            "ถาม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee krap/ka — Hello. Mee arai hai chuay mai krap/ka — Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "คุณต้องการไปที่ไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ธนาคาร",
+            "แบงก์"
+          ],
+          "nextTurnId": "t3_bank"
+        },
+        {
+          "keywords": [
+            "ตลาด"
+          ],
+          "nextTurnId": "t3_market"
+        },
+        {
+          "keywords": [
+            "ห้องน้ำ",
+            "สุขา"
+          ],
+          "nextTurnId": "t3_restroom"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun dtong gaan bpai tee nai krap/ka — Where do you want to go?"
+    },
+    "t3_bank": {
+      "id": "t3_bank",
+      "prompt": "ธนาคารอยู่ตรงไปครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ไกล",
+            "ใกล้",
+            "กี่",
+            "เลี้ยว",
+            "ตรง"
+          ],
+          "nextTurnId": "t4_bank"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-thanks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tanaakaan yoo trong bpai krap/ka — The bank is straight ahead."
+    },
+    "t3_market": {
+      "id": "t3_market",
+      "prompt": "ตลาดอยู่ตรงไปครับ/ค่ะ แล้วเลี้ยวซ้าย",
+      "branches": [
+        {
+          "keywords": [
+            "ไกล",
+            "ใกล้",
+            "กี่",
+            "เลี้ยว",
+            "ตรง"
+          ],
+          "nextTurnId": "t4_market"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-thanks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dtalat yoo trong bpai krap/ka — The market is straight ahead. Laew liao sai — Then turn left."
+    },
+    "t3_restroom": {
+      "id": "t3_restroom",
+      "prompt": "ห้องน้ำอยู่ตรงไปครับ/ค่ะ ไม่ไกล",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-thanks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hong nam yoo trong bpai krap/ka — The restroom is straight ahead. Mai glai — Not far."
+    },
+    "t4_bank": {
+      "id": "t4_bank",
+      "prompt": "ไปอีกนิดหน่อยครับ/ค่ะ แล้วจะเห็นธนาคารอยู่ทางขวา",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-thanks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpai eek nit noy krap/ka — Go a little further. Laew ja hen tanaakaan yoo taang kwaa — Then you will see the bank on the right."
+    },
+    "t4_market": {
+      "id": "t4_market",
+      "prompt": "เดินไปประมาณสองนาทีครับ/ค่ะ ตลาดอยู่ข้างร้านอาหาร",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-thanks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dern bpai pramaan song naatee krap/ka — Walk for about two minutes. Dtalat yoo kang raan aahaan — The market is next to the restaurant."
+    },
+    "t-thanks": {
+      "id": "t-thanks",
+      "prompt": "ยินดีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "บ๊ายบาย",
+            "ไป"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin dee krap/ka — You're welcome."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ธนาคาร",
+            "ตลาด",
+            "ห้องน้ำ",
+            "ไป",
+            "ถาม",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor thot krap/ka — Excuse me. Pood eek krang dai mai krap/ka — Can you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "โชคดีครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chok dee krap/ka — Good luck. Sawasdee krap/ka — Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

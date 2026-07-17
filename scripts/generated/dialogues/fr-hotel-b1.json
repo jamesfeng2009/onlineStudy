@@ -1,0 +1,142 @@
+{
+  "id": "dlg-fr-hotel-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bienvenue à l'Hôtel Belle Vue. Avez-vous une réservation au nom de... ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bienvenue à l'Hôtel Belle Vue. Avez-vous une réservation au nom de... ?",
+      "branches": [
+        {
+          "keywords": [
+            "nom",
+            "réservation"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome to the Belle Vue Hotel. Do you have a reservation under the name of...?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Pourriez-vous me présenter une pièce d'identité, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "pièce",
+            "identité",
+            "passeport"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very well. Could you please show me a form of identification?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Parfait. Et pour le paiement, comment souhaitez-vous régler ? Carte de crédit ou espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "crédit"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. And for payment, how would you like to settle? Credit card or cash?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord. Avez-vous une préférence pour votre chambre ? Par exemple, une vue sur la mer ou un étage élevé ?",
+      "branches": [
+        {
+          "keywords": [
+            "vue",
+            "mer",
+            "balcon",
+            "étage"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Do you have any preference for your room? For example, a sea view or a high floor?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien. Et concernant le petit-déjeuner, souhaitez-vous l'inclure pendant votre séjour ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "petit-déjeuner",
+            "inclure"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. And regarding breakfast, would you like to include it during your stay?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Parfait ! Tout est en ordre. Votre chambre numéro 203 est prête. Voici votre clé. Je vous souhaite un excellent séjour !",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Perfect! Everything is in order. Your room number 203 is ready. Here is your key. I wish you an excellent stay!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I didn't quite understand. Could you please repeat, please?"
+    }
+  }
+}

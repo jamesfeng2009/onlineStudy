@@ -1,0 +1,271 @@
+{
+  "id": "dlg-ms-small-talk-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Sembang Santai Hujung Minggu",
+  "opening": "Assalamualaikum! Lama tak jumpa. Macam mana hujung minggu awak? Harapnya taklah lemau sangat, kan?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Assalamualaikum! Lama tak jumpa. Macam mana hujung minggu awak? Harapnya taklah lemau sangat, kan?",
+      "branches": [
+        {
+          "keywords": [
+            "seronok",
+            "best",
+            "menarik",
+            "aktif"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "biasa",
+            "rilek",
+            "santai",
+            "tenang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "sibuk",
+            "penat",
+            "lemau",
+            "kerja"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Assalamualaikum (Ah-sah-lah-moo-ah-lai-koom)! (Peace be upon you/Greeting - typical Malay greeting). Long time no see. How was your weekend? Hopefully, not too sluggish, right?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wah, seronoknya! Ceritalah sikit, apa yang awak buat sampai bersemangat macam ni?",
+      "branches": [
+        {
+          "keywords": [
+            "jalan",
+            "travel",
+            "bercuti",
+            "melancong"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hobi",
+            "minat",
+            "sukan",
+            "baca"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "keluarga",
+            "kawan",
+            "saudara"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah (Wah), how fun! Tell me a bit, what did you do to be so spirited?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kadang-kadang, hujung minggu yang santai tu memang nikmat. Awak jenis yang suka rehat-rehat kat rumah atau ada aktiviti lain untuk hilangkan stres?",
+      "branches": [
+        {
+          "keywords": [
+            "rumah",
+            "chill",
+            "netflix",
+            "baca"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "luar",
+            "aktiviti",
+            "sukan",
+            "lepak"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kadang-kadang (Kah-dang-kah-dang), sometimes, a relaxed weekend is truly enjoyable. Are you the type who likes to chill at home or do you have other activities to relieve stress?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Aduh, kesiannya. Hujung minggu patutnya masa untuk rehat. Apa yang buat awak sibuk sangat tu? Harapnya bukan kerja yang tak berkesudahan, kan?",
+      "branches": [
+        {
+          "keywords": [
+            "kerja",
+            "tugasan",
+            "projek"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "urusan",
+            "keluarga",
+            "rumah"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "belajar",
+            "kursus"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aduh (Ah-dooh), oh dear, that's a pity. The weekend should be a time for rest. What made you so busy? Hopefully, it wasn't endless work, right?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oh, menariknya! Destinasi mana yang awak tuju? Saya pun dah lama tak merayau jauh-jauh, asyik terperuk kat sini je.",
+      "branches": [
+        {
+          "keywords": [
+            "lokal",
+            "dekat",
+            "dalamnegara"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, how interesting! Which destination did you go to? I haven't travelled far for a long time either, always stuck here."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Bagus tu, penting ada minat sendiri. Kadang-kadang, bila kita terlalu fokus pada kerja, kita lupa nak luangkan masa untuk diri sendiri. Teruskan je, biar tak tepu!",
+      "branches": [
+        {
+          "keywords": [
+            "betul",
+            "setuju",
+            "memang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's good, it's important to have your own interests. Sometimes, when we focus too much on work, we forget to make time for ourselves. Keep it up, so you don't get stagnant!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ah, memanglah seronok dapat meluangkan masa dengan orang tersayang. Hubungan sosial ni penting tau, biar tak rasa sunyi dan ada tempat nak berkongsi cerita.",
+      "branches": [
+        {
+          "keywords": [
+            "penting",
+            "setuju",
+            "betul"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, it's really enjoyable to spend time with loved ones. Social connections are important, you know, so you don't feel lonely and have someone to share stories with."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Kerja memang takkan habis. Ingat, jaga kesihatan mental dan fizikal. Jangan sampai burnout pula. Kena pandai cari masa untuk diri sendiri juga.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "nasihat",
+            "ingat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Work will never end. Remember, take care of your mental and physical health. Don't burn out. You need to know how to find time for yourself too."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh awak ulang semula? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I'm not very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya kena minta diri dulu. Seronok bersembang dengan awak. Jumpa lagi ya!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I have to excuse myself now. It was nice chatting with you. See you again!",
+      "isTerminal": true
+    }
+  }
+}

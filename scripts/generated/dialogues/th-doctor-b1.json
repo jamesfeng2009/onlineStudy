@@ -1,0 +1,102 @@
+{
+  "id": "dlg-th-doctor-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "การไปพบแพทย์",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ปวดหัว",
+            "เจ็บหัว",
+            "ไมเกรน"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee krap/ka. Mee a-rai hai chuay krap/ka? — Hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อาการนี้เป็นมานานเท่าไหร่แล้วครับ/คะ และมีอาการอื่น ๆ ร่วมด้วยไหมครับ/คะ เช่น ปวดเมื่อย คลื่นไส้ หรือมีเสมหะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สองวัน",
+            "สามวัน",
+            "ไม่กี่วัน",
+            "เมื่อวาน"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aa-gaan née bpen maa naan tâo-rài láew krap/ka? Láe mee aa-gaan ʉ̀ʉn ʉ̀ʉn rûam dûay mái krap/ka? Chên pùat mʉ̂ai klʉ̂n-sâi rǔe mee sěm-hà? — How long have you had these symptoms? And are there any other accompanying symptoms, such as body aches, nausea, or phlegm?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "อืมครับ/ค่ะ นอกจากอาการที่คุณเล่ามาแล้ว มีประวัติแพ้ยาอะไรเป็นพิเศษไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่แพ้",
+            "ไม่เคยแพ้"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ʔʉm krap/ka. Nôk jàak aa-gaan têe kun lâo maa láew, mee prà-wàt pâe yaa a-rai bpen pí-sèet mái krap/ka? — I see. Besides the symptoms you've described, do you have any specific drug allergies?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จากอาการที่เล่ามา ผม/ดิฉันคิดว่าน่าจะเป็นหวัด/อาหารเป็นพิษเบื้องต้นนะครับ/คะ ผม/ดิฉันจะจัดยาแก้ปวด ลดไข้ และยาบรรเทาอาการให้ทานนะครับ/คะ ที่สำคัญคือต้องพักผ่อนให้เพียงพอและดื่มน้ำเยอะๆ ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณครับ",
+            "ขอบคุณค่ะ",
+            "รับทราบ",
+            "เข้าใจแล้ว"
+          ],
+          "nextTurnId": "t5_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jàak aa-gaan têe lâo maa, phǒm/dì-chán kít wâa nâa jà bpen wàt/aa-hǎan bpen pí-sèt bʉ̂ang-dtôn ná krap/ka. Phǒm/dì-chán jà jàt yaa gâae pùat lót kâi láe yaa ban-tao aa-gaan hâi taan ná krap/ka. Têe sǎm-kan kʉʉ dtông pák-pò̜n hâi piang-pɔɔ láe dʉ̀m náam yér-yér krap/ka. — From the symptoms described, I think it might be a cold/mild food poisoning. I will prescribe pain relievers, fever reducers, and symptom relief medication for you to take. Importantly, you need to get enough rest and drink plenty of water."
+    },
+    "t5_end": {
+      "id": "t5_end",
+      "prompt": "ถ้าอาการไม่ดีขึ้นภายใน 2-3 วัน หรือมีไข้สูงขึ้น ให้กลับมาพบหมออีกครั้งนะครับ/คะ หวังว่าคุณจะหายเร็วๆ นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t5_end",
+      "promptTranslation": "Tâa aa-gaan mâi dee kʉ̂n maai nai sɔ̌ɔng-sǎam wan rʉ̌u mee kâi sǔung kʉ̂n, hâi glàp maa phóp mɔ̌ɔ ìik kráng ná krap/ka. Wǎng wâa kun jà hǎai reo-reo ná krap/ka. — If symptoms don't improve within 2-3 days, or if your fever gets higher, please come back to see the doctor again. I hope you recover soon!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ใช่",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr tôht krap/ka. Pôot ìik kráng dâi mái krap/ka? — Excuse me. Could you please say that again?"
+    }
+  }
+}

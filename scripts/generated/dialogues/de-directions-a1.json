@@ -1,0 +1,237 @@
+{
+  "id": "dlg-de-directions-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Wegbeschreibung in der Stadt",
+  "opening": "Guten Tag! Kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "bahnhof",
+            "zug"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hotel"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "post",
+            "brief"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten tahg! Kahn ich een-en hel-fen? — Good day! Can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Können Sie das wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Vee bit-tuh? Kern-nen zee das vee-der-hoh-len? — Pardon? Can you repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Der Bahnhof? Gehen Sie hier geradeaus.",
+      "branches": [
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "distanz"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "bus",
+            "fahren"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Der bahn-hohf? Geh-en zee heer geh-rah-deh-ows. — The train station? Go straight ahead here."
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Das Hotel? Gehen Sie hier rechts. Es ist dort.",
+      "branches": [
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "distanz"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "bus",
+            "fahren"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das hoh-tel? Geh-en zee heer rehts. Es ist dort. — The hotel? Go right here. It is there."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Die Post? Gehen Sie hier links. Es ist nicht weit.",
+      "branches": [
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "distanz"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "bus",
+            "fahren"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee pohst? Geh-en zee heer links. Es ist nicht vait. — The post office? Go left here. It is not far."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "Es ist nicht weit. Vielleicht fünf Minuten zu Fuß.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bus",
+            "fahren"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Es ist nicht vait. Fee-laykhst foenf mee-noo-ten tsoo foos. — It is not far. Maybe five minutes on foot."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Ja, Sie können Bus Linie 10 nehmen. Die Haltestelle ist hier.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "weit",
+            "lange",
+            "distanz"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yah, zee kern-nen boos lee-nee-uh zehn neh-men. Dee hahl-teh-shtel-luh ist heer. — Yes, you can take bus line 10. The bus stop is here."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern geh-sheh-en. Owf vee-der-zeh-en! — You're welcome. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

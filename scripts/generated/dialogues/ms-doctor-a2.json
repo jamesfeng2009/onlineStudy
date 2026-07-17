@@ -1,0 +1,171 @@
+{
+  "id": "dlg-ms-doctor-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Lawatan Doktor",
+  "opening": "Selamat pagi. Ada apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit kepala",
+            "kepala"
+          ],
+          "nextTurnId": "t2_headache"
+        },
+        {
+          "keywords": [
+            "sakit perut",
+            "perut"
+          ],
+          "nextTurnId": "t2_stomach"
+        },
+        {
+          "keywords": [
+            "demam",
+            "batuk",
+            "selesema",
+            "sakit tekak",
+            "sakit badan"
+          ],
+          "nextTurnId": "t2_flu"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-la-mat pa-gi. A-da a-pa yang bo-leh sa-ya ban-tu? — Good morning. What can I help you with?"
+    },
+    "t2_headache": {
+      "id": "t2_headache",
+      "prompt": "Sakit kepala? Sudah berapa lama anda rasa sakit ini? Adakah ia teruk?",
+      "branches": [
+        {
+          "keywords": [
+            "satu hari",
+            "dua hari",
+            "beberapa hari",
+            "seminggu",
+            "lama",
+            "sejak pagi",
+            "pagi",
+            "semalam"
+          ],
+          "nextTurnId": "t3_common"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-kit ke-pa-la? Su-dah be-ra-pa la-ma an-da ra-sa sa-kit i-ni? A-da-kah i-a te-ruk? — Headache? How long have you felt this pain? Is it severe?"
+    },
+    "t2_stomach": {
+      "id": "t2_stomach",
+      "prompt": "Sakit perut? Sudah berapa lama? Ada loya atau muntah?",
+      "branches": [
+        {
+          "keywords": [
+            "satu hari",
+            "dua hari",
+            "beberapa hari",
+            "seminggu",
+            "lama",
+            "sejak malam",
+            "malam"
+          ],
+          "nextTurnId": "t3_common"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-kit pe-rut? Su-dah be-ra-pa la-ma? A-da lo-ya a-tau mun-tah? — Stomachache? How long? Do you have nausea or vomiting?"
+    },
+    "t2_flu": {
+      "id": "t2_flu",
+      "prompt": "Faham. Sudah berapa hari anda rasa tidak sihat? Ada rasa letih atau sakit tekak?",
+      "branches": [
+        {
+          "keywords": [
+            "satu hari",
+            "dua hari",
+            "beberapa hari",
+            "seminggu",
+            "lama"
+          ],
+          "nextTurnId": "t3_common"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fa-ham. Su-dah be-ra-pa ha-ri an-da ra-sa ti-dak si-hat? A-da ra-sa le-tih a-tau sa-kit te-kak? — Understood. How many days have you felt unwell? Do you feel tired or have a sore throat?"
+    },
+    "t3_common": {
+      "id": "t3_common",
+      "prompt": "Baiklah, saya faham. Adakah anda alah kepada sebarang ubat?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada",
+            "alah",
+            "ubat"
+          ],
+          "nextTurnId": "t4_terminal"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bai-klah, sa-ya fa-ham. A-da-kah an-da a-lah ke-pa-da se-ba-rang u-bat? — Alright, I understand. Are you allergic to any medicine?"
+    },
+    "t4_terminal": {
+      "id": "t4_terminal",
+      "prompt": "Baik. Saya akan berikan ubat. Sila ambil ubat ini seperti yang diarahkan. Semoga cepat sembuh. Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t4_terminal",
+      "promptTranslation": "Baik. Sa-ya a-kan be-ri-kan u-bat. Si-la am-bil u-bat i-ni se-per-ti yang di-a-rah-kan. Se-mo-ga ce-pat sem-buh. Se-la-mat ting-gal. — Okay. I will give you medicine. Please take this medicine as directed. Hope you recover quickly. Goodbye.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bo-leh an-da u-lang se-ka-li la-gi? Sa-ya ti-dak fa-ham. — Sorry, can you repeat that? I don't understand."
+    }
+  }
+}

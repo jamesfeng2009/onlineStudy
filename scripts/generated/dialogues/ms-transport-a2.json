@@ -1,0 +1,188 @@
+{
+  "id": "dlg-ms-transport-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Perkhidmatan Pengangkutan Awam",
+  "opening": "Selamat datang. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "beli",
+            "tiket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "arah",
+            "mana",
+            "info"
+          ],
+          "nextTurnId": "t5_request_dest"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang — Welcome. Boleh saya bantu? — Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Anda hendak ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "pusatbandar"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anda hendak ke mana? — Where do you want to go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tiket sehala atau pergi balik?",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tiket sehala — One-way ticket or pergi balik — return ticket?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik. Harganya RM 5. Ini tiket anda. Ada soalan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok",
+            "tiada"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "soalan",
+            "ada",
+            "platform",
+            "arah",
+            "bas",
+            "keretaapi"
+          ],
+          "nextTurnId": "t5_give_info"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik. — Okay. Harganya RM lima. — The price is RM 5. Ini tiket anda. — Here is your ticket. Ada soalan lain? — Any other questions?"
+    },
+    "t5_request_dest": {
+      "id": "t5_request_dest",
+      "prompt": "Ke mana anda ingin pergi?",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "pusatbandar"
+          ],
+          "nextTurnId": "t5_give_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ke mana anda ingin pergi? — Where do you wish to go?"
+    },
+    "t5_give_info": {
+      "id": "t5_give_info",
+      "prompt": "Bas/kereta api ke destinasi anda akan tiba di platform 2. Hentian seterusnya ialah Masjid Jamek. Mungkin ada sedikit kelewatan 5 minit.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "faham",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bas/kereta api ke destinasi anda akan tiba di platform dua. — The bus/train to your destination will arrive at platform 2. Hentian seterusnya ialah Masjid Jamek. — The next stop is Masjid Jamek. Mungkin ada sedikit kelewatan lima minit. — There might be a slight delay of 5 minutes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang semula?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, boleh ulang semula? — can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama — You're welcome. Selamat jalan! — Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

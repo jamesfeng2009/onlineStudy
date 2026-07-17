@@ -1,0 +1,182 @@
+{
+  "id": "dlg-it-hotel-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Check-in in Hotel",
+  "opening": "Buonasera! Benvenuti. Avete una prenotazione? Posso avere il suo nome, per favore?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Benvenuti. Avete una prenotazione? Posso avere il suo nome, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "mi chiamo",
+            "mio nome",
+            "nome",
+            "cognome",
+            "sì",
+            "ho"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boo-nah-seh-rah! Ben-veh-noo-tee. Ah-veh-teh oon-ah preh-noh-tah-tzee-oh-neh? Pos-so ah-veh-reh eel soo-oh no-meh, per fah-voh-reh? — Good evening! Welcome. Do you have a reservation? May I have your name, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, signor/a (Nome Cognome)! La sua prenotazione è per (data). Potrebbe darmi un documento d'identità, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "documento",
+            "carta",
+            "passaporto",
+            "ecco",
+            "sì"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, see-nyor/rah (No-meh Koh-nyoh-meh)! Lah soo-ah preh-noh-tah-tzee-oh-neh eh per (dah-tah). Poh-treb-beh dar-mee oon doh-koo-men-toh dee-den-tee-tah, per fah-voh-reh? — Ah, Mr./Ms. (First Last Name)! Your reservation is for (date). Could you give me an ID, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Grazie. E per il pagamento? Accetta carta di credito o preferisce contanti?",
+      "branches": [
+        {
+          "keywords": [
+            "carta",
+            "credito",
+            "bancomat",
+            "con carta"
+          ],
+          "nextTurnId": "t4_card"
+        },
+        {
+          "keywords": [
+            "contanti",
+            "soldi",
+            "in contanti"
+          ],
+          "nextTurnId": "t4_cash"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grah-tzee-eh. Eh per eel pah-gah-men-toh? Ah-chet-tah kar-tah dee kreh-dee-toh oh preh-feh-ree-sheh kon-tan-tee? — Thank you. And for the payment? Do you accept credit card or prefer cash?"
+    },
+    "t4_card": {
+      "id": "t4_card",
+      "prompt": "Perfetto, carta di credito. Desidera la colazione inclusa?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "colazione",
+            "voglio",
+            "desidero"
+          ],
+          "nextTurnId": "t5_breakfast_yes"
+        },
+        {
+          "keywords": [
+            "no",
+            "non voglio",
+            "senza"
+          ],
+          "nextTurnId": "t5_no_breakfast"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect, credit card. Would you like breakfast included?"
+    },
+    "t4_cash": {
+      "id": "t4_cash",
+      "prompt": "Perfetto, contanti. Desidera la colazione inclusa?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "colazione",
+            "voglio",
+            "desidero"
+          ],
+          "nextTurnId": "t5_breakfast_yes"
+        },
+        {
+          "keywords": [
+            "no",
+            "non voglio",
+            "senza"
+          ],
+          "nextTurnId": "t5_no_breakfast"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect, cash. Would you like breakfast included?"
+    },
+    "t5_breakfast_yes": {
+      "id": "t5_breakfast_yes",
+      "prompt": "Ottimo! La colazione è dalle 7 alle 10. La sua camera è la numero 302, al terzo piano. Ecco la chiave.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "chiave",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! Breakfast is from 7 to 10. Your room is number 302, on the third floor. Here is the key."
+    },
+    "t5_no_breakfast": {
+      "id": "t5_no_breakfast",
+      "prompt": "Va bene, senza colazione. La sua camera è la numero 302, al terzo piano. Ecco la chiave.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "chiave",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "All right, without breakfast. Your room is number 302, on the third floor. Here is the key."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ripeto",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, non oh kah-pee-toh beh-neh. Poh-treb-beh ree-peh-teh-reh, per fah-voh-reh? — Excuse me, I didn't quite understand. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto! Le auguro un ottimo soggiorno. Buonanotte!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect! I wish you a great stay. Good night!",
+      "isTerminal": true
+    }
+  }
+}

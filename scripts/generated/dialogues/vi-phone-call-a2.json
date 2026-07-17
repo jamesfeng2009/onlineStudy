@@ -1,0 +1,152 @@
+{
+  "id": "dlg-vi-phone-call-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Cuộc gọi điện thoại",
+  "opening": "Xin chào, công ty ABC đây ạ.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào, công ty ABC đây ạ. Tôi có thể giúp gì cho anh/chị?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi là",
+            "tên tôi là"
+          ],
+          "nextTurnId": "t3_purpose"
+        },
+        {
+          "keywords": [
+            "gặp",
+            "nói chuyện",
+            "cho tôi hỏi",
+            "có",
+            "ai đấy",
+            "ai đang gọi"
+          ],
+          "nextTurnId": "t2_who_calling"
+        },
+        {
+          "keywords": [
+            "",
+            "xin chào"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào (Sin chao) — Hello, ABC company here. How may I help you?"
+    },
+    "t2_who_calling": {
+      "id": "t2_who_calling",
+      "prompt": "Xin lỗi, ai đang gọi vậy ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi là",
+            "tên tôi là",
+            "tôi gọi"
+          ],
+          "nextTurnId": "t3_purpose"
+        },
+        {
+          "keywords": [
+            "",
+            "không phải việc của anh"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi (Sin loy) — Excuse me, who's calling please?"
+    },
+    "t3_purpose": {
+      "id": "t3_purpose",
+      "prompt": "Vâng, xin chào. Anh/chị muốn gặp ai ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gặp",
+            "nói chuyện với",
+            "có"
+          ],
+          "nextTurnId": "t4_person_unavailable"
+        },
+        {
+          "keywords": [
+            "",
+            "không biết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vung) — Yes, hello. Who would you like to speak to?"
+    },
+    "t4_person_unavailable": {
+      "id": "t4_person_unavailable",
+      "prompt": "Xin lỗi, anh/chị Lan hiện không có ở đây. Anh/chị có muốn để lại lời nhắn không?",
+      "branches": [
+        {
+          "keywords": [
+            "để lại lời nhắn",
+            "có thể nhắn"
+          ],
+          "nextTurnId": "t5_leave_message_ack"
+        },
+        {
+          "keywords": [
+            "không",
+            "gọi lại sau",
+            "sẽ gọi"
+          ],
+          "nextTurnId": "t6_call_back_ack"
+        },
+        {
+          "keywords": [
+            "",
+            "tôi sẽ nghĩ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, Mr./Ms. Lan is not here right now. Would you like to leave a message?"
+    },
+    "t5_leave_message_ack": {
+      "id": "t5_leave_message_ack",
+      "prompt": "Vâng, tôi sẽ chuyển lời nhắn của anh/chị. Cảm ơn anh/chị đã gọi. Tạm biệt!",
+      "branches": [],
+      "fallbackBranchId": "t5_leave_message_ack",
+      "promptTranslation": "Yes, I will pass on your message. Thank you for calling. Goodbye!",
+      "isTerminal": true
+    },
+    "t6_call_back_ack": {
+      "id": "t6_call_back_ack",
+      "prompt": "Vâng, vậy anh/chị gọi lại sau nhé. Tạm biệt!",
+      "branches": [],
+      "fallbackBranchId": "t6_call_back_ack",
+      "promptTranslation": "Okay, please call back later. Goodbye!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe không rõ. Anh/chị có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "vâng",
+            "được"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't hear clearly. Could you please repeat?"
+    }
+  }
+}

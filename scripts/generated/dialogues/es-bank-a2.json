@@ -1,0 +1,167 @@
+{
+  "id": "dlg-es-bank-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "En el banco",
+  "opening": "Buenos días, ¿en qué puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días, ¿en qué puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "abrir cuenta",
+            "cuenta"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "cambiar dinero",
+            "divisas"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "problema cajero",
+            "cajero automático"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "",
+            "otra cosa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días, ¿en ké pwédo ayuðárle? — Good morning, how can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, ¿poðría rrepétir, por fabór? — Excuse me, could you repeat, please?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Claro, para abrir una cuenta, necesito su pasaporte o DNI. ¿Lo tiene?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "lo tengo"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "no",
+            "no tengo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, para abrir úna kwénta, nesesíto su pasapórte o DNI. ¿Lo tyéne? — Of course, to open an account, I need your passport or ID. Do you have it?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Entendido. ¿Cuánto dinero quiere cambiar y a qué moneda?",
+      "branches": [
+        {
+          "keywords": [
+            "euros",
+            "a euros"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entenðíðo. ¿Kwánto ðinéro kyére kambyár i a ké monéða? — Understood. How much money do you want to exchange and to which currency?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Lo siento. ¿Cuál es el problema con el cajero automático? ¿La tarjeta no funciona?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "mi tarjeta"
+          ],
+          "nextTurnId": "t3c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lo syénto. ¿Kwál es el probléma kon el kahéro automátiko? ¿La tarhéta no funsyóna? — I'm sorry. What is the problem with the ATM? Is the card not working?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Perfecto. Le doy el formulario para rellenar y en un momento estará lista.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfékto. Le ðóy el formuláryo pára reyenár i en un moménto estará lísta. — Perfect. I give you the form to fill out and it will be ready in a moment."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Muy bien. El tipo de cambio es bueno hoy. ¿Cuántos quiere cambiar?",
+      "branches": [
+        {
+          "keywords": [
+            "cien",
+            "cien euros"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Múy byen. El típo ðe kámbyo es bwéno óy. ¿Kwántos kyére kambyár? — Very good. The exchange rate is good today. How many do you want to exchange?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Entiendo. Acompáñeme a la ventanilla, por favor. Le ayudaremos con su tarjeta.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entenðíðo. Akompáɲeme a la bentaníʎa, por fabór. Le ayuðarémos kon su tarhéta. — I understand. Please come with me to the counter. We will help you with your card."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. Muchas gracias por su visita y que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De akwérðo. Múchas grásyas por su bisíta i ke ténga un bwén día. — Okay. Thank you very much for your visit and have a good day.",
+      "isTerminal": true
+    }
+  }
+}

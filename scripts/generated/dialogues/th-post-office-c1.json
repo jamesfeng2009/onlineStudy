@@ -1,0 +1,190 @@
+{
+  "id": "dlg-th-post-office-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีค่ะ ไม่ทราบว่ามีอะไรให้ช่วยได้บ้างคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ไม่ทราบว่ามีอะไรให้ช่วยได้บ้างคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ",
+            "ส่งจดหมาย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "แสตมป์",
+            "ซื้อแสตมป์"
+          ],
+          "nextTurnId": "t_stamps"
+        },
+        {
+          "keywords": [
+            "สอบถาม",
+            "ข้อมูล",
+            "บริการ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Sawatdii kâ. Mâi sâap wâa mii à-rai hâi chûay dâai bâang ká? — Hello. How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ส่งพัสดุใช่ไหมคะ? จะส่งไปต่างประเทศหรือในประเทศดีคะ แล้วต้องการแบบลงทะเบียนหรือ EMS เป็นพิเศษไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ต่างประเทศ",
+            "นอกประเทศ",
+            "ลงทะเบียน",
+            "ด่วน"
+          ],
+          "nextTurnId": "t3_customs"
+        },
+        {
+          "keywords": [
+            "ในประเทศ",
+            "ในไทย",
+            "ธรรมดา",
+            "อีเอ็มเอส"
+          ],
+          "nextTurnId": "t4_weigh"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Sòng pátsàdù châi mái ká? Jà sòng bpai tàang bpràtêet rǔu nai bpràtêet dii ká? Láew dtâwnggaan bàep long tábiian rǔu EMS bpen pí-sèet mái ká? — Sending a parcel, right? Will it be international or domestic? And do you need registered mail or EMS specifically?"
+    },
+    "t3_customs": {
+      "id": "t3_customs",
+      "prompt": "ถ้าส่งต่างประเทศแบบลงทะเบียน ต้องกรอกใบศุลกากรค่ะ ไม่ทราบว่าของข้างในเป็นเอกสารหรือสิ่งของทั่วไปคะ จะได้แนะนำการกรอกได้ถูกต้อง",
+      "branches": [
+        {
+          "keywords": [
+            "เอกสาร",
+            "หนังสือ",
+            "จดหมาย"
+          ],
+          "nextTurnId": "t4_weigh"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tâa sòng tàang bpràtêet bàep long tábiian, dtâwng gràwk bai sùnlágaagawn kâ. Mâi sâap wâa kǎwng kâang nai bpen èkkasǎan rǔu sìng kǎwng tûapai ká? Jà dâai náenam gaan gràwk dâai tòok dtôong. — For international registered mail, you need to fill out a customs form. Is the content documents or general goods? So I can advise you on filling it out correctly."
+    },
+    "t4_weigh": {
+      "id": "t4_weigh",
+      "prompt": "วางพัสดุบนตาชั่งได้เลยค่ะ น้ำหนักจะกำหนดค่าส่งและเราจะออกเลขพัสดุให้สำหรับการติดตามนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "พร้อม",
+            "วางแล้ว",
+            "โอเค"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "คำถามอื่น"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Waang pátsàdù bon dtaa châang dâai loei kâ. Námnàk jà gamnòt kâa sòng láe rao jà àwk lêk pátsàdù hâi sǎmràp gaan dtìd dtaam ná ká. — Please place the parcel on the scale. The weight will determine the postage, and we'll issue a tracking number for tracking."
+    },
+    "t_stamps": {
+      "id": "t_stamps",
+      "prompt": "สำหรับซื้อแสตมป์ ทางเรามีทั้งแบบใช้ส่งจดหมายและแบบสะสมค่ะ ไม่ทราบว่าต้องการแบบไหนและราคาประมาณเท่าไหร่คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งจดหมาย",
+            "ส่งเอกสาร",
+            "ใช้ส่ง"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Sǎmràp súu sá-dtɛm, taang rao mii táng bàep chái sòng jòtmǎai láe bàep sà-sǒm kâ. Mâi sâap wâa dtâwnggaan bàep nǎi láe raakaà bpramáan tâorài ká? — For stamps, we have both for sending letters and for collecting. Which type do you need and approximately what value?"
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "เรียบร้อยค่ะ ยอดรวมทั้งหมด (สมมุติ) 250 บาทค่ะ รับใบเสร็จและเลขพัสดุได้ตรงนี้เลยนะคะ หากมีข้อสงสัยเกี่ยวกับการติดตาม สอบถามเพิ่มเติมได้เลยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "แค่นี้",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Rîap rói kâ. Yôd ruam táng mòt (sǒm-mút) sɔ̌ɔng rói hâa sìp Bàat kâ. Rápp bai sèt láe lêk pátsàdù dâai dtrong níi loei ná ká. Hàak mii kâw sǒngsăi gìao gàp gaan dtìd dtaam, sàwp tăam pèrm dterm dâai loei kâ. — All done. The total is (for example) 250 Baht. You can get your receipt and tracking number here. If you have any questions about tracking, feel free to ask."
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "ขออภัยค่ะ รบกวนพูดอีกครั้งได้ไหมคะ ดิฉันไม่ค่อยได้ยิน",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อะไรก็ได้"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ à-pai kâ. Rópbuan pûut ìik kráng dâai mái ká? Dì-chán mâi kôi dâi yin. — Sorry, could you please repeat? I didn't quite catch that."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "ขอบคุณที่มาใช้บริการค่ะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Kɔ̀pkun tîi maa chái bɔɔrígaan kâ. Sàwàtdii kâ. — Thank you for using our service. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

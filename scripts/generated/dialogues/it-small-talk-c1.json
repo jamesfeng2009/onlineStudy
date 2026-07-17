@@ -1,0 +1,165 @@
+{
+  "id": "dlg-it-small-talk-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Quattro chiacchiere al ricevimento",
+  "opening": "Ciao! Scusa l'intrusione, ma ho sentito un accento interessante. Sei di queste parti o sei qui per qualcosa di specifico?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Scusa l'intrusione, ma ho sentito un accento interessante. Sei di queste parti o sei qui per qualcosa di specifico?",
+      "branches": [
+        {
+          "keywords": [
+            "sono qui per lavoro",
+            "lavoro",
+            "conferenza"
+          ],
+          "nextTurnId": "t2_topic_work"
+        },
+        {
+          "keywords": [
+            "sono qui per vacanza",
+            "vacanza",
+            "turismo",
+            "viaggio"
+          ],
+          "nextTurnId": "t2_topic_leisure"
+        },
+        {
+          "keywords": [
+            "",
+            "non capisco"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chow! Scoo-za l'in-troo-zee-oh-neh, ma oh sen-tee-toh oon ach-chen-toh in-teh-res-san-teh. Say dee kwes-teh par-tee oh say kwee per kwal-koh-za dee speh-chee-fee-koh? — Hi! Sorry to intrude, but I heard an interesting accent. Are you from around here or are you here for something specific?"
+    },
+    "t2_topic_work": {
+      "id": "t2_topic_work",
+      "prompt": "Capisco. E immagino che, come me, tu sia qui per la conferenza. Qual è la tua area di competenza, se non sono troppo indiscreto?",
+      "branches": [
+        {
+          "keywords": [
+            "marketing",
+            "vendite",
+            "comunicazione",
+            "pubblicità"
+          ],
+          "nextTurnId": "t3_interest_topic"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kah-pee-sko. Eh im-mah-jee-noh keh, koh-meh meh, too see-ah kwee per lah kon-feh-ren-za. Kwahl eh lah too-ah ah-reh-ah dee kohm-peh-ten-za, seh non soh-noh troh-poh in-dees-kreh-toh? — I understand. And I imagine, like me, you're here for the conference. What's your area of expertise, if I'm not being too indiscreet?"
+    },
+    "t2_topic_leisure": {
+      "id": "t2_topic_leisure",
+      "prompt": "Che bello! Un po' di svago non guasta mai. Hai già avuto modo di visitare qualcosa o ti sei concentrato sul relax?",
+      "branches": [
+        {
+          "keywords": [
+            "ho visitato",
+            "visite",
+            "turismo",
+            "esplorare"
+          ],
+          "nextTurnId": "t3_interest_topic"
+        },
+        {
+          "keywords": [
+            "",
+            "non so"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Keh bel-loh! Oon poh dee zva-goh non gwas-tah my. Eye jah ah-voo-toh moh-doh dee vee-zee-tah-reh kwahl-koh-za oh tee say kon-chen-trah-toh sool reh-lax? — How nice! A bit of leisure never hurts. Have you already had a chance to visit anything or have you focused on relaxing?"
+    },
+    "t3_interest_topic": {
+      "id": "t3_interest_topic",
+      "prompt": "Interessante! E cosa ti sta appassionando di più in questo momento, riguardo a questo argomento? Ci sono nuove sfide o esperienze che ti hanno particolarmente colpito?",
+      "branches": [
+        {
+          "keywords": [
+            "sfide",
+            "difficoltà",
+            "problemi",
+            "ostacoli"
+          ],
+          "nextTurnId": "t4_conclusion_challenge"
+        },
+        {
+          "keywords": [
+            "esperienze",
+            "scoperte",
+            "successi",
+            "piacere",
+            "novità"
+          ],
+          "nextTurnId": "t4_conclusion_positive"
+        },
+        {
+          "keywords": [
+            "",
+            "non saprei"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In-teh-res-san-teh! Eh koh-za tee stah ap-pas-see-oh-nan-doh dee pyoo in kwes-toh moh-men-toh, ree-gwar-doh a kweh-stoh ar-goh-men-toh? Chee soh-noh noo-oh-veh sfee-deh oh es-peh-ryen-zeh keh tee an-noh par-tee-koh-lar-men-teh kol-pee-toh? — Interesting! And what are you most passionate about right now, regarding this topic? Are there new challenges or experiences that have particularly struck you?"
+    },
+    "t4_conclusion_challenge": {
+      "id": "t4_conclusion_challenge",
+      "prompt": "Capisco, ogni campo ha le sue complessità. Spero tu possa trovare soluzioni stimolanti. È stato un piacere scambiare due chiacchiere.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kah-pee-sko, oh-nyee kam-poh ah leh soo-eh kom-pless-see-tah. Speh-roh too pohs-sah troh-vah-reh soh-loo-zyoh-nee stee-moh-lan-tee. Eh stah-toh oon pee-ah-cheh-reh skam-byah-reh doo-eh kee-ak-kee-ah-reh. — I understand, every field has its complexities. I hope you can find stimulating solutions. It's been a pleasure to chat a bit.",
+      "isTerminal": true
+    },
+    "t4_conclusion_positive": {
+      "id": "t4_conclusion_positive",
+      "prompt": "Che bello sentire questo entusiasmo! È sempre edificante incontrare persone appassionate. Grazie per questa piacevole conversazione.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Keh bel-loh sen-tee-reh kwes-toh en-too-zee-ahz-moh! Eh sem-preh eh-dee-fee-kan-teh een-kon-trah-reh per-soh-neh ap-pas-see-oh-nah-teh. Grah-zyeh per kwes-tah pee-ah-cheh-voh-leh kon-ver-saht-zyoh-neh. — How wonderful to hear such enthusiasm! It's always uplifting to meet passionate people. Thank you for this pleasant conversation.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, non ho colto bene. Potresti ripeterlo o spiegarlo in altro modo?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripetere",
+            "spiegare"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scoo-za, non oh kol-toh beh-neh. Poh-treh-stee ree-peh-ter-loh oh spee-gah-rloh in al-troh moh-doh? — Sorry, I didn't quite catch that. Could you repeat it or explain it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare con te. Spero di rivederti in giro o, chissà, magari al prossimo evento! Ciao!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Eh stah-toh oon pee-ah-cheh-reh kee-ak-kee-ah-rah-reh kon teh. Speh-roh dee ree-veh-der-tee in jee-roh oh, kee-ssah, mah-gah-ree ahl pross-see-moh eh-ven-toh! Chow! — It was a pleasure chatting with you. I hope to see you around or, who knows, maybe at the next event! Bye!",
+      "isTerminal": true
+    }
+  }
+}

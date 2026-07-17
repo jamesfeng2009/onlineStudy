@@ -1,0 +1,137 @@
+{
+  "id": "dlg-es-doctor-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Consulta Médica Avanzada",
+  "opening": "Buenos días, [Nombre del paciente]. Por favor, tome asiento. ¿Qué le trae por aquí hoy? Cuénteme con todo lujo de detalles qué le ocurre y desde cuándo se siente indispuesto.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días, [Nombre del paciente]. Por favor, tome asiento. ¿Qué le trae por aquí hoy? Cuénteme con todo lujo de detalles qué le ocurre y desde cuándo se siente indispuesto.",
+      "branches": [
+        {
+          "keywords": [
+            "dolor",
+            "duele",
+            "malestar",
+            "siento",
+            "enfermo",
+            "mal"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días, [Nombre del paciente]. Por favor, tome asiento. ¿Qué le trae por aquí hoy? Cuénteme con todo lujo de detalles qué le ocurre y desde cuándo se siente indispuesto. — Good morning, [Patient Name]. Please, have a seat. What brings you here today? Tell me in great detail what's happening to you and since when you've been feeling unwell."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo. Para poder acotar el diagnóstico, ¿podría especificarme la localización exacta del malestar, cómo describiría el tipo de dolor —si es punzante, sordo, quemante—, y en una escala del uno al diez, qué intensidad tiene? Además, ¿hay algún otro síntoma que lo acompañe, como fiebre, mareos o problemas digestivos?",
+      "branches": [
+        {
+          "keywords": [
+            "cabeza",
+            "cuello",
+            "espalda",
+            "pecho",
+            "abdomen",
+            "brazo",
+            "pierna",
+            "estómago",
+            "garganta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. Para poder acotar el diagnóstico, ¿podría especificarme la localización exacta del malestar, cómo describiría el tipo de dolor —si es punzante, sordo, quemante—, y en una escala del uno al diez, qué intensidad tiene? Además, ¿hay algún otro síntoma que lo acompañe, como fiebre, mareos o problemas digestivos? — I understand. To narrow down the diagnosis, could you specify the exact location of the discomfort, how you would describe the type of pain—whether it's sharp, dull, burning—and on a scale of one to ten, how intense is it? Also, are there any other accompanying symptoms, such as fever, dizziness, or digestive problems?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "De acuerdo. Con todos estos datos, el cuadro clínico se va perfilando. Antes de proponerle un tratamiento, es de vital importancia que me confirme si padece alguna alergia medicamentosa, especialmente a analgésicos o antiinflamatorios, o si tiene alguna enfermedad crónica o condición preexistente que deba conocer.",
+      "branches": [
+        {
+          "keywords": [
+            "alergia",
+            "alérgico",
+            "soy alérgico",
+            "penicilina",
+            "ibuprofeno",
+            "aspirina",
+            "paracetamol"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. Con todos estos datos, el cuadro clínico se va perfilando. Antes de proponerle un tratamiento, es de vital importancia que me confirme si padece alguna alergia medicamentosa, especialmente a analgésicos o antiinflamatorios, o si tiene alguna enfermedad crónica o condición preexistente que deba conocer. — Alright. With all this information, the clinical picture is taking shape. Before proposing a treatment, it is of vital importance that you confirm if you suffer from any drug allergies, especially to analgesics or anti-inflammatories, or if you have any chronic illness or pre-existing condition that I should be aware of."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excelente, gracias por la información. Por lo que me describe, podríamos estar ante [diagnóstico plausible, e.g., una lumbalgia, una gastritis leve]. Le voy a recetar [medicamento, e.g., un antiinflamatorio y un protector gástrico] y le aconsejo reposo. Si en un plazo de tres o cuatro días no experimenta mejoría o los síntomas se agudizan, sería imperativo que volviéramos a vernos para explorar otras vías.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "de acuerdo",
+            "bien",
+            "perfecto",
+            "sí"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, thank you for the information. From what you describe, we could be facing [plausible diagnosis, e.g., a lower back pain, a mild gastritis]. I'm going to prescribe [medication, e.g., an anti-inflammatory and a gastric protector] and I advise rest. If within three or four days you don't experience improvement or the symptoms worsen, it would be imperative for us to see each other again to explore other avenues."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetírmelo? No he logrado captar el mensaje completo. Por favor, hable más claro o con otras palabras.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that for me? I didn't manage to catch the full message. Please, speak more clearly or use different words."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Pues le espero la semana que viene para la revisión. Mientras tanto, siga las indicaciones y, por favor, no dude en contactar si los síntomas empeoran. Que se mejore.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. I'll see you next week for the check-up then. In the meantime, follow the instructions and, please, don't hesitate to contact us if the symptoms worsen. Get well soon.",
+      "isTerminal": true
+    }
+  }
+}

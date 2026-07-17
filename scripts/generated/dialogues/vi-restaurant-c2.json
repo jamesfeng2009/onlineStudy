@@ -1,0 +1,268 @@
+{
+  "id": "dlg-vi-restaurant-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Thực Đơn Và Những Câu Chuyện Bàn Ăn",
+  "opening": "Chào anh/chị. Anh/chị đã sẵn sàng gọi món chưa, hay muốn em giới thiệu vài món đặc trưng của quán mình ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị đã sẵn sàng gọi món chưa, hay muốn em giới thiệu vài món đặc trưng của quán mình ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "sẵn sàng",
+            "gọi món"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "giới thiệu",
+            "món đặc trưng",
+            "gợi ý"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chưa",
+            "xem thêm",
+            "đợi chút"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao anh/chi. Anh/chi da san sang goi mon chua, hay muon em gioi thieu vai mon dac trung cua quan minh a? — Hello. Are you ready to order, or would you like me to recommend some of our restaurant's specialties?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, mời anh/chị. Anh/chị dùng gì ạ? Hôm nay quán mình có món bún chả nem cua bể rất được khách ưa chuộng.",
+      "branches": [
+        {
+          "keywords": [
+            "bún chả nem cua bể",
+            "món đó",
+            "bún chả"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "khác",
+            "món khác",
+            "tự chọn"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "thực đơn",
+            "xem lại",
+            "chưa nghĩ ra"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, moi anh/chi. Anh/chi dung gi a? Hom nay quan minh co mon bun cha nem cua be rat duoc khach ua chuong. — Yes, please. What would you like to have? Today, our restaurant has 'bún chả nem cua bể' (vermicelli with grilled pork and crab spring rolls) which is very popular with customers."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tuyệt vời! Quán mình nổi tiếng với phở cuốn và nộm bò khô. Đặc biệt, món cá lăng om chuối đậu là món tủ của nhiều thực khách sành ăn, nguyên liệu tươi rói vừa về sáng nay ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "cá lăng om chuối đậu",
+            "cá lăng",
+            "món tủ",
+            "cá"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "chọn món khác",
+            "chưa nghĩ ra",
+            "muốn xem thêm"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyet voi! Quan minh noi tieng voi pho cuon va nom bo kho. Dac biet, mon ca lang om chuoi dau la mon tu cua nhieu thuc khach sanh an, nguyen lieu tuoi roi vua ve sang nay a. — Excellent! Our restaurant is famous for 'phở cuốn' (fresh spring rolls) and 'nộm bò khô' (dried beef salad). Especially, the 'cá lăng om chuối đậu' (catfish stewed with bananas and tofu) is a favorite among many gourmands, with ingredients freshly delivered this morning."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng, anh/chị cứ thong thả xem thực đơn. Khi nào sẵn sàng, anh/chị vẫy tay gọi em nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "sẵn sàng",
+            "gọi món"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "giới thiệu",
+            "gợi ý",
+            "hỏi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "sẽ gọi sau",
+            "lát nữa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, anh/chi cu thong tha xem thuc don. Khi nao san sang, anh/chi vay tay goi em nhe. — Yes, please take your time to look at the menu. When you're ready, just wave for me."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Quyết định sáng suốt ạ! Vậy anh/chị dùng món đó. Anh/chị có muốn dùng thêm đồ uống hay món tráng miệng nào không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đồ uống",
+            "trà đá",
+            "nước cam",
+            "bia"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "không",
+            "đủ rồi",
+            "thế thôi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quyet dinh sang suot a! Vay anh/chi dung mon do. Anh/chi co muon dung them do uong hay mon trang mieng nao khong a? — A wise decision! So you'll have that dish. Would you like any drinks or desserts with that?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Dạ vâng, anh/chị muốn dùng món gì ạ? Nếu có món nào cần giải thích thêm, đừng ngần ngại hỏi em nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "phở",
+            "bún bò",
+            "mì xào",
+            "cơm rang"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "không biết",
+            "quay lại",
+            "giới thiệu lại"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, anh/chi muon dung mon gi a? Neu co mon nao can giai thich them, dung ngan ngai hoi em nhe. — Yes, what would you like to have? If there's any dish you need further explanation for, please don't hesitate to ask me."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Vâng ạ, vậy là order của anh/chị đã được ghi nhận. Anh/chị có muốn thêm món nào nữa không, hay mình chốt order luôn ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thêm",
+            "gọi thêm",
+            "thêm nữa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "chốt",
+            "đủ rồi",
+            "xong"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang a, vay la order cua anh/chi da duoc ghi nhan. Anh/chi co muon them mon nao nua khong, hay minh chot order luon a? — Yes, your order has been noted. Would you like to add anything else, or shall we finalize the order?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Dạ, anh/chị có thể nhắc lại giúp em được không ạ? Em nghe chưa rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Da, anh/chi co the nhac lai giup em duoc khong a? Em nghe chua ro. — Excuse me, could you please repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Dạ vâng, em đã ghi nhận order của anh/chị. Món ăn sẽ được chuẩn bị và mang ra ngay ạ. Chúc anh/chị ngon miệng!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Da vang, em da ghi nhan order cua anh/chi. Mon an se duoc chuan bi va mang ra ngay a. Chuc anh/chi ngon mieng! — Yes, I've noted your order. The food will be prepared and brought out shortly. Enjoy your meal!",
+      "isTerminal": true
+    }
+  }
+}

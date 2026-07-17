@@ -1,0 +1,323 @@
+{
+  "id": "dlg-en-airport-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Lost in Transit",
+  "opening": "Good morning/afternoon. Welcome to Heathrow Terminal 5. How may I assist you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning/afternoon. Welcome to Heathrow Terminal 5. How may I assist you today?",
+      "branches": [
+        {
+          "keywords": [
+            "lost luggage",
+            "missing bag",
+            "where is my bag"
+          ],
+          "nextTurnId": "t2_lost_luggage"
+        },
+        {
+          "keywords": [
+            "delay",
+            "flight delay",
+            "flight status"
+          ],
+          "nextTurnId": "t2_other_issue"
+        },
+        {
+          "keywords": [
+            "",
+            "hello",
+            "hi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning/afternoon. Welcome to Heathrow Terminal 5. How may I assist you today? (Ni hao/zao an/wu an. Huānyíng lái dào Xī sī zhōngduān wǔ. Jīntiān wǒ néng wéi nín xiàoláo ma?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or be more specific?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or be more specific? (Duìbùqǐ, wǒ méiyǒu tīng qīngchu. Nín néng qǐng zài shuō yí biàn huòzhě gèng jùtǐ yīdiǎn ma?)"
+    },
+    "t2_lost_luggage": {
+      "id": "t2_lost_luggage",
+      "prompt": "I see. That's certainly frustrating. Could you elaborate on when you last saw your baggage and provide your flight details?",
+      "branches": [
+        {
+          "keywords": [
+            "flight details",
+            "baggage tag",
+            "last saw",
+            "my flight"
+          ],
+          "nextTurnId": "t3_details_provided"
+        },
+        {
+          "keywords": [
+            "what next",
+            "procedure",
+            "what do i do"
+          ],
+          "nextTurnId": "t3_ask_procedure"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. That's certainly frustrating. Could you elaborate on when you last saw your baggage and provide your flight details? (Wǒ míngbái. Zhè quèshí hěn lìng rén wǔnù. Nín néng xiángxì shuōmíng nín shàng cì kàn dào xínglǐ de shíhòu, bìng tígōng nín de hángbān xìnxī ma?)"
+    },
+    "t2_other_issue": {
+      "id": "t2_other_issue",
+      "prompt": "I understand. While this counter primarily handles baggage claims, I can certainly point you to the correct department for other inquiries. Please proceed to the information desk on your left.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thank you",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. While this counter primarily handles baggage claims, I can certainly point you to the correct department for other inquiries. Please proceed to the information desk on your left."
+    },
+    "t3_details_provided": {
+      "id": "t3_details_provided",
+      "prompt": "Thank you for that. So, flight BA249 from Santiago, connecting through Madrid. And your baggage tag number, if you have it handy? This will significantly expedite the tracing process.",
+      "branches": [
+        {
+          "keywords": [
+            "tag number",
+            "receipt",
+            "found tag",
+            "here's the tag"
+          ],
+          "nextTurnId": "t4_tag_provided"
+        },
+        {
+          "keywords": [
+            "no tag",
+            "don't have it",
+            "lost tag"
+          ],
+          "nextTurnId": "t4_no_tag"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for that. So, flight BA249 from Santiago, connecting through Madrid. And your baggage tag number, if you have it handy? This will significantly expedite the tracing process."
+    },
+    "t3_ask_procedure": {
+      "id": "t3_ask_procedure",
+      "prompt": "Typically, we'd need your flight itinerary and any baggage claim tags to file a Property Irregularity Report. Let's start with your flight details.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "flight details",
+            "my flight"
+          ],
+          "nextTurnId": "t3_details_provided"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Typically, we'd need your flight itinerary and any baggage claim tags to file a Property Irregularity Report. Let's start with your flight details."
+    },
+    "t4_tag_provided": {
+      "id": "t4_tag_provided",
+      "prompt": "Excellent, thank you for being so thorough. We'll initiate a comprehensive trace immediately. Please fill out this Passenger Irregularity Report form, and we'll endeavour to contact you within 24 hours with an update on your baggage's whereabouts.",
+      "branches": [
+        {
+          "keywords": [
+            "compensation",
+            "reimbursement",
+            "expenses"
+          ],
+          "nextTurnId": "t5_compensation"
+        },
+        {
+          "keywords": [
+            "delivery",
+            "bring to me",
+            "send to hotel"
+          ],
+          "nextTurnId": "t5_delivery"
+        },
+        {
+          "keywords": [
+            "thanks",
+            "appreciate it",
+            "goodbye"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, thank you for being so thorough. We'll initiate a comprehensive trace immediately. Please fill out this Passenger Irregularity Report form, and we'll endeavour to contact you within 24 hours with an update on your baggage's whereabouts."
+    },
+    "t4_no_tag": {
+      "id": "t4_no_tag",
+      "prompt": "Not to worry, we can still proceed, though a tag would have streamlined the process. We'll need a detailed description of your bag. In the meantime, please fill out this Passenger Irregularity Report form, and we'll contact you within 24 hours with an update.",
+      "branches": [
+        {
+          "keywords": [
+            "description",
+            "describe bag"
+          ],
+          "nextTurnId": "t5_description_prompt"
+        },
+        {
+          "keywords": [
+            "compensation",
+            "reimbursement",
+            "expenses"
+          ],
+          "nextTurnId": "t5_compensation"
+        },
+        {
+          "keywords": [
+            "delivery",
+            "bring to me",
+            "send to hotel"
+          ],
+          "nextTurnId": "t5_delivery"
+        },
+        {
+          "keywords": [
+            "thanks",
+            "appreciate it",
+            "goodbye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Not to worry, we can still proceed, though a tag would have streamlined the process. We'll need a detailed description of your bag. In the meantime, please fill out this Passenger Irregularity Report form, and we'll contact you within 24 hours with an update."
+    },
+    "t5_description_prompt": {
+      "id": "t5_description_prompt",
+      "prompt": "Please provide a thorough description of your bag: its brand, color, distinguishing features, and approximate size. This will be crucial for identification.",
+      "branches": [
+        {
+          "keywords": [
+            "my bag is",
+            "it's a",
+            "it has"
+          ],
+          "nextTurnId": "t4_no_tag"
+        },
+        {
+          "keywords": [
+            "thanks",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please provide a thorough description of your bag: its brand, color, distinguishing features, and approximate size. This will be crucial for identification."
+    },
+    "t5_compensation": {
+      "id": "t5_compensation",
+      "prompt": "Regarding compensation, regulations stipulate a maximum liability for delayed or lost baggage. We'll provide you with a form to claim reasonable expenses for essential items. Please keep all receipts.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "goodbye",
+            "understand",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Regarding compensation, regulations stipulate a maximum liability for delayed or lost baggage. We'll provide you with a form to claim reasonable expenses for essential items. Please keep all receipts."
+    },
+    "t5_delivery": {
+      "id": "t5_delivery",
+      "prompt": "Once located, we'll arrange for your baggage to be delivered to your local address or hotel, whichever is more convenient for you. We'll confirm the details when we have an update.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "goodbye",
+            "understand",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Once located, we'll arrange for your baggage to be delivered to your local address or hotel, whichever is more convenient for you. We'll confirm the details when we have an update."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're most welcome. We appreciate your patience and will do our utmost to reunite you with your belongings as swiftly as possible. Have a pleasant day, despite the circumstances.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're most welcome. We appreciate your patience and will do our utmost to reunite you with your belongings as swiftly as possible. Have a pleasant day, despite the circumstances. (Bù kèqì. Wǒmen gǎnxiè nín de nàixīn, bìng jiāng jìn zuìdà nǔlì jìnkuài ràng nín yǔ nín de wùpǐn tuányuán. Jǐnguǎn qíngkuàng rúcǐ, zhù nín yǒu gè yúkuài de yī tiān.)",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "id": "dlg-it-restaurant-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Una serata gastronomica",
+  "opening": "Buonasera, benvenuti al nostro ristorante. Avete una prenotazione o preferite accomodarvi a un tavolo libero?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera, benvenuti al nostro ristorante. Avete una prenotazione o preferite accomodarvi a un tavolo libero?",
+      "branches": [
+        {
+          "keywords": [
+            "prenotazione",
+            "ho",
+            "riservato"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tavolo",
+            "libero",
+            "senza",
+            "prenotare"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera — Good evening, benvenuti al nostro ristorante — welcome to our restaurant. Avete una prenotazione — Do you have a reservation o preferite accomodarvi a un tavolo libero — or would you prefer to take an available table?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfetto, sotto che nome è la prenotazione? Abbiamo un tavolo splendido che vi aspetta.",
+      "branches": [
+        {
+          "keywords": [
+            "rossi",
+            "bianchi",
+            "verdi",
+            "il mio nome",
+            "cognome"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "sbagliato",
+            "non ho prenotato"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto — Perfect, sotto che nome è la prenotazione — under what name is the reservation? Abbiamo un tavolo splendido che vi aspetta — We have a splendid table waiting for you."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Nessun problema, vi accompagno subito a un tavolo nella zona più tranquilla. Ecco i menù. Gradite intanto un aperitivo per stuzzicare l'appetito?",
+      "branches": [
+        {
+          "keywords": [
+            "aperitivo",
+            "si",
+            "volontieri",
+            "certo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "consigliare"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nessun problema — No problem, vi accompagno subito a un tavolo nella zona più tranquilla — I'll accompany you immediately to a table in the quietest area. Ecco i menù — Here are the menus. Gradite intanto un aperitivo — Would you like an aperitif in the meantime per stuzzicare l'appetito — to whet your appetite?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certo. Avete già avuto modo di dare un'occhiata al menù? Oggi, ad esempio, abbiamo un fuori menù strepitoso: tagliolini fatti in casa con tartufo nero e funghi porcini freschi.",
+      "branches": [
+        {
+          "keywords": [
+            "tartufo",
+            "porcini",
+            "prendo",
+            "ordinare",
+            "quello"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "senza",
+            "vegetariano",
+            "vegano",
+            "dieta"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "menu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo — Certainly. Avete già avuto modo di dare un'occhiata al menù — Have you already had a chance to look at the menu? Oggi — Today, ad esempio — for example, abbiamo un fuori menù strepitoso — we have an amazing off-menu special: tagliolini fatti in casa con tartufo nero e funghi porcini freschi — homemade tagliolini with black truffle and fresh porcini mushrooms."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Comprendo, è fondamentale sapere. Ha qualche allergia specifica o preferenza alimentare da segnalare? Altrimenti, posso suggerirle qualche altro abbinamento squisito.",
+      "branches": [
+        {
+          "keywords": [
+            "senza",
+            "glutine",
+            "lattosio",
+            "carne",
+            "vegetariano",
+            "noci"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Comprendo — I understand, è fondamentale sapere — it's essential to know. Ha qualche allergia specifica o preferenza alimentare da segnalare — Do you have any specific allergies or dietary preferences to report? Altrimenti — Otherwise, posso suggerirle qualche altro abbinamento squisito — I can suggest some other exquisite pairing."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottima scelta! Quindi, per ricapitolare, un piatto di tagliolini al tartufo. Desidera accompagnarlo con un vino o qualche altra bevanda? Oppure desidera altro prima di procedere?",
+      "branches": [
+        {
+          "keywords": [
+            "vino",
+            "acqua",
+            "bere",
+            "si",
+            "bicchiere"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottima scelta — Excellent choice! Quindi — So, per ricapitolare — to recap, un piatto di tagliolini al tartufo — one plate of tagliolini with truffle. Desidera accompagnarlo con un vino o qualche altra bevanda — Would you like to accompany it with a wine or some other drink? Oppure desidera altro prima di procedere — Or do you wish for anything else before proceeding?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi — Excuse me, non ho afferrato bene — I didn't quite catch that. Potrebbe ripetere, per favore — Could you please repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. Il suo ordine arriverà a breve. Le auguro una splendida serata e un buon appetito!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfetto — Perfect. Il suo ordine arriverà a breve — Your order will arrive shortly. Le auguro una splendida serata e un buon appetito — I wish you a splendid evening and bon appétit!",
+      "isTerminal": true
+    }
+  }
+}

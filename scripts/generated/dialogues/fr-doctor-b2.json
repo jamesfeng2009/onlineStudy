@@ -1,0 +1,172 @@
+{
+  "id": "dlg-fr-doctor-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Visite chez le médecin",
+  "opening": "Bonjour, entrez ! Qu'est-ce qui vous amène aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, entrez ! Qu'est-ce qui vous amène aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "malaise",
+            "fatigue",
+            "fièvre",
+            "nausée",
+            "tousse",
+            "rhume"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "douleur",
+            "j'ai mal",
+            "ça fait mal",
+            "maux",
+            "souffre"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR), entrez (ahn-TRAY) ! Qu'est-ce qui vous amène aujourd'hui (oh-zhoor-DWEE) ? — Hello, come in! What brings you here today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien compris.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you please repeat? I didn't quite understand."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord. Depuis quand ressentez-vous cela et quelle est l'intensité de la gêne sur une échelle de 1 à 10 ?",
+      "branches": [
+        {
+          "keywords": [
+            "depuis",
+            "jours",
+            "semaines",
+            "mois",
+            "trois",
+            "cinq",
+            "huit",
+            "forte",
+            "faible",
+            "modérée",
+            "supportable",
+            "insupportable"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR). Depuis (deh-PWE) quand ressentez-vous cela et quelle est l'intensité (ahn-tahn-see-TAY) de la gêne sur une échelle de 1 à 10 ? — Alright. Since when have you been feeling this, and what is the intensity of the discomfort on a scale of 1 to 10?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Où se situe précisément cette douleur ? Est-ce une douleur sourde, aiguë, lancinante ?",
+      "branches": [
+        {
+          "keywords": [
+            "tête",
+            "ventre",
+            "gorge",
+            "dos",
+            "poitrine",
+            "jambe",
+            "bras",
+            "oreille",
+            "aigüe",
+            "sourde",
+            "lancinante",
+            "brûlure",
+            "élancement",
+            "côté"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Où se situe précisément (pray-see-zay-MAHN) cette douleur (doo-LEUR) ? Est-ce une douleur sourde, aiguë, lancinante ? — Where exactly is this pain located? Is it a dull, sharp, or throbbing pain?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Je vois. Compte tenu de vos symptômes, je vais vous prescrire un traitement ou un examen complémentaire. Y a-t-il des allergies ou d'autres traitements en cours dont je devrais être informé ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "aucune",
+            "rien",
+            "pas"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Given your symptoms, I will prescribe a treatment or further examination. Are there any allergies or other ongoing treatments I should be aware of?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien. Je vous donne l'ordonnance et un arrêt de travail si nécessaire. Suivez bien les instructions et n'hésitez pas à me recontacter si les symptômes persistent. Reposez-vous bien !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "compris",
+            "bien"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. I'm giving you the prescription and a sick leave if necessary. Follow the instructions carefully and don't hesitate to contact me if the symptoms persist. Get well soon!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir, et bon rétablissement !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye, and get well soon!",
+      "isTerminal": true
+    }
+  }
+}

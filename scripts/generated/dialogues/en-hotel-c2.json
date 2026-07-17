@@ -1,0 +1,111 @@
+{
+  "id": "dlg-en-hotel-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Good afternoon! Welcome to The Grand Hotel. Do you have a reservation with us today, and if so, under what name?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good afternoon! Welcome to The Grand Hotel. Do you have a reservation with us today, and if so, under what name?",
+      "branches": [
+        {
+          "keywords": [
+            "reservation",
+            "my name is",
+            "it's",
+            "booked",
+            "under",
+            "name"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good afternoon! (ɡʊd ˈæftərˌnuːn!) Welcome to The Grand Hotel. Do you have a reservation with us today, and if so, under what name? — Good afternoon! Welcome to The Grand Hotel. Do you have a reservation with us today, and if so, under what name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, got it. Could I trouble you for a piece of photo identification and the credit card used for the booking, please?",
+      "branches": [
+        {
+          "keywords": [
+            "here",
+            "id",
+            "identification",
+            "passport",
+            "license"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, got it. (raɪt, ɡɒt ɪt.) Could I trouble you for a piece of photo identification and the credit card used for the booking, please? — Right, got it. Could I trouble you for a piece of photo identification and the credit card used for the booking, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Excellent. So, you're all set with your Deluxe King, just as booked. Do you have any particular preferences for your room, perhaps a high floor or a specific view, if you will?",
+      "branches": [
+        {
+          "keywords": [
+            "high floor",
+            "upper floor",
+            "top floor",
+            "quiet"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. (ˈɛksələnt.) So, you're all set with your Deluxe King, just as booked. Do you have any particular preferences for your room, perhaps a high floor or a specific view, if you will? — Excellent. So, you're all set with your Deluxe King, just as booked. Do you have any particular preferences for your room, perhaps a high floor or a specific view, if you will?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Understood. We'll certainly do our best to accommodate that. One final thing: our sumptuous breakfast buffet is served in The Conservatory from 7 to 10 AM. Will you be joining us for that during your stay?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i will",
+            "breakfast",
+            "please",
+            "count me in"
+          ],
+          "nextTurnId": "t5_finalize"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. We'll certainly do our best to accommodate that. One final thing: our sumptuous breakfast buffet is served in The Conservatory from 7 to 10 AM. Will you be joining us for that during your stay? — Understood. We'll certainly do our best to accommodate that. One final thing: our sumptuous breakfast buffet is served in The Conservatory from 7 to 10 AM. Will you be joining us for that during your stay?"
+    },
+    "t5_finalize": {
+      "id": "t5_finalize",
+      "prompt": "Splendid. Your room key is right here. Your room number is 703 on the seventh floor. The bellhop will be delighted to assist you with your luggage. Enjoy your stay with us!",
+      "branches": [],
+      "fallbackBranchId": "t5_finalize",
+      "promptTranslation": "Splendid. Your room key is right here. Your room number is 703 on the seventh floor. The bellhop will be delighted to assist you with your luggage. Enjoy your stay with us! — Splendid. Your room key is right here. Your room number is 703 on the seventh floor. The bellhop will be delighted to assist you with your luggage. Enjoy your stay with us!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or repeat that for me?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm terribly sorry, I didn't quite catch that. (aɪm ˈtɛrəbli ˈsɒri, aɪ dɪdnt kwaɪt kætʃ ðæt.) Could you possibly rephrase or repeat that for me? — I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or repeat that for me?"
+    }
+  }
+}

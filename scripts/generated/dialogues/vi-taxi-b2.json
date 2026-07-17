@@ -1,0 +1,179 @@
+{
+  "id": "dlg-vi-taxi-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Đi taxi",
+  "opening": "Chào anh/chị. Anh/chị đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "khách sạn",
+            "đến",
+            "đi",
+            "chợ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "giá",
+            "bao nhiêu",
+            "đồng hồ"
+          ],
+          "nextTurnId": "t2a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. Anh/chị đi đâu ạ? — Chào anh/chị (Chao anh/chi). Where are you going, sir/ma'am?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À, khách sạn Rex ở Quận 1. Được rồi, tuyến đường này hơi đông một chút vào giờ cao điểm, nhưng tôi sẽ cố gắng chọn đường nhanh nhất.",
+      "branches": [
+        {
+          "keywords": [
+            "bao lâu",
+            "thời gian",
+            "khi nào tới"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, khách sạn Rex ở Quận 1. Được rồi, tuyến đường này hơi đông một chút vào giờ cao điểm, nhưng tôi sẽ cố gắng chọn đường nhanh nhất. — Ah, Rex Hotel in District 1. Okay, this route is a bit busy (hơi đông một chút) during rush hour, but I'll try to choose the fastest way."
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Chúng tôi tính theo đồng hồ. Đến khách sạn Rex thì khoảng tầm 70-80 nghìn tùy tình hình giao thông anh/chị nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "được",
+            "vâng",
+            "đi đi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chúng tôi tính theo đồng hồ. Đến khách sạn Rex thì khoảng tầm 70-80 nghìn (70-80 nghin) tùy tình hình giao thông anh/chị nhé. — We charge by meter. To Rex Hotel, it'll be around 70-80 thousand VND depending on traffic, sir/ma'am."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, nếu đi đường Nguyễn Huệ thì có thể mất khoảng 20-25 phút. Còn nếu anh/chị muốn đi đường ít kẹt hơn, có thể đi vòng một chút nhưng đôi khi lại nhanh hơn.",
+      "branches": [
+        {
+          "keywords": [
+            "nhanh nhất",
+            "đường nhanh",
+            "ưu tiên nhanh"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, nếu đi đường Nguyễn Huệ thì có thể mất khoảng 20-25 phút (20-25 phut). Còn nếu anh/chị muốn đi đường ít kẹt hơn, có thể đi vòng một chút nhưng đôi khi lại nhanh hơn. — Yes, if we take Nguyen Hue street, it might take about 20-25 minutes. If you prefer a less congested route, we can take a slight detour, which sometimes turns out to be faster."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Đến nơi rồi ạ. Tổng cộng là 75.000 đồng. Anh/chị có tiền lẻ không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiền lẻ",
+            "đúng",
+            "75"
+          ],
+          "nextTurnId": "t-end-thanks"
+        },
+        {
+          "keywords": [
+            "100",
+            "200",
+            "500",
+            "tiền lớn"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đến nơi rồi ạ. Tổng cộng là 75.000 đồng (75 nghìn dong). Anh/chị có tiền lẻ không ạ? — We've arrived. The total is 75,000 VND. Do you have small change, sir/ma'am?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "À vâng, đây là 25.000 đồng tiền thừa của anh/chị. Cảm ơn đã sử dụng dịch vụ.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "chào",
+            "tạm biệt"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "À vâng, đây là 25.000 đồng (hai mươi lăm nghìn dong) tiền thừa của anh/chị. Cảm ơn đã sử dụng dịch vụ. — Ah yes, here's your 25,000 VND in change. Thank you for using our service."
+    },
+    "t-end-thanks": {
+      "id": "t-end-thanks",
+      "prompt": "Dạ vâng, cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành.",
+      "branches": [],
+      "fallbackBranchId": "t-end-thanks",
+      "promptTranslation": "Dạ vâng, cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành. — Yes, thank you sir/ma'am. Wish you a good day.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói lại rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, anh/chị có thể nói lại rõ hơn được không ạ? — Sorry, could you please speak more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chào tạm biệt anh/chị. Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chào tạm biệt anh/chị. Hẹn gặp lại. — Goodbye sir/ma'am. Hope to see you again.",
+      "isTerminal": true
+    }
+  }
+}

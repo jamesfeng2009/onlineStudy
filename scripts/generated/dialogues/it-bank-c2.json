@@ -1,0 +1,230 @@
+{
+  "id": "dlg-it-bank-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "In banca: un ventaglio di servizi",
+  "opening": "Benvenuto alla Banca Nazionale. Come posso esserle d'aiuto oggi? Abbiamo un'ampia gamma di servizi a disposizione.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Benvenuto alla Banca Nazionale. Come posso esserle d'aiuto oggi? Abbiamo un'ampia gamma di servizi a disposizione.",
+      "branches": [
+        {
+          "keywords": [
+            "aprireconto",
+            "nuovoconto",
+            "conto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cambiarevaluta",
+            "cambiomoney",
+            "valuta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "problematm",
+            "atm",
+            "bancomat"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bonifico",
+            "trasferimento",
+            "giroconto"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Benvenuto alla Banca Nazionale (Ben-ve-nu-to al-la Ban-ca Na-zio-na-le). Come posso esserle d'aiuto oggi? (Co-me pos-so es-ser-le d'aiu-to og-gi?) We have a wide range of services available."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certamente. Ha già un'idea del tipo di conto di cui avrebbe bisogno, magari per risparmi o per le operazioni quotidiane? Siamo in grado di offrire soluzioni personalizzate per ogni esigenza.",
+      "branches": [
+        {
+          "keywords": [
+            "risparmio",
+            "contoresparmio"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Do you already have an idea of the type of account you would need, perhaps for savings or for daily operations? We are able to offer personalized solutions for every need."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Molto bene. Di quale valuta si tratta e per quale importo approssimativo? Così le posso dare un'indicazione sui tassi attuali e sulle eventuali commissioni applicate, in tutta trasparenza.",
+      "branches": [
+        {
+          "keywords": [
+            "dollari",
+            "usd",
+            "americani"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Which currency is it and for what approximate amount? (Di qua-le va-lu-ta si trat-ta e per qua-le im-por-to ap-pros-si-ma-ti-vo?) This way I can give you an indication of the current rates and any commissions applied, with full transparency."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mi dispiace per l'inconveniente, può capitare. Potrebbe descrivermi meglio cosa è successo? La carta è stata inghiottita, ha dimenticato il PIN o ha avuto problemi con un prelievo o un versamento?",
+      "branches": [
+        {
+          "keywords": [
+            "inghiottita",
+            "cartainghiottita",
+            "carta"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I am sorry for the inconvenience, it can happen. Could you describe better what happened? (Po-treb-be de-scri-ver-mi me-glio co-sa è suc-ces-so?) Was the card swallowed, did you forget the PIN, or did you have issues with a withdrawal or deposit?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Certamente. Si tratta di un bonifico nazionale, internazionale, o magari un giroconto tra suoi conti? Per ciascuna tipologia, abbiamo procedure consolidate per garantire velocità e sicurezza.",
+      "branches": [
+        {
+          "keywords": [
+            "nazionale",
+            "bonificonazionale"
+          ],
+          "nextTurnId": "t9"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Is it a national, international bank transfer, or perhaps a transfer between your own accounts? For each type, we have established procedures to ensure speed and security."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Capisco l'interesse. Per il conto corrente offriamo varie opzioni con o senza canone, a seconda dei servizi inclusi. Per il conto risparmio, abbiamo soluzioni che prevedono interessi crescenti nel tempo. Vorrebbe approfondire un aspetto in particolare o preferisce che le illustri le caratteristiche principali di entrambi, per poi decidere?",
+      "branches": [
+        {
+          "keywords": [
+            "principali",
+            "caratteristiche"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            "procedere",
+            "aprire"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand your interest. For the current account, we offer various options with or without a monthly fee, depending on the included services. For the savings account, we have solutions that provide increasing interest over time. Would you like to delve into a particular aspect or would you prefer me to illustrate the main characteristics of both, so you can decide?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Al momento il tasso di cambio per la valuta richiesta è di circa X.XX, con una commissione fissa del Y%. È un'offerta competitiva e il cambio è immediato. Vuole procedere con l'operazione o preferisce attendere un eventuale miglioramento del tasso?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "procedere",
+            "accetto"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            "no",
+            "attendere",
+            "rifiuto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Currently, the exchange rate for the requested currency is approximately X.XX, with a fixed commission of Y%. It's a competitive offer and the exchange is immediate. Do you want to proceed with the operation or would you prefer to wait for a possible improvement in the rate?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "D'accordo. Per la carta inghiottita, dobbiamo bloccarla immediatamente per sicurezza e ordinarne una nuova che riceverà a casa in pochi giorni. Se invece è un problema di PIN dimenticato, possiamo avviare la procedura di reset qui allo sportello, con l'emissione di un nuovo codice. Come preferisce procedere o ha altre domande?",
+      "branches": [
+        {
+          "keywords": [
+            "bloccare",
+            "nuovacarta"
+          ],
+          "nextTurnId": "t10"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. For a swallowed card, we need to block it immediately for security and order a new one that you will receive at home in a few days. If it's a forgotten PIN issue, we can start the reset procedure here at the counter, with the issuance of a new code. How would you like to proceed or do you have any other questions?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Perfetto. Per procedere con un bonifico nazionale, avrò bisogno dell'IBAN del beneficiario, l'importo e la causale, oltre a un documento d'identità valido. Per l'internazionale, servono anche il codice SWIFT/BIC e il nome della banca estera, il tutto nel rispetto delle normative vigenti. Ha già tutti questi dati a portata di mano?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "hodati"
+          ],
+          "nextTurnId": "t10"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. To proceed with a national bank transfer, I will need the beneficiary's IBAN, the amount, and the reason, in addition to a valid ID. For international transfers, the SWIFT/BIC code and the name of the foreign bank are also required, all in compliance with current regulations. Do you already have all this information at hand?"
+    },
+    "t10": {
+      "id": "t10",
+      "prompt": "Benissimo. Possiamo procedere subito con la pratica o la richiesta, oppure preferisce fissare un appuntamento con un nostro consulente per discuterne con calma e senza fretta? Siamo a sua completa disposizione.",
+      "branches": [
+        {
+          "keywords": [
+            "subito",
+            "procedereora",
+            "sì"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. We can proceed immediately with the procedure or request, or would you prefer to schedule an appointment with one of our consultants to discuss it calmly and without haste? We are at your complete disposal."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe ripetere o riformulare la sua richiesta, per favore? A volte non è semplice capirsi al primo colpo.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti",
+            "scusa",
+            "noncapisco"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat or rephrase your request? (Po-treb-be ri-pe-te-re o ri-for-mu-la-re la sua ri-chie-sta?) Sometimes it's not easy to understand each other on the first try."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto, la ringrazio per la sua visita e per aver scelto i nostri servizi. Arrivederci e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect, thank you for your visit and for choosing our services. (Ar-ri-ve-der-ci e buo-na gior-na-ta!) Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "id": "dlg-it-phone-call-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Telefonata professionale",
+  "opening": "Pronto? Sono Marta Rossi. Con chi ho il piacere?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Pronto? Sono Marta Rossi della ditta IT Solutions. Con chi ho il piacere?",
+      "branches": [
+        {
+          "keywords": [
+            "chiamo",
+            "sono",
+            "parlo",
+            "mio"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pronto? (Hello?) Sono Marta Rossi (This is Marta Rossi) della ditta IT Solutions (from IT Solutions company). Con chi ho il piacere? (Who am I speaking with?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, buongiorno. In cosa posso esserle utile? Il Dottor Bianchi, a proposito, non è in ufficio al momento.",
+      "branches": [
+        {
+          "keywords": [
+            "appuntamento",
+            "fissare",
+            "richiesta",
+            "informazione"
+          ],
+          "nextTurnId": "t3_details"
+        },
+        {
+          "keywords": [
+            "lasciare",
+            "messaggio",
+            "potrei"
+          ],
+          "nextTurnId": "t3_message_offer"
+        },
+        {
+          "keywords": [
+            "richiamare",
+            "dopo",
+            "no",
+            "grazie"
+          ],
+          "nextTurnId": "t4_no_message"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, buongiorno (Ah, good morning). In cosa posso esserle utile? (How can I help you?) Il Dottor Bianchi (Dr. Bianchi), a proposito (by the way), non è in ufficio al momento (is not in the office at the moment)."
+    },
+    "t3_details": {
+      "id": "t3_details",
+      "prompt": "Capisco. Potrebbe darmi qualche dettaglio in più sulla sua richiesta, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "riguardo",
+            "circa",
+            "problema",
+            "prodotto",
+            "servizio"
+          ],
+          "nextTurnId": "t4_message_taken"
+        },
+        {
+          "keywords": [
+            "lasciare",
+            "messaggio",
+            "non",
+            "vorrei"
+          ],
+          "nextTurnId": "t3_message_offer"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (I understand). Potrebbe darmi qualche dettaglio in più (Could you give me some more details) sulla sua richiesta, per favore? (about your request, please?)"
+    },
+    "t3_message_offer": {
+      "id": "t3_message_offer",
+      "prompt": "Certamente, posso prendere un messaggio per lui o per la persona di riferimento. Mi dica pure.",
+      "branches": [
+        {
+          "keywords": [
+            "dica",
+            "riferisca",
+            "chiami",
+            "ritorni"
+          ],
+          "nextTurnId": "t4_message_taken"
+        },
+        {
+          "keywords": [
+            "no",
+            "richiamare",
+            "dopo",
+            "grazie"
+          ],
+          "nextTurnId": "t4_no_message"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certamente (Certainly), posso prendere un messaggio (I can take a message) per lui o per la persona di riferimento (for him or the relevant person). Mi dica pure (Go ahead and tell me)."
+    },
+    "t4_message_taken": {
+      "id": "t4_message_taken",
+      "prompt": "Perfetto, ho annotato tutto. Sarà fatto. C'è qualcos'altro in cui posso esserle d'aiuto?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "tutto",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto (Perfect), ho annotato tutto (I've noted everything down). Sarà fatto (It will be done). C'è qualcos'altro (Is there anything else) in cui posso esserle d'aiuto? (I can help you with?)"
+    },
+    "t4_no_message": {
+      "id": "t4_no_message",
+      "prompt": "Va bene, allora aspetteremo la sua richiamata. La ringrazio per la sua chiamata e le auguro una buona giornata.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "saluto",
+            "buona"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene (Alright), allora aspetteremo la sua richiamata (then we will await your call back). La ringrazio per la sua chiamata (Thank you for your call) e le auguro una buona giornata (and I wish you a good day)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusi (Excuse me), non ho capito bene (I didn't understand well). Potrebbe ripetere, per favorer? (Could you please repeat?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Molto bene. La ringrazio e le auguro una buona giornata. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Molto bene (Very good). La ringrazio (I thank you) e le auguro una buona giornata (and I wish you a good day). Arrivederci! (Goodbye!)",
+      "isTerminal": true
+    }
+  }
+}

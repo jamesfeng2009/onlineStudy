@@ -1,0 +1,309 @@
+{
+  "id": "dlg-fr-bank-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "À la banque",
+  "opening": "Bonjour, comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, comment puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "ouvrir",
+            "compte",
+            "nouveau"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "changer",
+            "argent",
+            "monnaie"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "problème",
+            "carte",
+            "distributeur",
+            "atm"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "transfert",
+            "virement"
+          ],
+          "nextTurnId": "t9"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bohn-joor, koh-mohn pwee-zhuh vooz eh-deh? — Hello, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Pour ouvrir un compte, il me faut quelques documents. Avez-vous une pièce d'identité et un justificatif de domicile ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "documents",
+            "tout"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "non",
+            "quels",
+            "besoin"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Poor oo-vreer uhn cohnt, eel muh foh kell-kuh doh-kyoo-mohn. Ah-veh voo yoon pyess dan-tee-teh eh uhn zhoos-tee-fee-kah-teef duh doh-mee-seel? — To open an account, I need a few documents. Do you have an ID and proof of address?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr. Quelle devise souhaitez-vous échanger et pour quel montant ?",
+      "branches": [
+        {
+          "keywords": [
+            "dollars",
+            "euros",
+            "yens",
+            "cent",
+            "deuxcents",
+            "cinquante"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Byan syoor. Kell duh-veez soo-eh-teh voo eh-shah-zhay eh poor kell mohn-tahn? — Of course. Which currency would you like to exchange and for how much?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord. Quel est le problème avec votre carte ou le distributeur ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "bloquée",
+            "perdue"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. What is the problem with your card or the ATM?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Pour un virement, vous avez besoin du RIB (Relevé d'Identité Bancaire) du bénéficiaire. L'avez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "rib"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "encore"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a transfer, you need the beneficiary's bank details (RIB). Do you have it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Parfait. Veuillez remplir ce formulaire et un conseiller va vous accompagner pour la suite.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "merci",
+            "oui"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Please fill out this form and an advisor will assist you with the next steps."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Il vous faut une pièce d'identité (passeport ou carte d'identité) et un justificatif de domicile (facture d'électricité ou de téléphone de moins de 3 mois).",
+      "branches": [
+        {
+          "keywords": [
+            "j'ai",
+            "documents",
+            "oui"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "je n'ai pas",
+            "manque",
+            "non"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You need an ID (passport or ID card) and proof of address (electricity or phone bill less than 3 months old)."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Le taux de change est très bon aujourd'hui. Souhaitez-vous confirmer ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "confirmer",
+            "s'il vous plaît"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The exchange rate is very good today. Would you like to confirm?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Je comprends. Nous allons faire une déclaration et commander une nouvelle carte/réinitialiser votre code PIN. Cela prendra quelques jours.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "merci",
+            "très bien"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. We will make a declaration and order a new card/reset your PIN. This will take a few days."
+    },
+    "t10": {
+      "id": "t10",
+      "prompt": "Excellent. Veuillez remplir ce formulaire avec les détails et je procède au virement.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "merci",
+            "oui"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Please fill out this form with the details and I will proceed with the transfer."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I did not understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci de votre visite et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your visit and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

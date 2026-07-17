@@ -1,0 +1,144 @@
+{
+  "id": "dlg-de-interview-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Bewerbungsgespräch – Führungsposition",
+  "opening": "Guten Tag, Herr/Frau [Nachname des Bewerbers]. Herzlich willkommen bei uns. Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns doch bitte ein wenig über sich und was Sie zu uns führt.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Nachname des Bewerbers]. Herzlich willkommen bei uns. Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns doch bitte ein wenig über sich und was Sie zu uns führt.",
+      "branches": [
+        {
+          "keywords": [
+            "erfahrung",
+            "hintergrund",
+            "motivation"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gooten Tahg, Hair/Frau [Nahch-nah-me dess Beh-ver-bers]. Hairt-slich vil-koh-men bye oons. Fee-luhn Dahngk, dass Zee hoy-te heer zint. Air-tsay-luhn Zee oons doch bit-tuh ayn ve-nich yoo-bur zich unt vass Zee tsoo oons foort. — Good day, Mr./Ms. [Applicant's Last Name]. Welcome. Thank you for being here today. Please tell us a bit about yourself and what brings you to us."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Das klingt ja vielversprechend. Was hat Sie denn konkret an dieser Position gereizt, und welche Ihrer bisherigen Erfahrungen sehen Sie als besonders relevant für die ausgeschriebene Stelle an?",
+      "branches": [
+        {
+          "keywords": [
+            "reiz",
+            "position",
+            "herausforderung",
+            "entwicklung"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dass klinkt yah feel-fair-shpreh-shend. Vass hat Zee denn kohn-kreet an dee-zer Poh-zit-syohn ge-reytst, unt vel-she ee-rer biz-he-ri-gen Air-fah-run-gen ze-hen Zee als be-zon-ders re-le-vant für dee ouss-ge-shree-be-nuh Shtel-luh an? — That sounds promising. What specifically attracted you to this position, and which of your past experiences do you consider particularly relevant for the advertised role?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Sehr gut. Jedes Unternehmen sucht nach Persönlichkeiten, die das Team bereichern. Welche Ihrer Stärken würden Sie denn als Ihre herausragendsten bezeichnen und wie könnten diese unserem Unternehmen zugutekommen?",
+      "branches": [
+        {
+          "keywords": [
+            "teamfähigkeit",
+            "kommunikation",
+            "lösungsorientiert",
+            "anpassungsfähig"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "belastbarkeit",
+            "eigeninitiative",
+            "analytisch",
+            "zielstrebig"
+          ],
+          "nextTurnId": "t4b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr goot. Yeh-des Unt-er-neh-men zookt nahch Pair-sön-lich-ky-ten, dee dass Teem be-rey-chuh-rn. Vel-she ee-rer Shtark-un vur-dün Zee denn als Ee-ruh he-rou-srah-gend-sten be-tsaych-nen unt vee könn-tuhn dee-ze oo-ze-rem Unt-er-neh-men tsoo-goo-tuh-koh-men? — Very good. Every company looks for personalities who enrich the team. Which of your strengths would you describe as your most outstanding, and how could these benefit our company?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Das hört sich nach einem wertvollen Beitrag an. Und wie steht es mit den Bereichen, in denen Sie noch Entwicklungspotenzial sehen? Gibt es Schwächen, an denen Sie aktiv arbeiten?",
+      "branches": [
+        {
+          "keywords": [
+            "perfektionismus",
+            "delegieren",
+            "geduld",
+            "details"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds like a valuable contribution. And what about the areas where you still see potential for development? Are there weaknesses you are actively working on?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Verstanden. Nun gibt es ja bekanntlich niemanden, der perfekt ist. Welche Aspekte Ihrer Arbeitsweise würden Sie als verbesserungswürdig einstufen und welche Maßnahmen ergreifen Sie, um sich dort weiterzuentwickeln?",
+      "branches": [
+        {
+          "keywords": [
+            "ungeduld",
+            "detailverliebtheit",
+            "strukturschwäche",
+            "risikobereitschaft"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. As is well known, nobody is perfect. Which aspects of your work would you classify as needing improvement, and what measures are you taking to further develop yourself there?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vielen Dank für Ihre Offenheit. Haben Sie denn Ihrerseits noch Fragen an uns, oder gibt es etwas, das Sie noch ansprechen möchten, bevor wir zum Ende kommen?",
+      "branches": [
+        {
+          "keywords": [
+            "fragen",
+            "frage",
+            "offene"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fee-luhn Dahngk für Ee-ruh Off-en-heyt. Hah-buhn Zee denn Ee-rer-zyts noch Frah-guhn an oons, oh-der gibt ess et-vass, dass Zee noch an-shprech-en möch-tuhn, be-for veer tzoom En-duh koh-men? — Thank you for your candor. Do you have any questions for us, or is there anything else you would like to address before we conclude?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ausgezeichnet. Das Gespräch hat uns einen sehr guten ersten Eindruck vermittelt. Wir werden uns in den nächsten Tagen bei Ihnen melden. Vielen Dank nochmals für Ihr Kommen und auf Wiederhören.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. The conversation has given us a very good first impression. We will contact you in the next few days. Thank you again for coming, and goodbye.",
+      "isTerminal": true
+    }
+  }
+}

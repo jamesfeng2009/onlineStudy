@@ -1,0 +1,516 @@
+{
+  "id": "dlg-id-bank-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Bantuan Perbankan Lanjutan",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu hari ini? Kami siap melayani segala kebutuhan perbankan Anda, mulai dari pembukaan rekening baru hingga konsultasi investasi yang lebih kompleks.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu hari ini? Kami siap melayani segala kebutuhan perbankan Anda, mulai dari pembukaan rekening baru hingga konsultasi investasi yang lebih kompleks.",
+      "branches": [
+        {
+          "keywords": [
+            "buka",
+            "rekening",
+            "akun",
+            "tabungan"
+          ],
+          "nextTurnId": "t2_akun"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "kirim",
+            "dana",
+            "uang"
+          ],
+          "nextTurnId": "t2_transfer"
+        },
+        {
+          "keywords": [
+            "atm",
+            "kartu",
+            "masalah",
+            "terblokir"
+          ],
+          "nextTurnId": "t2_atm"
+        },
+        {
+          "keywords": [
+            "investasi",
+            "konsultasi",
+            "produk"
+          ],
+          "nextTurnId": "t2_investasi"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi. — Good morning. Ada yang bisa saya bantu hari ini? — Is there anything I can help you with today? Kami siap melayani segala kebutuhan perbankan Anda, mulai dari pembukaan rekening baru hingga konsultasi investasi yang lebih kompleks. — We are ready to serve all your banking needs, from opening a new account to more complex investment consultations."
+    },
+    "t2_akun": {
+      "id": "t2_akun",
+      "prompt": "Baik, untuk pembukaan rekening, apakah Anda berminat pada rekening tabungan biasa, rekening giro untuk keperluan bisnis, atau mungkin produk tabungan berjangka dengan bunga kompetitif?",
+      "branches": [
+        {
+          "keywords": [
+            "tabungan",
+            "biasa"
+          ],
+          "nextTurnId": "t3_tabungan"
+        },
+        {
+          "keywords": [
+            "giro",
+            "bisnis"
+          ],
+          "nextTurnId": "t3_giro"
+        },
+        {
+          "keywords": [
+            "berjangka",
+            "deposito"
+          ],
+          "nextTurnId": "t3_berjangka"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, — Okay, untuk pembukaan rekening, — for opening an account, apakah Anda berminat pada rekening tabungan biasa, — are you interested in a regular savings account, rekening giro untuk keperluan bisnis, — a current account for business purposes, atau mungkin produk tabungan berjangka dengan bunga kompetitif? — or perhaps a time deposit product with competitive interest rates?"
+    },
+    "t2_transfer": {
+      "id": "t2_transfer",
+      "prompt": "Tentu, untuk transaksi transfer, apakah Anda ingin melakukan transfer domestik antarbank, atau transfer internasional yang memerlukan swift code? Kami juga menyediakan layanan RTGS dan SKN untuk jumlah besar.",
+      "branches": [
+        {
+          "keywords": [
+            "domestik",
+            "antarbank"
+          ],
+          "nextTurnId": "t3_transfer_domestik"
+        },
+        {
+          "keywords": [
+            "internasional",
+            "swift"
+          ],
+          "nextTurnId": "t3_transfer_internasional"
+        },
+        {
+          "keywords": [
+            "rtgs",
+            "skn"
+          ],
+          "nextTurnId": "t3_transfer_besar"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu, — Certainly, untuk transaksi transfer, — for transfer transactions, apakah Anda ingin melakukan transfer domestik antarbank, — do you want to make a domestic interbank transfer, atau transfer internasional yang memerlukan swift code? — or an international transfer that requires a swift code? Kami juga menyediakan layanan RTGS dan SKN untuk jumlah besar. — We also provide RTGS and SKN services for large amounts."
+    },
+    "t2_atm": {
+      "id": "t2_atm",
+      "prompt": "Mohon maaf atas ketidaknyamanannya. Bisa Anda jelaskan lebih lanjut mengenai kendala ATM yang Anda alami? Apakah kartu Anda tertelan, PIN terblokir, atau ada masalah dengan penarikan tunai?",
+      "branches": [
+        {
+          "keywords": [
+            "tertelan",
+            "kartu"
+          ],
+          "nextTurnId": "t3_atm_tertelan"
+        },
+        {
+          "keywords": [
+            "pin",
+            "terblokir"
+          ],
+          "nextTurnId": "t3_atm_pin"
+        },
+        {
+          "keywords": [
+            "tarik",
+            "tunai",
+            "masalah"
+          ],
+          "nextTurnId": "t3_atm_tarik"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf atas ketidaknyamanannya. — We apologize for the inconvenience. Bisa Anda jelaskan lebih lanjut mengenai kendala ATM yang Anda alami? — Could you explain more about the ATM issue you are experiencing? Apakah kartu Anda tertelan, PIN terblokir, atau ada masalah dengan penarikan tunai? — Has your card been swallowed, is your PIN blocked, or is there a problem with cash withdrawal?"
+    },
+    "t2_investasi": {
+      "id": "t2_investasi",
+      "prompt": "Sangat menarik! Kami memiliki beragam produk investasi yang dapat disesuaikan dengan profil risiko dan tujuan finansial Anda. Apakah Anda tertarik pada reksa dana, obligasi, atau mungkin deposito berjangka yang lebih konservatif?",
+      "branches": [
+        {
+          "keywords": [
+            "reksa",
+            "dana"
+          ],
+          "nextTurnId": "t3_invest_reksadana"
+        },
+        {
+          "keywords": [
+            "obligasi"
+          ],
+          "nextTurnId": "t3_invest_obligasi"
+        },
+        {
+          "keywords": [
+            "deposito",
+            "konservatif"
+          ],
+          "nextTurnId": "t3_invest_deposito"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sangat menarik! — Very interesting! Kami memiliki beragam produk investasi yang dapat disesuaikan dengan profil risiko dan tujuan finansial Anda. — We have a variety of investment products that can be tailored to your risk profile and financial goals. Apakah Anda tertarik pada reksa dana, obligasi, atau mungkin deposito berjangka yang lebih konservatif? — Are you interested in mutual funds, bonds, or perhaps a more conservative time deposit?"
+    },
+    "t3_tabungan": {
+      "id": "t3_tabungan",
+      "prompt": "Untuk rekening tabungan biasa, Anda hanya perlu mengisi formulir aplikasi dan menyertakan kartu identitas asli seperti KTP atau paspor. Apakah Anda sudah membawa dokumen-dokumen tersebut?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "bawa",
+            "lengkap"
+          ],
+          "nextTurnId": "t4_proses_lanjut"
+        },
+        {
+          "keywords": [
+            "belum",
+            "kurang"
+          ],
+          "nextTurnId": "t4_dokumen_kurang"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk rekening tabungan biasa, — For a regular savings account, Anda hanya perlu mengisi formulir aplikasi dan menyertakan kartu identitas asli seperti KTP atau paspor. — you only need to fill out an application form and include an original ID card such as KTP or passport. Apakah Anda sudah membawa dokumen-dokumen tersebut? — Have you brought these documents?"
+    },
+    "t3_giro": {
+      "id": "t3_giro",
+      "prompt": "Pembukaan rekening giro memerlukan sedikit lebih banyak dokumen, termasuk SIUP atau TDP jika atas nama perusahaan, serta NPWP pribadi atau badan. Apakah Anda sudah melengkapi persyaratan tersebut?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "lengkap"
+          ],
+          "nextTurnId": "t4_proses_lanjut"
+        },
+        {
+          "keywords": [
+            "belum",
+            "kurang",
+            "siup",
+            "tdp"
+          ],
+          "nextTurnId": "t4_dokumen_kurang"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pembukaan rekening giro — Opening a current account memerlukan sedikit lebih banyak dokumen, — requires a few more documents, termasuk SIUP atau TDP jika atas nama perusahaan, serta NPWP pribadi atau badan. — including SIUP or TDP if on behalf of a company, as well as a personal or corporate NPWP. Apakah Anda sudah melengkapi persyaratan tersebut? — Have you completed these requirements?"
+    },
+    "t3_berjangka": {
+      "id": "t3_berjangka",
+      "prompt": "Rekening tabungan berjangka menawarkan bunga yang lebih tinggi dengan komitmen jangka waktu tertentu. Kami bisa menyesuaikan tenor dan nominal sesuai kebutuhan Anda. Apakah Anda ingin mengetahui simulasi perhitungan bunganya?",
+      "branches": [
+        {
+          "keywords": [
+            "simulasi",
+            "bunga"
+          ],
+          "nextTurnId": "t4_simulasi_bunga"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rekening tabungan berjangka — A time deposit account menawarkan bunga yang lebih tinggi dengan komitmen jangka waktu tertentu. — offers higher interest rates with a specific term commitment. Kami bisa menyesuaikan tenor dan nominal sesuai kebutuhan Anda. — We can adjust the tenor and nominal amount according to your needs. Apakah Anda ingin mengetahui simulasi perhitungan bunganya? — Would you like to know the interest calculation simulation?"
+    },
+    "t3_transfer_domestik": {
+      "id": "t3_transfer_domestik",
+      "prompt": "Untuk transfer domestik, Anda cukup mengisi formulir transfer dengan detail rekening tujuan dan nominal. Transaksi akan diproses secara real-time atau pada hari kerja berikutnya, tergantung bank tujuan. Apakah Anda siap mengisi formulir?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "formulir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk transfer domestik, — For domestic transfers, Anda cukup mengisi formulir transfer dengan detail rekening tujuan dan nominal. — you just need to fill out a transfer form with the destination account details and amount. Transaksi akan diproses secara real-time atau pada hari kerja berikutnya, tergantung bank tujuan. — Transactions will be processed in real-time or on the next business day, depending on the destination bank. Apakah Anda siap mengisi formulir? — Are you ready to fill out the form?"
+    },
+    "t3_transfer_internasional": {
+      "id": "t3_transfer_internasional",
+      "prompt": "Transfer internasional memerlukan detail lebih rinci, termasuk nama penerima, alamat bank penerima, dan tentu saja SWIFT code. Biaya dan waktu proses bervariasi. Apakah Anda sudah memiliki semua informasi ini?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "lengkap"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Transfer internasional — International transfers memerlukan detail lebih rinci, — require more detailed information, termasuk nama penerima, alamat bank penerima, dan tentu saja SWIFT code. — including recipient's name, recipient bank's address, and of course, the SWIFT code. Biaya dan waktu proses bervariasi. — Fees and processing times vary. Apakah Anda sudah memiliki semua informasi ini? — Do you have all this information?"
+    },
+    "t3_transfer_besar": {
+      "id": "t3_transfer_besar",
+      "prompt": "Untuk transfer dengan nominal besar, layanan RTGS (Real-Time Gross Settlement) atau SKN (Sistem Kliring Nasional) adalah opsi terbaik. RTGS lebih cepat namun biayanya sedikit lebih tinggi. Mana yang Anda preferensikan?",
+      "branches": [
+        {
+          "keywords": [
+            "rtgs",
+            "cepat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk transfer dengan nominal besar, — For large nominal transfers, layanan RTGS (Real-Time Gross Settlement) atau SKN (Sistem Kliring Nasional) adalah opsi terbaik. — RTGS or SKN services are the best options. RTGS lebih cepat namun biayanya sedikit lebih tinggi. — RTGS is faster but slightly more expensive. Mana yang Anda preferensikan? — Which do you prefer?"
+    },
+    "t3_atm_tertelan": {
+      "id": "t3_atm_tertelan",
+      "prompt": "Baik, untuk kartu ATM yang tertelan, kami perlu melakukan pemblokiran segera dan proses penggantian kartu. Anda akan diminta untuk menunjukkan identitas diri dan mengisi formulir laporan. Apakah Anda siap untuk memulai proses ini?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "mulai"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, — Okay, untuk kartu ATM yang tertelan, — for a swallowed ATM card, kami perlu melakukan pemblokiran segera dan proses penggantian kartu. — we need to immediately block it and process a card replacement. Anda akan diminta untuk menunjukkan identitas diri dan mengisi formulir laporan. — You will be asked to show identification and fill out a report form. Apakah Anda siap untuk memulai proses ini? — Are you ready to start this process?"
+    },
+    "t3_atm_pin": {
+      "id": "t3_atm_pin",
+      "prompt": "Untuk PIN yang terblokir, Anda perlu melakukan reset PIN di hadapan petugas kami dengan menunjukkan identitas diri. Ini demi keamanan transaksi Anda. Apakah Anda membawa KTP/Paspor Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "bawa",
+            "ktp",
+            "paspor"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk PIN yang terblokir, — For a blocked PIN, Anda perlu melakukan reset PIN di hadapan petugas kami dengan menunjukkan identitas diri. — you need to reset your PIN in front of our staff by showing identification. Ini demi keamanan transaksi Anda. — This is for the security of your transactions. Apakah Anda membawa KTP/Paspor Anda? — Do you have your KTP/Passport?"
+    },
+    "t3_atm_tarik": {
+      "id": "t3_atm_tarik",
+      "prompt": "Jika ada masalah dengan penarikan tunai, kami perlu mengecek riwayat transaksi Anda. Apakah Anda mencoba menarik tunai melebihi batas harian, atau ada indikasi masalah sistem? Bisa Anda tunjukkan kartu ATM Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "batas",
+            "limit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jika ada masalah dengan penarikan tunai, — If there's a problem with cash withdrawal, kami perlu mengecek riwayat transaksi Anda. — we need to check your transaction history. Apakah Anda mencoba menarik tunai melebihi batas harian, atau ada indikasi masalah sistem? — Did you try to withdraw cash exceeding the daily limit, or is there an indication of a system issue? Bisa Anda tunjukkan kartu ATM Anda? — Could you show me your ATM card?"
+    },
+    "t3_invest_reksadana": {
+      "id": "t3_invest_reksadana",
+      "prompt": "Reksa dana adalah pilihan yang populer, namun penting untuk memahami bahwa ada potensi keuntungan dan risiko yang sebanding. Apakah Anda sudah memiliki pemahaman dasar tentang profil risiko Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "risiko",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Reksa dana — Mutual funds adalah pilihan yang populer, — are a popular choice, namun penting untuk memahami bahwa ada potensi keuntungan dan risiko yang sebanding. — but it's important to understand that there are proportional potential gains and risks. Apakah Anda sudah memiliki pemahaman dasar tentang profil risiko Anda? — Do you already have a basic understanding of your risk profile?"
+    },
+    "t3_invest_obligasi": {
+      "id": "t3_invest_obligasi",
+      "prompt": "Obligasi menawarkan pendapatan tetap yang lebih stabil dibandingkan saham, meskipun tingkat pengembaliannya mungkin tidak setinggi reksa dana berisiko tinggi. Kami bisa bantu menyusun portofolio obligasi yang sesuai. Tertarik?",
+      "branches": [
+        {
+          "keywords": [
+            "tertarik",
+            "obligasi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Obligasi — Bonds menawarkan pendapatan tetap yang lebih stabil dibandingkan saham, — offer more stable fixed income compared to stocks, meskipun tingkat pengembaliannya mungkin tidak setinggi reksa dana berisiko tinggi. — although their returns may not be as high as high-risk mutual funds. Kami bisa bantu menyusun portofolio obligasi yang sesuai. — We can help you arrange a suitable bond portfolio. Tertarik? — Interested?"
+    },
+    "t3_invest_deposito": {
+      "id": "t3_invest_deposito",
+      "prompt": "Deposito berjangka adalah pilihan yang paling konservatif, dengan risiko minimal dan pengembalian yang pasti. Ideal untuk Anda yang memprioritaskan keamanan modal. Berapa nominal yang ingin Anda investasikan?",
+      "branches": [
+        {
+          "keywords": [
+            "nominal",
+            "investasi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Deposito berjangka — Time deposits adalah pilihan yang paling konservatif, dengan risiko minimal dan pengembalian yang pasti. — are the most conservative option, with minimal risk and guaranteed returns. Ideal untuk Anda yang memprioritaskan keamanan modal. — Ideal for those who prioritize capital security. Berapa nominal yang ingin Anda investasikan? — How much would you like to invest?"
+    },
+    "t4_proses_lanjut": {
+      "id": "t4_proses_lanjut",
+      "prompt": "Bagus sekali! Jika semua dokumen sudah lengkap, mari kita mulai proses pengisian formulir pembukaan rekening. Anda bisa duduk di meja nomor tiga di sana. Petugas kami akan memandu Anda.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Bagus sekali! — Excellent! Jika semua dokumen sudah lengkap, — If all documents are complete, mari kita mulai proses pengisian formulir pembukaan rekening. — let's start the account opening form filling process. Anda bisa duduk di meja nomor tiga di sana. — You can sit at table number three over there. Petugas kami akan memandu Anda. — Our staff will guide you.",
+      "isTerminal": true
+    },
+    "t4_dokumen_kurang": {
+      "id": "t4_dokumen_kurang",
+      "prompt": "Tidak masalah. Anda bisa melengkapi dokumen yang kurang terlebih dahulu. Setelah lengkap, silakan kembali ke sini dan kami akan dengan senang hati membantu Anda melanjutkan proses pembukaan rekening.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tidak masalah. — No problem. Anda bisa melengkapi dokumen yang kurang terlebih dahulu. — You can complete the missing documents first. Setelah lengkap, silakan kembali ke sini dan kami akan dengan senang hati membantu Anda melanjutkan proses pembukaan rekening. — Once complete, please return here and we will gladly help you continue the account opening process.",
+      "isTerminal": true
+    },
+    "t4_simulasi_bunga": {
+      "id": "t4_simulasi_bunga",
+      "prompt": "Tentu, mari kita simulasikan potensi keuntungan deposito berjangka Anda. Dengan tenor X bulan dan nominal Y, Anda bisa mendapatkan perkiraan bunga Z. Apakah Anda ingin melanjutkan dengan simulasi ini atau ada pertanyaan lain?",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tentu, — Certainly, mari kita simulasikan potensi keuntungan deposito berjangka Anda. — let's simulate the potential returns of your time deposit. Dengan tenor X bulan dan nominal Y, Anda bisa mendapatkan perkiraan bunga Z. — With a tenor of X months and a nominal amount of Y, you can get an estimated interest of Z. Apakah Anda ingin melanjutkan dengan simulasi ini atau ada pertanyaan lain? — Would you like to proceed with this simulation or do you have any other questions?",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisakah Anda ulangi atau jelaskan lebih spesifik apa yang Anda maksud? Saya kurang memahami permintaan Anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf, — I apologize, bisakah Anda ulangi — could you repeat that or jelaskan lebih spesifik apa yang Anda maksud? — or explain more specifically what you mean? Saya kurang memahami permintaan Anda. — I don't quite understand your request."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih atas kunjungan Anda. Jika ada hal lain yang bisa kami bantu, jangan sungkan untuk kembali. Selamat melanjutkan aktivitas Anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, — Okay, terima kasih atas kunjungan Anda. — thank you for your visit. Jika ada hal lain yang bisa kami bantu, jangan sungkan untuk kembali. — If there's anything else we can help with, don't hesitate to come back. Selamat melanjutkan aktivitas Anda! — Have a good day! / Enjoy the rest of your day!",
+      "isTerminal": true
+    }
+  }
+}

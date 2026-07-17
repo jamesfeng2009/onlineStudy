@@ -1,0 +1,228 @@
+{
+  "id": "dlg-de-small-talk-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Kleiner Plausch auf einer Party",
+  "opening": "Hallo! Wie geht es Ihnen? Haben Sie ein schönes Wochenende gehabt?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Wie geht es Ihnen? Haben Sie ein schönes Wochenende gehabt?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gut",
+            "schön"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "langweilig",
+            "schlecht"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hah-lo! Vee gayt es een-en? Hah-ben zee ine shuh-nes vok-en-end-eh ge-habt? — Hello! How are you? Did you have a nice weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Das ist schön! Was haben Sie am Wochenende gemacht?",
+      "branches": [
+        {
+          "keywords": [
+            "entspannen",
+            "lesen",
+            "ruhe",
+            "relaxen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "spazieren",
+            "kochen",
+            "besuchen",
+            "freunde",
+            "sport"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "arbeiten",
+            "hausarbeit"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist shuhn! Vas hah-ben zee am vok-en-end-eh ge-macht? — That's nice! What did you do on the weekend?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, schade. Warum war es nicht so schön?",
+      "branches": [
+        {
+          "keywords": [
+            "regen",
+            "wetter",
+            "schlechteswetter",
+            "kalt"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "arbeiten",
+            "hausarbeit",
+            "putzen",
+            "vielzutun"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, shah-deh. Vah-room vahr es nicht zo shuhn? — Oh, too bad. Why wasn't it so nice?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Das klingt gut! Entspannung ist wichtig. Haben Sie Hobbys?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "hobbys",
+            "lesen",
+            "sport",
+            "kochen"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klinkt goot! Ent-shpah-nung ist vich-tich. Hah-ben zee hob-bys? — That sounds good! Relaxation is important. Do you have hobbies?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oh, das klingt interessant! Was kochen Sie gerne oder wen haben Sie besucht?",
+      "branches": [
+        {
+          "keywords": [
+            "kochen",
+            "italienisch",
+            "essen",
+            "rezept"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, das klinkt in-ter-es-sant! Vas koch-en zee gair-neh oh-der vayn hah-ben zee be-zocht? — Oh, that sounds interesting! What do you like to cook or whom did you visit?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ach ja, das Wetter kann manchmal wirklich schade sein. Ich mag auch keinen Regen.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "stimmt",
+            "regen",
+            "schlimm"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach yah, das vet-ter kann manch-mal virk-lich shah-deh zine. Ish mahg ouch kine-en ray-gen. — Oh yes, the weather can sometimes be really a shame. I don't like rain either."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Das ist nicht schön. Hausarbeit ist manchmal langweilig. Ich hoffe, Sie können sich bald entspannen.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ja",
+            "hoffentlich"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist nicht shuhn. Hous-ar-bite ist manch-mal lang-vy-lich. Ish hof-fe, zee koon-nen zich bald ent-shpah-nen. — That's not nice. Housework is sometimes boring. I hope you can relax soon."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Könnten Sie das bitte wiederholen? Ich habe Sie nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kuhn-ten zee das bit-te vee-der-ho-len? Ish hah-beh zee nicht gants fer-stan-den. — Could you please repeat that? I didn't quite understand you."
+    },
+    "t10": {
+      "id": "t10",
+      "prompt": "Schön, dass wir uns unterhalten haben. Einen schönen Abend noch!",
+      "branches": [],
+      "fallbackBranchId": "t10",
+      "promptTranslation": "Shuhn, dass veer uns un-ter-hal-ten hah-ben. Ine-en shuhn-en ah-bent noch! — Nice that we talked. Have a nice evening!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dlg-th-weather-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "คุยเรื่องอากาศ",
+  "opening": "สวัสดีครับ/ค่ะ วันนี้อากาศเป็นยังไงบ้างครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ วันนี้อากาศเป็นยังไงบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ร้อน",
+            "ร้อนมาก"
+          ],
+          "nextTurnId": "t2_plan"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Wan nee akat pen yang-ngai bang krap/ka? — Hello. How is the weather today?"
+    },
+    "t2_plan": {
+      "id": "t2_plan",
+      "prompt": "อืม... แล้ววันนี้คุณมีแผนจะทำอะไรบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "อยู่บ้าน",
+            "พักผ่อน"
+          ],
+          "nextTurnId": "t3_forecast"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Uhm... Laew wan nee khun mee paen ja tham arai bang krap/ka? — Hmm... And what are your plans for today?"
+    },
+    "t3_forecast": {
+      "id": "t3_forecast",
+      "prompt": "คุณอยากรู้พยากรณ์อากาศพรุ่งนี้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "อยากรู้",
+            "ใช่"
+          ],
+          "nextTurnId": "t4_detail_forecast"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun yak roo pa-ya-korn a-kat prung-nee mai krap/ka? — Do you want to know tomorrow's weather forecast?"
+    },
+    "t4_detail_forecast": {
+      "id": "t4_detail_forecast",
+      "prompt": "พรุ่งนี้จะมีแดดและอุณหภูมิประมาณ 30 องศาเซลเซียสครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "ดีจัง"
+          ],
+          "nextTurnId": "t5_season"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Prung-nee ja mee daed lae oo-na-poom pra-man sam-sip ong-sa Celsius krap/ka. — Tomorrow will be sunny with a temperature of about 30 degrees Celsius."
+    },
+    "t5_season": {
+      "id": "t5_season",
+      "prompt": "คุณชอบฤดูอะไรมากที่สุดครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หน้าร้อน",
+            "ร้อน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun chob rudoo arai mak tee-sood krap/ka? — What season do you like most?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor-tode na krap/ka, poot eek krang dai mai krap/ka? — Excuse me, could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ/ค่ะ วันนี้คุยเรื่องอากาศสนุกมากครับ/ค่ะ ขอบคุณมากนะครับ/คะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Krap/Ka. Wan nee kuy reuang akat sa-nook mak krap/ka. Kob-kun mak na krap/ka. Sawatdee krap/ka. — Yes. It was fun talking about the weather today. Thank you very much. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

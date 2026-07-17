@@ -1,0 +1,99 @@
+{
+  "id": "dlg-vi-hotel-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Thủ tục nhận phòng khách sạn",
+  "opening": "Chào mừng quý khách đến với khách sạn chúng tôi. Quý khách có thể vui lòng cho biết tên hoặc mã đặt phòng để chúng tôi tiện kiểm tra ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách đến với khách sạn chúng tôi. Quý khách có thể vui lòng cho biết tên hoặc mã đặt phòng để chúng tôi tiện kiểm tra ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "tênlà",
+            "tôilà",
+            "tôicótên"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào mừng quý khách đến với khách sạn chúng tôi. Quý khách có thể vui lòng cho biết tên hoặc mã đặt phòng để chúng tôi tiện kiểm tra ạ? (Chao mung quy khach den voi khach san chung toi. Quy khach co the vui long cho biet ten hoac ma dat phong de chung toi tien kiem tra a? — Welcome to our hotel. Could you please provide your name or reservation code so we can check it easily?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ vâng, tôi đã tìm thấy thông tin của quý khách. Để hoàn tất thủ tục, quý khách vui lòng xuất trình giấy tờ tùy thân và cho phép chúng tôi xác nhận phương thức thanh toán ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "cmnd",
+            "cccd",
+            "hộchiếu",
+            "giấytờ"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, tôi đã tìm thấy thông tin của quý khách. Để hoàn tất thủ tục, quý khách vui lòng xuất trình giấy tờ tùy thân và cho phép chúng tôi xác nhận phương thức thanh toán ạ? (Da vang, toi da tim thay thong tin cua quy khach. De hoan tat thu tuc, quy khach vui long xuat trinh giay to tuy than va cho phep chung toi xac nhan phuong thuc thanh toan a? — Yes, I've found your information. To complete the check-in, could you please present your identification and allow us to confirm your payment method?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Cảm ơn quý khách. Về phòng ở, quý khách có ưu tiên đặc biệt nào không ạ? Ví dụ như phòng view thành phố, view biển, hay tầng cao hơn một chút? Và quý khách có muốn sử dụng bữa sáng buffet tại nhà hàng của chúng tôi không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "viewbiển",
+            "hướngbiển",
+            "phòngviewbiển"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn quý khách. Về phòng ở, quý khách có ưu tiên đặc biệt nào không ạ? Ví dụ như phòng view thành phố, view biển, hay tầng cao hơn một chút? Và quý khách có muốn sử dụng bữa sáng buffet tại nhà hàng của chúng tôi không ạ? (Cam on quy khach. Ve phong o, quy khach co uu tien dac biet nao khong a? Vi du nhu phong view thanh pho, view bien, hay tang cao hon mot chut? Va quy khach co muon su dung bua sang buffet tai nha hang cua chung toi khong a? — Thank you. Regarding your room, do you have any specific preferences? For example, a city view room, sea view, or a higher floor? And would you like to include our buffet breakfast at the restaurant?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Tuyệt vời. Vậy là quý khách sẽ nhận phòng tiêu chuẩn với ưu tiên view mong muốn và đã bao gồm bữa sáng. Đây là thẻ phòng của quý khách. Chúc quý khách có một kỳ nghỉ thật thoải mái tại khách sạn chúng tôi!",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảmơnạ",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời. Vậy là quý khách sẽ nhận phòng tiêu chuẩn với ưu tiên view mong muốn và đã bao gồm bữa sáng. Đây là thẻ phòng của quý khách. Chúc quý khách có một kỳ nghỉ thật thoải mái tại khách sạn chúng tôi! (Tuyet voi. Vay la quy khach se nhan phong tieu chuan voi uu tien view mong muon va da bao gom bua sang. Day la the phong cua quy khach. Chuc quy khach co mot ky nghi that thoai mai tai khach san chung toi! — Excellent. So, you'll be getting a standard room with your preferred view and breakfast included. Here is your room key card. We wish you a very comfortable stay at our hotel!)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi quý khách, tôi nghe chưa rõ. Quý khách có thể nhắc lại giúp tôi được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi quý khách, tôi nghe chưa rõ. Quý khách có thể nhắc lại giúp tôi được không ạ? (Xin loi quy khach, toi nghe chua ro. Quy khach co the nhac lai giup toi duoc khong a? — Excuse me, I didn't quite catch that. Could you please repeat it for me?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, xin chào tạm biệt quý khách và hẹn gặp lại. Chúc quý khách một ngày tốt lành.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, xin chào tạm biệt quý khách và hẹn gặp lại. Chúc quý khách một ngày tốt lành. (Vang, xin chao tam biet quy khach va hen gap lai. Chuc quy khach mot ngay tot lanh. — Yes, goodbye and see you again. Have a good day.)",
+      "isTerminal": true
+    }
+  }
+}

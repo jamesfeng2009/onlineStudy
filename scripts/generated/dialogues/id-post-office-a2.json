@@ -1,0 +1,210 @@
+{
+  "id": "dlg-id-post-office-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "Di Kantor Pos",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "paket",
+            "barang"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "beli",
+            "prangko",
+            "perangko"
+          ],
+          "nextTurnId": "t3_stamps"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "informasi",
+            "harga"
+          ],
+          "nextTurnId": "t4_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Ada yang bisa saya bantu? — How can I help you?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Baik, mau kirim paket ke mana? Dalam negeri atau luar negeri?",
+      "branches": [
+        {
+          "keywords": [
+            "dalamnegeri",
+            "lokal",
+            "indonesia"
+          ],
+          "nextTurnId": "t5_domestic_parcel"
+        },
+        {
+          "keywords": [
+            "luarnegeri",
+            "internasional",
+            "luar"
+          ],
+          "nextTurnId": "t6_international_parcel"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay. Mau kirim paket ke mana? — Where do you want to send the parcel? Dalam negeri atau luar negeri? — Domestic or international?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "Mau beli prangko untuk surat biasa atau koleksi? Berapa banyak?",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "surat"
+          ],
+          "nextTurnId": "t7_regular_stamps"
+        },
+        {
+          "keywords": [
+            "koleksi",
+            "gambar",
+            "seri"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mau beli prangko untuk surat biasa atau koleksi? — Do you want to buy stamps for regular mail or for collecting? Berapa banyak? — How many?"
+    },
+    "t4_info": {
+      "id": "t4_info",
+      "prompt": "Ada pertanyaan khusus tentang layanan kami? Misalnya tentang pengiriman atau harga?",
+      "branches": [
+        {
+          "keywords": [
+            "pengiriman",
+            "kirim",
+            "paket"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "harga",
+            "biaya",
+            "tarif"
+          ],
+          "nextTurnId": "t8_price_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ada pertanyaan khusus tentang layanan kami? — Do you have any specific questions about our services? Misalnya tentang pengiriman atau harga? — For example, about sending or prices?"
+    },
+    "t5_domestic_parcel": {
+      "id": "t5_domestic_parcel",
+      "prompt": "Baik, untuk dalam negeri. Mau dikirim biasa atau terdaftar agar bisa dilacak?",
+      "branches": [
+        {
+          "keywords": [
+            "terdaftar",
+            "lacak",
+            "tracking"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, for domestic. Mau dikirim biasa atau terdaftar — Do you want to send it regular or registered agar bisa dilacak? — so it can be tracked?"
+    },
+    "t6_international_parcel": {
+      "id": "t6_international_parcel",
+      "prompt": "Untuk luar negeri. Mohon isi formulir bea cukai ini. Ke negara mana tujuannya?",
+      "branches": [
+        {
+          "keywords": [
+            "singapura",
+            "malaysia",
+            "jepang",
+            "negara",
+            "eropa",
+            "amerika",
+            "mana"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk luar negeri — For international. Mohon isi formulir bea cukai ini — Please fill out this customs form. Ke negara mana tujuannya? — To which country is it going?"
+    },
+    "t7_regular_stamps": {
+      "id": "t7_regular_stamps",
+      "prompt": "Untuk surat ke mana? Dan berapa nilai prangko yang dibutuhkan?",
+      "branches": [
+        {
+          "keywords": [
+            "dalamnegeri",
+            "luarnegeri",
+            "lokal",
+            "internasional",
+            "lima",
+            "ribu",
+            "seribu",
+            "nilai"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk surat ke mana? — For mail to where? Dan berapa nilai prangko yang dibutuhkan? — And what stamp value is needed?"
+    },
+    "t8_price_info": {
+      "id": "t8_price_info",
+      "prompt": "Untuk harga, Anda bisa melihat daftar tarif di meja informasi atau di situs web kami.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "terima",
+            "baik",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk harga — For prices, Anda bisa melihat daftar tarif di meja informasi — you can see the price list at the information desk atau di situs web kami — or on our website."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak begitu paham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah datang. Sampai jumpa.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for coming. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

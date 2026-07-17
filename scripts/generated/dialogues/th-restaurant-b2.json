@@ -1,0 +1,313 @@
+{
+  "id": "dlg-th-restaurant-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "สั่งอาหารที่ร้านอาหาร",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ วันนี้อยากลองอะไรดีคะ หรือมีอะไรสอบถามได้เลยนะคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ วันนี้อยากลองอะไรดีคะ หรือมีอะไรสอบถามได้เลยนะคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เมนูแนะนำ",
+            "แนะนำ",
+            "อะไรอร่อย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สั่งอาหาร",
+            "พร้อมสั่ง",
+            "สั่งเลย"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เมนูพิเศษ",
+            "พิเศษ",
+            "เมนูใหม่"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄awạs̄dī kâ. Yin-dī tîwn-ráp kâ. Wan-nī́ yàak lawng à-rai dī ká? Rụ̄̌rụ̄ mī à-rai s̄òp-t̄aam dâai loei ná ká? — Hello! Welcome. What would you like to try today, or do you have any questions?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "วันนี้เรามีแกงเขียวหวานรสเด็ด หรือผัดไทยสูตรโบราณค่ะ คุณลูกค้ามีข้อจำกัดด้านอาหารอะไรไหมคะ เช่น แพ้อาหารหรือเป็นมังสวิรัติ?",
+      "branches": [
+        {
+          "keywords": [
+            "แพ้",
+            "มังสวิรัติ",
+            "ไม่ทานเนื้อ",
+            "ไม่กินเนื้อ",
+            "ไม่กินหมู"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "แกงเขียวหวาน",
+            "ผัดไทย",
+            "เอาอันนี้"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "อย่างอื่น",
+            "เมนูอื่น",
+            "มีอะไรอีก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wan-nī́ rao mī gaaeng kǐeow-wǎan rót-dèt rụ̄̌rụ̄ p̄hàt-thai sùut boo-raan kâ. Khun lûuk-kháa mī kôr-jam-kàt dâan aa-hǎan à-rai mái ká? chèn pâae aa-hǎan rụ̄̌rụ̄ bpen mang-s̄a-wí-rát? — Today we have a delicious green curry or a traditional Pad Thai. Do you have any dietary restrictions, such as allergies or being vegetarian?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "รับทราบค่ะ คุณลูกค้าต้องการสั่งเมนูอะไรเพิ่มเติมอีกไหมคะ หรือรับเครื่องดื่มอะไรดีคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าวเปล่า",
+            "สั่งเพิ่ม",
+            "ขอเพิ่ม",
+            "เพิ่มอาหาร"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ชานมเย็น",
+            "น้ำเปล่า",
+            "เครื่องดื่ม",
+            "น้ำ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "แค่นี้",
+            "พอแล้ว",
+            "ไม่เพิ่ม",
+            "ครบแล้ว"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp sâap kâ. Khun lûuk-kháa tâwng-gaan s̄àng me-nuu à-rai pœ̂m-dtœ̄m eek mái ká? Rụ̄̌rụ̄ ráp krû̄ang-dʉ̀ʉm à-rai dī ká? — Understood. Would you like to order any other dishes, or what would you like to drink?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "วันนี้มีเมนูพิเศษเป็นปลากะพงนึ่งมะนาวค่ะ หรือถ้าคุณลูกค้าชอบรสจัดจ้าน แนะนำยำวุ้นเส้นทะเลค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ปลากะพง",
+            "ยำวุ้นเส้น",
+            "เอาอันนี้",
+            "สั่งพิเศษ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เมนูแนะนำ",
+            "กลับไปแนะนำ",
+            "แนะนำอีกที"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wan-nī́ mī me-nuu pí-sèet bpen plaa-ka-pong nʉ̂ng ma-naao kâ. Rụ̄̌rụ̂ t̂aa khun lûuk-kháa châwp rót jàt-jâan, náe-nam yam wún-sên ta-lay kâ. — Today's special is steamed sea bass with lime. Or, if you like spicy flavors, I recommend spicy glass noodle salad with seafood."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ถ้าอย่างนั้นแนะนำเป็นเมนูผักรวมผัดน้ำมันหอย หรือแกงเลียงกุ้งสดก็ได้ค่ะ ไม่มีส่วนผสมของถั่ว/เนื้อสัตว์ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ผักรวม",
+            "แกงเลียง",
+            "เอาอันนั้น",
+            "ตกลง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เมนูอื่น",
+            "ขอตัวเลือกอื่น",
+            "มีอย่างอื่นอีก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̂aa yàang-nán náe-nam bpen me-nuu p̄hàk-ruam p̄hàt nám-man-hǒi rụ̄̌rụ̂ gaaeng-līang kûng-sòt gôr dâai kâ. Mâi mī sùan-p̄hà-sǒm kâwng t̄ûa/nʉ́ʉa-sàt kâ. — In that case, I recommend stir-fried mixed vegetables with oyster sauce, or spicy herbal soup with fresh shrimp. They don't contain nuts/meat."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "รับชานมเย็น/น้ำเปล่านะคะ มีเครื่องดื่มอื่นที่ต้องการเพิ่มเติมไหมคะ เช่น กาแฟ หรือน้ำผลไม้?",
+      "branches": [
+        {
+          "keywords": [
+            "กาแฟ",
+            "น้ำส้ม",
+            "น้ำผลไม้",
+            "สั่งเพิ่ม"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "แค่นี้",
+            "พอแล้ว",
+            "ไม่เพิ่มแล้ว"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "น้ำผลไม้สด",
+            "มีอะไรบ้าง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp chaa-nom-yen/nám-bplàaw ná ká? Mī krû̄ang-dʉ̀ʉm ỳn tîi tâwng-gaan pœ̂m-dtœ̄m mái ká? chèn gaa-faae rụ̄̌rụ̂ nám-p̄hon-lá-mái? — So, iced milk tea/water, right? Are there any other drinks you'd like to add, such as coffee or fruit juice?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "รับทราบค่ะ สรุปรายการอาหารและเครื่องดื่มตามนี้ คุณลูกค้าพร้อมเช็คบิลเลยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เช็คบิล",
+            "คิดเงิน",
+            "บิล"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "สั่งของหวาน",
+            "ขอของหวาน",
+            "ขนม"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp sâap kâ. Sòp-rúp raai-gaan aa-hǎan lae krû̄ang-dʉ̀ʉm dtaam nī́. Khun lûuk-kháa práwm chék-bil loei mái ká? — Understood. So, the food and drink items are as follows. Are you ready for the bill?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "ยอดรวมทั้งหมดตามบิลนี้ค่ะ จะรับเป็นเงินสดหรือบัตรเครดิตดีคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรเครดิต",
+            "เงินสด",
+            "จ่าย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yôht-ruam táng-mòt dtaam bil nī́ kâ. Ja ráp bpen ngern-sòt rụ̄̌rụ̂ bàt-kre-dìt dī ká? — The total is as per this bill. Will you be paying with cash or credit card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ ไม่แน่ใจว่าได้ยินถูกต้อง รบกวนพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khaw-tôht kâ. Mâi nâe-jai wâa dâai-yin tòok-dtâwng. Róop-guan pôot eek kráng dâai mái ká? — Excuse me, I'm not sure I heard that correctly. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการนะคะ หวังว่าคงจะถูกใจ และเรียนเชิญใหม่นะคะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khàwp-khun tîi chái bôo-rí-gaan ná ká. Wǎng wâa kong ja tòok-jai láe rīan-chern mài ná ká. — Thank you for your patronage. We hope you enjoyed your meal and look forward to seeing you again.",
+      "isTerminal": true
+    }
+  }
+}

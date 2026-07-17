@@ -1,0 +1,251 @@
+{
+  "id": "dlg-es-transport-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Consulta de Transporte Público",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle? ¿Va a algún destino en particular o necesita información general?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle? ¿Va a algún destino en particular o necesita información general?",
+      "branches": [
+        {
+          "keywords": [
+            "destino",
+            "billete",
+            "trayecto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "informacion",
+            "dudas",
+            "pregunta"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "",
+            "hola"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! (Buenos días) — Good morning! How can I help you? Are you going to a specific destination or do you need general information?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. Para ese trayecto, ¿necesita un billete sencillo, de ida y vuelta, o quizás un abono multi-viaje si planea usarlo más veces por la red de transporte?",
+      "branches": [
+        {
+          "keywords": [
+            "sencillo",
+            "ida"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "abono",
+            "multiviaje",
+            "bono"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. (Entendido) — Understood. For that journey, do you need a single ticket, a return ticket, or perhaps a multi-trip pass if you plan to use it more often on the transport network?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Claro, dígame. ¿Se trata de horarios, tarifas, conexiones o quizás de alguna incidencia en particular que le preocupe?",
+      "branches": [
+        {
+          "keywords": [
+            "horarios",
+            "tarifas",
+            "conexiones"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "nodigo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, dígame. (Claro, dígame) — Of course, tell me. Is it about schedules, fares, connections, or perhaps a particular incident that concerns you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto, el billete está en camino. El autobús hacia su destino saldrá del andén 5 en unos diez minutos. Tenga en cuenta que hoy hay obras en el tramo entre Atocha y Sol, por lo que es previsible que haya alguna ligera demora.",
+      "branches": [
+        {
+          "keywords": [
+            "demora",
+            "retraso",
+            "obras",
+            "incidencia"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "ok",
+            "entendido"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "dudas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, el billete está en camino. (Perfecto, el billete está en camino) — Perfect, the ticket is on its way. The bus to your destination will depart from platform 5 in about ten minutes. Please note that today there are construction works on the section between Atocha and Sol, so some slight delays are to be expected."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Un abono es una excelente elección si va a moverse mucho. ¿Qué tipo de abono le interesa? ¿El de 10 viajes, el mensual, o quizás el turístico para visitantes?",
+      "branches": [
+        {
+          "keywords": [
+            "10viajes",
+            "mensual",
+            "turistico"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "",
+            "norecuerdo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un abono es una excelente elección (Un abono es una excelente elección) — A pass is an excellent choice if you're going to move around a lot. What type of pass are you interested in? The 10-trip one, the monthly one, or perhaps the tourist pass for visitors?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Para información detallada sobre horarios y tarifas, lo mejor es consultar las pantallas informativas o nuestra aplicación móvil. Ahí podrá ver en tiempo real cualquier novedad. ¿Le gustaría que le ayudara con algo más concreto?",
+      "branches": [
+        {
+          "keywords": [
+            "aplicacion",
+            "pantallas",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "concreto",
+            "especifico",
+            "si"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "noentiendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Para información detallada sobre horarios y tarifas (Para información detallada sobre horarios y tarifas) — For detailed information on schedules and fares, it's best to check the information screens or our mobile application. There you can see any updates in real-time. Would you like me to help you with something more specific?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "No, las demoras suelen ser mínimas, nada grave que impida llegar a tiempo. De todos modos, siempre hay un plan B si la cosa se complica, pero no creo que llegue a tanto. ¿Hay algo más en lo que pueda asistirle?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "confirmar",
+            "ok",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No, las demoras suelen ser mínimas (No, las demoras suelen ser mínimas) — No, the delays are usually minimal, nothing serious that would prevent you from arriving on time. Anyway, there's always a Plan B if things get complicated, but I don't think it will come to that. Is there anything else I can assist you with?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Perfecto, le gestiono el abono. El importe total es de [precio genérico]. Puede realizar el pago con tarjeta o en efectivo. ¿Algo más en lo que pueda ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "pagar",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "duda"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, le gestiono el abono [tipo de abono]. (Perfecto, le gestiono el abono) — Perfect, I'll process the pass for you. The total amount is [generic price]. You can pay by card or cash. Is there anything else I can help you with today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? No le he entendido bien. ¿Podría repetírmelo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Disculpe? (Disculpe?) — Excuse me? I didn't quite understand. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Perfecto! Que tenga un muy buen viaje y gracias por usar nuestros servicios.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "¡Perfecto! Que tenga un muy buen viaje y gracias por usar nuestros servicios. — Perfect! Have a very good journey and thank you for using our services.",
+      "isTerminal": true
+    }
+  }
+}

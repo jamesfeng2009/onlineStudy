@@ -1,0 +1,92 @@
+{
+  "id": "dlg-vi-restaurant-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Trải nghiệm nhà hàng Việt Nam",
+  "opening": "Chào mừng quý khách đến với nhà hàng chúng tôi ạ! Anh/chị đã đặt bàn trước chưa hay muốn dùng bữa tại đây ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách đến với nhà hàng chúng tôi ạ! Anh/chị đã đặt bàn trước chưa hay muốn dùng bữa tại đây ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đặtbàn",
+            "cóđặt"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t2",
+      "promptTranslation": "Chào mừng quý khách đến với nhà hàng chúng tôi ạ! (Chao mung quy khach den voi nha hang chung toi a!) Anh/chị đã đặt bàn trước chưa hay muốn dùng bữa tại đây ạ? (Anh/chi da dat ban truoc chua hay muon dung bua tai day a?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ vâng. Nếu đã đặt, quý khách vui lòng cho em biết tên hoặc mã số. Còn nếu chưa đặt, quý khách có bao nhiêu người ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "mã",
+            "số"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Dạ vâng. Nếu đã đặt, quý khách vui lòng cho em biết tên hoặc mã số. Còn nếu chưa đặt, quý khách có bao nhiêu người ạ? — Yes. If you have a reservation, please tell me the name or code. If not, how many people are in your party?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ mời quý khách đi lối này ạ. Thực đơn đây ạ. Anh/chị có cần em giới thiệu thêm món nào không hay muốn chút thời gian để xem ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gợimón",
+            "giớithiệu",
+            "mónngon"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "sẵnsàng",
+            "gọimón",
+            "chọnmón"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Dạ mời quý khách đi lối này ạ. (Da moi quy khach di loi nay a.) Thực đơn đây ạ. (Thuc don day a.) Anh/chị có cần em giới thiệu thêm món nào không hay muốn chút thời gian để xem ạ?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng, nhà hàng chúng em có phở cuốn và bún chả Hà Nội là món đặc trưng. Hoặc quý khách cứ từ từ xem thực đơn ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "chọn",
+            "gọimón",
+            "phởcuốn",
+            "búnchả",
+            "đồuống"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Dạ vâng, nhà hàng chúng em có phở cuốn (pho cuon) và bún chả Hà Nội (bun cha Ha Noi) là món đặc trưng. Hoặc quý khách cứ từ từ xem thực đơn ạ."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dạ vâng. Quý khách muốn dùng món gì ạ? Nếu có yêu cầu đặc biệt về món ăn (ăn chay, dị ứng...), xin quý khách cho biết luôn nhé.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Dạ vâng. Quý khách muốn dùng món gì ạ? Nếu có yêu cầu đặc biệt về món ăn (ăn chay, dị ứng...), xin quý khách cho biết luôn nhé. — Yes. What would you like to have? If you have any special requests regarding the food (vegetarian",
+      "isTerminal": true
+    }
+  }
+}

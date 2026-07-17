@@ -1,0 +1,171 @@
+{
+  "id": "dlg-it-weather-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Chiacchiere sul meteo: Tra previsioni e imprevisti",
+  "opening": "Sai, oggi il cielo è un vero spettacolo di nuvole minacciose. Che aria tira dalle tue parti? Spero non sia uno di quei pomeriggi da 'acqua a catinelle'!",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Sai, oggi il cielo è un vero spettacolo di nuvole minacciose. Che aria tira dalle tue parti? Spero non sia uno di quei pomeriggi da 'acqua a catinelle'!",
+      "branches": [
+        {
+          "keywords": [
+            "pioggia",
+            "piove",
+            "nuvole",
+            "brutto",
+            "maltempo"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You know, today the sky is a real spectacle of threatening clouds. What's the weather like where you are? I hope it's not one of those afternoons for 'pouring rain' (acqua a catinelle — ah-kwah ah kah-tee-nell-eh)!"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, quindi il meteo è un po' ballerino anche lì, o magari ti stai godendo un po' di sole? Qui da noi sembra di essere a ridosso di un ciclone, ma si sa, 'paese che vai, clima che trovi'! Avevi programmi all'aperto, o sei al sicuro al chiuso?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "avevo",
+            "programmi",
+            "allaperto",
+            "volevo"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonavevo",
+            "casa",
+            "chiuso",
+            "niente"
+          ],
+          "nextTurnId": "t3_no_plans"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, so the weather is a bit erratic there too, or maybe you're enjoying some sun? Here it seems like we're on the brink of a cyclone, but you know, 'Every country you go to, you find a different climate' (paese che vai, clima che trovi — pah-eh-zeh keh vah-ee, klee-mah keh troh-vee)! Did you have outdoor plans, or are you safely indoors?"
+    },
+    "t3_plans": {
+      "id": "t3_plans",
+      "prompt": "Che disdetta! È sempre un peccato quando il tempo ci fa da guastafeste. Magari potresti ripiegare su qualcosa di accogliente al chiuso, tipo un buon libro o un film con una tazza di cioccolata calda. 'Non tutti i mali vengono per nuocere', no?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ottimaidea",
+            "ripiegare",
+            "bell'idea",
+            "farò"
+          ],
+          "nextTurnId": "t4_positive"
+        },
+        {
+          "keywords": [
+            "no",
+            "chepeccato",
+            "deluso",
+            "nonvoglio",
+            "preferivo"
+          ],
+          "nextTurnId": "t4_negative"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What a nuisance! It's always a shame when the weather plays spoilsport. Maybe you could fall back on something cozy indoors, like a good book or a movie with a hot chocolate. 'Not all evils come to harm', right?"
+    },
+    "t3_no_plans": {
+      "id": "t3_no_plans",
+      "prompt": "Beh, almeno non hai dovuto stravolgere i tuoi programmi. A volte, un pomeriggio piovoso è una scusa perfetta per dedicarsi a sé stessi, senza il rimorso di 'sprecare' una bella giornata. 'Ogni lasciata è persa', ma non per il relax!",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "relax",
+            "giusto",
+            "verissimo",
+            "esatto"
+          ],
+          "nextTurnId": "t4_positive"
+        },
+        {
+          "keywords": [
+            "no",
+            "noia",
+            "preferirei",
+            "chepeccato",
+            "nonostante"
+          ],
+          "nextTurnId": "t4_negative"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, at least you didn't have to overturn your plans. Sometimes, a rainy afternoon is a perfect excuse to dedicate yourself to yourself, without the guilt of 'wasting' a beautiful day. 'Every opportunity missed is lost', but not for relaxation!"
+    },
+    "t4_positive": {
+      "id": "t4_positive",
+      "prompt": "Esatto! L'importante è sapersi adattare e tirare fuori il meglio da ogni situazione, meteorologica o meno. Ricorda, 'dopo la pioggia viene il sereno'. Ci sentiamo presto allora, in attesa di cieli più azzurri o almeno di qualche raggio di sole!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ciao",
+            "saluti",
+            "perfetto",
+            "allaprossima"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactly! The important thing is to know how to adapt and make the best of every situation, weather-related or not. Remember, 'after the rain comes the calm'. We'll talk soon then, awaiting bluer skies or at least some sunshine!"
+    },
+    "t4_negative": {
+      "id": "t4_negative",
+      "prompt": "Capisco la delusione, non sempre è facile vederci il lato positivo. Ma non disperare, 'non tutte le ciambelle riescono col buco', ma il tempo è volubile e si spera in giornate migliori. L'importante è non lasciarsi abbattere. Alla prossima, sperando in un meteo più clemente!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ciao",
+            "saluti",
+            "speriamo",
+            "allaprossima"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand the disappointment, it's not always easy to see the positive side. But don't despair, 'not all doughnuts come out with a hole', but the weather is fickle and we hope for better days. The important thing is not to get down. Until next time, hoping for more merciful weather!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ti ho capito bene, forse è colpa del vento che soffia forte anche qui! 'Chiare, fresche e dolci acque' per le parole!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat? I didn't quite understand you, maybe it's the strong wind blowing here too! 'Clear, fresh, and sweet waters' (Chiare, fresche e dolci acque — kee-ah-reh, fres-keh eh dohl-chee ah-kwah) for words!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare! Spero che il tempo ti sia amico. A presto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure chatting! I hope the weather is kind to you. See you soon!",
+      "isTerminal": true
+    }
+  }
+}

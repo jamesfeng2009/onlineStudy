@@ -1,0 +1,200 @@
+{
+  "id": "dlg-id-small-talk-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Obrolan Santai di Pesta",
+  "opening": "Wah, ramai juga ya acaranya malam ini. Sudah lama tidak bertemu, apa kabar? Sibuk apa sekarang?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Wah, ramai juga ya acaranya malam ini. Sudah lama tidak bertemu, apa kabar? Sibuk apa sekarang?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "bagus",
+            "sehat",
+            "puji tuhan"
+          ],
+          "nextTurnId": "t2_work_hobby"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, ramai juga ya acaranya malam ini. Sudah lama tidak bertemu, apa kabar? Sibuk apa sekarang? — Wow, this event is quite lively tonight, isn't it? It's been a long time, how are you? What have you been busy with lately?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, kurang jelas tadi. Bisa diulang lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang",
+            "lagi",
+            "iya"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, kurang jelas tadi. Bisa diulang lagi? — Sorry, that wasn't clear. Could you repeat that?"
+    },
+    "t2_work_hobby": {
+      "id": "t2_work_hobby",
+      "prompt": "Oh, begitu ya. Syukurlah kalau baik-baik saja. Kalau boleh tahu, akhir-akhir ini lagi sibuk berkutat dengan proyek apa? Atau mungkin ada hobi baru yang lagi ditekuni sampai lupa waktu?",
+      "branches": [
+        {
+          "keywords": [
+            "kerja",
+            "proyek",
+            "kantor",
+            "bisnis"
+          ],
+          "nextTurnId": "t3_weekend_work"
+        },
+        {
+          "keywords": [
+            "hobi",
+            "baru",
+            "olahraga",
+            "seni",
+            "musik",
+            "traveling",
+            "baca"
+          ],
+          "nextTurnId": "t3_weekend_hobby"
+        },
+        {
+          "keywords": [
+            "santai",
+            "tidak",
+            "biasa",
+            "belum"
+          ],
+          "nextTurnId": "t3_weekend_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu ya. Syukurlah kalau baik-baik saja. Kalau boleh tahu, akhir-akhir ini lagi sibuk berkutat dengan proyek apa? Atau mungkin ada hobi baru yang lagi ditekuni sampai lupa waktu? — Oh, I see. Glad to hear you're doing well. If you don't mind me asking, what projects have you been engrossed in lately? Or perhaps you've taken up a new hobby that makes you lose track of time?"
+    },
+    "t3_weekend_work": {
+      "id": "t3_weekend_work",
+      "prompt": "Begitulah ya hidup di kota metropolitan, ada saja yang menyita waktu. Tapi, setidaknya akhir pekan bisa jadi ajang 'balas dendam' buat istirahat kan? Kemarin sempat santai atau malah sibuk juga?",
+      "branches": [
+        {
+          "keywords": [
+            "santai",
+            "istirahat",
+            "rebahan"
+          ],
+          "nextTurnId": "t4_leisure"
+        },
+        {
+          "keywords": [
+            "sibuk",
+            "kerja",
+            "keluarga",
+            "acara"
+          ],
+          "nextTurnId": "t4_family_activity"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Begitulah ya hidup di kota metropolitan, ada saja yang menyita waktu. Tapi, setidaknya akhir pekan bisa jadi ajang 'balas dendam' buat istirahat kan? Kemarin sempat santai atau malah sibuk juga? — That's just how life is in a metropolitan city, something always takes up your time. But at least the weekend can be a 'revenge' opportunity to rest, right? Did you get to relax last weekend or were you busy too?"
+    },
+    "t3_weekend_hobby": {
+      "id": "t3_weekend_hobby",
+      "prompt": "Menarik sekali! Memang butuh ketekunan ekstra ya untuk itu. Oh iya, ngomong-ngomong soal waktu luang, akhir pekan kemarin sempat santai atau malah sibuk juga dengan hobi itu?",
+      "branches": [
+        {
+          "keywords": [
+            "santai",
+            "istirahat",
+            "rebahan"
+          ],
+          "nextTurnId": "t4_leisure"
+        },
+        {
+          "keywords": [
+            "jalan-jalan",
+            "liburan",
+            "keluar",
+            "piknik"
+          ],
+          "nextTurnId": "t4_family_activity"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali! Memang butuh ketekunan ekstra ya untuk itu. Oh iya, ngomong-ngomong soal waktu luang, akhir pekan kemarin sempat santai atau malah sibuk juga dengan hobi itu? — That's very interesting! It really requires extra perseverance, doesn't it? Oh, by the way, speaking of free time, did you get to relax last weekend or were you also busy with that hobby?"
+    },
+    "t3_weekend_general": {
+      "id": "t3_weekend_general",
+      "prompt": "Paham, paham. Terkadang memang hidup berjalan begitu saja ya. Kalau akhir pekan kemarin, ada kegiatan yang menarik nggak, atau malah cuma santai-santai di rumah?",
+      "branches": [
+        {
+          "keywords": [
+            "santai",
+            "istirahat",
+            "rebahan"
+          ],
+          "nextTurnId": "t4_leisure"
+        },
+        {
+          "keywords": [
+            "sibuk",
+            "kerja",
+            "keluarga",
+            "acara"
+          ],
+          "nextTurnId": "t4_family_activity"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Paham, paham. Terkadang memang hidup berjalan begitu saja ya. Kalau akhir pekan kemarin, ada kegiatan yang menarik nggak, atau malah cuma santai-santai di rumah? — I understand, I understand. Sometimes life just goes on, doesn't it? As for last weekend, did you have any interesting activities, or did you just relax at home?"
+    },
+    "t4_leisure": {
+      "id": "t4_leisure",
+      "prompt": "Betul sekali, recharge energi itu penting. Kalau lagi santai di rumah, biasanya keluarga pada ngapain? Atau mungkin ada film/serial bagus yang baru ditonton?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "nonton",
+            "serial",
+            "drama"
+          ],
+          "nextTurnId": "t5_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Betul sekali, recharge energi itu penting. Kalau lagi santai di rumah, biasanya keluarga pada ngapain? Atau mungkin ada film/serial bagus yang baru ditonton? — That's absolutely right, recharging your energy is important. When you're relaxing at home, what do your family usually do? Or perhaps there's a good movie/series you've watched recently?"
+    },
+    "t4_family_activity": {
+      "id": "t4_family_activity",
+      "prompt": "Wah, itu baru namanya quality time! Pasti seru ya. Kalau ngumpul sama keluarga, biasanya ada acara kulineran juga nggak sih? Atau malah pada seneng nonton film bareng?",
+      "branches": [
+        {
+          "keywords": [
+            "kuliner",
+            "makan",
+            "masak",
+            "jajan"
+          ],
+          "nextTurnId": "t5_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, itu baru namanya quality time! Pasti seru ya. Kalau ngumpul sama keluarga, biasanya ada acara kulineran juga nggak sih? Atau malah pada seneng nonton film bareng? — Wow, that's what I call quality time! Must be fun. When you get together with family, do you usually have culinary events too? Or do you prefer watching movies together?"
+    },
+    "t5_end": {
+      "id": "t5_end",
+      "prompt": "Asyik juga ngobrol sama kamu malam ini, banyak cerita seru. Rasanya waktu cepat sekali berlalu. Semoga lain kali bisa ngobrol lebih panjang lagi ya. Sampai jumpa!",
+      "branches": [],
+      "fallbackBranchId": "t5_end",
+      "promptTranslation": "Asyik juga ngobrol sama kamu malam ini, banyak cerita seru. Rasanya waktu cepat sekali berlalu. Semoga lain kali bisa ngobrol lebih panjang lagi ya. Sampai jumpa! — It's been fun chatting with you tonight, lots of interesting stories. Time really flies. Hope we can chat longer next time. See you!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "id": "dlg-ms-directions-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Mencari Arah di Pekan",
+  "opening": "Assalamualaikum! Maaf mengganggu, ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Assalamualaikum! Maaf mengganggu, ada apa-apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pejabatpos",
+            "pos"
+          ],
+          "nextTurnId": "t2_postoffice"
+        },
+        {
+          "keywords": [
+            "bank",
+            "cimb"
+          ],
+          "nextTurnId": "t2_bank"
+        },
+        {
+          "keywords": [
+            "pasar",
+            "pasarraya"
+          ],
+          "nextTurnId": "t2_market"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "As-sa-lam-u-a-lai-kum! Ma-af meng-gang-gu, a-da a-pa-a-pa yang bo-leh sa-ya ban-tu? — Peace be upon you! Sorry to bother you, is there anything I can help you with?"
+    },
+    "t2_postoffice": {
+      "id": "t2_postoffice",
+      "prompt": "Oh, Pejabat Pos. Baiklah, dari sini, awak jalan terus sahaja sampai jumpa lampu isyarat pertama. Kemudian, belok kiri di lampu isyarat itu. Pejabat Pos akan berada di sebelah kanan awak.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "lama",
+            "berapa",
+            "minit"
+          ],
+          "nextTurnId": "t3_distance_landmark"
+        },
+        {
+          "keywords": [
+            "bas",
+            "pengangkutan",
+            "angkutan"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "landmark",
+            "bangunan",
+            "ciri"
+          ],
+          "nextTurnId": "t5_specific_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Pe-ja-bat Pos. Baik-lah, da-ri si-ni, a-wak ja-lan te-rus sa-ha-ja sam-pai jum-pa lam-pu i-sya-rat per-ta-ma. Ke-mu-di-an, be-lok ki-ri di lam-pu i-sya-rat i-tu. Pe-ja-bat Pos a-kan be-ra-da di se-be-lah ka-nan a-wak. — Oh, the Post Office. Alright, from here, just walk straight until you see the first traffic light. Then, turn left at that traffic light. The Post Office will be on your right."
+    },
+    "t2_bank": {
+      "id": "t2_bank",
+      "prompt": "Bank? Oh, Bank Raya. Awak perlu jalan terus, ikut selekoh tajam ke kiri, lepas itu bank akan nampak di sebelah kanan. Ia berhadapan dengan sebuah farmasi besar.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t6_farewell"
+        },
+        {
+          "keywords": [
+            "berapa jauh",
+            "jalan kaki"
+          ],
+          "nextTurnId": "t3_distance_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bank? Oh, Bank Ra-ya. A-wak per-lu ja-lan te-rus, i-kut se-le-koh ta-jam ke ki-ri, le-pas i-tu bank a-kan nam-pak di se-be-lah ka-nan. I-a ber-ha-da-pan de-ngan se-buah far-ma-si be-sar. — Bank? Oh, Raya Bank. You need to walk straight, follow the sharp left turn, and then the bank will be visible on the right. It's opposite a big pharmacy."
+    },
+    "t2_market": {
+      "id": "t2_market",
+      "prompt": "Pasar? Pasar Besar Bandar ni memang terkenal. Awak cuma perlu terus berjalan hingga ke hujung jalan ini, kemudian belok kanan di bulatan. Pasar tu tak jauh dari situ, di seberang jambatan kecil.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t6_farewell"
+        },
+        {
+          "keywords": [
+            "pengangkutan",
+            "bas"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pa-sar? Pa-sar Be-sar Ban-dar ni me-mang ter-ke-nal. A-wak cu-ma per-lu te-rus ber-ja-lan hing-ga ke hu-jung ja-lan i-ni, ke-mu-di-an be-lok ka-nan di bu-la-tan. Pa-sar tu tak ja-uh da-ri si-tu, di se-be-rang jam-ba-tan ke-cil. — The market? This Town's Big Market is very famous. You just need to keep walking to the end of this road, then turn right at the roundabout. The market isn't far from there, across a small bridge."
+    },
+    "t3_distance_landmark": {
+      "id": "t3_distance_landmark",
+      "prompt": "Jalan kaki mungkin ambil dalam 10 ke 15 minit, tak jauh sangat. Awak akan nampak sebuah masjid besar berwarna biru betul-betul sebelum lampu isyarat pertama tu. Pejabat Pos tu dekat dengan kedai buku lama.",
+      "branches": [
+        {
+          "keywords": [
+            "faham",
+            "jelas",
+            "terima kasih"
+          ],
+          "nextTurnId": "t6_farewell"
+        },
+        {
+          "keywords": [
+            "bas",
+            "pengangkutan"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja-lan ka-ki mung-kin am-bil da-lam se-pu-luh ke li-ma be-las mi-nit, tak ja-uh sa-ngat. A-wak a-kan nam-pak se-buah mas-jid be-sar ber-war-na bi-ru be-tul-be-tul se-be-lum lam-pu i-sya-rat per-ta-ma tu. Pe-ja-bat Pos tu de-kat de-ngan ke-dai bu-ku la-ma. — Walking might take about 10 to 15 minutes, not very far. You'll see a big blue mosque right before that first traffic light. The Post Office is near an old bookstore."
+    },
+    "t4_transport": {
+      "id": "t4_transport",
+      "prompt": "Kalau nak naik bas, boleh ambil bas nombor 17 dari perhentian bas di seberang jalan sana. Tapi jujur cakap, saya rasa jalan kaki lebih mudah dan cepat sebab tak perlu tunggu bas yang selalu lambat.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baiklah"
+          ],
+          "nextTurnId": "t6_farewell"
+        },
+        {
+          "keywords": [
+            "jalan kaki",
+            "jarak"
+          ],
+          "nextTurnId": "t3_distance_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ka-lau nak na-ik bas, bo-leh am-bil bas no-m-bor tu-juh be-las da-ri per-hen-ti-an bas di se-be-rang ja-lan sa-na. Ta-pi ju-jur ca-kap, sa-ya ra-sa ja-lan ka-ki le-bih mu-dah dan ce-pat se-bab tak per-lu tung-gu bas yang se-la-lu lam-bat. — If you want to take the bus, you can take bus number 17 from the bus stop across the road. But honestly, I think walking is easier and faster because you don't need to wait for the bus which is always late."
+    },
+    "t5_specific_landmark": {
+      "id": "t5_specific_landmark",
+      "prompt": "Sebelum lampu isyarat pertama tu, awak akan nampak sebuah masjid berwarna hijau terang di sebelah kiri. Pejabat Pos tu pula nanti berhadapan dengan kedai makan terkenal, 'Warung Pak Mat' yang selalu ramai.",
+      "branches": [
+        {
+          "keywords": [
+            "faham",
+            "jelas",
+            "terima kasih"
+          ],
+          "nextTurnId": "t6_farewell"
+        },
+        {
+          "keywords": [
+            "jauh",
+            "berapa",
+            "minit"
+          ],
+          "nextTurnId": "t3_distance_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-be-lum lam-pu i-sya-rat per-ta-ma tu, a-wak a-kan nam-pak se-buah mas-jid ber-war-na hi-jau te-rang di se-be-lah ki-ri. Pe-ja-bat Pos tu pu-la na-nti ber-ha-da-pan de-ngan ke-dai ma-kan ter-ke-nal, 'Wa-rung Pak Mat' yang se-la-lu ra-mai. — Before the first traffic light, you'll see a bright green mosque on the left. The Post Office will then be opposite a famous eatery, 'Warung Pak Mat' which is always crowded."
+    },
+    "t6_farewell": {
+      "id": "t6_farewell",
+      "prompt": "Sama-sama. Pastikan awak tengok kiri kanan sebelum melintas ya. Hati-hati di jalan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baiklah",
+            "jumpa lagi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sa-ma-sa-ma. Pas-ti-kan a-wak te-ngok ki-ri ka-nan se-be-lum me-lin-tas ya. Ha-ti-ha-ti di ja-lan. — You're welcome. Make sure you look left and right before crossing, okay? Be careful on the road."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Boleh ulang semula? Saya kurang jelas apa yang awak katakan tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Bo-leh u-lang se-mu-la? Sa-ya ku-rang je-las a-pa yang a-wak ka-ta-kan ta-di. — Can you repeat that? I'm not very clear what you said just now."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalanan anda selamat. Jaga diri!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sa-ma-sa-ma. Se-mo-ga per-ja-la-nan an-da se-la-mat. Ja-ga di-ri! — You're welcome. Have a safe journey. Take care!",
+      "isTerminal": true
+    }
+  }
+}

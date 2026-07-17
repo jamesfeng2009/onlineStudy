@@ -1,0 +1,238 @@
+{
+  "id": "dlg-fr-phone-call-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Appel téléphonique : Identifier et laisser un message",
+  "opening": "Cabinet Dubois, bonjour. Je vous écoute.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Cabinet Dubois, bonjour. [ka.bi.nɛ dy.bwa bɔ̃.ʒuʁ] Je vous écoute.",
+      "branches": [
+        {
+          "keywords": [
+            "parler",
+            "joindre",
+            "maître"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "rendez-vous",
+            "rdv",
+            "consultation"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "demande",
+            "question",
+            "information"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dubois Law Firm, good morning. [ka.bi.nɛ dy.bwa bɔ̃.ʒuʁ] How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "C'est de la part de qui, s'il vous plaît ? [sɛ də la paʁ də ki sil vu plɛ] Et quel est l'objet de votre appel ?",
+      "branches": [
+        {
+          "keywords": [
+            "nom",
+            "prénom",
+            "identité",
+            "sujet"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "message",
+            "laisser"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Who's calling, please? [sɛ də la paʁ də ki sil vu plɛ] And what is the purpose of your call?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Je peux vous orienter. [ʒə pø vu ɔ.ʁjɑ̃.te] Pourriez-vous me préciser la nature de la consultation et vos disponibilités ?",
+      "branches": [
+        {
+          "keywords": [
+            "disponibilités",
+            "horaires",
+            "jour"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nature",
+            "objet",
+            "dossier"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "demander"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I can guide you. [ʒə pø vu ɔ.ʁjɑ̃.te] Could you specify the nature of the consultation and your availabilities?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Je vous écoute. [ʒə vu ze.kut] De quoi s'agit-il précisément ?",
+      "branches": [
+        {
+          "keywords": [
+            "information",
+            "renseignement",
+            "question"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "urgence",
+            "urgent"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm listening. [ʒə vu ze.kut] What is it about precisely?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Je crains que Maître Dubois ne soit actuellement en réunion et injoignable. [ʒə kʁɛ̃ kə mɛtʁ dy.bwa nə swa tak.ty.ɛl.mɑ̃ ɑ̃ ʁe.y.njɔ̃ e ɛ̃.ʒwɛ̃.ɲabl] Est-ce urgent ?",
+      "branches": [
+        {
+          "keywords": [
+            "urgent",
+            "oui",
+            "pressant"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasurgent"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm afraid Maître Dubois is currently in a meeting and unreachable. [ʒə kʁɛ̃ kə mɛtʁ dy.bwa nə swa tak.ty.ɛl.mɑ̃ ɑ̃ ʁe.y.njɔ̃ e ɛ̃.ʒwɛ̃.ɲabl] Is it urgent?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Souhaitez-vous que je prenne un message détaillé que je transmettrai dès son retour, ou préférez-vous que je vous transfère au service compétent ?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "laisser"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Would you like me to take a detailed message that I will pass on upon his return, or would you prefer I transfer you to the relevant department?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Dans ce cas, pourriez-vous m'en dire un peu plus sur la nature de l'urgence [dɑ̃ sə ka pu.ʁje.vu mɑ̃ diʁ œ̃ pø ply syʁ la na.tyʁ də lyʁ.ʒɑ̃s] afin que je puisse évaluer la priorité et transmettre au mieux ?",
+      "branches": [
+        {
+          "keywords": [
+            "expliquer",
+            "décrire",
+            "préciser"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In that case, could you tell me a bit more about the nature of the urgency [dɑ̃ sə ka pu.ʁje.vu mɑ̃ diʁ œ̃ pø ply syʁ la na.tyʁ də lyʁ.ʒɑ̃s] so I can assess the priority and convey it as best as possible?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. [paʁ.dɔ̃ ʒə ne pa bjɛ̃ sa.zi] Pourriez-vous reformuler, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. [paʁ.dɔ̃ ʒə ne pa bjɛ̃ sa.zi] Could you rephrase, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien, je transmets/transfère immédiatement. [tʁɛ bjɛ̃ ʒə tʁɑ̃s.mɛ tʁɑ̃s.fɛʁ i.me.djat.mɑ̃] Au revoir et bonne journée.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I'll pass it on/transfer you immediately. [tʁɛ bjɛ̃ ʒə tʁɑ̃s.mɛ tʁɑ̃s.fɛʁ i.me.djat.mɑ̃] Goodbye and have a good day.",
+      "isTerminal": true
+    }
+  }
+}

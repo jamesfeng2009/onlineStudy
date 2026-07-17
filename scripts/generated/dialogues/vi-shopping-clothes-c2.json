@@ -1,0 +1,233 @@
+{
+  "id": "dlg-vi-shopping-clothes-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Mua sắm quần áo",
+  "opening": "Chào mừng quý khách! Anh/chị đang tìm gì ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách! Anh/chị đang tìm gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "áo sơ mi",
+            "đầm",
+            "quần jean",
+            "chân váy"
+          ],
+          "nextTurnId": "t2_item_specific"
+        },
+        {
+          "keywords": [
+            "xem thôi",
+            "đi dạo",
+            "ngó nghiêng"
+          ],
+          "nextTurnId": "t3_browse"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao mung quy khach! Anh/chi dang tim gi a? — Welcome! What are you looking for?"
+    },
+    "t2_item_specific": {
+      "id": "t2_item_specific",
+      "prompt": "Dạ vâng, áo sơ mi thì bên em có nhiều mẫu lắm ạ, từ công sở đến dạo phố. Anh/chị thích phong cách nào hay chất liệu gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "dạo phố",
+            "casual",
+            "thường ngày"
+          ],
+          "nextTurnId": "t4_try_on"
+        },
+        {
+          "keywords": [
+            "công sở",
+            "lịch sự",
+            "sang trọng"
+          ],
+          "nextTurnId": "t5_size_color"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, ao so mi thi ben em co nhieu mau lam a, tu cong so den dao pho. Anh/chi thich phong cach nao hay chat lieu gi a? — Yes, for shirts, we have many styles, from office wear to casual. What style or material do you prefer?"
+    },
+    "t3_browse": {
+      "id": "t3_browse",
+      "prompt": "Vâng ạ, anh/chị cứ tự nhiên xem. Nếu cần tư vấn hay tìm đồ gì cứ gọi em nhé. Bên em mới về nhiều mẫu đầm và quần jean rất đẹp ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "size",
+            "cỡ",
+            "màu",
+            "có cái này không"
+          ],
+          "nextTurnId": "t5_size_color"
+        },
+        {
+          "keywords": [
+            "thử đồ",
+            "mặc thử"
+          ],
+          "nextTurnId": "t4_try_on"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang a, anh/chi cu tu nhien xem. Neu can tu van hay tim do gi cu goi em nhe. Ben em moi ve nhieu mau dam va quan jean rat dep a. — Sure, please feel free to browse. If you need any advice or are looking for something specific, just call me. We just got a lot of beautiful new dresses and jeans."
+    },
+    "t4_try_on": {
+      "id": "t4_try_on",
+      "prompt": "À vâng, phòng thử đồ ở phía cuối hành lang bên tay phải đó ạ. Anh/chị cứ cầm vào thử thoải mái nhé. Có cần em lấy thêm size hay màu khác không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "vừa rồi",
+            "ưng ý",
+            "lấy cái này",
+            "đẹp quá"
+          ],
+          "nextTurnId": "t6_payment"
+        },
+        {
+          "keywords": [
+            "không vừa",
+            "chật",
+            "rộng",
+            "đổi size",
+            "size khác"
+          ],
+          "nextTurnId": "t5_size_color"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A vang, phong thu do o phia cuoi hanh lang ben tay phai do a. Anh/chi cu cam vao thu thoai mai nhe. Co can em lay them size hay mau khac khong a? — Oh yes, the fitting room is at the end of the corridor on the right. Please feel free to take items in to try. Do you need me to get another size or color?"
+    },
+    "t5_size_color": {
+      "id": "t5_size_color",
+      "prompt": "Dạ vâng, anh/chị mặc size gì ạ? Hoặc thích màu nào khác không? Để em đi kiểm tra xem còn hàng không nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "size s",
+            "size m",
+            "cỡ l",
+            "size xl"
+          ],
+          "nextTurnId": "t4_try_on"
+        },
+        {
+          "keywords": [
+            "đổi trả",
+            "chính sách",
+            "quy định đổi trả"
+          ],
+          "nextTurnId": "t7_policy"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, anh/chi mac size gi a? Hoac thich mau nao khac khong? De em di kiem tra xem con hang khong nhe. — Yes, what size do you wear? Or do you prefer another color? Let me go check if we still have it."
+    },
+    "t6_payment": {
+      "id": "t6_payment",
+      "prompt": "Dạ vâng, mời anh/chị qua quầy thanh toán ở phía trước ạ. Anh/chị có muốn dùng thẻ thành viên không? À mà, bên em có chính sách đổi trả trong vòng 7 ngày nếu sản phẩm còn nguyên tem mác nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "thanh toán",
+            "trả tiền",
+            "quẹt thẻ",
+            "dùng thẻ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "đổi trả",
+            "chính sách đổi trả"
+          ],
+          "nextTurnId": "t7_policy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, moi anh/chi qua quay thanh toan o phia truoc a. Anh/chi co muon dung the thanh vien khong? A ma, ben em co chinh sach doi tra trong vong 7 ngay neu san pham con nguyen tem mac nhe. — Yes, please come to the cashier at the front. Do you want to use your membership card? Oh, and we have a return/exchange policy within 7 days if the product still has its tags."
+    },
+    "t7_policy": {
+      "id": "t7_policy",
+      "prompt": "Dạ vâng, về chính sách đổi trả thì bên em áp dụng trong vòng 7 ngày kể từ ngày mua, với điều kiện sản phẩm còn nguyên vẹn, chưa qua sử dụng, và còn đủ tem mác, hóa đơn gốc ạ. Anh/chị có thể đổi sang sản phẩm khác cùng giá hoặc cao hơn, hoặc nhận lại tiền nếu không có món đồ ưng ý ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "hiểu rồi",
+            "cảm ơn",
+            "rõ rồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da vang, ve chinh sach doi tra thi ben em ap dung trong vong 7 ngay ke tu ngay mua, voi dieu kien san pham con nguyen ven, chua qua su dung, va con du tem mac, hoa don goc a. Anh/chi co the doi sang san pham khac cung gia hoac cao hon, hoac nhan lai tien neu khong co mon do ung y a. — Yes, regarding our return/exchange policy, we apply it within 7 days from the date of purchase, provided the product is intact, unused, and still has all tags and the original receipt. You can exchange it for another product of the same or higher price, or receive a refund if you don't find a suitable item."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói lại rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin loi, anh/chi co the noi lai ro hon duoc khong a? — Sorry, could you please speak more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Dạ vâng, cảm ơn quý khách đã ghé thăm và mua sắm. Hẹn gặp lại anh/chị lần sau ạ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Da vang, cam on quy khach da ghe tham va mua sam. Hen gap lai anh/chi lan sau a! — Thank you for visiting and shopping. See you next time!",
+      "isTerminal": true
+    }
+  }
+}

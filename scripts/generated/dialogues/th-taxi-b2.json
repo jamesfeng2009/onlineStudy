@@ -1,0 +1,219 @@
+{
+  "id": "dlg-th-taxi-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "แท็กซี่ไปไหนครับ?",
+  "opening": "สวัสดีครับ/ค่ะ มีที่หมายปลายทางจะไปที่ไหนครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีที่หมายปลายทางจะไปที่ไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "พารากอน",
+            "สีลม",
+            "สุขุมวิท",
+            "ทองหล่อ"
+          ],
+          "nextTurnId": "t2_general_route"
+        },
+        {
+          "keywords": [
+            "สนามบินสุวรรณภูมิ",
+            "สุวรรณภูมิ",
+            "สนามบินดอนเมือง",
+            "ดอนเมือง"
+          ],
+          "nextTurnId": "t2_airport_tolls"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdi khrap/kha. Mi thi mai plai thang ja pai thi nai khrap/kha? — Hello. Where is your destination?"
+    },
+    "t2_general_route": {
+      "id": "t2_general_route",
+      "prompt": "โอเคครับ/ค่ะ ช่วงนี้รถค่อนข้างติดนะครับ/คะ อยากให้ขึ้นทางด่วนไหมครับ/คะ ค่าทางด่วนต่างหากจากมิเตอร์นะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "ขึ้นเลย"
+          ],
+          "nextTurnId": "t3_route_decision_and_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-khe khrap/kha. Chueng ni rot kon kang tit na khrap/kha. Yak hai khuen thang duan mai khrap/kha? Kha thang duan tang hak jak meter na khrap. — Okay. Traffic is quite heavy around this time. Would you like to take the expressway? The toll fee is separate from the meter."
+    },
+    "t2_airport_tolls": {
+      "id": "t2_airport_tolls",
+      "prompt": "สนามบินใช่ไหมครับ/คะ? ปกติจะวิ่งทางด่วนตลอดเลยนะครับ/คะ ค่าทางด่วนสองต่อ 75 บาท ไม่รวมค่าโดยสารมิเตอร์นะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "รับทราบ",
+            "ตกลง",
+            "ไปเลย"
+          ],
+          "nextTurnId": "t3_route_decision_and_payment"
+        },
+        {
+          "keywords": [
+            "ไม่เอา",
+            "ไม่ต้อง",
+            "ไม่ขึ้น",
+            "แพง",
+            "ทำไมแพง"
+          ],
+          "nextTurnId": "t3_airport_toll_rejection"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sanam Bin chai mai khrap/kha? Pokkati ja wing thang duan talot loei na khrap/kha. Kha thang duan song tor jet sip ha baht mai ruam kha doisan meter na khrap/kha. — The airport, right? I usually take the expressway all the way. The expressway tolls are 75 baht (two segments), not including the meter fare."
+    },
+    "t3_route_decision_and_payment": {
+      "id": "t3_route_decision_and_payment",
+      "prompt": "โอเคครับ/ค่ะ งั้นตามนั้นเลยนะครับ/คะ มีสัมภาระให้ช่วยยกไหมครับ/คะ แล้วจะให้ชำระค่าโดยสารแบบไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เงินสด",
+            "สด",
+            "โอน",
+            "โอนจ่าย",
+            "พร้อม",
+            "ไปเลย",
+            "ตกลง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "กระเป๋า",
+            "สัมภาระ",
+            "ช่วยยก"
+          ],
+          "nextTurnId": "t4_luggage_help_and_confirm_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-khe khrap/kha. Ngan tam nan loei na khrap/kha. Mi samphara hai chuai yok mai khrap/kha? Laeo ja hai chamra kha doisan baep nai khrap/kha? — Okay. So, that's settled. Do you have any luggage you'd like help with? And how would you like to pay for the fare?"
+    },
+    "t3_airport_toll_rejection": {
+      "id": "t3_airport_toll_rejection",
+      "prompt": "ถ้าไม่ขึ้นทางด่วนก็จะติดมากและถึงช้ากว่าปกติเยอะเลยนะครับ/คะ ปกติไปสนามบินต้องขึ้นทางด่วนเท่านั้นนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "เข้าใจ",
+            "งั้นขึ้น",
+            "ไปเลย",
+            "ตกลง"
+          ],
+          "nextTurnId": "t3_route_decision_and_payment"
+        },
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ไม่เอา",
+            "ไปเส้นปกติ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tha mai khuen thang duan gor ja tit mak lae thueng cha kwa pokkati yoe loei na khrap/kha. Pokkati pai sanam bin tong khuen thang duan thao nan na khrap/kha. — If we don't take the expressway, traffic will be very bad and we'll arrive much later than usual. Usually, for the airport, we must take the expressway."
+    },
+    "t4_luggage_help_and_confirm_payment": {
+      "id": "t4_luggage_help_and_confirm_payment",
+      "prompt": "ได้เลยครับ/ค่ะ เดี๋ยวผม/ดิฉันช่วยยกให้นะครับ/คะ แล้วจะให้ชำระค่าโดยสารแบบไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เงินสด",
+            "สด",
+            "โอน",
+            "โอนจ่าย",
+            "พร้อม",
+            "ไปเลย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loei khrap/kha. Diao phom/dichan chuai yok hai na khrap/kha. Laeo ja hai chamra kha doisan baep nai khrap/kha? — Okay. I'll help you lift it. And how would you like to pay for the fare?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ ไม่ค่อยได้ยินเมื่อกี้ ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho thot na khrap/kha, mai khoi dai yin muea ki, chuai phut ik khrang dai mai khrap/kha? — Excuse me, I didn't quite hear that, could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "โอเคครับ/ค่ะ เดินทางปลอดภัยนะครับ/คะ ขอบคุณมากครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "O-khe khrap/kha. Doen thang plòt phai na khrap/kha. Khop khun mak khrap/kha. — Okay, have a safe trip. Thank you very much.",
+      "isTerminal": true
+    }
+  }
+}

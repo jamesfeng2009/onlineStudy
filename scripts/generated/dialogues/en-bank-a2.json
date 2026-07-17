@@ -1,0 +1,410 @@
+{
+  "id": "dlg-en-bank-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "At the Bank",
+  "opening": "Hello! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "open",
+            "account"
+          ],
+          "nextTurnId": "t2_open_account"
+        },
+        {
+          "keywords": [
+            "exchange",
+            "money",
+            "currency"
+          ],
+          "nextTurnId": "t3_exchange_money"
+        },
+        {
+          "keywords": [
+            "atm",
+            "problem",
+            "card",
+            "pin"
+          ],
+          "nextTurnId": "t4_atm_issue"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "money"
+          ],
+          "nextTurnId": "t5_transfer"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! How can I help you today?"
+    },
+    "t2_open_account": {
+      "id": "t2_open_account",
+      "prompt": "Okay, you want to open an account. Do you want a savings account or a checking account?",
+      "branches": [
+        {
+          "keywords": [
+            "savings"
+          ],
+          "nextTurnId": "t5_id_request"
+        },
+        {
+          "keywords": [
+            "i",
+            "don't",
+            "know",
+            "help"
+          ],
+          "nextTurnId": "t2_account_explain"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, you want to open an account. Do you want a savings account or a checking account?"
+    },
+    "t2_account_explain": {
+      "id": "t2_account_explain",
+      "prompt": "A savings account is for saving money. A checking account is for everyday payments and bills. Which one is better for you?",
+      "branches": [
+        {
+          "keywords": [
+            "savings"
+          ],
+          "nextTurnId": "t5_id_request"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A savings account is for saving money. A checking account is for everyday payments and bills. Which one is better for you?"
+    },
+    "t3_exchange_money": {
+      "id": "t3_exchange_money",
+      "prompt": "No problem. What currency do you have, and which currency do you need? Also, how much money?",
+      "branches": [
+        {
+          "keywords": [
+            "euros",
+            "usd",
+            "dollars",
+            "yen",
+            "gbp"
+          ],
+          "nextTurnId": "t6_exchange_process"
+        },
+        {
+          "keywords": [
+            "exchange",
+            "rate",
+            "rate"
+          ],
+          "nextTurnId": "t3_exchange_rate"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. What currency do you have, and which currency do you need? Also, how much money?"
+    },
+    "t3_exchange_rate": {
+      "id": "t3_exchange_rate",
+      "prompt": "Today's exchange rate for US Dollars to Euros is 1.08. What currency do you want to exchange?",
+      "branches": [
+        {
+          "keywords": [
+            "euros",
+            "usd",
+            "dollars",
+            "yen",
+            "gbp"
+          ],
+          "nextTurnId": "t6_exchange_process"
+        },
+        {
+          "keywords": [
+            "i'll",
+            "think",
+            "about",
+            "it"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Today's exchange rate for US Dollars to Euros is 1.08. What currency do you want to exchange?"
+    },
+    "t4_atm_issue": {
+      "id": "t4_atm_issue",
+      "prompt": "Okay, about the ATM. Is your card stuck, or do you have a problem with your PIN?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "stuck"
+          ],
+          "nextTurnId": "t6_atm_process"
+        },
+        {
+          "keywords": [
+            "other"
+          ],
+          "nextTurnId": "t6_atm_other"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, about the ATM. Is your card stuck, or do you have a problem with your PIN?"
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "You want to transfer money. Do you want to send money to another account in this bank, or to a different bank?",
+      "branches": [
+        {
+          "keywords": [
+            "this",
+            "bank",
+            "same"
+          ],
+          "nextTurnId": "t6_transfer_process"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You want to transfer money. Do you want to send money to another account in this bank, or to a different bank?"
+    },
+    "t5_id_request": {
+      "id": "t5_id_request",
+      "prompt": "Alright, for this, I need to see your ID, like a passport. Do you have it with you?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i",
+            "do",
+            "here"
+          ],
+          "nextTurnId": "t7_almost_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "i",
+            "don't",
+            "forgot"
+          ],
+          "nextTurnId": "t7_come_back"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, for this, I need to see your ID, like a passport. Do you have it with you?"
+    },
+    "t6_exchange_process": {
+      "id": "t6_exchange_process",
+      "prompt": "Okay, please give me the money. I will process the exchange for you now.",
+      "branches": [
+        {
+          "keywords": [
+            "here",
+            "you",
+            "go",
+            "thanks"
+          ],
+          "nextTurnId": "t7_almost_done"
+        },
+        {
+          "keywords": [
+            "how",
+            "long"
+          ],
+          "nextTurnId": "t7_how_long"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, please give me the money. I will process the exchange for you now."
+    },
+    "t6_atm_process": {
+      "id": "t6_atm_process",
+      "prompt": "Understood. Please fill out this form and bring your ID. We will help you with your ATM card or PIN.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thanks"
+          ],
+          "nextTurnId": "t7_almost_done"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Please fill out this form and bring your ID. We will help you with your ATM card or PIN."
+    },
+    "t6_atm_other": {
+      "id": "t6_atm_other",
+      "prompt": "Can you tell me more about the ATM problem?",
+      "branches": [
+        {
+          "keywords": [
+            "atm",
+            "not",
+            "working"
+          ],
+          "nextTurnId": "t7_atm_not_working"
+        },
+        {
+          "keywords": [
+            "money",
+            "didn't",
+            "come",
+            "out"
+          ],
+          "nextTurnId": "t6_atm_process"
+        },
+        {
+          "keywords": [
+            "",
+            "can't",
+            "remember"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Can you tell me more about the ATM problem?"
+    },
+    "t6_transfer_process": {
+      "id": "t6_transfer_process",
+      "prompt": "Okay, please tell me the account number and amount you want to transfer. We can do that here.",
+      "branches": [
+        {
+          "keywords": [
+            "account",
+            "number",
+            "amount"
+          ],
+          "nextTurnId": "t7_almost_done"
+        },
+        {
+          "keywords": [
+            "how",
+            "much",
+            "fee"
+          ],
+          "nextTurnId": "t7_transfer_fee"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, please tell me the account number and amount you want to transfer. We can do that here."
+    },
+    "t7_almost_done": {
+      "id": "t7_almost_done",
+      "prompt": "Great, please wait a moment while I help you with this. We will be done soon.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thankyou",
+            "great"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "how",
+            "long"
+          ],
+          "nextTurnId": "t7_how_long"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great, please wait a moment while I help you with this. We will be done soon."
+    },
+    "t7_come_back": {
+      "id": "t7_come_back",
+      "prompt": "No problem. Please come back with your ID, and we can help you then.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thankyou",
+            "goodbye"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Please come back with your ID, and we can help you then."
+    },
+    "t7_atm_not_working": {
+      "id": "t7_atm_not_working",
+      "prompt": "I see. Which ATM is it? We can send someone to check it.",
+      "branches": [
+        {
+          "keywords": [
+            "main",
+            "entrance",
+            "outside"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Which ATM is it? We can send someone to check it."
+    },
+    "t7_transfer_fee": {
+      "id": "t7_transfer_fee",
+      "prompt": "There is a small fee for international transfers, usually 5 dollars. Local transfers are free.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "fine",
+            "understood"
+          ],
+          "nextTurnId": "t7_almost_done"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "There is a small fee for international transfers, usually 5 dollars. Local transfers are free."
+    },
+    "t7_how_long": {
+      "id": "t7_how_long",
+      "prompt": "It usually takes about 5-10 minutes. Please have a seat.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thanks",
+            "i'll",
+            "wait"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It usually takes about 5-10 minutes. Please have a seat."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Can you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Can you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for visiting us. Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for visiting us. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

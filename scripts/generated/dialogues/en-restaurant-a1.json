@@ -1,0 +1,117 @@
+{
+  "id": "dlg-en-restaurant-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Restaurant Order",
+  "opening": "Hello! Welcome to our restaurant.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Welcome. A table for one or two?",
+      "branches": [
+        {
+          "keywords": [
+            "one"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Welcome. A table for one or two?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "OK. Follow me. Here is your table. Here is the menu. Are you ready to order?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ready"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "not ready",
+            "recommendation"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "OK. Follow me. Here is your table. Here is the menu. Are you ready to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "What would you like to eat?",
+      "branches": [
+        {
+          "keywords": [
+            "soup",
+            "i want soup"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What would you like to eat?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "We have good soup. And pizza. They are popular.",
+      "branches": [
+        {
+          "keywords": [
+            "soup",
+            "i want soup",
+            "yes",
+            "ok"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We have good soup. And pizza. They are popular."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "OK. And for a drink?",
+      "branches": [
+        {
+          "keywords": [
+            "water",
+            "i want water"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "OK. And for a drink?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry? Can you repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? Can you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "OK. Your order is coming soon. Enjoy your meal! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "OK. Your order is coming soon. Enjoy your meal! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

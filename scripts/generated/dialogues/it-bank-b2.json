@@ -1,0 +1,160 @@
+{
+  "id": "dlg-it-bank-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Alla Banca: Gestire le Tue Esigenze",
+  "opening": "Buongiorno! Benvenuto/a in Banca Italia. Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Benvenuto/a in Banca Italia. Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "aprireunconto",
+            "nuovoconto",
+            "aprireconto"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "problemaatn",
+            "sportello",
+            "atmguasto"
+          ],
+          "nextTurnId": "t3_atm"
+        },
+        {
+          "keywords": [
+            "resetpin",
+            "pinbloccato",
+            "dimenticatopin"
+          ],
+          "nextTurnId": "t4_pin"
+        },
+        {
+          "keywords": [
+            "altro",
+            "informazioni",
+            "generale"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno! (bwon-JOR-noh!) Benvenuto/a in Banca Italia. (ben-veh-NOO-toh/tah in BAN-kah ee-TAH-lee-ah.) Come posso aiutarla oggi? (KOH-meh POSS-so ah-yoo-TAR-lah OH-jee?) — Good morning! Welcome to Banca Italia. How can I help you today?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Certo. Per aprire un conto, abbiamo diverse opzioni. Le interesserebbe un conto corrente o un conto di risparmio? Avrebbe con sé un documento d'identità valido?",
+      "branches": [
+        {
+          "keywords": [
+            "corrente",
+            "contocorrente",
+            "solocorrente"
+          ],
+          "nextTurnId": "t5_final_steps"
+        },
+        {
+          "keywords": [
+            "nonho",
+            "nodocumento",
+            "senzadocumento"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. To open an account, we have several options. Would you be interested in a checking account or a savings account? Do you have a valid ID with you?"
+    },
+    "t3_atm": {
+      "id": "t3_atm",
+      "prompt": "Mi dispiace per l'inconveniente. Può descrivermi il problema più precisamente? La sua carta è stata inghiottita dallo sportello o non le ha erogato il denaro?",
+      "branches": [
+        {
+          "keywords": [
+            "cartainghiottita",
+            "inghiottita",
+            "carta"
+          ],
+          "nextTurnId": "t5_final_steps"
+        },
+        {
+          "keywords": [
+            "altroproblema",
+            "nonfunziona"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dispiace per l'inconveniente. (mee dees-PYAH-cheh per leen-kon-veh-NEE-en-teh.) Può descrivermi il problema più precisamente? (PWOH deh-skree-ver-mee eel proh-BLEH-mah pyoo preh-chee-zah-MEN-teh?) La sua carta è stata inghiottita dallo sportello o non le ha erogato il denaro? (lah SOO-ah KAR-tah eh STAH-tah een-GYOT-tee-tah DAH-loh spor-TEL-loh oh non leh ah eh-roh-GAH-toh eel deh-NAH-roh?) — I'm sorry for the inconvenience. Can you describe the problem more precisely? Was your card swallowed by the ATM or did it not dispense the money?"
+    },
+    "t4_pin": {
+      "id": "t4_pin",
+      "prompt": "Capisco. Per la sua sicurezza, avremo bisogno di verificare la sua identità. Ha con sé un documento e la sua carta di debito o credito?",
+      "branches": [
+        {
+          "keywords": [
+            "hocartaedoc",
+            "sìho",
+            "documentoecarta"
+          ],
+          "nextTurnId": "t5_final_steps"
+        },
+        {
+          "keywords": [
+            "nohocarta",
+            "nohodocumento",
+            "solodoc"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. For your security, we'll need to verify your identity. Do you have an ID and your debit or credit card with you?"
+    },
+    "t5_final_steps": {
+      "id": "t5_final_steps",
+      "prompt": "Grazie per le informazioni. Possiamo procedere subito. La invito a seguirmi al mio sportello e ci occuperemo di tutto il necessario. Ci vorranno alcuni minuti.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie per le informazioni. (GRAH-tsee-eh per leh een-for-mah-TSEE-oh-nee.) Possiamo procedere subito. (poss-SYAH-moh proh-CHEH-deh-reh SOO-bee-toh.) La invito a seguirmi al mio sportello e ci occuperemo di tutto il necessario. (lah een-VEE-toh ah seh-GWEER-mee ahl MEE-oh spor-TEL-loh eh chee ok-koo-peh-REH-moh dee TOOT-toh eel neh-chess-SAH-ree-oh.) Ci vorranno alcuni minuti. — Thank you for the information. We can proceed immediately. I invite you to follow me to my counter and we will take care of everything necessary. It will take a few minutes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, non ho capito bene. (mee SKOO-zee, non oh kah-PEE-toh BEH-neh.) Potrebbe ripetere, per favore? (poh-TREB-beh ree-PEH-teh-reh, per fah-VOH-reh?) — Excuse me, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie per aver scelto Banca Italia. Le auguro una buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing Banca Italia. I wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

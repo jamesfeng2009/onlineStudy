@@ -1,0 +1,220 @@
+{
+  "id": "dlg-ms-phone-call-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon Profesional",
+  "opening": "Assalamualaikum. Syarikat Inovasi Prima, saya Farhan bercakap. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Assalamualaikum. Syarikat Inovasi Prima, saya Farhan bercakap. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "bercakap",
+            "puan",
+            "encik",
+            "tuan",
+            "ingin",
+            "mengenai"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cari",
+            "puan",
+            "encik",
+            "tuan",
+            "cakap",
+            "dengan",
+            "ingin",
+            "hubung"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Assalamualaikum — Peace be upon you. Prima Innovation Company, Farhan speaking. How may I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang semula? Saya tidak berapa jelas apa yang anda sampaikan.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch what you said."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Encik/Puan. Apakah yang boleh saya bantu anda hari ini? Ada apa-apa hal mustahak yang perlu dibincangkan?",
+      "branches": [
+        {
+          "keywords": [
+            "urusan",
+            "berkenaan",
+            "projek",
+            "mesyuarat",
+            "isu",
+            "perkara",
+            "mengenai"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, Mr./Ms. — Encik/Puan. What can I help you with today? Is there any urgent matter that needs to be discussed?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Boleh saya tahu nama penuh dan jabatan beliau, serta apakah urusan anda dengannya? Saya perlukan butiran lanjut untuk menyambungkan anda.",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "jabatan",
+            "urusan",
+            "berkenaan",
+            "projek",
+            "mesej",
+            "penting",
+            "tidak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "May I know his/her full name and department, and what is your business with him/her? I need more details to connect you."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Faham. Sebentar ya, saya semak sama ada beliau ada di pejabat. (jeda) Maaf, Puan Laila sedang dalam mesyuarat sekarang dan mungkin tidak dapat dihubungi. Adakah anda ingin meninggalkan pesanan, atau saya boleh bantu sampaikan kepada beliau?",
+      "branches": [
+        {
+          "keywords": [
+            "tinggalkan",
+            "pesanan",
+            "sila",
+            "hendak",
+            "mahu",
+            "sampaikan",
+            "boleh",
+            "tolong"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "hubungi",
+            "balik",
+            "nanti",
+            "kemudian",
+            "cuba",
+            "kali",
+            "lain"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. One moment please, I'll check if he/she is in the office. (pause) — Maaf, Puan Laila sedang dalam mesyuarat sekarang dan mungkin tidak dapat dihubungi. Sorry, Ms. Laila is in a meeting right now and might not be reachable. Would you like to leave a message, or can I help convey it to her?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik, sila sampaikan pesanan anda. Saya akan catatkan butiran penting dan pastikan Puan Laila menerimanya sebaik sahaja beliau lapang.",
+      "branches": [
+        {
+          "keywords": [
+            "sila",
+            "maklumkan",
+            "beritahu",
+            "katakan",
+            "pesanan",
+            "penting",
+            "urusan",
+            "projek",
+            "terima kasih",
+            "itu",
+            "sahaja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, please convey your message. I will jot down the important details and ensure Ms. Laila receives it as soon as she is free."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baik, Puan/Encik. Sila hubungi semula nanti, atau anda boleh cuba menghubungi beliau secara terus selepas jam 2 petang. Terima kasih atas panggilan anda.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "baik",
+            "nanti",
+            "faham",
+            "assalamualaikum",
+            "akan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Ms./Mr. — Puan/Encik. Please call back later, or you can try contacting her directly after 2 PM. Thank you for your call."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih kerana menghubungi Syarikat Inovasi Prima. Semoga hari anda menyenangkan. Assalamualaikum.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for contacting Prima Innovation Company. Have a pleasant day. Assalamualaikum.",
+      "isTerminal": true
+    }
+  }
+}

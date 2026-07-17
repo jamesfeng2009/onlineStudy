@@ -1,0 +1,135 @@
+{
+  "id": "dlg-th-interview-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "สัมภาษณ์งานเบื้องต้น",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่การสัมภาษณ์งานในวันนี้ครับ/ค่ะ ก่อนอื่นเลย รบกวนช่วยแนะนำตัวและเล่าถึงประสบการณ์การทำงานที่ผ่านมาให้เราฟังคร่าว ๆ ได้ไหมครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ยินดีต้อนรับสู่การสัมภาษณ์งานในวันนี้ครับ/ค่ะ ก่อนอื่นเลย รบกวนช่วยแนะนำตัวและเล่าถึงประสบการณ์การทำงานที่ผ่านมาให้เราฟังคร่าว ๆ ได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ประสบการณ์",
+            "ทำงาน",
+            "จบการศึกษา",
+            "หน้าที่"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Yin dee tawn rap soo gaan sam-pat ngaan nai wan nee krap/ka. Gaawn eun loey, roo-buan chuay nae-nam dtua lae lao teung pra-sòp-gaan gaan tam ngaan tee paa-maa hai rao fang kraao-kraao dai mai krap/ka? — Hello. Welcome to today's job interview. First, could you please introduce yourself and briefly tell us about your past work experience?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "น่าสนใจมากครับ/ค่ะ จากประสบการณ์ที่คุณเล่ามา มีโครงการหรือสถานการณ์ท้าทายใดบ้างที่คุณรู้สึกภูมิใจที่ได้เป็นส่วนหนึ่ง และได้เรียนรู้อะไรจากมันบ้างครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "โครงการ",
+            "โปรเจกต์",
+            "ความสำเร็จ",
+            "แก้ปัญหา"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "เล่า",
+            "อธิบาย"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Naa son jai maak krap/ka. Jaak pra-sòp-gaan têe kun lao maa, mee krohng-gaan reūu sa-thàan-ná-gaan táa-thaay dai bâang têe kun róo-seuk poom-jai têe dâi bpen sùan neung, lae dâi ree-an róo a-rai jaak man bâang krap/ka? — That's very interesting. From the experience you shared, are there any projects or challenging situations you're proud to have been a part of, and what did you learn from them?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอบคุณครับ/ค่ะ ทีนี้อยากจะถามถึงจุดแข็งและจุดอ่อนของคุณบ้างครับ/ค่ะ คุณคิดว่าจุดแข็งของคุณคืออะไร และมีวิธีจัดการหรือพัฒนาจุดอ่อนอย่างไรบ้างครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "จุดแข็ง",
+            "ความสามารถ",
+            "ทักษะ",
+            "ความมุ่งมั่น"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "แข็ง",
+            "อ่อน"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khawp khun krap/ka. Tee née yàak jà tăam teung jùt-kăeng lae jùt-ɔ̀ɔn kōng kun bâang krap/ka. Kun kít wâa jùt-kăeng kōng kun keu a-rai, lae mee wí-tee jàt-gaan reūu pát-thá-naa jùt-ɔ̀ɔn yàang rai bâang krap/ka? — Thank you. Now, I'd like to ask about your strengths and weaknesses. What do you consider your strengths to be, and how do you manage or develop your weaknesses?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ดีมากครับ/ค่ะ สุดท้ายนี้ ทำไมคุณถึงสนใจตำแหน่งนี้และบริษัทของเราเป็นพิเศษครับ/คะ และคุณมองเห็นตัวเองในอีกห้าปีข้างหน้าอย่างไรบ้าง",
+      "branches": [
+        {
+          "keywords": [
+            "บริษัท",
+            "ตำแหน่ง",
+            "ความท้าทาย",
+            "โอกาส"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "สนใจ",
+            "มองเห็น"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee mâak krap/ka. Sùt táai née, tam-mai kun teung sŏn jai dtam-nàeng née lae bɔɔ-rí-sàt kōng rao bpen pĭ-sèt krap/ka? Lae kun mɔɔng hĕn dtua-eng nai èek hâa bpee kâang nâa yàang rai bâang? — Very good. Finally, why are you particularly interested in this position and our company? And how do you see yourself in the next five years?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ไม่ค่อยได้ยินชัดเจน รบกวนช่วยพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ใช่",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ a-pai krap/ka. Mâi kɔ̂y dâi yin chát-jen. Rop-guan chûay pôot èek kráng dâai mái krap/ka? — I apologize, I didn't hear that clearly. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีมากครับ/ค่ะ ขอบคุณมากนะครับ/คะ ที่สละเวลามาในวันนี้ ทางเราจะติดต่อกลับไปโดยเร็วที่สุดครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dee mâak krap/ka. Khawp khun mâak ná krap/ka têe sa-là we-laa maa nai wan née. Thaang rao jà dtìt-dtɔ̀ glàp bpai doi reo têe sùt krap/ka. — Very good. Thank you very much for your time today. We will contact you back as soon as possible.",
+      "isTerminal": true
+    }
+  }
+}

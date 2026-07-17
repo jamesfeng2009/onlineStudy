@@ -1,0 +1,174 @@
+{
+  "id": "dlg-th-airport-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "ที่สนามบิน (Têe Sà-nǎam Bin) - At the Airport",
+  "opening": "สวัสดีค่ะ/ครับ ยินดีต้อนรับค่ะ/ครับ ขอหนังสือเดินทางกับตั๋วเครื่องบินด้วยค่ะ/ครับ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ ขอหนังสือเดินทางกับตั๋วเครื่องบินด้วยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "นี่ครับ",
+            "หนังสือเดินทาง",
+            "ตั๋วเครื่องบิน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่เข้าใจ",
+            "ขอโทษ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee ka, yindee dton-rap ka. Khor nang-sue dern-taang gap dtua krueang-bin duay ka. — Hello, welcome. May I have your passport and flight ticket, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขอบคุณค่ะ คุณมีกระเป๋าที่จะเช็คอินไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "มี",
+            "มีกระเป๋า",
+            "ใช่"
+          ],
+          "nextTurnId": "t3_has_luggage"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่",
+            "ไม่ค่ะ",
+            "ไม่ครับ"
+          ],
+          "nextTurnId": "t3_no_luggage"
+        },
+        {
+          "keywords": [
+            "เช็คอิน",
+            "กระเป๋า"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop-kun ka. Khun mee gra-bpao tee ja chek-in mai ka? — Thank you. Do you have any luggage to check in?"
+    },
+    "t3_has_luggage": {
+      "id": "t3_has_luggage",
+      "prompt": "มีกระเป๋ากี่ใบคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่งใบ",
+            "1"
+          ],
+          "nextTurnId": "t4_boarding_pass"
+        },
+        {
+          "keywords": [
+            "กี่ใบ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee gra-bpao gee bai ka? — How many bags do you have?"
+    },
+    "t3_no_luggage": {
+      "id": "t3_no_luggage",
+      "prompt": "ตกลงค่ะ นี่คือบัตรโดยสารของคุณค่ะ ประตูทางออกหมายเลข G5 ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ขอบคุณค่ะ",
+            "ขอบคุณครับ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ประตู",
+            "หมายเลข"
+          ],
+          "nextTurnId": "t4_gate_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tok-long ka. Nee keu bat doi-saan kong khun ka. Pra-dtu taang-ork maai-lek G5 ka. — Alright. Here is your boarding pass. Gate number G5."
+    },
+    "t4_boarding_pass": {
+      "id": "t4_boarding_pass",
+      "prompt": "เรียบร้อยแล้วค่ะ นี่คือบัตรโดยสารของคุณค่ะ ประตูทางออกหมายเลข G5 ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ขอบคุณค่ะ",
+            "ขอบคุณครับ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ประตู",
+            "หมายเลข"
+          ],
+          "nextTurnId": "t4_gate_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Riab-roi laew ka. Nee keu bat doi-saan kong khun ka. Pra-dtu taang-ork maai-lek G5 ka. — It's done. Here is your boarding pass. Gate number G5."
+    },
+    "t4_gate_info": {
+      "id": "t4_gate_info",
+      "prompt": "ประตูทางออกหมายเลข G5 ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ขอบคุณค่ะ",
+            "ขอบคุณครับ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pra-dtu taang-ork maai-lek G5 ka. — Gate number G5."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ/ครับ คุณช่วยพูดซ้ำอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ",
+            "อะไร"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-toht ka/krap, khun chuay poot sam eek krang dai mai ka/krap? — Excuse me, could you please repeat that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอให้เดินทางโดยสวัสดิภาพนะคะ/ครับ ขอบคุณค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khor hai dern-taang doi sa-wat-di-paap na ka/krap. Khop-kun ka/krap. — Have a safe journey. Thank you.",
+      "isTerminal": true
+    }
+  }
+}

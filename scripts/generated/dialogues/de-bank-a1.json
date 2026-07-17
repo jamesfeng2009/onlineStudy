@@ -1,0 +1,192 @@
+{
+  "id": "dlg-de-bank-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "Bei der Bank",
+  "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "konto",
+            "öffnen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "geld",
+            "wechseln"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "automat",
+            "pin",
+            "problem"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "services"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Vee kann ish ee-nen hel-fen? — Good day! How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ein Konto? Ja, gerne. Haben Sie Ihren Ausweis dabei?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "habe",
+            "ausweis"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "was"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ine Kon-toh? Yah, gair-ne. Hah-ben zee ee-ren Ous-vice dah-bye? — An account? Yes, gladly. Do you have your ID with you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Geld wechseln? Wie viel möchten Sie wechseln?",
+      "branches": [
+        {
+          "keywords": [
+            "hundert",
+            "zwei",
+            "dollar",
+            "euro",
+            "fünfzig"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Geld vek-seln? Vee feel mosh-ten zee vek-seln? — Exchange money? How much would you like to exchange?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ein Problem mit dem Automaten oder der PIN? Kommen Sie bitte mit mir.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "wohin"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ine Prob-lem mit dem Au-toh-mah-ten o-der der PIN? Kom-men zee bit-te mit meer. — A problem with the ATM or the PIN? Please come with me."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sehr gut. Bitte füllen Sie dieses Formular aus.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ja",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "was"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr goot. Bit-te fül-len zee dee-ses For-mu-lar ous. — Very good. Please fill out this form."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ohne Ausweis geht es leider nicht. Bitte kommen Sie mit Ihrem Ausweis wieder.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ja",
+            "später"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "wann"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-ne Ous-vice geht es lie-der nisht. Bit-te kom-men zee mit ee-rem Ous-vice vee-der. — Unfortunately, it's not possible without ID. Please come back with your ID."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich verstehe das nicht. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shul-di-gung, ish fer-shtay das nisht. Könn-ten zee das bit-te vee-der-ho-len? — Excuse me, I don't understand that. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank für ee-ren Be-zukh. Ouf Vee-der-zeen! — Thank you for your visit. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

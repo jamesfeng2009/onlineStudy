@@ -1,0 +1,232 @@
+{
+  "id": "dlg-th-transport-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "การเดินทางด้วยระบบขนส่งสาธารณะ",
+  "opening": "สวัสดีค่ะ/ครับ ไปไหนคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ไปไหนคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "ไปสยาม",
+            "สีลม",
+            "สถานี"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ราคา",
+            "ค่าโดยสาร",
+            "เท่าไหร่"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krap. Pai nai ka/krap? — Hello. Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ไปสยามใช่ไหมคะ/ครับ? เที่ยวเดียวหรือไปกลับคะ/ครับ หรือต้องการข้อมูลเส้นทางคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "เที่ยวเดียว",
+            "ขาไป"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไปกลับ",
+            "สองเที่ยว"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ข้อมูล",
+            "เส้นทาง",
+            "เปลี่ยนสาย",
+            "จอด",
+            "นานเท่าไหร่"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai Siam chai mai ka/krap? Tiaw dio rue pai glap ka/krap? Rue tong gan khomool sen tang ka/krap? — To Siam, right? One-way or round-trip? Or do you need route information?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ไปที่ไหนคะ/ครับ ราคาขึ้นอยู่กับสถานีปลายทางค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "ไปสยาม",
+            "สีลม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai tee nai ka/krap? Ra-ka kuen yoo gap sa-ta-nee plai tang ka/krap. — Where are you going? The price depends on the destination station."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ไปสยามเที่ยวเดียว ราคา 40 บาทค่ะ/ครับ รับตั๋วไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "รับ",
+            "เอา",
+            "ตกลง",
+            "ซื้อ",
+            "จ่าย"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่รับ",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai Siam tiaw dio ra-ka see sip baht ka/krap. Rap tua mai ka/krap? — To Siam, one-way, 40 baht. Would you like a ticket?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ไปกลับสยาม ราคา 80 บาทค่ะ/ครับ รับตั๋วไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "รับ",
+            "เอา",
+            "ตกลง",
+            "ซื้อ",
+            "จ่าย"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่รับ",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai glap Siam ra-ka paet sip baht ka/krap. Rap tua mai ka/krap? — Round-trip to Siam, 80 baht. Would you like a ticket?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ไปสยามไม่ต้องเปลี่ยนสายค่ะ/ครับ เป็นสายตรง ใช้เวลาประมาณ 15-20 นาทีค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจ",
+            "ตกลง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ซื้อตั๋ว",
+            "ตั๋ว",
+            "อยากได้ตั๋ว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai Siam mai tong plian sai ka/krap. Pen sai drong. Chai wela pra-man sip ha-yi sip na-tee ka/krap. — To Siam, no need to transfer. It's a direct line. It takes approximately 15-20 minutes."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "รับเงินค่ะ/ครับ นี่ตั๋วค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rap ngern ka/krap. Nee tua ka/krap. — Taking payment. Here is your ticket."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ/ครับ ไม่เข้าใจค่ะ/ครับ ช่วยพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-thot ka/krap. Mai kao jai ka/krap. Chuay poot eek krang dai mai ka/krap? — Sorry, I don't understand. Could you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอให้เดินทางโดยสวัสดิภาพค่ะ/ครับ ขอบคุณที่ใช้บริการค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khor hai dern tang doy sa-wat-di-phap ka/krap. Khop khun tee chai bor-ri-gan ka/krap. — Have a safe journey. Thank you for using our service.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "dlg-en-post-office-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "At the Post Office",
+  "opening": "Hello! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "parcel",
+            "package",
+            "send"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "stamps",
+            "stamp"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! (Heh-LOH!) How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Okay, you want to send a parcel. Where are you sending it?",
+      "branches": [
+        {
+          "keywords": [
+            "uk",
+            "england",
+            "local",
+            "country",
+            "national"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "germany",
+            "france",
+            "usa",
+            "abroad",
+            "international"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, you want to send a parcel. Where are you sending it? (Wair arr yoo SEND-ing it?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Stamps, no problem. What kind of stamps do you need? First class or second class?",
+      "branches": [
+        {
+          "keywords": [
+            "first",
+            "1st"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stamps, no problem. What kind of stamps do you need? First class or second class?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "For within the UK, do you want standard or special delivery? Special delivery includes tracking.",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "normal"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For within the UK, do you want standard or special delivery? Special delivery includes tracking."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "For international, do you want airmail or economy? Airmail is faster. Do you need tracking?",
+      "branches": [
+        {
+          "keywords": [
+            "airmail",
+            "fast"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international, do you want airmail or economy? Airmail is faster. Do you need tracking?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Okay, how many stamps do you need?",
+      "branches": [
+        {
+          "keywords": [
+            "one",
+            "two",
+            "four",
+            "ten",
+            "many"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, how many stamps do you need?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Okay, your parcel for the UK is ready. Is there anything else for today?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "another"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "no",
+            "thatisall"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, your parcel for the UK is ready. Is there anything else for today?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Okay, for an international parcel, you will need a customs form. Do you have one, or do you need one?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ihave"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, for an international parcel, you will need a customs form. Do you have one, or do you need one?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Could you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. Could you please say that again? (Kood yoo pleez SAY that uh-GEN?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you! Have a good day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

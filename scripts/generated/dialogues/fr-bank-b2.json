@@ -1,0 +1,726 @@
+{
+  "id": "dlg-fr-bank-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Conversation à la Banque : Ouverture de Compte et Services",
+  "opening": "Bonjour Monsieur/Madame, bienvenue à la Banque Nationale. En quoi puis-je vous être utile aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour Monsieur/Madame, bienvenue à la Banque Nationale. En quoi puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "ouvriruncompte",
+            "compte",
+            "nouveaucompte"
+          ],
+          "nextTurnId": "t2_open_account"
+        },
+        {
+          "keywords": [
+            "argent",
+            "changerargent",
+            "devises",
+            "virement",
+            "transfert"
+          ],
+          "nextTurnId": "t2_money_ops"
+        },
+        {
+          "keywords": [
+            "problemeatm",
+            "distributeur",
+            "cartebloquee",
+            "codeperdu",
+            "resetpin"
+          ],
+          "nextTurnId": "t2_card_issues"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour Monsieur/Madame (Bon-zhoor Muh-syuh/Ma-dam) — Hello Sir/Madam, welcome to the National Bank. How may I help you today?"
+    },
+    "t2_open_account": {
+      "id": "t2_open_account",
+      "prompt": "Très bien. Souhaitez-vous ouvrir un compte courant pour vos opérations quotidiennes, ou plutôt un compte épargne pour placer de l'argent ?",
+      "branches": [
+        {
+          "keywords": [
+            "comptecourant",
+            "quotidiennes",
+            "courant"
+          ],
+          "nextTurnId": "t3_current"
+        },
+        {
+          "keywords": [
+            "compteepargne",
+            "epargne",
+            "placerargent"
+          ],
+          "nextTurnId": "t3_savings"
+        },
+        {
+          "keywords": [
+            "lesdeux"
+          ],
+          "nextTurnId": "t3_both"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien (Tray byan) — Very good. Do you wish to open a current account for your daily operations, or rather a savings account to deposit money?"
+    },
+    "t3_current": {
+      "id": "t3_current",
+      "prompt": "Un compte courant, je vois (Uh kōnt koo-rahn, zhuh vwah). Est-ce pour vos dépenses personnelles habituelles, ou avez-vous des besoins spécifiques liés à une activité professionnelle par exemple ?",
+      "branches": [
+        {
+          "keywords": [
+            "personnelles",
+            "depenses",
+            "quotidien"
+          ],
+          "nextTurnId": "t4_personal_needs"
+        },
+        {
+          "keywords": [
+            "professionnelle",
+            "activitepro",
+            "entreprise"
+          ],
+          "nextTurnId": "t4_pro_needs"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A current account, I see. Is it for your usual personal expenses, or do you have specific needs related to a professional activity, for instance?"
+    },
+    "t4_personal_needs": {
+      "id": "t4_personal_needs",
+      "prompt": "D'accord, un compte courant pour vos besoins personnels donc. Il nous faudra quelques documents pour procéder à l'ouverture. Avez-vous une pièce d'identité valide et un justificatif de domicile récent ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jedispose",
+            "lesai",
+            "document"
+          ],
+          "nextTurnId": "t6_appointment"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasmaintenant",
+            "oublie"
+          ],
+          "nextTurnId": "t6_return_later"
+        },
+        {
+          "keywords": [
+            "quelsdocuments",
+            "listedocuments"
+          ],
+          "nextTurnId": "t5_docs_list"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, a current account for your personal needs then. We will need a few documents to proceed with the opening. Do you have a valid ID and a recent proof of address?"
+    },
+    "t5_docs_list": {
+      "id": "t5_docs_list",
+      "prompt": "Bien sûr. Pour ouvrir un compte courant, nous demandons généralement une pièce d'identité officielle (passeport, carte d'identité), un justificatif de domicile de moins de trois mois (facture d'électricité, quittance de loyer) et parfois un justificatif de revenus. Avez-vous ces éléments à disposition ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jedispose",
+            "lesai"
+          ],
+          "nextTurnId": "t6_appointment"
+        },
+        {
+          "keywords": [
+            "nonpasencore",
+            "doislereunir"
+          ],
+          "nextTurnId": "t6_return_later"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. To open a current account, we generally ask for an official ID (passport, ID card), a proof of address less than three months old (electricity bill, rent receipt), and sometimes proof of income. Do you have these items available?"
+    },
+    "t6_appointment": {
+      "id": "t6_appointment",
+      "prompt": "Excellent ! Dans ce cas, nous pouvons commencer le processus. Avez-vous un moment maintenant, ou préféreriez-vous prendre rendez-vous pour une date ultérieure ?",
+      "branches": [
+        {
+          "keywords": [
+            "maintenant",
+            "toutdesuite"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent! In that case, we can start the process. Do you have a moment now, or would you prefer to make an appointment for a later date?"
+    },
+    "t6_return_later": {
+      "id": "t6_return_later",
+      "prompt": "Pas de problème. Je vous invite à rassembler ces documents et à revenir nous voir quand vous serez prêt. N'hésitez pas si vous avez d'autres questions d'ici là.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. I invite you to gather these documents and come back to see us when you are ready. Don't hesitate if you have any other questions in the meantime."
+    },
+    "t2_money_ops": {
+      "id": "t2_money_ops",
+      "prompt": "D'accord. S'agit-il d'un virement international, d'un changement de devises, ou d'une autre opération monétaire ?",
+      "branches": [
+        {
+          "keywords": [
+            "virement",
+            "international"
+          ],
+          "nextTurnId": "t3_transfer_details"
+        },
+        {
+          "keywords": [
+            "change",
+            "devises",
+            "euros"
+          ],
+          "nextTurnId": "t3_exchange_details"
+        },
+        {
+          "keywords": [
+            "autre",
+            "operation"
+          ],
+          "nextTurnId": "t4_other_money_ops"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Is it an international transfer, a currency exchange, or another monetary operation?"
+    },
+    "t3_transfer_details": {
+      "id": "t3_transfer_details",
+      "prompt": "Pour un virement international, il nous faudra l'IBAN du bénéficiaire, le code SWIFT/BIC de sa banque, et le montant. Avez-vous toutes ces informations à portée de main ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jedispose",
+            "lesai"
+          ],
+          "nextTurnId": "t4_transfer_proceed"
+        },
+        {
+          "keywords": [
+            "non",
+            "jesaispas",
+            "oublie"
+          ],
+          "nextTurnId": "t4_transfer_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For an international transfer, we will need the recipient's IBAN, their bank's SWIFT/BIC code, and the amount. Do you have all this information readily available?"
+    },
+    "t4_transfer_proceed": {
+      "id": "t4_transfer_proceed",
+      "prompt": "Parfait. Je peux initier le virement pour vous. Il y aura des frais de transaction. Souhaitez-vous continuer ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "continuer",
+            "proceder"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. I can initiate the transfer for you. There will be transaction fees. Do you wish to continue?"
+    },
+    "t4_transfer_info": {
+      "id": "t4_transfer_info",
+      "prompt": "Je comprends. Sans ces informations, je ne peux pas procéder au virement. Je vous invite à les rassembler et à revenir nous voir, ou à utiliser notre service en ligne.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Without this information, I cannot proceed with the transfer. I invite you to gather it and come back to see us, or to use our online service."
+    },
+    "t3_exchange_details": {
+      "id": "t3_exchange_details",
+      "prompt": "Pour changer des devises, quel montant souhaitez-vous convertir et en quelle monnaie ? Veuillez noter que les taux de change fluctuent.",
+      "branches": [
+        {
+          "keywords": [
+            "montant",
+            "combien",
+            "dollars",
+            "yen"
+          ],
+          "nextTurnId": "t4_exchange_proceed"
+        },
+        {
+          "keywords": [
+            "information",
+            "taux",
+            "frais"
+          ],
+          "nextTurnId": "t4_exchange_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To exchange currency, what amount do you wish to convert and into which currency? Please note that exchange rates fluctuate."
+    },
+    "t4_exchange_proceed": {
+      "id": "t4_exchange_proceed",
+      "prompt": "Très bien. Je peux vérifier le taux actuel et procéder à l'échange. Avez-vous la somme en espèces ou souhaitez-vous la débiter de votre compte ?",
+      "branches": [
+        {
+          "keywords": [
+            "especes",
+            "cash"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. I can check the current rate and proceed with the exchange. Do you have the sum in cash or do you want to debit it from your account?"
+    },
+    "t4_exchange_info": {
+      "id": "t4_exchange_info",
+      "prompt": "Nous affichons les taux de change du jour à l'entrée et nos frais sont de X% par transaction. Souhaitez-vous quand même procéder à l'échange ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "proceder"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We display the daily exchange rates at the entrance and our fees are X% per transaction. Do you still wish to proceed with the exchange?"
+    },
+    "t4_other_money_ops": {
+      "id": "t4_other_money_ops",
+      "prompt": "Je vois. Pour toute autre opération monétaire spécifique, je vous invite à consulter nos brochures ou à prendre rendez-vous avec un conseiller spécialisé.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. For any other specific monetary operation, I invite you to consult our brochures or make an appointment with a specialized advisor."
+    },
+    "t2_card_issues": {
+      "id": "t2_card_issues",
+      "prompt": "D'accord, un problème avec votre carte ou votre code PIN. S'agit-il d'une carte bloquée, d'un code PIN oublié, ou d'une autre difficulté avec le distributeur automatique ?",
+      "branches": [
+        {
+          "keywords": [
+            "cartebloquee",
+            "bloquee"
+          ],
+          "nextTurnId": "t3_card_blocked"
+        },
+        {
+          "keywords": [
+            "codeoublié",
+            "pinperdu",
+            "resetpin"
+          ],
+          "nextTurnId": "t3_pin_reset"
+        },
+        {
+          "keywords": [
+            "autreprobleme",
+            "distributeur",
+            "atm"
+          ],
+          "nextTurnId": "t3_other_atm_issue"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, a problem with your card or PIN. Is it a blocked card, a forgotten PIN, or another difficulty with the ATM?"
+    },
+    "t3_card_blocked": {
+      "id": "t3_card_blocked",
+      "prompt": "Une carte bloquée. Avez-vous essayé de l'utiliser récemment, et est-ce un problème de code erroné ou une transaction suspecte ?",
+      "branches": [
+        {
+          "keywords": [
+            "codeerrone",
+            "mauvaiscode"
+          ],
+          "nextTurnId": "t4_code_blocked"
+        },
+        {
+          "keywords": [
+            "transactionsuspecte",
+            "fraude"
+          ],
+          "nextTurnId": "t4_fraud_blocked"
+        },
+        {
+          "keywords": [
+            "justebloquee",
+            "saispas"
+          ],
+          "nextTurnId": "t4_general_blocked"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A blocked card. Have you tried to use it recently, and is it an incorrect code issue or a suspicious transaction?"
+    },
+    "t4_code_blocked": {
+      "id": "t4_code_blocked",
+      "prompt": "Si c'est un problème de code erroné, nous pouvons tenter de le débloquer ici si vous confirmez votre identité, ou vous commander une nouvelle carte avec un nouveau code. Que préférez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "debloquer",
+            "confirmer"
+          ],
+          "nextTurnId": "t5_identity_check"
+        },
+        {
+          "keywords": [
+            "nouvellecarte",
+            "recommander"
+          ],
+          "nextTurnId": "t5_new_card"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If it's an incorrect code issue, we can try to unblock it here if you confirm your identity, or order you a new card with a new code. What do you prefer?"
+    },
+    "t5_identity_check": {
+      "id": "t5_identity_check",
+      "prompt": "Très bien, veuillez me présenter une pièce d'identité valide. Nous procéderons à la vérification et au déblocage.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, please present a valid ID. We will proceed with the verification and unblocking."
+    },
+    "t5_new_card": {
+      "id": "t5_new_card",
+      "prompt": "D'accord, nous allons commander une nouvelle carte et un nouveau code PIN vous sera envoyé par courrier. Cela prendra quelques jours. Veuillez confirmer votre adresse.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, we will order a new card and a new PIN will be sent to you by mail. This will take a few days. Please confirm your address."
+    },
+    "t4_fraud_blocked": {
+      "id": "t4_fraud_blocked",
+      "prompt": "Une transaction suspecte est une affaire sérieuse. Nous allons immédiatement bloquer la carte et lancer une enquête. Avez-vous déjà contacté notre service anti-fraude ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A suspicious transaction is a serious matter. We will immediately block the card and launch an investigation. Have you already contacted our fraud department?"
+    },
+    "t4_general_blocked": {
+      "id": "t4_general_blocked",
+      "prompt": "Dans ce cas, je vais avoir besoin de vérifier votre identité pour diagnostiquer le problème. Pouvez-vous me présenter une pièce d'identité ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "voicimaidentite"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In that case, I will need to verify your identity to diagnose the problem. Can you present an ID?"
+    },
+    "t3_pin_reset": {
+      "id": "t3_pin_reset",
+      "prompt": "Pour un code PIN oublié, pour des raisons de sécurité, nous ne pouvons pas le 'réinitialiser' directement. Nous devons vous en commander un nouveau. Souhaitez-vous procéder ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "commander"
+          ],
+          "nextTurnId": "t4_new_pin"
+        },
+        {
+          "keywords": [
+            "nonmerci",
+            "pasmaintenant"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a forgotten PIN, for security reasons, we cannot 'reset' it directly. We must order you a new one. Do you wish to proceed?"
+    },
+    "t4_new_pin": {
+      "id": "t4_new_pin",
+      "prompt": "Très bien, un nouveau code PIN vous sera envoyé par courrier dans les prochains jours. Veuillez confirmer votre adresse postale.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, a new PIN will be sent to you by mail in the next few days. Please confirm your mailing address."
+    },
+    "t3_other_atm_issue": {
+      "id": "t3_other_atm_issue",
+      "prompt": "Un autre problème avec le distributeur ? Pouvez-vous me décrire ce qui s'est passé exactement ?",
+      "branches": [
+        {
+          "keywords": [
+            "erreur",
+            "argentpasrecu",
+            "cartegardee"
+          ],
+          "nextTurnId": "t4_atm_description"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Another problem with the ATM? Can you describe exactly what happened?"
+    },
+    "t4_atm_description": {
+      "id": "t4_atm_description",
+      "prompt": "Je vois. Nous allons devoir remplir un formulaire d'incident. Cela peut prendre un peu de temps. Êtes-vous prêt à le faire maintenant ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "pret",
+            "maintenant"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. We will need to fill out an incident report. This might take a bit of time. Are you ready to do it now?"
+    },
+    "t3_savings": {
+      "id": "t3_savings",
+      "prompt": "Un compte épargne, très bien. Quel est votre objectif principal : placer de l'argent à court terme, ou constituer une épargne à plus long terme avec un meilleur rendement ?",
+      "branches": [
+        {
+          "keywords": [
+            "courtterme",
+            "rapide"
+          ],
+          "nextTurnId": "t4_savings_offer"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A savings account, very good. What is your main objective: to deposit money short-term, or to build up longer-term savings with a better return?"
+    },
+    "t3_both": {
+      "id": "t3_both",
+      "prompt": "Vous souhaitez ouvrir les deux ? C'est une excellente idée pour gérer vos finances. Nous pouvons commencer par le compte courant, puis discuter des options d'épargne.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "commencons"
+          ],
+          "nextTurnId": "t4_personal_needs"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You wish to open both? That's an excellent idea for managing your finances. We can start with the current account, then discuss savings options."
+    },
+    "t4_pro_needs": {
+      "id": "t4_pro_needs",
+      "prompt": "Pour une activité professionnelle, nous avons des offres spécifiques. Avez-vous déjà une entreprise enregistrée ou êtes-vous un indépendant ?",
+      "branches": [
+        {
+          "keywords": [
+            "entreprise",
+            "societe"
+          ],
+          "nextTurnId": "t5_pro_documents"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a professional activity, we have specific offers. Do you already have a registered company or are you self-employed?"
+    },
+    "t5_pro_documents": {
+      "id": "t5_pro_documents",
+      "prompt": "Très bien. Pour ouvrir un compte professionnel, en plus de votre pièce d'identité et justificatif de domicile, il nous faudra des documents liés à votre activité (statuts de société, Kbis, justificatif d'activité). Êtes-vous en mesure de les fournir ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jedispose",
+            "lesai"
+          ],
+          "nextTurnId": "t6_appointment"
+        },
+        {
+          "keywords": [
+            "non",
+            "doislereunir"
+          ],
+          "nextTurnId": "t6_return_later"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. To open a professional account, in addition to your ID and proof of address, we will need documents related to your activity (company articles, Kbis, proof of activity). Are you able to provide them?"
+    },
+    "t4_savings_offer": {
+      "id": "t4_savings_offer",
+      "prompt": "Nous avons différentes solutions d'épargne adaptées à vos objectifs, comme le Livret A ou des comptes à terme. Souhaitez-vous des détails sur l'une d'entre elles ou êtes-vous prêt à ouvrir un compte ?",
+      "branches": [
+        {
+          "keywords": [
+            "details",
+            "informations"
+          ],
+          "nextTurnId": "t5_savings_details"
+        },
+        {
+          "keywords": [
+            "ouvriruncompte",
+            "pret"
+          ],
+          "nextTurnId": "t6_appointment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We have various savings solutions tailored to your objectives, such as the Livret A or term accounts. Would you like details on one of them or are you ready to open an account?"
+    },
+    "t5_savings_details": {
+      "id": "t5_savings_details",
+      "prompt": "Le Livret A offre un taux garanti et une disponibilité des fonds, tandis que les comptes à terme peuvent offrir un meilleur rendement sur des durées plus longues. Lequel vous intéresse le plus pour l'ouverture ?",
+      "branches": [
+        {
+          "keywords": [
+            "livreta",
+            "disponibilite"
+          ],
+          "nextTurnId": "t6_appointment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The Livret A offers a guaranteed rate and fund availability, while term accounts can offer a better return over longer periods. Which one interests you most for opening?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Excusez-moi, je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! Nous sommes à votre entière disposition pour la suite. Je vous souhaite une excellente journée. Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect! We are at your entire disposal for the next steps. I wish you an excellent day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

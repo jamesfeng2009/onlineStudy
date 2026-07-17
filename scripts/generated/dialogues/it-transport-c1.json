@@ -1,0 +1,223 @@
+{
+  "id": "dlg-it-transport-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Richieste al Banco Informazioni",
+  "opening": "Buongiorno, posso aiutarla in qualche modo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, posso aiutarla in qualche modo?",
+      "branches": [
+        {
+          "keywords": [
+            "biglietto",
+            "firenze",
+            "milano",
+            "roma"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "orario",
+            "treno",
+            "venezia",
+            "ritardo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwon-Jor-no), posso aiutarla (pos-so ai-u-tar-la) in qualche modo? (in kwal-ke mo-do?) — Good morning, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, nessun problema. Desidera un biglietto di andata e ritorno o solo andata? E preferisce la prima o la seconda classe?",
+      "branches": [
+        {
+          "keywords": [
+            "soloandata",
+            "secondaclasse",
+            "semplice"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (Cher-to), nessun problema. Desidera (De-si-de-ra) un biglietto di andata e ritorno (an-da-ta e ri-tor-no) o solo andata? (so-lo an-da-ta?) E preferisce la prima o la seconda classe? — Certainly, no problem. Do you want a return ticket or one-way? And do you prefer first or second class?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Un attimo che controllo gli orari e le eventuali interruzioni. Desidera un treno ad alta velocità o va bene anche uno regionale?",
+      "branches": [
+        {
+          "keywords": [
+            "altavelocità",
+            "frecciarossa",
+            "veloce"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un attimo (Un at-ti-mo) che controllo gli orari e le eventuali interruzioni. Desidera un treno ad alta velocità (al-ta ve-lo-chi-tà) o va bene anche uno regionale? (re-jo-na-le?) — One moment while I check the schedules and any interruptions. Do you want a high-speed train or is a regional one okay too?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfetto. Un biglietto solo andata in seconda classe costa 25 euro. Quello di andata e ritorno in prima, invece, 70 euro. Quale opzione le si addice di più?",
+      "branches": [
+        {
+          "keywords": [
+            "25euro",
+            "soloandata",
+            "seconda",
+            "bene"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "cambiare",
+            "modificare",
+            "ripensarci"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. A one-way ticket in second class costs 25 euros. The return ticket in first, however, 70 euros. Which option suits you best?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Allora (Al-lo-ra), il prossimo treno ad alta velocità (al-ta ve-lo-chi-tà) per Venezia parte tra venti minuti dal binario 5 (bi-na-ri-o chin-que). Per fortuna non si segnalano ritardi. Per i regionali, ce n'è uno tra 40 minuti dal binario 3.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "chiaro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "biglietto",
+            "acquistare",
+            "comprare"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "domanda",
+            "altro",
+            "dubbio"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, the next high-speed train to Venice leaves in twenty minutes from platform 5. Fortunately, no delays are reported. For regional trains, there's one in 40 minutes from platform 3."
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "No, al momento la rete è regolare e non si prevedono interruzioni. È una giornata tranquilla, per fortuna!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "bene",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No, at the moment the network is regular and no interruptions are foreseen. It's a quiet day, fortunately!"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottimo. Può inserire la carta qui per il pagamento. Le auguro buon viaggio!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "arrivederci",
+            "saluti",
+            "pagamento"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great. You can insert your card here for payment. I wish you a good journey!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto, arrivederci e buon viaggio!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect, goodbye and have a good journey!",
+      "isTerminal": true
+    }
+  }
+}

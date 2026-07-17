@@ -1,0 +1,127 @@
+{
+  "id": "dlg-ms-interview-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Temu Duga Kerja",
+  "opening": "Selamat pagi, (nama calon). Terima kasih kerana sudi hadir. Boleh kita mulakan? Sila ceritakan serba sedikit tentang diri anda.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, (nama calon). Terima kasih kerana sudi hadir. Boleh kita mulakan? Sila ceritakan serba sedikit tentang diri anda.",
+      "branches": [
+        {
+          "keywords": [
+            "latarbelakang",
+            "pengalaman",
+            "kemahiran"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, (nama calon). Terima kasih kerana sudi hadir. Boleh kita mulakan? Sila ceritakan serba sedikit tentang diri anda. — (Selamat pagi, (NAH-ma CHAH-lon). Teh-ree-ma KAH-seeh ke-RAH-na SOO-dee HAH-dir. Boh-leh KEE-ta moo-LAH-kan? SEE-la che-REE-ta-kan ser-ba se-DEE-kit ten-tang DEE-ree AN-da.) Good morning, (candidate name). Thank you for coming. Shall we begin? Please tell us a little about yourself."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang semula? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh anda ulang semula? Saya kurang jelas. — (MAH-ahf, boh-leh AN-da oo-LANG se-MOO-la? SAH-ya koo-RANG je-LAS.) Sorry, could you repeat that? I'm not very clear."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik sekali. Berdasarkan latar belakang anda, boleh anda ceritakan tentang pengalaman kerja anda yang paling relevan dengan jawatan ini dan apakah sumbangan terbesar anda?",
+      "branches": [
+        {
+          "keywords": [
+            "projek",
+            "pencapaian",
+            "sumbangan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali. Berdasarkan latar belakang anda, boleh anda ceritakan tentang pengalaman kerja anda yang paling relevan dengan jawatan ini dan apakah sumbangan terbesar anda? — (Me-NAH-rik se-KAH-li. Ber-DA-sar-kan LAH-tar be-LA-kang AN-da, boh-leh AN-da che-REE-ta-kan ten-tang pe-NGA-la-man KER-ja AN-da yang PAH-ling re-LE-van de-NGAN JAH-wa-tan EE-nee dan A-pah-kah SUM-ba-ngan ter-BE-sar AN-da?) Very interesting. Based on your background, could you tell me about your most relevant work experience for this position and what your greatest contributions were?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih atas perkongsian itu. Setiap individu pasti ada kekuatan dan kelemahan. Pada pandangan anda, apakah kekuatan utama anda dan bagaimana anda menguruskan kelemahan diri?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "kelebihan",
+            "aset"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas perkongsian itu. Setiap individu pasti ada kekuatan dan kelemahan. Pada pandangan anda, apakah kekuatan utama anda dan bagaimana anda menguruskan kelemahan diri? — (Teh-ree-ma KAH-seeh AH-tas per-KONG-see-an EE-too. Se-TIAP in-dee-VEE-doo PAHS-ti AH-da ke-KUA-tan dan ke-LE-ma-han. PA-da pan-DA-ngan AN-da, A-pah-kah ke-KUA-tan oo-TA-ma AN-da dan ba-GAI-ma-na AN-da me-NGE-rus-kan ke-LE-ma-han DEE-ree?) Thank you for that sharing. Every individual certainly has strengths and weaknesses. In your opinion, what are your main strengths and how do you manage your weaknesses?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baiklah, itu gambaran yang cukup jelas. Sebagai penutup, di mana anda melihat diri anda dalam tempoh lima tahun akan datang dan mengapa anda berminat untuk menyertai syarikat kami?",
+      "branches": [
+        {
+          "keywords": [
+            "matlamat",
+            "kerjaya",
+            "masa hadapan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah, itu gambaran yang cukup jelas. Sebagai penutup, di mana anda melihat diri anda dalam tempoh lima tahun akan datang dan mengapa anda berminat untuk menyertai syarikat kami? — (BAI-klah, EE-too GAM-ba-ran yang COO-chop je-LAS. Se-BA-gai pe-NOO-top, dee MAH-na AN-da me-LEE-hat DEE-ree AN-da DA-lam TEM-poh LEE-ma TAH-hun A-kan DA-tang dan me-NGA-pa AN-da ber-MEE-nat un-tok me-NYER-tai SHA-ree-kat KAH-mee?) Alright, that gives a clear picture. To conclude, where do you see yourself in the next five years and why are you interested in joining this company?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih atas masa anda. Kami akan maklumkan keputusan dalam masa terdekat. Selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih atas masa anda. Kami akan maklumkan keputusan dalam masa terdekat. Selamat jalan. — (Teh-ree-ma KAH-seeh AH-tas MA-sa AN-da. KAH-mee A-kan MAK-lum-kan ke-PU-tu-san DA-lam MA-sa ter-DE-kat. Se-LA-mat JA-lan.) Thank you for your time. We will inform you of the decision soon. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

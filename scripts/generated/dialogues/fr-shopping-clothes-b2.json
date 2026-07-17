@@ -1,0 +1,56 @@
+{
+  "id": "dlg-fr-shopping-clothes-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "Un après-midi shopping",
+  "opening": "Bonjour, je peux vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue chez nous. Je peux vous aider à trouver quelque chose en particulier ou vous préférez jeter un œil par vous-même ?",
+      "branches": [
+        {
+          "keywords": [
+            "chercher",
+            "trouver",
+            "quelquechose",
+            "besoin"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t2",
+      "promptTranslation": "Bonjour ! (Bon-zhoor!) Welcome to our store. Can I help you find something specific, or would you prefer to browse by yourself?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien ! Quel type de vêtement recherchez-vous ? Et quelle taille, si vous avez une idée ?",
+      "branches": [
+        {
+          "keywords": [
+            "robe",
+            "pantalon",
+            "chemise",
+            "pull",
+            "jean",
+            "jupe",
+            "manteau"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Très bien ! (Trey byan!) Alright! What type of clothing are you looking for? And what size, if you have an idea?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Parfait ! J'ai ce modèle qui pourrait vous plaire. Il est en taille M. Les cabines d'essayage sont juste là, à gauche. Allez-y, essayez-le et dites-moi ce que vous en pensez !",
+      "branches": [],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Parfait ! (Par-fay!) Perfect! I have this model that might please you. It's",
+      "isTerminal": true
+    }
+  }
+}

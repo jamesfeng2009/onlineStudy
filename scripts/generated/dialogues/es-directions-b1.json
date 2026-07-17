@@ -1,0 +1,229 @@
+{
+  "id": "dlg-es-directions-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Pedir indicaciones en la calle",
+  "opening": "Disculpe, ¿necesita ayuda con algo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Disculpe, ¿necesita ayuda con algo?",
+      "branches": [
+        {
+          "keywords": [
+            "prado",
+            "museo",
+            "arte"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dis-CUL-peh, ¿neh-seh-SEE-tah ah-YOO-dah kohn AL-go? — Excuse me, do you need help with something?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro. Para llegar al Museo del Prado, tiene que seguir recto por esta calle unas cinco cuadras y luego girar a la izquierda en la Gran Vía.",
+      "branches": [
+        {
+          "keywords": [
+            "transporte",
+            "autobús",
+            "metro"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "másdetalles",
+            "referencia",
+            "cómoes"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "tiempo",
+            "lejos"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "KLAH-roh. PAH-rah yeh-GAR ahl Moo-SEH-oh del PRAH-doh, TYEH-neh keh seh-GEER REK-toh por ES-tah KAH-yeh OO-nahs SEEN-koh KWAH-drahs ee LWEH-goh hee-RAR a LAH ees-KYER-dah en LAH GRAHN VEE-ah. — Sure. To get to the Prado Museum, you have to go straight on this street for about five blocks and then turn left onto Gran Vía."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Si prefiere ir en transporte público, puede tomar el autobús número 27. La parada está aquí mismo, a unos metros. Le deja justo en la puerta del museo.",
+      "branches": [
+        {
+          "keywords": [
+            "tiempo",
+            "rápido"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "See preh-FYEH-reh eer en trahns-POR-teh POO-blee-koh, PWEH-deh toh-MAR el ow-toh-BOOS NOO-meh-roh veen-tee-SYEH-teh. Lah pah-RAH-dah es-TAH ah-KEE MEES-moh, ah OO-nohs MEH-tros. Leh DEH-hah HOOS-toh en lah PWER-tah del moo-SEH-oh. — If you prefer to go by public transport, you can take bus number 27. The stop is right here, a few meters away. It leaves you right at the museum's door."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Después de girar en la Gran Vía, lo verá a su derecha, justo al lado de la famosa Fuente de Neptuno. No tiene pérdida.",
+      "branches": [
+        {
+          "keywords": [
+            "cuánto",
+            "tiempo",
+            "distancia"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "After turning onto Gran Vía, you will see it on your right, right next to the famous Neptune Fountain. You can't miss it."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "A pie, serán unos veinte minutos de aquí. Si va en autobús, en unos diez minutos estará allí, dependiendo del tráfico.",
+      "branches": [
+        {
+          "keywords": [
+            "cerca",
+            "alrededor",
+            "máslugares"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot, it will be about twenty minutes from here. If you go by bus, you'll be there in about ten minutes, depending on traffic."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Cerca del Prado, tiene el Parque del Retiro, que está justo detrás, o el Jardín Botánico, que está enfrente. También la Plaza de Cibeles, a unos cinco minutos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Near the Prado, you have the Retiro Park, which is right behind it, or the Botanical Garden, which is opposite. Also Cibeles Square, about five minutes away."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No le he entendido bien. ¿Podría repetirlo?",
+      "branches": [
+        {
+          "keywords": [
+            "prado",
+            "museo",
+            "arte",
+            "gracias",
+            "no",
+            "transporte",
+            "autobús",
+            "metro",
+            "másdetalles",
+            "referencia",
+            "cómoes",
+            "cuánto",
+            "tiempo",
+            "lejos",
+            "rápido",
+            "perfecto",
+            "entendido",
+            "distancia",
+            "cerca",
+            "alrededor",
+            "máslugares",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Per-DON? NO leh eh en-ten-DEE-doh BYEN. ¿Poh-DREE-ah reh-peh-TEER-loh? — Sorry? I didn't understand you well. Could you repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡De nada! Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "DEH NAH-dah! Keh TEN-gah oon BWEN DEE-ah. — You're welcome! Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

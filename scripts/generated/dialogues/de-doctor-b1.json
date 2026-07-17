@@ -1,0 +1,145 @@
+{
+  "id": "dlg-de-doctor-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Arztbesuch: Symptome beschreiben",
+  "opening": "Guten Tag, Herr/Frau [Nachname]. Was führt Sie heute zu mir? Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Herr/Frau [Nachname]. Was führt Sie heute zu mir? Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "kopfschmerzen",
+            "kopfweh",
+            "migräne"
+          ],
+          "nextTurnId": "t2_symptom"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag (GOO-ten TAHG), Herr/Frau [Nachname]. Was führt Sie (VAHS fyooRt ZEE) heute zu mir? Wie kann ich (VEE kahn IKH) Ihnen helfen? - Good day, Mr./Ms. [Surname]. What brings you to me today? How can I help you?"
+    },
+    "t2_symptom": {
+      "id": "t2_symptom",
+      "prompt": "Verstehe. Können Sie die Beschwerden etwas genauer beschreiben? Seit wann haben Sie die Symptome und wie stark sind sie? Haben Sie auch Fieber oder Schüttelfrost?",
+      "branches": [
+        {
+          "keywords": [
+            "seitgestern",
+            "seitdrei",
+            "seitwoche",
+            "seitlangem",
+            "seitheute"
+          ],
+          "nextTurnId": "t3_allergien"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstehe (fer-SHTEH-e). Können Sie (KER-nen ZEE) die Beschwerden (be-SHVEHR-den) etwas genauer (GET-now-er) beschreiben (be-SHRY-ben)? Seit wann (ZYT vahn) haben Sie die Symptome (ZYM-toh-me) und wie stark (VEE SHTARK) sind sie? Haben Sie auch Fieber (FEE-ber) oder Schüttelfrost (SHOO-tel-frost)? - I see. Can you describe the complaints in a bit more detail? How long have you had the symptoms and how severe are they? Do you also have a fever or chills?"
+    },
+    "t3_allergien": {
+      "id": "t3_allergien",
+      "prompt": "Danke für die ausführliche Beschreibung. Nun zu Ihrer Krankengeschichte: Nehmen Sie regelmäßig Medikamente oder leiden Sie unter Allergien, die ich wissen sollte?",
+      "branches": [
+        {
+          "keywords": [
+            "allergisch",
+            "penicillin",
+            "pollen",
+            "keineallergien",
+            "hausstaub",
+            "nichtsallergisch"
+          ],
+          "nextTurnId": "t4_diagnose"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Danke für (DANK-e fyer) die ausführliche (OWS-fuer-lich-e) Beschreibung (be-SHRY-bung). Nun zu (NOON tsoo) Ihrer (EE-rer) Krankengeschichte (KRAHN-ken-ge-shich-te): Nehmen Sie (NEH-men ZEE) regelmäßig (REH-gel-mess-ig) Medikamente (MEH-dee-kah-men-te) oder leiden Sie (LY-den ZEE) unter Allergien (AHL-ler-gee-en), die ich wissen (VISS-en) sollte? - Thank you for the detailed description. Now to your medical history: Do you take regular medication or suffer from allergies that I should know about?"
+    },
+    "t4_diagnose": {
+      "id": "t4_diagnose",
+      "prompt": "Basierend auf Ihren Angaben vermute ich eine [Diagnose, z.B. starke Erkältung/Magenverstimmung/Spannungskopfschmerzen]. Ich verschreibe Ihnen ein passendes Medikament, das Sie in der Apotheke erhalten können.",
+      "branches": [
+        {
+          "keywords": [
+            "rezept",
+            "medikament",
+            "einnahme",
+            "wieeins"
+          ],
+          "nextTurnId": "t5_anweisungen"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Basierend (bah-SEE-rent) auf Ihren (OWF EE-ren) Angaben (AHN-gah-ben) vermute (fer-MOO-te) ich eine [Diagnose, z.B. starke Erkältung (SHTAR-ke er-KAYL-tung)/Magenverstimmung (MAH-gen-fer-shtim-ung)/Spannungskopfschmerzen (SHPAH-nungs-kopf-shmer-tsen)]. Ich verschreibe (fer-SHRY-be) Ihnen ein passendes (PAHS-sen-des) Medikament (MEH-dee-kah-ment), das Sie (DAHS ZEE) in der Apotheke (AH-po-teh-ke) erhalten (er-HAHL-ten) können. - Based on your information, I suspect a [diagnosis, e.g., severe cold/upset stomach/tension headache]. I will prescribe you a suitable medication that you can get at the pharmacy."
+    },
+    "t5_anweisungen": {
+      "id": "t5_anweisungen",
+      "prompt": "Nehmen Sie das Medikament [Anweisung, z.B. dreimal täglich nach dem Essen]. Wenn die Beschwerden nicht innerhalb von drei Tagen besser werden, oder sich verschlimmern, kommen Sie bitte noch einmal vorbei. Gute Besserung und auf Wiedersehen!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "vielendank",
+            "aufwiedersehen",
+            "tschüss",
+            "gutbesserung"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nehmen Sie (NEH-men ZEE) das Medikament (MEH-dee-kah-ment) [Anweisung, z.B. dreimal täglich (DRY-mahl TEG-lich) nach dem Essen (NAKH dem ESS-en)]. Wenn die Beschwerden (be-SHVEHR-den) nicht innerhalb (IN-ner-halb) von drei (DRY) Tagen (TAH-gen) besser (BESS-er) werden, oder sich verschlimmern (fer-SHLIM-mern), kommen Sie (KOM-men ZEE) bitte (BIT-te) noch einmal (NOCH ayn-MAHL) vorbei. Gute Besserung (GOO-te BESS-er-ung) und auf Wiedersehen (OWF VEE-der-zeh-en)! - Take the medication [instruction, e.g., three times a day after meals]. If the symptoms do not improve within three days, or if they worsen, please come back again. Get well soon and goodbye!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung (en-SHUL-di-gung), ich habe Sie (HAH-be ZEE) nicht ganz (NICHT gants) verstanden (fer-SHTAN-den). Könnten Sie (KER-nten ZEE) das bitte (BIT-te) wiederholen (vee-der-HO-len) oder anders (AHN-ders) formulieren (for-moo-LEE-ren)? - Excuse me, I didn't quite understand you. Could you please repeat that or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen. Ich wünsche Ihnen eine gute Besserung und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern geschehen (GERRN ge-SHEH-en). Ich wünsche (VUEN-she) Ihnen eine gute Besserung (GOO-te BESS-er-ung) und auf Wiedersehen (OWF VEE-der-zeh-en)! - You're welcome. I wish you a good recovery and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

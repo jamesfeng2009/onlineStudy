@@ -1,0 +1,185 @@
+{
+  "id": "dlg-vi-interview-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc: Cấp độ Nâng cao",
+  "opening": "Chào mừng bạn đến với công ty X. Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình được không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng bạn đến với công ty X. Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình được không?",
+      "branches": [
+        {
+          "keywords": [
+            "kinhnghiem",
+            "chuyenmon",
+            "lamviec"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "sothich",
+            "tinhcach",
+            "banthan"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "chuẩn_bị",
+            "chưa",
+            "khongbiet"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào mừng bạn đến với công ty X. Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình được không? (Chao mung ban den voi cong ty X. De bat dau, ban co the gioi thieu doi net ve ban than va kinh nghiem lam viec cua minh duoc khong? — Welcome to Company X. To begin, could you tell us a little about yourself and your work experience?)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Thật ấn tượng! Với kinh nghiệm phong phú như vậy, bạn có thể chia sẻ một thành tựu đáng kể mà bạn tự hào nhất trong sự nghiệp của mình không? Và điều gì đã giúp bạn đạt được nó?",
+      "branches": [
+        {
+          "keywords": [
+            "thanhcong",
+            "thanhqua",
+            "thanh_tuu"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "kho_khan",
+            "thach_thuc",
+            "baihoc"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thật ấn tượng! Với kinh nghiệm phong phú như vậy, bạn có thể chia sẻ một thành tựu đáng kể mà bạn tự hào nhất trong sự nghiệp của mình không? Và điều gì đã giúp bạn đạt được nó? (That an tuong! Voi kinh nghiem phong phu nhu vay, ban co the chia se mot thanh tuu dang ke ma ban tu hao nhat trong su nghiep cua minh khong? Va dieu gi da giup ban dat duoc no? — That's impressive! With such extensive experience, could you share a significant achievement in your career that you're most proud of? And what helped you achieve it?)"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Cảm ơn bạn đã chia sẻ. Với những đặc điểm cá nhân đó, bạn nghĩ mình sẽ đóng góp như thế nào vào văn hóa và mục tiêu của công ty chúng tôi?",
+      "branches": [
+        {
+          "keywords": [
+            "gia_tri",
+            "vanhoa",
+            "donggop"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ky_nang",
+            "the_manh",
+            "kha_nang"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn đã chia sẻ. Với những đặc điểm cá nhân đó, bạn nghĩ mình sẽ đóng góp như thế nào vào văn hóa và mục tiêu của công ty chúng tôi? (Cam on ban da chia se. Voi nhung dac diem ca nhan do, ban nghi minh se dong gop nhu the nao vao van hoa va muc tieu cua cong ty chung toi? — Thank you for sharing. With those personal characteristics, how do you think you would contribute to our company's culture and goals?)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Rất tốt. Vậy nhìn chung, đâu là thế mạnh nổi trội nhất mà bạn tin rằng sẽ tạo ra giá trị khác biệt cho vị trí này và cho công ty chúng tôi? Và liệu có điểm nào bạn cảm thấy mình cần cải thiện thêm không?",
+      "branches": [
+        {
+          "keywords": [
+            "themanh",
+            "uu_diem",
+            "kha_nang"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất tốt. Vậy nhìn chung, đâu là thế mạnh nổi trội nhất mà bạn tin rằng sẽ tạo ra giá trị khác biệt cho vị trí này và cho công ty chúng tôi? Và liệu có điểm nào bạn cảm thấy mình cần cải thiện thêm không? (Rat tot. Vay nhin chung, dau la the manh noi troi nhat ma ban tin rang se tao ra gia tri khac biet cho vi tri nay va cho cong ty chung toi? Va lieu co diem nao ban cam thay minh can cai thien them khong? — Very good. Overall, what is your most outstanding strength that you believe will create distinct value for this position and for our company? And is there any area you feel you need to improve?)"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Cảm ơn bạn đã thành thật chia sẻ. Mỗi trải nghiệm đều là bài học quý giá. Vậy nhìn về tương lai, bạn hình dung bản thân mình sẽ phát triển như thế nào trong 3-5 năm tới nếu gia nhập đội ngũ của chúng tôi?",
+      "branches": [
+        {
+          "keywords": [
+            "phattrien",
+            "muc_tieu",
+            "tuong_lai"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn đã thành thật chia sẻ. Mỗi trải nghiệm đều là bài học quý giá. Vậy nhìn về tương lai, bạn hình dung bản thân mình sẽ phát triển như thế nào trong 3-5 năm tới nếu gia nhập đội ngũ của chúng tôi? (Cam on ban da thanh that chia se. Moi trai nghiem deu la bai hoc quy gia. Vay nhin ve tuong lai, ban hinh dung ban than minh se phat trien nhu the nao trong 3-5 nam toi neu gia nhap doi ngu cua chung toi? — Thank you for sharing honestly. Every experience is a valuable lesson. So looking to the future, how do you envision yourself developing in the next 3-5 years if you join our team?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Những mục tiêu đó thật đáng ngưỡng mộ. Chúng tôi đánh giá cao sự chuẩn bị kỹ lưỡng của bạn. Cuối cùng, bạn có bất kỳ câu hỏi nào dành cho chúng tôi về vị trí này hay về công ty không?",
+      "branches": [
+        {
+          "keywords": [
+            "cau_hoi",
+            "hoi_ro",
+            "thac_mac"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Những mục tiêu đó thật đáng ngưỡng mộ. Chúng tôi đánh giá cao sự chuẩn bị kỹ lưỡng của bạn. Cuối cùng, bạn có bất kỳ câu hỏi nào dành cho chúng tôi về vị trí này hay về công ty không? (Nhung muc tieu do that dang nguong mo. Chung toi danh gia cao su chuan bi ky luong cua ban. Cuoi cung, ban co bat ky cau hoi nao danh cho chung toi ve vi tri nay hay ve cong ty khong? — Those goals are admirable. We appreciate your thorough preparation. Finally, do you have any questions for us about this position or the company?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Bạn có thể nhắc lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa nghe rõ. Bạn có thể nhắc lại không? (Sin loi, toi chua nghe ro. Ban co the nhac lai khong? — Sorry, I didn't hear clearly. Could you repeat that?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã dành thời gian đến phỏng vấn. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn đã dành thời gian đến phỏng vấn. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất. (Cam on ban da danh thoi gian den phong van. Chung toi se lien he lai trong thoi gian som nhat. — Thank you for taking the time to interview with us. We will contact you as soon as possible.)",
+      "isTerminal": true
+    }
+  }
+}

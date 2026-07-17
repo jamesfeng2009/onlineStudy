@@ -1,0 +1,250 @@
+{
+  "id": "dlg-es-post-office-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "En la Oficina de Correos",
+  "opening": "¡Hola! ¿Cómo puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Cómo puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "enviar",
+            "paquete",
+            "unpaquete"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "comprar",
+            "sellos",
+            "unasellos",
+            "carta",
+            "unacarta"
+          ],
+          "nextTurnId": "t_stamps"
+        },
+        {
+          "keywords": [
+            "rastrear",
+            "seguimiento"
+          ],
+          "nextTurnId": "t_track"
+        },
+        {
+          "keywords": [
+            "",
+            "otra",
+            "algo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah) ¿Cómo puedo ayudarle hoy? (Koh-moh pweh-doh ah-yoo-dahr-leh oy?) — Hello! How can I help you today?"
+    },
+    "t_track": {
+      "id": "t_track",
+      "prompt": "Claro, para rastrear un envío necesito el número de seguimiento. ¿Lo tiene?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "numerodeseguimiento"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "no",
+            "nolotengo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, to track a shipment I need the tracking number. Do you have it?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro. ¿A dónde quiere enviar el paquete y qué contiene?",
+      "branches": [
+        {
+          "keywords": [
+            "españa",
+            "nacional",
+            "dentroespaña"
+          ],
+          "nextTurnId": "t3_parcel_national"
+        },
+        {
+          "keywords": [
+            "alemania",
+            "francia",
+            "europa",
+            "internacional",
+            "fueraespaña"
+          ],
+          "nextTurnId": "t3_parcel_international"
+        },
+        {
+          "keywords": [
+            "",
+            "otro",
+            "nose"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro. (Klah-roh) ¿A dónde quiere enviar el paquete y qué contiene? (Ah dohn-deh kee-eh-reh en-vee-ahr el pah-keh-teh ee keh kohn-tee-eh-neh?) — Of course. Where do you want to send the parcel and what does it contain?"
+    },
+    "t3_parcel_national": {
+      "id": "t3_parcel_national",
+      "prompt": "¿Es un envío normal o prefiere el servicio certificado con seguimiento?",
+      "branches": [
+        {
+          "keywords": [
+            "normal",
+            "estándar",
+            "simple"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "nose",
+            "cual"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Is it a standard shipment or do you prefer the registered service with tracking?"
+    },
+    "t3_parcel_international": {
+      "id": "t3_parcel_international",
+      "prompt": "Para envíos internacionales, ¿quiere un servicio estándar o certificado con número de rastreo?",
+      "branches": [
+        {
+          "keywords": [
+            "estándar",
+            "normal",
+            "simple"
+          ],
+          "nextTurnId": "t4_customs"
+        },
+        {
+          "keywords": [
+            "",
+            "nose",
+            "cual"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international shipments, do you want a standard service or registered with a tracking number?"
+    },
+    "t4_customs": {
+      "id": "t4_customs",
+      "prompt": "Necesitará rellenar un formulario de aduanas. ¿Le doy uno ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "porfavor",
+            "dameuno"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "queeseso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You will need to fill out a customs form. Shall I give you one now?"
+    },
+    "t_stamps": {
+      "id": "t_stamps",
+      "prompt": "¿Cuántos sellos necesita y para qué tipo de carta: nacional o internacional?",
+      "branches": [
+        {
+          "keywords": [
+            "nacional",
+            "paraespaña",
+            "cinco",
+            "uno"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "nose",
+            "cuantos"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Cuántos sellos necesita y para qué tipo de carta: nacional o internacional? (Kwan-tohs seh-yohs neh-seh-see-tah ee pah-rah keh tee-poh deh kahr-tah: nah-see-oh-nahl oh een-tehr-nah-see-oh-nahl?) — How many stamps do you need and for what type of letter: national or international?"
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "De acuerdo. El total es de 8 euros. ¿Cómo desea pagar?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "contarjeta"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay. The total is 8 euros. How do you wish to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perdón? (Pehr-dohn?) ¿Podría repetir, por favor? (Poh-dree-ah reh-peh-teer, pohr fah-vohr?) — Excuse me? Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Aquí tiene. ¡Que tenga un buen día! Adiós.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Here you go. Have a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

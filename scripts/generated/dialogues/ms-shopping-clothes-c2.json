@@ -1,0 +1,191 @@
+{
+  "id": "dlg-ms-shopping-clothes-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Pengalaman Membeli-belah di Butik Anggun",
+  "opening": "Selamat datang ke Butik Anggun. Ada apa-apa yang boleh saya bantu, cik?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Butik Anggun. Ada apa-apa yang boleh saya bantu, cik?",
+      "branches": [
+        {
+          "keywords": [
+            "cari baju",
+            "cari kemeja",
+            "cari pakaian",
+            "cari seluar",
+            "cari skirt",
+            "cari dress"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pulangkan",
+            "tukar"
+          ],
+          "nextTurnId": "t_returns"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Butik Anggun. (Se-la-mat da-tang ke Bu-tik Ang-gun.) Ada apa-apa yang boleh saya bantu, cik? (A-da a-pa-a-pa yang bo-leh sa-ya ban-tu, cik?) — Welcome to Anggun Boutique. Is there anything I can help you with, madam?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, cik. Kami ada pelbagai jenis kemeja dan seluar, dari kasual sehingga formal. Cik cari untuk majlis apa ya, atau gaya bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "kasual",
+            "santai",
+            "harian"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, cik. (Ba-ik, cik.) Kami ada pelbagai jenis kemeja dan seluar, dari kasual sehingga formal. (Ka-mi a-da pel-ba-gai je-nis ke-me-ja dan se-luar, da-ri ka-su-al se-hing-ga for-mal.) Cik cari untuk majlis apa ya, atau gaya bagaimana? (Cik ca-ri un-tuk maj-lis a-pa ya, a-tau ga-ya ba-ga-i-ma-na?) — Alright, madam. We have various types of shirts and trousers, from casual to formal. What kind of occasion are you looking for, or what style?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk gaya pilihan cik, kami ada koleksi baharu yang cukup menarik. Cik biasa pakai saiz apa dan ada warna pilihan di hati?",
+      "branches": [
+        {
+          "keywords": [
+            "saiz m",
+            "saiz l",
+            "saiz s",
+            "saiz xl"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk gaya pilihan cik, (Un-tuk ga-ya pi-li-han cik,) kami ada koleksi baharu yang cukup menarik. (ka-mi a-da ko-lek-si ba-ha-ru yang cu-kup me-na-rik.) Cik biasa pakai saiz apa dan ada warna pilihan di hati? (Cik bi-a-sa pa-kai sa-iz a-pa dan a-da war-na pi-li-han di ha-ti?) — For your chosen style, we have a very interesting new collection. What size do you usually wear and do you have a preferred color in mind?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Oh, kebetulan pula! Kami ada beberapa pilihan yang menepati ciri-ciri yang cik inginkan. Cik nak cuba dulu di bilik persalinan?",
+      "branches": [
+        {
+          "keywords": [
+            "nak cuba",
+            "boleh cuba",
+            "ya"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tak jadi",
+            "tak nak",
+            "cari lain"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, kebetulan pula! (Oh, ke-be-tu-lan pu-la!) Kami ada beberapa pilihan yang menepati ciri-ciri yang cik inginkan. (Ka-mi a-da be-be-ra-pa pi-li-han yang me-ne-pa-ti ci-ri-ci-ri yang cik ing-in-kan.) Cik nak cuba dulu di bilik persalinan? (Cik nak cu-ba du-lu di bi-lik per-sa-li-nan?) — Oh, what a coincidence! We have a few options that match the characteristics you're looking for. Would you like to try them on in the fitting room?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Serasi sungguh pilihan cik! Baju itu memang potongan premium dan kainnya pun selesa dipakai sepanjang hari. Nak teruskan pembayaran di kaunter? Kami juga ada program keahlian untuk diskaun 10% bagi pembelian seterusnya.",
+      "branches": [
+        {
+          "keywords": [
+            "ya bayar",
+            "jadi ambil",
+            "ambil ini"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "nak tengok lagi",
+            "ada lagi",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Serasi sungguh pilihan cik! (Se-ra-si sung-guh pi-li-han cik!) Baju itu memang potongan premium dan kainnya pun selesa dipakai sepanjang hari. (Ba-ju i-tu me-mang po-tong-an pre-mi-um dan ka-in-nya pun se-le-sa di-pa-kai se-pan-jang ha-ri.) Nak teruskan pembayaran di kaunter? (Nak te-rus-kan pem-ba-yar-an di ka-un-ter?) Kami juga ada program keahlian untuk diskaun 10% bagi pembelian seterusnya. (Ka-mi ju-ga a-da pro-gram ke-ah-li-an un-tuk dis-kaun 10% ba-gi pem-be-li-an se-te-rus-nya.) — Your choice suits you very well! That outfit truly has a premium cut and its fabric is comfortable to wear all day. Shall we proceed with payment at the counter? We also have a membership program for a 10% discount on your next purchase."
+    },
+    "t_returns": {
+      "id": "t_returns",
+      "prompt": "Oh, cik nak pulangkan atau tukar barang? Boleh saya lihat resit pembelian dan itemnya? Jika ada, kami boleh bantu terus.",
+      "branches": [
+        {
+          "keywords": [
+            "ada resit",
+            "ini resit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, cik nak pulangkan atau tukar barang? (Oh, cik nak pu-lang-kan a-tau tu-kar ba-rang?) Boleh saya lihat resit pembelian dan itemnya? (Bo-leh sa-ya li-hat re-sit pem-be-li-an dan i-tem-nya?) Jika ada, kami boleh bantu terus. (Ji-ka a-da, ka-mi bo-leh ban-tu te-rus.) — Oh, you want to return or exchange an item? May I see the receipt and the item? If you have them, we can assist you right away."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh cik ulang semula atau jelaskan dengan lebih lanjut?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh cik ulang semula (Ma-af, bo-leh cik u-lang se-mu-la) atau jelaskan dengan lebih lanjut? (a-tau je-las-kan de-ngan le-bih lan-jut?) — Sorry, could you please repeat or explain further?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak-banyak kerana sudi membeli-belah di sini. Jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak-banyak (Te-ri-ma ka-sih ba-nyak-ba-nyak) kerana sudi membeli-belah di sini. (ke-ra-na su-di mem-be-li-be-lah di si-ni.) Jumpa lagi! (Jum-pa la-gi!) — Thank you very much for shopping here. See you again!",
+      "isTerminal": true
+    }
+  }
+}

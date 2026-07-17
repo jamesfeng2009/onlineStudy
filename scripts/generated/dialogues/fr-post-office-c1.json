@@ -1,0 +1,188 @@
+{
+  "id": "dlg-fr-post-office-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Au Bureau de Poste",
+  "opening": "Bonjour, bienvenue à La Poste. En quoi puis-je vous être utile aujourd'hui ?",
+  "startTurnId": "t1_greet",
+  "turns": {
+    "t1_greet": {
+      "id": "t1_greet",
+      "prompt": "Bonjour, bienvenue à La Poste. En quoi puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "envoyercolis",
+            "colis",
+            "expédier",
+            "paquet"
+          ],
+          "nextTurnId": "t2_parcel_destination"
+        },
+        {
+          "keywords": [
+            "achetertimbres",
+            "timbres",
+            "affranchir"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour — Hello, bienvenue à La Poste — welcome to the Post Office. En quoi puis-je vous être utile aujourd'hui ? — How may I help you today?"
+    },
+    "t2_parcel_destination": {
+      "id": "t2_parcel_destination",
+      "prompt": "Très bien. S'agit-il d'un envoi national ou international ? C'est crucial pour les formalités et les options de suivi.",
+      "branches": [
+        {
+          "keywords": [
+            "international",
+            "étranger",
+            "horsfrance"
+          ],
+          "nextTurnId": "t3_international_details"
+        },
+        {
+          "keywords": [
+            "national",
+            "france",
+            "domestique"
+          ],
+          "nextTurnId": "t3_national_details"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien — Very well. S'agit-il d'un envoi national ou international ? — Is it a national or international shipment? C'est crucial pour les formalités et les options de suivi — It's crucial for formalities and tracking options."
+    },
+    "t3_international_details": {
+      "id": "t3_international_details",
+      "prompt": "Pour un envoi à l'étranger, nous devons remplir une déclaration en douane (CN23). Avez-vous besoin d'aide avec cela, et souhaitez-vous un envoi recommandé, assuré, ou un simple suivi ?",
+      "branches": [
+        {
+          "keywords": [
+            "aide",
+            "douane",
+            "formulaire"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour un envoi à l'étranger — For a shipment abroad, nous devons remplir une déclaration en douane (CN23) — we must fill out a customs declaration (CN23). Avez-vous besoin d'aide avec cela — Do you need help with that, et souhaitez-vous un envoi recommandé — and would you like registered mail, assuré — insured, ou un simple suivi ? — or simple tracking?"
+    },
+    "t3_national_details": {
+      "id": "t3_national_details",
+      "prompt": "Pour un envoi en France, avez-vous une préférence entre un Colissimo standard, un Colissimo avec signature, ou un service de livraison express ?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "normal"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour un envoi en France — For a shipment within France, avez-vous une préférence entre un Colissimo standard — do you have a preference between a standard Colissimo, un Colissimo avec signature — a Colissimo with signature, ou un service de livraison express ? — or an express delivery service?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Pour les timbres, c'est pour quel type de courrier et quelle destination ? Une simple lettre pour la France, ou un envoi à l'international ?",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "national",
+            "lettre"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour les timbres — For stamps, c'est pour quel type de courrier et quelle destination ? — what type of mail and destination is it for? Une simple lettre pour la France — A simple letter for France, ou un envoi à l'international ? — or an international shipment?"
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "Parfait. Une fois toutes les formalités complétées, le montant total sera de [prix]. Quel mode de paiement préférez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "espèces",
+            "payer"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait — Perfect. Une fois toutes les formalités complétées — Once all formalities are completed, le montant total sera de [prix] — the total amount will be [price]. Quel mode de paiement préférez-vous ? — Which payment method do you prefer?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t1_greet"
+        }
+      ],
+      "fallbackBranchId": "t1_greet",
+      "promptTranslation": "Je n'ai pas bien saisi — I didn't quite catch that. Pourriez-vous répéter, s'il vous plaît ? — Could you please repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci de votre visite à La Poste et excellente journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci de votre visite à La Poste — Thank you for your visit to the Post Office et excellente journée ! — and have an excellent day!",
+      "isTerminal": true
+    }
+  }
+}

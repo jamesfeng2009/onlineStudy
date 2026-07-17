@@ -1,0 +1,206 @@
+{
+  "id": "dlg-ms-phone-call-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon Rasmi",
+  "opening": "Selamat pagi, Progresif Berhad. Ini Farah bercakap. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Progresif Berhad. Ini Farah bercakap. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "encik",
+            "puan",
+            "cakap",
+            "bercakap"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "hello"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, Progresif Berhad. Ini Farah ber-cakap. Boleh saya ban-tu? — Good morning, Progresif Berhad. This is Farah speaking. How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Encik Tan? Beliau ada mesyuarat penting sekarang dan memang tiada di pejabat. Ada apa-apa yang boleh saya sampaikan atau ada hal lain?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "mesej"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "bila",
+            "tersedia",
+            "lapang",
+            "ada",
+            "hubungi"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "ulangi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, En-cik Tan? Be-liau a-da me-syua-rat pen-ting se-ka-rang dan me-mang tia-da di pe-ja-bat. A-da a-pa-a-pa yang bo-leh saya sam-pai-kan a-tau a-da hal la-in? — Oh, Mr. Tan? He's in an important meeting right now and is not in the office. Is there anything I can convey or is there another matter?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Baiklah, sila maklumkan nama dan nombor telefon tuan/puan, serta sedikit butiran pesanan. Nanti saya sampaikan sebaik sahaja beliau lapang.",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "nombor",
+            "pesanan",
+            "mesej",
+            "saya"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "call",
+            "telefon",
+            "hubung",
+            "balik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakfaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bai-klah, si-la mak-lum-kan na-ma dan nom-bor te-le-fon tuan/puan, ser-ta se-di-kit bu-ti-ran pe-sa-nan. Nan-ti saya sam-pai-kan se-ba-ik sa-ha-ja be-liau la-pang. — Alright, please state your name and phone number, and a brief detail of the message. I will convey it as soon as he is free."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Agak sukar saya nak pastikan bila beliau akan lapang, mungkin dalam sejam dua lagi. Atau, boleh saya sambungkan ke Puan Aminah di jabatan yang sama? Beliau mungkin boleh membantu.",
+      "branches": [
+        {
+          "keywords": [
+            "sambung",
+            "hubungkan",
+            "puanaminah"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "telefon",
+            "call",
+            "hubung",
+            "balik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "mesej"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "tidak"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's a bit hard for me to confirm when he'll be free, perhaps in an hour or two. Or, may I connect you to Ms. Aminah in the same department? She might be able to help."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Terima kasih atas maklumat itu. Saya akan pastikan Encik Tan dapat pesanan tuan/puan. Ada apa-apa lagi yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "cukup",
+            "itu",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for that information. I will ensure Mr. Tan receives your message. Is there anything else I can help you with?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Baik, tunggu sebentar ya. Saya sambungkan talian. Terima kasih kerana menghubungi kami.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, please wait a moment. I'll connect the line. Thank you for contacting us."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh tuan/puan ulangi sekali lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that? It wasn't very clear just now."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih atas panggilan tuan/puan. Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for your call. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

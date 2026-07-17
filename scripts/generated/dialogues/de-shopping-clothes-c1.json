@@ -1,0 +1,238 @@
+{
+  "id": "dlg-de-shopping-clothes-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen: Eine C1-Konversation",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein? Suchen Sie etwas Bestimmtes oder möchten Sie sich einfach nur umsehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein? Suchen Sie etwas Bestimmtes oder möchten Sie sich einfach nur umsehen?",
+      "branches": [
+        {
+          "keywords": [
+            "pullover",
+            "hemd",
+            "kleid",
+            "hose",
+            "jacke",
+            "schuhe"
+          ],
+          "nextTurnId": "t2_specific"
+        },
+        {
+          "keywords": [
+            "umsehen",
+            "stöbern",
+            "inspiration",
+            "durchschauen"
+          ],
+          "nextTurnId": "t2_browse_or_gift"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahk! Vee kahn ihkh Ee-nen beh-hilf-likh zyn? Zoo-khen zee et-vas Bestimmtes (be-sh-timm-tesh) oh-der mohkh-ten zee zikh ayn-fakh noor oom-zeh-en? — Hello! How may I help you? Are you looking for something specific or would you just like to browse?"
+    },
+    "t2_specific": {
+      "id": "t2_specific",
+      "prompt": "Verstehe. Für einen Pullover haben wir eine sehr ansprechende Auswahl. Haben Sie schon eine präzise Vorstellung bezüglich Größe, Farbe oder Stil?",
+      "branches": [
+        {
+          "keywords": [
+            "größe",
+            "grösse",
+            "s",
+            "m",
+            "l",
+            "xl",
+            "36",
+            "38",
+            "40",
+            "42",
+            "44"
+          ],
+          "nextTurnId": "t3_show_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fer-shtay-e. Foor ay-nen Pool-oh-ver hah-ben veer ay-ne zeer an-shpre-khen-de Auz-vahl. Hah-ben zee shohn ay-ne pre-tsee-se For-shtel-lung be-tsoo-glikh Groh-se (Groh-se), Far-be (Far-be) oh-der Shtiel? — I see. For a sweater, we have a very appealing selection. Do you already have a precise idea regarding size, color, or style?"
+    },
+    "t2_browse_or_gift": {
+      "id": "t2_browse_or_gift",
+      "prompt": "Gerne. Möchten Sie sich in einer bestimmten Abteilung umsehen, beispielsweise bei den Neuheiten, im Sale oder suchen Sie vielleicht etwas für einen besonderen Anlass?",
+      "branches": [
+        {
+          "keywords": [
+            "neuheiten",
+            "neu",
+            "frisch"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "pullover",
+            "hemd",
+            "kleid",
+            "hose",
+            "jacke",
+            "schuhe",
+            "dochpullover"
+          ],
+          "nextTurnId": "t2_specific"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gair-ne. Mohkh-ten zee zikh in ay-ner be-sh-timm-ten Ap-ty-lung oom-zeh-en, by-shpeelz-vy-ze by den Noy-hay-ten (Noy-hay-ten), im Sayl (Sayl) oh-der zoo-khen zee fyl-laykh et-vasch foor ay-nen be-zon-de-ren An-las? — Certainly. Would you like to look around in a specific department, for example, new arrivals, sale, or are you perhaps looking for something for a special occasion?"
+    },
+    "t3_show_item": {
+      "id": "t3_show_item",
+      "prompt": "Ausgezeichnet. Ich habe hier ein Modell, das Ihren Vorstellungen entsprechen könnte. Es ist ein hochwertiger Kaschmirpullover in Größe M, klassischem Blau. Der Preis liegt bei 129 Euro. Möchten Sie ihn einmal anprobieren oder soll ich Ihnen weitere Alternativen zeigen?",
+      "branches": [
+        {
+          "keywords": [
+            "anprobieren",
+            "ja",
+            "gerne",
+            "probieren"
+          ],
+          "nextTurnId": "t4_decision"
+        },
+        {
+          "keywords": [
+            "andere",
+            "mehr",
+            "alternativen",
+            "weitersuchen",
+            "anderes"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "kaufen",
+            "nehmeich",
+            "direkt"
+          ],
+          "nextTurnId": "t5_purchase"
+        },
+        {
+          "keywords": [
+            "zuteuer",
+            "teuer",
+            "nichtimbudget"
+          ],
+          "nextTurnId": "t5_no_purchase"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Auz-ge-tsaykh-net. Ihkh hah-be heer ayn Moh-del, das Ee-ren For-shtel-lun-gen ent-shpre-khen kohn-te. Es ist ayn hokh-vair-ti-ger Kah-shmeer-pul-loh-ver in Groh-se Em, klas-sih-shem Blou. Der Prys leegt by 129 Oy-ro. Mohkh-ten zee ihn ayn-mahl an-pro-bee-ren oh-der soll ihkh Ee-nen vy-te-re Al-ter-nah-tee-ven tsay-gen? — Excellent. I have a model here that could match your ideas. It's a high-quality cashmere sweater in size M, classic blue. The price is 129 Euros. Would you like to try it on, or should I show you other alternatives?"
+    },
+    "t4_decision": {
+      "id": "t4_decision",
+      "prompt": "Und, wie gefällt er Ihnen? Fühlt er sich angenehm an und passt er gut? Manchmal kommt es auch auf Nuancen an. Was denken Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "passt",
+            "gefällt",
+            "nehmeich",
+            "kaufen",
+            "perfekt"
+          ],
+          "nextTurnId": "t5_purchase"
+        },
+        {
+          "keywords": [
+            "passtnicht",
+            "zugross",
+            "zuklein",
+            "anderegröße",
+            "anderegrösse",
+            "anderefarbe"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "überlegen",
+            "unsicher",
+            "nichtganz",
+            "passtnichtso"
+          ],
+          "nextTurnId": "t5_no_purchase"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oond, vee ge-fellt er Ee-nen? Foolet er zikh an-ge-nem ahn oond passt er goot? Mahnkh-mahl kommt es oukh ouf Noo-an-sen ahn. Vas den-ken zee? — And, how do you like it? Does it feel comfortable and fit well? Sometimes it also depends on nuances. What do you think?"
+    },
+    "t5_purchase": {
+      "id": "t5_purchase",
+      "prompt": "Wunderbar! Eine ausgezeichnete Wahl. Gehen wir zur Kasse? Falls Sie möchten, verpacken wir es Ihnen auch gerne als Geschenk.",
+      "branches": [
+        {
+          "keywords": [
+            "zahlen",
+            "kasse",
+            "bezahlen",
+            "ja",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Voon-der-bahr! Ay-ne auz-ge-tsaykh-ne-te Vahl. Geh-en veer tsoor Kah-se? Fals zee mohkh-ten, fer-pak-ken veer es Ee-nen oukh gair-ne als Ge-shenk. — Wonderful! An excellent choice. Shall we go to the checkout? If you like, we'll also be happy to wrap it for you as a gift."
+    },
+    "t5_no_purchase": {
+      "id": "t5_no_purchase",
+      "prompt": "Kein Problem, das ist ja kein Beinbruch. Wenn Sie noch etwas anderes suchen oder später wiederkommen möchten, stehe ich Ihnen jederzeit gerne zur Verfügung.",
+      "branches": [
+        {
+          "keywords": [
+            "weiterschauen",
+            "andereabteilung",
+            "andere",
+            "dochpullover"
+          ],
+          "nextTurnId": "t3_show_item"
+        },
+        {
+          "keywords": [
+            "danke",
+            "nichts",
+            "später",
+            "aufwiedersehen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kyn Pro-blem, das ist yah kyn Byn-brookh. Ven zee nokh et-vasch an-de-res zoo-khen oh-der shpe-ter vee-der-kom-men mohkh-ten, shtay-e ihkh Ee-nen ye-de-r-tzyt gair-ne tsoor Fer-foo-gung. — No problem at all, it's not the end of the world. If you're looking for something else or would like to come back later, I'm always at your disposal."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-dih-gen zee, ihkh hah-be zee ah-koos-tihsh nihkh-t fer-shtan-den. Kohn-ten zee das bit-te nokh ayn-mahl vee-der-hoh-len? — Excuse me, I didn't catch that acoustically. Could you please repeat that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dahk foor Ee-ren Be-zook oond ouf Vee-der-zeh-en! — Thank you for your visit and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "id": "dlg-th-taxi-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "การเดินทางด้วยแท็กซี่",
+  "opening": "สวัสดีครับ/ค่ะ จะไปไหนดีครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ จะไปไหนดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สนามบินสุวรรณภูมิ",
+            "สนามบินดอนเมือง",
+            "โรงแรม",
+            "สถานีรถไฟฟ้า",
+            "ไป...",
+            "ที่..."
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-wat-dee khrap/kha, ja pai nai dee khrap/kha? — Hello, where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "สนามบินสุวรรณภูมิใช่ไหมครับ/คะ? จะให้ไปทางด่วนเลยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ใช้ทางด่วน",
+            "เอาทางด่วน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไม่เอาทางด่วน",
+            "ไม่ใช้ทางด่วน",
+            "ทางธรรมดา",
+            "ไม่ทางด่วน"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-nam-bin Su-wan-na-phum chai mai khrap/kha? Ja hai pai thang duan loey mai khrap/kha? — Suvarnabhumi Airport, right? Should I take the expressway?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "โอเคครับ/ค่ะ ค่าทางด่วนผู้โดยสารจ่ายเองนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครับ",
+            "ค่ะ",
+            "ได้ครับ",
+            "ได้ค่ะ",
+            "เข้าใจแล้ว",
+            "ตกลง"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-key khrap/kha. Kha thang duan phu-doi-san jai eng na khrap/kha. — Okay, the passenger pays the toll, just so you know."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ได้ครับ/ค่ะ แต่ถ้าไปทางธรรมดา อาจจะติดหน่อยนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ได้ครับ",
+            "ได้ค่ะ",
+            "รอได้"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ทางด่วนดีกว่า",
+            "เปลี่ยนเป็นทางด่วน",
+            "เอาทางด่วน"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai khrap/kha. Tae tha pai thang thammada at ja tit noi na khrap/kha. — Okay, but if we go the normal way, there might be some traffic."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เรียบร้อยครับ/ค่ะ เชิญเลยครับ/ค่ะ ค่าโดยสารตามมิเตอร์นะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครับ",
+            "ค่ะ",
+            "ไปได้เลย",
+            "ไม่มีครับ",
+            "ไม่มีค่ะ",
+            "ขอบคุณครับ",
+            "ขอบคุณค่ะ"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Riap roi khrap/kha. Chern loey khrap/kha. Kha doi san tam meter na khrap/kha. — Alright. Please come in. The fare is by the meter."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ถึงแล้วครับ/ค่ะ ยอดตามมิเตอร์ 250 บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "จ่ายแล้ว",
+            "นี่ครับ",
+            "นี่ค่ะ",
+            "เงินทอน",
+            "ขอบคุณครับ",
+            "ขอบคุณค่ะ",
+            "ครับ",
+            "ค่ะ",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Teung laew khrap/kha. Yot tam meter song roi ha sip baht khrap/kha. — We're here. The meter total is 250 baht."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho thot khrap/kha, phut ik khrang dai mai khrap/kha? — Sorry, could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ เดินทางปลอดภัยนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khop khun mak khrap/kha. Dern thang plai phai na khrap/kha. — Thank you very much. Have a safe trip!",
+      "isTerminal": true
+    }
+  }
+}

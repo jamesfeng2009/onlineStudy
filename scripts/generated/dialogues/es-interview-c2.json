@@ -1,0 +1,192 @@
+{
+  "id": "dlg-es-interview-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Entrevista de Trabajo: Perfil Profesional",
+  "opening": "Buenos días, [Nombre del Candidato]. Soy [Nombre del Entrevistador], el gerente de contratación. Gracias por venir. Para empezar, me gustaría que nos contaras un poco sobre ti y tu trayectoria profesional.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días, [Nombre del Candidato]. Soy [Nombre del Entrevistador], el gerente de contratación. Gracias por venir. Para empezar, me gustaría que nos contaras un poco sobre ti y tu trayectoria profesional.",
+      "branches": [
+        {
+          "keywords": [
+            "experiencia",
+            "trayectoria",
+            "profesional",
+            "currículum"
+          ],
+          "nextTurnId": "t2_experience"
+        },
+        {
+          "keywords": [
+            "quién",
+            "soy",
+            "presentarme",
+            "mí"
+          ],
+          "nextTurnId": "t2_intro"
+        },
+        {
+          "keywords": [
+            "empresa",
+            "interés",
+            "motivación"
+          ],
+          "nextTurnId": "t2_motivation"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, [Candidate's Name]. I am [Interviewer's Name], the hiring manager. Thank you for coming. To begin, I'd like you to tell us a bit about yourself and your professional background. [Spanish pronunciation]"
+    },
+    "t2_experience": {
+      "id": "t2_experience",
+      "prompt": "Interesante. Veo en tu currículum que tienes una sólida experiencia en tu campo. ¿Podrías ahondar un poco más en algún proyecto o rol que consideres particularmente relevante para este puesto?",
+      "branches": [
+        {
+          "keywords": [
+            "proyecto",
+            "logro",
+            "éxito",
+            "resultados"
+          ],
+          "nextTurnId": "t3_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "masinformacion"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting. I see on your resume that you have solid experience in your field. Could you delve a little deeper into a project or role you consider particularly relevant for this position? [Spanish pronunciation]"
+    },
+    "t2_intro": {
+      "id": "t2_intro",
+      "prompt": "Entendido. Aprecio tu enfoque holístico. Ahora bien, para entender mejor cómo encajarías en nuestro equipo, ¿podrías compartirnos tus puntos fuertes y alguna área de mejora?",
+      "branches": [
+        {
+          "keywords": [
+            "fortalezas",
+            "habilidades",
+            "puntosfuertes"
+          ],
+          "nextTurnId": "t3_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "entender"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. I appreciate your holistic approach. Now, to better understand how you'd fit into our team, could you share your strengths and an area for improvement? [Spanish pronunciation]"
+    },
+    "t2_motivation": {
+      "id": "t2_motivation",
+      "prompt": "Es excelente escuchar tu entusiasmo por nuestra compañía. ¿Qué es lo que más te atrae de este puesto en particular y qué crees que podrías aportar que nos diferencie?",
+      "branches": [
+        {
+          "keywords": [
+            "aportar",
+            "valor",
+            "diferencia",
+            "distinguir"
+          ],
+          "nextTurnId": "t3_strengths"
+        },
+        {
+          "keywords": [
+            "",
+            "masinformacion"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's excellent to hear your enthusiasm for our company. What is it that most attracts you to this particular position, and what do you think you could bring that would make us stand out? [Spanish pronunciation]"
+    },
+    "t3_strengths": {
+      "id": "t3_strengths",
+      "prompt": "Muy bien. Para tener una perspectiva completa de tu perfil, ¿cuáles dirías que son tus principales fortalezas que te hacen idóneo para este rol, y qué área de mejora te gustaría comentar con nosotros?",
+      "branches": [
+        {
+          "keywords": [
+            "fortalezas",
+            "habilidades",
+            "competencias"
+          ],
+          "nextTurnId": "t4_weakness_probe"
+        },
+        {
+          "keywords": [
+            "",
+            "explicar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. To get a complete perspective of your profile, what would you say are your main strengths that make you suitable for this role, and what area for improvement would you like to discuss with us? [Spanish pronunciation]"
+    },
+    "t4_weakness_probe": {
+      "id": "t4_weakness_probe",
+      "prompt": "Agradezco tu honestidad y autoconciencia. Es crucial entender que no hay nadie perfecto. En relación a esa área de mejora que mencionas, ¿podrías describir alguna situación en la que te hayas enfrentado a un desafío significativo y cómo lo abordaste para mitigar sus efectos?",
+      "branches": [
+        {
+          "keywords": [
+            "desafío",
+            "problema",
+            "obstáculo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ejemplo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I appreciate your honesty and self-awareness. It's crucial to understand that no one is perfect. Regarding that area for improvement you mentioned, could you describe a situation where you faced a significant challenge and how you addressed it to mitigate its effects? [Spanish pronunciation]"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, ¿podrías repetirlo? No te he entendido del todo. [Spanish pronunciation]",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, could you repeat that? I didn't quite catch it. [Spanish pronunciation]"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Magnífico. Hemos cubierto bastante terreno hoy. Te agradezco enormemente tu tiempo y la franqueza de tus respuestas. Nosotros nos pondremos en contacto contigo en los próximos días para informarte sobre los siguientes pasos. ¡Que tengas un excelente día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. We've covered a lot of ground today. I greatly appreciate your time and the candor of your responses. We will contact you in the coming days to inform you about the next steps. Have an excellent day! [Spanish pronunciation]",
+      "isTerminal": true
+    }
+  }
+}

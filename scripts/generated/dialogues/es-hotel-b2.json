@@ -1,0 +1,125 @@
+{
+  "id": "dlg-es-hotel-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Registro en el hotel",
+  "opening": "¡Buenos días! Bienvenido/a al Hotel Miramar. ¿Tiene una reserva a su nombre?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! Bienvenido/a al Hotel Miramar. ¿Tiene una reserva a su nombre?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "mi nombre es",
+            "reserva"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! (Bwenos DEE-as) Bienvenido/a al Hotel Miramar. (Bee-en-veh-NEE-do/da al Hotel Meer-ah-MAR) ¿Tiene una reserva a su nombre? (Tee-EH-neh oo-na reh-SER-va a soo NOM-breh) — Good morning! Welcome to Hotel Miramar. Do you have a reservation under your name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excelente. Si no le importa, ¿podría facilitarme su documento de identidad y una tarjeta de crédito para el depósito, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "aquí tiene",
+            "tome",
+            "pasaporte",
+            "dni"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. (Ek-seh-LEN-teh) Si no le importa, (See no leh im-POR-ta) ¿podría facilitarme (po-DREE-a fa-see-lee-TAR-meh) su documento de identidad y una tarjeta de crédito para el depósito, por favor? (soo do-koo-MEN-to deh ee-den-tee-DAD ee oo-na tar-HET-a deh KREH-dee-to pa-ra el deh-PO-see-to, por fa-VOR) — Excellent. If you don't mind, could you please provide me with your ID and a credit card for the deposit, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto. Hemos verificado su reserva. ¿Tiene alguna preferencia de habitación? Por ejemplo, ¿prefiere una planta alta, vistas específicas o una habitación más tranquila?",
+      "branches": [
+        {
+          "keywords": [
+            "planta alta",
+            "tranquila",
+            "vistas",
+            "exterior"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. (Per-FEK-to) Hemos verificado su reserva. (Eh-mos veh-ree-fee-KA-do soo reh-SER-va) ¿Tiene alguna preferencia de habitación? (Tee-EH-neh al-GOO-na preh-feh-REN-see-a deh ha-bee-ta-SYON) Por ejemplo, ¿prefiere una planta alta, vistas específicas o una habitación más tranquila? — Perfect. We have verified your reservation. Do you have any room preferences? For example, do you prefer a high floor, specific views, or a quieter room?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. Le hemos asignado la habitación 305, que cumple con sus requisitos. ¿Desearía incluir el desayuno buffet en su estancia? Se sirve de 7 a 10 de la mañana en el restaurante.",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "desayuno",
+            "quiero",
+            "buffet"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. We have assigned you room 305, which meets your requirements. Would you like to include the breakfast buffet with your stay? It is served from 7 to 10 AM in the restaurant."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¡Perfecto! Su habitación es la 305 en la tercera planta. Aquí tiene su llave/tarjeta. Si necesita algo más, no dude en consultarnos. ¡Que disfrute de su estancia!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Perfect! Your room is 305 on the third floor. Here is your key/card. If you need anything else, don't hesitate to ask us. Enjoy your stay!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't understand you well."
+    }
+  }
+}

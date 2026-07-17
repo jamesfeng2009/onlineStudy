@@ -1,0 +1,147 @@
+{
+  "id": "dlg-it-doctor-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Visita dal Dottore",
+  "opening": "Buongiorno, come posso aiutarLa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, come posso aiutarLa?",
+      "branches": [
+        {
+          "keywords": [
+            "malditesta",
+            "testa",
+            "fa male la testa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nonstobene",
+            "male",
+            "misentomale"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (bwon-JOR-no), come posso aiutarLa (ah-yoo-TAR-la)? — Good morning, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Mi dica di più. Dov'è il dolore e da quanto tempo?",
+      "branches": [
+        {
+          "keywords": [
+            "testa",
+            "qui",
+            "fronte"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dica di più (mee DEE-kah dee pyoo). Dov'è il dolore e da quanto tempo (DAH KWAN-toh TEM-po)? — Tell me more. Where is the pain and for how long?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. Ha anche altri sintomi, come tosse o febbre?",
+      "branches": [
+        {
+          "keywords": [
+            "tosse",
+            "holatosse",
+            "tosso"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. Ha anche altri sintomi, come tosse o febbre? — I understand. Do you also have other symptoms, like a cough or fever?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Va bene. Ha qualche allergia a farmaci?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "sonoallergico",
+            "penicillina"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene (va BEH-neh). Ha qualche allergia (KWAL-keh ah-ller-JEE-ah) a farmaci? — Okay. Do you have any allergies to medications?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Capisco. Le prescrivo un farmaco. Lo prenda due volte al giorno per tre giorni. Ha capito?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "hocapito",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonhocapito",
+            "ripetere"
+          ],
+          "nextTurnId": "t5a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. Le prescrivo un farmaco. Lo prenda due volte al giorno per tre giorni. Ha capito? — I understand. I'm prescribing you a medicine. Take it twice a day for three days. Do you understand?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Certamente. Prenda una compressa al mattino e una alla sera, dopo i pasti, per tre giorni. È più chiaro ora?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certamente. Prenda una compressa al mattino e una alla sera, dopo i pasti, per tre giorni. È più chiaro ora? — Certainly. Take one tablet in the morning and one in the evening, after meals, for three days. Is it clearer now?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sì",
+            "ok",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, potrebbe ripetere, per favore? — Excuse me, could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Bene. Spero si senta meglio presto. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Bene. Spero si senta meglio presto. Arrivederci! — Good. I hope you feel better soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

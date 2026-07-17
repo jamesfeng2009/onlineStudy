@@ -1,0 +1,165 @@
+{
+  "id": "dlg-fr-doctor-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Chez le médecin",
+  "opening": "Bonjour, entrez. Asseyez-vous, s'il vous plaît. Qu'est-ce qui ne va pas ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, entrez. Asseyez-vous, s'il vous plaît. Qu'est-ce qui ne va pas ?",
+      "branches": [
+        {
+          "keywords": [
+            "mal",
+            "suis malade",
+            "pas bien"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bonjour",
+            "salut",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bon-zhoor), entrez. Asseyez-vous (a-say-yay-voo), s'il vous plaît. Qu'est-ce qui ne va pas (kes-kee-nuh-va-pah) ? — Hello, come in. Please sit down. What's wrong?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Je vois. Quels sont vos symptômes principaux ? Vous avez de la fièvre, de la toux, ou des douleurs ?",
+      "branches": [
+        {
+          "keywords": [
+            "fièvre",
+            "chaud"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je vois (zhuh-vwah). Quels sont vos symptômes principaux (kel-son-vo-sim-pto-muh-prin-see-po) ? Vous avez de la fièvre (voo-za-vay-duh-la-fyevr), de la toux (duh-la-too), ou des douleurs ? — I see. What are your main symptoms? Do you have a fever, a cough, or pain?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accord. Où avez-vous mal exactement et depuis quand avez-vous ces symptômes ?",
+      "branches": [
+        {
+          "keywords": [
+            "tête",
+            "jours",
+            "hier",
+            "peu"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (da-kor). Où avez-vous mal (oo-a-vay-voo-mal) exactement et depuis quand (dep-wee-kahn) avez-vous ces symptômes ? — Okay. Where exactly does it hurt and since when have you had these symptoms?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Merci. Avez-vous des allergies à des médicaments, ou d'autres allergies ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "médicaments",
+            "pénicilline"
+          ],
+          "nextTurnId": "t5_allergy"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas allergies",
+            "rien"
+          ],
+          "nextTurnId": "t5_noallergy"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci (mer-see). Avez-vous des allergies (a-vay-voo-day-zal-er-jee) à des médicaments (ah-day-may-dee-ka-mon), ou d'autres allergies ? — Thank you. Do you have any allergies to medication, or other allergies?"
+    },
+    "t5_allergy": {
+      "id": "t5_allergy",
+      "prompt": "Bien, je prends note. Je vais vous donner une ordonnance pour des médicaments adaptés. Vous devez les prendre pendant cinq jours.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "question",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien (byan), je prends note. Je vais vous donner une ordonnance (oo-nor-do-nons) pour des médicaments (day-may-dee-ka-mon) adaptés. Vous devez les prendre pendant cinq jours. — Good, I'll make a note. I will give you a prescription for suitable medication. You need to take them for five days."
+    },
+    "t5_noallergy": {
+      "id": "t5_noallergy",
+      "prompt": "Bien. Je vais vous donner une ordonnance pour des médicaments. Prenez-les trois fois par jour pendant cinq jours.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "question",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien (byan). Je vais vous donner une ordonnance (oo-nor-do-nons) pour des médicaments (day-may-dee-ka-mon). Prenez-les trois fois par jour pendant cinq jours. — Good. I will give you a prescription for medication. Take them three times a day for five days."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Excusez-moi, je n'ai pas compris. Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excusez-moi (ex-skew-zay-mwa), je n'ai pas compris (zhuh-nay-pa-kom-pree). Pouvez-vous répéter (poo-vay-voo-ray-pay-tay), s'il vous plaît ? — Excuse me, I didn't understand. Can you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien. Au revoir et bon rétablissement !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très bien (tray-byan). Au revoir (o-ruh-vwar) et bon rétablissement (bon-ray-ta-blee-suh-mon) ! — Very good. Goodbye and get well soon!",
+      "isTerminal": true
+    }
+  }
+}

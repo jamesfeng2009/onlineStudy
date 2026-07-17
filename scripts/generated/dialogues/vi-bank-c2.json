@@ -1,0 +1,192 @@
+{
+  "id": "dlg-vi-bank-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Giao Dịch Ngân Hàng - Cấp Độ C2",
+  "opening": "Xin chào quý khách, tôi có thể giúp gì được cho quý khách hôm nay ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào quý khách, tôi có thể giúp gì được cho quý khách hôm nay ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "mởtài khoản",
+            "tài khoảnmới"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "đổitiền",
+            "chuyểntiền tệ"
+          ],
+          "nextTurnId": "t3_exchange"
+        },
+        {
+          "keywords": [
+            "vấnđềatm",
+            "thẻatm",
+            "lỗiatm"
+          ],
+          "nextTurnId": "t4_atm"
+        },
+        {
+          "keywords": [
+            "chuyểnkhoản",
+            "gửitiền"
+          ],
+          "nextTurnId": "t5_transfer"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào quý khách, tôi có thể giúp gì được cho quý khách hôm nay ạ? — Hello, how may I help you today?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Vâng, quý khách muốn mở loại tài khoản nào ạ? Tài khoản tiết kiệm, tài khoản thanh toán, hay tài khoản doanh nghiệp?",
+      "branches": [
+        {
+          "keywords": [
+            "tiếtkiệm",
+            "gửitiếtkiệm"
+          ],
+          "nextTurnId": "t2a_savings"
+        },
+        {
+          "keywords": [
+            "thanhtoán",
+            "tài khoảnthường"
+          ],
+          "nextTurnId": "t2b_current"
+        },
+        {
+          "keywords": [
+            "doanhnghiệp",
+            "tài khoảnkinhdoanh"
+          ],
+          "nextTurnId": "t2c_business"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách muốn mở loại tài khoản nào ạ? Tài khoản tiết kiệm, tài khoản thanh toán, hay tài khoản doanh nghiệp? — Yes, what type of account would you like to open? A savings account, a current account, or a business account?"
+    },
+    "t2a_savings": {
+      "id": "t2a_savings",
+      "prompt": "Để mở tài khoản tiết kiệm, quý khách vui lòng cung cấp giấy tờ tùy thân và điền vào mẫu đơn này. Quý khách có muốn tìm hiểu thêm về các gói lãi suất ưu đãi của chúng tôi không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "quan tâm",
+            "lãisuất"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để mở tài khoản tiết kiệm, quý khách vui lòng cung cấp giấy tờ tùy thân và điền vào mẫu đơn này. Quý khách có muốn tìm hiểu thêm về các gói lãi suất ưu đãi của chúng tôi không? — To open a savings account, please provide your identification documents and fill out this form. Would you like to learn more about our preferential interest rate packages?"
+    },
+    "t2b_current": {
+      "id": "t2b_current",
+      "prompt": "Với tài khoản thanh toán, quý khách có thể thực hiện giao dịch hàng ngày một cách thuận tiện. Quý khách vui lòng cung cấp giấy tờ tùy thân để chúng tôi hỗ trợ mở tài khoản nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "đãhiểu",
+            "ok",
+            "tiếptục"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Với tài khoản thanh toán, quý khách có thể thực hiện giao dịch hàng ngày một cách thuận tiện. Quý khách vui lòng cung cấp giấy tờ tùy thân để chúng tôi hỗ trợ mở tài khoản nhé. — With a current account, you can perform daily transactions conveniently. Please provide your identification documents for us to assist with opening the account."
+    },
+    "t2c_business": {
+      "id": "t2c_business",
+      "prompt": "Để mở tài khoản doanh nghiệp, chúng tôi cần thêm một số giấy tờ pháp lý của công ty. Quý khách có muốn chúng tôi tư vấn chi tiết hơn về quy trình và các lợi ích không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "tưvấn",
+            "chi tiết"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để mở tài khoản doanh nghiệp, chúng tôi cần thêm một số giấy tờ pháp lý của công ty. Quý khách có muốn chúng tôi tư vấn chi tiết hơn về quy trình và các lợi ích không? — To open a business account, we require additional legal documents from the company. Would you like us to provide more detailed consultation on the process and benefits?"
+    },
+    "t3_exchange": {
+      "id": "t3_exchange",
+      "prompt": "Quý khách muốn đổi từ loại tiền tệ nào sang tiền tệ nào và số lượng là bao nhiêu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "usd sang vnd",
+            "đôla"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách muốn đổi từ loại tiền tệ nào sang tiền tệ nào và số lượng là bao nhiêu ạ? — Which currency would you like to exchange from and to, and what is the amount?"
+    },
+    "t4_atm": {
+      "id": "t4_atm",
+      "prompt": "Về vấn đề ATM, quý khách vui lòng cho biết cụ thể mình đang gặp phải tình huống nào ạ? Ví dụ như nuốt thẻ, quên mã PIN, hay không rút được tiền?",
+      "branches": [
+        {
+          "keywords": [
+            "nuốtthẻ",
+            "mắc thẻ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Về vấn đề ATM, quý khách vui lòng cho biết cụ thể mình đang gặp phải tình huống nào ạ? Ví dụ như nuốt thẻ, quên mã PIN, hay không rút được tiền? — Regarding the ATM issue, could you please specify what situation you are experiencing? For example, card swallowed, forgotten PIN, or unable to withdraw cash?"
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "Quý khách muốn thực hiện chuyển khoản trong nước hay quốc tế ạ? Và quý khách có sẵn thông tin người nhận chưa?",
+      "branches": [
+        {
+          "keywords": [
+            "trongnước",
+            "nộiđịa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách muốn thực hiện chuyển khoản trong nước hay quốc tế ạ? Và quý khách có sẵn thông tin người nhận chưa? — Would you like to make a domestic or international transfer? And do you have the recipient's information ready?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nhắc lại hoặc nói rõ hơn được không ạ? Tôi chưa nắm rõ yêu cầu.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, quý khách có thể nhắc lại hoặc nói rõ hơn được không ạ? Tôi chưa nắm rõ yêu cầu. — Sorry, could you please repeat or clarify? I didn't quite catch your request."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, cảm ơn quý khách. Nếu có bất kỳ thắc mắc nào khác, xin đừng ngần ngại liên hệ lại. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, cảm ơn quý khách. Nếu có bất kỳ thắc mắc nào khác, xin đừng ngần ngại liên hệ lại. Chúc quý khách một ngày tốt lành! — Yes, thank you. If you have any other questions, please don't hesitate to contact us again. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

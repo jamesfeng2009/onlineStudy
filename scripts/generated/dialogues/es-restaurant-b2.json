@@ -1,0 +1,266 @@
+{
+  "id": "dlg-es-restaurant-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Pedir comida en un restaurante",
+  "opening": "¡Buenas noches! ¿Ya han decidido qué les gustaría pedir o necesitan un poco más de tiempo para echar un vistazo a la carta?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas noches! ¿Ya han decidido qué les gustaría pedir o necesitan un poco más de tiempo para echar un vistazo a la carta?",
+      "branches": [
+        {
+          "keywords": [
+            "listo",
+            "si"
+          ],
+          "nextTurnId": "t2_main_decision"
+        },
+        {
+          "keywords": [
+            "tiempo",
+            "carta",
+            "mirar"
+          ],
+          "nextTurnId": "t2_give_time"
+        },
+        {
+          "keywords": [
+            "",
+            "hola"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenas noches! ¿Ya han decidido qué les gustaría pedir o necesitan un poco más de tiempo para echar un vistazo a la carta? — Good evening! Have you decided what you'd like to order, or do you need a bit more time to look at the menu?"
+    },
+    "t2_main_decision": {
+      "id": "t2_main_decision",
+      "prompt": "Excelente. ¿Qué les apetece hoy? Si desean, puedo sugerirles algunas especialidades de la casa o aclarar cualquier duda sobre ingredientes.",
+      "branches": [
+        {
+          "keywords": [
+            "recomendar",
+            "sugerencia"
+          ],
+          "nextTurnId": "t3_recommendation"
+        },
+        {
+          "keywords": [
+            "pedir",
+            "ordenar",
+            "quiero"
+          ],
+          "nextTurnId": "t3_take_order"
+        },
+        {
+          "keywords": [
+            "dieta",
+            "alergia",
+            "restriccion"
+          ],
+          "nextTurnId": "t3_dietary_restrictions"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. ¿Qué les apetece hoy? Si desean, puedo sugerirles algunas especialidades de la casa o aclarar cualquier duda sobre ingredientes. — Excellent. What are you in the mood for today? If you wish, I can suggest some house specialties or clarify any doubts about ingredients."
+    },
+    "t2_give_time": {
+      "id": "t2_give_time",
+      "prompt": "De acuerdo, tómense su tiempo. Regreso en un momento para tomar su pedido cuando estén listos.",
+      "branches": [
+        {
+          "keywords": [
+            "listo",
+            "gracias",
+            "si"
+          ],
+          "nextTurnId": "t3_take_order"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo, tómense su tiempo. Regreso en un momento para tomar su pedido cuando estén listos. — Alright, take your time. I'll be back in a moment to take your order when you're ready."
+    },
+    "t3_recommendation": {
+      "id": "t3_recommendation",
+      "prompt": "Claro, con gusto. Nuestro 'Solomillo a la pimienta verde' y la 'Lubina a la sal' son opciones muy populares. ¿Qué les parece?",
+      "branches": [
+        {
+          "keywords": [
+            "solomillo",
+            "carne",
+            "lubina",
+            "pescado"
+          ],
+          "nextTurnId": "t4_ask_for_extras"
+        },
+        {
+          "keywords": [
+            "no",
+            "otro",
+            "mirar"
+          ],
+          "nextTurnId": "t3_take_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, con gusto. Nuestro 'Solomillo a la pimienta verde' y la 'Lubina a la sal' son opciones muy populares. ¿Qué les parece? — Of course, with pleasure. Our 'Green Peppercorn Sirloin' and the 'Salt-baked Sea Bass' are very popular options. What do you think?"
+    },
+    "t3_take_order": {
+      "id": "t3_take_order",
+      "prompt": "Perfecto. Cuando quieran, díganme qué desean. Estoy listo para tomar nota.",
+      "branches": [
+        {
+          "keywords": [
+            "pedir",
+            "ordenar",
+            "quiero",
+            "este",
+            "eso"
+          ],
+          "nextTurnId": "t4_ask_for_extras"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. Cuando quieran, díganme qué desean. Estoy listo para tomar nota. — Perfect. Whenever you're ready, tell me what you'd like. I'm ready to take your order."
+    },
+    "t3_dietary_restrictions": {
+      "id": "t3_dietary_restrictions",
+      "prompt": "Entendido, es importante saberlo. ¿Hay algo en particular que deba tener en cuenta para su pedido, alguna alergia o preferencia específica?",
+      "branches": [
+        {
+          "keywords": [
+            "gluten",
+            "celiaco",
+            "vegetariano",
+            "vegano",
+            "sinlactosa",
+            "lactosa",
+            "frutossecos"
+          ],
+          "nextTurnId": "t4_ask_for_extras"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "noimporta"
+          ],
+          "nextTurnId": "t3_take_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido, es importante saberlo. ¿Hay algo en particular que deba tener en cuenta para su pedido, alguna alergia o preferencia específica? — Understood, that's important to know. Is there anything particular I should be aware of for your order, any allergy or specific preference?"
+    },
+    "t4_ask_for_extras": {
+      "id": "t4_ask_for_extras",
+      "prompt": "Excelente elección. ¿Y desean algo más para acompañar, como un entrante, una bebida o postre?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "bebida",
+            "entrante",
+            "postre",
+            "agua",
+            "vino",
+            "cerveza",
+            "refresco",
+            "ensalada",
+            "sopa",
+            "pan"
+          ],
+          "nextTurnId": "t5_final_check"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente elección. ¿Y desean algo más para acompañar, como un entrante, una bebida o postre? — Excellent choice. And would you like anything else to accompany it, like a starter, a drink, or dessert?"
+    },
+    "t5_final_check": {
+      "id": "t5_final_check",
+      "prompt": "Muy bien. Entonces, ¿eso sería todo por ahora? ¿Puedo enviar la comanda a la cocina?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "adelante",
+            "listo",
+            "gracias",
+            "enviar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. Entonces, ¿eso sería todo por ahora? ¿Puedo enviar la comanda a la cocina? — Very well. So, would that be all for now? Can I send the order to the kitchen?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? No le he entendido bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Disculpe? No le he entendido bien. ¿Podría repetir, por favor? — Excuse me? I didn't understand you well. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Su comanda irá directamente a la cocina. ¡Que disfruten de su comida!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. Su comanda irá directamente a la cocina. ¡Que disfruten de su comida! — Perfect. Your order will go directly to the kitchen. Enjoy your meal!",
+      "isTerminal": true
+    }
+  }
+}

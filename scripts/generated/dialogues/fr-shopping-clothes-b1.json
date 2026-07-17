@@ -1,0 +1,232 @@
+{
+  "id": "dlg-fr-shopping-clothes-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Acheter des Vêtements",
+  "opening": "Bonjour ! Bienvenue chez nous. Je peux vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue chez nous. Je peux vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "cherche",
+            "demande",
+            "voir"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "regarde",
+            "juste",
+            "promène"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour — Hello! Bienvenue chez nous — Welcome to our store. Je peux vous aider ? — Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bien sûr ! Quel type de vêtement cherchez-vous et dans quelle taille ?",
+      "branches": [
+        {
+          "keywords": [
+            "chemise",
+            "pantalon",
+            "robe",
+            "jupe",
+            "manteau",
+            "pull",
+            "taille"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "regarde",
+            "hésite",
+            "change"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr — Of course! Quel type de vêtement cherchez-vous et dans quelle taille ? — What kind of clothing are you looking for and in what size?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accord, prenez votre temps pour regarder. Si vous avez besoin de quoi que ce soit, n'hésitez pas à me faire signe.",
+      "branches": [
+        {
+          "keywords": [
+            "aide",
+            "question",
+            "cherche"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "merci",
+            "regarde",
+            "partir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord — Okay, prenez votre temps pour regarder — take your time to look. Si vous avez besoin de quoi que ce soit — If you need anything, n'hésitez pas à me faire signe — don't hesitate to signal me."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien, nous avons quelques options. Voulez-vous essayer ce modèle ? Les cabines d'essayage sont par là. Ou peut-être préférez-vous une autre couleur ou un style différent ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "essayer",
+            "s'ilvousplaît",
+            "volontiers"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "non",
+            "couleur",
+            "style",
+            "autre"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "merci",
+            "non",
+            "pasmaintenant",
+            "partir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien — Very good, nous avons quelques options — we have some options. Voulez-vous essayer ce modèle ? — Do you want to try this model on? Les cabines d'essayage sont par là — The fitting rooms are over there. Ou peut-être préférez-vous une autre couleur ou un style différent ? — Or perhaps you'd prefer another color or a different style?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Voilà ! N'hésitez pas à m'appeler si vous avez besoin d'une autre taille, d'un conseil, ou si vous avez des questions. Je suis juste à côté.",
+      "branches": [
+        {
+          "keywords": [
+            "taille",
+            "plusgrand",
+            "pluspetit",
+            "autre"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "achète",
+            "prends",
+            "parfait",
+            "convient"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "non",
+            "nonaimepas",
+            "pasprends",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Voilà ! — Here you go! N'hésitez pas à m'appeler si vous avez besoin d'une autre taille, d'un conseil, ou si vous avez des questions — Don't hesitate to call me if you need another size, advice, or if you have questions. Je suis juste à côté — I'm right here."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Excellent ! Je peux vous l'apporter à la caisse quand vous êtes prêt(e). Vous désirez autre chose ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "prêt",
+            "caisse",
+            "achète"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent ! — Excellent! Je peux vous l'apporter à la caisse quand vous êtes prêt(e) — I can take it to the checkout for you when you're ready. Vous désirez autre chose ? — Do you want anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon — Sorry, I didn't quite understand. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien ! N'hésitez pas si vous avez d'autres questions. Au revoir et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien — You're welcome! Don't hesitate if you have other questions. Au revoir et bonne journée ! — Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "id": "dlg-th-phone-call-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "การโทรศัพท์",
+  "opening": "สวัสดีค่ะ บริษัท ABC ยินดีให้บริการค่ะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ บริษัท ABC ยินดีให้บริการค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "สวัสดี",
+            "โทรมา",
+            "ขอคุย",
+            "อยากคุย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ฮัลโหล"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka. Borisat ABC yindee hai borikarn ka. — Hello. ABC Company, happy to serve you."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ไม่ทราบว่าคุณต้องการจะคุยกับใครคะ/ครับ และไม่ทราบว่าคุณชื่ออะไรคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "ผมชื่อ",
+            "ดิฉันชื่อ",
+            "ต้องการคุย",
+            "ขอสาย"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mai sap wa khun tong kran ja kui gap krai ka/khrap lae mai sap wa khun chue arai ka/khrap? — May I ask who you'd like to speak with, and what your name is?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "สักครู่นะคะ/ครับ... อ๋อ คุณสมชายไม่อยู่ที่โต๊ะพอดีค่ะ/ครับ จะฝากข้อความไว้ไหมคะ/ครับ หรือจะให้โทรกลับดีคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ฝากบอก",
+            "ฝาก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "โทรกลับ",
+            "ให้โทร",
+            "จะโทรกลับ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "เมื่อไหร่",
+            "กลับเมื่อไหร่",
+            "อยู่เมื่อไหร่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "แล้วแต่"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sak khrue na kha/khrap... Or, khun Somchai mai yoo tee toh por dee ka/khrap. Ja fak khor khwam wai mai ka/khrap rue ja hai tho glap dee ka/khrap? — Just a moment... Oh, Mr. Somchai isn't at his desk right now. Would you like to leave a message, or would you prefer he call you back?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ได้ค่ะ/ครับ กรุณาบอกข้อความมาได้เลยค่ะ/ครับ ดิฉัน/ผมจะแจ้งให้คุณสมชายทราบค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้อความ",
+            "แจ้งว่า",
+            "บอกว่า"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai ka/khrap. Karuna bok khor khwam ma dai loei ka/khrap. Di-chan/Phom ja jaeng hai khun Somchai sap ka/khrap. — Okay. Please tell me the message. I will inform Mr. Somchai."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "คาดว่าคุณสมชายจะกลับมาช่วงบ่ายค่ะ/ครับ คุณจะลองโทรกลับมาอีกครั้งไหมคะ/ครับ หรือจะให้ดิฉัน/ผมรับเรื่องไว้ก่อนคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "โทรกลับ",
+            "จะโทร",
+            "ลองโทร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ฝากเรื่อง",
+            "ฝาก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ตัดสินใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khat wa khun Somchai ja glap ma chuang bai ka/khrap. Khun ja long tho glap ma eek khrang mai ka/khrap rue ja hai di-chan/phom rap rueang wai gon ka/khrap? — I expect Mr. Somchai will be back in the afternoon. Would you like to try calling back, or should I take your message?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่ค่อยได้ยินเลยค่ะ/ครับ รบกวนพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ได้ค่ะ",
+            "ได้ครับ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho thot na kha/khrap. Mai khoi dai yin loei kha/khrap. Rob kuan phut eek khrang dai mai kha/khrap? — Sorry, I didn't hear that very well. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่โทรมานะคะ/ครับ สวัสดีค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khop khun tee tho ma na kha/khrap. Sawatdee ka/khrap. — Thank you for calling. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

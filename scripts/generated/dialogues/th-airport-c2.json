@@ -1,0 +1,200 @@
+{
+  "id": "dlg-th-airport-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "ที่สนามบิน: การสนทนาเชิงลึก",
+  "opening": "สวัสดีค่ะ/ครับ เที่ยวบินจุดหมายปลายทางของคุณคือที่ไหนคะ/ครับ และมีอะไรให้ดิฉัน/ผมรับใช้ในวันนี้บ้างคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ เที่ยวบินจุดหมายปลายทางของคุณคือที่ไหนคะ/ครับ และมีอะไรให้ดิฉัน/ผมรับใช้ในวันนี้บ้างคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "เช็คอิน",
+            "จองตั๋ว",
+            "ขึ้นเครื่อง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "มีปัญหา",
+            "กระเป๋าหาย",
+            "ล่าช้า"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krap. Thiawbin chutmai plai thang khong khun khue thi nai ka/krap, lae mee arai hai di-chan/phom rap chai nai wanni bang ka/krap? — Hello. What is the destination of your flight, and how may I be of service to you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "รบกวนช่วยแสดงหนังสือเดินทางและรหัสการจองที่ท่านได้รับมาด้วยนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "นี่ครับ",
+            "หนังสือเดินทาง"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "รหัสหาย",
+            "หาไม่เจอ",
+            "จำไม่ได้"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rop kuan chuay sadaeng nang sue doen thang lae rahat kan chong thi tan dai rap ma duay na ka/krap. — Could you please show your passport and the booking reference you received?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "โปรดชี้แจงสถานการณ์ที่ท่านกำลังเผชิญอยู่ให้ละเอียดสักหน่อยได้ไหมคะ/ครับ เพื่อที่ดิฉัน/ผมจะได้ช่วยเหลือได้อย่างถูกต้องและรวดเร็ว",
+      "branches": [
+        {
+          "keywords": [
+            "กระเป๋าหาย",
+            "สัมภาระ"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "เที่ยวบินล่าช้า",
+            "เครื่องดีเลย์",
+            "รอเครื่อง"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "จองผิด",
+            "แก้ไข",
+            "เปลี่ยนตั๋ว"
+          ],
+          "nextTurnId": "t4d"
+        },
+        {
+          "keywords": [
+            "คำถาม",
+            "ต้องการข้อมูล"
+          ],
+          "nextTurnId": "t4e"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Prot chie chaeng sathana kan thi tan kamlang pa-choen yoo hai la-iat sak noi dai mai ka/krap, phuea thi di-chan/phom ja chuay luea dai yang took tong lae ruat reo. — Could you please explain the situation you are facing in a bit more detail, so that I may assist you accurately and swiftly?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "เรียบร้อยค่ะ/ครับ คุณสามารถรับบัตรโดยสารได้เลยค่ะ/ครับ และขอเชิญผู้โดยสารทุกท่านไปยังประตูทางออกขึ้นเครื่องหมายเลข 12 ได้เลยนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจ",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Riab roi ka/krap. Khun samat rap bat doi san dai loei ka/krap, lae kho choen phu doi san took tan pai yang pra-too thang ok khuen khreuang mai lek sip-song dai loei na ka/krap. — All set. You may receive your boarding pass now. All passengers are invited to proceed to boarding gate number 12."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "ต้องกราบขออภัยในความไม่สะดวกที่เกิดขึ้นอย่างสุดซึ้งนะคะ/ครับ ในกรณีนี้ รบกวนท่านกรอกแบบฟอร์มแจ้งความประสงค์ได้ที่เคาน์เตอร์บริการสัมภาระค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "รับทราบ",
+            "ค่ะ",
+            "ครับ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tong krap kho a-phai nai kwam mai sa-duak thi koet khuen yang sut sueng na ka/krap. Nai karani nee, rop kuan tan krok baep form jaeng kwam pra-song dai thi kaownter borikan sam-phara ka/krap. — We sincerely apologize for the inconvenience. In this case, please fill out the claim form at the baggage service counter."
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "เรียนแจ้งให้ทราบว่าเที่ยวบินของท่านล่าช้าไปประมาณ 2 ชั่วโมงนะคะ/ครับ ทางสายการบินได้จัดเตรียมคูปองอาหารไว้ให้ที่จุดบริการใกล้เคียงค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจ",
+            "รับทราบ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rian jaeng hai sap wa thiawbin khong tan la cha pai pra-man song chua-mong na ka/krap. Thang sai kan bin dai jat triam ku-pong a-han wai hai thi chut borikan glai kiang ka/krap. — Please be informed that your flight is delayed by approximately 2 hours. The airline has prepared meal vouchers at the nearby service point."
+    },
+    "t4d": {
+      "id": "t4d",
+      "prompt": "ดิฉัน/ผมต้องตรวจสอบข้อมูลการจองของท่านอย่างละเอียดก่อนนะคะ/ครับ และจะช่วยประสานงานกับสายการบินเพื่อหาทางแก้ไขต่อไปค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ค่ะ",
+            "ครับ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Di-chan/phom tong truap sop khomul kan chong khong tan yang la-iat kon na ka/krap, lae ja chuay prasan ngan gap sai kan bin phuea ha thang kae khai tor pai ka/krap. — I need to thoroughly check your booking details first, and I will assist in coordinating with the airline to find a solution."
+    },
+    "t4e": {
+      "id": "t4e",
+      "prompt": "คุณมีข้อสงสัยอะไรอีกไหมคะ/ครับ โปรดสอบถามได้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี",
+            "เรียบร้อย",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun mee kho song sai arai eek mai ka/krap? Prot sop tham dai loei ka/krap. — Do you have any further questions? Please feel free to ask."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ไม่เข้าใจที่คุณพูด รบกวนพูดใหม่อีกครั้งได้ไหมคะ/ครับ ช้าๆ ชัดๆ ก็ได้ค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kho a-phai ka/krap. Mai khao jai thi khun phut. Rop kuan phut mai ik khrang dai mai ka/krap? Chaa chaa chat chat gor dai ka/krap. — Sorry, I didn't understand what you said. Could you please repeat that again? Slowly and clearly is also fine."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอให้เดินทางโดยสวัสดิภาพนะคะ/ครับ และหวังเป็นอย่างยิ่งว่าจะได้มีโอกาสให้บริการท่านอีกในคราวหน้าค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kho hai doen thang doi sawatdipap na ka/krap, lae wang pen yang ying wa ja dai mee okat hai borikan tan eek nai krao naa ka/krap. — Have a safe journey, and we sincerely hope to have the opportunity to serve you again next time.",
+      "isTerminal": true
+    }
+  }
+}

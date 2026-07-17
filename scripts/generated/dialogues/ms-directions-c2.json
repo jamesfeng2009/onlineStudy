@@ -1,0 +1,259 @@
+{
+  "id": "dlg-ms-directions-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Bertanya Arah",
+  "opening": "Selamat pagi! Boleh saya bantu apa-apa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Boleh saya bantu apa-apa?",
+      "branches": [
+        {
+          "keywords": [
+            "pasar seni",
+            "central market"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bank",
+            "cimb",
+            "maybank"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi) — Good morning! Can I help you with anything?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Pasar Seni. Senang saja. Anda teruskan jalan ni, lepas tu ambil belok kiri di lampu isyarat pertama. Pasar Seni akan nampak di sebelah kanan, dekat dengan stesen LRT.",
+      "branches": [
+        {
+          "keywords": [
+            "berapa jauh",
+            "jarak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pengangkutan",
+            "naik apa",
+            "transport"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tempat lain",
+            "dekat mana"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Pasar Seni (Pa-sar Se-ni) — Oh, Central Market. It's easy. Just go straight on this road, then turn left at the first traffic light. Central Market will be visible on the right, near the LRT station."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bank? Ada beberapa bank di sekitar sini. Bank mana satu yang anda cari, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "maybank",
+            "cimb",
+            "public bank"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bank? (Bank?) — Bank? There are a few banks around here. Which one are you looking for?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Tak jauh pun, dalam lima ke sepuluh minit jalan kaki saja. Kalau naik bas atau teksi, lagi cepatlah sampai.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tempat lain",
+            "dekat mana"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "cukup"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tak jauh pun (Tak jau poh), dalam lima ke sepuluh minit jalan kaki saja. — It's not far at all, just a five to ten minute walk. If you take a bus or taxi, you'll get there even faster."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Untuk ke sana, anda boleh jalan kaki je, dekat sangat. Kalau malas nak jalan, boleh naik bas RapidKL yang lalu laluan ni, turun di Pasar Seni.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "berapa jauh",
+            "jarak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "cukup"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk ke sana, anda boleh jalan kaki je (Un-tuk ke sa-na, an-da bo-leh ja-lan ka-ki je), dekat sangat. — To get there, you can just walk, it's very close. If you're too lazy to walk, you can take a RapidKL bus that passes this route, get off at Pasar Seni."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, dekat Pasar Seni tu ada banyak tarikan lain. Ada Petaling Street, Central Market tu sendiri pun menarik, lepas tu ada juga Muzium Tekstil Negara. Banyaklah tempat untuk dilawati.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, dekat Pasar Seni tu ada banyak tarikan lain (Oh, de-kat Pa-sar Se-ni tu a-da ba-nyak ta-ri-kan la-in). — Oh, near Central Market there are many other attractions. There's Petaling Street, Central Market itself is interesting, and then there's also the National Textile Museum. Many places to visit."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baiklah. Untuk bank-bank tu, anda terus saja jalan ni, lepas kedai mamak tu ada satu simpang empat. Ambil belok kanan, jalan sikit, nanti nampaklah bank tu di sebelah kiri. Dalam lima minit jalan kaki dari sini.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "berapa jauh",
+            "jarak"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "cukup"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah. Untuk bank-bank tu (Bai-klah. Un-tuk bank-bank tu) — Alright. For those banks, just go straight on this road, after the mamak stall there's a crossroads. Turn right, walk a bit, you'll see the bank on the left. About five minutes walk from here."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Macam saya cakap tadi, dalam lima minit jalan kaki saja. Tak perlu naik apa-apa, membazir duit je.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Macam saya cakap tadi (Ma-cam sa-ya ca-kap ta-di) — As I mentioned earlier, it's just about a five-minute walk. No need to take anything, it would just be a waste of money."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tak berapa jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? (Ma-af, bo-leh u-lang se-ka-li la-gi?) — Sorry, could you please repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalanan anda lancar dan selamat!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (Sa-ma-sa-ma). Semoga perjalanan anda lancar dan selamat! — You're welcome. May your journey be smooth and safe!",
+      "isTerminal": true
+    }
+  }
+}

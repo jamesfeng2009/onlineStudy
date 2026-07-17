@@ -1,0 +1,249 @@
+{
+  "id": "dlg-id-weather-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Obrolan Cuaca Harian",
+  "opening": "Halo! Selamat pagi. Cuaca hari ini bagaimana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo! Selamat pagi. Cuaca hari ini bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "bagus",
+            "biasa"
+          ],
+          "nextTurnId": "t2_good"
+        },
+        {
+          "keywords": [
+            "mendung",
+            "hujan",
+            "gerimis",
+            "buruk",
+            "dingin"
+          ],
+          "nextTurnId": "t2_bad"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! (hah-lo) Good morning. (se-lah-mat pah-gee) How's the weather today?"
+    },
+    "t2_good": {
+      "id": "t2_good",
+      "prompt": "Oh, cuaca cerah/bagus ya. Bagus sekali! Ada rencana apa hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "pergi",
+            "jalan-jalan",
+            "piknik",
+            "luar"
+          ],
+          "nextTurnId": "t3_plan_yes"
+        },
+        {
+          "keywords": [
+            "di rumah",
+            "santai",
+            "istirahat",
+            "dalam",
+            "kerja",
+            "belajar",
+            "tidak ada"
+          ],
+          "nextTurnId": "t3_plan_no"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, the weather is sunny/good. Very good! (bah-goos se-ka-li) Do you have any plans today?"
+    },
+    "t2_bad": {
+      "id": "t2_bad",
+      "prompt": "Oh, hujan ya? Sayang sekali. Apakah Anda punya payung?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "punya"
+          ],
+          "nextTurnId": "t3_umbrella_yes"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "belum"
+          ],
+          "nextTurnId": "t3_umbrella_no"
+        },
+        {
+          "keywords": [
+            "di rumah",
+            "santai",
+            "tidak pergi"
+          ],
+          "nextTurnId": "t3_plan_no"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, rainy (hoo-jan)? What a pity! (sa-yang se-ka-li) Do you have an umbrella?"
+    },
+    "t3_plan_yes": {
+      "id": "t3_plan_yes",
+      "prompt": "Bagus! Semoga cuaca mendukung rencana Anda. Anda suka musim apa di Indonesia?",
+      "branches": [
+        {
+          "keywords": [
+            "hujan",
+            "dingin"
+          ],
+          "nextTurnId": "t4_season_discussion"
+        },
+        {
+          "keywords": [
+            "tidak tahu",
+            "tidak ada",
+            "terimakasih",
+            "ya"
+          ],
+          "nextTurnId": "t4_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good! I hope the weather supports your plans. What season do you like in Indonesia?"
+    },
+    "t3_plan_no": {
+      "id": "t3_plan_no",
+      "prompt": "Betul, di rumah saja lebih nyaman kalau cuaca tidak bagus. Ngomong-ngomong, Anda tahu tentang musim di Indonesia?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "tahu"
+          ],
+          "nextTurnId": "t4_season_discussion"
+        },
+        {
+          "keywords": [
+            "terimakasih",
+            "oke"
+          ],
+          "nextTurnId": "t4_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "True, staying home is more comfortable if the weather isn't good. By the way, do you know about the seasons in Indonesia?"
+    },
+    "t3_umbrella_yes": {
+      "id": "t3_umbrella_yes",
+      "prompt": "Bagus kalau sudah siap! Jangan sampai kehujanan ya. Musim hujan di sini memang sering begitu.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "terimakasih",
+            "oke"
+          ],
+          "nextTurnId": "t4_end"
+        },
+        {
+          "keywords": [
+            "musim hujan",
+            "musim"
+          ],
+          "nextTurnId": "t4_season_discussion"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good if you're ready! Don't get caught in the rain. The rainy season (moo-sim hoo-jan) here is often like that."
+    },
+    "t3_umbrella_no": {
+      "id": "t3_umbrella_no",
+      "prompt": "Saya punya payung lebih. Hujan deras bisa tiba-tiba datang. Musim hujan di sini memang sering begitu.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "mau",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t4_end"
+        },
+        {
+          "keywords": [
+            "musim hujan",
+            "musim"
+          ],
+          "nextTurnId": "t4_season_discussion"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I have an extra umbrella. Heavy rain can suddenly come. The rainy season (moo-sim hoo-jan) here is often like that."
+    },
+    "t4_season_discussion": {
+      "id": "t4_season_discussion",
+      "prompt": "Indonesia hanya punya dua musim: musim hujan dan musim kemarau. Sekarang sedang musim hujan.",
+      "branches": [
+        {
+          "keywords": [
+            "oh",
+            "ya",
+            "mengerti",
+            "terimakasih"
+          ],
+          "nextTurnId": "t4_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Indonesia only has two seasons: the rainy season (moo-sim hoo-jan) and the dry season (moo-sim ke-ma-rau). It's the rainy season now."
+    },
+    "t4_end": {
+      "id": "t4_end",
+      "prompt": "Senang ngobrol dengan Anda tentang cuaca. Semoga hari Anda menyenangkan!",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "sama-sama",
+            "anda juga",
+            "baik",
+            "sampai jumpa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nice talking with you about the weather. (se-nang ngob-rol de-ngan an-da ten-tang chu-ah-cha) Have a pleasant day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya kurang mengerti. Bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I don't quite understand. Could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, sampai jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, see you again!",
+      "isTerminal": true
+    }
+  }
+}

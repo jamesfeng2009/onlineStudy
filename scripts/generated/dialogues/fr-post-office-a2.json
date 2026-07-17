@@ -1,0 +1,133 @@
+{
+  "id": "dlg-fr-post-office-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "À la Poste",
+  "opening": "Bonjour, comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, comment puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "colis",
+            "envoyer"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "timbres",
+            "acheter"
+          ],
+          "nextTurnId": "t3_stamps"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bon-ZHOOR), comment (ko-MON) puis-je (pwee-ZH) vous (voo) aider (eh-DAY) ? — Hello, how can I help you?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "D'accord, vous voulez envoyer un colis. Pour quelle destination et quel service (simple, suivi, recommandé) ?",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "national",
+            "intérieur"
+          ],
+          "nextTurnId": "t4_parcel_details"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR), vous (voo) voulez (voo-LAY) envoyer (on-vwa-YAY) un (un) colis (ko-LEE). Pour (poor) quelle (kel) destination (des-tee-na-SYON) et (ay) quel (kel) service (ser-VEES) ? — Okay, you want to send a parcel. For which destination and what service (standard, tracked, registered)?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "Vous désirez des timbres. Pour quelle destination et combien en voulez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "lettre"
+          ],
+          "nextTurnId": "t5_stamps_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You want stamps. For which destination and how many do you want?"
+    },
+    "t4_parcel_details": {
+      "id": "t4_parcel_details",
+      "prompt": "Très bien. Avez-vous besoin d'un formulaire de douane pour l'international ? Connaissez-vous le poids ? Nous allons calculer le prix.",
+      "branches": [
+        {
+          "keywords": [
+            "douane",
+            "formulaire"
+          ],
+          "nextTurnId": "t6_parcel_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Do you need a customs form for international? Do you know the weight? We will calculate the price."
+    },
+    "t5_stamps_payment": {
+      "id": "t5_stamps_payment",
+      "prompt": "D'accord. Le prix des timbres sera de sept euros. Vous payez comment ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "bancaire"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. The price of the stamps will be seven euros. How would you like to pay?"
+    },
+    "t6_parcel_payment": {
+      "id": "t6_parcel_payment",
+      "prompt": "Le prix de votre envoi sera de douze euros. Vous payez par carte ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "bancaire"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The price of your shipment will be twelve euros. Do you pay by card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé(e), je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter",
+            "quoi"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Désolé(e) (day-zo-LAY), je n'ai (zheh nay) pas (pah) compris (kon-PREE). Pourriez-vous (poo-rye-voo) répéter (ray-pay-TAY), s'il (seel) vous (voo) plaît (play) ? — Sorry, I didn't understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci (mer-SEE) et bonne (bon) journée (zhoor-NAY) ! — Thank you and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

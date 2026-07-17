@@ -1,0 +1,205 @@
+{
+  "id": "dlg-th-phone-call-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "การติดต่อทางโทรศัพท์ในสถานการณ์ธุรกิจ",
+  "opening": "สวัสดีค่ะ/ครับ [ชื่อบริษัท] ไม่ทราบว่าต้องการติดต่อเรื่องอะไรคะ/ครับ หรือต้องการเรียนสายกับท่านใดเป็นพิเศษไหมคะ/ครับ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ [ชื่อบริษัท] ไม่ทราบว่าต้องการติดต่อเรื่องอะไรคะ/ครับ หรือต้องการเรียนสายกับท่านใดเป็นพิเศษไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "คุณ",
+            "พี่",
+            "ขอสาย",
+            "คุยกับ",
+            "เจ้านาย",
+            "ท่าน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ทิ้งข้อความ",
+            "บอกว่า",
+            "โทรกลับ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sà-wàt-dee kâ/kráp [Company Name]. Mâi sâap wâa tông gàan dtìt dtò rêuang à-rai kâ/kráp rǔe tông gàan riian sǎai gàp tân dai bpen pí-sèet mái kâ/kráp? — Hello, [Company Name]. May I know what you'd like to contact us about, or would you like to speak to someone in particular?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขออนุญาตเรียนถามว่า ท่านชื่ออะไรคะ/ครับ แล้วมีธุระอะไรด่วนหรือเปล่าคะ/ครับ ทางเราจะได้ประสานงานให้ได้ถูกต้องค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "ฉัน",
+            "ผม",
+            "ด่วน",
+            "สำคัญ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไม่ด่วน",
+            "ไม่เป็นไร",
+            "ไม่มี",
+            "แค่",
+            "ปกติ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kɔ̌ɔ à-nú-yâat riian tǎam wâa tân chêu à-rai kâ/kráp láew mee tú-rá à-rai dûan rǔe bplào kâ/kráp? Taang rao jà dâi bprà-sǎan ngaan hâi dâi tòok dtông kâ/kráp. — May I ask your name, please, and is it urgent? We want to ensure we coordinate properly."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ได้เลยค่ะ/ครับ ไม่ทราบว่าต้องการฝากข้อความถึงใครคะ/ครับ แล้วให้เรียนว่าอะไรบ้างคะ/ครับ เผื่อท่านจะได้ติดต่อกลับได้ถูกคนถูกเรื่องค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ถึง",
+            "สำหรับ",
+            "เรียน",
+            "บอกว่า",
+            "ฝาก"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "เดี๋ยวโทรใหม่",
+            "โทรเอง",
+            "ไม่เป็นไร",
+            "ไม่ต้อง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi loei kâ/kráp. Mâi sâap wâa tông gàan fàak kɔ̂ɔ-kwam tǔeng krai kâ/kráp láew hâi riian wâa à-rai bâang kâ/kráp? Pêua tân jà dâi dtìt dtò glàp dâi tòok kon tòok rêuang kâ/kráp. — Certainly. May I know who you'd like to leave a message for, and what should I tell them? So they can contact you back about the right matter."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ตอนนี้คุณ [ชื่อคนที่ถามหา] ติดสายอยู่อีกสายนึงพอดีเลยค่ะ/ครับ ไม่ทราบว่าพอจะรอสายสักครู่ได้ไหมคะ/ครับ หรือจะให้ดิฉัน/ผมเรียนสายกลับภายหลังดีคะ/ครับ หากสะดวกรับสายเมื่อว่างค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "รอ",
+            "ค้างสาย",
+            "สักครู่",
+            "ได้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tɔ̂ɔn-née kun [Person's Name] dtìt sǎai yòo èek sǎai neung pɔɔ dee loei kâ/kráp. Mâi sâap wâa pɔɔ jà rɔɔ sǎai sàk krôo dâi mái kâ/kráp rǔe jà hâi dí-chǎn/pǒm riian sǎai glàp paai lǎng dee kâ/kráp? Hàak sà-dùak ráp sǎai mêua wâang kâ/kráp. — Mr./Ms. [Person's Name] is currently on another line. Would you mind holding for a moment, or would you prefer I have them call you back later, when they are available?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "คุณ [ชื่อคนที่ถามหา] ไม่ได้อยู่ที่โต๊ะพอดีเลยค่ะ/ครับ ไม่ทราบว่าสะดวกจะฝากข้อความไว้ก่อนไหมคะ/ครับ หรือจะให้เรียนสายกลับไปดีคะ/ครับ เผื่อว่าท่านจะรับทราบข้อมูลที่จำเป็นค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ทิ้งข้อความ",
+            "บอกว่า"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "โทรกลับ",
+            "ให้โทร",
+            "เดี๋ยวโทรใหม่",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kun [Person's Name] mâi dâi yòo têe dtó pɔɔ dee loei kâ/kráp. Mâi sâap wâa sà-dùak jà fàak kɔ̂ɔ-kwam wái gɔ̀n mái kâ/kráp rǔe jà hâi riian sǎai glàp bpai dee kâ/kráp? Pêua wâa tân jà ráp sâap kɔ̂ɔ-moon têe jam-bpen kâ/kráp. — Mr./Ms. [Person's Name] is not at their desk right now. Would you like to leave a message, or would you prefer I have them call you back? So they can get the necessary information."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "รับทราบค่ะ/ครับ เดี๋ยวจะเรียนให้ท่าน [ชื่อคนที่ฝากข้อความถึง] ทราบข้อมูลที่แจ้งมาทั้งหมดนะคะ/ครับ มีอะไรให้ดิฉัน/ผมช่วยอย่างอื่นเพิ่มเติมอีกไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "แค่นี้แหละ",
+            "สวัสดี",
+            "ไม่แล้ว"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp sâap kâ/kráp. Dǐao jà riian hâi tân [Recipient's Name] sâap kɔ̂ɔ-moon têe jâeng maa táng mòt ná kâ/kráp. Mee à-rai hâi dí-chǎn/pǒm chûay yàang èun pêrm dteum èek mái kâ/kráp? — Understood. I'll inform Mr./Ms. [Recipient's Name] of all the information you provided. Is there anything else I can help you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ไม่ค่อยได้ยินชัดเจนเท่าไหร่ รบกวนพูดอีกครั้งได้ไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ à-pai kâ/kráp. Mâi kɔ̂i dâi yin chát-jen tâo rài. Róp guan pôot èek kráng dâi mái kâ/kráp? — I apologize, I didn't hear that clearly. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากค่ะ/ครับ ที่โทรเข้ามา สวัสดีค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kɔ̀p kun mâak kâ/kráp têe too kâo maa. Sà-wàt-dee kâ/kráp. — Thank you very much for calling. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

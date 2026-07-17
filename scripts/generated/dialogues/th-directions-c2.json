@@ -1,0 +1,180 @@
+{
+  "id": "dlg-th-directions-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "ถามทางไปวัดอรุณฯ",
+  "opening": "สวัสดีค่ะ/ครับ ไม่ทราบว่ามีอะไรให้กระผม/ดิฉันช่วยได้บ้างครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ไม่ทราบว่ามีอะไรให้กระผม/ดิฉันช่วยได้บ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "วัดอรุณ",
+            "ไปวัดอรุณ",
+            "วัดแจ้ง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii kâ/kráp. Mâi sâap wâa mii à-rai hâi krà-pǒm/dì-chán chûay dâai bâang kráp/kâ? — Hello. May I know if there's anything I can help you with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "โอ้ วัดอรุณฯ เหรอครับ/คะ? ตรงนี้ไปไม่ยากหรอกค่ะ/ครับ ถ้าจะไปวัดอรุณฯ ที่ติดริมแม่น้ำเจ้าพระยาน่ะค่ะ/ครับ ต้องนั่งเรือด่วนเจ้าพระยาไปถึงจะสะดวกที่สุดค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขึ้นเรือที่ไหน",
+            "ท่าเรือ",
+            "ไปท่าเรือ",
+            "ท่าเรือใกล้ๆ",
+            "เรือด่วน",
+            "เรืออะไร",
+            "ค่าตั๋ว",
+            "กี่บาท"
+          ],
+          "nextTurnId": "t3_boat_details"
+        },
+        {
+          "keywords": [
+            "เดินไปได้ไหม",
+            "เดินไป",
+            "ไกลไหม",
+            "มีวิธีอื่นไหม",
+            "ทางอื่น",
+            "รถเมล์",
+            "แท็กซี่"
+          ],
+          "nextTurnId": "t4_distance_other"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ôo Wát Arun ráw kráp/kâ? Dtrong-níi bpai mâi yâak ròk kâ/kráp. Tâa jà bpai Wát Arun tîi dtìt rim mâae-náam Jâo-prá-yaa nâ kâ/kráp dtâwng nâng reua-dùuan Jâo-prá-yaa bpai tĕung jà sà-dùuak têe-sùt kâ/kráp. — Oh, Wat Arun? It's not hard to get there from here. If you want to go to Wat Arun which is by the Chao Phraya River, it's most convenient to take the Chao Phraya Express Boat."
+    },
+    "t3_boat_details": {
+      "id": "t3_boat_details",
+      "prompt": "จากตรงนี้ ถ้าจะไปท่าเรือที่ใกล้ที่สุดก็คือท่าเรือสาทรค่ะ/ครับ ต้องขึ้นรถไฟฟ้าบีทีเอสจากสถานีนี้ไปลงที่สถานีสะพานตากสิน แล้วเดินต่อไปอีกนิดก็จะถึงท่าเรือเลยค่ะ/ครับ พอถึงท่าเรือสาทรแล้ว ให้สังเกตป้ายเรือด่วนเจ้าพระยาที่เป็นธงส้มนะคะ/ครับ นั่งไปประมาณ 10-15 นาทีก็ถึงท่าเรือวัดอรุณฯ เลยค่ะ/ครับ ค่าเรือประมาณ 16 บาทค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "รอบๆ",
+            "แถวนั้น",
+            "ใกล้ๆ",
+            "ที่เที่ยว",
+            "มีอะไรอีก"
+          ],
+          "nextTurnId": "t5_nearby"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jàak dtrong-níi tâa jà bpai tâa-reua tîi glâi têe-sùt gôr keu tâa-reua Sǎa-tɔɔn kâ/kráp. Dtâwng kêun rót-fái-fáa Bii-Tii-Èt jàak sà-thǎa-nii níi bpai long tîi sà-thǎa-nii Sà-paan Dtàak-sĭn láaew dern dtɔ̀ɔ bpai eek nít gôr jà tĕung tâa-reua loei kâ/kráp. Pɔɔ tĕung tâa-reua Sǎa-tɔɔn láaew hâi sǎng-gàyt bpâai reua-dùuan Jâo-prá-yaa têe bpen tong-sôm ná-ká/kráp. Nâng bpai bprà-maan sìp-sìp-hâa naa-tee gôr tĕung tâa-reua Wát Arun loei kâ/kráp. Kâa reua bprà-maan sìp-hòk bàat kâ/kráp. — From here, the closest pier is Sathorn Pier. You have to take the BTS Skytrain from this station to Saphan Taksin Station, then walk a little further and you'll reach the pier. Once you reach Sathorn Pier, look for the Chao Phraya Express Boat sign with the orange flag. It's about a 10-15 minute ride to Wat Arun Pier. The boat fare is about 16 baht."
+    },
+    "t4_distance_other": {
+      "id": "t4_distance_other",
+      "prompt": "โอ้โห เดินไปไม่ไหวหรอกค่ะ/ครับคุณพี่คุณน้อง ไกลลิบโลกเลยค่ะ/ครับ เป็นสิบๆ กิโลเมตรเลยนะคะ/ครับ แนะนำให้นั่งเรือด่วนเจ้าพระยาดีกว่าค่ะ/ครับสะดวกที่สุดแล้ว หรือถ้าอยากจะนั่งแท็กซี่ก็ได้ค่ะ/ครับ แต่ค่าใช้จ่ายก็จะสูงกว่าเยอะเลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เรือดีกว่า",
+            "เรือ",
+            "เรือด่วน",
+            "ขึ้นเรือที่ไหน",
+            "ท่าเรือ"
+          ],
+          "nextTurnId": "t3_boat_details"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ôo-hǒh dern bpai mâi wăi ròk kâ/kráp kun pêe kun nɔ́ɔng. Glai líp lôhk loei kâ/kráp bpen sìp-sìp gì-loh-máet loey ná-ká/kráp. Nâe-nam hâi nâng reua-dùuan Jâo-prá-yaa dee gwàa kâ/kráp sà-dùuak têe-sùt láaew rĕu tâa yàak jà nâng táek-sêe gôr dâai kâ/kráp dtàe kâa-chái-jàai gôr jà sǔung gwàa yóe loey kâ/kráp. — Oh my, you can't walk there, dear. It's incredibly far, tens of kilometers. I recommend taking the Chao Phraya Express Boat; it's the most convenient. Or if you want to take a taxi, you can, but the cost will be much higher."
+    },
+    "t5_nearby": {
+      "id": "t5_nearby",
+      "prompt": "แถววัดอรุณฯ ก็มีที่เที่ยวเยอะเลยค่ะ/ครับ พอข้ามฟากไปฝั่งตรงข้ามก็จะเป็นวัดโพธิ์กับพระบรมมหาราชวังค่ะ/ครับ เป็นแลนด์มาร์คสำคัญที่นักท่องเที่ยวชอบไปกันค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tǎaew Wát Arun gôr mii tîi tîeow yóe loey kâ/kráp. Pɔɔ kâam-fâak bpai fàng dtrong-kâam gôr jà bpen Wát Pôh gàp Prá-bɔɔ-rom-má-hǎa-ráat-wǎng kâ/kráp. Bpen laaen-máak sǎm-kan tîi nák-tɔ̂ng-tîeow chɔ̂ɔp bpai gan kâ/kráp. — There are many attractions around Wat Arun. Once you cross the river to the opposite side, you'll find Wat Pho and the Grand Palace. These are important landmarks that tourists love to visit."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ/ครับ ไม่ค่อยได้ยินที่คุณพูดเมื่อสักครู่นี้ รบกวนช่วยพูดใหม่อีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ a-pai kâ/kráp mâi kɔ̂i dâi yin têe kun pôot mêua sàk-kroo-née róp-guan chûay pôot mài eek kráng dâai mái kâ/kráp? — Sorry, I didn't quite hear what you said just now. Could you please repeat it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีค่ะ/ครับ ขอให้เที่ยวให้สนุกนะคะ/ครับ เดินทางปลอดภัยค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin-dee kâ/kráp kɔ̌ɔ hâi tîeow hâi sà-nùk ná-ká/kráp dern-taang bplɔ̀ɔt-pai kâ/kráp. — You're welcome. Have a good trip! Travel safely.",
+      "isTerminal": true
+    }
+  }
+}

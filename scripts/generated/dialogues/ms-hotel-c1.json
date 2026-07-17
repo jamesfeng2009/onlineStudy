@@ -1,0 +1,186 @@
+{
+  "id": "dlg-ms-hotel-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Daftar Masuk Hotel",
+  "opening": "Selamat datang ke Hotel Impian Jaya. Adakah anda mempunyai tempahan dengan kami? Boleh saya dapatkan nama penuh anda, sila?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Impian Jaya. Adakah anda mempunyai tempahan dengan kami? Boleh saya dapatkan nama penuh anda, sila?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "tempahan",
+            "saya"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak"
+          ],
+          "nextTurnId": "t-no-reservation"
+        },
+        {
+          "keywords": [
+            "bila",
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Hotel Impian Jaya. (Selamat datang ke Hotel Impian Jaya. - Welcome to Dream Victory Hotel.) Adakah anda mempunyai tempahan dengan kami? (Adakah anda mempunyai tempahan dengan kami? - Do you have a reservation with us?) Boleh saya dapatkan nama penuh anda, sila? (Boleh saya dapatkan nama penuh anda, sila? - May I have your full name, please?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Encik/Puan. Kami ada tempahan atas nama anda. Boleh saya mohon kad pengenalan atau pasport anda untuk pengesahan?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "kad",
+            "pasport",
+            "ada"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bayar",
+            "deposit",
+            "wang"
+          ],
+          "nextTurnId": "t-payment-query"
+        },
+        {
+          "keywords": [
+            "di mana",
+            "alamat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Encik/Puan. (Baik, Encik/Puan. - Alright, Mr./Ms.) Kami ada tempahan atas nama anda. (Kami ada tempahan atas nama anda. - We have a reservation under your name.) Boleh saya mohon kad pengenalan atau pasport anda untuk pengesahan? (Boleh saya mohon kad pengenalan atau pasport anda untuk pengesahan? - May I request your ID card or passport for verification?)"
+    },
+    "t-payment-query": {
+      "id": "t-payment-query",
+      "prompt": "Untuk pembayaran dan deposit, itu boleh diuruskan selepas pengesahan identiti dan maklumat bilik. Jadi, boleh saya lihat dokumen pengenalan anda dahulu?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "kad",
+            "pasport",
+            "baik"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk pembayaran dan deposit, itu boleh diuruskan selepas pengesahan identiti dan maklumat bilik. (Untuk pembayaran dan deposit, itu boleh diuruskan selepas pengesahan identiti dan maklumat bilik. - For payment and deposit, that can be handled after identity verification and room details.) Jadi, boleh saya lihat dokumen pengenalan anda dahulu? (Jadi, boleh saya lihat dokumen pengenalan anda dahulu? - So, may I see your identification document first?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Bilik anda adalah Superior King di tingkat 12. Adakah anda mempunyai sebarang keutamaan bilik, seperti pemandangan bandar atau jauh dari lif?",
+      "branches": [
+        {
+          "keywords": [
+            "pemandangan",
+            "bandar",
+            "lif",
+            "jauh"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih. (Terima kasih. - Thank you.) Bilik anda adalah Superior King di tingkat 12. (Bilik anda adalah Superior King di tingkat 12. - Your room is a Superior King on the 12th floor.) Adakah anda mempunyai sebarang keutamaan bilik, seperti pemandangan bandar atau jauh dari lif? (Adakah anda mempunyai sebarang keutamaan bilik, seperti pemandangan bandar atau jauh dari lif? - Do you have any room preferences, such as a city view or far from the elevator?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, kami akan cuba penuhi permintaan anda. Untuk makluman, sarapan pagi termasuk dalam pakej anda dan kami juga menawarkan pilihan halal yang luas. Ia akan dihidangkan di Restoran Anggerik dari jam 7 hingga 10 pagi setiap hari. Adakah anda ingin mengesahkan tempahan sarapan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sahkan",
+            "nak",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, kami akan cuba penuhi permintaan anda. (Baik, kami akan cuba penuhi permintaan anda. - Alright, we will try to fulfill your request.) Untuk makluman, sarapan pagi termasuk dalam pakej anda dan kami juga menawarkan pilihan halal yang luas. (Untuk makluman, sarapan pagi termasuk dalam pakej anda dan kami juga menawarkan pilihan halal yang luas. - For your information, breakfast is included in your package and we also offer a wide range of halal options.) Ia akan dihidangkan di Restoran Anggerik dari jam 7 hingga 10 pagi setiap hari. (Ia akan dihidangkan di Restoran Anggerik dari jam 7 hingga 10 pagi setiap hari. - It will be served at Anggerik Restaurant from 7 to 10 AM daily.) Adakah anda ingin mengesahkan tempahan sarapan ini? (Adakah anda ingin mengesahkan tempahan sarapan ini? - Would you like to confirm this breakfast reservation?)"
+    },
+    "t-no-reservation": {
+      "id": "t-no-reservation",
+      "prompt": "Mohon maaf atas kekeliruan. Jika anda ingin membuat tempahan sekarang, kami boleh bantu anda melihat ketersediaan bilik. Jika tidak, ada apa-apa lagi yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin tempah",
+            "ya",
+            "lihat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf atas kekeliruan. (Mohon maaf atas kekeliruan. - My apologies for the confusion.) Jika anda ingin membuat tempahan sekarang, kami boleh bantu anda melihat ketersediaan bilik. (Jika anda ingin membuat tempahan sekarang, kami boleh bantu anda melihat ketersediaan bilik. - If you wish to make a reservation now, we can help you check room availability.) Jika tidak, ada apa-apa lagi yang boleh saya bantu? (Jika tidak, ada apa-apa lagi yang boleh saya bantu? - Otherwise, is there anything else I can help you with?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulangi semula? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh anda ulangi semula? (Maaf, boleh anda ulangi semula? - Sorry, could you please repeat?) Saya kurang jelas. (Saya kurang jelas. - I'm not clear.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, semua sudah selesai. Selamat menikmati penginapan anda di Hotel Impian Jaya. Jika ada sebarang pertanyaan, jangan segan silu hubungi kami.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, semua sudah selesai. (Baik, semua sudah selesai. - Alright, everything is done.) Selamat menikmati penginapan anda di Hotel Impian Jaya. (Selamat menikmati penginapan anda di Hotel Impian Jaya. - Enjoy your stay at Dream Victory Hotel.) Jika ada sebarang pertanyaan, jangan segan silu hubungi kami. (Jika ada sebarang pertanyaan, jangan segan silu hubungi kami. - If you have any questions, don't hesitate to contact us.)",
+      "isTerminal": true
+    }
+  }
+}

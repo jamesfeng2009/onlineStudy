@@ -1,0 +1,202 @@
+{
+  "id": "dlg-vi-doctor-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Khám Bác Sĩ",
+  "opening": "Chào bạn, bạn cảm thấy không khỏe chỗ nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, bạn cảm thấy không khỏe chỗ nào?",
+      "branches": [
+        {
+          "keywords": [
+            "đau",
+            "bệnh",
+            "ốm"
+          ],
+          "nextTurnId": "t2_symptom_location"
+        },
+        {
+          "keywords": [
+            "ho",
+            "sổmũi",
+            "sốt"
+          ],
+          "nextTurnId": "t2a_cold_flu"
+        },
+        {
+          "keywords": [
+            "đauđầu",
+            "đaubụng"
+          ],
+          "nextTurnId": "t2b_specific_pain"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (chao ban) — Hello, what brings you here today?"
+    },
+    "t2_symptom_location": {
+      "id": "t2_symptom_location",
+      "prompt": "Bạn đau ở đâu? Hoặc có triệu chứng gì?",
+      "branches": [
+        {
+          "keywords": [
+            "bụng",
+            "đầu",
+            "họng",
+            "ngực"
+          ],
+          "nextTurnId": "t3_pain_duration_severity"
+        },
+        {
+          "keywords": [
+            "sốt",
+            "mệt",
+            "ho",
+            "buồnnôn"
+          ],
+          "nextTurnId": "t3a_general_symptoms_details"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn đau ở đâu? (ban dau o dau?) — Where do you feel pain? Or what are your symptoms?"
+    },
+    "t2a_cold_flu": {
+      "id": "t2a_cold_flu",
+      "prompt": "Bạn bị ho, sổ mũi hay sốt đã bao lâu rồi?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtngày",
+            "hômqua"
+          ],
+          "nextTurnId": "t4_allergies"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn bị ho, sổ mũi hay sốt đã bao lâu rồi? — How long have you had a cough, runny nose, or fever?"
+    },
+    "t2b_specific_pain": {
+      "id": "t2b_specific_pain",
+      "prompt": "Cơn đau đầu hoặc đau bụng của bạn như thế nào? Đã bao lâu rồi?",
+      "branches": [
+        {
+          "keywords": [
+            "nhẹ",
+            "nặng",
+            "nhóinhói"
+          ],
+          "nextTurnId": "t3_pain_duration_severity"
+        },
+        {
+          "keywords": [
+            "mộtngày",
+            "hômqua",
+            "vàingày"
+          ],
+          "nextTurnId": "t4_allergies"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cơn đau đầu hoặc đau bụng của bạn như thế nào? (con dau dau hoac dau bung cua ban nhu the nao?) — How is your headache or stomachache? How long has it been?"
+    },
+    "t3_pain_duration_severity": {
+      "id": "t3_pain_duration_severity",
+      "prompt": "Bạn bị đau bao lâu rồi? Đau nhiều hay ít?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtngày",
+            "hômqua",
+            "ít"
+          ],
+          "nextTurnId": "t4_allergies"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn bị đau bao lâu rồi? (ban bi dau bao lau roi?) — How long have you been in pain? Is the pain severe or mild?"
+    },
+    "t3a_general_symptoms_details": {
+      "id": "t3a_general_symptoms_details",
+      "prompt": "Bạn cảm thấy như vậy bao lâu rồi? Có sốt không?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtngày",
+            "hômqua",
+            "có"
+          ],
+          "nextTurnId": "t4_allergies"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn cảm thấy như vậy bao lâu rồi? — How long have you felt like this? Do you have a fever?"
+    },
+    "t4_allergies": {
+      "id": "t4_allergies",
+      "prompt": "Tôi sẽ kê đơn thuốc cho bạn. Bạn có dị ứng thuốc gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "khôngcó"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "có",
+            "dịứng"
+          ],
+          "nextTurnId": "t5_specific_allergy"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tôi sẽ kê đơn thuốc cho bạn. (toi se ke don thuoc cho ban) — I will prescribe you some medicine. Do you have any drug allergies?"
+    },
+    "t5_specific_allergy": {
+      "id": "t5_specific_allergy",
+      "prompt": "Bạn dị ứng với thuốc gì vậy? Hãy nói rõ hơn.",
+      "branches": [
+        {
+          "keywords": [
+            "penicillin",
+            "aspirin",
+            "khác",
+            "thuốcgiảmđau"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn dị ứng với thuốc gì vậy? — What medicine are you allergic to? Please explain more clearly."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu. Bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "làmơn"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa hiểu. Bạn có thể nói lại không? — Sorry, I didn't understand. Can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Được rồi. Bạn hãy uống thuốc theo chỉ dẫn nhé. Chúc bạn mau khỏe!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Được rồi. Bạn hãy uống thuốc theo chỉ dẫn nhé. (duoc roi. ban hay uong thuoc theo chi dan nhe) — Okay. Please take the medicine as directed. Wish you a speedy recovery!",
+      "isTerminal": true
+    }
+  }
+}

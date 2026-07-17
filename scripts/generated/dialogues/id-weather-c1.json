@@ -1,0 +1,181 @@
+{
+  "id": "dlg-id-weather-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Obrolan Cuaca Tingkat Lanjut",
+  "opening": "Cuaca belakangan ini memang sulit ditebak, ya? Kadang terik menyengat, tiba-tiba sorenya hujan deras seperti dicurahkan dari langit.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Cuaca belakangan ini memang sulit ditebak, ya? Kadang terik menyengat, tiba-tiba sorenya hujan deras seperti dicurahkan dari langit.",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "benar",
+            "mengganggu",
+            "rencana"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ramalan",
+            "perkiraan",
+            "cuaca",
+            "bmkg"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The weather lately has been so unpredictable, hasn't it? Sometimes it's scorching hot, then suddenly in the afternoon, it's pouring rain as if poured from the sky."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Betul sekali. Sulit memang kalau sudah ada agenda tapi alam berkehendak lain. Memangnya ada agenda apa yang sampai terganggu?",
+      "branches": [
+        {
+          "keywords": [
+            "luar",
+            "ruangan",
+            "piknik",
+            "olahraga",
+            "jalan-jalan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "perjalanan",
+            "liburan",
+            "pulang",
+            "mudik"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolutely. It's truly difficult when you have plans, but nature has other ideas. So, what kind of agenda got disrupted?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Menurut BMKG, sih, beberapa hari ke depan masih akan ada potensi hujan lebat di beberapa wilayah. Tapi, ya, ramalan cuaca ini kadang seperti tebak-tebakan berhadiah, sering meleset juga.",
+      "branches": [
+        {
+          "keywords": [
+            "siap-siap",
+            "payung",
+            "jas hujan",
+            "antisipasi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidakpercaya",
+            "ragu",
+            "meleset",
+            "memangbegitu"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "According to the BMKG (Meteorology, Climatology, and Geophysics Agency), there's still potential for heavy rain in several areas in the coming days. But, well, weather forecasts are sometimes like a guessing game with prizes; they often miss the mark."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mau bagaimana lagi, ya? Namanya juga hidup di negara tropis, musim hujan memang seperti sudah jadi 'langganan'. Kita saja yang harus pandai-pandai menyiasati.",
+      "branches": [
+        {
+          "keywords": [
+            "dalam",
+            "rumah",
+            "menikmati",
+            "aktivitas"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "menunggu",
+            "cerah",
+            "baik",
+            "berharap"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What else can we do, right? Living in a tropical country, the rainy season is just 'a regular occurrence.' We're the ones who have to be clever in adapting."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ya, begitulah. Kadang memang kita harus pasrah pada kehendak alam. Mungkin ini saatnya mencari alternatif hiburan di dalam ruangan, atau sekadar menikmati secangkir kopi hangat sambil mendengarkan rintik hujan.",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "benar",
+            "idebaik",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "iklim",
+            "jangkapanjang",
+            "perubahan",
+            "global"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, that's how it is. Sometimes we just have to surrender to the will of nature. Perhaps this is the time to find alternative indoor entertainment, or simply enjoy a warm cup of coffee while listening to the patter of rain."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Betul. Perubahan iklim memang isu global yang patut jadi perhatian kita semua. Tapi untuk sekarang, mari nikmati saja dulu apa yang ada, sambil berharap cuaca membaik di hari esok.",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "amin",
+            "harap",
+            "semoga"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's right. Climate change is indeed a global issue that deserves everyone's attention. But for now, let's just enjoy what we have, while hoping for better weather tomorrow."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang menangkap apa yang Anda sampaikan tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch what you said earlier."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah kalau begitu. Semoga hari Anda menyenangkan, terlepas dari cuaca di luar sana! Sampai jumpa lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright then. Hope you have a pleasant day, regardless of the weather outside! See you again.",
+      "isTerminal": true
+    }
+  }
+}

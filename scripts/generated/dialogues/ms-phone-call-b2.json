@@ -1,0 +1,185 @@
+{
+  "id": "dlg-ms-phone-call-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon",
+  "opening": "Selamat pagi, Pejabat Urusan Seri Jaya. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Pejabat Urusan Seri Jaya. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin",
+            "bercakap",
+            "encikamir"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning, Seri Jaya Management Office. How can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak begitu faham. Boleh anda ulang sekali lagi atau bercakap dengan lebih jelas?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I don't quite understand. Could you please repeat that or speak more clearly?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baiklah. Boleh saya tahu siapa yang bercakap dan dari syarikat mana?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "ahmad",
+            "syarikat",
+            "abc"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah — Alright. May I know who's speaking and from which company?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Maaf — Encik Amir tiada di pejabat pada masa ini. Ada apa-apa pesanan penting yang ingin anda tinggalkan untuknya?",
+      "branches": [
+        {
+          "keywords": [
+            "ingin",
+            "tinggalkan",
+            "pesanan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bila",
+            "balik"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cuba",
+            "hubung",
+            "nanti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf — Sorry, Mr. Amir is not in the office at the moment. Is there any important message you'd like to leave for him?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sila berikan pesanan anda. Dan, boleh saya dapatkan nombor telefon anda supaya Encik Amir boleh menghubungi anda semula?",
+      "branches": [
+        {
+          "keywords": [
+            "nombor",
+            "telefon",
+            "saya",
+            "0123456789",
+            "pesanan",
+            "penting"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please provide your message. And, may I get your phone number so Mr. Amir can call you back?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Beliau dijangka kembali selepas waktu makan tengah hari. Anda boleh cuba hubungi semula sekitar jam 2 petang.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "informasi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "He is expected back after lunch. You can try calling again around 2 PM."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baiklah, saya telah catatkan pesanan anda dan nombor telefonnya. Saya akan pastikan Encik Amir mendapatkannya sebaik sahaja beliau kembali.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "bantuan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I have noted down your message and phone number. I will make sure Mr. Amir gets it as soon as he returns."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Terima kasih kerana menghubungi kami. Selamat pagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Thank you for contacting us. Good morning.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "dlg-ms-weather-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Bual Bicara Cuaca",
+  "opening": "Aduh, panasnya hari ini sampai melekit satu badan! Rasa macam nak mandi air batu je. Kau apa khabar, terjejas juga ke dengan bahang ni?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Aduh, panasnya hari ini sampai melekit satu badan! Rasa macam nak mandi air batu je. Kau apa khabar, terjejas juga ke dengan bahang ni?",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "bahang",
+            "melekit",
+            "terik"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "redup",
+            "mendung",
+            "tak"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aduh, panasnya hari ini sampai melekit satu badan! Rasa macam nak mandi air batu je. Kau apa khabar, terjejas juga ke dengan bahang ni? — Ugh, it's so hot today, I'm all sticky! I feel like taking an ice bath. How are you doing? Are you also affected by this heat?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Betul tak? Rasa macam nak cair je berdiri bawah matahari ni. Saya pun tak tahu nak buat apa, duduk dalam rumah pun berkuap. Agak-agak, bila lah nak hujan ni? Cuaca terik macam ni memang buat pening kepala.",
+      "branches": [
+        {
+          "keywords": [
+            "aircond",
+            "dingin",
+            "mall",
+            "rumah",
+            "lepak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "harap hujan",
+            "ramalan",
+            "mendung",
+            "sejuk"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Betul tak? Rasa macam nak cair je berdiri bawah matahari ni. Saya pun tak tahu nak buat apa, duduk dalam rumah pun berkuap. Agak-agak, bila lah nak hujan ni? Cuaca terik macam ni memang buat pening kepala. — Right? I feel like I'm melting standing under this sun. I don't know what to do either, even indoors it's stuffy. When do you think it's going to rain? Scorching weather like this really gives me a headache."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, kau bernasib baiklah kalau tak terjejas sangat. Kadang-kadang hujan tu rahmat juga, buat suasana jadi nyaman sikit. Cuma, kalau hujan lebat sangat, mula lah risaukan banjir atau perjalanan tergendala. Apa plan kau hari ni, terganggu tak dengan cuaca?",
+      "branches": [
+        {
+          "keywords": [
+            "rumah",
+            "lepak",
+            "tidur",
+            "minum kopi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "batal",
+            "tertunda",
+            "luar",
+            "aktiviti"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, kau bernasib baiklah kalau tak terjejas sangat. Kadang-kadang hujan tu rahmat juga, buat suasana jadi nyaman sikit. Cuma, kalau hujan lebat sangat, mula lah risaukan banjir atau perjalanan tergendala. Apa plan kau hari ni, terganggu tak dengan cuaca? — Oh, you're lucky if you're not too affected. Sometimes rain is a blessing too, making the atmosphere a bit more comfortable. But if it rains too heavily, then we start worrying about floods or disrupted travel. What are your plans today, are they affected by the weather?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Itulah fasalnya. Kena cari akal jugaklah nak elak bahang ni. Cuaca di Malaysia ni memang begini, kadang panas membahang, tiba-tiba hujan mencurah. Tak boleh nak dijangka sangat. Kau rasa musim panas ni akan berlarutan lagi ke?",
+      "branches": [
+        {
+          "keywords": [
+            "musim",
+            "tengkujuh",
+            "normal",
+            "iklim"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "cuti",
+            "balik kampung",
+            "pergi"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's why. We have to find a way to avoid this heat. The weather in Malaysia is like this, sometimes scorching hot, suddenly pouring rain. It's not very predictable. Do you think this hot season will prolong?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Betul lah tu, kadang-kadang ramalan cuaca pun tak berapa nak tepat sangat. Tapi takpelah, kita kena sentiasa sedia payung sebelum hujan kan? Ada buat plan B tak, kalau-kalau cuaca tak mengizinkan?",
+      "branches": [
+        {
+          "keywords": [
+            "plan b",
+            "ganti",
+            "lain"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "harap",
+            "doakan",
+            "cerah",
+            "sejuk"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's true, sometimes the weather forecast isn't very accurate. But never mind, we always have to prepare an umbrella before it rains, right? Do you have a Plan B, just in case the weather doesn't permit?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Malaysia ni kan negara tropika, memang begini lah selok-belok cuacanya. Panasnya bukan kepalang, tapi bila hujan pula, kadang-kadang sampai banjir kilat. Kena sabar jelah. Tapi itulah, itulah dia rentak cuaca di khatulistiwa kita ni.",
+      "branches": [
+        {
+          "keywords": [
+            "betul",
+            "setuju",
+            "itulah",
+            "susah"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Malaysia is a tropical country, so this is how its weather works. The heat is unbearable, but when it rains, sometimes there are flash floods. We just have to be patient. But that's how the weather rhythm is here at our equator."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Oh, ada rancangan tertentu rupanya. Harap-harap cuaca mengizinkanlah ya. Jangan sampai hujan lebat pulak masa kau nak keluar nanti. Apa-apa pun, semoga perjalanan kau dipermudahkan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "amin",
+            "harap"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, so you have specific plans. Hopefully, the weather will permit it. Don't let it rain heavily when you're about to go out later. Anyway, I hope your journey will be easy."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya kurang jelas. Boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf, saya kurang jelas. Boleh ulang sekali lagi? — Sorry, I'm not clear. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya pergi dulu. Jaga diri!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, I'll be going now. Take care!",
+      "isTerminal": true
+    }
+  }
+}

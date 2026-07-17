@@ -1,0 +1,156 @@
+{
+  "id": "dlg-en-bank-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Bank Assistance",
+  "opening": "Hello! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "atm",
+            "problem",
+            "machine"
+          ],
+          "nextTurnId": "t2_atm"
+        },
+        {
+          "keywords": [
+            "account",
+            "open",
+            "new"
+          ],
+          "nextTurnId": "t2_account"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! How can I help you today?"
+    },
+    "t2_atm": {
+      "id": "t2_atm",
+      "prompt": "Okay, what seems to be the problem with the ATM?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "stuck",
+            "swallowed",
+            "pin",
+            "forgot",
+            "reset"
+          ],
+          "nextTurnId": "t3_id_needed"
+        },
+        {
+          "keywords": [
+            "transaction",
+            "failed",
+            "didn'tgetmoney",
+            "error"
+          ],
+          "nextTurnId": "t3_general_atm"
+        },
+        {
+          "keywords": [
+            "",
+            "somethingelse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, what seems to be the problem with the ATM?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "No problem. Are you looking for a checking or savings account?",
+      "branches": [
+        {
+          "keywords": [
+            "checking",
+            "current"
+          ],
+          "nextTurnId": "t3_resolve_account"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Are you looking for a checking or savings account?"
+    },
+    "t3_id_needed": {
+      "id": "t3_id_needed",
+      "prompt": "I see. For this, I'll need to verify your identity. Can I see your debit card and a valid photo ID, please?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "sure",
+            "here",
+            "id"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. For this, I'll need to verify your identity. Can I see your debit card and a valid photo ID, please?"
+    },
+    "t3_general_atm": {
+      "id": "t3_general_atm",
+      "prompt": "Hmm. Sometimes the machines have a temporary glitch. Did you get a receipt or an error message?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "receipt",
+            "error"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hmm. Sometimes the machines have a temporary glitch. Did you get a receipt or an error message?"
+    },
+    "t3_resolve_account": {
+      "id": "t3_resolve_account",
+      "prompt": "Excellent. Please take a seat, and I'll call you over to get started in a moment.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "thanks",
+            "willdo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Please take a seat, and I'll call you over to get started in a moment."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for visiting us today. Have a great day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for visiting us today. Have a great day!",
+      "isTerminal": true
+    }
+  }
+}

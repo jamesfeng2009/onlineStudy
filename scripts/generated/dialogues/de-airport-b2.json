@@ -1,0 +1,129 @@
+{
+  "id": "dlg-de-airport-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Hilfe am Flughafen",
+  "opening": "Guten Tag, kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "flugverspätung",
+            "verspätung",
+            "flug hat verspätung"
+          ],
+          "nextTurnId": "t2_delay"
+        },
+        {
+          "keywords": [
+            "gepäck",
+            "koffer",
+            "gepäck verloren",
+            "koffer fehlt"
+          ],
+          "nextTurnId": "t2_luggage"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg, kann ich Ih-nen be-hilf-lich sein? — Good day, can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie leider nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gen Zee, ich ha-be Zee lei-der nicht ganzt fer-stan-den. Könn-ten Zee das bit-te vie-der-ho-len? — Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen, ich wünsche Ihnen eine gute Reise und einen angenehmen Aufenthalt am Flughafen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern ge-she-hen, ich wün-sche Ih-nen ei-ne goo-te Rei-se oond ei-nen an-ge-neh-men Oof-ent-halt am Floog-ha-fen! — You're welcome, I wish you a good journey and a pleasant stay at the airport!",
+      "isTerminal": true
+    },
+    "t2_delay": {
+      "id": "t2_delay",
+      "prompt": "Oh, das ist ärgerlich. Um welchen Flug handelt es sich denn und was ist der aktuelle Status, den Sie haben?",
+      "branches": [
+        {
+          "keywords": [
+            "flugnummer",
+            "lh456",
+            "ek123",
+            "nummer"
+          ],
+          "nextTurnId": "t3_delay_resolution"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, das ist är-ger-lich. Um wel-chen Floog han-delt es sich denn oond vas ist der ak-too-el-le Sta-tus, den Zee ha-ben? — Oh, that's annoying. Which flight is it, and what's the current status you have?"
+    },
+    "t2_luggage": {
+      "id": "t2_luggage",
+      "prompt": "Das ist wirklich unangenehm. Haben Sie schon eine Verlustmeldung aufgegeben oder wissen Sie, bei welcher Fluggesellschaft Ihr Gepäck verloren gegangen ist?",
+      "branches": [
+        {
+          "keywords": [
+            "verlustmeldung",
+            "gemeldet",
+            "bericht"
+          ],
+          "nextTurnId": "t3_luggage_resolution"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist wirk-lich un-an-ge-nehm. Ha-ben Zee shon ei-ne Fer-lust-mel-dung oof-ge-ge-ben o-der vis-sen Zee, bei wel-cher Floog-ge-sell-schaft Ihr Ge-päck fer-lo-ren ge-gan-gen ist? — That's really unpleasant. Have you already filed a lost property report, or do you know which airline lost your luggage?"
+    },
+    "t3_delay_resolution": {
+      "id": "t3_delay_resolution",
+      "prompt": "Vielen Dank. Wenn Sie eine Flugnummer haben, überprüfen Sie die Anzeigetafeln oder wenden Sie sich an den Serviceschalter Ihrer Fluggesellschaft. Ohne Nummer empfehle ich den allgemeinen Informationsschalter. Dort erhalten Sie die aktuellsten Informationen.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ok",
+            "verstanden",
+            "schalter",
+            "information",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. If you have a flight number, check the display boards or contact your airline's service counter. Without a number, I recommend the general information desk. There you will get the most up-to-date information."
+    },
+    "t3_luggage_resolution": {
+      "id": "t3_luggage_resolution",
+      "prompt": "Verstanden. Wenn Sie bereits eine Verlustmeldung haben, verfolgen Sie den Status online oder wenden Sie sich an das Gepäckermittlungsbüro im Ankunftsbereich. Falls nicht, müssen Sie unbedingt zum Serviceschalter Ihrer Fluggesellschaft, um eine offizielle Meldung aufzugeben.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ok",
+            "verstanden",
+            "büro",
+            "schalter",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. If you already have a lost property report, track the status online or contact the baggage tracing office in the arrivals area. If not, you must absolutely go to your airline's service counter to file an official report."
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "id": "dlg-th-weather-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "คุยเรื่องสภาพอากาศ",
+  "opening": "วันนี้อากาศเป็นยังไงบ้างครับ/คะ ดูเหมือนฝนจะตกช่วงบ่ายนะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "วันนี้อากาศเป็นยังไงบ้างครับ/คะ ดูเหมือนฝนจะตกช่วงบ่ายนะ",
+      "branches": [
+        {
+          "keywords": [
+            "ฝนตก",
+            "ฝน",
+            "ตก"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ร้อน",
+            "แดดออก",
+            "แดดแรง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ดี",
+            "อากาศดี",
+            "เย็นสบาย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wán-níi aa-gàat bpen yang-ngai bâang kráp/ká? Doo mʉ̌ʉan fǒn jà dtòk chûuang bàai ná. — How's the weather today? Looks like it might rain this afternoon."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ใช่เลยครับ/ค่ะ เห็นว่าพายุจะเข้าช่วงเย็นด้วย สงสัยแผนที่วางไว้คงต้องเปลี่ยนแล้วล่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "แผน",
+            "กิจกรรม",
+            "ไปเที่ยว"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "พายุ",
+            "พายุเข้า",
+            "รุนแรง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "เปลี่ยนแผน",
+            "เห็นด้วย",
+            "เซ็ง",
+            "แย่จัง"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Châi loei kráp/ká. Hěn wâa paa-yú jà kâo chûuang yen dûay. Sǒng-sǎi pláen têe waang wái kong dtông bplìan láew lâ. — You're right. I heard a storm is coming this evening too. I guess our plans might have to change."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ร้อนจริงๆ ครับ/ค่ะ ช่วงนี้อากาศไม่ค่อยจะเป็นใจเลย ต้องหาวิธีคลายร้อนบ้างแล้ว",
+      "branches": [
+        {
+          "keywords": [
+            "คลายร้อน",
+            "วิธีคลายร้อน",
+            "ร้อนมาก"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "แล้ง",
+            "ฤดูร้อน",
+            "หน้าแล้ง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่ชอบ",
+            "ไม่ไหว",
+            "ทนไม่ไหว"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rón jing-jing kráp/ká. Chûuang níi aa-gàat mâi kôi jà bpen jai loei. Dtông hǎa wí-tee klaai rón bâang láew. — It's really hot. The weather hasn't been very cooperative lately. We need to find ways to cool down."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จริงด้วยครับ/ค่ะ อากาศดีแบบนี้หายากนะช่วงนี้ มีแผนจะไปไหนเป็นพิเศษไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้างนอก",
+            "กิจกรรมกลางแจ้ง",
+            "ไปเที่ยว",
+            "สวนสาธารณะ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "อยู่บ้าน",
+            "ไม่ไปไหน"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "คุณล่ะ",
+            "แผนคุณ",
+            "ของคุณล่ะ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jing dûay kráp/ká. Aa-gàat dee bàep níi hǎa yâak ná chûuang níi. Mee pláen jà bpai năi bpen pí-sèet mái kráp/ká? — That's true. Good weather like this is rare these days. Do you have any special plans to go anywhere?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "น่าสนใจครับ/ค่ะ! หวังว่าสภาพอากาศจะเอื้ออำนวยให้นะครับ/คะ ถ้าฝนไม่ตกหรือร้อนเกินไปคงจะดี",
+      "branches": [
+        {
+          "keywords": [
+            "หวังว่า",
+            "กลัวฝน",
+            "กลัวร้อน",
+            "อย่าตกนะ"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ทางเลือกอื่น",
+            "ทำอะไรดี",
+            "สำรอง"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sounds interesting! I hope the weather cooperates for you. It would be great if it doesn't rain or get too hot."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ใช่ครับ/ค่ะ ช่วงนี้อากาศค่อนข้างแปรปรวนจริงๆ เดี๋ยวร้อนเดี๋ยวฝนตก ถ้ามีกิจกรรมในร่มสำรองไว้บ้างก็ดีนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "เห็นด้วย",
+            "ความคิดดี",
+            "ในร่ม",
+            "น่าสนใจ"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You're right. The weather is quite unpredictable lately. It's hot one moment, then it rains. It's good to have some indoor activities as backup."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "ใช่ครับ/ค่ะ ยังไงก็ดูแลสุขภาพด้วยนะครับ/คะ อากาศเปลี่ยนแปลงบ่อยแบบนี้ต้องระวังไม่ให้ป่วย",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ดูแลตัวเอง",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's right. Anyway, take care of your health. With the weather changing so often, you have to be careful not to get sick."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจที่คุณพูดเมื่อสักครู่ รบกวนพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kǒr-tôht kráp/ká. Mâi kâo-jai têe kun pôot mʉ̂a sàk-krôo. Róp-guan pôot eek kráng dâi mái kráp/ká? — I'm sorry, I didn't understand what you just said. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีเลยครับ/ค่ะ งั้นวันนี้คงต้องคุยกันแค่นี้ก่อนนะครับ/คะ ไว้คุยกันใหม่โอกาสหน้านะครับ/คะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dee loei kráp/ká. Ngán wan-níi kong dtông kui gan kâe née gɔ̀ɔn ná kráp/ká. Wái kui gan mài oo-gàat nâa ná kráp/ká. Sà-wàt-dee kráp/ká! — Alright. Then we'll have to end our chat for today. Let's talk again next time. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

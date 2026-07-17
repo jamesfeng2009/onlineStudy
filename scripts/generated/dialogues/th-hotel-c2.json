@@ -1,0 +1,141 @@
+{
+  "id": "dlg-th-hotel-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "การเช็คอินโรงแรม",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเรานะคะ ไม่ทราบว่าท่านได้จองห้องพักไว้ในชื่อใดคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับสู่โรงแรมของเรานะคะ ไม่ทราบว่าท่านได้จองห้องพักไว้ในชื่อใดคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "นามสกุล",
+            "จองไว้",
+            "เช็คอิน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "sà-wàt-dee kâ, yin-dee dtɔ̂n-ráp sùu rohng-raem kɔ̌ɔng rao ná ká. mâi sâap wâa tâan dâi jɔɔng hɔ̂ng-pák wái nai chʉ̂ʉ dai ká? — Hello. Welcome to our hotel. May I know under which name you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ค่ะ ดิฉันค้นหาข้อมูลให้สักครู่นะคะ รบกวนขอเอกสารยืนยันตัวตน อาทิ บัตรประชาชน หรือหนังสือเดินทาง เพื่อใช้ในการตรวจสอบและลงทะเบียนด้วยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรประชาชน",
+            "พาสปอร์ต",
+            "หนังสือเดินทาง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "kâ, dì-chán kón-hǎa kôr-moon hâi sàk-krûu ná ká. róp-guan kɔ̌ɔ èek-gà-sǎan yʉʉn-yan dtua-dton aa-tí bàt-prà-chaa-chon rʉ̌ʉ nǎng-sʉ̌ʉ-dʉən-taang pʉ̂ʉa chái nai gaan dtrùat-sɔ̀p láe long-tábian dûai kâ. — Alright, I'll look up the information for a moment. Could I trouble you for a form of identification, such as your ID card or passport, for verification and registration please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอบคุณค่ะ ขอเวลาดำเนินการสักครู่นะคะ ระหว่างนี้ ดิฉันขอสอบถามเรื่องการชำระเงินค่ะ ท่านประสงค์จะชำระด้วยวิธีใดคะ บัตรเครดิต เงินสด หรือช่องทางอื่น ๆ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรเครดิต",
+            "เครดิต",
+            "รูดบัตร"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "kɔ̀ɔp-kun kâ. kɔ̌ɔ wee-laa dam-nəən-gaan sàk-krûu ná ká. rá-wàang níi dì-chán kɔ̌ɔ sɔ̀ɔp-tǎam rʉ̂ʉang gaan chá-mrá ngən kâ. tâan prà-sǒng jà chá-mrá dûai wí-tee dai ká? bàt-kray-dìt, ngən-sòt rʉ̌ʉ chɔ̂ng-taangʉ̀ʉn-ʉ̀ʉn? — Thank you. Please give me a moment to process this. In the meantime, I'd like to inquire about the payment. How would you prefer to pay? Credit card, cash, or other methods?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "รับทราบค่ะ ห้องพักของท่านเป็นประเภทดีลักซ์ตามที่จองไว้นะคะ ไม่ทราบว่าท่านมีข้อกำหนดเพิ่มเติมเกี่ยวกับห้องพักหรือไม่คะ เช่น ห้องปลอดบุหรี่ วิวเมือง หรือชั้นสูง ๆ หรือต้องการอาหารเช้าเพิ่มเติมไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "วิว",
+            "ชั้นสูง",
+            "ปลอดบุหรี่",
+            "ไม่สูบบุหรี่",
+            "พิเศษ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ráb-sâap kâ. hɔ̂ng-pák kɔ̌ɔng tâan bpen prà-pêet dee-lák dtaam têe jɔɔng wái ná ká. mâi sâap wâa tâan mee kɔ̂ɔ-gam-nòt pə̂əm-dtə̀m gèe-ao-gàp hɔ̂ng-pák rʉ̌ʉ mâi ká? chên hɔ̂ng bplɔ̀t bù-rèe, wíw mʉʉang rʉ̌ʉ chán sǔung-sǔung? rʉ̌ʉ dtɔ̂ng-gaan aa-hǎan-cháo pə̂əm-dtə̀m mái ká? — Understood. Your room is a Deluxe room as reserved. Do you have any additional preferences for the room, such as a non-smoking room, city view, or a higher floor, or would you like to add breakfast?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เรียบร้อยแล้วค่ะ ทางเราจะจัดเตรียมทุกอย่างให้ตามความประสงค์นะคะ นี่คีย์การ์ดสำหรับห้องพักหมายเลข 705 ค่ะ ห้องพักของท่านอยู่ชั้น 7 หวังว่าท่านจะเพลิดเพลินกับการพักผ่อนที่นี่นะคะ หากมีสิ่งใดให้ช่วยเหลือเพิ่มเติม สามารถแจ้งพนักงานได้ตลอด 24 ชั่วโมงเลยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ค่ะ",
+            "ครับ",
+            "เรียบร้อย"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "rîap-rɔ́ɔi láew kâ. taang rao jà jàt-dtreeam túk yàang hâi dtaam kwaam-prà-sǒng ná ká. née kee-gaat sǎm-ràp hɔ̂ng-pák maai-lêk jet-sŏon-hâa kâ. hɔ̂ng-pák kɔ̌ɔng tâan yòo chán jet. wǎng-wâa tâan jà plə̂əp-pləən gàp gaan pák-pɔ̀n têe nêe ná ká. hàak mee sìng dai hâi chûay-lʉ̌ʉ pə̂əm-dtə̀m sǎa-mâat jâeng pá-nák-ngaan dâai dtà-lɔ̀t yêe-sìp-sèe chûa-moong ləəi kâ. — All done. We will arrange everything according to your preferences. Here is your keycard for room number 705. Your room is on the 7th floor. We hope you enjoy your stay here. If you need any further assistance, please feel free to inform any staff member 24 hours a day."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ดิฉันไม่ค่อยเข้าใจ รบกวนท่านช่วยพูดซ้ำอีกครั้งได้ไหมคะ? หรืออาจจะลองพูดอีกแบบหนึ่งก็ได้ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "kɔ̌ɔ a-pai kâ, dì-chán mâi kɔ̂i kâo-jai. róp-guan tâan chûai pûut sám èek kráng dâai mái ká? rʉ̌ʉ àat jà lɔɔng pûut èek bàep nʉ̀ng gɔ̂r dâi kâ. — I apologize, I didn't quite catch that. Could you please repeat what you said? Or perhaps try saying it in a different way."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีให้บริการค่ะ ขอให้มีความสุขกับการพักผ่อนนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "yin-dee hâi bɔɔ-rí-gaan kâ. kɔ̌ɔ hâi mee kwaam-sùk gàp gaan pák-pɔ̀n ná ká. — You're welcome. Have a pleasant stay!",
+      "isTerminal": true
+    }
+  }
+}

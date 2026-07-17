@@ -1,0 +1,152 @@
+{
+  "id": "dlg-ms-taxi-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Naik Teksi",
+  "opening": "Selamat pagi! Nak ke mana ya, cik?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Nak ke mana ya, cik?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "pusat",
+            "alamat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi! (Selamat pagi — Good morning!) Nak ke mana ya, cik? (Where would you like to go, miss/sir?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, ke Hotel Seri Malaysia. Kalau ikut jalan biasa, anggaran 45 minit, tiada tol. Kalau ikut lebuh raya bertol, lebih cepat dalam 25 minit, tapi tambang sekitar RM25-RM30. Yang mana satu cik nak?",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "tiada tol"
+          ],
+          "nextTurnId": "t3_ok"
+        },
+        {
+          "keywords": [
+            "mahal",
+            "kenapa"
+          ],
+          "nextTurnId": "t3_fare_explain"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ke Hotel Seri Malaysia. (Oh, to Hotel Seri Malaysia.) Kalau ikut jalan biasa, (Kalau ikut jalan biasa — If we take the usual road,) anggaran 45 minit, tiada tol. (it's approximately 45 minutes, no toll.) Kalau ikut lebuh raya bertol, (Kalau ikut lebuh raya bertol — If we take the toll highway,) lebih cepat dalam 25 minit, (it's faster, about 25 minutes,) tapi tambang sekitar RM25-RM30. (but the fare is around RM25-RM30.) Yang mana satu cik nak? (Which one would you like, miss/sir?)"
+    },
+    "t3_fare_explain": {
+      "id": "t3_fare_explain",
+      "prompt": "Tambang teksi memang bergantung pada jarak dan tol, cik. Itu harga standard.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "faham",
+            "teruskan"
+          ],
+          "nextTurnId": "t3_ok"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tambang teksi memang bergantung pada jarak dan tol, cik. (Tambang teksi — Taxi fare memang bergantung pada jarak — really depends on distance dan tol, cik — and toll, miss/sir.) Itu harga standard. (That is the standard price.)"
+    },
+    "t3_ok": {
+      "id": "t3_ok",
+      "prompt": "Baik, kita gerak sekarang. Harap perjalanan lancar.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "terima"
+          ],
+          "nextTurnId": "t4_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, kita gerak sekarang. (Okay, we'll start now.) Harap perjalanan lancar. (Hope the journey is smooth.)"
+    },
+    "t4_payment": {
+      "id": "t4_payment",
+      "prompt": "Kita dah sampai, cik. Jumlah tambang RM28. Ada duit kecil? Dan ada barang di bonet?",
+      "branches": [
+        {
+          "keywords": [
+            "ada",
+            "duit",
+            "beg",
+            "ini"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kita dah sampai, cik. (We've arrived, miss/sir.) Jumlah tambang RM28. (Total fare RM28.) Ada duit kecil? (Do you have small change?) Dan ada barang di bonet? (And do you have anything in the boot?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "ya",
+            "cakap"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (Sorry,) boleh ulang sekali lagi? (could you repeat that?) Saya kurang faham. (I don't quite understand.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak, harap jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak, (Thank you very much,) harap jumpa lagi! (hope to see you again!)",
+      "isTerminal": true
+    }
+  }
+}

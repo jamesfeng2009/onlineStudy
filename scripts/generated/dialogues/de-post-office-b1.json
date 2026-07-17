@@ -1,0 +1,201 @@
+{
+  "id": "dlg-de-post-office-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "Auf der Post: Paket und Briefe verschicken",
+  "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "pakete"
+          ],
+          "nextTurnId": "t2_parcel_dest"
+        },
+        {
+          "keywords": [
+            "brief",
+            "briefe"
+          ],
+          "nextTurnId": "t2_letter_dest"
+        },
+        {
+          "keywords": [
+            "briefmarken"
+          ],
+          "nextTurnId": "t5_stamps_type"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Vee kahn ich ee-nen hel-fen? — Good day! How can I help you?"
+    },
+    "t2_parcel_dest": {
+      "id": "t2_parcel_dest",
+      "prompt": "Sie möchten ein Paket verschicken? Wohin soll es denn gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "deutschland",
+            "europa",
+            "eu"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            "usa",
+            "amerika",
+            "international",
+            "ausland"
+          ],
+          "nextTurnId": "t4_customs"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "See muesh-ten ayn Pah-ket fair-shik-ken? Voh-hin zol es den gay-en? — You want to send a parcel? Where should it go?"
+    },
+    "t2_letter_dest": {
+      "id": "t2_letter_dest",
+      "prompt": "Einen Brief? Wohin geht der denn?",
+      "branches": [
+        {
+          "keywords": [
+            "deutschland",
+            "europa",
+            "eu",
+            "usa",
+            "international",
+            "ausland"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ay-nen Breef? Voh-hin gayt dair den? — A letter? Where is it going?"
+    },
+    "t3_options": {
+      "id": "t3_options",
+      "prompt": "Alles klar. Möchten Sie das versichert verschicken oder mit Sendungsverfolgung? Oder als Einschreiben?",
+      "branches": [
+        {
+          "keywords": [
+            "versichert",
+            "versicherung"
+          ],
+          "nextTurnId": "t6_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah-les klar. Moesh-ten zee das fair-zi-chert fair-shik-ken o-der mit Zen-dungs-fair-fol-gung? O-der als Ayn-shry-ben? — All right. Would you like to send it insured or with tracking? Or as registered mail?"
+    },
+    "t4_customs": {
+      "id": "t4_customs",
+      "prompt": "Für Sendungen ins Ausland benötigen wir eine Zollerklärung. Was ist im Paket und wie hoch ist der Wert?",
+      "branches": [
+        {
+          "keywords": [
+            "geschenk",
+            "kleidung"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fuer Zen-doon-gen ins Auz-land be-noe-ti-gen veer ay-ne Tsol-er-kler-ung. Vas ist im Pah-ket oont vee hohch ist dair Vairt? — For international shipments, we need a customs declaration. What's in the parcel and what's its value?"
+    },
+    "t5_stamps_type": {
+      "id": "t5_stamps_type",
+      "prompt": "Welche Art von Briefmarken benötigen Sie? Für Standardbriefe oder Postkarten?",
+      "branches": [
+        {
+          "keywords": [
+            "standardbrief",
+            "brief"
+          ],
+          "nextTurnId": "t6_confirm"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vel-che Art fon Breef-mar-ken be-noe-ti-gen see? Fuer Stan-dard-bree-fe o-der Post-kar-ten? — What kind of stamps do you need? For standard letters or postcards?"
+    },
+    "t6_confirm": {
+      "id": "t6_confirm",
+      "prompt": "Gut. Das macht dann insgesamt X Euro. Wie möchten Sie bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot. Das mahct dan in-ge-zamt X Oy-ro. Vee moesh-ten see be-tsah-len? — Good. That will be X Euros in total. How would you like to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shul-di-gen Zee, koen-ten Zee das bit-te vee-der-ho-len? — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch und einen schönen Tag!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fuer ee-ren Be-zooch oont ay-nen shoe-nen Tahg! — Thank you for your visit and have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

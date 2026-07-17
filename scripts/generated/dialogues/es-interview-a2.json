@@ -1,0 +1,131 @@
+{
+  "id": "dlg-es-interview-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Entrevista de Trabajo - Nivel A2",
+  "opening": "Hola, buenos días. Gracias por venir. Cuéntame un poco sobre ti.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenos días. Gracias por venir. Cuéntame un poco sobre ti.",
+      "branches": [
+        {
+          "keywords": [
+            "estudiante",
+            "estudio",
+            "buscando"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "experiencia",
+            "trabajado",
+            "trabajo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hola, buenos días — Hello, good morning. Gracias por venir — Thank you for coming. Cuéntame un poco sobre ti — Tell me a little about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¿Qué estudias o qué te interesa de este puesto?",
+      "branches": [
+        {
+          "keywords": [
+            "servicioalcliente",
+            "clientes",
+            "atender"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué estudias — What do you study or qué te interesa de este puesto? — what interests you about this position?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Interesante. ¿Qué tipo de experiencia tienes y qué buscas ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "servicioalcliente",
+            "clientes",
+            "atender"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting. What kind of experience do you have and what are you looking for now?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Muy bien. ¿Cuál crees que es tu mayor fortaleza para este puesto?",
+      "branches": [
+        {
+          "keywords": [
+            "responsable",
+            "responsabilidad"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien — Very good. ¿Cuál crees que es tu mayor fortaleza para este puesto? — What do you think is your greatest strength for this position?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gracias por tu tiempo. Ha sido un placer conocerte. Te llamaremos pronto.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Gracias por tu tiempo — Thank you for your time. Ha sido un placer conocerte — It's been a pleasure to meet you. Te llamaremos pronto — We will call you soon.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, no te he entendido. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "si",
+            "ok",
+            "claro"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Lo siento — I'm sorry, no te he entendido — I didn't understand you. ¿Podrías repetirlo, por favor? — Could you repeat it, please?"
+    }
+  }
+}

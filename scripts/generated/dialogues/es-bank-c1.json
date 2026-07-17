@@ -1,0 +1,200 @@
+{
+  "id": "dlg-es-bank-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Gestiones Bancarias Avanzadas",
+  "opening": "¡Buenos días! Dígame, ¿en qué puedo asistirle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! Dígame, ¿en qué puedo asistirle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "abrir",
+            "cuenta",
+            "nueva"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "hacer",
+            "transferencia",
+            "enviar"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "problema",
+            "cajero",
+            "automático",
+            "tarjeta"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "otra",
+            "consulta",
+            "duda"
+          ],
+          "nextTurnId": "t2d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boo-eh-nos Dee-ahs! Dee-gah-meh, en keh poo-eh-doh ah-sees-teer-leh oy? — Good morning! Tell me, how may I assist you today?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Perfecto. Para la apertura de una nueva cuenta, ¿estaría interesado en una cuenta corriente, de ahorro, o quizás una cuenta específica para inversionistas?",
+      "branches": [
+        {
+          "keywords": [
+            "corriente",
+            "normal"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perr-fehk-toh. Pah-rah lah ah-pehr-too-rah deh oo-nah noo-eh-vah koo-ehn-tah, ehs-tah-ree-ah een-teh-reh-sah-doh en oo-nah koo-ehn-tah koh-rree-ehn-teh, deh ah-oh-rroh, oh kee-sah ooh-nah koo-ehn-tah ehs-peh-see-fee-kah pah-rah een-vehr-syoh-nees-tahs? — Perfect. For opening a new account, would you be interested in a checking account, a savings account, or perhaps a specific account for investors?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Comprendo. ¿Se trata de una transferencia nacional o internacional? Y, ¿es a una cuenta propia o a la de un tercero?",
+      "branches": [
+        {
+          "keywords": [
+            "nacional",
+            "propia"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kohm-pren-doh. Seh trah-tah deh oo-nah trahns-feh-ren-syah nah-syoh-nahl oh een-tehr-nah-syoh-nahl? Ee, ehs ah oo-nah koo-ehn-tah proh-pyah oh ah lah deh oon tehr-seh-roh? — I understand. Is it a national or international transfer? And, is it to your own account or to a third party's?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "¿Qué inconveniente le está presentando el cajero? ¿Quizás se tragó su tarjeta, no le dispensó el dinero, o hay algún error en el saldo?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "tragó",
+            "atascada"
+          ],
+          "nextTurnId": "t3c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Keh een-kohn-veh-nyehn-teh leh ehs-tah preh-sehn-tahn-doh el kah-heh-roh? Kee-sah seh trah-goh soo tar-heh-tah, noh leh dees-pehn-soh el dee-neh-roh, oh ay ahl-goon eh-rroh en el sahl-doh? — What issue is the ATM presenting to you? Perhaps it swallowed your card, didn't dispense the money, or is there an error in the balance?"
+    },
+    "t2d": {
+      "id": "t2d",
+      "prompt": "Entendido. Por favor, especifique un poco más su consulta para que pueda derivarle con el especialista adecuado.",
+      "branches": [
+        {
+          "keywords": [
+            "pin",
+            "restablecer",
+            "clave"
+          ],
+          "nextTurnId": "t3d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-tehn-dee-doh. Phor fah-vor, eh-speh-see-fee-keh oon poh-koh mahs soo kohn-sool-tah pah-rah keh poo-eh-dah deh-ree-var-leh kohn el ehs-peh-syah-lees-tah ah-deh-koo-ah-doh. — Understood. Please specify your query a bit more so I can direct you to the appropriate specialist."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Excelente elección. Para proceder con la apertura, necesitaré su documento de identidad y una prueba de residencia. ¿Los tiene a mano?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "si",
+            "tengo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ehk-seh-lehn-teh eh-lek-syohn. Pah-rah proh-seh-dehr kohn lah ah-pehr-too-rah, neh-seh-see-tah-reh soo doh-koo-mehn-toh deh ee-dehn-tee-dahd ee oo-nah proo-eh-bah deh reh-see-dehn-syah. Lohs tyee-neh ah mah-noh? — Excellent choice. To proceed with the opening, I will need your identity document and proof of residence. Do you have them handy?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "De acuerdo. Para completar la transferencia, por favor, indíqueme el número de cuenta de destino y el importe exacto. ¿Dispone de esa información ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "si",
+            "tengo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Deh ah-koo-ehr-doh. Pah-rah kohm-pleh-tahr lah trahns-feh-ren-syah, porr fah-vor, een-dee-keh-meh el noo-meh-roh deh koo-ehn-tah deh dehs-tee-noh ee el eem-pohr-teh ehk-sahk-toh. Dees-poh-neh deh eh-sah een-fohr-mah-syohn ah-oh-rah? — Alright. To complete the transfer, please provide me with the destination account number and the exact amount. Do you have that information now?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Entendido. Para gestionar esta incidencia, le ruego que rellene un formulario de reclamación y adjunte cualquier justificante que tenga. ¿Está dispuesto a hacerlo ahora mismo?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "si",
+            "dispuesto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-tehn-dee-doh. Pah-rah heh-stee-oh-nahr ehs-tah een-see-dehn-syah, leh roo-eh-goh keh reh-yeh-neh oon fohr-moo-lah-ryoh deh reh-klah-mah-syohn ee ahd-joon-teh koo-ahl-kyee-ehr hoos-tee-fee-kahn-teh keh tehn-gah. Ehs-tah dees-poo-ehs-toh ah ah-sehr-loh ah-oh-rah mees-moh? — Understood. To manage this incident, I ask you to fill out a claim form and attach any supporting documents you have. Are you prepared to do it right now?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "Gracias por la aclaración. Permítame consultarlo con mi colega de atención especializada. Le atenderá en un instante. ¿Puede esperar un momento?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "si",
+            "puedo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grah-syahs por lah ah-klah-rah-syohn. Pehr-mee-tah-meh kohn-sool-tahr-loh kohn mee koh-leh-gah deh ah-tehn-syohn ehs-peh-syah-lee-sah-dah. Leh ah-tehn-dah-rah en oon een-stahn-teh. Poo-eh-deh ehs-peh-rahr oon moh-mehn-toh? — Thank you for the clarification. Allow me to consult with my specialized service colleague. They will assist you in a moment. Can you wait a moment?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he entendido bien. ¿Podría repetírmelo, por favor, o expresarlo de otra manera?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Dees-kool-peh, noh leh eh ehn-tehn-dee-doh byehn. Poh-dree-ah reh-peh-teer-meh-loh, por fah-vor, oh ehks-preh-sahr-loh deh oh-trah mah-neh-rah? — Excuse me, I didn't understand you well. Could you please repeat it, or express it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto, le agradecemos su visita y la confianza depositada en nuestro banco. Que tenga un excelente día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perr-fehk-toh, leh ah-grah-deh-seh-mos soo vee-see-tah ee lah kohn-fyan-sah deh-poh-see-tah-dah en noo-ehs-troh bahn-koh. Keh tehn-gah oon ehk-seh-lehn-teh dee-ah. — Perfect, we thank you for your visit and the trust placed in our bank. Have an excellent day.",
+      "isTerminal": true
+    }
+  }
+}

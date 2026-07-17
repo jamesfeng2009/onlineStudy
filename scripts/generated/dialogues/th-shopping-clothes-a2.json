@@ -1,0 +1,133 @@
+{
+  "id": "dlg-th-shopping-clothes-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "ซื้อเสื้อผ้า",
+  "opening": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หาเสื้อ",
+            "เสื้อ"
+          ],
+          "nextTurnId": "t2_item_request"
+        },
+        {
+          "keywords": [
+            "แค่ดู",
+            "ดูเฉยๆ",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t_end_browsing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee ka. Mee a-rai hai chuay mai ka? — Hello. Can I help you?"
+    },
+    "t2_item_request": {
+      "id": "t2_item_request",
+      "prompt": "คุณลูกค้าอยากได้สีอะไรคะ? และขนาดเท่าไหร่ดีคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สีน้ำเงิน",
+            "ขนาดm"
+          ],
+          "nextTurnId": "t3_tryon_offer"
+        },
+        {
+          "keywords": [
+            "ไม่รู้",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t2_item_request"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khun look-kaa yak dai see a-rai ka? Lae kha-naat thao-rai dee ka? — What color would you like? And what size?"
+    },
+    "t3_tryon_offer": {
+      "id": "t3_tryon_offer",
+      "prompt": "ได้ค่ะ มีของค่ะ คุณลูกค้าจะลองไหมคะ? ห้องลองอยู่ทางโน้นค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ลอง",
+            "อยากลอง"
+          ],
+          "nextTurnId": "t4_decision"
+        },
+        {
+          "keywords": [
+            "ไม่ลอง",
+            "ไม่เอา",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t_end_browsing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai ka. Mee khong ka. Khun look-kaa ja long mai ka? Hong long yoo taang nohn ka. — Okay. We have the item. Would you like to try it on? The fitting room is over there."
+    },
+    "t4_decision": {
+      "id": "t4_decision",
+      "prompt": "เป็นไงบ้างคะ? ชอบไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชอบ",
+            "เอา",
+            "ซื้อ"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "ไม่ชอบ",
+            "เล็กไป",
+            "ใหญ่ไป"
+          ],
+          "nextTurnId": "t2_item_request"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pen ngai baang ka? Chorp mai ka? — How is it? Do you like it?"
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "ได้ค่ะ ชำระเงินได้ที่แคชเชียร์เลยค่ะ ขอบคุณมากค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t5_payment",
+      "promptTranslation": "Dai ka. Cham-ra ngern dai tee cash-shia loey ka. Khop khun maak ka. — Okay. You can pay at the cashier. Thank you very much.",
+      "isTerminal": true
+    },
+    "t_end_browsing": {
+      "id": "t_end_browsing",
+      "prompt": "ขอบคุณที่แวะมานะคะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t_end_browsing",
+      "promptTranslation": "Khop khun tee wae maa na ka. Sawasdee ka. — Thank you for stopping by. Goodbye.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ ไม่เข้าใจค่ะ คุณลูกค้าพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor thot ka. Mai khao jai ka. Khun look-kaa phoot eek krang dai mai ka? — Sorry, I don't understand. Could you please say it again?"
+    }
+  }
+}

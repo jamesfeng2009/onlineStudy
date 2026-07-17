@@ -1,0 +1,272 @@
+{
+  "id": "dlg-fr-doctor-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Visite chez le médecin",
+  "opening": "Bonjour, entrez. Asseyez-vous, s'il vous plaît.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, entrez. Asseyez-vous, s'il vous plaît. Qu'est-ce qui vous amène aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "mal au ventre",
+            "douleur estomac",
+            "problèmes digestion"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "j'ai de la fièvre",
+            "je suis malade",
+            "je ne me sens pas bien"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "mal de tête",
+            "migraine"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR), entrez (ahn-TRAY). Asseyez-vous (ah-say-AY-voo), s'il vous plaît (seel voo PLEH). Qu'est-ce qui vous amène (ah-MEN) aujourd'hui (oh-zhoor-DWEE)? - Hello, come in. Sit down, please. What brings you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord. Depuis quand avez-vous mal au ventre ? Pouvez-vous décrire la douleur ?",
+      "branches": [
+        {
+          "keywords": [
+            "depuis hier",
+            "ce matin",
+            "depuis 2 jours"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Since when have you had a stomach ache? Can you describe the pain?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Je vois. Quels sont vos autres symptômes ? Avez-vous de la toux ou des courbatures ?",
+      "branches": [
+        {
+          "keywords": [
+            "toux",
+            "tousse",
+            "gorge"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. What are your other symptoms? Do you have a cough or body aches?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Un mal de tête, d'accord. Est-ce une douleur constante ou par crises ? Où est-elle localisée ?",
+      "branches": [
+        {
+          "keywords": [
+            "constante",
+            "tout le temps"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A headache, okay. Is it a constant pain or in attacks? Where is it located?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Et est-ce que quelque chose aggrave ou soulage la douleur ? Par exemple, après les repas ?",
+      "branches": [
+        {
+          "keywords": [
+            "après manger",
+            "après les repas",
+            "en mangeant"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Et (eh) est-ce que (ess kuh) quelque chose (KEL-kuh shohz) aggrave (ah-GRAHV) ou soulage (soo-LAJ) la douleur (lah doo-LEUR)? Par exemple (pahr ehg-ZAHMPL), après les repas (ah-PREH lay ruh-PAH)? - And does anything worsen or relieve the pain? For example, after meals?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "D'accord. Et depuis quand avez-vous ces symptômes de toux ou de courbatures ? Sont-ils apparus ensemble ?",
+      "branches": [
+        {
+          "keywords": [
+            "depuis 3 jours",
+            "depuis peu"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. And since when have you had these cough or body ache symptoms? Did they appear together?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Je vois. Avez-vous d'autres symptômes associés, comme une sensibilité à la lumière ou au bruit ?",
+      "branches": [
+        {
+          "keywords": [
+            "lumière",
+            "photophobie"
+          ],
+          "nextTurnId": "t4b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Do you have any other associated symptoms, like sensitivity to light or noise?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Hmm, je vois. Avez-vous des allergies connues à des médicaments ? Je vais vous donner une ordonnance.",
+      "branches": [
+        {
+          "keywords": [
+            "oui, pénicilline",
+            "allergique aux antibiotiques"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hmm (mmm), je vois (zhuh VWAH). Avez-vous (ah-VAY-voo) des allergies (zah-ler-ZHEE) connues (koh-NYU) à des médicaments (may-dee-kah-MAHN)? Je vais vous donner (VAH voo doh-NAY) une ordonnance (or-doh-NAHNS). - Hmm, I see. Do you have any known medication allergies? I'm going to give you a prescription."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "D'accord, il semble que ce soit un virus. Avez-vous des allergies connues à des médicaments ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui, pénicilline",
+            "allergique aux antibiotiques"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, it seems to be a virus. Do you have any known medication allergies?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Bien. Je pense que c'est une migraine classique. Avez-vous déjà pris quelque chose pour cela ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui, paracétamol",
+            "ibuprofène"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. I think it's a classic migraine. Have you ever taken anything for it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien. Je vais vous prescrire [médicament/repos]. Suivez les instructions et si ça ne va pas mieux, revenez me voir.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "je vais faire"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très (treh) bien (byen). Je vais vous prescrire (VOO press-KREER) [medication/rest]. Suivez (SWEE-vay) les instructions (zayn-strook-SYOHN) et si ça ne va pas (SAH nuh VAH pah) mieux (MYEU), revenez (ruh-VUH-nay) me voir (muh VWAR). - Very well. I will prescribe [medication/rest] for you. Follow the instructions and if it doesn't get better, come back to see me."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (par-DOHN), je n'ai pas bien compris (pah byan kohn-PREE). Pourriez-vous (poo-RYAY-voo) répéter (ray-PAY-tay), s'il vous plaît (seel voo PLEH)? - Sorry, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Je vous en prie. N'hésitez pas à me contacter si vous avez d'autres questions. Au revoir et bon rétablissement.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Je vous en prie (zhuh voo zahn PREE). N'hésitez pas (nay-zee-TAY pah) à me contacter (mah kohn-TACK-tay) si vous avez (voo zah-VAY) d'autres questions (DOH-truh kess-TYOHN). Au revoir (oh ruh-VWAR) et bon rétablissement (bohn ray-tah-BLEES-mah)! - You're welcome. Don't hesitate to contact me if you have other questions. Goodbye and get well soon.",
+      "isTerminal": true
+    }
+  }
+}

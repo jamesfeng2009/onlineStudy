@@ -1,0 +1,57 @@
+{
+  "id": "dlg-en-shopping-clothes-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "A Day at The Haberdashery",
+  "opening": "Good morning! Welcome to 'The Haberdashery'. Are you looking for anything in particular, or just having a browse today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Welcome to 'The Haberdashery'. Are you looking for anything in particular, or just having a browse today?",
+      "branches": [
+        {
+          "keywords": [
+            "specific",
+            "lookingfor",
+            "want"
+          ],
+          "nextTurnId": "t2_specific"
+        },
+        {
+          "keywords": [
+            "browsing",
+            "justlooking",
+            "around"
+          ],
+          "nextTurnId": "t2_browse"
+        }
+      ],
+      "fallbackBranchId": "t2_browse",
+      "promptTranslation": "Good morning! Welcome to 'The Haberdashery'. Are you looking for anything in particular, or just having a browse today? (Good morning! Welcome to our store. What can I help you find today?)"
+    },
+    "t2_specific": {
+      "id": "t2_specific",
+      "prompt": "Certainly. What kind of item did you have in mind? Perhaps a smart casual shirt or something for a special occasion?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t2_browse"
+        }
+      ],
+      "fallbackBranchId": "t2_browse",
+      "promptTranslation": "Certainly. What kind of item did you have in mind? Perhaps a smart casual shirt or something for a special occasion? (Of course. What item are you interested in? A shirt or a dress for an event?)"
+    },
+    "t2_browse": {
+      "id": "t2_browse",
+      "prompt": "Absolutely, feel free to take your time. We've just received a stunning new collection of autumnal wear, or perhaps our accessories might pique your interest.",
+      "branches": [],
+      "fallbackBranchId": "t2_browse",
+      "promptTranslation": "Absolutely, feel free to take your time. We'",
+      "isTerminal": true
+    }
+  }
+}

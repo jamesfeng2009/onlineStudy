@@ -1,0 +1,215 @@
+{
+  "id": "dlg-vi-weather-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Trò chuyện về thời tiết",
+  "opening": "Chào bạn! Hôm nay trời thế nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Hôm nay trời thế nào?",
+      "branches": [
+        {
+          "keywords": [
+            "nắng",
+            "nóng",
+            "ấm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mưa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "lạnh",
+            "rét"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "mát",
+            "đẹp",
+            "cómây"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn! (Chà-o bạn!) — Hello! Hôm nay (Hôm nay) — today trời (trời) — weather thế nào? (thế nà-o?) — how is it?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin lỗi) — Excuse me, bạn (bạn) — you có thể (có thể) — can nói lại (nói lại) — say again không? (không?) — ?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ồ, nóng quá! Bạn có kế hoạch gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "ởnhà",
+            "nghỉngơi",
+            "đọcsách"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "rasông",
+            "rabãi biển",
+            "đi chơi",
+            "đi bơi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "khôngcó",
+            "chưa",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ (Ồ) — Oh, nóng quá (nóng quá) — too hot! Bạn (Bạn) — you có kế hoạch gì (có kế hoạch gì) — have any plans không? (không?) — ?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Trời mưa à. Bạn có thích trời mưa không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thích",
+            "thíchmưa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "không",
+            "ghét",
+            "khôngthích"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Trời mưa (Trời mưa) — It's raining à (à) — (interjection, like \"oh, is it?\"). Bạn (Bạn) — you có thích (có thích) — like trời mưa (trời mưa) — rainy weather không? (không?) — ?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Trời lạnh. Bạn thường làm gì khi trời lạnh?",
+      "branches": [
+        {
+          "keywords": [
+            "uốngtrà",
+            "uốngcàphê",
+            "uốngnước nóng"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "điăn",
+            "ănlẩu"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Trời lạnh (Trời lạnh) — It's cold. Bạn (Bạn) — you thường làm gì (thường làm gì) — usually do what khi (khi) — when trời lạnh (trời lạnh) — it's cold?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Thật tuyệt! Thời tiết đẹp như vậy, bạn định làm gì?",
+      "branches": [
+        {
+          "keywords": [
+            "đi bộ",
+            "tậpthểdục",
+            "đicôngviên"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "làmviệc",
+            "học"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thật tuyệt (Thật tuyệt) — That's great! Thời tiết (Thời tiết) — Weather đẹp (đẹp) — beautiful như vậy (như vậy) — like that, bạn (bạn) — you định làm gì? (định làm gì?) — plan to do what?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Nghe thật thư giãn. Chúc bạn một ngày vui vẻ!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nghe (Nghe) — Sounds thật (thật) — really thư giãn (thư giãn) — relaxing. Chúc bạn (Chúc bạn) — Wish you một ngày (một ngày) — a day vui vẻ (vui vẻ) — happy!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Nghe có vẻ vui đó! Chúc bạn có một ngày tuyệt vời.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Nghe (Nghe) — Sounds có vẻ (có vẻ) — like vui (vui) — fun đó (đó) — (interjection)! Chúc bạn (Chúc bạn) — Wish you có (có) — have một ngày (một ngày) — a day tuyệt vời (tuyệt vời) — wonderful!"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "À, vậy sao. Hy vọng bạn sẽ tìm được việc gì đó vui sau nhé. Chúc một ngày tốt lành!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "À, vậy sao (À, vậy sa-o) — Oh, is that so. Hy vọng (Hy vọng) — Hope bạn (bạn) — you sẽ tìm được (sẽ tìm được) — will find việc gì đó (việc gì đó) — something vui (vui) — fun sau nhé (sau nhé) — later. Chúc một ngày tốt lành (Chúc một ngày tốt lành)! — Have a good day!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt bạn!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tạm biệt (Tạm biệt) — Goodbye bạn (bạn) — you!",
+      "isTerminal": true
+    }
+  }
+}

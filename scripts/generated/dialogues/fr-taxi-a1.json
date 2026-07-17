@@ -1,0 +1,129 @@
+{
+  "id": "dlg-fr-taxi-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Prendre un taxi",
+  "opening": "Bonjour! Où voulez-vous aller?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour! Où voulez-vous aller?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "gare",
+            "aeroport",
+            "centre",
+            "ville",
+            "adresse"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour! (bohn-ZHOOR) Où voulez-vous aller? (oo voo-LAY voo ah-LAY) — Hello! Where do you want to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord. Avez-vous des bagages?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "un",
+            "deux",
+            "valise"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord. (dah-KOR) Avez-vous des bagages? (ah-VAY voo day bah-GAHZ) — Okay. Do you have luggage?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien. Nous partons. Le prix est environ vingt euros.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "merci",
+            "bien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien. (byan) Nous partons. (noo par-TON) Le prix est environ vingt euros. (luh pree eh ahn-vee-RON van euro) — Good. We're leaving. The price is about twenty euros."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nous sommes arrivés. Ce sera vingt euros, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "voila",
+            "payer",
+            "carte",
+            "argent",
+            "merci",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nous sommes arrivés. (noo som ah-ree-VAY) Ce sera vingt euros, s'il vous plaît. (suh suh-RAH van euro, seel voo PLAY) — We have arrived. That will be twenty euros, please."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon? Pouvez-vous répéter, s'il vous plaît?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? (par-DON) Pouvez-vous répéter, s'il vous plaît? (poo-VAY voo ray-peh-TAY, seel voo PLAY) — Sorry? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup et au revoir!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci beaucoup (mer-SEE boh-KOO) et au revoir! (eh oh ruh-VWAR) — Thank you very much and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

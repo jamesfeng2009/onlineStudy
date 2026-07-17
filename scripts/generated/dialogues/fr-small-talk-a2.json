@@ -1,0 +1,258 @@
+{
+  "id": "dlg-fr-small-talk-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Petite conversation amicale",
+  "opening": "Bonjour ! Comment allez-vous aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment s'est passé votre week-end ?",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "super",
+            "génial"
+          ],
+          "nextTurnId": "t2_weekend_positive"
+        },
+        {
+          "keywords": [
+            "pasmal",
+            "fatigué",
+            "ennuyeux"
+          ],
+          "nextTurnId": "t2_weekend_negative"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Comment s'est passé votre week-end ? — Hello! How was your weekend?"
+    },
+    "t2_weekend_positive": {
+      "id": "t2_weekend_positive",
+      "prompt": "Oh, c'est super ! Qu'avez-vous fait de beau ?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "regarder",
+            "série"
+          ],
+          "nextTurnId": "t3_movies"
+        },
+        {
+          "keywords": [
+            "lire",
+            "livre"
+          ],
+          "nextTurnId": "t3_books"
+        },
+        {
+          "keywords": [
+            "sortir",
+            "balade",
+            "promener",
+            "amis"
+          ],
+          "nextTurnId": "t3_outings"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, c'est super ! Qu'avez-vous fait de beau ? — Oh, that's great! What nice things did you do?"
+    },
+    "t2_weekend_negative": {
+      "id": "t2_weekend_negative",
+      "prompt": "Dommage ! J'espère que le prochain week-end sera mieux. Vous aimez cuisiner ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "adorer",
+            "cuisiner"
+          ],
+          "nextTurnId": "t3_cooking"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasvraiment",
+            "restaurant"
+          ],
+          "nextTurnId": "t3_restaurant"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dommage ! J'espère que le prochain week-end sera mieux. Vous aimez cuisiner ? — Too bad! I hope next weekend will be better. Do you like to cook?"
+    },
+    "t3_movies": {
+      "id": "t3_movies",
+      "prompt": "Ah, quel genre de films aimez-vous ? Moi, j'adore les comédies.",
+      "branches": [
+        {
+          "keywords": [
+            "comédie",
+            "rire"
+          ],
+          "nextTurnId": "t4_end_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, quel genre de films aimez-vous ? Moi, j'adore les comédies. — Ah, what kind of movies do you like? I love comedies."
+    },
+    "t3_books": {
+      "id": "t3_books",
+      "prompt": "C'est une bonne idée ! Que lisez-vous en ce moment ?",
+      "branches": [
+        {
+          "keywords": [
+            "roman",
+            "fiction"
+          ],
+          "nextTurnId": "t4_end_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est une bonne idée ! Que lisez-vous en ce moment ? — That's a good idea! What are you reading right now?"
+    },
+    "t3_outings": {
+      "id": "t3_outings",
+      "prompt": "Super ! C'est important de sortir. Où aimez-vous aller ?",
+      "branches": [
+        {
+          "keywords": [
+            "parc",
+            "nature"
+          ],
+          "nextTurnId": "t4_end_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Super ! C'est important de sortir. Où aimez-vous aller ? — Great! It's important to go out. Where do you like to go?"
+    },
+    "t3_cooking": {
+      "id": "t3_cooking",
+      "prompt": "Moi aussi, j'adore ça ! Qu'est-ce que vous aimez préparer ?",
+      "branches": [
+        {
+          "keywords": [
+            "pâtes",
+            "pizza"
+          ],
+          "nextTurnId": "t4_end_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Moi aussi, j'adore ça ! Qu'est-ce que vous aimez préparer ? — I love that too! What do you like to prepare?"
+    },
+    "t3_restaurant": {
+      "id": "t3_restaurant",
+      "prompt": "Je comprends. Il y a de très bons restaurants ici. Vous avez un plat préféré ?",
+      "branches": [
+        {
+          "keywords": [
+            "pâtes",
+            "italien"
+          ],
+          "nextTurnId": "t4_end_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je comprends. Il y a de très bons restaurants ici. Vous avez un plat préféré ? — I understand. There are very good restaurants here. Do you have a favorite dish?"
+    },
+    "t4_end_chat": {
+      "id": "t4_end_chat",
+      "prompt": "C'est intéressant ! Bon, je dois y aller. C'était un plaisir de discuter avec vous !",
+      "branches": [
+        {
+          "keywords": [
+            "au revoir",
+            "salut",
+            "plaisir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est intéressant ! Bon, je dois y aller. C'était un plaisir de discuter avec vous ! — That's interesting! Well, I have to go. It was a pleasure chatting with you!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, pouvez-vous répéter s'il vous plaît ? Je n'ai pas bien compris.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, pouvez-vous répéter s'il vous plaît ? Je n'ai pas bien compris. — Excuse me, can you please repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Au revoir et à bientôt ! — Goodbye and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

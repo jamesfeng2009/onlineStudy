@@ -1,0 +1,179 @@
+{
+  "id": "dlg-de-small-talk-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Wochenend-Plausch",
+  "opening": "Hallo! Schön, dich zu sehen. Wie war dein Wochenende? Hast du etwas Schönes gemacht?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Schön, dich zu sehen. Wie war dein Wochenende? Hast du etwas Schönes gemacht?",
+      "branches": [
+        {
+          "keywords": [
+            "entspannt",
+            "ruhig",
+            "erholt"
+          ],
+          "nextTurnId": "t2_relax"
+        },
+        {
+          "keywords": [
+            "aktiv",
+            "unterwegs",
+            "erlebnisreich"
+          ],
+          "nextTurnId": "t2_active"
+        },
+        {
+          "keywords": [
+            "gearbeitet",
+            "stressig",
+            "leider"
+          ],
+          "nextTurnId": "t3_exit_generic"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hallo! (Hahl-loh!) Schön, dich zu sehen. (Shurn, dish tsoo zay-en.) Wie war dein Wochenende? (Vee vahr dine voh-ken-en-deh?) Hast du etwas Schönes gemacht? (Hast doo et-vas shurn-es geh-makt?)"
+    },
+    "t2_relax": {
+      "id": "t2_relax",
+      "prompt": "Ah, das klingt nach einer willkommenden Pause. Manchmal ist Entspannung genau das, was man braucht. Hast du ein gutes Buch gelesen oder einfach nur die Seele baumeln lassen?",
+      "branches": [
+        {
+          "keywords": [
+            "buch",
+            "lesen",
+            "geschichte"
+          ],
+          "nextTurnId": "t3_discuss_relax"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, das klingt nach einer willkommenden Pause. (Ah, das klinkt nahkh eye-ner vil-kom-en-den Pow-zeh.) Manchmal ist Entspannung genau das, was man braucht. (Mahnkh-mahl ist ent-shpah-nung geh-now das, vas mahn browkht.) Did you read a good book or just relax?"
+    },
+    "t2_active": {
+      "id": "t2_active",
+      "prompt": "Oh, spannend! Erzähl mal, was hast du denn gemacht? Warst du wandern, hast du Freunde getroffen oder vielleicht eine Ausstellung besucht?",
+      "branches": [
+        {
+          "keywords": [
+            "wandern",
+            "natur",
+            "ausflug"
+          ],
+          "nextTurnId": "t3_discuss_active"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, spannend! (Oh, shpah-nend!) Erzähl mal, was hast du denn gemacht? (Er-tsayl mahl, vas hast doo den geh-makt?) What did you do? Did you go hiking, meet friends, or perhaps visit an exhibition?"
+    },
+    "t3_discuss_relax": {
+      "id": "t3_discuss_relax",
+      "prompt": "Das klingt wirklich nach einer verdienten Auszeit. Es ist so wichtig, zwischendurch mal abzuschalten und neue Energie zu tanken. Ich nehme mir das für nächste Woche auch fest vor. Aber jetzt muss ich leider schon los. Einen schönen Tag noch!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "That really sounds like a well-deserved break. It's so important to switch off now and then and recharge your batteries. I'm definitely planning that for next week too. But unfortunately, I have to go now. Have a nice day!"
+    },
+    "t3_discuss_active": {
+      "id": "t3_discuss_active",
+      "prompt": "Das klingt ja nach einem sehr ereignisreichen Wochenende! Es ist toll, wenn man so viel unternimmt und neue Eindrücke sammelt. Leider muss ich jetzt weiter, aber es war schön, mit dir zu plaudern. Bis bald!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "That sounds like a very eventful weekend! It's great when you do so much and gather new impressions. Unfortunately, I have to go now, but it was nice chatting with you. See you soon!"
+    },
+    "t3_exit_generic": {
+      "id": "t3_exit_generic",
+      "prompt": "Das ist schade zu hören, aber manchmal ist das leider so. Ich hoffe, du konntest wenigstens ein bisschen zur Ruhe kommen. Was hilft dir denn am besten, um nach einer stressigen Woche wieder runterzukommen?",
+      "branches": [
+        {
+          "keywords": [
+            "musik",
+            "lesen",
+            "meditieren"
+          ],
+          "nextTurnId": "t4_stress_relief"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a shame to hear, but sometimes it's like that. I hope you could at least get a little rest. What helps you best to relax after a stressful week?"
+    },
+    "t4_stress_relief": {
+      "id": "t4_stress_relief",
+      "prompt": "Ja, da hat jeder so seine Methoden. Das ist wichtig, um die Balance zu halten. Leider muss ich jetzt los, aber es war schön, mit dir zu plaudern. Einen schönen Abend noch!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yes, everyone has their methods. That's important to maintain balance. Unfortunately, I have to go now, but it was nice chatting with you. Have a nice evening!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie akustisch nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't catch that. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Das war schön, mit dir zu plaudern! Ich wünsche dir noch einen schönen Tag. Bis bald!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was nice chatting with you! I wish you a good day. See you soon!",
+      "isTerminal": true
+    }
+  }
+}

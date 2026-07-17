@@ -1,0 +1,175 @@
+{
+  "id": "dlg-fr-interview-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Entretien d'embauche",
+  "opening": "Bonjour, merci d'être venu(e). Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours professionnel ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour [bonʒuʁ], merci d'être venu(e). Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours professionnel ?",
+      "branches": [
+        {
+          "keywords": [
+            "expérience",
+            "parcours",
+            "professionnel",
+            "formation"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "motivation",
+            "intéressé",
+            "pourquoi",
+            "poste"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello [bonʒuʁ], thank you for coming. To begin, could you please introduce yourself and tell us a bit about your professional background?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien, votre expérience semble pertinente. Pourriez-vous nous donner un exemple concret d'une réalisation majeure dont vous êtes particulièrement fier(e) ?",
+      "branches": [
+        {
+          "keywords": [
+            "succès",
+            "réussite",
+            "accomplissement",
+            "projet"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "défi",
+            "résoudre",
+            "solution",
+            "problème"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, your experience seems relevant. Could you give us a concrete example of a major achievement you are particularly proud of?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Je vois. Au-delà de votre parcours, qu'est-ce qui vous attire spécifiquement dans notre entreprise et ce poste en particulier ? Nous recherchons quelqu'un qui adhère à nos valeurs.",
+      "branches": [
+        {
+          "keywords": [
+            "valeurs",
+            "mission",
+            "culture",
+            "entreprise"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "développement",
+            "évoluer",
+            "carrière",
+            "apprendre"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Beyond your background, what specifically attracts you to our company and this particular position? We are looking for someone who adheres to our values."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Puisque nous parlons de vos atouts, quelles seraient, selon vous, vos principales forces et faiblesses professionnelles ? Soyez honnête [sɔje ɔnɛt], car la connaissance de soi est cruciale.",
+      "branches": [
+        {
+          "keywords": [
+            "forces",
+            "atouts",
+            "qualités",
+            "compétences"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Since we're talking about your strengths, what do you think are your main professional strengths and weaknesses? Be honest [sɔje ɔnɛt], as self-knowledge is crucial."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "C'est clair. Comment voyez-vous votre évolution professionnelle à moyen terme, disons dans les trois à cinq prochaines années ? Quels sont vos objectifs de carrière ?",
+      "branches": [
+        {
+          "keywords": [
+            "manager",
+            "diriger",
+            "responsabilités",
+            "équipe"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's clear. How do you see your professional development in the medium term, say within the next three to five years? What are your career goals?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Je vous remercie pour cet échange enrichissant [ʒə vu ʁəmɛʁsi puʁ sɛt eʃɑ̃ʒ ɑ̃ʁiʃisɑ̃]. Nous allons étudier votre candidature avec attention et reviendrons vers vous sous peu. Avez-vous des questions pour nous ?",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Thank you for this enriching discussion [ʒə vu ʁəmɛʁsi puʁ sɛt eʃɑ̃ʒ ɑ̃ʁiʃisɑ̃]. We will carefully review your application and get back to you shortly. Do you have any questions for us?",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, pourriez-vous répéter s'il vous plaît [paʁdɔ̃ puʁje vu ʁepete sil vu plɛ] ? Je n'ai pas bien saisi votre dernière phrase.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, could you please repeat [paʁdɔ̃ puʁje vu ʁepete sil vu plɛ]? I didn't quite catch your last sentence."
+    }
+  }
+}

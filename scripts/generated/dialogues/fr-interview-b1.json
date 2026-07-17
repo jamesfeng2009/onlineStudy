@@ -1,0 +1,139 @@
+{
+  "id": "dlg-fr-interview-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Entretien d'embauche",
+  "opening": "Bonjour. Merci d'être venu(e). Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Merci d'être venu(e). Pour commencer, pourriez-vous vous présenter et nous parler un peu de votre parcours ?",
+      "branches": [
+        {
+          "keywords": [
+            "expérience",
+            "parcours",
+            "professionnel",
+            "études"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. (Bon-jour) Thank you for coming. (Mer-see detr ve-nu) To begin, could you introduce yourself and tell us a little about your background?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Votre expérience semble intéressante. Pourriez-vous nous dire ce qui vous attire dans ce poste en particulier et pourquoi vous pensez être le/la candidat(e) idéal(e) ?",
+      "branches": [
+        {
+          "keywords": [
+            "attire",
+            "poste",
+            "rôle",
+            "missions"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. (Trey byan) Your experience seems interesting. (Vo-truh ex-pay-ryans sam-bl an-tay-ray-sant) Could you tell us what attracts you to this particular position and why you think you are the ideal candidate?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "C'est clair. Parlons de vos qualités. Quelles sont, selon vous, vos principales forces et comment pourraient-elles bénéficier à notre équipe ?",
+      "branches": [
+        {
+          "keywords": [
+            "autonomie",
+            "indépendant",
+            "proactif"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's clear. (Say clair) Let's talk about your qualities. (Par-lon duh vo kwa-li-tay) What do you think are your main strengths and how could they benefit our team?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Je vois. Et si nous parlions de vos points à améliorer ? Quelle est votre principale faiblesse et comment travaillez-vous dessus ?",
+      "branches": [
+        {
+          "keywords": [
+            "impatience",
+            "perfectionnisme"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. (Juh vwah) And what if we talked about your areas for improvement? What is your main weakness and how are you working on it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Merci pour votre honnêteté. Avez-vous des questions pour nous sur le poste, l'entreprise, ou l'équipe ?",
+      "branches": [
+        {
+          "keywords": [
+            "questions",
+            "salaire",
+            "évolution",
+            "formation"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your honesty. (Mer-see poor vo-truh o-net-tay) Do you have any questions for us about the position, the company, or the team?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? (Par-don?) Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup de votre temps et de votre intérêt. Nous vous contacterons bientôt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your time and interest. (Mer-see bo-koo duh vo-truh tan ay duh vo-truh an-tay-reh. Noo voo con-tac-te-ron byen-toh) We will contact you soon.",
+      "isTerminal": true
+    }
+  }
+}

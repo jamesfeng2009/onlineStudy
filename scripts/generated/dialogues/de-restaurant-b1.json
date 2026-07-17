@@ -1,0 +1,208 @@
+{
+  "id": "dlg-de-restaurant-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Im Restaurant",
+  "opening": "Guten Abend! Haben Sie eine Reservierung oder suchen Sie noch einen Tisch?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend! Haben Sie eine Reservierung oder suchen Sie noch einen Tisch?",
+      "branches": [
+        {
+          "keywords": [
+            "reservierung",
+            "ja"
+          ],
+          "nextTurnId": "t2a_reservation"
+        },
+        {
+          "keywords": [
+            "tisch",
+            "suchen",
+            "nein"
+          ],
+          "nextTurnId": "t2b_no_reservation"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! (Goo-ten ah-bent!) Do you have a reservation or are you still looking for a table?"
+    },
+    "t2a_reservation": {
+      "id": "t2a_reservation",
+      "prompt": "Auf welchen Namen ist die Reservierung?",
+      "branches": [
+        {
+          "keywords": [
+            "meier",
+            "schmidt",
+            "müller",
+            "name"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Under what name is the reservation?"
+    },
+    "t2b_no_reservation": {
+      "id": "t2b_no_reservation",
+      "prompt": "Kein Problem. Für wie viele Personen?",
+      "branches": [
+        {
+          "keywords": [
+            "zwei",
+            "drei",
+            "vier",
+            "eine",
+            "alleine"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. For how many people?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Gerne, bitte folgen Sie mir. Hier ist Ihr Tisch. Hier ist die Speisekarte. Möchten Sie schon etwas trinken und haben Sie schon eine Idee für das Essen?",
+      "branches": [
+        {
+          "keywords": [
+            "wasser",
+            "bier",
+            "wein",
+            "trinken",
+            "kaffee"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "empfehlung",
+            "wasempfehlen",
+            "vegetarisch",
+            "vegan"
+          ],
+          "nextTurnId": "t4_recommend"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly (Gair-neh), please follow me. Here is your table. Here is the menu. Would you like something to drink already and do you already have an idea for the food?"
+    },
+    "t4_recommend": {
+      "id": "t4_recommend",
+      "prompt": "Viele Gäste mögen unser Wiener Schnitzel, aber wir haben auch ein köstliches vegetarisches Risotto mit Pilzen. Was darf es sein?",
+      "branches": [
+        {
+          "keywords": [
+            "schnitzel",
+            "risotto",
+            "bestellen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Many guests like our Wiener Schnitzel, but we also have a delicious vegetarian risotto with mushrooms. What would you like?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alles klar, ich habe Ihre Bestellung aufgenommen. Kommt das mit einer Beilage oder wünschen Sie etwas Besonderes?",
+      "branches": [
+        {
+          "keywords": [
+            "beilage",
+            "kartoffeln",
+            "salat",
+            "pommes"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I have taken your order. (Kommt das mit eye-ner Bye-lah-geh oh-der vün-shen zee et-vas be-son-de-res?) Does that come with a side dish or would you like something special?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sehr gut. Hier ist Ihre Rechnung. Zusammen oder getrennt? Und wie möchten Sie bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "zusammen",
+            "getrennt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Here is your bill. (Zee-rer Rehk-noong) Together or separately? And how would you like to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't understand you. (Ent-shool-di-gen zee, ich hah-beh zee nisht fer-stan-den. Kern-ten zee das bi-teh vee-der-ho-len?) Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank! Ich wünsche Ihnen noch einen schönen Abend und hoffe, wir sehen uns bald wieder.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much! I wish you a nice evening and hope we see you again soon.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "dlg-fr-directions-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Demander son chemin dans la rue",
+  "opening": "Excusez-moi, pourriez-vous m'aider s'il vous plaît ? Je cherche la Place de la Comédie.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Excusez-moi, pourriez-vous m'aider s'il vous plaît ? Je cherche la Place de la Comédie.",
+      "branches": [
+        {
+          "keywords": [
+            "place",
+            "comédie",
+            "où"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excusez-moi (ek-sku-zay-mwa), pourriez-vous (poo-ryay-voo) m'aider (may-day) s'il vous plaît (seel-voo-play) ? (Excuse me, could you help me please?) Je cherche la Place de la Comédie. (I'm looking for the Place de la Comédie.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oui bien sûr ! La Place de la Comédie n'est pas très loin d'ici. Vous devez prendre la rue principale en face de vous, puis tourner à gauche au premier feu rouge.",
+      "branches": [
+        {
+          "keywords": [
+            "gauche",
+            "feu",
+            "premier"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "loin",
+            "marche",
+            "pied"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "bus",
+            "tram",
+            "transport"
+          ],
+          "nextTurnId": "t3c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui (wee) bien (byan) sûr (soor) ! (Yes, of course!) La Place de la Comédie n'est pas très loin d'ici. (The Place de la Comédie isn't very far from here.) Vous devez prendre la rue principale en face de vous, puis tourner à gauche au premier feu rouge. (You need to take the main street in front of you, then turn left at the first traffic light.)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Oui, c'est ça. Après le feu rouge, vous verrez une grande fontaine. La place est juste derrière.",
+      "branches": [
+        {
+          "keywords": [
+            "fontaine",
+            "derrière",
+            "voir"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "trouver"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, c'est ça (say sa). (Yes, that's right.) Après le feu rouge, vous verrez une grande fontaine (fon-ten). (After the traffic light, you will see a large fountain.) La place est juste derrière. (The square is just behind it.)"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "À pied, cela vous prendra environ quinze minutes. C'est une jolie promenade.",
+      "branches": [
+        {
+          "keywords": [
+            "quinze",
+            "minutes",
+            "loin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bus",
+            "tram",
+            "transport"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "merci",
+            "parfait",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À pied (a pyay), cela vous prendra environ quinze minutes. (On foot, it will take you about fifteen minutes.) C'est une jolie promenade (pro-me-nad). (It's a nice walk.)"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Oui, il y a un arrêt de tram juste après le feu rouge, à côté de la fontaine. Le tram numéro 1 va directement à la Place de la Comédie en deux arrêts.",
+      "branches": [
+        {
+          "keywords": [
+            "tram",
+            "un",
+            "numéro"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "merci",
+            "pratique",
+            "bon"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, il y a un arrêt (a-ray) de tram juste après le feu rouge, à côté de la fontaine. (Yes, there is a tram stop just after the traffic light, next to the fountain.) Le tram numéro (noo-may-ro) 1 va directement à la Place de la Comédie en deux arrêts. (Tram number 1 goes directly to Place de la Comédie in two stops.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vous ne pouvez pas la manquer. C'est une très grande place avec des cafés, des restaurants et souvent des spectacles de rue.",
+      "branches": [
+        {
+          "keywords": [
+            "cafés",
+            "restaurants",
+            "spectacles"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vous ne pouvez pas la manquer. (You can't miss it.) C'est une très grande place avec des cafés, des restaurants et souvent des spectacles de rue. (It's a very large square with cafes, restaurants and often street performances.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter",
+            "quoi",
+            "pardon"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (par-don) ? Pourriez-vous (poo-ryay-voo) répéter (ray-pay-tay) s'il vous plaît ? (Sorry? Could you repeat please?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien ! Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien (duh ryan)! Bonne (bon) journée (zhoor-nay) ! (You're welcome! Have a good day!)",
+      "isTerminal": true
+    }
+  }
+}

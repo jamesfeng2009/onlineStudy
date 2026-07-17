@@ -1,0 +1,255 @@
+{
+  "id": "dlg-en-bank-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Banking on Expertise",
+  "opening": "Good morning! Welcome to Sterling Bank. How may I be of assistance today? Are you looking to open an account, perhaps discuss an investment portfolio, or is there something else entirely on your mind?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Welcome to Sterling Bank. How may I be of assistance today? Are you looking to open an account, perhaps discuss an investment portfolio, or is there something else entirely on your mind?",
+      "branches": [
+        {
+          "keywords": [
+            "open",
+            "account",
+            "new",
+            "checking",
+            "savings"
+          ],
+          "nextTurnId": "t2_open_account"
+        },
+        {
+          "keywords": [
+            "invest",
+            "portfolio",
+            "stocks",
+            "bonds",
+            "advice"
+          ],
+          "nextTurnId": "t2_invest"
+        },
+        {
+          "keywords": [
+            "problem",
+            "issue",
+            "atm",
+            "pin",
+            "transfer",
+            "help"
+          ],
+          "nextTurnId": "t2_issue"
+        },
+        {
+          "keywords": [
+            "",
+            "anythingelse"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! Welcome to Sterling Bank. How may I be of assistance today? Are you looking to open an account, perhaps discuss an investment portfolio, or is there something else entirely on your mind? — Good morning! Welcome to Sterling Bank. How may I be of assistance today? Are you looking to open an account, perhaps discuss an investment portfolio, or is there something else entirely on your mind?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer? We want to ensure we address your needs perfectly.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer? We want to ensure we address your needs perfectly. — I'm sorry, I didn't quite catch that. Could you please rephrase or speak a little clearer? We want to ensure we address your needs perfectly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for choosing Sterling Bank. We're always here to assist you with your financial journey. Have a splendid day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing Sterling Bank. We're always here to assist you with your financial journey. Have a splendid day! — Thank you for choosing Sterling Bank. We're always here to assist you with your financial journey. Have a splendid day!",
+      "isTerminal": true
+    },
+    "t2_open_account": {
+      "id": "t2_open_account",
+      "prompt": "Excellent! Opening an account with us is a straightforward process. Are you interested in a standard current account for day-to-day banking, or perhaps one of our premium offerings with enhanced benefits, like our global multi-currency account?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "current",
+            "daytoday",
+            "basic"
+          ],
+          "nextTurnId": "t3_account_type"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent! Opening an account with us is a straightforward process. Are you interested in a standard current account for day-to-day banking, or perhaps one of our premium offerings with enhanced benefits, like our global multi-currency account? — Excellent! Opening an account with us is a straightforward process. Are you interested in a standard current account for day-to-day banking, or perhaps one of our premium offerings with enhanced benefits, like our global multi-currency account?"
+    },
+    "t2_invest": {
+      "id": "t2_invest",
+      "prompt": "A shrewd decision! Navigating the investment landscape requires a bespoke approach. Do you have a specific risk appetite in mind, or are you looking for guidance on long-term wealth management?",
+      "branches": [
+        {
+          "keywords": [
+            "risk",
+            "appetite",
+            "tolerance",
+            "aggressive",
+            "conservative"
+          ],
+          "nextTurnId": "t4_investment_setup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A shrewd decision! Navigating the investment landscape requires a bespoke approach. Do you have a specific risk appetite in mind, or are you looking for guidance on long-term wealth management? — A shrewd decision! Navigating the investment landscape requires a bespoke approach. Do you have a specific risk appetite in mind, or are you looking for guidance on long-term wealth management?"
+    },
+    "t2_issue": {
+      "id": "t2_issue",
+      "prompt": "I'm sorry to hear you're experiencing an issue. Could you briefly describe the problem so I can direct you to the right department or assist you myself promptly?",
+      "branches": [
+        {
+          "keywords": [
+            "atm",
+            "card",
+            "stuck",
+            "notworking",
+            "malfunction"
+          ],
+          "nextTurnId": "t4_issue_resolution"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry to hear you're experiencing an issue. Could you briefly describe the problem so I can direct you to the right department or assist you myself promptly? — I'm sorry to hear you're experiencing an issue. Could you briefly describe the problem so I can direct you to the right department or assist you myself promptly?"
+    },
+    "t3_account_type": {
+      "id": "t3_account_type",
+      "prompt": "Understood. Are you leaning towards our robust standard current account, our feature-rich premium multi-currency offering, or would you like to delve into a comparison of the two?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "current",
+            "basic",
+            "daytoday"
+          ],
+          "nextTurnId": "t4_application_docs"
+        },
+        {
+          "keywords": [
+            "compare",
+            "difference",
+            "which",
+            "recommend"
+          ],
+          "nextTurnId": "t4_compare_summary"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Are you leaning towards our robust standard current account, our feature-rich premium multi-currency offering, or would you like to delve into a comparison of the two? — Understood. Are you leaning towards our robust standard current account, our feature-rich premium multi-currency offering, or would you like to delve into a comparison of the two?"
+    },
+    "t4_compare_summary": {
+      "id": "t4_compare_summary",
+      "prompt": "To summarise, the standard account handles daily banking efficiently. The premium, however, offers preferential exchange rates, dedicated advisory services, and multi-currency capabilities. Given your needs, which is more compelling?",
+      "branches": [
+        {
+          "keywords": [
+            "premium",
+            "rates",
+            "advisory",
+            "multicurrency",
+            "choosepremium"
+          ],
+          "nextTurnId": "t4_application_docs"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To summarise, the standard account handles daily banking efficiently. The premium, however, offers preferential exchange rates, dedicated advisory services, and multi-currency capabilities. Given your needs, which is more compelling? — To summarise, the standard account handles daily banking efficiently. The premium, however, offers preferential exchange rates, dedicated advisory services, and multi-currency capabilities. Given your needs, which is more compelling?"
+    },
+    "t4_application_docs": {
+      "id": "t4_application_docs",
+      "prompt": "Splendid! Let's get you set up then. Please take a seat at my desk, and we can go through the necessary documentation and formalities. This won't take long at all.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "great",
+            "okay",
+            "sure",
+            "alright",
+            "perfect"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Splendid! Let's get you set up then. Please take a seat at my desk, and we can go through the necessary documentation and formalities. This won't take long at all. — Splendid! Let's get you set up then. Please take a seat at my desk, and we can go through the necessary documentation and formalities. This won't take long at all."
+    },
+    "t4_investment_setup": {
+      "id": "t4_investment_setup",
+      "prompt": "Understood. For a comprehensive investment consultation, I'll connect you with one of our wealth management specialists. They'll be able to delve into your objectives and craft a tailored strategy.",
+      "branches": [
+        {
+          "keywords": [
+            "connect",
+            "specialist",
+            "yes",
+            "great",
+            "arrange"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Understood. For a comprehensive investment consultation, I'll connect you with one of our wealth management specialists. They'll be able to delve into your objectives and craft a tailored strategy. — Understood. For a comprehensive investment consultation, I'll connect you with one of our wealth management specialists. They'll be able to delve into your objectives and craft a tailored strategy."
+    },
+    "t4_issue_resolution": {
+      "id": "t4_issue_resolution",
+      "prompt": "Thank you for clarifying. I'll need to access your account details to properly assist you. Please come over to my counter, and we can resolve this for you promptly.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thankyou",
+            "great",
+            "sure",
+            "resolve"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for clarifying. I'll need to access your account details to properly assist you. Please come over to my counter, and we can resolve this for you promptly. — Thank you for clarifying. I'll need to access your account details to properly assist you. Please come over to my counter, and we can resolve this for you promptly."
+    }
+  }
+}

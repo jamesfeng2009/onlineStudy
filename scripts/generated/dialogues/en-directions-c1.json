@@ -1,0 +1,228 @@
+{
+  "id": "dlg-en-directions-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Navigating the City",
+  "opening": "Excuse me, you seem a bit disoriented. May I be of assistance?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Excuse me, you seem a bit disoriented. May I be of assistance?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "please",
+            "help",
+            "thank you",
+            "looking for",
+            "directions",
+            "lost",
+            "confused"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, you seem a bit disoriented. May I be of assistance? — Excuse me, you look a bit lost. Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Of course, I'd be glad to lend a hand. Where exactly are you trying to get to?",
+      "branches": [
+        {
+          "keywords": [
+            "gallery",
+            "museum",
+            "cathedral",
+            "theatre",
+            "station",
+            "hotel",
+            "restaurant",
+            "market",
+            "centre",
+            "city centre",
+            "downtown"
+          ],
+          "nextTurnId": "t3_specific_place"
+        },
+        {
+          "keywords": [
+            "not sure",
+            "don't know",
+            "something interesting",
+            "attraction"
+          ],
+          "nextTurnId": "t3_suggestion"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, I'd be glad to lend a hand. Where exactly are you trying to get to? — Yes, I'll help. Where do you want to go?"
+    },
+    "t3_specific_place": {
+      "id": "t3_specific_place",
+      "prompt": "Ah, the National Gallery! A splendid choice. From here, you'll want to head straight down this street. Trafalgar Square will loom large directly ahead of you, and the Gallery is on its north side. It's a brisk 15-minute walk, or you can hop on any bus heading to Charing Cross.",
+      "branches": [
+        {
+          "keywords": [
+            "how far",
+            "long",
+            "distance",
+            "walk",
+            "time"
+          ],
+          "nextTurnId": "t4_details"
+        },
+        {
+          "keywords": [
+            "clarify",
+            "repeat",
+            "what did you say"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the National Gallery! A splendid choice. From here, you'll want to head straight down this street. Trafalgar Square will loom large directly ahead of you, and the Gallery is on its north side. It's a brisk 15-minute walk, or you can hop on any bus heading to Charing Cross. — The National Gallery! Go straight down this street. Trafalgar Square is ahead, the Gallery is on its north side. It's a 15-minute walk, or take a bus to Charing Cross."
+    },
+    "t3_suggestion": {
+      "id": "t3_suggestion",
+      "prompt": "Well, given our current location, I'd highly recommend a visit to the British Museum. It's absolutely phenomenal, and not too far from here. It's about a 30-minute walk, or a quick tube ride on the Central Line.",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "british museum",
+            "sounds good"
+          ],
+          "nextTurnId": "t4_details_museum"
+        },
+        {
+          "keywords": [
+            "no",
+            "else",
+            "another",
+            "something else"
+          ],
+          "nextTurnId": "t4_alt_suggestion"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, given our current location, I'd highly recommend a visit to the British Museum. It's absolutely phenomenal, and not too far from here. It's about a 30-minute walk, or a quick tube ride on the Central Line. — From here, I suggest the British Museum. It's great and nearby. It's a 30-minute walk, or a short tube ride."
+    },
+    "t4_details": {
+      "id": "t4_details",
+      "prompt": "To elaborate, the bus stop for Charing Cross is just a stone's throw away, directly across the street. Any bus displaying 'Charing Cross' or 'Westminster' will serve your purpose. If walking, simply keep the impressive architecture of St Martin-in-the-Fields church on your left as you approach the Square.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "got it",
+            "clear",
+            "understand",
+            "perfect"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To elaborate, the bus stop for Charing Cross is just a stone's throw away, directly across the street. Any bus displaying 'Charing Cross' or 'Westminster' will serve your purpose. If walking, simply keep the impressive architecture of St Martin-in-the-Fields church on your left as you approach the Square. — The bus stop for Charing Cross is very close, across the street. Take any bus going to Charing Cross or Westminster. If walking, keep St Martin-in-the-Fields church on your left as you get to the Square."
+    },
+    "t4_details_museum": {
+      "id": "t4_details_museum",
+      "prompt": "For the British Museum, the closest tube station is Tottenham Court Road, about a five-minute walk from here. From there, you'll want the Central Line, just two stops to Russell Square, which is practically on the museum's doorstep. It's significantly quicker than walking.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "got it",
+            "clear",
+            "understand",
+            "perfect"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the British Museum, the closest tube station is Tottenham Court Road, about a five-minute walk from here. From there, you'll want the Central Line, just two stops to Russell Square, which is practically on the museum's doorstep. It's significantly quicker than walking. — For the British Museum, Tottenham Court Road tube station is 5 minutes walk. Take the Central Line, two stops to Russell Square, right by the museum. It's much faster."
+    },
+    "t4_alt_suggestion": {
+      "id": "t4_alt_suggestion",
+      "prompt": "Alright, if the museum isn't quite your cup of tea, how about a stroll through Hyde Park? It's a vast green oasis perfect for unwinding. It's a bit of a trek on foot, but easily accessible by tube from Green Park or Hyde Park Corner.",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "hyde park",
+            "park",
+            "sounds good",
+            "perfect"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, if the museum isn't quite your cup of tea, how about a stroll through Hyde Park? It's a vast green oasis perfect for unwinding. It's a bit of a trek on foot, but easily accessible by tube from Green Park or Hyde Park Corner. — Okay, if you don't like the museum, how about Hyde Park? It's a big park, good for relaxing. It's far to walk but easy by tube from Green Park or Hyde Park Corner."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I beg your pardon? Could you possibly reiterate that for me?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I beg your pardon? Could you possibly reiterate that for me? — Sorry? Could you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're most welcome! Enjoy your visit to London, and do take care.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're most welcome! Enjoy your visit to London, and do take care. — You're welcome! Enjoy London, and be careful.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "id": "dlg-es-shopping-clothes-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Comprando Ropa",
+  "opening": "Hola, buenos días. ¿Le puedo ayudar en algo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenos días. ¿Le puedo ayudar en algo?",
+      "branches": [
+        {
+          "keywords": [
+            "busco",
+            "necesito",
+            "quiero"
+          ],
+          "nextTurnId": "t2_item"
+        },
+        {
+          "keywords": [
+            "solo",
+            "mirar",
+            "gracias"
+          ],
+          "nextTurnId": "t_browsing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hola, buenos días. [oh-lah bweh-nohs dee-ahs] ¿Le puedo ayudar en algo? [leh pweh-doh ah-yoo-dahr en ahl-goh] — Hello, good morning. Can I help you with anything?"
+    },
+    "t_browsing": {
+      "id": "t_browsing",
+      "prompt": "De acuerdo. Si necesita algo, no dude en preguntar.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "busco",
+            "necesito"
+          ],
+          "nextTurnId": "t2_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. [deh ah-kwehr-doh] Si necesita algo, no dude en preguntar. [see neh-seh-see-tah ahl-goh, noh doo-deh en preh-goon-tahr] — Okay. If you need anything, don't hesitate to ask."
+    },
+    "t2_item": {
+      "id": "t2_item",
+      "prompt": "Claro, ¿qué tipo de ropa busca? ¿Y qué talla y color prefiere?",
+      "branches": [
+        {
+          "keywords": [
+            "camiseta",
+            "pantalon",
+            "vestido",
+            "falda"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, [klah-roh] ¿qué tipo de ropa busca? [keh tee-poh deh roh-pah boos-kah] ¿Y qué talla y color prefiere? [ee keh tah-yah ee koh-lor preh-fee-eh-reh] — Of course, what type of clothes are you looking for? And what size and color do you prefer?"
+    },
+    "t3_options": {
+      "id": "t3_options",
+      "prompt": "Tenemos una camiseta azul en talla M. ¿Le gustaría probársela?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "probar",
+            "probarmela"
+          ],
+          "nextTurnId": "t4_tryon"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "otro"
+          ],
+          "nextTurnId": "t4_another"
+        },
+        {
+          "keywords": [
+            "caro",
+            "precio"
+          ],
+          "nextTurnId": "t4_price_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tenemos una camiseta azul en talla M. [teh-neh-mos oo-nah kah-mee-seh-tah ah-sool en tah-yah em] ¿Le gustaría probársela? [leh goos-tah-ree-ah proh-bar-seh-lah] — We have a blue t-shirt in size M. Would you like to try it on?"
+    },
+    "t4_tryon": {
+      "id": "t4_tryon",
+      "prompt": "Los probadores están al fondo, a la derecha. Le espero por aquí.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "voy",
+            "ok"
+          ],
+          "nextTurnId": "t5_feedback"
+        },
+        {
+          "keywords": [
+            "cambiar",
+            "otro"
+          ],
+          "nextTurnId": "t4_another"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Los probadores [lohs proh-bah-doh-rehs] están al fondo, [es-tahn ahl fon-doh] a la derecha. [ah lah deh-reh-chah] Le espero por aquí. [leh es-peh-roh por ah-kee] — The changing rooms are at the back, on the right. I'll wait for you here."
+    },
+    "t4_another": {
+      "id": "t4_another",
+      "prompt": "De acuerdo. ¿Prefiere otra talla, color o un modelo diferente?",
+      "branches": [
+        {
+          "keywords": [
+            "talla",
+            "color",
+            "modelo"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. [deh ah-kwehr-doh] ¿Prefiere otra talla, [preh-fee-eh-reh oh-trah tah-yah] color o un modelo diferente? [koh-lor oh oon moh-deh-loh dee-feh-ren-teh] — Okay. Do you prefer another size, color, or a different model?"
+    },
+    "t4_price_info": {
+      "id": "t4_price_info",
+      "prompt": "Este modelo es un poco más caro. Tenemos otros similares más económicos.",
+      "branches": [
+        {
+          "keywords": [
+            "ver",
+            "economico"
+          ],
+          "nextTurnId": "t3_options"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "caro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Este modelo [es-teh moh-deh-loh] es un poco más caro. [es oon poh-koh mas kah-roh] Tenemos otros similares más económicos. [teh-neh-mos oh-tros see-mee-lah-res mas eh-koh-noh-mee-kos] — This model is a bit more expensive. We have other similar, more economical ones."
+    },
+    "t5_feedback": {
+      "id": "t5_feedback",
+      "prompt": "¿Qué tal le queda? ¿Le gusta?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "bien",
+            "gusta",
+            "llevar"
+          ],
+          "nextTurnId": "t6_pay"
+        },
+        {
+          "keywords": [
+            "no",
+            "mal",
+            "grande",
+            "pequeno"
+          ],
+          "nextTurnId": "t4_another"
+        },
+        {
+          "keywords": [
+            "caro",
+            "precio"
+          ],
+          "nextTurnId": "t4_price_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué tal le queda? [keh tahl leh keh-dah] ¿Le gusta? [leh goos-tah] — How does it fit? Do you like it?"
+    },
+    "t6_pay": {
+      "id": "t6_pay",
+      "prompt": "¡Excelente! La caja está al fondo. ¿Cómo desea pagar?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "credito"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Excelente! [eks-seh-len-teh] La caja [lah kah-hah] está al fondo. [es-tah ahl fon-doh] ¿Cómo desea pagar? [koh-moh deh-seh-ah pah-gar] — Excellent! The cash register is at the back. How would you like to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdón, ¿podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perdón, [per-don] ¿podría repetir, por favor? [poh-dree-ah reh-peh-teer, por fah-vor] — Sorry, could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Muchas gracias por su compra y que tenga un buen día! ¡Hasta la próxima!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "¡Muchas gracias por su compra [moo-chas grah-see-ahs por soo kom-prah] y que tenga un buen día! [ee keh ten-gah oon bwen dee-ah] ¡Hasta la próxima! [ahs-tah lah prok-see-mah] — Thank you very much for your purchase and have a good day! See you next time!",
+      "isTerminal": true
+    }
+  }
+}

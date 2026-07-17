@@ -1,0 +1,146 @@
+{
+  "id": "dlg-vi-doctor-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Khám Bệnh Chuyên Sâu",
+  "opening": "Chào anh/chị. Mời anh/chị ngồi. Anh/chị có thể cho tôi biết hôm nay anh/chị đến khám vì lý do gì không ạ? Xin anh/chị cứ trình bày thật chi tiết.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Mời anh/chị ngồi. Anh/chị có thể cho tôi biết hôm nay anh/chị đến khám vì lý do gì không ạ? Xin anh/chị cứ trình bày thật chi tiết.",
+      "branches": [
+        {
+          "keywords": [
+            "đau bụng",
+            "khó chịu",
+            "sốt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị — Hello sir/madam. Mời anh/chị ngồi — Please have a seat. Anh/chị có thể cho tôi biết hôm nay anh/chị đến khám vì lý do gì không ạ? — Could you please tell me the reason for your visit today? Xin anh/chị cứ trình bày thật chi tiết — Please feel free to describe it in detail."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, tôi đã nắm được thông tin ban đầu. Anh/chị vui lòng mô tả rõ hơn về mức độ và tần suất của cơn đau, hay các triệu chứng khác đi kèm? Tình trạng này đã kéo dài bao lâu rồi?",
+      "branches": [
+        {
+          "keywords": [
+            "kéo dài",
+            "mấy ngày",
+            "đau âm ỉ",
+            "liên tục"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, tôi đã nắm được thông tin ban đầu — Yes, I have the initial information. Anh/chị vui lòng mô tả rõ hơn về mức độ và tần suất của cơn đau, hay các triệu chứng khác đi kèm? — Could you please describe in more detail the intensity and frequency of the pain, or any other accompanying symptoms? Tình trạng này đã kéo dài bao lâu rồi? — How long has this condition been going on?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Cảm ơn anh/chị đã cung cấp thông tin chi tiết. Để có cái nhìn toàn diện hơn, anh/chị có tiền sử bệnh lý nào đáng chú ý không, hay có đang sử dụng loại thuốc nào thường xuyên? Đặc biệt là có dị ứng với thành phần nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "không có",
+            "khỏe mạnh",
+            "chưa từng"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for providing detailed information. To get a more comprehensive view, do you have any notable medical history, or are you regularly taking any medication? Specifically, are you allergic to any ingredients?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dựa trên những gì anh/chị vừa mô tả và tiền sử bệnh lý, tôi nhận thấy có vẻ như đây là một tình trạng... Tuy nhiên, để đưa ra chẩn đoán chính xác và phác đồ điều trị phù hợp, chúng ta sẽ cần làm thêm một vài xét nghiệm chuyên sâu. Anh/chị có đồng ý không?",
+      "branches": [
+        {
+          "keywords": [
+            "đồng ý",
+            "vâng",
+            "tôi hiểu",
+            "tôi tin tưởng"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dựa trên những gì anh/chị vừa mô tả và tiền sử bệnh lý, tôi nhận thấy có vẻ như đây là một tình trạng... — Based on what you've just described and your medical history, it seems to me that this is a condition of... Tuy nhiên, để đưa ra chẩn đoán chính xác và phác đồ điều trị phù hợp, chúng ta sẽ cần làm thêm một vài xét nghiệm chuyên sâu — However, to provide an accurate diagnosis and appropriate treatment plan, we will need to conduct some more in-depth tests. Anh/chị có đồng ý không? — Do you agree?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Tuyệt vời. Vậy tôi sẽ kê đơn một số xét nghiệm máu và siêu âm. Anh/chị có thể đến quầy tiếp tân để được hướng dẫn cụ thể về quy trình. Sau khi có kết quả, chúng ta sẽ gặp lại để thảo luận về phác đồ điều trị chi tiết. Anh/chị có thắc mắc gì thêm không?",
+      "branches": [
+        {
+          "keywords": [
+            "hẹn lịch",
+            "khi nào",
+            "lấy kết quả",
+            "gặp lại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. So I will prescribe some blood tests and an ultrasound. You can go to the reception desk for specific instructions on the procedure. After receiving the results, we will meet again to discuss a detailed treatment plan. Do you have any further questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể vui lòng nhắc lại hoặc nói rõ hơn được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat or elaborate?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, nếu không còn thắc mắc gì nữa, tôi mời anh/chị ra quầy tiếp tân để hoàn tất các thủ tục. Chúc anh/chị sớm bình phục. Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yes, if you have no further questions, I invite you to go to the reception desk to complete the procedures. I wish you a speedy recovery. See you again.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "id": "dlg-it-phone-call-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Telefonata: Lasciare un Messaggio",
+  "opening": "Pronto? Sono Marco Bianchi.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Pronto? Sono Marco Bianchi.",
+      "branches": [
+        {
+          "keywords": [
+            "ciao",
+            "salve",
+            "pronto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chi",
+            "parla",
+            "siete"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "c'è",
+            "parlare",
+            "con"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pronto? (Prohn-toh?) Sono Marco Bianchi. (Soh-noh Mar-koh Bee-ahn-kee — Hello? It's Marco Bianchi.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, salve! Come posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "vorrei",
+            "parlare",
+            "con"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "richiamo",
+            "dopo",
+            "tardi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, salve! (Ah, sal-veh!) Come posso aiutarla? (Koh-meh pos-soh ah-yoo-tar-lah — Ah, hello! How can I help you?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Sono Marco Bianchi. Lei chi è?",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "il mio nome",
+            "chiamo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sono Marco Bianchi. (Soh-noh Mar-koh Bee-ahn-kee.) Lei chi è? (Lay kee eh? — I'm Marco Bianchi. Who are you?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mi scusi, chi cerca? La signora Rossi non c'è in questo momento.",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "il mio nome",
+            "chiamo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "quando",
+            "torna"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "richiamo",
+            "più tardi",
+            "dopo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi scusi, (Mee skoo-zee,) chi cerca? (kee cher-kah?) La signora Rossi non c'è in questo momento. (Lah see-nyo-rah Ros-see non cheh een kwes-toh moh-men-toh — Excuse me, who are you looking for? Ms. Rossi isn't here at the moment.)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, capisco. Vuole lasciare un messaggio per lei?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "volere",
+            "lasciare"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "richiamo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I see. Do you want to leave a message for her?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Non so quando torna. Forse nel pomeriggio. Vuole lasciare un messaggio?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "volere",
+            "lasciare"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "richiamo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I don't know when she'll be back. Maybe in the afternoon. Do you want to leave a message?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Certo, cosa devo dirle?",
+      "branches": [
+        {
+          "keywords": [
+            "dica",
+            "che",
+            "chiamato",
+            "richiami",
+            "urgente"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course, what should I tell her?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Va bene, le riferirò il messaggio. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, I'll give her the message. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

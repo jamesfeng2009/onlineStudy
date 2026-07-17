@@ -1,0 +1,272 @@
+{
+  "id": "dlg-de-directions-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Wegbeschreibung in der Stadt",
+  "opening": "Guten Tag! Kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "bahnhof",
+            "hauptbahnhof",
+            "zentralbahnhof"
+          ],
+          "nextTurnId": "t2_bahnhof"
+        },
+        {
+          "keywords": [
+            "museum",
+            "stadtmuseum"
+          ],
+          "nextTurnId": "t2_museum"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Kann ich ee-nen beh-hilf-lich zein? — Good day! Can I help you?"
+    },
+    "t2_bahnhof": {
+      "id": "t2_bahnhof",
+      "prompt": "Der Hauptbahnhof ist nicht weit von hier. Gehen Sie diese Straße geradeaus bis zur nächsten großen Kreuzung mit den vielen Ampeln. Dort biegen Sie links ab, dann sehen Sie den Bahnhof schon.",
+      "branches": [
+        {
+          "keywords": [
+            "wie",
+            "weit",
+            "lange",
+            "zeit"
+          ],
+          "nextTurnId": "t3_time"
+        },
+        {
+          "keywords": [
+            "bus",
+            "bahn",
+            "ubahn",
+            "strassenbahn",
+            "oepnv"
+          ],
+          "nextTurnId": "t3_transport_bahnhof"
+        },
+        {
+          "keywords": [
+            "verstanden",
+            "klar",
+            "ok",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Der Howpt-bahn-hohf ist nicht vait fon heer. Gay-en Zee dee-ze Shtrah-sse grah-de-ows bis tsoor naykh-sten groh-ßen Kroi-tsung mit den fee-len Am-peln. Dort bee-gen Zee links ab, dann zay-en Zee den Bahn-hohf shon. — The main station isn't far from here. Go straight down this street until the next big intersection with the many traffic lights. Turn left there, then you'll already see the station."
+    },
+    "t2_museum": {
+      "id": "t2_museum",
+      "prompt": "Das Stadtmuseum ist ein Stück von hier. Am besten nehmen Sie die Straßenbahn, aber Sie könnten auch zu Fuß gehen. Wenn Sie zu Fuß gehen möchten, biegen Sie hier rechts ab und folgen Sie der Straße.",
+      "branches": [
+        {
+          "keywords": [
+            "zufuss",
+            "laufen",
+            "gehen"
+          ],
+          "nextTurnId": "t3_walk_museum_details"
+        },
+        {
+          "keywords": [
+            "bus",
+            "bahn",
+            "ubahn",
+            "strassenbahn",
+            "oepnv"
+          ],
+          "nextTurnId": "t3_transport_museum"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das Shtat-moo-zee-um ist ain Shtueck fon heer. Am bes-ten nay-men Zee dee Shtrah-ßen-bahn, ah-ber Zee koenn-ten owkh tsoo Fooss gay-en. Venn Zee tsoo Fooss gay-en moech-ten, bee-gen Zee heer rekh-ts ab und fol-gen Zee der Shtrah-sse. — The city museum is a bit far from here. It's best to take the tram, but you could also walk. If you want to walk, turn right here and follow the street."
+    },
+    "t3_time": {
+      "id": "t3_time",
+      "prompt": "Zu Fuß dauert das etwa fünfzehn bis zwanzig Minuten, je nachdem, wie schnell Sie gehen. Es ist ein angenehmer Spaziergang.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "ok",
+            "allesklar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot, that takes about fifteen to twenty minutes, depending on how fast you walk. It's a pleasant walk."
+    },
+    "t3_transport_bahnhof": {
+      "id": "t3_transport_bahnhof",
+      "prompt": "Für den Hauptbahnhof nehmen Sie am besten die U-Bahnlinie U3. Die nächste Haltestelle ist gleich um die Ecke, auf der anderen Straßenseite. Zwei Stationen und Sie sind da.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lieberlaufen",
+            "zufuss",
+            "gehen"
+          ],
+          "nextTurnId": "t2_bahnhof"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the main station, it's best to take subway line U3. The next stop is just around the corner, on the other side of the street. Two stops and you are there."
+    },
+    "t3_transport_museum": {
+      "id": "t3_transport_museum",
+      "prompt": "Nehmen Sie die Straßenbahnlinie 7 Richtung 'Stadtzentrum'. Die Haltestelle ist direkt vor diesem Gebäude. Steigen Sie an der dritten Haltestelle 'Museumsplatz' aus. Das Museum ist dann gleich gegenüber.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lieberlaufen",
+            "zufuss",
+            "gehen"
+          ],
+          "nextTurnId": "t3_walk_museum_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Take tram line 7 towards 'city center'. The stop is directly in front of this building. Get off at the third stop 'Museumsplatz'. The museum is then right opposite."
+    },
+    "t3_walk_museum_details": {
+      "id": "t3_walk_museum_details",
+      "prompt": "In Ordnung. Nach dem Abbiegen nach rechts folgen Sie der Straße etwa zehn Minuten. Sie kommen dann an einem großen Park vorbei. Das Museum ist nach dem Park auf der linken Seite, ein altes, rotes Backsteingebäude.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "park",
+            "springbrunnen",
+            "sehen"
+          ],
+          "nextTurnId": "t4_clarify_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. After turning right, follow the street for about ten minutes. You will then pass a large park. The museum is after the park on the left side, an old, red brick building."
+    },
+    "t4_clarify_landmark": {
+      "id": "t4_clarify_landmark",
+      "prompt": "Ja, der Park ist ziemlich groß und nicht zu übersehen. Er hat einen Springbrunnen in der Mitte. Direkt danach kommt das Museum.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "allesklar",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, the park is quite large and hard to miss. It has a fountain in the middle. The museum comes right after it."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-dee-gung, ich hah-be Zee nicht gan-ts fer-shtan-den. Koenn-ten Zee das bit-te nokh ain-mahl vee-der-hoh-len? — Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen! Ich wünsche Ihnen noch einen schönen Tag und einen guten Weg!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern geh-sheh-hen! Ich wuen-shee ee-nen nokh ain-en shoe-nen Tahg und ain-en goo-ten Vehg! — You're welcome! I wish you a nice day and a good journey!",
+      "isTerminal": true
+    }
+  }
+}

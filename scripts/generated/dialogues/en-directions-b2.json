@@ -1,0 +1,197 @@
+{
+  "id": "dlg-en-directions-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Asking for Directions",
+  "opening": "Excuse me, you look a bit lost. Can I lend a hand with anything?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Excuse me, you look a bit lost. Can I lend a hand with anything?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "directions",
+            "help",
+            "lost"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "fine"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me (iks-KYOOS mee), you look a bit lost. Can I lend a hand with anything?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, I see. What particular place are you trying to find then? Perhaps the National Museum, or maybe a good coffee shop?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "nationalmuseum"
+          ],
+          "nextTurnId": "t3_museum"
+        },
+        {
+          "keywords": [
+            "coffee",
+            "cafe",
+            "coffeeshop"
+          ],
+          "nextTurnId": "t3_cafe"
+        },
+        {
+          "keywords": [
+            "lost",
+            "anythinginteresting",
+            "justwandering"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right (RAHYT), I see. What particular place are you trying to find then? Perhaps the National Museum, or maybe a good coffee shop?"
+    },
+    "t3_museum": {
+      "id": "t3_museum",
+      "prompt": "The National Museum? Oh, that's a popular spot. You'll want to head straight down this street for about two blocks, then take a left at the big fountain. You can't miss it, it's a huge building.",
+      "branches": [
+        {
+          "keywords": [
+            "howfar",
+            "walk",
+            "bus",
+            "transport"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "gotit",
+            "clear"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The National Museum? Oh, that's a popular spot. You'll want to head straight down this street for about two blocks, then take a left at the big fountain. You can't miss it (yoo KANT mis it), it's a huge building."
+    },
+    "t3_cafe": {
+      "id": "t3_cafe",
+      "prompt": "A nice cafe? There's a brilliant little spot called 'The Daily Grind' just around the corner. Go left out of here, walk past the bus stop, and it's the second shop on your right. They do excellent coffee.",
+      "branches": [
+        {
+          "keywords": [
+            "howfar",
+            "walk",
+            "bus",
+            "transport"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "gotit",
+            "clear"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A nice cafe? There's a brilliant little spot called 'The Daily Grind' just around the corner. Go left out of here, walk past the bus stop, and it's the second shop on your right. They do excellent coffee (EK-suh-luhnt KOF-ee)."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Hmm, just generally lost, eh? Well, the National Museum is just a short walk away, or if you're looking for something more relaxed, 'The Daily Grind' coffee shop is popular and nearby. Which sounds better?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "nationalmuseum"
+          ],
+          "nextTurnId": "t3_museum"
+        },
+        {
+          "keywords": [
+            "coffee",
+            "cafe",
+            "coffeeshop"
+          ],
+          "nextTurnId": "t3_cafe"
+        },
+        {
+          "keywords": [
+            "",
+            "neither",
+            "nothanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hmm, just generally lost, eh? Well, the National Museum is just a short walk away, or if you're looking for something more relaxed, 'The Daily Grind' coffee shop is popular and nearby. Which sounds better?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "For the museum, it's probably a 10-15 minute walk. You could catch the number 4 bus from the stop just ahead, but it's often quicker on foot in this traffic. The cafe is only about 5 minutes on foot.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "thanks",
+            "gotit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "anotherplace",
+            "somethingelse",
+            "whatelse"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the museum, it's probably a 10-15 minute walk. You could catch the number 4 bus from the stop just ahead, but it's often quicker on foot in this traffic. The cafe is only about 5 minutes on foot."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you repeat that? I didn't quite catch what you said.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat",
+            "pardon",
+            "again"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry (SOR-ee), could you repeat that? I didn't quite catch what you said."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "No worries at all! Glad I could help. Have a good one!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "No worries (NO WUR-eez) at all! Glad I could help. Have a good one!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "id": "dlg-fr-post-office-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "À la Poste",
+  "opening": "Bonjour, Madame, Monsieur. Comment puis-je vous aider aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, Madame, Monsieur. Comment puis-je vous aider aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "envoyer",
+            "colis",
+            "paquet",
+            "lettre"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            "timbres",
+            "acheter"
+          ],
+          "nextTurnId": "t_stamps_quick"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bon-jour, Ma-dam, Mon-sieur. Com-man pwee-juh voo zay-day oh-jour-dwee? — Hello, Madam, Sir. How can I help you today?"
+    },
+    "t_stamps_quick": {
+      "id": "t_stamps_quick",
+      "prompt": "Très bien. Pour quelle destination et combien de timbres vous faut-il ? Je peux calculer le coût tout de suite.",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "europe",
+            "monde",
+            "dix",
+            "cinq"
+          ],
+          "nextTurnId": "t4_final_price"
+        },
+        {
+          "keywords": [
+            "juste",
+            "information",
+            "regarder"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "je",
+            "sais",
+            "pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tray byan. Poor kell des-tee-na-syon ay com-byan duh tam-bruh voo fo-teel? Juh puh kal-ku-lay luh koo too dweet. — Very well. For which destination and how many stamps do you need? I can calculate the cost right away."
+    },
+    "t2_destination": {
+      "id": "t2_destination",
+      "prompt": "D'accord, vous souhaitez envoyer un colis ou une lettre. Quelle est la destination, s'il vous plaît ? France, Europe ou International ?",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "national",
+            "paris",
+            "marseille"
+          ],
+          "nextTurnId": "t3_options_fr"
+        },
+        {
+          "keywords": [
+            "europe",
+            "allemagne",
+            "espagne"
+          ],
+          "nextTurnId": "t3_options_int"
+        },
+        {
+          "keywords": [
+            "",
+            "je",
+            "sais",
+            "pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da-kor, voo swe-tay an-vwa-yay un co-lee oo dewn leh-truh. Kell ay la des-tee-na-syon, seel voo play? Fransa, Eur-op oo An-ter-na-syo-nal? — Alright, you wish to send a parcel or a letter. What is the destination, please? France, Europe or International?"
+    },
+    "t3_options_fr": {
+      "id": "t3_options_fr",
+      "prompt": "Pour la France, vous avez le choix entre l'envoi standard, le Colissimo Suivi pour un traçage en ligne, ou le recommandé avec signature pour plus de sécurité. Lequel préférez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "normal"
+          ],
+          "nextTurnId": "t4_final_price"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Poor la Fransa, voo za-vay luh shwa an-truh lan-vwa stan-dard, luh Co-li-ssi-mo Swee-vee poor un tra-saj an leen, oo luh ruh-co-man-day a-vec see-na-tyur poor ploos duh say-koo-ree-tay. Luh-kell pray-fay-ray-voo? — For France, you have the choice between standard shipping, Colissimo Tracked for online tracing, or registered mail with signature for more security. Which one do you prefer?"
+    },
+    "t3_options_int": {
+      "id": "t3_options_int",
+      "prompt": "Pour l'international, nous avons Colissimo International avec suivi, ou Chronopost pour les urgences. Si la destination est hors Union Européenne, il faudra remplir un formulaire de douane. Avez-vous besoin de ce formulaire ou avez-vous déjà choisi votre service ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "douane",
+            "formulaire",
+            "horsue"
+          ],
+          "nextTurnId": "t4_final_price"
+        },
+        {
+          "keywords": [
+            "",
+            "je",
+            "sais",
+            "pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Poor lan-ter-na-syo-nal, noo za-von Co-li-ssi-mo In-ter-na-syo-nal a-vec swee-vee, oo Kro-no-post poor lay-zoor-jans. See la des-tee-na-syon ay orr Yoo-nyon Eur-o-pay-en, eel foh-dra ram-pleer un for-myu-lair duh dwan. A-vay-voo buh-zwan duh suh for-myu-lair oo a-vay-voo day-zha shwa-zee voh-truh ser-vees? — For international, we have Colissimo International with tracking, or Chronopost for emergencies. If the destination is outside the European Union, you will need to fill out a customs form. Do you need this form or have you already chosen your service?"
+    },
+    "t4_final_price": {
+      "id": "t4_final_price",
+      "prompt": "Bien. Après la vérification, le coût total sera de [X] euros. Souhaitez-vous procéder à l'envoi / l'achat ou avez-vous d'autres questions ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "procéder",
+            "payer",
+            "achat",
+            "envoi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Byan. Ah-pray la vay-ree-fee-ka-syon, luh koo toh-tal suh-ra duh [X] eur-oh. Swe-tay-voo pro-say-day ah lan-vwa / la-sha oo a-vay-voo dohtr kes-tyon? — Good. After verification, the total cost will be [X] euros. Do you wish to proceed with the shipment / purchase or do you have any other questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourriez-vous répéter ou formuler différemment, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Par-don, je nay pa byan com-pree. Pour-yee-voo ray-pay-tay oo for-myu-lay dee-fay-ra-man, seel voo play? — Sorry, I didn't quite understand. Could you please repeat or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! Merci de votre visite et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Par-fay! Mair-see duh voh-truh vee-zeet ay bonn jour-nay! — Perfect! Thank you for your visit and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

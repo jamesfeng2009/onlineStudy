@@ -1,0 +1,278 @@
+{
+  "id": "dlg-vi-restaurant-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Thực Khách Sành Ăn",
+  "opening": "Chào mừng quý khách đến với nhà hàng chúng tôi. Quý khách đã đặt bàn trước chưa ạ? Hay tôi có thể đưa thực đơn cho quý khách xem qua?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách đến với nhà hàng chúng tôi. Quý khách đã đặt bàn trước chưa ạ? Hay tôi có thể đưa thực đơn cho quý khách xem qua?",
+      "branches": [
+        {
+          "keywords": [
+            "thựcđơn",
+            "xem",
+            "chưa",
+            "có",
+            "rồi"
+          ],
+          "nextTurnId": "t2_menu_offer"
+        },
+        {
+          "keywords": [
+            "đặt",
+            "gọi",
+            "sẵn sàng"
+          ],
+          "nextTurnId": "t3_ready_order"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào mừng quý khách (Chao mung quy khach) đến với nhà hàng chúng tôi. Quý khách đã đặt bàn trước chưa ạ? Hay tôi có thể đưa thực đơn (thuc don) cho quý khách xem qua? — Welcome (Welcome esteemed guest) to our restaurant. Have you made a reservation? Or may I present the menu for you to browse?"
+    },
+    "t2_menu_offer": {
+      "id": "t2_menu_offer",
+      "prompt": "Đây là thực đơn của chúng tôi. Quý khách có muốn tôi giới thiệu món đặc biệt của ngày hôm nay không, hay quý khách cần thêm thời gian để tham khảo ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "giớithiệu",
+            "đặcsắc",
+            "gợiý"
+          ],
+          "nextTurnId": "t4_recommend"
+        },
+        {
+          "keywords": [
+            "thờigian",
+            "xem",
+            "chút",
+            "lát"
+          ],
+          "nextTurnId": "t5_wait_then_ask"
+        },
+        {
+          "keywords": [
+            "đặt",
+            "gọi"
+          ],
+          "nextTurnId": "t3_ready_order"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đây là thực đơn (thuc don) của chúng tôi. Quý khách có muốn tôi giới thiệu món đặc biệt của ngày hôm nay không, hay quý khách cần thêm thời gian (thoi gian) để tham khảo ạ? — Here is our menu (menu). Would you like me to introduce today's specials, or do you need more time to look through?"
+    },
+    "t3_ready_order": {
+      "id": "t3_ready_order",
+      "prompt": "Tuyệt vời, quý khách muốn dùng món gì ạ? Xin vui lòng cho tôi biết tên món và số lượng.",
+      "branches": [
+        {
+          "keywords": [
+            "phở",
+            "búnchả",
+            "cá",
+            "bò",
+            "gà",
+            "hải sản",
+            "mónnày",
+            "đặt"
+          ],
+          "nextTurnId": "t6_confirm"
+        },
+        {
+          "keywords": [
+            "hỏi",
+            "gì",
+            "mónđó",
+            "mónnào"
+          ],
+          "nextTurnId": "t4_recommend"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời, quý khách muốn dùng món gì ạ? Xin vui lòng cho tôi biết tên món và số lượng (so luong). — Excellent, what would you like to order? Please tell me the dish name and quantity."
+    },
+    "t4_recommend": {
+      "id": "t4_recommend",
+      "prompt": "Món đặc biệt hôm nay là Cá Lóc Nướng Trui, được chế biến theo công thức truyền thống, rất được lòng thực khách. Quý khách có quan tâm món này không, hay có yêu cầu đặc biệt nào về chế độ ăn uống không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đặt",
+            "cá",
+            "ngon",
+            "ănkiêng",
+            "dịứng",
+            "chay",
+            "có"
+          ],
+          "nextTurnId": "t6_confirm"
+        },
+        {
+          "keywords": [
+            "khác",
+            "mónkhác",
+            "gìkhác",
+            "không"
+          ],
+          "nextTurnId": "t3_ready_order"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Món đặc biệt hôm nay là Cá Lóc Nướng Trui, được chế biến theo công thức truyền thống (cong thuc truyen thong), rất được lòng thực khách (thuc khach). Quý khách có quan tâm món này không, hay có yêu cầu đặc biệt nào về chế độ ăn uống (che do an uong) không ạ? — Today's special is Grilled Snakehead Fish, prepared with a traditional recipe, very popular with our guests. Are you interested in this dish, or do you have any special dietary requirements?"
+    },
+    "t5_wait_then_ask": {
+      "id": "t5_wait_then_ask",
+      "prompt": "Vâng, quý khách cứ thong thả xem thực đơn. Quý khách đã chọn được món chưa ạ? Hay quý khách vẫn muốn tôi giới thiệu thêm?",
+      "branches": [
+        {
+          "keywords": [
+            "rồi",
+            "gọi",
+            "sẵn sàng",
+            "muốnđặt"
+          ],
+          "nextTurnId": "t3_ready_order"
+        },
+        {
+          "keywords": [
+            "giớithiệu",
+            "thêm",
+            "khác",
+            "mónmới"
+          ],
+          "nextTurnId": "t4_recommend"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách cứ thong thả xem thực đơn. Quý khách đã chọn được món chưa ạ? Hay quý khách vẫn muốn tôi giới thiệu thêm? — Certainly, please take your time reviewing the menu. Have you chosen your dishes yet? Or would you still like me to introduce more?"
+    },
+    "t6_confirm": {
+      "id": "t6_confirm",
+      "prompt": "Vậy là quý khách gọi [Tên món]. Quý khách có muốn dùng thêm đồ uống gì không ạ? Hay chỉ cần thế thôi ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "nước",
+            "bia",
+            "càphê",
+            "trà",
+            "sinh tố",
+            "không",
+            "đủ",
+            "thếthôi"
+          ],
+          "nextTurnId": "t7_bill_prep"
+        },
+        {
+          "keywords": [
+            "thêmmón",
+            "gìkhác"
+          ],
+          "nextTurnId": "t3_ready_order"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy là quý khách gọi [Dish Name]. Quý khách có muốn dùng thêm đồ uống gì không ạ? Hay chỉ cần thế thôi ạ? — So, you're ordering [Dish Name]. Would you like any drinks? Or just that?"
+    },
+    "t7_bill_prep": {
+      "id": "t7_bill_prep",
+      "prompt": "Vâng, xin quý khách đợi một lát. Quý khách có cần thêm gì không ạ, hay tôi có thể mang hóa đơn ra cho quý khách ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "hóađơn",
+            "thanhtoán",
+            "trảtiền",
+            "không",
+            "đủrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, xin quý khách đợi một lát. Quý khách có cần thêm gì không ạ, hay tôi có thể mang hóa đơn (hoa don) ra cho quý khách ạ? — Certainly, please wait a moment. Do you need anything else, or may I bring the bill for you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nhắc lại không ạ? Tôi chưa rõ ý quý khách.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), quý khách có thể nhắc lại không ạ? Tôi chưa rõ ý quý khách. — Sorry, could you repeat that? I'm not clear on what you mean."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã ghé thăm. Chúc quý khách một buổi tối vui vẻ và hẹn gặp lại!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn quý khách đã ghé thăm. Chúc quý khách một buổi tối vui vẻ (vui ve) và hẹn gặp lại! — Thank you for visiting. Have a pleasant evening and see you again!",
+      "isTerminal": true
+    }
+  }
+}

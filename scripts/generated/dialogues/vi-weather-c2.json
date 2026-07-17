@@ -1,0 +1,209 @@
+{
+  "id": "dlg-vi-weather-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Trò chuyện về thời tiết",
+  "opening": "Chào bạn, sáng nay ra đường thấy trời se se lạnh, đúng kiểu thời tiết giao mùa ở Hà Nội ấy nhỉ. Bạn thấy thế nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, sáng nay ra đường thấy trời se se lạnh, đúng kiểu thời tiết giao mùa ở Hà Nội ấy nhỉ. Bạn thấy thế nào?",
+      "branches": [
+        {
+          "keywords": [
+            "thích",
+            "dễchịu",
+            "đúngvậy",
+            "ổn"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lạnh",
+            "rét",
+            "khóchịu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bìnhthường",
+            "khôngđặcbiệt",
+            "khôngquanâm"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "tôi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn — Hello, this morning on the street I felt a slight chill, exactly the kind of transitional weather in Hanoi, isn't it? How do you find it?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À, đúng rồi. Thời tiết này thì còn gì bằng! Dễ chịu đến nỗi chỉ muốn lượn lờ phố phường cả ngày thôi. Bạn có kế hoạch gì cho ngày cuối tuần chưa?",
+      "branches": [
+        {
+          "keywords": [
+            "dangoại",
+            "chơithểthao",
+            "điđâuđó",
+            "ra ngoài"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ởnhà",
+            "nghỉngơi",
+            "đọcsách",
+            "thưgiãn"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chưabiết",
+            "tùythuộc",
+            "chưaquyếtđịnh",
+            "khôngchắc"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "kếhoạch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, đúng rồi — Oh, that's right. What could be better than this weather! So pleasant I just want to stroll around the streets all day. Do you have any plans for the weekend yet?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ừ, đúng là hơi se lạnh thật. Mấy hôm nay tôi cũng phải khoác thêm áo ngoài mỗi khi ra đường. Thời tiết thất thường thế này dễ ốm lắm, bạn nhớ giữ ấm nhé!",
+      "branches": [
+        {
+          "keywords": [
+            "cẩnthận",
+            "giữấm",
+            "đồrét",
+            "nhớ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cảmgió",
+            "sổmũi",
+            "ốm",
+            "bệnh"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "thời tiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ừ, đúng là hơi se lạnh thật — Yes, it is a bit chilly, indeed. These past few days I've also had to wear an extra jacket whenever I go out. Such erratic weather makes it easy to get sick, remember to keep warm!"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Tuyệt vời! Hi vọng thời tiết sẽ ủng hộ kế hoạch của bạn. Tôi thì đang nghĩ, liệu cuối tuần này trời có đổ mưa không nhỉ, thấy dự báo có vẻ không mấy khả quan.",
+      "branches": [
+        {
+          "keywords": [
+            "dựbáo",
+            "mưa",
+            "khôngổn",
+            "thờitiếtxấu",
+            "xấu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "mongtrờiđẹp",
+            "khôngmưa",
+            "đẹptrời",
+            "nắng"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "kếhoạch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời! — Wonderful! Hope the weather will support your plans. As for me, I'm wondering if it will rain this weekend; the forecast doesn't look very optimistic."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Thôi thì cứ liệu cơm gắp mắm thôi nhỉ. Dù trời nắng hay mưa thì mình cũng có cách tận hưởng riêng. Nhưng mà nói thật, tôi vẫn thích trời đẹp để có thể tự do tung tăng hơn.",
+      "branches": [
+        {
+          "keywords": [
+            "đúngvậy",
+            "tậnhưởng",
+            "đồngý",
+            "chínhxác"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "thời tiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thôi thì cứ liệu cơm gắp mắm thôi nhỉ — Well, one just has to adapt to circumstances, right? Whether it's sunny or rainy, we all have our own ways to enjoy it. But honestly, I still prefer good weather so I can roam freely."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Bạn có thể nhắc lại không? Tôi nghe không rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "nhắclại",
+            "gì",
+            "nói"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you repeat? I didn't hear very clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc bạn một ngày tốt lành nhé! Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wish you a good day! See you again.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "id": "dlg-vi-post-office-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Giao dịch tại Bưu điện",
+  "opening": "Chào anh/chị, tôi có thể hỗ trợ gì cho anh/chị trong buổi sáng đẹp trời hôm nay ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, tôi có thể hỗ trợ gì cho anh/chị trong buổi sáng đẹp trời hôm nay ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi bưu phẩm",
+            "gửi hàng"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mua tem",
+            "cần tem"
+          ],
+          "nextTurnId": "t_stamps"
+        },
+        {
+          "keywords": [
+            "kiểm tra",
+            "tra cứu",
+            "mã vận đơn"
+          ],
+          "nextTurnId": "t_track"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chà-o anh/chị, tôi có thể hỗ trợ gì cho anh/chị trong buổi sáng đẹp trời hôm nay ạ? — Hello, how may I assist you on this beautiful morning?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, anh/chị muốn gửi bưu phẩm đi đâu và có yêu cầu gì đặc biệt về tốc độ hay hình thức gửi không ạ? Ví dụ như gửi thường, gửi nhanh, hay gửi bảo đảm?",
+      "branches": [
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nội địa",
+            "trong nước"
+          ],
+          "nextTurnId": "t_domestic_parcel"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị muốn gửi bưu phẩm đi đâu và có yêu cầu gì đặc biệt về tốc độ hay hình thức gửi không ạ? Ví dụ như gửi thường, gửi nhanh, hay gửi bảo đảm? — Vang, anh/chi muon gui buu pham di dau va co yeu cau gi dac biet ve toc do hay hinh thuc gui khong a? Vi du nhu gui thuong, gui nhanh, hay gui bao dam? — Yes, where do you want to send the parcel and do you have any special requirements regarding speed or shipping method? For example, standard, express, or registered mail?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "À, gửi quốc tế thì mình cần điền thêm tờ khai hải quan. Anh/chị muốn gửi thường, gửi nhanh hay có cần dịch vụ gửi đảm bảo kèm mã theo dõi trực tuyến không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "theo dõi",
+            "đảm bảo"
+          ],
+          "nextTurnId": "t4_tracking"
+        },
+        {
+          "keywords": [
+            "không",
+            "không cần",
+            "thường",
+            "tiết kiệm"
+          ],
+          "nextTurnId": "t4_no_tracking"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, gửi quốc tế thì mình cần điền thêm tờ khai hải quan. Anh/chị muốn gửi thường, gửi nhanh hay có cần dịch vụ gửi đảm bảo kèm mã theo dõi trực tuyến không ạ? — Ah, gui quoc te thi minh can dien them to khai hai quan. Anh/chi muon gui thuong, gui nhanh hay co can dich vu gui dam bao kem ma theo doi truc tuyen khong a? — Ah, for international shipments, you'll need to fill out a customs declaration. Do you want standard, express, or registered mail with online tracking?"
+    },
+    "t4_tracking": {
+      "id": "t4_tracking",
+      "prompt": "Tuyệt vời. Vậy anh/chị vui lòng điền tờ khai hải quan và đưa bưu phẩm đây ạ. Sau khi cân đo, tôi sẽ thông báo cước phí và cung cấp mã vận đơn để anh/chị tiện bề theo dõi hành trình của món hàng nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "được rồi",
+            "cảm ơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời. Vậy anh/chị vui lòng điền tờ khai hải quan và đưa bưu phẩm đây ạ. Sau khi cân đo, tôi sẽ thông báo cước phí và cung cấp mã vận đơn để anh/chị tiện bề theo dõi hành trình của món hàng nhé. — Tuyet voi. Vay anh/chi vui long dien to khai hai quan va dua buu pham day a. Sau khi can do, toi se thong bao cuoc phi va cung cap ma van don de anh/chi tien be theo doi hanh trinh cua mon hang nhe. — Excellent. Please fill out the customs declaration and hand over the parcel. After weighing, I'll inform you of the shipping fee and provide a tracking number for your convenience to track your item's journey."
+    },
+    "t4_no_tracking": {
+      "id": "t4_no_tracking",
+      "prompt": "Vâng, vậy anh/chị vẫn cần điền tờ khai hải quan. Món hàng sẽ được gửi theo hình thức thường, không có mã theo dõi. Anh/chị đồng ý chứ?",
+      "branches": [
+        {
+          "keywords": [
+            "đồng ý",
+            "vâng",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, vậy anh/chị vẫn cần điền tờ khai hải quan. Món hàng sẽ được gửi theo hình thức thường, không có mã theo dõi. Anh/chị đồng ý chứ? — Vang, vay anh/chi van can dien to khai hai quan. Mon hang se duoc gui theo hinh thuc thuong, khong co ma theo doi. Anh/chi dong y chu? — Okay, you still need to fill out the customs form. The item will be sent via standard mail, without a tracking number. Is that acceptable?"
+    },
+    "t_domestic_parcel": {
+      "id": "t_domestic_parcel",
+      "prompt": "Với bưu phẩm nội địa, anh/chị chỉ cần điền thông tin người gửi và người nhận. Anh/chị có muốn gửi nhanh hay gửi thường thôi ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi nhanh",
+            "hỏa tốc"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Với bưu phẩm nội địa, anh/chị chỉ cần điền thông tin người gửi và người nhận. Anh/chị có muốn gửi nhanh hay gửi thường thôi ạ? — For domestic parcels, you only need to fill in the sender and recipient information. Do you want express or standard shipping?"
+    },
+    "t_stamps": {
+      "id": "t_stamps",
+      "prompt": "Anh/chị muốn mua loại tem nào ạ? Tem thường, tem kỷ niệm, hay tem theo lô lớn, và số lượng bao nhiêu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tem thường",
+            "tem thư",
+            "10 con",
+            "20 cái"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn mua loại tem nào ạ? Tem thường, tem kỷ niệm, hay tem theo lô lớn, và số lượng bao nhiêu ạ? — Which type of stamps would you like? Standard, commemorative, or in bulk, and how many?"
+    },
+    "t_track": {
+      "id": "t_track",
+      "prompt": "Vâng, để tra cứu thông tin bưu phẩm, anh/chị vui lòng cung cấp mã vận đơn gồm 13 ký tự để tôi kiểm tra ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "mã vận đơn",
+            "mã số",
+            "abc123456789vn"
+          ],
+          "nextTurnId": "t_track_result"
+        },
+        {
+          "keywords": [
+            "không có mã",
+            "quên mã"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, để tra cứu thông tin bưu phẩm, anh/chị vui lòng cung cấp mã vận đơn gồm 13 ký tự để tôi kiểm tra ạ. — Yes, to look up parcel information, please provide the 13-character tracking number so I can check."
+    },
+    "t_track_result": {
+      "id": "t_track_result",
+      "prompt": "Vâng, bưu phẩm của anh/chị đang trên đường vận chuyển, dự kiến sẽ đến vào cuối tuần này. Anh/chị có muốn hỏi thêm gì không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "đủ rồi",
+            "cảm ơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, bưu phẩm của anh/chị đang trên đường vận chuyển, dự kiến sẽ đến vào cuối tuần này. Anh/chị có muốn hỏi thêm gì không ạ? — Yes, your parcel is in transit, expected to arrive by the end of this week. Do you have any further questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nhắc lại không ạ? Hoặc anh/chị muốn tôi nói rõ hơn về vấn đề gì?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "lặp lại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, anh/chị có thể nhắc lại không ạ? Hoặc anh/chị muốn tôi nói rõ hơn về vấn đề gì? — Xin loi, anh/chi co the nhac lai khong a? Hoac anh/chi muon toi noi ro hon ve van de gi? — Excuse me, could you please repeat that? Or would you like me to clarify something?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị đã sử dụng dịch vụ của Bưu điện Việt Nam. Chúc anh/chị một ngày tốt lành và hẹn gặp lại!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị đã sử dụng dịch vụ của Bưu điện Việt Nam. Chúc anh/chị một ngày tốt lành và hẹn gặp lại! — Thank you for using Vietnam Post's services. Wish you a good day and see you again!",
+      "isTerminal": true
+    }
+  }
+}

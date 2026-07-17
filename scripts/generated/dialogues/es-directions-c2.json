@@ -1,0 +1,382 @@
+{
+  "id": "dlg-es-directions-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Preguntando direcciones en el corazón de Madrid",
+  "opening": "Disculpe, ¿le importaría si le preguntara algo? Parece un poco desorientado.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Disculpe, ¿le importaría si le preguntara algo? Parece un poco desorientado.",
+      "branches": [
+        {
+          "keywords": [
+            "museo",
+            "prado",
+            "thyssen",
+            "arte",
+            "reina sofía"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ayuda",
+            "sí",
+            "porfavor",
+            "necesito"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "estación",
+            "tren",
+            "metro",
+            "autobuses",
+            "atocha"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "",
+            "otra",
+            "cosa",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Disculpe (dee-SKOOL-peh) — Excuse me, would you mind if I asked you something? You look a bit lost."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Ah, el Museo del Prado! Un clásico. Está a tiro de piedra de aquí. Para empezar, diríjase hacia la glorieta que ve al fondo, la de Cibeles. ¿Le suena?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "conozco",
+            "claro",
+            "suena"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "dónde",
+            "cómo",
+            "glorieta"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "tiempo",
+            "lejos",
+            "cerca"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "más"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, el Museo del Prado (moo-SEH-o del PRAH-doh)! A classic. It's a stone's throw from here. To start, head towards the roundabout you see in the background, Cibeles. Does that ring a bell?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "¿Qué le trae por aquí? ¿Busca algún lugar en particular, quizá?",
+      "branches": [
+        {
+          "keywords": [
+            "museo",
+            "prado",
+            "thyssen",
+            "arte",
+            "reina sofía"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "estación",
+            "tren",
+            "metro",
+            "autobuses",
+            "atocha"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "hotel",
+            "alojamiento",
+            "restaurante"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What brings you here? Are you looking for a particular place, perhaps?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "La estación de Atocha, entiendo. No está muy lejos, pero tiene su miga si va andando. Lo más directo es tomar el metro o un autobús.",
+      "branches": [
+        {
+          "keywords": [
+            "metro",
+            "autobús",
+            "transporte"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "andando",
+            "caminar",
+            "pie"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "",
+            "cómo",
+            "sigo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Atocha station, I understand. It's not too far, but it's a bit of a walk. The most direct way is to take the metro or a bus."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto. Una vez en la glorieta de Cibeles, tome la tercera salida a la derecha, por la calle de Alcalá. No tiene pérdida, verá el Palacio de Cibeles justo enfrente, una joya arquitectónica.",
+      "branches": [
+        {
+          "keywords": [
+            "después",
+            "siguiente",
+            "luego",
+            "ahora"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "tiempo",
+            "lejos",
+            "cerca"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido",
+            "claro"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "otro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto (per-FEK-toh) — Perfect. Once at Cibeles roundabout, take the third exit to the right, onto Alcalá street. You can't miss it, you'll see the Cibeles Palace right in front, an architectural gem."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Disculpe, quizá no me he explicado bien. La glorieta es esa rotonda grande que tiene enfrente, con una fuente en el centro. Siga recto por esta calle hasta llegar a ella.",
+      "branches": [
+        {
+          "keywords": [
+            "ahora",
+            "entiendo",
+            "sí",
+            "sigo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cómo",
+            "rotonda",
+            "donde"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry, perhaps I didn't explain myself well. The 'glorieta' is that big roundabout in front of you, with a fountain in the center. Go straight down this street until you reach it."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Desde Cibeles, estará a unos diez o quince minutos a pie, dependiendo de su ritmo. Si prefiere transporte público, tiene varias paradas de autobús justo enfrente del Palacio de Cibeles.",
+      "branches": [
+        {
+          "keywords": [
+            "autobús",
+            "metro",
+            "transporte"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "caminar",
+            "andando",
+            "pie",
+            "prefiero"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "From Cibeles, it will be about ten or fifteen minutes on foot, depending on your pace. If you prefer public transport, there are several bus stops right in front of the Cibeles Palace."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Si va andando a Atocha, le llevará unos veinte minutos. Es un paseo agradable, pero un poco largo si no está acostumbrado. Siga esta calle, la de Alcalá, y luego gire a la derecha en el Paseo del Prado, lo verá al fondo.",
+      "branches": [
+        {
+          "keywords": [
+            "metro",
+            "autobús",
+            "transporte"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido",
+            "claro"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "repita",
+            "másdetalles"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you walk to Atocha, it will take about twenty minutes. It's a pleasant walk, but a bit long if you're not used to it. Follow this street, Alcalá, and then turn right onto Paseo del Prado, you'll see it at the end."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Después de pasar el Palacio de Cibeles, siga recto por la calle de Alcalá. El Prado estará a su mano derecha, justo después de la fuente de Neptuno. Lo reconocerá por su imponente fachada neoclásica. Para el autobús, le servirían el 10, el 14 o el 27. Le dejarán en la misma puerta del museo. Si opta por el metro, la estación de Banco de España está a dos pasos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto",
+            "entendido",
+            "claro"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "metro",
+            "autobús",
+            "transporte"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "After passing the Cibeles Palace, continue straight along Alcalá street. The Prado will be on your right, just after the Neptune fountain. You'll recognize it by its imposing neoclassical façade. For the bus, lines 10, 14, or 27 would work. They'll drop you right at the museum's entrance. If you opt for the metro, Banco de España station is a stone's throw away."
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Para Atocha, lo más sencillo es tomar el metro desde Banco de España o un autobús en cualquiera de las paradas cercanas. Varias líneas van directas, como el 10, el 14 o el 27. Le dejarán en la puerta de la estación.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto",
+            "entendido",
+            "claro"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "metro",
+            "autobús",
+            "transporte"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For Atocha, the easiest way is to take the metro from Banco de España or a bus from any of the nearby stops. Several lines go direct, such as 10, 14, or 27. They'll drop you at the station entrance."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, ¿podría repetir eso? No le he entendido bien. O quizá expresarse de otra forma, si no es mucha molestia.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Lo siento (loh SYEN-toh) — I'm sorry, could you repeat that? I didn't quite understand you. Or perhaps express yourself differently, if it's not too much trouble."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "De nada, ¡que tenga un buen día! ¡Y disfrute de la visita/el viaje!",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "De nada (deh NAH-dah) — You're welcome, have a good day! And enjoy your visit/trip!",
+      "isTerminal": true
+    }
+  }
+}

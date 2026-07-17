@@ -1,0 +1,210 @@
+{
+  "id": "dlg-it-weather-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Il tempo",
+  "opening": "Ciao! Come sta il tempo oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Come sta il tempo oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "sole",
+            "bello"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pioggia",
+            "piove",
+            "brutto"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nuvoloso",
+            "nuvole"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! Koh-meh stah eel tem-poh oh-jee? — Hello! How is the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, che bello! Fa caldo o fa freddo?",
+      "branches": [
+        {
+          "keywords": [
+            "caldo",
+            "fa caldo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "freddo",
+            "fresco",
+            "fa freddo"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, keh bel-loh! Fah kal-doh oh fah fred-doh? — Oh, how nice! Is it hot or is it cold?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, peccato! Piove molto?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "molto"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, pek-kah-toh! Pee-oh-veh mol-toh? — Oh, what a pity! Is it raining a lot?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nuvoloso... Forse piove più tardi?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "piove"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonpiove"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Noo-voh-loh-zoh... For-seh pee-oh-veh pyoo tar-dee? — Cloudy... Maybe it rains later?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Fa caldo! Forse un gelato?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "gelato"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fah kal-doh! For-seh oon jeh-lah-toh? — It's hot! Maybe an ice cream?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Fa fresco. Forse un caffè caldo?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "caffe"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fah fres-koh. For-seh oon kaf-feh kal-doh? — It's cool. Maybe a hot coffee?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ah, che peccato. Stai a casa?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "casa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, keh pek-kah-toh. Stah-ee ah kah-zah? — Ah, what a pity. Are you staying home?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, non capisco. Puoi ripetere?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Skoo-zah, non kah-pees-koh. Poo-oy ree-peh-teh-reh? — Excuse me, I don't understand. Can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci! Buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah-ree-veh-der-chee! Bwoh-nah jee-or-nah-tah! — Goodbye! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

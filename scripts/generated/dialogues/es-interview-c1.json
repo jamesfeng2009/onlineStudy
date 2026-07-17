@@ -1,0 +1,277 @@
+{
+  "id": "dlg-es-interview-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Entrevista de Trabajo: Perfil Avanzado",
+  "opening": "Buenos días, [Nombre del Candidato]. Es un placer tenerte aquí. Para empezar, cuéntanos un poco sobre ti, tu trayectoria y qué te motivó a postularte para este puesto.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días, [Nombre del Candidato]. Es un placer tenerte aquí. Para empezar, cuéntanos un poco sobre ti, tu trayectoria y qué te motivó a postularte para este puesto.",
+      "branches": [
+        {
+          "keywords": [
+            "experiencia",
+            "trayectoria",
+            "currículum",
+            "formación"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "motivación",
+            "interés",
+            "puesto",
+            "empresa"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "habilidades",
+            "cualidades",
+            "aptitudes"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días, [Nombre del Candidato]. Es un placer tenerte aquí. Para empezar, cuéntanos un poco sobre ti, tu trayectoria y qué te motivó a postularte para este puesto. (BWEH-nohs DEE-ahs, [Nombre del Candidato]. Es oon plah-SEHR teh-NEHR-teh ah-KEE. PAH-rah ehm-peh-SAHR, KWEHN-tah-nohs oon POH-koh SOH-breh TEE, too trah-yek-TOH-ree-ah ee KEH teh moh-TEE-voh ah pohs-too-LAHR-teh PAH-rah EHS-teh PWEHS-toh. Good morning, [Candidate Name]. It's a pleasure to have you here. To begin, tell us a little about yourself, your background, and what motivated you to apply for this position.)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Interesante. Profundizando en tu trayectoria, ¿podrías compartir un logro significativo o un proyecto en el que hayas tenido un impacto tangible y del cual te sientas particularmente orgulloso/a?",
+      "branches": [
+        {
+          "keywords": [
+            "logro",
+            "proyecto",
+            "resultado",
+            "impacto"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "desafío",
+            "superación",
+            "aprendizaje",
+            "crecimiento"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesante. Profundizando en tu trayectoria, ¿podrías compartir un logro significativo o un proyecto en el que hayas tenido un impacto tangible y del cual te sientas particularmente orgulloso/a? (Interesting. Delving deeper into your background, could you share a significant achievement or a project where you had a tangible impact and of which you are particularly proud?)"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Comprendo. Es vital sentir esa conexión. En ese sentido, ¿qué esperas aportar a nuestro equipo y qué te atrae específicamente de la cultura o los valores de nuestra empresa?",
+      "branches": [
+        {
+          "keywords": [
+            "aportar",
+            "valor",
+            "contribución",
+            "experiencia"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "cultura",
+            "valores",
+            "misión",
+            "visión"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "desarrollo",
+            "crecimiento",
+            "oportunidades"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Comprendo. Es vital sentir esa conexión. En ese sentido, ¿qué esperas aportar a nuestro equipo y qué te atrae específicamente de la cultura o los valores de nuestra empresa? (koh-M-PREHN-doh. EHS vee-TAHL sehn-TEER EH-sah koh-nek-SYOHN. En EH-seh sehn-TEE-doh, KEH ehs-PEH-rahs ah-por-TAHR ah NWEHS-troh eh-KEE-poh ee KEH teh ah-TRAH-eh ehs-peh-SEE-fee-kah-MEHN-teh deh lah KUL-too-rah oh lohs vah-LOH-rehs deh NWEHS-trah ehm-PREH-sah? I understand. It's vital to feel that connection. In that sense, what do you hope to bring to our team and what specifically attracts you to our company's culture or values?)"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Veo que tienes claras tus fortalezas. Para ir un poco más allá, ¿podrías darme un ejemplo concreto de cómo has aplicado alguna de esas habilidades clave para resolver un problema complejo o lograr un objetivo desafiante en un entorno profesional anterior?",
+      "branches": [
+        {
+          "keywords": [
+            "resolución",
+            "problema",
+            "solución",
+            "reto"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "competencias",
+            "destrezas",
+            "conocimientos"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Veo que tienes claras tus fortalezas. Para ir un poco más allá, ¿podrías darme un ejemplo concreto de cómo has aplicado alguna de esas habilidades clave para resolver un problema complejo o lograr un objetivo desafiante en un entorno profesional anterior? (I see you are clear about your strengths. To go a bit further, could you give me a concrete example of how you have applied one of those key skills to solve a complex problem or achieve a challenging objective in a previous professional environment?)"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Excelente. Ya que estamos hablando de tus puntos fuertes, ¿cómo crees que esas cualidades encajan con los requisitos de este puesto y la dinámica de nuestro equipo? Y, en un ejercicio de autocrítica constructiva, ¿hay alguna área en la que consideres que necesitas mejorar?",
+      "branches": [
+        {
+          "keywords": [
+            "fortalezas",
+            "encajar",
+            "requisitos",
+            "dinámica"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. Ya que estamos hablando de tus puntos fuertes, ¿cómo crees que esas cualidades encajan con los requisitos de este puesto y la dinámica de nuestro equipo? Y, en un ejercicio de autocrítica constructiva, ¿hay alguna área en la que consideres que necesitas mejorar? (ehk-seh-LEHN-teh. Yah KEH ehs-TAH-mohs ah-BLAHN-doh deh toos POHN-tohs FWEHR-tehs, KOH-moh KREH-ehs KEH EH-sas KWAH-lee-DAH-dehs ehn-KAH-han kohn lohs reh-kee-SEE-tohs deh EHS-teh PWEHS-toh ee lah dee-NAH-mee-kah deh NWEHS-troh eh-KEE-poh? Ee, en oon eh-her-SEE-syo deh ah-oo-toh-KREE-tee-kah kohns-truk-TEE-vah, AY ah-LGOO-nah AH-reh-ah en lah KEH kohn-see-DEH-rahs KEH neh-seh-SEE-tahs meh-ho-RAHR? Excellent. Since we are talking about your strong points, how do you think those qualities fit with the requirements of this position and the dynamic of our team? And, in an an exercise of constructive self-criticism, is there any area in which you consider you need to improve?)"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Entiendo. Es admirable ver esa mentalidad de crecimiento. Pensando en el futuro, ¿dónde te ves profesionalmente en los próximos tres a cinco años y cómo crees que este puesto te ayudaría a alcanzar esa visión?",
+      "branches": [
+        {
+          "keywords": [
+            "futuro",
+            "visión",
+            "metas",
+            "objetivos"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. Es admirable ver esa mentalidad de crecimiento. Pensando en el futuro, ¿dónde te ves profesionalmente en los próximos tres a cinco años y cómo crees que este puesto te ayudaría a alcanzar esa visión? (I understand. It's admirable to see that growth mindset. Thinking about the future, where do you see yourself professionally in the next three to five years, and how do you think this position would help you achieve that vision?)"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Me alegra que nuestra cultura resuene contigo. ¿Hay algún aspecto específico de nuestro trabajo o de la industria que te genere curiosidad o sobre el que tengas preguntas, que quizás no hayamos cubierto aún?",
+      "branches": [
+        {
+          "keywords": [
+            "pregunta",
+            "duda",
+            "curiosidad",
+            "consultar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Me alegra que nuestra cultura resuene contigo. ¿Hay algún aspecto específico de nuestro trabajo o de la industria que te genere curiosidad o sobre el que tengas preguntas, que quizás no hayamos cubierto aún? (I'm glad our culture resonates with you. Is there any specific aspect of our work or the industry that sparks your curiosity or about which you have questions, that perhaps we haven't covered yet?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Muy bien. Para concluir, ¿tienes alguna pregunta para nosotros, algo que te gustaría saber o aclarar sobre el puesto, el equipo o la empresa?",
+      "branches": [
+        {
+          "keywords": [
+            "pregunta",
+            "duda",
+            "aclaración",
+            "saber"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. Para concluir, ¿tienes alguna pregunta para nosotros, algo que te gustaría saber o aclarar sobre el puesto, el equipo o la empresa? (MWEE byehn. PAH-rah kohn-kloo-EER, TYEH-nehs ah-LGOO-nah preh-GOON-tah PAH-rah NWEHS-trohs, AHL-goh KEH teh goos-tah-REE-ah sah-BEHR oh ah-klah-RAHR SOH-breh ehl PWEHS-toh, ehl eh-KEE-poh oh lah ehm-PREH-sah? Very well. To conclude, do you have any questions for us, anything you would like to know or clarify about the position, the team, or the company?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Podrías repetir lo último, por favor? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "otra"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Podrías repetir lo último, por favor? No te he entendido bien. (Could you please repeat the last thing? I didn't quite understand you.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Muchas gracias por tu tiempo y por venir hoy. Nos pondremos en contacto contigo pronto. ¡Que tengas un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Muchas gracias por tu tiempo y por venir hoy. Nos pondremos en contacto contigo pronto. ¡Que tengas un buen día! (Thank you very much for your time and for coming today. We will contact you soon. Have a good day!)",
+      "isTerminal": true
+    }
+  }
+}

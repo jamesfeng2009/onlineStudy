@@ -1,0 +1,198 @@
+{
+  "id": "dlg-it-doctor-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Visita Medica",
+  "opening": "Buongiorno. Come sta? Cosa c'è che non va?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno (Bwon-jor-noh). Come sta? Cosa c'è che non va?",
+      "branches": [
+        {
+          "keywords": [
+            "male",
+            "nonsto",
+            "nonstobene",
+            "dolore"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "raffreddore",
+            "tosse",
+            "gola"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning. How are you? What's wrong?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dove le fa male?",
+      "branches": [
+        {
+          "keywords": [
+            "testa",
+            "testamale"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pancia",
+            "panciamale"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "gola",
+            "golamale"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Where does it hurt?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ha raffreddore (rahf-fred-DOH-reh) o tosse (TOS-seh)?",
+      "branches": [
+        {
+          "keywords": [
+            "raffreddore"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Do you have a cold or a cough?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Da quanto tempo le fa male la testa?",
+      "branches": [
+        {
+          "keywords": [
+            "ungiorno",
+            "ieri"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How long has your head been hurting?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Da quanto tempo le fa male la pancia?",
+      "branches": [
+        {
+          "keywords": [
+            "ungiorno",
+            "ieri"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How long has your stomach been hurting?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Da quanto tempo ha questi sintomi?",
+      "branches": [
+        {
+          "keywords": [
+            "ungiorno",
+            "ieri"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How long have you had these symptoms?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ok. Prenda queste pastiglie (pas-TEEL-yeh) per tre giorni. Riposi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "va"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Take these pills for three days. Rest."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi (SKOO-zee), può ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, can you repeat please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci (Ah-ree-veh-DER-chee)! Si riposi e stia bene.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye! Rest well and get better.",
+      "isTerminal": true
+    }
+  }
+}

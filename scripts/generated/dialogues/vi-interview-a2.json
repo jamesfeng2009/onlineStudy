@@ -1,0 +1,119 @@
+{
+  "id": "dlg-vi-interview-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc (cơ bản)",
+  "opening": "Chào bạn. Cảm ơn bạn đã đến phỏng vấn. Bạn có thể giới thiệu một chút về bản thân được không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn. Cảm ơn bạn đã đến phỏng vấn. Bạn có thể giới thiệu một chút về bản thân được không?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "tuổi",
+            "là",
+            "tôi",
+            "sinhviên"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn. Cảm ơn bạn đã đến phỏng vấn. Bạn có thể giới thiệu một chút về bản thân được không? — Hello. Thank you for coming to the interview. Could you please tell me a little about yourself?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn bạn. Vậy tại sao bạn quan tâm đến vị trí này và công ty chúng tôi? Hoặc bạn có kinh nghiệm làm việc gì rồi?",
+      "branches": [
+        {
+          "keywords": [
+            "kinhnghiệm",
+            "làmviệc",
+            "đãtừng",
+            "tôiđã"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn. Vậy tại sao bạn quan tâm đến vị trí này và công ty chúng tôi? Hoặc bạn có kinh nghiệm làm việc gì rồi? — Thank you. So why are you interested in this position and our company? Or what work experience do you have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Rất tốt. Bạn nghĩ điểm mạnh của bạn là gì?",
+      "branches": [
+        {
+          "keywords": [
+            "chămchỉ",
+            "họcnhanh",
+            "kỹnăng",
+            "tôicó"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất tốt. Bạn nghĩ điểm mạnh của bạn là gì? — Very good. What do you think your strengths are?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Còn điểm yếu thì sao? Bạn có thể chia sẻ một chút không?",
+      "branches": [
+        {
+          "keywords": [
+            "chậm",
+            "cầncảithiện",
+            "khókhăn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "And what about weaknesses? Can you share a little?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn có thể nói lại được không? — Sorry, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã đến. Chúng tôi sẽ liên hệ lại sớm. Chào bạn.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn đã đến. Chúng tôi sẽ liên hệ lại sớm. Chào bạn. — Thank you for coming. We will contact you soon. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

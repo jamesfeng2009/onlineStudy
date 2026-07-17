@@ -1,0 +1,167 @@
+{
+  "id": "dlg-es-taxi-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Un viaje en taxi por Madrid",
+  "opening": "¡Hola! ¿A dónde le llevo, señor/señora? El tráfico está algo complicado a estas horas, pero intentaremos sortearlo.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿A dónde le llevo, señor/señora? El tráfico está algo complicado a estas horas, pero intentaremos sortearlo.",
+      "branches": [
+        {
+          "keywords": [
+            "calle",
+            "mayor",
+            "gran",
+            "vía",
+            "sol",
+            "palacio",
+            "museo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "costaría",
+            "ruta",
+            "precio",
+            "tarifa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "hola",
+            "buenas",
+            "gracias"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! ¿A dónde le llevo, señor/señora? (OH-lah! Ah DOHN-deh leh YEH-vo, seh-NYOR/seh-NYO-rah?) — Hello! Where can I take you, sir/madam? The traffic is a bit complicated at this time, but we'll try to navigate (sor-te-AR-lo) around it."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. Para allá vamos. Lo más directo sería por la M-30, pero a esta hora suele ser un infierno. ¿Le parece bien si probamos por el centro, aunque sea más largo en kilómetros?",
+      "branches": [
+        {
+          "keywords": [
+            "centro",
+            "sí",
+            "parece",
+            "bien",
+            "mejor",
+            "correcto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tiempo",
+            "costo",
+            "diferencia",
+            "caro",
+            "ahorro"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendi",
+            "explica",
+            "disculpe"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. Para allá vamos. (En-ten-DEE-do. PA-ra ya VAH-mos.) — Understood. We're heading there. The most direct route would be via the M-30, but at this hour it's usually hell (un in-FYER-no). Does it seem okay if we try through the city center, even if it's longer in kilometers?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Mire, el trayecto por el centro podría sumarle unos diez minutos más, pero el taxímetro no se disparará tanto con las paradas. Por la M-30, podría ser más rápido, pero con los atascos el coste es impredecible.",
+      "branches": [
+        {
+          "keywords": [
+            "centro",
+            "bien",
+            "sí",
+            "vamos",
+            "conforme",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez",
+            "repita",
+            "no entiendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mire, el trayecto por el centro podría sumarle unos diez minutos más, pero el taxímetro no se disparará (se dis-pa-ra-RAH) tanto con las paradas. — Look, the journey through the city center could add about ten more minutes, but the taximeter won't shoot up (se dis-pa-ra-RAH) as much with the stops. Via the M-30, it could be faster, but with traffic jams, the cost is unpredictable."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Hemos llegado a su destino. Son veintiocho euros con cincuenta céntimos. ¿Cómo prefiere abonar, en efectivo o con tarjeta?",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "cash",
+            "billete",
+            "monedas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "cuanto",
+            "gracias",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hemos llegado a su destino. Son veintiocho euros con cincuenta céntimos. (Eh-mos ye-GAH-do ah soo des-TEE-no. Son vein-TYO-cho EH-oo-ros con thin-KUEN-tah SEN-tee-mos.) — We have arrived at your destination. It's twenty-eight euros and fifty cents. How do you prefer to pay (ah-bo-NAR), in cash or by card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "repito",
+            "claro"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Disculpe, ¿podría repetir eso? (Dis-KUL-peh, po-DRÍ-ah re-pe-TIR EH-so?) No le he entendido bien. — Excuse me, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Perfecto! Aquí tiene su cambio/recibo. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "¡Perfecto! Aquí tiene su cambio/recibo. Que tenga un buen día. (Per-FEC-to! Ah-KEE TYE-neh soo KAM-byo/re-THI-bo. Ke TEN-gah oon BWEN DEE-ah.) — Perfect! Here's your change/receipt. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "id": "dlg-it-airport-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Servizio Clienti Aeroportuale",
+  "opening": "Buongiorno, benvenuto al servizio clienti. In cosa posso esserle utile oggi? Spero di poterla aiutare al meglio, senza troppi intoppi burocratici.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto al servizio clienti. In cosa posso esserle utile oggi? Spero di poterla aiutare al meglio, senza troppi intoppi burocratici.",
+      "branches": [
+        {
+          "keywords": [
+            "bagaglio",
+            "smarrimento"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ritardo",
+            "volo"
+          ],
+          "nextTurnId": "t3_inquiry"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buon-giorno, ben-ve-nu-to al ser-vi-zio clien-ti. In co-sa pos-so es-ser-le u-ti-le og-gi? Spe-ro di po-ter-la aiu-ta-re al me-glio, sen-za trop-pi in-top-pi bu-ro-cra-ti-ci. — Good morning, welcome to customer service. I hope I can help you in the best way today, without too many bureaucratic hitches."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Mi spiace sentirlo. Per procedere con la pratica di ricerca, potrebbe fornirmi il codice PNR del suo volo e una descrizione sommaria del bagaglio? È fondamentale per avviare il tutto senza indugio.",
+      "branches": [
+        {
+          "keywords": [
+            "pnr",
+            "codice",
+            "descrizione",
+            "valigia"
+          ],
+          "nextTurnId": "t4_resolve_luggage"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi spia-ce sen-tir-lo. Per pro-ce-de-re con la pra-ti-ca di ri-cer-ca, po-treb-be for-nir-mi il co-di-ce PNR del suo vo-lo e u-na de-scri-zio-ne som-ma-ria del ba-ga-glio? È fon-da-men-ta-le per av-via-re il tut-to sen-za in-du-gio. — I'm sorry to hear that. To proceed with the search process, could you provide me with your flight PNR code and a brief description of the luggage? It is essential to start everything without delay."
+    },
+    "t3_inquiry": {
+      "id": "t3_inquiry",
+      "prompt": "Capisco. Per cortesia, mi dica il numero del suo volo e la destinazione, oppure la sua domanda specifica. Cercherò di darle tutte le delucidazioni del caso, così da dissipare ogni suo dubbio.",
+      "branches": [
+        {
+          "keywords": [
+            "volo",
+            "numero",
+            "destinazione",
+            "meta"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ca-pi-sco. Per cor-te-sia, mi di-ca il nu-me-ro del suo vo-lo e la de-sti-na-zio-ne, op-pu-re la sua do-man-da spe-ci-fi-ca. Cer-che-rò di dar-le tut-te le de-lu-ci-da-zio-ni del ca-so, co-sì da dis-si-pa-re o-gni suo dub-bio. — I understand. Please, tell me your flight number and destination, or your specific question. I will try to give you all the necessary clarifications, so as to dispel all your doubts."
+    },
+    "t4_resolve_luggage": {
+      "id": "t4_resolve_luggage",
+      "prompt": "Ottimo, grazie per le informazioni. Procederemo immediatamente con la pratica di ricerca. Le chiedo cortesemente di compilare questo modulo per lo smarrimento. Normalmente l'iter richiede 24-72 ore, ma le garantisco il massimo impegno per accelerare. Non si preoccupi, risolveremo.",
+      "branches": [
+        {
+          "keywords": [
+            "modulo",
+            "compilare"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ot-ti-mo, gra-zie per le in-for-ma-zio-ni. Pro-ce-de-re-mo im-me-dia-ta-men-te con la pra-ti-ca di ri-cer-ca. Le chie-do cor-te-se-men-te di com-pi-la-re que-sto mo-du-lo per lo smar-ri-men-to. Nor-mal-men-te l'i-ter ri-chie-de ven-ti-quat-tro-set-tan-ta-due o-re, ma le ga-ran-ti-sco il mas-si-mo im-pe-gno per ac-ce-le-ra-re. Non si pre-oc-cu-pi, ri-sol-ve-re-mo. — Excellent, thank you for the information. We will immediately proceed with the search process. I kindly ask you to fill out this lost luggage form. Normally, the process takes 24-72 hours, but I guarantee our utmost commitment to speed it up. Don't worry, we will resolve it."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato. Potrebbe ripetere o riformulare, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti",
+            "scusa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scu-si, non ho af-fer-ra-to. Po-treb-be ri-pe-te-re o ri-for-mu-la-re, per cor-te-sia? — Excuse me, I didn't catch that. Could you please repeat or rephrase?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie per la sua pazienza e collaborazione. Le auguro una buona giornata e speriamo di risolvere presto. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gra-zie per la sua pa-zien-za e col-la-bo-ra-zio-ne. Le au-gu-ro u-na buo-na gior-na-ta e spe-ria-mo di ri-sol-ve-re pre-sto. Ar-ri-ve-der-ci! — Thank you for your patience and cooperation. I wish you a good day and we hope to resolve it soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

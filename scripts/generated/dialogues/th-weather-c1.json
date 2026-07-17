@@ -1,0 +1,105 @@
+{
+  "id": "dlg-th-weather-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "พยากรณ์อากาศและชีวิตประจำวัน",
+  "opening": "ช่วงนี้อากาศแปรปรวนเหลือเกินนะครับคุณ นี่เพิ่งเห็นพยากรณ์อากาศเมื่อเช้าว่าจะมีฝนตกหนักอีกระลอกช่วงบ่ายวันนี้ คุณได้เช็กบ้างไหมครับว่าแถวบ้านคุณเป็นอย่างไรบ้าง?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "ช่วงนี้อากาศแปรปรวนเหลือเกินนะครับคุณ นี่เพิ่งเห็นพยากรณ์อากาศเมื่อเช้าว่าจะมีฝนตกหนักอีกระลอกช่วงบ่ายวันนี้ คุณได้เช็กบ้างไหมครับว่าแถวบ้านคุณเป็นอย่างไรบ้าง?",
+      "branches": [
+        {
+          "keywords": [
+            "ฝนตก",
+            "ตกหนัก",
+            "น้ำท่วม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "อากาศดี",
+            "แดดออก",
+            "ร้อน"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "chûang-níi-à-gàat-bplae-bpruan-lǔue-goen-ná-kráp-kun. nîi-pôeng-hěn-pá-yaa-gon-à-gàat-môe-cháo-wâa-jà-mee-fŏn-dtòk-nàk-èek-rá-lôk-chûang-bàai-wan-níi. kun-dâai-chék-bâang-mái-kráp-wâa-tâaeo-bâan-kun-bpen-yàang-rai-bâang? — The weather has been so erratic lately, hasn't it? I just saw the forecast this morning predicting another heavy downpour this afternoon. Have you checked what it's like around your area?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ถ้าอย่างนั้นคงต้องระมัดระวังเป็นพิเศษเลยนะครับช่วงบ่ายนี้ ยิ่งช่วงนี้ถนนหลายสายน้ำท่วมขังบ่อยๆ ผมล่ะกังวลจริงๆ ว่าจะเดินทางลำบาก คุณมีแผนสำรองสำหรับการเดินทางหรือกิจกรรมที่ต้องทำนอกบ้านบ้างไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "เลื่อน",
+            "ยกเลิก",
+            "เปลี่ยน"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "tâa-yàang-nán-kong-dtông-rá-mát-rá-wang-bpen-pí-sèt-loei-ná-kráp-chûang-bàai-níi. yîng-chûang-níi-tà-nǒn-láai-săai-náam-tûam-kăng-bòi-bòi. pŏm-lá-gang-won-jing-jing-wâa-jà-dern-taang-lam-bàak. kun-mee-plaan-săm-rɔ̂ng-săm-ràp-gaan-dern-taang-rǔue-gìt-jà-gam-tîi-dtông-tam-nɔ̂k-bâan-bâang-mái-kráp? — In that case, we'll need to be especially careful this afternoon. Especially since many roads are frequently flooded these days. I'm really worried about difficult commutes. Do you have any backup plans for travel or outdoor activities?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "โชคดีจังเลยครับที่อากาศไม่เป็นอุปสรรคต่อแผนของคุณ ผมนี่อยากให้ฟ้าโปร่งๆ แบบนี้บ้างจังเลยครับ จะได้ออกไปทำกิจกรรมกลางแจ้งบ้าง แต่พูดถึงฤดูฝนแล้วก็อดคิดถึงฤดูแล้งที่ร้อนระอุจนแทบไม่อยากก้าวเท้าออกจากบ้านไม่ได้เลยนะครับ คุณคิดว่าฤดูไหนในบ้านเราเป็น 'ช่วงเวลาทอง' ที่สุดสำหรับการใช้ชีวิตนอกบ้านครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ฤดูหนาว",
+            "หน้าหนาว"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "chôok-dee-jang-loei-kráp-tîi-à-gàat-mâi-bpen-ùp-bpa-sàk-dtɔ̀ɔ-plaan-kɔ̌ɔng-kun. pŏm-nîi-yàak-hâi-fáa-bpròong-bpròong-bàep-níi-bâang-jang-loei-kráp. jà-dâai-ɔ̀ɔk-bpai-tam-gìt-jà-gam-glaang-jâeng-bâang. dtàae-pôot-tǔeng-rʉ́-doo-fŏn-láaew-gɔ̂ɔ-òt-kít-tǔeng-rʉ́-doo-láaeng-tîi-rɔ́ɔn-rá-ù-jon-tâep-mâi-yàak-gâao-táao-ɔ̀ɔk-jàak-bâan-mâi-dâai-loei-ná-kráp. kun-kít-wâa-rʉ́-doo-nǎi-nai-bâan-rao-bpen-'chûang-wee-laa-tɔɔng'-tîi-sùt-săm-ràp-gaan-chái-chee-wít-nɔ̂k-bâan-kráp? — How lucky that the weather isn't hindering your plans! I really wish for clear skies like this sometimes, so I could do some outdoor activities. But speaking of the rainy season, I can't help but think of the hot dry season, so scorching that you barely want to step out of the house. Which season in our country do you think is the \"golden period\" for outdoor living?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จริงอย่างที่คุณว่าเลยครับ แต่ละฤดูก็มีเสน่ห์และข้อจำกัดของมันเอง โดยเฉพาะเรื่องการท่องเที่ยวและกิจกรรมต่างๆ คงต้องปรับตัวตามสภาพอากาศกันไป สุดท้ายนี้ ขอให้คุณเดินทางและทำกิจกรรมต่างๆ ได้อย่างราบรื่นไม่ว่าจะเจอสภาพอากาศแบบไหนนะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ดีใจ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You're absolutely right. Each season has its own charm and limitations, especially concerning travel and various activities. We just have to adapt to the weather conditions. Lastly, I hope your travels and activities go smoothly, no matter what kind of weather you encounter."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ รบกวนช่วยพูดอีกครั้งได้ไหมครับ พอดีผมฟังไม่ค่อยถนัดเลย",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ครับ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "kɔ̌ɔ-tôot-ná-kráp róp-guan-chûuay-pôot-èek-kráng-dâi-mái-kráp pɔɔ-dee-pŏm-fang-mâi-kɔ̂i-tà-nàt-loei. — Excuse me, could you please repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ ขอบคุณมากครับที่มาร่วมพูดคุยกัน ไว้โอกาสหน้าเรามาคุยกันใหม่นะครับ สวัสดีครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for chatting with me. Let's talk again next time. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "id": "dlg-vi-taxi-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Đi taxi",
+  "opening": "Chào bạn. Bạn đi đâu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn. Bạn đi đâu?",
+      "branches": [
+        {
+          "keywords": [
+            "kháchsạn",
+            "chợ",
+            "bệnhviện"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "baonhiêu",
+            "xa",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban) — Hello. Bạn đi đâu? (Ban di dau?) — Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Được. Bạn có hành lý không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "cóhànhlý",
+            "vâng"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "baonhiêutiền",
+            "tiền"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được (Duoc) — Okay. Bạn có hành lý không? (Ban co hanh ly khong?) — Do you have luggage?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bạn muốn đi đâu? Khách sạn hay chợ?",
+      "branches": [
+        {
+          "keywords": [
+            "kháchsạn"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn muốn đi đâu? — Where do you want to go? Khách sạn (Khach san) hay chợ (cho)? — Hotel or market?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Được rồi. Đi thôi. Đường này ít xe.",
+      "branches": [
+        {
+          "keywords": [
+            "baonhiêutiền",
+            "tiền"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "vâng",
+            "được"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được rồi (Duoc roi) — Okay. Đi thôi (Di thoi) — Let's go. Đường này ít xe (Duong nay it xe) — This road has few cars."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Khoảng 50 nghìn đồng.",
+      "branches": [
+        {
+          "keywords": [
+            "được",
+            "vâng",
+            "ok"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khoảng (Khoang) 50 nghìn đồng (nam muoi nghin dong). — About 50,000 VND."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Đến rồi. 50 nghìn đồng.",
+      "branches": [
+        {
+          "keywords": [
+            "tiền",
+            "đâytiền",
+            "cảmơn",
+            "đây"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đến rồi (Den roi) — We're here. 50 nghìn đồng (nam muoi nghin dong) — 50,000 VND."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Bạn nói gì? Tôi không hiểu. Bạn nói lại nhé?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Bạn nói gì? (Ban noi gi?) — What did you say? Tôi không hiểu (Toi khong hieu) — I don't understand. Bạn nói lại nhé? (Ban noi lai nhe?) — Can you say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chào bạn. Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chào bạn (Chao ban) — Goodbye. Hẹn gặp lại (Hen gap lai) — See you again.",
+      "isTerminal": true
+    }
+  }
+}

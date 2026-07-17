@@ -1,0 +1,115 @@
+{
+  "id": "dlg-es-doctor-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Visita al Médico",
+  "opening": "Hola, buenos días. ¿Cómo está hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenos días. ¿Cómo está hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "mal",
+            "enfermo",
+            "enferma"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello (OH-lah), good morning (BWEH-nohs DEE-ahs). How (KOH-moh) are you (ehs-TAH) today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¿Qué le duele? ¿Dónde le duele?",
+      "branches": [
+        {
+          "keywords": [
+            "cabeza",
+            "micabeza"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What (KEH) hurts (DWEH-leh) you? Where (DOHN-deh) does it hurt (DWEH-leh)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¿Desde cuándo le duele?",
+      "branches": [
+        {
+          "keywords": [
+            "ayer",
+            "desdeayer"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Since (DES-deh) when (KWAHN-doh) does it hurt (DWEH-leh) you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Necesita tomar una medicina. ¿Tiene alguna alergia?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "tengoalergias"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "notengoalergias"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You need (neh-seh-SEE-tah) to take (toh-MAR) a medicine (meh-dee-SEE-nah). Do you have any allergy (ah-LEHR-hee-ah)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¿A qué es alérgico/a?",
+      "branches": [
+        {
+          "keywords": [
+            "penicilina"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To what (ah KEH) are you allergic (ah-LEHR-hee-koh/kah)?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Muy bien. Tome la medicina y descanse. Adiós.",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Very well. Take the medicine and rest. Goodbye (ah-DEE-ohs).",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? (per-DON) Can you repeat (re-pe-TIR), please?"
+    }
+  }
+}

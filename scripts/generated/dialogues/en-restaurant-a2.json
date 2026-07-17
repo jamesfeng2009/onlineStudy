@@ -1,0 +1,300 @@
+{
+  "id": "dlg-en-restaurant-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Ordering Food",
+  "opening": "Hello! Are you ready to order?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Are you ready to order?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ready",
+            "order"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "not",
+            "yet",
+            "no",
+            "wait"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "recommend",
+            "suggestion"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! /hɛˈloʊ/ — A common friendly greeting. Are you ready to order? — Do you want to tell us what food you want now?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand. Can you say that again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "no",
+            "ready",
+            "order",
+            "recommend",
+            "wait",
+            "pizza",
+            "burger",
+            "water",
+            "bill",
+            "pay",
+            "thanks"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't understand. /sɔːri aɪ dɪdnt ˌʌndərˈstænd/ — I didn't hear you clearly or understand your words. Can you say that again? — Please speak again."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Great! What would you like to have? And do you have any allergies or dietary needs?",
+      "branches": [
+        {
+          "keywords": [
+            "pizza",
+            "burger",
+            "soup",
+            "salad",
+            "pasta"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "water",
+            "cola",
+            "drink"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! /ɡreɪt/ — Good! What would you like to have? /wʌt wʊd juː laɪk tuː hæv/ — What food or drink do you want? And do you have any allergies /ælərdʒiz/ or dietary needs /daɪɪˈtɛri niːdz/?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "No problem. I'll come back in a few minutes. Can I get you a drink while you decide?",
+      "branches": [
+        {
+          "keywords": [
+            "water",
+            "cola",
+            "drink",
+            "yes"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "wait",
+            "thanks"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. /noʊ ˈprɑːbləm/ — It's okay. I'll come back in a few minutes. — I will return shortly. Can I get you a drink while you decide? — Do you want a drink while you choose your food?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "I recommend the pasta! It's very popular today.",
+      "branches": [
+        {
+          "keywords": [
+            "order",
+            "that",
+            "pasta",
+            "yes"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "else",
+            "different"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I recommend the pasta! /aɪ ˌrɛkəˈmɛnd ðə ˈpæstə/ — I suggest the pasta. It's very popular today. — Many people like it today."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Okay, I have your order. Anything else, or maybe something to drink?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "drink",
+            "water",
+            "cola"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "thanks",
+            "finish",
+            "bill"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I have your order. /aɪ hæv jʊər ˈɔːrdər/ — I wrote down your food choice. Anything else, or maybe something to drink? — Do you want more food, or a drink?"
+    },
+    "t5b": {
+      "id": "t5b",
+      "prompt": "One moment for your drink. So, your order is complete for now?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "complete",
+            "done",
+            "bill"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "no",
+            "more",
+            "food"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "One moment for your drink. /wʌn ˈmoʊmənt fɔr jʊər drɪŋk/ — I will bring your drink quickly. So, your order is complete for now? — Are you finished ordering all your food and drinks?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "One drink, coming right up! Is there anything else you'd like?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "food",
+            "pizza",
+            "burger"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "all",
+            "bill",
+            "check"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "One drink, coming right up! /kʌmɪŋ raɪt ʌp/ — I will bring your drink very soon. Is there anything else you'd like? — Do you want more food or drinks?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Here is your bill. Thank you!",
+      "branches": [
+        {
+          "keywords": [
+            "pay",
+            "ready",
+            "card",
+            "cash",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here is your bill. /hɪər ɪz jʊər bɪl/ — This is the paper with the total cost. Thank you! — A polite way to end interaction before payment."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for visiting! Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for visiting! /θæŋk juː fɔr ˈvɪzɪtɪŋ/ — We are happy you came. Have a good day! — I hope you have a nice rest of the day.",
+      "isTerminal": true
+    }
+  }
+}

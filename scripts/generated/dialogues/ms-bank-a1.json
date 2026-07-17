@@ -1,0 +1,234 @@
+{
+  "id": "dlg-ms-bank-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "Di Bank",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "buka",
+            "akaun"
+          ],
+          "nextTurnId": "t2_akaun"
+        },
+        {
+          "keywords": [
+            "tukar",
+            "duit",
+            "wang"
+          ],
+          "nextTurnId": "t2_tukar"
+        },
+        {
+          "keywords": [
+            "masalah",
+            "atm"
+          ],
+          "nextTurnId": "t2_atm"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Boleh saya bantu (How can I help you)?"
+    },
+    "t2_akaun": {
+      "id": "t2_akaun",
+      "prompt": "Baik. Untuk buka akaun, anda ada kad pengenalan?",
+      "branches": [
+        {
+          "keywords": [
+            "ada",
+            "ya"
+          ],
+          "nextTurnId": "t3_akaun_has_id"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak"
+          ],
+          "nextTurnId": "t3_akaun_no_id"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). Untuk buka akaun (To open an account), anda ada kad pengenalan (do you have an ID card)?"
+    },
+    "t2_tukar": {
+      "id": "t2_tukar",
+      "prompt": "Baik. Anda mahu tukar duit apa?",
+      "branches": [
+        {
+          "keywords": [
+            "dolar",
+            "usd",
+            "amerika"
+          ],
+          "nextTurnId": "t3_tukar_passport"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). Anda mahu tukar duit apa (What money do you want to exchange)?"
+    },
+    "t2_atm": {
+      "id": "t2_atm",
+      "prompt": "Apa masalah ATM anda? Kad tersekat atau PIN salah?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "tersekat"
+          ],
+          "nextTurnId": "t3_atm_generic_solution"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apa masalah ATM anda (What is your ATM problem)? Kad tersekat (Card stuck) atau PIN salah (or wrong PIN)?"
+    },
+    "t3_akaun_has_id": {
+      "id": "t3_akaun_has_id",
+      "prompt": "Bagus. Sila isi borang ini.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagus (Good). Sila isi borang ini (Please fill this form)."
+    },
+    "t3_akaun_no_id": {
+      "id": "t3_akaun_no_id",
+      "prompt": "Maaf. Anda perlu kad pengenalan. Sila datang esok.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (Sorry). Anda perlu kad pengenalan (You need an ID card). Sila datang esok (Please come tomorrow)."
+    },
+    "t3_tukar_passport": {
+      "id": "t3_tukar_passport",
+      "prompt": "Terima kasih. Sila beri pasport anda.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Thank you). Sila beri pasport anda (Please give your passport)."
+    },
+    "t3_atm_generic_solution": {
+      "id": "t3_atm_generic_solution",
+      "prompt": "Baik. Sila tunggu sebentar. Kami akan bantu anda.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). Sila tunggu sebentar (Please wait a moment). Kami akan bantu anda (We will help you)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang",
+            "lagi"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh ulang (can you repeat)?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih. Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Thank you). Selamat tinggal (Goodbye).",
+      "isTerminal": true
+    }
+  }
+}

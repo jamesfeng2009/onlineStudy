@@ -1,0 +1,208 @@
+{
+  "id": "dlg-fr-restaurant-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Commander au restaurant",
+  "opening": "Bonsoir, Madame, Monsieur. Avez-vous déjà eu l'occasion de vous faire une idée de notre carte ou souhaitez-vous que je vous éclaire sur nos spécialités ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonsoir, Madame, Monsieur. Avez-vous déjà eu l'occasion de vous faire une idée de notre carte ou souhaitez-vous que je vous éclaire sur nos spécialités ?",
+      "branches": [
+        {
+          "keywords": [
+            "recommandation",
+            "conseil",
+            "spécialité"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "régime",
+            "restriction"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "prêt",
+            "choisi",
+            "commander"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonsoir, Madame, Monsieur. (Bohn-swahr, Mah-dahm, Muh-syuh.) Avez-vous déjà eu l'occasion de vous faire une idée de notre carte ou souhaitez-vous que je vous éclaire sur nos spécialités ? (Ah-vay-voo day-zhah oo lah-kah-zyohn duh voo fayr oon ee-day duh noh-truh kart oo soo-weh-tay-voo kuh zhuh voo ay-klayr syoor noh speh-sya-lee-tay?) — Good evening, Madam, Sir. Have you already had a chance to get an idea of our menu or would you like me to enlighten you about our specialties?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Prenez votre temps, nous ne sommes pas pressés. N'hésitez pas si vous avez des questions ou si vous souhaitez des précisions sur un plat.",
+      "branches": [
+        {
+          "keywords": [
+            "recommandation",
+            "conseil",
+            "spécialité"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "régime",
+            "restriction"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "prêt",
+            "choisi",
+            "commander"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Take your time, we're not in a hurry. Don't hesitate if you have any questions or if you'd like more details about a dish."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Absolument ! Parmi nos incontournables, je vous suggérerais la blanquette de veau à l'ancienne, une véritable institution ici, ou peut-être notre magret de canard aux cerises, revisité avec une touche de modernité. Qu'en pensez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "prendre",
+            "choisir",
+            "blanquette",
+            "magret"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "restriction",
+            "végétarien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "autre",
+            "hésiter",
+            "difficile"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolument ! (Ahb-so-loo-mohn!) Parmi nos incontournables, je vous suggérerais la blanquette de veau à l'ancienne, une véritable institution ici, ou peut-être notre magret de canard aux cerises, revisité avec une touche de modernité. (Pahr-mee noh zain-kohn-toor-nahbl, zhuh voo soo-zhay-reh-reh lah blahn-ket duh voh ah lah-ahn-syenn, oon vay-ree-tahbl ain-stee-too-syohn ee-see, oo puh-tay-truh noh-truh mah-gray duh kah-nahr oh seh-reez, ruh-vee-zee-tay ah-vek oon too-sh duh mo-der-nee-tay.) Qu'en pensez-vous ? (Kahn pahn-say-voo?) — Absolutely! Among our must-tries, I would suggest the traditional veal blanquette, a real institution here, or perhaps our duck breast with cherries, revisited with a modern twist. What do you think?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bien sûr, nous prenons les allergies très au sérieux. Pourriez-vous me préciser vos restrictions ? Notre chef se fera un plaisir de vous proposer des ajustements ou des alternatives sur mesure.",
+      "branches": [
+        {
+          "keywords": [
+            "gluten",
+            "lactose",
+            "fruitdemer",
+            "végétarien",
+            "végétalien"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "recommandation",
+            "suggestion"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr, nous prenons les allergies très au sérieux. (Byan syoor, noo pruh-nohng lay zah-ler-zhee trayz oh seh-ryuh.) For sure, we take allergies very seriously. Pourriez-vous me préciser vos restrictions ? (Poo-ryay-voo muh pray-see-zay voh res-treek-syohn?) Could you specify your restrictions for me? Notre chef se fera un plaisir de vous proposer des ajustements ou des alternatives sur mesure. (Noh-truh shef suh fuh-rah uhn play-zeer duh voo pro-poh-zay dez ah-zhoos-tuh-mohn oo dez ahl-ter-nah-teev syoor muh-zyoor.) — Our chef would be delighted to offer you bespoke adjustments or alternatives."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Excellent ! Je vous écoute donc. Qu'est-ce qui vous ferait plaisir ce soir ? N'oubliez pas nos accords mets et vins si vous souhaitez une expérience complète.",
+      "branches": [
+        {
+          "keywords": [
+            "plat",
+            "entrée",
+            "dessert",
+            "boisson"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "hésiter",
+            "encore",
+            "plusdetemps"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent! (Ek-seh-lohn!) Je vous écoute donc. Qu'est-ce qui vous ferait plaisir ce soir ? (Zhuh vooz ay-koot dohnk. Kes-kee voo fuh-ray play-zeer suh swahr?) N'oubliez pas nos accords mets et vins si vous souhaitez une expérience complète. (Noo-blee-yay pah nohz ah-kor mey ay vain see voo soo-weh-tay oon ek-speh-ryahns kohn-plett.) — Excellent! I'm listening then. What would you like tonight? Don't forget our food and wine pairings if you wish for a complete experience."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Très bien, votre commande est notée. Y aura-t-il autre chose pour vous ce soir, ou puis-je vous apporter l'addition quand vous le souhaitez ?",
+      "branches": [
+        {
+          "keywords": [
+            "addition",
+            "facture",
+            "payer"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, your order is noted. Will there be anything else for you tonight, or can I bring you the bill whenever you wish?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, pourriez-vous répéter ? Je n'ai pas bien saisi votre demande. Ou peut-être reformuler ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat? I didn't quite catch your request. Or perhaps rephrase it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait, je vous apporte cela sans plus attendre. Merci de votre visite et bonne soirée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect, I'll bring that right away. Thank you for your visit and have a good evening!",
+      "isTerminal": true
+    }
+  }
+}

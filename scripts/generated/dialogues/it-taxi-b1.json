@@ -1,0 +1,237 @@
+{
+  "id": "dlg-it-taxi-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "In Taxi per la Città",
+  "opening": "Buongiorno/Buonasera. Dove la porto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno/Buonasera. Dove la porto?",
+      "branches": [
+        {
+          "keywords": [
+            "destinazione",
+            "andare",
+            "voglio",
+            "via",
+            "indirizzo",
+            "hotel",
+            "aeroporto",
+            "stazione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "costo",
+            "tariffa",
+            "prezzo",
+            "quanto",
+            "spesa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "traffico",
+            "strada",
+            "percorso",
+            "tempo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "salve",
+            "ciao",
+            "sì",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buon-giorno / Buon-a-sera. Do-ve la por-to? — Good morning/evening. Where can I take you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ottimo, Via Roma 12. Ci vorranno circa 20 minuti, traffico permettendo. Preferisce la strada più veloce o quella più panoramica?",
+      "branches": [
+        {
+          "keywords": [
+            "veloce",
+            "rapida",
+            "prima"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie",
+            "ok",
+            "sì"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ot-ti-mo, Vi-a Ro-ma dodici. Ci vo-ran-no cir-ca venti mi-nu-ti, traf-fi-co per-met-ten-do. Pre-fe-ri-sce la stra-da più ve-lo-ce o quel-la più pa-no-ra-mi-ca? — Great, Via Roma 12. It will take about 20 minutes, traffic permitting. Do you prefer the fastest route or the most scenic one?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certo, per darle un'idea del costo, mi dica prima la destinazione, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            "destinazione",
+            "andare",
+            "voglio",
+            "via",
+            "indirizzo",
+            "hotel",
+            "aeroporto",
+            "stazione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ok",
+            "capito",
+            "bene",
+            "grazie"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            "sì",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cer-to, per dar-le un'i-de-a del co-sto, mi di-ca pri-ma la de-sti-na-zio-ne, per fa-vo-re. — Sure, to give you an idea of the cost, please tell me the destination first."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Il traffico è normale per quest'ora, non dovremmo avere grossi problemi. Dove andiamo?",
+      "branches": [
+        {
+          "keywords": [
+            "destinazione",
+            "andare",
+            "voglio",
+            "via",
+            "indirizzo",
+            "hotel",
+            "aeroporto",
+            "stazione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ok",
+            "bene",
+            "grazie",
+            "capito"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            "sì",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Il traf-fi-co è nor-ma-le per que-st'o-ra, non do-vrem-mo a-ve-re gros-si pro-ble-mi. Do-ve an-dia-mo? — Traffic is normal for this hour, we shouldn't have big problems. Where are we going?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Va bene, andiamo per quella strada allora. Metta pure la cintura, partiamo subito. C'è qualcos'altro che desidera sapere sul percorso o sul costo?",
+      "branches": [
+        {
+          "keywords": [
+            "costo",
+            "prezzo",
+            "tariffa",
+            "quanto",
+            "pagare"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "sì"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va be-ne, an-dia-mo per quel-la stra-da al-lo-ra. Met-ta pu-re la cin-tu-ra, par-tia-mo su-bi-to. C'è qual-co-s'al-tro che de-si-de-ra sa-pe-re sul per-cor-so o sul co-sto? — Okay, let's take that route then. Please buckle up, we're leaving now. Is there anything else you wish to know about the route or the cost?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Il costo stimato è di circa 25 euro. Come preferisce pagare, in contanti o con carta? I bagagli li ho già messi nel portabagagli.",
+      "branches": [
+        {
+          "keywords": [
+            "contanti",
+            "denaro",
+            "soldi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "sì",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Il co-sto sti-ma-to è di cir-ca venticinque eu-ro. Co-me pre-fe-ri-sce pa-ga-re, in con-tan-ti o con car-ta? I ba-ga-gli li ho già mes-si nel por-ta-ba-ga-gli. — The estimated cost is about 25 euros. How do you prefer to pay, cash or card? I've already put the luggage in the trunk."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Perfetto. Ecco il resto/Bene. Il terminale è qui. Grazie e arrivederci! Spero che il viaggio sia stato di suo gradimento.",
+      "branches": [],
+      "fallbackBranchId": "t7",
+      "promptTranslation": "Per-fet-to. Ec-co il re-sto/Be-ne. Il ter-mi-na-le è qui. Gra-zie e ar-ri-ve-der-ci! Spe-ro che il viag-gio sia sta-to di suo gra-di-men-to. — Perfect. Here's your change/Good. The terminal is here. Thank you and goodbye! I hope the journey was to your liking.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sì",
+            "no",
+            "ripetere",
+            "di"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scu-si, po-treb-be ri-pe-te-re, per fa-vo-re? — Excuse me, could you please repeat?"
+    }
+  }
+}

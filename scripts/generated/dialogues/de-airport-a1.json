@@ -1,0 +1,170 @@
+{
+  "id": "dlg-de-airport-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Am Flughafen",
+  "opening": "Guten Tag! Wohin fliegen Sie?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wohin fliegen Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "berlin",
+            "wien",
+            "frankfurt",
+            "münchen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag! — Good day! Wohin fliegen Sie? — Where are you flying?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "wiederholen"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung — Excuse me, können Sie das bitte wiederholen? — can you please repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, nach [Stadt]. Haben Sie Ihre Bordkarte?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "hier",
+            "bordkarte"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ichhabekeine",
+            "nein"
+          ],
+          "nextTurnId": "t-no-boardingpass"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, nach [Stadt]. — Ah, to [City]. Haben Sie Ihre Bordkarte? — Do you have your boarding pass?"
+    },
+    "t-no-boardingpass": {
+      "id": "t-no-boardingpass",
+      "prompt": "Bitte zeigen Sie Ihre Bordkarte. Haben Sie sie nicht?",
+      "branches": [
+        {
+          "keywords": [
+            "doch",
+            "ichhabesie"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nein",
+            "ichhabesienicht"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bitte zeigen Sie Ihre Bordkarte. — Please show your boarding pass. Haben Sie sie nicht? — Don't you have it?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Danke. Haben Sie Gepäck?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "einkoffer",
+            "zwei koffer"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keingepäck"
+          ],
+          "nextTurnId": "t-no-luggage"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Danke. — Thanks. Haben Sie Gepäck? — Do you have luggage?"
+    },
+    "t-no-luggage": {
+      "id": "t-no-luggage",
+      "prompt": "Kein Gepäck? Alles klar. Sie können direkt zum Gate gehen.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "okay",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kein Gepäck? — No luggage? Alles klar. — All clear. Sie können direkt zum Gate gehen. — You can go directly to the gate."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Okay. Bitte legen Sie Ihr Gepäck auf das Band.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ja",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. — Okay. Bitte legen Sie Ihr Gepäck auf das Band. — Please put your luggage on the belt."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank! Guten Flug!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vielen Dank! — Many thanks! Guten Flug! — Good flight!",
+      "isTerminal": true
+    }
+  }
+}

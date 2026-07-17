@@ -1,0 +1,207 @@
+{
+  "id": "dlg-id-doctor-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Kunjungan ke Dokter",
+  "opening": "Selamat pagi, silakan duduk. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, silakan duduk. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakitkepala",
+            "pusing"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "demam",
+            "panas",
+            "meriang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "batuk",
+            "flu",
+            "pilek",
+            "tenggorokan",
+            "tidakenakbadan",
+            "lemas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), silakan duduk (please sit down). Ada yang bisa saya bantu (How can I help you)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sudah berapa lama sakit kepalanya dan bagaimana rasanya? Apakah sakitnya menusuk atau berdenyut?",
+      "branches": [
+        {
+          "keywords": [
+            "menusuk",
+            "parah",
+            "sangat sakit",
+            "sejakdua hari"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sudah berapa lama (How long have you had) sakit kepalanya (the headache) dan bagaimana rasanya (what does it feel like)? Apakah sakitnya menusuk (Is the pain sharp) atau berdenyut (or throbbing)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Selain demam, apakah ada gejala lain seperti batuk, pilek, atau sakit tenggorokan?",
+      "branches": [
+        {
+          "keywords": [
+            "batuk",
+            "tenggorokan",
+            "sakitmenelan"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selain demam (Besides fever), apakah ada gejala lain (are there other symptoms) seperti batuk (like cough), pilek (runny nose), atau sakit tenggorokan (sore throat)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Batuknya kering atau berdahak? Apakah disertai sesak napas?",
+      "branches": [
+        {
+          "keywords": [
+            "kering",
+            "tidakberdahak",
+            "gatal"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Batuknya kering (Is the cough dry) atau berdahak (or phlegmy)? Apakah disertai sesak napas (Is it accompanied by shortness of breath)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, apakah Anda memiliki alergi obat atau sedang mengonsumsi obat-obatan lain saat ini?",
+      "branches": [
+        {
+          "keywords": [
+            "alergi",
+            "penisilin",
+            "aspirin"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), apakah Anda memiliki alergi obat (do you have any drug allergies) atau sedang mengonsumsi obat-obatan lain (or are you taking any other medications) saat ini (at the moment)?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oke, apakah Anda punya riwayat alergi obat atau sedang minum obat-obatan rutin?",
+      "branches": [
+        {
+          "keywords": [
+            "alergi",
+            "penisilin",
+            "aspirin"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke (Okay), apakah Anda punya riwayat alergi obat (do you have a history of drug allergies) atau sedang minum obat-obatan rutin (or are you taking any regular medications)?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baik, berdasarkan gejala yang Anda alami, sepertinya Anda mengalami infeksi ringan. Saya akan meresepkan obat pereda nyeri dan penurun panas. Minum sesuai anjuran, dan jika tidak membaik dalam tiga hari, silakan datang lagi.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "terimakasih",
+            "mengerti",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), berdasarkan gejala yang Anda alami (based on the symptoms you're experiencing), sepertinya Anda mengalami infeksi ringan (it seems you have a mild infection). Saya akan meresepkan obat pereda nyeri (I will prescribe pain relievers) dan penurun panas (and fever reducers). Minum sesuai anjuran (Take it as directed), dan jika tidak membaik dalam tiga hari (and if it doesn't improve within three days), silakan datang lagi (please come back)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih atas kunjungannya. Semoga lekas sembuh.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for your visit. I hope you get well soon.",
+      "isTerminal": true
+    }
+  }
+}

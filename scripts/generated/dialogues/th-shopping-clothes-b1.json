@@ -1,0 +1,306 @@
+{
+  "id": "dlg-th-shopping-clothes-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "ซื้อเสื้อผ้า",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หาเสื้อ",
+            "หาเสื้อผ้า",
+            "อยากได้เสื้อ",
+            "ดูเสื้อ",
+            "ชุด"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ดูก่อน",
+            "ชมก่อน",
+            "เดินดูก่อน"
+          ],
+          "nextTurnId": "t-browse"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Mee a-rai hai chuay mai ka? — Hello, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ได้เลยค่ะ อยากได้เสื้อแบบไหนคะ? เช่น เสื้อเชิ้ต เสื้อยืด หรือเดรสคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เสื้อเชิ้ต",
+            "เชิ้ต",
+            "เสื้อทำงาน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "อะไรก็ได้",
+            "แล้วแต่",
+            "แนะนำ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loey ka. Yak dai seua baeb nai ka? Chen seua-chuert, seua-yeut reu dress ka? — Okay. What kind of shirt would you like? For example, a formal shirt, a t-shirt, or a dress?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "โอเคค่ะ ปกติใส่ไซส์อะไรคะ? แล้วอยากได้สีอะไรเป็นพิเศษไหม?",
+      "branches": [
+        {
+          "keywords": [
+            "ไซส์s",
+            "s",
+            "ไซส์m",
+            "m",
+            "ไซส์l",
+            "l",
+            "ไซส์xl",
+            "xl"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ลองดู",
+            "ดูแบบอื่น"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-kay ka. Pa-ka-ti sai size a-rai ka? Laew yak dai see a-rai pen pi-set mai? — Okay. What size do you usually wear? And would you like any particular color?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "งั้นลองดูเสื้อเชิ้ตลายนี้ไหมคะ กำลังอินเทรนด์เลยค่ะ หรือถ้าชอบเสื้อยืด เราก็มีสีพื้นสวยๆ หลายสีเลยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "เสื้อเชิ้ต",
+            "เชิ้ต"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ดูเอง",
+            "ดูก่อน"
+          ],
+          "nextTurnId": "t-browse"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ngan long doo seua-chuert lai nee mai ka? Gam-lang in-trend loey ka. Reu ta chorb seua-yeut, rao gor mee see peun suay-suay lai see loey ka. — How about this patterned shirt? It's very trendy. Or if you like t-shirts, we have many beautiful solid colors."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "นี่ค่ะ ลองตัวนี้ดูนะคะ ห้องลองเสื้ออยู่ทางด้านซ้ายมือค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ลอง",
+            "จะลอง",
+            "โอเค"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่เอา",
+            "ไม่ชอบ",
+            "ไม่ถูกใจ"
+          ],
+          "nextTurnId": "t-browse"
+        },
+        {
+          "keywords": [
+            "สีอื่น",
+            "ไซส์อื่น",
+            "แบบอื่น"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nee ka. Long tua nee doo na ka. Hong long seua yoo tang daan sai meu ka. — Here you go. Please try this one on. The fitting rooms are on your left."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "เป็นยังไงบ้างคะ พอดีไหม ถูกใจหรือเปล่า?",
+      "branches": [
+        {
+          "keywords": [
+            "พอดี",
+            "เอา",
+            "รับ",
+            "ถูกใจ"
+          ],
+          "nextTurnId": "t-final"
+        },
+        {
+          "keywords": [
+            "เล็กไป",
+            "คับไป",
+            "ใหญ่ไป",
+            "หลวมไป"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ไม่ถูกใจ",
+            "ไม่ชอบ",
+            "ไม่เอา"
+          ],
+          "nextTurnId": "t-browse"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pen yang-ngai baang ka? Paw-dee mai? Took jai reu plao? — How is it? Does it fit well? Do you like it?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "อ๋อ งั้นเดี๋ยวหยิบไซส์อื่นมาให้ลองดูนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ลอง",
+            "จะลอง",
+            "เอา"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่เอา",
+            "พอแค่นี้"
+          ],
+          "nextTurnId": "t-browse"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or, ngan diao yib size eun ma hai long doo na ka. — Oh, then I'll get another size for you to try."
+    },
+    "t-browse": {
+      "id": "t-browse",
+      "prompt": "ได้เลยค่ะ ถ้าต้องการความช่วยเหลือเพิ่มเติม เรียกได้เลยนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "หาเสื้อ",
+            "หาเสื้อผ้า",
+            "อยากได้เสื้อ",
+            "ดูเสื้อ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "พอแล้ว",
+            "กลับ"
+          ],
+          "nextTurnId": "t-final"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่รู้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loey ka. Ta tong-gaan kwam chuay-leua perm-term, riak dai loey na ka. — Okay. If you need any more assistance, just call me."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ ไม่เข้าใจค่ะ ช่วยพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "โอเค",
+            "ได้",
+            "ใช่"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor-toht na ka. Mai kao jai ka. Chuay poot eek krang dai mai ka? — Excuse me, I don't understand. Could you please say that again?"
+    },
+    "t-final": {
+      "id": "t-final",
+      "prompt": "ดีเลยค่ะ เชิญชำระเงินที่เคาน์เตอร์ด้านหน้าได้เลยนะคะ ขอบคุณที่มาใช้บริการ โอกาสหน้าเชิญใหม่ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-final",
+      "promptTranslation": "Dee loey ka. Chern cha-ra ngern tee counter daan naa dai loey na ka. Kob-koon tee ma chai bo-ri-gaan. O-gaat naa chern mai ka. — Great! Please proceed to the cashier at the front for payment. Thank you for shopping with us. Please come again next time.",
+      "isTerminal": true
+    }
+  }
+}

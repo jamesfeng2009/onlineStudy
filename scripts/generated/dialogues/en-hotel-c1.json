@@ -1,0 +1,134 @@
+{
+  "id": "dlg-en-hotel-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Hotel Check-in: The Grandeur Suites",
+  "opening": "Good afternoon! Welcome to The Grandeur Suites. May I have the name the reservation is under, please?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good afternoon! Welcome to The Grandeur Suites. May I have the name the reservation is under, please?",
+      "branches": [
+        {
+          "keywords": [
+            "mynameis",
+            "its",
+            "under",
+            "name",
+            "surname",
+            "reservation",
+            "checkingin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good afternoon! Welcome to The Grandeur Suites. May I have the name the reservation is under, please? — Good afternoon! Welcome to The Grandeur Suites. May I have the name the reservation is under, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, thank you. And just to complete the check-in process, could I trouble you for a form of identification, perhaps your passport or driving license?",
+      "branches": [
+        {
+          "keywords": [
+            "hereis",
+            "myid",
+            "passport",
+            "license",
+            "ofcourse",
+            "certainly"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, thank you. And just to complete the check-in process, could I trouble you for a form of identification, perhaps your passport or driving license? — Right, thank you. And just to complete the check-in process, could I trouble you for a form of identification, perhaps your passport or driving license?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Excellent, thank you. Now, for the incidental charges and room security deposit, how would you like to settle that? We accept all major credit cards, or you can opt for a pre-authorization.",
+      "branches": [
+        {
+          "keywords": [
+            "creditcard",
+            "card",
+            "visa",
+            "mastercard",
+            "amex",
+            "debitcard",
+            "preauthorization"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, thank you. Now, for the incidental charges and room security deposit, how would you like to settle that? We accept all major credit cards, or you can opt for a pre-authorization. — Excellent, thank you. Now, for the incidental charges and room security deposit, how would you like to settle that? We accept all major credit cards, or you can opt for a pre-authorization."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfect. Your room is a Deluxe King, just as reserved. Is there anything else you might require? Perhaps a high floor, or a quiet room? And have you considered adding our gourmet breakfast buffet for a small additional charge?",
+      "branches": [
+        {
+          "keywords": [
+            "highfloor",
+            "quietroom",
+            "view",
+            "balcony",
+            "upgraded"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Your room is a Deluxe King, just as reserved. Is there anything else you might require? Perhaps a high floor, or a quiet room? And have you considered adding our gourmet breakfast buffet for a small additional charge? — Perfect. Your room is a Deluxe King, just as reserved. Is there anything else you might require? Perhaps a high floor, or a quiet room? And have you considered adding our gourmet breakfast buffet for a small additional charge?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat what you said? — I'm sorry, I didn't quite catch that. Could you please rephrase or repeat what you said?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Right, all set then. Here's your key card, room 703. Should you need anything at all during your stay, please don't hesitate to dial '0' for reception. Enjoy your stay with us!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Right, all set then. Here's your key card, room 703. Should you need anything at all during your stay, please don't hesitate to dial '0' for reception. Enjoy your stay with us! — Right, all set then. Here's your key card, room 703. Should you need anything at all during your stay, please don't hesitate to dial '0' for reception. Enjoy your stay with us!",
+      "isTerminal": true
+    }
+  }
+}

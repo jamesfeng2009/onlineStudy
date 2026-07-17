@@ -1,0 +1,128 @@
+{
+  "id": "dlg-id-interview-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Wawancara Pekerjaan – Tingkat C1",
+  "opening": "Selamat pagi. Terima kasih sudah datang hari ini. Mari kita mulai wawancaranya. Bisakah Anda memperkenalkan diri Anda secara singkat?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Terima kasih sudah datang hari ini. Mari kita mulai wawancaranya. Bisakah Anda memperkenalkan diri Anda secara singkat?",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "latarbelakang",
+            "profil",
+            "diri"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mulai",
+            "dimulai",
+            "jelaskan",
+            "maksud"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Terima kasih sudah datang hari ini (Thank you for coming today). Mari kita mulai wawancaranya (Let's begin the interview). Bisakah Anda memperkenalkan diri Anda secara singkat (Could you please briefly introduce yourself)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik sekali. Dari pengalaman yang Anda paparkan, apa yang menurut Anda menjadi kekuatan utama Anda yang relevan dengan posisi ini? Dan bagaimana Anda mengaplikasikannya dalam pekerjaan sebelumnya?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "keunggulan",
+            "prestasi",
+            "kemampuan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "relevan",
+            "posisi",
+            "maksudnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik sekali (Very interesting). Dari pengalaman yang Anda paparkan (From the experience you've shared), apa yang menurut Anda menjadi kekuatan utama Anda (what do you consider your main strength) yang relevan dengan posisi ini (that is relevant to this position)? Dan bagaimana Anda mengaplikasikannya (And how did you apply it) dalam pekerjaan sebelumnya (in your previous work)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Setiap individu pasti memiliki area yang dapat ditingkatkan. Bisakah Anda ceritakan tentang satu kelemahan yang pernah Anda hadapi dan bagaimana Anda berusaha mengatasinya atau mengubahnya menjadi sebuah keunggulan?",
+      "branches": [
+        {
+          "keywords": [
+            "kelemahan",
+            "tantangan",
+            "mengatasi",
+            "meningkatkan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "keunggulan",
+            "sulit",
+            "lain",
+            "pertanyaan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Setiap individu pasti memiliki area yang dapat ditingkatkan (Every individual certainly has areas that can be improved). Bisakah Anda ceritakan tentang satu kelemahan (Could you tell me about one weakness) yang pernah Anda hadapi (you've faced) dan bagaimana Anda berusaha mengatasinya (and how you tried to overcome it) atau mengubahnya menjadi sebuah keunggulan (or turn it into an advantage)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik. Pembahasan yang cukup komprehensif. Sebelum kita mengakhiri sesi ini, apakah ada pertanyaan yang ingin Anda ajukan terkait posisi, perusahaan, atau hal lainnya?",
+      "branches": [
+        {
+          "keywords": [
+            "pertanyaan",
+            "gaji",
+            "budaya",
+            "tim",
+            "prospek"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright). Pembahasan yang cukup komprehensif (A quite comprehensive discussion). Sebelum kita mengakhiri sesi ini (Before we conclude this session), apakah ada pertanyaan yang ingin Anda ajukan (do you have any questions you'd like to ask) terkait posisi, perusahaan, atau hal lainnya (regarding the position, company, or anything else)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisakah Anda mengulang atau merumuskan kembali jawaban Anda? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf (I apologize), bisakah Anda mengulang (could you please repeat) atau merumuskan kembali jawaban Anda (or rephrase your answer)? Saya kurang jelas (I'm not clear)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas waktu dan minat Anda. Kami akan segera menghubungi Anda mengenai langkah selanjutnya.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak (Thank you very much) atas waktu dan minat Anda (for your time and interest). Kami akan segera menghubungi Anda (We will contact you soon) mengenai langkah selanjutnya (regarding the next steps).",
+      "isTerminal": true
+    }
+  }
+}

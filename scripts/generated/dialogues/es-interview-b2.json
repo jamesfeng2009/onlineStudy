@@ -1,0 +1,141 @@
+{
+  "id": "dlg-es-interview-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Entrevista de Trabajo B2",
+  "opening": "¡Hola! Gracias por venir. Para empezar, ¿podrías contarnos un poco sobre ti y tu experiencia profesional?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Gracias por venir. Para empezar, ¿podrías contarnos un poco sobre ti y tu experiencia profesional?",
+      "branches": [
+        {
+          "keywords": [
+            "experiencia",
+            "trayectoria",
+            "antecedentes"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "habilidades",
+            "fortalezas",
+            "capacidades"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Ho-la! Gra-cias por ve-nir. Pa-ra em-pe-zar, ¿po-drí-as con-tar-nos un po-co so-bre ti y tu ex-pe-rien-cia pro-fe-sio-nal? — Hello! Thank you for coming. To start, could you tell us a bit about yourself and your professional experience?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Interesante. ¿Podrías profundizar un poco más en tu rol anterior y las responsabilidades que asumías?",
+      "branches": [
+        {
+          "keywords": [
+            "responsabilidades",
+            "funciones",
+            "logros"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "desafíos",
+            "problemas",
+            "proyectos"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In-te-re-san-te. ¿Po-drí-as pro-fun-di-zar un po-co más en tu rol an-te-rior y las res-pon-sa-bi-li-da-des que a-su-mí-as? — Interesting. Could you elaborate a bit more on your previous role and the responsibilities you held?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Muy bien. Ahora, si tuvieras que destacar tus principales fortalezas para este puesto, ¿cuáles serían y por qué?",
+      "branches": [
+        {
+          "keywords": [
+            "comunicación",
+            "liderazgo",
+            "proactividad",
+            "resolución",
+            "trabajoenequipo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. A-ho-ra, si tu-vie-ras que des-ta-car tus prin-ci-pa-les for-ta-le-zas pa-ra es-te pues-to, ¿cuá-les se-rí-an y por qué? — Very good. Now, if you had to highlight your main strengths for this position, what would they be and why?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. Y por el otro lado, ¿podrías mencionar alguna debilidad o área de mejora y cómo trabajas en ella?",
+      "branches": [
+        {
+          "keywords": [
+            "perfeccionismo",
+            "impaciencia",
+            "delegar",
+            "organización",
+            "mejorar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-ten-di-do. Y por el o-tro la-do, ¿po-drí-as men-cio-nar al-gu-na de-bi-li-dad o á-rea de me-jo-ra y có-mo tra-ba-jas en e-lla? — Understood. And on the other hand, could you mention a weakness or area for improvement and how you work on it?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Muchas gracias por tu tiempo y por compartir tu experiencia con nosotros. Te contactaremos pronto con los siguientes pasos.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Mu-chas gra-cias por tu tiem-po y por com-par-tir tu ex-pe-rien-cia con no-so-tros. Te con-tac-ta-re-mos pron-to con los si-guien-tes pa-sos. — Thank you very much for your time and for sharing your experience with us. We will contact you soon with the next steps.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podrías repetirlo, por favor? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Per-dón? ¿Po-drí-as re-pe-tir-lo, por fa-vor? No te he en-ten-di-do bien. — Pardon? Could you repeat that, please? I didn't quite understand you."
+    }
+  }
+}

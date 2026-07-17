@@ -1,0 +1,137 @@
+{
+  "id": "dlg-es-airport-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Contratiempos en el Aeropuerto",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy? Parece que su rostro delata alguna cuita viajera, ¿quizá un contratiempo con su itinerario?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy? Parece que su rostro delata alguna cuita viajera, ¿quizá un contratiempo con su itinerario?",
+      "branches": [
+        {
+          "keywords": [
+            "retraso",
+            "cancelado",
+            "vuelo"
+          ],
+          "nextTurnId": "t2_problema"
+        },
+        {
+          "keywords": [
+            "facturar",
+            "chequeo",
+            "check-in"
+          ],
+          "nextTurnId": "t2_facturar"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! (Good morning!) ¿En qué puedo ayudarle hoy? (How can I help you today?) Parece que su rostro delata alguna cuita viajera, (It seems your face betrays some travel woe,) ¿quizá un contratiempo con su itinerario? (perhaps a setback with your itinerary?)"
+    },
+    "t2_problema": {
+      "id": "t2_problema",
+      "prompt": "Entiendo. Últimamente, los cielos andan revueltos y los equipajes juegan al escondite. Para dar con la clave, ¿podría indicarme si se trata de un problema con su vuelo, su equipaje, o alguna otra cuestión?",
+      "branches": [
+        {
+          "keywords": [
+            "vuelo",
+            "itinerario",
+            "salida"
+          ],
+          "nextTurnId": "t3_resolver"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. (I understand.) Últimamente, los cielos andan revueltos (Lately, the skies have been turbulent) y los equipajes juegan al escondite. (and luggage plays hide-and-seek.) Para dar con la clave, (To get to the bottom of it,) ¿podría indicarme si se trata de un problema con su vuelo, su equipaje, o alguna otra cuestión? (could you tell me if it's a problem with your flight, your luggage, or some other issue?)"
+    },
+    "t2_facturar": {
+      "id": "t2_facturar",
+      "prompt": "Perfecto. Para agilizar el proceso, ¿me permitiría ver su pasaporte y la confirmación de su reserva, por favor? Así podremos despachar su billete sin dilación.",
+      "branches": [
+        {
+          "keywords": [
+            "pasaporte",
+            "documento",
+            "identificación"
+          ],
+          "nextTurnId": "t3_facturar_resuelto"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. (Perfect.) Para agilizar el proceso, (To expedite the process,) ¿me permitiría ver su pasaporte y la confirmación de su reserva, por favor? (would you allow me to see your passport and your booking confirmation, please?) Así podremos despachar su billete sin dilación. (That way we can issue your ticket without delay.)"
+    },
+    "t3_resolver": {
+      "id": "t3_resolver",
+      "prompt": "Comprendido. Sea cual sea la índole del problema, le aseguro que haremos lo indecible por encontrar una solución. Por favor, deme los detalles pertinentes: número de vuelo, descripción de la maleta, o la consulta específica.",
+      "branches": [
+        {
+          "keywords": [
+            "vuelo",
+            "númerodevuelo",
+            "destino"
+          ],
+          "nextTurnId": "t4_confirmacion_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Whatever the nature of the problem, I assure you we will do our utmost to find a solution. Please give me the pertinent details: flight number, luggage description, or the specific inquiry."
+    },
+    "t3_facturar_resuelto": {
+      "id": "t3_facturar_resuelto",
+      "prompt": "Todo en orden. Aquí tiene su tarjeta de embarque. La puerta es la B23 y el embarque comienza en treinta minutos. ¡Que tenga un feliz viaje!",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "All in order. Here is your boarding pass. The gate is B23 and boarding begins in thirty minutes. Have a happy trip!"
+    },
+    "t4_confirmacion_general": {
+      "id": "t4_confirmacion_general",
+      "prompt": "Perfecto. Hemos gestionado su solicitud y le proporcionaremos las indicaciones necesarias, ya sea un nuevo billete, un seguimiento de equipaje o la información requerida. ¿Hay algo más en lo que pueda asistirle?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. We have processed your request and will provide you with the necessary instructions, whether it's a new ticket, luggage tracking, or the required information. Is there anything else I can assist you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido del todo. Hablo deprisa a veces.",
+      "branches": [
+        {
+          "keywords": [
+            "repetir",
+            "otravez",
+            "sí"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that? I didn't quite understand you. I speak quickly sometimes."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡De nada! Que tenga un excelente día y un buen viaje. Estamos para servirle.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome! Have an excellent day and a good trip. We are here to serve you.",
+      "isTerminal": true
+    }
+  }
+}

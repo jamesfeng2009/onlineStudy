@@ -1,0 +1,420 @@
+{
+  "id": "dlg-fr-restaurant-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Commander au restaurant",
+  "opening": "Bonjour, vous avez choisi ? (Bohn-zhoor, voo zah-vay shwah-zee?)",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, Madame/Monsieur. Êtes-vous prêt(e) à commander ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "prêt",
+            "commander"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pasencore",
+            "menu",
+            "carte"
+          ],
+          "nextTurnId": "t1_menu_quick"
+        },
+        {
+          "keywords": [
+            "",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, Madame/Monsieur. (Bohn-zhoor, Mah-dahm/Muh-syuh.) Êtes-vous prêt(e) à commander ? (Eht-voo preht ah koh-mahn-day?) — Hello, Madam/Sir. Are you ready to order?"
+    },
+    "t1_menu_quick": {
+      "id": "t1_menu_quick",
+      "prompt": "Pas de problème. Voici la carte. Prenez votre temps. Alors, qu'est-ce que je peux vous servir ?",
+      "branches": [
+        {
+          "keywords": [
+            "plat",
+            "prendre",
+            "vouloir"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "recommander",
+            "conseil"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "régime",
+            "sans"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pas de problème. (Pah duh proh-blehm.) Voici la carte. (Vwah-see lah kart.) Prenez votre temps. (Pruh-nay voh-truh tahn.) Alors, qu'est-ce que je peux vous servir ? (Ah-lor, kehs-kuh juh puh voo sehr-veer?) — No problem. Here is the menu. Take your time. So, what can I get you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Qu'est-ce que je peux vous servir ?",
+      "branches": [
+        {
+          "keywords": [
+            "plat",
+            "prendre",
+            "vouloir"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "recommander",
+            "conseil"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "régime",
+            "sans"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. (Treh byahn.) Qu'est-ce que je peux vous servir ? (Kehs-kuh juh puh voo sehr-veer?) — Very good. What can I get you?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Très bien. Un plat principal. Et avec ça ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "suffisant",
+            "ça"
+          ],
+          "nextTurnId": "t4_bill"
+        },
+        {
+          "keywords": [
+            "oui",
+            "boisson",
+            "dessert"
+          ],
+          "nextTurnId": "t4_add"
+        },
+        {
+          "keywords": [
+            "changer",
+            "nonpas"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. (Treh byahn.) Un plat principal. (Uhn plah prehn-see-pahl.) Et avec ça ? (Eh ah-vehk sah?) — Very good. A main course. And with that?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Je vous recommande notre plat du jour : le bœuf bourguignon. C'est délicieux !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "le prendre",
+            "ça"
+          ],
+          "nextTurnId": "t3a_recommend"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "autre"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je vous recommande notre plat du jour : (Juh voo ruh-koh-mahn-duh noh-truh plah doo zhoor:) le bœuf bourguignon. (luh buf boor-gee-nyohn.) C'est délicieux ! (Seh deh-lee-syuh!) — I recommend our dish of the day: beef bourguignon. It's delicious!"
+    },
+    "t3a_recommend": {
+      "id": "t3a_recommend",
+      "prompt": "Excellent choix ! Un bœuf bourguignon. Et avec ça ?",
+      "branches": [
+        {
+          "keywords": [
+            "boisson",
+            "eau",
+            "vin",
+            "dessert"
+          ],
+          "nextTurnId": "t4_add"
+        },
+        {
+          "keywords": [
+            "non",
+            "rien"
+          ],
+          "nextTurnId": "t4_bill"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choix ! (Ehk-seh-lahn shwah!) Un bœuf bourguignon. (Uhn buf boor-gee-nyohn.) Et avec ça ? (Eh ah-vehk sah?) — Excellent choice! A beef bourguignon. And with that?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "D'accord. Avez-vous une allergie spécifique ou une préférence ?",
+      "branches": [
+        {
+          "keywords": [
+            "gluten",
+            "lait",
+            "fruitsdemer",
+            "végétarien"
+          ],
+          "nextTurnId": "t3c_specific"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasparticulier"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "merci"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord. (Dah-kor.) Avez-vous une allergie spécifique (Ah-vay-voo zewn ah-lehr-zhee speh-see-feek) ou une préférence ? (oo ewn preh-feh-rahns?) — Alright. Do you have a specific allergy or a preference?"
+    },
+    "t3c_specific": {
+      "id": "t3c_specific",
+      "prompt": "Bien noté. Je vais voir ce que le chef peut vous préparer sans cet ingrédient.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "attendre",
+            "daccord"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien noté. (Byahn noh-tay.) Je vais voir ce que le chef peut vous préparer sans cet ingrédient. (Juh vay vwahr suh kuh luh shef puh voo preh-pah-ray sahn set ehn-gray-dyahn.) — Noted. I will see what the chef can prepare for you without that ingredient."
+    },
+    "t4_add": {
+      "id": "t4_add",
+      "prompt": "Très bien. Et comme boisson ou dessert ?",
+      "branches": [
+        {
+          "keywords": [
+            "eau",
+            "vin",
+            "jus",
+            "café",
+            "thé",
+            "dessert"
+          ],
+          "nextTurnId": "t4_confirm_add"
+        },
+        {
+          "keywords": [
+            "non",
+            "rien"
+          ],
+          "nextTurnId": "t4_bill"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. (Treh byahn.) Et comme boisson ou dessert ? (Eh kohm bwah-sohn oo deh-sehr?) — Very good. And for a drink or dessert?"
+    },
+    "t4_confirm_add": {
+      "id": "t4_confirm_add",
+      "prompt": "D'accord. Ça sera tout ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "tout"
+          ],
+          "nextTurnId": "t4_bill"
+        },
+        {
+          "keywords": [
+            "non",
+            "ajouter"
+          ],
+          "nextTurnId": "t4_add"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord. (Dah-kor.) Ça sera tout ? (Sah suh-rah too?) — Alright. Will that be all?"
+    },
+    "t4_bill": {
+      "id": "t4_bill",
+      "prompt": "Parfait. Votre commande est prise. Voulez-vous l'addition maintenant ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "addition",
+            "payer"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasencore"
+          ],
+          "nextTurnId": "t4_bill_wait"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait. (Pahr-feh.) Votre commande est prise. (Voh-truh koh-mahn-d eh preez.) Voulez-vous l'addition maintenant ? (Voo-lay-voo lah-dee-syohn mahnt-nahn?) — Perfect. Your order is taken. Would you like the bill now?"
+    },
+    "t4_bill_wait": {
+      "id": "t4_bill_wait",
+      "prompt": "Pas de souci. Dites-moi quand vous êtes prêt(e).",
+      "branches": [
+        {
+          "keywords": [
+            "prêt",
+            "addition",
+            "oui"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pas de souci. (Pah duh soo-see.) Dites-moi quand vous êtes prêt(e). (Deet-mwah kahn voo zeht preht.) — No worries. Tell me when you're ready."
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "Voilà l'addition. Vous payez par carte ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "cb"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Voilà l'addition. (Vwah-lah lah-dee-syohn.) Vous payez par carte ou en espèces ? (Voo peh-yeh pahr kart oo ahn ehs-pehs?) — Here is the bill. Will you pay by card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? (Pahr-dohn?) Pouvez-vous répéter, s'il vous plaît ? (Poo-vay-voo ray-peh-tay, seel voo pleh?) — Sorry? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup et au revoir ! Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci beaucoup et au revoir ! (Mehr-see boh-koo eh oh ruh-vwahr!) Bonne journée ! (Bohn zhoor-nay!) — Thank you very much and goodbye! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

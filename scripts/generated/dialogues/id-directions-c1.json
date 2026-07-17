@@ -1,0 +1,205 @@
+{
+  "id": "dlg-id-directions-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Mencari Arah di Pusat Kota",
+  "opening": "Selamat siang, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "nasional"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "stasiun",
+            "kereta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pasar",
+            "belanja"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang (Seh-lah-mat See-ang) — Good afternoon, can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Museum Nasional. Anda cukup berjalan lurus ke arah barat sekitar lima ratus meter, nanti di persimpangan jalan besar, belok kiri. Bangunannya megah, tidak mungkin terlewatkan. Untuk ke sana, Anda lebih memilih berjalan kaki, naik transportasi umum, atau taksi online?",
+      "branches": [
+        {
+          "keywords": [
+            "jalan",
+            "kaki",
+            "berjalan"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "transportasi",
+            "umum",
+            "kendaraan"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "taksi",
+            "online"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Museum Nasional (Moo-seh-um Nah-sio-nal) — Oh, the National Museum. You just walk straight west for about five hundred meters, then at the main intersection, turn left. The building is grand, impossible to miss. To get there, would you prefer walking, taking public transport, or an online taxi?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Baik, jika berjalan kaki, setelah belok kiri, terus saja ikuti trotoar. Museumnya ada di sisi kanan jalan, persis di seberang taman kota. Mungkin sekitar sepuluh hingga lima belas menit jalan kaki dari sini. Sudah cukup jelas atau ada pertanyaan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "jelas",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pertanyaan",
+            "tidakjelas"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, if you're walking, after turning left, just keep following the pavement. The museum is on the right side of the road, directly opposite the city park. It's probably about ten to fifteen minutes walk from here. Is that clear enough or do you have other questions?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Kalau naik transportasi umum, dari sini Anda bisa naik TransJakarta koridor 1. Halte terdekat ada di ujung blok ini, sekitar dua puluh meter ke depan. Turun di halte Monas, lalu tinggal menyeberang jalan. Cukup praktis. Apakah rute ini sesuai, atau Anda ingin tahu opsi lain?",
+      "branches": [
+        {
+          "keywords": [
+            "sesuai",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "opsi",
+            "lain",
+            "alternatif"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau naik transportasi umum (trans-por-ta-si u-mum) — If you take public transport, from here you can take TransJakarta (Trans-Ja-kar-ta) corridor 1. The nearest bus stop is at the end of this block, about twenty meters ahead. Get off at Monas stop, then just cross the road. Quite practical. Is this route suitable, or would you like to know other options?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Stasiun? Maksud Anda Stasiun Gambir atau Stasiun Gondangdia? Keduanya tidak terlalu jauh dari sini, tapi beda arah. Stasiun Gambir agak ke timur sekitar satu kilometer, bisa jalan kaki atau ojek. Kalau Stasiun Gondangdia ke selatan, bisa naik angkot atau jalan kaki sekitar lima belas menit. Anda lebih prefer yang mana?",
+      "branches": [
+        {
+          "keywords": [
+            "gambir",
+            "kecepatan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stasiun (Sta-si-un) — Station? Do you mean Gambir Station or Gondangdia Station? Both are not too far from here, but in different directions. Gambir Station is a bit to the east, about one kilometer, you can walk or take a motorcycle taxi (o-jek). If Gondangdia Station is to the south, you can take a public minivan (ang-kot) or walk about fifteen minutes. Which do you prefer?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Pasar? Apakah Anda mencari Pasar Baru atau pasar tradisional lainnya? Pasar Baru cukup terkenal dan biasanya jadi tujuan turis, bisa jalan kaki lima belas menit ke utara atau naik bajaj. Jika Anda mencari pasar tradisional yang lebih otentik, mungkin Pasar Senen bisa jadi pilihan, tapi agak jauh dan perlu taksi online atau TransJakarta. Mana yang lebih menarik bagi Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pasarbaru",
+            "bajaj"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pasar (Pa-sar) — Market? Are you looking for Pasar Baru (Pa-sar Ba-ru) or another traditional market? Pasar Baru is quite famous and usually a tourist destination, you can walk fifteen minutes north or take a bajaj (Ba-jaj). If you're looking for a more authentic traditional market, Pasar Senen (Pa-sar Seh-nen) might be an option, but it's a bit far and requires an online taxi or TransJakarta. Which one is more appealing to you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulangi? Saya kurang mengerti maksud Anda. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulangi (bi-sa di-u-lang-i)? — Sorry, could you repeat that? I don't quite understand what you mean. Can I help you?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalanan Anda lancar dan tidak tersesat! Hati-hati di jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (Sa-ma Sa-ma). — You're welcome. I hope your journey goes smoothly and you don't get lost! Be careful on the road.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "dlg-es-taxi-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "En el Taxi",
+  "opening": "¡Hola! ¿A dónde va?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿A dónde va?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel",
+            "museo",
+            "palacio",
+            "centro"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) ¿A dónde va? (Ah dohn-deh vah?) — Hello! Where are you going?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "si",
+            "ok"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón? (Per-dohn?) ¿Puede repetir, por favor? (Pweh-deh reh-peh-teer por fah-vor?) — Sorry? Can you repeat, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¿Y qué número o calle?",
+      "branches": [
+        {
+          "keywords": [
+            "uno",
+            "dos",
+            "tres",
+            "cuatro"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Y qué número o calle? (Ee keh noo-meh-roh oh kah-yeh?) — And what number or street?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Entendido. Son diez euros.",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "ok",
+            "perfecto",
+            "bien"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. (En-ten-dee-doh.) Son diez euros. (Sohn dee-ez eh-oo-rohs.) — Understood. It's ten euros."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¿Paga en efectivo o con tarjeta?",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "dinero"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Paga en efectivo o con tarjeta? (Pah-gah en eh-fek-tee-voh oh kohn tar-heh-tah?) — Do you pay in cash or with card?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Aquí tiene. Gracias.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aquí tiene. (Ah-kee tee-eh-neh.) Gracias. (Grah-syas.) — Here you go. Thank you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Adiós. ¡Que tenga un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Adiós. (Ah-dee-ohs.) ¡Que tenga un buen día! (Keh ten-gah oon bwen dee-ah!) — Goodbye. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

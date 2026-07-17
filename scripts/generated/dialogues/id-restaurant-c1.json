@@ -1,0 +1,104 @@
+{
+  "id": "dlg-id-restaurant-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Santap Malam di Restoran Elit",
+  "opening": "Selamat malam, Bapak/Ibu. Selamat datang di restoran kami. Sudah ada reservasi, atau ingin kami carikan meja?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam, Bapak/Ibu. Selamat datang di restoran kami. Sudah ada reservasi (su-dah a-da re-ser-va-si), atau ingin kami carikan meja?",
+      "branches": [
+        {
+          "keywords": [
+            "reservasi",
+            "sudah"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening, Sir/Madam. Welcome to our restaurant. Do you have a reservation, or would you like us to find you a table?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, mari saya antar ke meja Anda. Ini daftar menu kami. Apakah ada pertanyaan, atau mungkin sudah tahu (su-dah ta-hu) ingin memesan apa?",
+      "branches": [
+        {
+          "keywords": [
+            "rekomendasi",
+            "favorit",
+            "spesial"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "siap"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, please allow me to escort you to your table. Here is our menu. Do you have any questions, or perhaps already know what you'd like to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu, dengan senang hati. Kami punya 'Gulai Kambing Elite' yang kaya rempah, atau 'Barramundi Panggang Sambal Matah' bagi penyuka cita rasa segar. Ada preferensi (pre-fe-ren-si) diet atau alergi yang perlu kami tahu?",
+      "branches": [
+        {
+          "keywords": [
+            "gulai",
+            "kambing",
+            "barramundi",
+            "ikan"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, with pleasure. We have 'Elite Lamb Gulai' which is rich in spices, or 'Grilled Barramundi with Sambal Matah' for those who love fresh flavors. Are there any dietary preferences or allergies we should be aware of?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, jadi untuk Bapak/Ibu, [pesanan jika disebutkan, atau tanyakan lagi]. Ada tambahan lain seperti minuman atau hidangan pembuka? Jika sudah selesai, saya bisa siapkan tagihannya (ta-gi-han-nya).",
+      "branches": [
+        {
+          "keywords": [
+            "cukup",
+            "tidakada"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, so for you, [order if mentioned, or ask again]. Anything else like drinks or appetizers? If you're finished, I can prepare your bill."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ini tagihannya. Pembayaran bisa dengan kartu atau tunai. Terima kasih sudah berkunjung ke restoran kami, semoga (se-mo-ga) Anda menikmati pengalaman bersantap (ber-san-tap) di sini. Sampai jumpa kembali!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Here is the bill. Payment can be by card or cash. Thank you for visiting our restaurant, we hope you enjoyed your dining experience here. See you again!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, Bapak/Ibu. Bisakah Anda mengulanginya? Kurang jelas bagi saya.",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, Sir/Madam. Could you please repeat that? It wasn't clear to me."
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "dlg-ms-doctor-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Konsultasi Doktor: Aduan Kesihatan",
+  "opening": "Selamat pagi. Sila duduk. Ada apa yang boleh saya bantu hari ini? Harap bukan sesuatu yang terlalu mendesak ya.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Sila duduk. Ada apa yang boleh saya bantu hari ini? Harap bukan sesuatu yang terlalu mendesak ya.",
+      "branches": [
+        {
+          "keywords": [
+            "rasatakselesa",
+            "taksehat",
+            "sakit",
+            "simptom"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning. Please have a seat. (Selamat pagi. Sila duduk.) How may I help you today? Hopefully, it's nothing too urgent."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Faham. Boleh ceritakan lebih lanjut tentang keluhan anda? Sudah berapa lama sakit ini bertandang dan adakah ia berpusat di satu bahagian tertentu atau merebak?",
+      "branches": [
+        {
+          "keywords": [
+            "beberapahari",
+            "sejakminggulepas",
+            "barubermula"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Can you elaborate more about your complaint? (Sudah berapa lama sakit ini bertandang) How long has this pain been present and is it localized to a specific area or spreading?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Adakah sakit ini datang dan pergi atau konsisten menyengat? Ada simptom iringan lain seperti demam, muntah-muntah, atau lesu yang melampau? Dan, ada sebarang riwayat alahan ubat atau sedang mengambil suplemen/ubat-ubatan lain sekarang?",
+      "branches": [
+        {
+          "keywords": [
+            "konsisten",
+            "datangpergi",
+            "demam",
+            "muntah",
+            "lesu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Is this pain intermittent or consistently stinging? Are there other accompanying symptoms (ada simptom iringan lain) like fever, vomiting, or extreme lethargy? Also, do you have any history of drug allergies or are you currently taking any supplements/other medications?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Setelah meneliti maklumat yang anda berikan, saya syak anda mengalami gastritis ringan. Saya akan preskripsikan ubat untuk meredakan gejala. Sila ambil ubat ini dua kali sehari selepas makan. Penting untuk menghabiskan dos yang diberikan, walau rasa sudah baik.",
+      "branches": [
+        {
+          "keywords": [
+            "faham",
+            "baiklah",
+            "akanpatuhi",
+            "terimakasih"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "After reviewing the information you've provided (Setelah meneliti maklumat yang anda berikan), I suspect you're experiencing mild gastritis. I will prescribe medication to alleviate the symptoms. Please take this medication twice a day after meals. It is important to finish the prescribed dose, even if you feel better."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Jika gejala tidak menunjukkan sebarang peredaan selepas dua tiga hari, atau jika ia bertambah parah, jangan teragak-agak untuk datang semula bagi pemeriksaan lanjut. Untuk sementara waktu, jaga pemakanan dan dapatkan rehat yang cukup. Semoga cepat sembuh.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "akaningat",
+            "baik",
+            "okey"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If symptoms (Jika gejala) do not show any improvement after two or three days, or if they worsen, do not hesitate to come back for further examination. For now, take care of your diet and get enough rest. Hope you get well soon."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, boleh anda ulang atau jelaskan semula dengan lebih terperinci? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "My apologies (Mohon maaf), could you repeat or explain again in more detail? I'm not clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga segera sembuh ya. Jaga kesihatan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. (Sama-sama.) Hope you recover quickly. Take care of your health.",
+      "isTerminal": true
+    }
+  }
+}

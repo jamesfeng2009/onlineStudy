@@ -1,0 +1,239 @@
+{
+  "id": "dlg-it-airport-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Assistenza all'Aeroporto",
+  "opening": "Buongiorno, posso esserle d'aiuto? C'è qualcosa in particolare per cui ha bisogno di assistenza?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, posso esserle d'aiuto? C'è qualcosa in particolare per cui ha bisogno di assistenza?",
+      "branches": [
+        {
+          "keywords": [
+            "volo",
+            "ritardo",
+            "cancellato"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagaglio",
+            "perso",
+            "smarrimento"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "gate",
+            "check-in"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwon-jor-noh, pos-soh es-seh-reh-leh dah-yoo-toh? Cheh kwahl-koh-zah een par-tee-koh-lah-reh pehr kwee ah bee-zo-nyoh dee as-sees-ten-zah? — Good morning, can I help you? Is there anything in particular you need assistance with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Mi dispiace per l'inconveniente. Per cortesia, potrebbe fornirmi il numero del volo o la destinazione?",
+      "branches": [
+        {
+          "keywords": [
+            "numero",
+            "volo",
+            "destinazione",
+            "città"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "non",
+            "so",
+            "biglietto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee dees-pyah-cheh pehr leen-kohn-veh-nyen-teh. Pehr kor-teh-zee-ah, poh-treh-beh for-neer-mee eel noo-meh-roh dehl voh-loh oh lah des-tee-nah-tsyo-neh? — I'm sorry for the inconvenience. Could you please provide me with your flight number or destination?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco, è una situazione piuttosto spiacevole. Ha già compilato il modulo di smarrimento o è la prima volta che lo segnala?",
+      "branches": [
+        {
+          "keywords": [
+            "già",
+            "compilato",
+            "modulo"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "prima",
+            "volta",
+            "dov'è",
+            "ufficio"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kah-pees-koh, eh oo-nah see-too-ah-tsyo-neh pyoot-tos-toh spee-ah-cheh-voh-leh. Ah jah kohm-pee-lah-toh eel moh-doo-loh dee zmar-ree-men-toh oh eh lah pree-mah vohl-tah keh loh seh-nyah-lah? — I understand, that's quite an unpleasant situation. Have you already filled out the lost luggage form, or is this the first time you're reporting it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certamente. Di che tipo di informazioni ha bisogno? Riguardo al check-in, al gate, ai servizi dell'aeroporto?",
+      "branches": [
+        {
+          "keywords": [
+            "check-in",
+            "banco"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "servizi",
+            "ristoranti",
+            "negozi",
+            "bagni"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chehr-tah-men-teh. Dee keh tee-poh dee een-for-mah-tsyo-nee ah bee-zo-nyoh? Ree-gwar-doh ahl chehk-een, ahl geh-teh, ah-ee ser-vee-tzee dehl-lah-eh-roh-por-toh? — Certainly. What kind of information do you need? Regarding check-in, the gate, or airport services?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Grazie. Un momento, per favore, mentre verifico le informazioni sul suo volo. Ah, vedo che il volo [XX123] per [Città] è previsto in partenza dal Gate B12 alle 14:30. C'è altro che posso fare per lei?",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "basta"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grah-tsee-eh. Oon moh-men-toh, pehr fah-voh-reh, men-treh veh-ree-fee-koh leh een-for-mah-tsyo-nee sool soo-oh voh-loh. Ah, veh-doh keh eel voh-loh [XX123] pehr [Cheet-tah] eh preh-vee-stoh een par-ten-zah dahl Geh-teh Bee-doo-eh-dee-chee ahl-leh kwah-toh-dee-chee-eh-tren-tah. Cheh ahl-troh keh pos-soh fah-reh pehr leh-ee? — Thank you. One moment, please, while I check your flight information. Ah, I see that flight [XX123] to [City] is scheduled to depart from Gate B12 at 2:30 PM. Is there anything else I can do for you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfetto. In quel caso, le consiglio di recarsi all'ufficio Lost & Found per verificare lo stato della sua pratica. L'ufficio si trova al piano terra, vicino agli arrivi internazionali. Ha bisogno di indicazioni più precise?",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "chiaro",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pehr-fet-toh. Een kwel kah-zoh, leh kohn-see-lyoh dee reh-kahr-see ahl-loof-fee-choh Lost & Found pehr veh-ree-fee-kahr loh stah-toh dehl-lah soo-ah prah-tee-kah. L'oof-fee-choh see troh-vah ahl pyah-noh tehr-rah, vee-chee-noh ah-lyee ahr-ree-vee een-tehr-nah-tsyo-nah-lee. Ah bee-zo-nyoh dee een-dee-kah-tsyo-nee pyoo preh-chee-zeh? — Perfect. In that case, I recommend you go to the Lost & Found office to check the status of your claim. The office is on the ground floor, near international arrivals. Do you need more precise directions?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "D'accordo. Deve compilare il modulo di smarrimento bagaglio all'ufficio Lost & Found. Si trova al piano terra, seguendo le indicazioni per 'Ritiro Bagagli' e poi 'Oggetti Smarriti'. Le serve altro?",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dahk-kor-doh. Deh-veh kohm-pee-lah-reh eel moh-doo-loh dee zmar-ree-men-toh bah-gah-lyoh ahl-loof-fee-choh Lost & Found. See troh-vah ahl pyah-noh tehr-rah, seh-gwen-doh leh een-dee-kah-tsyo-nee pehr 'Ree-tee-roh Bah-gah-lyee' eh pwoy 'Oh-jet-tee Zmar-ree-tee'. Leh sehr-veh ahl-troh? — Alright. You need to fill out the lost luggage form at the Lost & Found office. It's on the ground floor, following the signs for 'Baggage Claim' and then 'Lost & Found'. Do you need anything else?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Certo. Per il check-in, se non l'ha già fatto online, può recarsi ai banchi della sua compagnia aerea. I numeri dei banchi sono solitamente indicati sui monitor. Per il gate, le suggerisco di controllare il suo biglietto o i tabelloni delle partenze. Ha altre domande?",
+      "branches": [
+        {
+          "keywords": [
+            "capito",
+            "grazie",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chehr-toh. Pehr eel chehk-een, seh non lah jah fat-toh ohn-lyne, pwò reh-kahr-see ah-ee bahn-kee dehl-lah soo-ah kohm-pah-nyee-ah ah-eh-reh-ah. Ee noo-meh-ree deh-ee bahn-kee soh-lee-tah-men-teh een-dee-kah-tee soo-ee moh-nee-tor. Pehr eel geh-teh, leh sooj-jeh-rees-koh dee kohn-trol-lah-reh eel soo-oh bee-lyet-toh oh ee tah-bel-loh-nee del-leh par-ten-zeh. Ah ahl-treh doh-mahn-deh? — Certainly. For check-in, if you haven't already done it online, you can go to your airline's counters. Counter numbers are usually displayed on monitors. For the gate, I suggest you check your ticket or the departure boards. Do you have any other questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, non oh kah-pee-toh beh-neh. Poh-treh-beh ree-peh-teh-reh, pehr fah-voh-reh? — Excuse me, I didn't quite understand. Could you please repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Prego, le auguro un buon viaggio e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Preh-goh, leh ah-oo-goo-roh oon bwon vee-ahj-joh eh ahr-ree-veh-dehr-chee! — You're welcome, I wish you a good trip and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

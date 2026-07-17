@@ -1,0 +1,123 @@
+{
+  "id": "dlg-fr-interview-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Entretien d'embauche",
+  "opening": "Bonjour Monsieur/Madame, bienvenue. Pour commencer, pourriez-vous nous parler un peu de vous, de votre parcours et de ce qui vous a amené à postuler chez nous ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour Monsieur/Madame, bienvenue. Pour commencer, pourriez-vous nous parler un peu de vous, de votre parcours et de ce qui vous a amené à postuler chez nous ?",
+      "branches": [
+        {
+          "keywords": [
+            "expérience",
+            "formation",
+            "carrière",
+            "parcours"
+          ],
+          "nextTurnId": "t2_experience"
+        },
+        {
+          "keywords": [
+            "motivation",
+            "intérêt",
+            "entreprise",
+            "objectif"
+          ],
+          "nextTurnId": "t2_motivation"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour Monsieur/Madame — Hello Sir/Madam, bienvenue — welcome. Pour commencer, pourriez-vous nous parler un peu de vous — To begin, could you tell us a little about yourself, de votre parcours — about your background, et de ce qui vous a amené à postuler chez nous — and what led you to apply to our company?"
+    },
+    "t2_experience": {
+      "id": "t2_experience",
+      "prompt": "Intéressant. Pourriez-vous détailler une expérience significative où vous avez pu mettre à profit vos compétences les plus pertinentes pour ce poste ? N'hésitez pas à nous donner des exemples concrets.",
+      "branches": [
+        {
+          "keywords": [
+            "projet",
+            "réussite",
+            "défi"
+          ],
+          "nextTurnId": "t3_strengths"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Intéressant — Interesting. Pourriez-vous détailler une expérience significative — Could you elaborate on a significant experience où vous avez pu mettre à profit vos compétences les plus pertinentes pour ce poste — where you were able to utilize your most relevant skills for this position? N'hésitez pas à nous donner des exemples concrets — Feel free to give us concrete examples."
+    },
+    "t2_motivation": {
+      "id": "t2_motivation",
+      "prompt": "Je vois. Qu'est-ce qui vous attire spécifiquement dans notre secteur d'activité ou notre entreprise en particulier ? Et comment envisagez-vous de contribuer à nos objectifs ?",
+      "branches": [
+        {
+          "keywords": [
+            "culture",
+            "valeurs",
+            "vision"
+          ],
+          "nextTurnId": "t3_strengths"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je vois — I see. Qu'est-ce qui vous attire spécifiquement dans notre secteur d'activité — What specifically attracts you to our industry ou notre entreprise en particulier — or our company in particular? Et comment envisagez-vous de contribuer à nos objectifs — And how do you envision contributing to our goals?"
+    },
+    "t3_strengths": {
+      "id": "t3_strengths",
+      "prompt": "Très bien. Si vous deviez mettre en exergue trois de vos qualités essentielles pour ce rôle et, avec une honnêteté intellectuelle, nous confier une faiblesse sur laquelle vous travaillez, quelles seraient-elles ?",
+      "branches": [
+        {
+          "keywords": [
+            "force",
+            "qualité",
+            "atout"
+          ],
+          "nextTurnId": "t4_questions"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien — Very well. Si vous deviez mettre en exergue trois de vos qualités essentielles pour ce rôle — If you had to highlight three of your essential qualities for this role et, avec une honnêteté intellectuelle — and, with intellectual honesty, nous confier une faiblesse sur laquelle vous travaillez — confide a weakness you are working on, quelles seraient-elles — what would they be?"
+    },
+    "t4_questions": {
+      "id": "t4_questions",
+      "prompt": "Merci pour cette franchise. Avez-vous, de votre côté, des questions à nous poser concernant le poste, l'entreprise ou notre équipe ?",
+      "branches": [
+        {
+          "keywords": [
+            "question",
+            "clarification",
+            "information"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci pour cette franchise — Thank you for your honesty. Avez-vous, de votre côté — Do you, on your side, des questions à nous poser concernant le poste, l'entreprise ou notre équipe — have any questions for us regarding the position, the company, or our team?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je vous prie de bien vouloir reformuler votre réponse, je n'ai pas saisi. Pourriez-vous répéter ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I would kindly ask you to rephrase your answer, I didn't quite catch it. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait. Nous vous remercions pour votre temps et votre intérêt. Nous ne manquerons pas de revenir vers vous très prochainement. Au revoir et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. We thank you for your time and interest. We will get back to you very soon. Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "dlg-ms-phone-call-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon",
+  "opening": "Hello, siapa di sana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, siapa di sana?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "panggil"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello, *sia-pa di sa-na* — who is there?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, *ma-af, bo-leh u-lang se-ka-li la-gi* — can you repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, baiklah. Apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "cakap",
+            "bercakap",
+            "jumpa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tinggal",
+            "pesan",
+            "mesej"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "salah",
+            "bukan",
+            "maaf"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, okay. *A-pa yang bo-leh sa-ya ban-tu* — What can I help you with?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Maaf, dia tiada di sini sekarang. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "tinggal",
+            "mesej"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "telefon",
+            "nanti",
+            "balik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, *ma-af, di-a tia-da di si-ni se-ka-rang. bo-leh sa-ya ban-tu* — he/she is not here now. Can I help?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baiklah, apakah pesanan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "sila",
+            "minta",
+            "tolong",
+            "maklum"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tak",
+            "apa-apa",
+            "telefon",
+            "nanti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, what is your message?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, saya akan sampaikan pesanan itu. Ada apa-apa lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "cukup",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "ulang"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I will deliver the message. Is there anything else?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih. Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, thank you. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

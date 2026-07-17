@@ -1,0 +1,183 @@
+{
+  "id": "dlg-it-phone-call-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Chiamata telefonica",
+  "opening": "Pronto? Chi parla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Pronto? Chi parla?",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "cerco",
+            "cercavo",
+            "parlare"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "",
+            "ciao"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pronto? (Pròn-toh? - Hello?) Chi parla? (Kee par-lah? - Who's speaking?)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Ah, ciao! [Nome Amico] non c'è in questo momento, è uscito mezz'ora fa. Vuoi lasciargli un messaggio?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "perfavore",
+            "richiamare",
+            "chiamare"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "richiamo",
+            "piùtardi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "quando",
+            "torna",
+            "rientra",
+            "sarà"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, ciao! (Ah, chow! - Oh, hi!) [Nome Amico] non c'è in questo momento, ([Nome Ameeco] non che in questo moh-men-toh, - [Friend's Name] isn't here right now,) è uscito mezz'ora fa. (eh oo-shee-toh metz-zoh-rah fah. - he went out half an hour ago.) Vuoi lasciargli un messaggio? (Vwoy lash-ar-lyee oon mess-sah-joh? - Do you want to leave him a message?)"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Ha detto che sarebbe tornato per cena, verso le otto. Se vuoi, posso comunque prendere un messaggio.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "allora",
+            "lascio",
+            "messaggio"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "chiamo",
+            "dopo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "va",
+            "bene"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ha detto che sarebbe tornato per cena, (Ah det-toh keh sah-reb-beh tor-nah-toh per cheh-nah, - He said he'd be back for dinner,) verso le otto. (ver-soh leh ot-toh. - around eight.) Se vuoi, posso comunque prendere un messaggio. (Se vwoy, pos-soh ko-moon-kweh pren-deh-reh oon mess-sah-joh. - If you want, I can still take a message.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certo, dimmi pure. Prendo nota.",
+      "branches": [
+        {
+          "keywords": [
+            "digli",
+            "chiamato",
+            "chiamata",
+            "richiamarmi",
+            "quando"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ok",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo, (Cher-toh, - Certainly,) dimmi pure. (Dee-mmee poo-reh. - Go ahead and tell me.) Prendo nota. (Pren-doh noh-tah. - I'll take a note.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Va bene, glielo dico. C'è qualcos'altro?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "tutto",
+            "grazie",
+            "finito"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "perfetto"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene, (Vah beh-neh, - Okay,) glielo dico. (Lyee-loh dee-koh. - I'll tell him.) C'è qualcos'altro? (Cheh kwal-kohs-al-troh? - Is there anything else?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, non ho capito bene. Potresti ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusa, (Skù-zah, - Sorry,) non ho capito bene. (Non oh ka-pì-toh bè-neh. - I didn't quite understand.) Potresti ripetere per favore? (Po-très-tee re-pè-te-reh per fa-vò-reh? - Could you please repeat?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Prego, allora a presto. Ciao!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome, see you soon. Bye!",
+      "isTerminal": true
+    }
+  }
+}

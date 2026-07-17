@@ -1,0 +1,201 @@
+{
+  "id": "dlg-de-transport-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "transport",
+  "title": "Fahrkartenkauf und Informationen im Nahverkehr",
+  "opening": "Guten Tag! Kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wohin möchten Sie fahren?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "hbf",
+            "bahnhof",
+            "zentrum",
+            "innenstadt",
+            "museum",
+            "markt",
+            "marienplatz",
+            "universität"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag! Vo-hin möch-ten Zee fa-hren? — Good day! Where would you like to go?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-tschul-di-gung, ich ha-be Zee nicht ver-stan-den. Kön-nen Zee das bit-te wie-der-ho-len? — Excuse me, I didn't understand you. Can you please repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Nehmen Sie bitte die Buslinie 10 Richtung 'Stadtmitte'. Der Bus fährt an dieser Haltestelle ab.",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte",
+            "preis",
+            "kosten"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "umsteigen",
+            "direkt",
+            "wechseln"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "haltestelle",
+            "wo",
+            "hier"
+          ],
+          "nextTurnId": "t2_repeat_stop"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Neh-men Zee bit-te dee Bus-lee-nee zehn Rich-tung 'Shtat-mit-te'. Der Bus fährt an dee-zer Hal-te-stel-le ab. — Please take bus line 10 towards 'City Center'. The bus departs from this stop."
+    },
+    "t2_repeat_stop": {
+      "id": "t2_repeat_stop",
+      "prompt": "Die Haltestelle ist direkt hier vor Ihnen, auf der rechten Seite.",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte",
+            "preis",
+            "kosten"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "umsteigen",
+            "direkt",
+            "wechseln"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "verstanden"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee Hal-te-stel-le ist di-rekt heer for Ih-nen, auf der rech-ten Zai-te. — The bus stop is directly here in front of you, on the right side."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ein Einzelticket kostet 2 Euro 90. Möchten Sie ein Ticket kaufen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "kaufen",
+            "eins"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "umsteigen",
+            "direkt",
+            "wechseln"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ain Ain-zel-ti-ket kos-tet zwei Oi-ro neun-zig. Möch-ten Zee ain Ti-ket kau-fen? — A single ticket costs 2 Euro 90. Would you like to buy a ticket?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nein, Sie müssen nicht umsteigen. Die Linie 10 fährt direkt dorthin.",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "verstanden",
+            "danke"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte",
+            "preis",
+            "kosten"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nain, Zee müs-sen nicht um-stai-gen. Dee Lee-nee zehn fährt di-rekt dort-hin. — No, you don't need to transfer. Line 10 goes directly there."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gern geschehen! Ich wünsche Ihnen eine gute Fahrt!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Gern ge-she-hen! Ich wün-sche Ih-nen ai-ne goo-te Fahrt! — You're welcome! I wish you a good trip!",
+      "isTerminal": true
+    }
+  }
+}

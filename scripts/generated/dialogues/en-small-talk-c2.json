@@ -1,0 +1,200 @@
+{
+  "id": "dlg-en-small-talk-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Party Banter",
+  "opening": "Hey there! What a turnout, huh? How are you finding the vibe tonight?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hey there! What a turnout, huh? How are you finding the vibe tonight?",
+      "branches": [
+        {
+          "keywords": [
+            "great",
+            "fantastic",
+            "lively",
+            "buzzing",
+            "fun"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "busy",
+            "crowded",
+            "alright",
+            "okay",
+            "slow",
+            "boring"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hey there! What a turnout, huh? — Hey there! What a big crowd, right? How are you experiencing the atmosphere tonight?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Glad to hear it! Yeah, it's really buzzing, isn't it? Have you managed to mingle much, or have you been anchored to the snack table like I have?",
+      "branches": [
+        {
+          "keywords": [
+            "mingling",
+            "socializing",
+            "talking",
+            "people"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "food",
+            "snacks",
+            "eating",
+            "table"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Glad to hear it! Yeah, it's really buzzing, isn't it? — I'm pleased to hear that! Yes, it's very lively, isn't it? Have you socialized a lot, or have you stayed by the snack table like I have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "I hear you. Sometimes these events can be a bit hit-or-miss. Are you just here for a quick appearance, or hoping to make the best of it?",
+      "branches": [
+        {
+          "keywords": [
+            "quick",
+            "leaving",
+            "short"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bestofit",
+            "trying",
+            "stickaround",
+            "hoping"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I hear you. Sometimes these events can be a bit hit-or-miss. — I understand. Occasionally these gatherings can be either very good or very bad. Are you only here for a short visit, or are you trying to enjoy it as much as possible?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Oh, really? Anyone particularly intriguing you've stumbled upon? I'm always looking for a good yarn. What typically sparks your interest at these shindigs?",
+      "branches": [
+        {
+          "keywords": [
+            "people",
+            "characters",
+            "stories",
+            "connecting"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, really? Anyone particularly intriguing you've stumbled upon? I'm always looking for a good yarn. — Oh, really? Have you met anyone especially fascinating? I'm always keen for an interesting story. What usually captures your attention at these parties?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Can't blame you, the spread looks quite inviting! What's your go-to at these events – do you dive straight for the savoury, or are you a sweet tooth like me?",
+      "branches": [
+        {
+          "keywords": [
+            "savoury",
+            "snacks",
+            "appetizers"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Can't blame you, the spread looks quite inviting! — I don't fault you, the array of food looks very appealing! What's your usual preference at these events – do you head directly for the salty or spicy foods, or do you prefer sweets like I do?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Fair enough, sometimes it's about making your own fun. What's usually on your radar – any exciting projects, hobbies, or travel plans you're keen to chat about?",
+      "branches": [
+        {
+          "keywords": [
+            "projects",
+            "work",
+            "career",
+            "hobbies",
+            "passions"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair enough, sometimes it's about making your own fun. — That's reasonable, sometimes you have to create your own enjoyment. What's usually on your mind – any exciting projects, hobbies, or upcoming trips you're eager to discuss?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you rephrase it, perhaps?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase it, perhaps?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "It was great chatting with you! Enjoy the rest of the evening, and hopefully, we'll cross paths again soon. Cheers!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was great chatting with you! Enjoy the rest of the evening, and hopefully, we'll cross paths again soon. Cheers!",
+      "isTerminal": true
+    }
+  }
+}

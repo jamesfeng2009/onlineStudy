@@ -1,0 +1,374 @@
+{
+  "id": "dlg-es-transport-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Comprando un billete de autobús",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "billete",
+            "comprar",
+            "ir",
+            "necesito"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            "horario",
+            "autobús",
+            "línea"
+          ],
+          "nextTurnId": "t_schedule"
+        },
+        {
+          "keywords": [
+            "precio",
+            "cuánto",
+            "cuesta"
+          ],
+          "nextTurnId": "t_price_general"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! — Good morning! ¿En qué puedo ayudarle hoy? — How can I help you today?"
+    },
+    "t2_destination": {
+      "id": "t2_destination",
+      "prompt": "Claro. ¿A qué destino desea ir? Por ejemplo, ¿a la estación central o al centro de la ciudad?",
+      "branches": [
+        {
+          "keywords": [
+            "estación",
+            "central",
+            "terminal"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro — Of course. ¿A qué destino desea ir? — To what destination do you wish to go? Por ejemplo, ¿a la estación central o al centro de la ciudad? — For example, to the central station or the city center?"
+    },
+    "t3_ticket_type": {
+      "id": "t3_ticket_type",
+      "prompt": "Entendido. ¿Necesita un billete de ida y vuelta, o solo de ida? Y, ¿hará algún transbordo?",
+      "branches": [
+        {
+          "keywords": [
+            "ida",
+            "no",
+            "sin",
+            "transbordo"
+          ],
+          "nextTurnId": "t4_confirm_price_ida"
+        },
+        {
+          "keywords": [
+            "ida",
+            "sí",
+            "con",
+            "transbordo"
+          ],
+          "nextTurnId": "t4_confirm_price_ida_transfer"
+        },
+        {
+          "keywords": [
+            "vuelta",
+            "no",
+            "sin",
+            "transbordo"
+          ],
+          "nextTurnId": "t4_confirm_price_idayvuelta"
+        },
+        {
+          "keywords": [
+            "vuelta",
+            "sí",
+            "con",
+            "transbordo"
+          ],
+          "nextTurnId": "t4_confirm_price_idayvuelta_transfer"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido — Understood. ¿Necesita un billete de ida y vuelta, o solo de ida? — Do you need a round-trip ticket, or just one-way? Y, ¿hará algún transbordo? — And, will you make any transfer?"
+    },
+    "t4_confirm_price_ida": {
+      "id": "t4_confirm_price_ida",
+      "prompt": "De acuerdo, un billete de ida sin transbordo cuesta 2,50 euros. ¿Le parece bien?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "bien",
+            "comprar"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiar",
+            "vuelta"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            "pagar",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo — Okay, un billete de ida sin transbordo cuesta 2,50 euros — a one-way ticket without transfer costs 2.50 euros. ¿Le parece bien? — Does that sound good to you?"
+    },
+    "t4_confirm_price_idayvuelta": {
+      "id": "t4_confirm_price_idayvuelta",
+      "prompt": "Un billete de ida y vuelta sin transbordo cuesta 4,00 euros. Es un poco más económico. ¿Lo desea?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "deseo",
+            "comprar"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiar",
+            "ida",
+            "solo"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            "pagar",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un billete de ida y vuelta sin transbordo cuesta 4,00 euros — A round-trip ticket without transfer costs 4.00 euros. Es un poco más económico — It's a bit cheaper. ¿Lo desea? — Do you want it?"
+    },
+    "t4_confirm_price_ida_transfer": {
+      "id": "t4_confirm_price_ida_transfer",
+      "prompt": "Un billete de ida con un transbordo cuesta 3,00 euros. El transbordo es válido por una hora. ¿Le parece bien?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "bien",
+            "comprar"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiar",
+            "sin",
+            "transbordo"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            "pagar",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un billete de ida con un transbordo cuesta 3,00 euros — A one-way ticket with one transfer costs 3.00 euros. El transbordo es válido por una hora — The transfer is valid for one hour. ¿Le parece bien? — Does that sound good to you?"
+    },
+    "t4_confirm_price_idayvuelta_transfer": {
+      "id": "t4_confirm_price_idayvuelta_transfer",
+      "prompt": "Un billete de ida y vuelta con transbordo cuesta 5,00 euros. Recuerde que el transbordo es válido por una hora. ¿Lo desea?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "deseo",
+            "comprar"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "no",
+            "cambiar",
+            "sin",
+            "transbordo"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            "pagar",
+            "tarjeta",
+            "efectivo"
+          ],
+          "nextTurnId": "t_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un billete de ida y vuelta con transbordo cuesta 5,00 euros — A round-trip ticket with transfer costs 5.00 euros. Recuerde que el transbordo es válido por una hora — Remember that the transfer is valid for one hour. ¿Lo desea? — Do you want it?"
+    },
+    "t_payment": {
+      "id": "t_payment",
+      "prompt": "¿Cómo le gustaría pagar? Aceptamos efectivo y tarjeta.",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "cash"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Cómo le gustaría pagar? — How would you like to pay? Aceptamos efectivo y tarjeta — We accept cash and card."
+    },
+    "t_schedule": {
+      "id": "t_schedule",
+      "prompt": "¿Qué línea o destino le interesa? Los horarios están disponibles en la parada o en línea.",
+      "branches": [
+        {
+          "keywords": [
+            "línea",
+            "autobús",
+            "número"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "destino",
+            "a dónde",
+            "ir"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué línea o destino le interesa? — Which line or destination interests you? Los horarios están disponibles en la parada o en línea — Schedules are available at the stop or online."
+    },
+    "t_price_general": {
+      "id": "t_price_general",
+      "prompt": "El precio del billete varía según el destino y si es de ida o de ida y vuelta. ¿A dónde le gustaría ir?",
+      "branches": [
+        {
+          "keywords": [
+            "destino",
+            "estación",
+            "centro"
+          ],
+          "nextTurnId": "t2_destination"
+        },
+        {
+          "keywords": [
+            "ida",
+            "vuelta",
+            "transbordo"
+          ],
+          "nextTurnId": "t3_ticket_type"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El precio del billete varía según el destino y si es de ida o de ida y vuelta — The ticket price varies depending on the destination and if it's one-way or round-trip. ¿A dónde le gustaría ir? — Where would you like to go?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Perdone, ¿podría repetir eso un poco más despacio, por favor? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perdone — Excuse me, ¿podría repetir eso un poco más despacio, por favor? — Could you please repeat that a bit slower? No le he entendido bien — I didn't understand you well."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "¡Aquí tiene! Que tenga un muy buen viaje. ¡Hasta pronto!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "¡Aquí tiene! — Here you go! Que tenga un muy buen viaje — Have a very good trip. ¡Hasta pronto! — See you soon!",
+      "isTerminal": true
+    }
+  }
+}

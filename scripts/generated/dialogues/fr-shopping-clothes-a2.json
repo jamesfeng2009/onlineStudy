@@ -1,0 +1,188 @@
+{
+  "id": "dlg-fr-shopping-clothes-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Achats de vêtements",
+  "opening": "Bonjour, je peux vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, je peux vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "cherche",
+            "veux"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "regarde",
+            "juste"
+          ],
+          "nextTurnId": "t-bye-no-purchase"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour — Hello, je peux vous aider ? — can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Quel genre de vêtement ? Quelle taille et quelle couleur cherchez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "pantalon",
+            "noir",
+            "taille",
+            "40"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "regarde",
+            "juste",
+            "voir"
+          ],
+          "nextTurnId": "t-bye-no-purchase"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quel genre — What kind de vêtement ? — of clothing? Quelle taille — What size et quelle couleur — and what color cherchez-vous ? — are you looking for?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "J'ai trouvé ce modèle. Voulez-vous l'essayer ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "essayer",
+            "veux",
+            "bien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "prends"
+          ],
+          "nextTurnId": "t5_buy"
+        },
+        {
+          "keywords": [
+            "trop",
+            "grand",
+            "petit",
+            "couleur",
+            "autre"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "J'ai trouvé — I found ce modèle. — this model. Voulez-vous — Do you want l'essayer ? — to try it on?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Les cabines d'essayage sont par ici, au fond à gauche.",
+      "branches": [
+        {
+          "keywords": [
+            "le prends",
+            "la prends",
+            "prends"
+          ],
+          "nextTurnId": "t5_buy"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "va pas"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The changing rooms are this way, at the back on the left."
+    },
+    "t5_buy": {
+      "id": "t5_buy",
+      "prompt": "Parfait ! La caisse est juste là, à droite.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir",
+            "payer"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect! The checkout is right there, on the right."
+    },
+    "t-bye-no-purchase": {
+      "id": "t-bye-no-purchase",
+      "prompt": "D'accord. N'hésitez pas si vous changez d'avis. Bonne journée !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "finalement",
+            "cherche"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Don't hesitate if you change your mind. Have a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? — Pardon? Pouvez-vous répéter, s'il vous plaît ? — Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci de votre visite et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your visit and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

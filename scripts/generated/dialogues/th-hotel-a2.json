@@ -1,0 +1,187 @@
+{
+  "id": "dlg-th-hotel-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "การเช็คอินที่โรงแรม",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มีจองห้องพักไว้ไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มีจองห้องพักไว้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "จองแล้ว",
+            "มี",
+            "จอง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ยังไม่ได้จอง",
+            "ไม่มี"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawaddee ka. Yindee t̂xntrab k̂a. Mee jxng ĥxng p̣hạk wị̂ mị ḳh? — Hello. Welcome. Do you have a room reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ค่ะ ชื่ออะไรคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "สมชาย",
+            "สมหญิง"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "พูดซ้ำ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̂a. Chụ̄̀x xarị ḳh? — Okay. What's the name?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ยังไม่ได้จองใช่ไหมคะ สนใจจองตอนนี้เลยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สนใจ",
+            "จองค่ะ",
+            "จอง"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไม่สนใจ",
+            "ไม่จอง",
+            "ไม่ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yang mai dai jong chai mai kha? Sonjai jong ton nee loey mai kha? — You haven't booked, right? Interested in booking now?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ขอบคุณค่ะ ขอบัตรประชาชนหรือพาสปอร์ตหน่อยค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "ได้ค่ะ",
+            "ค่ะ",
+            "บัตรประชาชน",
+            "พาสปอร์ต"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ลืม"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun ka. Khor bat prachachon rue passport noi kha. — Thank you. May I have your ID card or passport please?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ขอบคุณค่ะ ต้องการห้องเตียงเดี่ยวหรือเตียงคู่คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เตียงเดี่ยว"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun ka. Tongkarn hong tiang diao rue tiang koo ka? — Thank you. Do you want a single bed or a double bed room?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ได้ค่ะ นี่คีย์การ์ดค่ะ มีอาหารเช้าด้วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "มีค่ะ",
+            "รวมค่ะ",
+            "มี"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai ka. Nee keycard ka. Mee a-harn chao duay mai ka? — Okay. Here's your keycard. Does it include breakfast?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ พูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor thot kha. Phood eek krang dai mai kha? — Sorry. Could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณค่ะ ขอให้มีความสุขกับการพักผ่อนนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khop khun ka. Khor hai mee kwarm sook gap garn pak pon na ka. — Thank you. Have a pleasant stay.",
+      "isTerminal": true
+    }
+  }
+}

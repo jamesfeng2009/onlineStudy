@@ -1,0 +1,200 @@
+{
+  "id": "dlg-id-phone-call-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Telepon Bisnis: Mengelola Panggilan",
+  "opening": "Selamat pagi, dengan PT Surya Kencana, Bunga berbicara. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, dengan PT Surya Kencana, Bunga berbicara. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "bicara",
+            "ngobrol",
+            "sambung",
+            "kontak"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "halo",
+            "selamatpagi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi), dengan PT Surya Kencana (Pe-Te Sur-ya Ke-nca-na), Bunga berbicara (Bu-nga ber-bi-ca-ra). Ada yang bisa saya bantu (A-da yang bi-sa sa-ya ban-tu)? — Good morning, PT Surya Kencana, Bunga speaking. How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bisa saya tahu dengan siapa saya berbicara dan apa keperluannya?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ingin",
+            "bicara",
+            "dengan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bisa saya tahu (Bi-sa sa-ya ta-hu) dengan siapa saya berbicara (dengan si-a-pa sa-ya ber-bi-ca-ra) dan apa keperluannya (dan a-pa ke-per-lu-an-nya)? — May I know who's calling and what it's regarding?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, terima kasih atas informasinya. Mohon tunggu sebentar, saya coba sambungkan. Jika beliau sedang tidak di tempat, apakah Anda ingin meninggalkan pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "ya",
+            "tolong"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "nanti",
+            "teleponlagi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tunggu",
+            "berapa",
+            "lama"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik), terima kasih (te-ri-ma ka-sih) atas informasinya (a-tas in-for-ma-si-nya). Mohon tunggu (Mo-hon tung-gu) sebentar (se-ben-tar), saya coba sambungkan (sa-ya co-ba sam-bung-kan). Jika beliau (Ji-ka be-li-au) sedang tidak di tempat (se-dang ti-dak di tem-pat), apakah Anda ingin meninggalkan pesan (a-pa-kah An-da i-ngin me-ning-gal-kan pe-san)? — Alright, thank you for the information. Please wait a moment, I'll try to connect you. If they are not available, would you like to leave a message?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, silakan sampaikan pesan Anda dengan jelas. Akan saya pastikan tersampaikan setelah beliau selesai dengan urusannya.",
+      "branches": [
+        {
+          "keywords": [
+            "sampaikan",
+            "minta",
+            "pesan",
+            "hubung"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, please state your message clearly. I will make sure it gets delivered after they are done with their business."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Biasanya tidak lebih dari satu atau dua menit, Bapak/Ibu. Mohon kesabarannya. Atau, saya bisa bantu cek jadwal beliau terlebih dahulu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunggu",
+            "baik",
+            "oke",
+            "sayaakanmenunggu"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "kalaugitu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Usually no more than one or two minutes, Sir/Madam. Please be patient. Or, I can help check their schedule first?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Mohon maaf, setelah saya cek, beliau sedang tidak di tempat atau sedang ada agenda penting. Apakah Anda ingin meninggalkan pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "ya",
+            "tolong"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "nanti",
+            "teleponlagi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I apologize, after I checked, they are currently not in the office or have an important agenda. Would you like to leave a message?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya kurang menangkap apa yang Anda sampaikan. Bisa diulang atau dijelaskan lebih lanjut?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (Ma-af), saya kurang menangkap (sa-ya ku-rang me-nang-kap) apa yang Anda sampaikan (a-pa yang An-da sam-pai-kan). Bisa diulang (Bi-sa di-u-lang) atau dijelaskan lebih lanjut (a-tau di-je-las-kan le-bih lan-jut)? — I apologize, I didn't quite catch what you said. Could you repeat or explain further?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih sudah menghubungi. Selamat siang.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for calling. Good afternoon.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "id": "dlg-th-restaurant-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "สั่งอาหารที่ร้านอาหาร",
+  "opening": "สวัสดีครับ/ค่ะ รับอะไรดีครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ รับอะไรดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เมนู",
+            "รายการอาหาร"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า",
+            "น้ำ"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "สวัสดี",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawàt-dii kráp/kâ. Ráp à-rai dii kráp/kâ? — Hello. What would you like?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "นี่ครับ/ค่ะ เมนู อยากทานอะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำ",
+            "ดี"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ข้าวผัด",
+            "ต้มยำ",
+            "แกงเขียวหวาน"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า",
+            "น้ำ"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nîi kráp/kâ me-nuu. Yàak taan à-rai kráp/kâ? — Here is the menu. What would you like to eat?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "แนะนำข้าวผัดครับ/ค่ะ อร่อยมาก",
+      "branches": [
+        {
+          "keywords": [
+            "เอา",
+            "ข้าวผัด"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "อื่น",
+            "ไม่เอา"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า",
+            "น้ำ"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Náe-nam kâao-pàt kráp/kâ. À-ròi mâak — I recommend fried rice. It's very delicious."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "ได้ครับ/ค่ะ น้ำเปล่า",
+      "branches": [
+        {
+          "keywords": [
+            "เมนู",
+            "อาหาร"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi kráp/kâ náam-plào — Okay. Water."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เอาข้าวผัดใช่ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "เอา",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "อื่น"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "น้ำเปล่า",
+            "น้ำ"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ao kâao-pàt châi mái kráp/kâ? — You want fried rice, right?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ได้ครับ/ค่ะ รอสักครู่ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi kráp/kâ. Ror sák krûu kráp/kâ — Okay. Please wait a moment."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kâw-tôht kráp/kâ. Pûut ìik kráng dâi mái kráp/kâ? — Excuse me. Can you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ โอกาสหน้าเชิญใหม่ครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kàwp-kun mâak kráp/kâ. Oh-gàat nâa chern mài kráp/kâ — Thank you very much. Please come again next time.",
+      "isTerminal": true
+    }
+  }
+}

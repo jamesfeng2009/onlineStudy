@@ -1,0 +1,208 @@
+{
+  "id": "dlg-th-bank-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "ทำธุรกรรมที่ธนาคาร",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เปิดบัญชี",
+            "เปิด",
+            "บัญชี"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "แลกเงิน",
+            "แลกเปลี่ยน",
+            "เงิน"
+          ],
+          "nextTurnId": "t2_exchange"
+        },
+        {
+          "keywords": [
+            "atm",
+            "บัตรเอทีเอ็ม",
+            "ปัญหา",
+            "กดเงิน",
+            "รีเซ็ต",
+            "pin",
+            "รหัส"
+          ],
+          "nextTurnId": "t2_atm_pin"
+        },
+        {
+          "keywords": [
+            "โอนเงิน",
+            "โอน"
+          ],
+          "nextTurnId": "t2_transfer"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี",
+            "สอบถาม"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄a-wạs̄-dii khráp/khâ. Mee à-rai hâi chûay mǎi khráp/khá? — Hello. How can I help you?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "ได้ครับ/ค่ะ ต้องการเปิดบัญชีประเภทไหนครับ/คะ? เช่น บัญชีออมทรัพย์ หรือบัญชีกระแสรายวัน?",
+      "branches": [
+        {
+          "keywords": [
+            "ออมทรัพย์",
+            "ออม"
+          ],
+          "nextTurnId": "t3_proceed_counter"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dâi khráp/khâ. Tâwng-gaan bpèrt ban-chee bprà-phêt năi khráp/khá? Chên ban-chee ǭm-sáp rĕu ban-chee grà-sæ-raai-wan? — Okay. What type of account would you like to open? For example, a savings account or a current account?"
+    },
+    "t2_exchange": {
+      "id": "t2_exchange",
+      "prompt": "ครับ/ค่ะ ต้องการแลกเงินสกุลอะไรครับ/คะ? และเป็นจำนวนเท่าไหร่ครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดอลลาร์",
+            "usd",
+            "ยูโร",
+            "eur",
+            "เยน",
+            "jpy",
+            "บาท",
+            "thb"
+          ],
+          "nextTurnId": "t3_proceed_counter"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khráp/khâ. Tâwng-gaan lâek ngern sà-gun à-rai khráp/khá? Læ pen jam-nuan tâo-rài khráp/khá? — Okay. What currency would you like to exchange, and how much?"
+    },
+    "t2_atm_pin": {
+      "id": "t2_atm_pin",
+      "prompt": "มีปัญหาเกี่ยวกับ ATM หรือต้องการรีเซ็ตรหัส PIN ครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรโดนยึด",
+            "โดนยึด",
+            "กดเงินไม่ออก",
+            "เงินไม่ออก",
+            "บัตรหาย",
+            "หาย",
+            "atm"
+          ],
+          "nextTurnId": "t3_proceed_counter"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee bpan-hǎa gîao-gàp ATM rĕu tâwng-gaan ree-sèt rá-hàt PIN khráp/khá? — Do you have an ATM issue or need to reset your PIN?"
+    },
+    "t2_transfer": {
+      "id": "t2_transfer",
+      "prompt": "ต้องการโอนเงินภายในประเทศ หรือระหว่างประเทศครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ในประเทศ",
+            "ภายในประเทศ"
+          ],
+          "nextTurnId": "t3_proceed_counter"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tâwng-gaan ohn ngern paai-nai bprà-thêet rĕu rá-wàang bprà-thêet khráp/khá? — Do you want to transfer money domestically or internationally?"
+    },
+    "t3_proceed_counter": {
+      "id": "t3_proceed_counter",
+      "prompt": "รับทราบครับ/ค่ะ สำหรับเรื่องนี้ กรุณาเตรียมบัตรประชาชนและเอกสารที่เกี่ยวข้อง แล้วไปที่เคาน์เตอร์ได้เลยครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ได้",
+            "ไป"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "สอบถาม"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ráp-sâap khráp/khâ. S̄am-ràp rêuang-nîi grù-naa dtriam bàt bprà-chaa-chon lǽa èek-gà-săan thîi gîao-k͡hông lǽo bpai thîi káo-têr dâi loei khráp/khâ. — Understood. For this matter, please prepare your ID card and relevant documents, then proceed to the counter."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจ รบกวนพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ",
+            "พูดซ้ำ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hŏthôt khráp/khâ. Mâi kâo-jai. Rop-kuan phûut ìik khráng dâi máy khráp/khá? — Sorry, I don't understand. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการครับ/ค่ะ หวังว่าวันหน้าจะได้ให้บริการอีกนะครับ/คะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khòp-khun thîi chái bǭ-rí-gaan khráp/khâ. Wǎng wâa wan nâa jà dâi bǭ-rí-gaan ìik ná khráp/khá. S̄a-wạs̄-dii khráp/khâ. — Thank you for using our service. We hope to serve you again in the future. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

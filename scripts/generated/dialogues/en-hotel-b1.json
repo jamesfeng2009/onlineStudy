@@ -1,0 +1,179 @@
+{
+  "id": "dlg-en-hotel-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Good afternoon! Welcome to the Grand Hotel. Do you have a reservation with us today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good afternoon! Welcome to the Grand Hotel. Do you have a reservation with us today, and what name is it under?",
+      "branches": [
+        {
+          "keywords": [
+            "reservation",
+            "booking",
+            "under",
+            "have"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "don't",
+            "not"
+          ],
+          "nextTurnId": "t-no-booking"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good afternoon! Welcome to the Grand Hotel. Do you have a reservation with us today, and what name is it under?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please repeat?"
+    },
+    "t-no-booking": {
+      "id": "t-no-booking",
+      "prompt": "I see. We can certainly check our availability for you, but this conversation is about checking in with an existing reservation. Perhaps we can assist you with a new booking at the front desk.",
+      "branches": [],
+      "fallbackBranchId": "t-no-booking",
+      "promptTranslation": "I see. We can certainly check our availability for you, but this conversation is about checking in with an existing reservation. Perhaps we can assist you with a new booking at the front desk.",
+      "isTerminal": true
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent. Could I please see your ID or passport, and a credit card for incidentals?",
+      "branches": [
+        {
+          "keywords": [
+            "here",
+            "is",
+            "my",
+            "id",
+            "passport",
+            "card"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "why",
+            "need",
+            "reason",
+            "cash"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. Could I please see your ID or passport, and a credit card for incidentals?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "We require ID for security purposes and a card for a pre-authorization, which covers any potential additional charges during your stay, like mini-bar use. Cash is fine for the room rate, but we still need a card for the pre-authorization.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "understand",
+            "here",
+            "is",
+            "my",
+            "id",
+            "card"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We require ID for security purposes and a card for a pre-authorization, which covers any potential additional charges during your stay, like mini-bar use. Cash is fine for the room rate, but we still need a card for the pre-authorization."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Thank you very much. Now, do you have any room preferences, perhaps a high floor or a quiet room? And will you be joining us for breakfast in the morning?",
+      "branches": [
+        {
+          "keywords": [
+            "high",
+            "floor",
+            "quiet",
+            "yes",
+            "breakfast"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you very much. Now, do you have any room preferences, perhaps a high floor or a quiet room? And will you be joining us for breakfast in the morning?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alright, that's all set. Just one moment while I prepare your key card. You're all checked in now. Is there anything else I can help you with?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "thank",
+            "you",
+            "that's",
+            "all"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, that's all set. Just one moment while I prepare your key card. You're all checked in now. Is there anything else I can help you with?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Great! Here's your key card. Your room number is 405, on the fourth floor. The lift is just over there. Enjoy your stay!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great! Here's your key card. Your room number is 405, on the fourth floor. The lift is just over there. Enjoy your stay!",
+      "isTerminal": true
+    }
+  }
+}

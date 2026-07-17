@@ -1,0 +1,226 @@
+{
+  "id": "dlg-id-restaurant-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat malam, Bapak/Ibu. Sudah siap memesan, atau ada yang ingin saya rekomendasikan?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam, Bapak/Ibu. Sudah siap memesan, atau ada yang ingin saya rekomendasikan?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "langsung",
+            "siap"
+          ],
+          "nextTurnId": "t3_order"
+        },
+        {
+          "keywords": [
+            "rekomendasi",
+            "saran",
+            "menu"
+          ],
+          "nextTurnId": "t2_reco"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "diet",
+            "bebasgluten"
+          ],
+          "nextTurnId": "t2_diet"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat malam — Good evening, Sir/Madam. Are you ready to order, or is there anything I can recommend?"
+    },
+    "t2_reco": {
+      "id": "t2_reco",
+      "prompt": "Tentu, untuk hidangan utama, kami punya Nasi Goreng Kampung istimewa dan Sate Lilit Ayam yang sangat populer. Keduanya adalah favorit pelanggan kami.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi goreng",
+            "sate lilit",
+            "itu saja"
+          ],
+          "nextTurnId": "t3_order"
+        },
+        {
+          "keywords": [
+            "lain",
+            "pilihan",
+            "ada lagi"
+          ],
+          "nextTurnId": "t2_other_reco"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "diet"
+          ],
+          "nextTurnId": "t2_diet"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly, for main courses, we have our special Kampung Fried Rice and the very popular Chicken Satay Lilit. Both are our customers' favorites."
+    },
+    "t2_other_reco": {
+      "id": "t2_other_reco",
+      "prompt": "Baik, jika Anda mencari sesuatu yang lebih ringan, kami juga punya Gado-Gado dengan saus kacang spesial dan Sop Buntut yang segar.",
+      "branches": [
+        {
+          "keywords": [
+            "gado-gado",
+            "sop buntut",
+            "pesan itu"
+          ],
+          "nextTurnId": "t3_order"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "belum",
+            "apa lagi"
+          ],
+          "nextTurnId": "t2_diet"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Alright, if you're looking for something lighter, we also have Gado-Gado with special peanut sauce and fresh Oxtail Soup."
+    },
+    "t2_diet": {
+      "id": "t2_diet",
+      "prompt": "Tentu, kami memiliki beberapa pilihan vegetarian seperti Tumis Kangkung, Tempe Mendoan, dan juga Nasi Goreng tanpa daging. Apakah ada alergi atau pantangan lain yang perlu kami perhatikan?",
+      "branches": [
+        {
+          "keywords": [
+            "tumis kangkung",
+            "tempe mendoan",
+            "nasi goreng"
+          ],
+          "nextTurnId": "t3_order"
+        },
+        {
+          "keywords": [
+            "alergi",
+            "kacang",
+            "pedas",
+            "tanpa"
+          ],
+          "nextTurnId": "t3_special_request"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly, we have several vegetarian options such as Stir-fried Water Spinach, Tempe Mendoan, and also Fried Rice without meat. Are there any other allergies or restrictions we should be aware of?"
+    },
+    "t3_order": {
+      "id": "t3_order",
+      "prompt": "Baik, pesanan Anda sudah saya catat. Ada pesanan minuman atau hidangan pembuka lainnya?",
+      "branches": [
+        {
+          "keywords": [
+            "minum",
+            "teh",
+            "kopi",
+            "jus"
+          ],
+          "nextTurnId": "t4_drinks"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "itu saja"
+          ],
+          "nextTurnId": "t5_bill"
+        },
+        {
+          "keywords": [
+            "tambah",
+            "lagi",
+            "menu"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Alright, your order has been noted. Any drinks or other appetizers?"
+    },
+    "t3_special_request": {
+      "id": "t3_special_request",
+      "prompt": "Mohon maaf sebelumnya. Bisa Anda sebutkan secara spesifik? Kami akan berusaha mengakomodasi permintaan Anda sebaik mungkin.",
+      "branches": [
+        {
+          "keywords": [
+            "pedas",
+            "tidak pedas",
+            "tanpa"
+          ],
+          "nextTurnId": "t3_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf sebelumnya — My apologies in advance. Could you be more specific? We will try our best to accommodate your request."
+    },
+    "t4_drinks": {
+      "id": "t4_drinks",
+      "prompt": "Pilihan yang bagus. Kami punya berbagai macam jus segar, es teh, atau kopi. Ada yang ingin dipesan?",
+      "branches": [
+        {
+          "keywords": [
+            "jus",
+            "es teh",
+            "kopi"
+          ],
+          "nextTurnId": "t5_bill"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pilihan yang bagus — Good choice. We have a variety of fresh juices, iced tea, or coffee. Would you like to order anything?"
+    },
+    "t5_bill": {
+      "id": "t5_bill",
+      "prompt": "Baik, ini totalnya. Apakah Anda ingin membayar dengan kartu, tunai, atau split bill?",
+      "branches": [
+        {
+          "keywords": [
+            "kartu",
+            "debit",
+            "kredit"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Alright, here is the total. Would you like to pay by card, cash, or split the bill?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas kunjungannya. Semoga hari Anda menyenangkan dan sampai jumpa kembali!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak atas kunjungannya — Thank you very much for your visit. Have a pleasant day and see you again!",
+      "isTerminal": true
+    }
+  }
+}

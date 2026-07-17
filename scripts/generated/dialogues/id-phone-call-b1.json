@@ -1,0 +1,242 @@
+{
+  "id": "dlg-id-phone-call-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Panggilan Telepon: Meninggalkan Pesan",
+  "opening": "Halo, dengan siapa saya berbicara?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo, dengan siapa saya berbicara?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "mencari",
+            "pak",
+            "bu",
+            "ada"
+          ],
+          "nextTurnId": "t2_unavailable"
+        },
+        {
+          "keywords": [
+            "ini",
+            "rumah",
+            "bapak",
+            "ibu",
+            "nomor",
+            "betul"
+          ],
+          "nextTurnId": "t2_confirm_house"
+        },
+        {
+          "keywords": [
+            "maaf",
+            "salah",
+            "nomor"
+          ],
+          "nextTurnId": "t-end_wrong_number"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halo — Hello, dengan siapa saya berbicara? — with whom am I speaking?"
+    },
+    "t2_unavailable": {
+      "id": "t2_unavailable",
+      "prompt": "Oh, Anda mencari Bapak Budi? Maaf, dia sedang tidak ada di tempat sekarang.",
+      "branches": [
+        {
+          "keywords": [
+            "kapan",
+            "kembali",
+            "pulang",
+            "akan"
+          ],
+          "nextTurnId": "t3_when_return"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "titip",
+            "tolong"
+          ],
+          "nextTurnId": "t3_leave_message"
+        },
+        {
+          "keywords": [
+            "telepon",
+            "kembali",
+            "nanti",
+            "lagi"
+          ],
+          "nextTurnId": "t4_call_back"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Anda mencari Bapak Budi? — Oh, you're looking for Mr. Budi? Maaf — Sorry, dia sedang tidak ada di tempat sekarang. — he's not here at the moment."
+    },
+    "t2_confirm_house": {
+      "id": "t2_confirm_house",
+      "prompt": "Iya, betul. Ini rumah Bapak Budi. Anda dengan siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "mencari",
+            "budi",
+            "ada"
+          ],
+          "nextTurnId": "t2_unavailable"
+        },
+        {
+          "keywords": [
+            "maaf",
+            "salah",
+            "nomor"
+          ],
+          "nextTurnId": "t-end_wrong_number"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Iya, betul. — Yes, that's right. Ini rumah Bapak Budi. — This is Mr. Budi's house. Anda dengan siapa? — Who is this?"
+    },
+    "t3_when_return": {
+      "id": "t3_when_return",
+      "prompt": "Sepertinya dia akan kembali sekitar jam dua siang nanti. Ada yang perlu saya sampaikan?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "tinggalkan",
+            "titip",
+            "tolong"
+          ],
+          "nextTurnId": "t4_ask_message"
+        },
+        {
+          "keywords": [
+            "telepon",
+            "kembali",
+            "nanti",
+            "lagi"
+          ],
+          "nextTurnId": "t4_call_back"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sepertinya dia akan kembali sekitar jam dua siang nanti. — It seems he will be back around two in the afternoon. Ada yang perlu saya sampaikan? — Is there anything I need to convey?"
+    },
+    "t3_leave_message": {
+      "id": "t3_leave_message",
+      "prompt": "Baik, silakan sampaikan pesan Anda. Akan saya catat.",
+      "branches": [
+        {
+          "keywords": [
+            "bilang",
+            "katakan",
+            "telepon",
+            "saya",
+            "hubungi",
+            "penting",
+            "pesan"
+          ],
+          "nextTurnId": "t4_message_received"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, silakan sampaikan pesan Anda. — please convey your message. Akan saya catat. — I will write it down."
+    },
+    "t4_ask_message": {
+      "id": "t4_ask_message",
+      "prompt": "Baik, silakan sampaikan pesan Anda. Akan saya catat.",
+      "branches": [
+        {
+          "keywords": [
+            "bilang",
+            "katakan",
+            "telepon",
+            "saya",
+            "hubungi",
+            "penting",
+            "pesan"
+          ],
+          "nextTurnId": "t4_message_received"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, silakan sampaikan pesan Anda. — please convey your message. Akan saya catat. — I will write it down."
+    },
+    "t4_message_received": {
+      "id": "t4_message_received",
+      "prompt": "Baik, akan saya sampaikan pesannya kepada Bapak Budi. Ada lagi yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "terima kasih",
+            "itu",
+            "saja"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, akan saya sampaikan pesannya kepada Bapak Budi. — I will pass on the message to Mr. Budi. Ada lagi yang bisa saya bantu? — Is there anything else I can help with?"
+    },
+    "t4_call_back": {
+      "id": "t4_call_back",
+      "prompt": "Baik, kalau begitu silakan telepon kembali nanti. Terima kasih.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "selamat tinggal",
+            "sampai jumpa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, kalau begitu silakan telepon kembali nanti. — in that case, please call back later. Terima kasih. — Thank you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak begitu jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "ya",
+            "bisa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa diulang? — could you repeat that? Saya tidak begitu jelas. — I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Terima kasih sudah menelepon. Selamat tinggal!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama — You're welcome. Terima kasih sudah menelepon. — Thanks for calling. Selamat tinggal! — Goodbye!",
+      "isTerminal": true
+    },
+    "t-end_wrong_number": {
+      "id": "t-end_wrong_number",
+      "prompt": "Oh, maaf kalau begitu. Tidak apa-apa. Selamat tinggal!",
+      "branches": [],
+      "fallbackBranchId": "t-end_wrong_number",
+      "promptTranslation": "Oh, maaf kalau begitu. — Oh, sorry about that. Tidak apa-apa. — It's okay. Selamat tinggal! — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

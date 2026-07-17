@@ -1,0 +1,283 @@
+{
+  "id": "dlg-id-directions-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Menanyakan Arah",
+  "opening": "Permisi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Permisi, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "museum",
+            "nasional",
+            "museum nasional",
+            "arah",
+            "dimana"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mencari",
+            "lokasi",
+            "tempat"
+          ],
+          "nextTurnId": "t1_clarify"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Permisi (per-MI-si) — Excuse me, ada yang bisa saya bantu (A-da yang BI-sa sa-ya BAN-tu)? — can I help you?"
+    },
+    "t1_clarify": {
+      "id": "t1_clarify",
+      "prompt": "Baik, Anda mencari tempat spesifik apa? Mungkin saya bisa membantu.",
+      "branches": [
+        {
+          "keywords": [
+            "museum nasional",
+            "museum",
+            "nasional"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "alamat",
+            "lokasi",
+            "tujuan"
+          ],
+          "nextTurnId": "t2_general"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (BA-ik), Anda mencari (AN-da men-CA-ri) tempat spesifik (TEM-pat spe-SI-fik) apa? Mungkin (MUNG-kin) saya bisa (SA-ya BI-sa) membantu (mem-BAN-tu)."
+    },
+    "t2_general": {
+      "id": "t2_general",
+      "prompt": "Maaf, saya tidak tahu alamat yang Anda sebutkan. Apakah ada landmark terdekat atau nama lain?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tidak ada",
+            "bukan"
+          ],
+          "nextTurnId": "t-end_no_info"
+        },
+        {
+          "keywords": [
+            "museum nasional",
+            "museum"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (MA-af), saya tidak tahu (SA-ya TI-dak TA-hu) alamat (A-la-mat) yang Anda (yang AN-da) sebutkan (se-BUT-kan). Apakah (A-pa-kah) ada landmark (A-da LAND-mark) terdekat (ter-DE-kat) atau (A-tau) nama lain (NA-ma LA-in)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Museum Nasional. Dari sini, Anda bisa lurus saja sekitar 500 meter sampai ketemu lampu merah kedua. Setelah itu, belok kiri. Museumnya ada di sebelah kanan jalan.",
+      "branches": [
+        {
+          "keywords": [
+            "berapa",
+            "jauh",
+            "lama",
+            "jarak"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "transportasi",
+            "transport",
+            "naik",
+            "apa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "kaki",
+            "jalan kaki",
+            "bisa"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, Museum Nasional (mu-SE-um na-sio-NAL). Dari sini (DA-ri SI-ni), Anda bisa lurus (AN-da BI-sa LU-rus) saja sekitar 500 meter sampai ketemu lampu merah kedua (sam-PAI ke-TE-mu LAM-pu ME-rah ke-DU-a). Setelah itu (se-TE-lah I-tu), belok kiri (BE-lok KI-ri). Museumnya ada di sebelah kanan jalan (mu-SE-um-nya A-da di se-BE-lah KA-nan JA-lan)."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tidak terlalu jauh kok, sekitar 10-15 menit jalan kaki dari sini. Kalau naik kendaraan umum mungkin lebih cepat sedikit.",
+      "branches": [
+        {
+          "keywords": [
+            "kendaraan",
+            "umum",
+            "naik apa",
+            "transjakarta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "landmark",
+            "tanda",
+            "ciri",
+            "jalan kaki"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tidak (TI-dak) terlalu (ter-LA-lu) jauh (JA-uh) kok (KOK), sekitar (se-KI-tar) 10-15 menit (SE-pu-luh LI-ma be-las me-NIT) jalan kaki (JA-lan KA-ki) dari sini (DA-ri SI-ni). Kalau (KA-lau) naik (NA-ik) kendaraan umum (ken-DA-ra-an U-mum) mungkin (MUNG-kin) lebih cepat (LE-bih CE-pat) sedikit (se-DI-kit)."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Anda bisa naik TransJakarta dari halte terdekat. Turun di halte Monas, lalu tinggal jalan kaki sebentar ke museum.",
+      "branches": [
+        {
+          "keywords": [
+            "halte",
+            "dimana",
+            "dekat",
+            "transjakarta"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "jalan kaki",
+            "jalan",
+            "lebih suka",
+            "kalau",
+            "prefer"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anda bisa (AN-da BI-sa) naik (NA-ik) TransJakarta (TRAN-ja-kar-ta) dari halte (DA-ri HAL-te) terdekat (ter-DE-kat). Turun (TU-run) di halte (di HAL-te) Monas (MO-nas), lalu (LA-lu) tinggal (TING-gal) jalan kaki (JA-lan KA-ki) sebentar (se-BEN-tar) ke museum (ke mu-SE-um)."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, kalau jalan kaki, setelah belok kiri di lampu merah, Anda akan melewati kantor pos besar di sebelah kiri. Museumnya persis setelah itu, di seberang Monumen Nasional.",
+      "branches": [
+        {
+          "keywords": [
+            "kantor pos",
+            "monas",
+            "monumen",
+            "dimana"
+          ],
+          "nextTurnId": "t5_clarify"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke",
+            "jelas",
+            "mengerti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (BA-ik), kalau jalan kaki (ka-lau JA-lan KA-ki), setelah belok kiri (se-TE-lah BE-lok KI-ri) di lampu merah (di LAM-pu ME-rah), Anda akan melewati (AN-da A-kan me-LE-wa-ti) kantor pos besar (KAN-tor POS be-SAR) di sebelah kiri (di se-BE-lah KI-ri). Museumnya persis setelah itu (mu-SE-um-nya PER-sis se-TE-lah I-tu), di seberang Monumen Nasional (di se-BE-rang MO-nu-men Na-sio-NAL)."
+    },
+    "t5_clarify": {
+      "id": "t5_clarify",
+      "prompt": "Kantor pos besar itu berwarna oranye dan terlihat jelas dari jalan. Monas itu monumen tugu di lapangan besar, museumnya di seberangnya.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke",
+            "jelas",
+            "mengerti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kantor pos (KAN-tor POS) besar (be-SAR) itu berwarna (I-tu ber-WAR-na) oranye (O-ran-ye) dan (DAN) terlihat (ter-LI-hat) jelas (JE-las) dari jalan (DA-ri JA-lan). Monas (MO-nas) itu monumen (I-tu MO-nu-men) tugu (TU-gu) di lapangan (di LA-pa-ngan) besar (be-SAR), museumnya (mu-SE-um-nya) di seberangnya (di se-BE-rang-nya)."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Halte TransJakarta terdekat ada di ujung jalan ini, sekitar 100 meter dari sini, di seberang toko kelontong.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke",
+            "jelas",
+            "mengerti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Halte (HAL-te) TransJakarta (TRAN-ja-kar-ta) terdekat (ter-DE-kat) ada (A-da) di ujung (di U-jung) jalan ini (JA-lan I-ni), sekitar (se-KI-tar) 100 meter (SE-ra-tus ME-ter) dari sini (DA-ri SI-ni), di seberang (di se-BE-rang) toko kelontong (TO-ko ke-LON-tong)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (MA-af), bisa diulang (BI-sa di-U-lang)? Saya kurang jelas (SA-ya KU-rang JE-las)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalananmu menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (SA-ma-SA-ma). Semoga perjalananmu menyenangkan (se-MO-ga per-ja-LA-nan-mu me-nye-NANG-kan)!",
+      "isTerminal": true
+    },
+    "t-end_no_info": {
+      "id": "t-end_no_info",
+      "prompt": "Oh, begitu. Maaf saya tidak bisa banyak membantu kalau begitu. Semoga Anda menemukan apa yang dicari.",
+      "branches": [],
+      "fallbackBranchId": "t-end_no_info",
+      "promptTranslation": "Oh (OH), begitu (be-GI-tu). Maaf (MA-af) saya tidak (SA-ya TI-dak) bisa (BI-sa) banyak (BA-nyak) membantu (mem-BAN-tu) kalau begitu (KA-lau be-GI-tu). Semoga (se-MO-ga) Anda (AN-da) menemukan (me-ne-MU-kan) apa (A-pa) yang dicari (yang di-CA-ri).",
+      "isTerminal": true
+    }
+  }
+}

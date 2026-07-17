@@ -1,0 +1,194 @@
+{
+  "id": "dlg-en-small-talk-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Small Talk: Weekend",
+  "opening": "Hi there! How was your weekend?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hi there! How was your weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "nice"
+          ],
+          "nextTurnId": "t2_positive"
+        },
+        {
+          "keywords": [
+            "okay",
+            "fine",
+            "not great",
+            "bad"
+          ],
+          "nextTurnId": "t2_negative"
+        },
+        {
+          "keywords": [
+            "",
+            "hello",
+            "hi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hi there! How was your weekend?"
+    },
+    "t2_positive": {
+      "id": "t2_positive",
+      "prompt": "That's great! What did you do?",
+      "branches": [
+        {
+          "keywords": [
+            "relax",
+            "rest",
+            "nothing"
+          ],
+          "nextTurnId": "t3_relax_ask_hobby"
+        },
+        {
+          "keywords": [
+            "movie",
+            "film",
+            "food",
+            "restaurant",
+            "sport",
+            "read",
+            "walk",
+            "hike"
+          ],
+          "nextTurnId": "t3_activity_followup"
+        },
+        {
+          "keywords": [
+            "",
+            "something"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's great! What did you do?"
+    },
+    "t2_negative": {
+      "id": "t2_negative",
+      "prompt": "Oh, I'm sorry to hear that. I hope this week is better!",
+      "branches": [
+        {
+          "keywords": [
+            "thank you",
+            "yes",
+            "i hope so"
+          ],
+          "nextTurnId": "t4_closing"
+        },
+        {
+          "keywords": [
+            "",
+            "bye"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, I'm sorry to hear that. I hope this week is better!"
+    },
+    "t3_relax_ask_hobby": {
+      "id": "t3_relax_ask_hobby",
+      "prompt": "Relaxing is good sometimes! Do you have any hobbies?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "read",
+            "books",
+            "sport",
+            "game"
+          ],
+          "nextTurnId": "t4_closing"
+        },
+        {
+          "keywords": [
+            "",
+            "hobby"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Relaxing is good sometimes! Do you have any hobbies?"
+    },
+    "t3_activity_followup": {
+      "id": "t3_activity_followup",
+      "prompt": "That sounds fun! What did you like about it?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "interesting",
+            "yummy"
+          ],
+          "nextTurnId": "t4_closing"
+        },
+        {
+          "keywords": [
+            "",
+            "it was"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds fun! What did you like about it?"
+    },
+    "t4_closing": {
+      "id": "t4_closing",
+      "prompt": "Well, it was nice chatting with you! I have to go now. Have a good day!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "bye",
+            "goodbye",
+            "thanks",
+            "you too"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, it was nice chatting with you! I have to go now. Have a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, can you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "ok"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, can you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You too! Bye for now.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You too! Bye for now.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "id": "dlg-es-airport-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Asistencia en el Aeropuerto",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy? ¿Viene para facturar, tiene alguna pregunta sobre un vuelo o necesita asistencia con algo más?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy? ¿Viene para facturar, tiene alguna pregunta sobre un vuelo o necesita asistencia con algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "facturar",
+            "registrar",
+            "checkin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "vuelo",
+            "retraso",
+            "estado",
+            "informacion"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "equipaje",
+            "perdido",
+            "maleta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! ¿En qué puedo ayudarle hoy? ¿Viene para facturar, tiene alguna pregunta sobre un vuelo o necesita asistencia con algo más? — Good morning! How can I help you today? Are you here to check in, do you have a question about a flight, or do you need assistance with something else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he entendido bien. ¿Podría repetírmelo, por favor? Intente usar palabras clave como 'facturar', 'vuelo' o 'equipaje'.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, no le he entendido bien. ¿Podría repetírmelo, por favor? Intente usar palabras clave como 'facturar', 'vuelo' o 'equipaje'. — I'm sorry, I didn't quite understand you. Could you please repeat it? Try using keywords like 'check in', 'flight' or 'luggage'."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entendido. Para facturar, ¿podría mostrarme su pasaporte y su billete electrónico, por favor? Si tiene equipaje para documentar, lo pesaremos ahora.",
+      "branches": [
+        {
+          "keywords": [
+            "aqui",
+            "tenga",
+            "pasaporte",
+            "billete",
+            "digital",
+            "movil",
+            "telefono"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "problema",
+            "olvide",
+            "perdi"
+          ],
+          "nextTurnId": "t-problem-doc"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. Para facturar, ¿podría mostrarme su pasaporte y su billete electrónico, por favor? Si tiene equipaje para documentar, lo pesaremos ahora. — Understood. To check in, could you please show me your passport and your e-ticket? If you have luggage to check, we'll weigh it now."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Claro. Para darle información precisa sobre su vuelo, ¿cuál es el número de vuelo o el destino, por favor? Así podré verificar el estado y cualquier posible incidencia.",
+      "branches": [
+        {
+          "keywords": [
+            "numero",
+            "vuelo",
+            "destino",
+            "madrid",
+            "paris",
+            "estado",
+            "retraso",
+            "cancelado"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro. Para darle información precisa sobre su vuelo, ¿cuál es el número de vuelo o el destino, por favor? Así podré verificar el estado y cualquier posible incidencia. — Certainly. To give you precise information about your flight, what is the flight number or destination, please? That way I can check the status and any possible incidents."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Lamento mucho escuchar eso. Necesitaremos rellenar un parte de irregularidad. ¿Podría describirme su equipaje? Color, marca, tamaño, y si llevaba alguna identificación o algo de valor.",
+      "branches": [
+        {
+          "keywords": [
+            "negra",
+            "azul",
+            "roja",
+            "maleta",
+            "mochila",
+            "grande",
+            "pequena",
+            "identificacion",
+            "rigida",
+            "blanda"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lamento mucho escuchar eso. Necesitaremos rellenar un parte de irregularidad. ¿Podría describirme su equipaje? Color, marca, tamaño, y si llevaba alguna identificación o algo de valor. — I'm very sorry to hear that. We'll need to fill out a report of irregularity. Could you describe your luggage? Color, brand, size, and if it had any identification or valuables."
+    },
+    "t-problem-doc": {
+      "id": "t-problem-doc",
+      "prompt": "Entiendo. Sin su documentación de viaje, no puedo proceder con el facturado desde aquí. Le sugiero que se dirija al mostrador de su aerolínea o a información para obtener ayuda específica con sus documentos. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Entiendo. Sin su documentación de viaje, no puedo proceder con el facturado desde aquí. Le sugiero que se dirija al mostrador de su aerolínea o a información para obtener ayuda específica con sus documentos. Que tenga un buen día. — I understand. Without your travel documentation, I cannot proceed with check-in from here. I suggest you go to your airline's counter or information desk for specific help with your documents. Have a good day.",
+      "isTerminal": true
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. Aquí tiene su tarjeta de embarque. Su puerta de embarque es la B12 y el embarque comienza a las 14:30. Si tiene alguna consulta sobre la sala VIP o un posible cambio de puerta, la información está en su billete o puede consultar una pantalla. ¿Algo más en lo que pueda ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "vale",
+            "no",
+            "ninguna",
+            "puerta",
+            "cambio",
+            "sala",
+            "vip",
+            "lounge"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. Aquí tiene su tarjeta de embarque. Su puerta de embarque es la B12 y el embarque comienza a las 14:30. Si tiene alguna consulta sobre la sala VIP o un posible cambio de puerta, la información está en su billete o puede consultar una pantalla. ¿Algo más en lo que pueda ayudarle? — Perfect. Here is your boarding pass. Your boarding gate is B12 and boarding begins at 2:30 PM. If you have any questions about the VIP lounge or a possible gate change, the information is on your ticket or you can check a screen. Is there anything else I can help you with?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gracias. Veo que su vuelo (número [XYZ]) con destino a [destino] tiene un retraso estimado de dos horas debido a condiciones meteorológicas adversas. Deberá dirigirse a la puerta G7 para más información sobre opciones de reubicación o posibles compensaciones. Para esos detalles, es crucial hablar con el personal de su aerolínea allí mismo. ¿Desea alguna otra aclaración general?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "vale",
+            "ir",
+            "entendido",
+            "no",
+            "retraso",
+            "compensacion",
+            "opciones",
+            "quehago"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gracias. Veo que su vuelo (número [XYZ]) con destino a [destino] tiene un retraso estimado de dos horas debido a condiciones meteorológicas adversas. Deberá dirigirse a la puerta G7 para más información sobre opciones de reubicación o posibles compensaciones. Para esos detalles, es crucial hablar con el personal de su aerolínea allí mismo. ¿Desea alguna otra aclaración general? — Thank you. I see that your flight (number [XYZ]) to [destination] has an estimated two-hour delay due to adverse weather conditions. You should go to gate G7 for more information on rebooking options or possible compensation. For those details, it is crucial to speak with your airline staff right there. Do you want any other general clarification?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Perfecto. Hemos registrado su descripción. Le proporciono un número de referencia para su seguimiento. Esperamos encontrarla pronto. Deberá rellenar el formulario completo en el mostrador de objetos perdidos para proceder con la búsqueda. ¿Algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "no",
+            "vale",
+            "entendido"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto. Hemos registrado su descripción. Le proporciono un número de referencia para su seguimiento. Esperamos encontrarla pronto. Deberá rellenar el formulario completo en el mostrador de objetos perdidos para proceder con la búsqueda. ¿Algo más? — Perfect. We've registered your description. I'll provide you with a reference number for tracking. We hope to find it soon. You'll need to fill out the complete form at the lost and found desk to proceed with the search. Anything else?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un buen día y esperamos que todo se resuelva pronto. ¡Hasta la vista!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De nada. Que tenga un buen día y esperamos que todo se resuelva pronto. ¡Hasta la vista! — You're welcome. Have a good day, and we hope everything gets resolved soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "dlg-fr-restaurant-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Commander au restaurant",
+  "opening": "Bonsoir ! Bienvenue. Êtes-vous prêt(e) à commander, ou souhaitez-vous encore quelques instants pour parcourir le menu ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonsoir ! Êtes-vous prêt(e) à commander, ou souhaitez-vous encore quelques instants pour parcourir le menu ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "prêt",
+            "commander"
+          ],
+          "nextTurnId": "t2_order"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasencore",
+            "quelquesinstants",
+            "menu"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "recommander",
+            "conseil",
+            "spécial",
+            "végétarien",
+            "allergie"
+          ],
+          "nextTurnId": "t2_recommend"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonsoir ! Êtes-vous prêt(e) à commander, ou souhaitez-vous encore quelques instants pour parcourir le menu ? - Good evening! Are you ready to order, or would you like a few more moments to look over the menu?"
+    },
+    "t2_order": {
+      "id": "t2_order",
+      "prompt": "Très bien. Que puis-je vous servir ?",
+      "branches": [
+        {
+          "keywords": [
+            "plat",
+            "choix",
+            "prendrai",
+            "voulais"
+          ],
+          "nextTurnId": "t3_confirm_item"
+        },
+        {
+          "keywords": [
+            "recommander",
+            "suggestion",
+            "spécial",
+            "végétarien",
+            "allergie"
+          ],
+          "nextTurnId": "t2_recommend"
+        },
+        {
+          "keywords": [
+            "",
+            "merci"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Que puis-je vous servir ? - Alright. What can I get for you?"
+    },
+    "t2_recommend": {
+      "id": "t2_recommend",
+      "prompt": "Bien sûr. Nous avons le Bar en croûte de sel en spécialité et le Magret de canard. Pour les végétariens, une excellente salade composée. Des allergies ou préférences particulières ?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "poisson"
+          ],
+          "nextTurnId": "t3_confirm_item"
+        },
+        {
+          "keywords": [
+            "merci",
+            "daccord",
+            "ok",
+            "autre"
+          ],
+          "nextTurnId": "t2_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr. Nous avons le Bar en croûte de sel en spécialité et le Magret de canard. Pour les végétariens, une excellente salade composée. Des allergies ou préférences particulières ? - Certainly. We have the Salt-crusted sea bass as a specialty and the Duck Breast. For vegetarians, an excellent mixed salad. Any allergies or particular preferences?"
+    },
+    "t3_confirm_item": {
+      "id": "t3_confirm_item",
+      "prompt": "Excellent choix ! Et avec ça, souhaitez-vous une boisson, un dessert ou autre chose ?",
+      "branches": [
+        {
+          "keywords": [
+            "boisson",
+            "eau",
+            "vin",
+            "bière"
+          ],
+          "nextTurnId": "t4_meal_end"
+        },
+        {
+          "keywords": [
+            "",
+            "merci"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choix ! Et avec ça, souhaitez-vous une boisson, un dessert ou autre chose ? - Excellent choice! And with that, would you like a drink, a dessert, or anything else?"
+    },
+    "t4_meal_end": {
+      "id": "t4_meal_end",
+      "prompt": "Parfait. J'espère que vous avez apprécié votre repas. Puis-je vous apporter l'addition ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "addition",
+            "payer"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait. J'espère que vous avez apprécié votre repas. Puis-je vous apporter l'addition ? - Perfect. I hope you enjoyed your meal. Can I bring you the bill?"
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "Voici l'addition. Souhaitez-vous régler par carte ou en espèces ? Le service est inclus, donc le pourboire est à votre discrétion.",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "cb"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "pourboire"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Voici l'addition. Souhaitez-vous régler par carte ou en espèces ? Le service est inclus, donc le pourboire est à votre discrétion. - Here's the bill. Would you like to pay by card or cash? Service is included, so tipping is at your discretion."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? - Sorry? Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup pour votre visite et excellente soirée ! Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci beaucoup pour votre visite et excellente soirée ! Au revoir ! - Thank you very much for your visit and have a great evening! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

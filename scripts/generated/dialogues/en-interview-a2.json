@@ -1,0 +1,145 @@
+{
+  "id": "dlg-en-interview-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Job Interview",
+  "opening": "Hello! Welcome. Please tell me a little about yourself.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! Welcome. Please tell me a little about yourself.",
+      "branches": [
+        {
+          "keywords": [
+            "student",
+            "work",
+            "job",
+            "experience"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hobbies",
+            "interests",
+            "like"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "mynameis",
+            "iam"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello! Welcome. Please tell me a little about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Thank you. What kind of work experience do you have?",
+      "branches": [
+        {
+          "keywords": [
+            "office",
+            "admin",
+            "assistant"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "none",
+            "new"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. What kind of work experience do you have?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "That's interesting. And what about your work experience?",
+      "branches": [
+        {
+          "keywords": [
+            "office",
+            "admin",
+            "assistant"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "none",
+            "new"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's interesting. And what about your work experience?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Good. What are your strengths for this job?",
+      "branches": [
+        {
+          "keywords": [
+            "hardworking",
+            "reliable",
+            "punctual"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. What are your strengths for this job?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Okay, thank you. What are your strengths?",
+      "branches": [
+        {
+          "keywords": [
+            "hardworking",
+            "reliable",
+            "punctual"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, thank you. What are your strengths?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I did not understand. Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I did not understand. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for your time. We will contact you soon. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your time. We will contact you soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "dlg-it-doctor-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Visita Medica",
+  "opening": "Buongiorno, signore/signora. Prego, si accomodi. Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, signore/signora. Prego, si accomodi. Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "dolore",
+            "sento",
+            "male",
+            "problema"
+          ],
+          "nextTurnId": "t2_symptoms"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Good morning), signore/signora (sir/madam). Prego, si accomodi (Please, have a seat). Come posso aiutarla (How can I help you) oggi (today)?"
+    },
+    "t2_symptoms": {
+      "id": "t2_symptoms",
+      "prompt": "Mi dica, che sintomi ha e da quando?",
+      "branches": [
+        {
+          "keywords": [
+            "febbre",
+            "tosse",
+            "raffreddore",
+            "stanchezza",
+            "nausea",
+            "vomito",
+            "diarrea",
+            "malessere"
+          ],
+          "nextTurnId": "t3_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dica (Tell me), che sintomi (what symptoms) ha (do you have) e da quando (and since when)?"
+    },
+    "t3_details": {
+      "id": "t3_details",
+      "prompt": "Capisco. Ha altre patologie o è allergico a qualche farmaco?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nessuna",
+            "non",
+            "allergie"
+          ],
+          "nextTurnId": "t4_prescription"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (I understand). Ha altre patologie (Do you have other conditions) o è allergico (or are you allergic) a qualche farmaco (to any medication)?"
+    },
+    "t4_prescription": {
+      "id": "t4_prescription",
+      "prompt": "Bene. Le prescrivo questo farmaco. Lo prenda per X giorni, due volte al giorno. Se non migliora, mi contatti. Vuole che le spieghi altro?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "spieghi",
+            "quando",
+            "come",
+            "effetti",
+            "domande"
+          ],
+          "nextTurnId": "t5_clarification"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie",
+            "tutto",
+            "chiaro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bene (Good). Le prescrivo (I prescribe you) questo farmaco (this medication). Lo prenda (Take it) per X giorni (for X days), due volte al giorno (twice a day). Se non migliora (If it doesn't improve), mi contatti (contact me). Vuole che le spieghi (Do you want me to explain) altro (anything else)?"
+    },
+    "t5_clarification": {
+      "id": "t5_clarification",
+      "prompt": "Dunque, lo prenda dopo i pasti. Gli effetti collaterali sono rari, ma se nota qualcosa di strano, mi richiami. È tutto chiaro adesso?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "grazie",
+            "tutto",
+            "chiaro",
+            "arrivederci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dunque (So), lo prenda (take it) dopo i pasti (after meals). Gli effetti collaterali (Side effects) sono rari (are rare), ma se nota (but if you notice) qualcosa di strano (anything strange), mi richiami (call me back). È tutto chiaro (Is everything clear) adesso (now)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (Excuse me), non ho capito bene (I didn't quite understand). Potrebbe ripetere (Could you repeat), per favore (please)?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Molto bene. Arrivederci e si rimetta presto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Molto bene (Very good). Arrivederci (Goodbye) e si rimetta presto (and get well soon)!",
+      "isTerminal": true
+    }
+  }
+}

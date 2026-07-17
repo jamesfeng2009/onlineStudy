@@ -1,0 +1,191 @@
+{
+  "id": "dlg-fr-small-talk-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Petite discussion amicale",
+  "opening": "Bonjour ! Comment allez-vous ? J'espère que vous passez une bonne soirée.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment allez-vous ? J'espère que vous passez une bonne soirée.",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "super",
+            "ça va",
+            "génial"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "fatigué",
+            "pas mal",
+            "comme ci comme ça",
+            "un peu"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Comment allez-vous ? (bon-zhoor! ko-mon ta-lé-voo?) — Hello! How are you? I hope you're having a good evening."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, c'est super ! Qu'est-ce qui vous amène ici, ou avez-vous fait quelque chose d'intéressant ce week-end ?",
+      "branches": [
+        {
+          "keywords": [
+            "travail",
+            "collègue",
+            "événement",
+            "conférence"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "amis",
+            "fête",
+            "rencontrer",
+            "social"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "voyage",
+            "visite",
+            "vacances",
+            "excursion"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, c'est super ! (ah, say su-pair!) — Oh, that's great! What brings you here, or did you do anything interesting this weekend?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accord, je comprends. J'espère que ça ira mieux. Est-ce que vous préférez un verre ou un petit coin plus calme ?",
+      "branches": [
+        {
+          "keywords": [
+            "boire",
+            "verre",
+            "boisson",
+            "rafraîchir"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, je comprends. (da-kor, zhuh kom-pron) — Okay, I understand. I hope it gets better. Would you prefer a drink or a quieter spot?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Intéressant ! Dans quel domaine travaillez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "informatique",
+            "technologie",
+            "développement",
+            "numérique"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting! What field do you work in?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Super ! Vous connaissez beaucoup de monde ici, ou c'est votre première fois ?",
+      "branches": [
+        {
+          "keywords": [
+            "amis",
+            "connais",
+            "personnes",
+            "collègues"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! Do you know many people here, or is it your first time?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, le voyage, c'est passionnant ! Où êtes-vous allé(e) ?",
+      "branches": [
+        {
+          "keywords": [
+            "paris",
+            "france",
+            "europe",
+            "italie",
+            "espagne"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, travel, that's exciting! Where did you go?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Pas de problème, suivez-moi, je peux vous aider à trouver ça. En tout cas, ça a été un plaisir de discuter avec vous !",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "No problem, follow me, I can help you find that. Anyway, it's been a pleasure talking with you!"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Très intéressant ! J'apprécie vraiment de discuter avec vous. Il faut que j'y aille, mais j'espère qu'on se reverra !",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Very interesting! I really enjoyed talking with you. I have to go, but I hope we'll see each other again!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Désolé, je n'ai pas bien compris. (day-zo-lay, zhuh n'ay pah byan kom-pree) — Sorry, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Au revoir et à bientôt ! (o ruh-vwar ay ah byan-to) — Goodbye and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

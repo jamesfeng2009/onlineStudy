@@ -1,0 +1,182 @@
+{
+  "id": "dlg-en-bank-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "International Funds Transfer",
+  "opening": "Good morning! How may I assist you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! How may I assist you today?",
+      "branches": [
+        {
+          "keywords": [
+            "transfer",
+            "sendmoney",
+            "internationaltransfer",
+            "remittance"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "account",
+            "openaccount",
+            "atm",
+            "pin",
+            "reset"
+          ],
+          "nextTurnId": "t-other-service"
+        },
+        {
+          "keywords": [
+            "",
+            "hello"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! How may I assist you today?"
+    },
+    "t-other-service": {
+      "id": "t-other-service",
+      "prompt": "For account openings, ATM issues, or PIN resets, please consult our specialists at the information desk. Is there anything else I can assist you with directly?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "nothing"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "yes",
+            "somethingelse"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For account openings, ATM issues, or PIN resets, please consult our specialists at the information desk. Is there anything else I can assist you with directly?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right then, an international transfer. Could you specify the destination country and whether it's a singular transaction or a recurring remittance? Also, are you keen on details regarding fees, exchange rates, or the transfer duration?",
+      "branches": [
+        {
+          "keywords": [
+            "uk",
+            "germany",
+            "canada",
+            "usa",
+            "onetime",
+            "regular",
+            "amount",
+            "details"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right then, an international transfer. Could you specify the destination country and whether it's a singular transaction or a recurring remittance? Also, are you keen on details regarding fees, exchange rates, or the transfer duration?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Understood. Our international transfers typically involve a nominal flat processing fee, dynamically updated exchange rates, and a clearance time of one to five business days. Do you have the beneficiary's complete banking details, such as their IBAN and SWIFT/BIC code, and would you like a detailed, no-obligation quote outlining the current mid-market rate and our operational margin?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "quote",
+            "details",
+            "haveit",
+            "proceed"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "donthave",
+            "needhelp",
+            "justinfo",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. Our international transfers typically involve a nominal flat processing fee, dynamically updated exchange rates, and a clearance time of one to five business days. Do you have the beneficiary's complete banking details, such as their IBAN and SWIFT/BIC code, and would you like a detailed, no-obligation quote outlining the current mid-market rate and our operational margin?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excellent. If you're content with the terms and ready to proceed, I can initiate the transfer process forthwith. Please have your identification and the requisite funds available. We'll finalize the particulars momentarily.",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "proceed",
+            "yes",
+            "start"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. If you're content with the terms and ready to proceed, I can initiate the transfer process forthwith. Please have your identification and the requisite funds available. We'll finalize the particulars momentarily."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I apologize, I didn't quite catch that. Could you please rephrase your request or articulate it a little more clearly?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat",
+            "tryagain"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, I didn't quite catch that. Could you please rephrase your request or articulate it a little more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfect. We'll ensure that's handled efficiently for you. Thank you for choosing to bank with us today, and do have a most pleasant day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. We'll ensure that's handled efficiently for you. Thank you for choosing to bank with us today, and do have a most pleasant day!",
+      "isTerminal": true
+    }
+  }
+}

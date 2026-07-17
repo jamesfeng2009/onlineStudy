@@ -1,0 +1,110 @@
+{
+  "id": "dlg-id-hotel-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Pendaftaran Hotel",
+  "opening": "Selamat sore. Ada yang bisa saya bantu? Apakah Anda sudah membuat reservasi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat sore. Ada yang bisa saya bantu? Apakah Anda sudah membuat reservasi?",
+      "branches": [
+        {
+          "keywords": [
+            "reservasi",
+            "nama",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat sore (Se-la-mat so-re) — Good afternoon. How may I help you? Do you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, atas nama Bapak/Ibu [Nama Anda]. Bisakah saya minta kartu identitas Anda untuk pendaftaran?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "kartu",
+            "paspor",
+            "identitas"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik) — Okay, under the name Mr./Ms. [Your Name]. May I have your ID card for registration?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Pembayaran akan dilakukan dengan kartu atau tunai? Dan apakah ada preferensi kamar, misalnya kamar dengan pemandangan kota?",
+      "branches": [
+        {
+          "keywords": [
+            "kartu",
+            "kredit",
+            "debit"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Te-ri-ma ka-sih) — Thank you. Will payment be by card or cash? And do you have any room preferences, for example, a room with a city view?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sip, semua sudah tercatat. Omong-omong, apakah Anda ingin menambahkan sarapan untuk besok pagi? Sarapan disajikan mulai pukul 7 pagi.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mau",
+            "tambah"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sip — Great, everything is recorded. By the way, would you like to add breakfast for tomorrow morning? Breakfast is served starting at 7 AM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sempurna. Ini kartu kunci Anda. Kamar Anda di lantai tiga, nomor 305. Selamat menikmati waktu Anda bersama kami!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Perfect. Here is your key card. Your room is on the third floor, number 305. Enjoy your stay with us!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af) — Sorry, could you repeat that?"
+    }
+  }
+}

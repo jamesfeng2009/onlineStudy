@@ -1,0 +1,417 @@
+{
+  "id": "dlg-en-transport-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Public Transport Enquiry",
+  "opening": "Good morning/afternoon. How can I assist you with your journey today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning/afternoon. How can I assist you with your journey today?",
+      "branches": [
+        {
+          "keywords": [
+            "buyticket",
+            "ticket",
+            "destination",
+            "travelto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "delay",
+            "information",
+            "schedule",
+            "platform"
+          ],
+          "nextTurnId": "t3_info"
+        },
+        {
+          "keywords": [
+            "travelcard",
+            "pass",
+            "generalquery"
+          ],
+          "nextTurnId": "t3_card"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning/afternoon. How can I assist you with your journey today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, so you're planning to head to [Destination]. Are you looking for a single or a return ticket, and do you have a specific time in mind?",
+      "branches": [
+        {
+          "keywords": [
+            "single",
+            "oneway",
+            "returnticket",
+            "roundtrip",
+            "today",
+            "tomorrow",
+            "nextweek"
+          ],
+          "nextTurnId": "t4_ticket_details"
+        },
+        {
+          "keywords": [
+            "howmuch",
+            "price",
+            "cost",
+            "fare"
+          ],
+          "nextTurnId": "t4_ticket_details_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, so you're planning to head to [Destination]. Are you looking for a single or a return ticket, and do you have a specific time in mind?"
+    },
+    "t3_info": {
+      "id": "t3_info",
+      "prompt": "Certainly. Which service or destination are you enquiring about specifically? We've had a few minor disruptions this morning, so it's always best to check.",
+      "branches": [
+        {
+          "keywords": [
+            "london",
+            "express",
+            "slowtrain",
+            "specifictrain",
+            "platform"
+          ],
+          "nextTurnId": "t5_info_detail"
+        },
+        {
+          "keywords": [
+            "anydelays",
+            "generalstatus",
+            "currentsituation"
+          ],
+          "nextTurnId": "t5_info_general"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Which service or destination are you enquiring about specifically? We've had a few minor disruptions this morning, so it's always best to check."
+    },
+    "t3_card": {
+      "id": "t3_card",
+      "prompt": "Of course. Are you interested in a daily, weekly, or monthly travel card, or perhaps a specific zone pass? We also offer discounts for certain professions or age groups.",
+      "branches": [
+        {
+          "keywords": [
+            "daily",
+            "weekly",
+            "monthly",
+            "yearly"
+          ],
+          "nextTurnId": "t5_card_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. Are you interested in a daily, weekly, or monthly travel card, or perhaps a specific zone pass? We also offer discounts for certain professions or age groups."
+    },
+    "t4_ticket_details": {
+      "id": "t4_ticket_details",
+      "prompt": "Understood. For a [single/return] ticket to [Destination], an off-peak standard fare would be £35.50, while an Anytime Super Off-Peak could set you back £58. If you're looking for more flexibility, the open return is £70. Which of these appeals to you most?",
+      "branches": [
+        {
+          "keywords": [
+            "offpeak",
+            "standard",
+            "35.50"
+          ],
+          "nextTurnId": "t6_confirm_payment"
+        },
+        {
+          "keywords": [
+            "transfers",
+            "route",
+            "stops"
+          ],
+          "nextTurnId": "t5_route_clarify"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. For a [single/return] ticket to [Destination], an off-peak standard fare would be £35.50, while an Anytime Super Off-Peak could set you back £58. If you're looking for more flexibility, the open return is £70. Which of these appeals to you most?"
+    },
+    "t4_ticket_details_price": {
+      "id": "t4_ticket_details_price",
+      "prompt": "The fare can vary quite a bit, depending on your chosen destination, whether it's a single or return, and if you're travelling during peak or off-peak hours. Could you elaborate on those details so I can give you an accurate quote?",
+      "branches": [
+        {
+          "keywords": [
+            "single",
+            "return",
+            "peak",
+            "offpeak",
+            "london",
+            "tomorrow"
+          ],
+          "nextTurnId": "t4_ticket_details"
+        },
+        {
+          "keywords": [
+            "justasking",
+            "generalidea",
+            "roughcost"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The fare can vary quite a bit, depending on your chosen destination, whether it's a single or return, and if you're travelling during peak or off-peak hours. Could you elaborate on those details so I can give you an accurate quote?"
+    },
+    "t5_info_detail": {
+      "id": "t5_info_detail",
+      "prompt": "Ah, the [Destination] service. We're currently experiencing minor delays of up to 15 minutes due to an earlier signalling fault. The next service is expected at [Time] from Platform [Number]. Do you need help finding your platform?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "platformnumber",
+            "whereisit"
+          ],
+          "nextTurnId": "t6_info_confirm"
+        },
+        {
+          "keywords": [
+            "no",
+            "thankyou",
+            "thatsfine"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the [Destination] service. We're currently experiencing minor delays of up to 15 minutes due to an earlier signalling fault. The next service is expected at [Time] from Platform [Number]. Do you need help finding your platform?"
+    },
+    "t5_info_general": {
+      "id": "t5_info_general",
+      "prompt": "Overall, the network is running fairly smoothly, albeit with a few minor hiccups on the [Line Name] line. If you're not travelling on that particular route, you should be fine. Is there a specific line or destination you had in mind?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "destination",
+            "london",
+            "express"
+          ],
+          "nextTurnId": "t5_info_detail"
+        },
+        {
+          "keywords": [
+            "no",
+            "thankyou",
+            "thatsall"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Overall, the network is running fairly smoothly, albeit with a few minor hiccups on the [Line Name] line. If you're not travelling on that particular route, you should be fine. Is there a specific line or destination you had in mind?"
+    },
+    "t5_card_details": {
+      "id": "t5_card_details",
+      "prompt": "Right, for a [type of card] [zone] travel card, that would be £X. We'll need to take a quick photo for your pass, and then you'll be all set. Are you ready to proceed?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "proceed",
+            "ready"
+          ],
+          "nextTurnId": "t6_confirm_payment"
+        },
+        {
+          "keywords": [
+            "notyet",
+            "later",
+            "thinkaboutit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, for a [type of card] [zone] travel card, that would be £X. We'll need to take a quick photo for your pass, and then you'll be all set. Are you ready to proceed?"
+    },
+    "t5_route_clarify": {
+      "id": "t5_route_clarify",
+      "prompt": "Certainly. The most direct route for that fare would involve one change at 'Central Junction', where you'd switch to the fast train. It typically shaves about 20 minutes off the journey. Does that work for you?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "soundsgood",
+            "takeit"
+          ],
+          "nextTurnId": "t6_confirm_payment"
+        },
+        {
+          "keywords": [
+            "no",
+            "direct",
+            "nonstop"
+          ],
+          "nextTurnId": "t4_ticket_details"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. The most direct route for that fare would involve one change at 'Central Junction', where you'd switch to the fast train. It typically shaves about 20 minutes off the journey. Does that work for you?"
+    },
+    "t6_confirm_payment": {
+      "id": "t6_confirm_payment",
+      "prompt": "Excellent. That'll be £[Price]. How would you like to settle the tab?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "creditcard",
+            "debitcard",
+            "contactless"
+          ],
+          "nextTurnId": "t7_payment_processed"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. That'll be £[Price]. How would you like to settle the tab?"
+    },
+    "t6_info_confirm": {
+      "id": "t6_info_confirm",
+      "prompt": "No problem. Platform [Number] is just through the main concourse and down the escalator to your left. Keep an eye on the departure boards for any last-minute changes. Is there anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "thankyou",
+            "thatsall"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "yes",
+            "question",
+            "another"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Platform [Number] is just through the main concourse and down the escalator to your left. Keep an eye on the departure boards for any last-minute changes. Is there anything else?"
+    },
+    "t7_payment_processed": {
+      "id": "t7_payment_processed",
+      "prompt": "Perfect. Payment received. Here's your ticket and a quick route map for your convenience. Have a smooth journey, and do mind the gap!",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "goodbye",
+            "cheers"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Payment received. Here's your ticket and a quick route map for your convenience. Have a smooth journey, and do mind the gap!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I apologise, I didn't quite catch that. Could you please rephrase or be a little more specific?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologise, I didn't quite catch that. Could you please rephrase or be a little more specific?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're most welcome. Safe travels!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're most welcome. Safe travels!",
+      "isTerminal": true
+    }
+  }
+}

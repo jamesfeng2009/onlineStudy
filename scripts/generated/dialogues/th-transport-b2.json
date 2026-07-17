@@ -1,0 +1,166 @@
+{
+  "id": "dlg-th-transport-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "ซื้อตั๋วรถโดยสาร",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ? จะไปที่ไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "ไปสยาม",
+            "จะไปสยาม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Mee a-rai hai chuay mai krap/ka? Ja pai tee nai krap/ka? — Hello. How can I help you? Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "รถสายนี้ผ่านย่านใจกลางเมืองหลายแห่งครับ/ค่ะ เช่น สยาม อโศก หากจะไปสยาม ตั๋วเที่ยวเดียว 25 บาท ตั๋วรายวัน 150 บาท คุณสนใจแบบไหนดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เที่ยวเดียว",
+            "ซื้อเที่ยวเดียว",
+            "เอาเที่ยวเดียว"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ต่อรถ",
+            "เปลี่ยนสาย",
+            "เปลี่ยนรถ"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rot sai nee paan yaan jai glaang meuaang laai haeng krap/ka. Chen Siam, Asoke. Haak ja pai Siam, dtua tieow deow yee-sip-haa baht, dtua rai wan roi haa-sip baht. Khun sonjai baeb nai dee krap/ka? — This bus line passes through many downtown areas, such as Siam, Asoke. If you're going to Siam, a single trip ticket is 25 baht, a day pass is 150 baht. Which type are you interested in?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "รับตั๋ว 25 บาท (เที่ยวเดียว) หรือ 150 บาท (รายวัน) ครับ/คะ? หรือมีคำถามเรื่องการเปลี่ยนสายไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ซื้อ",
+            "เอาเลย",
+            "ตกลง"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ต่อรถ",
+            "เปลี่ยนสาย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ราคาเท่าไหร่",
+            "ยืนยันราคา"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap dtua yee-sip-haa baht (tieow deow) reue roi haa-sip baht (rai wan) krap/ka? Reue mee kam-taam reueang gaan plian sai mai krap/ka? — Will you take the 25 baht ticket (single trip) or 150 baht (day pass)? Or do you have questions about transfers?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ตั๋วเที่ยวเดียวไม่รวมการเปลี่ยนสายครับ/ค่ะ แต่ถ้าใช้ตั๋วรายวัน สามารถเปลี่ยนสายได้ไม่จำกัด สถานีใหญ่ๆ ที่ต่อรถได้สะดวกคือสยาม หรืออโศกครับ/ค่ะ จะตัดสินใจซื้อตั๋วแบบไหนดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ซื้อเที่ยวเดียว",
+            "เอาเที่ยวเดียว",
+            "ไม่ต่อ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dtua tieow deow mai ruam gaan plian sai krap/ka. Dtae taa chai dtua rai wan, sa-maat plian sai dai mai jam-kat. Sataanee yai yai tee tor rot dai sa-duak keu Siam reue Asoke krap/ka. Ja dtat-sin-jai sue dtua baeb nai dee krap/ka? — A single trip ticket does not include transfers. But if you use a day pass, you can transfer unlimited times. Major convenient transfer stations are Siam or Asoke. Which type of ticket will you decide to buy?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เรียบร้อยครับ/ค่ะ เชิญจ่ายที่ช่องนี้ได้เลยนะครับ/คะ รถจะมาในอีกประมาณ 5 นาที ที่ชานชาลา 3 ครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "โอเค",
+            "เข้าใจแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Riap roy krap/ka. Chern jai tee chong nee dai loey na krap/ka. Rot ja maa nai eek pra-maan haa na-tee tee chaan-chaa-laa saam krap/ka. — Alright. Please pay at this window. The bus will arrive in about 5 minutes at platform 3."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ ไม่ค่อยเข้าใจ ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-tode na krap/ka. Mai koy kao jai. Chuay poot eek krang dai mai krap/ka? — Excuse me. I didn't quite understand. Could you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอให้เดินทางโดยสวัสดิภาพนะครับ/คะ ขอบคุณครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khor hai dern taang doy sa-wad-ti-paap na krap/ka. Khop khun krap/ka. — Have a safe journey. Thank you.",
+      "isTerminal": true
+    }
+  }
+}

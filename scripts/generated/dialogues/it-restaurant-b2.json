@@ -1,0 +1,191 @@
+{
+  "id": "dlg-it-restaurant-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Cena al Ristorante Italiano",
+  "opening": "Buonasera! Avete deciso o desiderate ancora qualche minuto per il menu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Avete deciso o desiderate ancora qualche minuto per il menu?",
+      "branches": [
+        {
+          "keywords": [
+            "pronti",
+            "deciso",
+            "ordinare"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "consiglio",
+            "cosa",
+            "specialità"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ancora",
+            "minuto",
+            "tempo",
+            "pensare"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwona-seh-ra! Ah-veh-teh deh-chee-zoh oh deh-zee-deh-rah-teh ahn-koh-ra kwahl-keh mee-noo-toh pehr eel meh-noo? — Good evening! Have you decided or would you like a few more minutes with the menu?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo! Tra i nostri piatti forti, oggi abbiamo un ottimo risotto ai funghi porcini e un branzino al sale che è squisito. Avete delle preferenze o restrizioni alimentari?",
+      "branches": [
+        {
+          "keywords": [
+            "risotto",
+            "funghi",
+            "vegetariano",
+            "vegano"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ordino",
+            "ok",
+            "prendo"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chayr-toh! Trah ee noh-stree pyah-tee fohr-tee, oh-jee ahb-byah-moh oon oh-ttee-moh ree-zoh-ttoh ahy foon-ghee pohr-chee-nee eh oon brahn-tzee-noh ahl sah-leh keh eh skwee-zee-toh. Ah-veh-teh del-leh preh-feh-ren-tseh oh reh-stree-tsyoh-nee ah-lee-men-tah-ree? — Certainly! Among our main dishes, today we have an excellent porcini mushroom risotto and a sea bass baked in salt, which is exquisite. Do you have any preferences or dietary restrictions?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto, cosa posso portarvi di buono stasera?",
+      "branches": [
+        {
+          "keywords": [
+            "risotto",
+            "funghi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "specialità",
+            "consigli",
+            "indeciso"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pehr-feh-ttoh, koh-zah pohs-soh pohr-tahr-vee dee bwoh-noh stah-seh-ra? — Perfect, what can I get for you this evening?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ottima scelta! Il branzino al sale viene sfilettato al tavolo, con contorno di patate e verdure. Oppure, per i vegetariani, potremmo proporvi una deliziosa parmigiana di melanzane. Cosa preferite?",
+      "branches": [
+        {
+          "keywords": [
+            "branzino",
+            "pesce",
+            "prendo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-ttee-mah shyel-tah! Eel brahn-tzee-noh ahl sah-leh vyeh-neh sfee-leh-tah-toh ahl tah-voh-loh, kohn kohn-tor-noh dee pah-tah-teh eh vehr-doo-reh. Ohp-poo-reh, pehr ee veh-jeh-tah-ryah-nee, poh-trehm-moh pro-pohr-vee oo-nah deh-lee-tsyoh-zah pahr-mee-jah-nah dee meh-lahn-dzah-neh. Koh-zah preh-feh-ree-teh? — Excellent choice! The sea bass in salt is filleted at the table, with a side of potatoes and vegetables. Or, for vegetarians, we could offer you a delicious eggplant parmesan. What do you prefer?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto. E da bere, qualcosa in particolare? Magari un buon vino per accompagnare?",
+      "branches": [
+        {
+          "keywords": [
+            "vino",
+            "rosso",
+            "bianco",
+            "calice"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pehr-feh-ttoh. Eh dah beh-reh, kwahl-koh-zah een pahr-tee-koh-lah-reh? Mah-gah-ree oon bwohn vee-noh pehr ahk-kohm-pah-nyah-reh? — Perfect. And to drink, anything in particular? Perhaps a good wine to accompany it?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottimo. Porterò subito le bevande e poi il vostro ordine arriverà a breve. Buon appetito!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "conto"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh-ttee-moh. Pohr-teh-roh soo-bee-toh leh beh-vahn-deh eh pwoy eel voh-stroh ohr-dee-neh ahr-ree-veh-rah ah breh-veh. Bwohn ahp-peh-tee-toh! — Excellent. I'll bring the drinks right away and then your order will arrive shortly. Enjoy your meal!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Prego. Desiderate qualcos'altro, magari un dolce o un caffè per concludere?",
+      "branches": [
+        {
+          "keywords": [
+            "tiramisù",
+            "dolce",
+            "caffè",
+            "digestivo"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Preh-goh. Deh-zee-deh-rah-teh kwahl-koh-z'ahl-troh, mah-gah-ree oon dohl-cheh oh oon kahf-feh pehr kohn-kloo-deh-reh? — You're welcome. Would you like anything else, perhaps a dessert or a coffee to finish?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Certo. Ecco il conto. Grazie e buona serata!",
+      "branches": [],
+      "fallbackBranchId": "t8",
+      "promptTranslation": "Chayr-toh. Ehk-koh eel kohn-toh. Grah-tsee-eh eh bwoh-nah seh-rah-tah! — Certainly. Here's the bill. Thank you and good evening!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, non oh kah-pee-toh beh-neh. Poh-treh-bbeh ree-peh-teh-reh, pehr fah-voh-reh? — Excuse me, I didn't quite understand. Could you please repeat that?"
+    }
+  }
+}

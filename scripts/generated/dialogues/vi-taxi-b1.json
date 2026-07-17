@@ -1,0 +1,126 @@
+{
+  "id": "dlg-vi-taxi-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Đi taxi ở Việt Nam",
+  "opening": "Chào anh/chị, anh/chị muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, anh/chị muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đến",
+            "tới",
+            "đi",
+            "về"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "em"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao anh/chi, anh/chi muon di dau a? — Hello, where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, anh/chị vui lòng cho tôi xin địa chỉ cụ thể hoặc tên đường được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "số",
+            "tòa",
+            "phố",
+            "đường",
+            "tại",
+            "ở"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, anh/chi vui long cho toi xin dia chi cu the hoac ten duong duoc khong a? — Okay, could you please give me the specific address or street name?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Được rồi, từ đây đến đó khoảng 15-20 phút và giá cước dự kiến sẽ là khoảng 80.000 đến 100.000 đồng. Anh/chị có đồng ý không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đồngý",
+            "được",
+            "vâng",
+            "ok",
+            "tốt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Duoc roi, tu day den do khoang muoi lam-hai muoi phut va gia cuoc du kien se la khoang tam muoi ngan den mot tram ngan dong. Anh/chi co dong y khong a? — Alright, from here to there it's about 15-20 minutes, and the estimated fare will be around 80,000 to 100,000 VND. Do you agree?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Được thôi. Chúng ta sẽ đi đường Láng, giờ này cũng không kẹt xe lắm đâu ạ. Anh/chị muốn thanh toán bằng tiền mặt hay chuyển khoản?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Duoc thoi. Chung ta se di duong Lang, gio nay cung khong ket xe lam dau a. Anh/chi muon thanh toan bang tien mat hay chuyen khoan? — Alright. We'll take Lang Street; it's not very congested right now. Would you like to pay with cash or by bank transfer?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sin loi, toi chua nghe ro. Anh/chi co the nhac lai duoc khong a? — Sorry, I didn't hear clearly. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, vậy chúng ta đi nhé. Cảm ơn anh/chị đã sử dụng dịch vụ của chúng tôi. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vang, vay chung ta di nhe. Cam on anh/chi da su dung dich vu cua chung toi. Chuc anh/chi mot ngay tot lanh! — Okay, let's go then. Thank you for using our service. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

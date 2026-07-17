@@ -1,0 +1,278 @@
+{
+  "id": "dlg-es-small-talk-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Charla informal: El fin de semana",
+  "opening": "¡Hola! ¿Qué tal? Me alegro de verte por aquí. ¿Cómo ha ido tu fin de semana? Espero que lo hayas disfrutado a tope.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tal? Me alegro de verte por aquí. ¿Cómo ha ido tu fin de semana? Espero que lo hayas disfrutado a tope.",
+      "branches": [
+        {
+          "keywords": [
+            "genial",
+            "bien",
+            "fantástico",
+            "descansado"
+          ],
+          "nextTurnId": "t2_positive"
+        },
+        {
+          "keywords": [
+            "ocupado",
+            "trabajo",
+            "liado",
+            "movido"
+          ],
+          "nextTurnId": "t2_busy"
+        },
+        {
+          "keywords": [
+            "normal",
+            "tranquilo",
+            "casa",
+            "relajado"
+          ],
+          "nextTurnId": "t2_quiet"
+        },
+        {
+          "keywords": [
+            "regular",
+            "mal",
+            "aburrido"
+          ],
+          "nextTurnId": "t2_negative"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! ¿Qué tal? — Hello! How's it going? Me alegro de verte por aquí. — Glad to see you here. ¿Cómo ha ido tu fin de semana? — How was your weekend? Espero que lo hayas disfrutado a tope. — I hope you've enjoyed it to the fullest (idiom for 'to the max')."
+    },
+    "t2_positive": {
+      "id": "t2_positive",
+      "prompt": "¡Qué bueno oír eso! Me alegro un montón. Yo, por mi parte, estuve haciendo una escapada a la sierra, ¡menuda desconexión! ¿Hiciste algo especial, o simplemente aprovechaste para recargar pilas?",
+      "branches": [
+        {
+          "keywords": [
+            "viaje",
+            "escapada",
+            "excursión"
+          ],
+          "nextTurnId": "t3_general"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bueno oír eso! — That's great to hear! Me alegro un montón. — I'm really glad. Yo, por mi parte, estuve haciendo una escapada a la sierra, ¡menuda desconexión! — On my part, I went on a getaway to the mountains, what a disconnection! ¿Hiciste algo especial, o simplemente aprovechaste para recargar pilas? — Did you do anything special, or did you just take the opportunity to recharge your batteries (idiom for 'recharge')?"
+    },
+    "t2_busy": {
+      "id": "t2_busy",
+      "prompt": "Vaya, qué pena que haya sido tan movido. Espero que al menos haya valido la pena el esfuerzo. Yo, a veces, también me veo enfrascado en mil cosas, un no parar. ¿Qué te tuvo tan ocupado, algún proyecto gordo?",
+      "branches": [
+        {
+          "keywords": [
+            "proyecto",
+            "trabajo",
+            "cliente"
+          ],
+          "nextTurnId": "t3_general"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vaya, qué pena que haya sido tan movido. — Oh, too bad it was so busy. Espero que al menos haya valido la pena el esfuerzo. — I hope at least the effort was worth it. Yo, a veces, también me veo enfrascado en mil cosas, un no parar. — I, too, sometimes find myself engrossed (idiom) in a thousand things, non-stop. ¿Qué te tuvo tan ocupado, algún proyecto gordo? — What kept you so busy, some big project?"
+    },
+    "t2_quiet": {
+      "id": "t2_quiet",
+      "prompt": "Entiendo, a veces apetece un fin de semana tranquilo, sin grandes planes. Yo también soy de esos que disfrutan de la calma y de quedarse en casa. ¿Aprovechaste para ponerte al día con alguna serie o lectura?",
+      "branches": [
+        {
+          "keywords": [
+            "serie",
+            "película",
+            "netflix",
+            "cine"
+          ],
+          "nextTurnId": "t3_general"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo, a veces apetece un fin de semana tranquilo, sin grandes planes. — I understand, sometimes you feel like a quiet weekend, without big plans. Yo también soy de esos que disfrutan de la calma y de quedarse en casa. — I'm also one of those who enjoy peace and staying at home. ¿Aprovechaste para ponerte al día con alguna serie o lectura? — Did you take the opportunity to catch up on any series or reading?"
+    },
+    "t2_negative": {
+      "id": "t2_negative",
+      "prompt": "¡Vaya! Siento oír eso. A veces los fines de semana no salen como uno espera. Espero que este tenga mejor pinta. ¿Hubo algo en particular que lo empañara, o fue más bien un cúmulo de despropósitos?",
+      "branches": [
+        {
+          "keywords": [
+            "enfermedad",
+            "salud",
+            "malestar"
+          ],
+          "nextTurnId": "t3_general"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Vaya! Siento oír eso. — Oh! Sorry to hear that. A veces los fines de semana no salen como uno espera. — Sometimes weekends don't turn out as one expects. Espero que este tenga mejor pinta. — I hope this one looks better. ¿Hubo algo en particular que lo empañara, o fue más bien un cúmulo de despropósitos? — Was there anything in particular that spoiled it, or was it more of a series of mishaps?"
+    },
+    "t3_general": {
+      "id": "t3_general",
+      "prompt": "Entiendo. A veces, la verdad es que el tiempo vuela, tanto si estamos enfrascados en algo como si simplemente dejamos que los días pasen. Por cierto, hablando de planes, ¿tienes algo chulo en mente para los próximos días, o vas a tirar de improvisación?",
+      "branches": [
+        {
+          "keywords": [
+            "planes",
+            "viaje",
+            "evento"
+          ],
+          "nextTurnId": "t4_plans"
+        },
+        {
+          "keywords": [
+            "trabajo",
+            "rutina",
+            "estudios"
+          ],
+          "nextTurnId": "t4_routine"
+        },
+        {
+          "keywords": [
+            "improvisar",
+            "nada",
+            "veré"
+          ],
+          "nextTurnId": "t4_improvise"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo. — I understand. A veces, la verdad es que el tiempo vuela, — Sometimes, the truth is that time flies, tanto si estamos enfrascados en algo como si simplemente dejamos que los días pasen. — whether we are engrossed (idiom) in something or just let the days pass. Por cierto, hablando de planes, ¿tienes algo chulo en mente para los próximos días, o vas a tirar de improvisación? — By the way, speaking of plans, do you have anything cool in mind for the next few days, or are you going to play it by ear (idiom for 'improvise')?"
+    },
+    "t4_plans": {
+      "id": "t4_plans",
+      "prompt": "¡Qué bien! Siempre es genial tener algo que te ilusione en el horizonte. ¿Y qué tipo de planes son? ¿Algo de ocio, trabajo, o quizás alguna escapada para quitarte el gusanillo de viajar?",
+      "branches": [
+        {
+          "keywords": [
+            "ocio",
+            "disfrutar",
+            "relax"
+          ],
+          "nextTurnId": "t5_terminal"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bien! — How nice! Siempre es genial tener algo que te ilusione en el horizonte. — It's always great to have something to look forward to (idiom: 'something that excites you') on the horizon. ¿Y qué tipo de planes son? — And what kind of plans are they? ¿Algo de ocio, trabajo, o quizás alguna escapada para quitarte el gusanillo de viajar? — Leisure, work, or maybe a getaway to satisfy your travel bug (idiom: 'remove the worm of traveling')?"
+    },
+    "t4_routine": {
+      "id": "t4_routine",
+      "prompt": "Ya veo, la rutina a veces es ineludible, ¿verdad? Pero bueno, al menos la estabilidad también tiene su encanto. Espero que no sea un no parar y que encuentres algún hueco para desconectar.",
+      "branches": [
+        {
+          "keywords": [
+            "siempre",
+            "igual",
+            "normal"
+          ],
+          "nextTurnId": "t5_terminal"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ya veo, la rutina a veces es ineludible, ¿verdad? — I see, routine is sometimes unavoidable, right? Pero bueno, al menos la estabilidad también tiene su encanto. — But hey, at least stability also has its charm. Espero que no sea un no parar y que encuentres algún hueco para desconectar. — I hope it's not non-stop (idiom: 'a non-stop') and that you find some time to disconnect."
+    },
+    "t4_improvise": {
+      "id": "t4_improvise",
+      "prompt": "¡Ah, la improvisación! A veces es lo mejor, dejar que los días te sorprendan. Quién sabe, igual surge algún plan inesperado que le dé un toque especial a la semana. ¡Que no te pille desprevenido!",
+      "branches": [
+        {
+          "keywords": [
+            "sorpresa",
+            "inesperado",
+            "aventura"
+          ],
+          "nextTurnId": "t5_terminal"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Ah, la improvisación! — Ah, improvisation! A veces es lo mejor, dejar que los días te sorprendan. — Sometimes it's the best, letting the days surprise you. Quién sabe, igual surge algún plan inesperado que le dé un toque especial a la semana. — Who knows, maybe some unexpected plan will come up that adds a special touch to the week. ¡Que no te pille desprevenido! — Don't let it catch you off guard (idiom: 'don't let it catch you unprepared')!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdona? No te he entendido muy bien. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? I didn't understand you very well. Could you please repeat it?"
+    },
+    "t5_terminal": {
+      "id": "t5_terminal",
+      "prompt": "Bueno, ha sido un placer charlar contigo un rato. Me tengo que ir, ¡que disfrutes del resto del día/noche y nos vemos pronto! ¡Un abrazo!",
+      "branches": [],
+      "fallbackBranchId": "t5_terminal",
+      "promptTranslation": "Well, it's been a pleasure chatting with you for a while. I have to go, enjoy the rest of your day/night and see you soon! A hug!",
+      "isTerminal": true
+    }
+  }
+}

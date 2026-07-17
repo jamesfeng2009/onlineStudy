@@ -1,0 +1,368 @@
+{
+  "id": "dlg-fr-small-talk-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "small-talk",
+  "title": "Discussion informelle : Le week-end et les loisirs",
+  "opening": "Bonjour ! Comment s'est passé votre week-end ? J'espère que vous avez pu vous reposer.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment s'est passé votre week-end ? J'espère que vous avez pu vous reposer.",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "super",
+            "génial",
+            "agréable"
+          ],
+          "nextTurnId": "t2_positive"
+        },
+        {
+          "keywords": [
+            "ennuyeux",
+            "fatigant",
+            "difficile",
+            "rien"
+          ],
+          "nextTurnId": "t2_negative"
+        },
+        {
+          "keywords": [
+            "",
+            "ça va"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (Bon-zhoor) ! Comment s'est passé votre week-end (koh-mah seh pah-seh voh-truh week-end) ? J'espère que vous avez pu vous reposer (zhe-spehr kuh voo zah-vay pyoo voo ruh-poh-zeh). — Hello! How was your weekend? I hope you were able to rest."
+    },
+    "t2_positive": {
+      "id": "t2_positive",
+      "prompt": "Ah, c'est super ! Vous avez fait quelque chose de particulier ou vous avez simplement profité pour recharger les batteries ?",
+      "branches": [
+        {
+          "keywords": [
+            "randonnée",
+            "balade",
+            "sport",
+            "amis",
+            "famille",
+            "voyage",
+            "visite"
+          ],
+          "nextTurnId": "t3_active"
+        },
+        {
+          "keywords": [
+            "lire",
+            "film",
+            "série",
+            "cuisine",
+            "maison",
+            "repos",
+            "dormir"
+          ],
+          "nextTurnId": "t3_relax"
+        },
+        {
+          "keywords": [
+            "rien",
+            "un peu de tout",
+            "pas grand chose",
+            "reposé"
+          ],
+          "nextTurnId": "t3_nothing_special"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, c'est super (ah seh syoo-pair)! Vous avez fait quelque chose de particulier (voo zah-vay fay kel-kuh shohz duh par-tee-kyoo-lyay) ou vous avez simplement profité pour recharger les batteries (oo voo zah-vay sang-pluh-mong proh-fee-tay poor ruh-shar-zhay lay ba-tree)? — Oh, that's great! Did you do anything special or did you just enjoy recharging your batteries?"
+    },
+    "t2_negative": {
+      "id": "t2_negative",
+      "prompt": "Oh, dommage ! J'espère que la semaine sera meilleure. Il n'y a rien eu d'intéressant du tout, même un petit moment sympa ?",
+      "branches": [
+        {
+          "keywords": [
+            "finalement",
+            "si",
+            "un peu",
+            "quelque chose",
+            "quand même"
+          ],
+          "nextTurnId": "t3_active"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas du tout",
+            "vraiment rien",
+            "absolument rien"
+          ],
+          "nextTurnId": "t3_nothing_special"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, dommage (oh doh-mazh)! J'espère que la semaine sera meilleure (zhe-spehr kuh lah suh-men sruh may-yur). Il n'y a rien eu d'intéressant du tout (eel nyah ryang yoo dan-tay-reh-sang doo too), même un petit moment sympa (mem ung puh-tee moh-mang sam-pah)? — Oh, too bad! I hope the week will be better. Was there nothing interesting at all, not even a small nice moment?"
+    },
+    "t3_active": {
+      "id": "t3_active",
+      "prompt": "C'est une excellente façon de profiter du week-end ! Ça me fait penser, vous êtes plutôt du genre à lire un bon livre ou à regarder un film captivant pour vous détendre après une journée bien remplie ?",
+      "branches": [
+        {
+          "keywords": [
+            "lire",
+            "livres",
+            "lecture",
+            "roman"
+          ],
+          "nextTurnId": "t4_books"
+        },
+        {
+          "keywords": [
+            "films",
+            "film",
+            "séries",
+            "regarder",
+            "cinéma"
+          ],
+          "nextTurnId": "t4_movies"
+        },
+        {
+          "keywords": [
+            "les deux",
+            "un peu des deux",
+            "ça dépend"
+          ],
+          "nextTurnId": "t4_both"
+        },
+        {
+          "keywords": [
+            "",
+            "ni l'un ni l'autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's an excellent way to enjoy the weekend! That makes me think, are you more the type to read a good book or watch a captivating movie to relax after a busy day?"
+    },
+    "t3_relax": {
+      "id": "t3_relax",
+      "prompt": "Le repos est essentiel, c'est vrai ! Et en parlant de détente, qu'est-ce qui vous aide le plus à vous évader : un roman passionnant ou un film immersif ?",
+      "branches": [
+        {
+          "keywords": [
+            "roman",
+            "livre",
+            "lecture"
+          ],
+          "nextTurnId": "t4_books"
+        },
+        {
+          "keywords": [
+            "film",
+            "films",
+            "séries",
+            "cinéma"
+          ],
+          "nextTurnId": "t4_movies"
+        },
+        {
+          "keywords": [
+            "les deux",
+            "dépend",
+            "ça dépend"
+          ],
+          "nextTurnId": "t4_both"
+        },
+        {
+          "keywords": [
+            "",
+            "ni l'un ni l'autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rest is essential, that's true! And speaking of relaxation, what helps you escape the most: a thrilling novel or an immersive movie?"
+    },
+    "t3_nothing_special": {
+      "id": "t3_nothing_special",
+      "prompt": "D'accord, parfois c'est bien aussi de ne rien faire de spécial. Mais si vous deviez choisir une activité pour décompresser, seriez-vous plus tenté par un bon livre ou une soirée cinéma ?",
+      "branches": [
+        {
+          "keywords": [
+            "livre",
+            "lire",
+            "lecture"
+          ],
+          "nextTurnId": "t4_books"
+        },
+        {
+          "keywords": [
+            "film",
+            "cinéma",
+            "regarder"
+          ],
+          "nextTurnId": "t4_movies"
+        },
+        {
+          "keywords": [
+            "aucun",
+            "ni l'un ni l'autre",
+            "rien"
+          ],
+          "nextTurnId": "t4_neither"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, sometimes it's good to do nothing special too. But if you had to choose an activity to unwind, would you be more tempted by a good book or a movie night?"
+    },
+    "t4_books": {
+      "id": "t4_books",
+      "prompt": "Excellente idée ! La lecture est un formidable moyen de s'évader. Vous avez lu quelque chose de marquant récemment que vous pourriez me recommander ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "livre",
+            "roman",
+            "auteur",
+            "titre"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent idea! Reading is a wonderful way to escape. Have you read anything notable recently that you could recommend to me?"
+    },
+    "t4_movies": {
+      "id": "t4_movies",
+      "prompt": "Ah, le cinéma, un classique indémodable ! Y a-t-il un film ou une série qui vous a particulièrement plu ces derniers temps et que vous suggéreriez ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "film",
+            "série",
+            "regarder",
+            "titre"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, cinema, a timeless classic! Is there a film or series that you particularly enjoyed recently and would suggest?"
+    },
+    "t4_both": {
+      "id": "t4_both",
+      "prompt": "C'est l'idéal d'avoir le choix ! Si vous deviez me donner une seule recommandation, ce serait plutôt un livre à dévorer ou un film/une série à binge-watcher ?",
+      "branches": [
+        {
+          "keywords": [
+            "livre",
+            "lecture",
+            "roman"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "surprise"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's ideal to have a choice! If you had to give me just one recommendation, would it be a book to devour or a film/series to binge-watch?"
+    },
+    "t4_neither": {
+      "id": "t4_neither",
+      "prompt": "Je comprends, chacun ses préférences ! Peut-être que vous préférez les jeux de société, la musique, ou autre chose ? En tout cas, merci d'avoir partagé un peu de votre week-end !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "musique",
+            "jeux",
+            "peinture",
+            "sport"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand, to each their own preferences! Perhaps you prefer board games, music, or something else? Anyway, thanks for sharing a bit about your weekend!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé, je n'ai pas bien compris. Pourriez-vous répéter ou formuler différemment ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Désolé (day-zoh-lay), je n'ai pas bien compris (zhuh nay pah byang kom-pree). Pourriez-vous répéter (poo-ryay-voo ray-pay-tay) ou formuler différemment (oo for-myoo-lay dee-fay-rah-mang)? — Sorry, I didn't quite catch that. Could you repeat or rephrase?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci pour les idées/discussions ! J'ai une autre réunion, donc je dois vous laisser. Passez une excellente journée et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci pour les idées/discussions (mair-see poor lez ee-day/dees-kyoo-syong)! J'ai une autre réunion (zhay yoon oh-truh ray-oo-nyong), donc je dois vous laisser (dong zhuh dwa voo lay-say). Passez une excellente journée (pah-say yoon ek-seh-lahnt zhoor-nay) et à bientôt (ay ah byan-toh)! — Thanks for the ideas/discussions! I have another meeting, so I have to leave you. Have a great day and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

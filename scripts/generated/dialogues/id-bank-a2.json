@@ -1,0 +1,205 @@
+{
+  "id": "dlg-id-bank-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "Percakapan di Bank",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "bukaakun",
+            "akunbaru"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tukar",
+            "uang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "atm",
+            "kartu",
+            "masalah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Ada yang bisa saya bantu? — How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu. Untuk membuka rekening, boleh saya lihat kartu identitas Anda seperti KTP atau paspor?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "silakan",
+            "punya"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "tidakada",
+            "belum"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly. Untuk membuka rekening, — To open an account, boleh saya lihat kartu identitas Anda — may I see your ID card seperti KTP atau paspor? — such as KTP or passport?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Baik, saya akan proses pembukaan rekening Anda. Mohon tunggu sebentar.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, saya akan proses pembukaan rekening Anda. — I will process your account opening. Mohon tunggu sebentar. — Please wait a moment."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anda mau tukar uang apa? Misalnya, dolar ke rupiah?",
+      "branches": [
+        {
+          "keywords": [
+            "dolar",
+            "usd",
+            "rupiah"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anda mau tukar uang apa? — What currency do you want to exchange? Misalnya, dolar ke rupiah? — For example, dollars to rupiah?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Baik, berapa banyak uang yang ingin Anda tukarkan? Kami ada kurs bagus hari ini.",
+      "branches": [
+        {
+          "keywords": [
+            "seratus",
+            "limapuluh",
+            "dua"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, berapa banyak uang yang ingin Anda tukarkan? — how much money do you want to exchange? Kami ada kurs bagus hari ini. — We have a good rate today."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ada masalah apa dengan ATM Anda? Apakah kartu Anda tertelan atau PIN terblokir?",
+      "branches": [
+        {
+          "keywords": [
+            "kartu",
+            "tertelan"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ada masalah apa dengan ATM Anda? — What is the problem with your ATM? Apakah kartu Anda tertelan — Is your card swallowed atau PIN terblokir? — or PIN blocked?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Baik, untuk masalah ini, Anda perlu mengisi formulir dan kami akan bantu.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Okay, untuk masalah ini, — for this problem, Anda perlu mengisi formulir — you need to fill out a form dan kami akan bantu. — and we will help you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa diulang? — could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah datang ke bank kami. Sampai jumpa.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih — Thank you sudah datang ke bank kami. — for coming to our bank. Sampai jumpa. — Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

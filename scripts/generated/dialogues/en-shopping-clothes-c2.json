@@ -1,0 +1,193 @@
+{
+  "id": "dlg-en-shopping-clothes-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "A Cursory Glance or a Keen Quest?",
+  "opening": "Welcome to 'The Loft'! Is there anything I can help you find today, or are you just browsing?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Welcome to 'The Loft'! Is there anything I can help you find today, or are you just browsing?",
+      "branches": [
+        {
+          "keywords": [
+            "looking",
+            "find",
+            "something",
+            "need"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "justbrowsing",
+            "browsing",
+            "around",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ˈwɛlkəm tu ðə lɒft! ɪz ðɛr ˈɛniˌθɪŋ aɪ kæn hɛlp ju faɪnd təˈdeɪ, ɔr ɑr ju dʒʌst ˈbraʊzɪŋ? - Welcome to 'The Loft'! Is there anything I can help you find today, or are you just browsing?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent! We've just had a fresh consignment of our seasonal collection. What particular item are you hoping to find, and do you have any preferences regarding size or colour?",
+      "branches": [
+        {
+          "keywords": [
+            "dress",
+            "size8",
+            "medium",
+            "blue"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ˈɛksələnt! wiv dʒʌst hæd ə frɛʃ kənˈsaɪnmənt əv aʊər ˈsizənəl kəˈlɛkʃən. wʌt pərˈtɪkjələr ˈaɪtəm ɑr ju ˈhoʊpɪŋ tu faɪnd, ænd du ju hæv ˈɛni ˈprɛfərənsɪz rɪˈgɑrdɪŋ saɪz ɔr ˈkʌlər? - Excellent! We've just had a fresh consignment of our seasonal collection. What particular item are you hoping to find, and do you have any preferences regarding size or colour?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Right, we should have a few options in that vein. Would you like me to fetch a couple of sizes and perhaps a variation in colour for you to try on in the fitting rooms?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "please",
+            "tryon",
+            "fittingroom"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "justlooking",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "actually",
+            "somethingelse",
+            "different"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "raɪt, wi ʃʊd hæv ə fju ˈɒpʃənz ɪn ðæt veɪn. wʊd ju laɪk mi tə fɛtʃ ə ˈkʌpl əv ˈsaɪzɪz ænd pərˈhæps ə ˌvɛriˈeɪʃən ɪn ˈkʌlər fɔr ju tə traɪ ɒn ɪn ðə ˈfɪtɪŋ rumz? - Right, we should have a few options in that vein. Would you like me to fetch a couple of sizes and perhaps a variation in colour for you to try on in the fitting rooms?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excellent. The fitting rooms are just over there, to your left. I'll be right back with those items for you. Do take your time and let me know if you need another size or anything else.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "ok",
+            "waiting"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "another",
+            "different",
+            "size"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "don'tlike",
+            "notforme",
+            "notinterested"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ˈɛksələnt. ðə ˈfɪtɪŋ rumz ɑr dʒʌst ˈoʊvər ðɛr, tu jʊər lɛft. aɪl bi raɪt bæk wɪð ðoʊz ˈaɪtəmz fɔr ju. du teɪk jʊər taɪm ænd lɛt mi noʊ ɪf ju nid əˈnʌðər saɪz ɔr ˈɛniˌθɪŋ ɛls. - Excellent. The fitting rooms are just over there, to your left. I'll be right back with those items for you. Do take your time and let me know if you need another size or anything else."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Splendid! They do look rather fetching on you. Ready to make them yours, or perhaps you'd like to explore some accessories to complete the ensemble?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "buy",
+            "takeit",
+            "purchase"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "ˈsplɛndɪd! ðeɪ du lʊk ˈrɑðər ˈfɛtʃɪŋ ɒn ju. ˈrɛdi tu meɪk ðɛm jʊərz, ɔr pərˈhæps jud laɪk tu ɛkˈsplɔr sʌm əkˈsɛsəriz tu kəmˈplit ðə ɑnˈsɒmbl? - Splendid! They do look rather fetching on you. Ready to make them yours, or perhaps you'd like to explore some accessories to complete the ensemble?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I beg your pardon? I didn't quite catch that. Could you articulate your request a little more clearly, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "aɪ bɛg jʊər ˈpɑrdn? aɪ ˈdɪdnt kwaɪt kætʃ ðæt. kʊd ju ɑrˈtɪkjuˌleɪt jʊər rɪˈkwɛst ə ˈlɪtl mɔr ˈklɪrli, pliz? - I beg your pardon? I didn't quite catch that. Could you articulate your request a little more clearly, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Wonderful! I'll just ring those up for you. Thanks for shopping with us today, and do come back soon!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "ˈwʌndərfəl! aɪl dʒʌst rɪŋ ðoʊz ʌp fɔr ju. θæŋks fɔr ˈʃɒpɪŋ wɪð ʌs təˈdeɪ, ænd du kʌm bæk sun! - Wonderful! I'll just ring those up for you. Thanks for shopping with us today, and do come back soon!",
+      "isTerminal": true
+    }
+  }
+}

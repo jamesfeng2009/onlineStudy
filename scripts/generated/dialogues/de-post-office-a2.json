@@ -1,0 +1,277 @@
+{
+  "id": "dlg-de-post-office-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "Auf der Post",
+  "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "senden",
+            "schicken"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "briefmarken",
+            "kaufen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "frage",
+            "etwas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahk! Vee kahn ihk een-en hel-fen? — Good day! How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gerne. Wohin möchten Sie das Paket schicken?",
+      "branches": [
+        {
+          "keywords": [
+            "deutschland",
+            "hier"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "spanien",
+            "frankreich",
+            "usa",
+            "ausland"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ichweißnicht",
+            "weißnicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-neh. Voh-hin mohk-ten zee das Pah-ket shick-en? — Gladly. Where would you like to send the parcel?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Für Briefe oder Postkarten? Und wohin soll es gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "brief",
+            "deutschland"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "brief",
+            "ausland"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fuer Bree-feh oh-der Post-kahr-ten? Oond voh-hin zol es geh-en? — For letters or postcards? And where should it go?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Möchten Sie es als Standardpaket oder mit Sendungsverfolgung senden?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "normal"
+          ],
+          "nextTurnId": "t9"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohk-ten zee es als Stahn-dart-pah-ket oh-der mit Zen-dungs-ver-fol-gung zen-den? — Would you like to send it as a standard parcel or with tracking?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Für das Ausland brauchen wir ein Zollformular. Haben Sie das schon ausgefüllt?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "ausgefüllt"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "nein",
+            "brauche",
+            "hilfe"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fuer das Ows-land brow-khen veer ine Zohl-for-moo-lahr. Hah-ben zee das shon ows-geh-fuelelt? — For abroad, we need a customs form. Have you already filled that out?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Eine Briefmarke für einen Standardbrief innerhalb Deutschlands kostet 85 Cent. Möchten Sie eine?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "nehme",
+            "kaufen"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I-neh Breef-mark-eh fuer i-nen Stahn-dart-breef in-ner-halb Deutch-lands kos-tet acht-und-fuenf-tsik Cent. Mohk-ten zee i-neh? — A stamp for a standard letter within Germany costs 85 cents. Would you like one?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Für einen Auslandsbrief kostet eine Briefmarke 1,10 Euro. Möchten Sie eine?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "nehme",
+            "kaufen"
+          ],
+          "nextTurnId": "t10"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fuer i-nen Ows-lands-breef kos-tet i-neh Breef-mark-eh ine Kom-ma tsen Ew-ro. Mohk-ten zee i-neh? — For an international letter, a stamp costs 1.10 Euro. Would you like one?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Kein Problem, ich helfe Ihnen gerne dabei. Was möchten Sie denn genau versenden?",
+      "branches": [
+        {
+          "keywords": [
+            "kleidung",
+            "buch",
+            "geschenk",
+            "dokumente"
+          ],
+          "nextTurnId": "t9"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kine Pro-blem, ihk hel-feh een-en ger-neh dah-bye. Vas mohk-ten zee den ge-now fer-zen-den? — No problem, I'll gladly help you with that. What exactly would you like to send?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Gut, das Paket ist fertig für den Versand. Die Kosten werden am Schalter berechnet. Möchten Sie sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "nicht"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ja",
+            "briefmarken"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "frage",
+            "etwas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot, das Pah-ket ist fer-tish fuer den Fer-zahnd. Dee Kos-ten ver-den am Shahl-ter beh-rekh-net. Mohk-ten zee zonst nokh et-vas? — Good, the parcel is ready for shipping. The costs will be calculated at the counter. Would you like anything else?"
+    },
+    "t10": {
+      "id": "t10",
+      "prompt": "In Ordnung, hier sind Ihre Briefmarken. Der Preis wird an der Kasse bezahlt. Brauchen Sie sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "nicht"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ja",
+            "paket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "frage",
+            "etwas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Ord-nung, heer zint ee-reh Breef-mark-en. Der Price veert an der Kah-seh beh-tahlt. Brow-khen zee zonst nokh et-vas? — Alright, here are your stamps. The price will be paid at the cash register. Do you need anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-dih-gen Zee, koon-ten Zee das bit-te vee-der-hoh-len? — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fuer ee-ren Beh-zook! Ouf Vee-der-zeh-en! — Thank you for your visit! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

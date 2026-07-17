@@ -1,0 +1,189 @@
+{
+  "id": "dlg-fr-airport-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Retard de vol imprévu",
+  "opening": "Bonjour, Madame/Monsieur. J'ai le regret de vous informer que votre vol AF203 à destination de Montréal est retardé.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, Madame/Monsieur. J'ai le regret de vous informer que votre vol AF203 à destination de Montréal est retardé.",
+      "branches": [
+        {
+          "keywords": [
+            "combien",
+            "longtemps",
+            "durée"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pourquoi",
+            "raison",
+            "cause"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "que faire",
+            "solution",
+            "maintenant"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bohn-zhoor, Mah-dahm/Muh-syuh. Zhej luh ruh-greh duh voo zaing-for-meh kuh voh-truh vol AF-deux-cents-trois ah des-tee-nah-syohn duh Mon-reh-ahl eh ruh-tar-deh. — Hello, Ma'am/Sir. I regret to inform you that your flight AF203 to Montreal is delayed."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Excusez-moi, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Eks-kew-zeh-mwah, zhuh neh pah byan kohn-pree. Poo-ryay-voo reh-peh-tay, seel voo pleh? — Excuse me, I didn't quite understand. Could you please repeat?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Le départ est maintenant prévu à 17h30, soit un retard de trois heures par rapport à l'horaire initial.",
+      "branches": [
+        {
+          "keywords": [
+            "correspondance",
+            "manquer",
+            "vol suivant"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "repas",
+            "compenser",
+            "dédommagement",
+            "boissons"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Luh day-par eh man-tuh-nahng preh-voo ah dees-set-zheuh-trehng-teuh, swah uhn ruh-tar duh trwah-zeur par rah-por ah loh-rair ee-nee-syal. — Departure is now scheduled for 5:30 PM, a three-hour delay compared to the original schedule."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Il s'agit malheureusement d'un problème technique imprévu sur l'appareil. Nos équipes font tout leur possible pour le résoudre au plus vite.",
+      "branches": [
+        {
+          "keywords": [
+            "combien",
+            "durer",
+            "temps"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sécurité",
+            "sûr",
+            "risques"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "comprendre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eel sah-zhee mah-leu-reuh-zuh-mahng duh-nuh proh-blem tek-neek ang-preh-voo sur lah-pah-rey. Noh-zeh-keep fohng too leur poh-see-bluh poor luh ray-zoo-druh oh ploo veet. — Unfortunately, it's an unforeseen technical issue with the aircraft. Our teams are doing everything they can to resolve it as quickly as possible."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nous allons bien sûr vous offrir des bons de repas et vous tenir informés via l'application mobile et les écrans d'affichage. Votre confort est notre priorité.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "accord",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "correspondance",
+            "vol suivant",
+            "réserver"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Noo za-lohng byan-sur voo-zoh-freer day bohng duh ruh-pah eh voo tuh-neer ang-for-meh vya lah-plee-ka-syohn mo-beel eh lay-zeh-krahng dah-fee-shahzh. Voh-truh kohn-for eh noh-truh pree-oh-ree-tay. — We will, of course, offer you meal vouchers and keep you informed via the mobile app and display screens. Your comfort is our priority."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pour votre correspondance, il est impératif de vous présenter au comptoir des transferts dès que possible. Ils pourront vous aider à réorganiser votre itinéraire.",
+      "branches": [
+        {
+          "keywords": [
+            "accord",
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "question"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Poor voh-truh koh-res-pohn-dahns, eel eh-tang-peh-rah-teef duh voo preh-zahn-tay-zoh kohn-twahr day trahns-fair deh kuh poh-see-bluh. Eel poh-rohng voo-zay-deh ah reh-ohr-gah-nee-zay voh-truh ee-tee-neh-rair. — For your connection, it is imperative that you go to the transfer desk as soon as possible. They will be able to help you re-organize your itinerary."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Nous vous remercions de votre patience et vous souhaitons un bon voyage malgré ce contretemps.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Noo voo ruh-mer-syohn duh voh-truh pah-syahns eh voo soo-eh-tohng uhn bohng vwah-yahzh mal-greh suh kohn-truh-tahng. — We thank you for your patience and wish you a good journey despite this setback.",
+      "isTerminal": true
+    }
+  }
+}

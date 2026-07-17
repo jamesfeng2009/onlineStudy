@@ -1,0 +1,144 @@
+{
+  "id": "dlg-fr-weather-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "La Météo",
+  "opening": "Bonjour ! Comment allez-vous ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment allez-vous ? Il fait quel temps aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "ilfaitbeau",
+            "beau",
+            "soleil",
+            "ilfaitchaud",
+            "chaud"
+          ],
+          "nextTurnId": "t2_bon_temps"
+        },
+        {
+          "keywords": [
+            "ilfaitfroid",
+            "froid",
+            "ilpleut",
+            "pluie"
+          ],
+          "nextTurnId": "t2_mauvais_temps"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-zhoor) ! Comment allez-vous (koh-mah tah-lay voo) ? Il fait quel temps aujourd'hui (eel fay kel tah oh-zhoor-dwee) ? — Hello! How are you? What's the weather like today?"
+    },
+    "t2_bon_temps": {
+      "id": "t2_bon_temps",
+      "prompt": "Ah, il fait beau ! C'est super. Vous aimez le soleil ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jaime",
+            "soleil"
+          ],
+          "nextTurnId": "t3_saison_pref"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, il fait beau (ah, eel fay boh) ! C'est super (say syoo-per). Vous aimez (voo zay-may) le soleil (luh soh-lay) ? — Ah, it's nice out! That's great. Do you like the sun?"
+    },
+    "t2_mauvais_temps": {
+      "id": "t2_mauvais_temps",
+      "prompt": "Ah, il fait froid ou il pleut ? C'est dommage. Vous restez à la maison ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "jereste",
+            "maison"
+          ],
+          "nextTurnId": "t3_saison_pref"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, il fait froid (ah, eel fay frwah) ou il pleut (oo eel pluh) ? C'est dommage (say doh-mahzh). Vous restez (voo res-tay) à la maison (ah lah may-zohn) ? — Ah, it's cold or it's raining? That's a shame. Are you staying home?"
+    },
+    "t3_saison_pref": {
+      "id": "t3_saison_pref",
+      "prompt": "Quelle est votre saison préférée ?",
+      "branches": [
+        {
+          "keywords": [
+            "printemps"
+          ],
+          "nextTurnId": "t4_farewell_remark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quelle est votre saison préférée ? — What is your favorite season?"
+    },
+    "t4_farewell_remark": {
+      "id": "t4_farewell_remark",
+      "prompt": "Ah, c'est une belle saison ! C'était intéressant de parler de la météo avec vous !",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah, c'est une belle saison ! C'était intéressant de parler de la météo avec vous ! — Ah, that's a beautiful season! It was interesting to talk about the weather with you!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Répétez, s'il vous plaît ? Je n'ai pas compris.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Répétez (reh-peh-tay), s'il vous plaît (seel voo pleh) ? Je n'ai pas compris (zhuh nay pah kohm-pree). — Please repeat? I didn't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir ! Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Au revoir (oh ruh-vwahr) ! Bonne journée (bon zhoor-nay) ! — Goodbye! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

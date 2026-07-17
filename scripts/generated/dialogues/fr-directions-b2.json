@@ -1,0 +1,198 @@
+{
+  "id": "dlg-fr-directions-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Demander son chemin en ville",
+  "opening": "Bonjour. Je peux vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (Par-dõ), je n'ai pas bien compris. Pourriez-vous répéter (ray-pay-tay), s'il vous plaît ?"
+    },
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Je peux vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "gare",
+            "musée",
+            "poste",
+            "pharmacie",
+            "hôpital"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "rue",
+            "place",
+            "avenue",
+            "boulevard"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "merci",
+            "non",
+            "désolé"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (Bon-zhoor). Je peux vous aider (ay-day) ?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, la gare ! D'accord, c'est assez simple, mais ça dépend de votre moyen de transport.",
+      "branches": [
+        {
+          "keywords": [
+            "pied",
+            "marcher",
+            "loin",
+            "temps"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "autre",
+            "près",
+            "proche",
+            "est-cequ'ilyaaussi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, la gare ! D'accord (Da-kor), c'est assez simple, mais ça dépend de votre moyen (mwa-yen) de transport."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "La rue Victor Hugo ? Bien sûr, je vois. C'est à deux pas d'ici, vous ne pouvez pas la manquer.",
+      "branches": [
+        {
+          "keywords": [
+            "comment",
+            "yaller",
+            "chemin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "repère",
+            "pointderepère",
+            "qu'est-cequejevois"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La rue Victor Hugo ? Bien sûr (Byan syoor), je vois. C'est à deux pas (doo pa) d'ici, vous ne pouvez pas la manquer."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "À pied, ça vous prendra environ quinze minutes en suivant cette rue tout droit. Vous passerez devant la grande fontaine.",
+      "branches": [
+        {
+          "keywords": [
+            "fontaine",
+            "après",
+            "ensuite",
+            "tourner"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "merci",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À pied (A pyay), ça vous prendra environ quinze minutes en suivant cette rue tout droit (too drwa). Vous passerez devant la grande fontaine."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Après la fontaine, prenez la première à droite. Vous verrez l'entrée de la bibliothèque juste après la boulangerie.",
+      "branches": [
+        {
+          "keywords": [
+            "boulangerie",
+            "droite",
+            "gauche",
+            "tourner",
+            "confirmer"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "retour",
+            "cheminretour"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Après la fontaine, prenez la première à droite (a drwat). Vous verrez l'entrée de la bibliothèque juste après la boulangerie (boo-lan-zhe-ree)."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Pour le retour, c'est le même chemin, ou vous pouvez prendre le bus 12 depuis l'arrêt en face du parc.",
+      "branches": [
+        {
+          "keywords": [
+            "parc",
+            "bus",
+            "arrêt",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour le retour (poor luh ruh-toor), c'est le même chemin, ou vous pouvez prendre le bus douze (dooz) depuis l'arrêt en face du parc."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien, bonne journée et bon chemin !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien (Duh ryen), bonne journée et bon chemin !",
+      "isTerminal": true
+    }
+  }
+}

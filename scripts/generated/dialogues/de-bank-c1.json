@@ -1,0 +1,260 @@
+{
+  "id": "dlg-de-bank-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Geldanlage mit Weitblick",
+  "opening": "Guten Tag, wie kann ich Ihnen behilflich sein? Haben Sie ein konkretes Anliegen oder möchten Sie sich über unsere Dienstleistungen informieren?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, wie kann ich Ihnen behilflich sein? Haben Sie ein konkretes Anliegen oder möchten Sie sich über unsere Dienstleistungen informieren?",
+      "branches": [
+        {
+          "keywords": [
+            "anlage",
+            "investition",
+            "kapital"
+          ],
+          "nextTurnId": "t2_anlage"
+        },
+        {
+          "keywords": [
+            "konto",
+            "girokonto",
+            "sparbuch"
+          ],
+          "nextTurnId": "t2_konto"
+        },
+        {
+          "keywords": [
+            "überweisung",
+            "transfer",
+            "geldsenden"
+          ],
+          "nextTurnId": "t2_ueberweisung"
+        },
+        {
+          "keywords": [
+            "problem",
+            "störung",
+            "pin"
+          ],
+          "nextTurnId": "t2_problem"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg, vee kan ish een-en be-hilf-lish zyne? Hah-ben zee ine kon-kre-tes Ahn-lee-gen oh-der mörsh-ten zee zish ee-ber oon-ze-re deenst-lys-tungen in-for-mee-ren? — Good day, how can I be of assistance? Do you have a specific request or would you like to inquire about our services?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie leider nicht ganz verstanden. Könnten Sie Ihr Anliegen bitte noch einmal präzisieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-dee-gen zee, ish hah-be zee ly-der nisht gants fer-shtan-den. Könn-ten zee eer Ahn-lee-gen bit-te nokh ine-mal pre-tsee-zee-ren? — Excuse me, I didn't quite understand you. Could you please specify your request once more?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ausgezeichnet, ich notiere das für Sie. Wir freuen uns auf Sie. Auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ows-ge-tsykh-net, ish no-tee-re das für zee. Veer froy-en uns owf zee. Owf Vee-der-hö-ren! — Excellent, I'll note that down for you. We look forward to seeing you. Goodbye!",
+      "isTerminal": true
+    },
+    "t_end_info": {
+      "id": "t_end_info",
+      "prompt": "Gerne, ich werde Ihnen die gewünschten Informationen zukommen lassen. Vielen Dank für Ihr Interesse und auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t_end_info",
+      "promptTranslation": "Ger-ne, ish ver-de een-en dee ge-vünsch-ten In-for-ma-tsee-o-nen tsoo-kom-men las-sen. Fee-len Dank für Eer In-te-res-se unt owf Vee-der-hö-ren! — Certainly, I will send you the requested information. Thank you for your interest and goodbye!",
+      "isTerminal": true
+    },
+    "t2_anlage": {
+      "id": "t2_anlage",
+      "prompt": "Nachhaltige Anlagen liegen uns sehr am Herzen. Haben Sie bereits Vorkenntnisse oder präferieren Sie eine bestimmte Risikoklasse?",
+      "branches": [
+        {
+          "keywords": [
+            "geringesrisiko",
+            "niedrigesrisiko",
+            "sicher"
+          ],
+          "nextTurnId": "t3_lowrisk"
+        },
+        {
+          "keywords": [
+            "hohesrisiko",
+            "ertragreich",
+            "wachstum"
+          ],
+          "nextTurnId": "t3_highrisk"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nahk-hahl-tee-ge Ahn-lah-gen lee-gen uns sehr am Herz-en. Hah-ben zee be-ryts For-kennt-niss-e oh-der pre-fe-ree-ren zee ine be-stimmt-e Ree-see-ko-klas-se? — Sustainable investments are very important to us. Do you already have prior knowledge or do you prefer a specific risk class?"
+    },
+    "t2_konto": {
+      "id": "t2_konto",
+      "prompt": "Gerne, wir bieten verschiedene Kontomodelle an, die auf Ihre Bedürfnisse zugeschnitten sind. Suchen Sie ein Girokonto für den Alltag oder etwas Spezielleres?",
+      "branches": [
+        {
+          "keywords": [
+            "girokonto",
+            "alltag",
+            "standard"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-ne, veer bee-ten fer-shee-de-ne Kon-to-mo-del-le an, dee owf ee-re Be-dürf-niss-e tsoo-ge-shnit-ten zint. Zoo-khen zee ine Gee-ro-kon-to für den Ahl-tag oh-der et-vas Shpe-tsee-el-le-res? — Certainly, we offer various account models tailored to your needs. Are you looking for a checking account for everyday use or something more specific?"
+    },
+    "t2_ueberweisung": {
+      "id": "t2_ueberweisung",
+      "prompt": "Bei Überweisungen gibt es verschiedene Optionen, je nachdem, ob es sich um eine Inlands-, Auslands- oder Echtzeitüberweisung handelt. Welches Anliegen haben Sie genau?",
+      "branches": [
+        {
+          "keywords": [
+            "ausland",
+            "international",
+            "fremdwährung"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "By Ü-ber-vy-sungen gipt es fer-shee-de-ne Op-tsee-o-nen, ye nahk-dem, op es zish um ine In-lants-, Ows-lants- oh-der Ekh-tsyt-ü-ber-vy-sung han-delt. Vel-khes Ahn-lee-gen hah-ben zee ge-now? — For transfers, there are various options, depending on whether it's a domestic, international, or real-time transfer. What exactly is your request?"
+    },
+    "t2_problem": {
+      "id": "t2_problem",
+      "prompt": "Es tut mir leid zu hören, dass es Probleme gibt. Handelt es sich um eine PIN-Änderung, eine gesperrte Karte oder etwas anderes?",
+      "branches": [
+        {
+          "keywords": [
+            "pin",
+            "passwort"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Es toot meer lyd tsoo hö-ren, das es Pro-ble-me gipt. Han-delt es zish um ine PIN-än-de-rung, ine ge-sperr-te Kar-te oh-der et-vas an-de-res? — I'm sorry to hear that there are problems. Is it a PIN change, a blocked card, or something else?"
+    },
+    "t3_lowrisk": {
+      "id": "t3_lowrisk",
+      "prompt": "In diesem Fall könnten unsere grünen Rentenfonds oder ausgewählte ETF-Portfolios interessant für Sie sein. Möchten Sie einen Beratungstermin vereinbaren, um dies detaillierter zu besprechen?",
+      "branches": [
+        {
+          "keywords": [
+            "termin",
+            "beratung",
+            "ja"
+          ],
+          "nextTurnId": "t4_termin_agree"
+        },
+        {
+          "keywords": [
+            "informationen",
+            "mehrdetails",
+            "broschüre"
+          ],
+          "nextTurnId": "t4_info_request"
+        },
+        {
+          "keywords": [
+            "nein",
+            "später",
+            "nichtjetzt"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In dee-zem Fal könn-ten oon-ze-re gröö-nen Ren-ten-fonds oh-der ows-ge-väl-te ETF-Por-fo-lee-os in-te-res-sant für zee zyne. Mörsh-ten zee i-nen Be-rah-tungs-ter-min fer-ine-bah-ren, um dees de-tyl-lee-rer tsoo be-sprech-en? — In this case, our green bond funds or selected ETF portfolios might be interesting for you. Would you like to schedule a consultation to discuss this in more detail?"
+    },
+    "t3_highrisk": {
+      "id": "t3_highrisk",
+      "prompt": "Bei höheren Risikobereitschaften eröffnen sich Chancen in Wachstumsaktien oder spezialisierten Themenfonds. Auch hier empfehle ich ein persönliches Gespräch zur Risikoprofilierung.",
+      "branches": [
+        {
+          "keywords": [
+            "termin",
+            "gespräch",
+            "ja"
+          ],
+          "nextTurnId": "t4_termin_agree"
+        },
+        {
+          "keywords": [
+            "mehrinformationen",
+            "produkte"
+          ],
+          "nextTurnId": "t4_info_request"
+        },
+        {
+          "keywords": [
+            "nichtjetzt",
+            "überlegen"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "By hö-he-ren Ree-see-ko-be-ryt-shaf-ten er-öf-nen zish Shan-sen in Vaks-tums-ak-tsyen oh-der shpe-tsya-lee-seer-ten Tee-men-fonds. Owkh heer em-pfeh-le ish ine per-sön-lish-es Ge-shpräch tsur Ree-see-ko-pro-fee-lee-rung. — With higher risk appetites, opportunities arise in growth stocks or specialized thematic funds. Here too, I recommend a personal consultation for risk profiling."
+    },
+    "t4_termin_agree": {
+      "id": "t4_termin_agree",
+      "prompt": "Gerne. Wie wäre es nächste Woche Dienstag um 10 Uhr oder Donnerstag um 14 Uhr? Oder passt Ihnen ein anderer Tag besser in den Kram?",
+      "branches": [
+        {
+          "keywords": [
+            "dienstag",
+            "10uhr",
+            "vormittag"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "anderertermin",
+            "verschieben",
+            "neuervorschlag"
+          ],
+          "nextTurnId": "t_end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ger-ne. Vee vä-re es näkh-ste Vo-khe Deens-tahg um tsayn Oor oh-der Don-ners-tahg um feer-tsayn Oor? Oh-der passt een-en ine an-de-rer Tahg bes-ser in den Kram? — Certainly. How about next Tuesday at 10 AM or Thursday at 2 PM? Or does another day suit you better?"
+    },
+    "t4_info_request": {
+      "id": "t4_info_request",
+      "prompt": "Selbstverständlich. Wir haben umfassende Informationsmaterialien zu unseren nachhaltigen Produkten. Möchten Sie, dass ich Ihnen eine Broschüre per E-Mail zusende oder direkt einige Details nenne?",
+      "branches": [
+        {
+          "keywords": [
+            "email",
+            "broschüre"
+          ],
+          "nextTurnId": "t_end_info"
+        },
+        {
+          "keywords": [
+            "termin",
+            "dochtermin"
+          ],
+          "nextTurnId": "t4_termin_agree"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zelbst-fer-shtänd-lish. Veer hah-ben um-fas-sen-de In-for-ma-tsee-on-ma-te-ree-a-lyen tsoo oon-ze-ren nahk-hahl-tee-gen Pro-duk-ten. Mörsh-ten zee, das ish ee-nen ine Bro-shü-re per Ee-myl tsoo-zen-de oh-der dee-rekt ey-nee-ge De-tyls nen-ne? — Of course. We have extensive information materials on our sustainable products. Would you like me to send you a brochure by email or tell you some details directly?"
+    }
+  }
+}

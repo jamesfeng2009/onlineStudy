@@ -1,0 +1,128 @@
+{
+  "id": "dlg-id-interview-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Wawancara Kerja Awal",
+  "opening": "Selamat pagi. Terima kasih sudah datang. Bisa ceritakan sedikit tentang diri Anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Terima kasih sudah datang. Bisa ceritakan sedikit tentang diri Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "diri",
+            "saya",
+            "nama",
+            "perkenalkan",
+            "latarbelakang"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Terima kasih sudah datang — Thank you for coming. Bisa ceritakan sedikit tentang diri Anda — Could you tell me a little bit about yourself?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik. Bisakah Anda jelaskan lebih lanjut tentang pengalaman kerja Anda yang relevan dengan posisi ini, atau keahlian utama Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "relevan",
+            "kerja",
+            "perusahaan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik — Interesting. Bisakah Anda jelaskan lebih lanjut tentang pengalaman kerja Anda yang relevan dengan posisi ini — Could you explain more about your work experience relevant to this position, atau keahlian utama Anda — or your main skills?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Setiap orang memiliki kelebihan dan kekurangan. Apa yang Anda anggap sebagai kekuatan terbesar Anda, dan ada area mana yang ingin Anda tingkatkan?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "kelebihan",
+            "kuat",
+            "baik",
+            "mampu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Alright. Setiap orang memiliki kelebihan dan kekurangan — Everyone has strengths and weaknesses. Apa yang Anda anggap sebagai kekuatan terbesar Anda — What do you consider your greatest strength, dan ada area mana yang ingin Anda tingkatkan — and what area would you like to improve?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas kejujurannya. Apakah ada pertanyaan yang ingin Anda tanyakan kepada kami tentang posisi atau perusahaan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "ada",
+            "ya",
+            "punya",
+            "ingin",
+            "bertanya"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih atas kejujurannya — Thank you for your honesty. Apakah ada pertanyaan yang ingin Anda tanyakan kepada kami tentang posisi atau perusahaan ini — Do you have any questions you'd like to ask us about this position or company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa Anda ulangi lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, bisa Anda ulangi lagi — could you please repeat that? Saya kurang jelas — I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih banyak atas waktu Anda hari ini. Kami akan segera menghubungi Anda.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik — Alright, terima kasih banyak atas waktu Anda hari ini — thank you very much for your time today. Kami akan segera menghubungi Anda — We will contact you soon.",
+      "isTerminal": true
+    }
+  }
+}

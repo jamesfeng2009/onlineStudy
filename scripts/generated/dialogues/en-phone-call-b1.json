@@ -1,0 +1,231 @@
+{
+  "id": "dlg-en-phone-call-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "A Phone Call",
+  "opening": "Hello, this is Sarah speaking. How can I help you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, this is Sarah speaking. How can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "this is",
+            "my name is",
+            "i'm calling",
+            "i am"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "can i speak to",
+            "is available",
+            "i'd like to talk to"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "what"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello, this is Sarah speaking. How can I help you? — (English)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, hello there! And who are you trying to reach today?",
+      "branches": [
+        {
+          "keywords": [
+            "i'd like to speak to",
+            "is available",
+            "i'm calling for"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "i'd like to leave a message",
+            "can i leave a message"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "what"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, hello there! And who are you trying to reach today? — (English)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Certainly. May I ask who's calling, please?",
+      "branches": [
+        {
+          "keywords": [
+            "this is",
+            "my name is",
+            "i'm"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "i don't want to say"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. May I ask who's calling, please? — (English)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "I'm afraid [Target Person] isn't here at the moment. Would you like to leave a message, or would you like to know when they'll be back?",
+      "branches": [
+        {
+          "keywords": [
+            "yes, please",
+            "i'd like to leave a message",
+            "can you tell"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "when will they be back",
+            "do you know when",
+            "at what time"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "i'll call back",
+            "i'll try again later",
+            "thank you"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "what"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm afraid [Target Person] isn't here at the moment. Would you like to leave a message, or would you like to know when they'll be back? — (English)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Certainly, I'll write that down. What would you like to say?",
+      "branches": [
+        {
+          "keywords": [
+            "please tell them",
+            "can you let them know",
+            "my message is",
+            "i want to tell them"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "nothing"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, I'll write that down. What would you like to say? — (English)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "They should be back around 3 PM this afternoon. Or would you prefer to leave a message?",
+      "branches": [
+        {
+          "keywords": [
+            "yes, please leave a message",
+            "i'll leave a message",
+            "i want to leave a message"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "i'll call back",
+            "i'll try again",
+            "thank you"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "what"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "They should be back around 3 PM this afternoon. Or would you prefer to leave a message? — (English)"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Okay, I've got that. I'll make sure [Target Person] gets your message as soon as possible. Is there anything else?",
+      "branches": [
+        {
+          "keywords": [
+            "no, that's all",
+            "that's everything",
+            "thank you",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I've got that. I'll make sure [Target Person] gets your message as soon as possible. Is there anything else? — (English)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat",
+            "yes"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat? — (English)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, thank you for calling. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for calling. Goodbye! — (English)",
+      "isTerminal": true
+    }
+  }
+}

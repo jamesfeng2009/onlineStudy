@@ -1,0 +1,138 @@
+{
+  "id": "dlg-fr-shopping-clothes-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Shopping à la mode parisienne",
+  "opening": "Bonjour ! Je suis à votre entière disposition. Cherchez-vous un article en particulier ou avez-vous besoin d'un coup de main pour dénicher la perle rare ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Je suis à votre entière disposition. Cherchez-vous un article en particulier ou avez-vous besoin d'un coup de main pour dénicher la perle rare ?",
+      "branches": [
+        {
+          "keywords": [
+            "robe",
+            "chemise",
+            "pantalon",
+            "jupe",
+            "veste",
+            "manteau",
+            "pull",
+            "accessoires"
+          ],
+          "nextTurnId": "t2_item_style_size"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! (Bon-jour!) I'm entirely at your disposal. Are you looking for a specific item, or do you need a hand finding that rare gem?"
+    },
+    "t2_item_style_size": {
+      "id": "t2_item_style_size",
+      "prompt": "Très bien, je vois. Pour être sûr de vous aiguiller au mieux, pourriez-vous me dire quel type d'article vous intéresse (robe, pantalon, etc.), quel style vous plaît (plutôt décontracté, habillé), et quelle est votre taille habituelle ?",
+      "branches": [
+        {
+          "keywords": [
+            "robe",
+            "pantalon",
+            "veste",
+            "jupe",
+            "pull",
+            "chemise"
+          ],
+          "nextTurnId": "t3_offer_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, je vois. (Tray byang, je vwâ.) Very good, I see. To guide you best, could you tell me what type of item interests you (dress, pants, etc.), what style you like (more casual, dressed up), and what your usual size is?"
+    },
+    "t3_offer_item": {
+      "id": "t3_offer_item",
+      "prompt": "D'accord, je vous propose cette superbe robe en lin mélangé, d'un vert émeraude éclatant, en taille 38. Elle fait l'unanimité ! Souhaitez-vous l'essayer ou préférez-vous voir d'autres options ?",
+      "branches": [
+        {
+          "keywords": [
+            "essayer",
+            "oui",
+            "volontiers",
+            "pourquoi pas"
+          ],
+          "nextTurnId": "t4_try_or_browse"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, (D'ac-cord!) Alright, I suggest this superb linen blend dress, in a vibrant emerald green, in size 38. It's a crowd-pleaser! Would you like to try it on, or would you prefer to see other options?"
+    },
+    "t4_try_or_browse": {
+      "id": "t4_try_or_browse",
+      "prompt": "Très bien. Si vous souhaitez l'essayer, les cabines sont juste là-bas, au fond, à gauche. N'hésitez pas à m'appeler si vous avez besoin d'une autre taille ou d'un avis. Si vous préférez voir d'autres options, je peux vous présenter notre sélection de jupes plissées ou de pantalons cigarette.",
+      "branches": [
+        {
+          "keywords": [
+            "cabines",
+            "essayer",
+            "jvais",
+            "merci"
+          ],
+          "nextTurnId": "t5_decision_or_info"
+        },
+        {
+          "keywords": [
+            "jupes",
+            "pantalons",
+            "autre",
+            "modèles",
+            "different"
+          ],
+          "nextTurnId": "t3_offer_item"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. (Tray byang.) Very good. If you'd like to try it on, the changing rooms are just over there, at the back, to the left. Don't hesitate to call me if you need another size or an opinion. If you prefer to see other options, I can show you our selection of pleated skirts or cigarette pants."
+    },
+    "t5_decision_or_info": {
+      "id": "t5_decision_or_info",
+      "prompt": "Alors, cette pièce, c'est un coup de cœur ? Ou peut-être avez-vous besoin d'un instant pour peser le pour et le contre ? Quoi qu'il en soit, sachez que vous avez 30 jours pour un échange ou un remboursement, avec le ticket de caisse, bien entendu.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "acheter",
+            "prends",
+            "caisse",
+            "jaime"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alors, (Ah-lor!) is this item a favorite? Or perhaps you need a moment to weigh the pros and cons? (pour et le contre) Either way, know that you have 30 days for an exchange or refund, with the receipt, of course."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi le sens de votre propos. Pourriez-vous reformuler ou répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter",
+            "quoi",
+            "pardon"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite grasp the meaning of what you said. Could you rephrase or repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup de votre visite et au plaisir de vous revoir chez nous !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your visit and hope to see you again soon!",
+      "isTerminal": true
+    }
+  }
+}

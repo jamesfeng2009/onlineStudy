@@ -1,0 +1,138 @@
+{
+  "id": "dlg-en-doctor-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Doctor's Visit",
+  "opening": "Good morning, come in. What brings you here today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning, come in. What brings you here today?",
+      "branches": [
+        {
+          "keywords": [
+            "notfeelingwell",
+            "sick",
+            "unwell"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "pain",
+            "ache",
+            "hurt"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "checkup",
+            "appointment",
+            "routine"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, come in. What brings you here today?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "I see. Could you tell me a bit more about what you're experiencing? How long has this been going on, and how severe is it on a scale of one to ten?",
+      "branches": [
+        {
+          "keywords": [
+            "fewdays",
+            "coupleofdays",
+            "threedays",
+            "adayortwo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Could you tell me a bit more about what you're experiencing? How long has this been going on, and how severe is it on a scale of one to ten?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Where exactly is the pain, and can you describe it for me? Is it a dull ache, sharp, or throbbing? And how long has it been bothering you?",
+      "branches": [
+        {
+          "keywords": [
+            "head",
+            "stomach",
+            "chest",
+            "back",
+            "leg"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Where exactly is the pain, and can you describe it for me? Is it a dull ache, sharp, or throbbing? And how long has it been bothering you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Okay, thank you for clarifying. Are you experiencing any other symptoms, perhaps a fever, headache, or nausea? And do you have any allergies I should be aware of?",
+      "branches": [
+        {
+          "keywords": [
+            "fever",
+            "headache",
+            "nausea",
+            "tired",
+            "vomiting"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, thank you for clarifying. Are you experiencing any other symptoms, perhaps a fever, headache, or nausea? And do you have any allergies I should be aware of?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Right. Based on what you've described, I'd like to prescribe some medication to help with the symptoms and schedule a follow-up if things don't improve. I'll also do a quick examination now.",
+      "branches": [
+        {
+          "keywords": [
+            "yesplease",
+            "soundsgood",
+            "alright",
+            "okay"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right. Based on what you've described, I'd like to prescribe some medication to help with the symptoms and schedule a follow-up if things don't improve. I'll also do a quick examination now."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "repeat",
+            "sayagain",
+            "tryagain",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Great. The prescription will be sent to the pharmacy. Take care and don't hesitate to call if you have any concerns. Goodbye for now.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Great. The prescription will be sent to the pharmacy. Take care and don't hesitate to call if you have any concerns. Goodbye for now.",
+      "isTerminal": true
+    }
+  }
+}

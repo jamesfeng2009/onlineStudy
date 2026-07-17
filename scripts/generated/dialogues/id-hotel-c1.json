@@ -1,0 +1,134 @@
+{
+  "id": "dlg-id-hotel-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Check-in Hotel: Tingkat Lanjut",
+  "opening": "Selamat sore, Bapak/Ibu. Ada yang bisa saya bantu? Apakah Anda sudah membuat reservasi sebelumnya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat sore, Bapak/Ibu. Ada yang bisa saya bantu? Apakah Anda sudah membuat reservasi sebelumnya?",
+      "branches": [
+        {
+          "keywords": [
+            "reservasi",
+            "sudah",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat sore (seh-lah-mat soh-reh), Bapak/Ibu (bah-pahk ee-boo). Ada yang bisa saya bantu (ah-dah yahng bee-sah sah-yah bahn-too)? Apakah Anda sudah membuat reservasi sebelumnya (ah-pah-kah ahn-dah soo-dah moo-boo-aht reh-ser-vah-see seh-beh-loom-nyah)? — Good afternoon, Sir/Madam. How may I assist you? Have you made a prior reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, mohon sebutkan nama lengkap yang Anda gunakan saat pemesanan, agar kami bisa melakukan verifikasi silang.",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "lengkap"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (ba-eek), mohon sebutkan nama lengkap (moh-hon seh-boot-kan nah-mah lehn-gkap) yang Anda gunakan saat pemesanan, agar kami bisa melakukan verifikasi silang (ah-gar kah-mee bee-sah meh-lah-koo-kan veh-ree-fee-kah-see see-lahng). — Alright, please state the full name you used when booking, so we can cross-verify."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih, Bapak/Ibu. Setelah kami temukan, mohon tunjukkan kartu identitas resmi Anda dan metode pembayaran yang hendak digunakan untuk jaminan.",
+      "branches": [
+        {
+          "keywords": [
+            "ktp",
+            "paspor",
+            "identitas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you, Sir/Madam. Once we've found it, please show your official identification card and the payment method you intend to use for guarantee."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Semuanya sudah tercatat dengan baik. Untuk kenyamanan Anda, apakah ada preferensi khusus mengenai kamar, seperti pemandangan kota, kolam renang, atau mungkin lantai yang lebih tinggi? Dan, apakah Anda ingin menambahkan paket sarapan pagi kami yang lezat?",
+      "branches": [
+        {
+          "keywords": [
+            "pemandangan",
+            "kota",
+            "kolam",
+            "lantai"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Everything has been duly noted. For your comfort, are there any specific room preferences, such as a city view, pool view, or perhaps a higher floor? And, would you like to add our delicious breakfast package?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sempurna! Semua detail sudah kami konfirmasi. Anda akan menempati kamar [Nomor Kamar] di lantai [Nomor Lantai] dengan pemandangan [Pemandangan]. Sarapan pagi [ditambahkan/tidak ditambahkan] dalam paket Anda. Ini adalah kunci kartu Anda. Selamat menikmati masa inap Anda bersama kami!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect! All details have been confirmed. You will occupy room [Room Number] on floor [Floor Number] with a [View] view. Breakfast is [added/not added] to your package. Here is your key card. Enjoy your stay with us!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulang? Saya kurang jelas menangkap maksud Anda.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf (moh-hon mah-ahf), bisa diulang (bee-sah dee-oo-lang)? Saya kurang jelas menangkap maksud Anda (sah-yah koo-rang jeh-las men-ang-kap mak-sood ahn-dah). — I apologize, could you please repeat that? I didn't quite catch your meaning clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas kunjungan dan kepercayaannya. Semoga perjalanan Anda menyenangkan dan selamat menikmati fasilitas unggulan kami.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your visit and trust. We hope you have a pleasant journey and enjoy our excellent facilities.",
+      "isTerminal": true
+    }
+  }
+}

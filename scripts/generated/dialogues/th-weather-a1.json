@@ -1,0 +1,165 @@
+{
+  "id": "dlg-th-weather-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "คุยเรื่องอากาศ",
+  "opening": "วันนี้อากาศเป็นอย่างไรบ้างครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "วันนี้อากาศเป็นอย่างไรบ้างครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ร้อน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ฝนตก"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เย็น"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wan-níi aa-gàat bpen yàang-rai bâang kráp/ká? — How is the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อากาศร้อน คุณชอบไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชอบ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aa-gàat rɔ́ɔn kun chɔ̂ɔp mái kráp/ká? — Do you like hot weather?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ฝนตก คุณมีแผนอะไรไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไปเที่ยว"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fǒn tòk kun mii pɛ̌ɛn à-rai mái kráp/ká? — It's raining. Do you have any plans?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "อากาศเย็นสบาย คุณชอบไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชอบ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aa-gàat yen-sa-baai kun chɔ̂ɔp mái kráp/ká? — Do you like cool weather?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ดีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dii kráp/ká. — Good."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "คุณจะไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บ้าน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kun jà pai nǎi kráp/ká? — Where will you go?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ tôot kráp/ká. Pûut ìik kráng dâai mái kráp/ká? — Sorry, could you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kɔ̀ɔp kun mâak kráp/ká. Sà-wàt-dii kráp/ká. — Thank you very much. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

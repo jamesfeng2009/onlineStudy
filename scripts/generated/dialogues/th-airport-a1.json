@@ -1,0 +1,170 @@
+{
+  "id": "dlg-th-airport-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "ที่สนามบิน",
+  "opening": "สวัสดีครับ/ค่ะ ตั๋วโดยสารของคุณครับ/ค่ะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ตั๋วโดยสารของคุณครับ/ค่ะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตั๋ว",
+            "โดยสาร",
+            "นี่",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่มี",
+            "หา"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-wat-dee krap/ka. Dtua doi-saan kong kun krap/ka? — Hello. Your boarding pass, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขอบคุณครับ/ค่ะ ไปกรุงเทพฯ ใช่ไหมครับ/คะ? มีกระเป๋ากี่ใบครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "หนึ่ง",
+            "กระเป๋าหนึ่ง",
+            "สอง",
+            "กระเป๋าสอง"
+          ],
+          "nextTurnId": "t_gate_32"
+        },
+        {
+          "keywords": [
+            "ไม่ใช่",
+            "เชียงใหม่",
+            "ไปเชียงใหม่"
+          ],
+          "nextTurnId": "t_gate_35"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kop-kun krap/ka. Bpai Krung-tep chai mai krap/ka? Mee gra-pao gee bai krap/ka? — Thank you. To Bangkok, right? How many bags?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "คุณจะไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "กรุงเทพ",
+            "ไปกรุงเทพ"
+          ],
+          "nextTurnId": "t_gate_32"
+        },
+        {
+          "keywords": [
+            "เชียงใหม่",
+            "ไปเชียงใหม่"
+          ],
+          "nextTurnId": "t_gate_35"
+        },
+        {
+          "keywords": [
+            "ไม่รู้",
+            "หลง",
+            "ช่วย"
+          ],
+          "nextTurnId": "t6_lost"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kun ja bpai nai krap/ka? — Where are you going?"
+    },
+    "t_gate_32": {
+      "id": "t_gate_32",
+      "prompt": "ประตูทางออกที่สามสิบสองครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ประตู",
+            "โอเค",
+            "ครับ",
+            "ค่ะ",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pra-dtuu taang-ork tee saam-sip-song krap/ka. — Gate thirty-two."
+    },
+    "t_gate_35": {
+      "id": "t_gate_35",
+      "prompt": "ประตูทางออกที่สามสิบห้าครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ประตู",
+            "โอเค",
+            "ครับ",
+            "ค่ะ",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pra-dtuu taang-ork tee saam-sip-ha krap/ka. — Gate thirty-five."
+    },
+    "t6_lost": {
+      "id": "t6_lost",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เป็นไรครับ/ค่ะ ให้ช่วยอะไรครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ช่วย",
+            "หา",
+            "ไป",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kor-toht krap/ka. Mai bpen rai krap/ka. Hai chuay a-rai krap/ka? — Sorry. No problem. How can I help?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor-toht krap/ka. Poot eek krang dai mai krap/ka? — Sorry, can you say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "เดินทางปลอดภัยครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dern-taang bplod-pai krap/ka. Sa-wat-dee krap/ka. — Have a safe trip! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

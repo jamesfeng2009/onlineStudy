@@ -1,0 +1,174 @@
+{
+  "id": "dlg-es-weather-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "El Tiempo",
+  "opening": "¡Hola! ¿Qué tal el tiempo hoy?",
+  "startTurnId": "t1_greeting_weather",
+  "turns": {
+    "t1_greeting_weather": {
+      "id": "t1_greeting_weather",
+      "prompt": "¡Hola! ¿Qué tal el tiempo hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "soleado",
+            "calor",
+            "verano",
+            "nublado",
+            "gris"
+          ],
+          "nextTurnId": "t2_sunny_plans"
+        },
+        {
+          "keywords": [
+            "lluvia",
+            "llueve",
+            "frio",
+            "invierno"
+          ],
+          "nextTurnId": "t3_rainy_plans"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "¡Hola! (Oh-la) — Hello! ¿Qué tal el tiempo hoy? (Keh tal el tee-em-po oy) — How's the weather today?"
+    },
+    "t2_sunny_plans": {
+      "id": "t2_sunny_plans",
+      "prompt": "¡Qué bien! Me gusta el sol. ¿Qué haces hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "pasear",
+            "caminar",
+            "parque",
+            "calle"
+          ],
+          "nextTurnId": "t4_likes_weather_preference"
+        },
+        {
+          "keywords": [
+            "casa",
+            "leer",
+            "descansar"
+          ],
+          "nextTurnId": "t4_neutral_weather_preference"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "¡Qué bien! (Keh bee-en) — How nice! Me gusta el sol. (Me goos-ta el sol) — I like the sun. ¿Qué haces hoy? (Keh ah-thes oy) — What are you doing today?"
+    },
+    "t3_rainy_plans": {
+      "id": "t3_rainy_plans",
+      "prompt": "Oh, llueve. No me gusta la lluvia. ¿Qué haces hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "casa",
+            "leer",
+            "ver",
+            "dormir",
+            "descansar"
+          ],
+          "nextTurnId": "t4_likes_weather_preference"
+        },
+        {
+          "keywords": [
+            "calle",
+            "parque",
+            "pasear"
+          ],
+          "nextTurnId": "t4_neutral_weather_preference"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Oh, llueve. (Oh, yoo-eh-veh) — Oh, it's raining. No me gusta la lluvia. (No me goos-ta la yoo-vee-ah) — I don't like the rain. ¿Qué haces hoy? (Keh ah-thes oy) — What are you doing today?"
+    },
+    "t4_likes_weather_preference": {
+      "id": "t4_likes_weather_preference",
+      "prompt": "¡Buena idea! Es un buen plan. ¿Te gusta el sol o la lluvia?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "soleado",
+            "calor"
+          ],
+          "nextTurnId": "t5_terminal"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "¡Buena idea! (Bweh-na ee-deh-a) — Good idea! Es un buen plan. (Es oon bwen plan) — It's a good plan. ¿Te gusta el sol o la lluvia? (Teh goos-ta el sol o la yoo-vee-ah) — Do you like the sun or the rain?"
+    },
+    "t4_neutral_weather_preference": {
+      "id": "t4_neutral_weather_preference",
+      "prompt": "Ah, entiendo. ¿Te gusta el sol o la lluvia?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "soleado",
+            "calor"
+          ],
+          "nextTurnId": "t5_terminal"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Ah, entiendo. (Ah, en-tee-en-do) — Ah, I understand. ¿Te gusta el sol o la lluvia? (Teh goos-ta el sol o la yoo-vee-ah) — Do you like the sun or the rain?"
+    },
+    "t5_terminal": {
+      "id": "t5_terminal",
+      "prompt": "Entiendo. ¡Qué interesante! ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t5_terminal",
+      "promptTranslation": "Entiendo. (En-tee-en-do) — I understand. ¡Qué interesante! (Keh een-te-re-san-te) — How interesting! ¡Adiós! (Ah-dee-os) — Goodbye!",
+      "isTerminal": true
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "¿Perdón? ¿Puedes repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_greeting_weather"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting_weather",
+      "promptTranslation": "¿Perdón? (Per-don) — Excuse me? ¿Puedes repetir, por favor? (Pweh-des re-pe-teer, por fa-vor) — Can you repeat, please?"
+    }
+  }
+}

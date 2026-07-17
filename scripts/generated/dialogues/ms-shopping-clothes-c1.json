@@ -1,0 +1,296 @@
+{
+  "id": "dlg-ms-shopping-clothes-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Membeli Pakaian Bergaya",
+  "opening": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu, atau sekadar mahu menjamu mata dengan koleksi terkini kami?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu, atau sekadar mahu menjamu mata dengan koleksi terkini kami?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "baju",
+            "blaus",
+            "seluar",
+            "jeans",
+            "skirt",
+            "cari"
+          ],
+          "nextTurnId": "t2_item_inquiry"
+        },
+        {
+          "keywords": [
+            "jamu",
+            "mata",
+            "belek",
+            "lihat",
+            "tengok",
+            "sekadar",
+            ""
+          ],
+          "nextTurnId": "t3_browse_offers"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu, atau sekadar mahu menjamu mata dengan koleksi terkini kami? — Welcome to our boutique! Is there anything I can help you with, or would you simply like to feast your eyes on our latest collection?"
+    },
+    "t2_item_inquiry": {
+      "id": "t2_item_inquiry",
+      "prompt": "Oh, faham. Kami ada pelbagai pilihan rekaan yang sentiasa mengikut arus fesyen. Adakah anda mencari sesuatu yang lebih kasual, untuk acara rasmi, atau mungkin gaya yang lebih kontemporari dan berani?",
+      "branches": [
+        {
+          "keywords": [
+            "kasual",
+            "santai",
+            "rasmi",
+            "formal",
+            "kontemporari",
+            "moden",
+            "berani",
+            "saranan",
+            "cadangan"
+          ],
+          "nextTurnId": "t4_show_item"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa",
+            "kos"
+          ],
+          "nextTurnId": "t4_price_query"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tak",
+            "kurang",
+            ""
+          ],
+          "nextTurnId": "t5_alternative_or_exit"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, faham. Kami ada pelbagai pilihan rekaan yang sentiasa mengikut arus fesyen. Adakah anda mencari sesuatu yang lebih kasual, untuk acara rasmi, atau mungkin gaya yang lebih kontemporari dan berani? — Oh, I see. We have a wide range of designs that always follow fashion trends. Are you looking for something more casual, for a formal occasion, or perhaps a more contemporary and daring style?"
+    },
+    "t3_browse_offers": {
+      "id": "t3_browse_offers",
+      "prompt": "Silakan, jangan segan-segan. Koleksi baharu kami di bahagian hadapan, dan bilik persalinan di hujung. Jika ada yang berkenan, panggil saya. Atau, ada sesuatu spesifik dalam fikiran?",
+      "branches": [
+        {
+          "keywords": [
+            "cuba",
+            "bilik",
+            "persalinan",
+            "mana"
+          ],
+          "nextTurnId": "t5_try_on"
+        },
+        {
+          "keywords": [
+            "kemeja",
+            "baju",
+            "seluar",
+            "cari"
+          ],
+          "nextTurnId": "t2_item_inquiry"
+        },
+        {
+          "keywords": [
+            "harga",
+            "diskaun",
+            "murah"
+          ],
+          "nextTurnId": "t4_price_query"
+        },
+        {
+          "keywords": [
+            "terima",
+            "ok",
+            "pulang",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Silakan, jangan segan-segan. Koleksi baharu kami di bahagian hadapan, dan bilik persalinan di hujung. Jika ada yang berkenan, panggil saya. Atau, ada sesuatu spesifik dalam fikiran? — Please, don't hesitate. Our new collection is at the front, and the fitting rooms are at the end. If anything catches your eye, call me. Or, do you have something specific in mind?"
+    },
+    "t4_show_item": {
+      "id": "t4_show_item",
+      "prompt": "Saya cadangkan kemeja ini. Rekaan minimalis tetapi tetap menonjolkan gaya moden yang 'evergreen'. Bagaimana, berminat untuk mencuba saiz anda, atau ingin tahu harganya dahulu?",
+      "branches": [
+        {
+          "keywords": [
+            "cuba",
+            "saiz",
+            "muat",
+            "pakai"
+          ],
+          "nextTurnId": "t5_try_on"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa",
+            "kos"
+          ],
+          "nextTurnId": "t4_price_query"
+        },
+        {
+          "keywords": [
+            "lain",
+            "warna",
+            "corak",
+            "tidak",
+            "kurang",
+            "pilihan",
+            ""
+          ],
+          "nextTurnId": "t5_alternative_or_exit"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I recommend this shirt. A minimalist design that still highlights an 'evergreen' modern style. What do you think, interested in trying on your size, or would you like to know the price first?"
+    },
+    "t4_price_query": {
+      "id": "t4_price_query",
+      "prompt": "Harga item ini RM189. Ia material berkualiti tinggi dan rekaan eksklusif. Adakah ini dalam lingkungan bajet anda, atau anda mahu mencubanya?",
+      "branches": [
+        {
+          "keywords": [
+            "beli",
+            "nak",
+            "ya",
+            "ambil"
+          ],
+          "nextTurnId": "t6_payment_options"
+        },
+        {
+          "keywords": [
+            "mahal",
+            "tidak",
+            "kurang",
+            "fikir"
+          ],
+          "nextTurnId": "t5_alternative_or_exit"
+        },
+        {
+          "keywords": [
+            "cuba",
+            "pakai",
+            "saiz"
+          ],
+          "nextTurnId": "t5_try_on"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The price for this item is RM189. It's made from high-quality material and an exclusive design. Is this within your budget, or would you like to try it on?"
+    },
+    "t5_try_on": {
+      "id": "t5_try_on",
+      "prompt": "Bagus! Bilik persalinan di hujung sana. Sila ambil masa anda. Apabila selesai, beritahu saya bagaimana rasanya. Adakah ia sesuai, atau anda perlukan saiz lain?",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "selesai",
+            "sudah",
+            "sesuai",
+            "ambil",
+            "beli"
+          ],
+          "nextTurnId": "t6_payment_options"
+        },
+        {
+          "keywords": [
+            "saiz",
+            "lain",
+            "besar",
+            "kecil",
+            "longgar",
+            "sendat"
+          ],
+          "nextTurnId": "t5_alternative_or_exit"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! The fitting rooms are at the far end. Please take your time. When you're done, let me know how it feels. Is it suitable, or do you need a different size?"
+    },
+    "t5_alternative_or_exit": {
+      "id": "t5_alternative_or_exit",
+      "prompt": "Tidak mengapa. Mungkin anda perlukan sesuatu yang lain? Kami ada pelbagai pilihan yang mungkin lebih menepati citarasa anda. Atau, ada soalan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "baju",
+            "seluar",
+            "cari"
+          ],
+          "nextTurnId": "t2_item_inquiry"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "terima",
+            "ok",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Perhaps you need something else? We have various options that might better suit your taste. Or, do you have any other questions?"
+    },
+    "t6_payment_options": {
+      "id": "t6_payment_options",
+      "prompt": "Bagus! Sila ke kaunter pembayaran di hadapan. Untuk makluman, dasar penukaran atau pemulangan kami membenarkan dalam tempoh 7 hari dengan resit asal dan barang masih dalam keadaan baik. Tiada pemulangan tunai. Ada apa-apa lagi sebelum saya tinggalkan anda untuk pembayaran?",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "faham",
+            "jelas",
+            "tiada",
+            "cukup",
+            "terima",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! Please proceed to the payment counter at the front. For your information, our exchange or return policy allows it within 7 days with the original receipt and the item still in good condition. No cash refunds. Anything else before I leave you to payment?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulangi semula? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana membeli-belah di butik kami. Harap jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for shopping at our boutique. Hope to see you again!",
+      "isTerminal": true
+    }
+  }
+}

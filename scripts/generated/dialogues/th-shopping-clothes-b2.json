@@ -1,0 +1,208 @@
+{
+  "id": "dlg-th-shopping-clothes-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "ซื้อเสื้อผ้า",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "หาเสื้อผ้า",
+            "ดูเสื้อ",
+            "อยากได้"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "แค่ดู",
+            "ดูเฉยๆ",
+            "ยังไม่",
+            "ดูก่อน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krab. Yindee t̂xnrạb ka/krab. Mee arai h̄̂chy mị ḱhạ/krạb? — Hello. Welcome. Can I help you with anything?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ตอนนี้กำลังมองหาเสื้อผ้าแบบไหนเป็นพิเศษคะ/ครับ? สำหรับใส่ทำงาน ใส่เที่ยวสบายๆ หรือมีสไตล์ที่สนใจเป็นพิเศษไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทำงาน",
+            "ออฟฟิศ",
+            "สุภาพ",
+            "ทางการ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "T̂xng-nêe gam-lang m̂xng-h̄aa seu-a-p̂haa bǽb-nǎi pen pi-s̄et ka/krab? S̄ả-h̄rạb s̄ài t̄am-ngaan, s̄ài t̂heīyw s̄a-bāy-s̄a-bāy, rĕu mee s̄tịl têe s̄on-jai pen pi-s̄et mị ka/krab? — What kind of clothes are you looking for right now? For work, casual wear, or do you have a specific style in mind?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "เข้าใจค่ะ/ครับ ทางเรามีแบบสวยๆ ให้เลือกเยอะเลย ไม่ทราบว่าปกติใส่ไซส์อะไร หรือชอบสีประมาณไหนเป็นพิเศษไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไซส์",
+            "ขนาด",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "อะไรก็ได้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kao-jai ka/krab. T̂haang rao mee bǽb s̄wy-s̄wy h̄̂y leụ̄xk yóe loey. Mị s̄aab wâ pok-ga-ti s̄ài s̄ịs̄ x-rị rĕu chôxb s̄ee pra-maan nǎi pen pi-s̄et mị ka/krab? — I understand. We have many beautiful styles to choose from. What size do you usually wear, or do you have a specific color preference?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ได้เลยค่ะ/ครับ เดี๋ยวจะหยิบให้ลองนะคะ/ครับ ห้องลองอยู่ด้านโน้นเลยค่ะ/ครับ สะดวกให้หยิบไปให้เลยไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ค่ะ",
+            "ครับ",
+            "เอาไป",
+            "ใช่",
+            "ช่วย"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loey ka/krab. Diao ja yip hai long na ka/krab. Hong long yoo dan non loey ka/krab. Sa-duak hai yip pai hai loey mai ka/krab? — Okay. I'll get it for you to try on. The fitting room is over there. Would you like me to take it there for you?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เป็นยังไงบ้างคะ/ครับ ใส่พอดีไหมคะ/ครับ หรืออยากดูสีอื่น/ไซส์อื่นเพิ่มเติมไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "พอดี",
+            "เอา",
+            "รับ",
+            "ซื้อ",
+            "ถูกใจ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่พอดี",
+            "ใหญ่ไป",
+            "เล็กไป",
+            "อีกไซส์",
+            "สีอื่น",
+            "ลองอีก"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "คิดดูก่อน",
+            "ขอดูก่อน",
+            "ยังไม่",
+            "ไม่แน่ใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pen yang-ngai bang ka/krab? Sai por-dee mai ka/krab? Reu yak doo see eun/size eun perm-term mai ka/krab? — How is it? Does it fit well? Or would you like to see other colors/sizes?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ดีเลยค่ะ/ครับ ชำระเงินที่เคาน์เตอร์ด้านหน้าได้เลยนะคะ/ครับ สะดวกจ่ายด้วยบัตรหรือเงินสดคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตร",
+            "เครดิต",
+            "รูดบัตร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "โอน"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee loey ka/krab. Cham-ra ngoen tee counter dan na dai loey na ka/krab. Sa-duak jai duay bat reu ngoen-sod ka/krab? — Great! You can pay at the counter upfront. Would you prefer to pay by card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่ค่อยได้ยินเมื่อสักครู่ รบกวนพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-toht na ka/krab, mai koi dai yin meua sak kruu, roop-guan poot eek krang dai mai ka/krab? — Sorry, I didn't quite hear that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีให้บริการค่ะ/ครับ หวังว่าจะได้พบกันอีกนะคะ/ครับ ขอบคุณมากค่ะ/ครับ!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yindee hai borikarn ka/krab. Wang wâ ja dai pob gan eek na ka/krab. Khob khun maak ka/krab! — Happy to help! Hope to see you again. Thank you very much!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "id": "dlg-id-restaurant-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Percakapan Pemesanan di Restoran",
+  "opening": "Selamat malam, Bapak/Ibu. Selamat datang di [Nama Restoran].",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam, Bapak/Ibu. Sudah siap memesan, atau ada yang bisa saya bantu dengan menu kami malam ini?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "rekomendasi",
+            "menu",
+            "bantu",
+            "diet",
+            "alergi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "belum",
+            "nanti",
+            "sebentar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat malam, Bapak/Ibu. (Se-la-mat ma-lam, Ba-pak/I-bu.) Are you ready to order, or is there anything I can assist you with regarding our menu tonight?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, silakan. Untuk hidangan utamanya, apa pilihan Bapak/Ibu? Mungkin ada preferensi atau hidangan favorit yang ingin dicoba?",
+      "branches": [
+        {
+          "keywords": [
+            "nasi goreng",
+            "sate",
+            "rendang",
+            "mie",
+            "ikan",
+            "ayam"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "alergi",
+            "diet",
+            "vegetarian",
+            "bebas gluten"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "bingung",
+            "rekomendasi",
+            "tidak tahu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, please go ahead. For the main course, what is your choice, Sir/Madam? Perhaps you have a preference or a favorite dish you'd like to try?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu saja. Kami punya 'Rendang Sapi Wagyu' yang jadi primadona di sini, dimasak dengan bumbu rahasia keluarga. Atau, kalau suka yang segar, 'Gulai Kakap Andaliman' kami juga sering dipuji. Kalau ada batasan diet seperti vegetarian atau alergi, mohon disampaikan agar bisa kami sesuaikan.",
+      "branches": [
+        {
+          "keywords": [
+            "rendang",
+            "wagyu",
+            "gulai",
+            "kakap",
+            "andaliman"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "bebas gluten",
+            "alergi",
+            "kacang",
+            "susu",
+            "pedas",
+            "manis",
+            "gurih",
+            "lain"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "tidak"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. We have 'Wagyu Beef Rendang' (Ren-dang Sa-pi Wag-yu) which is our star dish here, cooked with a secret family recipe. Or, if you prefer something fresh, our 'Andaliman Snapper Gulai' (Gu-lai Ka-kap An-da-li-man) is also highly praised. If there are any dietary restrictions like vegetarian or allergies, please let us know so we can accommodate."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Baik, kami catat. Untuk preferensi rasa pedas gurih, 'Bebek Betutu' kami pilihan yang pas. Jika ada batasan diet, seperti bebas gluten, 'Tumis Kangkung Belacan' tanpa belacan atau 'Tahu Isi Sayuran' bisa jadi alternatif. Jadi, pilihan Bapak/Ibu jatuh pada yang mana?",
+      "branches": [
+        {
+          "keywords": [
+            "bebek",
+            "betutu",
+            "kangkung",
+            "tahu",
+            "pesan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "lain",
+            "bingung",
+            "kembali"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood, we've noted that. For a savory and spicy taste preference, our 'Betutu Duck' is an excellent choice. If there are dietary restrictions, such as gluten-free, 'Stir-fried Water Spinach' without belacan or 'Vegetable Stuffed Tofu' can be alternatives. So, which one do you choose, Sir/Madam?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, satu porsi [hidangan]. Ada tambahan minuman, hidangan penutup, atau langsung saya siapkan tagihannya?",
+      "branches": [
+        {
+          "keywords": [
+            "minum",
+            "kopi",
+            "teh",
+            "jus",
+            "es campur",
+            "kue lapis",
+            "dessert",
+            "tambah"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "nanti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, one portion of [dish]. (Ba-ik, sa-tu por-si [hi-da-ngan].) Any additional drinks, desserts, or shall I prepare the bill immediately?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, akan saya siapkan tagihannya. Pembayaran tunai atau dengan kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "cash"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, I'll prepare the bill. Will it be cash or card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, Bapak/Ibu, bisa diulang atau diperjelas? Saya kurang menangkap maksudnya.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang",
+            "jelas"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, Sir/Madam, could you please repeat or clarify? I didn't quite catch what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak sudah berkunjung, Bapak/Ibu. Semoga hidangannya memuaskan. Hati-hati di jalan dan kami tunggu kedatangan Anda selanjutnya. Selamat malam!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for visiting, Sir/Madam. (Te-ri-ma ka-sih ba-nyak su-dah ber-kun-jung, Ba-pak/I-bu.) We hope the meal was satisfying. Drive safely and we look forward to your next visit. Good night!",
+      "isTerminal": true
+    }
+  }
+}

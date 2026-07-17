@@ -1,0 +1,224 @@
+{
+  "id": "dlg-id-restaurant-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat datang. Siap pesan?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang. Siap pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "siap"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "belum",
+            "nanti"
+          ],
+          "nextTurnId": "t-wait"
+        },
+        {
+          "keywords": [
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Suh-lah-maht dah-tahng) — Welcome. Siap pesan? (See-ahp peh-sahn) — Ready to order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Mau pesan apa? Ada nasi goreng atau sate.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng"
+          ],
+          "nextTurnId": "t3_nasigoreng"
+        },
+        {
+          "keywords": [
+            "sate"
+          ],
+          "nextTurnId": "t3_sate"
+        },
+        {
+          "keywords": [
+            "apa",
+            "itu"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mau pesan apa? (Mow peh-sahn ah-pah) — What would you like to order? Ada nasi goreng (Ah-dah nah-see goh-reng) atau sate (ah-tow sah-tay). — We have fried rice or satay."
+    },
+    "t3_nasigoreng": {
+      "id": "t3_nasigoreng",
+      "prompt": "Baik. Satu nasi goreng. Ada lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "minum"
+          ],
+          "nextTurnId": "t-drink"
+        },
+        {
+          "keywords": [
+            "ya",
+            "lagi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bye-eek). Satu nasi goreng. Ada lagi? (Ah-dah lah-gee) — Okay. One fried rice. Anything else?"
+    },
+    "t3_sate": {
+      "id": "t3_sate",
+      "prompt": "Baik. Satu sate. Ada lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "minum"
+          ],
+          "nextTurnId": "t-drink"
+        },
+        {
+          "keywords": [
+            "ya",
+            "lagi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bye-eek). Satu sate. Ada lagi? (Ah-dah lah-gee) — Okay. One satay. Anything else?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nasi goreng adalah nasi dengan telur. Sate adalah daging bakar. Mau yang mana?",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng"
+          ],
+          "nextTurnId": "t3_nasigoreng"
+        },
+        {
+          "keywords": [
+            "sate"
+          ],
+          "nextTurnId": "t3_sate"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tahu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nasi goreng adalah nasi dengan telur. Sate adalah daging bakar. Mau yang mana? (Mow yahng mah-nah) — Fried rice is rice with egg. Satay is grilled meat. Which one do you want?"
+    },
+    "t-drink": {
+      "id": "t-drink",
+      "prompt": "Mau minum apa? Ada air putih atau teh.",
+      "branches": [
+        {
+          "keywords": [
+            "air",
+            "putih"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mau minum apa? (Mow mee-noom ah-pah) — What would you like to drink? Ada air putih (Ah-dah eye-er poo-teeh) atau teh. — We have water or tea."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ini makanan Anda. Selamat makan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ini makanan Anda (Ee-nee mah-kah-nahn Ahn-dah) — Here is your food. Selamat makan (Suh-lah-maht mah-kahn) — Enjoy your meal."
+    },
+    "t-wait": {
+      "id": "t-wait",
+      "prompt": "Baik. Silakan lihat menu.",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bye-eek). Silakan lihat menu (See-lah-kahn lee-hat meh-noo) — Okay. Please look at the menu."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa ulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Mah-ahf), bisa ulang? (Bee-sah oo-lahng) — Sorry, can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih. Sampai jumpa.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Teh-ree-mah kah-seeh). Sampai jumpa (Sahm-pie joom-pah). — Thank you. See you again.",
+      "isTerminal": true
+    }
+  }
+}

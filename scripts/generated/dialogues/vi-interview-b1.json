@@ -1,0 +1,101 @@
+{
+  "id": "dlg-vi-interview-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc",
+  "opening": "Chào bạn, cảm ơn bạn đã đến. Bạn có thể giới thiệu một chút về bản thân và kinh nghiệm làm việc của mình không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, cảm ơn bạn đã đến. Bạn có thể giới thiệu một chút về bản thân và kinh nghiệm làm việc của mình không?",
+      "branches": [
+        {
+          "keywords": [
+            "kinhnghiệm",
+            "làmviệc",
+            "tốtnghiệp",
+            "chuyêngia"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban), cảm ơn bạn đã đến (cam on ban da den). Bạn có thể giới thiệu một chút về bản thân (ban co the gioi thieu mot chut ve ban than) và kinh nghiệm làm việc (va kinh nghiem lam viec) của mình không? — Hello, thank you for coming. Could you tell us a bit about yourself and your work experience?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn bạn. Vậy điểm mạnh của bạn là gì và làm thế nào bạn áp dụng chúng vào công việc?",
+      "branches": [
+        {
+          "keywords": [
+            "điểmmạnh",
+            "kỹnăng",
+            "giảiquyếtvấnđề",
+            "lãnhđạo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn (Cam on ban). Vậy điểm mạnh (vay diem manh) của bạn là gì và làm thế nào (lam the nao) bạn áp dụng (ban ap dung) chúng vào công việc? — Thank you. So, what are your strengths and how do you apply them to your work?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Rất tốt. Thế còn điểm yếu nào mà bạn đang cố gắng cải thiện không?",
+      "branches": [
+        {
+          "keywords": [
+            "điểmyếu",
+            "cảithiện",
+            "học hỏi",
+            "pháttriển"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất tốt (Rat tot). Thế còn điểm yếu (the con diem yeu) nào mà bạn đang cố gắng (ban dang co gang) cải thiện (cai thien) không? — Very good. What about any weaknesses you are trying to improve?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Chúng tôi hiểu rồi. Bạn có câu hỏi nào cho chúng tôi không, hoặc bạn kỳ vọng gì ở vị trí này?",
+      "branches": [
+        {
+          "keywords": [
+            "câuhỏi",
+            "thôngtin",
+            "môitrường",
+            "pháttriển"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chúng tôi hiểu rồi. Bạn có câu hỏi nào (ban co cau hoi nao) cho chúng tôi không, hoặc bạn kỳ vọng gì (ban ky vong gi) ở vị trí này? — We understand. Do you have any questions for us, or what do you expect from this position?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi chưa nghe rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), bạn có thể nhắc lại (ban co the nhac lai) không? Tôi chưa nghe rõ (Toi chua nghe ro). — Sorry, could you please repeat? I didn't hear clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã tham gia buổi phỏng vấn. Chúng tôi sẽ liên hệ lại với bạn sớm.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn đã tham gia buổi phỏng vấn. Chúng tôi sẽ liên hệ lại với bạn sớm. — Thank you for participating in the interview. We will contact you soon.",
+      "isTerminal": true
+    }
+  }
+}

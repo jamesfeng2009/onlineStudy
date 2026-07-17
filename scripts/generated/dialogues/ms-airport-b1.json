@@ -1,0 +1,176 @@
+{
+  "id": "dlg-ms-airport-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "Perbualan di Lapangan Terbang",
+  "opening": "Selamat datang ke Lapangan Terbang Antarabangsa Kuala Lumpur. Ada apa-apa yang boleh saya bantu? Adakah anda ingin daftar masuk?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Lapangan Terbang Antarabangsa Kuala Lumpur. Ada apa-apa yang boleh saya bantu? Adakah anda ingin daftar masuk?",
+      "branches": [
+        {
+          "keywords": [
+            "daftar",
+            "masuk",
+            "daftar masuk"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sudah",
+            "selesai",
+            "online",
+            "sudah daftar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hilang",
+            "beg",
+            "beg hilang"
+          ],
+          "nextTurnId": "t-lost"
+        },
+        {
+          "keywords": [
+            "",
+            "bantu",
+            "soalan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (se-LA-mat DA-tang) ke Lapangan Terbang Antarabangsa Kuala Lumpur (LA-pa-ngan ter-BANG an-ta-RA-bang-sa KU-a-la LUM-pur). Ada apa-apa yang boleh saya bantu (A-da a-PA a-PA yang bo-LEH sa-YA ban-TU)? Adakah anda ingin daftar masuk (a-DA-kah AN-da i-NGIN daf-TAR ma-SUK)? - Welcome to Kuala Lumpur International Airport. Is there anything I can help you with? Do you wish to check in?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu. Boleh saya lihat pasport dan tiket penerbangan anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pasport",
+            "ini pasport",
+            "pasport saya"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (TEN-tu). Boleh saya lihat pasport (bo-LEH sa-YA li-HAT pas-PORT) dan tiket penerbangan anda (dan TI-ket pe-ner-BA-ngan AN-da)? - Certainly. May I see your passport and flight ticket?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Adakah anda mempunyai bagasi untuk didaftar masuk?",
+      "branches": [
+        {
+          "keywords": [
+            "satu",
+            "satu beg",
+            "1"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih. Adakah anda mempunyai bagasi untuk didaftar masuk? - Thank you. Do you have any luggage to check in?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baiklah, proses daftar masuk anda selesai. Ini kad penerbangan anda. Pintu pelepasan anda ialah G10. Adakah anda mempunyai soalan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "keselamatan",
+            "pemeriksaan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "tiada",
+            "selamat tinggal",
+            "ok",
+            "baik",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah (BA-ik-lah), proses daftar masuk anda selesai (PRO-ses daf-TAR ma-SUK AN-da se-LE-sai). Ini kad penerbangan anda (I-ni kad pe-ner-BA-ngan AN-da). Pintu pelepasan anda ialah G10. Adakah anda mempunyai soalan lain (a-DA-kah AN-da mem-PU-nya-i so-A-lan LA-in)? - Alright, your check-in process is complete. Here is your boarding pass. Your departure gate is G10. Do you have any other questions?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pemeriksaan keselamatan terletak di tingkat atas, selepas anda melalui imigresen. Sila pastikan anda berada di pintu G10 sekurang-kurangnya 30 minit sebelum masa berlepas. Semoga perjalanan anda selamat!",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pemeriksaan keselamatan (pe-me-rik-SA-an ke-se-la-MA-tan) terletak di tingkat atas (ter-LE-tak di TING-kat A-tas), selepas anda melalui imigresen (se-LE-pas AN-da me-LA-lui i-mi-GRE-sen). Sila pastikan anda berada di pintu G10 sekurang-kurangnya 30 minit sebelum masa berlepas. Semoga perjalanan anda selamat (se-MO-ga per-ja-LA-nan AN-da se-LA-mat)! - Security check is located upstairs, after you pass through immigration. Please ensure you are at gate G10 at least 30 minutes before departure time. Have a safe journey!"
+    },
+    "t-lost": {
+      "id": "t-lost",
+      "prompt": "Oh, saya faham. Sila pergi ke kaunter bagasi hilang dan dijumpai di tingkat bawah. Mereka akan membantu anda di sana.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh (OH), saya faham (sa-YA fa-HAM). Sila pergi ke kaunter bagasi hilang (SI-la per-GI ke ka-UN-ter ba-GA-si HI-lang) dan dijumpai di tingkat bawah (dan di-JUM-pa-i di TING-kat BA-wah). Mereka akan membantu anda di sana. - Oh, I understand. Please go to the lost and found luggage counter downstairs. They will assist you there."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak faham. Boleh anda ulang atau sebutkan dengan lebih jelas?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (MA-af), saya tidak faham (sa-YA TI-dak FA-ham). Boleh anda ulang (bo-LEH AN-da U-lang) atau sebutkan dengan lebih jelas (a-TA-u se-BUT-kan de-NGAN le-BIH JE-las)? - Sorry, I don't understand. Can you repeat or state it more clearly?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Selamat jalan dan terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Selamat jalan (se-LA-mat JA-lan) dan terima kasih (dan te-RI-ma ka-SIH). - Have a safe journey and thank you.",
+      "isTerminal": true
+    }
+  }
+}

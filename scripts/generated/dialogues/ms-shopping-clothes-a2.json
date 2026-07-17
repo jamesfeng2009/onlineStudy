@@ -1,0 +1,189 @@
+{
+  "id": "dlg-ms-shopping-clothes-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Membeli Pakaian",
+  "opening": "Selamat datang ke kedai kami. Ada apa-apa yang saya boleh bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke kedai kami. Ada apa-apa yang saya boleh bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "cari",
+            "baju",
+            "pakaian"
+          ],
+          "nextTurnId": "t2_what_item"
+        },
+        {
+          "keywords": [
+            "tengok",
+            "lihat",
+            "saja",
+            "sahaja"
+          ],
+          "nextTurnId": "t-end_goodbye_looking"
+        },
+        {
+          "keywords": [
+            "",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Welcome) to our shop. Is there anything I can help you with?"
+    },
+    "t2_what_item": {
+      "id": "t2_what_item",
+      "prompt": "Baik. Baju apa yang anda cari?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "baju kemeja"
+          ],
+          "nextTurnId": "t3_ask_size"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). What kind of clothes are you looking for?"
+    },
+    "t3_ask_size": {
+      "id": "t3_ask_size",
+      "prompt": "Saiz apa yang anda cari? Kami ada bilik persalinan di sana. Atau nak warna lain?",
+      "branches": [
+        {
+          "keywords": [
+            "saiz s",
+            "s",
+            "saiz m",
+            "m",
+            "saiz l",
+            "l",
+            "cuba"
+          ],
+          "nextTurnId": "t4_after_try_feedback"
+        },
+        {
+          "keywords": [
+            "",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saiz apa (What size) are you looking for? We have a fitting room over there. Or would you like a different color?"
+    },
+    "t4_after_try_feedback": {
+      "id": "t4_after_try_feedback",
+      "prompt": "Bagaimana? Muat tak? Nak beli atau tidak?",
+      "branches": [
+        {
+          "keywords": [
+            "muat",
+            "beli",
+            "ya",
+            "sesuai",
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t5_payment"
+        },
+        {
+          "keywords": [
+            "kecil",
+            "besar",
+            "saiz lain",
+            "tak sesuai"
+          ],
+          "nextTurnId": "t-end_goodbye_no_buy"
+        },
+        {
+          "keywords": [
+            "",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagaimana (How is it)? Does it fit? Do you want to buy it or not?"
+    },
+    "t5_payment": {
+      "id": "t5_payment",
+      "prompt": "Baik. Harganya RM 65.00. Anda nak bayar tunai atau kad?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "cash"
+          ],
+          "nextTurnId": "t-end_goodbye_buy"
+        },
+        {
+          "keywords": [
+            "",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). The price is RM 65.00. Do you want to pay cash or card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tak faham. Boleh ulang?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "boleh"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), I don't understand. Can you repeat?"
+    },
+    "t-end_goodbye_looking": {
+      "id": "t-end_goodbye_looking",
+      "prompt": "Baiklah. Kalau ada apa-apa, beritahu saya ya. Terima kasih.",
+      "branches": [],
+      "fallbackBranchId": "t-end_goodbye_looking",
+      "promptTranslation": "Okay. If there's anything, let me know. Thank you.",
+      "isTerminal": true
+    },
+    "t-end_goodbye_no_buy": {
+      "id": "t-end_goodbye_no_buy",
+      "prompt": "Tidak mengapa. Terima kasih kerana datang. Sila datang lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end_goodbye_no_buy",
+      "promptTranslation": "It's okay. Thank you for coming. Please come again.",
+      "isTerminal": true
+    },
+    "t-end_goodbye_buy": {
+      "id": "t-end_goodbye_buy",
+      "prompt": "Terima kasih banyak! Sila datang lagi.",
+      "branches": [],
+      "fallbackBranchId": "t-end_goodbye_buy",
+      "promptTranslation": "Terima kasih banyak (Thank you very much)! Please come again.",
+      "isTerminal": true
+    }
+  }
+}

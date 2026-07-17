@@ -1,0 +1,254 @@
+{
+  "id": "dlg-en-directions-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Asking for directions",
+  "opening": "Excuse me, can I help you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Excuse me, can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "find",
+            "looking",
+            "where"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "hello"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me (eks-KYOOS mee), can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Okay, where do you want to go?",
+      "branches": [
+        {
+          "keywords": [
+            "supermarket",
+            "shop"
+          ],
+          "nextTurnId": "t3_supermarket"
+        },
+        {
+          "keywords": [
+            "bank",
+            "money"
+          ],
+          "nextTurnId": "t3_bank"
+        },
+        {
+          "keywords": [
+            "park",
+            "green"
+          ],
+          "nextTurnId": "t3_park"
+        },
+        {
+          "keywords": [
+            "",
+            "place"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, where do you want to go?"
+    },
+    "t3_supermarket": {
+      "id": "t3_supermarket",
+      "prompt": "The supermarket is not far. Go straight for two blocks, then turn left at the traffic lights.",
+      "branches": [
+        {
+          "keywords": [
+            "howfar",
+            "distance"
+          ],
+          "nextTurnId": "t4_clarify"
+        },
+        {
+          "keywords": [
+            "bus",
+            "walk"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "",
+            "okay"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The supermarket (SOO-per-mar-ket) is not far. Go straight for two blocks, then turn left at the traffic lights."
+    },
+    "t3_bank": {
+      "id": "t3_bank",
+      "prompt": "The bank is on this street. Walk straight ahead for about five minutes. It's next to the post office.",
+      "branches": [
+        {
+          "keywords": [
+            "howfar",
+            "minutes"
+          ],
+          "nextTurnId": "t4_clarify"
+        },
+        {
+          "keywords": [
+            "bus",
+            "walk"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "",
+            "right"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bank is on this street. Walk straight ahead for about five minutes. It's next to the post office (POST OF-iss)."
+    },
+    "t3_park": {
+      "id": "t3_park",
+      "prompt": "The park is a little far. You can take the number 12 bus. The bus stop is across the street.",
+      "branches": [
+        {
+          "keywords": [
+            "bus",
+            "number12"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "walk",
+            "far"
+          ],
+          "nextTurnId": "t4_walk"
+        },
+        {
+          "keywords": [
+            "stop",
+            "across"
+          ],
+          "nextTurnId": "t4_clarify"
+        },
+        {
+          "keywords": [
+            "",
+            "long"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The park is a little far. You can take the number 12 bus. The bus stop (BUS stop) is across the street."
+    },
+    "t4_clarify": {
+      "id": "t4_clarify",
+      "prompt": "Yes, that's right. Go straight and then turn left. It's easy to find.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "again"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, that's right. Go straight and then turn left. It's easy to find."
+    },
+    "t4_transport": {
+      "id": "t4_transport",
+      "prompt": "Yes, take the bus. It stops right in front of the place.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "bus"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, take the bus. It stops right in front of the place."
+    },
+    "t4_walk": {
+      "id": "t4_walk",
+      "prompt": "It's about 20 minutes to walk. It might be better to take the bus.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "walk"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's about twenty (TWEN-tee) minutes to walk. It might be better to take the bus."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I don't understand. Can you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "no"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I don't understand (un-der-STAND). Can you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're welcome! Have a good day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome (WEL-kum)! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

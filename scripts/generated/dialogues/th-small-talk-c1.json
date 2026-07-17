@@ -1,0 +1,400 @@
+{
+  "id": "dlg-th-small-talk-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "บทสนทนาเล็กๆ น้อยๆ ในงานสังคม",
+  "opening": "สวัสดีครับ ไม่ทราบว่าคุณมางานนี้บ่อยหรือเปล่าครับ? ดูคุ้นหน้าคุ้นตาจังเลย",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ ไม่ทราบว่าคุณมางานนี้บ่อยหรือเปล่าครับ? ดูคุ้นหน้าคุ้นตาจังเลย",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "บ่อย"
+          ],
+          "nextTurnId": "t2_familiar"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ครั้งแรก"
+          ],
+          "nextTurnId": "t2_new"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap. Mai saap waa khun maa ngaan nee boi reu bplao krap? Doo kun naa kun dtaa jang loey. — Hello. I wonder if you come to this event often? You look familiar."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ ไม่ค่อยได้ยินเลยครับ รบกวนพูดอีกทีได้ไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor thot na krap. Mai khoi dai yin loey krap. Rob guan phuut eek thee dai mai krap? — Excuse me. I didn't quite hear you. Could you please repeat that?"
+    },
+    "t2_familiar": {
+      "id": "t2_familiar",
+      "prompt": "อ้อ จริงด้วย! ผมว่าแล้วเชียวว่าเคยเห็นคุณที่งานคล้ายๆ แบบนี้บ่อยๆ คุณทำงานด้านไหนครับเนี่ย หรือว่าสนใจเรื่องเดียวกัน?",
+      "branches": [
+        {
+          "keywords": [
+            "งาน",
+            "ทำงาน"
+          ],
+          "nextTurnId": "t3_work"
+        },
+        {
+          "keywords": [
+            "สนใจ",
+            "เรื่องเดียวกัน",
+            "งานอดิเรก"
+          ],
+          "nextTurnId": "t3_hobby"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aw jing duay! Phom waa laew chiao waa khoey hen khun thee ngaan klai klai baep nee boi boi. Khun tam ngaan daan nai krap nia rue waa son jai rueang diaw gan? — Oh, you're right! I thought so, I've seen you at similar events quite often. What kind of work do you do, or are you interested in the same things?"
+    },
+    "t2_new": {
+      "id": "t2_new",
+      "prompt": "ยินดีที่ได้รู้จักครับ! ถ้าอย่างนั้นก็ถือว่าเป็นโอกาสดีเลยที่ได้มาเจอกันที่นี่ ไม่ทราบว่าวันนี้คุณมากับใครหรือเปล่าครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "คนเดียว",
+            "มาคนเดียว"
+          ],
+          "nextTurnId": "t3_single"
+        },
+        {
+          "keywords": [
+            "เพื่อน",
+            "มากับเพื่อน"
+          ],
+          "nextTurnId": "t3_friend"
+        },
+        {
+          "keywords": [
+            "ครอบครัว",
+            "มากับครอบครัว"
+          ],
+          "nextTurnId": "t3_family"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yin dee thee dai ruu jak krap! Tha yang nan gor teu waa pen oh gaat dee loey thee dai maa jer gan thee nee. Mai saap waa wan nee khun maa gap krai reu bplao krap? — Nice to meet you! If so, it's a good opportunity to meet here. Do you mind if I ask if you came with anyone today?"
+    },
+    "t3_work": {
+      "id": "t3_work",
+      "prompt": "น่าสนใจทีเดียวครับ ผมเองก็อยู่ในวงการนี้มานานพอสมควร มีอะไรที่เราพอจะแลกเปลี่ยนมุมมองกันได้บ้างไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แลกเปลี่ยน",
+            "มุมมอง"
+          ],
+          "nextTurnId": "t4_deep_work"
+        },
+        {
+          "keywords": [
+            "ไม่เป็นไร",
+            "ไม่แน่ใจ",
+            "ทั่วไป"
+          ],
+          "nextTurnId": "t4_general_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Naa son jai tee diaw krap. Phom eng gor yoo nai wong gaan nee maa naan por som kuan. Mee a-rai thee rao por ja laek bplian mum mong gan dai baang mai krap? — That's quite interesting. I myself have been in this industry for a while. Is there anything we could exchange perspectives on?"
+    },
+    "t3_hobby": {
+      "id": "t3_hobby",
+      "prompt": "โอ้โห! แสดงว่ามี 'คอเดียวกัน' สินะครับ ยิ่งคุยยิ่งเพลินเลยทีนี้ ช่วงนี้มีกิจกรรมหรืองานอดิเรกอะไรที่กำลังอินเป็นพิเศษบ้างไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "กิจกรรม",
+            "งานอดิเรก",
+            "อิน"
+          ],
+          "nextTurnId": "t4_deep_hobby"
+        },
+        {
+          "keywords": [
+            "ไม่ค่อยมี",
+            "ไม่มี"
+          ],
+          "nextTurnId": "t4_general_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh ho! Sa daeng waa mee 'kor diaw gan' si na krap. Ying khuy ying ploern loey tee nee. Chuang nee mee git ja gam rue ngaan a-di-rek a-rai thee gam lang in pen pi set baang mai krap? — Wow! So we're 'of the same mind,' aren't we? The more we talk, the more enjoyable it gets. Are there any particular activities or hobbies you're really into lately?"
+    },
+    "t3_single": {
+      "id": "t3_single",
+      "prompt": "มาคนเดียวก็ดีนะครับ จะได้มีโอกาสพบปะผู้คนใหม่ๆ ได้เต็มที่ ไม่ทราบว่าวันนี้คุณตั้งใจมาหาอะไรเป็นพิเศษในงานนี้หรือเปล่าครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "หาข้อมูล",
+            "เรียนรู้",
+            "ตั้งใจ"
+          ],
+          "nextTurnId": "t4_purpose"
+        },
+        {
+          "keywords": [
+            "เดินเล่น",
+            "ทั่วไป",
+            "ชมงาน"
+          ],
+          "nextTurnId": "t4_general_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maa kon diaw gor dee na krap. Ja dai mee oh gaat phob bpa phoo kon mai mai dai dtem thee. Mai saap waa wan nee khun dtang jai maa haa a-rai pen pi set nai ngaan nee reu bplao krap? — Coming alone is also good, you get to meet new people fully. Do you mind if I ask if you came with a special intention for this event today?"
+    },
+    "t3_friend": {
+      "id": "t3_friend",
+      "prompt": "มากับเพื่อนก็สนุกอีกแบบนะครับ เพื่อนคุณอยู่แถวนี้ไหมครับ หรือว่าแยกกันเดินสำรวจงาน? งานนี้ก็กว้างขวางน่าดูเลย",
+      "branches": [
+        {
+          "keywords": [
+            "อยู่ด้วยกัน",
+            "ไปด้วยกัน"
+          ],
+          "nextTurnId": "t4_invite_friend"
+        },
+        {
+          "keywords": [
+            "แยกกัน",
+            "สำรวจ"
+          ],
+          "nextTurnId": "t4_general_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maa gap peuan gor sa nuk eek baep na krap. Peuan khun yoo thaew nee mai krap rue waa yaek gan dern sam ruat ngaan? Ngaan nee gor gwaang kwaang naa doo loey. — Coming with a friend is another kind of fun. Is your friend around here, or did you split up to explore the event? This event looks quite extensive."
+    },
+    "t3_family": {
+      "id": "t3_family",
+      "prompt": "มากับครอบครัวนี่อบอุ่นดีจริงๆ เลยนะครับ แสดงว่าเรื่องนี้เป็นที่สนใจของทุกคนในบ้านเลยสินะครับ? คุณมีลูกๆ ด้วยหรือเปล่าครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "มีลูก",
+            "ลูก"
+          ],
+          "nextTurnId": "t4_children"
+        },
+        {
+          "keywords": [
+            "ไม่มีลูก",
+            "ยังไม่มี"
+          ],
+          "nextTurnId": "t4_general_chat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maa gap krob krua nee op oon dee jing jing loey na krap. Sa daeng waa rueang nee pen thee son jai kong took kon nai baan loey si na krap? Khun mee look look duay reu bplao krap? — Coming with family is really heartwarming. So this topic is of interest to everyone in your household, isn't it? Do you have children as well?"
+    },
+    "t4_deep_work": {
+      "id": "t4_deep_work",
+      "prompt": "เยี่ยมเลยครับ ผมเองก็คิดว่าในยุคดิจิทัลเช่นนี้ การปรับตัวและเรียนรู้สิ่งใหม่ๆ เป็นเรื่องสำคัญยิ่งยวด คุณมีประเด็นไหนที่อยากจะชวนพูดคุยเป็นพิเศษบ้างไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดิจิทัล",
+            "ปรับตัว",
+            "เรียนรู้",
+            "ประเด็น"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yiam loey krap. Phom eng gor khit waa nai yuk di-ji-tal chen nee gaan bprab dtua lae rian roo sing mai mai pen rueang sam kan ying yuwat. Khun mee pra den nai thee yak ja chuan phuut khuy pen pi set baang mai krap? — Excellent! I also think that in this digital age, adapting and learning new things is of paramount importance. Is there any particular point you'd like to discuss?"
+    },
+    "t4_deep_hobby": {
+      "id": "t4_deep_hobby",
+      "prompt": "น่าสนุกจังเลยครับ ผมเองก็เคยสนใจเรื่องนี้อยู่พักใหญ่ แต่ก็ไม่ได้ลงลึกอะไรมากมาย มีอะไรที่คุณอยากแนะนำให้ผมลองทำดูบ้างไหมครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำ",
+            "ลองทำ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Naa sa nuk jang loey krap. Phom eng gor khoey son jai rueang nee yoo pak yai dtae gor mai dai long leuk a-rai maak maai. Mee a-rai thee khun yak nae nam hai phom long tam doo baang mai krap? — That sounds fun! I myself was quite interested in this for a while, but didn't delve into it much. Is there anything you'd recommend I try?"
+    },
+    "t4_purpose": {
+      "id": "t4_purpose",
+      "prompt": "ดีเลยครับ งานนี้มีข้อมูลที่น่าสนใจเยอะแยะเลยทีเดียว ผมเองก็กำลังมองหาข้อมูลเกี่ยวกับเรื่องนี้พอดี ถ้ามีโอกาสอาจจะลองแลกเปลี่ยนกันดูนะครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ข้อมูล",
+            "แลกเปลี่ยน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee loey krap. Ngaan nee mee khoomoon thee naa son jai yer yae loey tee diaw. Phom eng gor gam lang mong haa khoomoon giap gap rueang nee por dee. Tha mee oh gaat aat ja long laek bplian gan doo na krap. — That's good. This event has a lot of interesting information. I myself am currently looking for information about this topic as it happens. If there's an opportunity, perhaps we could exchange notes."
+    },
+    "t4_invite_friend": {
+      "id": "t4_invite_friend",
+      "prompt": "ถ้าอย่างนั้น ถ้าเพื่อนคุณสะดวก ผมขออนุญาตทักทายด้วยนะครับ ยินดีที่ได้เจอทั้งสองคนเลยครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ยินดี",
+            "ได้เลย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tha yang nan, tha peuan khun sa-duak phom kho a-nu-yaat tak taai duay na krap. Yin dee thee dai jer tang song kon loey krap. — In that case, if your friend is available, I'd like to say hello to them too. Nice to meet both of you."
+    },
+    "t4_children": {
+      "id": "t4_children",
+      "prompt": "โอ้ น่ารักจังเลยครับ แล้วลูกๆ ของคุณสนใจเรื่องนี้ด้วยไหมครับ หรือว่ามาเป็นเพื่อนคุณเฉยๆ?",
+      "branches": [
+        {
+          "keywords": [
+            "สนใจ",
+            "ชอบ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh naa rak jang loey krap. Laew look look kong khun son jai rueang nee duay mai krap rue waa maa pen peuan khun choey choey? — Oh, how lovely! And are your children interested in this topic too, or are they just accompanying you?"
+    },
+    "t4_general_chat": {
+      "id": "t4_general_chat",
+      "prompt": "ครับ ไม่เป็นไรครับ ถ้าอย่างนั้นขอให้คุณมีความสุขกับการเดินชมงานนะครับ หากมีโอกาสก็หวังว่าจะได้พูดคุยกันอีกในครั้งหน้าครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เช่นกัน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Krap. Mai pen rai krap. Tha yang nan kor hai khun mee kwam sook gap gaan dern chom ngaan na krap. Hak mee oh gaat gor wang waa ja dai phuut khuy gan eek nai krang naa krap. — Alright. No worries. In that case, I hope you enjoy exploring the event. If there's an opportunity, I hope we can chat again next time."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีที่ได้พูดคุยกับคุณในวันนี้นะครับ ขอตัวก่อนนะครับ สวัสดีครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin dee thee dai phuut khuy gap khun nai wan nee na krap. Khor dtua gaun na krap. Sawatdee krap. — It was nice chatting with you today. Please excuse me. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

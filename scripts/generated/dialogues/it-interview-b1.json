@@ -1,0 +1,179 @@
+{
+  "id": "dlg-it-interview-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "Colloquio di Lavoro",
+  "opening": "Buongiorno, signor/signora. Benvenuto/a. Parliamo un po' di lei. Mi parli delle sue esperienze passate, per favore.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, signor/signora. Benvenuto/a. Parliamo un po' di lei. Mi parli delle sue esperienze passate, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            "esperienza",
+            "lavoro",
+            "precedente",
+            "ruolo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "studio",
+            "formazione",
+            "università",
+            "laurea"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwohn-johr-noh), signor/signora. Benvenuto/a (Behn-veh-noo-toh/tah). Let's talk a bit about you. Please tell me about your past experiences."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Interessante. Potrebbe descrivere più dettagliatamente il suo ruolo precedente e cosa le è piaciuto di più?",
+      "branches": [
+        {
+          "keywords": [
+            "ruolo",
+            "mansioni",
+            "responsabilità"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting. Could you describe your previous role in more detail and what you liked most about it?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. E come pensa che la sua formazione accademica la possa aiutare in questa posizione?",
+      "branches": [
+        {
+          "keywords": [
+            "competenze",
+            "conoscenze",
+            "utile",
+            "aiutare"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. And how do you think your academic background can help you in this position?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Molto bene. Ogni candidato ha dei punti di forza. Quali sono le sue, e come potrebbero essere utili per noi?",
+      "branches": [
+        {
+          "keywords": [
+            "forza",
+            "qualità",
+            "capacità",
+            "abilità"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Molto bene (Mohl-toh beh-neh). Every candidate has strengths. What are yours, and how could they be useful for us?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Grazie. E riguardo ai punti di debolezza? Ce n'è uno su cui sta lavorando per migliorare?",
+      "branches": [
+        {
+          "keywords": [
+            "debolezza",
+            "migliorare",
+            "sviluppare",
+            "lavoro"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thanks. And regarding weaknesses? Is there one you are working on to improve?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ottimo. Abbiamo quasi finito. Ha delle domande per me o sull'azienda?",
+      "branches": [
+        {
+          "keywords": [
+            "domande",
+            "chiedere",
+            "informazioni",
+            "curiosità"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo (Oht-tee-moh). We are almost done. Do you have any questions for me or about the company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusi (Sku-zee), potrebbe ripetere per favore? Non ho capito bene (Non oh kah-pee-toh beh-neh). — Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie mille per il suo tempo e la sua disponibilità. Le faremo sapere presto. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your time and availability. We will let you know soon. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

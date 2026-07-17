@@ -1,0 +1,67 @@
+{
+  "id": "dlg-vi-post-office-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Tại Bưu Điện",
+  "opening": "Chào anh/chị. Tôi có thể hỗ trợ gì cho anh/chị hôm nay ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nói rõ hơn một chút được không ạ? Tôi chưa nắm rõ ý của anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, anh/chị có thể nói rõ hơn một chút được không ạ? (Xin lỗi, anhy/chị có thể nói rõ hơn một chút được không ạ?) — Sorry, could you clarify a bit? I didn't quite catch your meaning."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, xin chào và chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yes, goodbye and wish you a good day!",
+      "isTerminal": true
+    },
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Tôi có thể hỗ trợ gì cho anh/chị hôm nay ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "muatem",
+            "temthư"
+          ],
+          "nextTurnId": "t_stamps"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chàw anhy/chị). Tôi có thể hỗ trợ gì cho anh/chị hôm nay ạ? (Tôi có thể hỗ trợ gì cho anhy/chị hôm nay ạ?) — Hello. How may I assist you today?"
+    },
+    "t_stamps": {
+      "id": "t_stamps",
+      "prompt": "",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end"
+    }
+  }
+}

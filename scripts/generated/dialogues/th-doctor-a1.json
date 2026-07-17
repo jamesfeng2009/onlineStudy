@@ -1,0 +1,120 @@
+{
+  "id": "dlg-th-doctor-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "การพบแพทย์",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ปวดหัว"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เจ็บคอ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee kráp/kâ. Mee a-rai hâi chûay kráp/ká? — Hello. How can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ tôht kráp/kâ. Pôot èek kráng dâi mái kráp/ká? — Sorry. Can you say it again?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ปวดตรงไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หัว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pùat dtrong năi kráp/ká? — Where does it hurt?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "มีไข้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "มี"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee kâi mái kráp/ká? — Do you have a fever?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เป็นมานานเท่าไหร่แล้วครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่งวัน",
+            "1วัน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpen maa naan tâo-rài láew kráp/ká? — How long have you had it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "โอเคครับ/ค่ะ ผม/ดิฉันจะให้ยา ไปพักผ่อนเยอะๆ นะครับ/คะ ขอให้หายเร็วๆ นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Oh-kay kráp/kâ. Pŏm/Dì-chán jà hâi yaa. Bpai pák-pɔ̀n yér-yér ná kráp/ká. Kɔ̌ɔ hâi hăai reo-reo ná kráp/ká. — Okay. I will give you medicine. Please rest a lot. Hope you get well soon.",
+      "isTerminal": true
+    }
+  }
+}

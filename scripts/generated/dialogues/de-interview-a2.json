@@ -1,0 +1,141 @@
+{
+  "id": "dlg-de-interview-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Bewerbungsgespräch",
+  "opening": "Guten Tag. Schön, dass Sie hier sind. Erzählen Sie doch bitte etwas über sich.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Schön, dass Sie hier sind. Erzählen Sie doch bitte etwas über sich.",
+      "branches": [
+        {
+          "keywords": [
+            "ichbin",
+            "meinname",
+            "bin"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot-en tahk. Shurn, dass zee heer zint. Air-tsay-len zee doH bit-tuh et-vas ue-ber ziH. — Good day. Nice to have you here. Please tell us a little about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sehr gut. Haben Sie schon Arbeitserfahrung, oder studieren Sie noch?",
+      "branches": [
+        {
+          "keywords": [
+            "arbeitserfahrung",
+            "gearbeitet",
+            "arbeit"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "studiere",
+            "student",
+            "noch"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zair goot. Hah-ben zee shohn Ar-baits-air-fah-rung, oh-der shtoo-dee-ren zee nohH? — Very good. Do you already have work experience, or are you still studying?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Interessant. Wo haben Sie gearbeitet und was waren Ihre Aufgaben?",
+      "branches": [
+        {
+          "keywords": [
+            "ichwar",
+            "habegearbeitet",
+            "aufgaben"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In-ter-es-sant. Voh hah-ben zee geh-ar-bai-tet oont vas vah-ren ee-ruh ouf-gah-ben? — Interesting. Where did you work and what were your tasks?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Verstehe. Was studieren Sie denn, und wann möchten Sie fertig werden?",
+      "branches": [
+        {
+          "keywords": [
+            "studiere",
+            "werdefertig",
+            "master",
+            "bachelor"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fair-shtay-uh. Vas shtoo-dee-ren zee den, oont van murH-ten zee fair-tiH vair-den? — I understand. What are you studying, and when do you want to finish?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "In Ordnung. Was sind Ihre Stärken? Warum sind Sie gut für diesen Job?",
+      "branches": [
+        {
+          "keywords": [
+            "ichbin",
+            "stark",
+            "gut",
+            "flexibel",
+            "motiviert"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. What are your strengths? Why are you good for this job?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Und gibt es auch etwas, das Sie verbessern möchten?",
+      "branches": [
+        {
+          "keywords": [
+            "möchteverbessern",
+            "manchmalbinich",
+            "pünktlichkeit"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "And is there also something you would like to improve?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, das habe ich nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für das Gespräch und Ihr Interesse an unserer Firma. Wir melden uns bei Ihnen.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len dank fuer das Gesh-präH oont Eer In-ter-es-se an oon-ze-rer Fir-ma. Veer mel-den uns bei Ee-nen. — Thank you very much for the conversation and your interest in our company. We will contact you.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "dlg-ms-hotel-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Daftar Masuk Hotel",
+  "opening": "Selamat datang ke Hotel Harmoni. Ada apa-apa yang boleh saya bantu? Anda ada tempahan atas nama siapa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Harmoni. Ada apa-apa yang boleh saya bantu? Anda ada tempahan atas nama siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "tempahan",
+            "nama",
+            "booking"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Hotel Harmoni (Welcome to Harmoni Hotel). Ada apa-apa yang boleh saya bantu (Is there anything I can help with)? Anda ada tempahan atas nama siapa (Do you have a reservation under whose name)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. Boleh saya dapatkan nama penuh anda dan kad pengenalan atau pasport untuk pendaftaran?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "kad",
+            "pasport",
+            "id"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Terima kasih - Thank you). Boleh saya dapatkan nama penuh anda (May I have your full name) dan kad pengenalan (kad pengenalan - ID card) atau pasport untuk pendaftaran (or passport for registration)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, terima kasih. Untuk pembayaran, adakah anda akan menggunakan kad kredit atau tunai? Juga, adakah anda mempunyai sebarang pilihan bilik, seperti pemandangan laut atau bilik tingkat tinggi?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "kredit",
+            "tunai",
+            "bayar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, terima kasih (Baik, terima kasih - Alright, thank you). Untuk pembayaran, adakah anda akan menggunakan kad kredit atau tunai (For payment, will you use credit card or cash)? Juga, adakah anda mempunyai sebarang pilihan bilik (juga, adakah anda mempunyai sebarang pilihan bilik - Also, do you have any room preferences), seperti pemandangan laut (pemandangan laut - sea view) atau bilik tingkat tinggi (or high-floor room)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Faham. Satu lagi, sarapan pagi termasuk dalam pakej anda. Adakah anda bercadang untuk bersarapan di restoran hotel kami esok pagi?",
+      "branches": [
+        {
+          "keywords": [
+            "sarapan",
+            "ya",
+            "akan",
+            "bersarapan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (Understood). One more thing, breakfast is included in your package. Do you plan to have breakfast at our hotel restaurant tomorrow morning?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sangat baik. Jadi, ini kunci bilik anda, nombor 705. Sarapan pagi di tingkat dua dari pukul 7 pagi hingga 10 pagi. Jika ada apa-apa, sila hubungi penyambut tetamu. Selamat menikmati penginapan anda!",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok",
+            "baik",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sangat baik (Very good). So, here is your room key, number 705. Breakfast is on the second floor from 7 AM to 10 AM. If there's anything, please contact the front desk. Enjoy your stay!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulangi semula apa yang anda katakan? Saya tidak berapa jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh anda ulangi semula apa yang anda katakan (could you repeat what you said)? Saya tidak berapa jelas (I wasn't very clear)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih dan selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Thank you) dan selamat jalan (and goodbye/have a good journey)!",
+      "isTerminal": true
+    }
+  }
+}

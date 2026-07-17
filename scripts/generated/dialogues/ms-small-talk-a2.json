@@ -1,0 +1,210 @@
+{
+  "id": "dlg-ms-small-talk-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Sembang Santai",
+  "opening": "Hai, apa khabar?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai, apa khabar?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "okey",
+            "sihat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "penat",
+            "sibuk",
+            "malas"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai, a-pa kha-bar? — Hi, how are you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baguslah! Apa awak buat hujung minggu lepas?",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "rumah",
+            "tidur"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "jalan-jalan",
+            "keluar",
+            "melancong"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "belajar",
+            "kursus"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-gus-lah! A-pa a-wak bu-at hu-jung ming-gu le-pas? — Great! What did you do last weekend?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, sibuk ya? Ada banyak kerja ke? Harap awak dapat berehat nanti.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "banyak",
+            "memang"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tak",
+            "tiada",
+            "biasa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, si-buk ya? A-da ba-nyak ker-ja ke? Ha-rap a-wak da-pat be-re-hat nan-ti. — Oh, busy? A lot of work? Hope you can rest later."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Seronok berehat di rumah. Awak suka tonton filem atau baca buku?",
+      "branches": [
+        {
+          "keywords": [
+            "filem",
+            "tonton",
+            "drama"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-ro-nok be-re-hat di ru-mah. A-wak su-ka ton-ton fi-lem a-tau ba-ca bu-ku? — Nice to relax at home. Do you like watching movies or reading books?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Menarik! Awak pergi mana? Atau ada buat aktiviti lain?",
+      "branches": [
+        {
+          "keywords": [
+            "makan",
+            "restoran",
+            "kafe"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Me-na-rik! A-wak per-gi ma-na? A-tau a-da bu-at ak-ti-vi-ti la-in? — Interesting! Where did you go? Or did you do any other activities?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Faham. Jangan lupa rehat ya. Ada filem bagus awak tengok hujung minggu ni?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada",
+            "tonton",
+            "cerita"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "tak",
+            "tiada",
+            "tidak"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fa-ham. Ja-ngan lu-pa re-hat ya. A-da fi-lem ba-gus a-wak te-ngok hu-jung ming-gu ni? — I understand. Don't forget to rest. Are there any good movies you watched this weekend?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Seronoknya! Saya pun suka. Apa lagi hobi awak?",
+      "branches": [
+        {
+          "keywords": [
+            "makan",
+            "masak",
+            "makanan"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-ro-nok-nya! Sa-ya pun su-ka. A-pa la-gi ho-bi a-wak? — How fun! I also like. What other hobbies do you have?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh awak ulang lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bo-leh a-wak u-lang la-gi? — Sorry, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, seronok berbual dengan awak! Jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Bai-klah, se-ro-nok ber-bu-al de-ngan a-wak! Jum-pa la-gi! — Alright, it was nice chatting with you! See you again!",
+      "isTerminal": true
+    }
+  }
+}

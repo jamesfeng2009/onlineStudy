@@ -1,0 +1,176 @@
+{
+  "id": "dlg-id-transport-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Naik Transportasi Publik: Isu Tiket, Rute, dan Penundaan",
+  "opening": "Selamat pagi, Pak/Bu. Ada yang bisa saya bantu terkait perjalanan Anda hari ini? Mungkin soal rute, jadwal, atau pembelian tiket?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Pak/Bu. Ada yang bisa saya bantu terkait perjalanan Anda hari ini? Mungkin soal rute, jadwal, atau pembelian tiket?",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "beli",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "rute",
+            "stasiun",
+            "halte",
+            "jalur"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "jadwal",
+            "tunda",
+            "keterlambatan",
+            "macet"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, Pak/Bu (Se-la-mat pa-gi, Pak/Boo). Ada yang bisa saya bantu terkait perjalanan Anda hari ini? Mungkin soal rute, jadwal, atau pembelian tiket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, mau tujuan ke mana, ya? Sekalian, apakah Anda berencana untuk kembali hari ini atau butuh tiket sekali jalan saja?",
+      "branches": [
+        {
+          "keywords": [
+            "kota",
+            "pusat",
+            "kantor",
+            "sekali",
+            "jalan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik), mau tujuan ke mana, ya? Sekalian, apakah Anda berencana untuk kembali hari ini atau butuh tiket sekali jalan saja?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu. Ada rute spesifik yang ingin Anda ketahui, atau tujuan akhir tertentu? Biar saya bantu cekkan opsi terbaik.",
+      "branches": [
+        {
+          "keywords": [
+            "rute",
+            "tujuan",
+            "daerah",
+            "mana"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (Ten-too). Ada rute spesifik yang ingin Anda ketahui, atau tujuan akhir tertentu? Biar saya bantu cekkan opsi terbaik."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ada apa dengan jadwal? Apakah ada jalur tertentu yang sedang Anda pantau atau cuma ingin tahu kondisi umum transportasi hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "jalur",
+            "laju",
+            "garis",
+            "rute"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ada apa dengan jadwal (A-da a-pa de-ngan jad-wal)? Apakah ada jalur tertentu yang sedang Anda pantau atau cuma ingin tahu kondisi umum transportasi hari ini?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, informasinya sudah saya dapatkan. Untuk tujuan tersebut, Anda bisa naik dari jalur 2, dan perkiraan tiba pukul 14.30. Tiketnya bisa Anda ambil di loket sebelah sana. Ada lagi yang bisa dibantu?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ada",
+            "lagi",
+            "bantu"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "terima",
+            "makasih",
+            "cukup"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik), informasinya sudah saya dapatkan. Untuk tujuan tersebut, Anda bisa naik dari jalur 2, dan perkiraan tiba pukul 14.30. Tiketnya bisa Anda ambil di loket sebelah sana. Ada lagi yang bisa dibantu?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang atau diperjelas maksudnya? Saya kurang menangkap tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulang atau diperjelas maksudnya? Saya kurang menangkap tadi."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, kalau begitu. Semoga perjalanan Anda menyenangkan. Hati-hati di jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Ba-ik), kalau begitu. Semoga perjalanan Anda menyenangkan. Hati-hati di jalan!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "dlg-de-restaurant-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Im Sternerestaurant",
+  "opening": "Guten Abend. Haben Sie reserviert, oder darf ich Ihnen einen Tisch zuweisen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend. Haben Sie reserviert, oder darf ich Ihnen einen Tisch zuweisen?",
+      "branches": [
+        {
+          "keywords": [
+            "reserviert",
+            "ja",
+            "habe"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Abend (GOO-ten AH-bent). Good evening. Do you have a reservation, or may I assign you a table?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sehr wohl. Bitte folgen Sie mir an Ihren Tisch. Hier sind die Speisekarten. Darf ich Ihnen schon etwas zu trinken bringen?",
+      "branches": [
+        {
+          "keywords": [
+            "wasser",
+            "wein",
+            "bier",
+            "getränk",
+            "gerne"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr wohl. Please follow me to your table. Here are the Speisekarten (SHPY-zeh-car-ten). May I already bring you something to drink?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Selbstverständlich. Lassen Sie sich Zeit. Haben Sie sich schon entschieden oder darf ich Ihnen etwas empfehlen?",
+      "branches": [
+        {
+          "keywords": [
+            "entschieden",
+            "bestellen",
+            "ja"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. Lassen Sie sich Zeit (LAH-sen zee sich TSYTE). Have you already decided, or may I recommend something?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gerne. Unsere heutige Empfehlung wäre das gegrillte Lammkarree auf Rosmarinjus mit saisonalem Gemüse. Ein Gedicht! Was darf es für Sie sein?",
+      "branches": [
+        {
+          "keywords": [
+            "lamm",
+            "bestelle",
+            "nehme",
+            "dasklingtgut",
+            "vegan",
+            "vegetarisch",
+            "anderes"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Our recommendation today would be the grilled rack of lamb on rosemary jus with seasonal vegetables. A poem! What may it be for you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that acoustically. Could you please repeat it one more time?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ausgezeichnete Wahl! Ich notiere. Wunderbar. Dann wünsche ich Ihnen einen exzellenten Appetit!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent choice! I'll note that down. Wonderful. Then I wish you an excellent appetite!",
+      "isTerminal": true
+    }
+  }
+}

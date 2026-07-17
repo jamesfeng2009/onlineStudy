@@ -1,0 +1,136 @@
+{
+  "id": "dlg-es-taxi-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Un Viaje en Taxi por la Ciudad",
+  "opening": "¡Hola! ¿A dónde le llevo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿A dónde le llevo?",
+      "branches": [
+        {
+          "keywords": [
+            "al centro",
+            "cibeles",
+            "plaza",
+            "dirección",
+            "calle"
+          ],
+          "nextTurnId": "t2_city_destination"
+        },
+        {
+          "keywords": [
+            "al aeropuerto",
+            "aeropuerto",
+            "a la estación",
+            "estación",
+            "tren"
+          ],
+          "nextTurnId": "t2_specific_destination"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah) ¿A dónde le llevo? (Ah DON-deh leh YEH-voh) — Hello! Where can I take you?"
+    },
+    "t2_city_destination": {
+      "id": "t2_city_destination",
+      "prompt": "Entendido, para el centro. El tráfico hoy está moderado, pero podríamos coger la M-30 si prefiere ir más rápido. ¿Le gustaría saber un estimado del precio o ya sabe cómo quiere ir?",
+      "branches": [
+        {
+          "keywords": [
+            "precio",
+            "tarifa",
+            "cuánto cuesta"
+          ],
+          "nextTurnId": "t3_fare_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido, (En-ten-DEE-doh) para el centro. (PAH-rah el SEN-troh) El tráfico hoy está moderado, pero podríamos coger la M-30 si prefiere ir más rápido. ¿Le gustaría saber un estimado del precio o ya sabe cómo quiere ir? — Understood, to the center. Traffic today is moderate, but we could take the M-30 if you prefer to go faster. Would you like to know an estimated price or do you already know how you want to go?"
+    },
+    "t2_specific_destination": {
+      "id": "t2_specific_destination",
+      "prompt": "De acuerdo. Si es al aeropuerto, son 30 euros de tarifa fija. Si es a la estación, el tráfico puede ser un poco pesado, ¿prefiere ir por la M-30 para evitarlo?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "bien",
+            "perfecto",
+            "tarifa",
+            "m-30",
+            "rápido"
+          ],
+          "nextTurnId": "t3_fare_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo. (deh ah-KWER-doh) Si es al aeropuerto, (ahl ah-eh-roh-PWER-toh) son 30 euros de tarifa fija. (TAH-ree-fah FEE-hah) Si es a la estación, (ah lah es-tah-SYON) el tráfico puede ser un poco pesado, ¿prefiere ir por la M-30 para evitarlo? — Okay. If it's to the airport, it's a fixed fare of 30 euros. If it's to the station, traffic can be a bit heavy, do you prefer to go via the M-30 to avoid it?"
+    },
+    "t3_fare_payment": {
+      "id": "t3_fare_payment",
+      "prompt": "Para su destino, el precio rondará los 15-20 euros (o 30 euros fijos si es aeropuerto). ¿Cómo prefiere pagar, con tarjeta o en efectivo?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "crédito"
+          ],
+          "nextTurnId": "t4_confirm_start"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Para su destino, el precio rondará los 15-20 euros (o 30 euros fijos si es aeropuerto). ¿Cómo prefiere pagar, con tarjeta o en efectivo? — For your destination, the price will be around 15-20 euros (or 30 fixed euros if it's the airport). How do you prefer to pay, by card or cash?"
+    },
+    "t4_confirm_start": {
+      "id": "t4_confirm_start",
+      "prompt": "Muy bien. El pago es flexible. Pues en marcha. Espero que disfrute el viaje y lleguemos sin contratiempos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "bien",
+            "perfecto",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pregunta",
+            "duda",
+            "otra cosa"
+          ],
+          "nextTurnId": "t3_fare_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien, (Mwee byen) el pago es flexible. (el PAH-goh es flex-EE-bleh) Pues en marcha. (Pwes en MAR-chah) Espero que disfrute el viaje y lleguemos sin contratiempos. — Alright. Payment is flexible. Let's go then. I hope you enjoy the trip and we arrive without hitches."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, (Dis-KOOL-peh) ¿podría repetir eso? (poh-DREE-ah reh-peh-TEER EH-soh) No le he entendido bien. — Excuse me, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Hemos llegado a su destino. Aquí tiene. ¡Que tenga un buen día y gracias por viajar con nosotros!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Hemos llegado a su destino. (EH-mos yeh-GAH-doh ah soo des-TEE-noh) Aquí tiene. (Ah-KEE TYEH-neh) ¡Que tenga un buen día y gracias por viajar con nosotros! — We've arrived at your destination. Here you go. Have a good day and thanks for traveling with us!",
+      "isTerminal": true
+    }
+  }
+}

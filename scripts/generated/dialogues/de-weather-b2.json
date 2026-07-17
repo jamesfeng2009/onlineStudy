@@ -1,0 +1,228 @@
+{
+  "id": "dlg-de-weather-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Wetter-Smalltalk",
+  "opening": "Na, wie wird das Wetter heute wohl? Die Vorhersage sah ja nicht so rosig aus.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Na, wie wird das Wetter heute wohl? Die Vorhersage sah ja nicht so rosig aus.",
+      "branches": [
+        {
+          "keywords": [
+            "regen",
+            "schlecht",
+            "ungemütlich",
+            "nass"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sonne",
+            "gut",
+            "besser",
+            "warm",
+            "hoffen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "egal",
+            "überraschen",
+            "sehen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na, wie wird das Wetter heute wohl? (Na, vee vird das Vetter hoy-te vohl?) Die Vorhersage sah ja nicht so rosig aus. (Dee For-her-zah-ge zah ya nicht zo roh-zig ows.) — So, how do you think the weather will be today? The forecast didn't look too rosy."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ja, leider! Mir graut es schon vor dem Gedanken, bei diesem Schmuddelwetter raus zu müssen. Hast du trotzdem etwas vor?",
+      "branches": [
+        {
+          "keywords": [
+            "drinnen",
+            "zuhause",
+            "gemütlich",
+            "lesen",
+            "bleiben"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "muss",
+            "arbeit",
+            "pflichten",
+            "termine"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "trotzdem",
+            "draußen",
+            "spaziergang",
+            "gehen"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja, leider! (Ya, ly-der!) Mir graut es schon vor dem Gedanken, (Mir growt es shon for dem Ge-dan-ken,) bei diesem Schmuddelwetter raus zu müssen. (by dee-zem Shmood-del-vet-ter raws tsoo mee-ssen.) Hast du trotzdem etwas vor? (Hast doo trotz-dem et-vas for?) — Yes, unfortunately! I dread the thought of having to go out in this miserable weather. Do you have any plans anyway?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, hoffentlich hast du Recht! Ein bisschen Sonnenschein würde die Stimmung gleich heben, findest du nicht auch?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "unbedingt",
+            "sonne",
+            "lieber",
+            "stimmung"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "schnee",
+            "winter",
+            "kalt",
+            "egal",
+            "andere"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nichtso",
+            "egal",
+            "machnichts",
+            "egalwas"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, hoffentlich hast du Recht! (Ach, hoff-ent-lich hast doo Recht!) Ein bisschen Sonnenschein würde die Stimmung gleich heben, (Ein biss-chen Zon-nen-shine veer-de dee Shtim-moong gleich he-ben,) findest du nicht auch? (fin-dest doo nicht owch?) — Oh, hopefully you're right! A little sunshine would immediately lift the mood, don't you think?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Das stimmt natürlich auch, man kann es ja nicht ändern. Aber hast du denn irgendwelche Pläne, die wetterabhängig sein könnten?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "draußen",
+            "garten",
+            "grillen",
+            "treffen"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "nein",
+            "drinnen",
+            "egal",
+            "keine"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "wetterbericht",
+            "unsicher",
+            "abwarten"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das stimmt natürlich auch, man kann es ja nicht ändern. (Das stimmt na-tür-lich owch, man kann es ya nicht en-dern.) Aber hast du denn irgendwelche Pläne, (Ah-ber hast doo denn ir-gend-vel-che Plä-ne,) die wetterabhängig sein könnten? (dee vet-ter-ab-häng-ig zyne kün-nten?) — That's true, of course, you can't change it anyway. But do you have any plans that might depend on the weather?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das klingt vernünftig! Bei so einem Wetter ist es doch am schönsten, es sich drinnen gemütlich zu machen. Was machst du am liebsten, wenn es draußen ungemütlich ist?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "film",
+            "serie",
+            "kaffee",
+            "tee"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds sensible! In this kind of weather, it's best to make yourself comfortable indoors. What do you like to do most when it's unpleasant outside?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ah, das ist natürlich weniger schön, wenn man bei dem Wetter raus muss. Ich hoffe, du hast wenigstens eine gute Regenjacke!",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "regenschirm",
+            "ausgerüstet",
+            "dabei"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, that's certainly not great when you have to go out in this weather. I hope you at least have a good rain jacket!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Mutig! Aber manchmal muss man einfach raus, egal wie das Wetter ist. Oder hattest du feste Pläne, die jetzt ins Wasser fallen könnten?",
+      "branches": [
+        {
+          "keywords": [
+            "fest",
+            "geplant",
+            "absagen",
+            "umplanen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Brave! But sometimes you just have to go out, no matter the weather. Or did you have fixed plans that might now fall through?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, das habe ich nicht ganz verstanden. Könntest du das vielleicht anders formulieren oder kurz wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung, das habe ich nicht ganz verstanden. (Ent-shool-di-goong, das ha-be ich nicht ganz fer-shtan-den.) Könntest du das vielleicht anders formulieren oder kurz wiederholen? (Könn-test doo das fye-lycht an-ders for-moo-ly-re-ren o-der koorts vee-der-hoh-len?) — Excuse me, I didn't quite understand that. Could you perhaps phrase that differently or briefly repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, danke für den kurzen Wetter-Plausch! Ich wünsche dir einen schönen Tag, egal wie das Wetter wird. Mach's gut!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thanks for the quick weather chat! I wish you a nice day, no matter what the weather turns out to be. Take care!",
+      "isTerminal": true
+    }
+  }
+}

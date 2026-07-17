@@ -1,0 +1,178 @@
+{
+  "id": "dlg-fr-airport-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "À l'aéroport",
+  "opening": "Bonjour. Votre carte d'embarquement, s'il vous plaît ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Votre carte d'embarquement, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "voici",
+            "la voici",
+            "tenez"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "excusez-moi",
+            "je ne comprends pas"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            "bonjour"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR). Votre carte d'embarquement (kart dahm-bark-MAHN), s'il vous plaît (seel voo PLEH) ? — Hello. Your boarding pass, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Merci. Avez-vous des bagages à enregistrer ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "une",
+            "valise",
+            "un",
+            "sac"
+          ],
+          "nextTurnId": "t3_luggage"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "bagage"
+          ],
+          "nextTurnId": "t4_gate_ask"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci (mehr-SEE). Avez-vous (ah-VAY voo) des bagages (bah-GAHZH) à enregistrer (ahn-reh-zhee-STRAY) ? — Thank you. Do you have any luggage to check in?"
+    },
+    "t3_luggage": {
+      "id": "t3_luggage",
+      "prompt": "D'accord. Placez votre valise sur le tapis, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "bien",
+            "ok"
+          ],
+          "nextTurnId": "t5_final"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR). Placez votre valise (vah-LEEZ) sur le tapis (tah-PEE), s'il vous plaît (seel voo PLEH). — Okay. Please place your suitcase on the conveyor belt."
+    },
+    "t4_gate_ask": {
+      "id": "t4_gate_ask",
+      "prompt": "Quelle est votre porte d'embarquement ?",
+      "branches": [
+        {
+          "keywords": [
+            "je",
+            "ne",
+            "sais",
+            "pas"
+          ],
+          "nextTurnId": "t4_gate_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What is your boarding gate?"
+    },
+    "t4_gate_info": {
+      "id": "t4_gate_info",
+      "prompt": "Votre porte est la B23. L'embarquement commence à 14h30.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "bien",
+            "compris"
+          ],
+          "nextTurnId": "t5_final"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your gate is B23. Boarding starts at 2:30 PM."
+    },
+    "t5_final": {
+      "id": "t5_final",
+      "prompt": "Parfait. Bon vol !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait (par-FEH). Bon vol (bohn VOL) ! — Perfect. Have a good flight!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I didn't understand. Could you please repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien. Au revoir et bon voyage !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Goodbye and have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

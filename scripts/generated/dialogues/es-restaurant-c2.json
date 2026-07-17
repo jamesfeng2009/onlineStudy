@@ -1,0 +1,174 @@
+{
+  "id": "dlg-es-restaurant-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Cena en 'El Rinconcito Ibérico'",
+  "opening": "¡Buenas noches! Bienvenidos a 'El Rinconcito Ibérico'. ¿Han podido echar un vistazo a nuestra carta ya, o necesitan alguna recomendación?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas noches! Bienvenidos a 'El Rinconcito Ibérico'. ¿Han podido echar un vistazo a nuestra carta ya, o necesitan alguna recomendación?",
+      "branches": [
+        {
+          "keywords": [
+            "menu",
+            "carta",
+            "mirado"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "recomendacion",
+            "sugerencia"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! Welcome to 'The Iberian Corner'. Have you had a chance to glance [e-CHAR un bis-TA-so, *to glance quickly*] at our menu yet, or do you need any recommendations?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfecto. ¿Hay algo que les haya llamado la atención o tienen alguna restricción alimentaria de la que debamos estar al tanto?",
+      "branches": [
+        {
+          "keywords": [
+            "restriccion",
+            "alergia",
+            "dieta",
+            "vegetariano"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "sinrestricciones"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. Is there anything that has caught your eye [ya-MA-do la at-en-SYON, *caught your eye/attention*], or do you have any dietary restrictions we should be aware of?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Con mucho gusto. Si buscan algo auténtico y contundente, les sugiero el cochinillo asado, una verdadera joya de nuestra gastronomía. Para algo más ligero, el pulpo a la gallega nunca defrauda. ¿Alguna preferencia en particular, quizás pescado o carne?",
+      "branches": [
+        {
+          "keywords": [
+            "cochinillo",
+            "cerdo",
+            "asado"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "vegetariano",
+            "ligero"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "With pleasure. If you're looking for something authentic and hearty, I suggest the roast suckling pig [ko-chi-NI-llo a-SA-do], a true gem of our gastronomy. For something lighter, the Galician-style octopus [PUL-po a la ga-YE-ga] never disappoints. Any particular preference, perhaps fish or meat?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entendido. Siendo así, para opciones vegetarianas, tenemos unas excelentes berenjenas rellenas o nuestra ensalada de la huerta con queso de cabra. Para cualquier alergia, todos nuestros platos están detallados en la carta con sus alérgenos, pero no duden en preguntar cualquier cosa específica.",
+      "branches": [
+        {
+          "keywords": [
+            "berenjenas",
+            "rellenas"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "otra",
+            "pregunta",
+            "especifico"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. In that case, for vegetarian options, we have excellent stuffed eggplants or our garden salad with goat cheese. For any allergies, all our dishes are detailed on the menu with their allergens, but don't hesitate to ask anything specific."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Excelente elección. Entonces, ¿sería un cochinillo asado y una ensalada de la huerta? ¿Algo más para beber o algún entrante mientras tanto?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "confirmar",
+            "correcto",
+            "perfecto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice. So, would that be a roast suckling pig and a garden salad? Anything else to drink or any appetizer in the meantime?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Disculpe? ¿Podría repetirlo, por favor? No le he entendido muy bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? Could you please repeat that? I didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Tomo nota de su pedido. Enseguida se lo traemos. ¡Que disfrute de la velada!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. I'll note your order. We'll bring it right away. Enjoy your evening!",
+      "isTerminal": true
+    }
+  }
+}

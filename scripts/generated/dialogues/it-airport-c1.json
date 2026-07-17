@@ -1,0 +1,226 @@
+{
+  "id": "dlg-it-airport-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Assistenza Aeroportuale",
+  "opening": "Buongiorno, posso esserle d'aiuto? C'è qualcosa in particolare che la porta al nostro banco informazioni?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, posso esserle d'aiuto? C'è qualcosa in particolare che la porta al nostro banco informazioni?",
+      "branches": [
+        {
+          "keywords": [
+            "ritardo",
+            "volo",
+            "gate",
+            "imbarco"
+          ],
+          "nextTurnId": "t2_delay_or_gate"
+        },
+        {
+          "keywords": [
+            "bagaglio",
+            "perso",
+            "smarrimento",
+            "valigia"
+          ],
+          "nextTurnId": "t2_luggage"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "generali"
+          ],
+          "nextTurnId": "t_fine"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Buongiorno — Good morning, posso esserle d'aiuto? — can I help you? C'è qualcosa in particolare che la porta al nostro banco informazioni? — Is there anything specific that brings you to our information desk?"
+    },
+    "t_ripeti": {
+      "id": "t_ripeti",
+      "prompt": "Mi scusi, potrebbe ripetere? Non ho afferrato bene la sua richiesta. Provi a riformulare, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi — Excuse me, potrebbe ripetere? — could you repeat? Non ho afferrato bene la sua richiesta. — I didn't quite catch your request. Provi a riformulare, per favore. — Please try to rephrase."
+    },
+    "t2_delay_or_gate": {
+      "id": "t2_delay_or_gate",
+      "prompt": "Capisco. Si tratta di un ritardo o di informazioni sul gate di imbarco? A quale volo si riferisce?",
+      "branches": [
+        {
+          "keywords": [
+            "ritardo",
+            "volo",
+            "az123",
+            "lh456"
+          ],
+          "nextTurnId": "t3_delay_info"
+        },
+        {
+          "keywords": [
+            "gate",
+            "imbarco",
+            "partenza",
+            "dove",
+            "cancello"
+          ],
+          "nextTurnId": "t3_gate_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Capisco. — I understand. Si tratta di un ritardo o di informazioni sul gate di imbarco? — Is it about a delay or gate information? A quale volo si riferisce? — Which flight are you referring to?"
+    },
+    "t3_delay_info": {
+      "id": "t3_delay_info",
+      "prompt": "Ah, il volo. Un attimo che verifico... Purtroppo sì, è previsto un ritardo significativo. Volare con quella compagnia aerea è un vero terno al lotto, non le pare? Il decollo è posticipato di almeno due ore.",
+      "branches": [
+        {
+          "keywords": [
+            "compensazione",
+            "voucher",
+            "diritti",
+            "rimborso"
+          ],
+          "nextTurnId": "t4_delay_compensation"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Ah, il volo. — Ah, the flight. Un attimo che verifico... — One moment while I check... Purtroppo sì, è previsto un ritardo significativo. — Unfortunately yes, a significant delay is expected. Volare con quella compagnia aerea è un vero terno al lotto, non le pare? — Flying with that airline is truly a lottery, isn't it? Il decollo è posticipato di almeno due ore. — Takeoff is postponed by at least two hours."
+    },
+    "t4_delay_compensation": {
+      "id": "t4_delay_compensation",
+      "prompt": "A fronte di un ritardo di questa entità, di solito la compagnia offre un voucher per un pasto o una bevanda. Le consiglio di recarsi al banco informazioni della sua compagnia, lì le daranno tutte le delucidazioni del caso. Mi auguro che il disagio sia minimo.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "ok"
+          ],
+          "nextTurnId": "t_fine"
+        },
+        {
+          "keywords": [
+            "dove",
+            "banco",
+            "posizione",
+            "compagnia"
+          ],
+          "nextTurnId": "t5_delay_location"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "A fronte di un ritardo di questa entità, — Given a delay of this magnitude, di solito la compagnia offre un voucher per un pasto o una bevanda. — the airline usually offers a voucher for a meal or drink. Le consiglio di recarsi al banco informazioni della sua compagnia, — I advise you to go to your airline's information desk, lì le daranno tutte le delucidazioni del caso. — where they will give you all the necessary clarifications. Mi auguro che il disagio sia minimo. — I hope the inconvenience is minimal."
+    },
+    "t5_delay_location": {
+      "id": "t5_delay_location",
+      "prompt": "Certo, il banco si trova al piano superiore, proprio accanto all'ingresso del Duty Free, prima dei gate B. È ben segnalato. Spero che la situazione si risolva al più presto per lei.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "arrivederci"
+          ],
+          "nextTurnId": "t_fine"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Certo, — Certainly, il banco si trova al piano superiore, — the desk is on the upper floor, proprio accanto all'ingresso del Duty Free, — right next to the Duty Free entrance, prima dei gate B. — before gates B. È ben segnalato. — It's well signposted. Spero che la situazione si risolva al più presto per lei. — I hope the situation resolves itself as soon as possible for you."
+    },
+    "t3_gate_info": {
+      "id": "t3_gate_info",
+      "prompt": "Un attimo che verifico... Il suo volo partirà dal Gate D12. L'imbarco è previsto tra mezz'ora. Non si affretti troppo, ma tenga d'occhio gli schermi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t_fine"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Un attimo che verifico... — One moment while I check... Il suo volo partirà dal Gate D12. — Your flight will depart from Gate D12. L'imbarco è previsto tra mezz'ora. — Boarding is scheduled in half an hour. Non si affretti troppo, ma tenga d'occhio gli schermi. — Don't rush too much, but keep an eye on the screens."
+    },
+    "t2_luggage": {
+      "id": "t2_luggage",
+      "prompt": "Un vero grattacapo, mi dispiace molto. Ha già compilato il modulo PIR (Property Irregularity Report) al banco della sua compagnia aerea o le serve assistenza per farlo?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "giàfatto",
+            "compilato",
+            "grazie"
+          ],
+          "nextTurnId": "t_fine"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_ripeti"
+        }
+      ],
+      "fallbackBranchId": "t_ripeti",
+      "promptTranslation": "Un vero grattacapo, — A real headache, mi dispiace molto. — I'm very sorry. Ha già compilato il modulo PIR (Property Irregularity Report) al banco della sua compagnia aerea o le serve assistenza per farlo? — Have you already filled out the PIR (Property Irregularity Report) form at your airline's desk, or do you need assistance with that?"
+    },
+    "t_fine": {
+      "id": "t_fine",
+      "prompt": "Perfetto, le auguro una buona giornata e spero che tutto si risolva al più presto. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t_fine",
+      "promptTranslation": "Perfect, I wish you a good day and hope everything resolves as soon as possible. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

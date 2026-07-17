@@ -1,0 +1,200 @@
+{
+  "id": "dlg-ms-weather-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Cuaca Hari Ini",
+  "opening": "Hai! Apa khabar? Cuaca hari ini nampak cerah, ya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai! Apa khabar? Cuaca hari ini nampak cerah, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "terik"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mendung",
+            "hujan",
+            "gerimis"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ramalan",
+            "esok",
+            "minggu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai! Apa khabar? (Hi! How are you?) Cuaca hari ini nampak cerah, ya? (The weather looks bright today, doesn't it?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Betul tu, terasa bahangnya. Saya harap taklah berlarutan panas terik ni, risau juga dengan kesihatan. Apa rancangan awak untuk cuaca macam ni?",
+      "branches": [
+        {
+          "keywords": [
+            "duduk rumah",
+            "dalam rumah",
+            "elak panas",
+            "aircond"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "awak",
+            "rancang",
+            "awak pula"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Betul tu, terasa bahangnya. (That's right, you can feel the heat.) Saya harap taklah berlarutan panas terik ni, risau juga dengan kesihatan. (I hope this scorching heat doesn't last, I'm also worried about health.) Apa rancangan awak untuk cuaca macam ni? (What are your plans for weather like this?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, ya ke? Dari sini nampak cerah pula. Tapi memang cuaca sekarang ni tak menentu, sekejap panas, sekejap hujan. Ada terbaca ramalan cuaca untuk esok?",
+      "branches": [
+        {
+          "keywords": [
+            "hujan",
+            "mendung",
+            "sejuk"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "belum",
+            "tak tahu",
+            "awak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ya ke? (Oh, really?) Dari sini nampak cerah pula. (From here, it looks bright though.) Tapi memang cuaca sekarang ni tak menentu, (But the weather now is really unpredictable,) sekejap panas, sekejap hujan. (one moment hot, one moment rainy.) Ada terbaca ramalan cuaca untuk esok? (Have you read the weather forecast for tomorrow?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Saya ada tengok tadi, katanya hujung minggu ni akan ada hujan lebat di beberapa kawasan. Kena bersedia payung dan baju hujanlah nampaknya. Macam mana dengan rancangan awak?",
+      "branches": [
+        {
+          "keywords": [
+            "batal",
+            "tangguh",
+            "dalam rumah"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "kawasan",
+            "mana",
+            "terjejas"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya ada tengok tadi, (I checked earlier,) katanya hujung minggu ni akan ada hujan lebat (It says there will be heavy rain) di beberapa kawasan. (in several areas this weekend.) Kena bersedia payung dan baju hujanlah nampaknya. (Looks like we need to prepare umbrellas and raincoats.) Macam mana dengan rancangan awak? (What about your plans?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Fahamlah, memang kena lebih berhati-hati dengan keadaan cuaca yang tak menentu ni. Apa pun, saya harap rancangan awak berjalan lancar dan awak sentiasa selesa.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "baik",
+            "ok",
+            "ya"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fahamlah, (I understand,) memang kena lebih berhati-hati dengan keadaan cuaca yang tak menentu ni. (we really need to be more careful with this unpredictable weather.) Apa pun, saya harap rancangan awak berjalan lancar dan awak sentiasa selesa. (Anyway, I hope your plans go smoothly and you are always comfortable.)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Kalau saya, mungkin akan duduk rumah saja buat masa ni, baca buku atau tonton filem. Tak sanggup nak berpanas terik atau berhujan lebat. Tapi kadang-kadang, cuaca begini memang ada hikmahnya, kan?",
+      "branches": [
+        {
+          "keywords": [
+            "hikmah",
+            "betul",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau saya, (As for me,) mungkin akan duduk rumah saja buat masa ni, (I'll probably just stay at home for now,) baca buku atau tonton filem. (read books or watch movies.) Tak sanggup nak berpanas terik atau berhujan lebat. (Can't stand scorching heat or heavy rain.) Tapi kadang-kadang, cuaca begini memang ada hikmahnya, kan? (But sometimes, this kind of weather has its wisdom, doesn't it?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? (Sorry, could you repeat that?) Saya kurang jelas. (I'm not very clear.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih kerana berkongsi. Semoga hari awak menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, (Alright,) terima kasih kerana berkongsi. (Thanks for sharing.) Semoga hari awak menyenangkan! (Have a pleasant day!)",
+      "isTerminal": true
+    }
+  }
+}

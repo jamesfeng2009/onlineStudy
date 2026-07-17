@@ -1,0 +1,249 @@
+{
+  "id": "dlg-id-post-office-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "Di Kantor Pos",
+  "opening": "Selamat pagi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kirimpaket",
+            "kirim",
+            "paket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "belimaterai",
+            "materai",
+            "stempel"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tanyainfo",
+            "tanya",
+            "info"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (seh-lah-mat pah-gee), ada yang bisa saya bantu (ah-dah yahng bee-sah sah-yah bahn-too)? — Good morning, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu, untuk pengiriman paket, apakah Anda ingin mengirim ke dalam negeri atau luar negeri?",
+      "branches": [
+        {
+          "keywords": [
+            "dalamnegeri",
+            "lokal",
+            "domestik"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "luarnegeri",
+            "internasional",
+            "ekspor"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (tehn-too), untuk pengiriman paket (puh-ngee-ree-man pah-ket), apakah Anda ingin mengirim ke dalam negeri (dah-lam neh-guh-ree) atau luar negeri (loo-ar neh-guh-ree)? — Certainly, for sending a parcel, would you like to send it domestically or internationally?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, materai apa yang Anda cari? Kami punya materai tempel dan elektronik. Berapa banyak yang Anda butuhkan?",
+      "branches": [
+        {
+          "keywords": [
+            "tempel",
+            "biasa",
+            "satu",
+            "dua",
+            "tiga",
+            "empat",
+            "lima",
+            "sepuluh",
+            "banyak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (bah-ik), materai apa yang Anda cari (mah-teh-ra-ee ah-pah yahng ahn-dah chah-ree)? Kami punya materai tempel (tehm-pehl) dan elektronik (eh-lek-tro-nik). Berapa banyak (beh-ra-pah bah-nyak) yang Anda butuhkan (boo-too-kan)? — Okay, what kind of stamps are you looking for? We have physical and electronic stamps. How many do you need?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Informasi mengenai apa? Layanan kami meliputi pengiriman surat, paket, dan pembayaran tagihan.",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "kirim"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "surat",
+            "pos"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Informasi mengenai apa (in-for-mah-see muh-nguh-na-ee ah-pah)? Layanan kami meliputi pengiriman surat (soo-rat), paket, dan pembayaran tagihan (tah-gee-han). — Information about what? Our services include sending letters, parcels, and bill payments."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Untuk pengiriman dalam negeri, apakah Anda ingin layanan reguler, kilat, atau tercatat (registered mail)?",
+      "branches": [
+        {
+          "keywords": [
+            "reguler",
+            "biasa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tercatat",
+            "registrasi"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk pengiriman dalam negeri (dah-lam neh-guh-ree), apakah Anda ingin layanan reguler (reh-goo-ler), kilat (kee-lat), atau tercatat (ter-cha-tat)? — For domestic shipping, would you like regular, express, or registered mail?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Untuk pengiriman internasional, Anda perlu mengisi formulir bea cukai. Apakah Anda sudah membawanya atau perlu formulir di sini?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "bawa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk pengiriman internasional (in-ter-na-sio-nal), Anda perlu mengisi formulir bea cukai (fohr-moo-lir beh-ah choo-ka-ee). Apakah Anda sudah membawanya (mem-bah-wah-nyah) atau perlu formulir di sini (see-nee)? — For international shipping, you need to fill out a customs form. Have you brought it or do you need a form here?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Untuk surat, kami menawarkan pengiriman biasa dan kilat. Apakah Anda ingin suratnya terdaftar (registered) juga?",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "reguler"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "terdaftar",
+            "registrasi"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk surat (soo-rat), kami menawarkan pengiriman biasa (bee-ah-sah) dan kilat (kee-lat). Apakah Anda ingin suratnya terdaftar (ter-dahf-tar) juga? — For letters, we offer regular and express shipping. Do you also want your letter registered?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Untuk layanan tercatat/terdaftar, Anda akan mendapatkan nomor resi untuk pelacakan. Apakah Anda ingin menambahkan asuransi?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mau"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk layanan tercatat (ter-cha-tat)/terdaftar (ter-dahf-tar), Anda akan mendapatkan nomor resi (no-mor reh-see) untuk pelacakan (peh-lah-cha-kan). Apakah Anda ingin menambahkan asuransi (ah-soo-ran-see)? — For registered mail service, you will receive a tracking number. Do you want to add insurance?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (mah-ahf), bisa diulang (bee-sah dee-oo-lang)? Saya kurang jelas (sah-yah koo-rang jeh-lahs). — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih sudah datang. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (bah-ik), terima kasih (teh-ree-mah kah-seeh) sudah datang (soo-dah dah-tang). Selamat jalan (seh-lah-mat jah-lan)! — Alright, thank you for coming. Have a good journey!",
+      "isTerminal": true
+    }
+  }
+}

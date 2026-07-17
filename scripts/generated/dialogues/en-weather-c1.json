@@ -1,0 +1,138 @@
+{
+  "id": "dlg-en-weather-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Casual Weather Chat",
+  "opening": "Good morning! How are you finding the day so far? It's looking a bit mercurial out there, isn't it?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! How are you finding the day so far? It's looking a bit mercurial out there, isn't it?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "fine",
+            "fantastic",
+            "positive"
+          ],
+          "nextTurnId": "t2_positive_mood"
+        },
+        {
+          "keywords": [
+            "notgood",
+            "bad",
+            "dreary",
+            "tired",
+            "negative"
+          ],
+          "nextTurnId": "t2_negative_mood"
+        },
+        {
+          "keywords": [
+            "weather",
+            "unpredictable",
+            "changeable",
+            "cloudy",
+            "sunny",
+            "rainy"
+          ],
+          "nextTurnId": "t2_weather_focus"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! How are you finding the day so far? It's looking a bit mercurial out there, isn't it?"
+    },
+    "t2_positive_mood": {
+      "id": "t2_positive_mood",
+      "prompt": "Splendid to hear! A buoyant spirit can certainly cut through the gloom of a day like this. Any grand plans that have you feeling so chipper, or just a generally sunny disposition?",
+      "branches": [
+        {
+          "keywords": [
+            "plans",
+            "outing",
+            "event"
+          ],
+          "nextTurnId": "t3_conclude"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Splendid to hear! A buoyant spirit can certainly cut through the gloom of a day like this. Any grand plans that have you feeling so chipper, or just a generally sunny disposition?"
+    },
+    "t2_negative_mood": {
+      "id": "t2_negative_mood",
+      "prompt": "Oh dear, I'm genuinely sorry to hear that. Is it perhaps this rather oppressive weather weighing you down, or something more substantial on your plate?",
+      "branches": [
+        {
+          "keywords": [
+            "weather",
+            "rainy",
+            "dull",
+            "gloomy"
+          ],
+          "nextTurnId": "t3_conclude"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh dear, I'm genuinely sorry to hear that. Is it perhaps this rather oppressive weather weighing you down, or something more substantial on your plate?"
+    },
+    "t2_weather_focus": {
+      "id": "t2_weather_focus",
+      "prompt": "You've hit the nail on the head! It's been an absolute toss-up, hasn't it? One minute you're reaching for sunglasses, the next it feels like a storm's brewing. It makes planning anything a complete nightmare.",
+      "branches": [
+        {
+          "keywords": [
+            "plans",
+            "cancel",
+            "outdoors",
+            "indoors"
+          ],
+          "nextTurnId": "t3_conclude"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You've hit the nail on the head! It's been an absolute toss-up, hasn't it? One minute you're reaching for sunglasses, the next it feels like a storm's brewing. It makes planning anything a complete nightmare."
+    },
+    "t3_conclude": {
+      "id": "t3_conclude",
+      "prompt": "Well, whatever the reason, I hope things take a turn for the better, both literally and figuratively. It was good catching up with you about the day's atmospheric drama!",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "you"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Well, whatever the reason, I hope things take a turn for the better, both literally and figuratively. It was good catching up with you about the day's atmospheric drama!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you elaborate a little? I didn't quite catch that.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you elaborate a little? I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alright, take care then, and try to make the most of whatever the weather throws at us! Farewell for now.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, take care then, and try to make the most of whatever the weather throws at us! Farewell for now.",
+      "isTerminal": true
+    }
+  }
+}

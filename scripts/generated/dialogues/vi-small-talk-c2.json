@@ -1,0 +1,207 @@
+{
+  "id": "dlg-vi-small-talk-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Hàn huyên cuối tuần",
+  "opening": "Chào bạn, mình là Hùng. Buổi tiệc hôm nay vui quá ha? Không khí sôi động thế này có làm bạn thấy thoải mái không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, mình là Hùng. Buổi tiệc hôm nay vui quá ha? Không khí sôi động thế này có làm bạn thấy thoải mái không?",
+      "branches": [
+        {
+          "keywords": [
+            "thoảimái",
+            "thích",
+            "vui",
+            "cũngđược",
+            "bìnhthường"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "hơiồn",
+            "khôngthíchồn",
+            "thíchyênlặng"
+          ],
+          "nextTurnId": "t2b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban), mình là Hùng (minh la Hung). Buổi tiệc hôm nay (Boi tiec hom nay) vui quá ha (vui qua ha)? Không khí (Khong khi) sôi động (soi dong) thế này (the nay) có làm (co lam) bạn thấy (ban thay) thoải mái (thoai mai) không (khong)? — Hi, I'm Hung. This party is great, isn't it? Does this lively atmosphere make you feel comfortable?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Tuyệt vời! Mình cũng thế. Thật ra, mình rất thích mấy buổi gặp gỡ kiểu này để thoát khỏi guồng quay công việc hàng ngày. Bạn thì sao, cuối tuần thường 'xả hơi' bằng cách nào?",
+      "branches": [
+        {
+          "keywords": [
+            "đọcsách",
+            "nghenhạc",
+            "xemphim",
+            "nghỉngơi"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "thểthao",
+            "dulịch",
+            "đi chơi",
+            "gặp gỡ bạn bè"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "làm việc",
+            "việcnhà"
+          ],
+          "nextTurnId": "t3c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời (Tuyet voi)! Mình cũng thế (Minh cung the). Thật ra (That ra), mình rất (minh rat) thích mấy (thich may) buổi gặp gỡ (buoi gap go) kiểu này (kieu nay) để thoát khỏi (de thoat khoi) guồng quay (guong quay) công việc (cong viec) hàng ngày (hang ngay). Bạn thì sao (Ban thi sao), cuối tuần (cuoi tuan) thường 'xả hơi' (xa hoi) bằng cách nào (bang cach nao)? — Awesome! Me too. Actually, I really like these kinds of gatherings to escape the daily work routine. How about you, how do you usually 'unwind' on weekends?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "À, mình hiểu rồi. Đúng là không phải ai cũng hợp với không khí náo nhiệt. Vậy thì chắc cuối tuần bạn sẽ tìm đến những nơi yên tĩnh hơn để thư giãn nhỉ? Có địa điểm nào bạn tâm đắc không?",
+      "branches": [
+        {
+          "keywords": [
+            "quáncàphê",
+            "nhàsách",
+            "ởnhà"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "côngviên",
+            "thiênnhiên",
+            "đi dạo"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "khác",
+            "tùy hứng"
+          ],
+          "nextTurnId": "t3d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À (Ah), mình hiểu rồi (minh hieu roi). Đúng là (Dung la) không phải (khong phai) ai cũng (ai cung) hợp với (hop voi) không khí (khong khi) náo nhiệt (nao nhiet). Vậy thì (Vay thi) chắc cuối tuần (chac cuoi tuan) bạn sẽ (ban se) tìm đến (tim den) những nơi (nhung noi) yên tĩnh (yen tinh) hơn (hon) để thư giãn (de thu gian) nhỉ (nhi)? Có địa điểm (Co dia diem) nào bạn (nao ban) tâm đắc (tam dac) không (khong)? — Ah, I understand. It's true that not everyone suits a bustling atmosphere. So, on weekends, you probably look for quieter places to relax, right? Do you have any favorite spots?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "À, tuyệt vời! Mình cũng hay tìm đến những hoạt động hay không gian như vậy để 'sạc pin'. Đặc biệt là sách, mình mê tiểu thuyết trinh thám lắm. Bạn có 'gu' như nào, hoặc có thể giới thiệu mình một 'tuyệt phẩm' gần đây không?",
+      "branches": [
+        {
+          "keywords": [
+            "tênsách",
+            "tênphim",
+            "tênquán",
+            "địađiểm",
+            "lãngmạn",
+            "hànhđộng",
+            "kinhdị",
+            "càphêsữađá"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À (Ah), tuyệt vời (tuyet voi)! Mình cũng (Minh cung) hay tìm đến (hay tim den) những hoạt động (nhung hoat dong) hay không gian (hay khong gian) như vậy (nhu vay) để 'sạc pin' (sac pin). Đặc biệt là (Dac biet la) sách (sach), mình mê (minh me) tiểu thuyết (tieu thuyet) trinh thám (trinh tham) lắm (lam). Bạn có 'gu' (Ban co gu) như nào (nhu nao), hoặc có thể (hoac co the) giới thiệu (gioi thieu) mình một (minh mot) 'tuyệt phẩm' (tuyet pham) gần đây (gan day) không (khong)? — Ah, wonderful! I also often seek out such activities or spaces to 'recharge'. Especially books, I really love detective novels. What's your 'taste' like, or can you recommend a recent 'masterpiece' to me?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Ồ, năng động quá! Nghe có vẻ hấp dẫn hơn việc ru rú ở nhà nhỉ. Mình thì hơi lười khoản vận động thể chất. Bạn có hay đi đâu xa không, hay chỉ loanh quanh thành phố thôi?",
+      "branches": [
+        {
+          "keywords": [
+            "xa",
+            "dulịch",
+            "cắmtrại"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ (Oh), năng động (nang dong) quá (qua)! Nghe có vẻ (Nghe co ve) hấp dẫn (hap dan) hơn việc (hon viec) ru rú (ru ru) ở nhà (o nha) nhỉ (nhi). Mình thì (Minh thi) hơi lười (hoi luoi) khoản vận động (khoan van dong) thể chất (the chat). Bạn có (Ban co) hay đi đâu xa (hay di dau xa) không (khong), hay chỉ (hay chi) loanh quanh (loan quanh) thành phố (thanh pho) thôi (thoi)? — Oh, so active! Sounds more appealing than staying cooped up at home, huh? I'm a bit lazy when it comes to physical activity. Do you often travel far, or just stay around the city?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Vậy hả, có vẻ bạn là người rất có trách nhiệm và biết cách quản lý thời gian. Nhưng dù sao thì cũng cần dành chút thời gian cho bản thân để thư giãn chứ nhỉ? Bạn có 'gu' giải trí nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "sách",
+            "phim",
+            "nhạc"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "thểthao",
+            "dulịch",
+            "gặp gỡ bạn bè"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "khôngcó",
+            "tùyhứng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy hả (Vay ha), có vẻ (co ve) bạn là (ban la) người rất (nguoi rat) có trách nhiệm (co trach nhiem) và biết (va biet) cách quản lý (cach quan ly) thời gian (thoi gian). Nhưng dù sao (Nhung du sao) thì cũng (thi cung) cần dành (can danh) chút thời gian (chut thoi gian) cho bản thân (cho ban than) để thư giãn (de thu gian) chứ nhỉ (chu nhi)? Bạn có 'gu' (Ban co gu) giải trí (giai tri) nào không (nao khong)? — Oh, I see, you seem to be a very responsible person and good at time management. But anyway, you still need to set aside some time for yourself to relax, right? Do you have any 'taste' in entertainment?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "À, tùy hứng cũng hay mà, không gò bó. Miễn là mình cảm thấy thoải mái là được. Mà bạn có hay nghe podcast không? Mình mới khám phá ra một kênh khá thú vị.",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "thích",
+            "kênhgì"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À (Ah), tùy hứng (tuy hung) cũng hay (cung hay) mà, không (khong) gò bó (go bo). Miễn là (Mien la) mình cảm thấy (minh cam thay) thoải mái (thoai mai) là được (la duoc). Mà bạn có (Ma ban co) hay nghe (hay nghe) podcast (podcast) không (khong)? Mình mới (Minh moi) khám phá (kham pha) ra một kênh (ra mot kenh) khá thú vị (kha thu vi). — Ah, being spontaneous is good too, no strict rules. As long as you feel comfortable, it's fine. By the way, do you often listen to podcasts? I just discovered a pretty interesting channel."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, mình nghe không rõ lắm. Bạn có thể nhắc lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), mình nghe (minh nghe) không rõ lắm (khong ro lam). Bạn có thể (Ban co the) nhắc lại (nhac lai) không (khong)? — Sorry, I didn't hear clearly. Could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Rất vui vì có dịp trò chuyện cùng bạn. Giờ thì mình phải đi chào mấy người bạn nữa rồi. Hẹn gặp lại bạn lần sau nhé!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rất vui (Rat vui) vì có dịp (vi co dip) trò chuyện (tro chuyen) cùng bạn (cung ban). Giờ thì (Gio thi) mình phải đi (minh phai di) chào mấy người (chao may nguoi) bạn nữa (ban nua) rồi (roi). Hẹn gặp lại (Hen gap lai) bạn lần sau (ban lan sau) nhé (nhe)! — It was great chatting with you. Now I have to go say hi to some other friends. See you next time!",
+      "isTerminal": true
+    }
+  }
+}

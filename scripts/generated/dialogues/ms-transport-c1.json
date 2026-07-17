@@ -1,0 +1,144 @@
+{
+  "id": "dlg-ms-transport-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Perbualan Pengangkutan Awam",
+  "opening": "Selamat pagi, tuan/puan. Ada apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, tuan/puan. Ada apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "ke",
+            "klcc",
+            "nak",
+            "tanya",
+            "laluan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "jadual",
+            "masa",
+            "berapa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, tuan/puan (too-ahn/poo-ahn). Ada apa yang boleh saya bantu (bah-ntoo)? — Good morning, sir/madam. How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, ke KLCC ya? Baik. Adakah tiket sehala atau pergi balik? Kami juga ada tawaran 'Pas Harian' yang berbaloi jika anda bercadang untuk menggunakan pengangkutan awam beberapa kali hari ini.",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ke KLCC ya? Baik (ba-ik). Adakah tiket sehala (se-ha-la) atau pergi balik (per-gi ba-lik)? Kami juga ada tawaran 'Pas Harian' yang berbaloi jika anda bercadang untuk menggunakan pengangkutan awam beberapa kali hari ini. — Oh, to KLCC? Alright. Is it a one-way or return ticket? We also have a worthwhile 'Daily Pass' offer if you plan to use public transport multiple times today."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, berkenaan jadual atau kelewatan, boleh saya tahu laluan atau destinasi spesifik yang anda ingin tahu? Ada sedikit gangguan perkhidmatan di laluan Kelana Jaya pagi ini, tetapi ia sedang diuruskan.",
+      "branches": [
+        {
+          "keywords": [
+            "kelana",
+            "jaya",
+            "gangguan",
+            "maklumat"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "mengapa",
+            "terima",
+            "kasih",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, berkenaan jadual (ja-doo-al) atau kelewatan (ke-le-wa-tan), boleh saya tahu laluan atau destinasi spesifik yang anda ingin tahu? Ada sedikit gangguan perkhidmatan di laluan Kelana Jaya pagi ini, tetapi ia sedang diuruskan. — Alright, regarding schedules or delays, may I know the specific route or destination you'd like to know about? There's a slight service disruption on the Kelana Jaya line this morning, but it's being managed."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Untuk tiket sehala ke KLCC, harganya RM 3.50. Jika anda memilih Pas Harian, ia berharga RM 15 dan sah untuk semua laluan MRT, LRT, Monorel dan bas Rapid KL sepanjang hari. Mengenai gangguan di laluan Kelana Jaya, dijangkakan kelewatan sekitar 15-20 minit untuk beberapa tren. Anda boleh menggunakan laluan bas alternatif U88 dari stesen Pasar Seni jika ingin mengelakkan kelewatan.",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "ok",
+            "beli",
+            "pas",
+            "ya"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a one-way ticket to KLCC, the price is RM 3.50. If you choose the Daily Pass, it costs RM 15 and is valid for all MRT, LRT, Monorail and Rapid KL bus routes all day. Regarding the disruption on the Kelana Jaya line, a delay of about 15-20 minutes is expected for some trains. You can use the alternative U88 bus route from Pasar Seni station if you wish to avoid delays."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I'm not very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih. Selamat jalan dan berhati-hati.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you. Have a good journey and take care.",
+      "isTerminal": true
+    }
+  }
+}

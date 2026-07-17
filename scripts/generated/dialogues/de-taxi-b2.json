@@ -1,0 +1,425 @@
+{
+  "id": "dlg-de-taxi-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Taxifahrt in der Stadt",
+  "opening": "Guten Tag! Wohin darf es denn gehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wohin darf es denn gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof",
+            "zug"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "flughafen",
+            "airport"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "hotel",
+            "rathaus",
+            "zentrum",
+            "adresse"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "bitte",
+            "wiederholen",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag! Vo-hin darf es denn geh-en? — Good day! Where would you like to go?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Zum Hauptbahnhof, verstanden. Haben Sie es eilig, oder sollen wir die übliche Route nehmen, die momentan etwas verstopft sein könnte?",
+      "branches": [
+        {
+          "keywords": [
+            "eilig",
+            "schnell",
+            "kürzeste",
+            "alternative"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "egal",
+            "übliche",
+            "keine",
+            "ruhig"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tzoom Howpt-bahn-hof, fer-SHTAN-den. HAH-ben zee es EYE-lig, o-der ZOL-len veer dee YOO-bliche ROO-teh NEH-men, dee MO-men-tan ET-vas fer-STOPFT zyn KÖN-te? — To the main station, understood. Are you in a hurry, or should we take the usual route, which might be a bit congested at the moment?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Ah, zum Flughafen. Wissen Sie schon, welches Terminal es sein soll? Und haben Sie viel Gepäck?",
+      "branches": [
+        {
+          "keywords": [
+            "terminal1",
+            "t1",
+            "viel",
+            "großes"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "terminal2",
+            "t2",
+            "wenig",
+            "kleines"
+          ],
+          "nextTurnId": "t3d"
+        },
+        {
+          "keywords": [
+            "egal",
+            "keine",
+            "beliebiges"
+          ],
+          "nextTurnId": "t3e"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, tzoom FLOOG-hah-fen. VIS-sen zee shon, VEL-ches TER-mi-nal es zol zyn? Oont HAH-ben zee feel ge-PECK? — Ah, to the airport. Do you already know which terminal it should be? And do you have a lot of luggage?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "In Ordnung. Könnten Sie mir die genaue Adresse nennen? Am besten mit Straße und Hausnummer.",
+      "branches": [
+        {
+          "keywords": [
+            "musterstraße 12",
+            "hauptstraße 5",
+            "marienplatz 8",
+            "straße",
+            "nummer",
+            "hausnummer"
+          ],
+          "nextTurnId": "t3f"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In ORD-nung. KÖN-ten zee meer dee ge-NAU-e A-DRES-se NEN-nen? Am BES-ten mit SHTRAH-sse oont HAUS-num-mer? — Alright. Could you tell me the exact address? Preferably with street and house number."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Alles klar, dann nehmen wir die Umgehungsstraße. Das dauert vielleicht ein paar Minuten länger, aber wir kommen auf jeden Fall staufrei durch. Wie möchten Sie denn bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "AL-les klar, dann NEH-men veer dee UM-ge-hoongs-SHTRAH-sse. Das DAU-ert fyl-LYCHT ayn paar mi-NOO-ten LENG-er, A-ber veer KOM-men owf YAY-den Fall STAWF-fry DOORK. Vee MÖCH-ten zee denn be-TZAH-len? — Alright, then we'll take the bypass. That might take a few minutes longer, but we'll definitely get through without traffic. How would you like to pay?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "In Ordnung, dann fahren wir die übliche Route durch die Stadt. Es könnte etwas länger dauern, aber das ist ja kein Problem. Wie möchten Sie denn bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In ORD-nung, dann FAH-ren veer dee YOO-bliche ROO-teh DOORK dee SHTATT. Es KÖN-te ET-vas LENG-er DAU-ern, A-ber das ist ya kyn PRO-blem. Vee MÖCH-ten zee denn be-TZAH-len? — Alright, then we'll take the usual route through the city. It might take a bit longer, but that's no problem. How would you like to pay?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Terminal 1, verstanden. Kein Problem mit dem Gepäck, der Kofferraum ist groß genug. Eine gute Wahl, T1 ist meistens etwas weniger überlaufen. Wie möchten Sie bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "TER-mi-nal ayn, fer-SHTAN-den. Kyn PRO-blem mit dem ge-PECK, der KOF-fer-raum ist GROSS ge-NOOG. Eye-ne GOO-te Vahl, TAY-ayn ist MYS-tens ET-vas VEE-nigh ooh-ber-LAU-fen. Vee MÖCH-ten zee be-TZAH-len? — Terminal 1, understood. No problem with the luggage, the trunk is big enough. A good choice, T1 is usually a bit less crowded. How would you like to pay?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "Terminal 2, notiert. Und mit wenig Gepäck sind wir schnell am Check-in. Von hier aus ist das in etwa 25 Minuten zu schaffen, je nach Verkehr. Wie möchten Sie bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "TER-mi-nal tsvy, no-TEERT. Oont mit VEE-nigh ge-PECK zint veer shnell am CHECK-in. Fon HEER ows ist das in ET-va FÜNF-und-tsvantsig mi-NOO-ten tsoo SHAF-fen, yay nach VER-keer. Vee MÖCH-ten zee be-TZAH-len? — Terminal 2, noted. And with little luggage, we'll be at check-in quickly. From here, it can be done in about 25 minutes, depending on traffic. How would you like to pay?"
+    },
+    "t3e": {
+      "id": "t3e",
+      "prompt": "Verstanden, dann nehme ich das Terminal 1, das ist oft etwas ruhiger. Haben Sie trotzdem viel Gepäck? Wie möchten Sie bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fer-SHTAN-den, dann NEH-me ich das TER-mi-nal ayn, das ist oft ET-vas ROO-i-ger. HAH-ben zee TROTTS-dem feel ge-PECK? Vee MÖCH-ten zee be-TZAH-len? — Understood, then I'll take Terminal 1, which is often a bit quieter. Do you still have a lot of luggage? How would you like to pay?"
+    },
+    "t3f": {
+      "id": "t3f",
+      "prompt": "Musterstraße 12, alles klar, das ist im Stadtzentrum. Dort kennen wir uns aus. Die Fahrt sollte etwa 15 Minuten dauern, je nach Verkehrslage. Wie möchten Sie denn bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kreditkarte",
+            "ec-karte",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "MOO-ster-shtrah-sse tsvölf, AL-les klar, das ist im SHTATT-tsen-trum. Dort KENN-en veer uns ows. Dee FAHRT zoll-te ET-va fuff-tsayn mi-NOO-ten DAU-ern, yay nach VER-keers-lah-ge. Vee MÖCH-ten zee denn be-TZAH-len? — Musterstraße 12, alright, that's in the city center. We know our way around there. The ride should take about 15 minutes, depending on traffic. How would you like to pay?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Barzahlung, wunderbar. Der Fahrpreis wird voraussichtlich zwischen 25 und 30 Euro liegen, je nach genauer Route und Verkehr. Ich gebe Ihnen dann Bescheid, wenn wir angekommen sind. Passt das so weit?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "passt",
+            "ok",
+            "gut",
+            "rechnung",
+            "quittung"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "BAR-tsah-lung, VOON-der-bar. Der FAHR-pryss virt fo-ROW-sicht-lich TSVISH-en FÜNF-und-tsvantsig oont DREIS-sig OY-ro LEE-gen, yay nach ge-NAU-er ROO-teh oont VER-keer. Ich GEE-be IH-nen dann be-SHYD, venn veer AN-ge-kom-men zint. Passt das zo vyt? — Cash payment, wonderful. The fare is expected to be between 25 and 30 Euros, depending on the exact route and traffic. I'll let you know when we arrive. Does that sound alright so far?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Kartenzahlung ist selbstverständlich auch möglich, kein Problem. Der Fahrpreis wird voraussichtlich zwischen 25 und 30 Euro liegen, je nach genauer Route und Verkehr. Möchten Sie eine Quittung?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "quittung",
+            "nein",
+            "keine"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "KAR-ten-tsah-lung ist ZELPST-fer-STEND-lich owch MÖG-lich, kyn PRO-blem. Der FAHR-pryss virt fo-ROW-sicht-lich TSVISH-en FÜNF-und-tsvantsig oont DREIS-sig OY-ro LEE-gen, yay nach ge-NAU-er ROO-teh oont VER-keer. MÖCH-ten zee eye-ne KVIT-tung? — Card payment is of course also possible, no problem. The fare is expected to be between 25 and 30 Euros, depending on the exact route and traffic. Would you like a receipt?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sehr gut. Dann wünsche ich Ihnen eine angenehme Fahrt. Wir sind gleich da. (Nach einer kurzen Pause) So, da wären wir. Das macht dann insgesamt 28,50 Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "hier",
+            "bitte",
+            "geld",
+            "wechselgeld",
+            "rechnung",
+            "bezahlen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr GOOT. Dann VÜN-sche ich IH-nen eye-ne AN-ge-neh-me FAHRT. Veer zint GLYCH dah. (Nach eye-ner KÜRT-tsen POW-ze) Zo, dah VÄH-ren veer. Das macht dann IN-ges-amt acht-und-tsvantsig FYÜNF-tsig OY-ro. — Very good. Then I wish you a pleasant journey. We'll be there shortly. (After a short pause) So, here we are. That will be a total of 28.50 Euros."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-SHOOL-di-gen zee, ich HAH-be zee nicht gants fer-SHTAN-den. KÖN-ten zee das BIT-te vee-der-HO-len? — Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und einen schönen Tag noch! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "FEE-len Dank oont eye-nen SHÖN-en Tag noch! Owf VEE-der-ze-hen! — Thank you very much and have a nice day! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

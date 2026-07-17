@@ -1,0 +1,163 @@
+{
+  "id": "dlg-it-taxi-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "In taxi per la città",
+  "opening": "Buonasera! Dove la porto stasera? O ha già un'idea del percorso che preferisce?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Dove la porto stasera? O ha già un'idea del percorso che preferisce?",
+      "branches": [
+        {
+          "keywords": [
+            "stazione",
+            "termini",
+            "colosseo",
+            "aeroporto",
+            "albergo",
+            "centro",
+            "indirizzo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "costo",
+            "prezzo",
+            "tariffa",
+            "strada",
+            "percorso"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "salve",
+            "ciao"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! (Buonasera!) Where can I take you tonight? (Dove la porto stasera?) Or do you already have an idea of your preferred route?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Capisco, la Stazione Termini. A quest'ora, con il traffico che c'è di solito, potremmo dover fare un giro leggermente più lungo per evitare il caos. Ha qualche preferenza sul percorso o mi affido alla mia esperienza?",
+      "branches": [
+        {
+          "keywords": [
+            "affidare",
+            "esperienza",
+            "strada",
+            "ottimo",
+            "va bene",
+            "faccia lei",
+            "quellochevuole"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "traffico",
+            "quanto",
+            "costo",
+            "prezzo",
+            "tariffa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand (Capisco), Termini Station. At this hour, with the usual traffic, we might have to take a slightly longer route to avoid the chaos. Do you have any preference on the path, or should I rely on my experience?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dunque, per quanto riguarda il costo, la corsa è a tassametro, quindi dipende dal traffico e dal percorso. Tuttavia, per la Stazione Termini, in condizioni normali, si aggira sui 15-20 euro. Se preferisce, possiamo prendere la tangenziale, ma è un po' più cara.",
+      "branches": [
+        {
+          "keywords": [
+            "va bene",
+            "perfetto",
+            "ok",
+            "procedere",
+            "andiamo",
+            "nessunaproblema",
+            "accetto",
+            "prego"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well (Dunque), regarding the cost, the ride is by meter, so it depends on traffic and the route. However, for Termini Station, under normal conditions, it's around 15-20 euros. If you prefer, we can take the ring road, but it's a bit more expensive."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Siamo arrivati a destinazione. Sono 18 euro e 50 centesimi. Preferisce pagare in contanti o con carta?",
+      "branches": [
+        {
+          "keywords": [
+            "contanti",
+            "soldi",
+            "banconota",
+            "cassa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "grazie"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We've arrived (Siamo arrivati) at your destination. That's 18 euros and 50 cents. Do you prefer to pay in cash or by card?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto, ecco il suo resto. Grazie e arrivederci! Buona serata!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Perfect, here's your change. Thank you and goodbye! Have a good evening!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato. Potrebbe ripetere, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti",
+            "scusi",
+            "destinazione"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you repeat, please?"
+    }
+  }
+}

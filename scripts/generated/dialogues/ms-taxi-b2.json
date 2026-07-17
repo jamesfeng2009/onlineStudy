@@ -1,0 +1,180 @@
+{
+  "id": "dlg-ms-taxi-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Perjalanan Teksi ke Lapangan Terbang",
+  "opening": "Selamat pagi, cik. Destinasi ke mana ya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, cik. Destinasi ke mana ya?",
+      "branches": [
+        {
+          "keywords": [
+            "lapanganterbang",
+            "airport",
+            "klia"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, cik. Destinasi ke mana ya? — Good morning, miss. Where is the destination?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, ke Lapangan Terbang Antarabangsa Kuala Lumpur. Ada laluan pilihan ke, atau ikut Waze saja?",
+      "branches": [
+        {
+          "keywords": [
+            "ikutwaze",
+            "waze",
+            "gps",
+            "laluanpantas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, ke Lapangan Terbang Antarabangsa Kuala Lumpur. Ada laluan pilihan ke, atau ikut Waze saja? — Okay, to Kuala Lumpur International Airport. Do you have a preferred route, or should I just follow Waze?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baiklah, kita ikut saja Waze untuk laluan terpantas. Trafik sederhana buat masa ini. Perjalanan dijangka ambil masa sekitar 45 minit hingga sejam.",
+      "branches": [
+        {
+          "keywords": [
+            "tambang",
+            "berapa",
+            "harga"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "faham"
+          ],
+          "nextTurnId": "t8_ready"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah, kita ikut saja Waze untuk laluan terpantas. Trafik sederhana buat masa ini. Perjalanan dijangka ambil masa sekitar 45 minit hingga sejam. — Alright, we'll just follow Waze for the fastest route. Traffic is moderate at the moment. The journey is expected to take around 45 minutes to an hour."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Anggaran tambang dalam RM70 hingga RM80, tak termasuk tol. Bagaimana, setuju?",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "ok",
+            "boleh"
+          ],
+          "nextTurnId": "t9_payment"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anggaran tambang dalam RM70 hingga RM80, tak termasuk tol. Bagaimana, setuju? — The estimated fare is between RM70 and RM80, not including tolls. What do you say, agree?"
+    },
+    "t8_ready": {
+      "id": "t8_ready",
+      "prompt": "Baik, kalau tiada apa-apa soalan lagi, kita boleh bertolak sekarang.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "boleh",
+            "jalan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tambang",
+            "bayaran"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, kalau tiada apa-apa soalan lagi, kita boleh bertolak sekarang. — Okay, if there are no more questions, we can leave now."
+    },
+    "t9_payment": {
+      "id": "t9_payment",
+      "prompt": "Boleh bayar tunai atau melalui e-dompet. Kami tak terima kad kredit buat masa ini. Ada apa-apa lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "cash"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boleh bayar tunai atau melalui e-dompet. Kami tak terima kad kredit buat masa ini. Ada apa-apa lagi? — You can pay with cash or e-wallet. We don't accept credit cards at the moment. Anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? Saya kurang jelas. — Sorry, could you repeat that? I'm not very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, terima kasih. Selamat jalan! — Alright, thank you. Have a good journey!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dlg-fr-bank-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "À la banque",
+  "opening": "Bonjour, que puis-je faire pour vous aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, que puis-je faire pour vous aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "ouvrircompte",
+            "nouveaucompte"
+          ],
+          "nextTurnId": "t2_compte"
+        },
+        {
+          "keywords": [
+            "echangermonnaie",
+            "changerargent",
+            "devise"
+          ],
+          "nextTurnId": "t2_echange"
+        },
+        {
+          "keywords": [
+            "problemedab",
+            "distributeur",
+            "cartebloquee",
+            "retrait"
+          ],
+          "nextTurnId": "t2_dab"
+        },
+        {
+          "keywords": [
+            "virement",
+            "transfert",
+            "codeconfidentiel",
+            "pin",
+            "autres",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bon-ZHOOR), que puis-je faire pour vous aujourd'hui (oh-ZHOOR-dwee) ? — Hello, what can I do for you today?"
+    },
+    "t2_compte": {
+      "id": "t2_compte",
+      "prompt": "Très bien. Pour ouvrir un compte, êtes-vous déjà client chez nous, ou est-ce votre première fois ?",
+      "branches": [
+        {
+          "keywords": [
+            "nouveauclient",
+            "premierefois"
+          ],
+          "nextTurnId": "t3_nouveau"
+        },
+        {
+          "keywords": [
+            "dejaclient",
+            "dejauncompte"
+          ],
+          "nextTurnId": "t3_deja"
+        },
+        {
+          "keywords": [
+            "justesavoir",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien (treh BYEN). Pour ouvrir un compte, êtes-vous déjà client chez nous, ou est-ce votre première fois ? — Very well. To open an account, are you already a customer with us, or is this your first time?"
+    },
+    "t2_echange": {
+      "id": "t2_echange",
+      "prompt": "Bien sûr. Quelle devise souhaitez-vous échanger et pour quel montant approximatif ?",
+      "branches": [
+        {
+          "keywords": [
+            "euros",
+            "dollars",
+            "livres",
+            "yen",
+            "cinquante",
+            "cent",
+            "deuxcent"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr (byen SOOR). Quelle devise souhaitez-vous échanger (eh-shan-ZHAY) et pour quel montant approximatif ? — Of course. Which currency do you wish to exchange and for what approximate amount?"
+    },
+    "t2_dab": {
+      "id": "t2_dab",
+      "prompt": "D'accord. Pouvez-vous me décrire ce qui s'est passé avec le distributeur ? Était-ce un problème de carte bloquée, de retrait non effectué, ou autre ?",
+      "branches": [
+        {
+          "keywords": [
+            "cartebloquee",
+            "macarteestbloquee"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR). Pouvez-vous me décrire ce qui s'est passé avec le distributeur (dees-tree-byoo-TUHR) ? Était-ce un problème de carte bloquée, de retrait non effectué, ou autre ? — Alright. Can you describe what happened with the ATM? Was it a blocked card, an uncompleted withdrawal, or something else?"
+    },
+    "t3_nouveau": {
+      "id": "t3_nouveau",
+      "prompt": "Très bien. Pourriez-vous me présenter une pièce d'identité (passeport, carte d'identité) et un justificatif de domicile ?",
+      "branches": [
+        {
+          "keywords": [
+            "ouijai",
+            "voicemaid"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Pourriez-vous me présenter une pièce d'identité (pyess dee-den-tee-TAY) (passeport, carte d'identité) et un justificatif de domicile ? — Very good. Could you show me an ID (passport, ID card) and proof of address?"
+    },
+    "t3_deja": {
+      "id": "t3_deja",
+      "prompt": "Parfait. Je vais consulter votre dossier. Quel type de compte souhaitez-vous ouvrir ou quelles modifications désirez-vous apporter ?",
+      "branches": [
+        {
+          "keywords": [
+            "comptedepargne",
+            "comptecourant",
+            "modifieradresse"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait. Je vais consulter votre dossier. Quel type de compte souhaitez-vous ouvrir ou quelles modifications désirez-vous apporter ? — Perfect. I will check your file. What type of account do you wish to open or what changes do you want to make?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien compris. Pourriez-vous répéter ou reformuler votre demande, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Je n'ai pas bien compris (zhuh nay pah byen kon-PREE). Pourriez-vous répéter ou reformuler votre demande, s'il vous plaît ? — I didn't quite understand. Could you please repeat or rephrase your request?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "D'accord, nous allons procéder. Merci de votre visite et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "D'accord, nous allons procéder. Merci de votre visite et bonne journée ! — Alright, we'll proceed. Thank you for your visit and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

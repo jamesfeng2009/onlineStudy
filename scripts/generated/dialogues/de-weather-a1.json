@@ -1,0 +1,207 @@
+{
+  "id": "dlg-de-weather-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Wetter-Plausch",
+  "opening": "Hallo! Wie ist das Wetter heute?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Wie ist das Wetter heute?",
+      "branches": [
+        {
+          "keywords": [
+            "sonnig",
+            "sonne",
+            "schön"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "regnet",
+            "regen",
+            "nass"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kalt",
+            "kühl",
+            "bewölkt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hallo! (Hah-loh!) Wie ist das Wetter heute? (Vee ist das Vett-er hoy-te?) — Hello! How is the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, schön! Ich mag Sonne. Was machst du heute?",
+      "branches": [
+        {
+          "keywords": [
+            "spaziergang",
+            "park",
+            "rausgehen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "arbeit",
+            "arbeiten",
+            "zuhause"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, schön! Ich mag Sonne. Was machst du heute? — Oh, nice! I like sun. What are you doing today?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, es regnet? (Ach, es reeg-net?) Das ist schade. (Das ist shah-de?) Bleibst du zu Hause? (Blybst doo tsoo Hou-ze?) — Oh, it's raining? That's a pity. Are you staying at home?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bleibe",
+            "zuhause"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nein",
+            "gehe",
+            "raus"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Es ist kalt? (Es ist kalt?) Brrr. Zieh einen warmen Pullover an! (Tsee ay-nen var-men Pool-oh-ver an!) — It's cold? Brrr. Put on a warm sweater!",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "pullover",
+            "warm"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nichtkalt"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ein Spaziergang ist gut bei Sonne! Gehst du oft spazieren?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "oft",
+            "immer"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ein Spaziergang ist gut bei Sonne! Gehst du oft spazieren? — A walk is good in the sun! Do you often go for walks?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Okay, ich verstehe. Dann einen schönen Tag!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, ich verstehe. Dann einen schönen Tag! — Okay, I understand. Then have a nice day!"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ah, mutig! Pass auf dich auf! Bis bald!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ah, mutig! Pass auf dich auf! Bis bald! — Ah, brave! Take care! See you soon!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich verstehe das nicht. (Ent-shool-di-goong, ich fer-shtay das nicht.) Könnten Sie das bitte wiederholen? (Kern-ten zee das bit-te vee-der-ho-len?) — Excuse me, I don't understand that. Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Auf Wiedersehen (Owf Vee-der-zay-en) und bis zum nächsten Mal! — Goodbye and until next time!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Auf Wiedersehen (Owf Vee-der-zay-en) und bis zum nächsten Mal! — Goodbye and until next time!",
+      "isTerminal": true
+    }
+  }
+}

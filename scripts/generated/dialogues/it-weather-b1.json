@@ -1,0 +1,177 @@
+{
+  "id": "dlg-it-weather-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Una chiacchierata sul tempo",
+  "opening": "Ciao! Che tempo fa oggi? Hai visto le previsioni?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Che tempo fa oggi? Hai visto le previsioni?",
+      "branches": [
+        {
+          "keywords": [
+            "sole",
+            "caldo",
+            "sereno"
+          ],
+          "nextTurnId": "t2a_goodweather"
+        },
+        {
+          "keywords": [
+            "pioggia",
+            "piove",
+            "brutto",
+            "nuvole",
+            "freddo"
+          ],
+          "nextTurnId": "t2b_badweather"
+        },
+        {
+          "keywords": [
+            "nonlosò",
+            "boh",
+            "nonleho"
+          ],
+          "nextTurnId": "t2c_unknown"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! (Chow!) Che tempo fa oggi? (Kay temp-oh fah ohj-jee?) Hai visto le previsioni? (Eye vee-stoh leh preh-vee-zyoh-nee?) — Hi! What's the weather like today? Have you seen the forecast?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Scusa, (Skoo-zah,) potresti ripetere? (Poh-tres-tee ree-peh-teh-reh?) Non ho capito bene. (Non oh kah-pee-toh beh-neh.) — Sorry, could you repeat that? I didn't quite understand."
+    },
+    "t2a_goodweather": {
+      "id": "t2a_goodweather",
+      "prompt": "Ottimo! Hai qualche progetto per goderti la giornata all'aperto?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "fuori",
+            "parco",
+            "gita",
+            "spiaggia"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            "no",
+            "casa",
+            "lavoro",
+            "studio",
+            "relax"
+          ],
+          "nextTurnId": "t3_no_plans"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo! (Ot-tee-moh!) Hai qualche progetto per goderti la giornata all'aperto? (Eye kwal-keh proh-jet-toh per goh-der-tee lah jor-nah-tah al-lah-per-toh?) — Great! Do you have any plans to enjoy the day outdoors?"
+    },
+    "t2b_badweather": {
+      "id": "t2b_badweather",
+      "prompt": "Peccato! Spero non influisca troppo sui tuoi piani. Cosa farai?",
+      "branches": [
+        {
+          "keywords": [
+            "casa",
+            "dentro",
+            "leggere",
+            "film",
+            "restare"
+          ],
+          "nextTurnId": "t3_no_plans"
+        },
+        {
+          "keywords": [
+            "uscire",
+            "devo",
+            "lavoro",
+            "ombrello",
+            "impermeabile"
+          ],
+          "nextTurnId": "t3_plans"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Peccato! (Pek-kah-toh!) Spero non influisca troppo sui tuoi piani. (Speh-roh non een-floo-ees-kah troh-poh soo-ee t'woy pyah-nee?) Cosa farai? (Koh-sah fah-rah-ee?) — What a pity! I hope it doesn't affect your plans too much. What will you do?"
+    },
+    "t2c_unknown": {
+      "id": "t2c_unknown",
+      "prompt": "Capisco. A volte è meglio non guardare le previsioni! Comunque, hai qualcosa in programma per oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "uscire",
+            "fuori",
+            "attività"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            "no",
+            "casa",
+            "dentro",
+            "riposo"
+          ],
+          "nextTurnId": "t3_no_plans"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. (Kah-pees-koh.) A volte è meglio non guardare le previsioni! (Ah vol-teh eh mel-yoh non goo-ar-dah-reh leh preh-vee-zyoh-nee!) Comunque, hai qualcosa in programma per oggi? (Koh-moon-kweh, eye kwal-koh-sah een proh-gram-mah per ohj-jee?) — I understand. Sometimes it's better not to look at the forecast! Anyway, do you have anything planned for today?"
+    },
+    "t3_plans": {
+      "id": "t3_plans",
+      "prompt": "Fantastico! Spero vada tutto bene e che tu ti diverta. A presto!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fantastic! I hope everything goes well and you have fun. See you soon!"
+    },
+    "t3_no_plans": {
+      "id": "t3_no_plans",
+      "prompt": "Va bene, anche una giornata tranquilla a casa è piacevole. Buon relax! Ci sentiamo.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, a quiet day at home is pleasant too. Enjoy your relaxation! Talk to you soon."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Va bene, ti saluto! Ci sentiamo presto. Buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, goodbye! Talk to you soon. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

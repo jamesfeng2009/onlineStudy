@@ -1,0 +1,238 @@
+{
+  "id": "dlg-es-directions-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Preguntando Direcciones",
+  "opening": "¡Hola! ¿Necesitas ayuda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Necesitas ayuda?",
+      "branches": [
+        {
+          "keywords": [
+            "banco",
+            "farmacia",
+            "parque",
+            "museo",
+            "tienda"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "hola",
+            "buenosdias",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "OH-lah! Neh-seh-SEE-tahs ah-YOO-dah? — Hello! Do you need help?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Claro. Para llegar, sigue recto por esta calle.",
+      "branches": [
+        {
+          "keywords": [
+            "donde",
+            "gira",
+            "izquierda",
+            "derecha"
+          ],
+          "nextTurnId": "t3_turn"
+        },
+        {
+          "keywords": [
+            "cuantas",
+            "cuadras",
+            "cerca",
+            "lejos"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entiendo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "KLAH-roh. PAH-rah yeh-GAHR, SEE-geh REHK-toh pohr EHS-tah KAH-yeh. — Sure. To get there, go straight on this street."
+    },
+    "t3_turn": {
+      "id": "t3_turn",
+      "prompt": "Gira a la izquierda en la esquina, en el parque. Está a una cuadra.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto",
+            "entiendo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "otra",
+            "pregunta",
+            "cerca"
+          ],
+          "nextTurnId": "t4_another_question"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "HEE-rah ah lah ees-KYEHR-dah ehn lah ehs-KEE-nah, ehn ehl PAHR-keh. EHS-tah ah OO-nah KWAH-drah. — Turn left at the corner, at the park. It's one block away."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "Está a dos cuadras de aquí. Después, gira a la derecha.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "bien",
+            "entiendo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "donde",
+            "banco",
+            "farmacia",
+            "gira"
+          ],
+          "nextTurnId": "t4_confirm_final_step"
+        },
+        {
+          "keywords": [
+            "otra",
+            "cerca",
+            "pregunta"
+          ],
+          "nextTurnId": "t4_another_question"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eh-STAH ah dohs KWAH-drahs deh ah-KEE. Dehs-PWEHS, HEE-rah ah lah deh-REH-chah. — It's two blocks from here. After that, turn right."
+    },
+    "t4_confirm_final_step": {
+      "id": "t4_confirm_final_step",
+      "prompt": "Sí, el banco está en esa calle, después de girar a la derecha. ¡Es muy fácil!",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "muchas",
+            "adios"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "otra",
+            "cosa",
+            "pregunta"
+          ],
+          "nextTurnId": "t4_another_question"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "SEE, ehl BAHN-koh eh-STAH ehn EH-sah KAH-yeh, dehs-PWEHS deh hee-RAHR ah lah deh-REH-chah. ¡EHS moo-EE FAH-seel! — Yes, the bank is on that street, after turning right. It's very easy!"
+    },
+    "t4_another_question": {
+      "id": "t4_another_question",
+      "prompt": "¿Necesitas algo más? ¿Una cafetería, quizás?",
+      "branches": [
+        {
+          "keywords": [
+            "cafeteria",
+            "tienda"
+          ],
+          "nextTurnId": "t5_another_place_info"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "nada"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Neh-seh-SEE-tahs AHL-goh MAHS? ¿Oo-nah kah-feh-teh-REE-ah, kee-SAHS? — Do you need anything else? A cafe, perhaps?"
+    },
+    "t5_another_place_info": {
+      "id": "t5_another_place_info",
+      "prompt": "Hay una cafetería muy buena al lado del parque. ¡Está cerca!",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "muchas",
+            "perfecto",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ay OO-nah kah-feh-teh-REE-ah moo-EE BWEE-nah ahl LAH-doh dehl PAHR-keh. ¡EHS-tah SEHR-kah! — There is a very good cafe next to the park. It's close!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No entiendo. ¿Puedes repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perr-DON? Noh ehn-tee-EHN-doh. Poo-EH-dehs reh-peh-TEER, pohr fah-VOHR? — Pardon? I don't understand. Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. ¡Que tengas un buen día! Adiós.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Deh NAH-dah. Keh TEHN-gahs oon BWEN DEE-ah! Ah-DYOHS. — You're welcome. Have a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

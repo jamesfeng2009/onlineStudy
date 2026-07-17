@@ -1,0 +1,189 @@
+{
+  "id": "dlg-de-phone-call-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Telefonat: Eine Nachricht hinterlassen",
+  "opening": "Guten Tag, Firma Müller. Mit wem spreche ich?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Firma Müller. Mit wem spreche ich?",
+      "branches": [
+        {
+          "keywords": [
+            "ichbin",
+            "meinnameist",
+            "hierist",
+            "hallo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "werist"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day, Müller Company. Who am I speaking with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung — Excuse me, could you please repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, Herr/Frau [Name]. Worum geht es denn?",
+      "branches": [
+        {
+          "keywords": [
+            "herrschmidt",
+            "fraumeyer",
+            "mitarbeiter",
+            "kollegen",
+            "sprechenmit"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "informationen",
+            "fragezu",
+            "wissenob",
+            "esgehtum"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, Mr./Ms. [Name]. Worum geht es denn? — What is it about then?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Herr Schmidt ist leider gerade nicht da. Möchten Sie eine Nachricht hinterlassen?",
+      "branches": [
+        {
+          "keywords": [
+            "nachricht",
+            "gerne",
+            "bitte",
+            "ja"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "rückruf",
+            "zurückrufen",
+            "anrufen",
+            "später"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mr. Schmidt is unfortunately not here right now. Would you like to leave a message?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Ich kann Ihnen vielleicht auch weiterhelfen. Worum geht es genau?",
+      "branches": [
+        {
+          "keywords": [
+            "trotzdem",
+            "brauche",
+            "sprechenmit",
+            "persönlich",
+            "rückruf"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "danke",
+            "keinproblem",
+            "allesklar",
+            "schon"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perhaps I can also help you. What exactly is it about?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Gerne, ich notiere die Nachricht. Er wird sie bekommen.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "super",
+            "aufwiederhören"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Certainly, I'll write down the message. He will get it."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Ich gebe ihm Bescheid, dass Sie angerufen haben und er Sie zurückrufen soll.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "prima",
+            "aufwiederhören"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "I'll let him know you called and that he should call you back."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar. Vielen Dank für Ihren Anruf und auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "All right. Thank you for your call and auf Wiederhören — goodbye!",
+      "isTerminal": true
+    }
+  }
+}

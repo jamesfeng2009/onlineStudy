@@ -1,0 +1,157 @@
+{
+  "id": "dlg-vi-airport-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Ở sân bay",
+  "opening": "Chào anh/chị. Cho tôi xem hộ chiếu và vé máy bay được không ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Cho tôi xem hộ chiếu và vé máy bay được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "hộchiếu",
+            "vé",
+            "đây",
+            "củaem"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "khôngcó",
+            "mất",
+            "quên"
+          ],
+          "nextTurnId": "t-problem"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. (Chao anh/chi.) Cho tôi xem hộ chiếu (ho chieu) và vé máy bay (ve may bay) được không ạ? — Hello sir/madam. Can I see your passport and flight ticket?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn. Anh/chị có hành lý ký gửi không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "một",
+            "hai",
+            "ba"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "không",
+            "chỉxáchtay",
+            "xáchtay"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn. (Cam on.) Anh/chị có hành lý ký gửi (hanh ly ky gui) không ạ? — Thank you. Do you have checked luggage?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng, xin mời anh/chị đặt hành lý lên cân.",
+      "branches": [
+        {
+          "keywords": [
+            "đặt",
+            "xong",
+            "được",
+            "rồi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nặng",
+            "quá",
+            "lớn"
+          ],
+          "nextTurnId": "t-problem"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, (Vang) xin mời anh/chị đặt hành lý (hanh ly) lên cân. (len can) — Yes, please place your luggage on the scale."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Được rồi. Đây là thẻ lên máy bay của anh/chị. Cổng ra số A10. Chuyến bay của anh/chị sẽ khởi hành lúc 10 giờ sáng.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tuyệt",
+            "rồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Được rồi. (Duoc roi.) Đây là thẻ lên máy bay (the len may bay) của anh/chị. Cổng ra (cong ra) số A10. Chuyến bay (chuyen bay) của anh/chị sẽ khởi hành lúc 10 giờ sáng. (muoi gio sang) — Alright. Here is your boarding pass. Gate A10. Your flight departs at 10 AM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Hành lý của anh/chị đã được ký gửi. Đây là thẻ lên máy bay và thông tin cổng ra. Cổng A10.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tuyệt",
+            "rồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hành lý (hanh ly) của anh/chị đã được ký gửi (ky gui). Đây là thẻ lên máy bay (the len may bay) và thông tin cổng ra (cong ra). Cổng A10. — Your luggage has been checked. Here is your boarding pass and gate info. Gate A10."
+    },
+    "t-problem": {
+      "id": "t-problem",
+      "prompt": "Xin lỗi, anh/chị có thể nói rõ hơn được không ạ? Chúng tôi sẽ cố gắng giúp đỡ.",
+      "branches": [
+        {
+          "keywords": [
+            "mất",
+            "quên",
+            "nặng",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi, (Sin loi) anh/chị có thể nói rõ hơn (noi ro hon) được không ạ? Chúng tôi sẽ cố gắng giúp đỡ. (co gang giup do) — Excuse me, could you explain more clearly? We will try to help."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu. Anh/chị có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi, (Sin loi) tôi chưa hiểu. (toi chua hieu) Anh/chị có thể nói lại (noi lai) được không? — Sorry, I didn't understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc anh/chị có một chuyến bay tốt đẹp!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chúc anh/chị có một chuyến bay tốt đẹp! (Chuc anh/chi co mot chuyen bay tot dep!) — Have a good flight!",
+      "isTerminal": true
+    }
+  }
+}

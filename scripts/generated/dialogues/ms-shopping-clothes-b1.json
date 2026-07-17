@@ -1,0 +1,200 @@
+{
+  "id": "dlg-ms-shopping-clothes-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Membeli-belah Pakaian di Butik",
+  "opening": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "cari",
+            "mahu",
+            "beli",
+            "blouse",
+            "kemeja",
+            "dress",
+            "seluar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tengok-tengok",
+            "lihat",
+            "saja"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke butik kami! (Selamat datang ke butik kami!) — Welcome to our boutique! Ada apa-apa yang boleh saya bantu? (Ada apa-apa yang boleh saya bantu?) — Is there anything I can help you with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu. Encik/Cik cari pakaian jenis apa ya? Dan nak saiz atau warna apa?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "baju",
+            "dress",
+            "gaun",
+            "seluar",
+            "jean",
+            "saiz",
+            "s",
+            "m",
+            "l",
+            "xl",
+            "xxl",
+            "warna",
+            "merah",
+            "biru",
+            "hitam",
+            "putih"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cadang",
+            "rekomen",
+            "sesuai"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu. (Tentu.) — Of course. Encik/Cik cari pakaian jenis apa ya? (Encik/Cik cari pakaian jenis apa ya?) — What kind of clothing are you looking for? Dan nak saiz atau warna apa? (Dan nak saiz atau warna apa?) — And what size or color would you like?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Kalau macam tu, saya cadangkan dress biru yang ini, rekaan terbaru dan sesuai untuk Encik/Cik. Nak cuba?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mahu",
+            "cuba",
+            "nak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "taknak",
+            "tak",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau macam tu, (Kalau macam tu,) — In that case, saya cadangkan dress biru yang ini, (saya cadangkan dress biru yang ini,) — I recommend this blue dress, it's the latest design and suitable for you. Rekaan terbaru dan sesuai untuk Encik/Cik. (Rekaan terbaru dan sesuai untuk Encik/Cik.) — Would you like to try it? Nak cuba? (Nak cuba?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, kita ada pilihan ini untuk Encik/Cik. Nak cuba dulu di bilik persalinan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mahu",
+            "cuba",
+            "nak"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "taknak",
+            "tak",
+            "lain",
+            "warna",
+            "saiz",
+            "fikir"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, (Baik,) — Alright, kita ada pilihan ini untuk Encik/Cik. (kita ada pilihan ini untuk Encik/Cik.) — We have this option for you. Nak cuba dulu di bilik persalinan? (Nak cuba dulu di bilik persalinan?) — Would you like to try it on first in the changing room?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Jadi, Encik/Cik berkenan dengan yang ini? Mari ke kaunter pembayaran ya!",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "beli",
+            "bayar",
+            "ambil",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tak",
+            "fikir",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jadi, (Jadi,) — So, Encik/Cik berkenan dengan yang ini? (Encik/Cik berkenan dengan yang ini?) — Do you like this one? Mari ke kaunter pembayaran ya! (Mari ke kaunter pembayaran ya!) — Let's go to the payment counter!"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Terima kasih banyak kerana membeli-belah dengan kami!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima kasih",
+            "bye",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak kerana membeli-belah dengan kami! (Terima kasih banyak kerana membeli-belah dengan kami!) — Thank you very much for shopping with us!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tak berapa faham.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, (Maaf,) — Sorry, boleh ulang sekali lagi? (boleh ulang sekali lagi?) — could you repeat that? Saya tak berapa faham. (Saya tak berapa faham.) — I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak dan jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak dan jumpa lagi! (Terima kasih banyak dan jumpa lagi!) — Thank you very much and see you again!",
+      "isTerminal": true
+    }
+  }
+}

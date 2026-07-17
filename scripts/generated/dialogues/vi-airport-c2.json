@@ -1,0 +1,337 @@
+{
+  "id": "dlg-vi-airport-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Sự Cố Ở Sân Bay",
+  "opening": "Chào anh/chị. Em có thể hỗ trợ gì cho anh/chị ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Em có thể hỗ trợ gì cho anh/chị ạ? Trông anh/chị có vẻ đang băn khoăn điều gì đó.",
+      "branches": [
+        {
+          "keywords": [
+            "chuyếnbay",
+            "hoãn",
+            "hủy"
+          ],
+          "nextTurnId": "t2_delay"
+        },
+        {
+          "keywords": [
+            "hànhlý",
+            "thấtlạc",
+            "mất"
+          ],
+          "nextTurnId": "t2_luggage"
+        },
+        {
+          "keywords": [
+            "cửakhởi",
+            "cổng",
+            "đổi"
+          ],
+          "nextTurnId": "t2_gate"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_general_query"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. Em có thể hỗ trợ gì cho anh/chị ạ? Trông anh/chị có vẻ đang băn khoăn điều gì đó. — (Chào anh/chị. Em có thể hỗ trợ gì cho anh/chị ạ? Trông anh/chị có vẻ đang băn khoăn điều gì đó.) Hello sir/madam. How may I assist you? You seem to be pondering something."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi anh/chị, em nghe chưa rõ ạ. Anh/chị có thể nhắc lại hoặc nói rõ hơn được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi anh/chị, em nghe chưa rõ ạ. Anh/chị có thể nhắc lại hoặc nói rõ hơn được không? — (Sin lỗi anh/chị, em nghe chưa rõ ạ. Anh/chị có thể nhắc lại hoặc nói rõ hơn được không?) Sorry, I didn't hear clearly. Could you please repeat or elaborate?"
+    },
+    "t2_delay": {
+      "id": "t2_delay",
+      "prompt": "À vâng, em rất tiếc phải báo tin chuyến bay VNxxx đi YYY đã bị hoãn/hủy do trục trặc kỹ thuật/thời tiết xấu. Sự việc này nằm ngoài mong muốn của chúng em. Anh/chị muốn xử lý thế nào ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đổichuyến",
+            "đặtlại",
+            "sớmmấtyêu"
+          ],
+          "nextTurnId": "t3_rebook"
+        },
+        {
+          "keywords": [
+            "thôngtin",
+            "lýdo",
+            "baolâu"
+          ],
+          "nextTurnId": "t3_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À vâng, em rất tiếc phải báo tin chuyến bay VNxxx đi YYY đã bị hoãn/hủy do trục trặc kỹ thuật/thời tiết xấu. Sự việc này nằm ngoài mong muốn của chúng em. Anh/chị muốn xử lý thế nào ạ? — (À vâng, em rất tiếc phải báo tin chuyến bay VNxxx đi YYY đã bị hoãn/hủy do trục trặc kỹ thuật/thời tiết xấu. Sự việc này nằm ngoài mong muốn của chúng em. Anh/chị muốn xử lý thế nào ạ?) Oh yes, I regret to inform you that flight VNxxx to YYY has been delayed/canceled due to technical issues/bad weather. This incident is beyond our control. How would you like to proceed?"
+    },
+    "t3_rebook": {
+      "id": "t3_rebook",
+      "prompt": "Dạ vâng, trường hợp này mình có thể chọn đổi chuyến sớm nhất hoặc nhận phiếu bồi hoàn/ưu đãi. Chuyến bay kế tiếp còn chỗ trống sẽ khởi hành sau [thời gian]. Anh/chị ưu tiên phương án nào hơn ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đổivétrựctiếp",
+            "chuyếnkếtiếp"
+          ],
+          "nextTurnId": "t4_confirm_rebook"
+        },
+        {
+          "keywords": [
+            "nhậnvoucher",
+            "phiếubồithường"
+          ],
+          "nextTurnId": "t4_confirm_voucher"
+        },
+        {
+          "keywords": [
+            "xemxét",
+            "suynghĩ",
+            "giảiquyết"
+          ],
+          "nextTurnId": "t4_consider"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, trường hợp này mình có thể chọn đổi chuyến sớm nhất hoặc nhận phiếu bồi hoàn/ưu đãi. Chuyến bay kế tiếp còn chỗ trống sẽ khởi hành sau [thời gian]. Anh/chị ưu tiên phương án nào hơn ạ? — (Dạ vâng, trường hợp này mình có thể chọn đổi chuyến sớm nhất hoặc nhận phiếu bồi hoàn/ưu đãi. Chuyến bay kế tiếp còn chỗ trống sẽ khởi hành sau [thời gian]. Anh/chị ưu tiên phương án nào hơn ạ?) Yes, in this case, you can choose to rebook the earliest flight or receive a compensation/voucher. The next available flight will depart after [time]. Which option do you prefer?"
+    },
+    "t4_confirm_rebook": {
+      "id": "t4_confirm_rebook",
+      "prompt": "Tuyệt vời, vậy em sẽ làm thủ tục đổi vé cho anh/chị sang chuyến bay kế tiếp [chuyến bay mới]. Anh/chị vui lòng kiểm tra email để nhận vé điện tử và thông tin chi tiết ạ. Rất mong anh/chị thông cảm vì sự bất tiện này.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "xongrồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời, vậy em sẽ làm thủ tục đổi vé cho anh/chị sang chuyến bay kế tiếp [chuyến bay mới]. Anh/chị vui lòng kiểm tra email để nhận vé điện tử và thông tin chi tiết ạ. Rất mong anh/chị thông cảm vì sự bất tiện này. — (Tuyệt vời, vậy em sẽ làm thủ tục đổi vé cho anh/chị sang chuyến bay kế tiếp [chuyến bay mới]. Anh/chị vui lòng kiểm tra email để nhận vé điện tử và thông tin chi tiết ạ. Rất mong anh/chị thông cảm vì sự bất tiện này.) Great, I will proceed with changing your ticket to the next flight [new flight]. Please check your email for the e-ticket and detailed information. We sincerely hope for your understanding regarding this inconvenience."
+    },
+    "t4_confirm_voucher": {
+      "id": "t4_confirm_voucher",
+      "prompt": "Dạ vâng, em sẽ gửi phiếu ưu đãi vào địa chỉ email của mình trong vòng [thời gian] phút. Anh/chị lưu ý kiểm tra cả hòm thư spam nhé. Chúc anh/chị có một chuyến đi thuận lợi.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "xongrồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, em sẽ gửi phiếu ưu đãi vào địa chỉ email của mình trong vòng [thời gian] phút. Anh/chị lưu ý kiểm tra cả hòm thư spam nhé. Chúc anh/chị có một chuyến đi thuận lợi. — (Dạ vâng, em sẽ gửi phiếu ưu đãi vào địa chỉ email của mình trong vòng [thời gian] phút. Anh/chị lưu ý kiểm tra cả hòm thư spam nhé. Chúc anh/chị có một chuyến đi thuận lợi.) Yes, I will send the voucher to your email address within [time] minutes. Please remember to check your spam folder as well. Wish you a smooth journey."
+    },
+    "t3_info": {
+      "id": "t3_info",
+      "prompt": "Dạ, hiện tại chúng em đang chờ thông báo chính thức từ bộ phận kỹ thuật/không lưu. Thời gian dự kiến khởi hành lại là [thời gian]. Mong anh/chị hết sức thông cảm và kiên nhẫn chờ đợi ạ. Anh/chị có muốn đổi sang chuyến khác hoặc nhận bồi hoàn không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đổichuyến",
+            "đặtlại"
+          ],
+          "nextTurnId": "t3_rebook"
+        },
+        {
+          "keywords": [
+            "chờđợi",
+            "tiếptục"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ, hiện tại chúng em đang chờ thông báo chính thức từ bộ phận kỹ thuật/không lưu. Thời gian dự kiến khởi hành lại là [thời gian]. Mong anh/chị hết sức thông cảm và kiên nhẫn chờ đợi ạ. Anh/chị có muốn đổi sang chuyến khác hoặc nhận bồi hoàn không ạ? — (Dạ, hiện tại chúng em đang chờ thông báo chính thức từ bộ phận kỹ thuật/không lưu. Thời gian dự kiến khởi hành lại là [thời gian]. Mong anh/chị hết sức thông cảm và kiên nhẫn chờ đợi ạ. Anh/chị có muốn đổi sang chuyến khác hoặc nhận bồi hoàn không ạ?) Yes, we are currently awaiting official notification from the technical/air traffic control department. The estimated new departure time is [time]. We sincerely ask for your understanding and patience. Would you like to change to another flight or receive compensation?"
+    },
+    "t4_consider": {
+      "id": "t4_consider",
+      "prompt": "Vâng, anh/chị cứ cân nhắc kỹ lưỡng nhé. Nếu đã có quyết định, anh/chị vui lòng quay lại đây để em hỗ trợ ạ. Cảm ơn anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, anh/chị cứ cân nhắc kỹ lưỡng nhé. Nếu đã có quyết định, anh/chị vui lòng quay lại đây để em hỗ trợ ạ. Cảm ơn anh/chị. — (Vâng, anh/chị cứ cân nhắc kỹ lưỡng nhé. Nếu đã có quyết định, anh/chị vui lòng quay lại đây để em hỗ trợ ạ. Cảm ơn anh/chị.) Yes, please take your time to consider carefully. Once you've made a decision, please come back here for my assistance. Thank you."
+    },
+    "t2_luggage": {
+      "id": "t2_luggage",
+      "prompt": "Ồ, em rất tiếc khi nghe tin hành lý của anh/chị bị thất lạc. Anh/chị vui lòng cung cấp số hiệu chuyến bay và mô tả sơ bộ về hành lý để em tiện tra cứu ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "cungcấp",
+            "thôngtin",
+            "chuyếnbay"
+          ],
+          "nextTurnId": "t3_luggage_details"
+        },
+        {
+          "keywords": [
+            "làmthếnào",
+            "quytrình"
+          ],
+          "nextTurnId": "t3_luggage_process"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, em rất tiếc khi nghe tin hành lý của anh/chị bị thất lạc. Anh/chị vui lòng cung cấp số hiệu chuyến bay và mô tả sơ bộ về hành lý để em tiện tra cứu ạ. — (Ồ, em rất tiếc khi nghe tin hành lý của anh/chị bị thất lạc. Anh/chị vui lòng cung cấp số hiệu chuyến bay và mô tả sơ bộ về hành lý để em tiện tra cứu ạ.) Oh, I'm very sorry to hear your luggage is lost. Please provide your flight number and a brief description of your luggage so I can look it up."
+    },
+    "t3_luggage_details": {
+      "id": "t3_luggage_details",
+      "prompt": "Cảm ơn anh/chị. Em đã ghi nhận thông tin. Chúng em sẽ tiến hành kiểm tra và liên hệ lại với anh/chị trong thời gian sớm nhất khi có kết quả. Anh/chị vui lòng giữ lại thẻ lên máy bay và cuống thẻ hành lý nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "mongđợi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn anh/chị. Em đã ghi nhận thông tin. Chúng em sẽ tiến hành kiểm tra và liên hệ lại với anh/chị trong thời gian sớm nhất khi có kết quả. Anh/chị vui lòng giữ lại thẻ lên máy bay và cuống thẻ hành lý nhé. — (Cảm ơn anh/chị. Em đã ghi nhận thông tin. Chúng em sẽ tiến hành kiểm tra và liên hệ lại với anh/chị trong thời gian sớm nhất khi có kết quả. Anh/chị vui lòng giữ lại thẻ lên máy bay và cuống thẻ hành lý nhé.) Thank you. I have recorded the information. We will proceed with checking and contact you as soon as possible with the results. Please keep your boarding pass and luggage tag."
+    },
+    "t3_luggage_process": {
+      "id": "t3_luggage_process",
+      "prompt": "Về quy trình, trước tiên anh/chị cần điền vào đơn trình báo thất lạc hành lý tại quầy Dịch vụ Hành lý. Sau đó, chúng em sẽ dùng hệ thống tra cứu toàn cầu để định vị. Thông thường sẽ mất khoảng [thời gian] để có thông tin ban đầu.",
+      "branches": [
+        {
+          "keywords": [
+            "tôisẽđiền",
+            "đơn",
+            "quầy"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Về quy trình, trước tiên anh/chị cần điền vào đơn trình báo thất lạc hành lý tại quầy Dịch vụ Hành lý. Sau đó, chúng em sẽ dùng hệ thống tra cứu toàn cầu để định vị. Thông thường sẽ mất khoảng [thời gian] để có thông tin ban đầu. — (Về quy trình, trước tiên anh/chị cần điền vào đơn trình báo thất lạc hành lý tại quầy Dịch vụ Hành lý. Sau đó, chúng em sẽ dùng hệ thống tra cứu toàn cầu để định vị. Thông thường sẽ mất khoảng [thời gian] để có thông tin ban đầu.) Regarding the process, first, you need to fill out a lost luggage report form at the Baggage Services counter. Then, we will use a global tracking system to locate it. It usually takes about [time] to get initial information."
+    },
+    "t2_gate": {
+      "id": "t2_gate",
+      "prompt": "Dạ, để em kiểm tra lại thông tin cửa khởi hành cho chuyến bay của anh/chị. Anh/chị vui lòng cho em biết số hiệu chuyến bay ạ. Đôi khi có những thay đổi vào phút chót, nên việc kiểm tra lại là cần thiết.",
+      "branches": [
+        {
+          "keywords": [
+            "sốchuyếnbay",
+            "kiểmtrayêu"
+          ],
+          "nextTurnId": "t3_gate_confirm"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ, để em kiểm tra lại thông tin cửa khởi hành cho chuyến bay của anh/chị. Anh/chị vui lòng cho em biết số hiệu chuyến bay ạ. Đôi khi có những thay đổi vào phút chót, nên việc kiểm tra lại là cần thiết. — (Dạ, để em kiểm tra lại thông tin cửa khởi hành cho chuyến bay của anh/chị. Anh/chị vui lòng cho em biết số hiệu chuyến bay ạ. Đôi khi có những thay đổi vào phút chót, nên việc kiểm tra lại là cần thiết.) Yes, let me double-check the departure gate information for your flight. Please tell me your flight number. Sometimes there are last-minute changes, so rechecking is necessary."
+    },
+    "t3_gate_confirm": {
+      "id": "t3_gate_confirm",
+      "prompt": "Vâng, em đã kiểm tra rồi ạ. Cửa khởi hành cho chuyến bay VNxxx đi YYY vẫn là cổng [số cổng]. Anh/chị có thể đi theo bảng chỉ dẫn hoặc hỏi thêm nhân viên nếu cần.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "rõràng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, em đã kiểm tra rồi ạ. Cửa khởi hành cho chuyến bay VNxxx đi YYY vẫn là cổng [số cổng]. Anh/chị có thể đi theo bảng chỉ dẫn hoặc hỏi thêm nhân viên nếu cần. — (Vâng, em đã kiểm tra rồi ạ. Cửa khởi hành cho chuyến bay VNxxx đi YYY vẫn là cổng [số cổng]. Anh/chị có thể đi theo bảng chỉ dẫn hoặc hỏi thêm nhân viên nếu cần.) Yes, I have checked. The departure gate for flight VNxxx to YYY is still gate [gate number]. You can follow the signs or ask other staff if needed."
+    },
+    "t1_general_query": {
+      "id": "t1_general_query",
+      "prompt": "Dạ, anh/chị có thể nói rõ hơn về vấn đề mình đang gặp phải được không ạ? Em sẽ cố gắng hết sức hỗ trợ trong phạm vi quyền hạn của mình.",
+      "branches": [
+        {
+          "keywords": [
+            "chuyếnbay",
+            "hoãn",
+            "hủy"
+          ],
+          "nextTurnId": "t2_delay"
+        },
+        {
+          "keywords": [
+            "hànhlý",
+            "thấtlạc",
+            "mất"
+          ],
+          "nextTurnId": "t2_luggage"
+        },
+        {
+          "keywords": [
+            "cửakhởi",
+            "cổng",
+            "đổi"
+          ],
+          "nextTurnId": "t2_gate"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ, anh/chị có thể nói rõ hơn về vấn đề mình đang gặp phải được không ạ? Em sẽ cố gắng hết sức hỗ trợ trong phạm vi quyền hạn của mình. — (Dạ, anh/chị có thể nói rõ hơn về vấn đề mình đang gặp phải được không ạ? Em sẽ cố gắng hết sức hỗ trợ trong phạm vi quyền hạn của mình.) Yes, could you please explain more clearly the issue you're facing? I will try my best to assist within my scope of authority."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Không có gì ạ. Nếu có bất kỳ vấn đề gì khác, anh/chị đừng ngần ngại liên hệ lại nhé. Chúc anh/chị một ngày tốt lành và một chuyến đi thượng lộ bình an!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Không có gì ạ. Nếu có bất kỳ vấn đề gì khác, anh/chị đừng ngần ngại liên hệ lại nhé. Chúc anh/chị một ngày tốt lành và một chuyến đi thượng lộ bình an! — (Không có gì ạ. Nếu có bất kỳ vấn đề gì khác, anh/chị đừng ngần ngại liên hệ lại nhé. Chúc anh/chị một ngày tốt lành và một chuyến đi thượng lộ bình an!) You're welcome. If you have any other issues, please don't hesitate to contact us again. Have a good day and a safe journey!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "id": "dlg-vi-restaurant-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Đặt món tại nhà hàng",
+  "opening": "Chào quý khách! Quý khách đã sẵn sàng gọi món chưa ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách! Quý khách đã sẵn sàng gọi món chưa ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "sẵn sàng",
+            "gọi món"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gợi ý",
+            "món ngon"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chưa",
+            "xem thực đơn"
+          ],
+          "nextTurnId": "t2b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao quy khach! Quy khach da san sang goi mon chua a? — Hello esteemed customer! Are you ready to order?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Không sao ạ. Quý khách cứ xem thực đơn thêm nhé. Khi nào sẵn sàng thì gọi tôi.",
+      "branches": [
+        {
+          "keywords": [
+            "rồi",
+            "gọi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "gợi ý",
+            "món ngon"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cảm ơn",
+            "chút nữa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khong sao a. Quy khach cu xem thuc don them nhe. Khi nao san sang thi goi toi. — No problem. Please take your time with the menu. Call me when you're ready."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, quý khách muốn dùng món gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "phở",
+            "bún",
+            "cơm",
+            "mì"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "không cay",
+            "ăn chay",
+            "dị ứng"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "đồ uống",
+            "nước",
+            "uống"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, quy khach muon dung mon gi a? — Yes, what would you like to have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ, món đặc biệt của chúng tôi hôm nay là Phở Bò Tái Nạm và Bún Chả Hà Nội ạ. Cả hai đều rất được khách ưa chuộng.",
+      "branches": [
+        {
+          "keywords": [
+            "phở",
+            "bò"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "khác",
+            "thực đơn"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da, mon dac biet cua chung toi hom nay la Pho Bo Tai Nam va Bun Cha Ha Noi a. Ca hai deu rat duoc khach ua chuong. — Yes, our specials today are Rare Beef Noodle Soup (Phở Bò Tái Nạm) and Hanoi Grilled Pork with Noodles (Bún Chả Hà Nội). Both are very popular."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Vâng, quý khách muốn món không cay hay có dị ứng gì không ạ? Chúng tôi có thể điều chỉnh theo yêu cầu.",
+      "branches": [
+        {
+          "keywords": [
+            "không cay",
+            "ít cay"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "không có",
+            "bình thường"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, quy khach muon mon khong cay hay co di ung gi khong a? Chung toi co the dieu chinh theo yeu cau. — Yes, would you like a non-spicy dish or do you have any allergies? We can adjust according to your request."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vâng, tôi đã ghi nhận món chính của quý khách. Quý khách có muốn gọi thêm đồ uống gì không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "nước ngọt",
+            "trà",
+            "cà phê"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "không",
+            "không cần",
+            "chỉ vậy thôi"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, toi da ghi nhan mon chinh cua quy khach. Quy khach co muon goi them do uong gi khong a? — Okay, I've noted your main dish. Would you like any drinks?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dạ, một đồ uống. Vậy là tôi đã ghi nhận xong các món quý khách gọi. Quý khách có cần thêm gì nữa không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đủ rồi",
+            "không",
+            "vậy thôi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "thêm",
+            "gọi thêm"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Da, mot do uong. Vay la toi da ghi nhan xong cac mon quy khach goi. Quy khach co can them gi nua khong a? — Okay, one drink. I've noted all your orders. Do you need anything else?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vâng, tôi hiểu. Vậy tôi sẽ mang hóa đơn ra ngay cho quý khách. Quý khách dùng tiền mặt hay thẻ ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiền mặt",
+            "cash"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, toi hieu. Vay toi se mang hoa don ra ngay cho quy khach. Quy khach dung tien mat hay the a? — Okay, I understand. I'll bring the bill right away. Will you be paying by cash or card?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Vâng, cảm ơn quý khách rất nhiều. Chúc quý khách một ngày tốt lành và hẹn gặp lại!",
+      "branches": [],
+      "fallbackBranchId": "t7",
+      "promptTranslation": "Vang, cam on quy khach rat nhieu. Chuc quy khach mot ngay tot lanh va hen gap lai! — Thank you very much. Wish you a good day and hope to see you again!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, quý khách có thể nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that?"
+    }
+  }
+}

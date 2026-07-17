@@ -1,0 +1,286 @@
+{
+  "id": "dlg-it-small-talk-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Chiacchiere al volo",
+  "opening": "Ciao! Come stai? Com'è andato il tuo fine settimana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Come stai? Com'è andato il tuo fine settimana?",
+      "branches": [
+        {
+          "keywords": [
+            "bene",
+            "bello",
+            "divertente",
+            "riposante",
+            "ottimo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cosìcosì",
+            "normale",
+            "impegnativo",
+            "stanco",
+            "stressante"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! Come stai? Com'è andato il tuo fine settimana? (Chah-oh! Koh-meh stah-ee? Koh-meh ahn-dah-toh eel too fee-neh set-tee-mah-nah?) - Hello! How are you? How was your weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, bene! Sono contento/a. Hai fatto qualcosa di interessante o di particolare?",
+      "branches": [
+        {
+          "keywords": [
+            "viaggiato",
+            "visitato",
+            "escursione",
+            "montagna",
+            "mare",
+            "fuoricasa",
+            "gita"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "letto",
+            "film",
+            "serie",
+            "cucinato",
+            "amici",
+            "relax",
+            "casa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, bene! Sono contento/a. Hai fatto qualcosa di interessante o di particolare? (Oh, beh-neh! Soh-noh kohn-tehn-toh/tah. Ah-ee faht-toh kwahl-koh-sah dee een-teh-reh-sahn-teh oh dee pahr-tee-koh-lah-reh?) - Oh, good! I'm glad. Did you do anything interesting or special?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, capisco. A volte i fine settimana sono più impegnativi della settimana lavorativa! Hai molti impegni ultimamente?",
+      "branches": [
+        {
+          "keywords": [
+            "lavoro",
+            "progetto",
+            "ufficio",
+            "studio",
+            "università"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "impegni",
+            "famiglia",
+            "casa",
+            "preparativi",
+            "commissioni"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, capisco. A volte i fine settimana sono più impegnativi della settimana lavorativa! Hai molti impegni ultimamente? (Ah, kah-pee-skoh. Ah vohl-teh ee fee-neh set-tee-mah-nah soh-noh pyoo eem-peh-nyah-tee-vee dehl-lah set-tee-mah-nah lah-voh-rah-tee-vah! Ah-ee mohl-tee eem-peh-nyee ool-tee-mah-mehn-teh?) - Ah, I understand. Sometimes weekends are busier than the work week! Do you have many commitments lately?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Interessante! Mi piacerebbe molto. C'è un posto in particolare che ti è piaciuto di più o un'attività che ti rilassa davvero?",
+      "branches": [
+        {
+          "keywords": [
+            "natura",
+            "passeggiare",
+            "trekking",
+            "musei",
+            "arte",
+            "storia",
+            "cultura"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "cibo",
+            "ristoranti",
+            "assaggiare",
+            "cucinare",
+            "nuovoristorante",
+            "mangiare"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting! I'd really like that. Is there a particular place you liked most or an activity that truly relaxes you?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottimo! Anche a me piace rilassarmi così. Hai letto un buon libro o visto un film/serie che consiglieresti?",
+      "branches": [
+        {
+          "keywords": [
+            "libro",
+            "romanzo",
+            "autore",
+            "lettura",
+            "giallo",
+            "fantasy"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "film",
+            "serie",
+            "tv",
+            "regista",
+            "attore",
+            "commedia",
+            "dramma"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! I also like to relax that way. Have you read a good book or seen a film/series you'd recommend?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Capisco. È importante trovare un buon equilibrio tra lavoro e tempo libero. Cosa fai per staccare un po' dalla routine?",
+      "branches": [
+        {
+          "keywords": [
+            "sport",
+            "palestra",
+            "correre",
+            "meditazione",
+            "yoga",
+            "camminare"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "musica",
+            "arte",
+            "cinema",
+            "hobby",
+            "suonare",
+            "dipingere",
+            "disegnare"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. It's important to find a good balance between work and free time. What do you do to disconnect a bit from the routine?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ah, sì, è una buona idea. È sempre bello scoprire nuove passioni o condividere interessi. Spero avremo modo di parlarne ancora!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "certo",
+            "grazie",
+            "ciao",
+            "piacere"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, yes, that's a good idea. It's always nice to discover new passions or share interests. I hope we'll have a chance to talk about it again!"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Ottimo! Anche a me piace molto. Magari la prossima volta possiamo scambiarci qualche consiglio o ricetta. È stato un piacere!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "certo",
+            "grazie",
+            "ciao",
+            "piacere"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! I also really like that. Maybe next time we can exchange some tips or recipes. It was a pleasure!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, potresti ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat please? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare con te! Ci vediamo in giro!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was a pleasure chatting with you! See you around!",
+      "isTerminal": true
+    }
+  }
+}

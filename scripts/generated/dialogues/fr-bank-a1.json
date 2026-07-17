@@ -1,0 +1,180 @@
+{
+  "id": "dlg-fr-bank-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "À la banque",
+  "opening": "Bonjour. Comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Comment puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "ouvrir",
+            "compte"
+          ],
+          "nextTurnId": "t2_ouvrir_compte"
+        },
+        {
+          "keywords": [
+            "changer",
+            "argent",
+            "euros"
+          ],
+          "nextTurnId": "t2_changer_argent"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (Bohn-zhoor). Comment (Koh-mahnt) puis-je (pwee-zhuh) vous (voo) aider (eh-day)? — Hello. How can I help you?"
+    },
+    "t2_ouvrir_compte": {
+      "id": "t2_ouvrir_compte",
+      "prompt": "D'accord. Vous voulez ouvrir un compte. Avez-vous une pièce d'identité ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai"
+          ],
+          "nextTurnId": "t3_id_oui"
+        },
+        {
+          "keywords": [
+            "non",
+            "je",
+            "n'ai",
+            "pas"
+          ],
+          "nextTurnId": "t3_id_non"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor). Vous (voo) voulez (voo-lay) ouvrir (oo-vreer) un (uhn) compte (kohnt). Avez-vous (ah-vay-voo) une (ewn) pièce (pyess) d'identité (dee-dahn-tee-tay) ? — Okay. You want to open an account. Do you have an ID?"
+    },
+    "t3_id_oui": {
+      "id": "t3_id_oui",
+      "prompt": "Très bien. Donnez-moi votre passeport, s'il vous plaît. Remplissez ce formulaire.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "ok",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien (Trey byen). Donnez-moi (Doh-nay-mwah) votre (voh-truh) passeport (pahss-por), s'il (seel) vous (voo) plaît (play). Remplissez (Rahn-plee-say) ce (suh) formulaire (for-mew-lair). — Very good. Give me your passport, please. Fill out this form."
+    },
+    "t3_id_non": {
+      "id": "t3_id_non",
+      "prompt": "Ah, c'est un problème. Il vous faut une pièce d'identité pour ouvrir un compte.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "comprends",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah (Ah), c'est (say) un (uhn) problème (proh-blem). Il (Eel) vous (voo) faut (foh) une (ewn) pièce (pyess) d'identité (dee-dahn-tee-tay) pour (poor) ouvrir (oo-vreer) un (uhn) compte (kohnt). — Ah, that's a problem. You need an ID to open an account."
+    },
+    "t2_changer_argent": {
+      "id": "t2_changer_argent",
+      "prompt": "Vous voulez changer de l'argent. Combien d'argent ?",
+      "branches": [
+        {
+          "keywords": [
+            "cent",
+            "100",
+            "euros"
+          ],
+          "nextTurnId": "t3_argent_montant"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vous (voo) voulez (voo-lay) changer (shahn-zhay) de (duh) l'argent (lar-zhahn). Combien (kohm-byen) d'argent (dar-zhahn) ? — You want to exchange money. How much money?"
+    },
+    "t3_argent_montant": {
+      "id": "t3_argent_montant",
+      "prompt": "D'accord. Donnez-moi les billets, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "ok",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor). Donnez-moi (Doh-nay-mwah) les (lay) billets (bee-yay), s'il (seel) vous (voo) plaît (play). — Okay. Give me the bills, please."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (Par-dohn) ? Pouvez-vous (Poo-vay-voo) répéter (ray-pay-tay), s'il (seel) vous (voo) plaît (play) ? — Sorry? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci et bonne journée ! Au revoir.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci (Mer-see) et (ay) bonne (bonn) journée (zhoor-nay) ! Au (Oh) revoir (ruh-vwahr). — Thank you and have a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "id": "dlg-fr-bank-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Opérations Bancaires Avancées",
+  "opening": "Bonjour, Monsieur/Madame. Comment puis-je vous être utile aujourd'hui ? Avez-vous un rendez-vous ou un besoin particulier ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, Monsieur/Madame. Comment puis-je vous être utile aujourd'hui ? Avez-vous un rendez-vous ou un besoin particulier ?",
+      "branches": [
+        {
+          "keywords": [
+            "transfert",
+            "virement",
+            "envoyerargent"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "compte",
+            "ouvrircompte",
+            "nouveaucompte"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "problème",
+            "question",
+            "aide"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "[bɔ̃ʒuʁ, məsjø/madam. kɔmɑ̃ pɥiʒə vu zɛtʁ ytɪl oʒuʁdɥi ? avevu ɛ̃ ʁɑ̃devu u ɛ̃ bəzwɛ̃ paʁtikylje ?] — Hello, Sir/Madam. How can I help you today? Do you have an appointment or a specific need?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien, un virement international donc. S'agit-il d'un transfert vers un pays de la zone euro ou hors zone SEPA ? Et quel est le montant approximatif, si ce n'est pas indiscret ?",
+      "branches": [
+        {
+          "keywords": [
+            "europe",
+            "sepa",
+            "euro",
+            "zoneeuro"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "horssepa",
+            "international",
+            "autredevise",
+            "etranger"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "[tʁɛ bjɛ̃, œ̃ viʁmɑ̃ ɛ̃tɛʁnasjɔnal dɔ̃k. saʒitil dœ̃ tʁɑ̃sfɛʁ vɛʁ œ̃ pei də la zon øʁo u ɔʁ zon sepa ? e kɛl ɛ lə mɔ̃tɑ̃ apʁɔksimatɪf, si sə nɛ pa zɛ̃diskʁɛ ?] — Very good, an international transfer then. Is it a transfer to a country in the Eurozone or outside the SEPA zone? And what is the approximate amount, if I may ask?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Pour l'ouverture d'un nouveau compte, nous proposons diverses options adaptées à vos besoins. Recherchez-vous un compte courant, un livret d'épargne, ou un investissement ?",
+      "branches": [
+        {
+          "keywords": [
+            "courant",
+            "chèques",
+            "quotidien"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "[puʁ luvɛʁtyʁ dœ̃ nuvo kɔ̃t, nu pʁɔpozɔ̃ divɛʁz‿ɔpsjɔ̃ adapte a vo bəzwɛ̃. ʁəʃɛʁʃevu œ̃ kɔ̃t kuʁɑ̃, œ̃ livʁɛ depaʁɲ, u ɛ̃n‿ɛ̃vɛstismɑ̃ ?] — For opening a new account, we offer various options tailored to your needs. Are you looking for a checking account, a savings account, or an investment?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord. Pourriez-vous préciser votre question ou le type d'information que vous recherchez ? Nous avons de nombreux produits et services.",
+      "branches": [
+        {
+          "keywords": [
+            "conditions",
+            "documents",
+            "pièces"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Could you specify your question or the type of information you are looking for? We have many products and services."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pour un virement SEPA, les frais sont généralement minimes, voire nuls, et le transfert est quasi instantané. Avez-vous déjà les coordonnées bancaires du bénéficiaire (IBAN et BIC) ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "coordonnées"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a SEPA transfer, fees are generally minimal, if not zero, and the transfer is almost instantaneous. Do you already have the beneficiary's bank details (IBAN and BIC)?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Pour un virement hors zone SEPA, les choses sont un peu différentes. Nous devrons considérer le taux de change en vigueur et les frais de transfert qui peuvent varier. Avez-vous une préférence pour une devise ou souhaitez-vous un devis ?",
+      "branches": [
+        {
+          "keywords": [
+            "devise",
+            "dollar",
+            "yen",
+            "livre"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a transfer outside the SEPA zone, things are a little different. We will need to consider the current exchange rate and transfer fees, which may vary. Do you have a currency preference or would you like a quote?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Bien sûr. Pour vous fournir un devis précis ou initier le transfert, j'aurai besoin de connaître le pays de destination, la devise souhaitée et bien sûr, les coordonnées complètes du bénéficiaire. Êtes-vous prêt à procéder ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "procéder",
+            "prêt",
+            "allonsy"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. To provide you with an accurate quote or initiate the transfer, I will need to know the destination country, the desired currency, and of course, the full beneficiary details. Are you ready to proceed?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait, je vous remercie. Nous allons gérer cela pour vous. N'hésitez pas si vous avez d'autres questions. Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect, thank you. We will take care of that for you. Don't hesitate if you have any other questions. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

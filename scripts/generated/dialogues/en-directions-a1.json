@@ -1,0 +1,216 @@
+{
+  "id": "dlg-en-directions-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Asking for Directions",
+  "opening": "Excuse me. Can I help you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Excuse me. Can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "bank"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "postoffice"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "supermarket"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me. - Can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I do not understand. Please say again.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry. - I do not understand. - Please say again."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "The bank is straight. Then turn left. It is near the park.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-ack"
+        },
+        {
+          "keywords": [
+            "howfar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "park"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bank is straight. - Then turn left. - It is near the park."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "The post office is straight. Then turn right. It is next to the cafe.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-ack"
+        },
+        {
+          "keywords": [
+            "howfar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cafe"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The post office is straight. - Then turn right. - It is next to the cafe."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "The supermarket is here. Go straight. It is big.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-ack"
+        },
+        {
+          "keywords": [
+            "howfar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The supermarket is here. - Go straight. - It is big."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "It is two blocks. Not far. About five minutes walk.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-ack"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It is two blocks. - Not far. - About five minutes walk."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Yes, that is correct. You are welcome.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-ack"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, that is correct. - You are welcome."
+    },
+    "t-ack": {
+      "id": "t-ack",
+      "prompt": "You are welcome. Have a nice day.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You are welcome. - Have a nice day."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

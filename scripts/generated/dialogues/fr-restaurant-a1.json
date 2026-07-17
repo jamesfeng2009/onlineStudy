@@ -1,0 +1,157 @@
+{
+  "id": "dlg-fr-restaurant-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Au restaurant",
+  "opening": "Bonjour ! Bienvenue. Que désirez-vous ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue. Que désirez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "table",
+            "deux",
+            "trois"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "carte",
+            "menu",
+            "manger",
+            "commander"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Bienvenue. Que désirez-vous ? — Bohn-zhoor! Byen-vuh-noo. Kuh day-zee-ray-voo? — Hello! Welcome. What would you like?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Suivez-moi, s'il vous plaît. Voici la carte.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Suivez-moi, s'il vous plaît. Voici la carte. — Trey byang. Soo-ee-vay-mwa, seel voo pleh. Vwa-see la kart. — Very good. Follow me, please. Here is the menu."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oui, voici la carte.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, voici la carte. — Wee, vwa-see la kart. — Yes, here is the menu."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vous avez choisi ? Nous avons un bon poulet avec frites.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "prends",
+            "poulet",
+            "frites"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "merci"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vous avez choisi ? Nous avons un bon poulet avec frites. — Voo zah-vay shwa-zee? Noo zah-vong uhn bon poo-leh ah-vek freet. — Have you chosen? We have a good chicken with fries."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien. Votre commande arrive bientôt. Voici l'addition.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "payer",
+            "addition"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ok"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Votre commande arrive bientôt. Voici l'addition. — Trey byang. Voh-truh koh-mahnd ah-reev byen-toh. Vwa-see lah-dee-syon. — Very good. Your order arrives soon. Here is the bill."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "bonjour"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pouvez-vous répéter, s'il vous plaît ? — Par-dong? Poo-vay-voo ray-pay-tay, seel voo pleh? — Pardon? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci et au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci et au revoir ! — Mehr-see eh oh ruh-vwahr! — Thank you and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

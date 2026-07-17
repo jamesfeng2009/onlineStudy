@@ -1,0 +1,197 @@
+{
+  "id": "dlg-de-airport-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Am Flughafen",
+  "opening": "Guten Tag! Haben Sie Ihren Pass und Ihr Ticket dabei?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Haben Sie Ihren Pass und Ihr Ticket dabei?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "habe",
+            "hier"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "suche",
+            "moment"
+          ],
+          "nextTurnId": "t1_a"
+        },
+        {
+          "keywords": [
+            "",
+            "bitte"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day! Haben Sie Ihren Pass und Ihr Ticket dabei? — Do you have your passport and ticket with you?"
+    },
+    "t1_a": {
+      "id": "t1_a",
+      "prompt": "Kein Problem, nehmen Sie sich Zeit. Ich warte kurz.",
+      "branches": [
+        {
+          "keywords": [
+            "habe",
+            "gefunden",
+            "ja",
+            "fertig"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "noch"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kein Problem — No problem, nehmen Sie sich Zeit — take your time. Ich warte kurz — I'll wait a moment."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vielen Dank. Haben Sie Gepäck zum Aufgeben?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "koffer",
+            "gepäck"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nurhandgepäck",
+            "keingepäck"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vielen Dank — Thank you very much. Haben Sie Gepäck zum Aufgeben? — Do you have luggage to check in?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bitte stellen Sie Ihren Koffer auf das Band hier.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "gemacht",
+            "ja"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "wohin"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bitte stellen Sie Ihren Koffer auf das Band hier — Please place your suitcase on the belt here."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Hier ist Ihre Bordkarte. Ihr Flug geht von Gate B23. Boarding ist um 10:30 Uhr.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "verstanden",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "gate",
+            "wo",
+            "woist"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "uhrzeit"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hier ist Ihre Bordkarte — Here is your boarding pass. Ihr Flug geht von Gate B23 — Your flight departs from Gate B23. Boarding ist um 10:30 Uhr — Boarding is at 10:30 AM."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gate B23 ist nach der Sicherheitskontrolle, links. Folgen Sie den Schildern.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ok",
+            "verstanden"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "schilde"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gate B23 ist nach der Sicherheitskontrolle, links — Gate B23 is after security, to the left. Folgen Sie den Schildern — Follow the signs."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung — Excuse me, könnten Sie das bitte wiederholen? — could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gute Reise!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gute Reise! — Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

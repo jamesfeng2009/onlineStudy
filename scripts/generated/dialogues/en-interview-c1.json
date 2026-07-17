@@ -1,0 +1,145 @@
+{
+  "id": "dlg-en-interview-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Advanced Interview Practice",
+  "opening": "Good morning! Thanks for coming in. Please, have a seat. Shall we begin?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Thanks for coming in. Please, have a seat. To kick things off, could you tell us a bit about yourself and what specifically drew you to consider this challenging role?",
+      "branches": [
+        {
+          "keywords": [
+            "experience",
+            "background",
+            "career"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! Thanks for coming in. Please, have a seat. To kick things off, could you tell us a bit about yourself and what specifically drew you to consider this challenging role? — English"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That's an insightful overview. Building on that, how do you see your core competencies and previous experiences directly aligning with the responsibilities and demands of this position?",
+      "branches": [
+        {
+          "keywords": [
+            "leadership",
+            "management",
+            "projects",
+            "teamwork"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's an insightful overview. Building on that, how do you see your core competencies and previous experiences directly aligning with the responsibilities and demands of this position?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Very good. Moving on, every professional has areas they excel in and those they're actively working to improve. Could you walk us through what you consider your most salient strength and a specific weakness you've been diligently addressing?",
+      "branches": [
+        {
+          "keywords": [
+            "strength",
+            "adaptability",
+            "resilience",
+            "initiative"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Moving on, every professional has areas they excel in and those they're actively working to improve. Could you walk us through what you consider your most salient strength and a specific weakness you've been diligently addressing? — English"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thank you for sharing those candid insights. We've covered quite a bit today. Before we wrap up, do you have any pressing questions for me or for the team about the role, the company culture, or our anticipated next steps?",
+      "branches": [
+        {
+          "keywords": [
+            "questions",
+            "culture",
+            "team",
+            "growth"
+          ],
+          "nextTurnId": "t-end-question-ack"
+        },
+        {
+          "keywords": [
+            "none",
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for sharing those candid insights. We've covered quite a bit today. Before we wrap up, do you have any pressing questions for me or for the team about the role, the company culture, or our anticipated next steps? — English"
+    },
+    "t-end-question-ack": {
+      "id": "t-end-question-ack",
+      "prompt": "Those are excellent questions, and we appreciate your proactive engagement. We'll be sure to provide that information as we move forward in the process.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Those are excellent questions, and we appreciate your proactive engagement. We'll be sure to provide that information as we move forward in the process."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I apologize, but I didn't quite catch that. Could you please rephrase your response or elaborate further?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, but I didn't quite catch that. Could you please rephrase your response or elaborate further?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you again for your valuable time and for coming in today. We'll be in touch regarding the next steps in the hiring process shortly. Have a pleasant day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you again for your valuable time and for coming in today. We'll be in touch regarding the next steps in the hiring process shortly. Have a pleasant day!",
+      "isTerminal": true
+    }
+  }
+}

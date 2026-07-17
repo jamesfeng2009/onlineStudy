@@ -1,0 +1,144 @@
+{
+  "id": "dlg-id-directions-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Mencari Arah",
+  "opening": "Permisi, ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Permisi, ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "bank",
+            "stasiun",
+            "pasar",
+            "kantorpos",
+            "apotek"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Permisi (pər-mee-see) — Excuse me, ada yang bisa saya bantu (ah-dah yahng bee-sah sah-yah ban-too)? — can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (mah-ahf) — Sorry, bisa diulang lagi (bee-sah dee-oo-lahng lah-gee)? — can you repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, tempat itu tidak jauh. Anda jalan lurus saja, nanti belok kiri di perempatan.",
+      "branches": [
+        {
+          "keywords": [
+            "berapa",
+            "jauh",
+            "tanda",
+            "ciri",
+            "patokan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "transportasi",
+            "naik",
+            "bis",
+            "angkot"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh (oh) — Oh, tempat itu tidak jauh (tee-dak jah-ooh) — that place is not far. Anda jalan lurus saja (ah-nda jah-lahn loo-roos sah-jah) — You just go straight, nanti belok kiri (nahn-tee beh-lok kee-ree) — then turn left di perempatan (dee pər-em-pah-tahn) — at the intersection."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tidak terlalu jauh. Sekitar lima menit jalan kaki. Anda akan melihat toko buku besar di dekatnya setelah belok kiri.",
+      "branches": [
+        {
+          "keywords": [
+            "jalan",
+            "kaki",
+            "bis",
+            "angkot"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Not too far. About five minutes walk. You will see a big bookstore nearby after turning left."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ya, bisa jalan kaki. Sangat dekat, kok. Atau kalau mau, ada halte bus di depan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "makasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, you can walk. It's very close, actually. Or if you want, there's a bus stop in front."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga lancar perjalanannya!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (sah-mah sah-mah) — You're welcome. Semoga lancar perjalanannya (sə-mo-gah lahn-char pər-jah-lahn-nya)! — Have a smooth journey!",
+      "isTerminal": true
+    }
+  }
+}

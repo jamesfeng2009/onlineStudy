@@ -1,0 +1,184 @@
+{
+  "id": "dlg-en-bank-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "At the Bank",
+  "opening": "Good morning! Welcome to Horizon Bank. How may I assist you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning! Welcome to Horizon Bank. How may I assist you today?",
+      "branches": [
+        {
+          "keywords": [
+            "openaccount",
+            "newaccount",
+            "account"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "atm",
+            "issue",
+            "problem",
+            "card"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "sendmoney",
+            "money"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning! Welcome to Horizon Bank. How may I assist you today? — Good morning! Welcome to Horizon Bank. How may I assist you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certainly. Are you looking to open a checking account, a savings account, or perhaps something like a joint or business account?",
+      "branches": [
+        {
+          "keywords": [
+            "checking",
+            "savings",
+            "personal"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Are you looking to open a checking account, a savings account, or perhaps something like a joint or business account? — Certainly. Are you looking to open a checking account, a savings account, or perhaps something like a joint or business account?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "I understand. Could you tell me more about the ATM issue? Is it a card problem, a transaction error, or do you need a PIN reset?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "stuck",
+            "transaction",
+            "wrongamount"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Could you tell me more about the ATM issue? Is it a card problem, a transaction error, or do you need a PIN reset? — I understand. Could you tell me more about the ATM issue? Is it a card problem, a transaction error, or do you need a PIN reset?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "No problem at all. Are you looking to make a domestic transfer or an international one? We have various options available.",
+      "branches": [
+        {
+          "keywords": [
+            "domestic",
+            "local"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem at all. Are you looking to make a domestic transfer or an international one? We have various options available. — No problem at all. Are you looking to make a domestic transfer or an international one? We have various options available."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Excellent. To proceed with opening an account, we'll need your ID and proof of address. Please take a seat, and a representative will be with you shortly to finalize everything. Does that sound good?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "soundsgood",
+            "ok",
+            "understood"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. To proceed with opening an account, we'll need your ID and proof of address. Please take a seat, and a representative will be with you shortly to finalize everything. Does that sound good? — Excellent. To proceed with opening an account, we'll need your ID and proof of address. Please take a seat, and a representative will be with you shortly to finalize everything. Does that sound good?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Thank you for the details. For this, I'll need to direct you to one of our specialists. Please head over to desk number three, and they will be able to assist you further. Is that clear?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "clear",
+            "ok",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for the details. For this, I'll need to direct you to one of our specialists. Please head over to desk number three, and they will be able to assist you further. Is that clear? — Thank you for the details. For this, I'll need to direct you to one of our specialists. Please head over to desk number three, and they will be able to assist you further. Is that clear?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat your request?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please rephrase or repeat your request? — I'm sorry, I didn't quite catch that. Could you please rephrase or repeat your request?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for choosing Horizon Bank. Have a wonderful day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing Horizon Bank. Have a wonderful day! — Thank you for choosing Horizon Bank. Have a wonderful day!",
+      "isTerminal": true
+    }
+  }
+}

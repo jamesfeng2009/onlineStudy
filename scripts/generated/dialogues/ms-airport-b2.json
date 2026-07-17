@@ -1,0 +1,188 @@
+{
+  "id": "dlg-ms-airport-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "Bantuan di Lapangan Terbang",
+  "opening": "Selamat datang ke Lapangan Terbang Antarabangsa Kuala Lumpur. Bagaimanakah saya boleh membantu anda hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Lapangan Terbang Antarabangsa Kuala Lumpur. Bagaimanakah saya boleh membantu anda hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "daftar",
+            "masuk",
+            "daftarmasuk"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagasi",
+            "hilang",
+            "beg"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "lewat",
+            "tunda",
+            "penerbangan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Lapangan Terbang Antarabangsa Kuala Lumpur. Bagaimanakah saya boleh membantu anda hari ini? — Welcome to Kuala Lumpur International Airport. How may I assist you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, untuk daftar masuk, boleh saya minta nombor tempahan atau pasport anda?",
+      "branches": [
+        {
+          "keywords": [
+            "tempahan",
+            "nombor",
+            "kod",
+            "ada",
+            "pasport",
+            "id"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "lupa",
+            "tidakada"
+          ],
+          "nextTurnId": "t2_nodoc"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, untuk daftar masuk, boleh saya minta nombor tempahan atau pasport anda? — Alright, for check-in, may I have your booking reference number or passport?"
+    },
+    "t2_nodoc": {
+      "id": "t2_nodoc",
+      "prompt": "Maaf, tanpa dokumen pengenalan diri atau nombor tempahan, saya tidak dapat membantu anda daftar masuk. Sila cuba cari dokumen anda atau hubungi syarikat penerbangan untuk bantuan lanjut.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terimakasih",
+            "baiklah"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Maaf, tanpa dokumen pengenalan diri atau nombor tempahan, saya tidak dapat membantu anda daftar masuk. Sila cuba cari dokumen anda atau hubungi syarikat penerbangan untuk bantuan lanjut. — I'm sorry, without identification documents or a booking reference number, I cannot assist you with check-in. Please try to find your documents or contact the airline for further assistance."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Saya faham. Sila berikan nombor penerbangan anda dan huraian beg anda yang hilang. Adakah anda sudah mengisi borang tuntutan atau perlukan bantuan?",
+      "branches": [
+        {
+          "keywords": [
+            "nomborpenerbangan",
+            "penerbangan",
+            "huraian",
+            "beg",
+            "sudahisi",
+            "sudah"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "belum",
+            "perlu",
+            "bantuan",
+            "borang"
+          ],
+          "nextTurnId": "t3_form"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya faham. Sila berikan nombor penerbangan anda dan huraian beg anda yang hilang. Adakah anda sudah mengisi borang tuntutan atau perlukan bantuan? — I understand. Please provide your flight number and a description of your lost bag. Have you already filled out a claim form or do you need assistance?"
+    },
+    "t3_form": {
+      "id": "t3_form",
+      "prompt": "Baiklah, untuk kes beg hilang, anda perlu mengisi borang tuntutan di kaunter perkhidmatan bagasi. Sila ikut saya untuk mendapatkan borang tersebut.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "terimakasih"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Baiklah, untuk kes beg hilang, anda perlu mengisi borang tuntutan di kaunter perkhidmatan bagasi. Sila ikut saya untuk mendapatkan borang tersebut. — Alright, for lost luggage cases, you need to fill out a claim form at the baggage services counter. Please follow me to get the form."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Saya minta maaf atas kesulitan ini, tetapi penerbangan anda ke [Destinasi] telah ditunda selama empat jam disebabkan masalah teknikal. Waktu berlepas yang dijangka sekarang ialah pada pukul 8 malam. Oleh kerana penundaan ini, anda berhak mendapat baucar makan dan minuman yang boleh diambil di kaunter perkhidmatan pelanggan.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terimakasih",
+            "baiklah",
+            "baucar",
+            "makan"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Saya minta maaf atas kesulitan ini, tetapi penerbangan anda ke [Destinasi] telah ditunda selama empat jam disebabkan masalah teknikal. Waktu berlepas yang dijangka sekarang ialah pada pukul 8 malam. Oleh kerana penundaan ini, anda berhak mendapat baucar makan dan minuman yang boleh diambil di kaunter perkhidmatan pelanggan. — I apologize for the inconvenience, but your flight to [Destination] has been delayed by four hours due to technical issues. The expected departure time is now 8 PM. Due to this delay, you are entitled to a food and beverage voucher which can be collected at the customer service counter."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sama-sama. Selamat jalan dan harap maaf atas segala kesulitan.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Sama-sama. Selamat jalan dan harap maaf atas segala kesulitan. — You're welcome. Have a good journey and apologies for any inconvenience.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak begitu faham. Boleh anda ulang atau nyatakan dengan cara yang berbeza?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, saya tidak begitu faham. Boleh anda ulang atau nyatakan dengan cara yang berbeza? — Sorry, I don't quite understand. Could you repeat or state it differently?"
+    }
+  }
+}

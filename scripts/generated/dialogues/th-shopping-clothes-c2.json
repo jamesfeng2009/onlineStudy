@@ -1,0 +1,261 @@
+{
+  "id": "dlg-th-shopping-clothes-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "เลือกเสื้อผ้าตามสไตล์",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มองหาแบบไหนอยู่เป็นพิเศษไหมคะ หรือแค่อยากจะเดินชมสินค้าก่อนก็ได้ค่ะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มองหาแบบไหนอยู่เป็นพิเศษไหมคะ หรือแค่อยากจะเดินชมสินค้าก่อนก็ได้ค่ะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ชุด",
+            "เดรส",
+            "งานเลี้ยง",
+            "ออกงาน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เดินชม",
+            "ดูก่อน",
+            "สินค้า",
+            "ดูไปเรื่อยๆ"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka, yindee t̂xntrạb ka. Mxngh̄ā bæb h̄ịn xyū̀ pĕn phis̄es̄ʹ h̄ịm kha? Rư̄x khæ̀ xyāk ca deinthcm s̄in k̄ĥā k̀xn k̆dị̂ kha? — Hello, welcome. Are you looking for anything specific, or would you just like to browse first?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ชุดไปงานเลี้ยงนี่ดีเลยค่ะ มีหลายแบบให้เลือกสรรค์เลยค่ะ พอจะมีสไตล์ในใจไหมคะ หรืออยากได้แบบที่กำลังเป็นที่นิยมตอนนี้ก็ได้ค่ะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เรียบหรู",
+            "คลาสสิก",
+            "หรูหรา"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "อินเทรนด์",
+            "ทันสมัย",
+            "สดใส",
+            "แฟชั่น"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "แบบไหน"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chúd pị ngān lêị̂ng nî dī loei kà. Mī h̄lāy bæb h̄ı̂ leụ̄xks̄rrkh̒ loei kà. Phx ca mī s̄tịl̒ nı cı h̄ịm kha? Rư̄x xyāk dị̂ bæb thī̀ kamlang pĕn thī̀ niyom tawnī̂ k̆dị̂ kha? — A party dress, excellent! We have many styles to choose from. Do you have a specific style in mind, or would you prefer something currently in vogue?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ได้เลยค่ะ เชิญเลือกชมได้ตามสบายเลยนะคะ สินค้าใหม่เพิ่งลงเมื่อสัปดาห์ที่แล้วมีหลายชิ้นที่น่าสนใจเลยค่ะ หรือถ้าชอบแนวไหนเป็นพิเศษบอกได้เลยนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ชุดเดรส",
+            "ชุดออกงาน",
+            "ชุดราตรี"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ชุดทำงาน",
+            "เสื้อทำงาน",
+            "กางเกงทำงาน",
+            "กระโปรงทำงาน"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dị̂ loei kà. Cheīỵ leụ̄xktcm dị̂ tām s̄bāy loei ná kha. S̄in k̄ĥā mị̀ p̄heîng long meụ̄̀x s̄ạpdāh̄̒ thī̀ læ̂w mī h̄lāy chîn thī̀ nā s̄ncı loei kà. Rư̄x thā̀ chxb næwh̄ịn pĕn phis̄es̄ʹ bxk dị̂ loei ná kha. — Of course, please feel free to browse. We had many interesting new arrivals last week. Or if you have a specific style in mind, please let me know."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เข้าใจเลยค่ะ สำหรับแนวเรียบหรู คลาสสิก เรามีคอลเลกชั่นพิเศษที่ตัดเย็บอย่างประณีตด้วยผ้าไหมและลูกไม้ฝรั่งเศสค่ะ โดดเด่นที่แพทเทิร์นและการคัตติ้งเนี้ยบกริบเลยค่ะ สนใจลองดูไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ดู",
+            "ชม",
+            "สนใจ",
+            "ลอง"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "สี",
+            "แบบอื่น",
+            "ผ้า"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "สวย"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kêwcı loei kà. S̄ảh̄rạb næw rī̂abh̄rū khlāssik rao mī khxl lekkc̄hạn phis̄es̄ʹ thī̀ tạtyĕb ỳāng prāṇīt d̂wy p̄ĥāmị̂ læa lūk mị̂ f̄rạ̀ngs̄es̄ʹ kà. Doddèn thī̀ phæththeīr̒n læa kār khạttîng nī̂ap krip loei kà. S̄ncı lxng dū h̄ịm kha? — I understand. For elegant, classic styles, we have a special collection meticulously tailored with silk and French lace. It stands out with its patterns and impeccably clean cutting. Would you be interested in taking a look?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ได้เลยค่ะ ถ้าเป็นแนวอินเทรนด์ สีสันสดใส ช่วงนี้ชุดเดรสทรงบอลกาวน์ที่ปรับให้โมเดิร์นขึ้นกำลังมาแรงเลยค่ะ เน้นดีเทลระบาย หรือการจับเดรปที่ดูโดดเด่นสะดุดตาค่ะ สนใจเป็นพิเศษไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ระบาย",
+            "จับเดรป",
+            "สนใจ",
+            "ลอง"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "สี",
+            "พาสเทล",
+            "โทน",
+            "แบบอื่น"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "แบบนี้"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dị̂ loei kà. Thā̀ pĕn næw xintheīr̒n s̄ī s̄ạns̄ods̄ı̀ ch̀wng nī̂ chúd de res thrng bxllkāwn thī̀ prạb h̄ı̂ modir̒n k̄hụ̂n kamlang mā ræng loei kà. Nénh̒ dī theīl rābāy rư̄x kār cạb drep thī̀ dū doddèn s̄adùd tā kà. S̄ncı pĕn phis̄es̄ʹ h̄ịm kha? — Okay. If it's trendy, bright colors, ball gowns with a modern twist are very popular right now. They emphasize ruffled details or eye-catching draping. Are you particularly interested in that?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "แน่นอนค่ะ สำหรับชุดทำงาน เรามีทั้งเบลเซอร์ กางเกง กระโปรง และเสื้อเชิ้ตที่ออกแบบมาให้ใส่สบายแต่ยังคงความสุภาพและเสริมบุคลิกภาพค่ะ อยากได้สไตล์ไหนเป็นพิเศษไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เบลเซอร์",
+            "กางเกง",
+            "ชุดเข้าชุด"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "เสื้อเชิ้ต",
+            "ผ้าลินิน",
+            "ผ้า"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอดู"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Næ̀nxn kà. S̄ảh̄rạb chúd thảngān rao mī thậng be lse xr kāng keng krạpong læa s̄eụ̄̂x cheī̂t thī̀ xxkbæb mā h̄ı̂ s̄ı̀ s̄bāy tæ̀ yạng khong khwām s̄up̣hāph læa s̄erim bukkhli kphāph kà. Xyāk dị̂ s̄tịl̒ h̄ịn pĕn phis̄es̄ʹ h̄ịm kha? — Certainly. For work clothes, we have blazers, pants, skirts, and shirts designed for comfort while maintaining a polite and professional image. Is there a particular style you're looking for?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "ดีเลยค่ะ เชิญทางนี้เลยนะคะ เดี๋ยวพาไปดูแบบที่เหมาะกับคุณลูกค้าค่ะ ต้องการไซส์ประมาณไหนดีคะ หรือถ้าไม่แน่ใจ เดี๋ยวเราช่วยประเมินให้ได้ค่ะ และมีห้องลองอยู่ด้านในนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ไซส์",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dī loei kà. Cheīỵ thāng nī̂ loei ná kha. Deīyyw phā pị dū bæb thī̀ h̄mxh̄m kạb khuṇ lūkkhá kà. T̂xngkār sịs̄̒ prảmāṇ h̄ịn dī kha? Rư̄x thā̀ mị̀ næ̀cı deīyyw rao ch̀wy pramein h̄ı̂ dị̂ kà. Læa mī h̄̂xng lxng xyū̀ d̂ānnı ná kha. — Excellent! Please come this way. I'll show you styles that suit you. What size would you prefer, or if you're unsure, we can help you assess. The fitting rooms are inside."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "ได้เลยค่ะ ถ้าเป็นสีโทนนั้น หรือผ้าแบบนั้นเดี๋ยวไปหยิบมาให้ชมนะคะ และถ้าถูกใจก็ลองสวมได้เลยค่ะ ห้องลองอยู่ด้านในนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ตกลง",
+            "ใช่ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dị̂ loei kà. Thā̀ pĕn s̄ī thon nận rư̄x p̄ĥā bæb nận deīyyw pị h̄yib mā h̄ı̂ tchm ná kha. Læa thā̀ t̄hūk cı k̆ lxng s̄wm dị̂ loei kà. H̄̂xng lxng xyū̀ d̂ānnı ná kha. — Of course. If it's that color tone or fabric, I'll go get it for you to see. And if you like it, you can try it on. The fitting rooms are inside."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ไม่แน่ใจว่าคุณลูกค้าหมายถึงอะไร รบกวนพูดอีกครั้งได้ไหมคะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "K̄hx xaphạy khà. Mị̀ næ̀cı wà khuṇ lūkkhá h̄māythึง xarị. Ropkwn phūd xīk khrậng dị̂ h̄ịm kha? — I'm sorry, I'm not sure what you mean. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีให้บริการค่ะ หากมีอะไรให้ช่วยเพิ่มเติม เชิญเรียกได้เลยนะคะ หรือถ้าตัดสินใจได้แล้ว เชิญชำระเงินที่เคาน์เตอร์ได้เลยค่ะ ขอบคุณที่มาอุดหนุนนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yindee hai borikarn ka. Hak mee arai hai chuay perm-term, chern riak dai loei na ka. Rue taa tad-sin-jai dai laew, chern cham-ra ngern tee counter dai loei ka. Khop-khun tee maa ut-nun na ka. — Happy to serve you. If there's anything else I can help with, please feel free to call me. Or if you've decided, please proceed to the counter for payment. Thank you for your patronage.",
+      "isTerminal": true
+    }
+  }
+}

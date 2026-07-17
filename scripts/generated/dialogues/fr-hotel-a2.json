@@ -1,0 +1,155 @@
+{
+  "id": "dlg-fr-hotel-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bonjour ! Bienvenue à l'Hôtel Belle Vue. Quel est votre nom pour la réservation ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue à l'Hôtel Belle Vue. Quel est votre nom pour la réservation ?",
+      "branches": [
+        {
+          "keywords": [
+            "je",
+            "suis",
+            "mon",
+            "dupont",
+            "martin",
+            "schmidt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour! (bõ-zhoor) Welcome to Hotel Belle Vue. What is your name for the reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, Monsieur/Madame [Nom]. D'accord. Pourriez-vous me montrer une pièce d'identité, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "voici",
+            "ma",
+            "pièce",
+            "identité"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, Mr./Ms. [Name]. Okay. (dah-kor) Could you show me an ID, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Merci. Votre chambre est prête. Souhaitez-vous le petit-déjeuner demain matin ? C'est 12 euros par personne.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "petit-déjeuner",
+            "s'ilvousplaît"
+          ],
+          "nextTurnId": "t4_breakfast"
+        },
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "pas"
+          ],
+          "nextTurnId": "t4_no_breakfast"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. (mair-see) Your room is ready. Would you like breakfast tomorrow morning? It's 12 euros per person."
+    },
+    "t4_breakfast": {
+      "id": "t4_breakfast",
+      "prompt": "Très bien. Donc, chambre et petit-déjeuner. Quel mode de paiement préférez-vous : carte ou espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "crédit",
+            "débit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. So, room and breakfast. What payment method do you prefer: card or cash?"
+    },
+    "t4_no_breakfast": {
+      "id": "t4_no_breakfast",
+      "prompt": "Pas de problème. Quel mode de paiement préférez-vous : carte ou espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "crédit",
+            "débit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. What payment method do you prefer: card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? (pah-dõ) Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Voilà votre clé. Profitez bien de votre séjour à l'Hôtel Belle Vue ! Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Here is your key. Enjoy your stay at Hotel Belle Vue! Goodbye! (Oh-ruh-vwah)",
+      "isTerminal": true
+    }
+  }
+}

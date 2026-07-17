@@ -1,0 +1,222 @@
+{
+  "id": "dlg-es-airport-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Retraso Inesperado",
+  "opening": "Buenos días. Disculpe la demora, estamos gestionando una situación imprevista con su vuelo.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días. Disculpe la demora, estamos gestionando una situación imprevista con su vuelo. Le ruego un poco de paciencia mientras ultimamos los detalles.",
+      "branches": [
+        {
+          "keywords": [
+            "razón",
+            "motivo",
+            "qué",
+            "pasó"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "conexión",
+            "vuelo",
+            "pierdo",
+            "contingencia"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "alternativas",
+            "opciones",
+            "soluciones",
+            "resolver"
+          ],
+          "nextTurnId": "t3b"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días — Good morning. Disculpe la demora — Excuse the delay, estamos gestionando una situación imprevista — we are managing an unforeseen situation con su vuelo — with your flight. Le ruego un poco de paciencia mientras ultimamos los detalles — I kindly ask for your patience while we finalize the details."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verá, se trata de una incidencia técnica menor en el tren de aterrizaje que ya está siendo subsanada. Prevemos que la salida se retrase unas dos horas, despegando a las 14:00h.",
+      "branches": [
+        {
+          "keywords": [
+            "compensación",
+            "bonos",
+            "reembolso",
+            "derechos"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "conexión",
+            "pierdo",
+            "vuelo",
+            "siguiente"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "espero",
+            "vale",
+            "bien",
+            "esperaré"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verá — You see, se trata de una incidencia técnica menor — it's a minor technical issue en el tren de aterrizaje — with the landing gear que ya está siendo subsanada — that is already being rectified. Prevemos que la salida se retrase — We anticipate the departure will be delayed unas dos horas — by about two hours, despegando a las 14:00h — taking off at 2:00 PM."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Entiendo su preocupación. Permítame verificar si su vuelo de conexión se ve afectado. ¿Podría indicarme el número de su próximo vuelo o el destino?",
+      "branches": [
+        {
+          "keywords": [
+            "número",
+            "es",
+            "destino",
+            "vuelo"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "qué",
+            "hacer",
+            "opciones",
+            "solución"
+          ],
+          "nextTurnId": "t4c"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo su preocupación — I understand your concern. Permítame verificar — Let me check si su vuelo de conexión se ve afectado — if your connecting flight is affected. ¿Podría indicarme el número — Could you tell me the number de su próximo vuelo o el destino? — of your next flight or the destination?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Estamos barajando varias opciones. La más viable por el momento es la reprogramación para la tarde, pero si le urge, podríamos explorar la posibilidad de reubicarle en un vuelo alternativo con otra compañía, aunque no garantizamos la disponibilidad inmediata.",
+      "branches": [
+        {
+          "keywords": [
+            "reprogramar",
+            "tarde",
+            "acepto",
+            "espero"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "alternativo",
+            "otra",
+            "compañía",
+            "urgencia"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "compensación",
+            "reembolso",
+            "vale"
+          ],
+          "nextTurnId": "t4a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Estamos barajando varias opciones — We are considering several options. La más viable por el momento — The most viable for now es la reprogramación para la tarde — is rescheduling for the afternoon, pero si le urge — but if you're in a hurry, podríamos explorar la posibilidad — we could explore the possibility de reubicarle — of rebooking you en un vuelo alternativo — on an alternative flight con otra compañía — with another airline, aunque no garantizamos la disponibilidad inmediata — although we don't guarantee immediate availability."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Por supuesto. Debido al retraso, tiene derecho a un vale para una consumición aquí en el aeropuerto y le daremos información sobre cómo solicitar una posible compensación adicional según la normativa europea.",
+      "branches": [
+        {
+          "keywords": [
+            "vale",
+            "compensación",
+            "gracias",
+            "acepto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Por supuesto — Of course. Debido al retraso — Due to the delay, tiene derecho a un vale — you are entitled to a voucher para una consumición aquí en el aeropuerto — for a refreshment here at the airport y le daremos información — and we will give you information sobre cómo solicitar — on how to apply for una posible compensación adicional — a possible additional compensation según la normativa europea — according to European regulations."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Déjeme consultar... Ah, veo que su conexión es crítica. Le propongo dos opciones: o le reubicamos en el siguiente vuelo disponible de nuestra compañía, que sale en cuatro horas, o le gestionamos un billete con una aerolínea asociada que sale más pronto.",
+      "branches": [
+        {
+          "keywords": [
+            "reubicar",
+            "cuatro",
+            "horas",
+            "acepto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "compensación",
+            "vales",
+            "derechos"
+          ],
+          "nextTurnId": "t4a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Déjeme consultar — Let me check... Ah, veo que su conexión es crítica — I see your connection is critical. Le propongo dos opciones — I propose two options: o le reubicamos — either we rebook you en el siguiente vuelo disponible — on the next available flight de nuestra compañía — with our company, que sale en cuatro horas — which departs in four hours, o le gestionamos un billete — or we arrange a ticket for you con una aerolínea asociada — with an associated airline que sale más pronto — that departs sooner."
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Entiendo su deseo de agilizar el proceso. Podemos explorar la opción de una aerolínea alternativa, pero debo advertirle que podría implicar un costo adicional o una ruta menos directa. ¿Prefiere que lo intentemos?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "intentar",
+            "alternativa",
+            "quiero"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo su deseo — I understand your desire de agilizar el proceso — to speed up the process. Podemos explorar la opción — We can explore the option de una aerolínea alternativa — of an alternative airline, pero debo advertirle — but I must warn you que podría implicar — that it could involve un costo adicional — an additional cost o una ruta menos directa — or a less direct route. ¿Prefiere que lo intentemos? — Do you prefer that we try it?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, no le he entendido del todo. ¿Podría repetírmelo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Lo siento — I'm sorry, no le he entendido del todo — I didn't quite understand you. ¿Podría repetírmelo, por favor? — Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfecto. Agradecemos su paciencia y le deseamos un buen viaje. ¡Hasta pronto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfecto — Perfect. Agradecemos su paciencia — We appreciate your patience y le deseamos un buen viaje — and wish you a good journey. ¡Hasta pronto! — See you soon!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "id": "dlg-id-hotel-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Check-in Hotel",
+  "opening": "Selamat datang di Hotel Angkasa. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang di Hotel Angkasa. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "reservasi",
+            "pemesanan",
+            "atasnama",
+            "nama"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Sə-la-mat da-tang) di Hotel Angkasa. Ada yang bisa saya bantu? — Welcome to Angkasa Hotel. How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, dengan Bapak/Ibu [Nama Anda]. Mohon maaf, bisa saya pinjam kartu identitas Anda untuk proses registrasi?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "silakan",
+            "ktp",
+            "paspor"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, dengan Bapak/Ibu [Your Name]. Mohon maaf (Mo-hon ma-af), bisa saya pinjam kartu identitas Anda untuk proses registrasi? — Alright, with Mr./Ms. [Your Name]. Excuse me, may I borrow your ID card for the registration process?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Untuk pembayaran, apakah Anda akan menggunakan kartu kredit atau tunai?",
+      "branches": [
+        {
+          "keywords": [
+            "kartukredit",
+            "kredit",
+            "kartu"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Tə-ri-ma ka-sih). Untuk pembayaran, apakah Anda akan menggunakan kartu kredit atau tunai? — Thank you. For payment, will you be using a credit card or cash?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sudah kami proses. Apakah ada preferensi kamar, seperti lantai tinggi atau pemandangan kota? Dan apakah Anda ingin menambahkan sarapan untuk besok pagi?",
+      "branches": [
+        {
+          "keywords": [
+            "lantai",
+            "pemandangan",
+            "preferensi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's been processed. Do you have any room preferences, such as a high floor or a city view? And would you like to add breakfast for tomorrow morning?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, semua sudah tercatat. Ini kunci kamar Anda, nomor 503. Fasilitas hotel bisa Anda temukan di lantai dasar.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "oke",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, everything is noted. Here is your room key, room number 503. Hotel facilities can be found on the ground floor."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulang? Saya kurang jelas. — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih telah memilih Hotel Angkasa. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing Angkasa Hotel. We hope you have a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

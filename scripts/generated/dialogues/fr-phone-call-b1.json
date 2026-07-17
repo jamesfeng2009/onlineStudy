@@ -1,0 +1,145 @@
+{
+  "id": "dlg-fr-phone-call-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Appel Téléphonique",
+  "opening": "Bonjour, ici la Pâtisserie Duval. Comment puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, ici la Pâtisserie Duval. Comment puis-je vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "parler",
+            "chercher",
+            "madame",
+            "monsieur",
+            "mme",
+            "m",
+            "leclerc"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "allo",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR), ici la Pâtisserie Duval (pah-tee-seh-REE doo-VAL). Comment (koh-MAHN) puis-je vous aider (pwee-zhuh vooz eh-DEH) ? — Hello, Duval Bakery here. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Qui est à l'appareil, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "je",
+            "m'appelle",
+            "suis",
+            "c'est",
+            "mon nom"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pardon",
+            "comment",
+            "répétez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Qui (kee) est à l'appareil (eh-tah lah-pah-REY), s'il vous plaît (seel voo PLEH) ? — Who is on the phone, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, bonjour. Malheureusement, Madame Leclerc n'est pas disponible pour le moment. Souhaitez-vous lui laisser un message ou préférez-vous rappeler ?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "laisser",
+            "oui"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "rappeler",
+            "non",
+            "plus tard",
+            "revenir"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "que faire"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, bonjour. Malheureusement (mah-luh-ruh-tuh-MAHN), Madame Leclerc n'est pas disponible (dees-poh-NEEBL) pour le moment. Souhaitez-vous (soo-eh-teh-voo) lui laisser un message (lwee leh-SEH uhn meh-SAHZH) ou préférez-vous (preh-feh-reh-voo) rappeler ? — Ah, hello. Unfortunately, Madame Leclerc is not available at the moment. Would you like to leave her a message or would you prefer to call back?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord, je prends note. Que puis-je lui dire ?",
+      "branches": [
+        {
+          "keywords": [
+            "dire",
+            "dites",
+            "que",
+            "commande",
+            "rendez-vous",
+            "appeler"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "je ne sais pas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR), je prends note (zhuh prahn noht). Que puis-je lui dire (kuh pwee-zhuh lwee deer) ? — Alright, I'll take a note. What can I tell her?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien, je transmettrai le message. Au revoir et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Très bien (treh bee-AHN), je transmettrai (zhuh trahns-meh-TREH) le message. Au revoir (oh ruh-VWAR) et bonne journée (bohn zhoor-NEH) ! — Very well, I will pass on the message. Goodbye and have a good day!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (par-DOHN) ? Je n'ai pas bien compris (zhuh neh pah bee-AHN kohm-PREE). Pourriez-vous (poo-ryeh-voo) répéter (reh-peh-TEH), s'il vous plaît ? — Pardon? I didn't quite understand. Could you repeat, please?"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dlg-th-post-office-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมคะ/ครับวันนี้?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมคะ/ครับวันนี้?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ซื้อแสตมป์",
+            "แสตมป์"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "สอบถาม",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee krap/ka, mee arai hai chuay mai ka/krap wan nee? — Hello. How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "จะส่งพัสดุไปที่ไหนครับ/คะ แล้วพอจะทราบน้ำหนักคร่าวๆ ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ต่างประเทศ",
+            "ต่างชาติ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "น้ำหนัก"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja song pa-sa-du pai tee nai krap/ka? Laew por ja saap nam-nak krao-krao mai krap/ka? — Where are you sending the parcel? And do you have an approximate weight?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "รับแสตมป์ประเภทไหนดีครับ/คะ หรือต้องการส่งจดหมายลงทะเบียนแบบไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "แสตมป์ในประเทศ",
+            "แสตมป์"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rup sa-taem pra-phet nai dee krap/ka reue tong-karn song jot-mai long-ta-bian baep nai krap/ka? — What kind of stamps would you like? Or what type of registered mail do you need?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "สำหรับพัสดุ มีทั้งแบบธรรมดาและด่วนพิเศษ EMS นะครับ/คะ หรือถ้าส่งต่างประเทศมีทางอากาศและทางเรือครับ/ค่ะ ต้องการแบบไหนและต้องการลงทะเบียนด้วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ems",
+            "ด่วน"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sam-rap pa-sa-du, mee tang baep tam-ma-da lae duan pi-set EMS na krap/ka. Reue ta song tang pra-tet mee tang ar-kard lae tang reua krap/ka. Tong-karn baep nai lae tong-karn long-ta-bian duay mai krap/ka? — For parcels, we have standard and EMS express. Or if sending internationally, we have airmail and surface mail. Which would you prefer, and do you want it registered?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ดีครับ/ค่ะ เดี๋ยวเราจะเตรียมใบศุลกากรให้กรอกนะครับ/คะ สินค้าในพัสดุคืออะไรครับ/คะ เพื่อความถูกต้องในการสำแดงครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ของใช้ส่วนตัว",
+            "เสื้อผ้า"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee krap/ka. Diao rao ja triam bai sool-la-ga-gorn hai grok na krap/ka. Sin-ka nai pa-sa-du kue a-rai krap/ka? Peua kwam took-tong nai gaan sam-daeng krap/ka. — Alright. We'll prepare the customs declaration form for you to fill out. What are the contents of the parcel, please, for accurate declaration?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "เรียบร้อยครับ/ค่ะ ถ้าอย่างนั้นขออนุญาตชั่งน้ำหนักและประเมินค่าบริการนะครับ/คะ สะดวกชำระด้วยวิธีไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ได้เลย"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Riab-roi krap/ka. Ta yang nan kor a-nu-yat chang nam-nak lae pra-mern ka bo-ri-gan na krap/ka. Sa-duak cham-ra duay wi-tee nai krap/ka? — Alright. In that case, please allow me to weigh it and calculate the service fee. How would you like to pay?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ไม่ค่อยได้ยินชัดเจน รบกวนพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor a-pai krap/ka. Mai koi dai-yin chat-jen. Ro-buan poot eek krang dai mai krap/ka? — Excuse me. I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่มาใช้บริการครับ/ค่ะ หากมีอะไรเพิ่มเติมสอบถามได้เลยนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kop kun tee ma chai bo-ri-gan krap/ka. Hak mee a-rai perm-term sorb-tam dai loey na krap/ka. — Thank you for using our service. Please feel free to ask if you have any further questions.",
+      "isTerminal": true
+    }
+  }
+}

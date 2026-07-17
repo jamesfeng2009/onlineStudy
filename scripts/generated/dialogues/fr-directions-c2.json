@@ -1,0 +1,221 @@
+{
+  "id": "dlg-fr-directions-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Demander son chemin en ville",
+  "opening": "Bonjour ! Puis-je vous aider ? Vous semblez un peu perdu(e).",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Puis-je vous aider ? Vous semblez un peu perdu(e).",
+      "branches": [
+        {
+          "keywords": [
+            "directions",
+            "chercher",
+            "trouver",
+            "aller",
+            "musée"
+          ],
+          "nextTurnId": "t2_mode_or_distance"
+        },
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "promener",
+            "regarder"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bon-ZHOOR)! Puis-je vous aider (pwee-zhuh voo zay-DAY)? Vous semblez un peu perdu(e) (voo sahm-BLAY uhn puh pehr-DEW)!"
+    },
+    "t2_mode_or_distance": {
+      "id": "t2_mode_or_distance",
+      "prompt": "Ah, le Musée des Beaux-Arts ? Excellent choix ! Pour y aller, vous préférez marcher ou prendre les transports en commun ? Ou peut-être voulez-vous connaître la distance et le temps de trajet avant de vous décider ?",
+      "branches": [
+        {
+          "keywords": [
+            "pied",
+            "marcher"
+          ],
+          "nextTurnId": "t3_walk"
+        },
+        {
+          "keywords": [
+            "bus",
+            "métro",
+            "tram",
+            "transport"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "distance",
+            "temps",
+            "loin",
+            "combien"
+          ],
+          "nextTurnId": "t3_distance_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, le Musée des Beaux-Arts (ah, luh moo-ZAY day boh-ZAR)? Excellent choix (ek-seh-LANT SHWAH)! Pour y aller (poor ee ah-LAY), vous préférez marcher (voo preh-fay-RAY mar-SHAY) ou prendre les transports en commun (oo prahndr lay trahns-POR ahn koh-MUN)? Ou peut-être voulez-vous connaître la distance et le temps de trajet (oo puh-TEHTR voo-lay-voo koh-NEHTR lah dee-STAHNS ay luh tahn duh tra-ZHEH) avant de vous décider (ah-VAHN duh voo day-SEE-day)?"
+    },
+    "t3_distance_info": {
+      "id": "t3_distance_info",
+      "prompt": "Alors, à pied, comptez une bonne vingtaine de minutes, tranquillement. En bus, c'est plutôt un quart d'heure, selon le trafic. Cela vous aide à choisir entre marcher ou prendre le bus ?",
+      "branches": [
+        {
+          "keywords": [
+            "pied",
+            "marcher"
+          ],
+          "nextTurnId": "t3_walk"
+        },
+        {
+          "keywords": [
+            "bus",
+            "transport",
+            "métro"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alors (ah-LOR), à pied (ah pyay), comptez une bonne vingtaine de minutes (kohn-TAY oon bonh van-TEN duh mee-NOOT), tranquillement (trahn-KEE-yuh-MAHN). En bus (ahn boos), c'est plutôt un quart d'heure (seh ploo-TOH uhn kar DUHR), selon le trafic (suh-LOHN luh tra-FEEK). Cela vous aide à choisir entre marcher ou prendre le bus (suh-LAH voo zed ah shwah-ZEER ahn-truh mar-SHAY oo prahndr luh boos)?"
+    },
+    "t3_walk": {
+      "id": "t3_walk",
+      "prompt": "D'accord, à pied c'est une petite trotte, mais tout à fait faisable. Prenez cette rue tout droit, puis tournez à la deuxième à gauche après la boulangerie Paul. Vous verrez le musée juste après le square, sur votre droite.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "parfait",
+            "super"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "boulangerie",
+            "paul",
+            "clarifier",
+            "plus",
+            "lentement",
+            "repéter",
+            "loin"
+          ],
+          "nextTurnId": "t4_clarify_generic"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (dah-KOR), à pied c'est une petite trotte (ah pyay seh-toon puh-TEET TROT), mais tout à fait faisable (meh too ah feh feh-ZAH-bluh). Prenez cette rue tout droit (preh-NAY set roo too DRWAH), puis tournez à la deuxième à gauche (pwee toor-NAY ah lah duh-ZYEM ah GOHSH) après la boulangerie Paul (ah-PREH lah boo-lahn-zhuh-REE Paul). Vous verrez le musée juste après le square (voo veh-RAY luh moo-ZAY joost ah-PREH luh SKWAR), sur votre droite (soor voh-truh DRWAT)."
+    },
+    "t3_transport": {
+      "id": "t3_transport",
+      "prompt": "Pour les transports, c'est plus simple. Prenez le bus 42, arrêt 'Châtelet - Les Halles', juste ici. Il vous déposera devant l'entrée du musée. Le trajet prend une quinzaine de minutes, hors embouteillages bien sûr.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "parfait",
+            "super"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "billet",
+            "horaire",
+            "prix",
+            "acheter",
+            "frequent",
+            "clarifier",
+            "plus",
+            "lentement",
+            "repéter"
+          ],
+          "nextTurnId": "t4_clarify_generic"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour les transports (poor lay trahns-POR), c'est plus simple (seh ploo SAM-pluh). Prenez le bus 42 (preh-NAY luh boos ka-rahnt-duh), arrêt 'Châtelet - Les Halles' (ah-REH sha-tuh-LAY lay al), juste ici (zhoost ee-SEE). Il vous déposera (eel voo day-poh-zuh-RAH) devant l'entrée du musée (duh-VAHN lahn-TRAY doo moo-ZAY). Le trajet prend une quinzaine de minutes (luh tra-ZHEH prahn een kan-ZEN duh mee-NOOT), hors embouteillages bien sûr (or ahn-boo-tee-YAZH byin SOOR)."
+    },
+    "t4_clarify_generic": {
+      "id": "t4_clarify_generic",
+      "prompt": "Pardon, pourriez-vous préciser ce que vous souhaiteriez que je reformule ou que j'explique davantage ? S'agit-il du chemin à pied, des informations sur le bus, ou d'autre chose ?",
+      "branches": [
+        {
+          "keywords": [
+            "pied",
+            "marcher",
+            "chemin",
+            "rue",
+            "boulangerie"
+          ],
+          "nextTurnId": "t3_walk"
+        },
+        {
+          "keywords": [
+            "bus",
+            "transport",
+            "ticket",
+            "horaire",
+            "prix"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "autre",
+            "non",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pardon (par-DOHN), pourriez-vous préciser (poo-ryay-voo preh-SEE-zay) ce que vous souhaiteriez (suh kuh voo sweh-tuh-RYAY) que je reformule (kuh zhuh ruh-for-MYOOL) ou que j'explique davantage (oo kuh zheks-PLEEK dah-vahn-TAZH)? S'agit-il du chemin à pied (sa-zhee-TEEL doo shuh-MANH ah pyay), des informations sur le bus (day zan-for-ma-SYON soor luh boos), ou d'autre chose (oo dohtr SHOHZ)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien compris ce que vous avez dit.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (par-DOHN)? Pourriez-vous répéter (poo-ryay-voo ray-pay-TAY), s'il vous plaît (seel voo PLEH)? Je n'ai pas bien compris ce que vous avez dit (zhuh nay pah byin kohn-PREE suh kuh voo za-VAY dee)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien ! Bonne journée et profitez bien de votre visite au musée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien (duh RYEN)! Bonne journée (bon-nuh zhoor-NAY) et profitez bien de votre visite au musée (eh proh-fee-TAY byin duh voh-truh vee-ZEET oh moo-ZAY)!",
+      "isTerminal": true
+    }
+  }
+}

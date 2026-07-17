@@ -1,0 +1,312 @@
+{
+  "id": "dlg-de-small-talk-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Small Talk auf einer Veranstaltung",
+  "opening": "Na, wie gefällt es dir hier? Ich finde die Atmosphäre wirklich gelungen, obwohl ich zugeben muss, dass ich anfangs etwas skeptisch war. Hast du einen guten Abend bisher?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Na, wie gefällt es dir hier? Ich finde die Atmosphäre wirklich gelungen, obwohl ich zugeben muss, dass ich anfangs etwas skeptisch war. Hast du einen guten Abend bisher?",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "schön",
+            "toll",
+            "gefällt",
+            "interessant",
+            "neu"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na — Nah, wie gefällt es dir hier — vee guh-FELT es deer heer? Ich finde die Atmosphäre wirklich gelungen — Ish FIN-duh dee At-mos-FÄ-ruh VIRK-lish guh-LUN-gen, obwohl ich zugeben muss, dass ich anfangs etwas skeptisch war — OP-wohl ish TSOO-geh-ben moos, das ish AN-fangs ET-vas SKEP-tish var. Hast du einen guten Abend bisher — Hast doo AY-nen GOO-ten AH-bent bis-HER? — So, how do you like it here? I find the atmosphere really successful, although I must admit I was a bit skeptical at first. Are you having a good evening so far?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Das freut mich zu hören! Es ist immer wieder erfrischend, neue Leute kennenzulernen. Was machst du denn so, wenn du nicht gerade auf solchen Veranstaltungen unterwegs bist? Hast du bestimmte Hobbys oder Leidenschaften, denen du nachgehst?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "bücher",
+            "literatur",
+            "schreiben"
+          ],
+          "nextTurnId": "t3_lesen"
+        },
+        {
+          "keywords": [
+            "sport",
+            "fitness",
+            "wandern",
+            "yoga",
+            "training"
+          ],
+          "nextTurnId": "t3_sport"
+        },
+        {
+          "keywords": [
+            "kochen",
+            "backen",
+            "essen",
+            "rezepte"
+          ],
+          "nextTurnId": "t3_kochen"
+        },
+        {
+          "keywords": [
+            "reisen",
+            "städtereisen",
+            "urlaub",
+            "entdecken"
+          ],
+          "nextTurnId": "t3_reisen"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das freut mich zu hören — Das froyt mish tsoo HER-en! Es ist immer wieder erfrischend — es ist IM-mer VEE-duh er-FRISH-end, neue Leute kennenzulernen — NOY-e LOY-te KEN-nen-tsoo-ler-nen. Was machst du denn so — Vas machst doo den zo, wenn du nicht gerade auf solchen Veranstaltungen unterwegs bist — ven doo nisht guh-RAH-de auf ZOL-shen Fair-AN-stal-tun-gen UN-ter-vegs bist? Hast du bestimmte Hobbys oder Leidenschaften — Hast doo be-SHPIM-te HOB-bys OH-der LIGH-den-shaf-ten, denen du nachgehst — DE-nen doo NACH-gehst? — I'm glad to hear that! It's always refreshing to meet new people. What do you do when you're not at events like these? Do you have any specific hobbies or passions you pursue?"
+    },
+    "t3_lesen": {
+      "id": "t3_lesen",
+      "prompt": "Ach, das ist ja toll! Ich lese auch sehr gerne, auch wenn mir im Alltag manchmal die Zeit dafür fehlt. Hast du denn gerade etwas Spannendes 'am Start' oder ein Genre, das dich besonders fesselt?",
+      "branches": [
+        {
+          "keywords": [
+            "roman",
+            "thriller",
+            "fantasy",
+            "sachbuch",
+            "autor",
+            "empfehlung",
+            "geschichte"
+          ],
+          "nextTurnId": "t4_detail"
+        },
+        {
+          "keywords": [
+            "keine",
+            "nichts",
+            "gerade",
+            "allgemein",
+            "egal",
+            "entspannung"
+          ],
+          "nextTurnId": "t4_allgemein"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach — Ach, das ist ja toll — das ist ya tol! Ich lese auch sehr gerne — Ish LEH-zeh ouch zeer GER-ne, auch wenn mir im Alltag manchmal die Zeit dafür fehlt — ouch ven meer im AL-tag MANCH-mal dee Tsayt da-FER fehlt. Hast du denn gerade etwas Spannendes 'am Start' — Hast doo den guh-RAH-de ET-vas SHPAN-nen-des am SHTART, oder ein Genre — OH-der ayn SHON-ruh, das dich besonders fesselt — das dish be-ZON-ders FES-selt? — Oh, that's great! I also love reading, even if I sometimes lack the time for it in everyday life. Do you have anything exciting 'on the go' right now, or a genre that particularly captivates you?"
+    },
+    "t3_sport": {
+      "id": "t3_sport",
+      "prompt": "Sportlich, sportlich! Das ist bewundernswert, ich muss mich da immer ein bisschen überwinden. Aber ich merke, wie gut es tut. Welche Sportart betreibst du denn bevorzugt, oder gibt es da einen besonderen Anreiz für dich?",
+      "branches": [
+        {
+          "keywords": [
+            "laufen",
+            "joggen",
+            "marathon",
+            "schwimmen",
+            "radfahren",
+            "klettern",
+            "mannschaftssport"
+          ],
+          "nextTurnId": "t4_detail"
+        },
+        {
+          "keywords": [
+            "balance",
+            "bewegung",
+            "gesundheit",
+            "fitness",
+            "wohlbefinden",
+            "ausgleich"
+          ],
+          "nextTurnId": "t4_allgemein"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sportlich, sportlich! Das ist bewundernswert, ich muss mich da immer ein bisschen überwinden. Aber ich merke, wie gut es tut. Welche Sportart betreibst du denn bevorzugt, oder gibt es da einen besonderen Anreiz für dich?"
+    },
+    "t3_kochen": {
+      "id": "t3_kochen",
+      "prompt": "Ah, ein Genussmensch! Kochen ist ja auch eine wunderbare Form der Kreativität. Hast du eine bestimmte Küche, die du besonders gerne ausprobierst, oder ein Gericht, das immer gelingt?",
+      "branches": [
+        {
+          "keywords": [
+            "italienisch",
+            "asiatisch",
+            "vegan",
+            "vegetarisch",
+            "backen",
+            "dessert",
+            "saisonale"
+          ],
+          "nextTurnId": "t4_detail"
+        },
+        {
+          "keywords": [
+            "experimentieren",
+            "ausprobieren",
+            "einfach",
+            "schnell",
+            "gesund",
+            "nachhaltig"
+          ],
+          "nextTurnId": "t4_allgemein"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, ein Genussmensch! Kochen ist ja auch eine wunderbare Form der Kreativität. Hast du eine bestimmte Küche, die du besonders gerne ausprobierst, oder ein Gericht, das immer gelingt?"
+    },
+    "t3_reisen": {
+      "id": "t3_reisen",
+      "prompt": "Das kann ich sehr gut nachvollziehen! Neue Orte zu entdecken, ist ungemein bereichernd. Gibt es ein Reiseziel, das dich kürzlich besonders beeindruckt hat, oder hast du noch einen unerfüllten Reisewunsch auf deiner Liste?",
+      "branches": [
+        {
+          "keywords": [
+            "europa",
+            "asien",
+            "amerika",
+            "natur",
+            "stadt",
+            "kultur",
+            "strand",
+            "berge"
+          ],
+          "nextTurnId": "t4_detail"
+        },
+        {
+          "keywords": [
+            "abenteuer",
+            "entspannung",
+            "erholung",
+            "neues",
+            "flexibilität",
+            "spontan"
+          ],
+          "nextTurnId": "t4_allgemein"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das kann ich sehr gut nachvollziehen! Neue Orte zu entdecken, ist ungemein bereichernd. Gibt es ein Reiseziel, das dich kürzlich besonders beeindruckt hat, oder hast du noch einen unerfüllten Reisewunsch auf deiner Liste?"
+    },
+    "t4_detail": {
+      "id": "t4_detail",
+      "prompt": "Das klingt wirklich faszinierend! Gerade bei solchen Nischenthemen finde ich es manchmal schwierig, die Spreu vom Weizen zu trennen, so viel Auswahl gibt es da. Was macht deine Präferenz für dich so besonders?",
+      "branches": [
+        {
+          "keywords": [
+            "geschichte",
+            "charakter",
+            "stil",
+            "herausforderung",
+            "zutaten",
+            "erlebnis",
+            "atmosphäre",
+            "gemeinschaft"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "was",
+            "du",
+            "deine",
+            "interesse"
+          ],
+          "nextTurnId": "t5_askback"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt wirklich faszinierend! Gerade bei solchen Nischenthemen finde ich es manchmal schwierig, die Spreu vom Weizen zu trennen, so viel Auswahl gibt es da. Was macht deine Präferenz für dich so besonders?"
+    },
+    "t4_allgemein": {
+      "id": "t4_allgemein",
+      "prompt": "Das kenne ich nur zu gut, manchmal braucht man einfach eine Auszeit ohne konkrete Verpflichtungen. Aber selbst beim 'einfach nur Sein' gibt es ja oft kleine Freuden. Was schätzt du daran am meisten?",
+      "branches": [
+        {
+          "keywords": [
+            "ruhe",
+            "entspannung",
+            "gelassenheit",
+            "stressfrei",
+            "abschalten"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das kenne ich nur zu gut, manchmal braucht man einfach eine Auszeit ohne konkrete Verpflichtungen. Aber selbst beim 'einfach nur Sein' gibt es ja oft kleine Freuden. Was schätzt du daran am meisten?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Absolut nachvollziehbar! Es war wirklich eine angeregte Unterhaltung und die Zeit ist wie im Flug vergangen. Ich freue mich, dass wir uns hier getroffen haben. Ich würde mich gern noch weiter unterhalten, aber ich sehe, dass ich mich langsam auf den Weg machen muss.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ebenso",
+            "schön",
+            "gerne",
+            "angenehm",
+            "nett"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolut nachvollziehbar! Es war wirklich eine angeregte Unterhaltung und die Zeit ist wie im Flug vergangen. Ich freue mich, dass wir uns hier getroffen haben. Ich würde mich gern noch weiter unterhalten, aber ich sehe, dass ich mich langsam auf den Weg machen muss."
+    },
+    "t5_askback": {
+      "id": "t5_askback",
+      "prompt": "Eine gute Frage! Ich persönlich schätze bei Büchern die Tiefe psychologischer Charakterstudien und bei Reisen die Authentizität lokaler Kulturen. Aber ich merke, wie die Zeit vergeht. Es war wirklich eine angeregte Unterhaltung, und ich freue mich, dass wir uns hier getroffen haben. Ich würde mich gern noch weiter unterhalten, aber ich sehe, dass ich mich langsam auf den Weg machen muss.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ebenso",
+            "schön",
+            "gerne",
+            "angenehm",
+            "nett"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eine gute Frage! Ich persönlich schätze bei Büchern die Tiefe psychologischer Charakterstudien und bei Reisen die Authentizität lokaler Kulturen. Aber ich merke, wie die Zeit vergeht. Es war wirklich eine angeregte Unterhaltung, und ich freue mich, dass wir uns hier getroffen haben. Ich würde mich gern noch weiter unterhalten, aber ich sehe, dass ich mich langsam auf den Weg machen muss."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Ich habe dich leider nicht ganz verstanden. Könntest du das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "können",
+            "ja",
+            "wiederholen",
+            "bitte",
+            "gerne"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Wie bitte — Vee BIT-tuh? Ich habe dich leider nicht ganz verstanden — Ish HAH-buh dish LIGH-duh nisht gants fair-SHTAN-den. Könntest du das bitte noch einmal wiederholen — KERN-test doo das BIT-tuh nock AYN-mal VEE-duh-hoh-len? — Pardon? I'm afraid I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Mach's gut und vielleicht bis bald!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Mach's gut — Mach's goot — und vielleicht bis bald — oont fee-LYCHT bis balt! — Take care and maybe see you soon!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "dlg-it-bank-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Allo sportello bancario",
+  "opening": "Buongiorno, benvenuto in banca. Come posso aiutarla oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto in banca. Come posso aiutarla oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "aprire",
+            "conto"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "cambiare",
+            "soldi",
+            "valuta"
+          ],
+          "nextTurnId": "t3_exchange"
+        },
+        {
+          "keywords": [
+            "bancomat",
+            "problema"
+          ],
+          "nextTurnId": "t4_atm"
+        },
+        {
+          "keywords": [
+            "bonifico",
+            "trasferire"
+          ],
+          "nextTurnId": "t5_transfer"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno — Good morning, benvenuto in banca — welcome to the bank. Come posso aiutarla oggi? — How can I help you today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ok",
+            "certo"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Certo, per aprire un conto. È interessato a un conto corrente per le operazioni quotidiane o a un conto di risparmio?",
+      "branches": [
+        {
+          "keywords": [
+            "corrente",
+            "quotidiane"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo — Certainly, per aprire un conto — to open an account. È interessato a un conto corrente — Are you interested in a current account for daily operations, o a un conto di risparmio? — or a savings account?"
+    },
+    "t3_exchange": {
+      "id": "t3_exchange",
+      "prompt": "Capisco, vuole cambiare del denaro. Che valuta desidera cambiare e in che quantità, approssimativamente?",
+      "branches": [
+        {
+          "keywords": [
+            "dollari",
+            "usd",
+            "sterline",
+            "gbp"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco — I understand, vuole cambiare del denaro — you want to exchange money. Che valuta desidera cambiare — What currency do you wish to exchange, e in che quantità, approssimativamente? — and in what quantity, approximately?"
+    },
+    "t4_atm": {
+      "id": "t4_atm",
+      "prompt": "Mi dispiace per l'inconveniente con il bancomat. Qual è il problema esattamente? La carta è stata inghiottita, c'è un errore nel saldo o deve resettare il PIN?",
+      "branches": [
+        {
+          "keywords": [
+            "inghiottita",
+            "mangiata",
+            "bloccata"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dispiace per l'inconveniente — I'm sorry for the inconvenience con il bancomat — with the ATM. Qual è il problema esattamente? — What is the problem exactly? La carta è stata inghiottita — Has the card been swallowed, c'è un errore nel saldo — is there an error in the balance, o deve resettare il PIN? — or do you need to reset the PIN?"
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "Un bonifico, certo. Si tratta di un bonifico nazionale o internazionale? E che importo desidera trasferire?",
+      "branches": [
+        {
+          "keywords": [
+            "nazionale",
+            "italia"
+          ],
+          "nextTurnId": "t_processing"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un bonifico, certo. — A bank transfer, certainly. Si tratta di un bonifico nazionale o internazionale? — Is it a national or international transfer? E che importo desidera trasferire? — And what amount do you wish to transfer?"
+    },
+    "t_processing": {
+      "id": "t_processing",
+      "prompt": "Molto bene. Per procedere, avremo bisogno di alcuni dettagli aggiuntivi e documenti. Potrebbe seguirmi allo sportello dedicato, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "certo",
+            "volentieri"
+          ],
+          "nextTurnId": "t-end_generic_nextsteps"
+        },
+        {
+          "keywords": [
+            "",
+            "altro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Molto bene. — Very good. Per procedere — To proceed, avremo bisogno di alcuni dettagli aggiuntivi e documenti — we will need some additional details and documents. Potrebbe seguirmi allo sportello dedicato, per favore? — Could you please follow me to the dedicated counter?"
+    },
+    "t-end_generic_nextsteps": {
+      "id": "t-end_generic_nextsteps",
+      "prompt": "Perfetto. La ringrazio per le informazioni, ora possiamo procedere con la sua richiesta. Le auguro una buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end_generic_nextsteps",
+      "promptTranslation": "Perfetto. — Perfect. La ringrazio per le informazioni — Thank you for the information, ora possiamo procedere con la sua richiesta — now we can proceed with your request. Le auguro una buona giornata! — I wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

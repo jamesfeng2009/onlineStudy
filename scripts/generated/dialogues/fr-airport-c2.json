@@ -1,0 +1,159 @@
+{
+  "id": "dlg-fr-airport-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Enregistrement à l'aéroport",
+  "opening": "Bonjour. Votre passeport et votre billet électronique, s'il vous plaît.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour. Votre passeport et votre billet électronique, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "voici",
+            "tient",
+            "passeport",
+            "billet"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bagages",
+            "enregistrer"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "question",
+            "excusez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bon-zhoor). Your passport and e-ticket, please."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Merci. Avez-vous des bagages à enregistrer aujourd'hui, ou voyagez-vous léger avec un simple bagage cabine ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "bagages",
+            "valises",
+            "soute"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "non",
+            "seulement",
+            "cabine",
+            "léger"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci (mair-see). Do you have any luggage to check in today, or are you traveling light with just a carry-on?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr, nous allons y venir. Mais d'abord, pourriez-vous me présenter vos documents, s'il vous plaît ? C'est le protocole habituel.",
+      "branches": [
+        {
+          "keywords": [
+            "voici",
+            "tient",
+            "passeport",
+            "billet"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr (byang-soor), we'll get to that. But first, could you please show me your documents? It's the usual protocol."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien. Concernant vos bagages, avez-vous des articles prohibés, des objets de valeur ou des liquides de plus de cent millilitres dans vos bagages de soute ? Et sont-ils conformes aux dimensions standards, ou avons-nous des bagages hors format ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "rien",
+            "ok",
+            "conforme"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien (tray byang). Regarding your luggage, do you have any prohibited items, valuables, or liquids over 100 milliliters in your checked luggage? And are they compliant with standard dimensions, or do we have oversized luggage?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Excellent. Voici votre carte d'embarquement. Votre porte est la B23 et l'embarquement débutera à 14h30. Veuillez noter que la sécurité est particulièrement dense aujourd'hui et qu'un comptoir spécial est disponible pour les bagages hors format. Prévoyez large pour toutes ces étapes. Bon voyage !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir",
+            "ok",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent (ek-say-lahn). Here is your boarding pass. Your gate is B23 and boarding will start at 2:30 PM. Please note that security is particularly busy today and a special counter is available for oversized luggage. Allow plenty of time for all these steps. Have a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je vous demande pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien saisi votre requête.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I beg your pardon? Could you please repeat, please? I didn't quite catch your request."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et bon vol ! Nous espérons vous revoir bientôt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye and have a good flight! We hope to see you again soon.",
+      "isTerminal": true
+    }
+  }
+}

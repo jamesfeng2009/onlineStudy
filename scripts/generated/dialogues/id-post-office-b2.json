@@ -1,0 +1,123 @@
+{
+  "id": "dlg-id-post-office-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "Di Kantor Pos",
+  "opening": "Selamat siang. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "paket",
+            "surat"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "beli",
+            "perangko"
+          ],
+          "nextTurnId": "t2_stamps"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Selamat siang (Sělamat siang) — Good afternoon. Ada yang bisa saya bantu? (Ada yang bisa saya bantu?) — How may I help you?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Baik, untuk kiriman. Ini tujuannya ke mana? Domestik atau luar negeri?",
+      "branches": [
+        {
+          "keywords": [
+            "domestik",
+            "dalamnegeri"
+          ],
+          "nextTurnId": "t3_domestic_service"
+        },
+        {
+          "keywords": [
+            "internasional",
+            "luarnegeri"
+          ],
+          "nextTurnId": "t3_international_customs"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Baik, untuk kiriman. (Baik, untuk kiriman.) — Okay, for a shipment. Ini tujuannya ke mana? Domestik atau luar negeri? (Ini tujuannya ke mana? Domestik atau luar negeri?) — Where is it going? Domestic or international?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Tentu. Anda butuh perangko untuk apa? Surat domestik, internasional, atau mungkin perangko koleksi?",
+      "branches": [
+        {
+          "keywords": [
+            "domestik",
+            "biasa"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tentu. (Tentu.) — Certainly. Anda butuh perangko untuk apa? (Anda butuh perangko untuk apa?) — What kind of stamps do you need? Surat domestik, internasional, atau mungkin perangko koleksi? (Surat domestik, internasional, atau mungkin perangko koleksi?) — Domestic, international letters, or perhaps collector's stamps?"
+    },
+    "t3_domestic_service": {
+      "id": "t3_domestic_service",
+      "prompt": "Untuk pengiriman domestik, apakah Anda ingin layanan reguler, kilat, atau terdaftar? Dan apakah perlu asuransi?",
+      "branches": [
+        {
+          "keywords": [
+            "reguler",
+            "biasa"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Untuk pengiriman domestik, (Untuk pengiriman domestik,) — For domestic shipping, apakah Anda ingin layanan reguler, kilat, atau terdaftar? (apakah Anda ingin layanan reguler, kilat, atau terdaftar?) — do you want regular, express, or registered service? Dan apakah perlu asuransi? (Dan apakah perlu asuransi?) — And is insurance needed?"
+    },
+    "t3_international_customs": {
+      "id": "t3_international_customs",
+      "prompt": "Untuk kiriman internasional, kami butuh formulir pabean. Apakah Anda sudah mengisinya atau perlu bantuan?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "isi"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Untuk kiriman internasional, (Untuk kiriman internasional,) — For international shipments, kami butuh formulir pabean. (kami butuh formulir pabean.) — we need a customs form. Apakah Anda sudah mengisinya atau perlu bantuan? (Apakah Anda sudah mengisinya atau perlu bantuan?) — Have you filled it out or do you need help?"
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, bisa diulang? (Maaf, bisa diulang?) — Sorry, could you repeat that? Saya kurang jelas. (Saya kurang jelas.) — I didn't quite catch it."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Baik, terima kasih sudah berkunjung ke kantor pos kami. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Baik, terima kasih sudah berkunjung ke kantor pos kami. (Baik, terima kasih sudah berkunjung ke kantor pos kami.) — Okay, thank you for visiting our post office. Selamat jalan! (Selamat jalan!) — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

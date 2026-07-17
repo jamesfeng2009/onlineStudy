@@ -1,0 +1,157 @@
+{
+  "id": "dlg-th-bank-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "บริการธนาคาร",
+  "opening": "สวัสดีค่ะ มีอะไรให้ช่วยคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ มีอะไรให้ช่วยคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เปิดบัญชี",
+            "บัญชีใหม่"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "โอนเงิน",
+            "โอน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เอทีเอ็ม",
+            "บัตรเอทีเอ็ม",
+            "บัตรกดเงิน",
+            "ตู้เอทีเอ็ม"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee ka, mee a-rai hai chuay ka? — Hello, how may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ได้ค่ะ ต้องการเปิดบัญชีประเภทไหนคะ เช่น บัญชีออมทรัพย์ หรือบัญชีกระแสรายวัน?",
+      "branches": [
+        {
+          "keywords": [
+            "ออมทรัพย์",
+            "บัญชีเงินฝาก"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai ka, tong-gaan pbert ban-chee pra-phet nai ka chên ban-chee aom-sap reū ban-chee gra-sae raai-wan? — Okay, what type of account would you like to open? For example, a savings account or a current account?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "การโอนเงินใช่ไหมคะ ต้องการโอนไปบัญชีธนาคารอื่น หรือโอนภายในธนาคารของเราคะ และยอดเงินเท่าไหร่คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ต่างธนาคาร",
+            "ธนาคารอื่น"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gaan ohn ngern chai mai ka? Tong-gaan ohn bpai ban-chee ta-na-kaan eun reū ohn paai-nai ta-na-kaan kōng rao ka, lae yâwt ngern tâo-rai ka? — Transferring money, is that right? Do you want to transfer to another bank or within our bank, and what is the amount?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เข้าใจค่ะ บัตรเอทีเอ็มมีปัญหาอย่างไรคะ บัตรถูกยึด ถอนเงินไม่ได้ หรือลืมรหัสผ่านคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรถูกยึด",
+            "โดนยึด"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kâo-jai ka, bat eh-tee-em mee pan-haa yàang-rai ka? Bat tùuk yeút, tŏn ngern mâi dâai reū leum ra-hàt pâan ka? — I understand. What kind of problem are you having with your ATM card? Was the card retained, can't withdraw money, or forgot your PIN?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ไม่ว่าจะเป็นบัญชีประเภทไหน ทางเราต้องขอเอกสารยืนยันตัวตน เช่น บัตรประชาชน หรือหนังสือเดินทางค่ะ พร้อมหรือยังคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "พร้อม",
+            "มีเอกสาร",
+            "ใช่"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mâi wâa ja bpen ban-chee pra-phet nai, taang rao tōng kŏr ehk-ga-sǎan yeun-yan dtua-dton chên bat pra-chaa-chon reū nang-sĕu dern-taang ka. Prôm reū yang ka? — Regardless of the account type, we will need identification documents such as your ID card or passport. Are you ready?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ขอบคุณค่ะ เพื่อความรวดเร็ว กรุณาเตรียมสมุดบัญชี หรือข้อมูลบัญชีปลายทาง พร้อมบัตรประชาชนให้พร้อมนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "พร้อม",
+            "มีข้อมูล",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kòp-kun ka. Peûa kwaam rûat-reo, ga-ru-naa dtriam sa-mùt ban-chee reū kôom-muun ban-chee bplaai-taang prôm bat pra-chaa-chon hâi prôm ná ka. — Thank you. For quick service, please prepare your passbook or destination account information, along with your ID card."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "เข้าใจแล้วค่ะ รบกวนนำบัตรเอทีเอ็มและบัตรประชาชนมาที่เคาน์เตอร์ได้เลยนะคะ เจ้าหน้าที่จะช่วยเหลือท่านต่อค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ได้ค่ะ",
+            "ไปเคาน์เตอร์",
+            "โอเค"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kâo-jai laéw ka. Róp-guan nam bat eh-tee-em laé bat pra-chaa-chon maa têe kâo-dtêr dâai leoi ná ka. Jâo-nâa-têe ja chûay-leua tâan dtò ka. — I understand. Please bring your ATM card and ID card to the counter. Our staff will assist you further."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ กรุณาพูดอีกครั้งได้ไหมคะ ดิฉันไม่ค่อยเข้าใจค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr a-pai ka, ga-ru-naa pôot èek kráng dâai mai ka? Di-chán mâi kôi kâo-jai ka. — I apologize, could you please repeat that? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการธนาคารของเรานะคะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kòp-kun têe chái bpe-ri-gaan ta-na-kaan kōng rao ná ka. Sa-wàt-dee ka. — Thank you for using our bank services. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "dlg-en-interview-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Job Interview: Mastery Level",
+  "opening": "Good morning/afternoon, [Applicant's Name]. Thanks for coming in. Let's kick things off, shall we? Could you start by giving us a brief overview of your background and what brings you here today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning/afternoon, [Applicant's Name]. Thanks for coming in. Let's kick things off, shall we? Could you start by giving us a brief overview of your background and what brings you here today?",
+      "branches": [
+        {
+          "keywords": [
+            "experience",
+            "background",
+            "skills",
+            "qualifications"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "motivation",
+            "passion",
+            "interest",
+            "whyhere"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning/afternoon, [Applicant's Name]. Thanks for coming in. Let's kick things off, shall we? (This phrase, 'kick things off', is an idiomatic expression meaning 'to start something'.) Could you start by giving us a brief overview of your background and what brings you here today?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "It's excellent to hear about your passion. Could you now perhaps connect the dots a bit more for us, highlighting how your professional background has prepared you for this specific role?",
+      "branches": [
+        {
+          "keywords": [
+            "experience",
+            "relevant",
+            "projects",
+            "achievements",
+            "skills"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's excellent to hear about your passion. Could you now perhaps connect the dots a bit more for us, (to 'connect the dots' is an idiom meaning to understand how different facts or ideas are related) highlighting how your professional background has prepared you for this specific role?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That's a solid foundation. Could you elaborate a bit more on how your previous experience specifically aligns with the requirements outlined in our job description for this role?",
+      "branches": [
+        {
+          "keywords": [
+            "projects",
+            "achievements",
+            "results",
+            "impact"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a solid foundation. (Here, 'solid foundation' is an idiomatic phrase meaning a good, strong base or starting point.) Could you elaborate a bit more on how your previous experience specifically aligns with the requirements outlined in our job description for this role?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "It sounds like you've really honed your craft. Now, let's pivot a little. We all have areas we excel in and areas where we see room for growth. How would you articulate your primary strengths, and conversely, what would you identify as an area you're actively working to improve upon?",
+      "branches": [
+        {
+          "keywords": [
+            "strengths",
+            "leadership",
+            "problemsolving",
+            "adaptability"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It sounds like you've really honed your craft. (To 'hone your craft' is an idiom meaning to perfect or refine a skill over time.) Now, let's pivot a little. We all have areas we excel in and areas where we see room for growth. How would you articulate your primary strengths, and conversely, what would you identify as an area you're actively working to improve upon?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "That's a candid and thoughtful response. Just one more question before we wrap up our initial chat: Do you have any questions for me about the role or the company culture here?",
+      "branches": [
+        {
+          "keywords": [
+            "questions",
+            "ask",
+            "query"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "noquestions",
+            "none",
+            "satisfied",
+            "thankyou"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a candid and thoughtful response. (The word 'candid' means honest and direct. To 'wrap up' is a phrasal verb meaning to finish or conclude something.) Just one more question before we wrap up our initial chat: Do you have any questions for me about the role or the company culture here?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "That's a pertinent question. We pride ourselves on fostering a highly collaborative and innovative environment. To answer your query specifically: [Answer related to hypothetical question]. Is there anything else you'd like to know?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "none",
+            "thankyou",
+            "thatsall"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a pertinent question. (A 'pertinent question' is one that is relevant and to the point. 'We pride ourselves on' is a common expression to highlight something a company values.) We pride ourselves on fostering a highly collaborative and innovative environment. To answer your query specifically: [Answer related to hypothetical question]. Is there anything else you'd like to know?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you perhaps rephrase or articulate your thoughts a little more clearly for me?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. (A polite way to say 'I didn't understand'.) Could you perhaps rephrase or articulate your thoughts a little more clearly for me?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Excellent. That's all the questions I had for today. Thank you for your time, [Applicant's Name]. We'll be in touch regarding the next steps.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. That's all the questions I had for today. Thank you for your time, [Applicant's Name]. We'll be in touch regarding the next steps. (A standard professional closing to an interview, indicating the conversation is over.)",
+      "isTerminal": true
+    }
+  }
+}

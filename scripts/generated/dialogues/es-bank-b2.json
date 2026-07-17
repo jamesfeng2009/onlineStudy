@@ -1,0 +1,53 @@
+{
+  "id": "dlg-es-bank-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Asistencia bancaria",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "cajero",
+            "atm",
+            "problema",
+            "incidente",
+            "tarjeta"
+          ],
+          "nextTurnId": "t2_atm_issue"
+        }
+      ],
+      "fallbackBranchId": "t2_atm_issue",
+      "promptTranslation": "Buenos días — Good morning! ¿En qué puedo ayudarle hoy? — How can I help you today?"
+    },
+    "t2_atm_issue": {
+      "id": "t2_atm_issue",
+      "prompt": "Entiendo. ¿Podría ser más específico sobre lo sucedido con el cajero? ¿Fue un problema al retirar efectivo o la tarjeta se quedó dentro?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "tragó",
+            "quedó"
+          ],
+          "nextTurnId": "t3_card_swallowed"
+        }
+      ],
+      "fallbackBranchId": "t3_card_swallowed",
+      "promptTranslation": "Entiendo — I understand. ¿Podría ser más específico sobre lo sucedido con el cajero? — Could you be more specific about what happened with the ATM? ¿Fue un problema al retirar efectivo o la tarjeta se quedó dentro? — Was it a problem withdrawing cash or did the card stay inside?"
+    },
+    "t3_card_swallowed": {
+      "id": "t3_card_swallowed",
+      "prompt": "Oh, vaya, eso es un engorro. Para poder ayudarle, necesitaré su documento de identidad. ¿Es el titular de la tarjeta, verdad?",
+      "branches": [],
+      "fallbackBranchId": "t3_card_swallowed",
+      "promptTranslation": "Oh, vaya — Oh, dear, eso es un engorro — that's a hassle. Para poder ayudarle, necesitaré su documento de identidad — To help you, I'll need your ID. ¿Es el titular de la tarjeta, verdad? — You",
+      "isTerminal": true
+    }
+  }
+}

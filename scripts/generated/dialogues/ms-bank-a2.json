@@ -1,0 +1,393 @@
+{
+  "id": "dlg-ms-bank-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "Di Bank",
+  "opening": "Selamat pagi. Ada apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "bukaakaun",
+            "akaunbaru"
+          ],
+          "nextTurnId": "t2_buka_akaun"
+        },
+        {
+          "keywords": [
+            "tukarduit",
+            "tukarmatawang"
+          ],
+          "nextTurnId": "t2_tukar_wang"
+        },
+        {
+          "keywords": [
+            "masalahatm",
+            "atm"
+          ],
+          "nextTurnId": "t2_masalah_atm"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Ada apa yang boleh saya bantu? (How can I help you?)"
+    },
+    "t2_buka_akaun": {
+      "id": "t2_buka_akaun",
+      "prompt": "Baik. Anda ingin buka akaun jenis apa? Akaun simpanan atau akaun semasa?",
+      "branches": [
+        {
+          "keywords": [
+            "simpanan",
+            "akaunsimpanan"
+          ],
+          "nextTurnId": "t3_simpanan"
+        },
+        {
+          "keywords": [
+            "semasa",
+            "akaunsemasa"
+          ],
+          "nextTurnId": "t3_semasa"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright). Anda ingin buka akaun jenis apa? (What type of account do you want to open?) Akaun simpanan (savings account) atau akaun semasa (current account)?"
+    },
+    "t2_tukar_wang": {
+      "id": "t2_tukar_wang",
+      "prompt": "Tentu. Anda mahu tukar mata wang apa kepada Ringgit Malaysia?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "dolar",
+            "dolaramerika"
+          ],
+          "nextTurnId": "t3_usd"
+        },
+        {
+          "keywords": [
+            "eur",
+            "euro"
+          ],
+          "nextTurnId": "t3_eur"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (Certainly). Anda mahu tukar mata wang apa kepada Ringgit Malaysia? (What currency do you want to exchange to Malaysian Ringgit?)"
+    },
+    "t2_masalah_atm": {
+      "id": "t2_masalah_atm",
+      "prompt": "Maaf mendengarnya. Apakah masalahnya?",
+      "branches": [
+        {
+          "keywords": [
+            "kadtersekat",
+            "kadlekat"
+          ],
+          "nextTurnId": "t3_kad_tersekat"
+        },
+        {
+          "keywords": [
+            "takdapatkeluarkan",
+            "takbolehkeluar"
+          ],
+          "nextTurnId": "t3_tak_dapat_keluar_wang"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf mendengarnya (Sorry to hear that). Apakah masalahnya? (What is the problem?)"
+    },
+    "t3_simpanan": {
+      "id": "t3_simpanan",
+      "prompt": "Baik, untuk akaun simpanan, sila isi borang ini dan berikan dokumen pengenalan anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), for a savings account, please fill out this form and provide your identification documents."
+    },
+    "t3_semasa": {
+      "id": "t3_semasa",
+      "prompt": "Untuk akaun semasa, anda perlukan deposit permulaan RM500. Sila isi borang ini.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a current account, you need an initial deposit of RM500. Please fill out this form."
+    },
+    "t3_usd": {
+      "id": "t3_usd",
+      "prompt": "Berapa banyak dolar AS yang anda mahu tukar?",
+      "branches": [
+        {
+          "keywords": [
+            "seratus",
+            "satu_ratus",
+            "100"
+          ],
+          "nextTurnId": "t4_usd_amount"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How much US Dollars do you want to exchange?"
+    },
+    "t3_eur": {
+      "id": "t3_eur",
+      "prompt": "Berapa banyak Euro yang anda mahu tukar?",
+      "branches": [
+        {
+          "keywords": [
+            "seratus",
+            "satu_ratus",
+            "100"
+          ],
+          "nextTurnId": "t4_eur_amount"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How much Euro do you want to exchange?"
+    },
+    "t3_kad_tersekat": {
+      "id": "t3_kad_tersekat",
+      "prompt": "Sila berikan kad pengenalan anda. Saya akan hubungi juruteknik kami.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please provide your identification card. I will contact our technician."
+    },
+    "t3_tak_dapat_keluar_wang": {
+      "id": "t3_tak_dapat_keluar_wang",
+      "prompt": "Ada mesej ralat di skrin ATM? Adakah akaun anda mempunyai baki yang mencukupi?",
+      "branches": [
+        {
+          "keywords": [
+            "ada",
+            "ralat"
+          ],
+          "nextTurnId": "t4_ralat_atm"
+        },
+        {
+          "keywords": [
+            "baki",
+            "baki tak cukup"
+          ],
+          "nextTurnId": "t4_baki_atm"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Is there an error message on the ATM screen? Does your account have sufficient balance?"
+    },
+    "t4_usd_amount": {
+      "id": "t4_usd_amount",
+      "prompt": "Baik, kadar pertukaran hari ini ialah 4.50 Ringgit untuk 1 dolar AS. Sila serahkan wang anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, today's exchange rate is 4.50 Ringgit for 1 US Dollar. Please hand over your money."
+    },
+    "t4_eur_amount": {
+      "id": "t4_eur_amount",
+      "prompt": "Baik, kadar pertukaran hari ini ialah 5.20 Ringgit untuk 1 Euro. Sila serahkan wang anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, today's exchange rate is 5.20 Ringgit for 1 Euro. Please hand over your money."
+    },
+    "t4_ralat_atm": {
+      "id": "t4_ralat_atm",
+      "prompt": "Mesej ralat apa? Sila terangkan. Saya mungkin perlu menghubungi juruteknik.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "terangkan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What error message? Please explain. I might need to contact a technician."
+    },
+    "t4_baki_atm": {
+      "id": "t4_baki_atm",
+      "prompt": "Jika baki tidak mencukupi, anda tidak boleh mengeluarkan wang. Sila semak baki anda melalui perbankan dalam talian.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baiklah",
+            "semak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If the balance is insufficient, you cannot withdraw money. Please check your balance via online banking."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, can you repeat that? I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana datang ke bank kami. Selamat hari.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for coming to our bank. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

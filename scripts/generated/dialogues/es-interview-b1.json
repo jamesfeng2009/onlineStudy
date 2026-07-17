@@ -1,0 +1,106 @@
+{
+  "id": "dlg-es-interview-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "La Entrevista de Trabajo",
+  "opening": "Buenos días. Gracias por venir. Háblame un poco de ti.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buenos días. Gracias por venir. Háblame un poco de ti.",
+      "branches": [
+        {
+          "keywords": [
+            "experiencia",
+            "trabajo",
+            "anterior"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "personalidad",
+            "intereses",
+            "soy"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buenos días (BWEH-nos DEE-ahs). Gracias por venir (GRAH-syahs por veh-NEER). Háblame un poco de ti (AH-blah-meh oon POH-koh deh tee). — Good morning. Thank you for coming. Tell me a bit about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Entiendo. ¿Y qué experiencia o habilidades específicas tienes que crees que serían valiosas para este puesto?",
+      "branches": [
+        {
+          "keywords": [
+            "experiencia",
+            "puesto",
+            "proyecto",
+            "anterior"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entiendo (en-TYEN-doh). ¿Y qué experiencia (ee keh eks-peh-RYEN-syah) o habilidades (oh ah-bee-lee-DAH-des) específicas (es-peh-SEE-fee-kas) tienes (TYEH-nes) que crees (keh KREH-es) que serían (keh seh-REE-an) valiosas (bah-LYOH-sas) para este puesto (PAH-rah ES-teh PWEHS-toh)? — I see. And what specific experience or skills do you have that you think would be valuable for this position?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Muy bien. Ahora, ¿podrías compartirnos cuáles consideras que son tus principales fortalezas para un entorno de trabajo como el nuestro?",
+      "branches": [
+        {
+          "keywords": [
+            "resolución",
+            "problemas",
+            "iniciativa"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien (MWEE byen). Ahora (ah-OH-rah), ¿podrías (poh-DREE-as) compartirnos (kom-par-TEER-nos) cuáles (KWAH-les) consideras (kon-see-DEH-ras) que son (keh son) tus principales (toos preen-see-PAH-les) fortalezas (for-tah-LEH-sas) para un entorno (PAH-rah oon en-TOR-noh) de trabajo (deh trah-BAH-ho) como el nuestro (KOH-moh el NWEHS-tro)? — Very good. Now, could you share what you consider to be your main strengths for a work environment like ours?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gracias. Y como todos tenemos áreas de mejora, ¿podrías mencionar una debilidad y cómo trabajas para superarla o mejorarla?",
+      "branches": [
+        {
+          "keywords": [
+            "perfeccionista",
+            "detalles",
+            "impaciente"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gracias (GRAH-syahs). Y como (ee KOH-moh) todos (TOH-dos) tenemos (teh-NEH-mos) áreas (AH-reh-as) de mejora (deh meh-HO-rah), ¿podrías (poh-DREE-as) mencionar (men-syon-AR) una debilidad (OO-nah deh-bee-lee-DAHD) y cómo (ee KOH-moh) trabajas (trah-BAH-has) para superarla (PAH-rah soo-peh-RAR-lah) o mejorarla (oh meh-ho-RAR-lah)? — Thank you. And as we all have areas for improvement, could you mention a weakness and how you work to overcome or improve it?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Podrías repetir eso, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "¿Perdón (pehr-DOHN)? ¿Podrías (poh-DREE-as) repetir (reh-peh-TEER) eso (EH-soh), por favor (por fah-VOR)? — Sorry? Could you repeat that, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Muchas gracias por tu tiempo y por compartir tu experiencia. Nos pondremos en contacto contigo pronto.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Muchas gracias (MOO-chas GRAH-syahs) por tu tiempo (por too TYEM-poh) y por compartir (ee por kom-par-TEER) tu experiencia (too eks-peh-RYEN-syah). Nos pondremos (nos pon-DREH-mos) en contacto (en kon-TAK-toh) contigo (kon-TEE-goh) pronto (PRON-toh). — Thank you very much for your time and for sharing your experience. We will contact you soon.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "id": "dlg-de-directions-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Wegbeschreibung in der Stadt",
+  "opening": "Guten Tag! Kann ich Ihnen behilflich sein? Sie sehen etwas suchend aus.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen behilflich sein? Sie sehen etwas suchend aus.",
+      "branches": [
+        {
+          "keywords": [
+            "weg",
+            "richtung",
+            "suchen"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag! Kann ich ih-nen be-hilf-lich sein? See zen et-was zoo-chend aus. — Good day! Can I help you? You look a bit lost/searching."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Kein Problem, das passiert jedem mal. Wohin soll die Reise denn gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof",
+            "zug"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kunstmuseum",
+            "museum",
+            "galerie"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kain Pro-blem, das pas-siert je-dem mal. Wo-hin soll dee Rai-se denn geh-en? — No problem, that happens to everyone. Where do you need to go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, zum Hauptbahnhof! Nun, am einfachsten ist es, wenn Sie mit der U-Bahn fahren. Gehen Sie diese Straße hier geradeaus bis zur nächsten großen Kreuzung, da ist der U-Bahnhof 'Stadtmitte'. Nehmen Sie die Linie U3 Richtung 'Nordpark', das sind nur zwei Stationen.",
+      "branches": [
+        {
+          "keywords": [
+            "verstanden",
+            "klar",
+            "super"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "zu fuß",
+            "laufen",
+            "gehen"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, tsoom Haupt-bahn-hof! Noon, am ain-fachs-ten ist es, wenn See mit der U-Bahn fah-ren. Geh-en See dee-ze Stra-ße heer ge-ra-de-aus bis tsoor näch-sten gro-ßen Kreu-tsung, da ist der U-Bahn-hof 'Stadt-mit-te'. Neh-men See dee Li-nie Oo-drai rich-tung 'Nord-park', das sint noor tsvai Sta-tsio-nen. — Ah, to the Main Station! Well, the easiest way is to take the subway. Go straight down this street until the next big intersection, there's the 'Stadtmitte' subway station. Take the U3 line towards 'Nordpark', that's only two stops."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Das Kunstmuseum? Interessante Wahl! Am besten gehen Sie von hier aus etwa zehn Minuten zu Fuß. Folgen Sie dieser Gasse hier, biegen Sie dann nach dem Bäcker 'Kruste & Krume' links ab und gehen Sie über den kleinen Marktplatz. Das Museum ist das große Gebäude mit der markanten Glasfassade auf der rechten Seite.",
+      "branches": [
+        {
+          "keywords": [
+            "verstanden",
+            "klar",
+            "danke"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "zu weit",
+            "bus",
+            "schneller"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das Kunst-moo-zee-um? In-te-res-san-te Vahl! Am bes-ten geh-en See fon heer aus et-wa tsain Mee-noo-ten tsoo Foos. Fol-gen See dee-zer Gas-se heer, bee-gen See dann nach dem Bäk-ker 'Krus-te unt Kroo-me' links ab unt geh-en See ü-ber den klai-nen Mark-platz. Das Moo-zee-um ist das gro-ße Ge-boiy-de mit der mar-kan-ten Glas-fa-sa-de auf der rech-ten Zai-te. — The Art Museum? Interesting choice! It's best to walk from here, about ten minutes. Follow this alley here, then turn left after the 'Kruste & Krume' bakery and cross the small marketplace. The museum is the large building with the distinctive glass facade on the right side."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Entschuldigen Sie, diesen Ort kenne ich leider nicht auf Anhieb. Könnten Sie mir vielleicht einen markanten Punkt in der Nähe nennen oder es genauer beschreiben?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "museum",
+            "galerie"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "vergiss",
+            "egal",
+            "trotzdem"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, I'm afraid I don't know this place offhand. Could you perhaps name a prominent landmark nearby or describe it more precisely?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Alles klar so weit? Oder haben Sie noch weitere Fragen? Ich bin hier quasi aufgewachsen und kenne mich bestens aus.",
+      "branches": [
+        {
+          "keywords": [
+            "fragen",
+            "mehr",
+            "umgebung",
+            "cafe"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "alles",
+            "keine",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Is everything clear so far? Or do you have any more questions? I practically grew up here and know my way around very well."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Alternativen gibt es immer, je nachdem, wie viel Zeit Sie haben oder ob Sie lieber laufen möchten. Die U-Bahn ist oft die schnellste Option. Wollen wir eine andere Möglichkeit in Betracht ziehen oder passt es so?",
+      "branches": [
+        {
+          "keywords": [
+            "bus",
+            "laufen",
+            "gehen"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "passt",
+            "gut",
+            "ok",
+            "danke"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "There are always alternatives, depending on how much time you have or if you prefer to walk. The subway is often the fastest option. Shall we consider another possibility, or is this okay?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Gerne. Suchen Sie etwas Spezielles in der Nähe des Museums oder des Hauptbahnhofs? Zum Beispiel ein gutes Café oder ein Geschäft?",
+      "branches": [
+        {
+          "keywords": [
+            "café",
+            "essen",
+            "restaurant",
+            "geschäft"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gladly. Are you looking for something specific near the museum or the main station? For example, a good cafe or a shop?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, das habe ich leider nicht richtig verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gen See, das ha-be ich lai-der nicht rich-tig fer-stan-den. Könn-ten See das bit-te noch ain-mal vee-der-ho-len? — Excuse me, I didn't quite understand that. Could you please repeat it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gern geschehen! Ich wünsche Ihnen noch einen schönen Tag und einen guten Weg!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gern ge-sheh-en! Ich vün-she ih-nen noch ai-nen shö-nen Tag unt ai-nen goo-ten Veg! — You're welcome! I wish you a nice day and a good journey!",
+      "isTerminal": true
+    }
+  }
+}

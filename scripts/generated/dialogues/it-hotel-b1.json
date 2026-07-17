@@ -1,0 +1,166 @@
+{
+  "id": "dlg-it-hotel-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "hotel",
+  "title": "Check-in in hotel",
+  "opening": "Buonasera! Benvenuti al Grand Hotel. Ha una prenotazione?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Benvenuti al Grand Hotel. Ha una prenotazione?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "si",
+            "ho",
+            "prenotazione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonho",
+            "nessuna"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera — Good evening! Benvenuti al Grand Hotel — Welcome to the Grand Hotel. Ha una prenotazione? — Do you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ottimo! A che nome è stata fatta la prenotazione?",
+      "branches": [
+        {
+          "keywords": [
+            "mio",
+            "nome",
+            "cognome",
+            "rossi",
+            "bianchi",
+            "verdi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nonricordo",
+            "nonsocome"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo! — Excellent! A che nome è stata fatta la prenotazione? — Under what name was the reservation made?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, sì, signor/a Rossi. Una camera doppia per due notti. Potrebbe mostrarmi un documento d'identità per la registrazione, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "certo",
+            "ecco",
+            "documento",
+            "carta",
+            "passaporto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "perché",
+            "motivo"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, sì, signor/a Rossi. — Oh, yes, Mr./Ms. Rossi. Una camera doppia per due notti. — A double room for two nights. Potrebbe mostrarmi un documento d'identità per la registrazione, per favore? — Could you please show me an ID for registration?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Ci serve per legge per la registrazione alberghiera, è una procedura standard. Non si preoccupi, è solo per un controllo rapido.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "capisco",
+            "ecco"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nonsono",
+            "nonho"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ci serve per legge per la registrazione alberghiera, — We need it by law for hotel registration, è una procedura standard. — it's a standard procedure. Non si preoccupi, è solo per un controllo rapido. — Don't worry, it's just for a quick check."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Grazie mille. Ora, per la colazione: la vuole inclusa o a parte? Ha richieste speciali per la camera? E per il pagamento, preferisce saldare ora o al check-out?",
+      "branches": [
+        {
+          "keywords": [
+            "inclusa",
+            "ora",
+            "carta",
+            "vista",
+            "silenziosa"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grazie mille. — Thank you very much. Ora, per la colazione: — Now, for breakfast: la vuole inclusa o a parte? — Do you want it included or separate? Ha richieste speciali per la camera? — Do you have any special requests for the room? E per il pagamento, preferisce saldare ora o al check-out? — And for payment, do you prefer to settle now or at check-out?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto. Abbiamo preso nota di tutto. Ecco la chiave magnetica della sua camera, la 305. L'ascensore è infondo al corridoio a destra. Le auguro un piacevole soggiorno!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto. — Perfect. Abbiamo preso nota di tutto. — We've noted everything. Ecco la chiave magnetica della sua camera, la 305. — Here is the magnetic key to your room, 305. L'ascensore è infondo al corridoio a destra. — The elevator is at the end of the corridor to the right. Le auguro un piacevole soggiorno! — I wish you a pleasant stay!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi scusi — Excuse me, non ho capito bene — I didn't quite understand. Potrebbe ripetere, per favore? — Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie e arrivederci! — Thank you and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

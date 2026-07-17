@@ -1,0 +1,305 @@
+{
+  "id": "dlg-fr-weather-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Discussion sur la météo",
+  "opening": "Alors, quel temps fait-il chez vous en ce moment ? J'ai entendu dire qu'il allait faire très beau ce week-end, ça serait chouette, n'est-ce pas ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alors, quel temps fait-il chez vous en ce moment ? J'ai entendu dire qu'il allait faire très beau ce week-end, ça serait chouette, n'est-ce pas ?",
+      "branches": [
+        {
+          "keywords": [
+            "beau",
+            "soleil",
+            "chaud"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "pluie",
+            "gris",
+            "froid"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "variable",
+            "incertain",
+            "mitigé"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alors, quel temps fait-il chez vous en ce moment ? (ah-LOR, kel tah fay-teel sheh voo ah suh moh-MAHN?) — So, what's the weather like where you are right now? J'ai entendu dire qu'il allait faire très beau ce week-end, ça serait chouette, n'est-ce pas ? (zhe an-tahn-doo deer keel ah-LAY fair treh boh suh wee-KEND, sah suh-RAY shwet, nest-PAH?) — I heard it's going to be very nice this weekend, that would be great, wouldn't it?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Ah, c'est super ça ! Profites-en bien. Chez nous, on alterne entre averses et éclaircies, c'est typique du printemps. Tu as des projets en extérieur ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "balade",
+            "pique-nique",
+            "jardinage"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "non",
+            "intérieur",
+            "lire"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, c'est super ça ! (ah, say soo-PER sah!) — Oh, that's great! Profites-en bien. (pro-FEET-zahn bee-AHN.) — Enjoy it. Chez nous, on alterne entre averses et éclaircies, c'est typique du printemps. (sheh noo, ohn ahl-TERN an-truh ah-VERS eh ay-KLAIR-see, say tee-PEEK doo pran-TAHN.) — Here, we're alternating between showers and clear spells, it's typical of spring. Tu as des projets en extérieur ? (too ah day pro-ZHEH zahn ek-STEH-ree-ur?) — Do you have any outdoor plans?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Oh, dommage ! Le temps maussade, c'est toujours un peu démoralisant. J'espère que ça va vite s'améliorer. Ça ne t'empêche pas de faire des activités ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "lecture",
+            "musée",
+            "cuisine"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "si",
+            "frustrant",
+            "annulé"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, dommage ! (oh, doh-MAJ!) — Oh, what a shame! Le temps maussade, c'est toujours un peu démoralisant. (luh tah moh-SAD, say too-ZHOORz uhn puh day-moh-rah-lee-ZAHN.) — Dreary weather is always a bit depressing. J'espère que ça va vite s'améliorer. (zhes-PER kuh sah vah veet sah-may-lee-oh-RAY.) — I hope it improves quickly. Ça ne t'empêche pas de faire des activités ? (sah nuh tahn-PESH pah duh fair dez ak-tee-vee-TAY?) — Does that not stop you from doing activities?"
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Ah, un temps typiquement capricieux ! C'est difficile de savoir comment s'habiller dans ces cas-là. Tu as une saison préférée, toi, niveau météo ?",
+      "branches": [
+        {
+          "keywords": [
+            "printemps",
+            "été",
+            "chaud"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "automne",
+            "hiver",
+            "froid"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "peu importe",
+            "toutes"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, un temps typiquement capricieux ! (ah, uhn tah tee-peek-mahn kah-PREE-see-yoo!) — Ah, typically fickle weather! C'est difficile de savoir comment s'habiller dans ces cas-là. (say dee-fee-SEEL duh sah-VWAR koh-MAHN sah-bee-YAY dahn say kah-LAH.) — It's hard to know how to dress in those situations. Tu as une saison préférée, toi, niveau météo ? (too ah oon seh-ZON preh-fay-RAY, twah, nee-VOH may-TAY-oh?) — Do you have a favorite season, weather-wise?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "C'est vrai que le beau temps, ça met tout de suite de meilleure humeur et ça donne envie de sortir. Pourvu que ça dure ! Il paraît que le réchauffement climatique rend les saisons moins distinctes, tu en penses quoi ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "déréglé",
+            "inquiétant",
+            "changement"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "non",
+            "cyclique",
+            "exagéré"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est vrai que le beau temps, ça met tout de suite de meilleure humeur et ça donne envie de sortir. (say vray kuh luh boh tah, sah met too duh sweet duh meh-YUR oo-MUR eh sah don ahn-VEE duh sor-TEER.) — It's true that good weather immediately puts you in a better mood and makes you want to go out. Pourvu que ça dure ! (poor-VOO kuh sah duur!) — Let's hope it lasts! Il paraît que le réchauffement climatique rend les saisons moins distinctes, tu en penses quoi ? (eel pah-RAY kuh luh reh-shoh-fuh-MAHN klee-mah-TEEK rahn lay seh-ZON mwahn dees-TINKT, too ahn pans KWAH?) — It seems that climate change is making seasons less distinct, what do you think about that?"
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Oui, c'est important d'avoir un plan B quand la météo n'est pas au rendez-vous. Il faut savoir s'adapter ! On dit souvent qu'il n'y a pas de mauvais temps, que des mauvais vêtements, tu es d'accord avec ça ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "d'accord",
+            "équipement"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "non",
+            "quand même",
+            "déprime"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, c'est important d'avoir un plan B quand la météo n'est pas au rendez-vous. (wee, say an-por-TAHN dah-VWAR uhn plahn BAY kahn lah may-TAY-oh nest pahz oh rahn-day-VOO.) — Yes, it's important to have a plan B when the weather isn't cooperating. Il faut savoir s'adapter ! (eel foh sah-VWAR sah-dap-TAY!) — You have to know how to adapt! On dit souvent qu'il n'y a pas de mauvais temps, que des mauvais vêtements, tu es d'accord avec ça ? (on dee soo-VAHN keel nee ah pah duh moh-VEH tah, kuh day moh-VEH vet-MAHN, too eh dah-KOR ah-VEK sah?) — They often say there's no bad weather, only bad clothes, do you agree with that?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Je comprends, le temps peut vraiment influencer l'humeur et les projets. Certains aiment la pluie ou le froid, ça a son charme aussi, pour une ambiance cosy par exemple. Mais quand même, un peu de soleil ne fait jamais de mal, n'est-ce pas ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "soleil",
+            "lumière"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "non",
+            "pluie",
+            "froid"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je comprends, le temps peut vraiment influencer l'humeur et les projets. (zhuh kon-PRAHN, luh tah puh vray-MAHN an-floo-AHN-say loo-MUR eh lay pro-ZHEH.) — I understand, the weather can really influence mood and plans. Certains aiment la pluie ou le froid, ça a son charme aussi, pour une ambiance cosy par exemple. (ser-TAN em lah plwee oo luh frwah, sah ah son sharm oh-SEE, poor oon an-bee-ANS koh-ZEE par eg-ZAN-pluh.) — Some people like rain or cold, it has its charm too, for a cozy atmosphere for example. Mais quand même, un peu de soleil ne fait jamais de mal, n'est-ce pas ? (meh kahn MEM, uhn puh duh soh-LEIL nuh fay zhah-MEH duh mahl, nest-PAH?) — But still, a little sunshine never hurts, does it?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Absolument ! J'espère que nous aurons de belles journées à venir. C'était intéressant d'échanger sur la météo avec toi.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "au revoir",
+            "bonne journée"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolument ! (ab-soh-loo-MAHN!) — Absolutely! J'espère que nous aurons de belles journées à venir. (zhes-PER kuh noo zoh-RONS duh bel zhoor-NAY ah veh-NEER.) — I hope we'll have some beautiful days ahead. C'était intéressant d'échanger sur la météo avec toi. (say-tay an-teh-reh-SAHN day-shahn-ZHAY sur lah may-TAY-oh ah-VEK twah.) — It was interesting to talk about the weather with you."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Oui, la météo, c'est un sujet inépuisable, surtout en France où l'on en parle beaucoup ! En tout cas, j'espère que tu auras le temps idéal pour tes activités.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "bonne journée",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, la météo, c'est un sujet inépuisable, surtout en France où l'on en parle beaucoup ! (wee, lah may-TAY-oh, sayz uhn soo-ZHEH ee-nay-pwee-ZAH-bluh, sur-TOO ahn Frahns oo lon ahn parl boh-KOO!) — Yes, the weather is an inexhaustible topic, especially in France where we talk about it a lot! En tout cas, j'espère que tu auras le temps idéal pour tes activités. (ahn too KAH, zhes-PER kuh too oh-RAH luh tah ee-DAY-al poor tay zak-tee-vee-TAY.) — In any case, I hope you'll have the ideal weather for your activities."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourrais-tu reformuler ou me donner une réponse plus simple, s'il te plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, je n'ai pas bien compris. (par-DON, zhuh nay pah bee-AHN kon-PREE.) — Sorry, I didn't quite understand. Pourrais-tu reformuler ou me donner une réponse plus simple, s'il te plaît ? (poo-RAY-too ruh-for-moo-LAY oo muh doh-NAY oon ray-PONS ploo SAN-pluh, seel tuh PLAY?) — Could you rephrase or give me a simpler answer, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci beaucoup pour cette conversation sur la météo. Bonne journée et à la prochaine !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Merci beaucoup pour cette conversation sur la météo. (mer-SEE boh-KOO poor set kon-ver-sah-SEE-on sur lah may-TAY-oh.) — Thank you very much for this conversation about the weather. Bonne journée et à la prochaine ! (bon zhoor-NAY eh ah lah pro-SHEN!) — Have a good day and see you next time!",
+      "isTerminal": true
+    }
+  }
+}

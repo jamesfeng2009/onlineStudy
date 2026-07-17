@@ -1,0 +1,172 @@
+{
+  "id": "dlg-vi-shopping-clothes-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Mua sắm quần áo cao cấp",
+  "opening": "Chào mừng quý khách đến với cửa hàng của chúng tôi. Liệu tôi có thể hỗ trợ gì cho quý vị trong việc tìm kiếm món đồ ưng ý hôm nay không ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào mừng quý khách đến với cửa hàng của chúng tôi. Liệu tôi có thể hỗ trợ gì cho quý vị trong việc tìm kiếm món đồ ưng ý hôm nay không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tìmkiếm",
+            "tìmđồ",
+            "mua",
+            "quà"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "xem",
+            "ngắm",
+            "chỉxem",
+            "không"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào mừng quý khách (Chao mung quy khach) đến với cửa hàng của chúng tôi. Liệu tôi có thể hỗ trợ gì cho quý vị (quy vi) trong việc tìm kiếm món đồ ưng ý hôm nay không ạ? (Welcome to our store. May I assist you in finding something to your liking today?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, quý khách đang tìm kiếm loại trang phục nào ạ, hoặc có phong cách nào đang quan tâm không? Chúng tôi có đa dạng các bộ sưu tập từ công sở, dạo phố đến các thiết kế dạ hội sang trọng.",
+      "branches": [
+        {
+          "keywords": [
+            "côngsở",
+            "dạhội",
+            "lịchsự",
+            "sangtrọng"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách đang tìm kiếm loại trang phục nào ạ, hoặc có phong cách nào đang quan tâm không? Chúng tôi có đa dạng các bộ sưu tập từ công sở, dạo phố đến các thiết kế dạ hội sang trọng. (Yes, what type of clothing are you looking for, or which style are you interested in? We have a diverse range of collections from office wear, casual wear to elegant evening designs.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ vâng, tôi hiểu rồi. Tôi có thể gợi ý một vài mẫu rất phù hợp. Quý khách có yêu cầu gì cụ thể về size, màu sắc, hay muốn thử luôn không ạ? Phòng thử đồ ở phía cuối hành lang bên trái.",
+      "branches": [
+        {
+          "keywords": [
+            "size",
+            "cỡ",
+            "màu",
+            "lớn hơn",
+            "nhỏ hơn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "không",
+            "xem thêm",
+            "chưa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, tôi hiểu rồi. Tôi có thể gợi ý một vài mẫu rất phù hợp. Quý khách có yêu cầu gì cụ thể về size (size), màu sắc, hay muốn thử luôn không ạ? Phòng thử đồ ở phía cuối hành lang bên trái. (Yes, I understand. I can suggest a few very suitable items. Do you have any specific requirements about size, color, or would you like to try them on now? The fitting rooms are at the end of the corridor on the left.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Trông quý khách rất hợp với bộ trang phục này. Quý khách muốn thanh toán bằng hình thức nào ạ? Hay quý khách có muốn xem thêm mẫu khác hoặc cần đổi size/màu không?",
+      "branches": [
+        {
+          "keywords": [
+            "thanh toán",
+            "trả tiền",
+            "mua"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "đổi",
+            "trả",
+            "đổitrả"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "xem khác",
+            "size khác",
+            "màu khác"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Trông quý khách rất hợp với bộ trang phục này. Quý khách muốn thanh toán bằng hình thức nào ạ? Hay quý khách có muốn xem thêm mẫu khác hoặc cần đổi size/màu không? (You look great in this outfit. How would you like to pay? Or would you like to see other items or need to exchange for a different size/color?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, chúng tôi chấp nhận tiền mặt, thẻ tín dụng và chuyển khoản ngân hàng. Quý khách muốn sử dụng hình thức nào ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, chúng tôi chấp nhận tiền mặt, thẻ tín dụng và chuyển khoản ngân hàng. Quý khách muốn sử dụng hình thức nào ạ? (Yes, we accept cash, credit card, and bank transfer. Which method would you like to use?)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Dạ vâng, quý khách muốn đổi sang mẫu khác hay hoàn tiền ạ? Xin quý khách vui lòng giữ hóa đơn để chúng tôi tiện hỗ trợ. Chính sách đổi trả của chúng tôi cho phép đổi trong 7 ngày với điều kiện sản phẩm còn nguyên vẹn.",
+      "branches": [
+        {
+          "keywords": [
+            "đổi",
+            "sảnphẩmkhác"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hoàntiền",
+            "trảlại"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng, quý khách muốn đổi sang mẫu khác hay hoàn tiền ạ? Xin quý khách vui lòng giữ hóa đơn để chúng tôi tiện hỗ trợ. Chính sách đổi trả của chúng tôi cho phép đổi trong 7 ngày với điều kiện sản phẩm còn nguyên vẹn. (Yes, would you like to exchange for a different item or get a refund? Please keep your receipt so we can assist you. Our return policy allows exchanges within 7 days, provided the product is intact.)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu ý quý khách lắm. Quý khách có thể vui lòng nhắc lại hoặc diễn đạt theo cách khác được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "lặp lại",
+            "nói lại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin loi), tôi chưa hiểu ý quý khách lắm. Quý khách có thể vui lòng nhắc lại (nhac lai) hoặc diễn đạt theo cách khác được không ạ? (Excuse me, I didn't quite understand. Could you please repeat or rephrase that?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách đã ghé thăm cửa hàng của chúng tôi. Rất mong được phục vụ quý khách vào lần tới. Chúc quý khách một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn (Cam on) quý khách đã ghé thăm cửa hàng của chúng tôi. Rất mong được phục vụ quý khách vào lần tới. Chúc quý khách một ngày tốt lành! (Thank you for visiting our store. We look forward to serving you next time. Have a great day!)",
+      "isTerminal": true
+    }
+  }
+}

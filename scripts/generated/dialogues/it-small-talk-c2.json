@@ -1,0 +1,225 @@
+{
+  "id": "dlg-it-small-talk-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Chiacchiere da festa",
+  "opening": "Ciao! Com'è andata la settimana? Immagino sia stata un bel tour de force, eh?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Com'è andata la settimana? Immagino sia stata un bel tour de force, eh?",
+      "branches": [
+        {
+          "keywords": [
+            "impegnativa",
+            "stressante",
+            "faticosa",
+            "dura"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tranquilla",
+            "bella",
+            "rilassante",
+            "piacevole"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao! (Chà-o! — Hello!) How was your week? I imagine it was quite a tour de force, eh?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, capisco. Non dev'essere stato facile. Spero tu sia riuscito a ritagliarti un po' di tempo per staccare la spina. Che fai di solito per ricaricare le batterie?",
+      "branches": [
+        {
+          "keywords": [
+            "leggo",
+            "sport",
+            "cucino",
+            "guardo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "amici",
+            "famiglia",
+            "esce"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "riposo",
+            "dormo",
+            "niente"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, capisco. (Ah, ca-pì-sco. — Ah, I understand.) That must not have been easy. I hope you managed to carve out some time to unplug. What do you usually do to recharge your batteries?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ottimo, mi fa piacere! Allora, che mi racconti di bello? Qualche aneddoto da condividere o magari hai fatto qualcosa di interessante nel weekend passato?",
+      "branches": [
+        {
+          "keywords": [
+            "viaggio",
+            "evento",
+            "festa",
+            "uscita"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lavoro",
+            "progetto",
+            "successo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "relax",
+            "casa",
+            "tranquillità"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo, mi fa piacere! (Òt-ti-mo, mi fa pia-cè-re! — Great, I'm glad to hear that!) So, what good news do you have for me? Any anecdotes to share or perhaps you did something interesting last weekend?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Interessante! Parlami un po' di più di quest'attività. Ultimamente mi sto dilettando anch'io in qualcosa di simile e sono sempre alla ricerca di spunti.",
+      "branches": [
+        {
+          "keywords": [
+            "consigli",
+            "suggerimenti",
+            "trucchi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting! Tell me a bit more about this activity. Lately, I've been dabbling in something similar myself and I'm always looking for ideas."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Fantastico! È sempre bello sentir parlare di successi o di momenti trascorsi con persone care. Chi hai incontrato/festeggiato con?",
+      "branches": [
+        {
+          "keywords": [
+            "amici",
+            "colleghi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fantastic! It's always great to hear about successes or moments spent with loved ones. Who did you meet/celebrate with?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Capisco benissimo, a volte non c'è niente di meglio che dedicarsi al dolce far niente. Anch'io, dopo una settimana intensa, mi abbandono al divano. Hai letto qualcosa di interessante o visto un bel film di recente?",
+      "branches": [
+        {
+          "keywords": [
+            "libro",
+            "lettura",
+            "romanzo"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand perfectly, sometimes there's nothing better than indulging in sweet idleness. After an intense week, I also surrender to the sofa. Have you read anything interesting or seen a good movie recently?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Davvero? Mi hai incuriosito un sacco! Magari ne parliamo più approfonditamente la prossima volta. Ora devo proprio andare, ma è stato un vero piacere fare due chiacchiere.",
+      "branches": [
+        {
+          "keywords": [
+            "certo",
+            "piacere",
+            "ciao",
+            "arrivederci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Really? You've really piqued my interest! Maybe we can talk more about it next time. I really have to go now, but it was a real pleasure to chat a bit."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Scusa, non ho afferrato bene. Potresti ripeterlo, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere chiacchierare con te! Spero ci si veda presto.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It was a pleasure chatting with you! I hope to see you soon.",
+      "isTerminal": true
+    }
+  }
+}

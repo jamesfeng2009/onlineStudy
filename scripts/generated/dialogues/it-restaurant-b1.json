@@ -1,0 +1,56 @@
+{
+  "id": "dlg-it-restaurant-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Al Ristorante: Ordinare il cibo",
+  "opening": "Buonasera! Avete già avuto modo di dare un'occhiata al menù o avete bisogno di qualche minuto in più?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Avete già avuto modo di dare un'occhiata al menù o avete bisogno di qualche minuto in più?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "pronto",
+            "ordinare"
+          ],
+          "nextTurnId": "t2_ready"
+        },
+        {
+          "keywords": [
+            "ancora",
+            "minuto",
+            "tempo"
+          ],
+          "nextTurnId": "t2_wait_and_ready"
+        }
+      ],
+      "fallbackBranchId": "t2_wait_and_ready",
+      "promptTranslation": "Good evening! (Bwon-ah-SAY-rah!) Have you already had a chance to look at the menu, or do you need a few more minutes?"
+    },
+    "t2_ready": {
+      "id": "t2_ready",
+      "prompt": "Bene, cosa desiderate ordinare? C'è qualcosa che vi incuriosisce dal menù o preferireste qualche suggerimento?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t2_wait_and_ready"
+        }
+      ],
+      "fallbackBranchId": "t2_wait_and_ready",
+      "promptTranslation": "Alright, what would you like to order? (Beeh-neh, koh-sah deh-see-deh-RAH-teh or-dee-NAH-reh?) Is there anything on the menu that interests you, or would you prefer some suggestions?"
+    },
+    "t2_wait_and_ready": {
+      "id": "t2_wait_and_ready",
+      "prompt": "Certo, torno tra qualche minuto allora. (Pausa) Bene, siete pronti per ordin",
+      "branches": [],
+      "fallbackBranchId": "t2_wait_and_ready",
+      "isTerminal": true
+    }
+  }
+}

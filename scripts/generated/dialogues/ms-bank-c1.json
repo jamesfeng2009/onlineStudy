@@ -1,0 +1,120 @@
+{
+  "id": "dlg-ms-bank-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Bantuan Isu Kad ATM",
+  "opening": "Selamat pagi. Selamat datang ke cawangan Bank Impian. Ada apa yang boleh kami bantu Puan/Encik pada hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Selamat datang ke cawangan Bank Impian. Ada apa yang boleh kami bantu Puan/Encik pada hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "kadatm",
+            "masalahkad",
+            "kad"
+          ],
+          "nextTurnId": "t2_atm_issue"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi — Good morning. Selamat datang ke cawangan Bank Impian — Welcome to Bank Impian branch. Ada apa yang boleh kami bantu Puan/Encik pada hari ini? — How may we assist you today, Madam/Sir?"
+    },
+    "t2_atm_issue": {
+      "id": "t2_atm_issue",
+      "prompt": "Oh, saya faham. Boleh Puan/Encik perincikan sedikit mengenai masalah kad ATM anda? Adakah kad anda disekat, ditelan mesin, atau mungkin ada isu dengan pengeluaran tunai?",
+      "branches": [
+        {
+          "keywords": [
+            "ditelan",
+            "tertelan",
+            "mesin"
+          ],
+          "nextTurnId": "t3_swallowed_card"
+        },
+        {
+          "keywords": [
+            "disekat",
+            "block",
+            "pin"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, saya faham — Oh, I understand. Boleh Puan/Encik perincikan sedikit mengenai masalah kad ATM anda? — Could you elaborate a bit on your ATM card problem, Madam/Sir? Adakah kad anda disekat, ditelan mesin, atau mungkin ada isu dengan pengeluaran tunai? — Is your card blocked, swallowed by the machine, or perhaps there's an issue with cash withdrawal?"
+    },
+    "t3_swallowed_card": {
+      "id": "t3_swallowed_card",
+      "prompt": "Faham. Jika kad anda ditelan, kami perlu membuat laporan rasmi. Boleh Puan/Encik beritahu di cawangan mana insiden itu berlaku dan pada anggaran masa bila?",
+      "branches": [
+        {
+          "keywords": [
+            "cawanganini",
+            "sini",
+            "bankini"
+          ],
+          "nextTurnId": "t4_solution_swallowed_this_branch"
+        },
+        {
+          "keywords": [
+            "cawanganlain",
+            "bukan",
+            "luar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham — Understood. Jika kad anda ditelan, kami perlu membuat laporan rasmi — If your card was swallowed, we need to file an official report. Boleh Puan/Encik beritahu di cawangan mana insiden itu berlaku dan pada anggaran masa bila? — Could you tell us at which branch the incident occurred and approximately when?"
+    },
+    "t4_solution_swallowed_this_branch": {
+      "id": "t4_solution_swallowed_this_branch",
+      "prompt": "Baik, jika di cawangan ini, itu memudahkan urusan. Sila serahkan nombor giliran anda kepada saya dan kad pengenalan untuk kami semak rekod CCTV dan mulakan proses permohonan kad baharu. Adakah Puan/Encik bersedia untuk teruskan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "bersedia",
+            "teruskan"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik — Alright. Jika di cawangan ini, itu memudahkan urusan — If it's at this branch, that simplifies things. Sila serahkan nombor giliran anda kepada saya dan kad pengenalan untuk kami semak rekod CCTV dan mulakan proses permohonan kad baharu — Please give me your queue number and identification card so we can check CCTV records and begin the new card application process. Adakah Puan/Encik bersedia untuk teruskan? — Are you ready to proceed?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh Puan/Encik ulang semula atau jelaskan dengan lebih lanjut? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf — Sorry, boleh Puan/Encik ulang semula atau jelaskan dengan lebih lanjut? — could you please repeat or explain further, Madam/Sir? Saya kurang jelas — I'm not clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana berurusan dengan kami di Bank Impian. Harap urusan Puan/Encik berjalan lancar. Selamat hari!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih kerana berurusan dengan kami di Bank Impian — Thank you for banking with us at Bank Impian. Harap urusan Puan/Encik berjalan lancar — We hope your transaction goes smoothly. Selamat hari! — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

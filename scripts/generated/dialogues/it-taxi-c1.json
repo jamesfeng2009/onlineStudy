@@ -1,0 +1,225 @@
+{
+  "id": "dlg-it-taxi-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Corsa in taxi a Roma",
+  "opening": "Buongiorno, dove la porto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, dove la porto?",
+      "branches": [
+        {
+          "keywords": [
+            "via",
+            "corso",
+            "stazione",
+            "termini",
+            "colosseo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno — Good morning, dove la porto? — where can I take you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, Via del Corso. Traffico permettendo, dovremmo farcela in una ventina di minuti. Prende il lungotevere o preferisce passare per il centro storico, a suo rischio e pericolo per le ZTL?",
+      "branches": [
+        {
+          "keywords": [
+            "lungotevere",
+            "fiume",
+            "lì"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "centro",
+            "storico",
+            "ztl",
+            "rischio"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "costo",
+            "tariffa",
+            "quanto"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo — Of course, Via del Corso. Traffico permettendo — Traffic permitting, dovremmo farcela in una ventina di minuti — we should make it in about twenty minutes. Prende il lungotevere — Will you take the Lungotevere (riverside road) or preferisce passare per il centro storico — do you prefer to go through the historic center, a suo rischio e pericolo per le ZTL? — at your own risk for the restricted traffic zones?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto, allora andiamo di Lungotevere. Scelta saggia, soprattutto a quest'ora.",
+      "branches": [
+        {
+          "keywords": [
+            "traffico",
+            "lento",
+            "ingorgo",
+            "velocemente"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "pagamento",
+            "carta",
+            "contanti"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto — Perfect, allora andiamo di Lungotevere — then we'll go via Lungotevere. Scelta saggia — A wise choice, soprattutto a quest'ora — especially at this hour."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Come desidera, ma tenga presente che le multe per le ZTL sono salate e a suo carico, anche se con la licenza del taxi non dovremmo incorrere in problemi.",
+      "branches": [
+        {
+          "keywords": [
+            "cambio",
+            "lungotevere",
+            "ripensarci"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "insisto",
+            "va bene",
+            "rischio"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "As you wish, but keep in mind that ZTL fines are hefty and at your expense, even if we shouldn't run into problems with the taxi license."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Per la tariffa, senza sorprese, dovrebbe aggirarsi sui 25-30 euro, traffico permettendo. Come intende saldare, in contanti o con carta?",
+      "branches": [
+        {
+          "keywords": [
+            "contanti",
+            "soldi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the fare, no surprises, it should be around 25-30 euros, traffic permitting. How do you intend to pay, cash or card?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Per ora il traffico è scorrevole, sembra che siamo passati nel momento giusto. Siamo quasi arrivati.",
+      "branches": [
+        {
+          "keywords": [
+            "pagamento",
+            "carta",
+            "contanti"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ottimo",
+            "bene",
+            "perfetto",
+            "arrivati"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For now, traffic is flowing smoothly, it seems we passed at the right time. We are almost there."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Eccoci arrivati. Sono 28 euro. Desidera la ricevuta?",
+      "branches": [
+        {
+          "keywords": [
+            "contanti",
+            "resto",
+            "ricevuta"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Eccoci arrivati — Here we are. Sono 28 euro — That will be 28 euros. Desidera la ricevuta? — Do you want a receipt?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere? Non ho afferrato bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi — Excuse me, potrebbe ripetere? — could you please repeat? Non ho afferrato bene — I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

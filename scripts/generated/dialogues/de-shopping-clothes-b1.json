@@ -1,0 +1,61 @@
+{
+  "id": "dlg-de-shopping-clothes-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen",
+  "opening": "Guten Tag! Kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "kleid",
+            "hemd",
+            "hose",
+            "rock",
+            "pullover",
+            "t-shirt",
+            "suche",
+            "brauche"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t2",
+      "promptTranslation": "Guten Tag! (Goo-ten Tahk! — Good day!) Kann ich Ihnen behilflich sein? (Can I help you?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, ein {Artikel}? Welche Größe tragen Sie denn normalerweise? Und welche Farbe stellen Sie sich vor?",
+      "branches": [
+        {
+          "keywords": [
+            "größe",
+            "klein",
+            "mittel",
+            "groß",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Ah, ein {Artikel}? (Ah, a {item}?) Welche Größe tragen Sie denn normalerweise? (Vel-cheh Grö-ßeh trah-gen Zee den nor-mah-ler-vee-zeh? — Which size do you usually wear?) Und welche Farbe stellen Sie sich vor? (And what color do you have in mind?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Wir haben hier ein sehr schönes {Artikel} in Ihrer Größe und Farbe. Es ist aus Baumwolle und sehr bequem. Möchten Sie es mal anprobieren?",
+      "branches": [],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Wir haben hier",
+      "isTerminal": true
+    }
+  }
+}

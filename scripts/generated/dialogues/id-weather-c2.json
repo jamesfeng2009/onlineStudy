@@ -1,0 +1,227 @@
+{
+  "id": "dlg-id-weather-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Obrolan Cuaca",
+  "opening": "Wah, Jakarta lagi panas-panasnya nih, gerah sekali rasanya. Kamu di sana bagaimana cuacanya? Semoga tidak sampai bikin sumpek, ya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Wah, Jakarta lagi panas-panasnya nih, gerah sekali rasanya. Kamu di sana bagaimana cuacanya? Semoga tidak sampai bikin sumpek, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "terik",
+            "gerah",
+            "panasnya"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "dingin",
+            "sejuk",
+            "mendung"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "mendung",
+            "tidakmenentu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wow, Jakarta is super hot right now, it feels really muggy. How's the weather where you are? Hope it's not making you feel too stuffy/uncomfortable (sum-pèk), ya?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Iya ya, memang lagi musim kemarau parah sepertinya. Sampai-sampai sawah di kampung saya banyak yang kekeringan. Ada rencana apa di cuaca terik begini?",
+      "branches": [
+        {
+          "keywords": [
+            "didalam",
+            "rumah",
+            "ac",
+            "kipas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "keluar",
+            "jalan-jalan",
+            "aktivitasluar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "doa",
+            "harap"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, it really seems to be a severe dry season. Even many rice fields in my village are drying up. Any plans in this scorching (te-rìk) weather?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, enak dong kalau di sana hujan, pasti suasananya lebih adem. Tapi, kalau hujannya nggak berhenti-henti, suka bikin rencana buyar juga, ya? Apalagi kalau banjir.",
+      "branches": [
+        {
+          "keywords": [
+            "batal",
+            "dirumah",
+            "buyar",
+            "berteduh"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "suka",
+            "senang",
+            "menikmati"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "banjir",
+            "macet",
+            "masalah"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, that's nice then if it's raining there, the atmosphere must be cooler. But if the rain doesn't stop, it often ruins (bu-yar) plans too, right? Especially if there's flooding."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Betul sekali, paling enak memang berteduh sambil menikmati secangkir kopi atau teh hangat. Kadang cuaca ekstrem begini memang bikin kita mesti lebih hati-hati menjaga kesehatan.",
+      "branches": [
+        {
+          "keywords": [
+            "kesehatan",
+            "hati-hati",
+            "jaga",
+            "setuju"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "keluar",
+            "harus",
+            "terpaksa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's very true, it's best to shelter indoors while enjoying a cup of coffee or warm tea. Sometimes extreme weather like this really makes us have to be more careful about our health."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Hati-hati, ya, jangan sampai dehidrasi atau malah terserang flu karena perubahan cuaca yang drastis. Musim pancaroba memang rentan sekali.",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "benar",
+            "oke",
+            "siap"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Be careful, ya, don't get dehydrated or even catch a flu due to drastic weather changes. The transitional season (pan-ca-ro-ba) is indeed very vulnerable."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ah, senangnya kalau bisa menikmati suasana hujan atau hawa sejuk. Kadang momen seperti itu yang bikin kita bersyukur, ya. Paling pas kalau sambil baca buku atau dengar musik.",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "benar",
+            "syukur",
+            "nikmat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, it's lovely to be able to enjoy the rainy atmosphere or cool air. Sometimes moments like that make us grateful, right? It's perfect if you're reading a book or listening to music at the same time."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang menangkap maksudmu tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Oke deh, kalau begitu saya pamit dulu, ya. Semoga harimu menyenangkan dan tetap jaga kesehatan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright then, I'll take my leave now. Hope you have a pleasant day and stay healthy!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "id": "dlg-es-doctor-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "Visita al médico",
+  "opening": "Hola, buenos días. ¿Qué le trae por aquí hoy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola, buenos días. ¿Qué le trae por aquí hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "me",
+            "duele",
+            "mal",
+            "enfermo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hola, buenos días — (Oh-lah bweh-nos dee-ahs) — Hello, good morning. ¿Qué le trae por aquí hoy — What brings you here today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "De acuerdo. ¿Y cuáles son sus síntomas principales?",
+      "branches": [
+        {
+          "keywords": [
+            "cabeza",
+            "cuerpo",
+            "garganta",
+            "estómago"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo — (Deh ah-kwer-doh) — Okay. ¿Y cuáles son sus síntomas principales — And what are your main symptoms?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¿Desde cuándo tiene estos síntomas?",
+      "branches": [
+        {
+          "keywords": [
+            "ayer",
+            "días",
+            "semana"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Desde cuándo tiene estos síntomas — Since when do you have these symptoms?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¿Es alérgico/a a algún medicamento?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "penicilina",
+            "alérgico"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Es alérgico/a a algún medicamento — Are you allergic to any medication?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "De acuerdo. Le voy a recetar algo para el dolor. Debe descansar y beber muchos líquidos.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "bien",
+            "vale"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "De acuerdo — Okay. Le voy a recetar algo para el dolor — I am going to prescribe something for the pain. Debe descansar y beber muchos líquidos — You should rest and drink plenty of liquids."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, no le he entendido bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Lo siento — (Loh see-en-toh) — I'm sorry, no le he entendido bien — I didn't understand you well. ¿Podría repetir, por favor — Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Que se mejore. Adiós.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Que se mejore — (Keh seh meh-ho-reh) — Get well soon. Adiós — Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

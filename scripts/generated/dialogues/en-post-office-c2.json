@@ -1,0 +1,187 @@
+{
+  "id": "dlg-en-post-office-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "A Confluence of Services",
+  "opening": "Welcome to the Royal Mail. How may I be of assistance today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Welcome to the Royal Mail. How may I be of assistance today?",
+      "branches": [
+        {
+          "keywords": [
+            "parcel",
+            "send",
+            "package"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "stamps",
+            "buy",
+            "postage"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "registered",
+            "tracking",
+            "query"
+          ],
+          "nextTurnId": "t4_final_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome to the Royal Mail. How may I be of assistance today?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Certainly. Are you looking to send this domestically or internationally, and do you require any specific services like tracking or express delivery?",
+      "branches": [
+        {
+          "keywords": [
+            "international",
+            "overseas",
+            "tracked",
+            "express"
+          ],
+          "nextTurnId": "t3_customs"
+        },
+        {
+          "keywords": [
+            "domestic",
+            "uk",
+            "standard"
+          ],
+          "nextTurnId": "t4_final_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Are you looking to send this domestically or internationally, and do you require any specific services like tracking or express delivery?"
+    },
+    "t3_customs": {
+      "id": "t3_customs",
+      "prompt": "Right, for international parcels, we'll need to complete a customs declaration form, of course. Have you already filled one out, or shall I provide you with one now?",
+      "branches": [
+        {
+          "keywords": [
+            "form",
+            "declaration",
+            "need"
+          ],
+          "nextTurnId": "t4_customs_help"
+        },
+        {
+          "keywords": [
+            "filled",
+            "done",
+            "already"
+          ],
+          "nextTurnId": "t4_final_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, for international parcels, we'll need to complete a customs declaration form, of course. Have you already filled one out, or shall I provide you with one now?"
+    },
+    "t4_customs_help": {
+      "id": "t4_customs_help",
+      "prompt": "No worries at all. It's fairly straightforward – just itemise the contents and their value clearly. Anything else I can assist you with today, perhaps regarding insurance or delivery times?",
+      "branches": [
+        {
+          "keywords": [
+            "insurance",
+            "cover",
+            "times",
+            "delivery"
+          ],
+          "nextTurnId": "t4_final_check"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothing",
+            "that'sall"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No worries at all. It's fairly straightforward – just itemise the contents and their value clearly. Anything else I can assist you with today, perhaps regarding insurance or delivery times?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Of course. Are you looking for first or second class, or perhaps some international stamps? And how many would you like?",
+      "branches": [
+        {
+          "keywords": [
+            "first",
+            "1st",
+            "second",
+            "2nd"
+          ],
+          "nextTurnId": "t4_final_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. Are you looking for first or second class, or perhaps some international stamps? And how many would you like?"
+    },
+    "t4_final_check": {
+      "id": "t4_final_check",
+      "prompt": "Right then, we'll get that processed for you. Anything else for you today, or are you all set?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "set",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "parcel",
+            "send"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "stamps",
+            "buy"
+          ],
+          "nextTurnId": "t2_stamps"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right then, we'll get that processed for you. Anything else for you today, or are you all set?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or speak a little more clearly, please?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm terribly sorry, I didn't quite catch that. Could you possibly rephrase or speak a little more clearly, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Right then, lovely. Thanks for popping in, and have a splendid day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Right then, lovely. Thanks for popping in, and have a splendid day!",
+      "isTerminal": true
+    }
+  }
+}

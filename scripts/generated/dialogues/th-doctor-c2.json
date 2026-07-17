@@ -1,0 +1,127 @@
+{
+  "id": "dlg-th-doctor-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "การปรึกษาแพทย์",
+  "opening": "สวัสดีครับ/ค่ะ คุณมีอาการอะไรบ้างครับ/คะ วันนี้",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ คุณมีอาการอะไรบ้างครับ/คะ วันนี้",
+      "branches": [
+        {
+          "keywords": [
+            "ปวด",
+            "เจ็บ",
+            "ไม่สบาย",
+            "จุกเสียด"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee kráp/kâ, Khun mee aa-gaan a-rai bâang kráp/kâ wan née? — Hello. What symptoms are you experiencing today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อืม... เข้าใจแล้วครับ/ค่ะ อาการที่คุณเล่ามานี่มันเป็นมานานแค่ไหนแล้วครับ/คะ แล้วลักษณะอาการเป็นยังไงบ้างครับ/คะ ปวดแบบจี๊ดๆ หรือปวดตื้อๆ หรือเปล่า",
+      "branches": [
+        {
+          "keywords": [
+            "เมื่อวาน",
+            "สองสามวัน",
+            "อาทิตย์กว่า",
+            "เดือนนึง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eum... kâo-jai láew kráp/kâ. Aa-gaan têe koon lâo maa née man bpen maa naan kâe năi láew kráp/kâ? Láew lák-sà-nà aa-gaan bpen yang-ngai bâang kráp/kâ? Bpùat bàep jít-jít rĕu bpùat dtʉ̂ʉ-dtʉ̂ʉ rĕu bplào? — Hmm, I see. How long have you been experiencing these symptoms? And what's the nature of the pain? Is it a sharp pain or a dull ache?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "แล้วอาการรบกวนการใช้ชีวิตประจำวันมากน้อยแค่ไหนครับ/คะ มีโรคประจำตัว หรือแพ้ยาอะไรเป็นพิเศษไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "รบกวน",
+            "กระทบ",
+            "นอนไม่หลับ",
+            "ทำงานลำบาก"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Láew aa-gaan róp-guan gaan chái chee-wít bprà-jam-wan mâak nɔ́ɔi kâe năi kráp/kâ? Mee rôhk bprà-jam-dtua rĕu pâe yaa a-rai bpen pí-sàyt mái kráp/kâ? — And how much do these symptoms interfere with your daily life? Do you have any underlying conditions or allergies to medication?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "จากที่ฟังมา คาดว่าน่าจะเป็น... (กล้ามเนื้ออักเสบ/กระเพาะอาหารอักเสบ) เบื้องต้นผม/ดิฉันจะจัดยาแก้ปวด/ลดอักเสบให้ไปทานก่อนนะครับ/คะ ถ้าอาการไม่ดีขึ้น หรือแย่ลงภายใน 2-3 วัน ให้กลับมาพบอีกครั้งนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เข้าใจ",
+            "จะปฏิบัติตาม"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Based on what you've described, it sounds like it might be... (e.g., muscle inflammation/gastritis). Initially, I'll prescribe some painkillers/anti-inflammatories for you to take. If your symptoms don't improve or worsen within 2-3 days, please come back for another visit."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยครับ/ค่ะ ไม่ค่อยได้ยินชัดเจน รบกวนช่วยพูดอีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr a-pai kráp/kâ, mâi kôi dâai yin chát-jen. Rópb-guan chûay pôot èek kráng dâai mái kráp/kâ? — I'm sorry, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดูแลสุขภาพด้วยนะครับ/คะ หายเร็วๆ นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Doo-lae sùk-kà-pâap dûay ná kráp/kâ. Hăai reo-reo ná kráp/kâ. — Take care of your health. Get well soon.",
+      "isTerminal": true
+    }
+  }
+}

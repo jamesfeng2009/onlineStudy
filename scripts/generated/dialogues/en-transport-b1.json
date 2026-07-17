@@ -1,0 +1,377 @@
+{
+  "id": "dlg-en-transport-b1",
+  "language": "en",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Bus Ticket and Information",
+  "opening": "Hello there! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello there! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "buy",
+            "single",
+            "return",
+            "pass"
+          ],
+          "nextTurnId": "t2_ticketquery"
+        },
+        {
+          "keywords": [
+            "schedule",
+            "bus",
+            "when",
+            "leaves"
+          ],
+          "nextTurnId": "t2_schedulequery"
+        },
+        {
+          "keywords": [
+            "how",
+            "get",
+            "reach",
+            "direction",
+            "where"
+          ],
+          "nextTurnId": "t2_directionquery"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello there! /hɛˈloʊ ðɛr/ (How can I assist you today?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat it, or say it a different way?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. /sɒri aɪ dɪdnt kwaɪt kætʃ ðæt/ (Please repeat or rephrase.)"
+    },
+    "t2_ticketquery": {
+      "id": "t2_ticketquery",
+      "prompt": "Alright, where are you planning to go? A single ticket, or a return?",
+      "branches": [
+        {
+          "keywords": [
+            "citycenter",
+            "station",
+            "museum",
+            "park",
+            "single"
+          ],
+          "nextTurnId": "t3_price_single"
+        },
+        {
+          "keywords": [
+            "citycenter",
+            "station",
+            "museum",
+            "park",
+            "return"
+          ],
+          "nextTurnId": "t3_price_return"
+        },
+        {
+          "keywords": [
+            "daily",
+            "weekly",
+            "pass",
+            "travelcard"
+          ],
+          "nextTurnId": "t3_price_pass"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, where are you planning to go? /ɔːlraɪt wɛr ɑː juː plænɪŋ tuː ɡoʊ/ (Tell me your destination and ticket type.)"
+    },
+    "t2_schedulequery": {
+      "id": "t2_schedulequery",
+      "prompt": "Which bus route are you interested in, or where are you heading?",
+      "branches": [
+        {
+          "keywords": [
+            "route",
+            "number",
+            "bus",
+            "to",
+            "citycenter",
+            "station"
+          ],
+          "nextTurnId": "t3_bus_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Which bus route are you interested in, or where are you heading? (Tell me the bus number or your destination.)"
+    },
+    "t2_directionquery": {
+      "id": "t2_directionquery",
+      "prompt": "Okay, where exactly are you trying to get to?",
+      "branches": [
+        {
+          "keywords": [
+            "citycenter",
+            "station",
+            "museum",
+            "park",
+            "market"
+          ],
+          "nextTurnId": "t3_bus_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, where exactly are you trying to get to? (What's your destination?)"
+    },
+    "t3_price_single": {
+      "id": "t3_price_single",
+      "prompt": "A single ticket to the City Center will be £3.50. Would you like to buy it?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "buy",
+            "ticket",
+            "please"
+          ],
+          "nextTurnId": "t4_purchase_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "expensive",
+            "just",
+            "asking"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "where",
+            "stop"
+          ],
+          "nextTurnId": "t4_stop_info_after_price"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single ticket to City Center will be three pounds fifty. (Confirm purchase.)"
+    },
+    "t3_price_return": {
+      "id": "t3_price_return",
+      "prompt": "A return ticket to the City Center is £6.00, valid for the whole day. Are you buying it?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "buy",
+            "ticket",
+            "please"
+          ],
+          "nextTurnId": "t4_purchase_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "just",
+            "asking",
+            "too expensive"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "where",
+            "stop"
+          ],
+          "nextTurnId": "t4_stop_info_after_price"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A return ticket to City Center is six pounds, valid for the whole day. (Confirm purchase.)"
+    },
+    "t3_price_pass": {
+      "id": "t3_price_pass",
+      "prompt": "A daily pass costs £7.00 and gives you unlimited travel. Is that what you'd like?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "buy",
+            "pass",
+            "please"
+          ],
+          "nextTurnId": "t4_purchase_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "just",
+            "asking",
+            "too expensive"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "where",
+            "stop"
+          ],
+          "nextTurnId": "t4_stop_info_after_price"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A daily pass costs seven pounds and gives you unlimited travel. (Confirm pass purchase.)"
+    },
+    "t3_bus_info": {
+      "id": "t3_bus_info",
+      "prompt": "Okay, the number 12 bus goes to City Center. It departs from Stop C, just around the corner, in about 10 minutes.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thank you",
+            "great"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "delays",
+            "late",
+            "on time"
+          ],
+          "nextTurnId": "t4_delay_check"
+        },
+        {
+          "keywords": [
+            "where",
+            "stop",
+            "platform"
+          ],
+          "nextTurnId": "t4_stop_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, the number 12 bus goes to City Center. /əʊˈkeɪ ðə ˈnʌmbər twɛlv bʌs ɡoʊz tuː ˈsɪti ˈsɛntər/ (Information about the bus and stop.)"
+    },
+    "t4_purchase_done": {
+      "id": "t4_purchase_done",
+      "prompt": "Great! Here's your ticket. The bus for the City Center departs from Stop C.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thank you",
+            "great"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "delays",
+            "late",
+            "on time"
+          ],
+          "nextTurnId": "t4_delay_check"
+        },
+        {
+          "keywords": [
+            "where",
+            "stop",
+            "platform"
+          ],
+          "nextTurnId": "t4_stop_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Payment confirmed. Here's your ticket. The bus for City Center departs from Stop C. (Ticket issued, stop information given.)"
+    },
+    "t4_stop_info_after_price": {
+      "id": "t4_stop_info_after_price",
+      "prompt": "Stop C is just outside the station building, to your left. Do you still want to buy the ticket?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "buy"
+          ],
+          "nextTurnId": "t4_purchase_done"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "changed mind"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "delays",
+            "late"
+          ],
+          "nextTurnId": "t4_delay_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stop C is just outside the station building, to your left. (Detailed stop location, asking about ticket again.)"
+    },
+    "t4_stop_info": {
+      "id": "t4_stop_info",
+      "prompt": "Stop C is just outside the station building, to your left as you exit. You can't miss it.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thank you",
+            "great"
+          ],
+          "nextTurnId": "t-end_thanks"
+        },
+        {
+          "keywords": [
+            "delays",
+            "late",
+            "on time"
+          ],
+          "nextTurnId": "t4_delay_check"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stop C is outside the station building, to your left. (Detailed stop location.)"
+    },
+    "t4_delay_check": {
+      "id": "t4_delay_check",
+      "prompt": "Let me check... At the moment, there are no reported delays for the number 12 bus. It should be on time.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "thank you",
+            "great"
+          ],
+          "nextTurnId": "t-end_thanks"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No reported delays for bus 12. It should be on time. (Checked for delays.)"
+    },
+    "t-end_thanks": {
+      "id": "t-end_thanks",
+      "prompt": "You're very welcome! Have a safe journey.",
+      "branches": [],
+      "fallbackBranchId": "t-end_thanks",
+      "promptTranslation": "You're very welcome! /jʊər vɛri wɛlkəm/ (Goodbye and have a good trip.)",
+      "isTerminal": true
+    }
+  }
+}

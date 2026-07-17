@@ -1,0 +1,228 @@
+{
+  "id": "dlg-de-post-office-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "Postgeschäfte: Paketversand und Einschreiben",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "senden",
+            "versenden"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Vee kahn ihkh Ihn-en be-hilf-likh zyn? — Good day! How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gerne. Worum geht es genau? Ein Paket, ein Einschreiben oder Briefmarken? Und wohin soll die Sendung ungefähr gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "versenden",
+            "ausland",
+            "usa",
+            "international"
+          ],
+          "nextTurnId": "t3_parcel_int"
+        },
+        {
+          "keywords": [
+            "paket",
+            "versenden",
+            "inland",
+            "deutschland",
+            "national"
+          ],
+          "nextTurnId": "t3_parcel_dom"
+        },
+        {
+          "keywords": [
+            "einschreiben",
+            "national",
+            "international",
+            "brief"
+          ],
+          "nextTurnId": "t3_registered"
+        },
+        {
+          "keywords": [
+            "briefmarken",
+            "marken",
+            "brief",
+            "postkarte"
+          ],
+          "nextTurnId": "t3_stamps"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gair-ne. Voh-rum gayt es ge-nau? Ayn Pa-ket, ayn Ayn-shry-ben o-der Breef-mar-ken? Oond voh-hin zol dee Zen-dung oon-ge-fair ge-hen? — Certainly. What exactly is it about? A parcel, a registered letter, or stamps? And roughly where should the shipment go?"
+    },
+    "t3_parcel_int": {
+      "id": "t3_parcel_int",
+      "prompt": "Für den internationalen Paketversand benötigen wir ein Zollformular. Haben Sie es schon ausgefüllt oder benötigen Sie dabei Hilfe? Sendungsverfolgung ist hierbei inklusive.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "ausgefüllt",
+            "fertig"
+          ],
+          "nextTurnId": "t4_final"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fyoor den in-ter-nah-tsio-nah-len Pa-ket-fair-sand be-nuh-ti-gen veer ayn Tsoll-for-moo-lahr. Hah-ben zee es shon ows-ge-fylt o-der be-nuh-ti-gen zee dah-by hil-fe? Zen-dungs-fair-fol-gung ist heer-by in-kloo-zee-ve. — For international parcel shipping, we need a customs form. Have you already filled it out, or do you need help with that? Tracking is included here."
+    },
+    "t3_parcel_dom": {
+      "id": "t3_parcel_dom",
+      "prompt": "Für Inlandspakete ist Sendungsverfolgung standardmäßig dabei. Möchten Sie zusätzlich eine Versicherung abschließen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "sendungsverfolgung",
+            "versicherung"
+          ],
+          "nextTurnId": "t4_final"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fyoor In-lands-pa-ke-te ist Zen-dungs-fair-fol-gung stan-dart-mes-sihg dah-by. Mukh-ten zee tsoo-zet-slikh ay-ne Fir-zee-kher-ung ap-shlee-sen? — For domestic parcels, tracking is included by default. Would you like to purchase additional insurance?"
+    },
+    "t3_registered": {
+      "id": "t3_registered",
+      "prompt": "Ein Einschreiben. Sendungsverfolgung ist hierbei inklusive. Möchten Sie noch eine Empfangsbestätigung oder eine Versicherung hinzufügen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bestaetigung",
+            "versicherung"
+          ],
+          "nextTurnId": "t4_final"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ayn Ayn-shry-ben. Zen-dungs-fair-fol-gung ist heer-by in-kloo-zee-ve. Mukh-ten zee nokh ay-ne Emp-fangs-be-ste-ti-gung o-der ay-ne Fir-zee-kher-ung hin-zoo-fyoo-gen? — A registered letter. Tracking is included. Would you like to add a delivery confirmation or insurance?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "Für einen Standardbrief innerhalb Deutschlands kostet eine Briefmarke 0,85 Euro. Benötigen Sie noch weitere, zum Beispiel für Postkarten oder internationalen Versand, oder möchten Sie direkt bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "mehr",
+            "postkarte",
+            "international"
+          ],
+          "nextTurnId": "t4_stamps_final"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "bezahlen",
+            "fertig"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "anderes",
+            "paket",
+            "einschreiben"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fyoor ay-nen Stan-dart-breef in-ner-halb Doich-landz kos-tet ay-ne Breef-mar-ke nuhl kom-ma akh-tzayn Oy-ro. Be-nuh-ti-gen zee nokh vy-te-re, tsoom by-shpeel fyoor Post-kar-ten o-der in-ter-nah-tsio-nah-len Fair-sand, o-der mukh-ten zee dee-rekt be-tsah-len? — For a standard letter within Germany, a stamp costs 0.85 Euros. Do you need any more, for example for postcards or international shipping, or would you like to pay directly?"
+    },
+    "t4_final": {
+      "id": "t4_final",
+      "prompt": "Alles klar. Das kostet dann 17,99 Euro (oder der angepasste Preis) und dauert voraussichtlich 5-7 Werktage. Gibt es sonst noch etwas, das ich für Sie tun kann?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "bezahlen",
+            "fertig"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ja",
+            "nochwas",
+            "anderefrage"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Al-les klahr. Das kos-tet dan zee-p-tsayn kom-ma noyn-tsee-sh noyn Oy-ro (o-der der an-ge-pas-te Prays) oond dow-ert fo-row-zikh-tlish fynf-zay-ben Verkh-tah-ge. Gipt es zonst nokh et-vas, das ihkh fyoor zee toon kahn? — All right. That will cost 17.99 Euros (or the adjusted price) and is expected to take 5-7 business days. Is there anything else I can do for you?"
+    },
+    "t4_stamps_final": {
+      "id": "t4_stamps_final",
+      "prompt": "Gut. Die zusätzlichen Briefmarken kosten dann 2,20 Euro. Insgesamt also 3,05 Euro. Möchten Sie direkt bezahlen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bezahlen",
+            "fertig"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "anderefrage",
+            "paket",
+            "einschreiben"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot. Dee tsoo-zet-slikh-en Breef-mar-ken kos-ten dan tsvey kom-ma tsven-tsikh Oy-ro. In-ge-zamt al-zo dry kom-ma nuhl-fynf Oy-ro. Mukh-ten zee dee-rekt be-tsah-len? — Okay. The additional stamps will then cost 2.20 Euros. So, a total of 3.05 Euros. Would you like to pay directly?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-dee-gen zee, ihkh hah-be zee nikht gants fair-stan-den. Kuhn-ten zee das bit-te vee-der-ho-len o-der an-ders for-moo-lee-ren? — Excuse me, I didn't quite understand. Could you please repeat that or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und einen schönen Tag noch!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank oond ay-nen shuh-nen Tahg nokh! — Thank you very much and have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

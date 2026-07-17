@@ -1,0 +1,190 @@
+{
+  "id": "dlg-fr-post-office-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "À la Poste",
+  "opening": "Bonjour, je peux vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, je peux vous aider ?",
+      "branches": [
+        {
+          "keywords": [
+            "colis",
+            "paquet"
+          ],
+          "nextTurnId": "t2_colis"
+        },
+        {
+          "keywords": [
+            "timbres"
+          ],
+          "nextTurnId": "t2_timbres"
+        },
+        {
+          "keywords": [
+            "question",
+            "autre",
+            "bonjour"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            "merci",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (Bohn-zhoor), je peux vous aider ? — Hello, can I help you?"
+    },
+    "t2_colis": {
+      "id": "t2_colis",
+      "prompt": "D'accord. Où voulez-vous envoyer le colis ?",
+      "branches": [
+        {
+          "keywords": [
+            "france",
+            "ici"
+          ],
+          "nextTurnId": "t3_colis_fr_price"
+        },
+        {
+          "keywords": [
+            "international",
+            "monde",
+            "europe",
+            "etranger"
+          ],
+          "nextTurnId": "t3_colis_int_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor). Où (Oo) voulez-vous envoyer le colis ? — Okay. Where do you want to send the parcel?"
+    },
+    "t2_timbres": {
+      "id": "t2_timbres",
+      "prompt": "Un timbre coûte 1 euro 50. Combien en voulez-vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "1"
+          ],
+          "nextTurnId": "t3_timbres_confirm"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un timbre (Un tam-br) coûte 1 euro 50. Combien (Kohm-byen) en voulez-vous ? — A stamp costs 1 euro 50. How many do you want?"
+    },
+    "t3_colis_fr_price": {
+      "id": "t3_colis_fr_price",
+      "prompt": "Pour la France, c'est cinq euros. C'est tout ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "payer",
+            "daccord",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour la France (Lah Frahns), c'est cinq (Sank) euros. C'est tout ? — For France, it's five euros. Is that all?"
+    },
+    "t3_colis_int_price": {
+      "id": "t3_colis_int_price",
+      "prompt": "Pour l'international, c'est dix euros. Il faut un formulaire. C'est tout ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "payer",
+            "daccord",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pour l'international (Lan-ter-na-syo-nal), c'est dix (Dees) euros. Il faut un formulaire (For-myu-lair). C'est tout ? — For international, it's ten euros. You need a form. Is that all?"
+    },
+    "t3_timbres_confirm": {
+      "id": "t3_timbres_confirm",
+      "prompt": "D'accord, c'est bon. C'est tout ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "acheter",
+            "payer",
+            "daccord",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dah-kor), c'est bon (Say bon). C'est tout ? — Okay, that's good. Is that all?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas compris. Pouvez-vous répéter ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon (Par-don), je n'ai pas compris. Pouvez-vous (Poo-vay voo) répéter ? — Sorry, I didn't understand. Can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien. Je vous remercie et vous souhaite une bonne journée. Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très (Trez) bien. Je vous remercie (Mer-see) et vous souhaite une bonne journée (Zhoor-nay). Au revoir (Oh re-vwahr) ! — Very good. Thank you and have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "id": "dlg-de-weather-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Wetter-Plausch",
+  "opening": "Guten Morgen! Wie ist das Wetter heute bei dir? Oder hast du schon die Vorhersage für den Tag gesehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Morgen! Wie ist das Wetter heute bei dir? Oder hast du schon die Vorhersage für den Tag gesehen?",
+      "branches": [
+        {
+          "keywords": [
+            "schön",
+            "sonnig",
+            "gut",
+            "warm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "schlecht",
+            "regen",
+            "kühl",
+            "bewölkt"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "vorhersage",
+            "prognose",
+            "wetterbericht"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Morgen! Wie ist das Wetter heute bei dir? Oder hast du schon die Vorhersage für den Tag gesehen? — Good morning! How's the weather with you today? Or have you already seen the forecast for the day?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, das klingt ja wunderbar! Bei so einem schönen Wetter bekommt man gleich gute Laune. Hast du etwas Besonderes vor heute?",
+      "branches": [
+        {
+          "keywords": [
+            "draußen",
+            "spaziergang",
+            "park",
+            "natur",
+            "garten"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "drinnen",
+            "entspannen",
+            "lesen",
+            "film",
+            "kochen"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "arbeit",
+            "uni",
+            "schule",
+            "arbeiten"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, das klingt ja wunderbar! Bei so einem schönen Wetter bekommt man gleich gute Laune. Hast du etwas Besonderes vor heute? — Oh, that sounds wonderful! Such beautiful weather immediately puts you in a good mood. Do you have anything special planned for today?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, schade! Regen und Kälte sind wirklich nicht mein Lieblingswetter. Macht das deine Pläne kaputt oder hast du trotzdem etwas vor?",
+      "branches": [
+        {
+          "keywords": [
+            "pläneändern",
+            "absagen",
+            "drinnenbleiben",
+            "keinepläne"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "trotzdem",
+            "egal",
+            "gehe",
+            "mussraus"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "arbeit",
+            "uni",
+            "schule",
+            "arbeiten"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach, schade! Regen und Kälte sind wirklich nicht mein Lieblingswetter. Macht das deine Pläne kaputt oder hast du trotzdem etwas vor? — Ah, what a shame! Rain and cold really aren't my favorite weather. Does that ruin your plans, or do you still have something planned?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Interessant, und was sagt die Vorhersage genau? Wird es wärmer, kälter, oder kommt vielleicht noch Regen?",
+      "branches": [
+        {
+          "keywords": [
+            "wärmer",
+            "sonne",
+            "besser",
+            "gut"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "kälter",
+            "regen",
+            "sturm",
+            "schlechter"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "gleichbleibend",
+            "unverändert",
+            "nichtsbesonderes"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interessant, und was sagt die Vorhersage genau? Wird es wärmer, kälter, oder kommt vielleicht noch Regen? — Interesting, and what exactly does the forecast say? Will it get warmer, colder, or maybe rain later?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das klingt toll! Die Natur genießen ist immer eine gute Idee. Welche Jahreszeit magst du denn am liebsten für solche Aktivitäten?",
+      "branches": [
+        {
+          "keywords": [
+            "frühling",
+            "sommer",
+            "herbst",
+            "winter"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt toll! Die Natur genießen ist immer eine gute Idee. Welche Jahreszeit magst du denn am liebsten für solche Aktivitäten? — That sounds great! Enjoying nature is always a good idea. Which season do you like best for such activities?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Das verstehe ich gut. Manchmal ist es auch schön, es sich drinnen gemütlich zu machen. Was machst du am liebsten, wenn das Wetter schlecht ist?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "film",
+            "kochen",
+            "malen",
+            "entspannen"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das verstehe ich gut. Manchmal ist es auch schön, es sich drinnen gemütlich zu machen. Was machst du am liebsten, wenn das Wetter schlecht ist? — I understand that well. Sometimes it's also nice to make yourself comfortable indoors. What do you like to do most when the weather is bad?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ja, der Alltag muss weitergehen, egal wie das Wetter ist. Aber beeinflusst das Wetter deine Stimmung bei der Arbeit oder Uni?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "positiv",
+            "gutelaune",
+            "motiviert"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "egal",
+            "konzentriert",
+            "nicht"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "schlecht",
+            "negativ",
+            "müde",
+            "deprimiert"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja, der Alltag muss weitergehen, egal wie das Wetter ist. Aber beeinflusst das Wetter deine Stimmung bei der Arbeit oder Uni? — Yes, daily life must go on, no matter the weather. But does the weather affect your mood at work or university?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Das ist wahr. Manchmal ist das Wetter einfach so, wie es ist. Gibt es ein Wetterphänomen, das dich besonders fasziniert oder das du gar nicht magst?",
+      "branches": [
+        {
+          "keywords": [
+            "sonne",
+            "schnee",
+            "sturm",
+            "blitz",
+            "gewitter",
+            "regenbogen"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das ist wahr. Manchmal ist das Wetter einfach so, wie es ist. Gibt es ein Wetterphänomen, das dich besonders fasziniert oder das du gar nicht magst? — That's true. Sometimes the weather just is what it is. Is there a weather phenomenon that particularly fascinates you, or one that you don't like at all?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe dich nicht ganz verstanden. Könntest du das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "wasistdas"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung, ich habe dich nicht ganz verstanden. Könntest du das bitte wiederholen oder anders formulieren? — Sorry, I didn't quite understand you. Could you please repeat that or phrase it differently?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Vielen Dank für das nette Gespräch über das Wetter! Ich wünsche dir noch einen schönen Tag, egal wie das Wetter wird. Auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t9",
+      "promptTranslation": "Vielen Dank für das nette Gespräch über das Wetter! Ich wünsche dir noch einen schönen Tag, egal wie das Wetter wird. Auf Wiederhören! — Thank you for the nice chat about the weather! I wish you a good day, no matter what the weather turns out to be. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

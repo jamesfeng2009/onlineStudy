@@ -1,0 +1,248 @@
+{
+  "id": "dlg-th-interview-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "interview",
+  "title": "การสัมภาษณ์งานเบื้องต้น",
+  "opening": "สวัสดีครับ/ค่ะ ยินดีที่ได้รู้จักครับ/ค่ะ ช่วยแนะนำตัวเองให้เราฟังหน่อยได้ไหมครับ/คะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ยินดีที่ได้รู้จักครับ/ค่ะ ช่วยแนะนำตัวเองให้เราฟังหน่อยได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "แนะนำตัวเอง",
+            "ประวัติ",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t2_background"
+        },
+        {
+          "keywords": [
+            "ประสบการณ์",
+            "งานที่เคยทำ"
+          ],
+          "nextTurnId": "t2_experience"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krab/ka. Yin dee tee dai roo jak krab/ka. Choo-ay nae nam dtua eng hai rao fang noi dai mai krab/ka? — Hello. Nice to meet you. Could you please introduce yourself?"
+    },
+    "t2_background": {
+      "id": "t2_background",
+      "prompt": "ขอบคุณครับ/ค่ะ เล่าถึงประสบการณ์การทำงานที่ผ่านมาให้ฟังหน่อยได้ไหมครับ/คะ ว่าเคยทำอะไรมาบ้าง",
+      "branches": [
+        {
+          "keywords": [
+            "เคยทำ",
+            "ประสบการณ์",
+            "งาน"
+          ],
+          "nextTurnId": "t3_skills"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "จบใหม่"
+          ],
+          "nextTurnId": "t3_newgrad"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khob khun krab/ka. Lao teung bprà-sòp-gaan gaan tam ngaan tee paan maa hai fang noi dai mai krab/ka? Waa koey tam a-rai maa bâang? — Thank you. Could you tell us about your past work experience? What have you done?"
+    },
+    "t2_experience": {
+      "id": "t2_experience",
+      "prompt": "น่าสนใจครับ/ค่ะ จากประสบการณ์ที่คุณมี คุณคิดว่าจุดแข็งของคุณคืออะไรครับ/คะ ที่จะช่วยงานของเราได้",
+      "branches": [
+        {
+          "keywords": [
+            "จุดแข็ง",
+            "ถนัด",
+            "ความสามารถ"
+          ],
+          "nextTurnId": "t3_strengths"
+        },
+        {
+          "keywords": [
+            "ทักษะ",
+            "ภาษา",
+            "คอมพิวเตอร์"
+          ],
+          "nextTurnId": "t3_skills"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Naa son jai krab/ka. Jaak bprà-sòp-gaan têe kun mee, kun kít wâa jùt kâeng kâung kun keu a-rai krab/ka têe jà chûay ngaan kâung rao dâai? — That's interesting. From your experience, what do you think your strengths are that could help our work?"
+    },
+    "t3_skills": {
+      "id": "t3_skills",
+      "prompt": "ดีมากครับ/ค่ะ แล้วคิดว่าทักษะเหล่านี้จะนำมาปรับใช้กับตำแหน่งนี้ได้อย่างไรบ้างครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ปรับใช้",
+            "ตำแหน่ง",
+            "นำไปใช้"
+          ],
+          "nextTurnId": "t4_questions"
+        },
+        {
+          "keywords": [
+            "อยากเรียนรู้",
+            "พัฒนา"
+          ],
+          "nextTurnId": "t4_growth"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee mâak krab/ka. Láeo kít wâa ták-sà́ láo née jà nam maa bpràp chái gàp dtam-nàeng née dâai yàang rai bâang krab/ka? — Very good. How do you think these skills can be applied to this position?"
+    },
+    "t3_newgrad": {
+      "id": "t3_newgrad",
+      "prompt": "ไม่เป็นไรครับ/ค่ะ ทุกคนต่างก็มีจุดเริ่มต้น คุณคิดว่าอะไรคือแรงจูงใจที่ทำให้คุณสนใจตำแหน่งนี้ครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "แรงจูงใจ",
+            "สนใจ",
+            "อยากทำงาน"
+          ],
+          "nextTurnId": "t4_questions"
+        },
+        {
+          "keywords": [
+            "เรียนรู้",
+            "พัฒนาตัวเอง",
+            "ท้าทาย"
+          ],
+          "nextTurnId": "t4_growth"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mâi bpen rai krab/ka. Túk kon dtàang gôr mee jùt rêrm dtôn. Kun kít wâa a-rai keu raeng joong jai têe tam hâi kun son jai dtam-nàeng née krab/ka? — That's alright. Everyone has a starting point. What motivated you to be interested in this position?"
+    },
+    "t3_strengths": {
+      "id": "t3_strengths",
+      "prompt": "เยี่ยมครับ/ค่ะ แล้วมีอะไรที่เราควรรู้เพิ่มเติมเกี่ยวกับคุณอีกไหมครับ/คะ เช่น จุดอ่อน หรือสิ่งที่คุณอยากพัฒนา",
+      "branches": [
+        {
+          "keywords": [
+            "จุดอ่อน",
+            "ข้อเสีย",
+            "ปรับปรุง"
+          ],
+          "nextTurnId": "t4_questions"
+        },
+        {
+          "keywords": [
+            "อยากพัฒนา",
+            "เป้าหมาย",
+            "ความท้าทาย"
+          ],
+          "nextTurnId": "t4_growth"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yîam krab/ka. Láeo mee a-rai têe rao kuan róo pêrm dterm gèe-ao gàp kun eek mai krab/ka? Chên jùt ôrn rĕu sìng têe kun yàak pát-tá-naa. — Excellent. Is there anything else we should know about you, such as your weaknesses or what you'd like to develop?"
+    },
+    "t4_questions": {
+      "id": "t4_questions",
+      "prompt": "ดีครับ/ค่ะ ก่อนที่เราจะจบการสัมภาษณ์ มีคำถามอะไรอยากจะถามเราบ้างไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "มีคำถาม",
+            "ถาม",
+            "อยากรู้"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee krab/ka. Gòn têe rao jà jòp gaan sàm-pâat, mee kam tăam a-rai yàak jà tăam rao bâang mai krab/ka? — Good. Before we conclude the interview, do you have any questions for us?"
+    },
+    "t4_growth": {
+      "id": "t4_growth",
+      "prompt": "เข้าใจครับ/ค่ะ เรายินดีสนับสนุนการพัฒนาตนเองของพนักงานทุกคนครับ/ค่ะ ขอบคุณสำหรับข้อมูลนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ยินดี",
+            "ดีใจ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kâo jai krab/ka. Rao yin dee sanàp-sà-nùn gaan pát-tá-naa dtua eng kâung pá-nák-ngaan túk kon krab/ka. Khob khun sam-ràp kôr-moon na krab/ka. — I understand. We are happy to support the personal development of all our employees. Thank you for the information."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่เข้าใจที่คุณพูดเมื่อสักครู่ ช่วยพูดใหม่อีกครั้งได้ไหมครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr tôht krab/ka. Mâi kâo jai têe kun pôot mêua sàk krôo. Chûay pôot mài èek kráng dâai mai krab/ka? — Sorry, I didn't understand what you said just now. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ ที่มาสัมภาษณ์ในวันนี้ ทางเราจะติดต่อกลับไปในเร็วๆ นี้ครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khob khun mâak krab/ka têe maa sàm-pâat nai wan née. Taang rao jà dtìt dtòr glàp bpai nai reo-reo née krab/ka. Sawatdee krab/ka. — Thank you very much for coming to the interview today. We will contact you soon. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

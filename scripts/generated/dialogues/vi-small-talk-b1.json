@@ -1,0 +1,105 @@
+{
+  "id": "dlg-vi-small-talk-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Trò chuyện thân mật",
+  "opening": "Chào bạn! Buổi tiệc hôm nay vui quá phải không? Cuối tuần của bạn thế nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Buổi tiệc hôm nay vui quá phải không? Cuối tuần của bạn thế nào?",
+      "branches": [
+        {
+          "keywords": [
+            "vui",
+            "tuyệt",
+            "thúvị",
+            "tuyệtvời"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn! Buổi tiệc hôm nay vui quá phải không? Cuối tuần của bạn thế nào? (Vietnamese text provided is already in romanized script) — Hi there! This party is really fun, isn't it? How was your weekend?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Nghe có vẻ thú vị / bận rộn / bình thường nhỉ. Dù sao thì, bạn có sở thích nào đặc biệt không, hay công việc của bạn có gì hay ho không?",
+      "branches": [
+        {
+          "keywords": [
+            "đọcsách",
+            "xemphim",
+            "nghenhạc",
+            "nghệthuật"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe có vẻ thú vị / bận rộn / bình thường nhỉ. Dù sao thì, bạn có sở thích nào đặc biệt không, hay công việc của bạn có gì hay ho không? (Vietnamese text provided is already in romanized script) — That sounds interesting / busy / normal. Anyway, do you have any special hobbies, or is there anything interesting about your job?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ồ, nghe hay đấy! Tôi cũng thích / quan tâm đến điều đó. Nhân tiện, bạn có thường dành thời gian cho gia đình không, hay bạn có thích đi ăn ngoài / xem phim không?",
+      "branches": [
+        {
+          "keywords": [
+            "giađình",
+            "cha_mẹ",
+            "anhchịem",
+            "concái"
+          ],
+          "nextTurnId": "t4_end"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, nghe hay đấy! Tôi cũng thích / quan tâm đến điều đó. Nhân tiện, bạn có thường dành thời gian cho gia đình không, hay bạn có thích đi ăn ngoài / xem phim không? (Vietnamese text provided is already in romanized script) — Oh, that sounds good! I also like / am interested in that. By the way, do you often spend time with your family, or do you like eating out / watching movies?"
+    },
+    "t4_end": {
+      "id": "t4_end",
+      "prompt": "Dù sao thì, tôi cũng phải đi chào hỏi những người khác nữa đây. Rất vui được nói chuyện với bạn nhé! Chúc bạn có một buổi tối thật vui vẻ.",
+      "branches": [],
+      "fallbackBranchId": "t4_end",
+      "promptTranslation": "Dù sao thì, tôi cũng phải đi chào hỏi những người khác nữa đây. Rất vui được nói chuyện với bạn nhé! Chúc bạn có một buổi tối thật vui vẻ. — Anyway, I also have to go say hello to other people now. It was great talking to you! Have a very pleasant evening.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe chưa rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe chưa rõ lắm. — Sorry, could you repeat that? I didn't quite catch it."
+    }
+  }
+}

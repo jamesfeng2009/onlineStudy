@@ -1,0 +1,142 @@
+{
+  "id": "dlg-fr-restaurant-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Au restaurant français",
+  "opening": "Bienvenue au restaurant Le Bon Appétit ! Avez-vous une réservation ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bienvenue au restaurant Le Bon Appétit ! Avez-vous une réservation ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "réservation",
+            "reservé"
+          ],
+          "nextTurnId": "t2_reservation_name"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas"
+          ],
+          "nextTurnId": "t2_no_reservation_count"
+        },
+        {
+          "keywords": [
+            "bonjour"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bienvenue au restaurant Le Bon Appétit ! [bjẽvny o ʁɛstoʁɑ̃ lə bɔnapeti] — Welcome to Le Bon Appétit restaurant! Do you have a reservation?"
+    },
+    "t2_reservation_name": {
+      "id": "t2_reservation_name",
+      "prompt": "Très bien. Quel est votre nom, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "nom",
+            "c'est",
+            "je"
+          ],
+          "nextTurnId": "t3_seat"
+        },
+        {
+          "keywords": [
+            "rechercher",
+            "trouvé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. [tʁɛ bjɛ̃] Quel est votre nom, s'il vous plaît ? [kɛl ɛ vɔtʁə nɔ̃ sil vu plɛ] — Very good. What is your name, please?"
+    },
+    "t2_no_reservation_count": {
+      "id": "t2_no_reservation_count",
+      "prompt": "Pas de problème. Pour combien de personnes êtes-vous ? Nous avons une table disponible près de la fenêtre.",
+      "branches": [
+        {
+          "keywords": [
+            "une",
+            "un"
+          ],
+          "nextTurnId": "t3_seat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pas de problème. [pa də pʁɔblɛm] Pour combien de personnes êtes-vous ? [puʁ kɔ̃bjɛ̃ də pɛʁsɔn ɛtə vu] — No problem. For how many people are you? We have a table available near the window."
+    },
+    "t3_seat": {
+      "id": "t3_seat",
+      "prompt": "Parfait ! Suivez-moi, s'il vous plaît. Voici votre table. Je vous apporte les menus tout de suite.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "s'asseoir",
+            "installer"
+          ],
+          "nextTurnId": "t4_order_inquiry"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait ! [paʁfɛ] Suivez-moi, s'il vous plaît. [sɥive mwa sil vu plɛ] Voici votre table. [vwasi vɔtʁə tabl] Je vous apporte les menus tout de suite. [ʒə vu zapɔʁt le məny tu d(ə) sɥit] — Perfect! Follow me, please. Here is your table. I'll bring you the menus right away."
+    },
+    "t4_order_inquiry": {
+      "id": "t4_order_inquiry",
+      "prompt": "Voici les menus. Pour commencer, souhaitez-vous une boisson ? Et êtes-vous prêts à commander ou avez-vous des questions ?",
+      "branches": [
+        {
+          "keywords": [
+            "boisson",
+            "eau",
+            "vin",
+            "bière",
+            "jus",
+            "apéritif"
+          ],
+          "nextTurnId": "t5_final_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Here are the menus. To start, would you like a drink? And are you ready to order or do you have any questions?"
+    },
+    "t5_final_order": {
+      "id": "t5_final_order",
+      "prompt": "Très bien, je prends note de tout cela. J'espère que vous passerez un excellent repas. Bon appétit !",
+      "branches": [],
+      "fallbackBranchId": "t5_final_order",
+      "promptTranslation": "Very good, I'll take note of all that. I hope you have an excellent meal. Enjoy your meal!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? [paʁdɔ̃] Pouvez-vous répéter, s'il vous plaît ? [puve vu ʁepete sil vu plɛ] — Sorry? Can you repeat, please?"
+    }
+  }
+}

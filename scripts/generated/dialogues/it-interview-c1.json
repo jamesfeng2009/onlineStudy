@@ -1,0 +1,147 @@
+{
+  "id": "dlg-it-interview-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "interview",
+  "title": "Colloquio di Lavoro: Livello C1",
+  "opening": "Buongiorno, [Nome del Candidato]. Sono [Nome dell'Intervistatore]. Benvenuto/a. Iniziamo pure. Mi parli un po' di sé.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, [Nome del Candidato]. Sono [Nome dell'Intervistatore]. Benvenuto/a. Iniziamo pure. Mi parli un po' di sé.",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "mi chiamo",
+            "laureato",
+            "esperienza",
+            "provengo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno — Good morning, [Candidate Name]. Sono [Nome dell'Intervistatore] — I am [Interviewer Name]. Benvenuto/a — Welcome. Iniziamo pure — Let's begin. Mi parli un po' di sé — Tell me a little about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Molto interessante. Dal suo curriculum vitae, vedo che ha un'esperienza significativa nel settore X. Potrebbe approfondire il suo ruolo e le sue responsabilità principali nel suo precedente impiego?",
+      "branches": [
+        {
+          "keywords": [
+            "ruolo",
+            "responsabilità",
+            "progetti",
+            "gestione",
+            "risultati"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Molto interessante — Very interesting. Dal suo curriculum vitae — From your CV, vedo che ha un'esperienza significativa nel settore X — I see you have significant experience in sector X. Potrebbe approfondire il suo ruolo e le sue responsabilità principali nel suo precedente impiego? — Could you elaborate on your role and main responsibilities in your previous job?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. Sembra che abbia gestito progetti complessi con successo. Parlando delle sue qualità, quali ritiene siano i suoi punti di forza che la renderebbero il candidato ideale per questa posizione?",
+      "branches": [
+        {
+          "keywords": [
+            "problem-solving",
+            "comunicazione",
+            "leadership",
+            "autonomo",
+            "creatività",
+            "dedizione"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco — I understand. Sembra che abbia gestito progetti complessi con successo — It seems you've successfully managed complex projects. Parlando delle sue qualità — Speaking of your qualities, quali ritiene siano i suoi punti di forza che la renderebbero il candidato ideale per questa posizione? — what do you consider your strengths that would make you the ideal candidate for this position?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ottimo. E per quanto riguarda le aree di miglioramento? Qual è, se ce n'è una, la debolezza su cui sta lavorando per trasformarla in un punto di forza?",
+      "branches": [
+        {
+          "keywords": [
+            "perfezionismo",
+            "impazienza",
+            "difficoltà-delegare",
+            "auto-critica",
+            "gestione-tempo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. And regarding areas for improvement? What, if any, is the weakness you are working on to turn into a strength?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "La ringrazio per la sua trasparenza. Abbiamo coperto i punti principali. Ha qualche domanda per me o per l'azienda?",
+      "branches": [
+        {
+          "keywords": [
+            "domande",
+            "grazie",
+            "interessato",
+            "opportunità"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for your transparency. We've covered the main points. Do you have any questions for me or the company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere o riformulare la sua risposta? Non ho afferrato bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat or rephrase your answer? I didn't quite catch that."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. La ringrazio per il suo tempo e la sua disponibilità. La contatteremo a breve per gli sviluppi. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Thank you for your time and availability. We will contact you shortly regarding the next steps. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

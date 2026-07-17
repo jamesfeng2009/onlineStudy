@@ -1,0 +1,182 @@
+{
+  "id": "dlg-en-taxi-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Taxi Ride",
+  "opening": "Alright, where are we headed today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alright, where are we headed today?",
+      "branches": [
+        {
+          "keywords": [
+            "airport",
+            "station",
+            "hotel",
+            "downtown",
+            "citycenter"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "route",
+            "howmuch",
+            "fare",
+            "time",
+            "cost",
+            "estimate"
+          ],
+          "nextTurnId": "t2_details"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, where are we headed today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "The airport, got it. Which terminal are you flying from?",
+      "branches": [
+        {
+          "keywords": [
+            "terminal1",
+            "terminal2",
+            "terminal3",
+            "international",
+            "domestic"
+          ],
+          "nextTurnId": "t3_route_fare"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The airport, got it. Which terminal are you flying from?"
+    },
+    "t2_details": {
+      "id": "t2_details",
+      "prompt": "No problem. To give you an accurate estimate, could you tell me your destination?",
+      "branches": [
+        {
+          "keywords": [
+            "airport",
+            "station",
+            "hotel",
+            "downtown",
+            "citycenter"
+          ],
+          "nextTurnId": "t3_route_fare"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. To give you an accurate estimate, could you tell me your destination?"
+    },
+    "t3_route_fare": {
+      "id": "t3_route_fare",
+      "prompt": "Right, traffic's a bit heavy today, but I know a shortcut that usually shaves off a good ten minutes. The fare will likely be around £35-40 to your destination. Does that sound alright, and how will you be paying?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "ok",
+            "good",
+            "fine",
+            "card",
+            "cash",
+            "paylater",
+            "later"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "route",
+            "shortcut",
+            "traffic",
+            "fare",
+            "cost",
+            "explain"
+          ],
+          "nextTurnId": "t4_clarify"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, traffic's a bit heavy today, but I know a shortcut that usually shaves off a good ten minutes. The fare will likely be around £35-40 to your destination. Does that sound alright, and how will you be paying?"
+    },
+    "t4_clarify": {
+      "id": "t4_clarify",
+      "prompt": "The shortcut avoids the city center congestion, saving about ten minutes. The fare is usually consistent unless traffic is unusually bad, but I can't give an exact fixed price. So, cash or card then?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "creditcard",
+            "debitcard"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The shortcut avoids the city center congestion, saving about ten minutes. The fare is usually consistent unless traffic is unusually bad, but I can't give an exact fixed price. So, cash or card then?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Excellent. We'll be there shortly. Have a good trip!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent. We'll be there shortly. Have a good trip!",
+      "isTerminal": true
+    }
+  }
+}

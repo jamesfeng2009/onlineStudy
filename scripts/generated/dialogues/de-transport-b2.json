@@ -1,0 +1,58 @@
+{
+  "id": "dlg-de-transport-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Fahrkartenkauf und Reiseinformation",
+  "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "fahrkarte",
+            "ticket",
+            "kaufen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "verbindung",
+            "gleis",
+            "abfahrt",
+            "information"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Guten Tag! Wie kann ich Ihnen behilflich sein? — (Goo-ten Tahg! Vee kahn ish ee-nen beh-hilf-lish zyne?) — Good day! How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Gerne. Wohin soll die Reise gehen? Eine einfache Fahrt nach Berlin kostet 25,50 Euro, nach Hamburg 32,50 Euro. Ein Hin- und Rückfahrtticket ist teurer. Welche Option möchten Sie?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Gerne. Wohin soll die Reise gehen? Eine einfache Fahrt nach Berlin kostet 25,50 Euro, nach Hamburg 32,50 Euro. Ein Hin- und Rückfahrtticket ist teurer. Welche Option möchten Sie? — (Ger-neh. Voh-hin zoll dee Rye-zeh geh-en? Eye-neh ayn-fah-kheh Fahrt nahkh Ber-leen kos-tet 25,50 Oy-ro, nahkh Hahm-burg 32,50 Oy-ro. Ayn Hin- unt Rük-fahrt-tik-ket ist toy-rer. Vel-kheh Op-tsyon mökh-ten zee?) — Certainly. Where would you like to travel? A one-way ticket to Berlin costs 25.50 Euros, to Hamburg 32.50 Euros. A return ticket is more expensive. Which option would you like?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Selbstverständlich. Welches Reiseziel interessiert Sie, zum Beispiel Berlin oder Hamburg? Ich kann Ihnen Abfahrtzeiten und Gleise nennen.",
+      "branches": [],
+      "fallbackBranchId": "t3",
+      "promptTranslation": "Selbstverständlich. Welches Reiseziel interessiert Sie, zum Beispiel Berlin oder Hamburg? Ich kann Ihnen Ab",
+      "isTerminal": true
+    }
+  }
+}

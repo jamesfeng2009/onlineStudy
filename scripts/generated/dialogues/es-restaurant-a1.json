@@ -1,0 +1,215 @@
+{
+  "id": "dlg-es-restaurant-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Ordenando en el restaurante",
+  "opening": "¡Hola! ¿Qué desea ordenar?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué desea ordenar?",
+      "branches": [
+        {
+          "keywords": [
+            "menú",
+            "carta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "quiero",
+            "pedir",
+            "taco",
+            "agua",
+            "café"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "hola"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) — Hello! ¿Qué desea ordenar? (Keh deh-seh-ah or-deh-nar?) — What would you like to order?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Aquí tiene el menú. ¿Está listo para ordenar?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "listo",
+            "lista"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "momento",
+            "tiempo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aquí tiene el menú. (Ah-kee tee-eh-neh el meh-noo.) — Here is the menu. ¿Está listo para ordenar? (Es-tah lees-toh pah-rah or-deh-nar?) — Are you ready to order?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "¿Qué desea comer o beber? Hoy tenemos tacos. ¿Desea tacos?",
+      "branches": [
+        {
+          "keywords": [
+            "quiero",
+            "tacos",
+            "pizza",
+            "agua",
+            "café",
+            "jugo",
+            "sopa",
+            "ensalada"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Qué desea comer o beber? (Keh deh-seh-ah koh-mer oh beh-ber?) — What would you like to eat or drink? Hoy tenemos tacos. (Oy teh-neh-mos tah-kos.) — Today we have tacos. ¿Desea tacos? (Deh-seh-ah tah-kos?) — Would you like tacos?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Muy bien. ¿Algo más?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "gracias"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "sí",
+            "agua",
+            "café",
+            "jugo",
+            "postre",
+            "otro"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Muy bien. (Moo-ee bee-en.) — Very good. ¿Algo más? (Al-goh mas?) — Anything else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Aquí está su pedido. ¿Desea la cuenta ahora?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "ahora",
+            "cuenta"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "más tarde",
+            "después"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aquí está su pedido. (Ah-kee es-tah soo peh-dee-doh.) — Here is your order. ¿Desea la cuenta ahora? (Deh-seh-ah lah koo-en-tah ah-oh-rah?) — Would you like the bill now?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Aquí tiene la cuenta. Son quince euros.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "pago",
+            "pagar",
+            "sí"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "total"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Aquí tiene la cuenta. (Ah-kee tee-eh-neh lah koo-en-tah.) — Here is the bill. Son quince euros. (Son keen-seh eh-oo-ros.) — It is fifteen euros."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? ¿Puede repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me? Can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gracias. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "id": "dlg-es-directions-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Pidiendo indicaciones en la calle",
+  "opening": "¡Claro! ¿Qué lugar buscas exactamente? Dependiendo de adónde vayas, las indicaciones varían un poco por aquí.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Claro! ¿Qué lugar buscas exactamente? Dependiendo de adónde vayas, las indicaciones varían un poco por aquí.",
+      "branches": [
+        {
+          "keywords": [
+            "museo",
+            "prado",
+            "reina",
+            "palacio",
+            "monumento"
+          ],
+          "nextTurnId": "t2_landmark"
+        },
+        {
+          "keywords": [
+            "estación",
+            "tren",
+            "farmacia",
+            "hospital",
+            "bus",
+            "metro",
+            "correos"
+          ],
+          "nextTurnId": "t2_practical"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Claro! — Of course! ¿Qué lugar buscas exactamente? — What place are you looking for exactly? Dependiendo de adónde vayas, las indicaciones varían un poco por aquí. — Depending on where you're going, the directions vary a bit around here."
+    },
+    "t2_landmark": {
+      "id": "t2_landmark",
+      "prompt": "Ah, si te refieres al Prado, estás de suerte, no pilla lejos. Lo más sencillo es que bajes por esta misma calle unas tres manzanas, hasta que veas un edificio con un arco de piedra a la izquierda. Ahí giras y el museo está justo enfrente. No tiene pérdida, es un emblema de la ciudad.",
+      "branches": [
+        {
+          "keywords": [
+            "horario",
+            "abierto",
+            "cerrado",
+            "entrada",
+            "ticket",
+            "otro",
+            "cerca",
+            "más"
+          ],
+          "nextTurnId": "t3_clarify_landmark"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido",
+            "perfecto"
+          ],
+          "nextTurnId": "t_thank_you"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, el Museo del Prado. — Ah, the Prado Museum. Estás de suerte, no pilla lejos. — You're in luck, it's not far. Lo más sencillo es que bajes por esta misma calle unas tres manzanas, — The easiest thing is for you to go down this very street about three blocks, hasta que veas un edificio con un arco de piedra a la izquierda. — until you see a building with a stone arch on the left. Ahí giras y el museo está justo enfrente. — There you turn and the museum is right in front. No tiene pérdida, es un emblema de la ciudad. — You can't miss it, it's an emblem of the city."
+    },
+    "t2_practical": {
+      "id": "t2_practical",
+      "prompt": "La estación de tren, dices. Mira, para llegar sin rodeos, lo más práctico es que cruces esta plaza en dirección a la fuente, y una vez allí, tomes la calle que sale a tu derecha. Es la Calle Mayor. Desde allí, ya está todo señalizado, pero ten en cuenta que es un buen paseo.",
+      "branches": [
+        {
+          "keywords": [
+            "lejos",
+            "distancia",
+            "tardar",
+            "tiempo",
+            "autobús",
+            "metro",
+            "transporte"
+          ],
+          "nextTurnId": "t3_clarify_practical"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido",
+            "perfecto"
+          ],
+          "nextTurnId": "t_thank_you"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The train station, you say. Look, to get there directly, the most practical thing is for you to cross this square towards the fountain, and once there, take the street that goes out to your right. It's Calle Mayor. From there, everything is signposted, but keep in mind it's a bit of a walk."
+    },
+    "t3_clarify_landmark": {
+      "id": "t3_clarify_landmark",
+      "prompt": "Ah, sí, los horarios suelen ser de diez de la mañana a ocho de la tarde, de martes a domingo. Si buscas entradas, te aconsejo la web para evitar colas. Y si te interesa el arte contemporáneo, a tiro de piedra tienes el Reina Sofía.",
+      "branches": [
+        {
+          "keywords": [
+            "web",
+            "internet",
+            "colar",
+            "online",
+            "museo",
+            "reina sofía"
+          ],
+          "nextTurnId": "t4_final_details"
+        },
+        {
+          "keywords": [
+            "gracias",
+            "entendido",
+            "perfecto"
+          ],
+          "nextTurnId": "t_thank_you"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, sí, los horarios suelen ser de diez de la mañana a ocho de la tarde, de martes a domingo. — Ah, yes, opening hours are usually from ten in the morning to eight in the evening, Tuesday to Sunday. Si buscas entradas, te aconsejo la web para evitar colas. — If you're looking for tickets, I advise you to check the website to avoid queues. Y si te interesa el arte contemporáneo, a tiro de piedra tienes el Reina Sofía. — And if you're interested in contemporary art, a stone's throw away you have the Reina Sofía."
+    },
+    "t3_clarify_practical": {
+      "id": "t3_clarify_practical",
+      "prompt": "No es que esté a la vuelta de la esquina, la verdad. Calcula unos quince o veinte minutos a pie. Si prefieres no andar tanto, el autobús urbano número 27 pasa por la misma Calle Mayor que te decía, y te deja en la misma puerta de la estación.",
+      "branches": [
+        {
+          "keywords": [
+            "autobús",
+            "número",
+            "parada",
+            "metro",
+            "línea"
+          ],
+          "nextTurnId": "t4_final_details"
+        },
+        {
+          "keywords": [
+            "andar",
+            "caminar",
+            "pie",
+            "gracias",
+            "entendido"
+          ],
+          "nextTurnId": "t_thank_you"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's not just around the corner, to be honest. Calculate about fifteen or twenty minutes on foot. If you prefer not to walk so much, city bus number 27 passes along the same Calle Mayor I told you about, and drops you right at the station's entrance."
+    },
+    "t4_final_details": {
+      "id": "t4_final_details",
+      "prompt": "El autobús que te decía es el número 27. Pasa con bastante frecuencia y es directo. O si prefieres comprar entradas por internet, te recomiendo buscar 'Museo del Prado entradas' en cualquier buscador, su web es muy intuitiva.",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "perfecto",
+            "claro",
+            "entendido"
+          ],
+          "nextTurnId": "t_thank_you"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bus I was telling you about is number 27. It passes quite frequently and is direct. Or if you prefer to buy tickets online, I recommend searching 'Museo del Prado entradas' in any search engine, their website is very intuitive."
+    },
+    "t_thank_you": {
+      "id": "t_thank_you",
+      "prompt": "De nada, para eso estamos. ¿Necesitas algo más o te ha quedado todo claro?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "claro",
+            "listo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You're welcome, that's what we're here for. Do you need anything else or is everything clear?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, ¿podrías repetir eso? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada, que tengas un buen día. ¡Mucha suerte!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome, have a good day. Good luck!",
+      "isTerminal": true
+    }
+  }
+}

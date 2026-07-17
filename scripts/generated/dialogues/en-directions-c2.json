@@ -1,0 +1,232 @@
+{
+  "id": "dlg-en-directions-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Finding Your Bearings",
+  "opening": "Excuse me, could you give me directions to the National Museum?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Oh, the National Museum? Certainly, I can help you with that. It's quite straightforward from here, actually.",
+      "branches": [
+        {
+          "keywords": [
+            "where",
+            "how",
+            "directions"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "far",
+            "distance",
+            "long"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "which",
+            "museum"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, the National Museum? — Yes, I can help you find it easily."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you articulate your question again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you articulate your question again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "You're most welcome! Hope you enjoy your visit to the museum. Have a splendid day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're most welcome! Hope you enjoy your visit to the museum. Have a splendid day!",
+      "isTerminal": true
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Alright, so you'll want to head straight down this street until you hit the main thoroughfare. Cross over and keep going, and you'll soon see a rather imposing Victorian building, which is the old Post Office. The museum is just past that, on your left. You really can't miss it, it sticks out like a sore thumb.",
+      "branches": [
+        {
+          "keywords": [
+            "confirm",
+            "landmarks",
+            "route"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "howfar",
+            "distance",
+            "time",
+            "transport"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You really can't miss it, it sticks out like a sore thumb. — It's very noticeable and easy to spot."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "The National Museum, you say? Just to be absolutely sure, are we talking about the main one, near the cathedral, or perhaps the smaller one dedicated to natural history down by the river?",
+      "branches": [
+        {
+          "keywords": [
+            "main",
+            "cathedral",
+            "yes"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "natural",
+            "history",
+            "river",
+            "no"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The National Museum, you say? — Just to confirm which specific museum you mean."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "My apologies, but I'm afraid I'm not much help then. I'm actually a bit out of my depth in this specific area myself. Perhaps a local shopkeeper or the information booth at the station could give you more precise directions.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "okay",
+            "understand"
+          ],
+          "nextTurnId": "t8"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm a bit out of my depth in this specific area myself. — I don't know this area well enough to help."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Indeed, the Post Office is quite a landmark, you can't miss it. It's a grand old edifice. Once you pass that, the museum will be staring you in the face. It's truly a piece of cake to find.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "gotit",
+            "understand",
+            "perfect",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "howfar",
+            "distance",
+            "time",
+            "transport"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's truly a piece of cake to find. — It's very easy to find."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "It's a pleasant ten to fifteen-minute walk, depending on your stride. If you're pressed for time, there's a bus stop just a stone's throw away that will take you directly there, or a taxi stand a couple of blocks down.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "perfect",
+            "understand"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Just a stone's throw away — Very close by."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ah, the main one, then! Yes, that's the one I just described. Head straight down this street, across the main road, past the imposing Post Office, and it's right there. You'll be there in a jiffy.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "gotit",
+            "perfect",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "howfar",
+            "distance",
+            "time",
+            "transport"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "confirm",
+            "landmarks",
+            "route"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You'll be there in a jiffy. — You'll arrive very quickly."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Right, well, I do hope you manage to find your way. Good luck with your search, and do ask around, someone local is bound to know.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "okay",
+            "understand",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good luck with your search, and do ask around, someone local is bound to know. — I hope you find it, ask other people who live here."
+    }
+  }
+}

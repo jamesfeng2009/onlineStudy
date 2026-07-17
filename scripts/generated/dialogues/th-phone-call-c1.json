@@ -1,0 +1,235 @@
+{
+  "id": "dlg-th-phone-call-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "การสนทนาทางโทรศัพท์เชิงธุรกิจ",
+  "opening": "สวัสดีค่ะ บริษัทพัฒนาซอฟต์แวร์ ABC ยินดีให้บริการค่ะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ บริษัทพัฒนาซอฟต์แวร์ ABC ยินดีให้บริการค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ติดต่อ",
+            "คุยกับ",
+            "ขอสาย"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สอบถาม",
+            "ข้อมูล",
+            "เรื่อง"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "อยากจะฝาก"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka. Borisat Patthana Software ABC yindee hai borikan ka. — Hello. ABC Software Development Company, how may I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ไม่ได้ยินชัดเจน รบกวนพูดอีกครั้งได้ไหมคะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "พูดซ้ำ",
+            "อีกครั้ง"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor aphai ka. Mai dai yin chatjen. Rob kuan phuut eek krang dai mai ka? — Excuse me, I didn't hear clearly. Could you please repeat that?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ไม่ทราบว่าคุณต้องการติดต่อกับท่านใดเป็นพิเศษคะ หรือพอจะแจ้งชื่อผู้ที่ต้องการติดต่อได้ไหมคะ",
+      "branches": [
+        {
+          "keywords": [
+            "คุณ[ชื่อ]",
+            "ขอสาย[ชื่อ]"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "ไม่ทราบชื่อ",
+            "เรื่อง[หัวข้อ]"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "",
+            "ใคร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mai sap wa khun tong kan tit to gap than dai pen phiset kha? Reu pho ja jaeng chue phu thi tong kan tit to dai mai kha? — Do you wish to speak with someone in particular, or could you provide the name of the person you'd like to reach?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ก่อนที่จะโอนสายไป รบกวนขอทราบชื่อของท่านผู้โทร และพอจะแจ้งเรื่องที่ต้องการติดต่อได้คร่าวๆ ไหมคะ ดิฉันจะได้ประสานงานให้ถูกต้องค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ[ชื่อ]",
+            "เกี่ยวกับ",
+            "เรื่อง"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่ทราบ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kon thi ja on sai pai, rob kuan kho sap chue khong than phu tho lae pho ja jaeng rueang thi tong kan tit to dai khrao khrao mai kha? Dichan ja dai prasan ngan hai thuk tong kha. — Before transferring, may I have your name and a brief summary of the purpose of your call? That way, I can ensure you're connected to the appropriate person."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "ได้ค่ะ ไม่ทราบว่าคุณต้องการสอบถามเกี่ยวกับเรื่องใดเป็นพิเศษคะ ดิฉันจะได้แนะนำผู้เชี่ยวชาญให้ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "บริการ",
+            "สินค้า",
+            "ราคา",
+            "ปรึกษา"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "",
+            "เรื่องอะไร"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai kha. Mai sap wa khun tong kan sop tham kiao kap rueang dai pen phiset kha? Dichan ja dai nae nam phu chiao chan hai kha. — Certainly. What specific matter are you inquiring about? I can then recommend the appropriate specialist."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เรียนสายคุณ[ชื่อบุคคลที่ต้องการติดต่อ] สักครู่ค่ะ... ขออภัยด้วยนะคะ ท่านไม่อยู่ที่โต๊ะพอดีค่ะ/กำลังติดสายอยู่ค่ะ ไม่ทราบว่าต้องการฝากข้อความไว้ไหมคะ หรือจะให้ดิฉันแจ้งให้ท่านติดต่อกลับไปดีคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ฝากข้อความ",
+            "ฝากบอก",
+            "ฝาก"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "เมื่อไหร่",
+            "ว่างตอนไหน",
+            "จะโทรใหม่",
+            "โทรกลับมาเอง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่สะดวก"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rian sai Khun [Name] sak khru kha... Khor aphai duay na kha, than mai yu thi to pho dee kha/kamlang tit sai yu kha. Mai sap wa tong kan fak kho khwam wai mai kha? Reu ja hai dichan jaeng hai than tit to klap pai dee kha? — Please hold for Khun [Name]... I apologize, but they are currently not at their desk/on another line. Would you like to leave a message, or shall I ask them to call you back?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "รับทราบค่ะ กรุณารอสักครู่นะคะ ดิฉันจะโอนสายไปยังแผนกที่เกี่ยวข้อง เพื่อให้ผู้เชี่ยวชาญดูแลคุณโดยตรงค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap sap kha. Karuna ro sak khru na kha. Dichan ja on sai pai yang phaenaek thi kiao khong pheu hai phu chiao chan du lae khun doi trong kha. — Understood. Please hold for a moment. I will transfer your call to the relevant department so a specialist can assist you directly."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "ได้เลยค่ะ ไม่ทราบว่าต้องการฝากข้อความถึงท่านใดคะ และดิฉันขอทราบชื่อ-นามสกุล และเบอร์โทรศัพท์ของท่านผู้โทรด้วยนะคะ",
+      "branches": [
+        {
+          "keywords": [
+            "ฝากถึง[ชื่อ]",
+            "ชื่อ[ชื่อ]",
+            "เบอร์[เบอร์]"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loei kha. Mai sap wa tong kan fak kho khwam thueng than dai kha? Lae dichan kho sap chue-nam sakun lae boe thorasap khong than phu tho duay na kha. — Certainly. Who would you like to leave a message for? And may I have your full name and phone number, please?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "รับทราบค่ะ ดิฉันจะดำเนินการแจ้งข้อความดังกล่าวให้ทราบโดยเร็วที่สุดนะคะ ขอบคุณที่ติดต่อเข้ามาค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Rap sap kha. Dichan ja dam noen jaeng kho khwam dang klaw hai sap doi reo thi sut na kha. Khop khun thi tit to khao ma kha. — Understood. I will relay that message as soon as possible. Thank you for contacting us."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการค่ะ สวัสดีค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khop khun thi chai borikan kha. Sawatdee kha. — Thank you for calling. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

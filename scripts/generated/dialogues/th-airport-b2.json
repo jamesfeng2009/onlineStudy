@@ -1,0 +1,131 @@
+{
+  "id": "dlg-th-airport-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "airport",
+  "title": "เที่ยวบินล่าช้า",
+  "opening": "สวัสดีค่ะ/ครับ ยินดีต้อนรับสู่เคาน์เตอร์เช็คอินสายการบินไทยค่ะ/ครับ ขออนุญาตดูหนังสือเดินทางและตั๋วเครื่องบินด้วยนะคะ/ครับ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ ยินดีต้อนรับสู่เคาน์เตอร์เช็คอินสายการบินไทยค่ะ/ครับ ขออนุญาตดูหนังสือเดินทางและตั๋วเครื่องบินด้วยนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "นี่ครับ",
+            "เอกสาร",
+            "หนังสือเดินทาง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krap. Yindee tawn rap suu kown-ter check-in sai karn bin Thai ka/krap. Kaw anuyaat doo nang sue doen tang lae dtua kreuang bin duay na ka/krap. (Hello. Welcome to Thai Airways check-in counter. May I please see your passport and flight ticket?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ขอบคุณค่ะ/ครับ เที่ยวบิน TG204 ไปลอนดอนของคุณลูกค้าใช่ไหมคะ/ครับ เอ่อ... ตอนนี้มีประกาศแจ้งว่าเที่ยวบินของคุณจะล่าช้าไปประมาณ 2 ชั่วโมงค่ะ/ครับ เนื่องจากสภาพอากาศไม่เอื้ออำนวย",
+      "branches": [
+        {
+          "keywords": [
+            "ล่าช้า",
+            "2ชั่วโมง",
+            "ทำไม",
+            "นานจัง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เที่ยวบินอื่น",
+            "เร็วกว่า",
+            "เปลี่ยน"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun ka/krap. Tiaw bin TG204 bpai London khong khun luuk khaa chai mai ka/krap? Uh... Dton nee mee pra-gaat jaeng waa tiaw bin khong khun ja laa chaa bpai pra-maan song chua mong ka/krap dueang jaak sa-phap ar-gaat mai eua am nuay. (Thank you. Your flight TG204 to London, correct? Uh... There's an announcement now stating your flight will be delayed by approximately 2 hours due to unfavorable weather conditions.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ใช่ค่ะ/ครับ ทางสายการบินต้องขออภัยในความไม่สะดวกเป็นอย่างสูงนะคะ/ครับ เราจะแจ้งความคืบหน้าให้ทราบเป็นระยะๆ ค่ะ/ครับ ในระหว่างนี้ ลูกค้าสามารถใช้คูปองอาหารที่ประตูทางออกขึ้นเครื่องได้เลยค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "คูปอง",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chai ka/krap. Taang sai garn bin tong kaw a-phai nai kwam mai sa-duak bpen yang sung na ka/krap. Rao ja jaeng kwam kueb naa hai saap bpen ra-ya ra-ya ka/krap. Nai ra-waang nee, luuk khaa saa-maat chai koo-pong ar-harn tee pra-too taang awk kuen kreuang dai loey ka/krap. (Yes. The airline sincerely apologizes for the inconvenience. We will keep you updated periodically. In the meantime, passengers can use meal vouchers at the boarding gate.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ตอนนี้ยังไม่มีเที่ยวบินอื่นที่ว่างเลยค่ะ/ครับ เนื่องจากสภาพอากาศที่ไม่เอื้ออำนวยกระทบหลายเที่ยวบิน เราแนะนำให้ท่านรอที่ประตูทางออกขึ้นเครื่องตามที่ระบุในบอร์ดดิ้งพาสนะคะ/ครับ และคอยฟังประกาศค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจแล้ว",
+            "เข้าใจ",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dton nee yang mai mee tiaw bin eun tee waang loey ka/krap. Dueang jaak sa-phap ar-gaat tee mai eua am nuay gra-tob laai tiaw bin. Rao nae nam hai tan raw tee pra-too taang awk kuen kreuang dtaam tee ra-boo nai boarding pass na ka/krap lae koy fang pra-gaat ka/krap. (There are no other available flights at the moment. The unfavorable weather is affecting many flights. We recommend you wait at the boarding gate as indicated on your boarding pass and listen for announcements.)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ค่ะ/ครับ ทางเราจะแจ้งรายละเอียดเพิ่มเติมให้ทราบเมื่อมีข้อมูลนะคะ/ครับ ขอให้เดินทางโดยสวัสดิภาพค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Ka/krap. Taang rao ja jaeng raai la-iad perm term hai saap meua mee khoomul na ka/krap. Kaw hai deun taang doi sa-wat-di-phap ka/krap. (Okay. We will inform you of further details when available. Have a safe journey!)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่ทราบว่าคุณลูกค้าพูดว่าอะไรคะ/ครับ รบกวนพูดอีกครั้งได้ไหมคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kaw-thot na ka/krap. Mai saap waa khun luuk khaa phuut waa a-rai ka/krap? Rop kuan phuut eek krang dai mai ka/krap? (Excuse me. I'm not sure what you said. Could you please repeat that?)"
+    }
+  }
+}

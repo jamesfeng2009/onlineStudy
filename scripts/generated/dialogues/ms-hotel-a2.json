@@ -1,0 +1,169 @@
+{
+  "id": "dlg-ms-hotel-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Daftar Masuk Hotel",
+  "opening": "Selamat datang ke Hotel Bintang. Ada tempahan atas nama siapa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Bintang. Ada tempahan atas nama siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "tempahan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Hotel Bintang (Se-la-mat da-tang ke Ho-tel Bin-tang). Ada tempahan (A-da tem-pa-han) atas nama siapa? (a-tas na-ma sia-pa?) — Welcome to Star Hotel. Do you have a reservation under what name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Encik/Puan. Boleh saya lihat kad pengenalan atau pasport anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "sila",
+            "sini"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Encik/Puan (Ba-ik, En-cik/Pu-an). Boleh saya lihat (Bo-leh sa-ya li-hat) kad pengenalan (kad pe-nge-na-lan) atau pasport (a-tau pas-port) anda? — Okay, Mr/Ms. May I see your ID card or passport?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Tempahan anda untuk bilik standard, satu malam. Adakah anda mahu sarapan pagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mahu",
+            "sarapan"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "takmahu",
+            "bukan"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Your reservation is for a standard room, one night. Do you want breakfast?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Baik. Sarapan pagi akan dikenakan caj tambahan RM20. Pembayaran tunai atau kad?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "guna kad"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik). Sarapan pagi (Sa-ra-pan pa-gi) akan dikenakan (a-kan di-ke-na-kan) caj tambahan (caj tam-ba-han) RM20. Pembayaran (Pem-ba-ya-ran) tunai (tu-nai) atau kad? (a-tau kad?) — Okay. Breakfast will be charged an additional RM20. Cash or card payment?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Baik, tiada sarapan pagi. Pembayaran tunai atau kad?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "guna kad"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, no breakfast. Cash or card payment?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Terima kasih. Pembayaran anda berjaya. Ini kunci bilik anda, bilik nombor 205. Lif di sana.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Your payment is successful. Here is your room key, room number 205. The lift is over there."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), boleh ulang (bo-leh u-lang) sekali lagi? (se-ka-li la-gi?) — Sorry, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Selamat menikmati penginapan anda di sini! Sila hubungi kami jika ada apa-apa.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Enjoy your stay here! Please contact us if you need anything.",
+      "isTerminal": true
+    }
+  }
+}

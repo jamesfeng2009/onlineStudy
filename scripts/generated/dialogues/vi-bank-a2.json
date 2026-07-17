@@ -1,0 +1,202 @@
+{
+  "id": "dlg-vi-bank-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "Giao dịch ngân hàng",
+  "opening": "Chào anh/chị. Tôi có thể giúp gì cho anh/chị ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Tôi có thể giúp gì cho anh/chị ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "mở tài khoản",
+            "tài khoản mới"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "đổi tiền",
+            "muốn đổi tiền"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "thẻ atm",
+            "máy atm",
+            "quên pin",
+            "đặt lại pin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "xin chào"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (chào anh/chị) — Hello sir/madam. Tôi có thể giúp gì cho anh/chị ạ (tôi có thể giúp gì cho anh/chị ạ) — How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, để mở tài khoản, anh/chị vui lòng cho xem giấy tờ tùy thân ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "đây",
+            "của tôi",
+            "giấy tờ đây"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tôi cần gì",
+            "giấy tờ gì"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (vâng) — Yes, để mở tài khoản (để mở tài khoản) — to open an account, anh/chị vui lòng (anh/chị vui lòng) — please, cho xem giấy tờ tùy thân ạ (cho xem giấy tờ tùy thân ạ) — show your ID."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anh/chị muốn đổi loại tiền nào và bao nhiêu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "đô la",
+            "sang vnd",
+            "triệu đồng"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn đổi loại tiền nào (anh/chị muốn đổi loại tiền nào) — Which currency do you want to exchange, và bao nhiêu ạ (và bao nhiêu ạ) — and how much?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vâng, anh/chị gặp vấn đề gì với thẻ ATM ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thẻ bị kẹt",
+            "máy nuốt thẻ"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (vâng) — Yes, anh/chị gặp vấn đề gì (anh/chị gặp vấn đề gì) — what problem do you have, với thẻ ATM ạ (với thẻ ATM ạ) — with your ATM card?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Cảm ơn. Anh/chị muốn mở tài khoản tiết kiệm hay tài khoản thanh toán ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiết kiệm",
+            "tài khoản tiết kiệm"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn (cảm ơn) — Thank you. Anh/chị muốn mở tài khoản tiết kiệm (anh/chị muốn mở tài khoản tiết kiệm) — Do you want to open a savings account, hay tài khoản thanh toán ạ (hay tài khoản thanh toán ạ) — or a checking account?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vâng, tỷ giá hôm nay là 24.500 đồng cho 1 đô la Mỹ. Anh/chị có muốn tiếp tục không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "vâng",
+            "tiếp tục"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (vâng) — Yes, tỷ giá hôm nay là 24.500 đồng cho 1 đô la Mỹ (tỷ giá hôm nay là hai mươi bốn ngàn năm trăm đồng cho một đô la Mỹ) — The exchange rate today is 24,500 VND for 1 USD. Anh/chị có muốn tiếp tục không ạ (anh/chị có muốn tiếp tục không ạ) — Do you want to proceed?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Vâng, anh/chị vui lòng cho xem thẻ hoặc giấy tờ tùy thân để chúng tôi kiểm tra ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "thẻ đây",
+            "thẻ của tôi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (vâng) — Yes, anh/chị vui lòng (anh/chị vui lòng) — please, cho xem thẻ (cho xem thẻ) — show your card, hoặc giấy tờ tùy thân (hoặc giấy tờ tùy thân) — or ID, để chúng tôi kiểm tra ạ (để chúng tôi kiểm tra ạ) — so we can check."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (xin lỗi) — Sorry, anh/chị có thể nhắc lại được không ạ (anh/chị có thể nhắc lại được không ạ) — could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị (cảm ơn anh/chị) — Thank you. Chúc anh/chị một ngày tốt lành (chúc anh/chị một ngày tốt lành) — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

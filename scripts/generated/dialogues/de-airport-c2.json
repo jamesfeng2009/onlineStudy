@@ -1,0 +1,206 @@
+{
+  "id": "dlg-de-airport-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "Verspätung und Umbuchung am Flughafen",
+  "opening": "Guten Tag. Wie kann ich Ihnen behilflich sein? Haben Sie möglicherweise eine Frage zu Ihrem Flug oder wünschen Sie eine Umbuchung?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Wie kann ich Ihnen behilflich sein? Haben Sie möglicherweise eine Frage zu Ihrem Flug oder wünschen Sie eine Umbuchung?",
+      "branches": [
+        {
+          "keywords": [
+            "verspätung",
+            "flugstatus",
+            "problem"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "umbuchung",
+            "andererflug"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day. Wie kann ich Ihnen behilflich sein — How can I help you? Haben Sie möglicherweise eine Frage zu Ihrem Flug oder wünschen Sie eine Umbuchung — Do you perhaps have a question about your flight or would you like to rebook?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, Sie meinen Flug LH457 nach Berlin? Ja, leider gibt es hier eine erhebliche Verspätung, voraussichtlich um die drei Stunden. Das ist natürlich ärgerlich, ich kann das gut nachvollziehen. Möchten Sie eventuell eine Umbuchung prüfen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "umbuchung"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "warum",
+            "grund"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "entschädigung",
+            "rechte"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ok",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, Sie meinen Flug LH457 nach Berlin — Ah, you mean flight LH457 to Berlin? Ja, leider gibt es hier eine erhebliche Verspätung — Yes, unfortunately, there's a significant delay here, voraussichtlich um die drei Stunden — probably around three hours. Das ist natürlich ärgerlich, ich kann das gut nachvollziehen — That's annoying, of course, I can well understand that. Möchten Sie eventuell eine Umbuchung prüfen — Would you perhaps like to check for a rebooking?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Der Grund für die Verzögerung ist eine technische Störung am Flugzeug, die sich leider als hartnäckiger erwiesen hat als zunächst angenommen. Unsere Techniker arbeiten mit Hochdruck daran, aber Sicherheit geht eben vor. Das ist eine unumstößliche Tatsache.",
+      "branches": [
+        {
+          "keywords": [
+            "umbuchung",
+            "alternativflug"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "verständnis",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "entschädigung"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The reason for the delay is a technical malfunction on the aircraft, which unfortunately proved more persistent than initially assumed. Our technicians are working flat out on it, but safety simply comes first. That's an undeniable fact."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gerne, da schauen wir doch gleich nach. Moment mal... Für Ihren Flug nach Berlin gibt es noch eine Verbindung am späten Abend mit LH459, die aber schon fast ausgebucht ist, oder einen Flug morgen früh. Was schwebt Ihnen da vor?",
+      "branches": [
+        {
+          "keywords": [
+            "abendflug",
+            "heute",
+            "jetzt"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "keineoption",
+            "nichtpassend",
+            "anderemöglichkeiten"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gerne, da schauen wir doch gleich nach — Gladly, let's check that right away. Moment mal — Just a moment... Für Ihren Flug nach Berlin gibt es noch eine Verbindung am späten Abend mit LH459 — For your flight to Berlin, there's still a connection late in the evening with LH459, die aber schon fast ausgebucht ist — but it's almost fully booked, oder einen Flug morgen früh — or a flight tomorrow morning. Was schwebt Ihnen da vor — What do you have in mind?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Bei einer derartigen Verspätung stünden Ihnen laut EU-Fluggastrechte-Verordnung natürlich Entschädigungsleistungen zu. Wir können das Formular online ausfüllen oder ich gebe Ihnen die nötigen Informationen mit auf den Weg. Auch Verpflegungsgutscheine kann ich Ihnen aushändigen.",
+      "branches": [
+        {
+          "keywords": [
+            "formular",
+            "online",
+            "entschädigung"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In the event of such a delay, you would, of course, be entitled to compensation services according to the EU Passenger Rights Regulation. We can fill out the form online, or I can give you the necessary information. I can also hand you meal vouchers."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Alles klar. Dann buche ich Sie auf den Abendflug um. Bitte halten Sie Ihren Ausweis und Ihre Bordkarte bereit. Ich drucke Ihnen die neue Bordkarte aus.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "bestätigen",
+            "ja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Then I'll rebook you for the evening flight. Please have your ID and boarding pass ready. I'll print your new boarding pass."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, das habe ich akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigen Sie — Excuse me, das habe ich akustisch nicht ganz verstanden — I didn't quite catch that. Könnten Sie das bitte noch einmal wiederholen oder anders formulieren — Could you please repeat that or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, vielen Dank für Ihr Verständnis und einen angenehmen Weiterflug!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you very much for your understanding and have a pleasant onward flight!",
+      "isTerminal": true
+    }
+  }
+}

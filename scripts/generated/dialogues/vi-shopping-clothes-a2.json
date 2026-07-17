@@ -1,0 +1,122 @@
+{
+  "id": "dlg-vi-shopping-clothes-a2",
+  "language": "vi",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Mua sắm quần áo",
+  "opening": "Chào anh/chị. Anh/chị cần gì ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị cần gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tìm",
+            "muốn",
+            "xem",
+            "áo",
+            "váy",
+            "quần"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chỉxem",
+            "không",
+            "nhìnthôi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chà-o an/chị). Anh/chị cần gì ạ? (An/chị cần gì ạ?) — Hello sir/madam. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Anh/chị muốn tìm loại nào? Áo sơ mi, áo phông hay váy ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "áo",
+            "sơmi",
+            "áosơmi",
+            "phông",
+            "áophông"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn tìm loại nào? (An/chị muốn tìm loạ-i nà-o?) Áo sơ mi, áo phông hay váy ạ? (Á-o sơ-mi, á-o phông ha-y vá-y ạ?) — Which kind are you looking for? A collared shirt, t-shirt or a dress?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vâng. Anh/chị mặc cỡ nào và muốn màu gì ạ? Đây có một cái cỡ M màu xanh. Anh/chị muốn thử không ạ? Phòng thử đồ ở đằng kia.",
+      "branches": [
+        {
+          "keywords": [
+            "thử",
+            "muốnthử",
+            "vâng"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "khôngthử",
+            "khôngcần",
+            "không",
+            "khôngthích"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng. Anh/chị mặc cỡ nào và muốn màu gì ạ? (Vâng. An/chị mặc cỡ nà-o và muốn mà-u gì ạ?) Đây có một cái cỡ M màu xanh. (Đâ-y có một cá-i cỡ M mà-u xanh.) Anh/chị muốn thử không ạ? (An/chị muốn thử không ạ?) Phòng thử đồ ở đằng kia. (Phòng thử đồ ở đằng ki-a.) — Yes. What size do you wear and what color do you want? Here's a size M blue one. Would you like to try it? The fitting room is over there."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thấy sao ạ? Vừa không ạ? Anh/chị muốn lấy nó không? Cái này giá là 350.000 đồng ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "vừa",
+            "tốt",
+            "được",
+            "lấy",
+            "mua",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thấy sao ạ? (Thấ-y sa-o ạ?) Vừa không ạ? (Vừa không ạ?) Anh/chị muốn lấy nó không? (An/chị muốn lấ-y nó không?) Cái này giá là 350.000 đồng ạ. (Cá-i nà-y giá là ba trăm năm mươi ngàn đồng ạ.) — How does it feel? Does it fit? Do you want to take it? This one costs 350,000 VND."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Xin lỗ-i), anh/chị nói lại được không ạ? (An/chị nó-i lạ-i được không ạ?) — Sorry, could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị. (Cảm ơn an/chị.) Chúc anh/chị một ngày tốt lành! (Chúc an/chị một ngà-y tốt lành!) — Thank you. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

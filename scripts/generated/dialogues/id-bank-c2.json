@@ -1,0 +1,201 @@
+{
+  "id": "dlg-id-bank-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Layanan Nasabah Bank",
+  "opening": "Selamat pagi, Bapak/Ibu. Ada yang bisa saya bantu hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Bapak/Ibu. Ada yang bisa saya bantu hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "buka rekening",
+            "rekening baru"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tukar uang",
+            "valuta asing",
+            "kurs"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "masalah atm",
+            "kartu tertelan",
+            "pin terblokir",
+            "transaksi gagal"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "kirim uang",
+            "reset pin",
+            "ganti pin"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-la-mat pa-gi, Ba-pak/I-bu. A-da yang bi-sa sa-ya ban-tu ha-ri i-ni? — Good morning, Sir/Madam. Is there anything I can help you with today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu, untuk pembukaan rekening, apakah Bapak/Ibu sudah membawa KTP dan NPWP? Kami ada beberapa pilihan rekening simpanan.",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "bawa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "belum",
+            "tidak bawa",
+            "lupa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "apa saja",
+            "persyaratan",
+            "dokumen"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ten-tu, un-tuk pem-bu-ka-an re-ke-ning, a-pa-kah Ba-pak/I-bu su-dah me-mba-wa KTP dan NPWP? Ka-mi a-da be-be-ra-pa pi-li-han re-ke-ning sim-pa-nan. — Sure, for account opening, have you brought your ID card and NPWP? We have several savings account options."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, untuk penukaran valuta asing, mata uang apa yang ingin Anda tukarkan dan berapa nominalnya?",
+      "branches": [
+        {
+          "keywords": [
+            "dolar",
+            "usd",
+            "amerika"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, un-tuk pe-nu-ka-ran va-lu-ta a-sing, ma-ta u-ang a-pa yang i-ngin An-da tu-kar-kan dan be-ra-pa no-mi-nal-nya? — Okay, for foreign currency exchange, what currency would you like to exchange and what's the amount?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mohon maaf atas ketidaknyamanannya. Bisa ceritakan lebih detail masalahnya? Apakah kartu tertelan, PIN terblokir, atau transaksi gagal?",
+      "branches": [
+        {
+          "keywords": [
+            "tertelan",
+            "kartu tertelan"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mo-hon ma-af a-tas ke-ti-dak-nya-ma-nan-nya. Bi-sa ce-ri-ta-kan le-bih de-tail ma-sa-lah-nya? A-pa-kah kar-tu ter-te-lan, PIN ter-blo-kir, a-tau tran-sak-si ga-gal? — Sorry for the inconvenience. Can you tell me more about the issue? Is the card swallowed, PIN blocked, or a failed transaction?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, untuk layanan lain seperti transfer atau reset PIN, Bapak/Ibu bisa langsung ke konter layanan nasabah di sana. Ada yang bisa saya bantu lagi sebelum itu?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "terima kasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "lain",
+            "bantu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, un-tuk la-ya-nan la-in se-per-ti tran-sfer a-tau re-set PIN, Ba-pak/I-bu bi-sa lang-sung ke kon-ter la-ya-nan na-sa-bah di sa-na. A-da yang bi-sa sa-ya ban-tu la-gi se-be-lum i-tu? — Okay, for other services like transfer or PIN reset, you can go directly to the customer service counter over there. Is there anything else I can help you with before that?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik, kami akan bantu proses. Mohon tunggu sebentar ya, saya panggilkan rekan kami yang bertugas.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "terima kasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, ka-mi a-kan ban-tu pro-ses. Mo-hon tung-gu se-ben-tar ya, sa-ya pang-gil-kan re-kan ka-mi yang ber-tu-gas. — Okay, we'll help process it. Please wait a moment, I'll call our colleague who is on duty."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Untuk pembukaan rekening, Anda memerlukan KTP asli, NPWP, dan setoran awal minimal. Apakah Anda sudah mempersiapkan dokumen tersebut?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "bawa"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "belum",
+            "tidak bawa",
+            "lupa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un-tuk pem-bu-ka-an re-ke-ning, An-da me-mer-lu-kan KTP as-li, NPWP, dan se-to-ran a-wal mi-ni-mal. A-pa-kah An-da su-dah mem-per-siap-kan do-ku-men ter-se-but? — For opening an account, you need original ID card, NPWP, and a minimum initial deposit. Have you prepared those documents?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang atau dijelaskan lebih lanjut apa yang Bapak/Ibu butuhkan?",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "apa",
+            "bantu"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bi-sa di-u-lang a-tau di-je-las-kan le-bih lan-jut a-pa yang Ba-pak/I-bu bu-tuh-kan? — Sorry, could you repeat or explain further what you need?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih sudah berkunjung ke bank kami. Selamat melanjutkan aktivitas.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ba-ik, te-ri-ma ka-sih su-dah ber-kun-jung ke bank ka-mi. Se-la-mat me-lan-jut-kan ak-ti-vi-tas. — Okay, thank you for visiting our bank. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

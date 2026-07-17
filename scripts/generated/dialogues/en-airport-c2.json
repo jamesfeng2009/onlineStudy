@@ -1,0 +1,186 @@
+{
+  "id": "dlg-en-airport-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "airport",
+  "title": "A Spot of Bother at the Gate",
+  "opening": "Good afternoon. If you could just present your boarding pass and passport, please. Hmm, I'm just having a spot of bother pulling up your reservation here. Is this the correct flight number, AC792 to Toronto?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good afternoon. If you could just present your boarding pass and passport, please. Hmm, I'm just having a spot of bother pulling up your reservation here. Is this the correct flight number, AC792 to Toronto?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "correct",
+            "thisone",
+            "right"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "different",
+            "notthis",
+            "other"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "what",
+            "sorry",
+            "confused",
+            "question"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good afternoon. If you could just present your boarding pass and passport, please. Hmm, I'm just having a spot of bother pulling up your reservation here. Is this the correct flight number, AC792 to Toronto? — Good afternoon. If you could just present your boarding pass and passport, please. Hmm, I'm just having a spot of bother pulling up your reservation here. Is this the correct flight number, AC792 to Toronto?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Right, it seems there's been a slight hiccup. Your ticket, while valid for AC792, appears to be for tomorrow's departure. A common oversight, I assure you.",
+      "branches": [
+        {
+          "keywords": [
+            "tomorrow",
+            "what",
+            "frustrated",
+            "mistake",
+            "disbelief"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, it seems there's been a slight hiccup. Your ticket, while valid for AC792, appears to be for tomorrow's departure. A common oversight, I assure you. — Right, it seems there's been a slight hiccup. Your ticket, while valid for AC792, appears to be for tomorrow's departure. A common oversight, I assure you."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, I see. That explains it! You're actually at the gate for flight AC792 to Toronto, but you're booked on AC801 to Vancouver. Entirely different kettle of fish, I'm afraid.",
+      "branches": [
+        {
+          "keywords": [
+            "oh",
+            "mybad",
+            "sorry",
+            "apologize",
+            "mistake"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I see. That explains it! You're actually at the gate for flight AC792 to Toronto, but you're booked on AC801 to Vancouver. Entirely different kettle of fish, I'm afraid. — Ah, I see. That explains it! You're actually at the gate for flight AC792 to Toronto, but you're booked on AC801 to Vancouver. Entirely different kettle of fish, I'm afraid."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Not to worry, these things happen. Let me see what we can do. It looks like we have a couple of seats remaining on an earlier flight this evening, albeit in economy plus. Would you be amenable to that, or perhaps we can rebook you for tomorrow with a complimentary lounge pass?",
+      "branches": [
+        {
+          "keywords": [
+            "earlier",
+            "tonight",
+            "economyplus",
+            "yesplease",
+            "takeit"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Not to worry, these things happen. Let me see what we can do. It looks like we have a couple of seats remaining on an earlier flight this evening, albeit in economy plus. Would you be amenable to that, or perhaps we can rebook you for tomorrow with a complimentary lounge pass? — Not to worry, these things happen. Let me see what we can do. It looks like we have a couple of seats remaining on an earlier flight this evening, albeit in economy plus. Would you be amenable to that, or perhaps we can rebook you for tomorrow with a complimentary lounge pass?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "No harm done, it's easily done in these sprawling terminals! Your gate for AC801 to Vancouver is Gate B17, just a hop, skip, and a jump down this concourse, then a left after the duty-free shop. You've got about an hour and a half before boarding commences.",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "appreciate",
+            "muchobliged"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No harm done, it's easily done in these sprawling terminals! Your gate for AC801 to Vancouver is Gate B17, just a hop, skip, and a jump down this concourse, then a left after the duty-free shop. You've got about an hour and a half before boarding commences. — No harm done, it's easily done in these sprawling terminals! Your gate for AC801 to Vancouver is Gate B17, just a hop, skip, and a jump down this concourse, then a left after the duty-free shop. You've got about an hour and a half before boarding commences."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Excellent choice. I've just processed the change for you. Here's your new boarding pass. Do double-check the details, especially the gate and boarding time. Have a truly wonderful journey!",
+      "branches": [
+        {
+          "keywords": [
+            "thankyou",
+            "thanks",
+            "appreciate",
+            "perfect"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice. I've just processed the change for you. Here's your new boarding pass. Do double-check the details, especially the gate and boarding time. Have a truly wonderful journey! — Excellent choice. I've just processed the change for you. Here's your new boarding pass. Do double-check the details, especially the gate and boarding time. Have a truly wonderful journey!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you run that by me again? I didn't quite catch what you said.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you run that by me again? I didn't quite catch what you said. — Sorry, could you run that by me again? I didn't quite catch what you said."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Right then, have a superb flight and enjoy your destination. Thanks for your patience!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Right then, have a superb flight and enjoy your destination. Thanks for your patience! — Right then, have a superb flight and enjoy your destination. Thanks for your patience!",
+      "isTerminal": true
+    }
+  }
+}

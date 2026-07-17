@@ -1,0 +1,234 @@
+{
+  "id": "dlg-de-phone-call-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Am Telefon",
+  "opening": "Guten Tag, Müller! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, Müller! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "ichbin",
+            "meinname",
+            "sprechen",
+            "herr",
+            "frau"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "frage",
+            "information",
+            "gehtum"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg, Muel-ler! Vee kann eech ee-nen hel-fen? — Good day, Müller! How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Einen Moment, bitte. Ich schaue nach. Ah, Herr/Frau [Name] ist leider nicht da.",
+      "branches": [
+        {
+          "keywords": [
+            "wann",
+            "zurück",
+            "kommt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nachricht",
+            "hinterlassen",
+            "sagen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eye-nen Mo-ment, bi-te. Eech shau-e nahkh. Ah, Herr/Frou [Nah-me] ist ly-der neecht dah. — One moment, please. I'll check. Ah, Mr./Ms. [Name] is unfortunately not here."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Worum geht es denn? Vielleicht kann ich Ihnen helfen.",
+      "branches": [
+        {
+          "keywords": [
+            "esgehtum",
+            "problem",
+            "betrifft",
+            "termin"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "möchte",
+            "sprechen",
+            "herr",
+            "frau"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vo-rum geht es den? Fee-lysh kann eech ee-nen hel-fen? — What is it about? Maybe I can help you."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Heute leider nicht mehr. Möchten Sie eine Nachricht hinterlassen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "nachricht"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nein",
+            "später",
+            "wiederanrufen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hoy-te ly-der neecht mer. Moekh-ten zee eye-ne Nahkh-reekhkt hin-ter-las-sen? — Unfortunately not today. Would you like to leave a message?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Gerne. Was möchten Sie Herrn/Frau [Name] denn sagen?",
+      "branches": [
+        {
+          "keywords": [
+            "bitte",
+            "sagen",
+            "ichmöchte",
+            "fragen"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gair-ne. Vas moech-ten zee Herr-n/Frou [Nah-me] den zah-gen? — Gladly. What would you like to tell Mr./Ms. [Name]?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Ich verstehe. Wenn ich Ihnen nicht direkt helfen kann, soll ich eine Nachricht weiterleiten?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "nachricht"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "brauche"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eech fair-shtay-e. Ven eech ee-nen neecht dee-rekt hel-fen kann, zol eech eye-ne Nahkh-reekhkt vy-ter-ly-ten? — I understand. If I can't help you directly, shall I forward a message?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "In Ordnung, ich werde die Nachricht übermitteln. Kann ich Ihnen sonst noch helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "nicht"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "noch"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Ord-nung, eech vair-de dee Nahkh-reekhkt ue-ber-mit-teln. Kann eech ee-nen zonst nokh hel-fen? — All right, I will pass on the message. Can I help you with anything else?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Anruf und auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your call and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

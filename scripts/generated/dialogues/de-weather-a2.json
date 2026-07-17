@@ -1,0 +1,264 @@
+{
+  "id": "dlg-de-weather-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Wetter-Plausch",
+  "opening": "Hallo! Wie ist das Wetter heute bei Ihnen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Wie ist das Wetter heute bei Ihnen?",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "schön",
+            "sonnig",
+            "warm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "schlecht",
+            "regnerisch",
+            "kalt",
+            "bewölkt"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "wetterbericht",
+            "vorhersage",
+            "wissen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "egal"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hallo (HA-llo)! Wie ist das Wetter heute bei Ihnen (IH-nen)? — Hello! How is the weather at your place today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, das ist schön! Haben Sie heute etwas Besonderes vor, bei dem schönen Wetter?",
+      "branches": [
+        {
+          "keywords": [
+            "spaziergang",
+            "park",
+            "garten",
+            "draußen",
+            "fahrrad"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nichts",
+            "arbeiten",
+            "zu hause",
+            "entspannen"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "weißnicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, das ist schön (SCHÖN)! Haben Sie heute etwas Besonderes vor (VOR), bei dem schönen Wetter? — Oh, that's nice! Do you have any special plans today, with this beautiful weather?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ach, das ist schade! Regnet es bei Ihnen oft? Oder ist das heute nur eine Ausnahme?",
+      "branches": [
+        {
+          "keywords": [
+            "oft",
+            "meistens",
+            "normal"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "selten",
+            "nicht",
+            "manchmal",
+            "ausnahme"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "weißnicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach (ACH), das ist schade (SCHA-de)! Regnet es bei Ihnen oft? Oder ist das heute nur eine Ausnahme (AUS-nah-me)? — Oh, that's a pity! Does it often rain where you are? Or is today just an exception?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Der Wetterbericht sagt, es bleibt heute sonnig, aber ab morgen wird es etwas kühler. Welche Jahreszeit mögen Sie am liebsten?",
+      "branches": [
+        {
+          "keywords": [
+            "frühling",
+            "sommer",
+            "herbst",
+            "winter"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "egal",
+            "weißnicht",
+            "alle",
+            "kommtdraufan"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "keine"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Der Wetterbericht (WET-ter-be-richt) sagt, es bleibt heute sonnig, aber ab morgen wird es etwas kühler. Welche Jahreszeit (JAH-res-zeit) mögen Sie am liebsten? — The weather report says it will stay sunny today, but from tomorrow it will get a bit cooler. Which season do you like best?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Das klingt gut! Und welche Temperatur ist Ihnen am liebsten? Eher warm oder doch lieber etwas kühler?",
+      "branches": [
+        {
+          "keywords": [
+            "warm",
+            "heiß",
+            "sonne",
+            "sommer"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "egal"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt gut (GUT)! Und welche Temperatur (Tem-pe-ra-TUR) ist Ihnen am liebsten? Eher warm oder doch lieber etwas kühler? — That sounds good! And what temperature do you prefer? Rather warm or rather a bit cooler?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Verstehe. Manchmal ist es auch schön, einfach zu entspannen. Mögen Sie es lieber sonnig oder macht Ihnen Regen nichts aus?",
+      "branches": [
+        {
+          "keywords": [
+            "sonnig",
+            "sonne",
+            "hell",
+            "trocken"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "beides"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstehe (Ver-STE-he). Manchmal (MANCH-mal) ist es auch schön, einfach zu entspannen. Mögen Sie es lieber sonnig oder macht Ihnen Regen nichts aus? — I understand. Sometimes it's also nice to just relax. Do you prefer it sunny or do you not mind rain?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Ach so, dann sind Sie das ja gewohnt. Was machen Sie dann am liebsten bei Regenwetter?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "film",
+            "kaffee",
+            "drinnen"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "nichts"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ach so (ACH so), dann sind Sie das ja gewohnt (ge-WOHNT). Was machen Sie dann am liebsten bei Regenwetter? — Oh, I see, then you're used to it. What do you like to do best in rainy weather?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Sehr interessant! Es ist immer schön, über das Wetter zu sprechen und Pläne zu machen.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "stimmt",
+            "danke",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sehr interessant (in-te-res-SANT)! Es ist immer schön, über das Wetter zu sprechen und Pläne zu machen. — Very interesting! It's always nice to talk about the weather and make plans."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Wie bitte (BIT-te)? Könnten Sie das bitte wiederholen (wie-der-HO-len)? — Pardon? Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, vielen Dank für das Gespräch! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alles klar (KLAR), vielen Dank für das Gespräch (Ge-SPRÄCH)! Auf Wiedersehen (WIE-der-seh-en)! — All right, thanks for the chat! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

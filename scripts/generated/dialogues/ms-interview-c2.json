@@ -1,0 +1,126 @@
+{
+  "id": "dlg-ms-interview-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Sesi Temu Duga Profesional",
+  "opening": "Selamat pagi, [Nama Calon]. Terima kasih kerana sudi hadir. Boleh kita mulakan? Sila ceritakan serba sedikit tentang diri anda dan pengalaman profesional anda.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, [Nama Calon]. Terima kasih kerana sudi hadir. Boleh kita mulakan? Sila ceritakan serba sedikit tentang diri anda dan pengalaman profesional anda.",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "latarbelakang",
+            "pendidikan",
+            "saya"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning (Selamat pagi), [Candidate Name]. Thank you (Terima kasih) for coming. Shall we begin (Boleh kita mulakan)? Please tell us (Sila ceritakan) a little about yourself (serba sedikit tentang diri anda) and your professional experience (dan pengalaman profesional anda)."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik sekali latar belakang anda. Daripada apa yang anda kongsikan, nampaknya anda mempunyai pelbagai kemahiran. Boleh anda huraikan apa kekuatan utama yang anda miliki dan bagaimana ia boleh menyumbang kepada syarikat kami?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "kemahiran",
+            "kelebihan",
+            "positif"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your background (latar belakang anda) is very interesting (menarik sekali). From what you've shared (Daripada apa yang anda kongsikan), it seems you have a variety of skills (pelbagai kemahiran). Could you elaborate (Boleh anda huraikan) on your main strengths (apa kekuatan utama yang anda miliki) and how they can contribute to our company (dan bagaimana ia boleh menyumbang kepada syarikat kami)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih atas perkongsian anda tentang kekuatan diri. Setiap individu pasti ada ruang untuk penambahbaikan, bukan? Jadi, secara jujur, apakah kelemahan terbesar anda dan bagaimana anda mengatasinya?",
+      "branches": [
+        {
+          "keywords": [
+            "kelemahan",
+            "cabaran",
+            "penambahbaikan",
+            "mengatasi"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for sharing (Terima kasih atas perkongsian anda) your strengths (tentang kekuatan diri). Every individual (Setiap individu) surely has room for improvement (pasti ada ruang untuk penambahbaikan), don't they (bukan)? So, honestly (secara jujur), what is your biggest weakness (apakah kelemahan terbesar anda) and how do you overcome it (dan bagaimana anda mengatasinya)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sangat menghargai keterbukaan anda. Baiklah, nampaknya kita sudah sampai ke penghujung perbincangan. Adakah anda mempunyai sebarang soalan untuk kami sebelum kita tamatkan sesi ini?",
+      "branches": [
+        {
+          "keywords": [
+            "soalan",
+            "tanya",
+            "pertanyaan",
+            "ingin"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "cukup",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I truly appreciate (Sangat menghargai) your openness (keterbukaan anda). Alright (Baiklah), it seems we have reached the end of our discussion (nampaknya kita sudah sampai ke penghujung perbincangan). Do you have any questions for us (Adakah anda mempunyai sebarang soalan untuk kami) before we conclude this session (sebelum kita tamatkan sesi ini)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Itu soalan yang bagus. Untuk makluman anda, [jawapan ringkas]. Jika tiada apa-apa lagi, saya rasa kita boleh tamatkan sesi ini. Terima kasih sekali lagi, [Nama Calon].",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That's a good question (Itu soalan yang bagus). For your information (Untuk makluman anda), [brief answer]. If there's nothing else (Jika tiada apa-apa lagi), I think we can conclude this session (saya rasa kita boleh tamatkan sesi ini). Thank you once again (Terima kasih sekali lagi), [Candidate Name]."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry (Maaf), could you please repeat that (boleh anda ulang sekali lagi)? I didn't quite catch it (Saya kurang jelas)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, [Nama Calon]. Terima kasih banyak atas masa anda. Kami akan menghubungi anda semula dalam masa terdekat. Sila berhati-hati di jalan raya.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, [Candidate Name]. Thank you very much for your time. We will contact you again soon. Please drive safely. (Baiklah, [Nama Calon]. Terima kasih banyak atas masa anda. Kami akan menghubungi anda semula dalam masa terdekat. Sila berhati-hati di jalan raya.)",
+      "isTerminal": true
+    }
+  }
+}

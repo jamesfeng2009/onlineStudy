@@ -1,0 +1,306 @@
+{
+  "id": "dlg-ms-taxi-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Perjalanan Teksi ke Destinasi Pilihan",
+  "opening": "Selamat pagi. Ke mana kita hari ini, encik/cik? Saya sedia berkhidmat.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ke mana kita hari ini, encik/cik? Saya sedia berkhidmat.",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "suria",
+            "menarakembar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pavilion",
+            "bukitbintang",
+            "bb"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "airport",
+            "lapanganterbang",
+            "klia",
+            "klia2"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "hotel",
+            "hotelseri",
+            "hotelhilton"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "lain",
+            "laintempat",
+            "tempatlain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Selamat pagi). Ke mana kita hari ini (Ke mana kita hari ini), encik/cik (encik/cik)? Saya sedia berkhidmat (Saya sedia berkhidmat)."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, KLCC. Ikut jalan biasa atau ada laluan alternatif yang encik/cik nak cadangkan? Sekarang ni jam sikit di MRR2, terutamanya di waktu puncak.",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "jalanbiasa",
+            "terpulang",
+            "ikutbiasa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "meter",
+            "tambang",
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "cadangan",
+            "cadangkan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik), KLCC. Ikut jalan biasa (Ikut jalan biasa) atau ada laluan alternatif (ada laluan alternatif) yang encik/cik nak cadangkan (yang encik/cik nak cadangkan)? Sekarang ni jam sikit (Sekarang ni jam sikit) di MRR2, terutamanya di waktu puncak (terutamanya di waktu puncak)."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Pavilion ya. Biasanya saya ikut Jalan Tun Razak, tapi kadang-kadang sesak teruk juga. Ada cadangan lain untuk elak kesesakan?",
+      "branches": [
+        {
+          "keywords": [
+            "biasa",
+            "jalanbiasa",
+            "terpulang",
+            "ikutbiasa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "meter",
+            "tambang",
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "cadangan",
+            "cadangkan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pavilion ya (Pavilion ya). Biasanya saya ikut Jalan Tun Razak (Biasanya saya ikut Jalan Tun Razak), tapi kadang-kadang sesak teruk juga (tapi kadang-kadang sesak teruk juga). Ada cadangan lain (Ada cadangan lain) untuk elak kesesakan (untuk elak kesesakan)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, kita ikut laluan itu. Untuk tambang, encik/cik lebih suka guna meter atau nak saya berikan harga tetap?",
+      "branches": [
+        {
+          "keywords": [
+            "meter",
+            "gunameter",
+            "ikutmeter"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "harga",
+            "tetap",
+            "hargatetap",
+            "berapa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "terpulang",
+            "pilihan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik), kita ikut laluan itu (kita ikut laluan itu). Untuk tambang (Untuk tambang), encik/cik lebih suka guna meter (encik/cik lebih suka guna meter) atau nak saya berikan harga tetap (atau nak saya berikan harga tetap)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Kalau nak harga tetap, saya boleh bagi RM20 untuk ke sana. Tapi selalunya lebih murah ikut meter kalau tak terlalu sesak. Mana satu pilihan encik/cik?",
+      "branches": [
+        {
+          "keywords": [
+            "meter",
+            "ikutmeter",
+            "guna meter"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tunai",
+            "kad",
+            "bayar",
+            "carabayaran"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "pilihan",
+            "boleh"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau nak harga tetap (Kalau nak harga tetap), saya boleh bagi RM20 (saya boleh bagi RM20) untuk ke sana. Tapi selalunya lebih murah (Tapi selalunya lebih murah) ikut meter (ikut meter) kalau tak terlalu sesak (kalau tak terlalu sesak). Mana satu pilihan encik/cik (Mana satu pilihan encik/cik)?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baiklah, kita bergerak sekarang. Urusan bayaran boleh settle di sana nanti ya. Ada apa-apa lagi sebelum kita jalan?",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "tiada",
+            "tidak",
+            "baik",
+            "jalan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bayaran",
+            "cara",
+            "nakbayar",
+            "pembayaran"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah (Baiklah), kita bergerak sekarang (kita bergerak sekarang). Urusan bayaran (Urusan bayaran) boleh settle di sana nanti ya (boleh settle di sana nanti ya). Ada apa-apa lagi (Ada apa-apa lagi) sebelum kita jalan (sebelum kita jalan)?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Saya terima tunai atau e-wallet seperti Touch 'n Go eWallet. Kalau kad kredit, kena tambah caj sikit sebab saya tak ada terminal sendiri. Tunai atau e-wallet lebih mudah.",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "cash",
+            "wangtunai"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya terima tunai (Saya terima tunai) atau e-wallet (e-wallet) seperti Touch 'n Go eWallet. Kalau kad kredit (Kalau kad kredit), kena tambah caj sikit (kena tambah caj sikit) sebab saya tak ada terminal sendiri (sebab saya tak ada terminal sendiri). Tunai atau e-wallet lebih mudah (Tunai atau e-wallet lebih mudah)."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Baik, ke lapangan terbang. Adakah encik/cik ingin ke KLIA atau KLIA2? Atau ada keperluan lain seperti pengangkutan bagasi yang banyak?",
+      "branches": [
+        {
+          "keywords": [
+            "klia",
+            "klia1"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lain",
+            "tidakpasti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik), ke lapangan terbang (ke lapangan terbang). Adakah encik/cik ingin ke KLIA (Adakah encik/cik ingin ke KLIA) atau KLIA2 (atau KLIA2)? Atau ada keperluan lain (Atau ada keperluan lain) seperti pengangkutan bagasi yang banyak (seperti pengangkutan bagasi yang banyak)?"
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Oh, ke hotel ya. Bolehkah encik/cik berikan nama penuh hotel dan alamatnya? Kadang-kadang ada beberapa hotel dengan nama yang serupa.",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "alamat",
+            "hotel"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidakpasti",
+            "bolehcarikan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh (Oh), ke hotel ya (ke hotel ya). Bolehkah encik/cik berikan nama penuh hotel (Bolehkah encik/cik berikan nama penuh hotel) dan alamatnya (dan alamatnya)? Kadang-kadang ada beberapa hotel (Kadang-kadang ada beberapa hotel) dengan nama yang serupa (dengan nama yang serupa)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Maaf), boleh ulang sekali lagi (boleh ulang sekali lagi)? Saya kurang jelas (Saya kurang jelas)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih banyak atas kesabaran encik/cik. Selamat sampai ke destinasi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Baik), terima kasih banyak (terima kasih banyak) atas kesabaran encik/cik (atas kesabaran encik/cik). Selamat sampai ke destinasi (Selamat sampai ke destinasi)!",
+      "isTerminal": true
+    }
+  }
+}

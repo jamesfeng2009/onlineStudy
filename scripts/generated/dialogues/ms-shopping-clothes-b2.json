@@ -1,0 +1,142 @@
+{
+  "id": "dlg-ms-shopping-clothes-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "Membeli Pakaian",
+  "opening": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke butik kami! Ada apa-apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "baju",
+            "blaus",
+            "seluar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tengok",
+            "lihat",
+            "saja"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke butik kami! (Selamat datang ke butik kami!) — Welcome to our boutique! Ada apa-apa yang boleh saya bantu? (Ada apa-apa yang boleh saya bantu?) — Is there anything I can help you with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu. Kami ada pelbagai pilihan. Anda mencari saiz apa dan warna/gaya bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "saiz",
+            "m",
+            "l",
+            "biru",
+            "kasual"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu. (Tentu.) — Certainly. Kami ada pelbagai pilihan. (Kami ada pelbagai pilihan.) — We have various options. Anda mencari saiz apa dan warna/gaya bagaimana? (Anda mencari saiz apa dan warna/gaya bagaimana?) — What size are you looking for and what color/style?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baiklah, saya ada beberapa pilihan di sini yang mungkin sesuai. Mungkin anda ingin mencubanya di bilik persalinan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "mahu",
+            "cuba"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "belum",
+            "tengok",
+            "cukuplah"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah, saya ada beberapa pilihan di sini yang mungkin sesuai. (Baiklah, saya ada beberapa pilihan di sini yang mungkin sesuai.) — Alright, I have a few options here that might suit you. Mungkin anda ingin mencubanya di bilik persalinan? (Mungkin anda ingin mencubanya di bilik persalinan?) — Perhaps you'd like to try them on in the fitting room?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bilik persalinan ada di sebelah sana, di hujung lorong. Setelah mencuba, beritahu saya ya, bagaimana ia sesuai?",
+      "branches": [
+        {
+          "keywords": [
+            "sesuai",
+            "ok",
+            "ambil"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "kecil",
+            "besar"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bilik persalinan ada di sebelah sana, di hujung lorong. (Bilik persalinan ada di sebelah sana, di hujung lorong.) — The fitting room is over there, at the end of the aisle. Setelah mencuba, beritahu saya ya, bagaimana ia sesuai? (Setelah mencuba, beritahu saya ya, bagaimana ia sesuai?) — After trying, let me know, okay, how does it fit?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oh, begitu. Saya akan carikan saiz yang lebih sesuai. Sila tunggu sebentar ya.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu. (Oh, begitu.) — Oh, I see. Saya akan carikan saiz yang lebih sesuai. (Saya akan carikan saiz yang lebih sesuai.) — I will find a more suitable size. Sila tunggu sebentar ya. (Sila tunggu sebentar ya.) — Please wait a moment."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "katalagi",
+            "ulang",
+            "maaf"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat? I'm not very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih banyak dan datanglah lagi! Selamat hari!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you very much and please come again! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "id": "dlg-ms-restaurant-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat datang! Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang! Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "menu",
+            "nakmakan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "order"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cadangan",
+            "rekomendasi"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (sah-lah-mat dah-tang) — Welcome! Boleh saya bantu (boh-leh sah-yah bahn-too)? — Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ini menu kita. Mahu pesan atau cadangan?",
+      "branches": [
+        {
+          "keywords": [
+            "pesan",
+            "order",
+            "nak"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cadangan",
+            "rekomendasi"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "takfaham",
+            "jelas"
+          ],
+          "nextTurnId": "t3a"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ini menu (ee-nee meh-noo) kita — Here is our menu. Mahu pesan (mah-hoo peh-san) atau cadangan (ah-tau chah-dah-ngan)? — Want to order or recommendation?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kami ada Nasi Lemak. Sangat sedap!",
+      "branches": [
+        {
+          "keywords": [
+            "nak",
+            "pesan",
+            "ya",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "apa",
+            "apa itu",
+            "jelas"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "taknak",
+            "tidak",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kami ada Nasi Lemak (nah-see leh-mak). Sangat sedap (sah-ngat seh-dap)! — We have Nasi Lemak. Very delicious!"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Nasi Lemak ada nasi, telur, sambal. Pedas sikit.",
+      "branches": [
+        {
+          "keywords": [
+            "nak",
+            "pesan",
+            "ya",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "takpedas",
+            "tidakpedas"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "terimakasih"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nasi Lemak has rice, egg, sambal. A little spicy."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Kami ada Mee Goreng tanpa pedas. Mahu?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "nak",
+            "pesan",
+            "ok"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "taknak",
+            "lain"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kami ada Mee Goreng (mee goh-reng) tanpa pedas (tan-pah peh-das). Mahu (mah-hoo)? — We have Mee Goreng without spice. Want it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, satu hidangan. Ada lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "cukup",
+            "tidak",
+            "tiada"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ya",
+            "lagi",
+            "tambah"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (bah-eek) — Okay, satu hidangan (sah-too hee-dah-ngan) — one dish. Ada lagi (ah-dah lah-gee)? — Anything else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ini bil anda. Semuanya RM 15. Terima kasih! Sila datang lagi.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Ini bil (ee-nee beel) anda — Here is your bill. Semuanya (seh-moo-nya) RM 15 — Total RM 15. Terima kasih (te-ree-ma kah-seeh)! — Thank you! Sila datang lagi (see-lah dah-tang lah-gee). — Please come again.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (mah-ahf) — Sorry, boleh ulang (boh-leh oo-lang)? — Can you repeat?"
+    }
+  }
+}

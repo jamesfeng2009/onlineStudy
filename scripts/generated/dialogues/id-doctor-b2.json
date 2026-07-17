@@ -1,0 +1,130 @@
+{
+  "id": "dlg-id-doctor-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "doctor",
+  "title": "Kunjungan Dokter: Gejala dan Resep",
+  "opening": "Selamat pagi, Bapak/Ibu. Silakan duduk. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Bapak/Ibu. Silakan duduk. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "kurangsehat",
+            "merasa"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Selamat pagi) — Good morning, sir/madam. Please have a seat. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, bisa Anda ceritakan lebih detail tentang apa yang Anda rasakan? Sejak kapan gejala ini muncul dan seberapa parah?",
+      "branches": [
+        {
+          "keywords": [
+            "demam",
+            "batuk",
+            "pilek",
+            "sakitkepala",
+            "pusing"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik) — Okay, could you tell me more details about what you're feeling? Since when have these symptoms appeared, and how severe are they?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, begitu. Sudah berapa lama Anda mengalami gejala tersebut? Ada riwayat alergi obat atau sedang mengonsumsi obat-obatan lain saat ini?",
+      "branches": [
+        {
+          "keywords": [
+            "hari",
+            "minggu",
+            "sejak",
+            "sudah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu (Oh, begitu) — Oh, I see. How long have you been experiencing these symptoms? Do you have any history of drug allergies or are you currently taking any other medications?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, dari gejala yang Anda sampaikan, kemungkinan Anda mengalami infeksi ringan. Saya akan meresepkan beberapa obat untuk meredakan gejala dan mempercepat pemulihan Anda. Pastikan Anda meminumnya sesuai anjuran, ya.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "mengerti",
+            "baik"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "oke"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, based on the symptoms you've described, it's likely you have a mild infection. I will prescribe some medication to relieve your symptoms and speed up your recovery. Please make sure you take them as directed, okay?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sama-sama. Jika dalam beberapa hari gejala tidak membaik atau justru memburuk, jangan ragu untuk kembali kontrol. Semoga lekas sembuh.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "You're welcome. If the symptoms don't improve or even worsen in a few days, please don't hesitate to come back for a follow-up. Get well soon.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulang? Saya tidak begitu jelas mendengar.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, could you please repeat that? I didn't quite catch it clearly."
+    }
+  }
+}

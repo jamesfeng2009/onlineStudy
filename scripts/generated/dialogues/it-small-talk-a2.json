@@ -1,0 +1,336 @@
+{
+  "id": "dlg-it-small-talk-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "small-talk",
+  "title": "Chiacchiere a una festa",
+  "opening": "Ciao! Come sta? È la prima volta che viene a questa festa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Ciao! Come sta? È la prima volta che viene a questa festa?",
+      "branches": [
+        {
+          "keywords": [
+            "bene",
+            "benissimo",
+            "ottimo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sì",
+            "primo"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ciao (CHOW)! Come sta (KOH-meh STAH)? È la prima volta (EH lah PREE-mah VOL-tah) che viene a questa festa (keh VYE-neh ah KWEH-stah FEH-stah)? — Hi! How are you? Is it your first time at this party?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ottimo! Cosa le piace fare nel tempo libero?",
+      "branches": [
+        {
+          "keywords": [
+            "leggere",
+            "libri"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "guardarefilm",
+            "cinema",
+            "serie"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "sport",
+            "correre",
+            "nuotare",
+            "camminare"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "cucinare",
+            "cucina"
+          ],
+          "nextTurnId": "t4d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo (OT-tee-moh)! Cosa le piace (KOH-sah leh PYA-cheh) fare nel tempo libero (FAH-reh nehl TEM-poh LEE-beh-roh)? — Great! What do you like to do in your free time?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. E lei, cosa le piace fare nel tempo libero?",
+      "branches": [
+        {
+          "keywords": [
+            "leggere",
+            "libri"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "guardarefilm",
+            "cinema",
+            "serie"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "sport",
+            "correre",
+            "nuotare",
+            "camminare"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "cucinare",
+            "cucina"
+          ],
+          "nextTurnId": "t4d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (kah-PEE-skoh). E lei (eh LEY), cosa le piace (KOH-sah leh PYA-cheh) fare nel tempo libero (FAH-reh nehl TEM-poh LEE-beh-roh)? — I see. And you, what do you like to do in your free time?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Che bello! Anch'io amo leggere. Ha letto un buon libro ultimamente?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "libro",
+            "autore"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            "no",
+            "niente"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Che bello (KEH BEL-loh)! Anch'io (ahn-KEE-oh) amo leggere (AH-moh LED-jeh-reh). Ha letto (AH LET-toh) un buon libro (oon BWON LEE-broh) ultimamente (ool-tee-mah-MEN-teh)? — How nice! I love reading too. Have you read a good book lately?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Interessante! Anch'io guardo molti film. Ha visto una bella serie o un film ultimamente?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "film",
+            "serie",
+            "titolo"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            "no",
+            "niente"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interessante (een-teh-reh-SAHN-teh)! Anch'io (ahn-KEE-oh) guardo molti film (GWAR-doh MOL-tee FEELM). Ha visto (AH VEE-stoh) una bella serie (OO-nah BEL-lah SEH-ryeh) o un film (oh oon FEELM) ultimamente (ool-tee-mah-MEN-teh)? — Interesting! I watch a lot of movies too. Have you seen a good series or movie lately?"
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Benissimo! Che tipo di sport le piace fare?",
+      "branches": [
+        {
+          "keywords": [
+            "calcio",
+            "nuoto",
+            "tennis",
+            "corsa"
+          ],
+          "nextTurnId": "t5c"
+        },
+        {
+          "keywords": [
+            "nonfaccio",
+            "poco"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Benissimo (beh-NEES-see-moh)! Che tipo di sport (KEH TEE-poh dee SPORT) le piace fare (leh PYA-cheh FAH-reh)? — Very good! What kind of sport do you like to do?"
+    },
+    "t4d": {
+      "id": "t4d",
+      "prompt": "Fantastico! Le piace cucinare piatti italiani o internazionali?",
+      "branches": [
+        {
+          "keywords": [
+            "italiani",
+            "pasta",
+            "pizza",
+            "lasagne"
+          ],
+          "nextTurnId": "t5d"
+        },
+        {
+          "keywords": [
+            "noncucino",
+            "poco"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fantastico (fahn-TAH-stee-koh)! Le piace cucinare (leh PYA-cheh koo-chee-NAH-reh) piatti italiani (PYAT-tee ee-tah-LYAH-nee) o internazionali (oh een-ter-nah-tsyo-NAH-lee)? — Fantastic! Do you like cooking Italian or international dishes?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Oh, interessante! Lo cercherò. Di che genere è?",
+      "branches": [
+        {
+          "keywords": [
+            "romanzo",
+            "storico",
+            "giallo",
+            "fantasy"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, interessante (oh, een-teh-reh-SAHN-teh)! Lo cercherò (loh cher-keh-ROH). Di che genere (dee keh JEN-neh-reh) è? — Oh, interesting! I'll look for it. What genre is it?"
+    },
+    "t5b": {
+      "id": "t5b",
+      "prompt": "Ah, conosco! Mi è piaciuto molto. Qual è il suo genere preferito?",
+      "branches": [
+        {
+          "keywords": [
+            "azione",
+            "commedia",
+            "dramma",
+            "horror"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, conosco (ah, koh-NO-skoh)! Mi è piaciuto (mee EH pya-CHOO-toh) molto (MOL-toh). Qual è il suo (KWAL EH eel SOO-oh) genere preferito (JEN-neh-reh preh-feh-REE-toh)? — Ah, I know it! I liked it a lot. What's your favorite genre?"
+    },
+    "t5c": {
+      "id": "t5c",
+      "prompt": "Ottima scelta! Lo pratica spesso?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "sempre",
+            "trevolte"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottima scelta (OT-tee-mah SHEL-tah)! Lo pratica (loh PRAH-tee-kah) spesso (SPEH-ssoh)? — Excellent choice! Do you practice it often?"
+    },
+    "t5d": {
+      "id": "t5d",
+      "prompt": "Che buono! Ha un piatto preferito da cucinare?",
+      "branches": [
+        {
+          "keywords": [
+            "pasta",
+            "pizza",
+            "lasagne",
+            "tiramisù"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Che buono (KEH BWOH-noh)! Ha un piatto (AH oon PYAT-toh) preferito (preh-feh-REE-toh) da cucinare (dah koo-chee-NAH-reh)? — How good! Do you have a favorite dish to cook?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Capisco! Sembra interessante. Bene, è stato un piacere chiacchierare un po'.",
+      "branches": [
+        {
+          "keywords": [
+            "anchio",
+            "piacere",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (kah-PEE-skoh)! Sembra interessante (SEM-brah een-teh-reh-SAHN-teh). Bene (BEH-neh), è stato un piacere (EH STAH-toh oon pya-CHEH-reh) chiacchierare un po' (kyak-kyeh-RAH-reh oon POH). — I see! Sounds interesting. Well, it was nice to chat a bit."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), può ripetere (PWOH ree-PEH-teh-reh), per favore (pehr fah-VOH-reh)? — Excuse me, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "È stato un piacere parlare con lei! Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "È stato un piacere (EH STAH-toh oon pya-CHEH-reh) parlare con lei (par-LAH-reh kohn LEY)! Arrivederci (ah-rree-veh-DER-chee)! — It was a pleasure talking to you! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

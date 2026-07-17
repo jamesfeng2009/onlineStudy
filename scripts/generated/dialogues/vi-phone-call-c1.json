@@ -1,0 +1,303 @@
+{
+  "id": "dlg-vi-phone-call-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Cuộc Gọi Chuyên Nghiệp",
+  "opening": "Alo, Văn phòng ABC xin nghe. Tôi là Lan.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alo, Văn phòng ABC xin nghe. Tôi là Lan.",
+      "branches": [
+        {
+          "keywords": [
+            "gặp",
+            "nói_chuyện",
+            "với",
+            "anh",
+            "chị",
+            "ông",
+            "bà",
+            "minh",
+            "thảo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hỏi",
+            "về",
+            "dịch_vụ",
+            "thông_tin",
+            "công_ty",
+            "đây",
+            "phải",
+            "giới_thiệu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alo — Hello, this is ABC Office. My name is Lan."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Dạ, anh Minh hiện đang bận họp. Anh/Chị có thể cho biết tên và lý do cuộc gọi không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi",
+            "là",
+            "gọi",
+            "để",
+            "trao_đổi",
+            "thảo_luận",
+            "về",
+            "dự_án",
+            "hợp_tác"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "khi_nào",
+            "rảnh",
+            "xong_họp",
+            "có_mặt",
+            "trở_lại"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ — Yes, Mr. Minh is currently in a meeting. Could you please tell me your name and the reason for your call?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Dự kiến khoảng một tiếng nữa ạ. Anh/Chị có muốn chờ, hay để lại lời nhắn không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi",
+            "sẽ",
+            "chờ",
+            "đợi",
+            "gọi_lại_sau"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "để_lại",
+            "lời_nhắn",
+            "nhắn_tin"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's expected to be about an hour. Would you like to wait, or leave a message?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ vâng, đây là Văn phòng ABC. Anh/Chị muốn tìm hiểu về dịch vụ hay có việc gì khác ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tôi",
+            "muốn",
+            "hỏi",
+            "về",
+            "sản_phẩm",
+            "dịch_vụ",
+            "dự_án",
+            "tư_vấn"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "tôi",
+            "gặp",
+            "nói_chuyện",
+            "với",
+            "ai",
+            "phụ_trách"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ — Yes, this is ABC Office. Are you looking to inquire about our services or is there something else I can help you with?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Chúng tôi chuyên về giải pháp công nghệ và tư vấn chiến lược. Anh/Chị có cần tôi gửi thông tin chi tiết qua email không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "gửi",
+            "email",
+            "qua",
+            "cho_tôi",
+            "tôi_muốn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We specialize in technology solutions and strategic consulting. Would you like me to send detailed information via email?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Vâng, tôi đã hiểu. Anh/Chị có muốn để lại lời nhắn, hay tôi có thể giúp gì khác không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "nhắn_rằng",
+            "là",
+            "muốn_gặp",
+            "họp",
+            "vấn_đề",
+            "nội_dung"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "không_gấp",
+            "không_khẩn_cấp",
+            "tôi_sẽ_gọi_lại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng — Yes, I understand. Would you like to leave a message, or can I help with anything else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dạ, tôi đã ghi nhận lời nhắn. Tôi sẽ chuyển lời lại cho anh Minh ngay khi anh ấy rảnh. Anh/Chị có muốn tôi xác nhận lại thông tin không?",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "được",
+            "cảm_ơn",
+            "không_cần",
+            "không_cần_nữa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "xác_nhận",
+            "lại",
+            "thông_tin",
+            "đọc_lại"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, I've noted the message. I will pass it on to Mr. Minh as soon as he's free. Would you like me to confirm the information?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Anh/Chị tên là [tên người gọi], số điện thoại [số điện thoại], muốn nhắn anh Minh về việc [nội dung tóm tắt lời nhắn]. Tôi đã ghi đúng chưa ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đúng_rồi",
+            "chính_xác",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sai",
+            "chưa_đúng",
+            "không_phải"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your name is [caller's name], phone number [phone number], and you want to message Mr. Minh about [summarized message content]. Have I noted it correctly?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe chưa rõ. Anh/Chị có thể nhắc lại được không ạ? Hoặc anh/chị muốn tôi hỗ trợ gì khác?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi — Sorry, I didn't hear clearly. Could you please repeat? Or is there anything else I can assist you with?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, không có gì ạ. Chúc anh/chị một ngày làm việc hiệu quả và nhiều niềm vui!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Wishing you a productive and joyful day!",
+      "isTerminal": true
+    }
+  }
+}

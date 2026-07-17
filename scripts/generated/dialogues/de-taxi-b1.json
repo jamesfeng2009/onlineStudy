@@ -1,0 +1,252 @@
+{
+  "id": "dlg-de-taxi-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Taxifahrt in Berlin",
+  "opening": "Guten Tag! Wo soll es hingehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wo soll es hingehen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "hotel",
+            "adresse",
+            "bahnhof"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "preis",
+            "kosten",
+            "was",
+            "wieviel"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            "hallo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day! Wo soll es hingehen? — Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Zum Hauptbahnhof, verstanden. Soll ich über die Autobahn fahren oder lieber durch die Stadt?",
+      "branches": [
+        {
+          "keywords": [
+            "autobahn",
+            "schneller"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "verkehr",
+            "dauert",
+            "wie lange"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Zum Hauptbahnhof — To the main station, verstanden — understood. Soll ich über die Autobahn fahren — Should I take the highway or lieber durch die Stadt — rather through the city?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Für eine Fahrt dorthin rechnen Sie bitte mit etwa 20-25 Euro, je nach Verkehr. Ich würde über die Stadtautobahn fahren, das ist meistens schneller.",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "gut",
+            "einverstanden",
+            "autobahn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "stadt",
+            "durchstadt"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "wann",
+            "wie lange"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Für eine Fahrt dorthin — For a trip there, rechnen Sie bitte mit etwa 20-25 Euro — please expect about 20-25 Euros, je nach Verkehr — depending on traffic. Ich würde über die Stadtautobahn fahren — I would drive via the city highway, das ist meistens schneller — that is usually faster."
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Durch die Stadt ist auch eine Option, aber da kann es zu Stoßzeiten etwas länger dauern. Was bevorzugen Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "autobahn",
+            "schneller"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Through the city is also an option, but during rush hour, it can take a bit longer. What do you prefer?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Momentan ist der Verkehr mittelmäßig, aber über die Autobahn sollten wir in etwa 20 Minuten dort sein. Durch die Stadt wäre es eher 25-30 Minuten.",
+      "branches": [
+        {
+          "keywords": [
+            "autobahn",
+            "schneller"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Currently, traffic is moderate, but via the highway, we should be there in about 20 minutes. Through the city, it would be more like 25-30 minutes."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alles klar, dann fahren wir los. Momentan sieht der Verkehr gut aus, wir sollten pünktlich ankommen.",
+      "branches": [
+        {
+          "keywords": [
+            "bezahlen",
+            "karte",
+            "bar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "gepäck",
+            "koffer"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, let's go. Currently, traffic looks good, we should arrive on time."
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Kein Problem, das Gepäck mache ich Ihnen gleich auf. Sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "allesgut"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem, I'll open the trunk for your luggage right away. Anything else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Wir sind fast da. Barzahlung oder mit Karte, ganz wie Sie möchten.",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We are almost there. Cash or card, whichever you prefer."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht richtig verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gerne. Vielen Dank für die Fahrt und einen schönen Tag!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Thank you for the ride and have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

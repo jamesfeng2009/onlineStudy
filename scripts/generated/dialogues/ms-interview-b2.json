@@ -1,0 +1,128 @@
+{
+  "id": "dlg-ms-interview-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Temuduga Pekerjaan",
+  "opening": "Selamat pagi. Terima kasih kerana hadir untuk temuduga ini. Boleh ceritakan sedikit tentang diri anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Terima kasih kerana hadir untuk temuduga ini. Boleh ceritakan sedikit tentang diri anda?",
+      "branches": [
+        {
+          "keywords": [
+            "diri",
+            "pengenalan",
+            "latarbelakang"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "minat",
+            "hobi"
+          ],
+          "nextTurnId": "t2_alt"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Terima kasih kerana hadir (Thank you for coming) untuk temuduga ini. Boleh ceritakan sedikit (Could you tell us a little) tentang diri anda?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik. Berdasarkan resume anda, anda mempunyai pengalaman dalam bidang X. Boleh anda huraikan lebih lanjut tentang pengalaman kerja anda yang relevan dengan jawatan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "projek",
+            "kemahiran"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Menarik (Interesting). Berdasarkan resume anda (Based on your resume), anda mempunyai pengalaman dalam bidang X. Boleh anda huraikan lebih lanjut (Could you elaborate further) tentang pengalaman kerja anda yang relevan (relevant work experience) dengan jawatan ini?"
+    },
+    "t2_alt": {
+      "id": "t2_alt",
+      "prompt": "Faham. Selain itu, apa yang menarik minat anda untuk memohon jawatan ini di syarikat kami?",
+      "branches": [
+        {
+          "keywords": [
+            "minat",
+            "peluang",
+            "syarikat"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (Understood). Selain itu (Furthermore), apa yang menarik minat anda (what interests you) untuk memohon jawatan ini (to apply for this position) di syarikat kami?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Setiap individu pasti ada kekuatan dan kelemahan. Pada pandangan anda, apakah kekuatan utama anda dan satu kelemahan yang anda sedang usahakan untuk perbaiki?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "kemahiran",
+            "positif"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright). Setiap individu pasti ada kekuatan dan kelemahan (Every individual surely has strengths and weaknesses). Pada pandangan anda (In your opinion), apakah kekuatan utama anda (what is your main strength) dan satu kelemahan (and one weakness) yang anda sedang usahakan untuk perbaiki (that you are working to improve)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas perkongsian anda. Kami akan maklumkan keputusan temuduga ini dalam masa terdekat. Sila tunggu e-mel atau panggilan daripada kami. Selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Terima kasih (Thank you) atas perkongsian anda (for your sharing). Kami akan maklumkan keputusan temuduga ini (We will inform you of the interview results) dalam masa terdekat (soon). Sila tunggu e-mel atau panggilan (Please wait for an email or call) daripada kami. Selamat jalan (Goodbye).",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang semula?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), boleh anda ulang semula (could you please repeat)?"
+    }
+  }
+}

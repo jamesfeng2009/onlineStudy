@@ -1,0 +1,321 @@
+{
+  "id": "dlg-es-directions-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Preguntando Direcciones",
+  "opening": "Disculpe, ¿necesita ayuda para encontrar algo? Parece un poco perdido/a.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Disculpe, ¿necesita ayuda para encontrar algo? Parece un poco perdido/a.",
+      "branches": [
+        {
+          "keywords": [
+            "estación",
+            "tren"
+          ],
+          "nextTurnId": "t2_estacion"
+        },
+        {
+          "keywords": [
+            "centro",
+            "ciudad",
+            "plaza"
+          ],
+          "nextTurnId": "t2_centro"
+        },
+        {
+          "keywords": [
+            "perdido",
+            "perdida",
+            "dondeestoy"
+          ],
+          "nextTurnId": "t2_perdido"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dis-CÚL-pe, ¿ne-CE-si-ta AY-u-da pa-ra en-con-TRAR AL-go? Pa-RE-ce un PO-co per-DÍ-do/a. — Excuse me, do you need help finding something? You look a bit lost."
+    },
+    "t2_estacion": {
+      "id": "t2_estacion",
+      "prompt": "Ah, la estación central. No está muy lejos de aquí. Tendrías que seguir esta calle todo recto unas tres o cuatro manzanas y girar a la derecha en el semáforo grande. ¿Prefieres ir andando o en autobús?",
+      "branches": [
+        {
+          "keywords": [
+            "caminando",
+            "pie",
+            "andando",
+            "preferircaminar"
+          ],
+          "nextTurnId": "t3_walk_estacion"
+        },
+        {
+          "keywords": [
+            "autobús",
+            "transporte",
+            "metro"
+          ],
+          "nextTurnId": "t3_bus_estacion"
+        },
+        {
+          "keywords": [
+            "otraforma",
+            "másfácil",
+            "indicaciones"
+          ],
+          "nextTurnId": "t4_alternative"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, la es-ta-CIÓN cen-TRAL. No es-TÁ muy LE-jos de a-QUÍ. Ten-DRÍ-as que se-GUIR ES-ta CA-lle TO-do REC-to U-nas TRES o CUA-tro man-ZA-nas y gi-RAR a la de-RE-cha en el se-MÁ-fo-ro GRAN-de. ¿Pre-FIE-res ir an-DAN-do o en au-to-BÚS? — Ah, the central station. It's not very far from here. You'd have to follow this street straight for about three or four blocks and turn right at the big traffic light. Do you prefer to walk or take the bus?"
+    },
+    "t2_centro": {
+      "id": "t2_centro",
+      "prompt": "El centro está a unos quince minutos a pie, o podrías coger cualquier autobús que vaya en dirección sur desde la parada de aquí al lado. Te dejará en la Plaza Mayor. ¿Qué te parece mejor?",
+      "branches": [
+        {
+          "keywords": [
+            "caminando",
+            "pie",
+            "andando",
+            "preferircaminar"
+          ],
+          "nextTurnId": "t3_walk_centro"
+        },
+        {
+          "keywords": [
+            "autobús",
+            "transporte",
+            "metro"
+          ],
+          "nextTurnId": "t3_bus_centro"
+        },
+        {
+          "keywords": [
+            "otraforma",
+            "másfácil",
+            "indicaciones"
+          ],
+          "nextTurnId": "t4_alternative"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El CEN-tro es-TÁ a U-nos QUIN-ce mi-NU-tos a PIE, o po-DRÍ-as co-GER cual-QUIER au-to-BÚS que VAY-a en di-rec-CIÓN SUR des-de la pa-RA-da de a-QUÍ al LA-do. Te de-ja-RÁ en la PLA-za ma-YOR. ¿QUÉ te pa-RE-ce me-JOR? — The center is about fifteen minutes on foot, or you could take any bus going south from the stop next to here. It will leave you in the Plaza Mayor. What seems better to you?"
+    },
+    "t2_perdido": {
+      "id": "t2_perdido",
+      "prompt": "¿En qué zona de la ciudad crees que estás, o adónde te dirigías? Así puedo orientarte mejor.",
+      "branches": [
+        {
+          "keywords": [
+            "estación",
+            "tren"
+          ],
+          "nextTurnId": "t2_estacion"
+        },
+        {
+          "keywords": [
+            "centro",
+            "ciudad",
+            "plaza"
+          ],
+          "nextTurnId": "t2_centro"
+        },
+        {
+          "keywords": [
+            "no sé",
+            "niidea",
+            "cualquier"
+          ],
+          "nextTurnId": "t4_alternative"
+        },
+        {
+          "keywords": [
+            "",
+            "gracias"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿En QUÉ ZO-na de la ciu-DAD CRE-es que es-TÁS, o a-DÓN-de te di-ri-GÍ-as? A-SÍ pue-do o-rien-TAR-te me-JOR. — What area of the city do you think you are in, or where were you heading? That way I can guide you better."
+    },
+    "t3_walk_estacion": {
+      "id": "t3_walk_estacion",
+      "prompt": "Caminando, calculo que tardarías unos quince o veinte minutos, dependiendo de tu ritmo. Es un paseo bastante directo, como te decía, todo recto y no tiene pérdida. Verás un gran centro comercial antes de llegar. ¿Te queda claro?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "perfecto",
+            "entiendo",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ca-mi-NAN-do, cal-CÚ-lo que tar-da-RÍ-as U-nos QUIN-ce o VEIN-te mi-NU-tos, de-pen-DIEN-do de tu RIT-mo. Es un pa-SE-o bas-TAN-te di-REC-to, CO-mo te de-CÍ-a, TO-do REC-to y no TIE-ne PÉR-di-da. Ve-RÁS un GRAN cen-tro co-mer-CIAL AN-tes de lle-GAR. ¿Te QUE-da CLA-ro? — Walking, I calculate it would take you about fifteen or twenty minutes, depending on your pace. It's a pretty direct walk, as I said, straight ahead and you can't get lost. You'll see a large shopping center before arriving. Is that clear?"
+    },
+    "t3_bus_estacion": {
+      "id": "t3_bus_estacion",
+      "prompt": "Para la estación, lo más práctico sería coger el autobús 27. La parada está justo cruzando la calle, al lado de la farmacia. Te dejará en la puerta principal de la estación. Serían unas cuatro o cinco paradas. ¿Entendido?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "perfecto",
+            "entiendo",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pa-ra la es-ta-CIÓN, lo MÁS prác-TI-co se-RÍ-a co-GER el au-to-BÚS VEIN-te-SI-E-te. La pa-RA-da es-TÁ JUS-to cru-ZAN-do la CA-lle, al LA-do de la far-MÁ-cia. Te de-ja-RÁ en la PUER-ta prin-ci-PAL de la es-ta-CIÓN. Se-RÍ-an U-nas CUA-tro o CIN-co pa-RA-das. ¿En-ten-DÍ-do? — For the station, the most practical would be to take bus 27. The stop is right across the street, next to the pharmacy. It will drop you off at the main entrance of the station. It would be about four or five stops. Understood?"
+    },
+    "t3_walk_centro": {
+      "id": "t3_walk_centro",
+      "prompt": "Perfecto, entonces simplemente tienes que seguir esta calle hacia el sur, cruzar dos avenidas grandes y ya estarás en el centro histórico, en la Plaza Mayor. Es un paseo muy agradable. ¿Hay algún punto de referencia que te gustaría saber?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "perfecto",
+            "entiendo",
+            "muchasgracias",
+            "referencia",
+            "lugares"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per-FEC-to, en-TON-ces sim-ple-MEN-te TIE-nes que se-GUIR ES-ta CA-lle HA-cia el SUR, cru-ZAR DOS a-ve-NÍ-das GRAN-des y YA es-ta-RÁS en el CEN-tro his-TÓ-ri-co, en la PLA-za ma-YOR. Es un pa-SE-o MUY a-gra-DA-ble. ¿HAY al-GÚN PUN-to de re-fe-REN-cia que te gus-ta-RÍ-a sa-BER? — Perfect, then you just have to follow this street south, cross two large avenues, and you'll be in the historic center, in the Plaza Mayor. It's a very pleasant walk. Is there any landmark you'd like to know about?"
+    },
+    "t3_bus_centro": {
+      "id": "t3_bus_centro",
+      "prompt": "El autobús que te sirve es el número 14 o el 25. Ambos pasan con bastante frecuencia y te dejan en la misma Plaza Mayor. La parada está a unos 50 metros de aquí, siguiendo la acera. Son unas pocas paradas. ¿Alguna otra duda?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "perfecto",
+            "entiendo",
+            "muchasgracias"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "El au-to-BÚS que te SIR-ve es el NÚ-me-ro ca-TOR-ce o el VEIN-ti-CIN-co. AM-bos PA-san con bas-TAN-te fre-CUEN-cia y te DE-jan en la MIS-ma PLA-za ma-YOR. La pa-RA-da es-TÁ a U-nos CIN-cuen-ta ME-tros de a-QUÍ, si-guien-do la a-CE-ra. Son U-nas PO-cas pa-RA-das. ¿Al-GU-na O-tra DÚ-da? — The bus that serves you is number 14 or 25. Both run quite frequently and drop you off in the Plaza Mayor itself. The stop is about 50 meters from here, following the sidewalk. It's a few stops. Any other questions?"
+    },
+    "t4_alternative": {
+      "id": "t4_alternative",
+      "prompt": "A ver, otra forma de llegar a la estación sería ir hasta el final de esta calle, donde hay un parque, y luego girar a la izquierda. Pasas una iglesia grande y la estación estará después de eso, a tu mano izquierda. Si lo que buscas es simplemente una zona céntrica con ambiente, sigue esta calle hacia el este, pasarás por un parque grande y llegarás a una zona comercial. ¿Te parece bien?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "claro",
+            "perfecto",
+            "entiendo",
+            "muchasgracias",
+            "parque",
+            "iglesia",
+            "centro"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A VER, O-tra FOR-ma de lle-GAR a la es-ta-CIÓN se-RÍ-a ir HAS-ta el FI-nal de ES-ta CA-lle, DON-de hay un PAR-que, y LUE-go gi-RAR a la IZ-quier-da. PA-sas U-na i-GLE-sia GRAN-de y la es-ta-CIÓN es-ta-RÁ des-PUÉS de E-so, a tu MA-no IZ-quier-da. Si lo que BUS-cas es sim-ple-MEN-te U-na ZO-na CÉN-tri-ca con am-BIEN-te, SI-gue ES-ta CA-lle HA-cia el ES-te, pa-sa-RÁS por un PAR-que GRAN-de y lle-ga-RÁS a U-na ZO-na co-mer-CIAL. ¿Te pa-RE-ce BIEN? — Let's see, another way to get to the station would be to go to the end of this street, where there's a park, and then turn left. You'll pass a large church and the station will be after that, on your left. If what you're looking for is simply a central area with atmosphere, follow this street east, you'll pass a large park and arrive at a commercial area. Does that sound good?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, ¿podrías repetirlo? No te he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repiteme",
+            "otravez"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Dis-CÚL-pa, ¿po-DRÍ-as re-pe-TÍR-lo? No te he en-ten-DÍ-do bien. — Sorry, could you repeat that? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada, ¡que tengas un buen día! Es un placer ayudar.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De NA-da, ¡que TEN-gas un BUEN DÍ-a! Es un pla-CER ay-u-DAR. — You're welcome, have a good day! It's a pleasure to help.",
+      "isTerminal": true
+    }
+  }
+}

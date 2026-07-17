@@ -1,0 +1,164 @@
+{
+  "id": "dlg-vi-post-office-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Tại Bưu Điện",
+  "opening": "Chào anh/chị. Anh/chị cần gì ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị cần gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi",
+            "bưu kiện",
+            "gửi bưu kiện"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tem",
+            "mua tem"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao an/chi) — Hello sir/madam. Anh/chị cần gì ạ? (An/chi kan zi a?) — What do you need?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Anh/chị muốn gửi đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "việt nam",
+            "trong nước"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn gửi đi đâu ạ? (An/chi muon gui di dau a?) — Where do you want to send it?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anh/chị muốn mua mấy cái tem ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "hai",
+            "2"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị muốn mua mấy cái tem ạ? (An/chi muon mua may kai tem a?) — How many stamps do you want to buy?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Anh/chị có muốn gửi bảo đảm không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "vâng"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị có muốn gửi bảo đảm không ạ? (An/chi co muon gui bao dam khong a?) — Do you want to send it registered mail?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng. Anh/chị cần điền tờ khai hải quan.",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "được",
+            "dạ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tờ khai",
+            "giấy",
+            "tờ khai là gì"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vung) — Yes. Anh/chị cần điền tờ khai hải quan (An/chi kan dien to khai hai quan) — You need to fill out a customs declaration form."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Đây là giấy tờ cho bưu kiện ra nước ngoài.",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "được",
+            "hiểu rồi"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đây là giấy tờ cho bưu kiện ra nước ngoài (Day la giay to cho buu kien ra nuoc ngoai) — This is the document for parcels going abroad."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Dạ được. Tổng cộng là hai mươi nghìn đồng. Anh/chị thanh toán ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "thanh toán",
+            "trả tiền",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ được (Ya duoc) — Okay. Tổng cộng là hai mươi nghìn đồng (Tong cong la hai muoi nghin dong) — The total is twenty thousand dong. Anh/chị thanh toán ạ? (An/chi thanh toan a?) — Will you pay now?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi) — Excuse me. Anh/chị nói lại được không ạ? (An/chi noi lai duoc khong a?) — Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị (Kam on an/chi) — Thank you. Chúc anh/chị một ngày tốt lành! (Chuk an/chi mot ngay tot lanh!) — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

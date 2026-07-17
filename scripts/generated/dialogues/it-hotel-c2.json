@@ -1,0 +1,151 @@
+{
+  "id": "dlg-it-hotel-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Check-in in Hotel",
+  "opening": "Benvenuto/a all'Hotel Splendore. Ha una prenotazione a suo nome?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Benvenuto/a all'Hotel Splendore. Ha una prenotazione a suo nome?",
+      "branches": [
+        {
+          "keywords": [
+            "nome",
+            "sono",
+            "ho",
+            "prenotazione",
+            "sì"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "nonesiste",
+            "mioscusi",
+            "non"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ben-voo-toh/tah ahl Oh-tel Splen-doh-reh. Ah oo-nah preh-noh-tah-tzee-oh-neh ah soo-oh noh-meh? — Welcome to Hotel Splendore. Do you have a reservation under your name?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato. Potrebbe ripetere, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, non oh ah-fehr-rah-toh. Poh-treh-bbeh ree-peh-teh-reh, pehr kor-teh-zee-ah? — Excuse me, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, signor/a. Un attimo che verifico. Ah, eccola qui. Potrebbe gentilmente mostrarmi un documento d'identità valido per la registrazione?",
+      "branches": [
+        {
+          "keywords": [
+            "certo",
+            "ecco",
+            "documento",
+            "passaporto",
+            "carta",
+            "identità"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nonho",
+            "dimenticato",
+            "noncelho"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chehr-toh, seen-yor/ah. Oon aht-tee-moh keh veh-ree-fee-koh. Ah, ehk-koh-lah kwee. Poh-treh-bbeh jen-teel-men-teh moh-strahr-mee oon doh-koo-men-toh dee-den-tee-tah vah-lee-doh pehr lah reh-jee-strah-tzee-oh-neh? — Certainly, Mr./Ms. One moment while I check. Ah, here it is. Could you kindly show me a valid identification document for registration?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto, grazie mille. Per quanto riguarda il pagamento, preferisce saldare subito o al momento del check-out? E, a proposito, ha qualche preferenza particolare per la camera? Magari vista mare, o un piano alto?",
+      "branches": [
+        {
+          "keywords": [
+            "subito",
+            "ora",
+            "pago"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pehr-feht-toh, grah-tzee-eh mee-lleh. Pehr kwahn-toh ree-gwahr-dah eel pah-gah-men-toh, preh-feh-ree-sheh sahl-dah-reh soo-bee-toh oh ahl moh-men-toh dehl chehk-owt? Eh, ah proh-poh-zee-toh, ah kwahl-keh preh-feh-rehn-tsah pahr-tee-koh-lah-reh pehr lah kah-meh-rah? Mah-gah-ree vee-stah mah-reh, oh oon pee-ah-noh ahl-toh? — Perfect, thank you very much. Regarding payment, do you prefer to pay now or at check-out? And, by the way, do you have any particular room preferences? Perhaps a sea view, or a high floor?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ottimo. L'informo che la colazione a buffet è inclusa e viene servita dalle 7:00 alle 10:30 nella sala al piano terra. Desidera usufruire di altri servizi, come il parcheggio o l'accesso alla spa?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "parcheggio",
+            "spa",
+            "anche"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo. L'informo che la colazione a buffet è inclusa e viene servita dalle 7:00 alle 10:30 nella sala al piano terra. Desidera usufruire di altri servizi, come il parcheggio o l'accesso alla spa? — Excellent. I'd like to inform you that the buffet breakfast is included and served from 7:00 AM to 10:30 AM in the ground floor lounge. Would you like to use any other services, such as parking or spa access?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Splendido. La sua camera è la 305, al terzo piano. Ecco la sua chiave magnetica e le credenziali per il Wi-Fi. Se avesse bisogno di qualsiasi cosa, non esiti a contattare la reception. Le auguro un piacevole soggiorno!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "perfetto",
+            "ottimo",
+            "ricevuto",
+            "ok",
+            "bene"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Splendido. La sua camera è la 305, al terzo piano. Ecco la sua chiave magnetica e le credenziali per il Wi-Fi. Se avesse bisogno di qualsiasi cosa, non esiti a contattare la reception. Le auguro un piacevole soggiorno! — Splendid. Your room is 305, on the third floor. Here is your key card and Wi-Fi credentials. If you need anything at all, don't hesitate to contact reception. I wish you a pleasant stay!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci e a presto!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ar-ree-veh-dehr-chee eh ah pre-stoh! — Goodbye and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

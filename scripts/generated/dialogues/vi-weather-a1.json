@@ -1,0 +1,167 @@
+{
+  "id": "dlg-vi-weather-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "weather",
+  "title": "Thời tiết hôm nay",
+  "opening": "Chào bạn. Thời tiết hôm nay thế nào?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn. Thời tiết hôm nay thế nào?",
+      "branches": [
+        {
+          "keywords": [
+            "nắng",
+            "nóng",
+            "đẹp",
+            "tốt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mưa",
+            "lạnh",
+            "xấu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chàobạn — Hello. Thời tiết hôm nay thế nào? — How is the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À, vậy à? Thời tiết tốt!",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "đúng",
+            "tốt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, vậy à? — Oh, really? Thời tiết tốt! — Good weather!"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ồ, không tốt lắm. Trời có mưa không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "mưa"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, không tốt lắm. — Oh, not very good. Trời có mưa không? — Is it raining?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bạn có đi đâu không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "đi",
+            "côngviên",
+            "dạo"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn có đi đâu không? — Are you going anywhere?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Bạn làm gì khi trời mưa?",
+      "branches": [
+        {
+          "keywords": [
+            "ởnhà",
+            "đọcsách",
+            "nghỉ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bạn làm gì khi trời mưa? — What do you do when it rains?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vậy à. Chúc bạn một ngày tốt lành nhé!",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy à. — Oh, okay. Chúc bạn một ngày tốt lành nhé! — Wish you a good day!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn nói gì?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn nói gì? — Sorry, what did you say?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt! Hẹn gặp lại.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tạm biệt! — Goodbye! Hẹn gặp lại. — See you again.",
+      "isTerminal": true
+    }
+  }
+}

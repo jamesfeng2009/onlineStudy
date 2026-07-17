@@ -1,0 +1,161 @@
+{
+  "id": "dlg-fr-airport-a1",
+  "language": "fr",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "À l'aéroport",
+  "opening": "Bonjour! Votre passeport et votre billet, s'il vous plaît.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour! Votre passeport et votre billet, s'il vous plaît.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "voici",
+            "passeport",
+            "billet"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "répéter",
+            "pardon"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour! (bohn-zhoor) Your passport (pahss-por) and your ticket (bee-yay), please (seel voo play)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon? Pouvez-vous répéter, s'il vous plaît?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon? (pahr-dohn) Can you repeat, please? (poo-vay voo ray-pay-tay, seel voo play)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Merci. Vous avez des bagages?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "bagages"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "non",
+            "pas",
+            "bagages"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you (mer-see). Do you have (vooz ah-vay) luggage (bah-gahzh)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accord. Mettez votre sac sur la balance.",
+      "branches": [
+        {
+          "keywords": [
+            "d'accord",
+            "oui",
+            "merci"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "où",
+            "balance"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay (dah-kor). Put (met-tay) your bag (sak) on the scale (sur la bah-lahns)."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "La balance est ici, devant vous.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "oui"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The scale (la bah-lahns) is here (ee-see), in front of you (duh-vahn voo)."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Votre carte d'embarquement. Votre porte est numéro trois. L'embarquement est à dix heures.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "trois",
+            "dixheures"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your boarding pass (kart d'ahm-bark-mong). Your gate (port) is number (noo-may-roh) three (trwah). Boarding (l'ahm-bark-mong) is at ten o'clock (deez ur)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Merci et bon voyage! Au revoir!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you and have a good trip! (bohn vwa-yazh) Goodbye! (oh ruh-vwahr)",
+      "isTerminal": true
+    }
+  }
+}

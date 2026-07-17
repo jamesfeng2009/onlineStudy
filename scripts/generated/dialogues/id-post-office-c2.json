@@ -1,0 +1,206 @@
+{
+  "id": "dlg-id-post-office-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Di Kantor Pos: Mengirim Paket dan Layanan Lain",
+  "opening": "Selamat siang. Ada yang bisa saya bantu hari ini, Bapak/Ibu? Mau kirim paket, beli perangko, atau ada keperluan lain?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang. Ada yang bisa saya bantu hari ini, Bapak/Ibu? Mau kirim paket, beli perangko, atau ada keperluan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "paket"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "beli",
+            "perangko",
+            "prangko"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "info",
+            "keperluanlain"
+          ],
+          "nextTurnId": "t2_general_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang (Se-la-mat si-ang) — Good afternoon. Is there anything I can help you with today, Sir/Madam? Are you sending a parcel, buying stamps, or something else?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Oke, untuk pengiriman paket. Bisa saya tahu tujuannya, domestik atau internasional? Dan apakah Anda membutuhkan layanan tercatat, kilat, atau biasa saja?",
+      "branches": [
+        {
+          "keywords": [
+            "internasional",
+            "luarnegeri"
+          ],
+          "nextTurnId": "t3_international_parcel"
+        },
+        {
+          "keywords": [
+            "domestik",
+            "dalamnegeri"
+          ],
+          "nextTurnId": "t3_domestic_parcel"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke (O-ke) — Alright, for parcel delivery. Could I know the destination, domestic or international? And do you need registered, express, or just regular service?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Baik, mau beli perangko ya. Ada kebutuhan khusus untuk perangkonya, mungkin untuk koleksi atau pengiriman surat biasa? Berapa lembar yang Bapak/Ibu perlukan?",
+      "branches": [
+        {
+          "keywords": [
+            "surat",
+            "biasa",
+            "beberapalembar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, you want to buy stamps. Any special needs for the stamps, perhaps for collection or regular letter postage? How many sheets do you need, Sir/Madam?"
+    },
+    "t2_general_info": {
+      "id": "t2_general_info",
+      "prompt": "Silakan, ada informasi apa yang ingin Bapak/Ibu tanyakan? Jangan sungkan, kami siap membantu.",
+      "branches": [
+        {
+          "keywords": [
+            "tarif",
+            "harga",
+            "jam",
+            "buka",
+            "lokasi",
+            "prosedur"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Please, Sir/Madam. Is there anything you'd like to ask about our services or procedures? Don't hesitate, we are ready to help."
+    },
+    "t3_international_parcel": {
+      "id": "t3_international_parcel",
+      "prompt": "Kalau tujuan internasional, berarti wajib mengisi formulir bea cukai, ya. Apakah Anda juga ingin menyertakan asuransi atau fitur pelacakan?",
+      "branches": [
+        {
+          "keywords": [
+            "bea",
+            "cukai",
+            "formulir"
+          ],
+          "nextTurnId": "t4_confirm_parcel"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau tujuan internasional (Ka-lau tu-juan in-ter-na-sio-nal) — If it's an international destination, then a customs declaration form is mandatory. Would you also like to include insurance or a tracking feature?"
+    },
+    "t3_domestic_parcel": {
+      "id": "t3_domestic_parcel",
+      "prompt": "Baik. Untuk layanan domestik, apakah Bapak/Ibu memerlukan nomor resi untuk pelacakan secara daring, atau cukup layanan biasa/tercatat saja?",
+      "branches": [
+        {
+          "keywords": [
+            "resi",
+            "pelacakan",
+            "tracking"
+          ],
+          "nextTurnId": "t4_confirm_parcel"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. For domestic service, do you need a tracking number for online tracking, or is regular/registered service sufficient?"
+    },
+    "t4_confirm_parcel": {
+      "id": "t4_confirm_parcel",
+      "prompt": "Oke, Bapak/Ibu. Kita sudah paham kebutuhannya. Silakan siapkan dokumen atau barangnya, nanti saya pandu ke loket yang tepat. Ada lagi yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "siap",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Sir/Madam. We understand your needs. Please prepare your documents or items, and I will guide you to the correct counter. Is there anything else I can help you with?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? It wasn't very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, kalau begitu, semoga lancar urusannya. Terima kasih banyak dan sampai jumpa.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright then, I hope everything goes smoothly. Thank you very much and goodbye.",
+      "isTerminal": true
+    }
+  }
+}

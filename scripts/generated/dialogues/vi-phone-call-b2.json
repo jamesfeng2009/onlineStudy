@@ -1,0 +1,315 @@
+{
+  "id": "dlg-vi-phone-call-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Cuộc gọi điện thoại: Xác định danh tính, hỏi người, để lại lời nhắn",
+  "opening": "Alo, văn phòng công ty XYZ, Hà nghe. Tôi có thể giúp gì cho anh/chị ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alo, văn phòng công ty XYZ, Hà nghe. Tôi có thể giúp gì cho anh/chị ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "muốn",
+            "gặp",
+            "nói chuyện",
+            "thảo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "xin",
+            "hỏi",
+            "thảo",
+            "có",
+            "không"
+          ],
+          "nextTurnId": "t2_alt"
+        },
+        {
+          "keywords": [
+            "thông tin",
+            "dịch vụ",
+            "công ty"
+          ],
+          "nextTurnId": "t-info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alo (Ah-loh), văn phòng (vahn fawng) công ty (cong tee) XYZ, Hà nghe (Ha ngeh). Tôi có thể (Toy kaw teh) giúp gì (gyoop gee) cho anh/chị (cho ahn/chee) ạ?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, anh/chị muốn gặp chị Thảo ạ? Xin lỗi, tôi có thể biết tên anh/chị là gì và về việc gì được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "tôi",
+            "là",
+            "về",
+            "dự án",
+            "họp"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "việc",
+            "riêng",
+            "cá nhân",
+            "quan trọng"
+          ],
+          "nextTurnId": "t3_private"
+        },
+        {
+          "keywords": [
+            "chị",
+            "thảo",
+            "có",
+            "đó",
+            "không"
+          ],
+          "nextTurnId": "t3_check_availability"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vung), anh/chị (ahn/chee) muốn gặp (moon gap) chị Thảo (chee Tao) ạ? Xin lỗi (Seen loy), tôi có thể (toy kaw teh) biết (bee-et) tên (ten) anh/chị là gì (ahn/chee la gee) và về việc gì (va veh vee-ec gee) được không (duhng khong) ạ?"
+    },
+    "t2_alt": {
+      "id": "t2_alt",
+      "prompt": "Xin lỗi, chị Thảo đang bận một chút. Anh/chị có thể cho biết tên và nội dung cuộc gọi để tôi tiện báo lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "tôi",
+            "là",
+            "nội dung",
+            "gặp",
+            "nói chuyện"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "việc",
+            "riêng",
+            "cá nhân",
+            "quan trọng"
+          ],
+          "nextTurnId": "t3_private"
+        },
+        {
+          "keywords": [
+            "khi nào",
+            "chị",
+            "rảnh",
+            "quay lại"
+          ],
+          "nextTurnId": "t3_check_availability"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, Ms. Thảo is a bit busy at the moment. Could you please tell me your name and the reason for your call so I can inform her?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ vâng, tôi hiểu rồi. Rất tiếc là chị Thảo hiện đang có một cuộc họp đột xuất và có thể sẽ kéo dài. Anh/chị có muốn để lại lời nhắn hay để tôi báo chị ấy gọi lại cho mình ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "để lại",
+            "lời nhắn",
+            "nhắn tin"
+          ],
+          "nextTurnId": "t4_message"
+        },
+        {
+          "keywords": [
+            "gọi lại",
+            "nhờ",
+            "chị",
+            "thảo",
+            "liên hệ"
+          ],
+          "nextTurnId": "t4_callback"
+        },
+        {
+          "keywords": [
+            "khi nào",
+            "chị",
+            "xong",
+            "họp",
+            "quay lại"
+          ],
+          "nextTurnId": "t3_check_availability"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng (Ya vung), tôi hiểu rồi (toy heeyu roy). Rất tiếc (rut tee-ec) là chị Thảo (la chee Tao) hiện đang có (heey-en dang kaw) một cuộc họp (mot coo-oc haw-op) đột xuất (dot soo-at) và có thể (va kaw teh) sẽ kéo dài (seh keo zai). Anh/chị (ahn/chee) có muốn (kaw moon) để lại (deh lai) lời nhắn (loi nhan) hay để tôi (hai deh toy) báo chị ấy (bao chee ay) gọi lại (goy lai) cho mình (cho min) ạ?"
+    },
+    "t3_private": {
+      "id": "t3_private",
+      "prompt": "Dạ vâng, tôi hiểu. Rất tiếc là chị Thảo hiện không có ở đây. Anh/chị có muốn để lại lời nhắn hay để tôi báo chị ấy gọi lại cho mình khi rảnh ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "để lại",
+            "lời nhắn",
+            "nhắn tin"
+          ],
+          "nextTurnId": "t4_message"
+        },
+        {
+          "keywords": [
+            "gọi lại",
+            "nhờ",
+            "chị",
+            "thảo",
+            "liên hệ"
+          ],
+          "nextTurnId": "t4_callback"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, I understand. I'm sorry, Ms. Thảo is not here at the moment. Would you like to leave a message or should I ask her to call you back when she's free?"
+    },
+    "t3_check_availability": {
+      "id": "t3_check_availability",
+      "prompt": "Thật ra thì tôi không chắc chính xác khi nào chị ấy sẽ rảnh, có thể là chiều nay hoặc sáng mai. Anh/chị có muốn để lại lời nhắn hay số điện thoại để chị Thảo gọi lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "để lại",
+            "lời nhắn",
+            "nhắn tin"
+          ],
+          "nextTurnId": "t4_message"
+        },
+        {
+          "keywords": [
+            "gọi lại",
+            "số điện thoại",
+            "nhờ",
+            "liên hệ"
+          ],
+          "nextTurnId": "t4_callback"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Actually, I'm not sure exactly when she'll be free, possibly this afternoon or tomorrow morning. Would you like to leave a message or a phone number for Ms. Thảo to call back?"
+    },
+    "t-info": {
+      "id": "t-info",
+      "prompt": "Vâng, anh/chị muốn tìm hiểu thông tin về dịch vụ nào của công ty ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "dịch vụ",
+            "sản phẩm",
+            "tuyển dụng"
+          ],
+          "nextTurnId": "t-end_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, what kind of service information about the company would you like to know?"
+    },
+    "t-end_info": {
+      "id": "t-end_info",
+      "prompt": "Dạ vâng, tôi sẽ chuyển cuộc gọi của anh/chị đến bộ phận phụ trách. Cảm ơn và chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end_info",
+      "promptTranslation": "Yes, I will transfer your call to the relevant department. Thank you and have a good day!",
+      "isTerminal": true
+    },
+    "t4_message": {
+      "id": "t4_message",
+      "prompt": "Vâng, xin mời anh/chị để lại lời nhắn. Tôi sẽ ghi lại và chuyển cho chị Thảo ngay khi chị ấy rảnh ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "nhắn",
+            "rằng",
+            "cần",
+            "gấp",
+            "gọi lại"
+          ],
+          "nextTurnId": "t5_confirm_message"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, please leave your message. I will write it down and pass it to Ms. Thảo as soon as she's free."
+    },
+    "t4_callback": {
+      "id": "t4_callback",
+      "prompt": "Dạ vâng. Vậy anh/chị có thể cho tôi xin số điện thoại để chị Thảo tiện liên hệ lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "số",
+            "điện thoại",
+            "của tôi",
+            "là"
+          ],
+          "nextTurnId": "t5_confirm_callback"
+        },
+        {
+          "keywords": [
+            "chị",
+            "thảo",
+            "có rồi",
+            "biết rồi"
+          ],
+          "nextTurnId": "t5_confirm_callback_no_number"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes. So, could you please give me your phone number so Ms. Thảo can easily contact you back?"
+    },
+    "t5_confirm_message": {
+      "id": "t5_confirm_message",
+      "prompt": "Dạ vâng, tôi đã ghi nhận lời nhắn của anh/chị rồi. Tôi sẽ chuyển lại cho chị Thảo. Cảm ơn anh/chị đã gọi điện!",
+      "branches": [],
+      "fallbackBranchId": "t5_confirm_message",
+      "promptTranslation": "Yes, I have noted down your message. I will pass it on to Ms. Thảo. Thank you for calling!",
+      "isTerminal": true
+    },
+    "t5_confirm_callback": {
+      "id": "t5_confirm_callback",
+      "prompt": "Dạ vâng, tôi đã ghi lại số điện thoại của anh/chị rồi. Tôi sẽ báo chị Thảo liên hệ lại sớm nhất có thể. Cảm ơn anh/chị!",
+      "branches": [],
+      "fallbackBranchId": "t5_confirm_callback",
+      "promptTranslation": "Yes, I have noted down your phone number. I will ask Ms. Thảo to contact you back as soon as possible. Thank you!",
+      "isTerminal": true
+    },
+    "t5_confirm_callback_no_number": {
+      "id": "t5_confirm_callback_no_number",
+      "prompt": "Dạ vâng, nếu chị Thảo đã có số của anh/chị rồi thì tốt quá. Tôi sẽ báo chị ấy liên hệ lại. Cảm ơn anh/chị!",
+      "branches": [],
+      "fallbackBranchId": "t5_confirm_callback_no_number",
+      "promptTranslation": "Yes, if Ms. Thảo already has your number, that's great. I will ask her to contact you back. Thank ơn anh/chị!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, đường dây hơi nhiễu, tôi nghe không rõ lắm. Anh/chị có thể vui lòng nhắc lại không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Seen loy), đường dây (duong zay) hơi (hoy) nhiễu (nyee-oo), tôi (toy) nghe (ngeh) không rõ (khong raw) lắm (lam). Anh/chị (ahn/chee) có thể (kaw teh) vui lòng (voo-ee long) nhắc lại (nyak lai) không (khong) ạ?"
+    }
+  }
+}

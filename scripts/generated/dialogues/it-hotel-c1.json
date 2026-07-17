@@ -1,0 +1,191 @@
+{
+  "id": "dlg-it-hotel-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Check-in in hotel: Benvenuti",
+  "opening": "Buonasera. Benvenuti all'Hotel Belvedere. Ha una prenotazione a suo nome?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera. Benvenuti all'Hotel Belvedere. Ha una prenotazione a suo nome?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "prenotazione",
+            "ho",
+            "nome"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "senza",
+            "prenotazione"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera — Good evening. Benvenuti all'Hotel Belvedere. Ha una prenotazione a suo nome? — Welcome to Hotel Belvedere. Do you have a reservation under your name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Perfetto. E il suo nome completo, per cortesia? Avrebbe anche un documento d'identità valido da mostrarmi?",
+      "branches": [
+        {
+          "keywords": [
+            "nome",
+            "cognome",
+            "documento",
+            "carta",
+            "passaporto",
+            "ecco"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "solo",
+            "non",
+            "senza",
+            "documento",
+            "ho",
+            "soloilnome"
+          ],
+          "nextTurnId": "t-id"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto. E il suo nome completo, per cortesia? — Perfect. And your full name, please? Avrebbe anche un documento d'identità valido da mostrarmi? — Would you also have a valid ID to show me?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Grazie mille. Dunque, Sig./Sig.ra [Nome Cognome], la sua prenotazione per una camera matrimoniale include la vista mare, corretto? E per la colazione, desidera includerla nel suo pacchetto o preferisce optare per il servizio à la carte?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "confermo",
+            "colazione",
+            "includere",
+            "prendo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "vista",
+            "camera",
+            "singola",
+            "doppia"
+          ],
+          "nextTurnId": "t-clarify"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grazie mille — Thank you very much. Dunque, Sig./Sig.ra [Nome Cognome], la sua prenotazione per una camera matrimoniale include la vista mare, corretto? — So, Mr./Ms. [Name Surname], your reservation for a double room includes a sea view, correct? E per la colazione, desidera includerla nel suo pacchetto o preferisce optare per il servizio à la carte? — And for breakfast, would you like to include it in your package or prefer to opt for the à la carte service?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ottimo. La sua camera è la 305, al terzo piano. Ecco la sua chiave magnetica. Il Wi-Fi è gratuito e le credenziali sono sul retro della chiave. Se avesse bisogno di qualcosa, non esiti a contattare la reception. Le auguro un piacevole soggiorno!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto",
+            "camera",
+            "chiave",
+            "tutto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo — Excellent. La sua camera è la 305, al terzo piano. Ecco la sua chiave magnetica — Your room is 305, on the third floor. Here is your key card. Il Wi-Fi è gratuito e le credenziali sono sul retro della chiave. Se avesse bisogno di qualcosa, non esiti a contattare la reception. Le auguro un piacevole soggiorno! — Wi-Fi is free and credentials are on the back of the key. If you need anything, don't hesitate to contact reception. I wish you a pleasant stay!"
+    },
+    "t-id": {
+      "id": "t-id",
+      "prompt": "Certo, avrei bisogno di un suo documento valido, come un passaporto o una carta d'identità, per completare il check-in.",
+      "branches": [
+        {
+          "keywords": [
+            "documento",
+            "passaporto",
+            "carta",
+            "ecco"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "ho",
+            "senza"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo, avrei bisogno di un suo documento valido, come un passaporto o una carta d'identità, per completare il check-in. — Certainly, I would need a valid document from you, such as a passport or ID card, to complete the check-in."
+    },
+    "t-clarify": {
+      "id": "t-clarify",
+      "prompt": "Mi scusi per l'incomprensione. La sua prenotazione specifica una camera standard con vista città, non è così? Desidera che verifichi la disponibilità per un upgrade con vista mare?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "confermo",
+            "città",
+            "standard"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "sì",
+            "upgrade",
+            "mare",
+            "verifichi",
+            "costo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi scusi per l'incomprensione. — Excuse me for the misunderstanding. La sua prenotazione specifica una camera standard con vista città, non è così? — Your reservation specifies a standard room with a city view, isn't that right? Desidera che verifichi la disponibilità per un upgrade con vista mare? — Would you like me to check availability for an upgrade with a sea view?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripetere"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi — Excuse me, non ho capito bene. Potrebbe ripetere, per cortesia? — I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie per la sua comprensione e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie per la sua comprensione e arrivederci! — Thank you for your understanding and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

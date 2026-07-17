@@ -1,0 +1,190 @@
+{
+  "id": "dlg-ms-post-office-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "Urusan Pos di Pejabat Pos",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "hantar",
+            "pos",
+            "bungkusan",
+            "parcel"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "setem",
+            "surat",
+            "berdaftar",
+            "lain"
+          ],
+          "nextTurnId": "t_general_info"
+        },
+        {
+          "keywords": [
+            "tanya",
+            "soalan",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi. Boleh saya bantu? — Good morning. How may I help you?"
+    },
+    "t_general_info": {
+      "id": "t_general_info",
+      "prompt": "Untuk perkhidmatan setem atau surat berdaftar, sila ke kaunter 2. Saya boleh bantu jika ada soalan mengenai penghantaran bungkusan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bungkusan",
+            "pos"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk perkhidmatan setem atau surat berdaftar, sila ke kaunter 2. Saya boleh bantu jika ada soalan mengenai penghantaran bungkusan. — For stamp or registered mail services, please go to counter 2. I can help if you have questions about parcel shipping."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Encik/Cik. Bungkusan untuk ke mana? Dan apa kandungan di dalamnya?",
+      "branches": [
+        {
+          "keywords": [
+            "luarnegara",
+            "antarabangsa",
+            "pakaian",
+            "hadiah"
+          ],
+          "nextTurnId": "t3_intl_customs_prompt"
+        },
+        {
+          "keywords": [
+            "tempatan",
+            "domestik",
+            "dokumen",
+            "buku"
+          ],
+          "nextTurnId": "t3_domestic_prompt"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Encik/Cik. Bungkusan untuk ke mana? Dan apa kandungan di dalamnya? — All right, Sir/Madam. Where is the parcel for? And what are its contents?"
+    },
+    "t3_intl_customs_prompt": {
+      "id": "t3_intl_customs_prompt",
+      "prompt": "Baik, untuk antarabangsa, borang kastam diperlukan. Perlu bantuan isi borang itu? Atau ingin tahu tentang penjejakan?",
+      "branches": [
+        {
+          "keywords": [
+            "bantuan",
+            "isi",
+            "bagaimana"
+          ],
+          "nextTurnId": "t4_details_and_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, untuk antarabangsa, borang kastam diperlukan. Perlu bantuan isi borang itu? Atau ingin tahu tentang penjejakan? — Alright, for international, a customs form is required. Do you need help filling out the form? Or would you like to know about tracking?"
+    },
+    "t3_domestic_prompt": {
+      "id": "t3_domestic_prompt",
+      "prompt": "Baiklah, domestik. Sila berikan bungkusan untuk ditimbang. Perlukan perkhidmatan penjejakan?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "jejaki",
+            "tracking"
+          ],
+          "nextTurnId": "t4_details_and_payment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah, domestik. Sila berikan bungkusan untuk ditimbang. Perlukan perkhidmatan penjejakan? — Alright, domestic. Please hand over the parcel to be weighed. Do you need tracking service?"
+    },
+    "t4_details_and_payment": {
+      "id": "t4_details_and_payment",
+      "prompt": "Baik, semua butiran sudah jelas. Mari kita teruskan ke kaunter timbangan dan pembayaran. Ada lagi soalan sebelum itu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tiada",
+            "cukup"
+          ],
+          "nextTurnId": "t5_final_checkout"
+        },
+        {
+          "keywords": [
+            "soalan",
+            "lain",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, semua butiran sudah jelas. Mari kita teruskan ke kaunter timbangan dan pembayaran. Ada lagi soalan sebelum itu? — Alright, all details are clear. Let's proceed to the weighing and payment counter. Any other questions before that?"
+    },
+    "t5_final_checkout": {
+      "id": "t5_final_checkout",
+      "prompt": "Terima kasih. Sila buat pembayaran di sini. Selamat jalan!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih. Sila buat pembayaran di sini. Selamat jalan! — Thank you. Please make payment here. Goodbye!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "ulang",
+            "ya",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang sekali lagi? Saya kurang jelas. — Sorry, could you repeat that? I'm not very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

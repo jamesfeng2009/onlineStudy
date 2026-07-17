@@ -1,0 +1,112 @@
+{
+  "id": "dlg-it-restaurant-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Al Ristorante: Ordinazione C2",
+  "opening": "Buonasera! Avete già avuto modo di dare un'occhiata al menù dei vini o preferite che vi lasci ancora un istante per decidere?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buonasera! Avete già avuto modo di dare un'occhiata al menù dei vini o preferite che vi lasci ancora un istante per decidere?",
+      "branches": [
+        {
+          "keywords": [
+            "menùvini",
+            "subito",
+            "pronto"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buonasera (Bwon-a-seh-rah)! Have you already had a chance to look at the wine menu, or would you prefer I leave you for another moment to decide?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, nessun problema. Posso portarvi il menù completo, oppure avete qualche curiosità su specialità della casa o piatti del giorno fuori menù?",
+      "branches": [
+        {
+          "keywords": [
+            "menù",
+            "listino"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "soloacqua",
+            "vino",
+            "aperitivo"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (Cher-toh), no problem. I can bring you the full menu, or do you have any curiosities about our house specialties or off-menu daily specials?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Per quanto riguarda le nostre specialità, oggi abbiamo un risotto ai funghi porcini che è la fine del mondo, e tra i secondi, il filetto al pepe verde è sempre un classico intramontabile. Avete forse delle preferenze o restrizioni alimentari di cui dovrei tenere conto?",
+      "branches": [
+        {
+          "keywords": [
+            "risotto",
+            "funghi",
+            "prendo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "difficile",
+            "indeciso",
+            "altro"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "As for our specialties, today we have a porcini mushroom risotto that is 'the end of the world' (la fee-neh del mon-doh) – absolutely delicious – and among the main courses, the green pepper fillet is always a timeless classic. Do you perhaps have any dietary preferences or restrictions I should be aware of?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Capisco. Dunque, per riassumere: per voi un risotto ai porcini e un filetto al pepe verde. C'è qualcos'altro che posso portarvi o va bene così per ora?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "perfetto",
+            "grazie"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. So, to summarize: for you a porcini risotto and a green pepper fillet. Is there anything else I can bring you or is that fine for now?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottima scelta! L'ordine è preso, ve lo porto subito. Buon appetito!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Excellent choice! The order is taken, I'll bring it right away. Enjoy your meal!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe ripetere, per favore? Oppure, se preferisce, possiamo ricominciare da capo.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat? Or, if you prefer, we can start over."
+    }
+  }
+}

@@ -1,0 +1,535 @@
+{
+  "id": "dlg-de-transport-b1",
+  "language": "de",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Öffentliche Verkehrsmittel",
+  "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte",
+            "kaufen"
+          ],
+          "nextTurnId": "t2_ticket"
+        },
+        {
+          "keywords": [
+            "bahnhof",
+            "haltestelle",
+            "anfahrt",
+            "ziel"
+          ],
+          "nextTurnId": "t2_destination"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goot-en tahg! Vee kahn ich een-en helf-en? — Good day! How can I help you?"
+    },
+    "t2_ticket": {
+      "id": "t2_ticket",
+      "prompt": "Möchten Sie eine Tageskarte, eine Einzelfahrt oder vielleicht eine Wochenkarte? Wohin möchten Sie fahren?",
+      "branches": [
+        {
+          "keywords": [
+            "tageskarte",
+            "tagesticket"
+          ],
+          "nextTurnId": "t3_tageskarte"
+        },
+        {
+          "keywords": [
+            "einzelfahrt",
+            "einzelticket"
+          ],
+          "nextTurnId": "t3_einzelfahrt"
+        },
+        {
+          "keywords": [
+            "wochenkarte",
+            "dauerticket"
+          ],
+          "nextTurnId": "t3_wochenkarte"
+        },
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "stadtzentrum",
+            "zentrum",
+            "ziel"
+          ],
+          "nextTurnId": "t2_destination"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merch-ten zee eye-nuh tah-gus-kar-tuh, eye-nuh ayn-tsel-fahrt, oh-der fee-lycht eye-nuh vokh-en-kar-tuh? Voh-hin merch-ten zee fah-ren? — Would you like a day ticket, a single fare, or perhaps a weekly ticket? Where would you like to go?"
+    },
+    "t2_destination": {
+      "id": "t2_destination",
+      "prompt": "Welches Ziel haben Sie? Dann kann ich Ihnen sagen, welche Linie Sie nehmen müssen und ob Sie umsteigen müssen.",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof",
+            "hbf"
+          ],
+          "nextTurnId": "t3_hauptbahnhof"
+        },
+        {
+          "keywords": [
+            "stadtzentrum",
+            "zentrum",
+            "mitte"
+          ],
+          "nextTurnId": "t3_stadtzentrum"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte",
+            "preis"
+          ],
+          "nextTurnId": "t2_ticket"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vel-ches tsee-l hah-ben zee? Dann kahn ich een-en zah-gen, vel-chuh lee-nee zee nay-men moos-sen unt op zee oom-stye-gen moos-sen? — What is your destination? Then I can tell you which line you need to take and if you need to transfer."
+    },
+    "t3_hauptbahnhof": {
+      "id": "t3_hauptbahnhof",
+      "prompt": "Zum Hauptbahnhof nehmen Sie am besten die Linie 14. Sie müssen nicht umsteigen. Die Fahrt dauert etwa 20 Minuten.",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "kosten",
+            "preis"
+          ],
+          "nextTurnId": "t4_ticket_price_hb"
+        },
+        {
+          "keywords": [
+            "dauer",
+            "minuten",
+            "lange"
+          ],
+          "nextTurnId": "t4_duration_confirm_hb"
+        },
+        {
+          "keywords": [
+            "abfahrt",
+            "wann",
+            "bus"
+          ],
+          "nextTurnId": "t4_departure_time_hb"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To the main station, it's best to take line 14. You don't need to transfer. The journey takes about 20 minutes."
+    },
+    "t3_stadtzentrum": {
+      "id": "t3_stadtzentrum",
+      "prompt": "Ins Stadtzentrum fährt die Linie 10 direkt von hier. Es sind ungefähr 15 Minuten. Sie können dort auch die Altstadt und das Rathaus besichtigen.",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "kosten",
+            "preis"
+          ],
+          "nextTurnId": "t4_ticket_price_sz"
+        },
+        {
+          "keywords": [
+            "dauer",
+            "minuten",
+            "lange"
+          ],
+          "nextTurnId": "t4_duration_confirm_sz"
+        },
+        {
+          "keywords": [
+            "abfahrt",
+            "wann",
+            "bus"
+          ],
+          "nextTurnId": "t4_departure_time_sz"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To the city center, line 10 goes directly from here. It's about 15 minutes. You can also visit the old town and the city hall there."
+    },
+    "t3_tageskarte": {
+      "id": "t3_tageskarte",
+      "prompt": "Eine Tageskarte kostet 8 Euro und ist den ganzen Tag gültig. Sie können damit beliebig oft fahren. Wohin möchten Sie zuerst?",
+      "branches": [
+        {
+          "keywords": [
+            "kaufen",
+            "bezahlen"
+          ],
+          "nextTurnId": "t4_buy_ticket_day"
+        },
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t3_hauptbahnhof"
+        },
+        {
+          "keywords": [
+            "stadtzentrum",
+            "zentrum"
+          ],
+          "nextTurnId": "t3_stadtzentrum"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A day ticket costs 8 Euros and is valid all day. You can ride as often as you like with it. Where would you like to go first?"
+    },
+    "t3_einzelfahrt": {
+      "id": "t3_einzelfahrt",
+      "prompt": "Eine Einzelfahrt kostet 3 Euro und ist für eine Fahrt in eine Richtung gültig. Möchten Sie zum Hauptbahnhof oder in die Stadtmitte?",
+      "branches": [
+        {
+          "keywords": [
+            "kaufen",
+            "bezahlen"
+          ],
+          "nextTurnId": "t4_buy_ticket_single"
+        },
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t3_hauptbahnhof"
+        },
+        {
+          "keywords": [
+            "stadtzentrum",
+            "zentrum"
+          ],
+          "nextTurnId": "t3_stadtzentrum"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single fare costs 3 Euros and is valid for one trip in one direction. Would you like to go to the main station or the city center?"
+    },
+    "t3_wochenkarte": {
+      "id": "t3_wochenkarte",
+      "prompt": "Eine Wochenkarte lohnt sich, wenn Sie öfter fahren möchten. Sie kostet 25 Euro. Ist das für Sie interessant?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "interessiert"
+          ],
+          "nextTurnId": "t4_buy_ticket_week"
+        },
+        {
+          "keywords": [
+            "nein",
+            "zu teuer"
+          ],
+          "nextTurnId": "t3_einzelfahrt"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A weekly ticket is worthwhile if you want to travel more often. It costs 25 Euros. Is that interesting for you?"
+    },
+    "t4_ticket_price_hb": {
+      "id": "t4_ticket_price_hb",
+      "prompt": "Eine Einzelfahrt zum Hauptbahnhof kostet 3 Euro. Wenn Sie öfter fahren, empfehle ich eine Tageskarte für 8 Euro. Möchten Sie eine kaufen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "kaufen",
+            "einzelfahrt"
+          ],
+          "nextTurnId": "t5_purchase_confirm_single"
+        },
+        {
+          "keywords": [
+            "tageskarte",
+            "tagesticket"
+          ],
+          "nextTurnId": "t5_purchase_confirm_day"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "nicht"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single fare to the main station costs 3 Euros. If you travel more often, I recommend a day ticket for 8 Euros. Would you like to buy one?"
+    },
+    "t4_ticket_price_sz": {
+      "id": "t4_ticket_price_sz",
+      "prompt": "Eine Einzelfahrt ins Stadtzentrum kostet 3 Euro. Wenn Sie öfter fahren, empfehle ich eine Tageskarte für 8 Euro. Möchten Sie eine kaufen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "kaufen",
+            "einzelfahrt"
+          ],
+          "nextTurnId": "t5_purchase_confirm_single"
+        },
+        {
+          "keywords": [
+            "tageskarte",
+            "tagesticket"
+          ],
+          "nextTurnId": "t5_purchase_confirm_day"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "nicht"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A single fare to the city center costs 3 Euros. If you travel more often, I recommend a day ticket for 8 Euros. Would you like to buy one?"
+    },
+    "t4_duration_confirm_hb": {
+      "id": "t4_duration_confirm_hb",
+      "prompt": "Ja, genau. Die Fahrt zum Hauptbahnhof dauert wirklich nur etwa 20 Minuten. Brauchen Sie sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte"
+          ],
+          "nextTurnId": "t4_ticket_price_hb"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "alles",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, exactly. The journey to the main station really only takes about 20 minutes. Do you need anything else?"
+    },
+    "t4_duration_confirm_sz": {
+      "id": "t4_duration_confirm_sz",
+      "prompt": "Ja, genau. Die Fahrt ins Stadtzentrum dauert wirklich nur etwa 15 Minuten. Brauchen Sie sonst noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "ticket",
+            "fahrkarte"
+          ],
+          "nextTurnId": "t4_ticket_price_sz"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "alles",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, exactly. The journey to the city center really only takes about 15 minutes. Do you need anything else?"
+    },
+    "t4_departure_time_hb": {
+      "id": "t4_departure_time_hb",
+      "prompt": "Der nächste Bus der Linie 14 zum Hauptbahnhof fährt in fünf Minuten. Der Bus kommt alle 15 Minuten. Passt das für Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "passt",
+            "gut",
+            "ok"
+          ],
+          "nextTurnId": "t5_departure_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The next bus of line 14 to the main station departs in five minutes. The bus comes every 15 minutes. Does that work for you?"
+    },
+    "t4_departure_time_sz": {
+      "id": "t4_departure_time_sz",
+      "prompt": "Der nächste Bus der Linie 10 ins Stadtzentrum fährt in drei Minuten. Der Bus kommt alle 10 Minuten. Passt das für Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "passt",
+            "gut",
+            "ok"
+          ],
+          "nextTurnId": "t5_departure_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The next bus of line 10 to the city center departs in three minutes. The bus comes every 10 minutes. Does that work for you?"
+    },
+    "t4_buy_ticket_day": {
+      "id": "t4_buy_ticket_day",
+      "prompt": "Sehr gut, eine Tageskarte kostet 8 Euro. Bar oder mit Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "karte",
+            "bezahlen"
+          ],
+          "nextTurnId": "t5_purchase_confirm_day"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, a day ticket costs 8 Euros. Cash or card?"
+    },
+    "t4_buy_ticket_single": {
+      "id": "t4_buy_ticket_single",
+      "prompt": "Sehr gut, eine Einzelfahrt kostet 3 Euro. Bar oder mit Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "karte",
+            "bezahlen"
+          ],
+          "nextTurnId": "t5_purchase_confirm_single"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, a single fare costs 3 Euros. Cash or card?"
+    },
+    "t4_buy_ticket_week": {
+      "id": "t4_buy_ticket_week",
+      "prompt": "Sehr gut, eine Wochenkarte kostet 25 Euro. Bar oder mit Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "karte",
+            "bezahlen"
+          ],
+          "nextTurnId": "t5_purchase_confirm_week"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good, a weekly ticket costs 25 Euros. Cash or card?"
+    },
+    "t5_purchase_confirm_single": {
+      "id": "t5_purchase_confirm_single",
+      "prompt": "Alles klar, hier ist Ihre Einzelfahrkarte. Ich wünsche Ihnen eine gute Fahrt!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "tschüss",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, here is your single ticket. I wish you a good trip!"
+    },
+    "t5_purchase_confirm_day": {
+      "id": "t5_purchase_confirm_day",
+      "prompt": "Alles klar, hier ist Ihre Tageskarte. Ich wünsche Ihnen eine gute Fahrt!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "tschüss",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, here is your day ticket. I wish you a good trip!"
+    },
+    "t5_purchase_confirm_week": {
+      "id": "t5_purchase_confirm_week",
+      "prompt": "Alles klar, hier ist Ihre Wochenkarte. Ich wünsche Ihnen eine gute Fahrt!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "tschüss",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, here is your weekly ticket. I wish you a good trip!"
+    },
+    "t5_departure_confirm": {
+      "id": "t5_departure_confirm",
+      "prompt": "Wunderbar! Der Bus steht gleich bereit. Ich wünsche Ihnen eine gute Fahrt!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gut",
+            "tschüss",
+            "aufwiedersehen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wonderful! The bus is ready to depart. I wish you a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, das habe ich nicht ganz verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            "wiederholen",
+            "ja",
+            "bitte",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-di-goong, das hah-buh ich nicht gahnts fer-stahn-den. Kern-ten zee das bit-tuh vee-der-hoh-len oh-der ahn-ders for-moo-lee-ren? — Excuse me, I didn't quite understand that. Could you please repeat it or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gute Fahrt und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goo-tuh fahrt unt owf vee-der-zay-en! — Have a good trip and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

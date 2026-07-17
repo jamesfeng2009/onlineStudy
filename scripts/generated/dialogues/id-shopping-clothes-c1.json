@@ -1,0 +1,206 @@
+{
+  "id": "dlg-id-shopping-clothes-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Belanja Pakaian di Butik Eksklusif",
+  "opening": "Selamat siang, Bapak/Ibu. Ada yang bisa saya bantu hari ini? Kami baru saja kedatangan koleksi musim semi yang begitu menawan.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang, Bapak/Ibu. Ada yang bisa saya bantu hari ini? Kami baru saja kedatangan koleksi musim semi yang begitu menawan.",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "atasan",
+            "baju",
+            "gaun",
+            "dress",
+            "celana",
+            "jaket",
+            "luaran",
+            "mencari",
+            "ingin"
+          ],
+          "nextTurnId": "t2_assist_and_suggest_try_on"
+        },
+        {
+          "keywords": [
+            "hanya",
+            "lihatlihat",
+            "melihat"
+          ],
+          "nextTurnId": "t3_browse_more"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang, Bapak/Ibu (Se-la-mat si-ang, Ba-pak/I-bu). Ada yang bisa saya bantu hari ini? Kami baru saja kedatangan koleksi musim semi yang begitu menawan (A-da yang bi-sa sa-ya ban-tu ha-ri i-ni? Ka-mi ba-ru sa-ja ke-da-tang-an ko-lek-si mu-sim se-mi yang be-gi-tu me-na-wan). — Good afternoon, Sir/Madam. How may I assist you today? We've just received a captivating new spring collection."
+    },
+    "t2_assist_and_suggest_try_on": {
+      "id": "t2_assist_and_suggest_try_on",
+      "prompt": "Tentu, kami punya beragam pilihan. Apakah Anda mencari gaya kasual atau formal? Lalu, ukuran berapa yang biasa Bapak/Ibu kenakan, dan ada preferensi warna tertentu? Mari saya carikan, dan Anda bisa langsung mencoba di ruang ganti kami.",
+      "branches": [
+        {
+          "keywords": [
+            "s",
+            "m",
+            "l",
+            "xl",
+            "ukuran",
+            "kasual",
+            "formal",
+            "warna",
+            "coba",
+            "lihat",
+            "oke",
+            "baik",
+            "siap",
+            "ya"
+          ],
+          "nextTurnId": "t3_after_try_on"
+        },
+        {
+          "keywords": [
+            "nanti",
+            "belum",
+            "ragu",
+            "lihat",
+            "lagi",
+            "tidak"
+          ],
+          "nextTurnId": "t3_browse_more"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (Ten-tu), kami punya beragam pilihan. Apakah Anda mencari gaya kasual (ka-su-al) atau formal (for-mal)? Lalu, ukuran berapa yang biasa Bapak/Ibu kenakan, dan ada preferensi warna tertentu (a-da pre-fe-ren-si war-na ter-ten-tu)? Mari saya carikan, dan Anda bisa langsung mencoba di ruang ganti kami. — Certainly, we have a variety of options. Are you looking for a casual or formal style? And what size do you usually wear, is there a specific color preference? Let me find it for you, and you can try it on directly in our fitting rooms."
+    },
+    "t3_after_try_on": {
+      "id": "t3_after_try_on",
+      "prompt": "Bagaimana, Bapak/Ibu? Apakah ada yang sesuai selera dan pas di badan? Jika sudah cocok, mari kita ke kasir.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "jadi",
+            "ambil",
+            "ok"
+          ],
+          "nextTurnId": "t4_pay"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "belum",
+            "mau",
+            "cari",
+            "lagi",
+            "lihat",
+            "ragu"
+          ],
+          "nextTurnId": "t3_browse_more"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagaimana (Ba-gai-ma-na), Bapak/Ibu? Apakah ada yang sesuai selera dan pas di badan (A-pa-kah a-da yang se-su-ai se-le-ra dan pas di ba-dan)? Jika sudah cocok, mari kita ke kasir. — How is it, Sir/Madam? Is there anything to your liking and that fits well? If it fits well, let's head to the cashier."
+    },
+    "t3_browse_more": {
+      "id": "t3_browse_more",
+      "prompt": "Tidak masalah. Silakan saja melihat-lihat lagi. Jika ada model lain yang menarik perhatian atau Anda ingin mencoba sesuatu yang berbeda, jangan sungkan untuk bertanya.",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "atasan",
+            "baju",
+            "gaun",
+            "dress",
+            "celana",
+            "jaket",
+            "luaran",
+            "mencari",
+            "ingin"
+          ],
+          "nextTurnId": "t2_assist_and_suggest_try_on"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tidak masalah (Ti-dak ma-sa-lah). Silakan saja melihat-lihat lagi. Jika ada model lain yang menarik perhatian atau Anda ingin mencoba sesuatu yang berbeda, jangan sungkan untuk bertanya. — No problem. Please feel free to browse around more. If any other models catch your eye or you'd like to try something different, don't hesitate to ask."
+    },
+    "t4_pay": {
+      "id": "t4_pay",
+      "prompt": "Pilihan yang sangat bagus! Mari kita ke kasir. Untuk pembayaran, kami menerima beragam metode. Apakah ada pertanyaan mengenai kebijakan pengembalian atau penukaran?",
+      "branches": [
+        {
+          "keywords": [
+            "pengembalian",
+            "tukar",
+            "kebijakan",
+            "retur"
+          ],
+          "nextTurnId": "t5_policy"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pilihan yang sangat bagus (Pi-li-han yang sa-ngat ba-gus)! Mari kita ke kasir. Untuk pembayaran, kami menerima beragam metode. Apakah ada pertanyaan mengenai kebijakan pengembalian atau penukaran (A-pa-kah a-da per-tan-ya-an me-nge-nai ke-bi-ja-kan peng-em-ba-li-an a-tau pe-nu-kar-an)? — Excellent choice! Let's head to the cashier. We accept various payment methods. Do you have any questions regarding our return or exchange policy?"
+    },
+    "t5_policy": {
+      "id": "t5_policy",
+      "prompt": "Untuk kebijakan pengembalian atau penukaran, kami menerima dalam waktu 7 hari dengan struk pembelian dan kondisi barang masih lengkap, tanpa kerusakan. Semoga jelas, ya?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk kebijakan pengembalian atau penukaran (Un-tuk ke-bi-ja-kan peng-em-ba-li-an a-tau pe-nu-kar-an), kami menerima dalam waktu 7 hari dengan struk pembelian dan kondisi barang masih lengkap, tanpa kerusakan. Semoga jelas, ya? — Regarding our return or exchange policy, we accept returns or exchanges within 7 days with the purchase receipt and if the item is still complete, without damage. Hope that's clear, right?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisakah Bapak/Ibu mengulanginya dengan lebih jelas? Saya kurang menangkap maksud Anda.",
+      "branches": [],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf (Ma-af), bisakah Bapak/Ibu mengulanginya dengan lebih jelas (bi-sa-kah Ba-pak/I-bu meng-u-lang-i-nya de-ngan le-bih je-las)? Saya kurang menangkap maksud Anda. — I'm sorry, could you please repeat that more clearly? I didn'",
+      "isTerminal": true
+    }
+  }
+}

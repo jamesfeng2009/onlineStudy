@@ -1,0 +1,319 @@
+{
+  "id": "dlg-fr-transport-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Voyage en Bus et Train : Naviguer dans les Transports Publics",
+  "opening": "Bonjour ! Comment puis-je vous être utile aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment puis-je vous être utile aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "destination",
+            "aller",
+            "direction",
+            "où",
+            "renseignement",
+            "info"
+          ],
+          "nextTurnId": "t2_dest"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "billet",
+            "acheter",
+            "tarif"
+          ],
+          "nextTurnId": "t2_ticket"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Comment puis-je vous être utile aujourd'hui ? — Hello! How can I help you today?"
+    },
+    "t2_dest": {
+      "id": "t2_dest",
+      "prompt": "Très bien. Pour quelle destination avez-vous besoin d'informations ? Pour la Gare du Nord, par exemple, le bus 38 est direct. Comptez environ 25 minutes hors heures de pointe.",
+      "branches": [
+        {
+          "keywords": [
+            "delai",
+            "retard",
+            "perturbation"
+          ],
+          "nextTurnId": "t3_delays"
+        },
+        {
+          "keywords": [
+            "trajet",
+            "chemin",
+            "itinéraire",
+            "correspondance"
+          ],
+          "nextTurnId": "t3_route_transfer"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "acheter",
+            "prix"
+          ],
+          "nextTurnId": "t3_ticket_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Pour quelle destination avez-vous besoin d'informations ? Pour la Gare du Nord, par exemple, le bus 38 est direct. Comptez environ 25 minutes hors heures de pointe. — Very well. For which destination do you need information? For the Gare du Nord, for example, bus 38 is direct. Allow about 25 minutes outside of peak hours."
+    },
+    "t2_ticket": {
+      "id": "t2_ticket",
+      "prompt": "Un ticket T+ coûte 2,10€. Un carnet de dix revient à 18,60€. Ces titres sont valables pour un trajet en bus ou métro avec correspondances. Quel type de titre de transport vous conviendrait ?",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "ticket",
+            "simple"
+          ],
+          "nextTurnId": "t4_buy_single"
+        },
+        {
+          "keywords": [
+            "carnet",
+            "dix"
+          ],
+          "nextTurnId": "t4_buy_carnet"
+        },
+        {
+          "keywords": [
+            "prix",
+            "combien",
+            "infos"
+          ],
+          "nextTurnId": "t3_ticket_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un ticket T+ coûte 2,10€. Un carnet de dix revient à 18,60€. Ces titres sont valables pour un trajet en bus ou métro avec correspondances. Quel type de titre de transport vous conviendrait ? — A T+ ticket costs €2.10. A book of ten costs €18.60. These tickets are valid for a bus or metro journey with transfers. Which type of ticket would suit you?"
+    },
+    "t3_delays": {
+      "id": "t3_delays",
+      "prompt": "Actuellement, il n'y a pas de perturbations majeures signalées sur le bus 38. Cependant, il est toujours prudent de prévoir une petite marge, les imprévus peuvent arriver.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "ok"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "acheter",
+            "prix"
+          ],
+          "nextTurnId": "t4_buy_ticket_after_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Actuellement, il n'y a pas de perturbations majeures signalées sur le bus 38. Cependant, il est toujours prudent de prévoir une petite marge, les imprévus peuvent arriver. — Currently, no major disruptions are reported on bus 38. However, it is always wise to allow a little leeway; unforeseen events can happen."
+    },
+    "t3_route_transfer": {
+      "id": "t3_route_transfer",
+      "prompt": "Le bus 38 est direct jusqu'à la Gare du Nord. Si vous deviez aller plus loin, des correspondances sont possibles avec le RER B ou les lignes de métro 4 et 5.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "ok"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            "ticket",
+            "acheter",
+            "prix"
+          ],
+          "nextTurnId": "t4_buy_ticket_after_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Le bus 38 est direct jusqu'à la Gare du Nord. Si vous deviez aller plus loin, des correspondances sont possibles avec le RER B ou les lignes de métro 4 et 5. — Bus 38 is direct to Gare du Nord. If you needed to go further, connections are possible with RER B or metro lines 4 and 5."
+    },
+    "t3_ticket_price": {
+      "id": "t3_ticket_price",
+      "prompt": "Un ticket T+ coûte 2,10€. Un carnet de dix est à 18,60€. Ces titres sont valables pour un trajet en bus ou métro avec correspondances.",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "ticket",
+            "simple"
+          ],
+          "nextTurnId": "t4_buy_single"
+        },
+        {
+          "keywords": [
+            "carnet",
+            "dix"
+          ],
+          "nextTurnId": "t4_buy_carnet"
+        },
+        {
+          "keywords": [
+            "merci",
+            "ok"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un ticket T+ coûte 2,10€. Un carnet de dix est à 18,60€. Ces titres sont valables pour un trajet en bus ou métro avec correspondances. — A T+ ticket costs €2.10. A book of ten is €18.60. These tickets are valid for a bus or metro journey with transfers."
+    },
+    "t4_buy_single": {
+      "id": "t4_buy_single",
+      "prompt": "Très bien, un ticket simple alors. Voilà. Y a-t-il autre chose ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "c'esttout"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, un ticket simple alors. Voilà. Y a-t-il autre chose ? — Very well, a single ticket then. Here you go. Is there anything else?"
+    },
+    "t4_buy_carnet": {
+      "id": "t4_buy_carnet",
+      "prompt": "Un carnet de dix, parfait. Voici votre carnet. Autre chose pour vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "c'esttout"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un carnet de dix, parfait. Voici votre carnet. Autre chose pour vous ? — A book of ten, perfect. Here is your book of tickets. Anything else for you?"
+    },
+    "t4_buy_ticket_after_info": {
+      "id": "t4_buy_ticket_after_info",
+      "prompt": "Que désirez-vous acheter ? Un ticket simple ou un carnet ?",
+      "branches": [
+        {
+          "keywords": [
+            "un",
+            "ticket",
+            "simple"
+          ],
+          "nextTurnId": "t4_buy_single"
+        },
+        {
+          "keywords": [
+            "carnet",
+            "dix"
+          ],
+          "nextTurnId": "t4_buy_carnet"
+        },
+        {
+          "keywords": [
+            "non",
+            "merci"
+          ],
+          "nextTurnId": "t5_confirm_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Que désirez-vous acheter ? Un ticket simple ou un carnet ? — What would you like to buy? A single ticket or a book of tickets?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Excusez-moi, pourriez-vous répéter ? Je n'ai pas bien saisi votre demande.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excusez-moi, pourriez-vous répéter ? Je n'ai pas bien saisi votre demande. — Excuse me, could you repeat that? I didn't quite catch your request."
+    },
+    "t5_confirm_end": {
+      "id": "t5_confirm_end",
+      "prompt": "Parfait. Je vous souhaite un excellent voyage et une bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t5_confirm_end",
+      "promptTranslation": "Parfait. Je vous souhaite un excellent voyage et une bonne journée ! — Perfect. I wish you an excellent journey and a good day!",
+      "isTerminal": true
+    }
+  }
+}

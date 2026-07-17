@@ -1,0 +1,179 @@
+{
+  "id": "dlg-th-directions-b2",
+  "language": "th",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "การถามทางไปตลาดนัดจตุจักร",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ผม/ดิฉันช่วยไหมครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ผม/ดิฉันช่วยไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตลาด",
+            "ไป",
+            "ทาง",
+            "จตุจักร"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawasdee krap/ka, mee a-rai hai pom/di-chan chuay mai krap/ka? — Hello, can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ ตลาดนัดจตุจักรใช่ไหมครับ/คะ ไม่ไกลจากตรงนี้เท่าไหร่ครับ/ค่ะ คุณสามารถเดินไปได้ หรือถ้านั่งรถไฟฟ้า BTS จะสะดวกกว่าเยอะเลยครับ",
+      "branches": [
+        {
+          "keywords": [
+            "เดิน",
+            "เท้า",
+            "ไกล",
+            "นาน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "รถไฟฟ้า",
+            "bts",
+            "สะดวก",
+            "สถานี"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or, Talat Nat Jatujak chai mai krap/ka? Mai glai jaak dtrong nee tao rai krap/ka. Khun sa-maat deun pai dai rue taa nang rot-fai-faa BTS ja sa-duak gwaa yer loey krap. — Oh, Chatuchak Weekend Market, right? It's not too far from here. You can walk, or taking the BTS Skytrain would be much more convenient."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ถ้าจะเดินไป ให้เดินตรงไปเรื่อยๆ ตามถนนนี้ครับ/ค่ะ ประมาณสิบห้าถึงยี่สิบนาทีก็จะเจอสวนจตุจักรอยู่ทางซ้ายมือครับ/ค่ะ ตลาดจะอยู่ถัดไปเลย",
+      "branches": [
+        {
+          "keywords": [
+            "ไกล",
+            "นาน",
+            "ถึง",
+            "สวน",
+            "เลี้ยว",
+            "ซ้าย"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "bts",
+            "รถไฟฟ้า",
+            "ง่ายกว่า",
+            "เร็ว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Taa ja deun pai, hai deun dtrong pai rueay-rueay dtaam ta-non nee krap/ka. Pra-maan sip-haa teung yee-sip naa-tee gor ja jer suan Jatujak yoo taang saai meu krap/ka. Ta-laat ja yoo tat pai loey. — If you walk, just go straight along this road. In about 15 to 20 minutes, you'll find Chatuchak Park on your left. The market will be right after it."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ถ้านั่ง BTS ก็ง่ายกว่าครับ/ค่ะ จากสถานีนี้ (สมมติว่าอยู่ใกล้สถานี BTS) คุณนั่งไปแค่สถานีเดียว ลงที่สถานีหมอชิตครับ/ค่ะ ออกทางออก 1 หรือ 3 ก็ได้ พอลงมาก็จะเจอสวนจตุจักรอยู่ฝั่งตรงข้ามตลาดเลย",
+      "branches": [
+        {
+          "keywords": [
+            "ออก",
+            "ทางออก",
+            "สวน",
+            "ตรงข้าม",
+            "หมายเลข"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจ",
+            "ชัดเจน",
+            "ดี"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Taa nang BTS gor ngaai gwaa krap/ka. Jaak sa-taa-nee nee (som-mut waa yoo glai sa-taa-nee BTS), khun nang pai kae sa-taa-nee dee-o long tee sa-taa-nee Mor Chit krap/ka. Ork taang ork nung rue saam gor dai. Por long maa gor ja jer suan Jatujak yoo fang dtrong-kham ta-laat loey. — If you take the BTS, it's easier. From this station (assuming it's near a BTS station), you just take it one stop, get off at Mo Chit station. You can take exit 1 or 3. Once you come down, you'll find Chatuchak Park right across from the market."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ใช่ครับ/ค่ะ สวนจตุจักรจะอยู่ติดกับตลาดนัดเลยครับ/ค่ะ เดินอีกนิดเดียวก็ถึงแล้ว ไม่น่าจะหลงนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "มาก",
+            "ชัดเจน",
+            "เข้าใจ",
+            "ยินดี"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chai krap/ka. Suan Jatujak ja yoo dtit gap ta-laat nat loey krap/ka. Deun eek nit dee-o gor teung laew. Mai naa ja long na krap/ka. — Yes, Chatuchak Park is right next to the market. Just a short walk and you'll be there. You shouldn't get lost."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ พูดอีกทีได้ไหมครับ/คะ ผม/ดิฉันไม่ค่อยได้ยิน",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor tort na krap/ka. Poot eek tee dai mai krap/ka? Pom/di-chan mai koi dai yin. — Sorry, could you please say that again? I didn't quite hear you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ยินดีครับ/ค่ะ ขอให้เดินทางโดยสวัสดิภาพนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yin dee krap/ka. Kor hai deun taang doi sa-wat-di-paap na krap/ka. — You're welcome. Have a safe journey!",
+      "isTerminal": true
+    }
+  }
+}

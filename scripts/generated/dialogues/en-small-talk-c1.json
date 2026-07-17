@@ -1,0 +1,169 @@
+{
+  "id": "dlg-en-small-talk-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Casual Catch-Up",
+  "opening": "Hey there! How was your weekend? Did you manage to get up to anything interesting?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hey there! How was your weekend? Did you manage to get up to anything interesting?",
+      "branches": [
+        {
+          "keywords": [
+            "good",
+            "great",
+            "relaxing",
+            "chilled"
+          ],
+          "nextTurnId": "t2_good_weekend"
+        },
+        {
+          "keywords": [
+            "busy",
+            "hectic",
+            "work",
+            "tiring"
+          ],
+          "nextTurnId": "t2_busy_weekend"
+        },
+        {
+          "keywords": [
+            "nothing",
+            "bore",
+            "quiet"
+          ],
+          "nextTurnId": "t2_quiet_weekend"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hey there! How was your weekend? Did you manage to get up to anything interesting?"
+    },
+    "t2_good_weekend": {
+      "id": "t2_good_weekend",
+      "prompt": "Oh, that sounds promising! Do tell, what did you get up to? Spill the beans!",
+      "branches": [
+        {
+          "keywords": [
+            "hike",
+            "walk",
+            "outdoors",
+            "nature",
+            "movie",
+            "read",
+            "tv",
+            "netflix",
+            "book",
+            "friends",
+            "party",
+            "social",
+            "dinner"
+          ],
+          "nextTurnId": "t3_general_followup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, that sounds promising! Do tell, what did you get up to? Spill the beans!"
+    },
+    "t2_busy_weekend": {
+      "id": "t2_busy_weekend",
+      "prompt": "Ah, the ever-elusive relaxing weekend! I know that feeling all too well. Was it more work-related, or just a whirlwind of personal errands?",
+      "branches": [
+        {
+          "keywords": [
+            "work",
+            "project",
+            "deadline",
+            "errands",
+            "chores",
+            "family",
+            "moving"
+          ],
+          "nextTurnId": "t3_general_followup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, the ever-elusive relaxing weekend! I know that feeling all too well. Was it more work-related, or just a whirlwind of personal errands?"
+    },
+    "t2_quiet_weekend": {
+      "id": "t2_quiet_weekend",
+      "prompt": "Oh, a quiet one, then? Sometimes that's exactly what the doctor ordered, a chance to recharge. Did you make the most of the peace and quiet?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "recharged",
+            "rest",
+            "no",
+            "bored",
+            "nothing"
+          ],
+          "nextTurnId": "t3_general_followup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, a quiet one, then? Sometimes that's exactly what the doctor ordered, a chance to recharge. Did you make the most of the peace and quiet?"
+    },
+    "t3_general_followup": {
+      "id": "t3_general_followup",
+      "prompt": "That sounds like quite the weekend! It's always good to either get things done, dive into a hobby, or simply unwind. Anyway, I've really enjoyed our chat, but I'm afraid duty calls!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "That sounds like quite the weekend! It's always good to either get things done, dive into a hobby, or simply unwind. Anyway, I've really enjoyed our chat, but I'm afraid duty calls!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you rephrase or tell me more simply? I'm all ears!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase or tell me more simply? I'm all ears!"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Well, it's been a genuine pleasure chatting with you. I'm afraid I've got to dash, but let's pick this",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

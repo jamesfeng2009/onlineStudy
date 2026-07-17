@@ -1,0 +1,151 @@
+{
+  "id": "dlg-vi-weather-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Trò chuyện về thời tiết",
+  "opening": "Chào bạn! Thời tiết hôm nay thế nào? Bạn có dự định gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Thời tiết hôm nay thế nào? Bạn có dự định gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "nắng",
+            "đẹp",
+            "ấmáp"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mưa",
+            "lạnh",
+            "bão"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "dựbáo",
+            "sẽ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao ban! Thoi tiet hom nay the nao? Ban co du dinh gi khong? — Hello! How's the weather today? Do you have any plans?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Nghe có vẻ tuyệt! Bạn có định ra ngoài làm gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "dạo",
+            "đi",
+            "chơi",
+            "tậpthểdục"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe co ve tuyet! Ban co dinh ra ngoai lam gi khong? — That sounds great! Do you plan to go out and do anything?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ôi, tiếc quá! Vậy bạn có dự định ở nhà làm gì không? Hay bạn có kế hoạch khác?",
+      "branches": [
+        {
+          "keywords": [
+            "xemphim",
+            "nấuăn",
+            "học",
+            "làmviệc"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oi, tiec qua! Vay ban co du dinh o nha lam gi khong? Hay ban co ke hoach khac? — Oh, that's a pity! So, do you have any plans to do something at home? Or do you have other plans?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "À, bạn xem dự báo rồi à? Vậy họ nói gì về nhiệt độ hay mùa này?",
+      "branches": [
+        {
+          "keywords": [
+            "nhiệtđộ",
+            "độ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A, ban xem du bao roi a? Vay ho noi gi ve nhiet do hay mua nay? — Oh, you checked the forecast already? So what did they say about the temperature or this season?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Thế thì hay quá / Nghe cũng được đấy! Dù sao cũng chúc bạn một ngày vui vẻ nhé.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The thi hay qua / Nghe cung duoc day! Du sao cung chuc ban mot ngay vui ve nhe. — That sounds great / That sounds okay! Anyway, I wish you a happy day."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe không rõ lắm.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin loi, ban co the nhac lai khong? Toi nghe khong ro lam. — Sorry, could you repeat that? I didn't hear very clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt bạn! Hẹn gặp lại nhé.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tam biet ban! Hen gap lai nhe. — Goodbye! See you again.",
+      "isTerminal": true
+    }
+  }
+}

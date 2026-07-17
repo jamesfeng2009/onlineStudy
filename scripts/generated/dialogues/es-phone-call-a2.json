@@ -1,0 +1,221 @@
+{
+  "id": "dlg-es-phone-call-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "phone-call",
+  "title": "Llamada telefónica",
+  "opening": "¡Hola! Soy Elena. ¿Con quién hablo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! Soy Elena. ¿Con quién hablo?",
+      "branches": [
+        {
+          "keywords": [
+            "soy",
+            "mi nombre",
+            "hablo",
+            "es"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "está",
+            "podría",
+            "hablarcon",
+            "carlos"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola — Hello! Soy Elena — I'm Elena. ¿Con quién hablo — With whom am I speaking?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, hola. ¿Cómo le puedo ayudar?",
+      "branches": [
+        {
+          "keywords": [
+            "quiero",
+            "necesito",
+            "hablarcon",
+            "carlos"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "mensaje",
+            "dejar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pregunta",
+            "información"
+          ],
+          "nextTurnId": "t-end-general"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, hola — Oh, hello. ¿Cómo le puedo ayudar — How can I help you?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "¿De parte de quién?",
+      "branches": [
+        {
+          "keywords": [
+            "soy",
+            "mi nombre",
+            "es"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no importa",
+            "personal"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿De parte de quién — On whose behalf (are you calling)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Lo siento, Carlos no está en este momento. ¿Quiere dejar un mensaje?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "quiero",
+            "dejar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "llamaré",
+            "luego",
+            "más tarde"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lo siento — I'm sorry, Carlos no está en este momento — Carlos is not available at the moment. ¿Quiere dejar un mensaje — Do you want to leave a message?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Claro, dígame. ¿Qué le digo?",
+      "branches": [
+        {
+          "keywords": [
+            "dí",
+            "que",
+            "porfavor",
+            "llama"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no importa",
+            "llamaré",
+            "luego"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro — Of course, dígame — tell me. ¿Qué le digo — What should I tell him?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Entendido. Le daré su mensaje a Carlos. Gracias por llamar.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Entendido — Understood. Le daré su mensaje a Carlos — I will give your message to Carlos. Gracias por llamar — Thank you for calling."
+    },
+    "t-end-general": {
+      "id": "t-end-general",
+      "prompt": "Entendido. Si tiene más preguntas, puede llamar más tarde. Adiós.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Entendido — Understood. Si tiene más preguntas — If you have more questions, puede llamar más tarde — you can call later. Adiós — Goodbye."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdón? No le he entendido bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Perdón — Sorry? No le he entendido bien — I didn't understand you well. ¿Podría repetir, por favor — Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De acuerdo. Gracias por llamar. ¡Adiós!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De acuerdo — Okay. Gracias por llamar — Thanks for calling. ¡Adiós — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

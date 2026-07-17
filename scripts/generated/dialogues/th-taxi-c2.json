@@ -1,0 +1,318 @@
+{
+  "id": "dlg-th-taxi-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "แท็กซี่ไปสยาม",
+  "opening": "สวัสดีครับ/ค่ะ เชิญครับ/ค่ะ ไปไหนดีครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ เชิญครับ/ค่ะ ไปไหนดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "พารากอน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สีลม",
+            "ทองหล่อ",
+            "อโศก",
+            "สนามบิน"
+          ],
+          "nextTurnId": "t2_other_dest"
+        },
+        {
+          "keywords": [
+            "มิเตอร์",
+            "เปิดมิเตอร์",
+            "ตามมิเตอร์"
+          ],
+          "nextTurnId": "t2_meter_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Chern krap/ka. Pai nai dee krap/ka? — Hello. Please come in. Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "อ๋อ สยามพารากอนนะครับ/คะ เข้าใจแล้ว ตอนนี้รถค่อนข้างหนาแน่นเลยครับ/ค่ะ อยากขึ้นทางด่วนเลยไหมครับ/คะ จะได้ถึงเร็วหน่อย",
+      "branches": [
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน",
+            "เอาทางด่วน",
+            "ขึ้นเลย"
+          ],
+          "nextTurnId": "t3_expressway"
+        },
+        {
+          "keywords": [
+            "ไม่ขึ้น",
+            "ไม่เอา",
+            "ข้างล่าง",
+            "ถนนธรรมดา"
+          ],
+          "nextTurnId": "t3_regular_road"
+        },
+        {
+          "keywords": [
+            "ค่าทางด่วน",
+            "เท่าไร",
+            "เพิ่มไหม"
+          ],
+          "nextTurnId": "t3_toll_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or, Siam Paragon na krap/ka. Kao jai laew. Ton nee rot kon kang na naen loey krap/ka. Yak kuen tang duan loey mai krap/ka? Ja dai tueng rew noi. — Ah, Siam Paragon, understood. Traffic is quite heavy right now. Would you like to take the expressway to get there a bit faster?"
+    },
+    "t2_other_dest": {
+      "id": "t2_other_dest",
+      "prompt": "ได้เลยครับ/ค่ะ เดี๋ยวเปิดมิเตอร์พาไปนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครับ",
+            "ค่ะ",
+            "ได้เลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ทางด่วน",
+            "ขึ้นทางด่วน"
+          ],
+          "nextTurnId": "t3_expressway"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loey krap/ka. Diao pert meter pa pai na krap/ka. — Okay. I'll turn on the meter and take you there."
+    },
+    "t2_meter_query": {
+      "id": "t2_meter_query",
+      "prompt": "แน่นอนครับ/ค่ะ เปิดมิเตอร์อยู่แล้วครับ/ค่ะ ไม่ต้องห่วง แล้วจะไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "พารากอน"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สีลม",
+            "ทองหล่อ",
+            "อโศก",
+            "สนามบิน"
+          ],
+          "nextTurnId": "t2_other_dest"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nae non krap/ka. Pert meter yoo laew krap/ka. Mai tong huang. Laew ja pai nai krap/ka? — Of course. The meter is on already. Don't worry. And where would you like to go?"
+    },
+    "t3_expressway": {
+      "id": "t3_expressway",
+      "prompt": "โอเคครับ/ค่ะ งั้นขออนุญาตขึ้นทางด่วนเลยนะครับ/คะ เดี๋ยวพอใกล้ถึงจะบอกอีกทีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครับ",
+            "ค่ะ",
+            "ได้เลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-kae krap/ka. Ngan kor a-nu-yat kuen tang duan loey na krap/ka. Diao por glai tueng ja bok eek tee krap/ka. — Okay. I'll take the expressway then. I'll let you know when we're almost there."
+    },
+    "t3_regular_road": {
+      "id": "t3_regular_road",
+      "prompt": "ได้เลยครับ/ค่ะ ถ้าอย่างนั้นก็วิ่งข้างล่างไปเรื่อยๆ นะครับ/คะ อาจจะช้าหน่อยแต่ก็ไม่ต้องเสียค่าทางด่วนครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ครับ",
+            "ค่ะ",
+            "ได้เลย"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai loey krap/ka. Tha yang nan gor wing kang lang pai rueay rueay na krap/ka. At ja cha noi tae gor mai tong sia ka tang duan krap/ka. — Okay. In that case, I'll drive on the regular roads. It might be a bit slower, but you won't have to pay for the expressway."
+    },
+    "t3_toll_query": {
+      "id": "t3_toll_query",
+      "prompt": "ค่าทางด่วนประมาณ 50-70 บาทครับ/ค่ะ เดี๋ยวเก็บที่ด่านแรกเลยนะครับ/คะ ถ้าขึ้นจะถึงเร็วกว่าเยอะเลยครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขึ้น",
+            "ตกลง"
+          ],
+          "nextTurnId": "t3_expressway"
+        },
+        {
+          "keywords": [
+            "ไม่ขึ้น",
+            "ไม่เอา"
+          ],
+          "nextTurnId": "t3_regular_road"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ka tang duan pra-man ha-sip jet-sip baht krap/ka. Diao gep tee dan raek loey na krap/ka. Tha kuen ja tueng rew gwa yueh loey krap/ka. — The expressway toll is about 50-70 baht. I'll collect it at the first toll booth. If we take it, we'll get there much faster."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ตอนนี้ใกล้ถึงแล้วนะครับ/คะ เลี้ยวซ้ายตรงหน้าก็ถึงสยามพารากอนแล้วครับ/ค่ะ สะดวกชำระเป็นเงินสดหรือจะสแกนจ่ายดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เงินสด",
+            "เงิน",
+            "จ่ายเงิน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "เท่าไร",
+            "กี่บาท",
+            "รวม"
+          ],
+          "nextTurnId": "t5_fare_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ton nee glai tueng laew na krap/ka. Liao sai trong naa gor tueng Siam Paragon laew krap/ka. Sa-duak cham-ra pen ngern sod rue ja scan jai dee krap/ka? — We're almost there now. Turn left up ahead and we'll be at Siam Paragon. Would you prefer to pay with cash or scan?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ถึงแล้วครับ/ค่ะ ยอดทั้งหมด ๒๕๕ บาทพอดีครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ครับ",
+            "จ่าย",
+            "สแกนแล้ว",
+            "เรียบร้อย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tueng laew krap/ka. Yod tung mod song roi ha-sip ha baht por dee krap/ka. — We've arrived. The total is 255 baht exactly."
+    },
+    "t5_fare_query": {
+      "id": "t5_fare_query",
+      "prompt": "ยอดทั้งหมด ๒๕๕ บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ครับ",
+            "จ่าย",
+            "สแกนแล้ว",
+            "เรียบร้อย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yod tung mod song roi ha-sip ha baht krap/ka. — The total is 255 baht."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ฟังไม่ค่อยถนัดเลย รบกวนพูดใหม่อีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor tod krap/ka. Fang mai koi ta-nat loey. Roob guan pood mai eek krang dai mai krap/ka? — Sorry, I didn't quite catch that. Could you please repeat it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากครับ/ค่ะ โอกาสหน้าเชิญใช้บริการใหม่นะครับ/คะ เดินทางปลอดภัยครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kob khun mak krap/ka. O-gat naa chern chai bo-ri-garn mai na krap/ka. Dern tang plord pai krap/ka. — Thank you very much. Please use our service again next time. Have a safe journey.",
+      "isTerminal": true
+    }
+  }
+}

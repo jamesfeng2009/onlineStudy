@@ -1,0 +1,182 @@
+{
+  "id": "dlg-es-weather-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "weather",
+  "title": "Charla Meteorológica C2",
+  "opening": "¡Vaya día más desapacible hace hoy! ¡Parece que el cielo se va a caer a trozos de un momento a otro! ¿No te parece que el tiempo está de lo más raro últimamente?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Vaya día más desapacible hace hoy! ¡Parece que el cielo se va a caer a trozos de un momento a otro! ¿No te parece que el tiempo está de lo más raro últimamente?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "cierto",
+            "raro",
+            "cambiante",
+            "loco"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "no",
+            "normal",
+            "tipico"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "",
+            "hola"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What a dismal day it is today! (VAY-ah DEE-ah mas des-ah-PATH-ee-bleh ah-theh oy!) It looks like the sky is going to fall apart any moment! Don't you think the weather's been really strange lately?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "¡Totalmente! Un día hace un calor de justicia y al siguiente necesitamos sacar el plumífero. ¡Es un vaivén constante! ¿Has visto la previsión para el fin de semana? Dicen que caerán chuzos de punta.",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "lluvia",
+            "mal",
+            "chuzos",
+            "prevision"
+          ],
+          "nextTurnId": "t3-plans"
+        },
+        {
+          "keywords": [
+            "",
+            "que"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Totally! (toh-TAHL-men-teh!) One day it's scorching hot and the next we need to get out the puffer jacket. It's a constant back-and-forth! Have you seen the forecast for the weekend? They say it's going to rain cats and dogs."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Bueno, supongo que tienes razón, al fin y al cabo, estamos en primavera/otoño y el tiempo es así de caprichoso. Pero ¿no te da la sensación de que las estaciones están un poco desvirtuadas? Parece que no hay término medio.",
+      "branches": [
+        {
+          "keywords": [
+            "estaciones",
+            "desvirtuadas",
+            "cambio",
+            "extremos"
+          ],
+          "nextTurnId": "t3-impact"
+        },
+        {
+          "keywords": [
+            "",
+            "como"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, I guess you're right, after all, we're in spring/autumn and the weather is that capricious. (CAH-pree-CHOH-soh) But don't you get the feeling that the seasons are a bit distorted? It seems there's no middle ground."
+    },
+    "t3-plans": {
+      "id": "t3-plans",
+      "prompt": "¡Qué rabia! Con este vaivén, a mí ya me ha fastidiado los planes de ruta de senderismo. ¿Qué planes tenías tú que se han visto afectados, o eres de los que siempre encuentran una alternativa bajo techo?",
+      "branches": [
+        {
+          "keywords": [
+            "afectados",
+            "cancelar",
+            "aire-libre",
+            "fastidia"
+          ],
+          "nextTurnId": "t4-closing"
+        },
+        {
+          "keywords": [
+            "",
+            "que"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How annoying! (keh RAH-byah!) With this fluctuation, it has already ruined my hiking plans. What plans did you have that have been affected, or are you one of those who always find an indoor alternative?"
+    },
+    "t3-impact": {
+      "id": "t3-impact",
+      "prompt": "Es verdad, es un poco desconcertante cómo cambian las estaciones. Mucha gente lo atribuye al cambio climático. ¿Tú qué opinas, crees que estamos viendo los efectos o es solo parte de los ciclos naturales de la tierra, como siempre?",
+      "branches": [
+        {
+          "keywords": [
+            "cambio-climatico",
+            "si",
+            "evidente",
+            "humano"
+          ],
+          "nextTurnId": "t4-closing"
+        },
+        {
+          "keywords": [
+            "",
+            "crees"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's true, it's a bit disconcerting how the seasons change. (des-con-ther-TAN-teh) Many people attribute it to climate change. What do you think, do you believe we are seeing the effects or is it just part of the Earth's natural cycles, as always?"
+    },
+    "t4-closing": {
+      "id": "t4-closing",
+      "prompt": "Sea como fuere, lo que es innegable es que el tiempo da para mucho de qué hablar. Al final, lo importante es adaptarse y, ¡a mal tiempo, buena cara! Siempre hay algo que hacer, ¿verdad? ¡Me ha encantado esta charla meteorológica!",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "verdad",
+            "encantado",
+            "charlar",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Be that as it may, (seh AH KOH-moh FOO-eh-reh) what's undeniable is that the weather gives us plenty to talk about. In the end, the important thing is to adapt and, when the weather is bad, put on a brave face! There's always something to do, right? I've loved this weather chat!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Perdona? No te he entendido bien. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry? I didn't quite understand you. Could you repeat it, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Bueno, me ha encantado charlar contigo un rato. ¡Que tengas un buen día, haga el tiempo que haga!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Well, I've loved chatting with you for a bit. Have a great day, whatever the weather!",
+      "isTerminal": true
+    }
+  }
+}

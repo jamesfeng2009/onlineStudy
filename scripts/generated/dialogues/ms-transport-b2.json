@@ -1,0 +1,285 @@
+{
+  "id": "dlg-ms-transport-b2",
+  "language": "ms",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Perjalanan Pengangkutan Awam",
+  "opening": "Selamat datang. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang. Boleh saya bantu? Anda ingin ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "petalingjaya",
+            "puduraya",
+            "masjidjamek",
+            "bandaraya"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "maklumat",
+            "jadual",
+            "harga",
+            "laluan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang. — Welcome. Boleh saya bantu? — Can I help you? Anda ingin ke mana? — Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, untuk ke destinasi itu, anda boleh ambil LRT Laluan Kelana Jaya. Anda mahu tiket sehala, pergi-balik, atau guna kad Touch 'n Go?",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satuhala"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "kad",
+            "touchngo"
+          ],
+          "nextTurnId": "t5_finalise"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa",
+            "tambang"
+          ],
+          "nextTurnId": "t4_askprice"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, untuk ke destinasi itu, anda boleh ambil LRT Laluan Kelana Jaya. — Alright, to that destination, you can take the Kelana Jaya LRT Line. Anda mahu tiket sehala, pergi-balik, atau guna kad Touch 'n Go? — Do you want a one-way ticket, return ticket, or use a Touch 'n Go card?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk maklumat apa ya? Boleh nyatakan destinasi anda atau jenis pertanyaan?",
+      "branches": [
+        {
+          "keywords": [
+            "jadual",
+            "waktu",
+            "lewat"
+          ],
+          "nextTurnId": "t3a_schedule"
+        },
+        {
+          "keywords": [
+            "laluan",
+            "peta"
+          ],
+          "nextTurnId": "t3b_route"
+        },
+        {
+          "keywords": [
+            "harga",
+            "tambang",
+            "berapa"
+          ],
+          "nextTurnId": "t4_askprice"
+        },
+        {
+          "keywords": [
+            "klcc",
+            "petalingjaya",
+            "puduraya",
+            "masjidjamek"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk maklumat apa ya? — What kind of information are you looking for? Boleh nyatakan destinasi anda atau jenis pertanyaan? — Could you state your destination or the type of inquiry?"
+    },
+    "t3a_schedule": {
+      "id": "t3a_schedule",
+      "prompt": "Jadual selalunya tepat, tetapi kadang-kadang ada kelewatan akibat trafik. Adakah anda ingin tahu jadual untuk laluan tertentu?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "betul",
+            "klcc"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tak",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jadual selalunya tepat, tetapi kadang-kadang ada kelewatan akibat trafik. — Schedules are usually punctual, but sometimes there are delays due to traffic. Adakah anda ingin tahu jadual untuk laluan tertentu? — Do you want to know the schedule for a specific route?"
+    },
+    "t3b_route": {
+      "id": "t3b_route",
+      "prompt": "Peta laluan ada terpapar di papan informasi di stesen. Anda boleh rujuk di sana. Destinasi anda ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "petalingjaya",
+            "puduraya",
+            "masjidjamek"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Peta laluan ada terpapar di papan informasi di stesen. — Route maps are displayed on the information boards at the station. Anda boleh rujuk di sana. — You can refer to them there. Destinasi anda ke mana? — Where is your destination?"
+    },
+    "t4_askprice": {
+      "id": "t4_askprice",
+      "prompt": "Tambang bergantung pada jarak dan jenis tiket. Untuk ke destinasi biasa seperti KLCC, tiket sehala berharga sekitar RM2.50. Anda nak tiket sehala atau pergi-balik?",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satuhala"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "kad",
+            "touchngo"
+          ],
+          "nextTurnId": "t5_finalise"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tambang bergantung pada jarak dan jenis tiket. — The fare depends on distance and ticket type. Untuk ke destinasi biasa seperti KLCC, tiket sehala berharga sekitar RM2.50. — For common destinations like KLCC, a one-way ticket costs around RM2.50. Anda nak tiket sehala atau pergi-balik? — Do you want a one-way or return ticket?"
+    },
+    "t4_confirm": {
+      "id": "t4_confirm",
+      "prompt": "Baik, tambang anda adalah RM2.50. Sila masukkan wang.",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "ya",
+            "sahkan",
+            "ok"
+          ],
+          "nextTurnId": "t5_finalise"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "batal"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, tambang anda adalah RM2.50. — Alright, your fare is RM2.50. Sila masukkan wang. — Please insert money."
+    },
+    "t5_finalise": {
+      "id": "t5_finalise",
+      "prompt": "Terima kasih, ini tiket anda. Sila pastikan anda simpan sehingga keluar dari stesen.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih, ini tiket anda. — Thank you, here is your ticket. Sila pastikan anda simpan sehingga keluar dari stesen. — Please ensure you keep it until you exit the station."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh anda ulang sekali lagi? — Sorry, could you repeat that? Saya tidak faham. — I didn't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, terima kasih. — Alright, thank you. Selamat jalan! — Have a good journey!",
+      "isTerminal": true
+    }
+  }
+}

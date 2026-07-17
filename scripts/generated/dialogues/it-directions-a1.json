@@ -1,0 +1,139 @@
+{
+  "id": "dlg-it-directions-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "directions",
+  "title": "Chiedere indicazioni",
+  "opening": "Mi scusi, posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Mi scusi, posso aiutarla?",
+      "branches": [
+        {
+          "keywords": [
+            "banca",
+            "dov'èlabanca"
+          ],
+          "nextTurnId": "t2_dir"
+        },
+        {
+          "keywords": [
+            "",
+            "scusi",
+            "dov'è"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), posso (POS-soh) aiutarla (ah-yoo-TAR-lah)? — Excuse me, can I help you?"
+    },
+    "t2_dir": {
+      "id": "t2_dir",
+      "prompt": "Certo! Gira a destra qui, poi vai sempre dritto.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "capito",
+            "bene"
+          ],
+          "nextTurnId": "t3_understood"
+        },
+        {
+          "keywords": [
+            "lontano",
+            "quanto"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "dove",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (CHER-toh)! Gira (JEE-rah) a destra (ah DES-trah) qui (kwee), poi (poy) vai (vai) sempre (SEM-preh) dritto (DRIT-toh). — Of course! Turn right here, then go straight."
+    },
+    "t3_understood": {
+      "id": "t3_understood",
+      "prompt": "Prego! È facile da trovare.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "mille"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "piedi",
+            "autobus",
+            "come"
+          ],
+          "nextTurnId": "t4_transport"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Prego (PREH-goh)! È facile (eh FAH-chee-leh) da trovare (dah tro-VAH-reh). — You're welcome! It's easy to find."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "No, non è lontano. È circa cinque minuti a piedi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "mille"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No (noh), non (non) è lontano (eh lon-TAH-noh). È circa (eh CHEER-kah) cinque (CHEEN-kweh) minuti (mee-NOO-tee) a piedi (ah PYEH-dee). — No, it's not far. It's about five minutes on foot."
+    },
+    "t4_transport": {
+      "id": "t4_transport",
+      "prompt": "È meglio andare a piedi, è molto vicino.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "mille"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "È meglio (eh MEL-lyoh) andare (an-DAH-reh) a piedi (ah PYEH-dee), è molto (eh MOL-toh) vicino (vee-CHEE-noh). — It's better to go on foot, it's very close."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito. Può ripetere?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), non ho capito (non oh kah-PEE-toh). Può ripetere (pwoh ree-PEH-teh-reh)? — Excuse me, I didn't understand. Can you repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Prego! Buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Prego (PREH-goh)! Buona giornata (BWOH-nah johr-NAH-tah)! — You're welcome! Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

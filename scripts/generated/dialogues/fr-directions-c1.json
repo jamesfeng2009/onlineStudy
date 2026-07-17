@@ -1,0 +1,362 @@
+{
+  "id": "dlg-fr-directions-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "directions",
+  "title": "Demander son chemin en ville",
+  "opening": "Bonjour, bien sûr, je peux vous aider. Où souhaitez-vous vous rendre exactement ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, bien sûr, je peux vous aider. Où souhaitez-vous vous rendre exactement ?",
+      "branches": [
+        {
+          "keywords": [
+            "placebellecour",
+            "bellecour"
+          ],
+          "nextTurnId": "t2_bellecour"
+        },
+        {
+          "keywords": [
+            "gare",
+            "partdieu"
+          ],
+          "nextTurnId": "t2_gare"
+        },
+        {
+          "keywords": [
+            "musée",
+            "beauxarts"
+          ],
+          "nextTurnId": "t2_musee"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello, of course, I can help you. Where exactly would you like to go? (Bohn-zhoor, byang soor, zhuh puh voo zay-day. Oo soo-eh-tay-voo voo rahn-druh eg-zak-tuh-mahng ?)"
+    },
+    "t2_bellecour": {
+      "id": "t2_bellecour",
+      "prompt": "La Place Bellecour, c'est assez simple. Vous devez prendre la rue de la République tout droit, sur environ cinq cents mètres. Vous ne pourrez pas la manquer, c'est une grande place emblématique avec la statue équestre de Louis XIV au centre. C'est à deux pas d'ici.",
+      "branches": [
+        {
+          "keywords": [
+            "combien",
+            "loin",
+            "distance"
+          ],
+          "nextTurnId": "t3_distance"
+        },
+        {
+          "keywords": [
+            "transport",
+            "métro",
+            "bus"
+          ],
+          "nextTurnId": "t3_transport"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t4_confirm_understanding"
+        },
+        {
+          "keywords": [
+            "",
+            "dautre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Place Bellecour, it's quite simple. You need to take Rue de la République straight ahead, for about five hundred meters. You won't be able to miss it, it's a large, emblematic square with the equestrian statue of Louis XIV in the center. It's just a stone's throw from here. (Lah Plahs Bell-koor, say ah-seh sam-pluh. Voo duh-vay prahndr lah roo duh lah Ray-poo-bleek too drwah, soor ahn-vee-rohn sang sahng mehtr. Voo nuh poo-ray pah lah mahn-kay, set oon grahnd plahs ahn-blay-mah-teek ah-vek lah stah-too ay-kes-truh duh Lwee Kat-orz oh sahn-truh. Say ah doo pah dee-see.)"
+    },
+    "t2_gare": {
+      "id": "t2_gare",
+      "prompt": "La gare de la Part-Dieu est un peu plus éloignée. Le plus simple serait de prendre le métro B, direction Charpennes, depuis la station proche de la place Jean Macé. C'est à quelques stations.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "où",
+            "station"
+          ],
+          "nextTurnId": "t4_metro_gare"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Part-Dieu station is a little further. The easiest way would be to take metro B, direction Charpennes, from the station near Place Jean Macé. It's a few stops away."
+    },
+    "t2_musee": {
+      "id": "t2_musee",
+      "prompt": "Le Musée des Beaux-Arts se trouve juste derrière la Place des Terreaux. Vous pouvez marcher tout droit sur la rue de la République, puis tourner à gauche après l'Opéra. C'est tout près.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "temps",
+            "loin"
+          ],
+          "nextTurnId": "t3_distance_musee"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The Museum of Fine Arts is just behind Place des Terreaux. You can walk straight down Rue de la République, then turn left after the Opera. It's very close."
+    },
+    "t3_distance": {
+      "id": "t3_distance",
+      "prompt": "À pied, cela vous prendra une bonne dizaine de minutes, pas plus. Si vous êtes pressé, le métro A ou D vous y mènera en une station depuis la station Bellecour, qui est juste là, à deux pas. (Ah pyay, suh-lah voo prahn-drah oon bon dee-zen duh mee-noot, pah ploos. See voo zet preh-say, luh may-troh ah oo day voo zee may-nuh-rah ahn oon stah-syon duh-pwee lah stah-syon Bell-koor, kee eh joost lah.)",
+      "branches": [
+        {
+          "keywords": [
+            "où",
+            "station",
+            "entrée"
+          ],
+          "nextTurnId": "t4_metro_location"
+        },
+        {
+          "keywords": [
+            "marcher",
+            "pied",
+            "préfère"
+          ],
+          "nextTurnId": "t4_walk_confirm"
+        },
+        {
+          "keywords": [
+            "merci",
+            "clair",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot, it will take you a good ten minutes, no more. If you're in a hurry, metro line A or D will take you there in one stop from Bellecour station, which is right here, a stone's throw away."
+    },
+    "t3_transport": {
+      "id": "t3_transport",
+      "prompt": "Le plus simple est le métro A ou D, direction Perrache. La station Bellecour est juste en face de vous, vous ne pouvez pas la manquer. C'est juste une station.",
+      "branches": [
+        {
+          "keywords": [
+            "entrée",
+            "où"
+          ],
+          "nextTurnId": "t4_metro_location"
+        },
+        {
+          "keywords": [
+            "marcher",
+            "pied"
+          ],
+          "nextTurnId": "t4_walk_confirm"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The simplest is metro A or D, direction Perrache. Bellecour station is right in front of you, you can't miss it. It's just one stop. (Luh ploos sam-pluh eh luh may-troh ah oo day, dee-rek-syon Peh-rahsh. Lah stah-syon Bell-koor eh joost ahn fahs duh voo, voo nuh poo-vay pah lah mahn-kay. Say joost oon stah-syon.)"
+    },
+    "t3_distance_musee": {
+      "id": "t3_distance_musee",
+      "prompt": "À pied, cela vous prendra cinq à sept minutes maximum. C'est une balade agréable, en plein centre-ville.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "On foot, it will take you five to seven minutes maximum. It's a pleasant stroll, right in the city center."
+    },
+    "t4_metro_location": {
+      "id": "t4_metro_location",
+      "prompt": "L'entrée de la station Bellecour est juste en face de l'Office de Tourisme, un grand bâtiment en pierre un peu plus loin sur votre gauche. Vous la verrez sans peine.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "parfait",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "dautre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The entrance to Bellecour station is right in front of the Tourist Office, a large stone building a little further on your left. You'll see it without difficulty. (Lahn-tray duh lah stah-syon Bell-koor eh joost ahn fahs duh l'Oh-fees duh Too-reezm, uhn grahng bah-tee-mahng ahn pyerr uhn puh ploos lwang soor voh-truh gohsh. Voo lah veh-ray sahng pen.)"
+    },
+    "t4_walk_confirm": {
+      "id": "t4_walk_confirm",
+      "prompt": "D'accord, c'est une très belle promenade de toute façon. Vous longez la rue de la République en admirant les vitrines. Vous y serez en un clin d'œil. N'hésitez pas si vous avez une autre question.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "parfait",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "dautre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, it's a very nice walk anyway. You'll go along Rue de la République admiring the shop windows. You'll be there in a flash. Don't hesitate if you have another question. (Dah-kor, sayt oon treh bell proh-muh-nahd duh toot fah-sohn. Voo lohn-zhay lah roo duh lah Ray-poo-bleek ahn ad-mee-rahng lay vee-treen. Voo zee suh-ray ahn uhn klang dyeuh. Neh-zee-tay pah see voo zah-vay oon ot-ruh kes-tyohn.)"
+    },
+    "t4_confirm_understanding": {
+      "id": "t4_confirm_understanding",
+      "prompt": "De rien ! Est-ce que les explications sont suffisamment claires ou souhaitez-vous que je précise un point ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "clair",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "non",
+            "répéter",
+            "préciser"
+          ],
+          "nextTurnId": "t2_bellecour"
+        },
+        {
+          "keywords": [
+            "",
+            "dautre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You're welcome! Are the explanations clear enough, or would you like me to clarify a point?"
+    },
+    "t4_metro_gare": {
+      "id": "t4_metro_gare",
+      "prompt": "La station Jean Macé est juste à la sortie de la place, en allant vers le sud. C'est très bien indiqué.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "clair"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "autre"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jean Macé station is just at the exit of the square, heading south. It's very well signposted."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous reformuler ou répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you rephrase or repeat, please? (Pahr-dohn, zhuh nay pah byang say-zee. Poo-ryeh-voo ruh-for-myoo-lay oo ray-pay-tay, seel voo pleh ?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Avec plaisir ! Bonne continuation et bonne journée à vous !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "With pleasure! Have a good continuation and a good day! (Ah-vek pleh-zeer! Bon kohn-tee-nyoo-ah-syon eh bon zhoor-nay ah voo!)",
+      "isTerminal": true
+    }
+  }
+}

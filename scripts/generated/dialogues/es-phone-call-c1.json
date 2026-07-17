@@ -1,0 +1,164 @@
+{
+  "id": "dlg-es-phone-call-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Llamada Telefónica Profesional",
+  "opening": "Oficina del Dr. Ramírez, buenos días. Habla Laura. ¿En qué puedo ayudarle?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Oficina del Dr. Ramírez, buenos días. Habla Laura. ¿En qué puedo ayudarle?",
+      "branches": [
+        {
+          "keywords": [
+            "pedir",
+            "doctor",
+            "ramirez",
+            "hablar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "numero",
+            "correcto",
+            "es"
+          ],
+          "nextTurnId": "t_ask_name"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oficina del Dr. Ramírez, buenos días. Habla Laura. ¿En qué puedo ayudarle? — Dr. Ramírez's office, good morning. This is Laura speaking. How may I help you?"
+    },
+    "t_ask_name": {
+      "id": "t_ask_name",
+      "prompt": "Entendido. Para poderle asistir mejor, ¿con quién tengo el gusto de hablar?",
+      "branches": [
+        {
+          "keywords": [
+            "mi",
+            "nombre",
+            "soy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "dejar",
+            "mensaje"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. Para poderle asistir mejor, ¿con quién tengo el gusto de hablar? — Understood. To assist you better, with whom do I have the pleasure of speaking?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Comprendo. El doctor está en una consulta y no puede atender llamadas directamente en este momento. ¿Le gustaría dejarle un recado o prefiere que le diga que ha llamado?",
+      "branches": [
+        {
+          "keywords": [
+            "soy",
+            "nombre",
+            "importante",
+            "urgente"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cuando",
+            "libre",
+            "disponible"
+          ],
+          "nextTurnId": "t_callback_time"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Comprendo. El doctor está en una consulta y no puede atender llamadas directamente en este momento. ¿Le gustaría dejarle un recado o prefiere que le diga que ha llamado? — I understand. The doctor is currently with a patient and cannot take calls directly. Would you like to leave him a message, or would you prefer I just tell him you called?"
+    },
+    "t_callback_time": {
+      "id": "t_callback_time",
+      "prompt": "No le puedo dar una hora exacta, ya que depende de la duración de su consulta actual. ¿Le gustaría que le tomara los datos para que el doctor le devuelva la llamada?",
+      "branches": [
+        {
+          "keywords": [
+            "si",
+            "mensaje",
+            "devolver",
+            "llamada"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "llamare",
+            "mas tarde"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No le puedo dar una hora exacta, ya que depende de la duración de su consulta actual. ¿Le gustaría que le tomara los datos para que el doctor le devuelva la llamada? — I cannot give you an exact time, as it depends on the duration of his current consultation. Would you like me to take your details so the doctor can call you back?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Claro, anoto lo que necesite. ¿Cuál sería el mensaje y cuál es el número de teléfono donde le puede localizar el doctor?",
+      "branches": [
+        {
+          "keywords": [
+            "mensaje",
+            "favor",
+            "es",
+            "necesito"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Claro, anoto lo que necesite. ¿Cuál sería el mensaje y cuál es el número de teléfono donde le puede localizar el doctor? — Of course, I'll write down what you need. What would be the message and what is the phone number where the doctor can reach you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfecto, le transmitiré su mensaje y su número de contacto tan pronto como termine su consulta. ¿Hay algo más en lo que pueda ayudarle hoy?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "todo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto, le transmitiré su mensaje y su número de contacto tan pronto como termine su consulta. ¿Hay algo más en lo que pueda ayudarle hoy? — Perfect, I will convey your message and contact number as soon as his consultation finishes. Is there anything else I can help you with today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he entendido bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, no le he entendido bien. ¿Podría repetir, por favor? — Excuse me, I didn't understand you well. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De nada. Que tenga un buen día. — You're welcome. Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dlg-fr-taxi-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Conversation en taxi",
+  "opening": "Bonjour ! Où souhaitez-vous aller ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Où souhaitez-vous aller ?",
+      "branches": [
+        {
+          "keywords": [
+            "gare",
+            "aéroport",
+            "hôtel",
+            "hopital",
+            "musée"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour ! Où souhaitez-vous aller ? (bohn-joor! oo soo-eh-tay voo ah-lay? - Hello! Where would you like to go?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord. Voulez-vous que je prenne la route la plus rapide ou préférez-vous éviter les embouteillages même si c'est un peu plus long ?",
+      "branches": [
+        {
+          "keywords": [
+            "rapide",
+            "vite",
+            "plusvite"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord. Voulez-vous que je prenne la route la plus rapide ou préférez-vous éviter les embouteillages même si c'est un peu plus long ? (dah-kor. voo-lay voo kuh zhuh pren lah root lah ply ra-peed oo pray-fay-ray voo ay-vee-tay layz ahn-boo-tee-yahzh mem see seh uhn puh ply long? - All right. Do you want me to take the fastest route or would you prefer to avoid traffic jams even if it's a bit longer?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Très bien. Par la route la plus rapide, ce sera environ 20 minutes et 25 euros. Si nous évitons les bouchons, comptez plutôt 30 minutes et 30 euros.",
+      "branches": [
+        {
+          "keywords": [
+            "rapide",
+            "vite",
+            "25euros"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Par la route la plus rapide, ce sera environ 20 minutes et 25 euros. Si nous évitons les bouchons, comptez plutôt 30 minutes et 30 euros. (treh byang. par lah root lah ply ra-peed, suh suh-rah ahn-vee-rong vah min-uut eh vah-sank uh-ro. see nooz ay-vee-tong lay boo-shong, kohn-tay ply-toh trahnt min-uut eh trahnt uh-ro. - Very good. By the fastest route, it will be about 20 minutes and 25 euros. If we avoid traffic jams, count on more like 30 minutes and 30 euros.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "D'accord, nous prendrons la route la plus rapide. Comment préférez-vous payer, par carte ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "credit",
+            "bleue"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "All right, we'll take the fastest route. How would you prefer to pay, by card or cash?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pouvez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "oui",
+            "non",
+            "répéter",
+            "s'ilvousplait"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pouvez-vous répéter, s'il vous plaît ? (pahr-dong? poo-vay voo ray-pay-tay, seel voo pleh? - Pardon? Can you please repeat?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! C'est parti. Merci et bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect! Let's go. Thank you and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

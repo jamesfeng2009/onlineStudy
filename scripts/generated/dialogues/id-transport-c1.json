@@ -1,0 +1,229 @@
+{
+  "id": "dlg-id-transport-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Perjalanan Bus Antarkota",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu? Mau ke mana, Mas/Mbak?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu? Mau ke mana, Mas/Mbak?",
+      "branches": [
+        {
+          "keywords": [
+            "tiket",
+            "beli",
+            "pesan",
+            "surabaya",
+            "bandung",
+            "yogyakarta",
+            "semarang",
+            "solo",
+            "medan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Is there anything I can help you with? Where are you going, Sir/Madam?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, ke mana tujuan persisnya? Untuk tanggal berapa dan berapa orang? Apakah Anda prefer kelas eksekutif atau reguler?",
+      "branches": [
+        {
+          "keywords": [
+            "surabaya",
+            "bandung",
+            "yogyakarta",
+            "semarang",
+            "solo",
+            "medan",
+            "besok",
+            "lusa",
+            "hariini",
+            "satu",
+            "dua",
+            "tiga",
+            "eksekutif",
+            "reguler"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "fasilitas",
+            "kelas",
+            "bedanya"
+          ],
+          "nextTurnId": "t3_detail"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright), what is the exact destination? For what date and how many people? Do you prefer executive or regular class?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ada keberangkatan jam 9 pagi dan jam 3 sore untuk kelas eksekutif besok ke tujuan yang Anda sebutkan, dengan harga Rp 250.000 per orang. Bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "pagi",
+            "sore",
+            "jam9",
+            "jam3",
+            "oke",
+            "ambil",
+            "setuju"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "fasilitas",
+            "kelaslain",
+            "reguler",
+            "lebihmurah",
+            "diskon"
+          ],
+          "nextTurnId": "t3_detail"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ada keberangkatan jam 9 pagi (There are departures at 9 AM) and jam 3 sore (3 PM) for executive class tomorrow to your mentioned destination, at a price of Rp 250,000 per person. How does that sound?"
+    },
+    "t3_detail": {
+      "id": "t3_detail",
+      "prompt": "Untuk kelas eksekutif, kami menawarkan kursi reclining, AC, selimut, air mineral, dan toilet. Kelas reguler memang lebih hemat, sekitar Rp 150.000, tapi fasilitasnya standar tanpa selimut dan kursi biasa. Perjalanan bisa terasa lebih padat. Mana yang Anda pilih?",
+      "branches": [
+        {
+          "keywords": [
+            "eksekutif",
+            "pagi",
+            "sore",
+            "jam9",
+            "jam3",
+            "tetap",
+            "mahal"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kembali",
+            "pilihan",
+            "pertimbangkan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For executive class, we offer reclining seats, AC, blankets, mineral water, and a toilet. Regular class is indeed more economical, around Rp 150,000, but facilities are standard without blankets and with regular seats. The journey might feel more crowded. Which one do you choose?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, satu tiket eksekutif jam 9 pagi ke Surabaya. Total Rp 250.000. Pembayaran bisa tunai atau kartu. Ada hal lain yang ingin ditanyakan, mungkin terkait pemberhentian, transit, atau perkiraan waktu tempuh?",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "tunai",
+            "kartu",
+            "oke",
+            "ya",
+            "proses"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "berhenti",
+            "transit",
+            "restarea",
+            "waktu",
+            "tempuh",
+            "lama",
+            "tiba",
+            "sampai",
+            "perjalanan"
+          ],
+          "nextTurnId": "t4_info"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, one executive ticket for 9 AM to Surabaya. Total Rp 250,000. Payment can be cash or card. Is there anything else you'd like to ask, perhaps regarding stops, transfers, or estimated travel time?"
+    },
+    "t4_info": {
+      "id": "t4_info",
+      "prompt": "Bus akan berhenti dua kali di rest area untuk istirahat, sekitar 30 menit setiap pemberhentian. Ini perjalanan langsung, tanpa transit. Perkiraan waktu tempuh sekitar 10-12 jam, tergantung kondisi lalu lintas.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "baik",
+            "mengerti",
+            "bayar",
+            "siap"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bus will stop twice at rest areas for breaks, approximately 30 minutes each stop. This is a direct journey, without transfers. The estimated travel time is around 10-12 hours, depending on traffic conditions."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas. Mohon gunakan kata kunci yang relevan.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), could you please repeat that? I'm not quite clear. Please use relevant keywords."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Terima kasih. Ini tiket Anda dan kembaliannya. Pastikan Anda sudah berada di gerbang keberangkatan 30 menit sebelum jadwal. Selamat jalan dan semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Terima kasih (Thank you). Here is your ticket and change. Please ensure you are at the departure gate 30 minutes before the scheduled time. Selamat jalan (Have a good journey) and we hope you have a pleasant trip!",
+      "isTerminal": true
+    }
+  }
+}

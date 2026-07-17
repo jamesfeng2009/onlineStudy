@@ -1,0 +1,337 @@
+{
+  "id": "dlg-ms-directions-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "directions",
+  "title": "Mencari Arah di Jalan Raya",
+  "opening": "Assalamualaikum! Maafkan saya, boleh saya bertanya sesuatu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Assalamualaikum! Maafkan saya, boleh saya bertanya sesuatu?",
+      "branches": [
+        {
+          "keywords": [
+            "bank",
+            "stesen",
+            "balai polisi",
+            "hospital",
+            "pejabat pos",
+            "pasar",
+            "klinik"
+          ],
+          "nextTurnId": "t2_where"
+        },
+        {
+          "keywords": [
+            "arah",
+            "jalan",
+            "di mana",
+            "menara",
+            "hotel",
+            "taman"
+          ],
+          "nextTurnId": "t2_general"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "bukan",
+            "tak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Assalamualaikum! (Peace be upon you! — A common Malay greeting) Maafkan saya (mah-ahf-kan sa-ya), boleh saya bertanya sesuatu (boh-leh sa-ya ber-tan-ya se-su-ah-tu)? — Hello! Excuse me, may I ask something?"
+    },
+    "t2_where": {
+      "id": "t2_where",
+      "prompt": "Tentu, boleh saya tahu awak mencari tempat apa?",
+      "branches": [
+        {
+          "keywords": [
+            "bank",
+            "stesen",
+            "pasar",
+            "muzium",
+            "klinik",
+            "menara",
+            "hotel",
+            "taman"
+          ],
+          "nextTurnId": "t3_explain_path"
+        },
+        {
+          "keywords": [
+            "transport",
+            "bas",
+            "teksi"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (ten-too), boleh saya tahu (boh-leh sa-ya tah-hoo) awak mencari tempat apa (ah-wak men-cha-ri tem-pat ah-pa)? — Certainly, may I know what place you are looking for?"
+    },
+    "t2_general": {
+      "id": "t2_general",
+      "prompt": "Awak mencari arah ke mana? Mungkin ada tempat spesifik yang awak ingin cari?",
+      "branches": [
+        {
+          "keywords": [
+            "bank",
+            "stesen",
+            "pasar",
+            "muzium",
+            "menara",
+            "hotel",
+            "taman"
+          ],
+          "nextTurnId": "t3_explain_path"
+        },
+        {
+          "keywords": [
+            "sana",
+            "kawasan",
+            "sekitar",
+            "dekat"
+          ],
+          "nextTurnId": "t3_explain_nearby"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Awak mencari arah ke mana (ah-wak men-cha-ri ah-rah ke mah-na)? Mungkin ada tempat spesifik (moong-kin ah-da tem-pat spe-si-fik) yang awak ingin cari (yang ah-wak i-ngin cha-ri)? — Where are you looking for directions to? Perhaps there's a specific place you'd like to find?"
+    },
+    "t3_explain_path": {
+      "id": "t3_explain_path",
+      "prompt": "Baiklah. Untuk ke sana, awak perlu belok kanan di lampu isyarat pertama, kemudian terus berjalan kira-kira 200 meter. Awak akan nampak bangunan itu di sebelah kiri.",
+      "branches": [
+        {
+          "keywords": [
+            "jauh",
+            "dekat",
+            "lama",
+            "masa"
+          ],
+          "nextTurnId": "t4_distance_clarify"
+        },
+        {
+          "keywords": [
+            "bas",
+            "teksi",
+            "keretaapi",
+            "transport"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "faham",
+            "terima kasih",
+            "ok",
+            "jelas"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah. (bai-klah) Untuk ke sana, awak perlu belok kanan (boh-leh sa-ya tah-hoo) di lampu isyarat pertama, kemudian terus berjalan kira-kira 200 meter. Awak akan nampak bangunan itu di sebelah kiri. — Alright. To get there, you need to turn right at the first traffic light, then walk straight for about 200 meters. You will see the building on your left."
+    },
+    "t3_explain_nearby": {
+      "id": "t3_explain_nearby",
+      "prompt": "Di kawasan sekitar sini, ada beberapa kedai makan dan sebuah taman kecil. Kalau awak mencari sesuatu yang spesifik, saya boleh cuba bantu.",
+      "branches": [
+        {
+          "keywords": [
+            "bank",
+            "stesen",
+            "pasar",
+            "muzium",
+            "klinik"
+          ],
+          "nextTurnId": "t3_explain_path"
+        },
+        {
+          "keywords": [
+            "tandas",
+            "makan",
+            "minum",
+            "atm",
+            "kemudahan"
+          ],
+          "nextTurnId": "t4_amenities"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "explore",
+            "lihat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Di kawasan sekitar sini, ada beberapa kedai makan dan sebuah taman kecil. Kalau awak mencari sesuatu yang spesifik, saya boleh cuba bantu. — Around this area, there are a few eateries and a small park. If you're looking for something specific, I can try to help."
+    },
+    "t4_distance_clarify": {
+      "id": "t4_distance_clarify",
+      "prompt": "Ia tidak terlalu jauh, mungkin dalam lima hingga sepuluh minit berjalan kaki, bergantung kepada kelajuan awak.",
+      "branches": [
+        {
+          "keywords": [
+            "bas",
+            "teksi",
+            "transport"
+          ],
+          "nextTurnId": "t4_transport"
+        },
+        {
+          "keywords": [
+            "faham",
+            "terima kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ia tidak terlalu jauh, mungkin dalam lima hingga sepuluh minit berjalan kaki, bergantung kepada kelajuan awak. — It's not too far, maybe five to ten minutes on foot, depending on your speed."
+    },
+    "t4_transport": {
+      "id": "t4_transport",
+      "prompt": "Untuk ke sana dengan bas, awak boleh tunggu di perhentian bas di hadapan sana. Bas nombor 17 akan lalu di sana. Teksi juga mudah didapati.",
+      "branches": [
+        {
+          "keywords": [
+            "tambang",
+            "berapa",
+            "laluan",
+            "harga"
+          ],
+          "nextTurnId": "t5_fare_route"
+        },
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk ke sana dengan bas, awak boleh tunggu di perhentian bas di hadapan sana. Bas nombor 17 akan lalu di sana. Teksi juga mudah didapati. — To get there by bus, you can wait at the bus stop up ahead. Bus number 17 will pass by there. Taxis are also easy to find."
+    },
+    "t4_amenities": {
+      "id": "t4_amenities",
+      "prompt": "Tandas awam ada di dalam pusat membeli-belah di seberang jalan, kira-kira 50 meter dari sini. ATM pula ada di bank yang sama.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tandas awam ada di dalam pusat membeli-belah di seberang jalan, kira-kira 50 meter dari sini. ATM pula ada di bank yang sama. — Public restrooms are inside the shopping mall across the street, about 50 meters from here. ATMs are at the same bank."
+    },
+    "t5_fare_route": {
+      "id": "t5_fare_route",
+      "prompt": "Tambang bas biasanya RM1.50 hingga RM2.00 bergantung pada jarak. Laluan bas itu akan melalui beberapa hentian utama sebelum sampai ke destinasi.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "ok",
+            "baiklah"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tambang bas biasanya RM1.50 hingga RM2.00 bergantung pada jarak. Laluan bas itu akan melalui beberapa hentian utama sebelum sampai ke destinasi. — Bus fare is usually RM1.50 to RM2.00 depending on the distance. The bus route will pass through several main stops before reaching the destination."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak begitu faham. Boleh awak ulang semula?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Maaf, saya tidak begitu faham. (mah-ahf, sa-ya tee-dak be-gee-too fah-ham) Boleh awak ulang semula? (boh-leh ah-wak oo-lang se-moo-la) — Sorry, I don't quite understand. Could you repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Selamat jalan! Harap awak jumpa apa yang dicari.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a good journey! I hope you find what you're looking for.",
+      "isTerminal": true
+    }
+  }
+}

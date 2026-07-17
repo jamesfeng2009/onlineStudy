@@ -1,0 +1,204 @@
+{
+  "id": "dlg-es-weather-b1",
+  "language": "es",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Charlando sobre el tiempo",
+  "opening": "¿Qué tiempo hace hoy por tu zona? ¿Has visto el pronóstico?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¿Qué tiempo hace hoy por tu zona? ¿Has visto el pronóstico?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "soleado",
+            "calor",
+            "bueno",
+            "bien",
+            "despejado"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lluvia",
+            "lluvioso",
+            "frío",
+            "nublado",
+            "mal",
+            "malotiempo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no sé",
+            "nohevisto",
+            "niidea",
+            "notengoidea"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Qué tiempo hace hoy por tu zona? — Kay tee-em-poh ah-thay oy por too thoh-nah? — What's the weather like in your area today? Have you seen the forecast?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Qué bien! Me alegro. ¿Tienes algún plan para aprovechar el buen tiempo?",
+      "branches": [
+        {
+          "keywords": [
+            "parque",
+            "playa",
+            "salir",
+            "paseo",
+            "deporte",
+            "montaña"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "nada",
+            "trabajar",
+            "estudiar",
+            "casa",
+            "relax"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bien! Me alegro. — Kay bee-en! Meh ah-leh-groh. — How nice! I'm glad. Do you have any plans to enjoy the good weather?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vaya, qué pena. Con este tiempo, ¿prefieres quedarte en casa o sueles salir igual?",
+      "branches": [
+        {
+          "keywords": [
+            "casa",
+            "quedarme",
+            "película",
+            "leer",
+            "descansar"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "salir",
+            "igual",
+            "paraguas",
+            "tengoque",
+            "necesito"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vaya, qué pena. — Vah-yah, kay peh-nah. — Oh, what a shame. With this weather, do you prefer to stay home or do you usually go out anyway?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ah, entiendo. Pues los días están cambiando mucho últimamente. ¿Hay alguna estación del año que te guste más por el tiempo que suele hacer?",
+      "branches": [
+        {
+          "keywords": [
+            "primavera",
+            "verano",
+            "otoño",
+            "invierno"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¿Hay alguna estación — Ay al-goo-nah es-tah-thyohn — Is there a season of the year that you like more because of the weather it usually has?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¡Qué bien! ¿Y qué tienes pensado hacer exactamente? Espero que lo disfrutes mucho.",
+      "branches": [
+        {
+          "keywords": [
+            "paseo",
+            "café",
+            "amigos",
+            "deporte",
+            "leer",
+            "comer"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "How nice! And what exactly do you plan to do? I hope you enjoy it a lot."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ah, entiendo. A veces es bueno quedarse en casa. ¿Qué sueles hacer cuando no hay planes y el tiempo no acompaña?",
+      "branches": [
+        {
+          "keywords": [
+            "leer",
+            "película",
+            "cocinar",
+            "descansar",
+            "series",
+            "jugar"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I see. Sometimes it's good to stay home. What do you usually do when there are no plans and the weather isn't good?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Entiendo. ¿Y por qué te gusta esa estación en particular? A mí me encanta la primavera por las flores y la temperatura.",
+      "branches": [
+        {
+          "keywords": [
+            "calor",
+            "frío",
+            "actividades",
+            "bonito",
+            "naturaleza",
+            "vacaciones"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. And why do you like that particular season? I love spring for the flowers and the temperature."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, no te he entendido muy bien. ¿Podrías repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite understand you. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ha sido un placer charlar contigo sobre el tiempo. ¡Que tengas un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's been a pleasure chatting with you about the weather. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

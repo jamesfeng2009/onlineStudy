@@ -1,0 +1,217 @@
+{
+  "id": "dlg-en-bank-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "At the Bank",
+  "opening": "Hello. How can I help you?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello. How can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "open account",
+            "account"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "exchange money",
+            "money"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pin",
+            "atm",
+            "reset"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "looking",
+            "hello",
+            "hi",
+            "bye",
+            "goodbye",
+            "help"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello. (Heh-loh) How can I help you? (How kan ai help yoo?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "You want to open an account. Do you have ID? Like a passport?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i have",
+            "passport",
+            "id"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "i do not have"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "what is id",
+            "what is passport"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You want to open an account. (yoo want too oh-pen an ah-count) Do you have ID? (Doo yoo hav eye-dee?) Like a passport? (Laik ah pass-port?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "You want to exchange money. What currency do you want? Dollars? Euros?",
+      "branches": [
+        {
+          "keywords": [
+            "dollars",
+            "usd"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "yen",
+            "pounds",
+            "gbp"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You want to exchange money. (yoo want too eks-chaynj muh-nee) What currency do you want? (Whaht kur-uhn-see doo yoo want?) Dollars? (Dah-lerz?) Euros? (Yoo-rohz?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "You need help with ATM or PIN. Do you need a new PIN or ATM help?",
+      "branches": [
+        {
+          "keywords": [
+            "new pin",
+            "reset pin",
+            "pin"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "card",
+            "money",
+            "transfer"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "You need help with ATM or PIN. (yoo need help with ay-tee-em or pin) Do you need a new PIN or ATM help? (Doo yoo need a noo pin or ay-tee-em help?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Great! Please come this way. We can open your account now.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thank you",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great! Please come this way. We can open your account now."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "No ID? I am sorry. You need ID to open an account. Please come back with ID.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thank you",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No ID? I am sorry. You need ID to open an account. Please come back with ID."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Okay. How much money do you want to exchange?",
+      "branches": [
+        {
+          "keywords": [
+            "one hundred",
+            "100",
+            "two hundred",
+            "200"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. How much money do you want to exchange?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Okay. Please go to desk three. They can help you.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "thank you",
+            "thanks"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay. Please go to desk three. They can help you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I do not understand. Can you say that again, please?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I do not understand. (Saw-ree, ai doo not un-der-stand) Can you say that again, please? (Kan yoo say that ah-gen, pleez?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Okay. Thank you. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay. Thank you. (Oh-kay. Thank yoo) Goodbye! (Good-bai!)",
+      "isTerminal": true
+    }
+  }
+}

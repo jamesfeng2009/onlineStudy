@@ -1,0 +1,141 @@
+{
+  "id": "dlg-id-post-office-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Pengiriman Paket di Kantor Pos",
+  "opening": "Selamat pagi/siang, Bapak/Ibu. Ada yang bisa saya bantu hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/siang, Bapak/Ibu (Sa-la-mat pa-gi/si-ang, Ba-pak/I-bu). Ada yang bisa saya bantu hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "paket",
+            "barang"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "surat",
+            "tercatat"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning/afternoon, Sir/Madam (Sa-la-mat pa-gi/si-ang, Ba-pak/I-bu). How may I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Bapak/Ibu (Ba-ik, Ba-pak/I-bu). Mau dikirim ke mana paketnya dan apa jenis barangnya? Untuk keperluan bea cukai, mohon jelaskan secara rinci.",
+      "branches": [
+        {
+          "keywords": [
+            "internasional",
+            "luar",
+            "negeri"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "domestik",
+            "lokal"
+          ],
+          "nextTurnId": "t5_simplified"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, Sir/Madam (Ba-ik, Ba-pak/I-bu). Where is the package going and what kind of items are inside? For customs purposes, please describe in detail."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk pengiriman internasional (Un-tuk pe-ngi-ri-man in-ter-na-sio-nal), Anda perlu mengisi formulir bea cukai CN22/CN23. Ada dua opsi layanan: kilat atau reguler. Keduanya dilengkapi nomor resi untuk pelacakan. Apakah Anda memerlukan asuransi tambahan?",
+      "branches": [
+        {
+          "keywords": [
+            "formulir",
+            "bea",
+            "cukai"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For international shipping (Un-tuk pe-ngi-ri-man in-ter-na-sio-nal), you'll need to fill out customs form CN22/CN23. There are two service options: express or regular. Both come with a tracking number. Do you require additional insurance?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Nomor resi akan tercetak di slip pengiriman Anda. Anda bisa melacaknya melalui situs web kami. Kalau untuk surat tercatat, prosesnya serupa, namun biasanya untuk dokumen penting dengan bukti pengiriman. Apakah Anda siap mengisi formulirnya?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The tracking number will be printed on your shipping slip. You can track it via our website. For registered mail, the process is similar, but usually for important documents with proof of delivery. Are you ready to fill out the form?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, silakan menuju meja di sana untuk mengisi formulir bea cukai dan detail pengiriman. Setelah itu, kembali ke sini untuk penimbangan dan pembayaran.",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "lanjut"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, please head to the table over there to fill out the customs form and shipping details. After that, return here for weighing and payment."
+    },
+    "t5_simplified": {
+      "id": "t5_simplified",
+      "prompt": "Untuk pengiriman domestik, prosesnya lebih sederhana. Silakan serahkan paketnya untuk penimbangan dan kami akan memproses detail pengirimannya.",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For domestic shipping, the process is simpler. Please hand over the package for weighing and we will process the shipping details."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisakah Anda mengulanginya? Saya kurang memahami maksud Anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, could you please repeat that? I didn't quite understand what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih atas kunjungannya, Bapak/Ibu. Semoga hari Anda menyenangkan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your visit, Sir/Madam. Have a pleasant day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "id": "dlg-it-phone-call-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Una telefonata inaspettata",
+  "opening": "Pronto? Ah, buongiorno! Chi parla, scusi? Non ho il numero in rubrica.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Pronto? Ah, buongiorno! Chi parla, scusi? Non ho il numero in rubrica.",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "chiamo",
+            "parlo",
+            "qui"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cercavo",
+            "vorrei",
+            "parlare"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "sbagliato",
+            "ho sbagliato"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello? (pronto) Ah, good morning! (buongiorno) Who's speaking, excuse me? (chi parla, scusi) I don't have this number in my contacts. (non ho il numero in rubrica)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, [Nome dell'utente], che piacere! Non mi aspettavo una sua chiamata oggi. Tutto bene? A cosa devo l'onore?",
+      "branches": [
+        {
+          "keywords": [
+            "devo",
+            "chiamavo",
+            "riguardo",
+            "problema",
+            "motivo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "volevo",
+            "solo",
+            "salutare",
+            "sentirti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "disturbo",
+            "momento",
+            "occupato"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, [User's Name], what a pleasure! (che piacere) I wasn't expecting your call today. (non mi aspettavo una sua chiamata) All good? To what do I owe the honor? (a cosa devo l'onore)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Mi dispiace, ma la persona che cerca non è disponibile in questo momento. Posso chiederle chi chiama e se desidera lasciare un messaggio?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "lasciare",
+            "messaggio"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "richiamerò",
+            "richiamo",
+            "ringrazio"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "quando",
+            "torna",
+            "disponibile"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry, but the person you're looking for (la persona che cerca) is not available at the moment. (non è disponibile in questo momento) May I ask who's calling (chi chiama) and if you'd like to leave a message? (se desidera lasciare un messaggio)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Temo che abbia sbagliato numero. Qui è la redazione di 'Critica Letteraria'. Forse cercava qualcun altro?",
+      "branches": [
+        {
+          "keywords": [
+            "scusi",
+            "errore",
+            "chiedo",
+            "perdone"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm afraid (temo) you have the wrong number. (abbia sbagliato numero) This is the editorial office of 'Literary Criticism'. Perhaps you were looking for someone else?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Capisco. Allora, prenderò nota di tutto e glielo riferirò appena possibile. C'è qualcos'altro che dovrei aggiungere o un numero a cui farla richiamare?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "basta",
+            "grazie",
+            "tutto"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. (capisco) So, I'll make a note of everything (prenderò nota di tutto) and convey it to him/her as soon as possible. (glielo riferirò appena possibile) Is there anything else I should add or a number for him/her to call you back?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Assolutamente no, non disturba affatto! Anzi, stavo proprio per prendere una pausa caffè. Dimmi pure, sono tutt'orecchi.",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "allora",
+            "volevo",
+            "bene",
+            "certo"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolutely not, (assolutamente no) you're not disturbing at all! (non disturba affatto) In fact, I was just about to take a coffee break. (stavo proprio per prendere una pausa caffè) Go ahead, I'm all ears. (sono tutt'orecchi)"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Dovrebbe rientrare tra un paio d'ore, non prima. Se è una questione urgente, posso provare a contattarlo sul cellulare, ma non garantisco nulla.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "allora",
+            "richiamo",
+            "aspetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "urgente",
+            "prova",
+            "sì",
+            "contatti"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "He/she should be back (dovrebbe rientrare) in a couple of hours, not before. If it's an urgent matter, I can try to contact him/her on his/her mobile, but I can't guarantee anything."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non l'ho sentita bene. Potrebbe ripetere, per cortesia?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't hear you well. Could you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "La ringrazio per la chiamata e le auguro una buona giornata! Arrivederci.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for the call and I wish you a good day! Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

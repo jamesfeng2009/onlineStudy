@@ -1,0 +1,195 @@
+{
+  "id": "dlg-es-phone-call-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Una llamada inesperada",
+  "opening": "¿Sí? Disculpe, ¿con quién tengo el placer de hablar a estas horas?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¿Sí? Disculpe, ¿con quién tengo el placer de hablar a estas horas?",
+      "branches": [
+        {
+          "keywords": [
+            "soy",
+            "habla",
+            "llama",
+            "es",
+            "mire"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "quería",
+            "necesito",
+            "pregunta",
+            "hablarcon"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "disculpe"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sí? (See?) Excuse me, with whom do I have the pleasure of speaking at this hour?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he oído bien. ¿Podría repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "claro"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I haven't heard you well. Could you repeat, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Ah, [nombre]! Qué sorpresa. ¿A qué se debe el honor de su llamada? No le esperaba, la verdad.",
+      "branches": [
+        {
+          "keywords": [
+            "quería",
+            "necesito",
+            "espor",
+            "llamopor",
+            "asunto"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "está",
+            "seencuentra",
+            "con",
+            "hablarcon"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "perdone"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, [name]! (Ah, [NAHM-bre]!) What a surprise. To what do I owe the honor of your call? I wasn't expecting it, honestly."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Lo siento, la persona que busca no se encuentra en este preciso instante. Está fuera de la oficina/en una reunión/de viaje. ¿Quiere dejarle algún recado o prefiere que le diga que ha llamado?",
+      "branches": [
+        {
+          "keywords": [
+            "recado",
+            "mensaje",
+            "dejar",
+            "sí"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "gracias",
+            "volveré",
+            "llamaré",
+            "otromomento"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "entiendo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm sorry, the person you are looking for is not available at this very moment. (Está fuera de la oficina/en una reunión/de viaje - He/She is out of the office/in a meeting/traveling.) Do you want to leave him/her a message or would you prefer I tell him/her you called?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Entiendo. Pues dígame, soy todo oídos. ¿Cómo puedo asistirle con eso? No se ande con rodeos.",
+      "branches": [
+        {
+          "keywords": [
+            "proyecto",
+            "información",
+            "cita",
+            "asunto",
+            "sobre"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "hablarcon",
+            "pasarcon",
+            "director",
+            "gerente"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "vale"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. (Entiendo - EHN-tyehn-doh) Well, tell me, I'm all ears. (soy todo oídos - SOY TOH-doh OH-ee-dohs) How can I assist you with that? Don't beat around the bush."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "De acuerdo, estoy tomando nota. Puede dictarme lo que desee que le transmita. Asegúrese de ser conciso.",
+      "branches": [
+        {
+          "keywords": [
+            "dígale",
+            "infórmele",
+            "que",
+            "porfavor"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "cambiodemente"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I'm taking notes. You can dictate what you wish me to convey to him/her. (Asegúrese de ser conciso - Ah-seh-GOO-reh-seh deh sehr kohn-SEE-soh - Make sure to be concise.)"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfecto, le haré llegar su mensaje/lo que me ha comentado. Muchas gracias por su llamada y que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Perfect, I will pass on your message/what you told me. Thank you very much for your call and have a good day.",
+      "isTerminal": true
+    }
+  }
+}

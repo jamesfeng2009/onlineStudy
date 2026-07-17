@@ -1,0 +1,206 @@
+{
+  "id": "dlg-ms-phone-call-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon di Pejabat",
+  "opening": "Hello, syarikat ABC. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, syarikat ABC. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "bercakap",
+            "encik",
+            "puan",
+            "cari",
+            "ingin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "siapa",
+            "ini",
+            "telefon"
+          ],
+          "nextTurnId": "t-identify_caller"
+        },
+        {
+          "keywords": [
+            "salah",
+            "tersalah",
+            "maaf",
+            "nombor"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "He-lo, sy-a-ri-kat ABC. Bo-leh sa-ya ban-tu? — Hello, ABC company. How can I help you?"
+    },
+    "t-identify_caller": {
+      "id": "t-identify_caller",
+      "prompt": "Saya Hawa dari bahagian khidmat pelanggan. Boleh saya tahu siapa di sana?",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mesej",
+            "tinggalkan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-ya Ha-wa da-ri ba-ha-gian khid-mat pe-lang-gan. Bo-leh sa-ya ta-hu sia-pa di sa-na? — I'm Hawa from customer service. May I know who is calling?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, Encik Tan tiada di pejabat sekarang. Ada apa-apa mesej yang ingin anda sampaikan?",
+      "branches": [
+        {
+          "keywords": [
+            "mesej",
+            "tinggalkan",
+            "sampaikan",
+            "pesan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "balik",
+            "bila",
+            "datang",
+            "tersedia",
+            "kembali"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "telefon",
+            "kembali",
+            "nanti",
+            "lagi",
+            "hubungi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, En-cik Tan tia-da di pe-ja-bat se-ka-rang. A-da a-pa-a-pa me-sej yang i-ngin an-da sam-pai-kan? — Oh, Mr. Tan is not in the office right now. Is there any message you'd like to leave?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baiklah, apakah mesejnya? Saya akan pastikan Encik Tan menerimanya.",
+      "branches": [
+        {
+          "keywords": [
+            "penting",
+            "dokumen",
+            "mesyuarat",
+            "maklumat",
+            "beritahu",
+            "sila",
+            "urgent"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bai-klah, a-pa-kah me-sej-nya? Sa-ya a-kan pas-ti-kan En-cik Tan me-ne-ri-ma-nya. — Alright, what is the message? I will make sure Mr. Tan receives it."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Beliau dijangka kembali selepas makan tengah hari, sekitar jam 2 petang. Adakah anda ingin meninggalkan mesej?",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "telefon",
+            "kembali",
+            "nanti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "mesej",
+            "tinggalkan",
+            "sampaikan",
+            "pesan",
+            "ya"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Be-liau di-jang-ka kem-ba-li se-le-pas ma-kan te-ngah ha-ri, se-ki-tar jam 2 pe-tang. A-da-kah an-da i-ngin me-ning-gal-kan me-sej? — He is expected back after lunch, around 2 PM. Would you like to leave a message?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bo-leh u-lang se-ka-li la-gi? Sa-ya ku-rang je-las. — Sorry, could you repeat that? I'm not clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya akan sampaikan. Terima kasih kerana menghubungi kami. Selamat tinggal.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Bai-klah, sa-ya a-kan sam-pai-kan. Te-ri-ma ka-sih ke-ra-na me-ngu-bung-gi ka-mi. Se-la-mat ting-gal. — Alright, I will convey it. Thank you for contacting us. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "dlg-de-bank-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "bank",
+  "title": "Bei der Bank",
+  "opening": "Guten Tag! Herzlich willkommen bei unserer Bank. Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Herzlich willkommen bei unserer Bank. Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "konto",
+            "eröffnen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "geld",
+            "wechseln"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "geldautomat",
+            "automat",
+            "karte"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tag! Herz-lich vil-kom-men bei oon-ze-rer Bank. Vee kan ish ee-nen hel-fen? — Good day! Welcome to our bank. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Möchten Sie ein Girokonto oder ein Sparkonto eröffnen?",
+      "branches": [
+        {
+          "keywords": [
+            "girokonto",
+            "normales"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Would you like to open a checking account or a savings account?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Welche Währung möchten Sie wechseln? Haben Sie US-Dollar oder Britische Pfund?",
+      "branches": [
+        {
+          "keywords": [
+            "us-dollar",
+            "dollar"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Which currency would you like to exchange? Do you have US dollars or British pounds?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Was ist das Problem mit dem Geldautomaten? Wurde Ihre Karte eingezogen oder gibt es kein Geld?",
+      "branches": [
+        {
+          "keywords": [
+            "karte",
+            "eingezogen"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What is the problem with the ATM? Was your card swallowed, or is there no money?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Alles klar. Dafür benötigen wir Ihren Personalausweis und ein Formular. Wir können das jetzt machen.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. For that, we need your ID card and a form. We can do that now."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gut. Bitte geben Sie mir das Geld. Ich kann es sofort für Sie wechseln.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good. Please give me the money. I can exchange it for you immediately."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Verstehe. Ich kann Ihnen dabei helfen. Bitte kommen Sie mit mir zum Schalter, dann schauen wir uns das an.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. I can help you with that. Please come with me to the counter, and we'll look into it."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gung, ish hah-beh zee nisht gants fer-shtan-den. Kohn-ten zee das bit-te vee-der-ho-len? — Excuse me, I didn't quite understand you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Besuch und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank fyoor ee-ren be-zook oond owf vee-der-ze-en! — Thank you for your visit and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

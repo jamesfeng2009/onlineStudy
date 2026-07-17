@@ -1,0 +1,137 @@
+{
+  "id": "dlg-id-airport-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Di Bandara",
+  "opening": "Selamat pagi. Boleh saya lihat tiket dan paspor Anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya lihat tiket dan paspor Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "tiket",
+            "paspor",
+            "dokumen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "dimana",
+            "mana"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (sah-lah-maht pah-gee). Boleh saya lihat tiket (tee-ket) dan paspor (pas-por) Anda? — Good morning. May I see your ticket and passport?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. Apakah Anda membawa bagasi?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "iya",
+            "ada",
+            "koper",
+            "satu",
+            "dua"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "hilang",
+            "belumdatang",
+            "bagasihilang",
+            "tertunda"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (teh-ree-mah ka-sih). Apakah Anda membawa bagasi (ba-gah-see)? — Thank you. Do you have any luggage?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Baik. Jika ada bagasi, tolong letakkan di sini. Jika tidak ada, Anda bisa langsung ke pemeriksaan keamanan.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "baik",
+            "mengerti",
+            "terimakasih"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (ba-ik). Jika ada bagasi, tolong letakkan (leh-tak-kan) di sini. Jika tidak ada, Anda bisa langsung ke pemeriksaan (pem-er-ik-sa-an) keamanan. — Okay. If you have luggage, please place it here. If not, you can go directly to security check."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Oh, begitu. Maaf sekali mendengarnya. Bisa tolong isi formulir laporan bagasi hilang di konter informasi?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "oke",
+            "terimakasih",
+            "akan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu (oh beh-gee-too). Maaf (ma-af) sekali mendengarnya. Bisa tolong isi formulir (for-moo-lir) laporan (la-por-an) bagasi hilang di konter informasi? — Oh, I see. I'm very sorry to hear that. Can you please fill out the lost luggage report form at the information counter?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sama-sama. Semoga perjalanan Anda menyenangkan. Jangan lupa cek nomor gerbang dan waktu keberangkatan Anda.",
+      "branches": [],
+      "fallbackBranchId": "t4",
+      "promptTranslation": "Sama-sama (sa-ma sa-ma). Semoga perjalanan (per-ja-la-nan) Anda menyenangkan (me-nye-nang-kan). Jangan lupa cek nomor gerbang (ger-bang) dan waktu keberangkatan (ke-ber-ang-kat-an) Anda. — You're welcome. Have a pleasant journey. Don't forget to check your gate number and departure time.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak mengerti.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (ma-af), bisa diulang (dee-oo-lang)? Saya tidak mengerti (meng-er-tee). — Sorry, can you repeat that? I don't understand."
+    }
+  }
+}

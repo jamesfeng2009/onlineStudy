@@ -1,0 +1,122 @@
+{
+  "id": "dlg-ms-interview-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Temu Duga Kerja",
+  "opening": "Selamat pagi, sila duduk. Boleh anda ceritakan sedikit tentang diri anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, sila duduk. Boleh anda ceritakan sedikit tentang diri anda?",
+      "branches": [
+        {
+          "keywords": [
+            "pelajar",
+            "baru",
+            "minat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), sila duduk (please sit). Boleh anda ceritakan (Can you tell) sedikit tentang diri anda (a little about yourself)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik. Sekarang, boleh anda ceritakan tentang pengalaman kerja anda?",
+      "branches": [
+        {
+          "keywords": [
+            "tiada",
+            "belum",
+            "belajar"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Good). Sekarang (Now), boleh anda ceritakan (can you tell) tentang pengalaman kerja anda (about your work experience)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Faham. Apakah kekuatan utama anda untuk jawatan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "rajin",
+            "berdikari",
+            "cepatbelajar",
+            "tepatmasa"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (Understood). Apakah kekuatan utama anda (What are your main strengths) untuk jawatan ini (for this position)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih. Dan, adakah anda mempunyai sebarang kelemahan yang anda sedang usahakan?",
+      "branches": [
+        {
+          "keywords": [
+            "perfeksionis",
+            "terlalu",
+            "detail"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Thank you). Dan (And), adakah anda mempunyai (do you have) sebarang kelemahan (any weaknesses) yang anda sedang usahakan (that you are working on)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat? I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih atas masa anda. Kami akan hubungi anda tidak lama lagi. Selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for your time. We will contact you soon. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

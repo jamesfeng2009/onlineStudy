@@ -1,0 +1,216 @@
+{
+  "id": "dlg-en-restaurant-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Ordering at The Gilded Spoon",
+  "opening": "Good evening! Welcome to The Gilded Spoon. Have you had a chance to peruse our menu, or are you ready to order straight away?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good evening! Welcome to The Gilded Spoon. Have you had a chance to peruse our menu, or are you ready to order straight away?",
+      "branches": [
+        {
+          "keywords": [
+            "ready",
+            "order",
+            "yes"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "time",
+            "look",
+            "browse",
+            "menu"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            "no"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good evening! Welcome to The Gilded Spoon. Have you had a chance to peruse our menu, or are you ready to order straight away?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent. What takes your fancy this evening? Our pan-seared scallops with saffron risotto and the slow-cooked lamb shank are consistently popular, or tonight's special is a wild mushroom and truffle pasta.",
+      "branches": [
+        {
+          "keywords": [
+            "scallops",
+            "risotto",
+            "lamb",
+            "shank",
+            "pasta",
+            "truffle",
+            "have",
+            "order"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "vegetarian",
+            "dietary",
+            "allergies",
+            "glutenfree",
+            "vegan"
+          ],
+          "nextTurnId": "t3-dietary"
+        },
+        {
+          "keywords": [
+            "specials",
+            "today"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "what"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. What takes your fancy this evening? Our pan-seared scallops with saffron risotto and the slow-cooked lamb shank are consistently popular, or tonight's special is a wild mushroom and truffle pasta."
+    },
+    "t3-dietary": {
+      "id": "t3-dietary",
+      "prompt": "Absolutely. We're well-equipped to handle most dietary requirements. Are we discussing gluten-free, dairy-free, vegetarian, or do you have any specific allergies we should be mindful of? We can adapt the truffle pasta or offer a grilled halloumi salad.",
+      "branches": [
+        {
+          "keywords": [
+            "vegetarian",
+            "vegan",
+            "dairyfree",
+            "glutenfree",
+            "allergy",
+            "halloumi",
+            "pasta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "somethingelse",
+            "different",
+            "options"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "thanks"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolutely. We're well-equipped to handle most dietary requirements. Are we discussing gluten-free, dairy-free, vegetarian, or do you have any specific allergies we should be mindful of? We can adapt the truffle pasta or offer a grilled halloumi salad."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "A splendid choice! And for drinks or any appetizers to start?",
+      "branches": [
+        {
+          "keywords": [
+            "water",
+            "wine",
+            "coke",
+            "juice",
+            "appetizer",
+            "starter",
+            "bread"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "bill",
+            "check",
+            "pay"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "else"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A splendid choice! And for drinks or any appetizers to start?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Coming right up. Will that be all for now, or is there anything else I can fetch for you before your meal arrives?",
+      "branches": [
+        {
+          "keywords": [
+            "more",
+            "another",
+            "dessert",
+            "coffee",
+            "tea"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "everything",
+            "done",
+            "no",
+            "thatall"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "thanks"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Coming right up. Will that be all for now, or is there anything else I can fetch for you before your meal arrives?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I do apologise, I seem to have missed that. Would you mind repeating or rephrasing your request?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repeat",
+            "sorry"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I do apologise, I seem to have missed that. Would you mind repeating or rephrasing your request?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Here's your bill. Please take your time with it. When you're ready, I'll be back to settle up. Thank you for dining with us tonight; we hope to have the pleasure of serving you again soon!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Here's your bill. Please take your time with it. When you're ready, I'll be back to settle up. Thank you for dining with us tonight; we hope to have the pleasure of serving you again soon!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "id": "dlg-ms-hotel-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Daftar Masuk ke Hotel Seri Gemilang",
+  "opening": "Selamat datang ke Hotel Seri Gemilang. Ada apa-apa yang boleh saya bantu, tuan/puan? Adakah anda mempunyai tempahan dengan kami?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Seri Gemilang. Ada apa-apa yang boleh saya bantu, tuan/puan? Adakah anda mempunyai tempahan dengan kami?",
+      "branches": [
+        {
+          "keywords": [
+            "tempahan",
+            "nama",
+            "booking",
+            "daftar",
+            "masuk",
+            "checkin"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Hotel Seri Gemilang. (Welcome to Seri Gemilang Hotel.) Ada apa-apa yang boleh saya bantu, tuan/puan? (Is there anything I can help you with, sir/madam?) Adakah anda mempunyai tempahan dengan kami? (Do you have a reservation with us?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, boleh saya dapatkan nama penuh dan nombor rujukan tempahan, jika ada? Kemudian, saya perlukan kad pengenalan atau pasport tuan/puan untuk tujuan pengesahan.",
+      "branches": [
+        {
+          "keywords": [
+            "kadpengenalan",
+            "pasport",
+            "id",
+            "dokumen",
+            "ini",
+            "ambillah"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bye-k), boleh saya dapatkan nama penuh dan nombor rujukan tempahan, jika ada? (Alright, may I have your full name and reservation reference number, if any?) Kemudian (Ke-moo-dee-ahn), saya perlukan kad pengenalan atau pasport tuan/puan untuk tujuan pengesahan. (Then, I'll need your ID card or passport for verification purposes.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih. Seterusnya, mengenai pembayaran, adakah tuan/puan ingin menggunakan kad kredit atau tunai?",
+      "branches": [
+        {
+          "keywords": [
+            "kadkredit",
+            "kad",
+            "kredit"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Te-ree-ma ka-seeh). Seterusnya (Se-te-rus-nyah), mengenai pembayaran, adakah tuan/puan ingin menggunakan kad kredit atau tunai? (Next, regarding payment, would you like to use credit card or cash?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, pembayaran telah diterima. Sekarang, adakah anda berminat dengan pakej sarapan pagi kami yang disertakan dengan hidangan tempatan yang lazat? Dan, adakah tuan/puan mempunyai sebarang pilihan bilik, seperti tingkat tinggi atau bilik menghadap laut?",
+      "branches": [
+        {
+          "keywords": [
+            "sarapan",
+            "mahu",
+            "ya",
+            "tinggi",
+            "laut",
+            "pemandanganlaut",
+            "atas"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Bye-k), pembayaran telah diterima. (Alright, payment has been received.) Sekarang (Se-ka-rang), adakah anda berminat dengan pakej sarapan pagi kami yang disertakan dengan hidangan tempatan yang lazat? (Now, are you interested in our breakfast package which includes delicious local dishes?) Dan, adakah tuan/puan mempunyai sebarang pilihan bilik, seperti tingkat tinggi atau bilik menghadap laut? (And, do you have any room preferences, like a high floor or a sea-facing room?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Sempurna! Bilik anda di tingkat [nombor tingkat], nombor [nombor bilik]. Kami telah maklumkan pilihan anda dan akan cuba penuhi. Kad kunci ini akan memberikan akses. Lif di hujung koridor sana. Sarapan pagi, jika dipilih, di Aras 2, Restoran Citarasa Rimba. Untuk Wi-Fi, sila sambung ke 'SeriGemilang_Guest' dan gunakan nombor bilik sebagai kata laluan. Kolam renang dan gimnasium di aras 3. Ada apa-apa lagi sebelum saya ucapkan selamat jalan?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "itu",
+            "sahaja",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sempurna! (Perfect!) Your room is on floor [floor number], room number [room number]. We have noted your preference and will try to fulfill it. This key card will grant access. The elevator is at the end of that corridor. Breakfast, if chosen, is on Level 2, Rimba Flavor Restaurant. For Wi-Fi (Wee-Fee), please connect to 'SeriGemilang_Guest' and use your room number as the password. Our swimming pool and gym are on level 3. Is there anything else before I bid you farewell?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh tuan/puan ulang lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat? I'm not clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih kerana memilih Hotel Seri Gemilang. Selamat menikmati penginapan anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for choosing Seri Gemilang Hotel. Enjoy your stay!",
+      "isTerminal": true
+    }
+  }
+}

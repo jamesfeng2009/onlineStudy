@@ -1,0 +1,153 @@
+{
+  "id": "dlg-ms-post-office-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Urusan Pos: Penghantaran C1",
+  "opening": "Selamat pagi! Ada apa yang boleh saya bantu pada hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Ada apa yang boleh saya bantu pada hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "hantar",
+            "pos",
+            "bungkusan",
+            "surat",
+            "daftar",
+            "berdaftar",
+            "setem",
+            "beli",
+            "jejak"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi! (Selamat pagi!) — Good morning! (Good morning!) Is there anything I can help you with today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Tuan/Puan. Untuk kiriman bungkusan atau surat? Dan ke mana destinasinya, dalam negara atau antarabangsa?",
+      "branches": [
+        {
+          "keywords": [
+            "bungkusan",
+            "antarabangsa",
+            "luarnegara"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Tuan/Puan (Baik, Tuan/Puan) — Alright, Sir/Madam. Is it for a parcel or a letter? And what is the destination, domestic or international?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Fahami. Jika kiriman antarabangsa, adakah anda sudah mengisi borang kastam dan mengisytiharkan isinya? Ini amat penting untuk kelancaran proses.",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "isi",
+            "borang",
+            "telah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fahami (Fahami) — Understood. If it's an international shipment, have you already filled out the customs form and declared its contents? This is extremely important for a smooth process."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bagus. Untuk memastikan kiriman anda selamat tiba di destinasi, adakah anda ingin menggunakan perkhidmatan mel berdaftar dengan nombor penjejakan, atau sekadar pos biasa dengan setem? Kita ada beberapa pilihan untuk perlindungan tambahan.",
+      "branches": [
+        {
+          "keywords": [
+            "berdaftar",
+            "penjejakan",
+            "jejak"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bagus. (Bagus.) — Good. To ensure your shipment arrives safely at its destination, would you like to use registered mail service with a tracking number, or just regular mail with stamps? We have several options for additional protection."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pilihan yang bijak! Sila serahkan bungkusan dan borang kastam anda jika ada. Kami akan menguruskan proses pengiraan bayaran dan memberi resit dengan nombor penjejakan jika anda memilih mel berdaftar.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "setuju",
+            "terus",
+            "sila",
+            "bayar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pilihan yang bijak! (Pilihan yang bijak!) — A wise choice! Please hand over your parcel and customs form if applicable. We will handle the payment calculation process and provide a receipt with a tracking number if you chose registered mail."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh Tuan/Puan ulang semula atau jelaskan dengan lebih terperinci? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Maaf), — Sorry, could you please repeat or explain in more detail? I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana menggunakan perkhidmatan kami. Harap berpuas hati dan selamat hari!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih kerana menggunakan perkhidmatan kami. Harap berpuas hati dan selamat hari! — Thank you for using our services. Hope you are satisfied and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

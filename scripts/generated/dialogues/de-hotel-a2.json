@@ -1,0 +1,155 @@
+{
+  "id": "dlg-de-hotel-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "hotel",
+  "title": "Hotel-Check-in",
+  "opening": "Guten Tag! Herzlich willkommen im Grand Hotel. Haben Sie eine Reservierung?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Herzlich willkommen im Grand Hotel. Haben Sie eine Reservierung?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "reservierung",
+            "habe"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keine",
+            "nicht"
+          ],
+          "nextTurnId": "t_no_res"
+        },
+        {
+          "keywords": [
+            "bitte"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag! — Good day! Herzlich willkommen im Grand Hotel. — Welcome to the Grand Hotel. Haben Sie eine Reservierung? — Do you have a reservation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sehr gut. Auf welchen Namen ist die Reservierung bitte? Und könnten Sie mir bitte Ihren Ausweis zeigen?",
+      "branches": [
+        {
+          "keywords": [
+            "meinnameist",
+            "ausweis",
+            "hierist",
+            "heißt"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr gut. — Very good. Auf welchen Namen ist die Reservierung bitte? — Under what name is the reservation, please? Und könnten Sie mir bitte Ihren Ausweis zeigen? — And could you please show me your ID?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Danke schön. Wie möchten Sie bezahlen? Bar oder mit Karte? Und haben Sie eine Präferenz für Ihr Zimmer, zum Beispiel mit Balkon?",
+      "branches": [
+        {
+          "keywords": [
+            "karte",
+            "balkon",
+            "mitkarte"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nur",
+            "karte",
+            "nicht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Danke schön. — Thank you. Wie möchten Sie bezahlen? Bar oder mit Karte? — How would you like to pay? Cash or card? Und haben Sie eine Präferenz für Ihr Zimmer, zum Beispiel mit Balkon? — And do you have a preference for your room, for example with a balcony?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alles klar. Möchten Sie auch Frühstück? Das Frühstück ist von 7 bis 10 Uhr.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gern",
+            "frühstück"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "zufrüh",
+            "zuspät"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alles klar. — Alright. Möchten Sie auch Frühstück? — Would you also like breakfast? Das Frühstück ist von 7 bis 10 Uhr. — Breakfast is from 7 to 10 o'clock."
+    },
+    "t_no_res": {
+      "id": "t_no_res",
+      "prompt": "Entschuldigung, ohne Reservierung haben wir leider kein Zimmer frei. Vielleicht ein anderes Mal?",
+      "branches": [
+        {
+          "keywords": [
+            "schade",
+            "danke",
+            "vielen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entschuldigung, — Sorry, ohne Reservierung haben wir leider kein Zimmer frei. — without a reservation we unfortunately don't have a free room. Vielleicht ein anderes Mal? — Maybe another time?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigen Sie, — Excuse me, ich habe Sie nicht verstanden. — I didn't understand you. Könnten Sie das bitte wiederholen? — Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Wunderbar! Ihr Zimmer ist die Nummer 203. Hier ist Ihr Schlüssel. Wir wünschen Ihnen einen schönen Aufenthalt!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wunderbar! — Wonderful! Ihr Zimmer ist die Nummer 203. — Your room is number 203. Hier ist Ihr Schlüssel. — Here is your key. Wir wünschen Ihnen einen schönen Aufenthalt! — We wish you a pleasant stay!",
+      "isTerminal": true
+    }
+  }
+}

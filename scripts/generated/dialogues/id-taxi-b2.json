@@ -1,0 +1,118 @@
+{
+  "id": "dlg-id-taxi-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Naik Taksi",
+  "opening": "Selamat datang, mau ke mana tujuan kita hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang, mau ke mana tujuan kita hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "stasiun",
+            "kereta"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Suh-lah-mat dah-tang) — Welcome, where are we headed today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, ke sana. Lalu lintas lumayan padat sekarang. Mau lewat tol atau jalan biasa?",
+      "branches": [
+        {
+          "keywords": [
+            "tol",
+            "cepat"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Ba-ik) — Okay, to there. Traffic is quite heavy now. Do you want to take the toll road or the regular road?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oke, lewat [ROUTE]. Mungkin sekitar 30-40 menit tergantung kemacetan, dengan perkiraan ongkos Rp50.000. Ada barang bawaan yang perlu ditaruh di bagasi?",
+      "branches": [
+        {
+          "keywords": [
+            "iya",
+            "ada",
+            "bagasi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oke (Oh-keh) — Okay, via [ROUTE]. It might take around 30-40 minutes depending on traffic, with an estimated fare of Rp50,000. Do you have any luggage that needs to be put in the trunk?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Siap, barangnya bisa ditaruh di bagasi. Untuk pembayaran, Bapak/Ibu prefer tunai atau non-tunai lewat aplikasi/kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "uang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Siap (See-ahp) — Understood, your items can be put in the trunk. For payment, Sir/Ma'am, do you prefer cash or cashless via app/card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Mah-ahf) — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, mari kita berangkat. Selamat menikmati perjalanan Anda!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Ba-ik) — Alright, let's go. Enjoy your trip!",
+      "isTerminal": true
+    }
+  }
+}

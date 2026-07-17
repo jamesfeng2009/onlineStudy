@@ -1,0 +1,164 @@
+{
+  "id": "dlg-it-interview-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Colloquio di Lavoro Semplice",
+  "opening": "Benvenuto/a. Mi parli un po' di lei.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Benvenuto/a. Mi parli un po' di lei.",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "esperienza",
+            "ho",
+            "lavoro"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome. Tell me a bit about yourself. (Ben-veh-NOO-toh/tah. Mee PAR-lee oon poh dee LAY.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Molto interessante. Quali sono i suoi punti di forza?",
+      "branches": [
+        {
+          "keywords": [
+            "sono",
+            "persona",
+            "organizzato",
+            "creativo",
+            "affidabile"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very interesting. What are your strengths? (MOL-toh een-teh-reh-SAHN-teh. KWAH-lee SOH-noh ee SOO-ee POON-tee dee FOR-tsah?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. E quali sono le sue aree di miglioramento, o punti deboli?",
+      "branches": [
+        {
+          "keywords": [
+            "volte",
+            "sono",
+            "timido",
+            "perfezionista",
+            "ma",
+            "migliorando"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. And what are your areas for improvement, or weaknesses?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La ringrazio. Ha qualche domanda per noi?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "domanda",
+            "ruolo",
+            "team",
+            "azienda"
+          ],
+          "nextTurnId": "t5_question_answer"
+        },
+        {
+          "keywords": [
+            "no",
+            "grazie"
+          ],
+          "nextTurnId": "t6_no_question"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you. Do you have any questions for us? (Lah reen-GRAH-tsee-oh. Ah KWAL-keh doh-MAHN-dah per NOY?)"
+    },
+    "t5_question_answer": {
+      "id": "t5_question_answer",
+      "prompt": "Certo, rispondo volentieri. Questo ruolo offre molte opportunità di crescita. Bene, la ringrazio per la domanda. Abbiamo finito.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Certainly, I'm happy to answer. This role offers many growth opportunities. Well, thank you for the question. We are finished."
+    },
+    "t6_no_question": {
+      "id": "t6_no_question",
+      "prompt": "Molto bene. La ringrazio molto per il suo tempo e la sua disponibilità. Abbiamo finito.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Very good. Thank you very much for your time and availability. We are finished."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat? (Mee SKOO-zee, poh-TREB-beh ree-PEH-teh-reh per fah-VOH-reh?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Le faremo sapere presto. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "We will let you know soon. Goodbye! (Leh fah-REH-moh sah-PEH-reh PRES-toh. Ah-ree-veh-DER-chee!)",
+      "isTerminal": true
+    }
+  }
+}

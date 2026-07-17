@@ -1,0 +1,157 @@
+{
+  "id": "dlg-it-bank-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "bank",
+  "title": "In banca",
+  "opening": "Buongiorno. Come posso aiutarLa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno. Come posso aiutarLa?",
+      "branches": [
+        {
+          "keywords": [
+            "aprire",
+            "conto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cambiare",
+            "soldi",
+            "valuta"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bancomat",
+            "problema"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwon-jor-no). Come posso aiutarLa (Koh-meh poh-soh ah-yoo-tar-lah)? — Good morning. How can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non capisco. Può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "grazie",
+            "ripeti"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (Mee skoo-zee), non capisco (non kah-pee-sko). Può ripetere (Pwoh ree-peh-teh-reh), per favore (per fah-voh-reh)? — Excuse me, I don't understand. Can you repeat, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vuole aprire un conto? Ha un documento?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ho",
+            "documento"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vuole aprire un conto (Vwoh-leh ah-pree-reh oon kohn-toh)? Ha un documento (Ah oon doh-koo-men-toh)? — Do you want to open an account? Do you have an ID?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Va bene. Che valuta vuole cambiare? Euro o Dollari?",
+      "branches": [
+        {
+          "keywords": [
+            "euro",
+            "euros"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene (Vah beh-neh). Che valuta vuole cambiare (Keh vah-loo-tah vwoh-leh kam-byah-reh)? Euro (Eh-oo-roh) o Dollari (Doh-lah-ree)? — Okay. What currency do you want to exchange? Euros or Dollars?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mi dispiace. Che problema ha con il bancomat?",
+      "branches": [
+        {
+          "keywords": [
+            "carta",
+            "bloccata"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dispiace (Mee dees-pyah-cheh). Che problema ha con il bancomat (Keh proh-bleh-mah ah kon eel ban-koh-mat)? — I'm sorry. What problem do you have with the ATM?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Capisco. Posso aiutarLa con questo. Un momento, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "certo"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (Kah-pee-sko). Posso aiutarLa con questo (Poh-soh ah-yoo-tar-lah kon kweh-stoh). Un momento (Oon moh-men-toh), per favore (per fah-voh-reh). — I understand. I can help you with this. One moment, please."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie per la sua visita. ArrivederLa!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie (Grah-tsee-eh) per la sua visita (per lah soo-ah vee-zee-tah). ArrivederLa (Ah-ree-veh-der-lah)! — Thank you for your visit. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

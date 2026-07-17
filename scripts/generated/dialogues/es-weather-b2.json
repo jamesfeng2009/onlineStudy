@@ -1,0 +1,142 @@
+{
+  "id": "dlg-es-weather-b2",
+  "language": "es",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Charlamos sobre el tiempo",
+  "opening": "¡Hola! ¿Qué tal el tiempo por tu zona hoy? Por aquí está un poco... incierto, la verdad.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tal el tiempo por tu zona hoy? Por aquí está un poco... incierto, la verdad.",
+      "branches": [
+        {
+          "keywords": [
+            "soleado",
+            "calor",
+            "despejado",
+            "buenclima"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Hola!) ¿Qué tal el tiempo por tu zona hoy? (How's the weather in your area today?) Por aquí está un poco... incierto, la verdad. (Here it's a bit... uncertain, to be honest.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, entiendo. Parece que el clima está un poco revuelto por todas partes últimamente. ¿Has visto la previsión para los próximos días? ¿Tienes algún plan al aire libre que pueda verse afectado por el tiempo?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "planes",
+            "previsión",
+            "afectados",
+            "viaje",
+            "escapada"
+          ],
+          "nextTurnId": "t3_plans"
+        },
+        {
+          "keywords": [
+            "no",
+            "interior",
+            "casa",
+            "cancelar",
+            "noafecta",
+            "nohevis"
+          ],
+          "nextTurnId": "t3_no_plans"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, entiendo. (Ah, en-tyen-do.) Parece que el clima está un poco revuelto por todas partes últimamente. (Pa-reh-theh kay el klee-ma es-tah oon po-ko reh-vwel-to por to-das par-tes ool-tee-ma-men-teh.) ¿Has visto la previsión para los próximos días? (Has vees-to la preh-vee-syon pa-ra los prohk-see-mos dee-as?) ¿Tienes algún plan al aire libre que pueda verse afectado por el tiempo? (Tye-nes al-goon plan al ay-reh lee-bre kay pweh-da ver-seh ah-fek-tah-do por el tyem-po?)"
+    },
+    "t3_plans": {
+      "id": "t3_plans",
+      "prompt": "Vaya, espero que no se tuerzan tus planes. A veces el clima nos juega malas pasadas. Hablando de eso, ¿cuál es tu estación del año favorita y por qué, a pesar de las sorpresas climáticas?",
+      "branches": [
+        {
+          "keywords": [
+            "verano",
+            "invierno",
+            "primavera",
+            "otoño",
+            "estación",
+            "gustos"
+          ],
+          "nextTurnId": "t4_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vaya, (Vah-yah,) espero que no se tuerzan tus planes. (es-peh-ro kay no seh twer-than toos pla-nes.) A veces el clima nos juega malas pasadas. (Ah veh-thes el klee-ma nos hweh-ga ma-las pa-sa-das.) Hablando de eso, (Ah-blan-do day eh-so,) ¿cuál es tu estación del año favorita y por qué, a pesar de las sorpresas climáticas? (Kwal es too es-ta-thyon del ah-nyo fah-vo-ree-ta ee por kay, ah peh-sar day las sor-preh-sas klee-ma-tee-kas?)"
+    },
+    "t3_no_plans": {
+      "id": "t3_no_plans",
+      "prompt": "Entiendo, a veces es mejor ser flexible o disfrutar de los planes en interior. Pero, ¿hay alguna época del año en la que disfrutes especialmente del clima, o que te resulte más llevadera?",
+      "branches": [
+        {
+          "keywords": [
+            "verano",
+            "invierno",
+            "primavera",
+            "otoño",
+            "estación",
+            "gustos"
+          ],
+          "nextTurnId": "t4_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-tyen-do, (I understand,) a veces es mejor ser flexible o disfrutar de los planes en interior. (ah veh-thes es meh-hor ser flek-see-ble o dees-froo-tar day los pla-nes en een-te-ryor.) Pero, (Peh-ro,) ¿hay alguna época del año en la que disfrutes especialmente del clima, o que te resulte más llevadera? (ay al-goo-na eh-po-ka del ah-nyo en la kay dees-froo-tes es-peh-thyal-men-teh del klee-ma, o kay teh reh-sool-teh mas lyeh-vah-deh-ra?)"
+    },
+    "t4_end": {
+      "id": "t4_end",
+      "prompt": "Cada estación tiene su encanto, es verdad. Ha sido un placer charlar contigo sobre el tiempo. ¡Hasta la próxima!",
+      "branches": [],
+      "fallbackBranchId": "t4_end",
+      "promptTranslation": "Ka-da es-ta-thyon tye-neh soo en-kan-to, es ver-dad. (Each season has its charm, it's true.) Ah see-do oon pla-ther char-lar kon-tee-go so-bre el tyem-po. (It's been a pleasure chatting with you about the weather.) ¡Hasta la próxima! (See you next time!)",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Lo siento, no te he entendido. ¿Podrías decirlo de otra manera o repetir, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Lo siento, (Lo syen-to,) no te he entendido. (no teh en-ten-dee-do.) ¿Podrías decirlo de otra manera o repetir, por favor? (Po-dree-as deh-thir-lo day oh-tra ma-neh-ra o reh-peh-teer, por fa-vor?)"
+    }
+  }
+}

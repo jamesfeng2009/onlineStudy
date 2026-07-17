@@ -1,0 +1,124 @@
+{
+  "id": "dlg-id-hotel-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Check-in Hotel",
+  "opening": "Selamat datang di Hotel Indah Permai, Bapak/Ibu. Ada yang bisa kami bantu? Barangkali sudah ada reservasi sebelumnya atas nama siapa?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang di Hotel Indah Permai, Bapak/Ibu. Ada yang bisa kami bantu? Barangkali sudah ada reservasi sebelumnya atas nama siapa?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "reservasi",
+            "pesanan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang di Hotel Indah Permai, Bapak/Ibu. Ada yang bisa kami bantu? Barangkali sudah ada reservasi sebelumnya atas nama siapa? — Welcome to Hotel Indah Permai, Sir/Madam. How may we assist you? Perhaps you already have a reservation under what name?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, Bapak/Ibu. Mohon maaf, bisa saya pinjam kartu identitasnya untuk proses verifikasi data? KTP atau paspor, kiranya akan sangat membantu. Lalu, untuk pembayaran, apakah Bapak/Ibu berkehendak melunasinya via kartu kredit, debit, atau tunai saja?",
+      "branches": [
+        {
+          "keywords": [
+            "ini",
+            "identitas",
+            "ktp",
+            "paspor",
+            "kartukredit",
+            "kredit"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "sudahdibayar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Bapak/Ibu. Mohon maaf, bisa saya pinjam kartu identitasnya untuk proses verifikasi data? KTP atau paspor, kiranya akan sangat membantu. Lalu, untuk pembayaran, apakah Bapak/Ibu berkehendak melunasinya via kartu kredit, debit, atau tunai saja? — Alright, Sir/Madam. My apologies, may I borrow your identification card for data verification? An ID card or passport would be greatly appreciated. Then, for payment, would you prefer to settle it via credit card, debit, or cash?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Terima kasih, Bapak/Ibu. Data sudah cocok dan pembayaran sudah kami terima. Sehubungan dengan reservasi Anda, Bapak/Ibu akan menempati kamar tipe Deluxe dengan pemandangan kota. Apakah ada preferensi khusus terkait lantai atau fasilitas lain? Dan, barangkali Anda berkenan untuk sarapan pagi di restoran hotel kami?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sarapan",
+            "mau",
+            "lantai",
+            "tinggi",
+            "view"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih, Bapak/Ibu. Data sudah cocok dan pembayaran sudah kami terima. Sehubungan dengan reservasi Anda, Bapak/Ibu akan menempati kamar tipe Deluxe dengan pemandangan kota. Apakah ada preferensi khusus terkait lantai atau fasilitas lain? Dan, barangkali Anda berkenan untuk sarapan pagi di restoran hotel kami? — Thank you, Sir/Madam. The data matches and payment has been received. Regarding your reservation, you will be occupying a Deluxe room with a city view. Do you have any special preferences concerning the floor or other facilities? And, perhaps you would like to have breakfast at our hotel restaurant?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sip, Bapak/Ibu. Semua sudah beres. Ini kunci kamar Anda, nomor [Nomor Kamar], di lantai [Nomor Lantai]. Sekiranya ada hal lain yang bisa kami bantu selama menginap di sini, jangan sungkan untuk menghubungi kami. Selamat menikmati waktu Anda.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "terima",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sip, Bapak/Ibu. Semua sudah beres. Ini kunci kamar Anda, nomor [Nomor Kamar], di lantai [Nomor Lantai]. Sekiranya ada hal lain yang bisa kami bantu selama menginap di sini, jangan sungkan untuk menghubungi kami. Selamat menikmati waktu Anda. — Excellent, Sir/Madam. Everything is settled. Here is your room key, number [Room Number], on floor [Floor Number]. Should there be anything else we can assist you with during your stay, please don't hesitate to contact us. Enjoy your time."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, Bapak/Ibu, bisa diulang kembali ucapannya? Saya kurang memahami maksud Anda. Barangkali ada yang salah dengan pendengaran saya.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf, Bapak/Ibu, bisa diulang kembali ucapannya? Saya kurang memahami maksud Anda. Barangkali ada yang salah dengan pendengaran saya. — My apologies, Sir/Madam, could you please repeat that? I didn't quite catch your meaning. Perhaps there's something wrong with my hearing."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak, Bapak/Ibu. Semoga perjalanan dan penginapan Anda menyenangkan. Kami tunggu kedatangan Anda lagi di lain kesempatan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak, Bapak/Ibu. Semoga perjalanan dan penginapan Anda menyenangkan. Kami tunggu kedatangan Anda lagi di lain kesempatan. — Thank you very much, Sir/Madam. We hope you have a pleasant journey and stay. We look forward to welcoming you again another time.",
+      "isTerminal": true
+    }
+  }
+}

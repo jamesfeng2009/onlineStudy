@@ -1,0 +1,185 @@
+{
+  "id": "dlg-ms-bank-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Urusan Bank Anda",
+  "opening": "Selamat datang ke Bank Jaya. Boleh saya bantu anda hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Bank Jaya. Boleh saya bantu anda hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "bukaakaun",
+            "akaunbaru"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tukarduit",
+            "pertukaranwang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "masalahatm",
+            "kadrosak",
+            "pinreset"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome to Jaya Bank (Selamat datang ke Bank Jaya). How may I help you today (Boleh saya bantu anda hari ini)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, untuk membuka akaun baru, saya perlukan beberapa maklumat dan dokumen daripada anda. Adakah anda sudah bersedia?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sedia"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "belum",
+            "lainkali"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright (Baik), to open a new account (untuk membuka akaun baru), I will need some information and documents from you. Are you ready (Adakah anda sudah bersedia)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu. Mata wang apakah yang ingin anda tukar, dan berapa jumlahnya?",
+      "branches": [
+        {
+          "keywords": [
+            "usd",
+            "dolar",
+            "amerika"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. What currency would you like to exchange, and how much?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Maaf mendengar masalah anda. Boleh terangkan dengan lebih lanjut apakah masalahnya? Adakah kad tersekat atau wang tidak keluar?",
+      "branches": [
+        {
+          "keywords": [
+            "kadtersekat",
+            "kad"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry to hear about your problem. Could you explain the problem in more detail? Is your card stuck or is money not being dispensed?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Untuk akaun simpanan, anda perlukan kad pengenalan atau pasport, dan bil utiliti sebagai bukti alamat. Sila sediakan dokumen tersebut.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "faham"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a savings account (Untuk akaun simpanan), you will need your ID card (kad pengenalan) or passport, and a utility bill as proof of address. Please prepare those documents (Sila sediakan dokumen tersebut)."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik, kadar pertukaran semasa untuk USD ke Ringgit Malaysia ialah 4.70. Berapa jumlah yang anda ingin tukar? Sila serahkan mata wang anda.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terus"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, the current exchange rate for USD to Malaysian Ringgit is 4.70. How much would you like to exchange? Please hand over your currency."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Faham. Untuk masalah ATM seperti itu, saya akan bantu reset PIN anda atau rujuk kepada pegawai teknikal kami. Sila tunggu sebentar.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. For an ATM problem like that, I will help you reset your PIN or refer you to our technical staff. Please wait a moment."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi atau berikan pilihan lain? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sorry, could you repeat again or provide other options? I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih kerana berurusan dengan Bank Jaya. Selamat tinggal!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for banking with Jaya Bank. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

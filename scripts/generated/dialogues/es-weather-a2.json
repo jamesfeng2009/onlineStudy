@@ -1,0 +1,230 @@
+{
+  "id": "dlg-es-weather-a2",
+  "language": "es",
+  "level": "A2",
+  "scenario": "weather",
+  "title": "Charla del tiempo",
+  "opening": "¡Hola! ¿Qué tiempo hace hoy por donde vives?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Hola! ¿Qué tiempo hace hoy por donde vives?",
+      "branches": [
+        {
+          "keywords": [
+            "sol",
+            "buen",
+            "calor",
+            "hacecalor",
+            "soleado"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lluvia",
+            "mal",
+            "frío",
+            "hacefrío",
+            "nublado"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "viento",
+            "ventoso",
+            "normal"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Hola! (Oh-lah!) — Hello! What's the weather like where you live today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¡Qué bien! Me alegro. ¿Tienes planes para disfrutar de este buen tiempo?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "parque",
+            "pasear",
+            "playa",
+            "afuera",
+            "airelibre"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "casa",
+            "trabajar",
+            "leer"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Qué bien! (Keh bee-en!) — How nice! I'm glad. Do you have plans to enjoy this good weather?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, qué pena. Con este tiempo, ¿qué sueles hacer o qué planes tienes?",
+      "branches": [
+        {
+          "keywords": [
+            "casa",
+            "leer",
+            "película",
+            "quedar",
+            "descansar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no puedo",
+            "cancelar",
+            "cambiar"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, qué pena. (Oh, keh peh-nah.) — Oh, what a pity. With this weather, what do you usually do or what plans do you have?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "¡Suena genial! Es importante aprovechar los días así. ¿Es típico este tiempo para esta época del año?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "normal",
+            "siempre",
+            "verano",
+            "primavera"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sounds great! It's important to make the most of days like this. Is this weather typical for this time of year?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Entiendo. A veces es agradable quedarse en casa o tener planes más tranquilos. ¿Hay algo especial que te guste hacer en días así?",
+      "branches": [
+        {
+          "keywords": [
+            "leer",
+            "cocinar",
+            "descansar",
+            "cine",
+            "vertele",
+            "televisión"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Sometimes it's nice to stay home or have quieter plans. Is there anything special you like to do on days like this?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Qué lástima que tus planes se hayan visto afectados. Espero que encuentres algo divertido para hacer dentro. ¿Quizás una película o un buen libro?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "buenaidea",
+            "película",
+            "libro"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "What a shame your plans were affected. I hope you find something fun to do indoors. Perhaps a movie or a good book?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Bueno, sea cual sea el tiempo, siempre hay algo que hacer. ¡Ha sido un placer charlar un poco con usted!",
+      "branches": [
+        {
+          "keywords": [
+            "gracias",
+            "adiós",
+            "igualmente",
+            "chao"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Well, whatever the weather, there's always something to do. It's been a pleasure chatting with you a bit!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "¿Podría repetir eso, por favor? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you (Poh-dree-ah reh-peh-teer eh-so, por fah-vor?) — repeat that, please? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "¡Adiós y que tenga un buen día!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

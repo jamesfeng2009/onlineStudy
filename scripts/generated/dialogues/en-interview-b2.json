@@ -1,0 +1,174 @@
+{
+  "id": "dlg-en-interview-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Job Interview: B2 Level",
+  "opening": "Good morning, thanks for coming in. Please, tell me a bit about yourself.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning, thanks for coming in. Please, tell me a bit about yourself.",
+      "branches": [
+        {
+          "keywords": [
+            "experience",
+            "background",
+            "education"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "skills",
+            "strengths",
+            "passions"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "careergoals",
+            "whythisrole"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, thanks for coming in. Please, tell me a bit about yourself. — Good morning, thanks for coming in. Please, tell me a bit about yourself."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "That sounds interesting. Could you elaborate a bit more on your professional experience and how it aligns with this role?",
+      "branches": [
+        {
+          "keywords": [
+            "responsibilities",
+            "achievements",
+            "projects"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "That sounds interesting. Could you elaborate a bit more on your professional experience and how it aligns with this role? — That sounds interesting. Could you elaborate a bit more on your professional experience and how it aligns with this role?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Excellent. What would you consider your strongest asset for this particular position, and could you give an example of how you've demonstrated it?",
+      "branches": [
+        {
+          "keywords": [
+            "communication",
+            "teamwork",
+            "collaboration"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. What would you consider your strongest asset for this particular position, and could you give an example of how you've demonstrated it? — Excellent. What would you consider your strongest asset for this particular position, and could you give an example of how you've demonstrated it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "I see. What specifically about this role or our company's mission attracted you to apply?",
+      "branches": [
+        {
+          "keywords": [
+            "companyculture",
+            "mission",
+            "values"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. What specifically about this role or our company's mission attracted you to apply? — I see. What specifically about this role or our company's mission attracted you to apply."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Thanks for sharing. Every role has its challenges. Can you tell me about an area where you're looking to improve, or perhaps a weakness you're actively working on?",
+      "branches": [
+        {
+          "keywords": [
+            "timemanagement",
+            "delegation",
+            "publicspeaking"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thanks for sharing. Every role has its challenges. Can you tell me about an area where you're looking to improve, or perhaps a weakness you're actively working on? — Thanks for sharing. Every role has its challenges. Can you tell me about an area where you're looking to improve, or perhaps a weakness you're actively working on?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Thank you. Before we wrap up, do you have any questions for me about the role, the team, or the company?",
+      "branches": [
+        {
+          "keywords": [
+            "team",
+            "culture",
+            "daytoday"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you. Before we wrap up, do you have any questions for me about the role, the team, or the company? — Thank you. Before we wrap up, do you have any questions for me about the role, the team, or the company?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you please repeat that? I didn't quite catch what you said.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you please repeat that? I didn't quite catch what you said. — Sorry, could you please repeat that? I didn't quite catch what you said."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for coming in today. We'll be in touch soon regarding the next steps. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for coming in today. We'll be in touch soon regarding the next steps. Goodbye! — Thank you for coming in today. We'll be in touch soon regarding the next steps. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "id": "dlg-fr-weather-b1",
+  "language": "fr",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Parlons Météo !",
+  "opening": "Bonjour ! Comment est le temps chez vous aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Comment est le temps chez vous aujourd'hui ? Avez-vous regardé la météo pour la journée ?",
+      "branches": [
+        {
+          "keywords": [
+            "beau",
+            "soleil",
+            "chaud",
+            "ensoleillé"
+          ],
+          "nextTurnId": "t2_good_weather"
+        },
+        {
+          "keywords": [
+            "pluie",
+            "froid",
+            "nuageux",
+            "gris",
+            "mauvais"
+          ],
+          "nextTurnId": "t2_bad_weather"
+        },
+        {
+          "keywords": [
+            "variable",
+            "incertain",
+            "pasregardé"
+          ],
+          "nextTurnId": "t2_uncertain_weather"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR)! Comment est le temps chez vous aujourd'hui ? Avez-vous regardé la météo (may-tay-OH) pour la journée ? — Hello! How's the weather where you are today? Have you checked the forecast for the day?"
+    },
+    "t2_good_weather": {
+      "id": "t2_good_weather",
+      "prompt": "Quelle chance ! Ici, c'est plutôt nuageux et frais pour la saison. Ça me donne envie de voyager vers le soleil ! Qu'est-ce que vous aimez faire quand il fait beau ?",
+      "branches": [
+        {
+          "keywords": [
+            "promenade",
+            "dehors",
+            "parc",
+            "jardin",
+            "terrasse",
+            "balade"
+          ],
+          "nextTurnId": "t3_outdoor"
+        },
+        {
+          "keywords": [
+            "lire",
+            "film",
+            "repos",
+            "cuisine",
+            "maison"
+          ],
+          "nextTurnId": "t3_indoor"
+        },
+        {
+          "keywords": [
+            "sport",
+            "vélo",
+            "courir",
+            "randonnée"
+          ],
+          "nextTurnId": "t3_sport"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quelle chance ! Ici, c'est plutôt nuageux et frais pour la saison. Ça me donne envie de voyager vers le soleil ! Qu'est-ce que vous aimez faire quand il fait beau ? — Lucky you! Here, it's rather cloudy and cool for the season. It makes me want to travel towards the sun! What do you like to do when the weather is nice?"
+    },
+    "t2_bad_weather": {
+      "id": "t2_bad_weather",
+      "prompt": "Oh, dommage ! Ça doit être difficile de trouver la motivation. J'espère que ça s'améliorera vite. Vous avez des projets qui sont parfois affectés par ce genre de météo ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "promenade",
+            "sport",
+            "dehors",
+            "gâcher"
+          ],
+          "nextTurnId": "t3_affected_plans"
+        },
+        {
+          "keywords": [
+            "non",
+            "pasvraiment",
+            "intérieur",
+            "lire",
+            "film",
+            "maison"
+          ],
+          "nextTurnId": "t3_not_affected_plans"
+        },
+        {
+          "keywords": [
+            "lecture",
+            "cuisiner",
+            "chezmoi"
+          ],
+          "nextTurnId": "t3_indoor"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, dommage ! Ça doit être difficile de trouver la motivation. J'espère que ça s'améliorera vite. Vous avez des projets qui sont parfois affectés par ce genre de météo ? — Oh, too bad! It must be hard to find motivation. I hope it gets better soon. Do you have plans that are sometimes affected by this kind of weather?"
+    },
+    "t2_uncertain_weather": {
+      "id": "t2_uncertain_weather",
+      "prompt": "Ah, le temps variable, c'est parfois le plus frustrant ! On ne sait jamais comment s'habiller. Quelle est votre saison préférée, et pourquoi ?",
+      "branches": [
+        {
+          "keywords": [
+            "été",
+            "chaleur",
+            "vacances",
+            "soleil"
+          ],
+          "nextTurnId": "t3_summer"
+        },
+        {
+          "keywords": [
+            "printemps",
+            "fleurs",
+            "doux",
+            "renouveau"
+          ],
+          "nextTurnId": "t3_spring"
+        },
+        {
+          "keywords": [
+            "automne",
+            "couleurs",
+            "frais",
+            "promenade"
+          ],
+          "nextTurnId": "t3_autumn"
+        },
+        {
+          "keywords": [
+            "hiver",
+            "neige",
+            "froid",
+            "cosy"
+          ],
+          "nextTurnId": "t3_winter"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, le temps variable (vah-ree-AHB-luh), c'est parfois le plus frustrant ! On ne sait jamais comment s'habiller. Quelle est votre saison préférée, et pourquoi ? — Ah, variable weather is sometimes the most frustrating! You never know how to dress. What's your favorite season, and why?"
+    },
+    "t3_outdoor": {
+      "id": "t3_outdoor",
+      "prompt": "C'est une excellente idée de profiter de l'extérieur ! J'espère que le beau temps tiendra pour vos activités.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "merci",
+            "daccord",
+            "genial"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est une excellente idée de profiter de l'extérieur ! J'espère que le beau temps tiendra pour vos activités. — That's an excellent idea to enjoy the outdoors! I hope the good weather holds for your activities."
+    },
+    "t3_indoor": {
+      "id": "t3_indoor",
+      "prompt": "Oui, parfois, même avec le beau temps, un bon livre est la meilleure option, ou se détendre à la maison. C'est aussi une façon de se ressourcer.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "exactement",
+            "daccord",
+            "repos"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, parfois, même avec le beau temps, un bon livre est la meilleure option, ou se détendre à la maison. C'est aussi une façon de se ressourcer. — Yes, sometimes, even with good weather, a good book is the best option, or relaxing at home. It's also a way to recharge."
+    },
+    "t3_sport": {
+      "id": "t3_sport",
+      "prompt": "Le sport en plein air, c'est génial quand le temps le permet ! Ça donne de l'énergie et ça fait du bien. J'espère que vous pourrez en profiter bientôt.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "merci",
+            "bientot",
+            "energie"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Le sport en plein air, c'est génial quand le temps le permet ! Ça donne de l'énergie et ça fait du bien. J'espère que vous pourrez en profiter bientôt. — Outdoor sports are great when the weather allows! It gives you energy and feels good. I hope you can enjoy it soon."
+    },
+    "t3_affected_plans": {
+      "id": "t3_affected_plans",
+      "prompt": "Je comprends. La pluie peut vraiment gâcher des plans de dernière minute. Il faut parfois s'adapter et trouver des alternatives. C'est la vie !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "exact",
+            "dommage",
+            "difficile"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je comprends. La pluie peut vraiment gâcher des plans de dernière minute. Il faut parfois s'adapter et trouver des alternatives. C'est la vie ! — I understand. Rain can really spoil last-minute plans. Sometimes you have to adapt and find alternatives. That's life!"
+    },
+    "t3_not_affected_plans": {
+      "id": "t3_not_affected_plans",
+      "prompt": "C'est bien d'être flexible et de ne pas se laisser décourager par la météo. L'important est de trouver des activités qu'on aime, quelle que soit la température !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "daccord",
+            "vrai",
+            "flexible"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est bien d'être flexible et de ne pas se laisser décourager par la météo. L'important est de trouver des activités qu'on aime, quelle que soit la température ! — It's good to be flexible and not let the weather discourage you. The important thing is to find activities you enjoy, whatever the temperature!"
+    },
+    "t3_summer": {
+      "id": "t3_summer",
+      "prompt": "Ah, l'été, ses longues journées, la chaleur, les vacances... difficile de ne pas aimer ! J'espère que vous aurez un bel été cette année.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "merci",
+            "esperons",
+            "plage"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, l'été (lay-TAY), ses longues journées, la chaleur, les vacances... difficile de ne pas aimer ! J'espère que vous aurez un bel été cette année. — Ah, summer, its long days, the heat, holidays... hard not to love it! I hope you have a beautiful summer this year."
+    },
+    "t3_spring": {
+      "id": "t3_spring",
+      "prompt": "Le printemps, c'est la saison du renouveau, avec les fleurs et les températures douces. C'est très agréable après l'hiver. Une belle saison !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "daccord",
+            "joli",
+            "fleurs"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Le printemps, c'est la saison du renouveau, avec les fleurs et les températures douces. C'est très agréable après l'hiver. Une belle saison ! — Spring is the season of renewal, with flowers and mild temperatures. It's very pleasant after winter. A beautiful season!"
+    },
+    "t3_autumn": {
+      "id": "t3_autumn",
+      "prompt": "L'automne, avec ses couleurs magnifiques et son ambiance plus calme, a un charme particulier. C'est parfait pour les promenades en forêt. Une bonne préférence !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "vrai",
+            "magnifique",
+            "foret"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "L'automne, avec ses couleurs magnifiques et son ambiance plus calme, a un charme particulier. C'est parfait pour les promenades en forêt. Une bonne préférence ! — Autumn, with its magnificent colors and calmer atmosphere, has a special charm. It's perfect for forest walks. A good preference!"
+    },
+    "t3_winter": {
+      "id": "t3_winter",
+      "prompt": "L'hiver a aussi ses charmes, surtout s'il y a de la neige pour les sports d'hiver ou pour une ambiance cosy à la maison. C'est une question de goût !",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "exact",
+            "neige",
+            "cosy"
+          ],
+          "nextTurnId": "t4_closing_comment"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "L'hiver a aussi ses charmes, surtout s'il y a de la neige pour les sports d'hiver ou pour une ambiance cosy à la maison. C'est une question de goût ! — Winter also has its charms, especially if there's snow for winter sports or a cozy atmosphere at home. It's a matter of taste!"
+    },
+    "t4_closing_comment": {
+      "id": "t4_closing_comment",
+      "prompt": "C'était intéressant de parler de tout ça ! J'espère que le temps sera favorable pour vos activités futures.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "oui",
+            "au revoir",
+            "bonnejournée"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'était intéressant de parler de tout ça ! J'espère que le temps sera favorable pour vos activités futures. — It was interesting to talk about all that! I hope the weather will be favorable for your future activities."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, je n'ai pas bien compris. Pourriez-vous (poo-ree-AY voo) répéter (ray-pay-TAY), s'il vous plaît ? — Sorry, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "C'était un plaisir de discuter avec vous de la météo ! Bonne journée et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "C'était un plaisir de discuter avec vous de la météo ! Bonne journée et à bientôt ! — It was a pleasure discussing the weather with you! Have a good day and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

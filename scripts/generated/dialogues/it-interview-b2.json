@@ -1,0 +1,123 @@
+{
+  "id": "dlg-it-interview-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Colloquio di lavoro",
+  "opening": "Buongiorno, grazie di essere venuto/a. Per iniziare, potrebbe parlarmi un po' di lei e del suo percorso professionale?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, grazie di essere venuto/a. Per iniziare, potrebbe parlarmi un po' di lei e del suo percorso professionale?",
+      "branches": [
+        {
+          "keywords": [
+            "esperienza",
+            "carriera",
+            "formazione"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bon-jor-no, graht-tsee-eh dee ess-seh-reh veh-noo-to/a. Pehr een-eet-tsee-ah-reh, poh-trehb-beh pahr-lahr-mee oon poh dee leh-ee eh dehl soo-oh pehr-kor-soh proh-fess-see-oh-nah-leh? — Good morning, thank you for coming. To begin, could you tell me a bit about yourself and your professional background?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Molto interessante. Dal suo percorso emerge una solida base. Ora, quali sono, a suo avviso, le competenze chiave che la rendono il candidato ideale per questa posizione e come le ha messe in pratica?",
+      "branches": [
+        {
+          "keywords": [
+            "problem-solving",
+            "risoluzione",
+            "comunicazione",
+            "leadership"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mol-to een-teh-ress-sahn-teh. Dahl soo-oh pehr-kor-soh eh-mehr-jeh oo-na soh-lee-da bah-zeh. Oh-ra, kwah-lee soh-noh, ah soo-oh ahv-vee-zoh, leh kohm-peh-ten-tseh kee-ah-veh keh lah ren-doh-noh eel kahn-dee-dah-toh ee-deh-ah-leh pehr kwess-ta poh-zeet-tsee-oh-neh eh koh-meh leh ah mess-seh een prah-tee-ka? — Very interesting. A solid foundation emerges from your background. Now, in your opinion, what are the key skills that make you the ideal candidate for this position, and how have you put them into practice?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco. Ogni persona ha punti di forza e aree di miglioramento. Quali ritiene siano i suoi principali punti di forza e, onestamente, quale sarebbe un'area in cui le piacerebbe crescere professionalmente?",
+      "branches": [
+        {
+          "keywords": [
+            "forza",
+            "punti di forza",
+            "pregio",
+            "vantaggio"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kah-pee-sko. Oh-gnee pehr-soh-na ah poon-tee dee for-tza eh ah-reh dee mee-glio-rah-men-to. Kwah-lee ree-tyeh-neh see-ah-noh ee soo-ee preen-chee-pah-lee poon-tee dee for-tza eh, oh-ness-tah-men-teh, kwah-leh sah-reb-beh oon-ah ah-reh een koo-ee leh pee-ah-tcheh-reb-beh kresh-sheh-reh proh-fess-see-oh-nahl-men-teh? — I see. Everyone has strengths and areas for improvement. What do you consider your main strengths to be, and honestly, what would be an area where you would like to grow professionally?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Un'ottima prospettiva. E per concludere, perché ha scelto di candidarsi proprio per la nostra azienda? Cosa la spinge a voler lavorare con noi?",
+      "branches": [
+        {
+          "keywords": [
+            "valori",
+            "missione",
+            "cultura"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "An excellent perspective. And to conclude, why did you choose to apply specifically for our company? What motivates you to want to work with us?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, poh-trehb-beh ree-peh-teh-reh pehr fah-voh-reh? Non oh kah-pee-toh beh-neh. — Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfetto. La ringraziamo per il suo tempo e per aver condiviso le sue esperienze. La contatteremo a breve per eventuali aggiornamenti. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Perfect. We thank you for your time and for sharing your experiences. We will contact you shortly for any updates. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

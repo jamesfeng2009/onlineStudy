@@ -1,0 +1,185 @@
+{
+  "id": "dlg-fr-small-talk-c2",
+  "language": "fr",
+  "level": "C2",
+  "scenario": "small-talk",
+  "title": "Bavardages informels",
+  "opening": "Alors, ce week-end, tu as pu décompresser un peu ou tu as été pris dans la spirale infernale des obligations diverses et variées ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alors, ce week-end, tu as pu décompresser un peu ou tu as été pris dans la spirale infernale des obligations diverses et variées ?",
+      "branches": [
+        {
+          "keywords": [
+            "détendu",
+            "reposé",
+            "profité",
+            "loisirs"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "travail",
+            "occupé",
+            "obligations",
+            "pasfacile"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So (Ah-LOR), this weekend (suh wee-KEND), were you able to unwind a bit (too ah poo deh-kom-pre-SAY uh puh) or were you caught (oo too ah eh-TEH pree) in the infernal spiral (don lah spee-RAL en-fer-NAL) of various and varied obligations (day-zoh-blee-gah-SYOHN dee-VERS eh vah-ree-EH)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, c'est toujours ça de pris ! Moi, j'ai tenté de me refaire une santé mentale en dévorant le dernier prix Goncourt. Tu lis beaucoup toi, ou tu es plutôt du genre à te perdre dans des séries Netflix ?",
+      "branches": [
+        {
+          "keywords": [
+            "lecture",
+            "lire",
+            "livres",
+            "roman"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "séries",
+            "films",
+            "netflix",
+            "cinéma"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "sport",
+            "musique",
+            "sorties",
+            "nature",
+            "voyage"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah (Ah), that's always good (seh too-JOOR sah duh pree)! Me (MWA), I tried (jay ton-TEH) to restore my mental health (duh muh ruh-FAIR oon son-TEH mon-TAL) by devouring (on deh-vo-RON) the latest Goncourt prize winner (luh der-NYAY pree gon-KOOR). Do you read a lot (Too lee boh-KOO TWA), or are you more the type (oo too eh ploo-TOH doo ZHONR) to get lost (ah tuh PERDR) in Netflix series (don day seh-REE NET-flix)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Je compatis, la vie moderne est un véritable marathon, n'est-ce pas ? Pour ma part, j'ai eu la chance d'explorer une nouvelle petite table. D'ailleurs, tu es plutôt du genre fin gourmet ou tu te contentes de ce qui passe ?",
+      "branches": [
+        {
+          "keywords": [
+            "gourmet",
+            "cuisine",
+            "restaurant",
+            "manger"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I sympathize (ZHUH kom-pah-TEE), modern life (lah VEE mo-DERN) is a real marathon (eh tun veh-ree-TABL mah-rah-TON), isn't it (nes pah)? For my part (poor mah PAR), I had the chance (jay yoo lah SHONS) to explore (dex-plo-REH) a new little restaurant (oon noo-VEL puh-TEET TABL). By the way (dahy-YUHR), are you more of a connoisseur (too eh ploo-TOH doo ZHONR fan goor-MEH) or do you just make do (oo too tuh kon-TONT duh suh kee PASS) with whatever comes along?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Magnifique ! Quelle est la dernière œuvre qui t'a vraiment transporté ? Personnellement, j'ai un faible pour les romans historiques qui nous plongent dans les méandres d'époques révolues. Et toi, quels sont tes genres de prédilection ?",
+      "branches": [
+        {
+          "keywords": [
+            "historique",
+            "histoire",
+            "passé",
+            "littérature"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wonderful (Mah-NYEE-feek)! What's the last work (KEL eh lah der-NYAIR OOVR) that truly transported you (kee tah vray-MON tron-spor-TEH)? Personally (Per-so-NEL-mon), I have a soft spot (jay un FEHBL) for historical novels (poor lay ro-MON ees-to-REEK) that plunge us (kee noo PLONJ) into the twists and turns (don lay meh-ONDR) of bygone eras (day-POK reh-vo-LOO). And you (eh TWA), what are your preferred genres (kel son tay ZHONR duh preh-dee-LEK-syohn)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ah, les séries, ce puits sans fond de distractions ! Y a-t-il une pépite que tu aurais à me conseiller, quelque chose qui t'a vraiment scotché à l'écran récemment ? Je suis toujours à l'affût de nouvelles découvertes.",
+      "branches": [
+        {
+          "keywords": [
+            "conseil",
+            "recommande",
+            "vu",
+            "aimé",
+            "série",
+            "film"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah (Ah), series (lay seh-REE), that bottomless pit (suh pwee son FOND) of distractions (duh dees-trak-SYOHN)! Is there a gem (eel-ya oon peh-PEET) you'd recommend to me (kuh too oh-RAY ah muh kon-say-YAY), something that really glued you to the screen (kel-kuh SHOS kee tah vray-MON skot-CHAY ah leh-KRON) recently (reh-sa-MON)? I'm always on the lookout (zhuh swee too-JOOR ah lah-FOO) for new discoveries (duh noo-VEL deh-koo-VERT)."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "C'est excellent de diversifier ses centres d'intérêt ! Que ce soit le sport pour se défouler ou la musique pour s'évader, chacun sa soupape. J'imagine que cela te permet de recharger les batteries et de garder un certain équilibre ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "recharge",
+            "équilibre",
+            "sain"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It's excellent (Seh-TEK-suh-lon) to diversify (duh dee-ver-see-FYAY) one's interests (say son-truh dan-teh-REH)! Whether it's sports (kuh suh SWA luh SPOR) to let off steam (poor suh deh-foo-LAY) or music (oo lah myoo-ZEEK) to escape (poor seh-vah-DAY), everyone has their own outlet (sha-KON sah soo-PAP). I imagine (zha-ma-ZHEEN) that allows you (kuh suh-LAH tuh per-MET) to recharge your batteries (duh ruh-shar-ZHAY lay bat-TREE) and maintain a certain balance (eh duh gar-DAY un ser-TEN eh-kee-LEEBR)?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "La bonne chère, c'est l'un des plaisirs les plus simples et les plus exquis de l'existence, n'est-ce pas ? Tu as une cuisine de prédilection, un plat fétiche qui te fait fondre à chaque fois ?",
+      "branches": [
+        {
+          "keywords": [
+            "française",
+            "italienne",
+            "asiatique",
+            "mexicaine",
+            "plat",
+            "préféré",
+            "fondre"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good food (Lah bon SHAIR) is one of life's (seh tun day pleh-ZEER lay ploo SAMPL) simplest and most exquisite pleasures (eh lay ploo-ZEKS-kee duh lek-zee-STONS), isn't it (nes pah)? Do you have a favorite cuisine (Too ah oon kwee-ZEEN duh preh-dee-LEK-syohn), a signature dish (un PLAH feh-TEESH) that makes you melt (kee tuh fay FONDDR) every time (ah shak FWA)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous répéter ou formuler cela différemment ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry (SOH-ree), I didn't quite catch that (zhuh nay pah byan say-ZEE). Could you please repeat (poo-ryay-VOO reh-peh-TEH) or rephrase that differently (oo for-myoo-LEH suh dee-feh-rah-MON)?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "C'est fascinant d'échanger sur ces sujets ! On pourrait en discuter des heures, mais il me semble que je dois déjà filer. C'était un plaisir de faire ta connaissance et d'échapper un instant à la cacophonie ambiante. Au plaisir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "It's fascinating (Seh fas-SEE-non) to discuss these topics (day-shon-JAY sur say soo-ZHEH)! We could talk for hours (On poo-RRAY-on dee-skoo-TEH day-ZOOR), but it seems (may eel muh SOMBL) I must already run along (kuh zhuh DWA day-ZHAH fee-LEHR). It was a pleasure (Seh-TAY un pleh-ZEER) meeting you (duh FAIR tah kon-NESS-ons) and escaping the surrounding cacophony (eh day-shap-PAY un en-STON ah lah kah-koh-fo-NEE on-byont) for a moment. See you around (Oh pleh-ZEER)!",
+      "isTerminal": true
+    }
+  }
+}

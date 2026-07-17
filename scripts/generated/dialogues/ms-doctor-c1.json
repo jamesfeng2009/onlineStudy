@@ -1,0 +1,170 @@
+{
+  "id": "dlg-ms-doctor-c1",
+  "language": "ms",
+  "level": "C1",
+  "scenario": "doctor",
+  "title": "Perundingan Doktor C1",
+  "opening": "Selamat pagi, encik/cik. Apa khabar hari ini? Sila ceritakan sedikit sebanyak tentang masalah kesihatan yang membawa encik/cik ke sini.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik/cik. Apa khabar hari ini? Sila ceritakan sedikit sebanyak tentang masalah kesihatan yang membawa encik/cik ke sini.",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "nyeri",
+            "pedih",
+            "sengal"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "demam",
+            "panas",
+            "menggigil"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "letih",
+            "lesu",
+            "takselesa",
+            "taksihat"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), sir/madam. Apa khabar (How are you) today? Sila ceritakan (Please tell me) a little about the health issue that brings you here."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Faham. Boleh jelaskan lebih lanjut tentang rasa sakit itu? Di mana lokasi utamanya, bagaimana rasanya – adakah ia tajam, mencucuk, berdenyut – dan sejak bila ia mula mengganggu?",
+      "branches": [
+        {
+          "keywords": [
+            "perut",
+            "kepala",
+            "dada",
+            "belakang",
+            "sendi"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham (I understand). Can you explain more about the pain? Where is its main location, what does it feel like – is it sharp, stabbing, throbbing – and since when has it been bothering you?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Kalau demam, adakah disertai dengan simptom lain seperti menggigil, sakit kepala, atau batuk? Dan sudah berapa lama demam ini berlarutan?",
+      "branches": [
+        {
+          "keywords": [
+            "sejak",
+            "lamadah",
+            "berlarutan",
+            "minggulepas"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Alright). If it's a fever, is it accompanied by other symptoms like shivering, headache, or cough? And how long has this fever been ongoing?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Saya faham. 'Tak selesa' itu agak subjektif. Boleh encik/cik perincikan lagi perasaan tidak selesa itu? Adakah ia seperti kelesuan melampau, pening, atau ada rasa mual?",
+      "branches": [
+        {
+          "keywords": [
+            "lesu",
+            "penat",
+            "letihmelampau",
+            "takbertenaga"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya faham (I understand). 'Not feeling well' is quite subjective. Can you elaborate further on that discomfort? Is it like extreme fatigue, dizziness, or a feeling of nausea?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Begitu. Adakah rasa sakit ini mengganggu aktiviti harian encik/cik? Adakah ia bertambah teruk dengan pergerakan tertentu atau berkurangan dengan rehat?",
+      "branches": [
+        {
+          "keywords": [
+            "mengganggu",
+            "sukartidur",
+            "takbolehfokus",
+            "halangaktiviti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. Does this pain interfere with your daily activities? Does it worsen with certain movements or lessen with rest?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baiklah. Adakah encik/cik ada mengambil sebarang ubat-ubatan untuk mengurangkan demam atau simptom lain sebelum datang ke sini? Ada sejarah alahan pada ubat?",
+      "branches": [
+        {
+          "keywords": [
+            "adaubat",
+            "paracetamol",
+            "painkiller",
+            "antibiotik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. Have you taken any medication to reduce the fever or other symptoms before coming here? Do you have any history of drug allergies?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Saya faham. Selain simptom-simptom ini, adakah encik/cik mengalami perubahan selera makan, pola tidur, atau ada tekanan emosi yang mungkin menyumbang?",
+      "branches": [
+        {
+          "keywords": [
+            "seleramakan",
+            "kurangmakan",
+            "taknakmakan",
+            "beratbadan"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. Besides these symptoms, have you experienced changes in appetite, sleep patterns, or any emotional stress that might be contributing?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh encik/cik ulangi atau jelaskan dengan cara lain? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), can you repeat or explain in another way? I don't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih atas maklumat yang diberikan. Dengan semua ini, saya sudah ada gambaran awal. Seterusnya, kita akan bincangkan pelan rawatan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thank you for the information. With all this, I have an initial picture. Next, we will discuss the treatment plan.",
+      "isTerminal": true
+    }
+  }
+}

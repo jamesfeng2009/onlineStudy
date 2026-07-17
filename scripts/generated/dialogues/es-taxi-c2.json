@@ -1,0 +1,125 @@
+{
+  "id": "dlg-es-taxi-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Viaje en Taxi por la Ciudad",
+  "opening": "¡Buenas tardes! ¿A dónde le llevo, señor/a? Dígame el destino sin ambages.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenas tardes! ¿A dónde le llevo, señor/a? Dígame el destino sin ambages.",
+      "branches": [
+        {
+          "keywords": [
+            "destino",
+            "dirección",
+            "calle",
+            "ir",
+            "llevarme"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "precio",
+            "tarifa",
+            "costo",
+            "vale"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenas tardes! (Buenas tardes — Good afternoon!) ¿A dónde le llevo, señor/a? (¿A dónde le llevo, señor/a? — Where can I take you, sir/madam?) Dígame el destino sin ambages. (Dígame el destino sin ambages — Tell me the destination without beating around the bush.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, al [destino X]. Entendido. Para evitar el tramo más concurrido a estas horas punta, ¿prefiere que tomemos la autopista, aunque implique un pequeño peaje, o nos ceñimos a la ruta habitual que suele ser un verdadero calvario ahora mismo?",
+      "branches": [
+        {
+          "keywords": [
+            "autopista",
+            "peaje",
+            "rápido",
+            "prefiero",
+            "sí"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cuánto",
+            "precio",
+            "tarifa",
+            "costo",
+            "vale"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, al [destino X]. (Ah, al [destino X] — Ah, to [destination X].) Entendido. (Entendido — Understood.) Para evitar el tramo más concurrido a estas horas punta, (Para evitar el tramo más concurrido a estas horas punta — To avoid the busiest stretch at this rush hour,) ¿prefiere que tomemos la autopista, (¿prefiere que tomemos la autopista — do you prefer we take the highway,) aunque implique un pequeño peaje, (aunque implique un pequeño peaje — even if it means a small toll,) o nos ceñimos a la ruta habitual que suele ser un verdadero calvario ahora mismo? (o nos ceñimos a la ruta habitual que suele ser un verdadero calvario ahora mismo? — or do we stick to the usual route which is usually a real ordeal right now?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Verá, el trayecto hasta allí, dependiendo de cómo se ponga el tráfico, suele rondar los 25 o 30 euros, sin incluir el peaje si optamos por la autopista. ¿Le parece un precio razonable o prefiere que lo miremos en el taxímetro directamente? Y, ¿cómo prefiere abonar, en efectivo o con tarjeta?",
+      "branches": [
+        {
+          "keywords": [
+            "efectivo",
+            "cash",
+            "billetes",
+            "contado"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verá, el trayecto hasta allí, (Verá, el trayecto hasta allí — You see, the trip there,) dependiendo de cómo se ponga el tráfico, (dependiendo de cómo se ponga el tráfico — depending on how the traffic gets,) suele rondar los 25 o 30 euros, (suele rondar los 25 o 30 euros — usually hovers around 25 or 30 euros,) sin incluir el peaje si optamos por la autopista. (sin incluir el peaje si optamos por la autopista — not including the toll if we opt for the highway.) ¿Le parece un precio razonable o prefiere que lo miremos en el taxímetro directamente? (¿Le parece un precio razonable o prefiere que lo miremos en el taxímetro directamente? — Does that seem a reasonable price, or do you prefer we check it directly on the taximeter?) Y, ¿cómo prefiere abonar, en efectivo o con tarjeta? (Y, ¿cómo prefiere abonar, en efectivo o con tarjeta? — And, how do you prefer to pay, in cash or by card?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfecto. Ya estamos a punto de llegar. Son 28.50 euros, según el taxímetro. ¿Necesita que le dé la vuelta o tiene el importe justo?",
+      "branches": [
+        {
+          "keywords": [
+            "vuelta",
+            "cambio",
+            "restante",
+            "devuélvame"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. We're about to arrive. It's 28.50 euros, according to the taximeter. Do you need change, or do you have the exact amount?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "¡Ha sido un placer llevarle! Que tenga un excelente día y gracias por su confianza.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "It's been a pleasure to drive you! Have an excellent day and thank you for your trust.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, no le he captado bien. ¿Podría ser tan amable de reformularlo o repetirlo, por favor?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "repetir",
+            "disculpa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please be so kind as to rephrase or repeat it?"
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "dlg-ms-small-talk-b1",
+  "language": "ms",
+  "level": "B1",
+  "scenario": "small-talk",
+  "title": "Sembang Santai di Majlis",
+  "opening": "Hai, selamat malam. Seronok ke majlis ni? Saya rasa makanan kat sini sedap sangat!",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai, selamat malam. Seronok ke majlis ni? Saya rasa makanan kat sini sedap sangat!",
+      "branches": [
+        {
+          "keywords": [
+            "seronok",
+            "best",
+            "suka"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sibuk",
+            "kerja"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hai, se-la-mat ma-lam. Se-ro-nok ke ma-jlis ni? Sa-ya ra-sa ma-ka-nan kat si-ni se-dap sa-ngat! — Hi, good evening. Are you enjoying this event? I think the food here is really delicious!"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baguslah kalau seronok! Atau kalau biasa-biasa pun, harap awak dapat berehat. Awak selalu buat apa pada hujung minggu?",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "buku",
+            "filem",
+            "tonton"
+          ],
+          "nextTurnId": "t3_culture_or_relax"
+        },
+        {
+          "keywords": [
+            "sukan",
+            "bersukan",
+            "aktiviti"
+          ],
+          "nextTurnId": "t3_sport_or_travel"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-gus-lah ka-lau se-ro-nok! A-tau ka-lau bia-sa-bia-sa pun, ha-rap a-wak da-pat be-re-hat. A-wak se-la-lu bu-at a-pa pa-da hu-jung ming-gu? — That's good if you're enjoying it! Or if it's just so-so, I hope you get to relax. What do you usually do on weekends?"
+    },
+    "t3_culture_or_relax": {
+      "id": "t3_culture_or_relax",
+      "prompt": "Oh, menarik! Sama ada membaca atau berehat, kita perlukan masa untuk diri sendiri. Awak ada buku/filem kegemaran, atau makanan santai yang wajib ada?",
+      "branches": [
+        {
+          "keywords": [
+            "novel",
+            "fiksyen",
+            "komedi",
+            "drama",
+            "sejarah"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, me-na-rik! Sa-ma a-da mem-ba-ca a-tau be-re-hat, ki-ta per-lu-kan ma-sa un-tuk di-ri sen-di-ri. A-wak a-da bu-ku/fi-lem ke-ge-ma-ran, a-tau ma-ka-nan san-tai yang wa-jib a-da? — Oh, interesting! Whether reading or relaxing, we need time for ourselves. Do you have a favorite book/movie, or a must-have comfort food?"
+    },
+    "t3_sport_or_travel": {
+      "id": "t3_sport_or_travel",
+      "prompt": "Bagus tu! Sukan atau melancong, kedua-duanya buat kita aktif. Awak main sukan apa/pergi mana baru-baru ni? Atau ada tempat impian?",
+      "branches": [
+        {
+          "keywords": [
+            "bola",
+            "badminton",
+            "jogging",
+            "gym"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-gus tu! Su-kan a-tau me-lan-cong, ke-dua-du-a-nya bu-at ki-ta ak-tif. A-wak ma-in su-kan a-pa/per-gi ma-na ba-ru-ba-ru ni? A-tau a-da tem-pat im-pi-an? — That's great! Sports or travel, both keep us active. What sport do you play/where have you been recently? Or do you have a dream place?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Menarik sekali! Saya pun teringin nak cuba/lawat. Mungkin saya patut cuba/lawat nanti. Terima kasih atas perkongsian!",
+      "branches": [
+        {
+          "keywords": [
+            "okey",
+            "sama-sama",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Me-na-rik se-ka-li! Sa-ya pun te-ri-ngin nak cu-ba/la-wat. Mu-ngkin sa-ya pa-tut cu-ba/la-wat nan-ti. Te-ri-ma ka-sih a-tas per-kong-si-an! — Very interesting! I'd love to try/visit that too. Maybe I should try/visit it later. Thanks for sharing!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang apa yang awak cakap? Saya tak berapa jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bo-leh u-lang a-pa yang a-wak ca-kap? Sa-ya tak be-ra-pa je-las. — Sorry, could you repeat what you said? I wasn't very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Menarik perbualan kita. Tapi saya kena minta diri dulu. Selamat malam!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Me-na-rik per-bu-al-an ki-ta. Ta-pi sa-ya ke-na min-ta di-ri du-lu. Se-la-mat ma-lam! — Our conversation was interesting. But I have to excuse myself now. Good evening!",
+      "isTerminal": true
+    }
+  }
+}

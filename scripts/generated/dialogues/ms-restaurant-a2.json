@@ -1,0 +1,233 @@
+{
+  "id": "dlg-ms-restaurant-a2",
+  "language": "ms",
+  "level": "A2",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat datang ke Restoran Sedap! Adakah anda bersedia untuk memesan, atau perlukan sedikit masa lagi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Restoran Sedap! Adakah anda bersedia untuk memesan, atau perlukan sedikit masa lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "sedia",
+            "ya",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "masa",
+            "lagi",
+            "belum"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang ke Restoran Sedap! — Welcome to Sedap Restaurant! Adakah anda bersedia untuk memesan, atau perlukan sedikit masa lagi? — Are you ready to order, or do you need a little more time?"
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "Baik, tiada masalah. Beritahu saya apabila anda sudah bersedia.",
+      "branches": [
+        {
+          "keywords": [
+            "sedia",
+            "mahu",
+            "pesan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "terima",
+            "ok"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, tiada masalah. — Okay, no problem. Beritahu saya apabila anda sudah bersedia. — Let me know when you are ready."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Apa yang boleh saya bantu anda pesan hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "cadangan",
+            "rekomendasi",
+            "apa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nasi",
+            "ayam",
+            "mee",
+            "roti",
+            "makanan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apa yang boleh saya bantu anda pesan hari ini? — What can I help you order today?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Saya cadangkan Nasi Lemak Istimewa kami. Ia sangat popular di sini.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi lemak",
+            "mahu",
+            "ya",
+            "ok",
+            "pesan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lain",
+            "tidak",
+            "bukan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saya cadangkan Nasi Lemak Istimewa kami. — I recommend our Special Nasi Lemak. Ia sangat popular di sini. — It's very popular here."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, pesanan utama anda sudah diambil. Ada lagi yang anda ingin pesan?",
+      "branches": [
+        {
+          "keywords": [
+            "minum",
+            "air",
+            "kopi",
+            "teh"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "itu",
+            "sahaja"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, pesanan utama anda sudah diambil. — Okay, your main order has been taken. Ada lagi yang anda ingin pesan? — Is there anything else you would like to order?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Apa minuman yang anda mahu?",
+      "branches": [
+        {
+          "keywords": [
+            "air limau",
+            "teh ais",
+            "kopi panas",
+            "minuman"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apa minuman yang anda mahu? — What drink would you like?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Pesanan anda sudah diambil. Adakah anda mempunyai alahan makanan?",
+      "branches": [
+        {
+          "keywords": [
+            "tiada",
+            "tidak",
+            "tak ada"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pesanan anda sudah diambil. — Your order has been taken. Adakah anda mempunyai alahan makanan? — Do you have any food allergies?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik, pesanan anda akan dihantar tidak lama lagi. Terima kasih dan selamat menjamu selera!",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "promptTranslation": "Baik, pesanan anda akan dihantar tidak lama lagi. — Okay, your order will be delivered soon. Terima kasih dan selamat menjamu selera! — Thank you and enjoy your meal!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh anda ulang sekali lagi?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh anda ulang sekali lagi? — Sorry, could you repeat that again?"
+    }
+  }
+}

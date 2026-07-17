@@ -1,0 +1,174 @@
+{
+  "id": "dlg-it-post-office-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "post-office",
+  "title": "Spedizione Internazionale",
+  "opening": "Buongiorno, benvenuto alle Poste Italiane. Come posso esserle utile oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto alle Poste Italiane. Come posso esserle utile oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "spedire",
+            "pacco",
+            "spedirepacco"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "francobolli",
+            "francobollo",
+            "comprarefrancobolli"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "raccomandata",
+            "tracciare",
+            "informazioni"
+          ],
+          "nextTurnId": "t5_tracking_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno, benvenuto alle Poste Italiane. Come posso esserle utile oggi? — Good morning, welcome to the Italian Post Office. How can I help you today?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Certo. Deve spedire un pacco. La destinazione è in Italia o all'estero?",
+      "branches": [
+        {
+          "keywords": [
+            "estero",
+            "internazionale",
+            "allestero"
+          ],
+          "nextTurnId": "t3_international_parcel"
+        },
+        {
+          "keywords": [
+            "italia",
+            "nazionale"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "costo",
+            "prezzo"
+          ],
+          "nextTurnId": "t5_tracking_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo. Deve spedire un pacco. La destinazione è in Italia o all'estero? — Certainly. You need to send a parcel. Is the destination in Italy or abroad?"
+    },
+    "t3_international_parcel": {
+      "id": "t3_international_parcel",
+      "prompt": "Capisco. Per una spedizione internazionale, è necessario compilare il modulo di dichiarazione doganale. Ha già preparato i documenti?",
+      "branches": [
+        {
+          "keywords": [
+            "modulo",
+            "dogana",
+            "compilare"
+          ],
+          "nextTurnId": "t4_customs_form"
+        },
+        {
+          "keywords": [
+            "spedire",
+            "basta"
+          ],
+          "nextTurnId": "t5_tracking_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. Per una spedizione internazionale, è necessario compilare il modulo di dichiarazione doganale. Ha già preparato i documenti? — I understand. For an international shipment, you need to fill out the customs declaration form. Have you already prepared the documents?"
+    },
+    "t4_customs_form": {
+      "id": "t4_customs_form",
+      "prompt": "Il modulo doganale richiede la descrizione del contenuto, il valore e l'indirizzo del mittente e del destinatario. Possiamo procedere qui. Vuole anche un servizio di tracciamento o assicurazione?",
+      "branches": [
+        {
+          "keywords": [
+            "tracciamento",
+            "tracciare",
+            "monitorare"
+          ],
+          "nextTurnId": "t5_tracking_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Il modulo doganale richiede la descrizione del contenuto, il valore e l'indirizzo del mittente e del destinatario. Possiamo procedere qui. Vuole anche un servizio di tracciamento o assicurazione? — The customs form requires the description of the contents, the value, and the sender's and recipient's addresses. We can proceed here. Do you also want a tracking service or insurance?"
+    },
+    "t5_tracking_options": {
+      "id": "t5_tracking_options",
+      "prompt": "Offriamo diverse opzioni: la spedizione standard con tracciamento base, o la spedizione assicurata per un valore dichiarato, che include un tracciamento più dettagliato e risarcimento. Quale preferisce?",
+      "branches": [
+        {
+          "keywords": [
+            "standard",
+            "base",
+            "normale"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Offriamo diverse opzioni: la spedizione standard con tracciamento base, o la spedizione assicurata per un valore dichiarato, che include un tracciamento più dettagliato e risarcimento. Quale preferisce? — We offer several options: standard shipping with basic tracking, or insured shipping for a declared value, which includes more detailed tracking and compensation. Which do you prefer?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi, potrebbe ripetere per favore? Non ho capito bene. — Excuse me, could you please repeat? I didn't quite understand."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Perfetto. Procediamo con il pagamento. Grazie e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Perfetto. Procediamo con il pagamento. Grazie e buona giornata! — Perfect. Let's proceed with the payment. Thank you and have a good day!",
+      "isTerminal": true
+    }
+  }
+}

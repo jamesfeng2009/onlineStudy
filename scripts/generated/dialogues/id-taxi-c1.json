@@ -1,0 +1,233 @@
+{
+  "id": "dlg-id-taxi-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Percakapan Taksi Tingkat Lanjut",
+  "opening": "Selamat sore, Bapak/Ibu. Mau ke mana tujuan kita hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat sore, Bapak/Ibu. Mau ke mana tujuan kita hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "stasiun",
+            "gambir",
+            "pasar",
+            "tanahabang"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "biaya",
+            "tarif"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat sore (Selamat sore) — Good afternoon, Sir/Madam. Mau ke mana (Mau ke mana) — Where are we headed today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, sudah jelas tujuannya. Mau lewat jalan tol atau jalan biasa, Bapak/Ibu? Kalau tol mungkin lebih cepat sampai tapi ada biaya tambahan.",
+      "branches": [
+        {
+          "keywords": [
+            "tol",
+            "cepat",
+            "lewat tol"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "biaya",
+            "tarif"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Baik) — Alright, the destination is clear. Mau lewat (Mau lewat) — Do you want to take the toll road or the regular road, Sir/Madam? If via toll, it might be faster but there's an extra charge."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk perkiraan ongkos ke sana, kalau lewat tol mungkin sekitar Rp 70.000 hingga Rp 80.000, tergantung kondisi lalu lintas. Kalau jalan biasa bisa sedikit lebih murah tapi waktu tempuhnya lebih lama.",
+      "branches": [
+        {
+          "keywords": [
+            "tol",
+            "cepat",
+            "lewat tol"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "mahal",
+            "tidak",
+            "nego",
+            "kurang"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk perkiraan (Untuk perkiraan) — For the estimated fare there, kalau lewat tol (kalau lewat tol) — if via toll road, it might be around Rp 70,000 to Rp 80,000, depending on traffic conditions. Kalau jalan biasa (Kalau jalan biasa) — If via regular road, it could be slightly cheaper but travel time will be longer."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, kita lewat tol. Mohon maaf, sepertinya di depan ada sedikit kepadatan lalu lintas, jadi mungkin akan ada keterlambatan sekitar 10-15 menit dari estimasi awal.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "tidakmasalah",
+            "baiklah"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "alternatif",
+            "jalur lain",
+            "jalan lain"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, we'll take the toll road. Apologies, it seems there's a bit of traffic congestion ahead, so there might be a delay of about 10-15 minutes from the initial estimate."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Mohon maaf, Bapak/Ibu, untuk argo kami sudah sesuai standar taksi Blue Bird. Tidak bisa harga borongan. Kalau untuk alternatif jalur, saat ini jalur ini yang paling efisien, jalur lain justru lebih padat.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apologies, Sir/Madam, our meter fare is already according to Blue Bird taxi standards. We cannot offer a fixed price. As for alternative routes, this route is currently the most efficient; other routes are even more congested."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Kita sudah sampai di Stasiun Gambir, Bapak/Ibu. Totalnya Rp 78.500. Mau bayar tunai atau pakai kartu?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "cash",
+            "uang",
+            "seratus",
+            "limapuluh"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "kartu",
+            "debit",
+            "kredit",
+            "e-money"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "We have arrived at Gambir Station, Sir/Madam. The total is Rp 78,500. Cash or card?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Baik, Rp 100.000. Ini kembaliannya Rp 21.500 dan struknya. Terima kasih banyak sudah menggunakan layanan kami.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "baik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, Rp 100,000. Here's your change of Rp 21,500 and the receipt. Thank you very much for using our service."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulangi lagi, Bapak/Ibu? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, could you please repeat that, Sir/Madam? It wasn't very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak, Bapak/Ibu. Hati-hati di jalan dan semoga hari Anda menyenangkan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much, Sir/Madam. Please be careful on your way and have a pleasant day.",
+      "isTerminal": true
+    }
+  }
+}

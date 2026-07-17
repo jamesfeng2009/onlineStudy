@@ -1,0 +1,93 @@
+{
+  "id": "dlg-vi-interview-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc",
+  "opening": "Chào bạn, cảm ơn bạn đã đến buổi phỏng vấn hôm nay. Trước hết, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình được không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, cảm ơn bạn đã đến buổi phỏng vấn hôm nay. Trước hết, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình được không?",
+      "branches": [
+        {
+          "keywords": [
+            "kinhnghiệm",
+            "côngviệc"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chà-o bạn) — Hello, thank you for coming to today's interview. First, could you tell us a bit about yourself and your work experience?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Nghe có vẻ thú vị. Vậy bạn có thể chia sẻ thêm về những kỹ năng nổi bật hoặc thành tựu đáng kể mà bạn đã đạt được trong sự nghiệp của mình không?",
+      "branches": [
+        {
+          "keywords": [
+            "kỹnăng",
+            "chuyênmôn"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nghe có vẻ thú vị (Nge có vẻ thú vị) — That sounds interesting. Could you share more about the outstanding skills or significant achievements you've made in your career?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Rất tốt. Mọi người đều có những điểm mạnh và điểm cần cải thiện. Bạn có thể cho biết đâu là điểm mạnh lớn nhất của bạn, và đâu là khía cạnh bạn muốn phát triển thêm không?",
+      "branches": [
+        {
+          "keywords": [
+            "điểm mạnh",
+            "mạnh"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất tốt (Rất tốt) — Very good. Everyone has strengths and areas for improvement. Could you tell us what your biggest strength is, and what aspect you'd like to develop further?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Cảm ơn bạn đã chia sẻ rất thẳng thắn. Câu hỏi cuối cùng, bạn mong muốn điều gì ở vị trí này và mục tiêu nghề nghiệp dài hạn của bạn là gì?",
+      "branches": [
+        {
+          "keywords": [
+            "mongmuốn",
+            "mụctiêu"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn (Cảm ơn bạn) — Thank you for sharing so frankly. Last question, what do you hope for in this position, and what are your long-term career goals?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Bạn có thể nhắc lại không? Tôi chưa nghe rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Could you repeat that? I didn't hear clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã dành thời gian đến buổi phỏng vấn hôm nay. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for taking the time to come to today's interview. We will contact you as soon as possible.",
+      "isTerminal": true
+    }
+  }
+}

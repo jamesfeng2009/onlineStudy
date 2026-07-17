@@ -1,0 +1,185 @@
+{
+  "id": "dlg-th-airport-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "ที่สนามบิน - การเช็คอิน",
+  "opening": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ? ขออนุญาตดูตั๋วโดยสารกับหนังสือเดินทางด้วยครับ/ค่ะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีอะไรให้ช่วยไหมครับ/คะ? ขออนุญาตดูตั๋วโดยสารกับหนังสือเดินทางด้วยครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ตั๋ว",
+            "หนังสือเดินทาง",
+            "นี่ครับ",
+            "นี่ค่ะ",
+            "เอกสาร"
+          ],
+          "nextTurnId": "t2_document_processing"
+        },
+        {
+          "keywords": [
+            "เที่ยวบิน",
+            "ล่าช้า",
+            "สถานะ",
+            "ไฟล์ท"
+          ],
+          "nextTurnId": "t1_status_query"
+        },
+        {
+          "keywords": [
+            "ไม่เข้าใจ",
+            "อะไรนะ",
+            "ช่วยอธิบาย"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Mee a-rai hai chuay mai krap/ka? Kor a-nu-yat doo dtua doy-sarn gap nang-sue dern-tang duay krap/ka. — Hello, how may I help you? May I see your boarding pass and passport, please?"
+    },
+    "t1_status_query": {
+      "id": "t1_status_query",
+      "prompt": "เที่ยวบิน TG910 ไปลอนดอนยังคงกำหนดการเดิมนะครับ/คะ ไม่มีเที่ยวบินล่าช้าครับ/ค่ะ ขออนุญาตดูตั๋วโดยสารกับหนังสือเดินทางด้วยครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ตั๋ว",
+            "หนังสือเดินทาง",
+            "นี่ครับ",
+            "นี่ค่ะ",
+            "เอกสาร"
+          ],
+          "nextTurnId": "t2_document_processing"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Flight TG910 to London is still on schedule. There are no delays. May I see your boarding pass and passport, please?"
+    },
+    "t2_document_processing": {
+      "id": "t2_document_processing",
+      "prompt": "ขอบคุณครับ/ค่ะ ขอตรวจสอบสักครู่นะครับ/คะ... คุณจะเดินทางไปลอนดอนด้วยเที่ยวบิน TG910 ใช่ไหมครับ/คะ? มีสัมภาระจะโหลดใต้ท้องเครื่องกี่ชิ้นครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่งใบ",
+            "สองใบ",
+            "ไม่มี",
+            "แค่",
+            "กระเป๋า"
+          ],
+          "nextTurnId": "t3_boarding_pass_issued"
+        },
+        {
+          "keywords": [
+            "น้ำหนัก",
+            "จำกัด",
+            "เท่าไหร่",
+            "กี่กิโล"
+          ],
+          "nextTurnId": "t2_baggage_allowance"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khop khun krap/ka. Kor dtrot-sop sak kroo na krap/ka... Khun ja dern-tang bpai London duay tiao-bin TG910 chai mai krap/ka? Mee sam-pa-ra ja loht dtai tong kreuang gee chin krap/ka? — Thank you. Please wait a moment while I check... You are traveling to London on flight TG910, correct? How many bags will you check in?"
+    },
+    "t2_baggage_allowance": {
+      "id": "t2_baggage_allowance",
+      "prompt": "สำหรับเที่ยวบินไปลอนดอน ชั้นประหยัด สัมภาระโหลดใต้ท้องเครื่องไม่เกิน 30 กิโลกรัมต่อใบครับ/ค่ะ และไม่เกินสองใบครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่งใบ",
+            "สองใบ",
+            "ไม่มี",
+            "แค่",
+            "กระเป๋า"
+          ],
+          "nextTurnId": "t3_boarding_pass_issued"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For flights to London, economy class, checked baggage is not to exceed 30 kilograms per bag, and not more than two bags."
+    },
+    "t3_boarding_pass_issued": {
+      "id": "t3_boarding_pass_issued",
+      "prompt": "รับทราบครับ/ค่ะ หากมีสัมภาระเกินขนาดหรือน้ำหนัก อาจมีค่าใช้จ่ายเพิ่มเติมนะครับ/คะ นี่คือบัตรผ่านขึ้นเครื่องและป้ายติดกระเป๋าครับ/ค่ะ ประตูขึ้นเครื่องหมายเลข G5 จะเริ่มเปิดให้ผู้โดยสารขึ้นเครื่องเวลา 21:00 น. ครับ/ค่ะ ขอให้เดินทางโดยสวัสดิภาพนะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เดินทางปลอดภัย",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ประตู",
+            "เวลา",
+            "ขึ้นเครื่อง",
+            "กี่โมง"
+          ],
+          "nextTurnId": "t3_gate_reconfirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap-sarp krap/ka. Hak mee sam-pa-ra gern ka-nat reua nam-nak at mee ka-chai-jai perm-term na krap/ka. Nee keu bat-parn keun kreuang lae bpai dtit gra-bpao krap/ka. Pratoo keun kreuang mai lek G5 ja roem perd hai poo-doy-sarn keun kreuang we-la yee-sip-et na-li-ga krap/ka. Kor hai dern-tang doy sa-wat-di-pap na krap/ka. — Understood. If there is oversized or overweight baggage, there might be additional charges. Here is your boarding pass and baggage tags. Boarding gate G5 will open for passengers at 9:00 PM. Have a safe journey."
+    },
+    "t3_gate_reconfirm": {
+      "id": "t3_gate_reconfirm",
+      "prompt": "ประตูขึ้นเครื่องหมายเลข G5 เวลา 21:00 น. ครับ/ค่ะ มีอะไรสอบถามเพิ่มเติมไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มีแล้ว",
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เดินทางปลอดภัย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ไม่แน่ใจ",
+            "สอบถาม",
+            "อีกครั้ง",
+            "ซ้ำ"
+          ],
+          "nextTurnId": "t3_gate_reconfirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Boarding gate G5 at 9:00 PM. Is there anything else you'd like to ask?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ รบกวนพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kor tort na krap/ka, rob-guan poot eek krang dai mai krap/ka? — Excuse me, could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ/ค่ะ ขอให้เดินทางโดยสวัสดิภาพนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Krap/ka. Kor hai dern-tang doy sa-wat-di-pap na krap/ka. — Alright. Have a safe journey.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "id": "dlg-th-bank-c1",
+  "language": "th",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "การทำธุรกรรมการเงินที่ธนาคาร",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับสู่ธนาคารของเรานะคะ มีอะไรให้ดิฉันช่วยอำนวยความสะดวกในวันนี้คะ?",
+  "startTurnId": "t1_greeting",
+  "turns": {
+    "t1_greeting": {
+      "id": "t1_greeting",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับสู่ธนาคารของเรานะคะ มีอะไรให้ดิฉันช่วยอำนวยความสะดวกในวันนี้คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เปิดบัญชี",
+            "เปิดใหม่",
+            "บัญชี"
+          ],
+          "nextTurnId": "t2_account_type"
+        },
+        {
+          "keywords": [
+            "โอนเงิน",
+            "โอน",
+            "ต่างประเทศ"
+          ],
+          "nextTurnId": "t2_transfer_details"
+        },
+        {
+          "keywords": [
+            "atm",
+            "บัตรหาย",
+            "รหัส",
+            "pin"
+          ],
+          "nextTurnId": "t2_atm_issue"
+        },
+        {
+          "keywords": [
+            "ลงทุน",
+            "กองทุน",
+            "ปรึกษา"
+          ],
+          "nextTurnId": "t2_investment_query"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee kâ, yin-dee dtôn-ráp sùu tá-naa-kaan kǎw rao ná ka. Mee à-rai hâi dì-chán chûay am-nuay kwaam sà-dùak nai wan née ká? — Hello, welcome to our bank. How may I assist you today?"
+    },
+    "t2_account_type": {
+      "id": "t2_account_type",
+      "prompt": "สำหรับการเปิดบัญชีใหม่ ทางธนาคารมีผลิตภัณฑ์ที่หลากหลาย ไม่ว่าจะเป็นบัญชีออมทรัพย์ที่ให้ดอกเบี้ยพิเศษ หรือบัญชีกระแสรายวันที่มาพร้อมวงเงินสินเชื่อสำรอง ไม่ทราบว่าคุณลูกค้าสนใจประเภทใดเป็นพิเศษ หรือต้องการทราบเอกสารประกอบการเปิดบัญชีคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ออมทรัพย์",
+            "ดอกเบี้ย"
+          ],
+          "nextTurnId": "t3_confirm_action"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Săm-ràp gaan bpèrt ban-chee mài, taang tá-naa-kaan mee plìt-tà-pan têe làak-lǎai. Mâi wâa jà bpen ban-chee ɔɔm-sáp têe hâi dɔ̂k-bîa pí-sèt rěu ban-chee grà-sàe raai-wan têe maa prɔ́m wong-ngern sǐn-chûea săm-rɔɔng. Mâi sâap wâa kun lôok-ค้า sŏn-jai prà-pêet dai bpen pí-sèt rěu dtɔ̂ng-gaan sâap èk-gà-săan bprà-kɔ̂p gaan bpèrt ban-chee ká? — For opening a new account, the bank has a variety of products, whether it's a savings account offering special interest or a current account that comes with a reserve credit line. May I ask which type you are particularly interested in, or if you need to know the required documents for opening an account?"
+    },
+    "t2_transfer_details": {
+      "id": "t2_transfer_details",
+      "prompt": "การโอนเงินต่างประเทศมีรายละเอียดที่ต้องพิจารณาค่อนข้างมาก ทั้งเรื่องสกุลเงิน ประเทศปลายทาง และค่าธรรมเนียมที่แตกต่างกันไป เพื่อความถูกต้อง ดิฉันขอสอบถามว่าคุณลูกค้าต้องการโอนไปประเทศใดและสกุลเงินใดคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "usa",
+            "usd",
+            "อเมริกา"
+          ],
+          "nextTurnId": "t3_confirm_action"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gaan oht ngern dtàang bprà-têet mee raai-lá-ìat têe dtɔ̂ng pí-jà-rá-naa kɔ̂n-kâang mâak. Táng rêuang sà-gun ngern, bprà-têet bplaai taang láe kâa tam-niam têe dtàek-dtàang gan bpai. Pêua kwaam tòok-dtɔ̂ng, dì-chán kɔ̌ɔ sɔ̀ɔp-tǎam wâa kun lôok-ค้า dtɔ̂ng-gaan oht bpai bprà-têet dai láe sà-gun ngern dai ká? — International money transfers involve quite a lot of details to consider, including currency, destination country, and varying fees. For accuracy, may I ask which country and currency you wish to transfer to?"
+    },
+    "t2_atm_issue": {
+      "id": "t2_atm_issue",
+      "prompt": "เรื่องบัตรเอทีเอ็มหรือรหัสผ่านนะคะ ขอเรียนถามว่าปัญหาคือบัตรหาย ต้องการขอออกบัตรใหม่, ต้องการเปลี่ยนรหัสผ่าน, หรือบัตรมีปัญหาใช้งานไม่ได้คะ? รายละเอียดจะช่วยให้ดิฉันแนะนำขั้นตอนที่ถูกต้องค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "บัตรหาย",
+            "ออกใหม่"
+          ],
+          "nextTurnId": "t3_confirm_action"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rêuang bàt ay-tee-em rěu rá-hàt pâan ná ka. Kɔ̌ɔ rian tǎam wâa bpan-hǎa keu bàt hǎai dtɔ̂ng-gaan kɔ̌ɔ ɔ̀ɔk bàt mài, dtɔ̂ng-gaan bplìan rá-hàt pâan, rěu bàt mee bpan-hǎa chai-ngaan mâi dâai ká? Raai-lá-ìat jà chûay hâi dì-chán náe-nam kân-dtɔ̂n têe tòok-dtɔ̂ng kâ. — Regarding your ATM card or PIN, may I ask if the issue is a lost card needing replacement, a desire to change your PIN, or if the card is malfunctioning and unusable? Details will help me advise on the correct procedure."
+    },
+    "t2_investment_query": {
+      "id": "t2_investment_query",
+      "prompt": "สำหรับการลงทุน ทางธนาคารมีผลิตภัณฑ์ที่หลากหลายเพื่อให้เหมาะสมกับระดับความเสี่ยงที่ยอมรับได้และผลตอบแทนที่คุณลูกค้าคาดหวัง ไม่ทราบว่าคุณลูกค้ามีกรอบแนวคิดเกี่ยวกับการลงทุนอย่างไรบ้างคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ความเสี่ยงต่ำ",
+            "มั่นคง"
+          ],
+          "nextTurnId": "t3_confirm_action"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Săm-ràp gaan long-tun, taang tá-naa-kaan mee plìt-tà-pan têe làak-lǎai pêua hâi mɔ́-sŏm gàp rá-dàp kwaam-sîang têe yɔɔm-ráp dâai láe pŏn-dtɔ̀p-taen têe kun lôok-ค้า kâat-wǎng. Mâi sâap wâa kun lôok-ค้า mee grɔ̀ɔp naew-kít gìao gàp gaan long-tun yàang rai bâang ká? — For investment, the bank offers a variety of products to suit your acceptable risk level and expected returns. May I ask what your general investment philosophy is?"
+    },
+    "t3_confirm_action": {
+      "id": "t3_confirm_action",
+      "prompt": "ดิฉันได้ให้ข้อมูลเบื้องต้นเกี่ยวกับเรื่องที่คุณลูกค้าสนใจแล้วนะคะ หากคุณลูกค้าประสงค์จะดำเนินการต่อ ดิฉันจะพาไปพบเจ้าหน้าที่ผู้เชี่ยวชาญในแต่ละด้าน หรือมีข้อสงสัยอื่นใดเพิ่มเติมอีกไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "ดำเนินการ",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-end_goodbye"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dì-chán dâi hâi kɔ̂ɔ-moon bêung-dtôn gìao gàp rêuang têe kun lôok-ค้า sŏn-jai láew ná ka. Hàak kun lôok-ค้า prà-sŏng jà dam-nern dtɔ̀ɔ, dì-chán jà paa bpai póp jâo-nâa-têe pôo chîao-chaan nai dtàe-làe dâan rěu mee kɔ̂ɔ-sǒng-săi eun dai perm-term eek mái ká? — I have provided initial information regarding the matter you are interested in. If you wish to proceed, I will escort you to the specialized officer for each area. Or do you have any other questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขออภัยค่ะ ดิฉันไม่ค่อยเข้าใจ ไม่ทราบว่าคุณลูกค้าจะกรุณาพูดซ้ำอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1_greeting"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting",
+      "promptTranslation": "Kɔ̌ɔ a-pai kâ. Dì-chán mâi kɔ̂y kâo-jai. Mâi sâap wâa kun lôok-ค้า jà gà-rú-naa pôot sám eek kráng dâai mái ká? — I apologize. I didn't quite understand. Could you please repeat that again?"
+    },
+    "t-end_goodbye": {
+      "id": "t-end_goodbye",
+      "prompt": "ยินดีให้บริการค่ะ ขอให้มีวันที่ดีนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t-end_goodbye",
+      "promptTranslation": "Yin-dee hai bor-ri-gaan kâ. Kɔ̌ɔ hâi mee wan têe dee ná ka. — Happy to serve you. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

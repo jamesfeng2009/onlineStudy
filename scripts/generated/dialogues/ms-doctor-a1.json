@@ -1,0 +1,207 @@
+{
+  "id": "dlg-ms-doctor-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Lawatan Doktor",
+  "opening": "Selamat pagi. Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "demam"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "batuk",
+            "selesema"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "perut"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Suh-lah-mat pah-gee). Boleh saya bantu (Boh-leh sah-yah bahn-too)? — Good morning. How can I help you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "demam",
+            "batuk",
+            "selesema",
+            "perut",
+            "kepala",
+            "badan",
+            "makanan",
+            "pedas",
+            "ubat",
+            "terimakasih",
+            "berapa",
+            "tiada",
+            "ada",
+            "ya",
+            "tidakfaham",
+            "tidak"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Mah-ahf), boleh ulang (boh-leh oo-lang)? — Sorry, can you repeat?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sakit di mana? Sejak bila?",
+      "branches": [
+        {
+          "keywords": [
+            "kepala",
+            "sejaksemalam"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "perut",
+            "sejaksemalam"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sakit di mana (Sah-keet dee mah-nah)? Sejak bila (Seh-jak bee-lah)? — Where does it hurt? Since when?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Batuk teruk? Berapa lama?",
+      "branches": [
+        {
+          "keywords": [
+            "satu",
+            "minggu"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "demam",
+            "juga"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Batuk teruk (Bah-took teh-rook)? Berapa lama (Beh-rah-pah lah-mah)? — Bad cough? How long?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perut sakit? Makan apa?",
+      "branches": [
+        {
+          "keywords": [
+            "makanan",
+            "pedas"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perut sakit (Peh-root sah-keet)? Makan apa (Mah-kan ah-pah)? — Stomach ache? What did you eat?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ini ubat. Makan dua kali sehari selepas makan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "harga"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "tidakfaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ini ubat (Ee-nee oo-baht). Makan dua kali sehari (Mah-kan doo-ah kah-lee seh-hah-ree) selepas makan (seh-leh-pas mah-kan). — This is medicine. Take twice a day after food."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ini ubat batuk. Rehat cukup.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "harga"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "tidakfaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ini ubat batuk (Ee-nee oo-baht bah-took). Rehat cukup (Reh-haht choo-kup). — This is cough medicine. Get enough rest."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Harga lima belas ringgit. Ada alahan?",
+      "branches": [
+        {
+          "keywords": [
+            "tiada",
+            "tidak"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Harga lima belas ringgit (Har-gah lee-mah beh-las ring-geet). Ada alahan (Ah-dah ah-lah-han)? — The price is fifteen ringgit. Any allergies?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Jaga diri.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (Sah-mah sah-mah). Jaga diri (Jah-gah dee-ree). — You're welcome. Take care.",
+      "isTerminal": true
+    }
+  }
+}

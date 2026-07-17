@@ -1,0 +1,192 @@
+{
+  "id": "dlg-fr-small-talk-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "small-talk",
+  "title": "Petite discussion entre amis",
+  "opening": "Alors, comment s'est passé ton week-end ? J'espère que tu as pu souffler un peu.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Alors, comment s'est passé ton week-end ? J'espère que tu as pu souffler un peu.",
+      "branches": [
+        {
+          "keywords": [
+            "bien",
+            "super",
+            "génial"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "occupé",
+            "fatiguant",
+            "pas-terrible"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, how was your weekend? (Ah-lor, koh-mahn seh pah-seh tohn wee-kehnd?) I hope you had a chance to relax a bit."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, c'est super d'entendre ça ! Qu'est-ce qui t'a le plus marqué ou plu ?",
+      "branches": [
+        {
+          "keywords": [
+            "lire",
+            "sport",
+            "nature"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "amis",
+            "famille",
+            "manger",
+            "sortir"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, that's great to hear! (Ah, seh soo-per dahn-tahn-dr sah!) What stood out or did you like the most?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, dommage. J'espère que cette soirée te permettra de te changer les idées alors. As-tu déjà goûté les petits fours ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "délicieux",
+            "non"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "peut-être",
+            "j'espère",
+            "fatigué"
+          ],
+          "nextTurnId": "t-wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, too bad. (Oh, doh-mahj.) I hope this evening will allow you to clear your head then. Have you already tried the canapés?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Intéressant ! Ça fait un moment que je voulais m'y mettre. Tu as des recommandations ou des conseils pour un débutant ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "livre",
+            "club"
+          ],
+          "nextTurnId": "t-wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interesting! I've been meaning to get into it for a while. Do you have any recommendations or tips for a beginner?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Moi aussi, je trouve que les discussions animées autour d'un bon repas, ça n'a pas de prix. D'ailleurs, tu es venu(e) avec des amis ce soir ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "eux",
+            "non",
+            "seul"
+          ],
+          "nextTurnId": "t-wrapup"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Me too, I think lively discussions over a good meal are priceless. By the way, did you come with friends tonight?"
+    },
+    "t-wrapup": {
+      "id": "t-wrapup",
+      "prompt": "C'était vraiment agréable de papoter un peu avec toi. Je vais aller me resservir un verre. On se recroise plus tard, j'espère !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "àbientôt"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "It was really nice to chat (pah-poh-tay) with you a bit. I'm going to go get another drink. I hope we run into each other again (ohn suh ruh-krwahz) later!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas bien saisi. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "répéter"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "non",
+            "passons"
+          ],
+          "nextTurnId": "t-wrapup"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et bonne fin de soirée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye and have a good rest of the evening!",
+      "isTerminal": true
+    }
+  }
+}

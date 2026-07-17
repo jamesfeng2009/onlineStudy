@@ -1,0 +1,279 @@
+{
+  "id": "dlg-vi-directions-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "directions",
+  "title": "Hỏi Đường Đi Lạc Giữa Phố Xá",
+  "opening": "Chào anh/chị, trông anh/chị có vẻ đang tìm kiếm gì đó? Tôi có thể giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, trông anh/chị có vẻ đang tìm kiếm gì đó? Tôi có thể giúp gì không?",
+      "branches": [
+        {
+          "keywords": [
+            "nhàhátlớn",
+            "địachỉ",
+            "chỗnày",
+            "chỗđó"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị — Hello, you seem to be looking for something? Can I help?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "À Nhà hát Lớn hả? Dễ thôi. Anh/chị cứ đi thẳng chừng hai trăm mét nữa, qua một ngã tư đèn xanh đèn đỏ là thấy nó nằm bên tay phải liền à. Đừng có đi lố nha!",
+      "branches": [
+        {
+          "keywords": [
+            "xa",
+            "mấyxa",
+            "đibộ",
+            "bao"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "phươngtiện",
+            "xebuýt",
+            "xeôm",
+            "taxi"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "ngãtư",
+            "rẽ",
+            "nhưthếnào"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À Nhà hát Lớn hả? — Ah, the Grand Opera House? Easy. Just go straight about two hundred meters, past a traffic light intersection, and you'll see it right on your right. Don't go past it!"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Đi bộ thì cũng hơi mất sức đó. Chừng năm, bảy phút gì đó thôi. Nhưng nếu muốn nhanh thì bắt xe ôm hoặc taxi cho tiện, đỡ phải đi bộ dưới trời nắng chang chang này.",
+      "branches": [
+        {
+          "keywords": [
+            "xeôm",
+            "taxibao nhiêu",
+            "giá"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "chỗkhác",
+            "gầnđó",
+            "khu",
+            "quanh"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "cámơn",
+            "được",
+            "rõrồi",
+            "ổnrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đi bộ thì cũng hơi mất sức đó. — Walking might be a bit tiring. It's only about five, seven minutes. But if you want to be quick, take a motorbike taxi (xe ôm) or a regular taxi for convenience, so you don't have to walk under this scorching sun."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Đi xe buýt thì hơi rắc rối một chút vì có thể phải đổi tuyến. Xe ôm hoặc taxi là tiện nhất. Giá cả thì cũng không quá đắt đâu, tầm 30-50 ngàn là cùng. Bắt xe công nghệ thì không sợ bị chặt chém đâu.",
+      "branches": [
+        {
+          "keywords": [
+            "xebuýt",
+            "tuyến",
+            "số"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "giábaonhiêu",
+            "giá",
+            "taxinhiêu"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cámơn",
+            "rõrồi",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đi xe buýt thì hơi rắc rối một chút — Taking the bus might be a bit complicated as you might need to change lines. A motorbike taxi (xe ôm) or a regular taxi is the most convenient. The price isn't too expensive, around 30-50 thousand (VND) at most. Taking a ride-hailing app won't cost you an arm and a leg."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "À, cái ngã tư đó có một cái tiệm cà phê Highlands Coffee lớn ngay góc, với lại một ngân hàng nữa. Anh/chị cứ nhìn thấy bảng hiệu lớn là đúng đường rồi. Chắc chắn không thể nhầm lẫn được đâu.",
+      "branches": [
+        {
+          "keywords": [
+            "hiểu",
+            "rõrồi",
+            "được"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cámơn",
+            "ổnrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "À, cái ngã tư đó có một cái tiệm cà phê Highlands Coffee lớn ngay góc — Oh, that intersection has a large Highlands Coffee shop right on the corner, and also a bank. Just look for the big signs and you're on the right track. You definitely can't mistake it."
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Nếu anh/chị thực sự muốn đi xe buýt, có tuyến số 09 hoặc 14 chạy ngang qua đó. Tuy nhiên, phải đợi hơi lâu và cũng đông người lắm đấy, mà nhiều khi tài xế chạy nhanh rất dễ bị lỡ bến.",
+      "branches": [
+        {
+          "keywords": [
+            "thôivậy",
+            "khỏi",
+            "khôngđi",
+            "taxi"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cámơn",
+            "được",
+            "rõrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nếu anh/chị thực sự muốn đi xe buýt — If you really want to take the bus, routes 09 or 14 pass through there. However, you might have to wait a bit long, and it's usually very crowded, and sometimes the drivers go so fast it's easy to miss your stop."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Chắc tầm 30-40 ngàn thôi, tùy quãng đường một chút. Cứ hỏi giá trước khi đi cho chắc ăn nhé, nhất là xe ôm. Hoặc anh/chị có thể đặt qua ứng dụng Grab, Gojek cho tiện, vừa rẻ vừa minh bạch.",
+      "branches": [
+        {
+          "keywords": [
+            "cámơn",
+            "rõrồi",
+            "được",
+            "tốt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chắc tầm 30-40 ngàn thôi, tùy quãng đường một chút. — It's probably around 30-40 thousand, depending a bit on the distance. Always ask for the price before you go, especially with motorbike taxis. Or you can book via Grab or Gojek apps for convenience, it's both cheap and transparent."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Gần Nhà hát Lớn có Vườn hoa Con Cóc, Bảo tàng Lịch sử Quốc gia, hoặc anh/chị có thể đi bộ ra Hồ Gươm cũng không xa lắm đâu. Toàn là những địa điểm tham quan nổi tiếng, đặc trưng của Hà Nội cả.",
+      "branches": [
+        {
+          "keywords": [
+            "hồgươm",
+            "bảotàng",
+            "vườnhoa"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gần Nhà hát Lớn có Vườn hoa Con Cóc, Bảo tàng Lịch sử Quốc gia — Near the Grand Opera House, there's Con Coc flower garden, the National Museum of History, or you can walk to Hoan Kiem Lake, which isn't too far either. These are all famous, characteristic tourist spots of Hanoi."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi anh/chị, tôi nghe không rõ lắm. Anh/chị có thể nhắc lại không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi anh/chị, tôi nghe không rõ lắm. — Sorry, I didn't hear clearly. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Không có gì đâu. Chúc anh/chị một ngày tốt lành và tìm được đường nhé!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Không có gì đâu. — You're welcome. Wish you a good day and hope you find your way!",
+      "isTerminal": true
+    }
+  }
+}

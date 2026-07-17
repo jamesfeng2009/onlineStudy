@@ -1,0 +1,232 @@
+{
+  "id": "dlg-th-weather-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "คุยเรื่องอากาศ",
+  "opening": "สวัสดีค่ะ วันนี้อากาศเป็นยังไงบ้างคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ วันนี้อากาศเป็นยังไงบ้างคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ร้อน",
+            "อบอ้าว"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ฝนตก",
+            "มีฝน"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "เย็น",
+            "สบาย",
+            "ดี"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawàtdee kâ. Wan née à-gàat bpen yang-ngai bâang ká? — Hello. How's the weather today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ร้อนจริงๆ ด้วยค่ะ ช่วงนี้อากาศร้อนอบอ้าวมาก คุณมีแพลนจะไปไหนไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "อยู่บ้าน",
+            "ไม่ไปไหน"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไปทะเล",
+            "เที่ยวทะเล"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rón jing-jing dûay kâ. Chûang née à-gàat rón òp-âo mâak. Kun mee plan jà bpai nǎi mái ká? — It's really hot! The weather is very sweltering lately. Do you have any plans?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ใช่ค่ะ ฝนตกเกือบทุกวันเลยช่วงนี้ คุณคิดว่าอากาศแบบนี้มีผลกับแผนของคุณไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "กระทบ",
+            "มีผล",
+            "เสียแผน"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "ไม่กระทบ",
+            "ไม่มีผล",
+            "ไม่เป็นไร"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Châi kâ. Fŏn dtòk geuap túk wan loey chûang née. Kun kít wâa à-gàat bàep née mee pŏn gàp plaaen kŏng kun mái ká? — Yes, it rains almost every day lately. Do you think this kind of weather affects your plans?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ดีจังเลยค่ะ! อากาศสบายๆ แบบนี้หายากนะคะ คุณชอบฤดูไหนมากที่สุดคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ฤดูหนาว",
+            "หน้าหนาว"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee jang loey kâ! À-gàat sà-baai-sà-baai bàep née hăa yâak ná ká. Kun chôp rú-doo nǎi mâak têe sùt ká? — That's good! This kind of pleasant weather is rare, isn't it? Which season do you like the most?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เห็นด้วยเลยค่ะ อากาศมีผลกับหลายอย่างจริงๆ คุณวางแผนจะทำอะไรต่อไปคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "พักผ่อน",
+            "ผ่อนคลาย"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hĕn dûay loey kâ. À-gàat mee pŏn gàp lăai yàang jing-jing. Kun waang plaaen jà tam à-rai dtò-bpai ká? — I agree. Weather really affects many things. What do you plan to do next?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "โอ้ ไปทะเลช่วงอากาศร้อนๆ ก็ดีนะคะ ได้เล่นน้ำคลายร้อน คุณเคยไปเที่ยวทะเลที่ไหนมาบ้างคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ภูเก็ต",
+            "กระบี่"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ôh, bpai tá-lay chûang à-gàat rón-rón gôr dee ná ká. Dâai lên náam klaai rón. Kun koey bpai tîeow tá-lay têe nǎi maa bâang ká? — Oh, going to the beach when it's hot is nice, isn't it? You can swim to cool down. Where have you traveled to the beach?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "เข้าใจเลยค่ะ ถ้าฝนตกหนักๆ การเดินทางก็ลำบาก แล้วมีกิจกรรมอื่นที่คุณต้องเลื่อนหรือเปล่าคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "เลื่อน",
+            "ต้องเลื่อน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kâo jai loey kâ. Tâa fŏn dtòk nàk-nàk gaan dern taang gôr lam-bàak. Láew mee gìt-jà-gam eun têe kun dtông lêuan rĕu bplào ká? — I understand. If it rains heavily, travel is difficult. Are there any other activities you had to postpone?"
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "น่าสนใจค่ะ แต่ละคนก็ชอบอากาศไม่เหมือนกัน แล้วอะไรที่คุณชอบที่สุดเกี่ยวกับฤดูนั้นคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "อากาศดี",
+            "ลมเย็น"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nâa sŏn jai kâ. Dtàe lá kon gôr chôp à-gàat mâi mĕuan gan. Láew à-rai têe kun chôp têe sùt gìao gàp rú-doo nán ká? — Interesting. Everyone likes different weather. What do you like most about that season?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ ช่วยพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kŏr tôht ná ká. Chûay pôot èek kráng dâai mái ká? — I'm sorry, could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ดีจังเลยค่ะ! ขอบคุณมากที่มาคุยกันนะคะ ไว้คุยกันใหม่ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Dee jang loey kâ! Kòp kun mâak têe maa kuy gan ná ká. Wái kuy gan mài kâ. — That's good! Thank you very much for chatting. Let's talk again soon!",
+      "isTerminal": true
+    }
+  }
+}

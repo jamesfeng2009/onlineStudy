@@ -1,0 +1,288 @@
+{
+  "id": "dlg-vi-transport-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Mua vé xe buýt",
+  "opening": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị muốn đi đâu ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "bệnhviệnchợrẫy",
+            "bệnhviện",
+            "chợrẫy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ga",
+            "gatrungtâm"
+          ],
+          "nextTurnId": "t2_other_dest"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chao an/chi. An/chi muon di dau a? — Hello. Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, Bệnh viện Chợ Rẫy. Quý khách muốn mua vé một chiều hay khứ hồi? Hay có thẻ đi lại tháng không?",
+      "branches": [
+        {
+          "keywords": [
+            "mộtchiều",
+            "vé_một_chiều"
+          ],
+          "nextTurnId": "t3_motchieu"
+        },
+        {
+          "keywords": [
+            "khứhồi",
+            "vé_khứ_hồi"
+          ],
+          "nextTurnId": "t3_khuhoi"
+        },
+        {
+          "keywords": [
+            "thẻtháng",
+            "thẻ_đi_lại_tháng"
+          ],
+          "nextTurnId": "t3_thethang"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khôngbiết"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, Benh vien Cho Ray. Quy khach muon mua ve mot chieu hay khu hoi? Hay co the di lai thang khong? — Yes, Cho Ray Hospital. Do you want a one-way or round-trip ticket? Or do you have a monthly pass?"
+    },
+    "t2_other_dest": {
+      "id": "t2_other_dest",
+      "prompt": "Xin lỗi, hiện tại chúng tôi chỉ có thông tin chi tiết cho tuyến Bệnh viện Chợ Rẫy. Anh/chị có muốn đến đó không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "muốn"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "không",
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sin loi, hien tai chung toi chi co thong tin chi tiet cho tuyen Benh vien Cho Ray. An/chi co muon den do khong? — Sorry, currently we only have detailed information for the Cho Ray Hospital route. Would you like to go there?"
+    },
+    "t3_motchieu": {
+      "id": "t3_motchieu",
+      "prompt": "Với vé một chiều, anh/chị sẽ đi tuyến số 10 và chuyển sang tuyến 14 tại Bến Thành. Tuyến 10 thường khá đông vào giờ cao điểm, có thể chậm khoảng 10-15 phút. Anh/chị có muốn mua vé luôn không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "mua",
+            "đồngý"
+          ],
+          "nextTurnId": "t4_confirm_motchieu"
+        },
+        {
+          "keywords": [
+            "không",
+            "khôngmua",
+            "suynghĩ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Voi ve mot chieu, an/chi se di tuyen so muoi va chuyen sang tuyen muoi bon tai Ben Thanh. Tuyen muoi thuong kha dong vao gio cao diem, co the cham khoang muoi muoi lam phut. An/chi co muon mua ve luon khong? — For a one-way ticket, you'll take route 10 and transfer to route 14 at Ben Thanh. Route 10 is often quite crowded during peak hours, it might be delayed by about 10-15 minutes. Would you like to buy the ticket now?"
+    },
+    "t3_khuhoi": {
+      "id": "t3_khuhoi",
+      "prompt": "Vé khứ hồi sẽ tiết kiệm hơn một chút. Lộ trình vẫn tương tự, tuyến 10 và chuyển sang tuyến 14. Tuyến 10 thường có chuyến mỗi 10-15 phút. Anh/chị có muốn mua vé luôn không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "mua",
+            "đồngý"
+          ],
+          "nextTurnId": "t4_confirm_khuhoi"
+        },
+        {
+          "keywords": [
+            "không",
+            "khôngmua",
+            "giá"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ve khu hoi se tiet kiem hon mot chut. Lo trinh van tuong tu, tuyen muoi va chuyen sang tuyen muoi bon. Tuyen muoi thuong co chuyen moi muoi muoi lam phut. An/chi co muon mua ve luon khong? — A round-trip ticket will save you a bit. The route is similar, route 10 and transfer to route 14. Route 10 usually has a bus every 10-15 minutes. Would you like to buy the ticket now?"
+    },
+    "t3_thethang": {
+      "id": "t3_thethang",
+      "prompt": "Nếu có thẻ tháng, quý khách chỉ cần quẹt thẻ. Tuyến 10 đi thẳng đến Bệnh viện Chợ Rẫy, không cần chuyển tuyến và thường khá thông thoáng. Anh/chị có muốn hỏi thêm thông tin gì khác không?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "cảmơn",
+            "đượcrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lịchtrình",
+            "khi_nào"
+          ],
+          "nextTurnId": "t4_schedule"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Neu co the thang, quy khach chi can quet the. Tuyen muoi di thang den Benh vien Cho Ray, khong can chuyen tuyen va thuong kha thong thoang. An/chi co muon hoi them thong tin gi khac khong? — If you have a monthly pass, you just need to swipe it. Route 10 goes directly to Cho Ray Hospital, no transfer needed and is usually quite clear. Do you need any other information?"
+    },
+    "t4_confirm_motchieu": {
+      "id": "t4_confirm_motchieu",
+      "prompt": "Vâng, vé một chiều đến Bệnh viện Chợ Rẫy là 7.000 đồng. Quý khách vui lòng thanh toán. Cảm ơn quý khách!",
+      "branches": [
+        {
+          "keywords": [
+            "thanh_toán",
+            "xong",
+            "đã_trả",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, ve mot chieu den Benh vien Cho Ray la bay nghin dong. Quy khach vui long thanh toan. Cam on quy khach! — Okay, a one-way ticket to Cho Ray Hospital is 7,000 dong. Please pay. Thank you!"
+    },
+    "t4_confirm_khuhoi": {
+      "id": "t4_confirm_khuhoi",
+      "prompt": "Vâng, vé khứ hồi đến Bệnh viện Chợ Rẫy là 12.000 đồng. Quý khách vui lòng thanh toán. Cảm ơn quý khách!",
+      "branches": [
+        {
+          "keywords": [
+            "thanh_toán",
+            "xong",
+            "đã_trả",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vang, ve khu hoi den Benh vien Cho Ray la muoi hai nghin dong. Quy khach vui long thanh toan. Cam on quy khach! — Okay, a round-trip ticket to Cho Ray Hospital is 12,000 dong. Please pay. Thank you!"
+    },
+    "t4_schedule": {
+      "id": "t4_schedule",
+      "prompt": "Lịch trình cụ thể có thể xem trên ứng dụng hoặc tại các trạm dừng. Thường thì cứ 10-15 phút sẽ có một chuyến.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "hiểu",
+            "tốt"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Lich trinh cu the co the xem tren ung dung hoac tai cac tram dung. Thuong thi cu muoi muoi lam phut se co mot chuyen. — Specific schedules can be viewed on the app or at bus stops. Usually, there's a bus every 10-15 minutes."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa hiểu rõ. Anh/chị có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "nóilại",
+            "lặp_lại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sin loi, toi chua hieu ro. An/chi co the noi lai duoc khong? — Sorry, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc quý khách có một chuyến đi thuận lợi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chuc quy khach co mot chuyen di thuan loi! — Have a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "id": "dlg-vi-transport-c1",
+  "language": "vi",
+  "level": "C1",
+  "scenario": "transport",
+  "title": "Hỏi đáp giao thông công cộng",
+  "opening": "Chào anh/chị. Anh/chị cần hỗ trợ gì về thông tin các tuyến xe buýt hay tàu điện ngầm ở thành phố không ạ? Nếu có điểm đến cụ thể, xin vui lòng cho biết.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị cần hỗ trợ gì về thông tin các tuyến xe buýt hay tàu điện ngầm ở thành phố không ạ? Nếu có điểm đến cụ thể, xin vui lòng cho biết.",
+      "branches": [
+        {
+          "keywords": [
+            "bảotàng",
+            "lịchsử",
+            "đến",
+            "muốnđến",
+            "tớiga"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tuyến",
+            "số",
+            "xe",
+            "tàu",
+            "lịchtrình"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "thôngtin",
+            "chung",
+            "giớithiệu"
+          ],
+          "nextTurnId": "t1b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. Anh/chị cần hỗ trợ gì về thông tin các tuyến xe buýt hay tàu điện ngầm ở thành phố không ạ? (Chao anh/chi. Anh/chi can ho tro gi ve thong tin cac tuyen xe buyt hay tau dien ngam o thanh pho khong a? — Hello/Good day. Do you need any assistance regarding information about bus routes or the subway in the city?) Nếu có điểm đến cụ thể, xin vui lòng cho biết. (Neu co diem den cu the, sin vui long cho biet. — If you have a specific destination, please let me know.)"
+    },
+    "t1b": {
+      "id": "t1b",
+      "prompt": "Để tôi có thể hỗ trợ tốt nhất, anh/chị vui lòng cho biết thông tin cụ thể hơn về nhu cầu của mình được không ạ? Ví dụ, anh/chị muốn đi đâu, hoặc quan tâm đến tuyến xe/tàu nào?",
+      "branches": [
+        {
+          "keywords": [
+            "bảotàng",
+            "lịchsử",
+            "đến",
+            "muốnđến",
+            "tớiga"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tuyến",
+            "số",
+            "xe",
+            "tàu",
+            "lịchtrình"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "khôngcần",
+            "tạmbiệt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để tôi có thể hỗ trợ tốt nhất, anh/chị vui lòng cho biết thông tin cụ thể hơn về nhu cầu của mình được không ạ? (De toi co the ho tro tot nhat, anh/chi vui long cho biet thong tin cu the hon ve nhu cau cua minh duoc khong a? — In order for me to provide the best assistance, could you please specify your needs more clearly?) Ví dụ, anh/chị muốn đi đâu, hoặc quan tâm đến tuyến xe/tàu nào? (Vi du, anh/chi muon di dau, hoac quan tam den tuyen xe/tau nao? — For example, where do you want to go, or which bus/train route are you interested in?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, để đến Bảo tàng Lịch sử từ đây, anh/chị có thể bắt tuyến xe buýt số 10 ngay trước cửa, đi khoảng 5 trạm rồi xuống ở trạm 'Cổng chính Công viên Thống Nhất'. Sau đó, chuyển sang tuyến 14 và đi thêm 2 trạm nữa là tới nơi. Tổng hành trình dự kiến mất tầm 45-50 phút, không kể thời gian chờ xe.",
+      "branches": [
+        {
+          "keywords": [
+            "giávé",
+            "vé",
+            "tiền",
+            "mua"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chuyểntuyến",
+            "đổixe",
+            "rõràng",
+            "xácnhận"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, để đến Bảo tàng Lịch sử từ đây, anh/chị có thể bắt tuyến xe buýt số 10 ngay trước cửa, đi khoảng 5 trạm rồi xuống ở trạm 'Cổng chính Công viên Thống Nhất'. (Vang, de den Bao tang Lich su tu day, anh/chi co the bat tuyen xe buyt so muoi ngay truoc cua, di khoang nam tram roi xuong o tram 'Cong chinh Cong vien Thong Nhat.' — Yes, to get to the History Museum from here, you can take bus route #10 right outside, go about 5 stops and get off at 'Thong Nhat Park Main Gate' station.) Sau đó, chuyển sang tuyến 14 và đi thêm 2 trạm nữa là tới nơi. Tổng hành trình dự kiến mất tầm 45-50 phút, không kể thời gian chờ xe. (Sau do, chuyen sang tuyen muoi bon va di them hai tram nua la toi noi. Tong hanh trinh du kien mat tam bon lam-nam muoi phut, khong ke thoi gian cho xe. — Then, transfer to route 14 and go two more stops to arrive. The total journey is expected to take about 45-50 minutes, not including waiting time for the bus.)"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Tuyến xe buýt số 10 chạy từ bến xe A đến bến xe B, qua các điểm chính như Quảng trường Độc Lập, Bệnh viện Trung ương và Chợ đêm. Tần suất khoảng 10-15 phút/chuyến vào giờ bình thường và 5-7 phút/chuyến vào giờ cao điểm. Anh/chị có muốn biết về điểm dừng cụ thể nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "giávé",
+            "vé",
+            "tiền"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "điểmdừng",
+            "trạm",
+            "đâu",
+            "lịchtrình"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "xácnhận"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyến xe buýt số 10 chạy từ bến xe A đến bến xe B, qua các điểm chính như Quảng trường Độc Lập, Bệnh viện Trung ương và Chợ đêm. (Tuyen xe buyt so muoi chay tu ben xe A den ben xe B, qua cac diem chinh nhu Quang truong Doc Lap, Benh vien Trung uong va Cho dem. — Bus route #10 runs from Bus Terminal A to Bus Terminal B, passing through key points such as Independence Square, Central Hospital, and Night Market.) Tần suất khoảng 10-15 phút/chuyến vào giờ bình thường và 5-7 phút/chuyến vào giờ cao điểm. Anh/chị có muốn biết về điểm dừng cụ thể nào không? (Tan suat khoang muoi-muoi lam phut/chuyen vao gio binh thuong va nam-bay phut/chuyen vao gio cao diem. Anh/chi co muon biet ve diem dung cu the nao khong? — The frequency is about 10-15 minutes/trip during normal hours and 5-7 minutes/trip during peak hours. Would you like to know about any specific stops?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Giá vé một chiều cho mỗi lượt đi là 7.000 đồng, anh/chị có thể mua trực tiếp trên xe hoặc tại quầy vé. Về tình hình giao thông, vào khung giờ cao điểm từ 7h-9h sáng và 17h-19h tối, các tuyến đường thường xuyên tắc nghẽn, có thể gây chậm trễ đáng kể. Nếu có thể, anh/chị nên cân nhắc sắp xếp thời gian đi lại linh hoạt hơn.",
+      "branches": [
+        {
+          "keywords": [
+            "muavé",
+            "vé",
+            "mua",
+            "véđơn"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "vétháng",
+            "véngày",
+            "loaivékác"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "rõràng",
+            "được",
+            "tạmbiệt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Giá vé một chiều cho mỗi lượt đi là 7.000 đồng (Gia ve mot chieu cho moi luot di la bay nghin dong — A one-way ticket for each trip is 7,000 VND), anh/chị có thể mua trực tiếp trên xe hoặc tại quầy vé. Về tình hình giao thông, vào khung giờ cao điểm từ 7h-9h sáng và 17h-19h tối, các tuyến đường thường xuyên tắc nghẽn, có thể gây chậm trễ đáng kể. (Ve tinh hinh giao thong, vao khung gio cao diem tu bay gio-chin gio sang va muoi bay gio-muoi chin gio toi, cac tuyen duong thuong xuyen tac nghen, co the gay cham tre dang ke. — Regarding traffic conditions, during peak hours from 7-9 AM and 5-7 PM, roads are often congested, which can cause significant delays.) Nếu có thể, anh/chị nên cân nhắc sắp xếp thời gian đi lại linh hoạt hơn. (Neu co the, anh/chi nen can nhac sap xep thoi gian di lai linh hoat hon. — If possible, you should consider arranging your travel time more flexibly.)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Rất vui được giải đáp. Anh/chị còn muốn tìm hiểu thêm về điểm dừng cụ thể, lịch trình chi tiết, hay có bất kỳ thắc mắc nào khác không ạ? Hoặc nếu đã đủ thông tin, tôi có thể hỗ trợ mua vé luôn.",
+      "branches": [
+        {
+          "keywords": [
+            "muavé",
+            "mua",
+            "vé"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "rõrồi",
+            "được",
+            "tạmbiệt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "giávé",
+            "tiền",
+            "thêm"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất vui được giải đáp. (Rat vui duoc giai dap. — Glad to assist.) Anh/chị còn muốn tìm hiểu thêm về điểm dừng cụ thể, lịch trình chi tiết, hay có bất kỳ thắc mắc nào khác không ạ? (Anh/chi con muon tim hieu them ve diem dung cu the, lich trinh chi tiet, hay co bat ky thac mac nao khac khong a? — Do you still want to learn more about specific stops, detailed schedules, or have any other questions?) Hoặc nếu đã đủ thông tin, tôi có thể hỗ trợ mua vé luôn. (Hoac neu da du thong tin, toi co the ho tro mua ve luon. — Or if you have enough information, I can assist with ticket purchase now.)"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Ngoài vé một chiều, chúng tôi còn có vé ngày giá 20.000 đồng, cho phép anh/chị đi lại không giới hạn trên tất cả các tuyến trong vòng 24 giờ. Hoặc vé tháng nếu anh/chị có nhu cầu đi lại thường xuyên hơn. Anh/chị quan tâm loại nào ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "véngày",
+            "20000",
+            "muavéngày"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cảmơn",
+            "nghĩlại",
+            "khôngmua"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ngoài vé một chiều, chúng tôi còn có vé ngày giá 20.000 đồng (Ngoai ve mot chieu, chung toi con co ve ngay gia hai muoi nghin dong — Besides one-way tickets, we also have daily passes priced at 20,000 VND), cho phép anh/chị đi lại không giới hạn trên tất cả các tuyến trong vòng 24 giờ. Hoặc vé tháng nếu anh/chị có nhu cầu đi lại thường xuyên hơn. (Hoac ve thang neu anh/chi co nhu cau di lai thuong xuyen hon. — Or monthly passes if you need to travel more frequently.) Anh/chị quan tâm loại nào ạ? (Anh/chi quan tam loai nao a? — Which type are you interested in?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vậy anh/chị quyết định mua loại vé nào ạ? Hay chỉ cần thông tin thôi ạ? Dù sao đi nữa, chúc anh/chị có một chuyến đi thuận lợi và an toàn nhé!",
+      "branches": [
+        {
+          "keywords": [
+            "véngày",
+            "vétháng",
+            "véđơn",
+            "mua",
+            "cảmơn",
+            "tạmbiệt",
+            "đủrồi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vậy anh/chị quyết định mua loại vé nào ạ? (Vay anh/chi quyet dinh mua loai ve nao a? — So, which type of ticket do you decide to buy?) Hay chỉ cần thông tin thôi ạ? Dù sao đi nữa, chúc anh/chị có một chuyến đi thuận lợi và an toàn nhé! (Hay chi can thong tin thoi a? Du sao di nua, chuc anh/chi co mot chuyen di thuan loi va an toan nhe! — Or do you just need the information? Either way, I wish you a convenient and safe journey!)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nhắc lại được không ạ? (Sin loy, toy chuh nghe ro. Anh/chi co the nhac lai duoc khong a? — Excuse me, I didn't hear clearly. Could you please repeat?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị đã sử dụng dịch vụ. Chúc anh/chị có một chuyến đi vui vẻ và an toàn!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị đã sử dụng dịch vụ. Chúc anh/chị có một chuyến đi vui vẻ và an toàn! (Cam on anh/chi da su dung dich vu. Chuc anh/chi co mot chuyen di vui ve va an toan! — Thank you for using our service. Wish you a pleasant and safe journey!)",
+      "isTerminal": true
+    }
+  }
+}

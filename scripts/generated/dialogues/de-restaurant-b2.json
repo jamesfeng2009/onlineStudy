@@ -1,0 +1,152 @@
+{
+  "id": "dlg-de-restaurant-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "restaurant",
+  "title": "Restaurantbesuch: Bestellung aufnehmen",
+  "opening": "Guten Abend! Herzlich willkommen. Haben Sie sich schon etwas aus unserer Speisekarte aussuchen können oder brauchen Sie noch einen Moment?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend! Herzlich willkommen. Haben Sie sich schon etwas aus unserer Speisekarte aussuchen können oder brauchen Sie noch einen Moment?",
+      "branches": [
+        {
+          "keywords": [
+            "bestellen",
+            "bereit",
+            "soweit",
+            "ja"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "moment",
+            "zeit",
+            "noch",
+            "gerne"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "empfehlung",
+            "vorschlag",
+            "wasempfehlen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Ah-bent! Hairt-slich Vil-kom-men. Hah-ben Zee sich shon et-vas ows un-ze-rer Shpy-zeh-kar-teh ows-zoo-chen ker-nen o-der brow-chen Zee noch ey-nen Mo-ment? — Good evening! Welcome. Have you already been able to choose something from our menu or do you need another moment?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ausgezeichnet! Was darf es denn für Sie sein?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptgericht",
+            "essen",
+            "steak",
+            "pasta"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ows-geh-tsai-chnet! Vas darf es den foor Zee zine? — Excellent! What would you like?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kein Problem, nehmen Sie sich die Zeit, die Sie brauchen. Haben Sie vielleicht schon Fragen zur Karte oder zu Allergenen?",
+      "branches": [
+        {
+          "keywords": [
+            "fragen",
+            "allergien",
+            "wasist"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "danke",
+            "bisgleich",
+            "soweit"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kine Pro-blem, nay-men Zee sich dee Tsyt, dee Zee brow-chen. Hah-ben Zee fee-lycht shon Fra-gen tsur Kar-teh o-der tsoo Ahl-ler-gay-nen? — No problem, take your time. Do you perhaps already have questions about the menu or allergens?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Gerne, ich helfe Ihnen dabei. Haben Sie bestimmte Vorlieben, wie vegetarisch oder vegan, oder gibt es Allergien, die ich an die Küche weitergeben sollte? Sonst hätte ich ein paar Vorschläge.",
+      "branches": [
+        {
+          "keywords": [
+            "vegetarisch",
+            "vegan",
+            "allergie",
+            "gluten",
+            "laktose",
+            "empfehlung"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nein",
+            "selbst",
+            "karte"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Gehr-neh, ich hel-feh Een-en dah-bye. Hah-ben Zee bes-tim-teh For-lee-ben, vee veh-geh-tah-rish o-der veh-gahn, o-der gipt es Ahl-ler-gee-en, dee ich an dee Kyooh-cheh vy-ter-gay-ben zoll-teh? Zons het-teh ich eyne paar For-shley-geh. — Certainly, I'll help you with that. Do you have specific preferences, like vegetarian or vegan, or are there any allergies I should pass on to the kitchen? Otherwise, I'd have a few suggestions."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Eine hervorragende Wahl! Ihre Bestellung ist aufgenommen. Wünschen Sie dazu noch eine passende Vorspeise, ein Getränk oder einen Nachtisch? Oder darf ich Ihnen vielleicht schon die Rechnung bringen?",
+      "branches": [
+        {
+          "keywords": [
+            "nachtisch",
+            "dessert",
+            "eis",
+            "kuchen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ey-neh hehr-for-rah-gen-deh Vahl! Ee-reh Beh-stell-lung ist owf-geh-nom-men. Vyn-shen Zee dah-tsoo noch ey-neh pah-sen-deh For-shpy-zeh, eyne Geh-trenk o-der ey-nen Nach-tisch? O-der darf ich Een-en fee-lycht shon dee Re-chnung brin-gen? — An excellent choice! Your order has been taken. Would you like a suitable appetizer, a drink, or a dessert with that? Or perhaps I can already bring you the bill?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, das habe ich leider nicht ganz verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-di-gung, das hah-beh ich ly-der nicht gants fer-stan-den. Kern-ten Zee das bit-teh vee-der-ho-len? — Excuse me, I didn't quite catch that. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gerne! Alles klar. Ihre Bestellung kommt gleich. Einen schönen Abend noch und guten Appetit!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Gehr-neh! Ah-les klar. Ee-reh Beh-stell-lung komt glych. Ey-nen sherr-nen Ah-bent noch oont goo-ten Ah-peh-teet! — Certainly! Alright. Your order will be right out. Have a nice evening and enjoy your meal!",
+      "isTerminal": true
+    }
+  }
+}

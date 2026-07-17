@@ -1,0 +1,185 @@
+{
+  "id": "dlg-fr-transport-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "transport",
+  "title": "Achat de billet et informations de voyage",
+  "opening": "Bonjour, comment puis-je vous aider aujourd'hui ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour, comment puis-je vous aider aujourd'hui ?",
+      "branches": [
+        {
+          "keywords": [
+            "billet",
+            "ticket",
+            "acheter",
+            "destination"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "horaire",
+            "retard",
+            "train",
+            "bus",
+            "ligne"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "information",
+            "savoir",
+            "prix",
+            "correspondance"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour, comment pweezh voo eh-deh oh-zhoor-dwee? — Hello, how can I help you today?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Zhuh nay pah byan kom-pree. Poo-ryeh-voo reh-peh-tay, seel voo pleh? — I didn't quite understand. Could you please repeat?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "D'accord, vous souhaitez un billet pour quelle destination et quel type de trajet ? Aller simple, aller-retour, ou peut-être un abonnement ?",
+      "branches": [
+        {
+          "keywords": [
+            "simple",
+            "aller",
+            "paris",
+            "lyon"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dah-kor, voo soo-eh-teh un bee-yeh poor kel des-tee-nah-syon eh kel teep duh tra-zheh? — All right, you want a ticket for which destination and what type of journey? One-way, round-trip, or perhaps a pass?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr, de quelle ligne ou de quel train/bus parlez-vous précisément ? Et à quelle heure était-il prévu, approximativement ?",
+      "branches": [
+        {
+          "keywords": [
+            "ligne",
+            "train",
+            "bus",
+            "heure",
+            "maintenant"
+          ],
+          "nextTurnId": "t6"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Byan soor, duh kel leen oo duh kel tran/boos par-leh-voo preh-see-zeh-mahn? Eh ah kel ur eh-teh-teel preh-voo, ap-rok-see-mah-tee-vah-mahn? — Certainly, which line or train/bus are you talking about precisely? And at what time was it scheduled, approximately?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Quel type d'information recherchez-vous ? Sur les tarifs ou les correspondances, par exemple ?",
+      "branches": [
+        {
+          "keywords": [
+            "tarif",
+            "prix",
+            "coût"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "correspondance",
+            "transfert",
+            "changer"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "horaire",
+            "quand"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kel teep deen-for-mah-syon ruh-sher-sheh-voo? Soor lay ta-reef oo lay kor-es-pon-dahns, par eg-zam-pluh? — What type of information are you looking for? About fares or transfers, for example?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pour un aller simple vers Paris, cela ferait 45 euros. Comment souhaitez-vous régler ? Par carte ou en espèces ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "crédit",
+            "bleue"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For a one-way trip to Paris, that would be 45 euros. How would you like to pay? By card or cash?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Le train de 14h30 à destination de Lyon est malheureusement annoncé avec un retard d'environ 25 minutes, en raison d'un incident technique sur la voie. Nous sommes désolés pour ce désagrément.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "d'accord",
+            "information",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The 2:30 PM train to Lyon is unfortunately announced with a delay of approximately 25 minutes, due to a technical incident on the track. We are sorry for this inconvenience."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Pour les correspondances, il est souvent préférable de vérifier les affichages en gare ou l'application mobile. Pour la plupart des destinations importantes, un changement à la gare centrale est courant. Avez-vous une destination spécifique en tête pour que je puisse être plus précis ?",
+      "branches": [
+        {
+          "keywords": [
+            "paris",
+            "marseille",
+            "lyon",
+            "destination"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For transfers, it's often best to check the station displays or the mobile app. For most major destinations, a change at the central station is common. Do you have a specific destination in mind so I can be more precise?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Je vous en prie. Bonne journée !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Zhuh vooz ahn pree. Bonn zhoor-nay! — You're welcome. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

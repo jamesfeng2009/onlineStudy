@@ -1,0 +1,181 @@
+{
+  "id": "dlg-fr-hotel-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bienvenue à l'Hôtel Magnifique ! Je suis à votre entière disposition pour votre enregistrement. Puis-je avoir le nom sous lequel la réservation a été faite, s'il vous plaît ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bienvenue à l'Hôtel Magnifique ! Je suis à votre entière disposition pour votre enregistrement. Puis-je avoir le nom sous lequel la réservation a été faite, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "nom",
+            "réservation",
+            "dupont",
+            "martin",
+            "leroy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "s'ilvousplaît",
+            "répétez",
+            "pardonavoir"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bienvenue à l'Hôtel Magnifique ! Je suis à votre entière disposition pour votre enregistrement. Puis-je avoir le nom sous lequel la réservation a été faite, s'il vous plaît ? — Welcome to the Magnifique Hotel! I am at your entire disposal for your check-in. May I have the name under which the reservation was made, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent, Monsieur/Madame [Nom du client]. Avant de vous remettre les clés de votre havre de paix, pourriez-vous me présenter une pièce d'identité valide ainsi que la carte bancaire ayant servi au paiement ou une autre pour la caution, si vous voulez bien ?",
+      "branches": [
+        {
+          "keywords": [
+            "pièceidentité",
+            "cartebancaire",
+            "voilà",
+            "tenez"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "chambre",
+            "préférence",
+            "demande"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "répétez",
+            "pardon",
+            "désolé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent, Monsieur/Madame [Nom du client]. Avant de vous remettre les clés de votre havre de paix, pourriez-vous me présenter une pièce d'identité valide ainsi que la carte bancaire ayant servi au paiement ou une autre pour la caution, si vous voulez bien ? — Excellent, Sir/Madam [Client's Name]. Before I hand over the keys to your haven of peace, could you please present a valid ID and the credit card used for payment or another one for the deposit, if you would be so kind?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Parfait, un instant s'il vous plaît... Voilà, c'est réglé. Pour la chambre, avez-vous une préférence particulière ? Une vue sur cour ou sur rue, un étage élevé peut-être ?",
+      "branches": [
+        {
+          "keywords": [
+            "vue",
+            "étage",
+            "calme",
+            "ensoleillé"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "répétez",
+            "pardon",
+            "jecomprendspas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait, un instant s'il vous plaît... Voilà, c'est réglé. Pour la chambre, avez-vous une préférence particulière ? Une vue sur cour ou sur rue, un étage élevé peut-être ? — Perfect, just a moment please... There, it's settled. For the room, do you have any particular preference? A courtyard or street view, a high floor perhaps?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "J'entends bien votre demande concernant la chambre. Cependant, pour finaliser votre enregistrement et accéder à cette requête, il me faut impérativement votre pièce d'identité et votre moyen de paiement. Pourriez-vous me les confier un instant, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "voilà",
+            "tenez",
+            "pièceidentité",
+            "cartebancaire"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "répétez",
+            "pardon",
+            "jecomprendspas"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "J'entends bien votre demande concernant la chambre. Cependant, pour finaliser votre enregistrement et accéder à cette requête, il me faut impérativement votre pièce d'identité et votre moyen de paiement. Pourriez-vous me les confier un instant, s'il vous plaît ? — I understand your request regarding the room. However, to finalize your check-in and grant this request, I absolutely need your ID and method of payment. Could you entrust them to me for a moment, please?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien, j'ai noté votre préférence. Votre chambre est prête. Dernière petite chose : souhaitez-vous agrémenter votre séjour d'un petit-déjeuner continental, servi de 7h à 10h au restaurant de l'hôtel (18€ par personne) ?",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "volontiers",
+            "déjeuner",
+            "ajoutez"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien, j'ai noté votre préférence. Votre chambre est prête. Dernière petite chose : souhaitez-vous agrémenter votre séjour d'un petit-déjeuner continental, servi de 7h à 10h au restaurant de l'hôtel (18€ par personne) ? — Very good, I've noted your preference. Your room is ready. Last small thing: would you like to enhance your stay with a continental breakfast, served from 7 am to 10 am at the hotel restaurant (18€ per person)?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Très bien. Voici votre clé. Votre chambre est le numéro 405 au quatrième étage. Y a-t-il d'autres questions auxquelles je puisse répondre, ou puis-je vous souhaiter un excellent séjour dès à présent ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "pasquestion"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très bien. Voici votre clé. Votre chambre est le numéro 405 au quatrième étage. Y a-t-il d'autres questions auxquelles je puisse répondre, ou puis-je vous souhaiter un excellent séjour dès à présent ? — Very well. Here is your key. Your room is number 405 on the fourth floor. Are there any other questions I can answer, or may I wish you an excellent stay right now?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Au revoir et à très bientôt ! Profitez bien de votre séjour !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Au revoir et à très bientôt ! Profitez bien de votre séjour ! — Goodbye and see you very soon! Enjoy your stay!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous reformuler, s'il vous plaît ? Je n'ai pas bien saisi. Souhaitez-vous que je réitère ma question précédente ou que nous reprenions depuis le début ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Pardon ? Pourriez-vous reformuler, s'il vous plaît ? Je n'ai pas bien saisi. Souhaitez-vous que je réitère ma question précédente ou que nous reprenions depuis le début ? — Excuse me? Could you rephrase or repeat, please? I didn't"
+    }
+  }
+}

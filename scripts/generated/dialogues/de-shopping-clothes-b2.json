@@ -1,0 +1,322 @@
+{
+  "id": "dlg-de-shopping-clothes-b2",
+  "language": "de",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen",
+  "opening": "Guten Tag! Kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "suche",
+            "kleidung"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Kan ish ee-nen be-hilf-lich zyn? — Good day! Can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wonach suchen Sie denn genau? Oder haben Sie schon etwas Bestimmtes im Auge?",
+      "branches": [
+        {
+          "keywords": [
+            "jeans",
+            "blau",
+            "grösse",
+            "38",
+            "dreissigacht"
+          ],
+          "nextTurnId": "t3_jeans"
+        },
+        {
+          "keywords": [
+            "kleid",
+            "rot",
+            "m",
+            "medium"
+          ],
+          "nextTurnId": "t3_kleid"
+        },
+        {
+          "keywords": [
+            "pullover",
+            "schwarz",
+            "l",
+            "gross"
+          ],
+          "nextTurnId": "t3_pullover"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vo-nahkh zoo-chen Zee den ge-nau? O-der hah-ben Zee shon et-vas be-shtim-tes im ow-ge? — What exactly are you looking for? Or do you already have something specific in mind?"
+    },
+    "t3_jeans": {
+      "id": "t3_jeans",
+      "prompt": "Moment, ich schaue mal nach. Ah ja, die blauen Jeans in Größe 38 haben wir noch vorrätig. Die finden Sie gleich hier in der Damenabteilung.",
+      "branches": [
+        {
+          "keywords": [
+            "anprobieren",
+            "probieren",
+            "umkleide"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "andere",
+            "farbe",
+            "grösse",
+            "modell"
+          ],
+          "nextTurnId": "t5_alt"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mo-ment, ish shau-e mal nakh. Ah yah, dee blau-en Jeens in Grös-se akh-t-und-dreis-sish hah-ben veer nokh foer-reh-tish. Dee fin-den Zee glykh heer in der Dah-men-ap-ty-lung. — One moment, I'll check. Ah yes, we still have the blue jeans in size 38 in stock. You'll find them right here in the women's department."
+    },
+    "t3_kleid": {
+      "id": "t3_kleid",
+      "prompt": "Ein rotes Kleid in Größe M? Ja, da haben wir ein sehr schönes Modell, das gerade frisch reingekommen ist. Es hängt drüben bei den Abendkleidern.",
+      "branches": [
+        {
+          "keywords": [
+            "anprobieren",
+            "probieren",
+            "umkleide"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "andere",
+            "stil",
+            "modell",
+            "farbe"
+          ],
+          "nextTurnId": "t5_alt"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ein ro-tes Klyd in Grös-se Em? Yah, dah hah-ben veer ayn zeer shöh-nes Mo-del, das ge-rah-de frish ryn-ge-kom-men ist. Es hängt drü-ben by den Ah-bent-kly-dern. — A red dress in size M? Yes, we have a very nice model that has just arrived. It's hanging over there with the evening dresses."
+    },
+    "t3_pullover": {
+      "id": "t3_pullover",
+      "prompt": "Einen schwarzen Pullover in Größe L? Ja, da haben wir einige zur Auswahl, sowohl klassische als auch sportliche Modelle. Sie finden sie in der Herrenabteilung, Reihe drei.",
+      "branches": [
+        {
+          "keywords": [
+            "anprobieren",
+            "probieren",
+            "umkleide"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "andere",
+            "material",
+            "marke",
+            "farbe"
+          ],
+          "nextTurnId": "t5_alt"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ay-nen shvarts-en Poo-lo-ver in Grös-se El? Yah, dah hah-ben veer ay-ni-ge tsur Ow-svahl, zoh-vohl klaf-si-she als owkh shport-lich-e Mo-del-le. Zee fin-den zee in der Her-ren-ap-ty-lung, Ry-e dry. — A black sweater in size L? Yes, we have several to choose from, both classic and sporty models. You'll find them in the men's department, aisle three."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Die Umkleidekabinen sind gleich hier hinten, auf der linken Seite. Lassen Sie sich ruhig Zeit. Wenn Sie noch etwas brauchen oder eine andere Größe wünschen, sagen Sie einfach Bescheid.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "ok",
+            "verstanden"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "wo",
+            "nochmal",
+            "richtung"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dee Um-kly-de-kah-bee-nen zind glykh heer hin-ten, owf der lin-ken sy-te. Las-sen Zee zikh roo-ish tsayt. Ven Zee nokh et-vas brou-khen o-der ay-ne an-de-re Gröh-se vün-shen, zah-gen Zee ayn-fakh Be-shyt. — The fitting rooms are right back here, on the left side. Take your time. If you need anything else or wish for a different size, just let me know."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Entschuldigen Sie, vielleicht habe ich es nicht deutlich genug erklärt. Die Umkleiden sind direkt hinter der Schuhabteilung, gleich um die Ecke, auf der linken Seite. Sehen Sie das Schild?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "ah",
+            "jetzt",
+            "gefunden"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "En-shool-di-gen Zee, fee-lykt ha-be ish es nisht doyt-lich ge-nug er-klährt. Dee Um-kly-den zind dee-rekt hin-ter der Shoo-ap-ty-lung, glykh oom dee Ek-ke, owf der lin-ken sy-te. Zeh-en Zee das Shild? — Excuse me, perhaps I didn't explain it clearly enough. The fitting rooms are directly behind the shoe department, just around the corner, on the left side. Do you see the sign?"
+    },
+    "t5_alt": {
+      "id": "t5_alt",
+      "prompt": "Kein Problem, wir haben auch noch andere Farben und Stile. Soll ich Ihnen ein paar Alternativen zeigen, oder möchten Sie lieber selbst stöbern?",
+      "branches": [
+        {
+          "keywords": [
+            "zeigen",
+            "ja",
+            "gerne"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "selbst",
+            "stöbern",
+            "allein"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kyn pro-blem, veer hah-ben owkh nokh an-de-re Far-ben und Stie-le. Zol ish ee-nen par Al-ter-nah-tee-ven tsay-gen, o-der mökh-ten Zee lee-ber zelpst shtöh-bern? — No problem, we also have other colors and styles. Shall I show you some alternatives, or would you prefer to browse yourself?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Hat alles gepasst, oder benötigen Sie noch etwas?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "nehme",
+            "passt",
+            "kaufen"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "leider",
+            "gefällt",
+            "passtnicht"
+          ],
+          "nextTurnId": "t5_alt"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hat al-les ge-past, o-der be-nöh-tee-gen Zee nokh et-vas? — Did everything fit, or do you need anything else?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Wunderbar! Die Kassen befinden sich direkt am Ausgang. Gern geschehen und auf Wiedersehen!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "tschüss",
+            "aufwiedersehen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Voon-der-bahr! Dee Kas-sen be-fin-den zikh dee-rekt am Ows-gang. Gern ge-sheh-en und owf Vee-der-zeh-en! — Wonderful! The checkouts are right at the exit. You're welcome and goodbye!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, das habe ich leider nicht verstanden. Könnten Sie das bitte wiederholen oder anders formulieren?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "En-shool-di-gen Zee, das hah-be ish ly-der nisht fer-stan-den. Kön-ten Zee das bit-te vee-der-hoh-len o-der an-ders for-moo-lee-ren? — Excuse me, I didn't understand that. Could you please repeat it or phrase it differently?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Einkauf und hoffentlich bis bald!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Fee-len Dank für ee-ren Ayn-kowf und hof-fent-lich bis balt! — Thank you for your purchase and hopefully see you soon!",
+      "isTerminal": true
+    }
+  }
+}

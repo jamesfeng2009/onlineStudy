@@ -1,0 +1,168 @@
+{
+  "id": "dlg-es-post-office-c1",
+  "language": "es",
+  "level": "C1",
+  "scenario": "post-office",
+  "title": "Gestiones Postales Avanzadas",
+  "opening": "¡Buenos días! ¿En qué puedo asistirle hoy en Correos?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo asistirle hoy en Correos?",
+      "branches": [
+        {
+          "keywords": [
+            "enviarpaquete",
+            "paquete",
+            "enviar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "comprarsellos",
+            "sellos",
+            "franqueo"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "otra",
+            "pregunta"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! — Good morning! ¿En qué puedo asistirle hoy en Correos? — How can I assist you today at the post office?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Con mucho gusto. ¿Va a realizar un envío nacional o transfronterizo? Y, ¿ya trae el paquete debidamente embalado o necesitará material de paquetería de nuestro surtido?",
+      "branches": [
+        {
+          "keywords": [
+            "nacionalya",
+            "nacional",
+            "yaembalado"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "noentendido",
+            "repetir"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Con mucho gusto. ¿Va a realizar un envío nacional o transfronterizo? — Gladly. Will you be sending a national or cross-border shipment? Y, ¿ya trae el paquete debidamente embalado o necesitará material de paquetería de nuestro surtido? — And, do you already have the package properly packed or will you need packaging material from our assortment?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfecto. Para envíos internacionales, disponemos de varias modalidades: desde el correo ordinario, el certificado con acuse de recibo, hasta el servicio Paq Premium que ofrece seguimiento exhaustivo y cobertura de seguro. ¿Cuál se ajusta mejor a sus expectativas, considerando la premura y el valor intrínseco del contenido?",
+      "branches": [
+        {
+          "keywords": [
+            "certificado",
+            "acusederecibo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ordinarioestandar",
+            "ordinario",
+            "estandar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "noestoyseguro",
+            "opciones"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. Para envíos internacionales, disponemos de varias modalidades: — Perfect. For international shipments, we have various options: desde el correo ordinario, el certificado con acuse de recibo, hasta el servicio Paq Premium que ofrece seguimiento exhaustivo y cobertura de seguro. — from ordinary mail, certified with acknowledgment of receipt, to the Paq Premium service which offers comprehensive tracking and insurance coverage. ¿Cuál se ajusta mejor a sus expectativas, considerando la premura y el valor intrínseco del contenido? — Which best suits your expectations, considering the urgency and intrinsic value of the content?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excelente. Si se trata de un envío transfronterizo o certificado, es imperativo cumplimentar la declaración aduanera. ¿La trae ya diligenciada? Además, le facilitaremos un número de referencia para que pueda rastrear su envío en tiempo real, lo cual representa un valor añadido inestimable, ¿no cree?",
+      "branches": [
+        {
+          "keywords": [
+            "nocompletado",
+            "no",
+            "rellenar"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "declaracion",
+            "aduanera"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excelente. Si se trata de un envío transfronterizo o certificado, es imperativo cumplimentar la declaración aduanera. — Excellent. If it's a cross-border or certified shipment, it's imperative to complete the customs declaration. ¿La trae ya diligenciada? — Do you already have it filled out? Además, le facilitaremos un número de referencia para que pueda rastrear su envío en tiempo real, lo cual representa un valor añadido inestimable, ¿no cree? — In addition, we will provide you with a reference number so you can track your shipment in real time, which represents an invaluable added value, don't you think?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfecto. El importe total a sufragar por este envío asciende a [X euros]. ¿Qué modalidad de pago prefiere? Aceptamos tanto tarjeta bancaria como efectivo. ¿Hay algo más en lo que pueda serle de utilidad antes de concluir nuestra gestión?",
+      "branches": [
+        {
+          "keywords": [
+            "tarjeta",
+            "pagartarjeta",
+            "credito"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez",
+            "repetir"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. El importe total a sufragar por este envío asciende a [X euros]. — Perfect. The total amount to be paid for this shipment comes to [X euros]. ¿Qué modalidad de pago prefiere? — What payment method do you prefer? Aceptamos tanto tarjeta bancaria como efectivo. — We accept both bank card and cash. ¿Hay algo más en lo que pueda serle de utilidad antes de concluir nuestra gestión? — Is there anything else I can be of use to you for before concluding our transaction?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetirlo un poco más claro? No le he entendido bien.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you repeat that a bit clearer? I didn't understand you well."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un magnífico día. ¡Hasta la próxima!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome. Have a wonderful day. See you next time!",
+      "isTerminal": true
+    }
+  }
+}

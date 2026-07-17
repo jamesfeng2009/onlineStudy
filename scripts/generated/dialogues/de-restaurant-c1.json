@@ -1,0 +1,275 @@
+{
+  "id": "dlg-de-restaurant-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Restaurantgespräch: Eine kulinarische Entdeckungsreise",
+  "opening": "Guten Abend! Herzlich willkommen. Haben Sie schon einen Blick in unsere Speisekarte werfen können oder gibt es noch offene Fragen, bevor Sie eine Wahl treffen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend! Herzlich willkommen. Haben Sie schon einen Blick in unsere Speisekarte werfen können oder gibt es noch offene Fragen, bevor Sie eine Wahl treffen?",
+      "branches": [
+        {
+          "keywords": [
+            "empfehlung",
+            "empfehlen",
+            "vorschlag",
+            "was",
+            "fragen",
+            "frage"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bestellen",
+            "fertig",
+            "gerne"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "allergie",
+            "vegan",
+            "vegetarisch",
+            "glutenfrei",
+            "diät"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Abend — Good evening! Herzlich willkommen — Welcome. Haben Sie schon einen Blick in unsere Speisekarte werfen können — Have you already had a look at our menu or — oder gibt es noch offene Fragen — are there any open questions, bevor Sie eine Wahl treffen? — before you make a choice?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Sehr gerne! Unser Küchenchef ist besonders stolz auf das 'Rheinische Sauerbraten-Soufflé' – eine moderne Interpretation eines Klassikers, unglaublich zart und aromatisch. Oder darf es etwas Leichteres sein, wie unser 'Gebeizter Lachs mit Meerrettichmousse'?",
+      "branches": [
+        {
+          "keywords": [
+            "sauerbraten",
+            "soufflé",
+            "nehme",
+            "möchte",
+            "dieses"
+          ],
+          "nextTurnId": "t_order_final"
+        },
+        {
+          "keywords": [
+            "anderes",
+            "etwasanderes",
+            "nicht",
+            "keines"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr gerne — With pleasure! Unser Küchenchef ist besonders stolz auf das 'Rheinische Sauerbraten-Soufflé' — Our chef is particularly proud of the 'Rhenish Sauerbraten Soufflé' — eine moderne Interpretation eines Klassikers — a modern interpretation of a classic, unglaublich zart und aromatisch — incredibly tender and aromatic. Oder darf es etwas Leichteres sein — Or may it be something lighter, wie unser 'Gebeizter Lachs mit Meerrettichmousse'? — like our 'Cured Salmon with Horseradish Mousse'?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Sehr schön, was darf es denn für Sie sein? Haben Sie sich schon für ein Gericht entschieden?",
+      "branches": [
+        {
+          "keywords": [
+            "sauerbraten",
+            "lachs",
+            "linsencurry",
+            "gnocchi",
+            "möchte",
+            "nehme",
+            "gericht"
+          ],
+          "nextTurnId": "t_order_final"
+        },
+        {
+          "keywords": [
+            "empfehlung",
+            "vorschlag"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "vegan",
+            "glutenfrei",
+            "allergie"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sehr schön — Very nice, was darf es denn für Sie sein? — what would you like? Haben Sie sich schon für ein Gericht entschieden? — Have you already decided on a dish?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Selbstverständlich. Haben Sie bestimmte Allergien oder Präferenzen, die wir beachten sollten? Wir bieten beispielsweise auch eine Reihe von veganen oder glutenfreien Optionen an, die nicht explizit auf der Karte stehen.",
+      "branches": [
+        {
+          "keywords": [
+            "vegan",
+            "vegetarisch"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "keine",
+            "nichts",
+            "keineallergie"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Do you have any specific allergies or preferences that we should consider? For example, we also offer a range of vegan or gluten-free options that are not explicitly on the menu."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Wunderbar. Ich nehme Ihre Bestellung dann auf. Ist das so weit korrekt oder möchten Sie noch etwas hinzufügen oder ändern?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "korrekt",
+            "stimmt",
+            "nichtsmehr"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "nein",
+            "änderung",
+            "doch",
+            "falsch"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wonderful. I'll take your order then. Is that correct so far, or would you like to add or change anything?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Verstanden. Für Ihre Präferenzen hätten wir heute ein hervorragendes 'Linsen-Curry mit Kokosmilch und Süßkartoffel' oder eine 'Trüffel-Gnocchi mit saisonalem Gemüse'. Beide sind sehr beliebt.",
+      "branches": [
+        {
+          "keywords": [
+            "linsencurry",
+            "curry"
+          ],
+          "nextTurnId": "t_order_final"
+        },
+        {
+          "keywords": [
+            "keins",
+            "dochlieber",
+            "anderes"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. For your preferences, we have an excellent 'Lentil Curry with Coconut Milk and Sweet Potato' or 'Truffle Gnocchi with seasonal vegetables' today. Both are very popular."
+    },
+    "t_order_final": {
+      "id": "t_order_final",
+      "prompt": "Eine ausgezeichnete Wahl! Kommt das gut. Und dazu? Darf es vielleicht ein passender Wein sein oder bevorzugen Sie etwas Alkoholfreies?",
+      "branches": [
+        {
+          "keywords": [
+            "wein",
+            "rotwein",
+            "weißwein",
+            "bier",
+            "getränk",
+            "cola",
+            "saft"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "später",
+            "nochnicht",
+            "etwasanderes",
+            "doch"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eine ausgezeichnete Wahl — An excellent choice! Kommt das gut — That's fine. Und dazu — And with that? Darf es vielleicht ein passender Wein sein — Perhaps a matching wine, oder bevorzugen Sie etwas Alkoholfreies? — or do you prefer something non-alcoholic?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, könnten Sie das bitte wiederholen? Ich habe Sie leider nicht ganz verstanden.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat that? I unfortunately didn't quite understand you."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Ausgezeichnet! Ihre Bestellung wird nun zubereitet. Vielen Dank für Ihren Besuch und einen schönen Abend noch!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent! Your order is now being prepared. Thank you for your visit and have a pleasant evening!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "id": "dlg-en-shopping-clothes-a2",
+  "language": "en",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Shopping for Clothes",
+  "opening": "Hello! How can I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello! How can I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "shirt",
+            "tshirt",
+            "dress",
+            "pants",
+            "jacket"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "justlook",
+            "browse"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hello - Hello! How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Okay, what kind of item are you looking for? Or what size and color?",
+      "branches": [
+        {
+          "keywords": [
+            "blue",
+            "red",
+            "black",
+            "green",
+            "white"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay - Okay, what kind of item are you looking for? Or what size and color?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Yes, we have that. Would you like to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "try",
+            "on",
+            "please"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "notnow",
+            "justbuy"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "think"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes - Yes, we have that. Would you like to try it on?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Great! The fitting rooms are over there, next to the shoes. Let me know if you need help.",
+      "branches": [
+        {
+          "keywords": [
+            "thanks",
+            "ok",
+            "find"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "where"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "another",
+            "size",
+            "different"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Great - Great! The fitting rooms are over there, next to the shoes. Let me know if you need help."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Do you like it? Are you ready to buy?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "like",
+            "buy"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "notfit",
+            "small",
+            "big"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Do you like it - Do you like it? Are you ready to buy?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Oh, I see. Would you like a different size or color?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "size",
+            "color"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "thanks",
+            "nothing"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, I see - Oh, I see. Would you like a different size or color?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't understand that. Can you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "anything"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry - Sorry, I didn't understand that. Can you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Okay, thank you for visiting! Have a nice day!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay - Okay, thank you for visiting! Have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

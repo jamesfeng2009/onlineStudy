@@ -1,0 +1,206 @@
+{
+  "id": "dlg-es-post-office-c2",
+  "language": "es",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Gestiones en Correos",
+  "opening": "¡Buenos días! ¿En qué puedo ayudarle hoy? ¿Viene a enviar algo, a recoger un paquete, o necesita algún otro servicio?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "¡Buenos días! ¿En qué puedo ayudarle hoy? ¿Viene a enviar algo, a recoger un paquete, o necesita algún otro servicio, quizás sellos o hacer un giro?",
+      "branches": [
+        {
+          "keywords": [
+            "enviar",
+            "paquete",
+            "envío"
+          ],
+          "nextTurnId": "t2_destino"
+        },
+        {
+          "keywords": [
+            "sellos",
+            "franqueo"
+          ],
+          "nextTurnId": "t2_sellos"
+        },
+        {
+          "keywords": [
+            "recoger",
+            "recogida",
+            "carta",
+            "giro",
+            "consultar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "otra",
+            "pregunta"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "¡Buenos días! — Good morning! ¿En qué puedo ayudarle hoy? — How can I help you today? ¿Viene a enviar algo, a recoger un paquete, o necesita algún otro servicio, quizás sellos o hacer un giro? — Are you here to send something, pick up a parcel, or do you need any other service, perhaps stamps or a money order?"
+    },
+    "t2_destino": {
+      "id": "t2_destino",
+      "prompt": "Entendido. Para el envío, ¿es nacional o internacional? Y, ¿desea que sea un envío certificado o prioritario, con seguimiento, o algo más estándar?",
+      "branches": [
+        {
+          "keywords": [
+            "internacional",
+            "extranjero",
+            "fuera"
+          ],
+          "nextTurnId": "t3_aduanas"
+        },
+        {
+          "keywords": [
+            "nacional",
+            "dentro",
+            "españa"
+          ],
+          "nextTurnId": "t3_confirm_envio"
+        },
+        {
+          "keywords": [
+            "",
+            "noestoyseguro",
+            "nose"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Entendido. — Understood. Para el envío, ¿es nacional o internacional? — For the shipment, is it domestic or international? Y, ¿desea que sea un envío certificado o prioritario, con seguimiento, o algo más estándar? — And, do you want it to be a certified or priority shipment, with tracking, or something more standard?"
+    },
+    "t2_sellos": {
+      "id": "t2_sellos",
+      "prompt": "Ah, sellos. ¿De qué tipo busca? ¿Para cartas nacionales, internacionales, o quizás sellos de coleccionismo? Tenemos una variedad bastante amplia.",
+      "branches": [
+        {
+          "keywords": [
+            "nacionales",
+            "nacional",
+            "españa"
+          ],
+          "nextTurnId": "t4_finalizar_transaccion"
+        },
+        {
+          "keywords": [
+            "",
+            "varios",
+            "nose"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, sellos. — Ah, stamps. ¿De qué tipo busca? — What kind are you looking for? ¿Para cartas nacionales, internacionales, o quizás sellos de coleccionismo? — For domestic or international letters, or perhaps collectible stamps? Tenemos una variedad bastante amplia. — We have quite a wide variety."
+    },
+    "t3_aduanas": {
+      "id": "t3_aduanas",
+      "prompt": "Para envíos internacionales, le informo que es imprescindible rellenar un formulario de aduanas. ¿Ya lo trae cumplimentado o necesita uno y ayuda para hacerlo?",
+      "branches": [
+        {
+          "keywords": [
+            "necesito",
+            "ayuda",
+            "démelo",
+            "si"
+          ],
+          "nextTurnId": "t4_finalizar_transaccion"
+        },
+        {
+          "keywords": [
+            "",
+            "quetrae",
+            "queeseso"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Para envíos internacionales, — For international shipments, le informo que es imprescindible rellenar un formulario de aduanas. — I inform you that it is essential to fill out a customs form. ¿Ya lo trae cumplimentado o necesita uno y ayuda para hacerlo? — Do you already have it completed or do you need one and help with it?"
+    },
+    "t3_confirm_envio": {
+      "id": "t3_confirm_envio",
+      "prompt": "Perfecto. Entonces, si ya tiene todo listo para el paquete, ¿desea añadir algún tipo de seguro o confirmación de entrega antes de proceder al pesaje?",
+      "branches": [
+        {
+          "keywords": [
+            "seguro",
+            "confirmacion",
+            "sí",
+            "adelante"
+          ],
+          "nextTurnId": "t4_finalizar_transaccion"
+        },
+        {
+          "keywords": [
+            "",
+            "otravez",
+            "quees"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfecto. — Perfect. Entonces, si ya tiene todo listo para el paquete, — So, if you already have everything ready for the package, ¿desea añadir algún tipo de seguro o confirmación de entrega antes de proceder al pesaje? — do you wish to add any type of insurance or delivery confirmation before proceeding to weighing?"
+    },
+    "t4_finalizar_transaccion": {
+      "id": "t4_finalizar_transaccion",
+      "prompt": "Estupendo. Entonces, si no hay nada más en lo que pueda asistirle con el envío o los sellos, procedemos con el pesaje y el pago. ¿Estamos listos para finalizar la transacción?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "listos",
+            "adelante",
+            "finalizar",
+            "pagar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no",
+            "espera",
+            "pregunta"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Estupendo. — Great. Entonces, si no hay nada más en lo que pueda asistirle con el envío o los sellos, — So, if there's nothing else I can assist you with regarding the shipment or stamps, procedemos con el pesaje y el pago. — we'll proceed with weighing and payment. ¿Estamos listos para finalizar la transacción? — Are we ready to finalize the transaction?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpe, ¿podría repetir eso? No le he entendido bien. Quizás haya habido un malentendido.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Disculpe, ¿podría repetir eso? — Excuse me, could you repeat that? No le he entendido bien. — I didn't quite understand you. Quizás haya habido un malentendido. — Perhaps there was a misunderstanding."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De nada. Que tenga un buen día.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De nada. — You're welcome. Que tenga un buen día. — Have a good day.",
+      "isTerminal": true
+    }
+  }
+}

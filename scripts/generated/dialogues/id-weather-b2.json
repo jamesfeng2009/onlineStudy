@@ -1,0 +1,146 @@
+{
+  "id": "dlg-id-weather-b2",
+  "language": "id",
+  "level": "B2",
+  "scenario": "weather",
+  "title": "Obrolan Cuaca",
+  "opening": "Wah, hari ini cuacanya cerah sekali ya, seperti yang diperkirakan. Enaknya buat apa nih, menurutmu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Wah, hari ini cuacanya cerah sekali ya, seperti yang diperkirakan. Enaknya buat apa nih, menurutmu?",
+      "branches": [
+        {
+          "keywords": [
+            "piknik",
+            "jalan-jalan",
+            "luar"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "diam",
+            "rumah",
+            "santai"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "sibuk",
+            "tidak-tahu",
+            "apa-saja"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, hari ini cuacanya cerah sekali ya, seperti yang diperkirakan. Enaknya buat apa nih, menurutmu? — Wow, the weather is really bright today, just as expected. What's good to do with this kind of weather, in your opinion?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ide bagus! Memang paling pas kalau cuaca secerah ini dimanfaatkan untuk kegiatan di luar. Ngomong-ngomong, kamu sudah lihat prakiraan cuaca untuk besok belum? Katanya sih mau ada potensi hujan ringan.",
+      "branches": [
+        {
+          "keywords": [
+            "hujan",
+            "payung",
+            "siap-siap"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kecewa",
+            "batal",
+            "sedih"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tidak-peduli",
+            "biasa-saja"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ide bagus! Memang paling pas kalau cuaca secerah ini dimanfaatkan untuk kegiatan di luar. Ngomong-ngomong, kamu sudah lihat prakiraan cuaca untuk besok belum? Katanya sih mau ada potensi hujan ringan. — Good idea! It's indeed best to use such bright weather for outdoor activities. By the way, have you seen the weather forecast for tomorrow? They say there's a potential for light rain."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, begitu ya. Kadang memang prakiraan cuaca bisa meleset, atau justru membuat kita jadi ragu mau melakukan sesuatu. Kalau menurutmu, musim di sini lebih banyak panasnya atau hujannya sih? Rasanya kok belakangan ini sering sekali tiba-tiba mendung.",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "kemarau",
+            "terik"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu ya. Kadang memang prakiraan cuaca bisa meleset, atau justru membuat kita jadi ragu mau melakukan sesuatu. Kalau menurutmu, musim di sini lebih banyak panasnya atau hujannya sih? Rasanya kok belakangan ini sering sekali tiba-tiba mendung. — Oh, I see. Sometimes weather forecasts can be wrong, or they make us hesitant to do something. In your opinion, are the seasons here more about heat or rain? It feels like lately it's often suddenly cloudy."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Iya juga ya, cuaca memang sering tidak bisa ditebak. Tapi setidaknya kita bisa bersiap-siap. Bicara soal suhu, akhir-akhir ini terasa lebih panas dari biasanya tidak sih? Atau aku saja yang terlalu sensitif?",
+      "branches": [
+        {
+          "keywords": [
+            "panas",
+            "gerah",
+            "terik"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Iya juga ya, cuaca memang sering tidak bisa ditebak. Tapi setidaknya kita bisa bersiap-siap. Bicara soal suhu, akhir-akhir ini terasa lebih panas dari biasanya tidak sih? Atau aku saja yang terlalu sensitif? — Yes, indeed, the weather is often unpredictable. But at least we can prepare. Speaking of temperature, does it feel hotter than usual lately? Or am I just too sensitive?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Betul sekali. Iklim di sini memang tropis, jadi tidak terlalu ekstrem, tapi kadang perubahan cuaca mendadak bisa bikin kaget. Yah, semoga saja cuaca tetap bersahabat untuk kegiatan kita ke depan.",
+      "branches": [
+        {
+          "keywords": [
+            "amin",
+            "semoga",
+            "setuju",
+            "iya"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolutely. The climate here is tropical, so it's not too extreme, but sometimes sudden weather changes can be surprising. Well, let's hope the weather remains friendly for our future activities."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, bisa diulang lagi? Kurang jelas tadi. — Sorry, could you repeat that? It wasn't very clear."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, terima kasih sudah mengobrol. Sampai jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright, thanks for chatting. See you again!",
+      "isTerminal": true
+    }
+  }
+}

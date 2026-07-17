@@ -1,0 +1,334 @@
+{
+  "id": "dlg-id-weather-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "weather",
+  "title": "Obrolan Cuaca Santai",
+  "opening": "Wah, cuaca hari ini cerah sekali ya! Ada rencana apa hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Wah, cuaca hari ini cerah sekali ya! Ada rencana apa hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "hangat",
+            "rencana",
+            "luar",
+            "piknik"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "mendung",
+            "gerimis",
+            "hujan",
+            "berawan",
+            "dingin",
+            "ragu"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wah, cuaca hari ini cerah sekali ya! (Wah, choo-ah ha-ree ee-nee chuh-rah suh-kah-lee ya!) — Wow, the weather today is so bright, isn't it? What are your plans for today?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Baguslah kalau begitu! Semoga tidak ada hujan yang mengganggu rencana Anda. Ngomong-ngomong, bagaimana prakiraan cuaca untuk akhir pekan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "cerah",
+            "panas",
+            "bagus",
+            "bersih"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "mendung",
+            "gerimis",
+            "tidakbagus"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "tidaktau",
+            "belumlihat",
+            "kurangyakin"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baguslah kalau begitu! Semoga tidak ada hujan yang mengganggu rencana Anda. (Bah-goos-lah kah-low buh-gee-too! Suh-moh-gah tee-dak ah-dah hoo-jan yang mung-gan-goo ruh-nah-nah an-dah.) — That's good then! Hopefully, no rain will disturb your plans. By the way, what's the weather forecast for this weekend?"
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Oh, begitu ya? Semoga saja tidak hujan lebat. Kalau cuaca mendung atau dingin, saya biasanya lebih suka di rumah saja. Bagaimana dengan Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "rumah",
+            "tinggaldirumah",
+            "santai",
+            "tidakkeluar"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            "keluar",
+            "tetapkeluar",
+            "adaacara",
+            "jalan-jalan"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu ya? Semoga saja tidak hujan lebat. (Oh, buh-gee-too ya? Suh-moh-gah sa-jah tee-dak hoo-jan luh-bat.) — Oh, really? Hopefully, it won't rain heavily. If the weather is cloudy or cold, I usually prefer to stay at home. How about you?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Wah, asyik sekali kalau begitu! Rencana jalan-jalan atau kegiatan di luar ruangan pasti menyenangkan. Saya jadi ingat musim kemarau di Indonesia yang seringkali cerah dan panas.",
+      "branches": [
+        {
+          "keywords": [
+            "kemarau",
+            "panas",
+            "terik",
+            "musim"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "jalan-jalan",
+            "wisata",
+            "liburan",
+            "kegiatan"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wow, that's great then! Outdoor activities or strolls will definitely be fun. It reminds me of the dry season in Indonesia, which is often bright and hot."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Betul sekali, lebih baik berhati-hati. Kalau hujan, jadi malas ke mana-mana. Beda dengan musim hujan di sini, kadang bisa sampai banjir lho di beberapa daerah. Anda lebih suka musim apa?",
+      "branches": [
+        {
+          "keywords": [
+            "kemarau",
+            "kering",
+            "panas",
+            "tidakpanas"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "dingin",
+            "sejuk"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactly, it's better to be careful. If it rains, I get lazy to go anywhere. It's different from the rainy season here, sometimes there can be floods in some areas, you know. What season do you prefer?"
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Ya, memang kadang cuaca bisa berubah cepat. Apalagi sekarang sudah masuk musim pancaroba, kadang cerah kadang tiba-tiba hujan. Anda sendiri lebih suka musim apa di Indonesia?",
+      "branches": [
+        {
+          "keywords": [
+            "kemarau",
+            "kering",
+            "panas"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "hujan",
+            "dingin",
+            "sejuk"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, indeed the weather can change quickly sometimes. Especially now that it's the transitional season, sometimes it's bright, sometimes it suddenly rains. What season do you prefer in Indonesia?"
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Musim kemarau memang enak untuk banyak kegiatan luar. Tapi kadang bisa terlalu panas dan kering juga ya. Suhu berapa derajat Celcius yang Anda rasa paling nyaman untuk beraktivitas?",
+      "branches": [
+        {
+          "keywords": [
+            "25",
+            "28",
+            "sejuk",
+            "tidakpanas",
+            "tidakdingin"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The dry season is indeed good for many outdoor activities. But sometimes it can be too hot and dry, right? What Celsius temperature do you find most comfortable for activities?"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Betul sekali! Indonesia memang punya banyak destinasi menarik untuk dinikmati saat cuaca cerah. Apa ada tempat spesifik yang ingin Anda kunjungi, atau kegiatan yang ingin Anda lakukan kalau cuaca mendukung?",
+      "branches": [
+        {
+          "keywords": [
+            "pantai",
+            "gunung",
+            "wisata",
+            "berenang",
+            "mendaki"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactly! Indonesia indeed has many interesting destinations to enjoy when the weather is clear. Is there any specific place you'd like to visit, or an activity you'd like to do if the weather permits?"
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Memang, setiap musim ada kelebihan dan kekurangannya sendiri. Musim hujan kadang bikin suasana lebih sejuk, tapi juga bisa menghambat aktivitas. Kalau menurut Anda, suhu berapa yang paling pas untuk beraktivitas di Indonesia?",
+      "branches": [
+        {
+          "keywords": [
+            "25",
+            "28",
+            "sejuk",
+            "tidakpanas",
+            "tidakdingin"
+          ],
+          "nextTurnId": "t5a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Indeed, every season has its own advantages and disadvantages. The rainy season sometimes makes the atmosphere cooler, but it can also hinder activities. According to you, what temperature is most suitable for activities in Indonesia?"
+    },
+    "t5a": {
+      "id": "t5a",
+      "prompt": "Ya, suhu yang nyaman memang penting untuk produktivitas. Baik, sepertinya obrolan kita sudah cukup. Terima kasih sudah berbagi cerita tentang cuaca dan preferensi Anda!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Yes, a comfortable temperature is indeed important for productivity. Alright, it seems our conversation is sufficient. Thank you for sharing your stories about the weather and your preferences!"
+    },
+    "t5b": {
+      "id": "t5b",
+      "prompt": "Wah, itu ide bagus sekali! Semoga Anda bisa menikmati rencana itu saat cuaca mendukung nanti. Senang bisa ngobrol tentang cuaca dengan Anda. Sampai jumpa lagi!",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wow, that's a great idea! Hopefully, you can enjoy those plans when the weather permits later. It was nice chatting about the weather with you. See you again!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang mengerti maksud Anda. (Mohon diulang).",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, bisa diulang? (Ma-ahf, bee-sa dee-oo-lang?) Saya kurang mengerti maksud Anda. (Mohon diulang). — Sorry, could you repeat that? I didn't quite understand what you meant. (Please repeat)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, senang bisa mengobrol dengan Anda. Semoga hari Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, senang bisa mengobrol dengan Anda. Semoga hari Anda menyenangkan! — Alright, it was nice chatting with you. Have a pleasant day!",
+      "isTerminal": true
+    }
+  }
+}

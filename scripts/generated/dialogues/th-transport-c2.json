@@ -1,0 +1,219 @@
+{
+  "id": "dlg-th-transport-c2",
+  "language": "th",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "เดินทางด้วยรถเมล์ในกรุงเทพฯ",
+  "opening": "สวัสดีครับ/ค่ะ ไปไหนครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ ไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยาม",
+            "siam",
+            "พารากอน",
+            "paragon"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "สาย25",
+            "รถเมล์25",
+            "บัส25"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "สวัสดี"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdii khrap/kha, pai nai khrap/kha? — Hello, where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "สยามเหรอครับ/คะ? ถ้าขึ้นจากตรงนี้ สาย 25 จะไปถึงตรงสยามพารากอนเลย ไม่ต้องต่อครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "รถติด",
+            "นานไหม",
+            "ใช้เวลา",
+            "ช้า"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ค่ารถ",
+            "ราคา",
+            "ค่าโดยสาร"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Saiyaam roe khrap/kha? Thaa khuen jaak trong nii, saai yii-sip-haa ja pai thueng trong Saiyaam Phaaragon loei mai tong tor khrap/kha. — Siam, is it? If you get on from here, bus #25 will go directly to Siam Paragon, no need to transfer."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "อ๋อ สาย 25 ไปสยามพารากอนเลยครับ/ค่ะ ลงป้ายหน้าสยามดิสคัฟเวอรี่ก็ได้ หรือจะเลยไปลงสยามสแควร์ก็สะดวก",
+      "branches": [
+        {
+          "keywords": [
+            "ใช้เวลา",
+            "นานเท่าไหร่",
+            "รถติดไหม"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "ค่าโดยสาร",
+            "ราคา",
+            "เท่าไหร่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Or, saai yii-sip-haa pai Saiyaam Phaaragon loei khrap/kha. Long paai naa Saiyaam Discovery ko dai rue ja loei pai long Saiyaam Square ko sa-duak. — Oh, bus #25 goes directly to Siam Paragon. You can get off at the stop in front of Siam Discovery or go further to Siam Square, both are convenient."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ช่วงนี้ถนนพระราม 1 รถเยอะหน่อย อาจจะถึงช้ากว่าปกติสักสิบห้าถึงยี่สิบนาทีได้ครับ/ค่ะ แต่ถ้าเลยบ่ายสามไปแล้วก็เริ่มโล่งแล้ว",
+      "branches": [
+        {
+          "keywords": [
+            "ค่ารถ",
+            "ราคา",
+            "จ่ายเท่าไหร่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "โอเค"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chuang nii thanon Phra Ram Neung rot yoe noi at ja thueng chaa kwaa pakati sak sip-haa thueng yii-sip naathii dai khrap/kha. Tae thaa loei baai saam pai laew ko roem loong laew. — The traffic on Rama 1 Road is quite heavy right now, so it might be fifteen to twenty minutes slower than usual. But if it's past 3 PM, it starts to clear up."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ค่ารถเมล์สาย 25 นี่ 8 บาทตลอดสายครับ/ค่ะ ถ้าปรับอากาศก็ 13 บาท",
+      "branches": [
+        {
+          "keywords": [
+            "จ่ายเงิน",
+            "เอาตั๋ว",
+            "หนึ่งใบ",
+            "สองใบ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "จ่ายบัตร",
+            "บัตร",
+            "แอพ",
+            "คิวอาร์โค้ด"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "โอเค"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kha rotmee saai yii-sip-haa nii paet baat talot saai khrap/kha. Thaa prap-akat ko sip-saam baat. — The fare for bus #25 is 8 baht for the entire route. If it's air-conditioned, it's 13 baht."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "รถเมล์ธรรมดาจะรับแต่เงินสดครับ/ค่ะ ส่วนรถปรับอากาศก็จ่ายด้วยบัตรโดยสารอิเล็กทรอนิกส์ได้ แต่ยังไม่รับ QR Code นะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "เงินสด",
+            "รับตั๋ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rotmee thammadaa ja rap tae ngoen sot khrap/kha. Suan rot prap-akat ko jaai duay bat doisarn electronic dai tae yang mai rap QR code na. — Regular buses only accept cash. Air-conditioned buses accept e-fare cards, but not QR codes yet."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะครับ/คะ ไม่ค่อยได้ยิน ช่วยพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khoothot na khrap/kha, mai khoi dai-yin. Chuay phuut ik khrang dai mai khrap/kha? — Excuse me, I didn't quite hear you. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ครับ/ค่ะ เชิญครับ/ค่ะ ขอให้เดินทางโดยสวัสดิภาพนะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khrap/kha, chern khrap/kha. Kho hai doen-thang doi sawatdiphap na khrap/kha. — Yes, please. Have a safe journey.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "id": "dlg-id-transport-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "transport",
+  "title": "Naik Transportasi Umum",
+  "opening": "Selamat pagi! Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi! Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "beli",
+            "tiket",
+            "ke"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "rute",
+            "jadwal",
+            "bis"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "halo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Se-la-mat pa-gi! A-da yang bi-sa sa-ya ban-tu? — Good morning! Is there anything I can help you with?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, mau pergi ke mana, Pak/Bu? Dan untuk berapa orang?",
+      "branches": [
+        {
+          "keywords": [
+            "stasiun",
+            "pasar",
+            "satu",
+            "dua",
+            "orang",
+            "tiga",
+            "empat"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tujuan",
+            "populer",
+            "favorit"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "bingung"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, ma-u per-gi ke ma-na, Pak/Bu? Dan un-tuk be-ra-pa o-rang? — Okay, where would you like to go, sir/madam? And for how many people?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anda mau naik bis ke mana? Untuk rute atau jadwal bis, bisa lihat di papan informasi atau aplikasi kami.",
+      "branches": [
+        {
+          "keywords": [
+            "rute",
+            "ke",
+            "stasiun",
+            "bis",
+            "terminal"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "aplikasi",
+            "papan",
+            "informasi",
+            "dimana"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "An-da ma-u na-ik bis ke ma-na? Un-tuk ru-te a-tau jad-wal bis, bi-sa li-hat di pa-pan in-for-ma-si a-tau a-pli-ka-si ka-mi. — Where do you want to take the bus to? For bus routes or schedules, you can check the information board or our app."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Oke, tiket Anda sudah siap. Totalnya Rp 15.000. Pembayaran bisa tunai atau non-tunai.",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "iya",
+            "tunai",
+            "non-tunai",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "sambung",
+            "ganti",
+            "transit"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            "",
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "O-ke, ti-ket An-da su-dah si-ap. To-tal-nya Ro-pia lima-belas-ri-bu. Pem-ba-ya-ran bi-sa tu-nai a-tau non-tu-nai. — Okay, your ticket is ready. The total is Rp 15,000. Payment can be cash or cashless."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Beberapa tujuan populer dari sini adalah Stasiun Kota, Pasar Senen, dan Monas. Anda mau ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "stasiun",
+            "pasar",
+            "monas"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lain",
+            "lainnya",
+            "lainnya?"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "tidaktau"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Be-be-ra-pa tu-ju-an po-pu-ler da-ri si-ni a-da-lah Sta-si-un Ko-ta, Pa-sar Se-nen, dan Mo-nas. An-da ma-u ke ma-na? — Some popular destinations from here are Kota Station, Senen Market, and Monas. Where would you like to go?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Untuk ke Stasiun Kota, Anda bisa naik bis nomor 1A. Bis itu akan lewat setiap 15 menit.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "bagus"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "telat",
+            "macet",
+            "keterlambatan"
+          ],
+          "nextTurnId": "t9"
+        },
+        {
+          "keywords": [
+            "",
+            "jadwal"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un-tuk ke Sta-si-un Ko-ta, An-da bi-sa na-ik bis no-mor sa-tu-A. Bis i-tu a-kan le-wat se-ti-ap lima-belas me-nit. — To Kota Station, you can take bus number 1A. It will pass every 15 minutes."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Aplikasi 'TransJakarta' bisa menunjukkan posisi bis secara real-time. Papan informasi ada di dekat pintu masuk terminal.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "bagaimana"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A-pli-ka-si 'Trans-Ja-kar-ta' bi-sa me-nun-juk-kan po-si-si bis se-ca-ra real-time. Pa-pan in-for-ma-si a-da di de-kat pin-tu ma-suk ter-mi-nal. — The 'TransJakarta' app can show bus positions in real-time. The information board is near the terminal entrance."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Anda bisa transfer di halte Bundaran HI jika ingin ke area pusat kota lainnya. Jangan lupa tap kartu saat keluar dan masuk kembali.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "mengerti",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bayar",
+            "kartu",
+            "lagi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "apaitu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "An-da bi-sa trans-fer di hal-te Bun-da-ran Ha-I ji-ka i-ngin ke a-re-a pu-sat ko-ta la-in-nya. Ja-ngan lu-pa tap kar-tu sa-at ke-lu-ar dan ma-suk kem-ba-li. — You can transfer at Bundaran HI stop if you want to go to other downtown areas. Don't forget to tap your card when exiting and re-entering."
+    },
+    "t9": {
+      "id": "t9",
+      "prompt": "Saat ini tidak ada laporan keterlambatan. Tapi, Jakarta sering macet di jam sibuk, jadi mungkin ada sedikit penundaan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "oke",
+            "baik",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "alternatif",
+            "cara",
+            "lain",
+            "cepat"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "",
+            "berangkat"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sa-at i-ni ti-dak a-da la-por-an ke-ter-lam-bat-an. Ta-pi, Ja-kar-ta se-ring ma-cet di jam si-buk, ja-di mung-kin a-da se-di-kit pe-nun-da-an. — Currently, there are no delay reports. But, Jakarta often has traffic jams during peak hours, so there might be a slight delay."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ma-af, bi-sa di-u-lang? Sa-ya ku-rang je-las. — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sa-ma-sa-ma. Se-mo-ga per-ja-la-nan An-da me-nye-nang-kan! — You're welcome. Have a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

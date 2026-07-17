@@ -1,0 +1,283 @@
+{
+  "id": "dlg-fr-directions-a2",
+  "language": "fr",
+  "level": "A2",
+  "scenario": "directions",
+  "title": "Demander son chemin",
+  "opening": "Bonjour ! Puis-je vous aider ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "La gare ? Oui, bien sûr. C'est assez simple.",
+      "branches": [
+        {
+          "keywords": [
+            "comment",
+            "aller",
+            "yaller",
+            "chemin",
+            "direction"
+          ],
+          "nextTurnId": "t2_give_directions"
+        },
+        {
+          "keywords": [
+            "loin",
+            "distance",
+            "combien"
+          ],
+          "nextTurnId": "t2_ask_directions_after_distance"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "La gare ? (La gar ?) Oui, bien sûr. (Wi, byen sur.) C'est assez simple. (Se ta-sé sim-ple.) — The train station? Yes, of course. It's quite simple."
+    },
+    "t2_give_directions": {
+      "id": "t2_give_directions",
+      "prompt": "Alors, prenez cette rue tout droit. Au deuxième feu rouge, tournez à gauche. La gare sera juste devant vous.",
+      "branches": [
+        {
+          "keywords": [
+            "loin",
+            "marcher",
+            "pied",
+            "temps"
+          ],
+          "nextTurnId": "t3_distance_landmarks"
+        },
+        {
+          "keywords": [
+            "clair",
+            "compris",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "autre",
+            "bus",
+            "transport"
+          ],
+          "nextTurnId": "t3_transport_option"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alors, prenez cette rue tout droit (A-lor, pre-né set ru tou droa). Au deuxième feu rouge (O deu-zyem feu roush), tournez à gauche (tour-né a gosh). La gare sera juste devant vous. (La gar su-ra just de-van vou.) — So, take this street straight ahead. At the second traffic light, turn left. The station will be right in front of you."
+    },
+    "t2_ask_directions_after_distance": {
+      "id": "t2_ask_directions_after_distance",
+      "prompt": "Non, ce n'est pas très loin, environ dix minutes à pied. Pour y aller, prenez cette rue tout droit, puis au deuxième feu rouge, tournez à gauche.",
+      "branches": [
+        {
+          "keywords": [
+            "compris",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "où",
+            "après",
+            "tourner",
+            "gauche",
+            "feu",
+            "panneau"
+          ],
+          "nextTurnId": "t3_clarify_landmark"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Non, ce n'est pas très loin (Non, se ne pa trè lwan), environ dix minutes à pied (an-vi-ron dis mi-nute a pyé). Pour y aller (Pur i za-lé), prenez cette rue tout droit (pre-né set ru tou droa), puis au deuxième feu rouge (pwi o deu-zyem feu roush), tournez à gauche. (tour-né a gosh.) — No, it's not very far, about ten minutes on foot. To go there, take this street straight ahead, then at the second traffic light, turn left."
+    },
+    "t3_distance_landmarks": {
+      "id": "t3_distance_landmarks",
+      "prompt": "Oui, c'est environ dix minutes. Après avoir tourné à gauche au feu, vous verrez un grand hôtel sur votre droite, la gare est juste après, en face d'une pharmacie.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "clair",
+            "compris",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pharmacie",
+            "hôtel",
+            "repère",
+            "devant"
+          ],
+          "nextTurnId": "t4_confirm_landmarks"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, c'est environ dix minutes. (Wi, se tan-vi-ron dis mi-nute.) Après avoir tourné à gauche au feu (A-prè za-vwar tour-né a gosh o feu), vous verrez un grand hôtel sur votre droite (vou ve-ré un gran o-tel sur vo-tre droa-te), la gare est juste après (la gar e just a-prè), en face d'une pharmacie. (an fas dun far-ma-si.) — Yes, it's about ten minutes. After turning left at the light, you will see a large hotel on your right, the station is just after, opposite a pharmacy."
+    },
+    "t3_transport_option": {
+      "id": "t3_transport_option",
+      "prompt": "Oui, vous pouvez aussi prendre le bus numéro 5. L'arrêt est de l'autre côté de la rue, juste devant la boulangerie. Il vous déposera devant la gare.",
+      "branches": [
+        {
+          "keywords": [
+            "bus",
+            "arrêt",
+            "boulangerie",
+            "numero"
+          ],
+          "nextTurnId": "t4_confirm_bus"
+        },
+        {
+          "keywords": [
+            "merci",
+            "compris",
+            "pied"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, vous pouvez aussi prendre le bus numéro 5. (Wi, vou pu-vé o-si pran-dre le bus nu-mé-ro sank.) L'arrêt est de l'autre côté de la rue (La-rêt e de lo-tre co-té de la ru), juste devant la boulangerie. (just de-van la bou-lan-je-ri.) Il vous déposera devant la gare. (Il vou dé-po-ze-ra de-van la gar.) — Yes, you can also take bus number 5. The stop is on the other side of the street, right in front of the bakery. It will drop you off in front of the station."
+    },
+    "t3_clarify_landmark": {
+      "id": "t3_clarify_landmark",
+      "prompt": "Oui, la gare est juste après le deuxième feu rouge, sur votre gauche. Vous verrez un grand panneau 'SNCF'.",
+      "branches": [
+        {
+          "keywords": [
+            "panneau",
+            "sncf",
+            "gauche",
+            "voir",
+            "repère"
+          ],
+          "nextTurnId": "t4_confirm_landmarks"
+        },
+        {
+          "keywords": [
+            "merci",
+            "clair",
+            "compris",
+            "parfait"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, la gare est juste après le deuxième feu rouge (Wi, la gar e just a-prè le deu-zyem feu roush), sur votre gauche. (sur vo-tre gosh.) Vous verrez un grand panneau 'SNCF'. (Vou ve-ré un gran pa-no 'SNCF'.) — Yes, the station is right after the second traffic light, on your left. You will see a large 'SNCF' sign."
+    },
+    "t4_confirm_landmarks": {
+      "id": "t4_confirm_landmarks",
+      "prompt": "Oui, c'est ça ! Avec ce repère, c'est facile à trouver.",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "beaucoup",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oui, c'est ça ! (Wi, se sa !) Avec ce repère (A-vek su re-pèr), c'est facile à trouver. (Se fa-sil a trou-vé.) — Yes, that's right! With this landmark, it's easy to find."
+    },
+    "t4_confirm_bus": {
+      "id": "t4_confirm_bus",
+      "prompt": "Exactement ! Le bus numéro 5, arrêt devant la boulangerie. Bon voyage !",
+      "branches": [
+        {
+          "keywords": [
+            "merci",
+            "beaucoup",
+            "au revoir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Exactement ! (Eg-zakt-e-man !) Le bus numéro 5 (Le bus nu-mé-ro sank), arrêt devant la boulangerie. (a-rêt de-van la bou-lan-je-ri.) Bon voyage ! (Bon voy-aj !) — Exactly! Bus number 5, stop in front of the bakery. Have a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon, je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon, je n'ai pas compris. (Par-don, je n'ai pa com-pri) — Excuse me, I didn't understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "De rien ! Bonne journée et bon chemin !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "De rien ! (De ryen) Bonne journée et bon chemin ! (Bon-ne jor-né e bon che-min) — You're welcome! Have a good day and a good journey!",
+      "isTerminal": true
+    }
+  }
+}

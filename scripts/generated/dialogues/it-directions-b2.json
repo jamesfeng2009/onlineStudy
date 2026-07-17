@@ -1,0 +1,240 @@
+{
+  "id": "dlg-it-directions-b2",
+  "language": "it",
+  "level": "B2",
+  "scenario": "directions",
+  "title": "Indicazioni stradali",
+  "opening": "Mi scusi, potrebbe aiutarmi? Cerco il Museo d'Arte Moderna.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Certo! Il Museo d'Arte Moderna... vediamo. Si trova a circa quindici minuti a piedi da qui, o potete prendere un autobus.",
+      "branches": [
+        {
+          "keywords": [
+            "apiedi",
+            "camminare"
+          ],
+          "nextTurnId": "t2_walk"
+        },
+        {
+          "keywords": [
+            "autobus",
+            "mezzi"
+          ],
+          "nextTurnId": "t2_bus"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course! The Museum of Modern Art... let's see. It's about fifteen minutes walk from here, or you can take a bus. (Chehr-toh! Eel Moo-ZAY-oh dar-teh Moh-DEHR-nah... veh-DYAH-moh. See TROH-vah ah CHEER-kah KWEEN-dee-chee mee-NOO-tee ah PYEH-dee dah KWEER, oh poh-TEH-teh PREN-deh-reh oon OW-toh-boos.)"
+    },
+    "t2_walk": {
+      "id": "t2_walk",
+      "prompt": "Allora, a piedi è abbastanza semplice. Deve proseguire dritto su questa via fino al semaforo, poi girare a destra. Lo vedrà subito sulla sinistra, dopo una grande piazza.",
+      "branches": [
+        {
+          "keywords": [
+            "dritto",
+            "semaforo",
+            "destra",
+            "chiarire"
+          ],
+          "nextTurnId": "t3_clarify_walk"
+        },
+        {
+          "keywords": [
+            "quanto",
+            "tempo"
+          ],
+          "nextTurnId": "t3_time_walk"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, on foot it's quite simple. You need to go straight down this street until the traffic light, then turn right. You'll see it immediately on your left, after a large square. (Ah-LOH-rah, ah PYEH-dee eh ah-bas-TAN-tsah SEM-plee-cheh. DEH-veh proh-seh-GWEE-reh DREET-toh soo KWEH-stah VEE-ah FEE-noh ahl seh-MAH-foh-roh, poy jee-RAH-reh ah DES-trah. Loh veh-DRAH SOO-bee-toh SOO-lah see-NEES-trah, DOH-poh OO-nah GRAN-deh PYAT-tsah.)"
+    },
+    "t2_bus": {
+      "id": "t2_bus",
+      "prompt": "Per l'autobus, deve attraversare la strada e prendere il numero 27 in direzione 'Stazione Centrale'. Scenda alla terza fermata, 'Piazza della Libertà', e il museo sarà di fronte a lei.",
+      "branches": [
+        {
+          "keywords": [
+            "quale",
+            "numero",
+            "fermata",
+            "specificare"
+          ],
+          "nextTurnId": "t3_clarify_bus"
+        },
+        {
+          "keywords": [
+            "costo",
+            "biglietto"
+          ],
+          "nextTurnId": "t3_ticket_bus"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For the bus, you need to cross the street and take number 27 in the direction of 'Central Station'. Get off at the third stop, 'Piazza della Libertà', and the museum will be in front of you. (Per LAU-toh-boos, DEH-veh ah-trah-ver-SAH-reh lah STRAH-dah eh PREN-deh-reh eel NOO-meh-roh venti-sette een dee-reh-TSYOH-neh 'Stah-TSYOH-neh Chen-TRAH-leh'. SHEN-dah AL-lah TER-tsah fer-MAH-tah, 'Pyat-tsah DEL-lah Lee-ber-TAH', eh eel moo-ZEH-oh sah-RAH dee FRON-teh ah LEH-ee.)"
+    },
+    "t3_clarify_walk": {
+      "id": "t3_clarify_walk",
+      "prompt": "Sì, esatto. Prosegua sempre dritto, oltre il primo incrocio. Al secondo semaforo, quello grande con l'edicola all'angolo, giri a destra. È impossibile sbagliarsi, è un edificio molto moderno.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "chiaro",
+            "perfetto"
+          ],
+          "nextTurnId": "t4_thank_you"
+        },
+        {
+          "keywords": [
+            "ancora",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yes, exactly. Keep going straight, past the first intersection. At the second traffic light, the big one with the newsstand on the corner, turn right. It's impossible to get it wrong, it's a very modern building. (See, eh-ZAT-toh. Proh-seh-GWEE-rah SEM-preh DREET-toh, OHL-treh eel PREE-moh een-CROH-choh. Ahl seh-KON-doh seh-MAH-foh-roh, KWELL-loh GRAN-deh kon LEH-dee-koh-lah ahl-LAN-goh-loh, JEE-ree ah DES-trah. Eh eem-pos-SEE-bee-leh sba-LYAR-see, eh oon eh-dee-FEE-choh MOL-toh moh-DEHR-noh.)"
+    },
+    "t3_time_walk": {
+      "id": "t3_time_walk",
+      "prompt": "Se cammina a passo normale, direi circa un quarto d'ora, forse venti minuti al massimo. È una bella passeggiata, non si preoccupi.",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "grazie",
+            "chiaro"
+          ],
+          "nextTurnId": "t4_thank_you"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "If you walk at a normal pace, I'd say about fifteen minutes, maybe twenty minutes at most. It's a nice walk, don't worry. (Seh kam-MEE-nah ah PAS-soh nor-MAH-leh, dee-REH-ee CHEER-kah oon KWAR-toh DOH-rah, FOR-seh VEN-tee mee-NOO-tee ahl MAS-see-moh. Eh OO-nah BEL-lah pas-seh-JAH-tah, non see preh-OK-koo-pee.)"
+    },
+    "t3_clarify_bus": {
+      "id": "t3_clarify_bus",
+      "prompt": "Il bus è il 27, sì, in direzione 'Stazione Centrale'. La fermata si chiama 'Piazza della Libertà', è la terza dopo quella dove sale. Attenzione, però, che a volte c'è traffico e potrebbe metterci un po' di più.",
+      "branches": [
+        {
+          "keywords": [
+            "capito",
+            "grazie",
+            "bene"
+          ],
+          "nextTurnId": "t4_thank_you"
+        },
+        {
+          "keywords": [
+            "dove",
+            "biglietti",
+            "ticket"
+          ],
+          "nextTurnId": "t3_ticket_bus"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "The bus is number 27, yes, in the direction of 'Central Station'. The stop is called 'Piazza della Libertà', it's the third after the one where you get on. Be careful, though, because sometimes there's traffic and it might take a bit longer. (Eel boos eh eel venti-sette, see, een dee-reh-TSYOH-neh 'Stah-TSYOH-neh Chen-TRAH-leh'. Lah fer-MAH-tah see KYAH-mah 'Pyat-tsah DEL-lah Lee-ber-TAH', eh lah TER-tsah DOH-poh KWELL-lah DOH-veh SAH-leh. Ah-ten-TSYOH-neh, peh-ROH, keh ah VOL-teh cheh TRAF-fee-koh eh poh-TREB-beh met-TER-chee oon poh dee PYOO.)"
+    },
+    "t3_ticket_bus": {
+      "id": "t3_ticket_bus",
+      "prompt": "I biglietti si possono comprare al tabaccaio qui di fronte, o direttamente sull'autobus, ma in quel caso costano un po' di più. Se ne prende più di uno, c'è lo sconto.",
+      "branches": [
+        {
+          "keywords": [
+            "bene",
+            "grazie",
+            "capito"
+          ],
+          "nextTurnId": "t4_thank_you"
+        },
+        {
+          "keywords": [
+            "",
+            "nonhochiaro"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tickets can be bought at the tobacconist's opposite here, or directly on the bus, but in that case they cost a bit more. If you buy more than one, there's a discount. (Ee bee-LYET-tee see POS-soh-noh kom-PRAH-reh ahl tah-bak-KAH-yoh kwee dee FRON-teh, oh dee-ret-tah-MEN-teh sool-LOW-toh-boos, mah een KWEHL KAH-zoh COS-tah-noh oon poh dee PYOO. Seh neh PREN-deh PYOO dee OO-noh, cheh loh SKON-toh.)"
+    },
+    "t4_thank_you": {
+      "id": "t4_thank_you",
+      "prompt": "Prego, figurati! Spero tu trovi facilmente il museo e ti goda la visita. Buona giornata!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "arrivederci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome, no problem! I hope you find the museum easily and enjoy your visit. Have a good day! (PREH-goh, fee-goo-RAH-tee! SPEH-roh too TROH-vee fah-chee-leh-MEN-teh eel moo-ZAY-oh eh tee GOH-dah lah VEE-zee-tah. BWOH-nah jor-NAH-tah!)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore, o formulare la domanda in un altro modo?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "riprovo"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite understand. Could you please repeat, or rephrase your question? (Mee SKOO-zee, non oh kah-PEE-toh BEH-neh. Poh-TREB-beh ree-PEH-teh-reh, per fah-VOH-reh, oh for-moo-LAH-reh lah doh-MAN-dah een oon AL-troh MOH-doh?)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Goodbye and have a good day! (Ah-ree-veh-DEHR-chee eh BWOH-nah jor-NAH-tah!)",
+      "isTerminal": true
+    }
+  }
+}

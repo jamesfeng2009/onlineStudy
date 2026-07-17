@@ -1,0 +1,207 @@
+{
+  "id": "dlg-de-phone-call-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Telefonat: Eine Nachricht hinterlassen",
+  "opening": "Müller hier, guten Tag. Womit kann ich Ihnen behilflich sein?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Müller hier, guten Tag. Womit kann ich Ihnen behilflich sein?",
+      "branches": [
+        {
+          "keywords": [
+            "schmidt",
+            "sprechen",
+            "herr"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "hier",
+            "spreche",
+            "meinname",
+            "anrufen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Müller here, guten Tag (goo-ten tahg). How can I assist you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Herr Schmidt ist leider gerade in einer wichtigen Besprechung und für die nächste Stunde nicht erreichbar. Soll ich ihm etwas ausrichten oder möchten Sie später noch einmal anrufen?",
+      "branches": [
+        {
+          "keywords": [
+            "nachricht",
+            "hinterlassen",
+            "ausrichten"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "später",
+            "anrufen",
+            "nochmal"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mr. Schmidt is unfortunately in an important meeting right now and will not be reachable for the next hour. Should I convey a message to him, or would you like to call back later?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Guten Tag, Herr/Frau [Ihr Name]. Schön, von Ihnen zu hören. Worum geht es denn genau? Vielleicht kann ich ja auch weiterhelfen.",
+      "branches": [
+        {
+          "keywords": [
+            "wollte",
+            "fragen",
+            "wegen",
+            "besprechung"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "schmidt",
+            "sprechen"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good day, Mr./Ms. [Your Name]. Schön, von Ihnen zu hören (shurn fon een-en tsoo hur-en). What exactly is it about? Perhaps I can help too."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Verstanden. Ich notiere mir das und werde es Herrn Schmidt umgehend ausrichten, sobald er wieder erreichbar ist. Ist das so in Ordnung für Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "danke",
+            "alles",
+            "gut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. I'll make a note of that and will convey it to Mr. Schmidt umgehend (oom-geh-ent) as soon as he's available again. Is that acceptable for you?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Herr Schmidt ist voraussichtlich ab 15 Uhr wieder im Büro. Möchten Sie es dann noch einmal versuchen oder soll ich ihm einen Rückruf ausrichten?",
+      "branches": [
+        {
+          "keywords": [
+            "anrufen",
+            "später",
+            "versuchen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "rückruf",
+            "bitten",
+            "er"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mr. Schmidt is expected to be back in the office from 3 PM. Would you like to try again then, or should I arrange a callback for him?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Ah, verstehe. Um welche Unterlagen geht es denn genau? Vielleicht kann ich Ihnen die benötigten Informationen auch direkt zukommen lassen.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "bitte",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nur",
+            "schmidt"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ah, I understand. Which documents exactly are you referring to? Perhaps I can send you the required information directly."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie bitte, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigen Sie bitte (ent-shool-di-gen zee bit-te), I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, dann vielen Dank für Ihren Anruf und auf Wiederhören!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Alright then, many thanks for your call and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

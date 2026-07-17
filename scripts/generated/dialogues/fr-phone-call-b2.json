@@ -1,0 +1,262 @@
+{
+  "id": "dlg-fr-phone-call-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "phone-call",
+  "title": "Appel téléphonique : Laisser un message",
+  "opening": "Allô, [Nom de la société], bonjour. Que puis-je faire pour vous ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Allô, [Nom de la société], bonjour. Que puis-je faire pour vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "parler",
+            "mme",
+            "m.",
+            "monsieur",
+            "madame",
+            "dupont",
+            "martin",
+            "avec"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "message",
+            "laisser",
+            "laisserunmessage",
+            "prendreunmessage"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "information",
+            "renseigner",
+            "renseignement",
+            "question"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "salut",
+            "bonjour",
+            "help",
+            "aide"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Allô (Ah-loh), [Company Name], hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Un instant s'il vous plaît. Je vais voir si [Nom de la personne] est disponible. Qui dois-je annoncer ?",
+      "branches": [
+        {
+          "keywords": [
+            "je",
+            "suis",
+            "c'est",
+            "monnom",
+            "appelle",
+            "dupont",
+            "martin",
+            "au sujet"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Un instant s'il vous plaît (Un-n an-stahn seel voo pleh). I'll see if [Person's Name] is available. Who should I say is calling?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "D'accord, je peux prendre votre message et le lui transmettre dès qu'il/elle sera de retour. C'est à quel sujet ?",
+      "branches": [
+        {
+          "keywords": [
+            "sujet",
+            "concerne",
+            "propos",
+            "demande",
+            "commande",
+            "réunion",
+            "urgent"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "rappeler",
+            "rappelerplustard",
+            "pasmaintenant",
+            "recontacter"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord (Dak-kor), I can take your message and pass it on as soon as he/she returns. What is it regarding?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Je vois. Dans ce cas, il faudrait que je vous transfère au service concerné. Pourriez-vous me laisser vos coordonnées ou un bref message pour qu'ils puissent vous rappeler ?",
+      "branches": [
+        {
+          "keywords": [
+            "coordonnées",
+            "message",
+            "d'accord",
+            "oui",
+            "volontiers",
+            "bien"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "rappeler",
+            "plus tard",
+            "non",
+            "pasmaintenant",
+            "préfère"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I see. In that case, I would need to transfer you to the relevant department. Could you leave me your contact details or a brief message so they can call you back?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Je suis désolé(e), [Nom de la personne] est actuellement en réunion/en ligne/absent(e) du bureau. Souhaitez-vous lui laisser un message ou préférez-vous rappeler plus tard ?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "laisser",
+            "oui",
+            "d'accord"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "rappeler",
+            "plus tard",
+            "non",
+            "pasmaintenant",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Je suis désolé(e) (Juh swee day-zoh-leh), [Person's Name] is currently in a meeting/on another line/out of the office. Would you like to leave a message or would you prefer to call back later?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Très bien. Quel est votre nom et quel est le message que vous souhaitez transmettre ?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "monnom",
+            "sujet",
+            "demande",
+            "c'est",
+            "je",
+            "urgent"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien (Treh bee-an). What is your name and what message would you like to convey?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "C'est noté. Je lui transmettrai votre message dès son retour. Y a-t-il autre chose que je puisse faire pour vous ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "merci",
+            "c'esttout",
+            "rien",
+            "aurevoir"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "C'est noté (Set noh-teh). I will pass on your message as soon as he/she returns. Is there anything else I can do for you?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Je n'ai pas bien compris. Pourriez-vous répéter s'il vous plaît ou reformuler ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I didn't quite understand. Could you please repeat or rephrase?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien, merci de votre appel et bonne journée. Au revoir !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Very well, thank you for your call and have a good day. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

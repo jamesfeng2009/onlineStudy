@@ -1,0 +1,117 @@
+{
+  "id": "dlg-de-doctor-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Beim Arzt",
+  "opening": "Guten Tag. Was fehlt Ihnen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag. Was fehlt Ihnen?",
+      "branches": [
+        {
+          "keywords": [
+            "krank",
+            "mirgehtesschlecht"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag (GOO-ten tahg). Was fehlt Ihnen (vas faylt EE-nen)? — Good day. What's wrong with you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Wo tut es weh?",
+      "branches": [
+        {
+          "keywords": [
+            "kopf",
+            "kopfschmerzen"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wo tut es weh (vo toot es vay)? — Where does it hurt?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Seit wann tut es weh?",
+      "branches": [
+        {
+          "keywords": [
+            "heute",
+            "seitheute"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Seit wann tut es weh? — Since when does it hurt?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ich verschreibe Ihnen Tabletten. Nehmen Sie die Tabletten dreimal am Tag.",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "vielen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ich verschreibe Ihnen Tabletten (ikh fer-SHRY-buh EE-nen tah-BLED-ten). Nehmen Sie die Tabletten dreimal am Tag (NAY-men zee dee tah-BLED-ten DRY-mal am tahg). — I prescribe you tablets. Take the tablets three times a day."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung (ent-SHOOL-di-gung), können Sie das bitte wiederholen (KURN-en zee das BIT-tuh vee-der-HO-len)? — Excuse me, can you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Auf Wiedersehen. Gute Besserung!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Auf Wiedersehen (owf VEE-der-zay-en). Gute Besserung (GOO-tuh BES-seh-rung)! — Goodbye. Get well soon!",
+      "isTerminal": true
+    }
+  }
+}

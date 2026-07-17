@@ -1,0 +1,174 @@
+{
+  "id": "dlg-th-post-office-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ซื้อแสตมป์",
+            "แสตมป์"
+          ],
+          "nextTurnId": "t3_stamps"
+        },
+        {
+          "keywords": [
+            "ตรวจสอบสถานะ",
+            "เช็คพัสดุ"
+          ],
+          "nextTurnId": "t3_track"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Sawatdii kha, mii a-rai hai chuay mai kha? — Hello, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "คุณต้องการส่งพัสดุไปที่ไหนคะ และต้องการส่งแบบลงทะเบียนหรือ EMS ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ต่างประเทศ",
+            "ลงทะเบียน",
+            "ems"
+          ],
+          "nextTurnId": "t3_detail"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Khun tong-gaan song pat-sa-du bpai tii nai kha lae tong-gaan song baep long-ta-bian reuu EMS mai kha? — Where do you want to send the parcel, and do you want to send it registered or EMS?"
+    },
+    "t3_detail": {
+      "id": "t3_detail",
+      "prompt": "ถ้าส่งต่างประเทศแบบลงทะเบียน จะมีทั้งทางอากาศและภาคพื้นดิน คุณต้องกรอกแบบฟอร์มศุลกากรด้วยนะคะ ค่าส่งจะขึ้นอยู่กับน้ำหนักและปลายทางค่ะ คุณต้องการให้ชั่งน้ำหนักเลยไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ทางอากาศ",
+            "ภาคพื้นดิน",
+            "ศุลกากร",
+            "ฟอร์ม"
+          ],
+          "nextTurnId": "t4_confirm"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Tâa sòng dtàang-prà-têet bàep long-tá-bian, jà mii táng taang aa-gàat láe pâak-pʉ́ʉn-din. Kun dtông gròk bàep-fɔɔm sùn-lá-gaa-gɔɔn dûay ná ká. Kâa sòng jà kʉ̂n-yùu gàp nám-nàk láe bplai-taang kâ. Kun dtɔ̂ng-gaan hâi châng nám-nàk ləəi mái kâ? — If sending internationally by registered mail, there are both airmail and surface mail options. You'll also need to fill out a customs form. The shipping cost depends on the weight and destination. Would you like me to weigh it now?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "คุณต้องการแสตมป์มูลค่าเท่าไหร่คะ หรือสำหรับจดหมายประเภทไหนคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "3บาท",
+            "5บาท",
+            "จดหมายในประเทศ"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Khun tong-gaan sa-taem muun-la-ka tao-rai kha reuu sam-rap jot-mai bpra-pet nai kha? — What value stamps do you need, or for what type of letter?"
+    },
+    "t3_track": {
+      "id": "t3_track",
+      "prompt": "คุณมีเลขพัสดุสำหรับติดตามใช่ไหมคะ? ถ้ามีแล้วดิฉันจะช่วยตรวจสอบสถานะให้ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "มีค่ะ",
+            "เลขพัสดุ",
+            "นี่ค่ะ",
+            "ช่วยตรวจสอบ"
+          ],
+          "nextTurnId": "t4_confirm"
+        },
+        {
+          "keywords": [
+            "",
+            "อื่นๆ"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Khun mii lek pat-sa-du sam-rap dtit-dtam chai mai kha? Ta mii laew di-chan ja chuay dtruat-sop sa-taa-na hai kha. — Do you have the tracking number for the parcel? If you have it, I can help you check the status."
+    },
+    "t4_confirm": {
+      "id": "t4_confirm",
+      "prompt": "ตกลงค่ะ ดิฉันจะดำเนินการให้นะคะ มีอะไรให้ช่วยอีกไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่แล้ว",
+            "ขอบคุณ"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Dtok-long kha. Di-chan ja dam-nern hai na kha. Mii a-rai hai chuay eek mai kha? — Okay. I will proceed with that. Is there anything else I can help you with?"
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "ขอโทษนะคะ ช่วยพูดอีกครั้งได้ไหมคะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ตกลง",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-thot na kha, chuay puut eek krang dai mai kha? — Excuse me, could you please repeat that?"
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "เรียบร้อยค่ะ ขอบคุณที่ใช้บริการไปรษณีย์ไทยนะคะ",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Riap-roi kha. Khob-khun tii chai bo-ri-gaan bprai-sa-nii Thai na kha. — All done. Thank you for using Thailand Post.",
+      "isTerminal": true
+    }
+  }
+}

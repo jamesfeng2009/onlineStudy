@@ -1,0 +1,187 @@
+{
+  "id": "dlg-en-phone-call-c2",
+  "language": "en",
+  "level": "C2",
+  "scenario": "phone-call",
+  "title": "Professional Phone Call Etiquette",
+  "opening": "Nexus Corp, how may I direct your call?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Nexus Corp, how may I direct your call?",
+      "branches": [
+        {
+          "keywords": [
+            "hello",
+            "hi",
+            "good morning",
+            "good afternoon",
+            "calling",
+            "speak",
+            "talk"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "whoisthis",
+            "whothisis"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nexus Corp, [NEX-uhs KORP] (A company name, often pronounced with a soft 'x' sound like 'ks') how may I help you today / connect your call?"
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "This is the general reception desk for Nexus Corp. Whom are you trying to reach, or what is your query?",
+      "branches": [
+        {
+          "keywords": [
+            "speakto",
+            "talkto",
+            "isthere",
+            "is"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "information",
+            "query",
+            "question"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "This is the general reception desk for Nexus Corp. Whom are you trying to reach, or what is your query? (A formal way to ask who they want to talk to, or what their question is.)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certainly. And who may I say is calling, please?",
+      "branches": [
+        {
+          "keywords": [
+            "thisis",
+            "its",
+            "i'm",
+            "mynameis"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. And who may I say is calling, please? [SURT-uhn-lee, and hoo may I say iz KAW-ling, pleez] (A polite, formal way to ask for the caller's name.)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "One moment while I check... [sound of keyboard] I'm afraid she's currently tied up in a meeting. Would you like to leave a message, or shall I have her ring you back?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "leavemessage",
+            "yes",
+            "please",
+            "wouldlike"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "callmeback",
+            "ringmeback"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "One moment while I check... [sound of keyboard] I'm afraid she's currently occupied/unavailable in a meeting. [taɪd ʌp] (an idiomatic expression meaning very busy or occupied). Would you like to leave a message, or shall I have her call you back? [rɪŋ ju bæk] (an idiomatic expression for calling someone back)."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Certainly. What would you like to convey? I'll make sure she gets the full gist of it.",
+      "branches": [
+        {
+          "keywords": [
+            "please tell",
+            "could you tell",
+            "let her know",
+            "message is",
+            "themessageis"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. What would you like to express or communicate? [kənˈveɪ] (a more formal word for 'say' or 'tell'). I'll make sure she understands the main point of it [dʒɪst] (meaning the substance or essence)."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Got it. I'll make sure she gets the message/your details. Thank you for calling Nexus Corp, and have a good day. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Understood. I'll ensure she receives the message/your contact information. Thank you for calling Nexus Corp, and have a good day. Goodbye!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat yourself?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "apology",
+            "sorry"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite understand what you said. Could you please say it again?"
+    }
+  }
+}

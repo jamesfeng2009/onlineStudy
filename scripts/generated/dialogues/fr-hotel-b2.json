@@ -1,0 +1,188 @@
+{
+  "id": "dlg-fr-hotel-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Enregistrement à l'hôtel",
+  "opening": "Bonjour ! Bienvenue à l'Hôtel Magnifique. Avez-vous une réservation ? Si oui, sous quel nom, s'il vous plaît ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Bienvenue à l'Hôtel Magnifique. Avez-vous une réservation ? Si oui, sous quel nom, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "dupont",
+            "martin",
+            "dubois",
+            "léger",
+            "monnomest",
+            "nom",
+            "au nom de"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "oui",
+            "j'ai",
+            "reservation",
+            "réservé"
+          ],
+          "nextTurnId": "t1_name_followup"
+        },
+        {
+          "keywords": [
+            "bonjour",
+            "salut"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour [pr. bɔ̃ʒuʁ] ! Bienvenue [pr. bjɛ̃vəny] à l'Hôtel Magnifique. Avez-vous une réservation ? Si oui, sous quel nom, s'il vous plaît ? — Hello! Welcome to the Hôtel Magnifique. Do you have a reservation? If so, under what name, please?"
+    },
+    "t1_name_followup": {
+      "id": "t1_name_followup",
+      "prompt": "D'accord. Et sous quel nom a été effectuée cette réservation, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "dupont",
+            "martin",
+            "dubois",
+            "léger",
+            "monnomest",
+            "nom",
+            "au nom de"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord. Et sous quel nom a été effectuée cette réservation, s'il vous plaît ? — All right. And under what name was this reservation made, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Parfait. Je vois votre réservation, Monsieur/Madame [Nom]. Pourriez-vous me présenter une pièce d'identité valide, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            "passeport",
+            "cni",
+            "identite",
+            "permis",
+            "carteidentité"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "uninstant",
+            "où",
+            "cherche"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait [pr. paʁfɛ]. Je vois votre réservation, Monsieur/Madame [Nom]. Pourriez-vous me présenter une pièce d'identité valide, s'il vous plaît ? — Perfect. I see your reservation, Mr./Ms. [Name]. Could you please show me a valid form of identification?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Merci. Tout est en ordre. Concernant le paiement, souhaitez-vous utiliser la carte préenregistrée ou une autre méthode ? Et avez-vous une préférence pour votre chambre, par exemple, vue sur jardin ou étage élevé ?",
+      "branches": [
+        {
+          "keywords": [
+            "carte",
+            "préenregistrée",
+            "celle-là",
+            "déjàenregistrée",
+            "nouvelle",
+            "autre",
+            "espèce",
+            "comptant"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Merci [pr. mɛʁsi]. Tout est en ordre. Concernant le paiement, souhaitez-vous utiliser la carte préenregistrée ou une autre méthode ? Et avez-vous une préférence pour votre chambre, par exemple, vue sur jardin ou étage élevé ? — Thank you. Everything is in order. Regarding payment, would you like to use the pre-registered card or another method? And do you have a preference for your room, for example, a garden view or a high floor?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Très bien. Nous allons procéder avec cela. Une dernière chose : prendrez-vous le petit-déjeuner avec nous demain matin ? Il est servi de 7h à 10h au restaurant de l'hôtel.",
+      "branches": [
+        {
+          "keywords": [
+            "oui",
+            "petit-déjeuner",
+            "matin",
+            "j'aimerais"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "répéter"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Nous allons procéder avec cela. Une dernière chose : prendrez-vous le petit-déjeuner [pr. pətidɛʒœne] avec nous demain matin ? Il est servi de 7h à 10h au restaurant de l'hôtel. — Very good. We'll proceed with that. One last thing: will you be having breakfast with us tomorrow morning? It's served from 7 am to 10 am in the hotel restaurant."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien compris.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon [pr. paʁdɔ̃] ? Pourriez-vous répéter, s'il vous plaît ? Je n'ai pas bien compris. — Pardon? Could you please repeat that? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Excellent ! Votre chambre est la 305. Voici votre clé. N'hésitez pas si vous avez la moindre question. Je vous souhaite un excellent séjour !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Excellent ! Votre chambre est la 305. Voici votre clé. N'hésitez pas [pr. neziˈte pa] si vous avez la moindre question. Je vous souhaite un excellent séjour ! — Excellent! Your room is 305. Here is your key. Don't hesitate if you have any questions. I wish you an excellent stay!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "id": "dlg-ms-bank-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "bank",
+  "title": "Urusan Perbankan Anda",
+  "opening": "Selamat pagi, encik/cik. Ada apa yang boleh saya bantu pada hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik/cik. Ada apa yang boleh saya bantu pada hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "buka akaun",
+            "akaun baru"
+          ],
+          "nextTurnId": "t2_akaun_path"
+        },
+        {
+          "keywords": [
+            "pindahan",
+            "kiriman wang"
+          ],
+          "nextTurnId": "t3_pindahan_path"
+        },
+        {
+          "keywords": [
+            "masalah atm",
+            "kad tersekat"
+          ],
+          "nextTurnId": "t4_atm_path"
+        },
+        {
+          "keywords": [
+            "lain-lain",
+            "soalan"
+          ],
+          "nextTurnId": "t5_lain_path"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, encik/cik. Ada apa yang boleh saya bantu pada hari ini? — Good morning, sir/madam. How may I assist you today?"
+    },
+    "t2_akaun_path": {
+      "id": "t2_akaun_path",
+      "prompt": "Baik, untuk pembukaan akaun baharu, adakah encik/cik berminat dengan akaun simpanan, akaun semasa, atau akaun pelaburan? Dokumen pengenalan diri sedia ada?",
+      "branches": [
+        {
+          "keywords": [
+            "simpanan",
+            "akaun simpanan"
+          ],
+          "nextTurnId": "t6_final_direction"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, untuk pembukaan akaun baharu, adakah encik/cik berminat dengan akaun simpanan, akaun semasa, atau akaun pelaburan? Dokumen pengenalan diri sedia ada? — Alright, for a new account opening, are you interested in a savings account, current account, or investment account? Do you have your identification documents ready?"
+    },
+    "t3_pindahan_path": {
+      "id": "t3_pindahan_path",
+      "prompt": "Tentu. Pindahan wang ke mana ya? Dalam negara atau ke luar negara? Dan adakah anda ingin membuat pindahan segera atau semak status?",
+      "branches": [
+        {
+          "keywords": [
+            "dalam negara",
+            "lokal"
+          ],
+          "nextTurnId": "t6_final_direction"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu. Pindahan wang ke mana ya? Dalam negara atau ke luar negara? Dan adakah anda ingin membuat pindahan segera atau semak status? — Certainly. Where is the money transfer to? Within the country or abroad? And would you like to make an immediate transfer or check the status?"
+    },
+    "t4_atm_path": {
+      "id": "t4_atm_path",
+      "prompt": "Oh, masalah ATM. Boleh ceritakan sedikit apa yang berlaku? Adakah kad tersekat, PIN lupa, atau transaksi tak berjaya?",
+      "branches": [
+        {
+          "keywords": [
+            "kad tersekat",
+            "kad ditelan"
+          ],
+          "nextTurnId": "t6_final_direction"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, masalah ATM. Boleh ceritakan sedikit apa yang berlaku? Adakah kad tersekat, PIN lupa, atau transaksi tak berjaya? — Oh, an ATM issue. Could you elaborate a bit on what happened? Is your card stuck, PIN forgotten, or was the transaction unsuccessful?"
+    },
+    "t5_lain_path": {
+      "id": "t5_lain_path",
+      "prompt": "Baik, untuk pertanyaan umum, boleh encik/cik nyatakan secara ringkas tentang kadar faedah, pinjaman, pelaburan, atau ada perkara lain yang ingin diketahui?",
+      "branches": [
+        {
+          "keywords": [
+            "kadar faedah",
+            "faedah"
+          ],
+          "nextTurnId": "t6_final_direction"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, untuk pertanyaan umum, boleh encik/cik nyatakan secara ringkas tentang kadar faedah, pinjaman, pelaburan, atau ada perkara lain yang ingin diketahui? — Alright, for general inquiries, could you briefly state what you'd like to know about interest rates, loans, investments, or anything else?"
+    },
+    "t6_final_direction": {
+      "id": "t6_final_direction",
+      "prompt": "Baik, faham. Untuk tindakan selanjutnya, sila ambil nombor giliran dan berurusan di kaunter perkhidmatan pelanggan. Mereka akan membantu anda secara terperinci.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "terima kasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, faham. Untuk tindakan selanjutnya, sila ambil nombor giliran dan berurusan di kaunter perkhidmatan pelanggan. Mereka akan membantu anda secara terperinci. — Okay, understood. For further action, please take a queue number and proceed to the customer service counter. They will assist you in detail."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya kurang jelas. Boleh encik/cik ulang atau nyatakan dengan cara lain?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, saya kurang jelas. Boleh encik/cik ulang atau nyatakan dengan cara lain? — I'm sorry, I'm not clear. Could you please repeat or state it in another way?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, saya harap urusan encik/cik berjalan lancar. Terima kasih kerana memilih perkhidmatan kami dan selamat menjalani hari.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baiklah, saya harap urusan encik/cik berjalan lancar. Terima kasih kerana memilih perkhidmatan kami dan selamat menjalani hari. — Alright, I hope your matters proceed smoothly. Thank you for choosing our services and have a good day.",
+      "isTerminal": true
+    }
+  }
+}

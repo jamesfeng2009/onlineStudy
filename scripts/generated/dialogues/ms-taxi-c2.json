@@ -1,0 +1,152 @@
+{
+  "id": "dlg-ms-taxi-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Perbualan Menaiki Teksi (C2)",
+  "opening": "Selamat pagi/petang, Tuan/Puan. Nak ke mana hari ni?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/petang, Tuan/Puan. Nak ke mana hari ni?",
+      "branches": [
+        {
+          "keywords": [
+            "ke",
+            "destinasi",
+            "tujuan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "harga",
+            "meter"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi/petang, Tuan/Puan. Nak ke mana hari ni? — Good morning/afternoon, Sir/Madam. Where to today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, ke sana. Baik, Tuan/Puan. Kita akan ikut jalan utama, memandangkan waktu ni trafik agak terkawal. Tambang ikut meter ya. Anggaran dalam 20-25 minit sampai. Okay?",
+      "branches": [
+        {
+          "keywords": [
+            "okay",
+            "baik",
+            "setuju",
+            "teruskan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "alternatif",
+            "cepat"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ke sana. Baik, Tuan/Puan. Kita akan ikut jalan utama, memandangkan waktu ni trafik agak terkawal. Tambang ikut meter ya. Anggaran dalam dua puluh ke dua puluh lima minit sampai. Okay? — Oh, to there. Alright, Sir/Madam. We'll take the main road, seeing as traffic is quite controlled at this time. Fare is by meter, okay? Estimated arrival in 20-25 minutes. Okay?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kalau nak harga tetap, susah sikit sebab bergantung trafik. Selalunya meter lagi berpatutan. Untuk jalan, yang utama ni paling efisien buat masa sekarang. Nak saya teruskan guna meter ikut laluan utama, atau ada cadangan lain?",
+      "branches": [
+        {
+          "keywords": [
+            "meter",
+            "setuju",
+            "utama"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "lain",
+            "cadangan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kalau nak harga tetap, susah sikit sebab bergantung trafik. Selalunya meter lagi berpatutan. Untuk jalan, yang utama ni paling efisien buat masa sekarang. Nak saya teruskan guna meter ikut laluan utama, atau ada cadangan lain? — If you want a fixed price, it's a bit difficult because it depends on traffic. Usually the meter is more reasonable. As for the road, this main one is the most efficient for now. Shall I continue using the meter via the main route, or do you have other suggestions?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, Tuan/Puan. Kita dah sampai di destinasi. Jumlah tambang mengikut meter ialah RM25.50. Ada wang kecil ke? Kalau tak, saya ada baki.",
+      "branches": [
+        {
+          "keywords": [
+            "bayar",
+            "ini",
+            "wang",
+            "dua"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, Sir/Madam. We've arrived at the destination. The total fare according to the meter is RM25.50. Do you have small change? If not, I have change."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Terima kasih banyak, Tuan/Puan. Nah, ini resitnya (jika diminta). Pastikan tak ada barang tertinggal di belakang ya. Selamat jalan!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "Thank you very much, Sir/Madam. Here's your receipt (if requested). Make sure you haven't left anything behind, okay? Have a good journey!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang",
+            "lagi"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, boleh ulang sekali lagi? Kurang jelas tadi. — Sorry, could you repeat that? It wasn't clear just now."
+    }
+  }
+}

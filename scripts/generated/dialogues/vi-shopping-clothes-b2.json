@@ -1,0 +1,229 @@
+{
+  "id": "dlg-vi-shopping-clothes-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "shopping-clothes",
+  "title": "Mua sắm quần áo",
+  "opening": "Chào anh/chị, tôi có thể giúp gì ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị, tôi có thể giúp gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tìmáo",
+            "tìmquần",
+            "tìmđầm",
+            "mualại",
+            "đổihàng"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "chỉxem",
+            "xemthôi",
+            "dạkhông"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị (Chao anh/chi) — Hello sir/madam, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng ạ. Anh/chị muốn tìm loại nào, màu sắc và kích cỡ ra sao ạ? Hoặc nếu muốn đổi/trả hàng thì anh/chị mang theo hóa đơn nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "áosơmi",
+            "quầnjean",
+            "đầmđen",
+            "size",
+            "màu",
+            "kíchcỡ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "giá",
+            "baonhiêu",
+            "khác",
+            "xemthêm",
+            "muốnxem"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "hóađơn",
+            "đổisize"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng ạ (Vang a) — Yes. What kind are you looking for, what color and size? Or if you want to exchange/return, please bring the receipt."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Dạ vâng, mời anh/chị cứ tự nhiên xem. Có gì cần hỗ trợ thì cứ gọi tôi nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "ok",
+            "được"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tìmáo",
+            "tìmquần",
+            "tìmđầm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng (Ya vang) — Yes, please feel free to browse. If you need any help, just call me."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ có ạ. Đây là mẫu bên em. Anh/chị có muốn thử không? Phòng thử đồ ở phía kia ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "thử",
+            "muốnthử",
+            "sẽthử"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "lấy",
+            "mua",
+            "tôimua"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ có ạ (Ya co a) — Yes, we do. This is our item. Would you like to try it on? The fitting room is over there."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Dạ không sao ạ. Anh/chị có muốn xem thêm mẫu khác không? Hoặc có thể xem các lựa chọn khác về màu sắc, kiểu dáng. Giá niêm yết là 450.000 VNĐ ạ.",
+      "branches": [
+        {
+          "keywords": [
+            "muốnthử",
+            "cáikhác",
+            "áokhác",
+            "quầnkhác"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "thôicảmơn",
+            "khôngmua",
+            "quaylại",
+            "nghĩlại"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lấy",
+            "mua"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ không sao ạ (Ya khong sao a) — No problem. Would you like to see other styles? Or you can see other options for colors and designs. The listed price is 450,000 VND."
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Vâng ạ. Anh/chị thanh toán bằng tiền mặt hay thẻ ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiềnmặt",
+            "cash",
+            "tiền",
+            "mặt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng ạ (Vang a) — Yes. Will you be paying by cash or card?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe không rõ. Anh/chị có thể nói lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi nghe không rõ (Sin loi, toi nghe khong ro) — Sorry, I didn't hear clearly. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn anh/chị đã mua hàng. Chúc anh/chị một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn anh/chị đã mua hàng (Cam on anh/chi da mua hang) — Thank you for your purchase. Chúc anh/chị một ngày tốt lành (Chuc anh/chi mot ngay tot lanh) — Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

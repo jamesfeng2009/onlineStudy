@@ -1,0 +1,180 @@
+{
+  "id": "dlg-id-post-office-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Di Kantor Pos",
+  "opening": "Selamat pagi. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "kirim",
+            "paket"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "beli",
+            "perangko"
+          ],
+          "nextTurnId": "t2_stamps"
+        },
+        {
+          "keywords": [
+            "",
+            "halo",
+            "selamatpagi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning). Ada yang bisa saya bantu (How can I help you)?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Mau kirim ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "dalamnegeri",
+            "domestik",
+            "lokal"
+          ],
+          "nextTurnId": "t3_domestic"
+        },
+        {
+          "keywords": [
+            "luarnegeri",
+            "internasional",
+            "amerika",
+            "inggris"
+          ],
+          "nextTurnId": "t3_international"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mau kirim ke mana (Where do you want to send it)?"
+    },
+    "t2_stamps": {
+      "id": "t2_stamps",
+      "prompt": "Mau beli berapa perangko?",
+      "branches": [
+        {
+          "keywords": [
+            "satu",
+            "1"
+          ],
+          "nextTurnId": "t4_confirmation"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mau beli berapa (How many do you want to buy) perangko (stamps)?"
+    },
+    "t3_domestic": {
+      "id": "t3_domestic",
+      "prompt": "Perlu surat tercatat?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "perlu"
+          ],
+          "nextTurnId": "t4_confirmation"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perlu (Do you need) surat tercatat (registered mail)?"
+    },
+    "t3_international": {
+      "id": "t3_international",
+      "prompt": "Untuk kirim ke luar negeri, harus isi formulir bea cukai.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "baik",
+            "ya"
+          ],
+          "nextTurnId": "t4_confirmation"
+        },
+        {
+          "keywords": [
+            "",
+            "tidakpaham"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk kirim ke luar negeri (To send abroad), harus isi (you must fill) formulir bea cukai (a customs form)."
+    },
+    "t4_confirmation": {
+      "id": "t4_confirmation",
+      "prompt": "Baik. Permintaan Anda sudah selesai.",
+      "branches": [
+        {
+          "keywords": [
+            "terimakasih",
+            "makasih",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay). Permintaan Anda sudah selesai (Your request is complete)."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ya",
+            "oke"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), bisa diulang (can you repeat)?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih, selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (Thank you), selamat jalan (goodbye / have a good journey).",
+      "isTerminal": true
+    }
+  }
+}

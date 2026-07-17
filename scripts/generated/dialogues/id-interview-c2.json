@@ -1,0 +1,135 @@
+{
+  "id": "dlg-id-interview-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Wawancara Pekerjaan: Lanjutan",
+  "opening": "Selamat pagi/siang/sore. Terima kasih sudah meluangkan waktu. Silakan ceritakan sedikit tentang diri Anda dan apa yang membuat Anda tertarik dengan posisi ini.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/siang/sore. Terima kasih sudah meluangkan waktu. Silakan ceritakan sedikit tentang diri Anda dan apa yang membuat Anda tertarik dengan posisi ini.",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "latarbelakang",
+            "pendidikan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "minat",
+            "peran",
+            "perusahaan"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "silakan",
+            "baik"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning/afternoon/evening. — Selamat pagi/siang/sore. Thank you for making time. — Terima kasih sudah meluangkan waktu. Please tell us a bit about yourself and what attracted you to this position."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Menarik sekali. Bisakah Anda elaborasi lebih jauh tentang pengalaman Anda yang paling relevan dengan posisi ini, dan bagaimana Anda melihatnya berkontribusi pada tim kami?",
+      "branches": [
+        {
+          "keywords": [
+            "proyek",
+            "pencapaian",
+            "keahlian"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "tentusaja"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very interesting. — Menarik sekali. Could you elaborate further on your most relevant experience for this position, and how you see it contributing to our team?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Kami senang mendengar ketertarikan Anda. Menurut Anda, apa tantangan terbesar dalam posisi ini dan bagaimana Anda berencana menghadapinya?",
+      "branches": [
+        {
+          "keywords": [
+            "tantangan",
+            "strategi",
+            "solusi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "menurutku"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright. We are glad to hear of your interest. In your opinion, what is the biggest challenge in this position and how do you plan to address it?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih atas jawaban Anda yang komprehensif. Sebagai penutup, apa keunggulan utama Anda yang akan menjadi aset berharga bagi kami, dan ada area mana yang menurut Anda masih perlu Anda kembangkan?",
+      "branches": [
+        {
+          "keywords": [
+            "kekuatan",
+            "aset",
+            "kelemahan",
+            "pengembangan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tentu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you for your comprehensive answer. — Terima kasih atas jawaban Anda yang komprehensif. To conclude, what is your main strength that would be a valuable asset to us, and in what area do you believe you still need to develop?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisakah Anda mengulanginya? Saya tidak begitu menangkap maksud Anda.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih banyak atas waktu dan insight yang Anda berikan. Kami akan segera menghubungi Anda kembali. Selamat pagi/siang/sore.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, thank you very much for your time and the insights you've provided. We will contact you again soon. Good morning/afternoon/evening.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "dlg-th-doctor-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "doctor",
+  "title": "ไปหาหมอ",
+  "opening": "สวัสดีครับ/ค่ะ คุณเป็นอะไรมาครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ คุณเป็นอะไรมาครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ป่วย",
+            "ไม่สบาย",
+            "ปวด"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เป็นไข้",
+            "ไข้"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī khrạb/khà. Khun bpen à-rai maa khráp/ká? — Hello. What's wrong?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ปวดตรงไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ปวดหัว",
+            "หัว"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpùat dtrong nǎi khráp/ká? — Where does it hurt?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "เป็นมานานเท่าไหร่แล้วครับ/คะ? และปวดมากไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สองสามวัน",
+            "สองวัน",
+            "สามวัน",
+            "เมื่อวาน"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bpen maa naan tâo-rài lɛ́ɛo khráp/ká? Lɛ́ bpùat mâak mǎi khráp/ká? — How long have you had it? And does it hurt a lot?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "มีไข้หรืออาการแพ้ยาอะไรไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "มีไข้",
+            "ไข้"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee kâi rěu aa-gaan pɛ̂ɛ yaa a-rai mǎi khráp/ká? — Do you have a fever or any drug allergies?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "โอเคครับ/ค่ะ ผมจะให้ยาแก้ปวด/ลดไข้ไปทานนะครับ/คะ ทานหลังอาหารสามเวลา หายเร็วๆ นะครับ/คะ",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "promptTranslation": "O-khe khráp/ká. Pǒm jà hâi yaa gɛ̂ɛ bpùat/lót kâi bpai taan ná khráp/ká. Taan lǎng aa-hǎan sǎam wee-laa. Hǎai rew-rew ná khráp/ká! — Okay. I'll give you pain/fever medication to take. Take it after meals three times a day. Get well soon!",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อะไรนะ",
+            "พูดอีกที"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ tôot khráp/ká. Pûut èek kráng dâi mǎi khráp/ká? — Sorry, could you say that again?"
+    }
+  }
+}

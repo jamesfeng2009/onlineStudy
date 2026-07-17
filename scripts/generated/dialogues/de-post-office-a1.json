@@ -1,0 +1,251 @@
+{
+  "id": "dlg-de-post-office-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "post-office",
+  "title": "Auf der Post",
+  "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wie kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "paket",
+            "senden",
+            "versenden"
+          ],
+          "nextTurnId": "t2_parcel"
+        },
+        {
+          "keywords": [
+            "briefmarken",
+            "marken",
+            "kaufen"
+          ],
+          "nextTurnId": "t2_stamps_type"
+        },
+        {
+          "keywords": [
+            "bitte",
+            "hilfe"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Tag — Good day! Wie kann ich Ihnen helfen? — How can I help you?"
+    },
+    "t2_parcel": {
+      "id": "t2_parcel",
+      "prompt": "Wohin möchten Sie das Paket schicken? Nach Deutschland oder ins Ausland?",
+      "branches": [
+        {
+          "keywords": [
+            "deutschland",
+            "inland"
+          ],
+          "nextTurnId": "t3_parcel_germany"
+        },
+        {
+          "keywords": [
+            "ausland",
+            "frankreich",
+            "usa"
+          ],
+          "nextTurnId": "t3_parcel_abroad"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wohin möchten Sie das Paket schicken? — Where do you want to send the parcel? Nach Deutschland oder ins Ausland? — To Germany or abroad?"
+    },
+    "t2_stamps_type": {
+      "id": "t2_stamps_type",
+      "prompt": "Möchten Sie Briefmarken für Briefe oder für Postkarten kaufen?",
+      "branches": [
+        {
+          "keywords": [
+            "briefe",
+            "brief"
+          ],
+          "nextTurnId": "t3_stamps_count_brief"
+        },
+        {
+          "keywords": [
+            "postkarten",
+            "postkarte"
+          ],
+          "nextTurnId": "t3_stamps_count_karte"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Möchten Sie Briefmarken für Briefe oder für Postkarten kaufen? — Do you want to buy stamps for letters or for postcards?"
+    },
+    "t3_parcel_germany": {
+      "id": "t3_parcel_germany",
+      "prompt": "Ein Paket nach Deutschland kostet 5 Euro. Möchten Sie es senden?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "senden",
+            "bezahlen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ein Paket nach Deutschland — A parcel to Germany kostet 5 Euro — costs 5 Euros. Möchten Sie es senden? — Do you want to send it?"
+    },
+    "t3_parcel_abroad": {
+      "id": "t3_parcel_abroad",
+      "prompt": "Für ein Paket ins Ausland brauchen Sie ein Zollformular. Bitte füllen Sie es aus. Hier ist es.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "okay",
+            "ausfüllen",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "was",
+            "bitte"
+          ],
+          "nextTurnId": "t3_parcel_abroad"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Für ein Paket ins Ausland — For a parcel abroad brauchen Sie ein Zollformular — you need a customs form. Bitte füllen Sie es aus — Please fill it out. Hier ist es — Here it is."
+    },
+    "t3_stamps_count_brief": {
+      "id": "t3_stamps_count_brief",
+      "prompt": "Eine Briefmarke für Briefe kostet 85 Cent. Wie viele Marken brauchen Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "eine",
+            "eins",
+            "zwei",
+            "drei",
+            "vier",
+            "fünf"
+          ],
+          "nextTurnId": "t4_stamps_confirm_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eine Briefmarke für Briefe — A stamp for letters kostet 85 Cent — costs 85 cents. Wie viele Marken brauchen Sie? — How many stamps do you need?"
+    },
+    "t3_stamps_count_karte": {
+      "id": "t3_stamps_count_karte",
+      "prompt": "Eine Briefmarke für Postkarten kostet 70 Cent. Wie viele Marken brauchen Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "eine",
+            "eins",
+            "zwei",
+            "drei",
+            "vier",
+            "fünf"
+          ],
+          "nextTurnId": "t4_stamps_confirm_price"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eine Briefmarke für Postkarten — A stamp for postcards kostet 70 Cent — costs 70 cents. Wie viele Marken brauchen Sie? — How many stamps do you need?"
+    },
+    "t4_stamps_confirm_price": {
+      "id": "t4_stamps_confirm_price",
+      "prompt": "In Ordnung. Das macht dann X Euro. Bitte schön.",
+      "branches": [
+        {
+          "keywords": [
+            "zahlen",
+            "bezahlen",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In Ordnung — All right. Das macht dann X Euro — That makes X Euros. Bitte schön — Here you go."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, können Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung — Excuse me, können Sie das bitte wiederholen? — can you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank und auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vielen Dank — Many thanks und auf Wiedersehen! — and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

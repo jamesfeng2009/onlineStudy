@@ -1,0 +1,105 @@
+{
+  "id": "dlg-en-hotel-b2",
+  "language": "en",
+  "level": "B2",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Welcome to the Grand Hotel! Do you have a reservation with us this evening?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Welcome to the Grand Hotel! Do you have a reservation with us this evening?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "i do",
+            "reservation"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Welcome to the Grand Hotel! Do you have a reservation with us this evening? — Welcome to the Grand Hotel! Do you have a reservation with us this evening?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Excellent. And under what name was the reservation made, please? We'll also need a form of photo identification, if you wouldn't mind.",
+      "branches": [
+        {
+          "keywords": [
+            "my name is",
+            "it's",
+            "name"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. And under what name was the reservation made, please? We'll also need a form of photo identification, if you wouldn't mind. — Excellent. And under what name was the reservation made, please? We'll also need a form of photo identification, if you wouldn't mind."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Thank you, Mr./Ms. [Learner's Name]. I see you've booked a standard double room. Do you have any particular preferences, perhaps a high floor or a quiet room? And how will you be settling the bill, with a credit card or other means?",
+      "branches": [
+        {
+          "keywords": [
+            "high floor",
+            "quiet room",
+            "view"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Thank you, Mr./Ms. [Learner's Name]. I see you've booked a standard double room. Do you have any particular preferences, perhaps a high floor or a quiet room? And how will you be settling the bill, with a credit card or other means? — Thank you, Mr./Ms. [Learner's Name]. I see you've booked a standard double room. Do you have any particular preferences, perhaps a high floor or a quiet room? And how will you be settling the bill, with a credit card or other means?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Right, we'll certainly do our best to accommodate your preferences. Just one more thing: our complimentary breakfast is served from 7 to 10 AM in the dining area. Would you like to add it to your booking?",
+      "branches": [
+        {
+          "keywords": [
+            "yes please",
+            "add breakfast",
+            "i'll have"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right, we'll certainly do our best to accommodate your preferences. Just one more thing: our complimentary breakfast is served from 7 to 10 AM in the dining area. Would you like to add it to your booking?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Perfect. Here's your key card for room 402 on the fourth floor. Enjoy your stay with us, and please don't hesitate to contact the front desk if you require anything at all.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. Here's your key card for room 402 on the fourth floor. Enjoy your stay with us, and please don't hesitate to contact the front desk if you require anything at all.",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, I didn't quite catch that. Could you please rephrase or repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, I didn't quite catch that. Could you please rephrase or repeat what you said? — Sorry, I didn't quite catch that. Could you please rephrase or repeat what you said?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for choosing the Grand Hotel. Have a wonderful stay!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for choosing the Grand Hotel. Have a wonderful stay!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": "dlg-id-doctor-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "doctor",
+  "title": "Kunjungan Dokter",
+  "opening": "Selamat pagi, Bapak/Ibu. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Bapak/Ibu. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit kepala",
+            "pusing"
+          ],
+          "nextTurnId": "t2_symptom"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Good morning, Sir/Madam. (Selamat pagi, Bapak/Ibu. Ada yang bisa saya bantu?) Can I help you?"
+    },
+    "t2_symptom": {
+      "id": "t2_symptom",
+      "prompt": "Baik, saya mengerti. Sudah berapa lama sakitnya?",
+      "branches": [
+        {
+          "keywords": [
+            "satu hari",
+            "sehari",
+            "dua hari",
+            "tiga hari"
+          ],
+          "nextTurnId": "t3_duration"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Okay, (Baik,) I understand. (saya mengerti.) How long has it been painful? (Sudah berapa lama sakitnya?)"
+    },
+    "t3_duration": {
+      "id": "t3_duration",
+      "prompt": "Oke. Apakah sakitnya parah? Atau ada alergi obat?",
+      "branches": [
+        {
+          "keywords": [
+            "parah",
+            "sangat sakit"
+          ],
+          "nextTurnId": "t4_advice"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Okay. (Oke.) Is the pain severe? (Apakah sakitnya parah?) Or do you have drug allergies? (Atau ada alergi obat?)"
+    },
+    "t4_advice": {
+      "id": "t4_advice",
+      "prompt": "Baik. Saya akan beri resep obat. Minum ini tiga kali sehari. Semoga cepat sembuh.",
+      "branches": [
+        {
+          "keywords": [
+            "terima kasih",
+            "baik",
+            "oke"
+          ],
+          "nextTurnId": "t_end"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Good. (Baik.) I will give you a prescription. (Saya akan beri resep obat.) Take this three times a day. (Minum ini tiga kali sehari.) Get well soon. (Semoga cepat sembuh.)"
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak mengerti.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, (Maaf, bisa diulang?) can you repeat? I don't understand."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Sama-sama. Sampai jumpa.",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "You're welcome. (Sama-sama.) Goodbye. (Sampai jumpa.)",
+      "isTerminal": true
+    }
+  }
+}

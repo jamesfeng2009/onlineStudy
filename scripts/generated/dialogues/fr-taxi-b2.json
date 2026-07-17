@@ -1,0 +1,157 @@
+{
+  "id": "dlg-fr-taxi-b2",
+  "language": "fr",
+  "level": "B2",
+  "scenario": "taxi",
+  "title": "Course en taxi à Paris",
+  "opening": "Bonjour ! Où puis-je vous conduire ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonjour ! Où puis-je vous conduire ? Le périphérique est un peu chargé ce matin, mais ça devrait aller.",
+      "branches": [
+        {
+          "keywords": [
+            "hôtel",
+            "gare",
+            "aéroport",
+            "adresse",
+            "place",
+            "rue"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonjour (bohn-ZHOOR) ! Où puis-je vous conduire (oo pwēzh voo kohn-DWĒR) ? Le périphérique est un peu chargé ce matin, mais ça devrait aller. — Hello! Where can I take you? The ring road is a bit busy this morning, but it should be fine."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Très bien. Et préférez-vous passer par les quais ou plutôt par l'intérieur de la ville, quitte à rencontrer un peu plus de feux rouges ?",
+      "branches": [
+        {
+          "keywords": [
+            "quais",
+            "rapide",
+            "voie",
+            "express"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "centre",
+            "ville",
+            "intérieur",
+            "peuimporte",
+            "commevousvoulez"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien. Et préférez-vous passer par les quais (trē BYAN. ay pray-fay-RAY voo pah-SAY par lay kay) ou plutôt par l'intérieur de la ville, quitte à rencontrer un peu plus de feux rouges ? — Very good. And do you prefer to go by the quays or rather through the city centre, even if it means encountering a few more traffic lights?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Parfait, les quais sont souvent plus fluides en ce moment. Vous devriez y être en une vingtaine de minutes, à peu près, selon le trafic. Le tarif sera autour de 20-25 euros.",
+      "branches": [
+        {
+          "keywords": [
+            "combien",
+            "prix",
+            "tarif"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait, les quais sont souvent plus fluides en ce moment. Vous devriez y être en une vingtaine de minutes, à peu près, selon le trafic. Le tarif sera autour de 20-25 euros. — Perfect, the quays are often smoother at the moment. You should be there in about twenty minutes, more or less, depending on traffic. The fare will be around 20-25 euros."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "D'accord, je vais passer par le centre. Cela pourrait prendre un peu plus de temps, disons vingt-cinq à trente minutes, et le tarif sera probablement dans la même fourchette, autour de 20-25 euros.",
+      "branches": [
+        {
+          "keywords": [
+            "paiement",
+            "espèces",
+            "carte"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "D'accord, je vais passer par le centre. Cela pourrait prendre un peu plus de temps, disons vingt-cinq à trente minutes, et le tarif sera probablement dans la même fourchette, autour de 20-25 euros. — Alright, I'll go through the centre. That might take a bit longer, say twenty-five to thirty minutes, and the fare will probably be in the same range, around 20-25 euros."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Pas de souci. Vous pouvez payer en espèces ou par carte bancaire, comme vous préférez. J'ai de la monnaie si besoin.",
+      "branches": [
+        {
+          "keywords": [
+            "espèces",
+            "liquide",
+            "argent"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pas de souci (pah duh soo-SEE). Vous pouvez payer en espèces ou par carte bancaire, comme vous préférez. J'ai de la monnaie si besoin. — No problem. You can pay in cash or by credit card, whichever you prefer. I have change if needed."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Pardon ? Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Pardon ? Pourriez-vous répéter, s'il vous plaît (POUR-yee-ay-voo ray-PAY-tay, seel voo PLAY) ? — Sorry? Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Très bien. Je vous dépose juste devant. Bonne continuation et merci !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Très bien. Je vous dépose juste devant. Bonne continuation et merci ! — Very good. I'll drop you right in front. Have a good day and thank you!",
+      "isTerminal": true
+    }
+  }
+}

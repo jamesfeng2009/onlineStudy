@@ -1,0 +1,222 @@
+{
+  "id": "dlg-id-bank-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "bank",
+  "title": "Layanan Bank",
+  "opening": "Selamat datang di Bank Jaya. Ada yang bisa saya bantu hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang di Bank Jaya. Ada yang bisa saya bantu hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "buka akun",
+            "akunbaru"
+          ],
+          "nextTurnId": "t2_akun"
+        },
+        {
+          "keywords": [
+            "tukar uang",
+            "valutaasing"
+          ],
+          "nextTurnId": "t3_tukar"
+        },
+        {
+          "keywords": [
+            "atm",
+            "masalahatm"
+          ],
+          "nextTurnId": "t4_atm"
+        },
+        {
+          "keywords": [
+            "transfer",
+            "kirimuang"
+          ],
+          "nextTurnId": "t5_transfer"
+        },
+        {
+          "keywords": [
+            "pin",
+            "resetpin"
+          ],
+          "nextTurnId": "t6_pin"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S'lah-mat da-tang di Bang Ja-ya. A-da yang bi-sa sa-ya ban-tu ha-ri i-ni? — Welcome to Jaya Bank. How can I help you today?"
+    },
+    "t2_akun": {
+      "id": "t2_akun",
+      "prompt": "Baik, untuk pembukaan rekening, apakah Anda sudah membawa kartu identitas seperti KTP atau paspor?",
+      "branches": [
+        {
+          "keywords": [
+            "sudah",
+            "bawa",
+            "ada"
+          ],
+          "nextTurnId": "t7_lanjut"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ba-ik, un-tuk pem-bu-ka-an re-ke-ning, a-pa-kah An-da su-dah me-ba-wa kar-tu i-den-ti-tas se-per-ti Ka-Te-Pe a-tau pas-por? — Okay, for opening an account, have you brought an ID card like a KTP or passport?"
+    },
+    "t3_tukar": {
+      "id": "t3_tukar",
+      "prompt": "Bisa saya tahu mata uang apa yang ingin Anda tukar dan berapa nominalnya?",
+      "branches": [
+        {
+          "keywords": [
+            "dolar",
+            "usd",
+            "rupiah",
+            "matauang"
+          ],
+          "nextTurnId": "t7_lanjut"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Could I know what currency you want to exchange and what amount?"
+    },
+    "t4_atm": {
+      "id": "t4_atm",
+      "prompt": "Mohon maaf atas ketidaknyamanannya. Ada masalah apa dengan ATM-nya? Apakah kartu Anda tertelan atau ada masalah lain?",
+      "branches": [
+        {
+          "keywords": [
+            "tertelan",
+            "kartu",
+            "macet"
+          ],
+          "nextTurnId": "t7_lanjut"
+        },
+        {
+          "keywords": [
+            "pin",
+            "lupapin"
+          ],
+          "nextTurnId": "t6_pin"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mo-hon ma-af a-tas ke-ti-dak-nya-ma-nan-nya. A-da ma-sa-lah a-pa de-ngan e-te-em-nya? A-pa-kah kar-tu An-da ter-te-lan a-tau a-da ma-sa-lah la-in? — Apologies for the inconvenience. What's the problem with the ATM? Was your card swallowed or is there another issue?"
+    },
+    "t5_transfer": {
+      "id": "t5_transfer",
+      "prompt": "Untuk transfer dana, apakah Anda ingin melakukan transfer antarbank lokal atau transfer internasional?",
+      "branches": [
+        {
+          "keywords": [
+            "lokal",
+            "antarbank",
+            "dalamnegeri"
+          ],
+          "nextTurnId": "t7_lanjut"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For fund transfers, do you want to do a local interbank transfer or an international transfer?"
+    },
+    "t6_pin": {
+      "id": "t6_pin",
+      "prompt": "Untuk reset PIN, kami perlu melakukan verifikasi identitas Anda. Apakah Anda siap untuk proses ini?",
+      "branches": [
+        {
+          "keywords": [
+            "siap",
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t7_lanjut"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For PIN reset, we need to verify your identity. Are you ready for this process?"
+    },
+    "t7_lanjut": {
+      "id": "t7_lanjut",
+      "prompt": "Baik, saya akan bantu Anda. Silakan ambil nomor antrean dan tunggu giliran Anda di loket layanan pelanggan.",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, I will help you. Please take a queue number and wait for your turn at the customer service counter."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih telah mengunjungi Bank Jaya. Semoga hari Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for visiting Bank Jaya. Have a nice day!",
+      "isTerminal": true
+    }
+  }
+}

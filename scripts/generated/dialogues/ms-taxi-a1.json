@@ -1,0 +1,201 @@
+{
+  "id": "dlg-ms-taxi-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "taxi",
+  "title": "Naik Teksi",
+  "opening": "Selamat pagi. Ke mana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "hotel"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "pasar",
+            "pasaraya"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            "stesen",
+            "stesenbas"
+          ],
+          "nextTurnId": "t2c"
+        },
+        {
+          "keywords": [
+            "alamat",
+            "sini"
+          ],
+          "nextTurnId": "t2d"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (se-la-mat pa-gee). Ke mana (ke ma-na)? — Good morning. To where?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "Hotel itu, ya? Tambang dua puluh ringgit.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Hotel itu, ya (ya)? Tambang (tahm-bahng) dua puluh (doo-ah poo-looh) ringgit (reeng-git). — That hotel, right? The fare is twenty ringgit."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Pasar? Baiklah. Tambang lima belas ringgit.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pasar (pa-sar)? Baiklah (baik-lah). Tambang lima belas (lee-ma be-las) ringgit. — The market? Okay. The fare is fifteen ringgit."
+    },
+    "t2c": {
+      "id": "t2c",
+      "prompt": "Stesen bas? Tambang dua puluh lima ringgit.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Stesen bas (ste-sen bas)? Tambang dua puluh lima (doo-ah poo-looh lee-ma) ringgit. — The bus station? The fare is twenty-five ringgit."
+    },
+    "t2d": {
+      "id": "t2d",
+      "prompt": "Sila beritahu alamat. Tambang tiga puluh ringgit.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            "setuju"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sila (see-la) beritahu (be-ree-ta-hoo) alamat (ah-la-mat). Tambang tiga puluh (tee-ga poo-looh) ringgit. — Please tell the address. The fare is thirty ringgit."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Kita jalan sekarang. Sudah sampai. Boleh bayar?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ini",
+            "wang"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "berapa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (baik). Kita jalan (kee-ta ja-lan) sekarang (se-ka-rang). Sudah sampai (soo-dah sahm-pai). Boleh bayar (boh-leh ba-yar)? — Okay. We go now. We have arrived. Can you pay?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih. Ini baki anda. Selamat jalan!",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok",
+            "bye"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (te-ree-ma ka-seeh). Ini baki (ba-kee) anda (ahn-da). Selamat jalan (se-la-mat ja-lan)! — Thank you. Here is your change. Have a safe trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang? Saya tidak faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (mah-ahf), boleh ulang (boh-leh oo-lahng)? Saya tidak faham (sah-yah tee-dak fah-hahm). — Sorry, can you repeat? I don't understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih! Selamat jalan.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih (te-ree-ma ka-seeh)! Selamat jalan (se-la-mat ja-lan)! — Thank you! Have a safe trip.",
+      "isTerminal": true
+    }
+  }
+}

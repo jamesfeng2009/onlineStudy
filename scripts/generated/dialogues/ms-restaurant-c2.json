@@ -1,0 +1,254 @@
+{
+  "id": "dlg-ms-restaurant-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "restaurant",
+  "title": "Makan Malam Istimewa di Warung Pak Mat",
+  "opening": "Selamat malam, encik/cik. Ada tempahan ke, atau nak meja untuk berapa orang?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam, encik/cik. Ada tempahan ke, atau nak meja untuk berapa orang?",
+      "branches": [
+        {
+          "keywords": [
+            "tempahan",
+            "nama"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat malam (Se-la-mat ma-lam), encik/cik (en-cik/cik). Ada tempahan (tem-pa-han) ke, atau nak meja (me-ja) untuk berapa orang (be-ra-pa o-rang)? — Good evening, sir/madam. Do you have a reservation, or a table for how many people?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Selamat datang ke Warung Pak Mat. Sila duduk. Ini menu kami. Ada apa-apa yang encik/cik ingin tahu tentang hidangan istimewa hari ini?",
+      "branches": [
+        {
+          "keywords": [
+            "istimewa",
+            "cadangan",
+            "rekomendasi"
+          ],
+          "nextTurnId": "t3_recommendations"
+        },
+        {
+          "keywords": [
+            "diet",
+            "alahan",
+            "vegetarian",
+            "halal"
+          ],
+          "nextTurnId": "t3_dietary"
+        },
+        {
+          "keywords": [
+            "pesan",
+            "sedia",
+            "order"
+          ],
+          "nextTurnId": "t4_take_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang (Se-la-mat da-tang) ke Warung Pak Mat. Sila duduk (Si-la du-duk). Ini menu kami. Ada apa-apa yang encik/cik ingin tahu (i-ngin ta-hu) tentang hidangan istimewa (hi-da-ngan is-ti-me-wa) hari ini? — Welcome to Warung Pak Mat. Please have a seat. Here is our menu. Is there anything you'd like to know about today's specials?"
+    },
+    "t3_recommendations": {
+      "id": "t3_recommendations",
+      "prompt": "Untuk hidangan istimewa hari ini, kami ada 'Ikan Bakar Sambal Petai' yang memang selalu jadi rebutan, atau 'Nasi Kerabu Daging Bakar' yang pedasnya memukau. Keduanya memang 'signature' kami.",
+      "branches": [
+        {
+          "keywords": [
+            "ikanbakar",
+            "sambalpetai"
+          ],
+          "nextTurnId": "t4_confirm_item"
+        },
+        {
+          "keywords": [
+            "lain",
+            "menu",
+            "tengok"
+          ],
+          "nextTurnId": "t4_take_order"
+        },
+        {
+          "keywords": [
+            "pilihan"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk hidangan istimewa (hi-da-ngan is-ti-me-wa) hari ini, kami ada 'Ikan Bakar Sambal Petai' (I-kan Ba-kar Sam-bal Pe-tai) yang memang selalu jadi rebutan (re-bu-tan), atau 'Nasi Kerabu Daging Bakar' (Na-si Ke-ra-bu Da-ging Ba-kar) yang pedasnya memukau (me-mu-kau). Keduanya (Ke-du-a-nya) memang 'signature' kami. — For today's specials, we have 'Grilled Fish with Stink Beans Sambal' which is always a hot favorite, or 'Nasi Kerabu with Grilled Beef' whose spiciness is captivating. Both are indeed our signatures."
+    },
+    "t3_dietary": {
+      "id": "t3_dietary",
+      "prompt": "Tentu. Ada alahan atau pantang larang tertentu ke? Kami boleh ubah suai mengikut keperluan.",
+      "branches": [
+        {
+          "keywords": [
+            "pedas",
+            "kurangpedas",
+            "tanpapedas"
+          ],
+          "nextTurnId": "t4_dietary_options"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "okey"
+          ],
+          "nextTurnId": "t4_take_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu. Ada alahan (a-la-han) atau pantang larang (pan-tang la-rang) tertentu ke? Kami boleh ubah suai (u-bah su-ai) mengikut keperluan (me-ngi-kut ke-per-lu-an). — Certainly. Do you have any specific allergies or dietary restrictions? We can modify dishes according to your needs."
+    },
+    "t4_confirm_item": {
+      "id": "t4_confirm_item",
+      "prompt": "Pilihan yang sangat bijak! Jadi, 'Ikan Bakar Sambal Petai' atau 'Nasi Kerabu Daging Bakar' yang mana satu? Dan nak tambah apa-apa lagi?",
+      "branches": [
+        {
+          "keywords": [
+            "ikanbakar",
+            "satu"
+          ],
+          "nextTurnId": "t5_drinks_dessert"
+        },
+        {
+          "keywords": [
+            "lain",
+            "lagi"
+          ],
+          "nextTurnId": "t4_take_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pilihan yang sangat bijak (pi-li-han yang sa-ngat bi-jak)! Jadi, 'Ikan Bakar Sambal Petai' atau 'Nasi Kerabu Daging Bakar' yang mana satu? Dan nak tambah apa-apa lagi? — A very wise choice! So, 'Grilled Fish with Stink Beans Sambal' or 'Nasi Kerabu with Grilled Beef', which one? And would you like to add anything else?"
+    },
+    "t4_dietary_options": {
+      "id": "t4_dietary_options",
+      "prompt": "Faham. Untuk [vegetarian/alahan udang], kami boleh cadangkan [Nasi Goreng Kampung tanpa belacan/Sotong Bakar tanpa sos udang]. Bagaimana?",
+      "branches": [
+        {
+          "keywords": [
+            "setuju",
+            "baik",
+            "okey"
+          ],
+          "nextTurnId": "t5_drinks_dessert"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "lain",
+            "bukan"
+          ],
+          "nextTurnId": "t4_take_order"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Faham. Untuk [vegetarian/alahan udang], kami boleh cadangkan [Nasi Goreng Kampung tanpa belacan/Sotong Bakar tanpa sos udang]. Bagaimana? — Understood. For [vegetarian/shrimp allergy], we can suggest [Kampung Fried Rice without belacan/Grilled Squid without shrimp sauce]. How about that?"
+    },
+    "t4_take_order": {
+      "id": "t4_take_order",
+      "prompt": "Baiklah. Sila beritahu saya apa yang encik/cik ingin pesan. Jangan segan silu.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "ayam",
+            "ikan",
+            "sotong",
+            "sayur"
+          ],
+          "nextTurnId": "t5_drinks_dessert"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baiklah. Sila beritahu saya apa yang encik/cik ingin pesan. Jangan segan silu (ja-ngan se-gan si-lu). — Alright. Please tell me what you'd like to order. Don't be shy."
+    },
+    "t5_drinks_dessert": {
+      "id": "t5_drinks_dessert",
+      "prompt": "Sempurna! Untuk minuman pula, nak yang sejuk-sejuk atau teh tarik panas? Kopi O pun padu sini, memang 'kick' rasanya.",
+      "branches": [
+        {
+          "keywords": [
+            "air",
+            "minuman",
+            "sejuk",
+            "jus"
+          ],
+          "nextTurnId": "t6_bill_or_confirm"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sempurna! Untuk minuman pula, nak yang sejuk-sejuk atau teh tarik (teh ta-rik) panas? Kopi O pun padu (pa-du) sini, memang 'kick' rasanya. — Perfect! For drinks, would you like something cold or hot 'teh tarik'? Our 'Kopi O' is also excellent here, truly has a kick."
+    },
+    "t6_bill_or_confirm": {
+      "id": "t6_bill_or_confirm",
+      "prompt": "Baik, tempahan anda sudah saya catat. Semuanya akan sampai tak lama lagi. Ada apa-apa lagi sebelum saya bawakan bil?",
+      "branches": [
+        {
+          "keywords": [
+            "bil",
+            "bayar",
+            "kira"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, tempahan anda sudah saya catat. Semuanya akan sampai tak lama lagi. Ada apa-apa lagi sebelum saya bawakan bil? — Alright, your order has been noted. Everything will arrive shortly. Is there anything else before I bring the bill?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang semula? Saya kurang faham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf, boleh ulang semula? Saya kurang faham. — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas kunjungan anda ke Warung Pak Mat. Harap berpuas hati. Sila datang lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak (te-ri-ma ka-sih ba-nyak) atas kunjungan (kun-ju-ngan) anda ke Warung Pak Mat. Harap berpuas hati (ha-rap ber-pu-as ha-ti). Sila datang lagi (si-la da-tang la-gi)! — Thank you very much for your visit to Warung Pak Mat. Hope you're satisfied. Please come again!",
+      "isTerminal": true
+    }
+  }
+}

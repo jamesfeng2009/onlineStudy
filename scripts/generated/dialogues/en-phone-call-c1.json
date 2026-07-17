@@ -1,0 +1,271 @@
+{
+  "id": "dlg-en-phone-call-c1",
+  "language": "en",
+  "level": "C1",
+  "scenario": "phone-call",
+  "title": "Professional Phone Call: Inquiries and Messages",
+  "opening": "Good morning, Sterling Solutions, Customer Relations. This is Alex speaking. How may I help you today?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good morning, Sterling Solutions, Customer Relations. This is Alex speaking. How may I help you today?",
+      "branches": [
+        {
+          "keywords": [
+            "speak",
+            "johnson",
+            "mr.johnson"
+          ],
+          "nextTurnId": "t2_ask_caller"
+        },
+        {
+          "keywords": [
+            "my",
+            "name",
+            "calling",
+            "hope",
+            "get",
+            "touch"
+          ],
+          "nextTurnId": "t2_ask_purpose"
+        },
+        {
+          "keywords": [
+            "",
+            "hello",
+            "hi"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, Sterling Solutions, Customer Relations. This is Alex speaking. How may I help you today? — A common formal greeting in professional phone calls, identifying the company, department, and speaker, then politely offering assistance."
+    },
+    "t2_ask_caller": {
+      "id": "t2_ask_caller",
+      "prompt": "Certainly. May I ask who's calling, please?",
+      "branches": [
+        {
+          "keywords": [
+            "my",
+            "name",
+            "johnson",
+            "smith",
+            "project"
+          ],
+          "nextTurnId": "t3_unavailable"
+        },
+        {
+          "keywords": [
+            "",
+            "this",
+            "is",
+            "it's"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. May I ask who's calling, please? — A polite way to ascertain the caller's identity before connecting them or providing information. Note the formal 'May I ask'."
+    },
+    "t2_ask_purpose": {
+      "id": "t2_ask_purpose",
+      "prompt": "And who were you looking to speak with regarding that matter, or what's the nature of your enquiry?",
+      "branches": [
+        {
+          "keywords": [
+            "mr",
+            "johnson",
+            "johnson"
+          ],
+          "nextTurnId": "t3_unavailable"
+        },
+        {
+          "keywords": [
+            "accounts",
+            "billing",
+            "department",
+            "invoice"
+          ],
+          "nextTurnId": "t3_transfer_or_help"
+        },
+        {
+          "keywords": [
+            "",
+            "general",
+            "query"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "And who were you looking to speak with regarding that matter, or what's the nature of your enquiry? — This asks for the specific person or the topic of the call. 'Regarding that matter' (formal) and 'nature of your enquiry' (professional idiom for 'what is your question about')."
+    },
+    "t3_unavailable": {
+      "id": "t3_unavailable",
+      "prompt": "I'm afraid Mr. Johnson is currently tied up in a critical meeting and isn't taking calls at the moment. Would you care to leave a message, or shall I have him return your call as soon as he's free?",
+      "branches": [
+        {
+          "keywords": [
+            "leave",
+            "message",
+            "yes"
+          ],
+          "nextTurnId": "t4_take_message"
+        },
+        {
+          "keywords": [
+            "return",
+            "call",
+            "back",
+            "have"
+          ],
+          "nextTurnId": "t4_take_callback"
+        },
+        {
+          "keywords": [
+            "",
+            "when",
+            "free"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I'm afraid Mr. Johnson is currently tied up in a critical meeting and isn't taking calls at the moment. Would you care to leave a message, or shall I have him return your call as soon as he's free? — 'Tied up' (idiom: busy/unavailable) and 'return your call' (idiom: call back) are common polite expressions. 'Care to leave a message' is a polite offer."
+    },
+    "t3_transfer_or_help": {
+      "id": "t3_transfer_or_help",
+      "prompt": "Understood. I can either put you through to Accounts, or perhaps I can assist you directly with a general query?",
+      "branches": [
+        {
+          "keywords": [
+            "transfer",
+            "accounts",
+            "yes",
+            "please"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "assist",
+            "directly",
+            "help"
+          ],
+          "nextTurnId": "t4_general_assistance"
+        },
+        {
+          "keywords": [
+            "",
+            "no",
+            "wait"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. I can either put you through to Accounts, or perhaps I can assist you directly with a general query? — 'Put you through' means to connect the call. 'Assist you directly' means the speaker (Alex) will help. 'General query' is a broad question."
+    },
+    "t4_take_message": {
+      "id": "t4_take_message",
+      "prompt": "Certainly. What's the message, and could you confirm your contact number for him?",
+      "branches": [
+        {
+          "keywords": [
+            "message",
+            "number",
+            "my"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "tell",
+            "him"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. What's the message, and could you confirm your contact number for him? — A clear request for the content of the message and the caller's phone number, using 'confirm' for politeness."
+    },
+    "t4_take_callback": {
+      "id": "t4_take_callback",
+      "prompt": "Right. What would be the most convenient number and time for him to get back to you?",
+      "branches": [
+        {
+          "keywords": [
+            "number",
+            "time",
+            "reach"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "anytime",
+            "tomorrow"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Right. What would be the most convenient number and time for him to get back to you? — 'Convenient number and time' is a polite and professional way to ask for the best contact details for a return call."
+    },
+    "t4_general_assistance": {
+      "id": "t4_general_assistance",
+      "prompt": "Of course. How can I assist you with your query?",
+      "branches": [
+        {
+          "keywords": [
+            "about",
+            "pricing",
+            "new",
+            "clients"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "product",
+            "service"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Of course. How can I assist you with your query? — A straightforward offer of help, using 'query' as a professional term for a question."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat what you said?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "yes",
+            "i'm",
+            "sorry",
+            "i"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I'm sorry, I didn't quite catch that. Could you please repeat what you said? — A standard, polite phrase used when the speaker did not hear or understand the previous statement."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for calling Sterling Solutions. Have a good day.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for calling Sterling Solutions. Have a good day. — A standard professional closing remark for a business call.",
+      "isTerminal": true
+    }
+  }
+}

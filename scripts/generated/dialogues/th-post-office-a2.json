@@ -1,0 +1,268 @@
+{
+  "id": "dlg-th-post-office-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "post-office",
+  "title": "ที่ทำการไปรษณีย์",
+  "opening": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ซื้อแสตมป์",
+            "แสตมป์"
+          ],
+          "nextTurnId": "t3_stamps"
+        },
+        {
+          "keywords": [
+            "ถามข้อมูล",
+            "ข้อมูล"
+          ],
+          "nextTurnId": "t6_info"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄wạs̄dī kâ/kráp. Mī ʾarị hâi chûay mị kâ/kráp? — Hello. How can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "จะส่งไปที่ไหนคะ/ครับ? ในประเทศหรือต่างประเทศคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ในประเทศ"
+          ],
+          "nextTurnId": "t4_dom"
+        },
+        {
+          "keywords": [
+            "ต่างประเทศ"
+          ],
+          "nextTurnId": "t5_int"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Jà s̄òng pai thī̀ nǎi kâ/kráp? Nai pra-thêēt rʉ̌ʉ tàang pra-thêēt kâ/kráp? — Where will you send it? Domestic or international?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "ต้องการแสตมป์กี่ดวงคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่ง",
+            "สอง",
+            "สาม",
+            "สี่",
+            "ห้า"
+          ],
+          "nextTurnId": "t4_price"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tâwng-kân s̄tæmp kī̀ duang kâ/kráp? — How many stamps do you need?"
+    },
+    "t4_dom": {
+      "id": "t4_dom",
+      "prompt": "ส่งในประเทศ ต้องการแบบธรรมดา หรือ ลงทะเบียนคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ธรรมดา"
+          ],
+          "nextTurnId": "t4_price"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄òng nai pra-thêēt. Tâwng-kân bæ̀p tham-ma-dā rʉ̌ʉ long-thá-bīan kâ/kráp? — Sending domestically. Do you want regular mail or registered mail?"
+    },
+    "t5_int": {
+      "id": "t5_int",
+      "prompt": "ส่งต่างประเทศ กรุณากรอกใบศุลกากรด้วยค่ะ/ครับ ต้องการแบบธรรมดา หรือ มีเลขติดตามคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ธรรมดา"
+          ],
+          "nextTurnId": "t4_price"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "S̄òng tàang pra-thêēt. Ka-rú-na gràwk bai sǔn-lá-kâ-gawn dûay kâ/kráp. Tâwng-kân bæ̀p tham-ma-dā rʉ̌ʉ mī lêk tid-tām kâ/kráp? — Sending internationally. Please fill out the customs form. Do you want regular mail or with a tracking number?"
+    },
+    "t6_info": {
+      "id": "t6_info",
+      "prompt": "ต้องการทราบข้อมูลอะไรคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "เวลาทำการ",
+            "เปิดปิด"
+          ],
+          "nextTurnId": "t7_info_hours"
+        },
+        {
+          "keywords": [
+            "ค่าส่ง",
+            "ราคา"
+          ],
+          "nextTurnId": "t7_info_price"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tâwng-kân s̄âp k̄hâw-mūl ʾarị kâ/kráp? — What information would you like to know?"
+    },
+    "t7_info_hours": {
+      "id": "t7_info_hours",
+      "prompt": "ที่ทำการไปรษณีย์เปิดทุกวันจันทร์ถึงศุกร์ เวลา 8.30 น. ถึง 16.30 น. ค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tī̀ tham-kān prai-s̄a-nīy pœ̀t thúk wan jan t̄hŭng s̄ùk. Welā pæ̀t-mōhng khrʉ̂ng t̄hŭng sìp-hòk mōhng khrʉ̂ng kâ/kráp. — The post office is open every Monday to Friday from 8:30 AM to 4:30 PM."
+    },
+    "t7_info_price": {
+      "id": "t7_info_price",
+      "prompt": "ค่าส่งขึ้นอยู่กับน้ำหนักและปลายทางค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ส่งพัสดุ",
+            "ส่งของ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kầ s̄òng kẖụ̂n-yū̀ kàp nâmnàk læ plāythāng kâ/kráp. — The postage depends on weight and destination."
+    },
+    "t4_price": {
+      "id": "t4_price",
+      "prompt": "ยอดรวมทั้งหมด ... บาทค่ะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ตกลง",
+            "จ่าย",
+            "เงินสด",
+            "บัตร"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ไม่เข้าใจ"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Yôd ruam thâng mòt ... bāt kâ/kráp. — The total amount is ... baht."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ/ครับ ไม่เข้าใจ พูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "อะไร"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "K̄hŏthôt kâ/kráp, mị̂ kâw-jai. Pût ìk khráng dâi mǎi kâ/kráp? — Excuse me, I don't understand. Could you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณที่ใช้บริการค่ะ/ครับ สวัสดีค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "K̄hàwp-khun thī̀ chái bọ̄-ri-kān kâ/kráp. S̄wạs̄dī kâ/kráp. — Thank you for using our service. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

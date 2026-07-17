@@ -1,0 +1,266 @@
+{
+  "id": "dlg-id-shopping-clothes-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "shopping-clothes",
+  "title": "Belanja Pakaian: Nuansa Transaksi Canggih",
+  "opening": "Selamat datang di butik kami, Pak/Bu. Ada yang bisa kami bantu? Sedang mencari apa gerangan?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang di butik kami, Pak/Bu. Ada yang bisa kami bantu? Sedang mencari apa gerangan?",
+      "branches": [
+        {
+          "keywords": [
+            "kemeja",
+            "kemejabatik",
+            "kemejaformal",
+            "baju",
+            "dress",
+            "gaun",
+            "pakaianpesta",
+            "celana",
+            "jeans",
+            "bawahan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "lihatlihat",
+            "browsing",
+            "tidakdulu"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat datang di butik kami, Pak/Bu — Welcome to our boutique, Sir/Madam. Ada yang bisa kami bantu? Sedang mencari apa gerangan? — Is there anything we can assist you with? What exactly are you looking for?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, begitu. Ada preferensi khusus, Pak/Bu? Mungkin modelnya, bahannya, atau ukuran yang biasa dipakai? Kami punya koleksi baru yang sedang jadi buah bibir.",
+      "branches": [
+        {
+          "keywords": [
+            "ukuranm",
+            "m",
+            "size m",
+            "medium",
+            "ukuranl",
+            "l",
+            "size l",
+            "large",
+            "ukuranxl",
+            "xl",
+            "size xl",
+            "extra large",
+            "ukuran30",
+            "30",
+            "size 30",
+            "ukuran32",
+            "32",
+            "size 32",
+            "ukuran34",
+            "34",
+            "size 34",
+            "warna",
+            "hitam",
+            "biru",
+            "merah",
+            "gold",
+            "silver",
+            "pastel",
+            "abuabu",
+            "model",
+            "bahan",
+            "kasual",
+            "formal",
+            "batik"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tidakpunya",
+            "tidaksuka",
+            "tidakcocok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu — Oh, I see. Ada preferensi khusus, Pak/Bu? — Do you have any specific preferences, Sir/Madam? Mungkin modelnya, bahannya, atau ukuran yang biasa dipakai? — Perhaps for the style, material, or your usual size? Kami punya koleksi baru yang sedang jadi buah bibir — We have a new collection that's currently the talk of the town."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Kebetulan sekali, kami ada beberapa pilihan yang cocok dengan deskripsi Anda. Mari saya tunjukkan. Atau, apakah Anda ingin langsung mencoba di ruang pas?",
+      "branches": [
+        {
+          "keywords": [
+            "coba",
+            "ruangpas",
+            "ukur"
+          ],
+          "nextTurnId": "t4a_fitting"
+        },
+        {
+          "keywords": [
+            "lihatdulu",
+            "tunjuk",
+            "perlihatkan"
+          ],
+          "nextTurnId": "t4b_show"
+        },
+        {
+          "keywords": [
+            "tidakjadi",
+            "tidaksuka",
+            "melihatlihat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kebetulan sekali — What a coincidence! Kami ada beberapa pilihan yang cocok dengan deskripsi Anda — We have several options that match your description. Mari saya tunjukkan — Let me show you. Atau, apakah Anda ingin langsung mencoba di ruang pas? — Or would you like to try it on directly in the fitting room?"
+    },
+    "t4a_fitting": {
+      "id": "t4a_fitting",
+      "prompt": "Tentu, ruang pas ada di sebelah sana, dekat dengan bagian aksesori. Jika butuh bantuan atau ukuran lain, jangan sungkan panggil saya, ya.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "siap",
+            "terimakasih"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidakjadi",
+            "masihlihat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly. Ruang pas ada di sebelah sana, dekat dengan bagian aksesori — The fitting room is over there, near the accessories section. Jika butuh bantuan atau ukuran lain, jangan sungkan panggil saya, ya — If you need help or another size, don't hesitate to call me, okay."
+    },
+    "t4b_show": {
+      "id": "t4b_show",
+      "prompt": "Baik, mari saya tunjukkan beberapa pilihan yang kami punya. Ini model terbaru dengan potongan yang sedang digandrungi. Bagaimana menurut Anda? Ada keinginan untuk mencoba?",
+      "branches": [
+        {
+          "keywords": [
+            "coba",
+            "mauukur",
+            "ruangpas"
+          ],
+          "nextTurnId": "t4a_fitting"
+        },
+        {
+          "keywords": [
+            "tidakcocok",
+            "tidakini",
+            "caralain"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "suka",
+            "bagus",
+            "ok"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, mari saya tunjukkan beberapa pilihan yang kami punya — All right, let me show you some of the options we have. Ini model terbaru dengan potongan yang sedang digandrungi — This is the latest model with a cut that's currently very popular. Bagaimana menurut Anda? — What do you think? Ada keinginan untuk mencoba? — Do you feel like trying it on?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Nah, bagaimana, Pak/Bu? Pas di badan? Atau ada yang kurang sreg? Kalau mau mencoba warna atau ukuran lain, jangan sungkan bilang.",
+      "branches": [
+        {
+          "keywords": [
+            "pas",
+            "ambilini",
+            "beli",
+            "cocok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "lainnya"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nah, bagaimana, Pak/Bu? — So, how is it, Sir/Madam? Pas di badan? — Does it fit well? Atau ada yang kurang sreg? — Or is there anything not quite right? Kalau mau mencoba warna atau ukuran lain, jangan sungkan bilang — If you'd like to try another color or size, don't hesitate to say."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulangi lagi? Kurang jelas tadi.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulangi"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf — I'm sorry, bisa diulangi lagi? — Could you repeat that? Kurang jelas tadi — I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, terima kasih banyak sudah berbelanja di tempat kami. Semoga puas dengan pilihannya. Kami tunggu kedatangan Anda kembali!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik, terima kasih banyak sudah berbelanja di tempat kami — Well then, thank you very much for shopping with us. Semoga puas dengan pilihannya — We hope you're satisfied with your choice. Kami tunggu kedatangan Anda kembali! — We look forward to your return!",
+      "isTerminal": true
+    }
+  }
+}

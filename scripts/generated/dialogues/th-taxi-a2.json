@@ -1,0 +1,199 @@
+{
+  "id": "dlg-th-taxi-a2",
+  "language": "th",
+  "level": "A2",
+  "scenario": "taxi",
+  "title": "การนั่งแท็กซี่",
+  "opening": "ไปไหนครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "ไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยามพารากอน",
+            "สยาม"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "เปิดมิเตอร์"
+          ],
+          "nextTurnId": "t2_meter"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Pai nai kráp/ká? — Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "สยามพารากอนใช่ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "ใช่",
+            "ถูก"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่ถูก"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sayam Paragon chai mai kráp/ká? — Siam Paragon, right?"
+    },
+    "t2_meter": {
+      "id": "t2_meter",
+      "prompt": "ครับ/ค่ะ เปิดมิเตอร์แล้วครับ/ค่ะ จะไปไหนครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "สยามพารากอน",
+            "สยาม"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Kráp/ká, poet mitoe laeo kráp/ká. Ja pai nai kráp/ká? — Yes, the meter is on. Where will you go?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "รถติดหน่อยนะครับ/คะ ใช้เวลาประมาณ 20 นาที",
+      "branches": [
+        {
+          "keywords": [
+            "เข้าใจ",
+            "ครับ",
+            "ค่ะ",
+            "โอเค"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rót tìt nòi ná kráp/ká. Chái welā pramān yîisìp nāthii. — There's a bit of traffic. It will take about 20 minutes."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "ถึงแล้วครับ/ค่ะ ทั้งหมด 120 บาทครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ครับ",
+            "นี่ค่ะ",
+            "จ่าย"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ทอน",
+            "เงินทอน"
+          ],
+          "nextTurnId": "t5_change"
+        },
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tʉ̌ng lɛ́ɛo kráp/ká. Táng mòt nʉ̀ng-rɔ́ɔi yîisìp bàat kráp/ká. — We've arrived. Total is 120 Baht."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "ขอบคุณครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Kɔ̀p kun kráp/ká. — Thank you."
+    },
+    "t5_change": {
+      "id": "t5_change",
+      "prompt": "สักครู่นะครับ/คะ นี่เงินทอนครับ/ค่ะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sàk krûu ná kráp/ká. Nî ngern tɔɔn kráp/ká. — Just a moment. Here's your change."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ พูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Kɔ̌ɔ tôot kráp/ká. Pûut ìik kráng dâi mái kráp/ká? — Excuse me, could you please say that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "โชคดีครับ/ค่ะ สวัสดีครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chôok dii kráp/ká. Sà-wàt-dii kráp/ká. — Good luck. Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "id": "dlg-it-airport-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Al Check-in",
+  "opening": "Buongiorno. Il suo passaporto e biglietto, per favore?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno. Il suo passaporto e biglietto, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "ecco",
+            "passaporto",
+            "biglietto",
+            "ho"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "noncapisco",
+            "scusi",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (bwohn-JOHR-noh). Il suo passaporto (pahs-sah-POR-toh) e biglietto (bee-LYET-toh), per favore? (pehr fah-VOH-reh?) — Good morning. Your passport and ticket, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Grazie. Quanti bagagli ha?",
+      "branches": [
+        {
+          "keywords": [
+            "uno",
+            "unobagaglio",
+            "1"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "nessuno",
+            "nonho",
+            "zero",
+            "0"
+          ],
+          "nextTurnId": "t3-nobag"
+        },
+        {
+          "keywords": [
+            "noncapisco",
+            "scusi",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grazie (GRAHT-see-eh). Quanti bagagli (bah-GAH-lyee) ha? — Thank you. How many bags do you have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto. Metta il bagaglio qui, per favore.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "metto",
+            "qui"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "noncapisco",
+            "scusi",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto. Metta il bagaglio qui, per favore. — Perfect. Put the bag here, please."
+    },
+    "t3-nobag": {
+      "id": "t3-nobag",
+      "prompt": "Va bene. Non ha bagagli? Prego, il suo biglietto e passaporto.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "capisco"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "noncapisco",
+            "scusi",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Va bene. Non ha bagagli? Prego, il suo biglietto e passaporto. — Okay. You don't have bags? Here is your ticket and passport."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ecco la sua carta d'imbarco. Il suo gate è B12. Buon viaggio!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "arrivederci",
+            "ciao"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "noncapisco",
+            "scusi",
+            "ripeti"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ecco (EK-koh) la sua carta d'imbarco (KAR-tah deem-BAR-koh). Il suo gate (GAYT) è B12. Buon viaggio (Bwohn VYAHD-joh)! — Here is your boarding pass. Your gate is B12. Have a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ok",
+            "sì",
+            "capisco"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), può ripetere (pwaw ree-PEH-teh-reh), per favore? (pehr fah-VOH-reh?) — Excuse me, can you repeat, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Arrivederci (ahr-ree-veh-DEHR-chee)! — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

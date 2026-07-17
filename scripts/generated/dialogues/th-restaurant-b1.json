@@ -1,0 +1,124 @@
+{
+  "id": "dlg-th-restaurant-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "การสนทนาที่ร้านอาหาร",
+  "opening": "สวัสดีครับ/ค่ะ มีกี่ท่านครับ/คะ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีครับ/ค่ะ มีกี่ท่านครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "หนึ่งคน",
+            "สองคน",
+            "สามคน",
+            "สี่คน"
+          ],
+          "nextTurnId": "t2_menu_offer"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee krap/ka. Mee gee tan krap/ka? — Hello. How many people?"
+    },
+    "t2_menu_offer": {
+      "id": "t2_menu_offer",
+      "prompt": "เชิญทางนี้ครับ/ค่ะ นี่คือเมนูนะครับ/คะ คุณพร้อมสั่งหรืออยากให้แนะนำอะไรดีครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            "พร้อมแล้ว",
+            "จะสั่ง",
+            "สั่ง",
+            "ขอคำแนะนำ",
+            "แนะนำ"
+          ],
+          "nextTurnId": "t3_recommend_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chern taang nee krap/ka. Nee keu menu na krap/ka. Koon prom sang reu yak hai nae nam a-rai dee krap/ka? — Please come this way. Here is the menu. Are you ready to order, or would you like some recommendations?"
+    },
+    "t3_recommend_order": {
+      "id": "t3_recommend_order",
+      "prompt": "วันนี้เรามีแกงเขียวหวานกับผัดไทยอร่อยนะครับ/คะ คุณสนใจรับอะไรดีครับ/คะ หรืออยากสั่งอะไรอย่างอื่น?",
+      "branches": [
+        {
+          "keywords": [
+            "แกงเขียวหวาน",
+            "เผ็ด"
+          ],
+          "nextTurnId": "t4_confirm_order"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Wan nee rao mee gaeng keo waan gap pad Thai a-roi na krap/ka. Koon son jai rap a-rai dee krap/ka? Reu yak sang a-rai yang eun? — Today we have delicious green curry and Pad Thai. What would you like? Or would you like to order something else?"
+    },
+    "t4_confirm_order": {
+      "id": "t4_confirm_order",
+      "prompt": "รับทราบครับ/ค่ะ อยากได้อะไรเพิ่มเติมไหมครับ/คะ เช่น ข้าวเปล่าหรือเครื่องดื่ม?",
+      "branches": [
+        {
+          "keywords": [
+            "ข้าวเปล่า",
+            "ข้าวสวย",
+            "เครื่องดื่ม",
+            "น้ำเปล่า"
+          ],
+          "nextTurnId": "t5_final_prep"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rap saap krap/ka. Yak dai a-rai perm term mai krap/ka? Chen khao plao reu kreuang deum? — Understood. Would you like anything else to add? Such as plain rice or a drink?"
+    },
+    "t5_final_prep": {
+      "id": "t5_final_prep",
+      "prompt": "ได้ครับ/ค่ะ สักครู่จะนำอาหารมาให้นะครับ/คะ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "ครับ",
+            "ค่ะ",
+            "โอเค",
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dai krap/ka. Sak kroo ja nam a-harn maa hai na krap/ka. — Alright. Your food will be brought to you shortly."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษครับ/ค่ะ ไม่ค่อยได้ยินเลยครับ/ค่ะ รบกวนพูดอีกครั้งได้ไหมครับ/คะ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-thot krap/ka. Mai khoi dai yin loey krap/ka. Rob guan poot eek krang dai mai krap/ka? — Sorry. I didn't quite hear that. Could you please say it again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "หวังว่าคุณจะมีความสุขกับอาหารนะครับ/คะ ขอบคุณที่มาใช้บริการครับ/ค่ะ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wang waa khoon ja mee kwaam sook gap a-harn na krap/ka. Kob khun tee maa chai bo-ri-gaan krap/ka. — I hope you enjoy your meal. Thank you for visiting.",
+      "isTerminal": true
+    }
+  }
+}

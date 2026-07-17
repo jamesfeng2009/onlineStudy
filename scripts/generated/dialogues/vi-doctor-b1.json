@@ -1,0 +1,230 @@
+{
+  "id": "dlg-vi-doctor-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "doctor",
+  "title": "Đi khám bác sĩ",
+  "opening": "Chào anh/chị. Anh/chị bị làm sao vậy?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào anh/chị. Anh/chị bị làm sao vậy?",
+      "branches": [
+        {
+          "keywords": [
+            "đauđầu",
+            "nhứcđầu"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "đaubụng",
+            "sótbụng"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cảm",
+            "cúm",
+            "sốt",
+            "ho",
+            "sổmũi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. Anh/chị bị là-m sa-o vậy? — Hello. What seems to be the problem?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Đau đầu từ bao giờ và mức độ đau như thế nào? Có kèm theo triệu chứng nào khác không?",
+      "branches": [
+        {
+          "keywords": [
+            "mới",
+            "hômqua",
+            "nhẹ",
+            "thỉnhthoảng"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "lâu",
+            "mấyngày",
+            "nặng",
+            "dữdội",
+            "liêntục"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đa-u đầ-u từ ba-o giờ và mức độ đa-u như thế nà-o? Có kèm the-o triệu chứng nà-o khác không? — How long have you had the headache and what is the intensity? Are there any other accompanying symptoms?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Anh/chị đau bụng từ khi nào? Đau âm ỉ hay quặn thắt? Có buồn nôn không?",
+      "branches": [
+        {
+          "keywords": [
+            "từsáng",
+            "âmỉ",
+            "khôngbuồnnôn",
+            "nhẹ"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tốihômqua",
+            "quặnthắt",
+            "buồnnôn",
+            "dữdội"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị đa-u bụng từ khi nà-o? Đa-u â-m ỉ hay quặ-n thắt? Có buồ-n nô-n không? — When did your stomach ache start? Is it a dull ache or sharp cramps? Do you feel nauseous?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Anh/chị bị cảm với những triệu chứng gì? Có sốt không? Sốt bao nhiêu độ?",
+      "branches": [
+        {
+          "keywords": [
+            "sổmũi",
+            "ho",
+            "sốtnhẹ",
+            "38độ",
+            "đauhọng"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "mệtmỏi",
+            "sốtcao",
+            "39độ",
+            "toátmồhôi"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Anh/chị bị cả-m với những triệu chứng gì? Có sốt không? Sốt ba-o nhiêu độ? — What are your cold symptoms? Do you have a fever? How high is the fever?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Tôi hiểu rồi. Anh/chị có dị ứng với thuốc nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "khôngcó",
+            "khôngdịứng"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tôi hiểu rồi. Anh/chị có dị ứng với thuốc nà-o không? — I see. Do you have any medication allergies?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tôi hiểu rồi. Anh/chị có tiền sử bệnh lý hay dị ứng với thuốc nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "khôngcó",
+            "khôngbịgì"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tôi hiểu rồi. Anh/chị có tiền sử bệnh lý hay dị ứng với thuốc nà-o không? — I see. Do you have any medical history or medication allergies?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Dựa vào các triệu chứng, tôi sẽ kê đơn thuốc cho anh/chị. Anh/chị nhớ uống thuốc đúng giờ và nghỉ ngơi đầy đủ. Nếu không đỡ, hãy quay lại tái khám nhé.",
+      "branches": [
+        {
+          "keywords": [
+            "vâng",
+            "cảmơn",
+            "tạmbiệt",
+            "chàobácsĩ"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dựa và-o các triệu chứng, tôi sẽ kê đơn thuốc cho anh/chị. Anh/chị nhớ uống thuốc đúng giờ và nghỉ ngơi đầy đủ. Nếu không đỡ, hãy quay lại tái khám nhé. — Based on your symptoms, I will prescribe some medication for you. Please remember to take your medicine on time and get enough rest. If you don't feel better, please come back for a follow-up."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, anh/chị có thể nhắc lại không? Tôi nghe chưa rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, anh/chị có thể nhắc lại không? Tôi nghe chưa rõ. — Sorry, could you please repeat? I didn't hear clearly."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc anh/chị mau khỏe! Tạm biệt!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Chúc anh/chị ma-u khỏe! Tạ-m biệ-t! — Wish you a speedy recovery! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dlg-id-doctor-c2",
+  "language": "id",
+  "level": "C2",
+  "scenario": "doctor",
+  "title": "Konsultasi Dokter Umum",
+  "opening": "Selamat pagi, Bu/Pak. Silakan duduk. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, Bu/Pak. Silakan duduk. Ada yang bisa saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "sakit",
+            "tidak enak badan",
+            "ada keluhan",
+            "kurang sehat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "batuk",
+            "demam",
+            "pilek",
+            "pusing",
+            "mual",
+            "muntah"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Good morning), Bu/Pak (Ma'am/Sir). Silakan duduk (Please have a seat). Ada yang bisa saya bantu (How can I help you)?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, bisa ceritakan lebih lanjut apa yang Ibu/Bapak rasakan? Sudah berapa lama keluhan ini?",
+      "branches": [
+        {
+          "keywords": [
+            "perut",
+            "kepala",
+            "dada",
+            "punggung",
+            "nyeri",
+            "rasa sakit",
+            "pegal",
+            "sejak kemarin",
+            "beberapa hari"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay), bisa ceritakan lebih lanjut (could you tell me more) apa yang Ibu/Bapak rasakan (what you're feeling)? Sudah berapa lama (How long has) keluhan ini (this complaint been)?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, begitu. Sudah berapa lama batuk/demamnya? Ada gejala lain yang menyertai, misalnya sakit tenggorokan atau menggigil?",
+      "branches": [
+        {
+          "keywords": [
+            "dua hari",
+            "tiga hari",
+            "seminggu",
+            "pilek",
+            "sakit tenggorokan",
+            "menggigil",
+            "badan pegal"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, begitu (I see). Sudah berapa lama (How long has) batuknya/demamnya (your cough/fever been)? Ada gejala lain (Are there any other accompanying symptoms) yang menyertai (that go with it), misalnya (for example) sakit tenggorokan (sore throat) atau menggigil (chills)?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Apakah rasa sakitnya mengganggu aktivitas sehari-hari? Ada riwayat alergi obat atau kondisi medis tertentu yang perlu saya ketahui?",
+      "branches": [
+        {
+          "keywords": [
+            "mengganggu",
+            "sulit beraktivitas",
+            "parah",
+            "alergi",
+            "obat tertentu",
+            "hipertensi",
+            "diabetes"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apakah rasa sakitnya mengganggu (Does the pain interfere with) aktivitas sehari-hari (daily activities)? Ada riwayat alergi obat (Do you have a history of drug allergies) atau kondisi medis tertentu (or specific medical conditions) yang perlu saya ketahui (that I need to know)?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, dari gejala yang Ibu/Bapak sampaikan, sepertinya ini hanya kelelahan biasa, atau mungkin infeksi virus ringan. Saya akan berikan resep untuk pereda nyeri dan vitamin, serta beberapa anjuran. Ada pertanyaan?",
+      "branches": [
+        {
+          "keywords": [
+            "obat",
+            "kapan sembuh",
+            "efek samping",
+            "pantangan",
+            "perlu istirahat"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (Okay), dari gejala (from the symptoms) yang Ibu/Bapak sampaikan (you've described), sepertinya ini hanya kelelahan biasa (it seems to be just ordinary fatigue), atau mungkin infeksi virus ringan (or perhaps a mild viral infection). Saya akan berikan resep (I will give you a prescription) untuk pereda nyeri (for pain relief) dan vitamin (and vitamins), serta beberapa anjuran (as well as some advice). Ada pertanyaan (Do you have any questions)?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Sorry), bisa diulang (could you repeat)? Saya kurang jelas (I didn't quite catch that)."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sama-sama. Semoga lekas pulih ya, Bu/Pak. Jaga kesehatan dan perhatikan istirahat.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Sama-sama (You're welcome). Semoga lekas pulih ya (I hope you recover quickly), Bu/Pak (Ma'am/Sir). Jaga kesehatan (Take care of your health) dan perhatikan istirahat (and pay attention to rest).",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "dlg-vi-airport-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "airport",
+  "title": "Tại Sân bay",
+  "opening": "Chào bạn. Hộ chiếu của bạn đâu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn. Hộ chiếu của bạn đâu?",
+      "branches": [
+        {
+          "keywords": [
+            "hộchiếu",
+            "đây"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "khôngbiết",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn (Chao ban) — Hello. Hộ chiếu (Ho chieu) của bạn đâu (cua ban dau)? — Where is your passport?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn. Số hiệu chuyến bay của bạn là gì?",
+      "branches": [
+        {
+          "keywords": [
+            "sốbay",
+            "chuyếnbay",
+            "chuyến",
+            "số"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn (Cam on) — Thank you. Số hiệu chuyến bay (So hieu chuyen bay) của bạn là gì (cua ban la gi)? — What is your flight number?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Đây là thẻ lên máy bay của bạn. Cổng A1.",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảm",
+            "ơn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Đây là thẻ lên máy bay (Day la the len may bay) của bạn — Here is your boarding pass. Cổng (Cong) A1. — Gate A1."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Cổng A1 ở đằng kia. Chúc bạn một chuyến đi vui vẻ!",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "cảm",
+            "ơn"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cổng A1 ở đằng kia (Cong A1 o dang kia) — Gate A1 is over there. Chúc bạn một chuyến đi vui vẻ (Chuc ban mot chuyen di vui ve)! — Have a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn nói gì?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loi) — Sorry. Bạn nói gì (Ban noi gi)? — What did you say?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Tạm biệt!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Tạm biệt (Tam biet)! — Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

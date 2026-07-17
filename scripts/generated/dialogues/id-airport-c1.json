@@ -1,0 +1,190 @@
+{
+  "id": "dlg-id-airport-c1",
+  "language": "id",
+  "level": "C1",
+  "scenario": "airport",
+  "title": "Penundaan Penerbangan dan Opsi Penumpang",
+  "opening": "Selamat pagi. Mohon maaf atas ketidaknyamanan yang tidak terhindarkan ini, Bapak/Ibu. Penerbangan Anda ke Singapura, GA123, terpaksa mengalami penundaan yang cukup signifikan.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Mohon maaf atas ketidaknyamanan yang tidak terhindarkan ini, Bapak/Ibu. Penerbangan Anda ke Singapura, GA123, terpaksa mengalami penundaan yang cukup signifikan.",
+      "branches": [
+        {
+          "keywords": [
+            "mengapa",
+            "alasan",
+            "kenapa"
+          ],
+          "nextTurnId": "t2_info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi). Mohon maaf (Mo-hon ma-af) atas ketidaknyamanan (ke-ti-dak-nya-ma-nan) yang tidak terhindarkan (ti-dak ter-hin-dar-kan) ini, Bapak/Ibu (Ba-pak/I-bu). Penerbangan (Pe-ner-ba-ngan) Anda ke Singapura (Sing-ga-pu-ra), GA123, terpaksa (ter-pak-sa) mengalami (me-nga-la-mi) penundaan (pe-nun-da-an) yang cukup signifikan (si-gnif-i-kan). — Good morning. We sincerely apologize for this unavoidable inconvenience, Sir/Madam. Your flight to Singapore, GA123, is unfortunately experiencing a significant delay."
+    },
+    "t2_info": {
+      "id": "t2_info",
+      "prompt": "Penundaan ini diakibatkan oleh kendala teknis yang memerlukan penanganan mendalam pada pesawat. Keselamatan penumpang adalah prioritas utama kami. Berdasarkan estimasi terbaru, kami perkirakan penerbangan akan berangkat sekitar pukul 16.30 WIB. Apa yang bisa kami bantu selanjutnya?",
+      "branches": [
+        {
+          "keywords": [
+            "kompensasi",
+            "makan",
+            "ganti"
+          ],
+          "nextTurnId": "t3_compensation"
+        },
+        {
+          "keywords": [
+            "lanjutan",
+            "transit",
+            "sambung"
+          ],
+          "nextTurnId": "t3_connecting"
+        },
+        {
+          "keywords": [
+            "batal",
+            "refund",
+            "dana"
+          ],
+          "nextTurnId": "t3_refund"
+        },
+        {
+          "keywords": [
+            "terima",
+            "baik",
+            "tunggu",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Penundaan (Pe-nun-da-an) ini diakibatkan (di-a-ki-bat-kan) oleh kendala (ken-da-la) teknis (tek-nis) yang memerlukan (me-mer-lu-kan) penanganan (pe-na-nga-nan) mendalam (men-da-lam) pada pesawat (pe-sa-wat). Keselamatan (Ke-se-la-mat-an) penumpang (pe-num-pang) adalah prioritas (pri-o-ri-tas) utama (u-ta-ma) kami. Berdasarkan (Ber-da-sar-kan) estimasi (es-ti-ma-si) terbaru (ter-ba-ru), kami perkirakan (per-ki-ra-kan) penerbangan (pe-ner-ba-ngan) akan berangkat (ber-ang-kat) sekitar (se-ki-tar) pukul (pu-kul) 16.30 WIB (We-I-Be). Apa (A-pa) yang bisa (bi-sa) kami bantu (ban-tu) selanjutnya (se-lan-jut-nya)? — This delay is due to a technical issue requiring in-depth attention on the aircraft. Passenger safety is our utmost priority. Based on the latest estimation, we anticipate the flight will depart around 4:30 PM Western Indonesian Time. How can we assist you further?"
+    },
+    "t3_compensation": {
+      "id": "t3_compensation",
+      "prompt": "Tentu, sebagai bentuk permohonan maaf dan sesuai regulasi, kami menyediakan voucher makan siang atau makanan ringan yang dapat Anda tukarkan di restoran bandara yang berpartisipasi. Anda bisa mengambilnya di konter layanan pelanggan dekat gerbang A7.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "baik",
+            "oke",
+            "paham"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lain",
+            "ada",
+            "lagi"
+          ],
+          "nextTurnId": "t4_other_issue"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu (Ten-tu), sebagai (se-ba-gai) bentuk (ben-tuk) permohonan (per-mo-hon-an) maaf (ma-af) dan sesuai (se-su-ai) regulasi (re-gu-la-si), kami menyediakan (me-nye-di-a-kan) voucher (vou-cher) makan (ma-kan) siang (si-ang) atau makanan (ma-ka-nan) ringan (ri-ngan) yang dapat (da-pat) Anda tukarkan (tu-kar-kan) di restoran (res-to-ran) bandara (ban-da-ra) yang berpartisipasi (ber-par-ti-si-pa-si). Anda bisa (bi-sa) mengambilnya (me-ngam-bil-nya) di konter (kon-ter) layanan (la-ya-nan) pelanggan (pe-lang-gan) dekat (de-kat) gerbang (ger-bang) A7. — Certainly, as a form of apology and in accordance with regulations, we are providing meal vouchers or snack vouchers that you can redeem at participating airport restaurants. You can collect them at our customer service counter near Gate A7."
+    },
+    "t3_connecting": {
+      "id": "t3_connecting",
+      "prompt": "Mohon maaf atas dampaknya pada rencana perjalanan Anda. Bisakah Anda sebutkan detail penerbangan lanjutan Anda agar kami dapat memeriksa opsi penjadwalan ulang atau alternatif terbaik? Bagasi Anda akan otomatis dialihkan.",
+      "branches": [
+        {
+          "keywords": [
+            "nomor",
+            "detail",
+            "kode",
+            "penerbangan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "batal",
+            "refund",
+            "dana"
+          ],
+          "nextTurnId": "t3_refund"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mohon maaf (Mo-hon ma-af) atas dampaknya (dam-pak-nya) pada rencana (ren-ca-na) perjalanan (per-ja-la-nan) Anda. Bisakah (Bi-sa-kah) Anda sebutkan (se-but-kan) detail (de-tail) penerbangan (pe-ner-ba-ngan) lanjutan (lan-jut-an) Anda agar (a-gar) kami dapat (da-pat) memeriksa (me-me-rik-sa) opsi (op-si) penjadwalan (pen-jad-wal-an) ulang (u-lang) atau alternatif (al-ter-na-tif) terbaik (ter-baik)? Bagasi (Ba-ga-si) Anda akan (a-kan) otomatis (o-to-ma-tis) dialihkan (di-a-lih-kan). — We apologize for the impact on your travel plans. Could you please provide details of your connecting flight so we can check rebooking options or the best alternatives? Your luggage will automatically be transferred."
+    },
+    "t3_refund": {
+      "id": "t3_refund",
+      "prompt": "Untuk proses pembatalan dan pengembalian dana penuh, Anda dapat langsung menghubungi pusat panggilan kami atau mengunjungi konter tiket di lobi utama, dekat pintu masuk 1. Mereka akan memandu Anda melalui prosedur yang diperlukan.",
+      "branches": [
+        {
+          "keywords": [
+            "terima",
+            "baik",
+            "paham",
+            "oke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "lain",
+            "ada",
+            "lagi"
+          ],
+          "nextTurnId": "t4_other_issue"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk (Un-tuk) proses (pro-ses) pembatalan (pem-ba-tal-an) dan pengembalian (pe-ngem-ba-li-an) dana (da-na) penuh (pe-nuh), Anda dapat (da-pat) langsung (lang-sung) menghubungi (me-ngu-bung-i) pusat (pu-sat) panggilan (pang-gi-lan) kami atau (a-tau) mengunjungi (me-ngun-jung-i) konter (kon-ter) tiket (ti-ket) di lobi (lo-bi) utama (u-ta-ma), dekat (de-kat) pintu (pin-tu) masuk (ma-suk) 1. Mereka (Me-re-ka) akan (a-kan) memandu (me-man-du) Anda melalui (me-la-lui) prosedur (pro-se-dur) yang diperlukan (di-per-lu-kan). — For the full cancellation and refund process, you can directly contact our call center or visit the ticket counter in the main lobby, near entrance 1. They will guide you through the necessary procedures."
+    },
+    "t4_other_issue": {
+      "id": "t4_other_issue",
+      "prompt": "Ada hal lain yang bisa kami bantu terkait perjalanan Anda, Bapak/Ibu?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "terima",
+            "cuma"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "batal",
+            "refund",
+            "dana"
+          ],
+          "nextTurnId": "t3_refund"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ada (A-da) hal (hal) lain (la-in) yang bisa (bi-sa) kami bantu (ban-tu) terkait (ter-ka-it) perjalanan (per-ja-la-nan) Anda, Bapak/Ibu (Ba-pak/I-bu)? — Is there anything else we can assist you with regarding your travel, Sir/Madam?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulangi perkataan Anda? Saya kurang menangkap maksudnya.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, could you please repeat that? I didn't quite catch what you meant."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak atas pengertian dan kesabaran Bapak/Ibu. Semoga perjalanan Anda menyenangkan!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your understanding and patience, Sir/Madam. We wish you a pleasant journey!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "id": "dlg-id-restaurant-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "restaurant",
+  "title": "Memesan Makanan di Restoran",
+  "opening": "Selamat malam! Ada yang bisa saya bantu? Untuk berapa orang, ya?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat malam! Ada yang bisa saya bantu? Untuk berapa orang, ya?",
+      "branches": [
+        {
+          "keywords": [
+            "meja",
+            "dua",
+            "tiga",
+            "empat",
+            "orang"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat malam — Good evening! Is there anything I can help you with? For how many people, please?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, silakan duduk di sini. Ini menu kami. Ada yang ingin diminum dulu, atau sudah siap memesan makanan?",
+      "branches": [
+        {
+          "keywords": [
+            "rekomendasi",
+            "sarankan",
+            "favorit"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "siap",
+            "pesan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nanti",
+            "belum"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, please sit here. Ini menu kami — Here is our menu. Would you like something to drink first, or are you ready to order food?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tentu. Hidangan favorit kami adalah Nasi Goreng Spesial, dengan telur mata sapi dan sate ayam. Banyak pelanggan menyukainya. Atau, kalau suka pedas, ada Ayam Bakar Sambal Matah.",
+      "branches": [
+        {
+          "keywords": [
+            "nasi",
+            "goreng",
+            "spesial"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "lain",
+            "bukan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tentu — Certainly. Hidangan favorit kami — Our favorite dish is Special Fried Rice, with a sunny-side-up egg and chicken satay. Many customers love it. Or, if you like spicy, there's Grilled Chicken with Sambal Matah."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, jadi (pesanan Anda). Ada lagi? Apakah ada alergi atau pantangan makanan yang perlu kami tahu?",
+      "branches": [
+        {
+          "keywords": [
+            "cukup",
+            "tidak",
+            "ada"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tambah",
+            "lagi"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, so (your order). Anything else? Are there any allergies or dietary restrictions we need to know about?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pesanan Anda akan segera kami siapkan. Apa ada hal lain yang bisa saya bantu sementara menunggu makanan Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "cukup",
+            "tidak ada"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "air",
+            "sendok",
+            "garpu",
+            "tissue"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Your order will be prepared shortly. Apa ada hal lain — Is there anything else I can help you with while you wait for your food?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Tentu. Ini tagihan Anda. Apakah Anda ingin membayar sekarang atau nanti setelah makan?",
+      "branches": [
+        {
+          "keywords": [
+            "sekarang",
+            "bayar",
+            "kartu",
+            "tunai"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Here is your bill. Would you like to pay now or later after eating?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak begitu paham.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Sorry, could you repeat? I didn't quite understand."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah datang ke restoran kami. Sampai jumpa lagi!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you for coming to our restaurant. See you again!",
+      "isTerminal": true
+    }
+  }
+}

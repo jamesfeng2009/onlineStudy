@@ -1,0 +1,95 @@
+{
+  "id": "dlg-id-interview-a2",
+  "language": "id",
+  "level": "A2",
+  "scenario": "interview",
+  "title": "Wawancara Kerja Sederhana",
+  "opening": "Selamat pagi. Terima kasih sudah datang. Bisa ceritakan sedikit tentang diri Anda?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi. Terima kasih sudah datang. Bisa ceritakan sedikit tentang diri Anda?",
+      "branches": [
+        {
+          "keywords": [
+            "kuliah",
+            "lulus",
+            "sekolah"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi (Se-la-mat pa-gi). Terima kasih sudah datang (Te-ri-ma ka-sih su-dah da-tang). Bisa ceritakan sedikit tentang diri Anda (Bi-sa ce-ri-ta-kan se-di-kit ten-tang di-ri An-da)? — Good morning. Thank you for coming. Can you tell me a little about yourself?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, terima kasih. Ceritakan tentang pengalaman kerja atau pendidikan Anda.",
+      "branches": [
+        {
+          "keywords": [
+            "pengalaman",
+            "kerja"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, terima kasih (Ba-ik, te-ri-ma ka-sih). Ceritakan tentang pengalaman kerja (Ce-ri-ta-kan ten-tang pe-nga-la-man ker-ja) atau pendidikan Anda (a-tau pen-di-di-kan An-da). — Okay, thank you. Tell me about your work experience or education."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Apa kelebihan utama Anda untuk posisi ini?",
+      "branches": [
+        {
+          "keywords": [
+            "rajin",
+            "disiplin",
+            "tepatwaktu"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apa kelebihan utama Anda untuk posisi ini (A-pa ke-le-bi-han u-ta-ma An-da un-tuk po-si-si i-ni)? — What are your main strengths for this position?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Terima kasih. Dan, apa kelemahan Anda, dan bagaimana Anda mengatasinya?",
+      "branches": [
+        {
+          "keywords": [
+            "lupa",
+            "kurangteliti"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Terima kasih (Te-ri-ma ka-sih). Dan, apa kelemahan Anda (Dan, a-pa ke-le-ma-han An-da), dan bagaimana Anda mengatasinya (dan ba-gai-ma-na An-da me-nga-ta-si-nya)? — Thank you. And what are your weaknesses, and how do you overcome them?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang lagi? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (Ma-af), bisa diulang lagi (bi-sa di-u-lang la-gi)? Saya kurang jelas (Sa-ya ku-rang je-las). — Sorry, could you repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baik, wawancara sudah selesai. Terima kasih banyak atas waktu Anda. Kami akan menghubungi Anda kembali segera.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Baik (Ba-ik), wawancara sudah selesai (wa-wan-ca-ra su-dah se-le-sai). Terima kasih banyak (Te-ri-ma ka-sih ba-nyak) atas waktu Anda (a-tas wak-tu An-da). Kami akan menghubungi Anda kembali segera (Ka-mi a-kan me-ngu-bung-i An-da kem-ba-li se-ge-ra). — Okay, the interview is finished. Thank you very much for your time. We will contact you again soon.",
+      "isTerminal": true
+    }
+  }
+}

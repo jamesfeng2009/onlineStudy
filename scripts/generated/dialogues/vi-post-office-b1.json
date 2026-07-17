@@ -1,0 +1,218 @@
+{
+  "id": "dlg-vi-post-office-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "post-office",
+  "title": "Tại Bưu điện",
+  "opening": "Chào quý khách, tôi có thể giúp gì cho quý khách ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào quý khách, tôi có thể giúp gì cho quý khách ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gửi hàng",
+            "gửi bưu phẩm",
+            "gửi bưu kiện",
+            "gửi đồ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mua tem",
+            "tem",
+            "mua tem thư"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "hỏi",
+            "thông tin",
+            "có câu hỏi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào quý khách (Chao quy khach), tôi có thể giúp gì (giup gi) cho quý khách ạ (cho quy khach a)? — Hello sir/madam, how can I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Vâng, quý khách muốn gửi bưu phẩm đi đâu và muốn sử dụng dịch vụ nào ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "quốc tế",
+            "nước ngoài"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "trong nước",
+            "nội địa"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang), quý khách muốn gửi bưu phẩm (gui buu pham) đi đâu (di dau) và muốn sử dụng dịch vụ nào (su dung dich vu nao) ạ? — Yes, where would you like to send the parcel and which service would you like to use?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Với bưu phẩm quốc tế, quý khách cần điền tờ khai hải quan. Quý khách đã điền chưa ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "chưa",
+            "chưa điền",
+            "cần"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Với bưu phẩm (Voi buu pham) quốc tế (quoc te), quý khách cần điền (can dien) tờ khai hải quan (to khai hai quan). Quý khách đã điền chưa (da dien chua) ạ? — For international parcels, you need to fill out a customs declaration form. Have you filled it out yet?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Dạ vâng, với dịch vụ gửi có theo dõi hoặc chuyển phát nhanh, chúng tôi sẽ cung cấp mã theo dõi cho quý khách. Quý khách muốn biết thêm về chi phí hay thời gian vận chuyển không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "chi phí",
+            "giá",
+            "bao nhiêu"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Dạ vâng (Ya vang), với dịch vụ (voi dich vu) gửi có theo dõi (gui co theo doi) hoặc chuyển phát nhanh (chuyen phat nhanh), chúng tôi (chung toi) sẽ cung cấp (se cung cap) mã theo dõi (ma theo doi) cho quý khách. Quý khách muốn biết thêm về chi phí (chi phi) hay thời gian vận chuyển (thoi gian van chuyen) không ạ? — Yes, for registered or express mail service, we will provide you with a tracking number. Would you like to know more about the cost or shipping time?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Vâng, tổng chi phí cho dịch vụ của quý khách là 150.000 đồng. Quý khách thanh toán bằng tiền mặt hay thẻ ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "tiền mặt",
+            "tiền"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang), tổng chi phí (tong chi phi) cho dịch vụ (cho dich vu) của quý khách là 150.000 đồng. Quý khách thanh toán (thanh toan) bằng tiền mặt (bang tien mat) hay thẻ (hay the) ạ? — Yes, the total cost for your service is 150,000 VND. Would you like to pay by cash or card?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Quý khách muốn mua loại tem nào và số lượng bao nhiêu ạ? Tem trong nước giá 4.000 đồng, tem quốc tế giá 15.000 đồng.",
+      "branches": [
+        {
+          "keywords": [
+            "trong nước",
+            "nội địa",
+            "5 cái"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách muốn mua loại tem nào (mua loai tem nao) và số lượng bao nhiêu (so luong bao nhieu) ạ? Tem trong nước (Tem trong nuoc) giá 4.000 đồng, tem quốc tế (tem quoc te) giá 15.000 đồng. — Which type of stamps and how many would you like to buy? Domestic stamps cost 4,000 VND, international stamps cost 15,000 VND."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Quý khách muốn hỏi về vấn đề gì ạ? Chúng tôi sẽ cố gắng giải đáp chi tiết.",
+      "branches": [
+        {
+          "keywords": [
+            "giờ làm việc",
+            "mấy giờ đóng cửa"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Quý khách muốn hỏi về vấn đề gì (hoi ve van de gi) ạ? Chúng tôi sẽ cố gắng (co gang) giải đáp chi tiết (giai dap chi tiet). — What would you like to ask about? We will try our best to provide detailed answers."
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Vâng, chúng tôi mở cửa từ 8 giờ sáng đến 5 giờ chiều hàng ngày. Quý khách còn câu hỏi nào khác không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "không",
+            "đủ rồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "còn",
+            "một câu nữa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng (Vang), chúng tôi mở cửa (mo cua) từ 8 giờ sáng (tu tam gio sang) đến 5 giờ chiều (den nam gio chieu) hàng ngày. Quý khách còn câu hỏi nào khác (con cau hoi nao khac) không ạ? — Yes, we are open from 8 AM to 5 PM daily. Do you have any other questions?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại được không ạ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi (Sin loy), bạn có thể nhắc lại (nhac lai) được không ạ (duoc khong a)? — Sorry, could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn quý khách. Chúc một ngày tốt lành!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn (Cam on) quý khách (quy khach). Chúc một ngày tốt lành (chuc mot ngay tot lanh)! — Thank you. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

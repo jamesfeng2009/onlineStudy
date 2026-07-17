@@ -1,0 +1,141 @@
+{
+  "id": "dlg-de-taxi-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "taxi",
+  "title": "Taxifahrt – Ziel, Route und Kosten",
+  "opening": "Guten Tag! Wohin darf's denn gehen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wohin darf's denn gehen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t2"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Goo-ten Tahg! Voh-hin darfs denn gay-en? — Good day! Where would you like to go?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstanden. Zum [Zielort]. Gibt es einen bestimmten Eingang, Terminal oder eine Hausnummer? Um diese Zeit könnte es auf der direkten Route etwas zäh werden, aber ich kenne einen guten Schleichweg.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "süd",
+            "nord",
+            "t1",
+            "t2",
+            "eingang",
+            "terminal",
+            "adresse",
+            "hausnummer"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "preis",
+            "kosten",
+            "wieviel"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Fer-stan-den. Tsoom [Tseel-ort]. Gibt es ey-nen be-stim-mten Eyne-gahng, Ter-mee-nahl oh-der ey-ne Hows-noom-mer? Oom dee-ze Tsite koon-te es owf der dee-rek-ten Roo-te et-vas tsay ver-den, ah-ber ish ken-ne ey-nen goo-ten Shlykh-veg. — Understood. To [Destination]. Is there a specific entrance, terminal, or house number? At this time, it could get a bit slow on the direct route, but I know a good shortcut."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Also gut, ich schlage vor, wir nehmen die Nebenstraßen, um den Stau zu umfahren. Das dauert zwar einen Moment länger, ist aber erfahrungsgemäß entspannter und wir sind sicherer pünktlich. Der Fahrpreis wird sich voraussichtlich auf etwa 28 bis 35 Euro belaufen. Passt das für Sie?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gut",
+            "einverstanden",
+            "ok"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "zu teuer",
+            "preis",
+            "kosten",
+            "wieviel"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ahl-zo goot, ish shlah-ge for, veer nay-men dee Nay-ben-strah-sen, oom den Stau tsoo oom-fah-ren. Das dow-ert tsvar ey-nen Mo-ment leng-er, ist ah-ber er-fah-rungs-ge-mahs ent-shpan-nter oond veer zind zikh-er-er pyunk-tlich. Der Fahr-prys virt zikh for-ows-zikt-lich owf et-va acht-oond-tsvan-zik bis fynf-oond-drays-sish Oy-ro be-low-fen. Passt das fyur Zee? — Alright, I suggest we take the side streets to bypass the traffic jam. That takes a moment longer, but experience shows it's more relaxed and we'll definitely be on time. The fare will likely amount to approximately 28 to 35 Euros. Does that work for you?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ich verstehe Ihre Bedenken. Die direkte Route ist zwar kürzer, birgt aber das Risiko erheblicher Verspätungen und damit auch höherer Kosten, da der Taxameter ja weiterläuft. Wenn Sie die direkte Route bevorzugen, ist das natürlich kein Problem, aber ich wollte Sie auf die mögliche Verzögerung hinweisen. Bezüglich des Preises liegt dieser im üblichen Rahmen für diese Strecke.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "gut",
+            "einverstanden",
+            "inordnung"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ish fer-stay-e ee-re Be-den-ken. Dee dee-rek-te Roo-te ist tsvar kyoor-tser, birgt ah-ber das Ree-zee-ko er-heb-lich-er Fer-shpay-toon-gen oond dah-mit owkh hoe-he-rer Kos-ten, dah der Tak-sah-may-ter yah vy-ter-loyft. Ven Zee dee dee-rek-te Roo-te be-for-zoo-gen, ist das nah-tyur-lich kyne Pro-blem, ah-ber ish vol-te Zee owf dee moeg-lich-e Fer-tsoe-ge-roong hin-vy-zen. Be-tsyug-lich des Pry-ses leegt dee-ser im yub-lich-en Rah-men fyur dee-ze Strek-ke. — I understand your concerns. The direct route is shorter, but it carries the risk of significant delays and thus higher costs, as the taxi meter continues to run. If you prefer the direct route, that's no problem, of course, but I wanted to make you aware of the possible delay. Regarding the price, it is within the usual range for this route."
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Wunderbar, dann machen wir das so. Wir sind auf dem Weg und werden in etwa zehn Minuten ankommen. So, wir sind angekommen. Passt das so für Sie? Das macht dann exakt 31,80 Euro.",
+      "branches": [
+        {
+          "keywords": [
+            "zahlen",
+            "bezahlen",
+            "bar",
+            "karte",
+            "hier"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vun-der-bar, dann mah-khen veer das zo. Veer zind owf dem Vek oond ver-den in et-va tsayn Mee-noo-ten an-kom-men. So, veer zind an-ge-kom-men. Passt das zo fyur Zee? Das makht dann ek-zakt ayn-oond-drays-sish Kom-ma akht-tsikh Oy-ro. — Wonderful, then we'll do it that way. We're on our way and will arrive in about ten minutes. Alright, we've arrived. Does that work for you? That makes exactly 31.80 Euros."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Ent-shool-di-gen Zee, ish hah-be Zee a-koos-tish nisht gants fer-stan-den. Koen-nten Zee das bit-te nokh yne-mahl vee-der-ho-len? — Excuse me, I didn't quite catch what you said. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Gerne. Hier ist Ihr Wechselgeld und die Quittung. Vielen Dank für die Fahrt und eine gute Weiterreise! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Ger-ne. Heer ist Eer Vek-sel-geld oond dee Kvit-toong. Fee-len Dank fyur dee Fahrt oond ey-ne goo-te Vy-ter-ry-ze! Owf Vee-der-zay-en! — You're welcome. Here is your change and the receipt. Thank you very much for the ride and have a good onward journey! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

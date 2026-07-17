@@ -1,0 +1,327 @@
+{
+  "id": "dlg-de-weather-c1",
+  "language": "de",
+  "level": "C1",
+  "scenario": "weather",
+  "title": "Wetter-Plauderei",
+  "opening": "Na, wie geht's denn so? Das Wetter spielt ja mal wieder verrückt, finde ich. Gestern noch frühlingshaft mild, heute bibbern wir schon wieder. Man weiß gar nicht, woran man ist, oder?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Na, wie geht's denn so? Das Wetter spielt ja mal wieder verrückt, finde ich. Gestern noch frühlingshaft mild, heute bibbern wir schon wieder. Man weiß gar nicht, woran man ist, oder?",
+      "branches": [
+        {
+          "keywords": [
+            "verrückt",
+            "unbeständig",
+            "wechselhaft",
+            "wissen"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            "mild",
+            "bibbern",
+            "kalt",
+            "temperatur"
+          ],
+          "nextTurnId": "t2b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Na, wie geht's denn so? Das Wetter spielt ja mal wieder verrückt, finde ich. Gestern noch frühlingshaft mild, heute bibbern wir schon wieder. Man weiß gar nicht, woran man ist, oder? — Well, how are things? The weather's acting crazy again, I think. Yesterday still spring-like mild, today we're shivering again. You just don't know where you stand, do you?"
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "In der Tat! Man weiß ja kaum noch, was man anziehen soll. Der Wetterbericht gleicht ja einer Lotterie, finde ich. Mal schauen, ob die Prognose für das Wochenende mit dem angekündigten Sonnenschein wirklich hinhaut.",
+      "branches": [
+        {
+          "keywords": [
+            "wetterbericht",
+            "lotterie",
+            "unzuverlässig",
+            "irren"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            "sonnenschein",
+            "hoffnung",
+            "wochenende",
+            "freuen"
+          ],
+          "nextTurnId": "t3b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "In der Tat! Man weiß ja kaum noch, was man anziehen soll. Der Wetterbericht gleicht ja einer Lotterie, finde ich. Mal schauen, ob die Prognose für das Wochenende mit dem angekündigten Sonnenschein wirklich hinhaut. — Indeed! You barely know what to wear anymore. The weather forecast is like a lottery, I find. Let's see if the prognosis for the weekend with the announced sunshine really works out."
+    },
+    "t2b": {
+      "id": "t2b",
+      "prompt": "Ja, es ist ziemlich frisch. Aber ich muss sagen, mir ist diese klare, trockene Kälte lieber als diese drückende Schwüle, die wir manchmal im Sommer haben. Da kann man wenigstens noch tief durchatmen.",
+      "branches": [
+        {
+          "keywords": [
+            "trocken",
+            "kälte",
+            "lieber",
+            "angenehm",
+            "durchatmen"
+          ],
+          "nextTurnId": "t3c"
+        },
+        {
+          "keywords": [
+            "schwüle",
+            "wärme",
+            "sommer",
+            "sehnen"
+          ],
+          "nextTurnId": "t3d"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ja, es ist ziemlich frisch. Aber ich muss sagen, mir ist diese klare, trockene Kälte lieber als diese drückende Schwüle, die wir manchmal im Sommer haben. Da kann man wenigstens noch tief durchatmen. — Yes, it's quite fresh. But I have to say, I prefer this clear, dry cold to that oppressive humidity we sometimes have in summer. At least you can still breathe deeply then."
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Das stimmt. Oft genug haben sie sich ja schon geirrt. Da verlässt man sich auf schönes Wetter und sitzt dann im Regen. Ich plane schon gar nichts mehr Großes im Voraus.",
+      "branches": [
+        {
+          "keywords": [
+            "irren",
+            "regen",
+            "planen",
+            "vorsicht",
+            "unzuverlässig"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "enttäuscht",
+            "frustriert"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das stimmt. Oft genug haben sie sich ja schon geirrt. Da verlässt man sich auf schönes Wetter und sitzt dann im Regen. Ich plane schon gar nichts mehr Großes im Voraus. — That's true. Often enough they've been wrong already. You rely on good weather and then you're stuck in the rain. I don't even plan anything big in advance anymore."
+    },
+    "t3b": {
+      "id": "t3b",
+      "prompt": "Das wäre ja traumhaft! Ein bisschen Sonne und Wärme würden mir wirklich guttun. Ich habe schon Pläne für einen Spaziergang im Park, wenn es wirklich so kommt.",
+      "branches": [
+        {
+          "keywords": [
+            "sonne",
+            "wärme",
+            "guttun",
+            "spaziergang",
+            "planen"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            "hoffen",
+            "freuen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das wäre ja traumhaft! Ein bisschen Sonne und Wärme würden mir wirklich guttun. Ich habe schon Pläne für einen Spaziergang im Park, wenn es wirklich so kommt. — That would be wonderful! A little sun and warmth would really do me good. I already have plans for a walk in the park if it really happens."
+    },
+    "t3c": {
+      "id": "t3c",
+      "prompt": "Absolut! Die hohe Luftfeuchtigkeit setzt mir immer zu. So ein knackiger Herbst- oder Wintertag hat auch seinen Reiz, solange die Sonne scheint. Was meinst du?",
+      "branches": [
+        {
+          "keywords": [
+            "luftfeuchtigkeit",
+            "herbst",
+            "winter",
+            "reiz",
+            "gemütlich"
+          ],
+          "nextTurnId": "t4c"
+        },
+        {
+          "keywords": [
+            "sonne",
+            "trocken"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolut! Die hohe Luftfeuchtigkeit setzt mir immer zu. So ein knackiger Herbst- oder Wintertag hat auch seinen Reiz, solange die Sonne scheint. Was meinst du? — Absolutely! High humidity always gets to me. A crisp autumn or winter day also has its charm, as long as the sun is shining. What do you think?"
+    },
+    "t3d": {
+      "id": "t3d",
+      "prompt": "Ich kann Ihnen da nicht ganz zustimmen. Ich bin ein absoluter Sommermensch und sehne mich nach Temperaturen, bei denen man leicht bekleidet den ganzen Tag draußen verbringen kann. Diese Kälte macht mich irgendwie trübe.",
+      "branches": [
+        {
+          "keywords": [
+            "sommermensch",
+            "wärme",
+            "sehnen",
+            "trübe",
+            "deprimiert"
+          ],
+          "nextTurnId": "t4d"
+        },
+        {
+          "keywords": [
+            "kälte",
+            "draußen",
+            "stimmung"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ich kann Ihnen da nicht ganz zustimmen. Ich bin ein absoluter Sommermensch und sehne mich nach Temperaturen, bei denen man leicht bekleidet den ganzen Tag draußen verbringen kann. Diese Kälte macht mich irgendwie trübe. — I can't quite agree with you there. I'm an absolute summer person and long for temperatures where you can spend the whole day outside lightly dressed. This cold somehow makes me gloomy."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Eben! Man muss flexibel bleiben. Am besten man nimmt es, wie es kommt und macht das Beste draus, egal ob Sonne oder Regen. Ein Hoch auf die Spontaneität!",
+      "branches": [
+        {
+          "keywords": [
+            "flexibel",
+            "spontanität",
+            "beste",
+            "anpassen",
+            "stimmt"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Eben! Man muss flexibel bleiben. Am besten man nimmt es, wie es kommt und macht das Beste draus, egal ob Sonne oder Regen. Ein Hoch auf die Spontaneität! — Exactly! You have to stay flexible. It's best to take it as it comes and make the best of it, whether sun or rain. Here's to spontaneity!"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Das klingt gut! Ich hoffe, wir haben alle Glück und können das Wochenende draußen genießen. Drücken wir die Daumen, dass der Himmel uns nicht im Stich lässt!",
+      "branches": [
+        {
+          "keywords": [
+            "glück",
+            "daumen",
+            "genießen",
+            "hoffnung",
+            "wochenende"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das klingt gut! Ich hoffe, wir haben alle Glück und können das Wochenende draußen genießen. Drücken wir die Daumen, dass der Himmel uns nicht im Stich lässt! — That sounds good! I hope we all get lucky and can enjoy the weekend outdoors. Let's keep our fingers crossed that the sky doesn't let us down!"
+    },
+    "t4c": {
+      "id": "t4c",
+      "prompt": "Genau! Mit warmer Kleidung und einer Tasse Tee kann so ein klarer Tag richtig schön sein. Man muss sich nur darauf einlassen. Ich gehe jetzt meinen Tee holen.",
+      "branches": [
+        {
+          "keywords": [
+            "tee",
+            "kleidung",
+            "schön",
+            "gemütlich",
+            "einlassen"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Genau! Mit warmer Kleidung und einer Tasse Tee kann so ein klarer Tag richtig schön sein. Man muss sich nur darauf einlassen. Ich gehe jetzt meinen Tee holen. — Exactly! With warm clothes and a cup of tea, such a clear day can be really beautiful. You just have to embrace it. I'm going to get my tea now."
+    },
+    "t4d": {
+      "id": "t4d",
+      "prompt": "Das kann ich gut nachvollziehen. Manchmal drückt das graue Wetter schon aufs Gemüt. Aber vielleicht hilft ja ein warmer Kaffee oder ein gutes Buch, um die Stimmung etwas aufzuhellen?",
+      "branches": [
+        {
+          "keywords": [
+            "kaffee",
+            "buch",
+            "stimmung",
+            "aufhellen",
+            "trösten"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Das kann ich gut nachvollziehen. Manchmal drückt das graue Wetter schon aufs Gemüt. Aber vielleicht hilft ja ein warmer Kaffee oder ein gutes Buch, um die Stimmung etwas aufzuhellen? — I can totally understand that. Sometimes gloomy weather really weighs on your mood. But maybe a warm coffee or a good book will help cheer things up a bit?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, das habe ich leider nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Entschuldigung, das habe ich leider nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen? — Excuse me, I didn't quite understand that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "So ist es. Nun, ich muss dann auch langsam los. Es war schön, mit Ihnen über dies und das zu plaudern. Einen schönen Tag noch!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "So ist es. Nun, ich muss dann auch langsam los. Es war schön, mit Ihnen über dies und das zu plaudern. Einen schönen Tag noch! — That's how it is. Well, I have to go now. It was nice chatting with you about this and that. Have a good day!",
+      "isTerminal": true
+    }
+  }
+}

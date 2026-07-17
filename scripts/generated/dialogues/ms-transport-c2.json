@@ -1,0 +1,117 @@
+{
+  "id": "dlg-ms-transport-c2",
+  "language": "ms",
+  "level": "C2",
+  "scenario": "transport",
+  "title": "Perjalanan di Bandaraya",
+  "opening": "Selamat pagi, encik/cik. Nak ke mana ya? Ada apa-apa yang boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi, encik/cik. Nak ke mana ya? Ada apa-apa yang boleh saya bantu?",
+      "branches": [
+        {
+          "keywords": [
+            "klcc",
+            "suria"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lain"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat pagi, encik/cik (se-lah-mat pah-gee, en-chik/chik). Nak ke mana ya (nak ke mah-na ya)? Ada apa-apa yang boleh saya bantu (ah-da ah-pa-ah-pa yang boh-leh sa-ya ban-tu)? — Good morning, sir/madam. Where are you heading? How may I help you?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, ke sana ya. Perlu tiket sehala atau pergi-balik? Atau mungkin nak tahu tentang pertukaran laluan?",
+      "branches": [
+        {
+          "keywords": [
+            "sehala",
+            "satuhala"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "pertukaran",
+            "laluanlain",
+            "tukar"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Oh, ke sana ya (oh, ke sa-na ya). Perlu tiket sehala (per-loo tee-ket se-ha-la) atau pergi-balik (ah-tau per-gee-ba-lek)? Atau mungkin nak tahu tentang pertukaran laluan (ah-tau mung-kin nak ta-hoo ten-tang per-tu-ka-ran la-loo-an)? — Oh, there. Do you need a one-way or return ticket? Or perhaps you'd like to know about transfers?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, untuk ke destinasi tersebut, tambangnya RM 3.50. Boleh bayar tunai atau kad, mana satu yang lebih selesa?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "duit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pertukaran",
+            "laluanlain",
+            "tukar"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik (ba-ek), untuk ke destinasi tersebut, tambangnya RM 3.50. Boleh bayar tunai (boh-leh ba-yar too-nai) atau kad (ah-tau kad), mana satu yang lebih selesa (ma-na sa-too yang le-beh se-le-sa)? — Alright, to that destination, the fare is RM 3.50. You can pay cash or card, which is more convenient?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Untuk pertukaran, encik/cik perlu turun di Stesen Masjid Jamek, kemudian ambil LRT Laluan Kelana Jaya menuju ke Gombak. Itu laluan yang paling efisien dan menjimatkan masa.",
+      "branches": [
+        {
+          "keywords": [
+            "faham",
+            "jelas",
+            "mengerti"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Untuk pertukaran (un-tuk per-tu-ka-ran), encik/cik perlu turun di Stesen Masjid Jamek, kemudian ambil LRT Laluan Kelana Jaya menuju ke Gombak. Itu laluan yang paling efisien (e-fee-syen) dan menjimatkan masa (men-jee-mat-kan ma-sa). — For transfers, sir/madam needs to alight at Masjid Jamek Station, then take the Kelana Jaya Line LRT towards Gombak. That's the most efficient and time-saving route."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang semula? Saya kurang jelas. Atau mungkin ada pertanyaan lain?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Maaf (ma-af), boleh ulang semula (boh-leh oo-lang se-moo-la)? Saya kurang jelas (sa-ya koo-rang je-las). Atau mungkin ada pertanyaan lain (ah-tau mung-kin ah-da per-tan-ya-an la-in)? — Sorry, could you repeat that? I'm not clear. Or perhaps you have another question?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih banyak. Tiket sudah ada dalam tangan. Selamat jalan dan semoga selamat sampai ke destinasi.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Terima kasih banyak (te-ree-ma ka-seeh ba-nyak). Tiket sudah ada dalam tangan (tee-ket soo-dah ah-da da-lam ta-ngan). Selamat jalan (se-lah-mat ja-lan) dan semoga selamat sampai ke destinasi (dan se-mo-ga se-lah-mat sam-pai ke des-ti-na-si). — Thank you very much. Your ticket is in hand. Have a good journey and safe travels to your destination.",
+      "isTerminal": true
+    }
+  }
+}

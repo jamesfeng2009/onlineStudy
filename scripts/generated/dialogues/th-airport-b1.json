@@ -1,0 +1,120 @@
+{
+  "id": "dlg-th-airport-b1",
+  "language": "th",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "ที่สนามบิน",
+  "opening": "สวัสดีค่ะ/ครับ คุณจะเดินทางไปที่ไหนคะ/ครับ หรือมีหมายเลขเที่ยวบินไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ คุณจะเดินทางไปที่ไหนคะ/ครับ หรือมีหมายเลขเที่ยวบินไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไป",
+            "ภูเก็ต",
+            "เชียงใหม่",
+            "กรุงเทพ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Sawatdee ka/krap. Khun ja deun-taang pai tee nai ka/krap? Reu mee maai-lek tiao-bin mai ka/krap? — Hello. Where are you traveling to, or do you have a flight number?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ค่ะ/ครับ มีกระเป๋าเดินทางที่จะโหลดใต้เครื่องกี่ใบคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            "ไม่มี",
+            "ไม่โหลด"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ka/Krap. Mee gra-pao deun-taang tee ja loht tai kreung gee bai ka/krap? — Okay. How many checked bags do you have?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอหนังสือเดินทางและวีซ่าของคุณด้วยค่ะ/ครับ ถ้ามี",
+      "branches": [
+        {
+          "keywords": [
+            "นี่ค่ะ",
+            "นี่ครับ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Khor nang-seu deun-taang lae wee-saa khong khun duay ka/krap, taa mee. — May I have your passport and visa, if you have one?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "นี่คือบัตรโดยสารของคุณค่ะ/ครับ ประตูขึ้นเครื่องหมายเลข B5 จะเริ่มเรียกผู้โดยสารเวลาบ่ายสองโมงครึ่งนะคะ/ครับ",
+      "branches": [
+        {
+          "keywords": [
+            "ขอบคุณ",
+            "เข้าใจแล้ว",
+            "ตกลง"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Nee keu bat-doi-saan khong khun ka/krap. Pra-too keun kreung maai-lek B5 ja roem riak poo-doi-saan welah bai-song mong kreung na ka/krap. — Here is your boarding pass. Gate B5 will begin boarding at 2:30 PM."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่ทราบว่าคุณพูดว่าอะไรนะคะ/ครับ? ช่วยพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Khor-toht na ka/krap, mai saab wa khun poot wa a-rai na ka/krap? Chuay poot eek krang dai mai ka/krap? — Excuse me, I'm not sure what you said. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอให้เดินทางโดยสวัสดิภาพนะคะ/ครับ ขอบคุณค่ะ/ครับ",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Khor hai deun-taang doi sa-wat-di-paap na ka/krap. Khop-khun ka/krap. — Have a safe journey. Thank you.",
+      "isTerminal": true
+    }
+  }
+}

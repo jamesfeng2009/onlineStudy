@@ -1,0 +1,215 @@
+{
+  "id": "dlg-fr-restaurant-c1",
+  "language": "fr",
+  "level": "C1",
+  "scenario": "restaurant",
+  "title": "Commande au restaurant : Le choix délicat",
+  "opening": "Bonsoir ! Avez-vous déjà fait votre choix ou souhaitez-vous quelques minutes de plus pour consulter notre carte ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Bonsoir ! Avez-vous déjà fait votre choix ou souhaitez-vous quelques minutes de plus pour consulter notre carte ?",
+      "branches": [
+        {
+          "keywords": [
+            "prêt",
+            "commander",
+            "oui"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "minutes",
+            "plus",
+            "encore",
+            "non"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bonsoir ! Avez-vous déjà fait votre choix ou souhaitez-vous quelques minutes de plus pour consulter notre carte ? — Good evening! Have you already made your choice, or would you like a few more minutes to consult our menu?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Parfait ! Que puis-je vous servir ce soir ? Avez-vous une préférence pour une entrée, un plat ou un dessert ?",
+      "branches": [
+        {
+          "keywords": [
+            "entrée",
+            "entrées"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "plat",
+            "plats",
+            "principal"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "recommandation",
+            "conseil",
+            "suggérez"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Parfait ! Que puis-je vous servir ce soir ? Avez-vous une préférence pour une entrée, un plat ou un dessert ? — Perfect! What can I serve you tonight? Do you have a preference for a starter, a main course, or a dessert?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bien sûr, prenez votre temps. Je repasserai dans quelques instants. N'hésitez pas à m'interpeller si vous êtes prêts.",
+      "branches": [
+        {
+          "keywords": [
+            "prêt",
+            "oui",
+            "commander",
+            "merci"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bien sûr, prenez votre temps. Je repasserai dans quelques instants. N'hésitez pas à m'interpeller si vous êtes prêts. — Of course, take your time. I'll come back in a few moments. Don't hesitate to call me when you're ready."
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Excellente idée ! Et pour la suite, avez-vous déjà une idée du plat principal ou souhaitez-vous que je vous détaille quelques-unes de nos suggestions ?",
+      "branches": [
+        {
+          "keywords": [
+            "plat",
+            "principale",
+            "commander"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "suggestion",
+            "détailler",
+            "conseil",
+            "recommandation"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellente idée ! Et pour la suite, avez-vous déjà une idée du plat principal ou souhaitez-vous que je vous détaille quelques-unes de nos suggestions ? — Excellent idea! And for what's next, do you already have an idea for the main course, or would you like me to detail some of our suggestions?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Très bien ! C'est un excellent choix. Et pour accompagner votre repas, souhaitez-vous une boisson ou peut-être un dessert par la suite ?",
+      "branches": [
+        {
+          "keywords": [
+            "boisson",
+            "boire"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Très bien ! C'est un excellent choix. Et pour accompagner votre repas, souhaitez-vous une boisson ou peut-être un dessert par la suite ? — Very good! That's an excellent choice. And to accompany your meal, would you like a drink, or perhaps a dessert afterwards?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Absolument ! Si je peux me permettre, notre pièce de bœuf Angus, maturée 30 jours, est particulièrement appréciée. Nous avons aussi un bar en croûte de sel, très léger et savoureux. Y a-t-il des restrictions alimentaires dont je devrais tenir compte ?",
+      "branches": [
+        {
+          "keywords": [
+            "bœuf",
+            "boeuf",
+            "angus",
+            "viande"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Absolument ! Si je peux me permettre, notre pièce de bœuf Angus, maturée 30 jours, est particulièrement appréciée. Nous avons aussi un bar en croûte de sel, très léger et savoureux. Y a-t-il des restrictions alimentaires dont je devrais tenir compte ? — Absolutely! If I may, our 30-day aged Angus beef cut is particularly popular. We also have a sea bass in salt crust, very light and flavorful. Are there any dietary restrictions I should be aware of?"
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Excellent choix ! Je note. Y aura-t-il autre chose pour vous ce soir, ou dois-je vous laisser profiter de votre repas ?",
+      "branches": [
+        {
+          "keywords": [
+            "non",
+            "rien",
+            "merci"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choix ! Je note. Y aura-t-il autre chose pour vous ce soir, ou dois-je vous laisser profiter de votre repas ? — Excellent choice! I'll note that. Will there be anything else for you tonight, or should I leave you to enjoy your meal?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Désolé, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Désolé, je n'ai pas bien compris. Pourriez-vous répéter, s'il vous plaît ? — Sorry, I didn't quite understand. Could you please repeat that?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Parfait ! J'espère que tout se passera bien. Passez une excellente soirée et à bientôt !",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Parfait ! J'espère que tout se passera bien. Passez une excellente soirée et à bientôt ! — Perfect! I hope everything goes well. Have a wonderful evening and see you soon!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "id": "dlg-vi-bank-b2",
+  "language": "vi",
+  "level": "B2",
+  "scenario": "bank",
+  "title": "Giao dịch ngân hàng",
+  "opening": "Xin chào quý khách. Không biết tôi có thể hỗ trợ gì cho anh/chị ạ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Xin chào quý khách. Không biết tôi có thể hỗ trợ gì cho anh/chị ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "mở tài khoản",
+            "tài khoản mới",
+            "tạo tài khoản"
+          ],
+          "nextTurnId": "t2_account"
+        },
+        {
+          "keywords": [
+            "đổi tiền",
+            "ngoại tệ",
+            "đổi ngoại tệ",
+            "rút tiền",
+            "chuyển tiền",
+            "mã pin",
+            "thẻ atm"
+          ],
+          "nextTurnId": "t2_service"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin chào quý khách (sin chao quy khach). Không biết tôi có thể hỗ trợ gì cho anh/chị ạ (khong biet toi co the ho tro gi cho anh chi a)? — Hello. How may I assist you today?"
+    },
+    "t2_account": {
+      "id": "t2_account",
+      "prompt": "Vâng, quý khách muốn mở loại tài khoản nào ạ? Tài khoản tiết kiệm hay tài khoản thanh toán thông thường?",
+      "branches": [
+        {
+          "keywords": [
+            "tiết kiệm",
+            "gửi tiết kiệm",
+            "tài khoản tiết kiệm"
+          ],
+          "nextTurnId": "t3_account_process"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách muốn mở loại tài khoản nào ạ (vang, quy khach muon mo loai tai khoan nao a)? Tài khoản tiết kiệm hay tài khoản thanh toán thông thường? — Okay, which type of account would you like to open? A savings account or a regular checking account?"
+    },
+    "t2_service": {
+      "id": "t2_service",
+      "prompt": "Vâng, quý khách muốn đổi tiền tệ, đặt lại mã PIN, chuyển tiền hay có vấn đề gì với thẻ ATM ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "đổi tiền",
+            "ngoại tệ",
+            "tỷ giá"
+          ],
+          "nextTurnId": "t3_exchange_process"
+        },
+        {
+          "keywords": [
+            "mã pin",
+            "quên pin",
+            "đặt lại pin",
+            "chuyển tiền",
+            "giao dịch chuyển tiền",
+            "thẻ atm",
+            "thẻ bị nuốt",
+            "kẹt thẻ"
+          ],
+          "nextTurnId": "t3_atm_process"
+        },
+        {
+          "keywords": [
+            "",
+            "khác"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, quý khách muốn đổi tiền tệ, đặt lại mã PIN, chuyển tiền hay có vấn đề gì với thẻ ATM ạ (vang, quy khach muon doi tien te, dat lai ma pin, chuyen tien hay co van de gi voi the atm a)? — Okay, would you like to exchange currency, reset your PIN, transfer money, or is there an issue with your ATM card?"
+    },
+    "t3_account_process": {
+      "id": "t3_account_process",
+      "prompt": "Để mở tài khoản, quý khách vui lòng điền vào mẫu đơn này và xuất trình căn cước công dân hoặc hộ chiếu còn hiệu lực ạ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để mở tài khoản, quý khách vui lòng điền vào mẫu đơn này (de mo tai khoan, quy khach vui long dien vao mau don nay) và xuất trình căn cước công dân hoặc hộ chiếu còn hiệu lực ạ. — To open an account, please fill out this form and present a valid citizen ID or passport."
+    },
+    "t3_exchange_process": {
+      "id": "t3_exchange_process",
+      "prompt": "Tỷ giá hối đoái hiện tại cho USD sang VND là 24.500 VND. Quý khách muốn đổi số lượng bao nhiêu ạ, hoặc muốn đổi loại tiền khác?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tỷ giá hối đoái hiện tại cho USD sang VND là 24.500 VND (ty gia hoi doai hien tai cho usd sang vnd la hai tu nam tram vnd). Quý khách muốn đổi số lượng bao nhiêu ạ, hoặc muốn đổi loại tiền khác? — The current exchange rate for USD to VND is 24,500 VND. How much would you like to exchange, or do you want to exchange a different currency?"
+    },
+    "t3_atm_process": {
+      "id": "t3_atm_process",
+      "prompt": "Để hỗ trợ quý khách, vui lòng cho biết vấn đề cụ thể của quý khách. Nếu là quên mã PIN, cần giấy tờ tùy thân. Chuyển tiền cần thông tin người nhận. Sự cố thẻ ATM cần thông tin cây ATM và thời điểm ạ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Để hỗ trợ quý khách, vui lòng cho biết vấn đề cụ thể của quý khách (de ho tro quy khach, vui long cho biet van de cu the cua quy khach). Nếu là quên mã PIN, cần giấy tờ tùy thân. Chuyển tiền cần thông tin người nhận. Sự cố thẻ ATM cần thông tin cây ATM và thời điểm ạ. — To assist you, please tell me your specific issue. If it's a forgotten PIN, ID is needed. Transfers require recipient info. ATM card issues need ATM and time details."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi nghe chưa rõ. Quý khách có thể vui lòng lặp lại hoặc nói rõ hơn được không ạ?",
+      "branches": [],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Xin lỗi (sin loi), tôi nghe chưa rõ (toi nghe chua ro). Quý khách có thể vui lòng",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dlg-vi-interview-c2",
+  "language": "vi",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc (C2)",
+  "opening": "Chào bạn, rất vui được gặp. Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, rất vui được gặp. Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình không?",
+      "branches": [
+        {
+          "keywords": [
+            "giớithiệu",
+            "kinhnghiệm",
+            "bảnthân"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "câuhỏi",
+            "rõhơn",
+            "nhắclại"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào bạn, rất vui được gặp. (Chao ban, rat vui duoc gap.) Để bắt đầu, bạn có thể giới thiệu đôi nét về bản thân và kinh nghiệm làm việc của mình không? (To begin, could you introduce a little about yourself and your work experience?)"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn bạn đã chia sẻ. Với kinh nghiệm đó, bạn thấy mình phù hợp với vị trí này như thế nào, và những thành tựu nào bạn tự hào nhất trong sự nghiệp?",
+      "branches": [
+        {
+          "keywords": [
+            "phùhợp",
+            "thànhtựu",
+            "kỹnăng"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Cảm ơn bạn đã chia sẻ. (Cam on ban da chia se.) Với kinh nghiệm đó, bạn thấy mình phù hợp với vị trí này như thế nào, và những thành tựu nào bạn tự hào nhất trong sự nghiệp? (Thank you for sharing. With that experience, how do you see yourself fitting into this role, and what achievements are you most proud of in your career?)"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Tuyệt vời. Bây giờ, nói về điểm mạnh đi. Bạn nghĩ đâu là những ưu điểm nổi trội nhất giúp bạn gặt hái thành công và tạo nên giá trị khác biệt cho công ty?",
+      "branches": [
+        {
+          "keywords": [
+            "điểmmạnh",
+            "ưutiên",
+            "khácbiệt"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Tuyệt vời. (Tuyet voi.) Bây giờ, nói về điểm mạnh đi. Bạn nghĩ đâu là những ưu điểm nổi trội nhất giúp bạn gặt hái thành công và tạo nên giá trị khác biệt cho công ty? (Excellent. Now, let's talk about strengths. What do you think are your most outstanding advantages that help you achieve success and create differentiated value for the company?)"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Không ai hoàn hảo cả. Vậy còn điểm yếu thì sao? Bạn có thể chia sẻ một điểm yếu mà bạn đang nỗ lực cải thiện, và cách bạn biến nó thành động lực phát triển không?",
+      "branches": [
+        {
+          "keywords": [
+            "điểmyếu",
+            "cảithiện",
+            "khắccphục"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Không ai hoàn hảo cả. (Khong ai hoan hao ca.) Vậy còn điểm yếu thì sao? Bạn có thể chia sẻ một điểm yếu mà bạn đang nỗ lực cải thiện, và cách bạn biến nó thành động lực phát triển không? (Nobody's perfect. So what about weaknesses? Can you share a weakness you're actively trying to improve, and how you're turning it into a motivation for growth?)"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Rất thẳng thắn. Câu hỏi cuối cùng, bạn có mong muốn hay kỳ vọng gì về môi trường làm việc tại đây, và điều gì khiến bạn tin rằng đây là bến đỗ lý tưởng cho sự nghiệp của mình?",
+      "branches": [
+        {
+          "keywords": [
+            "mongmuốn",
+            "kỳvọng",
+            "môitrường"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Rất thẳng thắn. (Rat thang than.) Câu hỏi cuối cùng, bạn có mong muốn hay kỳ vọng gì về môi trường làm việc tại đây, và điều gì khiến bạn tin rằng đây là bến đỗ lý tưởng cho sự nghiệp của mình? (Very candid. Last question, what are your desires or expectations for the working environment here, and what makes you believe this is the ideal destination for your career?)"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nhắc lại không? Tôi nghe không rõ.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, bạn có thể nhắc lại không? (Sin loi, ban co the nhac lai khong?) Tôi nghe không rõ. (Sorry, could you repeat that? I didn't hear clearly.)"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã đến phỏng vấn. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Cảm ơn bạn đã đến phỏng vấn. (Cam on ban da den phong van.) Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất. (Thank you for coming to the interview. We will contact you as soon as possible.)",
+      "isTerminal": true
+    }
+  }
+}

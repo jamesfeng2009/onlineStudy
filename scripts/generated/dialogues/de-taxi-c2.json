@@ -1,0 +1,119 @@
+{
+  "id": "dlg-de-taxi-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "taxi",
+  "title": "Mit dem Taxi durch die Stadt",
+  "opening": "Guten Tag! Wohin darf's gehen? Haben Sie ein bestimmtes Ziel vor Augen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Wohin darf's gehen? Haben Sie ein bestimmtes Ziel vor Augen?",
+      "branches": [
+        {
+          "keywords": [
+            "hauptbahnhof",
+            "bahnhof"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good day! (Goo-ten Tahg!) Where would you like to go? Do you have a specific destination in mind?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstanden. Egal ob Hauptbahnhof, Flughafen oder eine genaue Adresse, um diese Tageszeit ist der Verkehr oft eine Herausforderung. Sollen wir versuchen, auf die Tube zu drücken, oder ist der Weg das Ziel und wir nehmen's gelassen?",
+      "branches": [
+        {
+          "keywords": [
+            "schnell",
+            "eilig",
+            "tube"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. (Fair-shtahn-den.) Whether it's the main station, airport, or a precise address, traffic is often a challenge at this time of day. Should we try to step on it, or is the journey the destination and we'll take it easy?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Alles klar, wir machen das so. Wir sind jetzt auf dem besten Weg und sollten, wenn uns kein Strich durch die Rechnung gemacht wird, in etwa zwanzig Minuten da sein. Der Taxameter läuft ja mit, aber der Endpreis wird sich im üblichen Rahmen bewegen. Möchten Sie schon wissen, mit welchen Kosten Sie ungefähr rechnen müssen?",
+      "branches": [
+        {
+          "keywords": [
+            "kosten",
+            "preis",
+            "wissen"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, (Ah-les Klar) we'll do it that way. We're well on our way now and should, if nothing throws a wrench in our plans, be there in about twenty minutes. The taximeter is running, of course, but the final price will be within the usual range. Would you like to know approximately what costs you can expect?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "In Ordnung. Dann sind wir gleich am Ziel. Wie möchten Sie denn bezahlen? Wir akzeptieren sowohl Barzahlung als auch gängige Kredit- und Debitkarten.",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Understood. (In Ord-noong.) Then we're almost at our destination. How would you like to pay? We accept both cash and common credit and debit cards."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch what you said. (Ent-shool-di-goong, ich hah-buh zee ah-koo-stish nisht gahntz fer-shtahn-den. Kun-ten zee das bi-tuh nohch ine-mahl vee-der-hoh-len?) Could you please repeat that again?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Alles klar, vielen Dank für die Fahrt und einen schönen Tag noch! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "All right, (Ah-les Klar) thank you very much for the ride and have a nice day! Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

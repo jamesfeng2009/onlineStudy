@@ -1,0 +1,232 @@
+{
+  "id": "dlg-vi-phone-call-b1",
+  "language": "vi",
+  "level": "B1",
+  "scenario": "phone-call",
+  "title": "Cuộc gọi điện thoại: Để lại lời nhắn",
+  "opening": "A lô? Tôi nghe.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "A lô? Tôi nghe.",
+      "branches": [
+        {
+          "keywords": [
+            "xin chào",
+            "tôi là",
+            "tên tôi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nhầm số",
+            "gọi nhầm"
+          ],
+          "nextTurnId": "t-end-wrongnumber"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "A lô? (Ah-loh?) — Hello? Tôi nghe. (Toy ngeh.) — I'm listening."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Chào anh/chị. Anh/chị là ai và gọi có việc gì ạ?",
+      "branches": [
+        {
+          "keywords": [
+            "gọi cho",
+            "nói chuyện với",
+            "cô lan",
+            "ông minh"
+          ],
+          "nextTurnId": "t3_unavailable"
+        },
+        {
+          "keywords": [
+            "hỏi về",
+            "dự án",
+            "công việc"
+          ],
+          "nextTurnId": "t3_general"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Chào anh/chị. (Chao ahn/chee.) — Hello. Anh/chị là ai và gọi có việc gì ạ? (Ahn/chee lah ai vah goy kaw veek zee ah?) — Who are you and what's the purpose of your call?"
+    },
+    "t3_unavailable": {
+      "id": "t3_unavailable",
+      "prompt": "Ồ, xin lỗi. Người đó không có ở đây vào lúc này. Anh/chị có muốn để lại lời nhắn không?",
+      "branches": [
+        {
+          "keywords": [
+            "có",
+            "vâng",
+            "làm ơn",
+            "để lại"
+          ],
+          "nextTurnId": "t4_message"
+        },
+        {
+          "keywords": [
+            "không",
+            "cảm ơn",
+            "gọi lại",
+            "sẽ gọi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ồ, xin lỗi. (Oh, sin loy.) — Oh, I'm sorry. Người đó không có ở đây vào lúc này. (Goo-oy daw khong kaw uh day vao look nai.) — That person is not here at the moment. Anh/chị có muốn để lại lời nhắn không? (Ahn/chee kaw moon deh lai loy nhan khong?) — Would you like to leave a message?"
+    },
+    "t3_general": {
+      "id": "t3_general",
+      "prompt": "Vâng, tôi có thể giúp được gì về việc đó không?",
+      "branches": [
+        {
+          "keywords": [
+            "tiến độ",
+            "thông tin",
+            "hỏi về",
+            "tình hình"
+          ],
+          "nextTurnId": "t4_info"
+        },
+        {
+          "keywords": [
+            "người phụ trách",
+            "muốn nói chuyện",
+            "quản lý"
+          ],
+          "nextTurnId": "t3_unavailable"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, tôi có thể giúp được gì về việc đó không? (Vang, toy kaw teh joop dook zee veh veek daw khong?) — Yes, how can I help with that?"
+    },
+    "t4_message": {
+      "id": "t4_message",
+      "prompt": "Vâng, xin mời anh/chị nói. Tôi sẽ ghi lại giúp.",
+      "branches": [
+        {
+          "keywords": [
+            "xin nói",
+            "nhắn rằng",
+            "tin nhắn",
+            "hãy nói"
+          ],
+          "nextTurnId": "t5_confirm"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, xin mời anh/chị nói. (Vang, sin moy ahn/chee noy.) — Yes, please speak. Tôi sẽ ghi lại giúp. (Toy seh ghee lai joop.) — I will write it down for you."
+    },
+    "t4_info": {
+      "id": "t4_info",
+      "prompt": "Về việc đó, tôi có thể nói rằng dự án đang trong giai đoạn cuối. Anh/chị còn câu hỏi nào không?",
+      "branches": [
+        {
+          "keywords": [
+            "không có",
+            "tốt rồi",
+            "cảm ơn",
+            "vậy là tốt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Về việc đó, tôi có thể nói rằng dự án đang trong giai đoạn cuối. (Veh veek daw, toy kaw teh noy rang zoo an dang trong zai doan koo-oy.) — Regarding that, I can say the project is in its final stage. Anh/chị còn câu hỏi nào không? (Ahn/chee kon kow hoy nao khong?) — Do you have any other questions?"
+    },
+    "t5_confirm": {
+      "id": "t5_confirm",
+      "prompt": "Vâng, tôi đã ghi lại rồi. Họ sẽ nhận được lời nhắn của anh/chị.",
+      "branches": [
+        {
+          "keywords": [
+            "cảm ơn",
+            "tuyệt vời",
+            "vâng"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vâng, tôi đã ghi lại rồi. (Vang, toy da ghee lai roy.) — Yes, I have noted it down. Họ sẽ nhận được lời nhắn của anh/chị. (Haw seh nhan dook loy nhan koo-ah ahn/chee.) — They will receive your message."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, tôi chưa nghe rõ. Anh/chị có thể nói lại được không?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Xin lỗi, tôi chưa nghe rõ. (Sin loy, toy choo-ah ngeh ro.) — Sorry, I didn't hear clearly. Anh/chị có thể nói lại được không? (Ahn/chee kaw teh noy lai dook khong?) — Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vâng, cảm ơn anh/chị. Chào tạm biệt.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Vâng, cảm ơn anh/chị. (Vang, kam oon ahn/chee.) — Yes, thank you. Chào tạm biệt. (Chao tam bee-et.) — Goodbye.",
+      "isTerminal": true
+    },
+    "t-end-wrongnumber": {
+      "id": "t-end-wrongnumber",
+      "prompt": "Vâng, không sao. Chào anh/chị.",
+      "branches": [],
+      "fallbackBranchId": "t-end-wrongnumber",
+      "promptTranslation": "Vâng, không sao. (Vang, khong sao.) — Okay, no problem. Chào anh/chị. (Chao ahn/chee.) — Goodbye.",
+      "isTerminal": true
+    }
+  }
+}

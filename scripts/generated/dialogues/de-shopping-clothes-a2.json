@@ -1,0 +1,275 @@
+{
+  "id": "dlg-de-shopping-clothes-a2",
+  "language": "de",
+  "level": "A2",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen",
+  "opening": "Guten Tag! Kann ich Ihnen helfen?",
+  "startTurnId": "t1_greeting",
+  "turns": {
+    "t1_greeting": {
+      "id": "t1_greeting",
+      "prompt": "Guten Tag! Kann ich Ihnen helfen?",
+      "branches": [
+        {
+          "keywords": [
+            "suche",
+            "suchen",
+            "kleidung",
+            "etwas"
+          ],
+          "nextTurnId": "t2_what_item"
+        },
+        {
+          "keywords": [
+            "nursehen",
+            "umsehen",
+            "schauen"
+          ],
+          "nextTurnId": "t_end_browsing"
+        },
+        {
+          "keywords": [
+            "",
+            "hilfe"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Good day! (Goo-ten Tahg!) Can I help you? (Kahn eekh Ee-nen HEL-fen?)"
+    },
+    "t2_what_item": {
+      "id": "t2_what_item",
+      "prompt": "Was suchen Sie denn genau? Ein Hemd, einen Pullover oder etwas anderes?",
+      "branches": [
+        {
+          "keywords": [
+            "pullover",
+            "sweater"
+          ],
+          "nextTurnId": "t3_ask_details"
+        },
+        {
+          "keywords": [
+            "",
+            "egal"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "What exactly are you looking for? (Vahs ZOO-khen Zee den ge-NAU?) A shirt, a sweater or something else?"
+    },
+    "t3_ask_details": {
+      "id": "t3_ask_details",
+      "prompt": "In welcher Größe und Farbe möchten Sie es?",
+      "branches": [
+        {
+          "keywords": [
+            "größe",
+            "grosse",
+            "s",
+            "m",
+            "l",
+            "xl",
+            "34",
+            "36",
+            "38",
+            "40"
+          ],
+          "nextTurnId": "t4_offer_item"
+        },
+        {
+          "keywords": [
+            "",
+            "keine"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "In which size and color would you like it?"
+    },
+    "t4_offer_item": {
+      "id": "t4_offer_item",
+      "prompt": "Einen Moment, ich schaue nach. Hier, bitte. Möchten Sie es anprobieren?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "anprobieren"
+          ],
+          "nextTurnId": "t5_after_try_on"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "nursehen",
+            "ansehen"
+          ],
+          "nextTurnId": "t5_after_try_on_no_try"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "One moment, I'll check. (Ain-en MOH-ment, eekh SHAU-e nahkh.) Here you go. Would you like to try it on? (MÖKH-ten Zee es AN-pro-bee-ren?)"
+    },
+    "t5_after_try_on": {
+      "id": "t5_after_try_on",
+      "prompt": "Und? Passt es Ihnen? Gefällt es?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "passt",
+            "gefällt",
+            "gut"
+          ],
+          "nextTurnId": "t6_decision"
+        },
+        {
+          "keywords": [
+            "",
+            "okay"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "And? Does it fit you? Do you like it?"
+    },
+    "t5_after_try_on_no_try": {
+      "id": "t5_after_try_on_no_try",
+      "prompt": "Was halten Sie von diesem Stück?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gefällt",
+            "gut",
+            "schön"
+          ],
+          "nextTurnId": "t6_decision"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "What do you think of this item?"
+    },
+    "t6_decision": {
+      "id": "t6_decision",
+      "prompt": "Super! Möchten Sie es kaufen, eine andere Größe oder doch lieber etwas anderes?",
+      "branches": [
+        {
+          "keywords": [
+            "kaufen",
+            "ja",
+            "gerne"
+          ],
+          "nextTurnId": "t7_payment"
+        },
+        {
+          "keywords": [
+            "größe",
+            "andere",
+            "nochmal"
+          ],
+          "nextTurnId": "t3_ask_details"
+        },
+        {
+          "keywords": [
+            "nein",
+            "doch nicht",
+            "egal"
+          ],
+          "nextTurnId": "t_end_no_buy"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Great! Would you like to buy it, a different size, or rather something else?"
+    },
+    "t7_payment": {
+      "id": "t7_payment",
+      "prompt": "Ausgezeichnet! Wie möchten Sie bezahlen? Bar oder mit Karte?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t_end_payment"
+        },
+        {
+          "keywords": [
+            "",
+            "danke"
+          ],
+          "nextTurnId": "t_repeat"
+        }
+      ],
+      "fallbackBranchId": "t_repeat",
+      "promptTranslation": "Excellent! How would you like to pay? Cash or by card?"
+    },
+    "t_repeat": {
+      "id": "t_repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja"
+          ],
+          "nextTurnId": "t1_greeting"
+        }
+      ],
+      "fallbackBranchId": "t1_greeting",
+      "promptTranslation": "Excuse me, I didn't understand you. Could you please repeat that?"
+    },
+    "t_end_browsing": {
+      "id": "t_end_browsing",
+      "prompt": "Gerne! Viel Spaß beim Stöbern. Sagen Sie Bescheid, wenn Sie Hilfe brauchen. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t_end_browsing",
+      "promptTranslation": "Certainly! Have fun browsing. Let me know if you need help. Goodbye!",
+      "isTerminal": true
+    },
+    "t_end_no_buy": {
+      "id": "t_end_no_buy",
+      "prompt": "Schade, vielleicht finden Sie ein anderes Mal etwas Passendes. Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t_end_no_buy",
+      "promptTranslation": "Too bad, maybe you'll find something suitable another time. Goodbye!",
+      "isTerminal": true
+    },
+    "t_end_payment": {
+      "id": "t_end_payment",
+      "prompt": "Vielen Dank für Ihren Einkauf! Auf Wiedersehen!",
+      "branches": [],
+      "fallbackBranchId": "t_end_payment",
+      "promptTranslation": "Thank you very much for your purchase! (FEE-len Dahngk fyoor EE-ren AIN-kouf!) Goodbye! (Ouf VEE-der-zane!)",
+      "isTerminal": true
+    }
+  }
+}

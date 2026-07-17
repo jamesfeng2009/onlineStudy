@@ -1,0 +1,155 @@
+{
+  "id": "dlg-it-airport-b1",
+  "language": "it",
+  "level": "B1",
+  "scenario": "airport",
+  "title": "All'aeroporto: Check-in",
+  "opening": "Buongiorno! Benvenuto all'aeroporto. Posso aiutarla con il suo volo?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Benvenuto all'aeroporto. Posso aiutarla con il suo volo?",
+      "branches": [
+        {
+          "keywords": [
+            "check-in",
+            "devo",
+            "informazioni",
+            "volo"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (bwon-JOR-noh)! Benvenuto (ben-veh-NOO-toh) all'aeroporto (al-leh-roh-POR-toh). Posso (POSS-oh) aiutarla (ah-yoo-TAR-lah) con il suo (sew-oh) volo (VOH-loh)? — Good morning! Welcome to the airport. Can I help you with your flight?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo. Ha già fatto il check-in online o ha bisogno di farlo qui? Posso vedere il suo passaporto e il biglietto, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "passaporto",
+            "biglietto",
+            "ecco"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (CHER-toh). Ha (ah) già (JAH) fatto (FAT-toh) il check-in (check-in) online (on-LINE) o (oh) ha bisogno (bee-ZOH-nyoh) di farlo (FAR-loh) qui (kwee)? Posso (POSS-oh) vedere (veh-DEH-reh) il suo (sew-oh) passaporto (pass-ah-POR-toh) e (eh) il biglietto (bee-LYET-toh), per favore (per fah-VOH-reh)? — Certainly. Have you already checked in online or do you need to do it here? Can I see your passport and ticket, please?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Grazie. Vedo che il suo volo per Roma parte dal gate A12. Il suo bagaglio è solo a mano o ha del bagaglio da imbarcare?",
+      "branches": [
+        {
+          "keywords": [
+            "soloamano",
+            "mano",
+            "nonho",
+            "nessuno"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "imbarcare",
+            "ho",
+            "bagaglio"
+          ],
+          "nextTurnId": "t4b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grazie (GRAHT-syee-eh). Vedo (VEH-doh) che (keh) il suo (sew-oh) volo (VOH-loh) per (per) Roma (ROH-mah) parte (PAR-teh) dal (dal) gate (gate) A12 (ah-DOH-dee-chee). Il suo (sew-oh) bagaglio (bah-GAH-lyoh) è (eh) solo (SOH-loh) a mano (ah MAH-noh) o (oh) ha (ah) del bagaglio (bah-GAH-lyoh) da imbarcare (im-bar-KAH-reh)? — Thank you. I see your flight to Rome departs from Gate A12. Is your luggage only carry-on or do you have checked luggage?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Perfetto, allora le consegno la carta d'imbarco. Il gate A12 chiude tra 45 minuti. Buon viaggio!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "buonviaggio",
+            "saluto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfetto (per-FET-toh), allora (al-LOH-rah) le (leh) consegno (kon-SEH-nyoh) la (lah) carta (KAR-tah) d'imbarco (dim-BAR-koh). Il gate (gate) A12 (ah-DOH-dee-chee) chiude (KYOO-deh) tra (trah) 45 (quar-AN-tah-chin-KWEH) minuti (mee-NOO-tee). Buon viaggio (bwon VYAJ-joh)! — Perfect, then I'll give you your boarding pass. Gate A12 closes in 45 minutes. Have a good trip!"
+    },
+    "t4b": {
+      "id": "t4b",
+      "prompt": "Prego, metta pure il suo bagaglio sul nastro. Dovrebbe passare poi ai controlli di sicurezza. Ecco la sua carta d'imbarco. Le auguro un buon viaggio!",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "buonviaggio",
+            "saluto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Prego (PREH-goh), metta (MET-tah) pure (POO-reh) il suo (sew-oh) bagaglio (bah-GAH-lyoh) sul (sool) nastro (NAS-troh). Dovrebbe (doh-VREB-beh) passare (pass-SAH-reh) poi (poy) ai (ay) controlli (kon-TROL-lee) di sicurezza (dee see-koo-RET-tsa). Ecco (EK-koh) la sua (sew-ah) carta (KAR-tah) d'imbarco (dim-BAR-koh). Le auguro (leh ow-GOO-roh) un buon viaggio (oon bwon VYAJ-joh)! — Please, put your luggage on the belt. You should then proceed to security checks. Here is your boarding pass. I wish you a good trip!"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee), non ho capito (non oh kah-PEE-toh) bene (BEH-neh). Potrebbe (poh-TREB-beh) ripetere (ree-PEH-teh-reh), per favore (per fah-VOH-reh)? — Excuse me, I didn't quite understand. Could you please repeat?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Grazie e arrivederci! Buon proseguimento di giornata.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Grazie (GRAHT-syee-eh) e (eh) arrivederci (ar-ree-veh-DER-chee)! Buon (bwon) proseguimento (proh-seh-gwee-MEN-toh) di giornata (dee jor-NAH-tah). — Thank you and goodbye! Have a good rest of your day.",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "dlg-it-airport-a2",
+  "language": "it",
+  "level": "A2",
+  "scenario": "airport",
+  "title": "Al banco del check-in",
+  "opening": "Buongiorno. Posso avere il suo passaporto e la carta d'imbarco, per favore?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno. Posso avere il suo passaporto e la carta d'imbarco, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "ecco",
+            "si",
+            "liho",
+            "certamente"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ripeti",
+            "scusi",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            "perso",
+            "nonho",
+            "noncelho"
+          ],
+          "nextTurnId": "t_lost_docs"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Bwon-jor-no. Pos-so a-veh-reh il soo-oh pas-sa-por-to eh la kar-ta dim-bar-ko, per fa-vo-reh? — Good morning. May I have your passport and boarding pass, please?"
+    },
+    "t_lost_docs": {
+      "id": "t_lost_docs",
+      "prompt": "Mi dispiace. Per favore, vada all'ufficio informazioni. Loro possono aiutarla.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "dove",
+            "ufficio",
+            "dovelufficio"
+          ],
+          "nextTurnId": "t_info_location"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mee dis-pyah-cheh. Per fa-vo-reh, vah-da al-luf-fee-cho een-for-ma-tsyo-nee. Lo-ro pos-so-no ah-yoo-tar-la. — I'm sorry. Please go to the information office. They can help you."
+    },
+    "t_info_location": {
+      "id": "t_info_location",
+      "prompt": "L'ufficio informazioni è laggiù, vicino all'uscita, a destra. Segua i cartelli.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Luf-fee-cho een-for-ma-tsyo-nee eh lad-joo, vee-chee-no al-loosh-chee-ta, a des-tra. Seh-gwa ee kar-tel-lee. — The information office is over there, near the exit, to the right. Follow the signs."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Grazie. Quanti bagagli ha da imbarcare?",
+      "branches": [
+        {
+          "keywords": [
+            "uno",
+            "unobagaglio"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Grah-tsee-eh. Kwan-tee bah-gah-lyee ah da im-bar-kar-eh? — Thank you. How many bags do you have to check in?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto. Ecco la sua carta d'imbarco. Il suo volo parte dal gate B7. Deve andare ai controlli di sicurezza.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            "sicurezza",
+            "dovesicurezza",
+            "controlli",
+            "gate",
+            "dovegate",
+            "b7"
+          ],
+          "nextTurnId": "t_directions"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Per-fet-to. Ek-ko la soo-ah kar-ta dim-bar-ko. Il soo-oh vo-lo par-te dal gayt bee set-teh. Deh-veh an-dar-eh ay kon-trol-lee dee see-koo-ret-tsa. — Perfect. Here is your boarding pass. Your flight departs from gate B7. You need to go to security."
+    },
+    "t_directions": {
+      "id": "t_directions",
+      "prompt": "I controlli di sicurezza sono al piano superiore. Prenda la scala mobile. Il gate B7 è dopo i controlli, a destra. Ci sono i cartelli per entrambi.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok"
+          ],
+          "nextTurnId": "t_end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ee kon-trol-lee dee see-koo-ret-tsa so-no al pyah-no soo-peh-ryo-reh. Pren-da la ska-la mo-bee-leh. Il gayt bee set-teh eh do-po ee kon-trol-lee, a des-tra. Chee so-no ee kar-tel-lee per em-bran-tee. — Security checks are on the upper floor. Take the escalator. Gate B7 is after security, to the right. There are signs for both."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere per favore? Non ho capito bene.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ripeti",
+            "scusi"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mee skoo-zee, pwo ree-peh-teh-reh per fa-vo-reh? Non o ka-pee-to beh-neh. — Excuse me, could you please repeat? I didn't understand well."
+    },
+    "t_end": {
+      "id": "t_end",
+      "prompt": "Buon viaggio e arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t_end",
+      "promptTranslation": "Bwon vyah-jo eh ar-ree-veh-der-chee! — Have a good trip and goodbye!",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "id": "dlg-it-post-office-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "post-office",
+  "title": "Spedizione Postale Complessa",
+  "opening": "Buongiorno, mi dica. Come posso esserle utile oggi?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, mi dica. Come posso esserle utile oggi?",
+      "branches": [
+        {
+          "keywords": [
+            "devo",
+            "spedire",
+            "pacco",
+            "invio"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "vorrei",
+            "informazioni",
+            "info"
+          ],
+          "nextTurnId": "t3_info"
+        },
+        {
+          "keywords": [
+            "ho",
+            "bisogno",
+            "francobolli",
+            "bolli"
+          ],
+          "nextTurnId": "t3_stamps"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Good morning, tell me. (mi DI-ca) How can I help you today?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certamente. Il pacco è destinato all'estero o per l'Italia? E ha già un'idea del servizio che desidera, magari tracciabile o raccomandato?",
+      "branches": [
+        {
+          "keywords": [
+            "estero",
+            "internazionale",
+            "tracciabile",
+            "assicurato",
+            "assicurazione"
+          ],
+          "nextTurnId": "t4_international_insured"
+        },
+        {
+          "keywords": [
+            "italia",
+            "nazionale",
+            "normale",
+            "standard"
+          ],
+          "nextTurnId": "t4_domestic_standard"
+        },
+        {
+          "keywords": [
+            "opzioni",
+            "estero",
+            "nonso"
+          ],
+          "nextTurnId": "t4_international_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Is the parcel destined abroad (al-L'E-ste-ro) or for Italy? And do you already have an idea of the service you want, perhaps traceable or registered?"
+    },
+    "t3_info": {
+      "id": "t3_info",
+      "prompt": "Certo, per fornirle assistenza, avrebbe per caso il numero di tracciamento o il codice di raccomandata?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "eccolo",
+            "ho"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, to provide assistance, do you happen to have the tracking number or registered mail code?"
+    },
+    "t3_stamps": {
+      "id": "t3_stamps",
+      "prompt": "Nessun problema. Le servono per corrispondenza ordinaria nazionale, o per qualche esigenza particolare, magari internazionale o per raccomandate?",
+      "branches": [
+        {
+          "keywords": [
+            "normali",
+            "ordinaria",
+            "lettere",
+            "decina"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Do you need them for ordinary domestic mail, or for some particular need, perhaps international or for registered mail?"
+    },
+    "t4_international_insured": {
+      "id": "t4_international_insured",
+      "prompt": "Ottimo. Quindi una spedizione internazionale raccomandata con avviso di ricevimento e assicurazione. Dovremo compilare la dichiarazione doganale. Procediamo pure allo sportello 3. Va bene?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ok",
+            "va bene"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "costa",
+            "quanto",
+            "prezzo"
+          ],
+          "nextTurnId": "t5_cost_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent. So, an international registered shipment (rac-co-man-DA-ta) with acknowledgment of receipt and insurance. We'll need to fill out the customs declaration. Let's proceed to counter 3. Is that okay?"
+    },
+    "t4_domestic_standard": {
+      "id": "t4_domestic_standard",
+      "prompt": "Perfetto. Per una spedizione nazionale standard, il pacco ordinario va benissimo. Se preferisce, abbiamo anche opzioni più celeri e tracciabili, come il pacco celere 3. Le interessa valutare alternative?",
+      "branches": [
+        {
+          "keywords": [
+            "no",
+            "ordinario",
+            "va bene"
+          ],
+          "nextTurnId": "t5_domestic_confirm"
+        },
+        {
+          "keywords": [
+            "altre",
+            "opzioni",
+            "alternative"
+          ],
+          "nextTurnId": "t5_domestic_options"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect. For a standard domestic shipment, the ordinary parcel (pac-co or-di-NA-rio) is perfectly fine. If you prefer, we also have faster and traceable options, like express parcel 3. Are you interested in evaluating alternatives?"
+    },
+    "t4_international_options": {
+      "id": "t4_international_options",
+      "prompt": "Certo. Per l'estero, le opzioni vanno dal pacco ordinario internazionale, senza tracciamento, fino alla raccomandata internazionale con avviso di ricevimento e possibilità di assicurazione, che le offre un tracciamento completo e garanzie. Quale preferirebbe?",
+      "branches": [
+        {
+          "keywords": [
+            "voglio",
+            "raccomandata",
+            "assicurazione"
+          ],
+          "nextTurnId": "t4_international_insured"
+        },
+        {
+          "keywords": [
+            "solo",
+            "senza",
+            "raccomandata"
+          ],
+          "nextTurnId": "t5_international_registered_only"
+        },
+        {
+          "keywords": [
+            "economica",
+            "meno",
+            "costi"
+          ],
+          "nextTurnId": "t5_cost_query"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. For abroad, options range from ordinary international parcel (pac-co or-di-NA-rio), without tracking, up to international registered mail (rac-co-man-DA-ta) with acknowledgment of receipt and the possibility of insurance, which offers complete tracking and guarantees. Which would you prefer?"
+    },
+    "t5_cost_query": {
+      "id": "t5_cost_query",
+      "prompt": "Per avere un costo esatto, dovrei prima pesare il pacco e verificare le dimensioni. Possiamo farlo allo sportello 3. Lì le darò tutti i dettagli, inclusi i costi dell'assicurazione e della raccomandata. Procediamo?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "procediamo",
+            "avanti"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "To get an exact cost, I would first need to weigh the parcel and check the dimensions. We can do that at counter 3. There I will give you all the details, including the costs of insurance and registered mail. Shall we proceed?"
+    },
+    "t5_domestic_confirm": {
+      "id": "t5_domestic_confirm",
+      "prompt": "Perfetto, allora un pacco ordinario nazionale. Si diriga pure allo sportello 2 per la pesatura e la compilazione del modulo. Sarà un attimo.",
+      "branches": [
+        {
+          "keywords": [
+            "grazie",
+            "ok",
+            "perfetto"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect, then a domestic ordinary parcel. Please head to counter 2 for weighing and form completion. It will be a moment."
+    },
+    "t5_domestic_options": {
+      "id": "t5_domestic_options",
+      "prompt": "Certo. Il pacco celere 3 garantisce una consegna in 3 giorni lavorativi, è tracciabile e include un'assicurazione base. L'ordinario è più lento e senza tracciamento. C'è molta differenza di costo, ma dipende dalla rapidità e sicurezza che cerca.",
+      "branches": [
+        {
+          "keywords": [
+            "celere",
+            "espresso",
+            "vado"
+          ],
+          "nextTurnId": "t6_domestic_celere"
+        },
+        {
+          "keywords": [
+            "ordinario",
+            "meglio"
+          ],
+          "nextTurnId": "t5_domestic_confirm"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly. Express parcel 3 guarantees delivery in 3 working days, is traceable, and includes basic insurance. The ordinary one is slower and without tracking. There's a significant cost difference, but it depends on the speed and security you're looking for."
+    },
+    "t5_international_registered_only": {
+      "id": "t5_international_registered_only",
+      "prompt": "Capisco. Quindi, una raccomandata internazionale senza assicurazione aggiuntiva. Benissimo. Per la dichiarazione doganale e la pesatura, la aspetto allo sportello 3. Va bene?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "perfetto",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "assicurazione",
+            "aggiungere"
+          ],
+          "nextTurnId": "t4_international_insured"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand. So, international registered mail (rac-co-man-DA-ta) without additional insurance. Very good. For the customs declaration and weighing, I'll wait for you at counter 3. Is that okay?"
+    },
+    "t6_domestic_celere": {
+      "id": "t6_domestic_celere",
+      "prompt": "Ottima scelta per la rapidità! Quindi, pacco celere 3. Si accomodi pure allo sportello 2 per finalizzare la spedizione. Grazie.",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "ok",
+            "grazie"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice for speed! So, express parcel 3. Please make yourself comfortable at counter 2 to finalize the shipment. Thank you."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho capito bene. Potrebbe ripetere o riformulare, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite understand. Could you repeat or rephrase, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Prego, si accomodi. Arrivederci!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "You're welcome, please make yourself comfortable. Goodbye!",
+      "isTerminal": true
+    }
+  }
+}

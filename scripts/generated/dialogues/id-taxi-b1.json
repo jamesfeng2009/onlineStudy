@@ -1,0 +1,147 @@
+{
+  "id": "dlg-id-taxi-b1",
+  "language": "id",
+  "level": "B1",
+  "scenario": "taxi",
+  "title": "Perjalanan Taksi",
+  "opening": "Selamat siang, Pak/Bu. Mau ke mana?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat siang, Pak/Bu. Mau ke mana?",
+      "branches": [
+        {
+          "keywords": [
+            "jalan",
+            "tempat",
+            "alamat",
+            "ke"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "berapa",
+            "harga",
+            "ongkos",
+            "rute",
+            "lewat"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Selamat siang, Pak/Bu (Sah-lah-mat see-ang, Pak/Boo) — Good afternoon, Sir/Ma'am. Where are you going?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik, menuju ke [Nama Tempat]. Apa Anda tahu jalan terbaik atau ada rute khusus yang ingin dilewati?",
+      "branches": [
+        {
+          "keywords": [
+            "terserah",
+            "ikut",
+            "anda",
+            "tahu",
+            "jalan",
+            "baik",
+            "silakan"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "macet",
+            "lalu lintas",
+            "ramai",
+            "padat"
+          ],
+          "nextTurnId": "t3"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, menuju ke [Nama Tempat] (Bah-ik, meh-noo-joo keh [Nah-ma Tem-pat]) — Okay, heading to [Place Name]. Do you know the best route, or is there a specific route you'd like to take?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Untuk tujuan itu, biasanya lewat jalan tol lebih cepat, tapi ada kemungkinan macet di jam sibuk. Kalau lewat jalan biasa mungkin lebih lama sedikit tapi pemandangannya lebih bagus. Kira-kira mau lewat mana?",
+      "branches": [
+        {
+          "keywords": [
+            "tol",
+            "cepat",
+            "buru-buru"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "For that destination, usually taking the toll road is faster, but there's a possibility of traffic jams during peak hours. If we take the regular road, it might be a bit longer but the view is better. Which way would you prefer to go?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik, Pak/Bu. Kita jalan sekarang, ya. Omong-omong, ada barang di bagasi atau di jok belakang?",
+      "branches": [
+        {
+          "keywords": [
+            "tidak",
+            "tidakada",
+            "bayar",
+            "nanti",
+            "tunai",
+            "kartu",
+            "aman"
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Baik, Pak/Bu (Bah-ik, Pak/Boo) — Okay, Sir/Ma'am. We'll leave now, alright? By the way, do you have any luggage in the trunk or on the back seat?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Oke, sudah aman ya. Untuk pembayaran, nanti bisa tunai atau pakai aplikasi kalau mau. Totalnya sekitar empat puluh lima ribu rupiah, tergantung rute yang diambil dan kondisi lalu lintas.",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "siap",
+            "baik",
+            "terimakasih",
+            "setuju",
+            "uang"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Okay, it's all secure. For payment, you can pay cash later or use an app if you prefer. The total will be around forty-five thousand rupiah, depending on the route taken and traffic conditions."
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mohon maaf, bisa diulang? Saya kurang jelas.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang",
+            "ya",
+            "tolong"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mohon maaf, bisa diulang? (Moh-hon ma-af, bee-sa dee-oo-lang?) — I apologize, could you please repeat that? I didn't quite catch it."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Oke, sudah sampai tujuan, Pak/Bu. Terima kasih sudah naik taksi saya, hati-hati di jalan ya.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Okay, we've arrived at the destination, Sir/Ma'am. Thank you for riding my taxi, please be careful on your way.",
+      "isTerminal": true
+    }
+  }
+}

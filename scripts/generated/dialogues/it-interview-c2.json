@@ -1,0 +1,121 @@
+{
+  "id": "dlg-it-interview-c2",
+  "language": "it",
+  "level": "C2",
+  "scenario": "interview",
+  "title": "Colloquio di Lavoro: Livello C2",
+  "opening": "Benvenuto! La ringrazio per essere venuto/a. Si accomodi pure. Se non le dispiace, inizieremmo subito: ci parli un po' di lei, del suo percorso e di cosa l'ha spinta a candidarsi per questa posizione.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Benvenuto! La ringrazio per essere venuto/a. Si accomodi pure. Se non le dispiace, inizieremmo subito: ci parli un po' di lei, del suo percorso e di cosa l'ha spinta a candidarsi per questa posizione.",
+      "branches": [
+        {
+          "keywords": [
+            "percorso",
+            "esperienza",
+            "candidatura"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Benvenuto/a (ben-veh-NO-toh/tah) — Welcome! La ringrazio per essere venuto/a (lah ring-GRAH-tseeoh per ES-seh-reh veh-NOO-toh/tah) — Thank you for coming. Si accomodi pure (see ahk-KOH-moh-dee POO-reh) — Please, make yourself comfortable. Se non le dispiace (seh non leh dees-PYAH-cheh) — If you don't mind, inizieremmo subito (ee-nee-tsyeh-REH-moh SOO-bee-toh) — we'll start right away: ci parli un po' di lei (chee PAR-lee oon poh dee LEY) — tell us a bit about yourself, del suo percorso (del SOO-oh per-KOR-soh) — about your background, e di cosa l'ha spinta a candidarsi per questa posizione (eh dee KOH-zah lah SPEEN-tah ah kan-dee-DAR-see per KWES-tah poh-zee-TSYOH-neh) — and what motivated you to apply for this position."
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Interessante. Mi sembra di capire che ci sia una chiara traiettoria nel suo percorso professionale. Potrebbe approfondire come le sue esperienze pregresse si allineano con i requisiti e le sfide che questa posizione comporta, e quali sono, a suo avviso, gli aspetti più stimolanti del ruolo?",
+      "branches": [
+        {
+          "keywords": [
+            "allineamento",
+            "requisiti",
+            "sfide"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Interessante (een-teh-reh-SSAN-teh) — Interesting. Mi sembra di capire che ci sia una chiara traiettoria nel suo percorso professionale (mee SEM-brah dee kah-PEE-reh keh chee SEE-ah OO-nah KYAH-rah trah-yet-TOR-yah nel SOO-oh per-KOR-soh pro-fes-syoh-NAH-leh) — It seems to me that there's a clear trajectory in your professional path. Potrebbe approfondire (poh-TREB-beh ap-pro-fon-DEE-reh) — Could you elaborate on how le sue esperienze pregresse (leh SOO-eh eh-speh-RYEN-tseh preh-GRES-seh) — your previous experiences si allineano con i requisiti e le sfide che questa posizione comporta (see al-lee-NEH-ah-noh kon ee reh-kwee-ZEE-tee eh leh SFE-deh keh KWES-tah poh-zee-TSYOH-neh kom-POR-tah) — align with the requirements and challenges this position entails, e quali sono, a suo avviso, gli aspetti più stimolanti del ruolo? (eh KWA-lee SOH-noh, ah SOO-oh av-VEE-zoh, lyee as-PET-tee pyoo stee-moh-LAN-tee del RWOH-loh?) — and what, in your opinion, are the most stimulating aspects of the role?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Molto bene. Guardiamo ora il rovescio della medaglia. Quali sono, a suo giudizio, i suoi punti di forza che porterebbe in questa posizione e, con un pizzico di onestà intellettuale, in quale area sente di dover ancora fare un salto di qualità o migliorare?",
+      "branches": [
+        {
+          "keywords": [
+            "forza",
+            "pregi",
+            "capacità"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Molto bene (MOL-toh BEH-neh) — Very good. Guardiamo ora il rovescio della medaglia (gwar-DYAH-moh OH-rah eel roh-VEH-shoh DEL-lah meh-DAH-lyah) — Let's now look at the other side of the coin (lit. 'the reverse of the medal'). Quali sono, a suo giudizio, i suoi punti di forza che porterebbe in questa posizione (KWA-lee SOH-noh, ah SOO-oh joo-DEET-tsyoh, ee SOO-oh-ee POON-tee dee FOR-tsah keh por-teh-REB-beh een KWES-tah poh-zee-TSYOH-neh) — What are, in your opinion, your strengths that you would bring to this position e, con un pizzico di onestà intellettuale (eh, kon oon PEET-tsee-koh dee oh-neh-STAH een-tel-leh-TOO-ah-leh) — and, with a touch of intellectual honesty, in quale area sente di dover ancora fare un salto di qualità o migliorare? (een KWA-leh AH-reh-ah SEN-teh dee doh-VER an-KOH-rah FAH-reh oon SAL-toh dee kwa-lee-TAH oh mee-lyoh-RAH-reh?) — in what area do you feel you still need to make a leap in quality or improve?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Apprezzo la sua trasparenza. Per concludere, ci dia un assaggio di come si vede tra cinque anni. Quali ambizioni la muovono e come pensa che questa posizione potrebbe fungere da trampolino di lancio per realizzarle?",
+      "branches": [
+        {
+          "keywords": [
+            "futuro",
+            "ambizioni",
+            "obiettivi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Apprezzo la sua trasparenza (ap-PRET-tsoh lah SOO-ah trah-spah-REN-tsah) — I appreciate your transparency. Per concludere (per kon-KLOO-deh-reh) — To conclude, ci dia un assaggio di come si vede tra cinque anni (chee DEE-ah oon as-SAJ-joh dee KOH-meh see VE-deh trah CHEEN-kweh AN-nee) — give us a glimpse of how you see yourself in five years. Quali ambizioni la muovono (KWA-lee am-bee-TSYOH-nee lah MWOH-vo-noh) — What ambitions drive you e come pensa che questa posizione potrebbe fungere da trampolino di lancio per realizzarle? (eh KOH-meh PEN-sah keh KWES-tah poh-zee-TSYOH-neh poh-TREB-beh FOON-jeh-reh dah tram-poh-LEE-noh dee LAN-choh per reh-al-leed-ZAR-leh?) — and how do you think this position could serve as a springboard to achieve them?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere o riformulare? Non ho afferrato bene il concetto.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Mi scusi (mee SKOO-zee) — Excuse me, potrebbe ripetere o riformulare? (poh-TREB-beh ree-PEH-teh-reh oh ree-for-moo-LAH-reh?) — could you repeat or rephrase? Non ho afferrato bene il concetto (non oh af-fer-RAH-toh BEH-neh eel kon-CHET-toh) — I didn't quite grasp the concept."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "La ringrazio per la sua disponibilità e per il tempo che ci ha dedicato. Le faremo sapere a breve. Le auguro una buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "La ringrazio per la sua disponibilità (lah ring-GRAH-tseeoh per lah SOO-ah dee-spoh-nee-bee-lee-TAH) — Thank you for your availability e per il tempo che ci ha dedicato (eh per eel TEM-poh keh chee ah deh-dee-KAH-toh) — and for the time you dedicated to us. Le faremo sapere a breve (leh fah-REH-moh sah-PEH-reh ah BREH-veh) — We will let you know shortly. Le auguro una buona giornata! (leh ow-GOO-roh OO-nah BWOH-nah jor-NAH-tah!) — I wish you a good day!",
+      "isTerminal": true
+    }
+  }
+}

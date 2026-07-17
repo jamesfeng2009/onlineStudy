@@ -1,0 +1,174 @@
+{
+  "id": "dlg-it-shopping-clothes-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "shopping-clothes",
+  "title": "Consigli di Stile e Acquisti Esclusivi",
+  "opening": "Buongiorno, benvenuto/a! Stava cercando qualcosa in particolare o le serve un consiglio per gli acquisti?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto/a! Stava cercando qualcosa in particolare o le serve un consiglio per gli acquisti?",
+      "branches": [
+        {
+          "keywords": [
+            "solo",
+            "guardare",
+            "curiosare"
+          ],
+          "nextTurnId": "t2_ask_needs"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno, benvenuto/a! (Bwohn-johr-noh, behn-veh-noo-toh/tah!) — Good morning, welcome! Were you looking for something specific or do you need some shopping advice?"
+    },
+    "t2_ask_needs": {
+      "id": "t2_ask_needs",
+      "prompt": "Capisco. Sta cercando qualcosa di specifico come un vestito da sera o una camicia elegante? Oppure preferirebbe dare un'occhiata alle ultime tendenze della nostra nuova collezione?",
+      "branches": [
+        {
+          "keywords": [
+            "vestito",
+            "camicia",
+            "jeans",
+            "giacca",
+            "pantalone",
+            "gonna",
+            "specifico"
+          ],
+          "nextTurnId": "t3_offer_item"
+        },
+        {
+          "keywords": [
+            "no grazie",
+            "solo guardo",
+            "vado via",
+            "basta"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco. (Kah-pee-skoh.) — I understand. Are you looking for something specific like an evening dress or an elegant shirt? Or would you prefer to take a look at the latest trends from our new collection?"
+    },
+    "t3_offer_item": {
+      "id": "t3_offer_item",
+      "prompt": "Ottimo. Le propongo questo capo: un elegante abito midi in cady di seta con scollo a V, molto versatile. È disponibile in diverse tonalità e nelle taglie dalla 38 alla 46. Le interessa provarlo?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "provo",
+            "taglia",
+            "colore",
+            "38",
+            "40",
+            "42",
+            "44",
+            "46"
+          ],
+          "nextTurnId": "t4_fitting_room"
+        },
+        {
+          "keywords": [
+            "no",
+            "altro",
+            "diverso",
+            "non mi piace"
+          ],
+          "nextTurnId": "t2_ask_needs"
+        },
+        {
+          "keywords": [
+            "grazie",
+            "penso",
+            "vado"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Ottimo. Le propongo questo capo: (Oh-tee-moh. Leh pro-poh-noh kweh-stoh kah-poh:) — Excellent. I propose this item: an elegant midi dress in silk cady with a V-neck, very versatile. It's available in various shades and in sizes from 38 to 46. Would you be interested in trying it on?"
+    },
+    "t4_fitting_room": {
+      "id": "t4_fitting_room",
+      "prompt": "Perfetto! Il camerino è libero, proprio lì in fondo a destra. Se ha bisogno di un'altra taglia o di qualsiasi altra cosa, mi chiami pure, sarò a sua disposizione.",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "vado",
+            "ok",
+            "provo"
+          ],
+          "nextTurnId": "t5_after_fitting"
+        },
+        {
+          "keywords": [
+            "cambiato",
+            "idea",
+            "non",
+            "più",
+            "rinuncio"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect! The fitting room is free, right there at the end on the right. If you need another size or anything else, just call me, I'll be at your disposal."
+    },
+    "t5_after_fitting": {
+      "id": "t5_after_fitting",
+      "prompt": "Allora, come le sta? Le è piaciuto il capo che ha provato? Oppure magari non è proprio quello che cercava?",
+      "branches": [
+        {
+          "keywords": [
+            "perfetto",
+            "prendo",
+            "acquisto",
+            "sì"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "non va",
+            "non piace",
+            "troppo",
+            "piccolo",
+            "grande"
+          ],
+          "nextTurnId": "t2_ask_needs"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "So, how does it fit? Did you like the item you tried on? Or perhaps it wasn't quite what you were looking for?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, non ho afferrato bene. Potrebbe ripetere o riformulare, per favore?",
+      "branches": [
+        {
+          "keywords": [
+            "ripeti",
+            "sì",
+            "certo",
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "I apologize, I didn't quite catch that. Could you please repeat or rephrase, please?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Molte grazie per la sua visita e arrivederci! Speriamo di rivederla presto.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Thank you very much for your visit and goodbye! We hope to see you again soon.",
+      "isTerminal": true
+    }
+  }
+}

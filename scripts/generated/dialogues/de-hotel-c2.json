@@ -1,0 +1,182 @@
+{
+  "id": "dlg-de-hotel-c2",
+  "language": "de",
+  "level": "C2",
+  "scenario": "hotel",
+  "title": "Hotel-Check-in: Ein anspruchsvolles Gespräch",
+  "opening": "Guten Abend! Herzlich willkommen im Grand Hotel Berlin. Haben Sie eine Reservierung unter einem bestimmten Namen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Abend! Herzlich willkommen im Grand Hotel Berlin. Haben Sie eine Reservierung unter einem bestimmten Namen?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "reservierung",
+            "name"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nein",
+            "keine"
+          ],
+          "nextTurnId": "t3a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Guten Abend — Good evening! Herzlich willkommen im Grand Hotel Berlin. Haben Sie eine Reservierung unter einem bestimmten Namen?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Verstanden. Könnten Sie mir bitte Ihren Ausweis oder Reisepass zur Verifizierung aushändigen? Wir benötigen dies für unsere Unterlagen, insbesondere wegen der aktuellen Datenschutzbestimmungen.",
+      "branches": [
+        {
+          "keywords": [
+            "ausweis",
+            "pass",
+            "hier"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "moment",
+            "suchen",
+            "finde"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Verstanden — Understood. Könnten Sie mir bitte Ihren Ausweis oder Reisepass zur Verifizierung aushändigen? Wir benötigen dies für unsere Unterlagen, insbesondere wegen der aktuellen Datenschutzbestimmungen."
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Vielen Dank. Die Formalitäten sind fast erledigt. Bezüglich der Zahlung: Haben Sie vor, mit Kreditkarte zu bezahlen, oder bevorzugen Sie eine andere Methode? Und gibt es spezielle Wünsche bezüglich des Zimmers – vielleicht eine höhere Etage oder Blick zum Park?",
+      "branches": [
+        {
+          "keywords": [
+            "kreditkarte",
+            "karte",
+            "bar",
+            "zahlung"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Vielen Dank — Thank you. Die Formalitäten sind fast erledigt. Bezüglich der Zahlung: Haben Sie vor, mit Kreditkarte zu bezahlen, oder bevorzugen Sie eine andere Methode? Und gibt es spezielle Wünsche bezüglich des Zimmers – vielleicht eine höhere Etage oder Blick zum Park?"
+    },
+    "t3a": {
+      "id": "t3a",
+      "prompt": "Kein Problem. Dann schauen wir mal, was wir für Sie arrangieren können. Für wie viele Nächte würden Sie bleiben wollen und welche Zimmerkategorie schwebt Ihnen vor?",
+      "branches": [
+        {
+          "keywords": [
+            "nacht",
+            "nächte",
+            "doppelzimmer",
+            "einzelzimmer"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "No problem. Then let's see what we can arrange for you. For how many nights would you like to stay, and what room category do you have in mind?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Sehr gut. Dann ist alles Wichtige geklärt. Eine letzte Frage: Möchten Sie unser Frühstücksbuffet in Anspruch nehmen? Es wird täglich von 7:00 bis 10:30 Uhr im Wintergarten serviert und bietet eine reichhaltige Auswahl.",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "frühstück",
+            "gerne"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Very good. Then all important matters are settled. One last question: Would you like to make use of our breakfast buffet? It is served daily from 7:00 to 10:30 in the winter garden and offers a rich selection."
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Alles klar, ich habe ein schönes Doppelzimmer für drei Nächte gefunden, inklusive Zugang zum Spa-Bereich. Möchten Sie dieses buchen? Und wie sieht es mit dem Frühstück aus?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "buchen",
+            "zimmer"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "frühstück"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Alright, I've found a nice double room for three nights, including access to the spa area. Would you like to book this? And what about breakfast?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigen Sie, ich habe Sie akustisch nicht ganz verstanden. Könnten Sie das bitte noch einmal wiederholen?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, I didn't quite catch that. Could you please repeat it?"
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Wunderbar! Hier ist Ihre Zimmerkarte mit der Nummer 407. Der Aufzug befindet sich gleich hinter der Rezeption. Sollten Sie noch Fragen haben oder etwas benötigen, zögern Sie nicht, uns anzusprechen. Wir wünschen Ihnen einen angenehmen Aufenthalt!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Wonderful! Here is your room card with number 407. The elevator is right behind the reception. Should you have any further questions or need anything, please do not hesitate to contact us. We wish you a pleasant stay!",
+      "isTerminal": true
+    }
+  }
+}

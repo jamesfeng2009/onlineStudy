@@ -1,0 +1,211 @@
+{
+  "id": "dlg-it-bank-c1",
+  "language": "it",
+  "level": "C1",
+  "scenario": "bank",
+  "title": "Servizi Bancari Avanzati",
+  "opening": "Buongiorno, benvenuto in Banca Nuova. Come posso esserle utile oggi? Ha un appuntamento o desidera effettuare qualche operazione?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno, benvenuto in Banca Nuova. Come posso esserle utile oggi? Ha un appuntamento o desidera effettuare qualche operazione?",
+      "branches": [
+        {
+          "keywords": [
+            "aprireunconto",
+            "nuovoconto",
+            "conto"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "bonifico",
+            "trasferiredenaro",
+            "trasferimento"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "bancomat",
+            "problemaatm",
+            "carta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "informazioni",
+            "domanda"
+          ],
+          "nextTurnId": "t-info"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Buongiorno (Bwon-jor-no), benvenuto in Banca Nuova. Come posso esserle utile oggi? Ha un appuntamento o desidera effettuare qualche operazione? — Good morning, welcome to Nuova Bank. How can I help you today? Do you have an appointment or would you like to perform some operation?"
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo, per l'apertura di un conto. Desidera un conto corrente tradizionale, magari con servizi di investimento integrati, o è più orientato verso un conto di deposito ad alto rendimento?",
+      "branches": [
+        {
+          "keywords": [
+            "contocorrente",
+            "tradizionale"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "investimento",
+            "altorendimento",
+            "deposito"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certo (Cher-to), per l'apertura di un conto. Desidera un conto corrente tradizionale, magari con servizi di investimento integrati, o è più orientato verso un conto di deposito ad alto rendimento? — Certainly, regarding opening an account. Do you wish for a traditional current account, perhaps with integrated investment services, or are you more inclined towards a high-yield deposit account?"
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Capisco, un bonifico. Si tratta di un trasferimento nazionale o internazionale? E l'importo supera la soglia dei 10.000 euro, per la quale sono richiesti controlli aggiuntivi?",
+      "branches": [
+        {
+          "keywords": [
+            "nazionale",
+            "initalia"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "internazionale",
+            "estero"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Capisco (Kah-pee-sko), un bonifico. Si tratta di un trasferimento nazionale o internazionale? E l'importo supera la soglia dei 10.000 euro, per la quale sono richiesti controlli aggiuntivi? — I understand, a bank transfer. Is it a national or international transfer? And does the amount exceed the threshold of 10,000 euros, for which additional checks are required?"
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Mi dispiace per l'inconveniente con il bancomat. Potrebbe descrivermi meglio cosa è successo? Ha prelevato denaro che non le è stato erogato, o la carta è stata trattenuta dalla macchina?",
+      "branches": [
+        {
+          "keywords": [
+            "denarononuscito",
+            "nonhaprelievato"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cartatrattenuta",
+            "cartabloccata"
+          ],
+          "nextTurnId": "t7"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Mi dispiace per l'inconveniente con il bancomat. Potrebbe descrivermi meglio cosa è successo? Ha prelevato denaro che non le è stato erogato, o la carta è stata trattenuta dalla macchina? — I'm sorry for the inconvenience with the ATM. Could you describe better what happened? Did you withdraw money that wasn't dispensed, or was your card retained by the machine?"
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottima scelta il conto corrente tradizionale. Per procedere, avremmo bisogno di un suo documento d'identità valido, il codice fiscale e un giustificativo di residenza. Li ha con sé?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "celo",
+            "hoconme"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Excellent choice, the traditional current account. To proceed, we would need a valid ID, your tax code, and proof of residence. Do you have them with you?"
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Perfetto, per un bonifico nazionale. Le chiedo cortesemente di compilare il modulo apposito indicando l'IBAN del beneficiario, l'importo e la causale. Se ha dubbi, sono qui per assisterla.",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "capito",
+            "procedo"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Perfect, for a national transfer. I kindly ask you to fill out the appropriate form indicating the beneficiary's IBAN, the amount, and the purpose. If you have any doubts, I'm here to assist you."
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Capisco, la carta è stata trattenuta. Per la sua sicurezza, la bloccheremo immediatamente e avvieremo la procedura per l'emissione di una nuova. Ha bisogno di prelevare contanti nel frattempo?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "contanti",
+            "denaro"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "I understand, the card was retained. For your security, we will block it immediately and start the procedure for issuing a new one. Do you need to withdraw cash in the meantime?"
+    },
+    "t-info": {
+      "id": "t-info",
+      "prompt": "Certo, sarò lieto di fornirle tutte le informazioni necessarie. Su quale argomento specifico desidera maggiori delucidazioni?",
+      "branches": [
+        {
+          "keywords": [
+            "tassi",
+            "interessi"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "promptTranslation": "Certainly, I will be happy to provide you with all the necessary information. On which specific topic do you wish for further clarification?"
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, potrebbe ripetere per favore? Non ho afferrato bene la sua richiesta.",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "ripeti",
+            "certo",
+            "ok"
+          ],
+          "nextTurnId": "t1"
+        },
+        {
+          "keywords": [
+            "no"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "promptTranslation": "Excuse me, could you please repeat? I didn't quite catch your request."
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Perfetto. Per qualsiasi altra esigenza, non esiti a contattarci. Grazie per aver scelto Banca Nuova e buona giornata!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "promptTranslation": "Perfect. For any other needs, please do not hesitate to contact us. Thank you for choosing Banca Nuova and have a good day!",
+      "isTerminal": true
+    }
+  }
+}
