@@ -1,0 +1,206 @@
+{
+  "id": "dlg-de-shopping-clothes-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "shopping-clothes",
+  "title": "Kleidung kaufen",
+  "opening": "Guten Tag! Kann ich Ihnen helfen?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag! Kann ich Ihnen helfen?",
+      "promptTranslation": "Goo-ten Tahg! Kan ikh ee-nen hel-fen? — Good day! Can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "suche",
+            "brauche",
+            "möchte"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "schauen",
+            "sehen",
+            "umsehen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ja, natürlich. Was suchen Sie denn?",
+      "promptTranslation": "Yah, nah-tyoor-likh. Vas zoo-khen zee den? — Yes, of course. What are you looking for?",
+      "branches": [
+        {
+          "keywords": [
+            "hemd",
+            "hose",
+            "kleid",
+            "rock"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "größe",
+            "groß",
+            "klein"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "rot",
+            "blau",
+            "grün",
+            "schwarz"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Ah, eine Hose in Größe M. Moment mal... Ja, die habe ich. Möchten Sie sie anprobieren?",
+      "promptTranslation": "Ah, eye-nuh Hoh-zuh in Gur-uh-suh Em. Moh-ment mahl... Yah, dee hah-buh ikh. Murkh-ten zee zee an-proh-bee-ren? — Ah, trousers in size M. One moment... Yes, I have them. Would you like to try them on?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "gerne",
+            "anprobieren"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "danke"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "sehen",
+            "schauen"
+          ],
+          "nextTurnId": "t4"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Steht Ihnen sehr gut! Gefällt sie Ihnen?",
+      "promptTranslation": "Shtayt ee-nen zair goot! Geh-felt zee ee-nen? — It suits you very well! Do you like them?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "nehmen",
+            "kaufen"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "nein",
+            "nicht",
+            "gefällt"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "teuer",
+            "preis"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "anderes",
+            "etwas"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Wunderbar! Bar oder mit Karte?",
+      "promptTranslation": "Voon-der-bar! Bar oh-der mit Kar-tuh? — Wonderful! Cash or by card?",
+      "branches": [
+        {
+          "keywords": [
+            "bar",
+            "bargeld"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "karte",
+            "kartenzahlung"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Können Sie das bitte wiederholen?",
+      "promptTranslation": "Ent-shool-dee-goong, ikh hah-buh zee nikht fer-shtan-den. Kur-nen zee das bi-tuh vee-der-hoh-len? — Excuse me, I didn't understand you. Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Vielen Dank für Ihren Einkauf! Auf Wiedersehen!",
+      "promptTranslation": "Fee-len dank fyur ee-ren ein-kauf! Ouf vee-der-ze-en! — Thank you for your purchase! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "id": "dlg-th-shopping-clothes-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "shopping-clothes",
+  "title": "ซื้อเสื้อผ้า",
+  "opening": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ/ครับ มีอะไรให้ช่วยไหมคะ/ครับ?",
+      "promptTranslation": "Sawatdee ka/krap. Mee arai hai chuay mai ka/krap? — Hello, how can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "เสื้อ",
+            "กระโปรง",
+            "กางเกง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ดู",
+            "ชม"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "อะไร"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "ค่ะ/ครับ กำลังมองหาเสื้อแบบไหน หรือไซส์อะไรดีคะ/ครับ?",
+      "promptTranslation": "Ka/krap. Kam-lang mong haa seua baep nai reuu size arai dee ka/krap? — Okay. What kind of shirt are you looking for, or what size?",
+      "branches": [
+        {
+          "keywords": [
+            "เสื้อยืด",
+            "เชิ้ต",
+            "เดรส"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไซส์s",
+            "ไซส์m",
+            "ไซส์l"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "สีแดง",
+            "สีน้ำเงิน",
+            "สีขาว"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "มีค่ะ/ครับ คุณลูกค้าต้องการลองสวมดูไหมคะ/ครับ?",
+      "promptTranslation": "Mee ka/krap. Khun look-kaa tong-gaan long suam doo mai ka/krap? — We have it. Would you like to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "ลอง",
+            "สวม"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่ลอง",
+            "ซื้อเลย"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "พอแล้ว"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "สีนั้นหมดแล้วค่ะ/ครับ แต่เรามีสีแดง สวยเหมือนกันค่ะ/ครับ สนใจไหมคะ/ครับ?",
+      "promptTranslation": "See nan mot laew ka/krap. Tae rao mee see daeng suay meuan gan ka/krap. Son-jai mai ka/krap? — That color is out of stock. But we have red, it's nice too. Interested?",
+      "branches": [
+        {
+          "keywords": [
+            "สนใจ",
+            "ลองแดง"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่สน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "เป็นยังไงบ้างคะ/ครับ ถูกใจไหมคะ/ครับ?",
+      "promptTranslation": "Pen yang-rai baang ka/krap? Took-jai mai ka/krap? — How is it? Do you like it?",
+      "branches": [
+        {
+          "keywords": [
+            "ถูกใจ",
+            "เอา",
+            "ซื้อ"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "ไม่ชอบ",
+            "ไม่เอา",
+            "เล็กไป",
+            "ใหญ่ไป"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "ได้ค่ะ/ครับ เชิญชำระเงินที่เคาน์เตอร์แคชเชียร์ได้เลยค่ะ/ครับ",
+      "promptTranslation": "Dai ka/krap. Choen cham-ra ngern tee counter cashier dai loey ka/krap. — Okay. Please proceed to the cashier counter to pay.",
+      "branches": [
+        {
+          "keywords": [
+            "จ่าย",
+            "เงิน"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "เปลี่ยน",
+            "คืน"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "สินค้าที่ซื้อแล้วไม่รับเปลี่ยนหรือคืนเงินนะคะ/ครับ ต้องขออภัยด้วยค่ะ/ครับ",
+      "promptTranslation": "Sin-kaa tee sue laew mai rap plian reuu keun ngern na ka/krap. Tong kor-a-pai duay ka/krap. — Items purchased cannot be exchanged or refunded. We apologize.",
+      "branches": [
+        {
+          "keywords": [
+            "โอเค",
+            "เข้าใจ"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษนะคะ/ครับ ไม่เข้าใจค่ะ/ครับ ช่วยพูดอีกครั้งได้ไหมคะ/ครับ?",
+      "promptTranslation": "Kor-thot na ka/krap. Mai kao-jai ka/krap. Chuay poot eek krang dai mai ka/krap? — Sorry, I don't understand. Could you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "ขอบคุณมากค่ะ/ครับ หวังว่าจะได้พบกันอีกนะคะ/ครับ",
+      "promptTranslation": "Khop khun mak ka/krap. Wang waa ja dai phop gan eek na ka/krap. — Thank you very much. Hope to see you again!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

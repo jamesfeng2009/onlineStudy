@@ -1,0 +1,164 @@
+{
+  "id": "dlg-es-interview-a1",
+  "language": "es",
+  "level": "A1",
+  "scenario": "interview",
+  "title": "Entrevista de Trabajo Básica",
+  "opening": "Hola. Gracias por venir. Háblame un poco de ti.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hola. Gracias por venir. Háblame un poco de ti.",
+      "promptTranslation": "Hola (OH-lah). Gracias (GRAH-see-ahs) por venir (veh-NEER). Háblame (AH-blah-meh) un poco (oon POH-koh) de ti. — Hello. Thanks for coming. Tell me a little about yourself.",
+      "branches": [
+        {
+          "keywords": [
+            "me llamo",
+            "soy"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "estudio",
+            "trabajo",
+            "profesión"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "otra cosa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "¿Tienes experiencia laboral?",
+      "promptTranslation": "¿Tienes (tee-EH-nes) experiencia (ex-peh-ree-EN-syah) laboral (lah-boh-RAL)? — Do you have work experience?",
+      "branches": [
+        {
+          "keywords": [
+            "sí",
+            "tengo",
+            "trabajo"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "no",
+            "no tengo",
+            "nunca",
+            "estudiante"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Excelente. ¿Dónde trabajaste antes?",
+      "promptTranslation": "Excelente (ex-seh-LEN-teh). ¿Dónde (DOHN-deh) trabajaste (trah-bah-HAS-teh) antes (AN-tes)? — Excellent. Where did you work before?",
+      "branches": [
+        {
+          "keywords": [
+            "tienda",
+            "restaurante",
+            "oficina"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "trabajé",
+            "era",
+            "en"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "no recuerdo"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "No hay problema. ¿Qué estudias o qué te interesa hacer?",
+      "promptTranslation": "No hay problema (noh ahy pro-BLEH-mah). ¿Qué (keh) estudias (es-TOO-dyahs) o qué (keh) te interesa (een-teh-REH-sah) hacer? — No problem. What do you study or what interests you to do?",
+      "branches": [
+        {
+          "keywords": [
+            "estudio",
+            "carrera",
+            "universidad"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "me interesa",
+            "quiero",
+            "aprender"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "no sé"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Disculpa, ¿podrías repetir por favor?",
+      "promptTranslation": "Disculpa (dees-KOOL-pah), ¿podrías (poh-DREE-ahs) repetir (reh-peh-TEER) por favor (por fah-VOR)? — Excuse me, could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "sí",
+            "repetir"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Muy bien. Gracias por la información. Te llamaremos pronto. ¡Adiós!",
+      "promptTranslation": "Muy bien (moo-EE bee-EN). Gracias (GRAH-see-ahs) por la información (een-for-mah-SYOHN). Te llamaremos (teh yah-mah-REH-mos) pronto (PRON-toh). ¡Adiós (ah-dee-OHS)! — Very good. Thanks for the information. We will call you soon. Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

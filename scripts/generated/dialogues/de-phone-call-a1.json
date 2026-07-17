@@ -1,0 +1,196 @@
+{
+  "id": "dlg-de-phone-call-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "phone-call",
+  "title": "Telefonanruf",
+  "opening": "Guten Tag, hier spricht Meier.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Guten Tag, hier spricht Meier.",
+      "promptTranslation": "Guten Tag — Good day, hier spricht Meier — this is Meier speaking.",
+      "branches": [
+        {
+          "keywords": [
+            "hallo",
+            "guten tag",
+            "ich bin",
+            "meinnameist"
+          ],
+          "nextTurnId": "t2_identify"
+        },
+        {
+          "keywords": [
+            "ist",
+            "herrschmidt",
+            "fraukoch"
+          ],
+          "nextTurnId": "t3_person_not_there"
+        },
+        {
+          "keywords": [
+            "wer",
+            "werist"
+          ],
+          "nextTurnId": "t2_ask_who"
+        },
+        {
+          "keywords": [
+            "",
+            "spricht"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2_ask_who": {
+      "id": "t2_ask_who",
+      "prompt": "Wer ist am Apparat, bitte?",
+      "promptTranslation": "Wer ist am Apparat — Who is on the line, bitte — please?",
+      "branches": [
+        {
+          "keywords": [
+            "ich bin",
+            "meinnameist"
+          ],
+          "nextTurnId": "t2_identify"
+        },
+        {
+          "keywords": [
+            "ist",
+            "herrschmidt",
+            "fraukoch"
+          ],
+          "nextTurnId": "t3_person_not_there"
+        },
+        {
+          "keywords": [
+            "niemand",
+            "falsch"
+          ],
+          "nextTurnId": "t-end-no-request"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2_identify": {
+      "id": "t2_identify",
+      "prompt": "Ah, guten Tag. Wen möchten Sie sprechen?",
+      "promptTranslation": "Ah, guten Tag — Ah, good day. Wen möchten Sie sprechen — Who would you like to speak to?",
+      "branches": [
+        {
+          "keywords": [
+            "herrschmidt",
+            "fraukoch",
+            "ist"
+          ],
+          "nextTurnId": "t3_person_not_there"
+        },
+        {
+          "keywords": [
+            "niemand",
+            "nurich",
+            "falsch"
+          ],
+          "nextTurnId": "t-end-no-request"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_person_not_there": {
+      "id": "t3_person_not_there",
+      "prompt": "Herr Schmidt ist leider nicht da. Kann ich etwas ausrichten?",
+      "promptTranslation": "Herr Schmidt ist leider — Mr. Schmidt is unfortunately nicht da — not here. Kann ich — Can I etwas ausrichten — take a message?",
+      "branches": [
+        {
+          "keywords": [
+            "ja",
+            "nachricht",
+            "sagen",
+            "bitte"
+          ],
+          "nextTurnId": "t4_message_taken"
+        },
+        {
+          "keywords": [
+            "nein",
+            "danke",
+            "ichrufewiederan",
+            "später",
+            "wann",
+            "zurück"
+          ],
+          "nextTurnId": "t5_call_back_later"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4_message_taken": {
+      "id": "t4_message_taken",
+      "prompt": "In Ordnung, ich werde es Herrn Schmidt sagen. Vielen Dank für Ihren Anruf! Auf Wiederhören!",
+      "promptTranslation": "In Ordnung — Alright, ich werde es Herrn Schmidt sagen — I will tell Mr. Schmidt. Vielen Dank — Many thanks für Ihren Anruf — for your call! Auf Wiederhören — Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t4_message_taken",
+      "isTerminal": true
+    },
+    "t5_call_back_later": {
+      "id": "t5_call_back_later",
+      "prompt": "Alles klar, rufen Sie bitte später noch einmal an. Auf Wiederhören!",
+      "promptTranslation": "Alles klar — Alright, rufen Sie bitte — please call später noch einmal — again later an. Auf Wiederhören — Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t5_call_back_later",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Entschuldigung, ich habe Sie nicht verstanden. Könnten Sie das bitte wiederholen?",
+      "promptTranslation": "Entschuldigung — Excuse me, ich habe Sie nicht verstanden — I didn't understand you. Könnten Sie das bitte wiederholen — Could you please repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "wiederholen",
+            "ja",
+            "nochmal"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end-no-request": {
+      "id": "t-end-no-request",
+      "prompt": "In Ordnung. Dann wünsche ich Ihnen einen schönen Tag. Auf Wiederhören!",
+      "promptTranslation": "In Ordnung — Alright. Dann wünsche ich Ihnen — Then I wish you einen schönen Tag — a nice day. Auf Wiederhören — Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t-end-no-request",
+      "isTerminal": true
+    }
+  }
+}

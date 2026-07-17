@@ -1,0 +1,190 @@
+{
+  "id": "dlg-en-interview-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "interview",
+  "title": "My First Interview",
+  "opening": "Hello, I'm [Interviewer's Name]. Welcome to the interview. Please, tell me a little about yourself.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hello, I'm [Interviewer's Name]. Welcome to the interview. Please, tell me a little about yourself.",
+      "promptTranslation": "Hello (Hel-lo), I'm (I-m) [Interviewer's Name]. Welcome (Wel-kum) to the (too thuh) interview (in-ter-vyoo). Please (pleez), tell (tel) me a (mee uh) little (li-tl) about (uh-bowt) yourself (yor-self).",
+      "branches": [
+        {
+          "keywords": [
+            "student",
+            "study",
+            "learn"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "work",
+            "job",
+            "experience"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "live",
+            "from",
+            "city"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Thank you. What kind of experience do you have? Or what skills do you bring to this job?",
+      "promptTranslation": "Thank you (Thank yoo). What (wot) kind (kynd) of experience (eks-pee-ree-ens) do you (doo yoo) have (hav)? Or what (or wot) skills (skilz) do you (doo yoo) bring (bring) to this (too this) job (job)?",
+      "branches": [
+        {
+          "keywords": [
+            "customer service",
+            "help people",
+            "sales"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "office work",
+            "computer",
+            "organize"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "fast learner",
+            "teamwork",
+            "good communication"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "That's great. Can you tell me about one of your strengths, and one area you want to improve?",
+      "promptTranslation": "That's great (That's grate). Can you (Kan yoo) tell me (tel mee) about (uh-bowt) one (wun) of your (ov yor) strengths (strengths), and one (and wun) area (air-ee-uh) you want (yoo wont) to improve (too im-proov)?",
+      "branches": [
+        {
+          "keywords": [
+            "strength",
+            "positive",
+            "good"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "weakness",
+            "improve",
+            "challenge"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "hardworking",
+            "friendly",
+            "learn new things"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thank you. Do you have any questions for me about the company or the job?",
+      "promptTranslation": "Thank you (Thank yoo). Do you (doo yoo) have (hav) any (en-ee) questions (kwes-chunz) for me (for mee) about (uh-bowt) the company (thuh kum-pah-nee) or the (or thuh) job (job)?",
+      "branches": [
+        {
+          "keywords": [
+            "salary",
+            "pay",
+            "money"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "hours",
+            "schedule",
+            "next step"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "no questions",
+            "understand",
+            "thank you"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Sorry, could you please repeat that? I didn't quite catch it.",
+      "promptTranslation": "Sorry (Sor-ree), could you (kood yoo) please (pleez) repeat (ree-peet) that (that)? I didn't (did-nt) quite (kwyt) catch (katch) it.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Thank you for your time today. We'll be in touch soon. Goodbye!",
+      "promptTranslation": "Thank you (Thank yoo) for your (for yor) time (tym) today (too-day). We'll be (weel bee) in touch (in tutch) soon (soon). Goodbye (Good-by)!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

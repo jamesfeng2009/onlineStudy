@@ -1,0 +1,316 @@
+{
+  "id": "dlg-id-shopping-clothes-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "shopping-clothes",
+  "title": "Berbelanja Pakaian",
+  "opening": "Selamat pagi/siang/sore. Ada yang bisa saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat pagi/siang/sore. Ada yang bisa saya bantu?",
+      "promptTranslation": "Selamat pagi/siang/sore — Good morning/afternoon/evening. Ada yang bisa saya bantu? — Is there anything I can help you with?",
+      "branches": [
+        {
+          "keywords": [
+            "baju",
+            "kaos",
+            "kemeja",
+            "gaun"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "celana",
+            "rok"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cari",
+            "beli"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "lihat",
+            "saja"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Tentu, Anda mencari ukuran apa dan warna apa?",
+      "promptTranslation": "Tentu — Of course. Anda mencari ukuran apa — What size are you looking for, dan warna apa? — and what color?",
+      "branches": [
+        {
+          "keywords": [
+            "ukuran",
+            "kecil",
+            "sedang",
+            "besar",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "warna",
+            "merah",
+            "biru",
+            "hijau",
+            "hitam",
+            "putih"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tahu"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik, saya ada ini. Ini ukuran M, warna biru. Silakan dicoba di ruang ganti di sana.",
+      "promptTranslation": "Baik — Okay. Saya ada ini — I have this. Ini ukuran M — This is size M, warna biru — blue color. Silakan dicoba di ruang ganti di sana — Please try it on in the changing room over there.",
+      "branches": [
+        {
+          "keywords": [
+            "coba",
+            "mau",
+            "ya"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            "warna",
+            "lain",
+            "ukuran",
+            "lain",
+            "tidak",
+            "cocok"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bagaimana? Cocok? Atau mau coba ukuran lain?",
+      "promptTranslation": "Bagaimana? — How is it? Cocok? — Does it fit? Atau mau coba ukuran lain? — Or would you like to try another size?",
+      "branches": [
+        {
+          "keywords": [
+            "cocok",
+            "mau",
+            "beli"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "cocok",
+            "besar",
+            "kecil"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "harga",
+            "berapa"
+          ],
+          "nextTurnId": "t4a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4a": {
+      "id": "t4a",
+      "prompt": "Harganya Rp 150.000. Apakah Anda tertarik?",
+      "promptTranslation": "Harganya Rp 150.000 — The price is 150,000 Rupiah. Apakah Anda tertarik? — Are you interested?",
+      "branches": [
+        {
+          "keywords": [
+            "beli",
+            "mau"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "terlalu",
+            "mahal"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "bisa",
+            "tukar",
+            "kembali",
+            "garansi"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, Anda bisa membayar di kasir. Mau bayar tunai atau kartu?",
+      "promptTranslation": "Baik — Okay. Anda bisa membayar di kasir — You can pay at the cashier. Mau bayar tunai atau kartu? — Would you like to pay cash or card?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "uang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "kartu",
+            "debit",
+            "kredit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tukar",
+            "kembali",
+            "garansi"
+          ],
+          "nextTurnId": "t5b"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5b": {
+      "id": "t5b",
+      "prompt": "Anda bisa menukar atau mengembalikan barang dalam 7 hari dengan struk pembelian. Ada pertanyaan lain?",
+      "promptTranslation": "Anda bisa menukar atau mengembalikan barang dalam 7 hari — You can exchange or return items within 7 days dengan struk pembelian — with the purchase receipt. Ada pertanyaan lain? — Any other questions?",
+      "branches": [
+        {
+          "keywords": [
+            "oke",
+            "baik",
+            "mengerti",
+            "iya"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "jadi",
+            "tidakmau"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "beli",
+            "mau"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya tidak mengerti.",
+      "promptTranslation": "Maaf — Sorry, bisa diulang? — Could you please repeat? Saya tidak mengerti — I don't understand.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih sudah berbelanja di sini! Sampai jumpa lagi!",
+      "promptTranslation": "Terima kasih sudah berbelanja di sini! — Thank you for shopping here! Sampai jumpa lagi! — See you again!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

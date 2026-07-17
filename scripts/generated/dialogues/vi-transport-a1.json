@@ -1,0 +1,280 @@
+{
+  "id": "dlg-vi-transport-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "transport",
+  "title": "Mua vé xe buýt",
+  "opening": "Chào bạn! Bạn cần giúp gì không?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn! Bạn cần giúp gì không?",
+      "promptTranslation": "Chào bạn! Bạn cần giúp gì không? (Chao ban! Ban can gyup zi khong? — Hello! Do you need any help?)",
+      "branches": [
+        {
+          "keywords": [
+            "muavé",
+            "vé"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "điđâu",
+            "xebuýt",
+            "tuyến"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "cảmơn"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "cần"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Bạn muốn mua vé đi đâu?",
+      "promptTranslation": "Bạn muốn mua vé đi đâu? (Ban muon mua ve di dau? — Where do you want to buy a ticket to?)",
+      "branches": [
+        {
+          "keywords": [
+            "hồgươm",
+            "hồhoànkiếm",
+            "bờhồ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "mộtvé",
+            "véđơn"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "khác",
+            "nơikhác"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Bạn muốn đến đâu?",
+      "promptTranslation": "Bạn muốn đến đâu? (Ban muon den dau? — Where do you want to go to?)",
+      "branches": [
+        {
+          "keywords": [
+            "hồgươm",
+            "hồhoànkiếm",
+            "bờhồ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "trạm",
+            "trạmừng",
+            "tuyến"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Bạn đi xe buýt số 09. Giá vé 7.000 đồng.",
+      "promptTranslation": "Bạn đi xe buýt số 09. Giá vé 7.000 đồng. (Ban di xe buyt so khong chin. Gia ve bay nghin dong. — You take bus number 09. The ticket price is 7,000 VND.)",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "đượcrồi",
+            "muavé"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "trạm",
+            "xuốngđâu",
+            "trạm nào"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "chuyển",
+            "đổixe",
+            "chuyểntuyến"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Bạn muốn biết thông tin về trạm dừng nào?",
+      "promptTranslation": "Bạn muốn biết thông tin về trạm dừng nào? (Ban muon biet thong tin ve tram dung nao? — Which bus stop information do you want to know?)",
+      "branches": [
+        {
+          "keywords": [
+            "hồgươm",
+            "hồhoànkiếm",
+            "bờhồ"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tuyếnnào",
+            "xethứmấy"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Bạn xuống ở trạm Bưu điện Hà Nội, gần Hồ Gươm.",
+      "promptTranslation": "Bạn xuống ở trạm Bưu điện Hà Nội, gần Hồ Gươm. (Ban xuong o tram Buu dien Ha Noi, gan Ho Guom. — You get off at Hanoi Post Office stop, near Hoan Kiem Lake.)",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "đượcrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "baolâu",
+            "thờigian"
+          ],
+          "nextTurnId": "t8"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Không cần chuyển tuyến, xe buýt số 09 đi thẳng đến đó.",
+      "promptTranslation": "Không cần chuyển tuyến, xe buýt số 09 đi thẳng đến đó. (Khong can chuyen tuyen, xe buyt so khong chin di thang den do. — No need to transfer, bus number 09 goes straight there.)",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "đượcrồi"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t8": {
+      "id": "t8",
+      "prompt": "Khoảng 20 phút nếu không kẹt xe.",
+      "promptTranslation": "Khoảng 20 phút nếu không kẹt xe. (Khoang hai muoi phut neu khong ket xe. — About 20 minutes if there's no traffic jam.)",
+      "branches": [
+        {
+          "keywords": [
+            "cảmơn",
+            "tạmbiet"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn nói lại được không?",
+      "promptTranslation": "Xin lỗi, bạn nói lại được không? (Xin loi, ban noi lai duoc khong? — Sorry, could you repeat that?)",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Chúc bạn một ngày tốt lành! Tạm biệt.",
+      "promptTranslation": "Chúc bạn một ngày tốt lành! Tạm biệt. (Chuc ban mot ngay tot lanh! Tam biet. — Have a good day! Goodbye.)",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

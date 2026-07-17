@@ -1,0 +1,241 @@
+{
+  "id": "dlg-en-hotel-a1",
+  "language": "en",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Hotel Check-in",
+  "opening": "Good evening! Welcome to the Grand Hotel. What name is the reservation under?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Good evening! Welcome to the Grand Hotel. What name is the reservation under?",
+      "promptTranslation": "/ɡʊd ˈiːvnɪŋ! ˈwɛlkəm tə ðə ɡrænd hoʊˈtɛl. wɒt neɪm ɪz ðə rɛzərˈveɪʃn ˈʌndər?/ — Good evening! Welcome to the Grand Hotel. What name is the reservation under?",
+      "branches": [
+        {
+          "keywords": [
+            "smith",
+            "jones",
+            "brown",
+            "adams",
+            "wilson"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mynameis",
+            "my",
+            "name",
+            "is"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "reservation",
+            "booking"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "Okay, and what name is that reservation under, please?",
+      "promptTranslation": "/oʊˈkeɪ, ænd wɒt neɪm ɪz ðæt rɛzərˈveɪʃn ˈʌndər, pliːz?/ — Okay, and what name is that reservation under, please?",
+      "branches": [
+        {
+          "keywords": [
+            "smith",
+            "jones",
+            "brown",
+            "adams",
+            "wilson"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "mynameis",
+            "my",
+            "name",
+            "is"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Ah, excellent! Could I please see your ID or passport?",
+      "promptTranslation": "/ɑː, ˈɛksələnt! kʊd aɪ pliːz siː jɔːr aɪˈdiː ɔːr ˈpɑːspɔːrt?/ — Ah, excellent! Could I please see your ID or passport?",
+      "branches": [
+        {
+          "keywords": [
+            "id",
+            "passport",
+            "here",
+            "itishere"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "yes",
+            "ok"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Thank you. And how will you be paying today? Card or cash?",
+      "promptTranslation": "/θæŋk juː. ænd haʊ wɪl juː biː ˈpeɪɪŋ təˈdeɪ? kɑːrd ɔːr kæʃ?/ — Thank you. And how will you be paying today? Card or cash?",
+      "branches": [
+        {
+          "keywords": [
+            "card",
+            "creditcard",
+            "debitcard"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cash",
+            "money"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "pay"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Alright, got it. You have a standard room. Would you prefer a single bed or a double bed?",
+      "promptTranslation": "/ɔːlˈraɪt, ɡɒt ɪt. juː hæv ə ˈstændərd ruːm. wʊd juː prɪˈfɜːr ə ˈsɪŋɡl bɛd ɔːr ə ˈdʌbl bɛd?/ — Alright, got it. You have a standard room. Would you prefer a single bed or a double bed?",
+      "branches": [
+        {
+          "keywords": [
+            "single",
+            "one"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "double",
+            "two"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "bed"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Okay, a bed for you. One last thing, would you like to add breakfast for tomorrow morning?",
+      "promptTranslation": "/oʊˈkeɪ, ə bɛd fɔːr juː. wʌn lɑːst θɪŋ, wʊd juː laɪk tuː æd ˈbrɛkfəst fɔːr təˈmɒroʊ ˈmɔːrnɪŋ?/ — Okay, a bed for you. One last thing, would you like to add breakfast for tomorrow morning?",
+      "branches": [
+        {
+          "keywords": [
+            "yes",
+            "please",
+            "breakfast"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "no",
+            "nothanks"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Excellent! Here is your room key. Your room is 402 on the fourth floor. Enjoy your stay!",
+      "promptTranslation": "/ˈɛksələnt! hɪər ɪz jɔːr ruːm kiː. jɔːr ruːm ɪz fɔːr oʊ tuː ɒn ðə fɔːrθ flɔːr. ɪnˈdʒɔɪ jɔːr steɪ!/ — Excellent! Here is your room key. Your room is 402 on the fourth floor. Enjoy your stay!",
+      "branches": [],
+      "fallbackBranchId": "t6",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "I'm sorry, I didn't quite catch that. Could you please repeat?",
+      "promptTranslation": "/aɪm ˈsɒri, aɪ dɪdnt kwaɪt kætʃ ðæt. kʊd juː pliːz rɪˈpiːt?/ — I'm sorry, I didn't quite catch that. Could you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    }
+  }
+}

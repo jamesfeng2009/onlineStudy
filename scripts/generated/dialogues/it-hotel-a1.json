@@ -1,0 +1,241 @@
+{
+  "id": "dlg-it-hotel-a1",
+  "language": "it",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Check-in in Hotel",
+  "opening": "Benvenuto/a all'Hotel Bellavista! Posso aiutarla?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Buongiorno! Ha una prenotazione?",
+      "promptTranslation": "Buongiorno! (Bwon-JOR-noh!) Ha una prenotazione? (Ah OO-nah preh-noh-tah-TSYOH-neh?) — Good morning! Do you have a reservation?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "si",
+            "prenotazione",
+            "ho"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "nessuna"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "ripetere",
+            "può",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Certo. A nome di chi è la prenotazione?",
+      "promptTranslation": "Certo. (CHER-toh.) A nome di chi è la prenotazione? (Ah NOH-meh dee kee eh lah preh-noh-tah-TSYOH-neh?) — Certainly. Under what name is the reservation?",
+      "branches": [
+        {
+          "keywords": [
+            "nome",
+            "cognome",
+            "rossi",
+            "bianchi",
+            "mio"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "documento",
+            "passaporto",
+            "identità"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "ripetere",
+            "può",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Perfetto. Avrei bisogno di un documento d'identità e una carta di credito, per favore.",
+      "promptTranslation": "Perfetto. (Per-FET-toh.) Avrei bisogno di un documento d'identità (Av-REI bee-ZOH-nyoh dee oon doh-koo-MEN-toh dee-den-tee-TAH) e una carta di credito, per favore. (eh OO-nah CAR-tah dee KREH-dee-toh, per fah-VOH-reh.) — Perfect. I would need an ID and a credit card, please.",
+      "branches": [
+        {
+          "keywords": [
+            "ecco",
+            "tieni",
+            "documento",
+            "carta",
+            "sì"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "contanti",
+            "cash",
+            "no",
+            "nonho"
+          ],
+          "nextTurnId": "t3_alt_payment"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "ripetere",
+            "può",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_alt_payment": {
+      "id": "t3_alt_payment",
+      "prompt": "Preferiamo pagamenti con carta, ma possiamo fare un'eccezione. Ha una carta di credito?",
+      "promptTranslation": "Preferiamo pagamenti con carta, (Preh-feh-RYAH-moh pah-gah-MEN-tee kon CAR-tah,) ma possiamo fare un'eccezione. (mah pohs-SYAH-moh FAH-reh oon-ech-cheh-TSYOH-neh.) Ha una carta di credito? (Ah OO-nah CAR-tah dee KREH-dee-toh?) — We prefer card payments, but we can make an exception. Do you have a credit card?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "si",
+            "ecco",
+            "carta"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "no",
+            "solocontanti",
+            "solo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "ripetere",
+            "può",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "La sua camera è la 203. Desidera la colazione inclusa?",
+      "promptTranslation": "La sua camera è la 203. (Lah SOO-ah CAH-meh-rah eh lah doo-eh-OH-treh.) Desidera la colazione inclusa? (Deh-see-DEH-rah lah koh-lah-TSYOH-neh in-KLOO-sah?) — Your room is 203. Would you like breakfast included?",
+      "branches": [
+        {
+          "keywords": [
+            "sì",
+            "si",
+            "colazione"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "no",
+            "non",
+            "grazie"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "scusi",
+            "ripetere",
+            "può",
+            "noncapisco"
+          ],
+          "nextTurnId": "t-repeat"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Mi scusi, può ripetere per favore?",
+      "promptTranslation": "Mi scusi, (Mee SKOO-zee,) può ripetere per favore? (PWOH ree-PEH-teh-reh per fah-VOH-reh?) — Excuse me, can you please repeat?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Ottimo! Ecco la chiave. Le auguro un buon soggiorno! Arrivederci!",
+      "promptTranslation": "Ottimo! (OT-tee-moh!) Ecco la chiave. (EK-koh lah KYAH-veh.) Le auguro un buon soggiorno! (Leh OW-goo-roh oon bwon soh-JOR-noh!) Arrivederci! (Ar-ree-veh-DER-chee!) — Great! Here is the key. I wish you a pleasant stay! Goodbye!",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "isTerminal": true
+    }
+  }
+}

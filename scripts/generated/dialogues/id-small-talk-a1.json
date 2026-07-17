@@ -1,0 +1,203 @@
+{
+  "id": "dlg-id-small-talk-a1",
+  "language": "id",
+  "level": "A1",
+  "scenario": "small-talk",
+  "title": "Obrolan Santai",
+  "opening": "Halo! Apa kabar hari ini?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Halo! Apa kabar hari ini?",
+      "promptTranslation": "Halo (hah-lo)! Apa (ah-pah) kabar (kah-bar) hari (hah-ree) ini (ee-nee)? — Hello! How are you today?",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "bagus",
+            "sehat",
+            "lumayan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidakbaik",
+            "sibuk",
+            "lelah"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "apa kabar",
+            "kabar"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Oh, begitu ya. Ngomong-ngomong, kamu suka melakukan apa di waktu luang?",
+      "promptTranslation": "Oh (oh), begitu (be-gee-too) ya (yah). Ngomong-ngomong (ngo-mong-ngo-mong), kamu (kah-moo) suka (soo-kah) melakukan (me-lah-koo-kan) apa (ah-pah) di (dee) waktu (wahk-too) luang (loo-ang)? — Oh, I see. By the way, what do you like to do in your free time?",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "buku",
+            "membaca"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "olahraga",
+            "lari",
+            "berenang"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "masak",
+            "makan",
+            "kuliner"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Menarik sekali! Lalu, apa rencanamu untuk akhir pekan ini?",
+      "promptTranslation": "Menarik (me-na-rik) sekali (se-kah-lee)! Lalu (lah-loo), apa (ah-pah) rencanamu (ren-cha-na-moo) untuk (oon-took) akhir (ah-khir) pekan (pe-kan) ini (ee-nee)? — That's very interesting! So, what are your plans for this weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "tidur",
+            "istirahat",
+            "santai"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "teman",
+            "keluarga"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "belajar",
+            "sibuk"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Kedengarannya menyenangkan! Ngomong-ngomong, kamu lebih suka nonton film atau mencoba makanan baru?",
+      "promptTranslation": "Kedengarannya (ke-den-ga-ran-nyah) menyenangkan (me-nye-nang-kan)! Ngomong-ngomong (ngo-mong-ngo-mong), kamu (kah-moo) lebih (le-bih) suka (soo-kah) nonton (non-ton) film (film) atau (ah-tau) mencoba (men-cho-ba) makanan (ma-ka-nan) baru (ba-roo)? — That sounds fun! By the way, do you prefer watching movies or trying new food?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "nonton",
+            "bioskop"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "makanan",
+            "kuliner",
+            "makan"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "keduanya",
+            "dua-duanya"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Pilihan yang bagus! Senang ngobrol denganmu. Sampai jumpa!",
+      "promptTranslation": "Pilihan (pee-lee-han) yang (yang) bagus (ba-goos)! Senang (se-nang) ngobrol (ngo-brol) denganmu (de-ngan-moo). Sampai (sam-pai) jumpa (joom-pah)! — Good choice! Nice talking to you. See you!",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "ya",
+            "baik",
+            "terimakasih"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, bisa diulang? Saya kurang mengerti.",
+      "promptTranslation": "Maaf (mah-ahf), bisa (bee-sah) diulang (dee-oo-lang)? Saya (sah-yah) kurang (koo-rang) mengerti (men-ger-tee). — Sorry, could you repeat that? I don't quite understand.",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ulang"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Sampai jumpa lagi!",
+      "promptTranslation": "Sampai (sam-pai) jumpa (joom-pah) lagi (la-gee)! — See you again!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "id": "dlg-de-small-talk-a1",
+  "language": "de",
+  "level": "A1",
+  "scenario": "small-talk",
+  "title": "Kleiner Plausch mit Anna",
+  "opening": "Hallo! Ich bin Anna. Wie war dein Wochenende?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hallo! Ich bin Anna. Wie war dein Wochenende?",
+      "promptTranslation": "HAL-lo! Ich bin AN-na. Vee var dein WO-chen-en-de? — Hello! I'm Anna. How was your weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "gut",
+            "schön",
+            "toll",
+            "super"
+          ],
+          "nextTurnId": "t2_pos"
+        },
+        {
+          "keywords": [
+            "nichtgut",
+            "langweilig",
+            "stress",
+            "schlecht"
+          ],
+          "nextTurnId": "t2_neg"
+        },
+        {
+          "keywords": [
+            "okay",
+            "normal"
+          ],
+          "nextTurnId": "t2_pos"
+        },
+        {
+          "keywords": [
+            "",
+            "wasmachstdu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2_pos": {
+      "id": "t2_pos",
+      "prompt": "Das ist schön! Was hast du gemacht?",
+      "promptTranslation": "Das ist SCHOEN! Vas hast doo ge-MACHT? — That's nice! What did you do?",
+      "branches": [
+        {
+          "keywords": [
+            "film",
+            "kino",
+            "serie",
+            "tv"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "essen",
+            "gekocht",
+            "restaurant"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "sport",
+            "treffen",
+            "freunde",
+            "familie"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "",
+            "nichts"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2_neg": {
+      "id": "t2_neg",
+      "prompt": "Oh, das tut mir leid. Was ist passiert?",
+      "promptTranslation": "Oh, das toot meer LIDE. Vas ist pas-SEERT? — Oh, I'm sorry. What happened?",
+      "branches": [
+        {
+          "keywords": [
+            "arbeit",
+            "lernen",
+            "stress"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "krank",
+            "müde",
+            "erkältung"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "wetter",
+            "regen",
+            "kalt"
+          ],
+          "nextTurnId": "t3_activity"
+        },
+        {
+          "keywords": [
+            "",
+            "nichts"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3_activity": {
+      "id": "t3_activity",
+      "prompt": "Das klingt interessant! Hast du auch Hobbys?",
+      "promptTranslation": "Das klingt in-te-res-SANT! Hast doo auch HOB-bys? — That sounds interesting! Do you also have hobbies?",
+      "branches": [
+        {
+          "keywords": [
+            "lesen",
+            "bücher",
+            "buch"
+          ],
+          "nextTurnId": "t4_goodbye"
+        },
+        {
+          "keywords": [
+            "musik",
+            "hören",
+            "konzert"
+          ],
+          "nextTurnId": "t4_goodbye"
+        },
+        {
+          "keywords": [
+            "reisen",
+            "urlaub",
+            "fotografieren"
+          ],
+          "nextTurnId": "t4_goodbye"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4_goodbye": {
+      "id": "t4_goodbye",
+      "prompt": "Ah, sehr schön! Ich muss jetzt leider gehen. Schön, dich kennengelernt zu haben!",
+      "promptTranslation": "Ah, sehr SCHOEN! Ich muss yetzt LEI-der GE-hen. Schön, dich KEN-nen-ge-lernt tsoo HA-ben! — Ah, very nice! I unfortunately have to go now. Nice to have met you!",
+      "branches": [
+        {
+          "keywords": [
+            "danke",
+            "gleichfalls"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "tschüss",
+            "aufwiedersehen"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "okay",
+            "machsgut"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "ja"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Wie bitte? Könntest du das wiederholen?",
+      "promptTranslation": "Wie BIT-te? KOEN-ntest doo das VEE-der-ho-len? — Sorry? Could you repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "ja",
+            "bitte"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Es war schön, mit dir zu sprechen. Tschüss!",
+      "promptTranslation": "Es var SCHOEN, mit deer tsoo SPRE-chen. TSHOESS! — It was nice talking to you. Bye!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

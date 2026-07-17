@@ -1,0 +1,340 @@
+{
+  "id": "dlg-ms-small-talk-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "small-talk",
+  "title": "Sembang Ringan (Small Talk)",
+  "opening": "Hai! Nama saya Siti. Awak apa khabar?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Hai! Nama saya Siti. Awak apa khabar?",
+      "promptTranslation": "Hi! My name is Siti. How are you? (Apa khabar?)",
+      "branches": [
+        {
+          "keywords": [
+            "baik",
+            "bagus",
+            "sihat"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tidakbaik",
+            "penat",
+            "bosan"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "nama",
+            "siapa"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "Nama saya Siti. Seronok bertemu dengan awak! Apa awak buat hujung minggu lepas?",
+      "promptTranslation": "My name is Siti. Nice to meet you! What did you do last weekend?",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "rumah",
+            "tidur"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "melawat",
+            "keluar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "belajar"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Saya baik juga. Apa awak buat hujung minggu lepas?",
+      "promptTranslation": "I'm good too. What did you do last weekend? (Apa awak buat hujung minggu lepas?)",
+      "branches": [
+        {
+          "keywords": [
+            "berehat",
+            "rumah",
+            "tidur"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "jalan",
+            "melawat",
+            "keluar"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kerja",
+            "belajar"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Oh, menarik! Awak ada hobi tak?",
+      "promptTranslation": "Oh, interesting! Do you have any hobbies? (Awak ada hobi tak?)",
+      "branches": [
+        {
+          "keywords": [
+            "baca",
+            "filem",
+            "menonton"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "sukan",
+            "luar",
+            "aktiviti"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "masak",
+            "makan",
+            "resepi"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Wah, seronoknya! Awak pergi mana? Makan apa?",
+      "promptTranslation": "Wow, how fun! (Seronoknya!) Where did you go? What did you eat?",
+      "branches": [
+        {
+          "keywords": [
+            "restoran",
+            "makan",
+            "kafe"
+          ],
+          "nextTurnId": "t7"
+        },
+        {
+          "keywords": [
+            "pawagam",
+            "beli-belah",
+            "shopping"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "taman",
+            "pantai",
+            "gunung"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Bestnya! Awak suka filem/buku jenis apa?",
+      "promptTranslation": "How nice! What kind of movies/books do you like?",
+      "branches": [
+        {
+          "keywords": [
+            "aksi",
+            "seram",
+            "thriller"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "komedi",
+            "romantik",
+            "drama"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "dokumentari",
+            "belajar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Hebatnya! Awak selalu buat aktiviti tu?",
+      "promptTranslation": "Great! Do you often do that activity?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "selalu",
+            "sering"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "kadang-kadang",
+            "jarang"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "baru",
+            "cuba"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t7": {
+      "id": "t7",
+      "prompt": "Sedapnya! Apa makanan kegemaran awak?",
+      "promptTranslation": "Delicious! What's your favorite food?",
+      "branches": [
+        {
+          "keywords": [
+            "nasilemak",
+            "laksa",
+            "roticanai"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "pizza",
+            "burger",
+            "pasta"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "kek",
+            "aiskrim",
+            "manisan"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-end",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang lagi? Saya tidak faham.",
+      "promptTranslation": "Sorry, can you repeat that? I don't understand. (Maaf, boleh ulang lagi?)",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah, seronok bersembang dengan awak! Jumpa lagi!",
+      "promptTranslation": "Alright, it was nice chatting with you! See you again! (Jumpa lagi!)",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

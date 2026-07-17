@@ -1,0 +1,191 @@
+{
+  "id": "dlg-vi-interview-a1",
+  "language": "vi",
+  "level": "A1",
+  "scenario": "interview",
+  "title": "Phỏng vấn xin việc",
+  "opening": "Chào bạn, mời bạn giới thiệu một chút về bản thân.",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Chào bạn, mời bạn giới thiệu một chút về bản thân.",
+      "promptTranslation": "Chào bạn (Chao ban), mời bạn (moi ban) giới thiệu (gioi thieu) một chút (mot chut) về bản thân (ve ban than). — Hello, please introduce yourself a bit.",
+      "branches": [
+        {
+          "keywords": [
+            "tên",
+            "là",
+            "tôi"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "sinhviên",
+            "họcsinh"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "làmviệc",
+            "kinhnghiệm"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Cảm ơn bạn. Tại sao bạn muốn làm việc ở đây?",
+      "promptTranslation": "Cảm ơn bạn (Cam on ban). Tại sao (Tai sao) bạn muốn (ban muon) làm việc (lam viec) ở đây (o day)? — Thank you. Why do you want to work here?",
+      "branches": [
+        {
+          "keywords": [
+            "thích",
+            "muốn",
+            "côngviệc",
+            "cơhội"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "học",
+            "pháttriển"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "gầnnhà",
+            "tiền",
+            "ổnđịnh"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Được rồi. Bạn có điểm mạnh nào không?",
+      "promptTranslation": "Được rồi (Duoc roi). Bạn có (Ban co) điểm mạnh (diem manh) nào không (nao khong)? — Okay. Do you have any strengths?",
+      "branches": [
+        {
+          "keywords": [
+            "chămchỉ",
+            "năngđộng"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "họchỏi",
+            "sángtạo"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "kiênnhẫn",
+            "tráchnhiệm"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Thế còn điểm yếu của bạn là gì?",
+      "promptTranslation": "Thế còn (The con) điểm yếu (diem yeu) của bạn (cua ban) là gì (la gi)? — And what about your weaknesses?",
+      "branches": [
+        {
+          "keywords": [
+            "thiếukinhnghiệm",
+            "chậm"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "ngại",
+            "ítnói"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "hoànthiện",
+            "cảithiện"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "xinlỗi",
+            "khônghiểu"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Xin lỗi, bạn có thể nói lại được không?",
+      "promptTranslation": "Xin lỗi (Sin loi), bạn có thể (ban co the) nói lại (noi lai) được không (duoc khong)? — Excuse me, could you repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "nóilại"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Cảm ơn bạn đã đến. Chúng tôi sẽ liên hệ lại sớm.",
+      "promptTranslation": "Cảm ơn bạn đã đến (Cam on ban da den). Chúng tôi sẽ liên hệ lại sớm (Chung toi se lien he lai som). — Thank you for coming. We will contact you soon.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

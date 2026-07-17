@@ -1,0 +1,259 @@
+{
+  "id": "dlg-ms-phone-call-a1",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "phone-call",
+  "title": "Panggilan Telefon",
+  "opening": "Helo, dengan siapa saya bercakap?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Helo, dengan siapa saya bercakap?",
+      "promptTranslation": "Hello, (Helo), with whom am I speaking? (dengan siapa saya bercakap?)",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "boleh",
+            "cakap",
+            "dengan",
+            "jumpa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "siapa",
+            "ini",
+            "awak"
+          ],
+          "nextTurnId": "t1b"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t1b": {
+      "id": "t1b",
+      "prompt": "Ini Aina. Ada apa boleh saya bantu?",
+      "promptTranslation": "This is Aina. (Ini Aina). How can I help you? (Ada apa boleh saya bantu?)",
+      "branches": [
+        {
+          "keywords": [
+            "saya",
+            "nama",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "cakap",
+            "dengan",
+            "nak",
+            "jumpa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "terima",
+            "kasih",
+            "ok"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baik. Ada apa boleh saya bantu?",
+      "promptTranslation": "Okay. (Baik). How can I help you? (Ada apa boleh saya bantu?)",
+      "branches": [
+        {
+          "keywords": [
+            "cakap",
+            "dengan",
+            "nak",
+            "jumpa"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "tinggalkan",
+            "pesanan",
+            "mesej"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "salah",
+            "nombor",
+            "maaf",
+            "silap"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Maaf, Encik Tan tiada di pejabat sekarang. Boleh saya ambil pesanan?",
+      "promptTranslation": "Sorry, (Maaf), Mr. Tan is not in the office now. (Encik Tan tiada di pejabat sekarang). Can I take a message? (Boleh saya ambil pesanan?)",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sila",
+            "boleh"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "jangan",
+            "tak",
+            "terima"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "telefon",
+            "semula",
+            "call",
+            "balik"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Baik. Apa pesanan anda?",
+      "promptTranslation": "Okay. (Baik). What is your message? (Apa pesanan anda?)",
+      "branches": [
+        {
+          "keywords": [
+            "tolong",
+            "beritahu",
+            "telefon",
+            "call"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tiada",
+            "takde",
+            "nothing",
+            "tak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t5"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Baik, saya akan sampaikan pesanan anda. Terima kasih.",
+      "promptTranslation": "Okay, I will pass on your message. (Baik, saya akan sampaikan pesanan anda). Thank you. (Terima kasih).",
+      "branches": [
+        {
+          "keywords": [
+            "ok",
+            "baik",
+            "terima",
+            "kasih"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t-end"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, saya tidak faham. Boleh ulang?",
+      "promptTranslation": "Sorry, I don't understand. (Maaf, saya tidak faham). Can you repeat? (Boleh ulang?)",
+      "branches": [
+        {
+          "keywords": [
+            "",
+            "apa"
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih, selamat tinggal.",
+      "promptTranslation": "Thank you, goodbye.",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

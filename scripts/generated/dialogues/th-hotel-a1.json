@@ -1,0 +1,223 @@
+{
+  "id": "dlg-th-hotel-a1",
+  "language": "th",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "การเช็คอินโรงแรม",
+  "opening": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มีการจองไว้ไหมคะ",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "สวัสดีค่ะ ยินดีต้อนรับค่ะ มีการจองไว้ไหมคะ",
+      "promptTranslation": "Sawadee ka. Yindee tawn rap ka. Mee gaan jong wai mai ka? — Hello. Welcome. Do you have a reservation?",
+      "branches": [
+        {
+          "keywords": [
+            "มี",
+            "จอง",
+            "ใช่"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "ไม่",
+            "ไม่มี",
+            "ยัง"
+          ],
+          "nextTurnId": "t1a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t1a": {
+      "id": "t1a",
+      "prompt": "ไม่เป็นไรค่ะ รบกวนขอชื่อและนามสกุลด้วยค่ะ",
+      "promptTranslation": "Mai pen rai ka. Rob guan kaw chue lae naam-sa-kun duay ka. — No problem. May I have your full name, please?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "นามสกุล",
+            "ฉันชื่อ"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "นี่",
+            "ให้",
+            "ส่ง"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "รบกวนขอชื่อ-นามสกุล และบัตรประชาชน หรือพาสปอร์ตด้วยค่ะ",
+      "promptTranslation": "Rob guan kaw chue-naam-sa-kun lae bat-pra-cha-chon rue paat-sap-port duay ka. — May I have your full name and ID card or passport, please?",
+      "branches": [
+        {
+          "keywords": [
+            "ชื่อ",
+            "บัตร",
+            "พาสปอร์ต",
+            "นี่"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "ลืม",
+            "แค่ชื่อ"
+          ],
+          "nextTurnId": "t2a"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2a": {
+      "id": "t2a",
+      "prompt": "ขออนุญาตสอบถามเอกสารยืนยันตัวตนอีกครั้งนะคะ",
+      "promptTranslation": "Kaw a-nu-yaat sawp-taam ek-ka-san yuen-yan tua-ton eek krang na ka. — May I please ask for your identification document again?",
+      "branches": [
+        {
+          "keywords": [
+            "มี",
+            "เจอ",
+            "นี่",
+            "ให้"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "ไม่มี",
+            "แล้ว",
+            "ส่ง"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "ขอบคุณค่ะ การจองของคุณเรียบร้อยแล้วค่ะ ชำระเงินด้วยอะไรดีคะ",
+      "promptTranslation": "Kawb-koon ka. Gaan jong khong khun riap roi laew ka. Cham-ra ngoen duay a-rai dee ka? — Thank you. Your reservation is confirmed. How would you like to pay?",
+      "branches": [
+        {
+          "keywords": [
+            "บัตร",
+            "เครดิต",
+            "การ์ด"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "เงินสด",
+            "สด"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "เรียบร้อยค่ะ นี่คีย์การ์ดค่ะ ห้องพักเลขที่ 305 ชั้น 3 นะคะ ต้องการรับอาหารเช้าไหมคะ",
+      "promptTranslation": "Riap roi ka. Nee kee-gaat ka. Hong pak lek tee saam-roi-haa chan saam na ka. Tong gaan rap a-harn chao mai ka? — All set. Here's your key card. Room number 305 on the 3rd floor. Would you like breakfast?",
+      "branches": [
+        {
+          "keywords": [
+            "เอา",
+            "ต้องการ",
+            "รับ",
+            "ใช่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "ไม่เอา",
+            "ไม่ต้องการ",
+            "ไม่รับ",
+            "ไม่"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "รับทราบค่ะ ขอให้มีความสุขกับการพักผ่อนนะคะ สวัสดีค่ะ",
+      "promptTranslation": "Rap saap ka. Kaw hai mee kwarm sook gap gaan pak-pon na ka. Sawadee ka. — Understood. Have a pleasant stay. Goodbye.",
+      "branches": [],
+      "fallbackBranchId": "t5",
+      "isTerminal": true
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "ขอโทษค่ะ พูดอีกครั้งได้ไหมคะ",
+      "promptTranslation": "Kaw-toht ka. Pood eek krang dai mai ka? — Sorry. Could you please say that again?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    }
+  }
+}

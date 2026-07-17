@@ -91,30 +91,33 @@ const argv = Object.fromEntries(
 );
 const ONLY_LANG = argv.lang as string | undefined;
 const ONLY_SCENARIO = argv.scenario as string | undefined;
+// 支持 --level=A1,A2 过滤(逗号分隔,大小写不敏感)
+const ONLY_LEVEL = argv.level as string | undefined;
 // P4-5: filter by provider so GitHub Actions can run only gemini languages
 // (en/es/fr/de/it/th) while DashScope languages (zh/ja/ko/yue) run locally.
 const ONLY_PROVIDER = argv.provider as Provider | undefined;
 
-// ---- Generation plan: per (language, scenario) one scene. ----
-// P4-1: 扩展到 10 语言 × 6 场景,语言等级对齐 languages.ts
+// ---- Generation plan: per (language, scenario, level) one scene. ----
+// 扩展到 13 语言 × 14 场景 × 多 level。levels 对齐 language-registry。
 type LangKey = "en" | "zh" | "ja" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue" | "vi" | "ms" | "id";
 
-const LANG_META: Record<LangKey, { native: string; english: string; level: string }> = {
-  en:  { native: "English",                          english: "English",    level: "A1" },
-  zh:  { native: "Chinese (Simplified)",             english: "Chinese",    level: "HSK2" },
-  ja:  { native: "Japanese",                          english: "Japanese",   level: "N5" },
-  ko:  { native: "Korean",                            english: "Korean",     level: "TOPIK1" },
-  es:  { native: "Spanish",                           english: "Spanish",    level: "A1" },
-  fr:  { native: "French",                             english: "French",     level: "A1" },
-  de:  { native: "German",                             english: "German",     level: "A1" },
-  it:  { native: "Italian",                            english: "Italian",    level: "A1" },
-  th:  { native: "Thai",                               english: "Thai",       level: "A1" },
-  yue: { native: "Cantonese (Traditional, Hong Kong)", english: "Cantonese",  level: "A1" },
-  vi:  { native: "Vietnamese",                         english: "Vietnamese", level: "A1" },
-  ms:  { native: "Malay",                              english: "Malay",      level: "A1" },
-  id:  { native: "Indonesian",                         english: "Indonesian", level: "A1" },
+const LANG_META: Record<LangKey, { native: string; english: string; levels: string[] }> = {
+  en:  { native: "English",                          english: "English",    levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  zh:  { native: "Chinese (Simplified)",             english: "Chinese",    levels: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6"] },
+  ja:  { native: "Japanese",                          english: "Japanese",   levels: ["N5", "N4", "N3", "N2", "N1"] },
+  ko:  { native: "Korean",                            english: "Korean",     levels: ["TOPIK1", "TOPIK2", "TOPIK3", "TOPIK4", "TOPIK5", "TOPIK6"] },
+  es:  { native: "Spanish",                           english: "Spanish",    levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  fr:  { native: "French",                             english: "French",     levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  de:  { native: "German",                             english: "German",     levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  it:  { native: "Italian",                            english: "Italian",    levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  th:  { native: "Thai",                               english: "Thai",       levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  yue: { native: "Cantonese (Traditional, Hong Kong)", english: "Cantonese",  levels: ["A1", "A2", "B1", "B2"] },
+  vi:  { native: "Vietnamese",                         english: "Vietnamese", levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  ms:  { native: "Malay",                              english: "Malay",      levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
+  id:  { native: "Indonesian",                         english: "Indonesian", levels: ["A1", "A2", "B1", "B2", "C1", "C2"] },
 };
 
+// 14 个场景覆盖生活/工作/旅行/服务/医疗等高频对话域
 const SCENARIOS: { id: string; title: string; description: string }[] = [
   { id: "hotel", title: "Hotel check-in", description: "Checking into a hotel — providing name, ID, payment, room preference, breakfast." },
   { id: "phone-call", title: "Phone call", description: "Making or receiving a phone call — identifying yourself, asking who's calling, leaving a message." },
@@ -122,18 +125,33 @@ const SCENARIOS: { id: string; title: string; description: string }[] = [
   { id: "transport", title: "Public transport", description: "Taking a bus/train — buying ticket, asking about stops, transfers, delays." },
   { id: "shopping-clothes", title: "Shopping (clothes)", description: "Buying clothes — asking for size, color, trying on, paying, returning/exchanging." },
   { id: "small-talk", title: "Small talk", description: "Casual small talk at a party or work — hobbies, weekend, family, movies, food." },
+  { id: "restaurant", title: "Restaurant", description: "Ordering food at a restaurant — menu, recommendations, dietary restrictions, paying the bill, tipping." },
+  { id: "airport", title: "Airport", description: "At the airport — check-in, security, gate, boarding pass, lost luggage, flight delays." },
+  { id: "doctor", title: "Doctor visit", description: "Visiting a doctor — describing symptoms, pain, duration, allergies, prescriptions, follow-up." },
+  { id: "bank", title: "Bank", description: "At the bank — opening an account, exchanging money, ATM issues, transfer, PIN reset." },
+  { id: "post-office", title: "Post office", description: "At the post office — sending a parcel, stamps, registered mail, tracking, customs form." },
+  { id: "taxi", title: "Taxi", description: "Taking a taxi — telling destination, fare, route, traffic, payment, change, luggage." },
+  { id: "directions", title: "Asking directions", description: "Asking for directions on the street — landmarks, turns, distance, transport, nearby places." },
+  { id: "weather", title: "Weather chat", description: "Talking about the weather — forecast, seasons, temperature, rain, plans affected by weather." },
 ];
 
-function plan(): { lang: LangKey; scenario: typeof SCENARIOS[number] }[] {
-  const out: { lang: LangKey; scenario: typeof SCENARIOS[number] }[] = [];
+function plan(): { lang: LangKey; scenario: typeof SCENARIOS[number]; level: string }[] {
+  const out: { lang: LangKey; scenario: typeof SCENARIOS[number]; level: string }[] = [];
   const langs = (Object.keys(LANG_META) as LangKey[])
     .filter((l) => !ONLY_LANG || l === ONLY_LANG)
     // P4-5: 按 provider 过滤
     .filter((l) => !ONLY_PROVIDER || PROVIDER_BY_LANG[l] === ONLY_PROVIDER);
+  // ONLY_SCENARIO 支持逗号分隔
+  const scenarioFilter = ONLY_SCENARIO ? ONLY_SCENARIO.split(",").map((s) => s.trim()) : null;
+  // ONLY_LEVEL 支持逗号分隔
+  const levelFilter = ONLY_LEVEL ? ONLY_LEVEL.split(",").map((l) => l.trim().toLowerCase()) : null;
   for (const lang of langs) {
     for (const sc of SCENARIOS) {
-      if (ONLY_SCENARIO && sc.id !== ONLY_SCENARIO) continue;
-      out.push({ lang, scenario: sc });
+      if (scenarioFilter && !scenarioFilter.includes(sc.id)) continue;
+      for (const level of LANG_META[lang].levels) {
+        if (levelFilter && !levelFilter.includes(level.toLowerCase())) continue;
+        out.push({ lang, scenario: sc, level });
+      }
     }
   }
   return out;
@@ -143,10 +161,10 @@ function plan(): { lang: LangKey; scenario: typeof SCENARIOS[number] }[] {
 const RESPONSE_SCHEMA = {
   type: "OBJECT",
   properties: {
-    id: { type: "STRING", description: "Lowercase id like 'dlg-en-hotel'." },
+    id: { type: "STRING", description: "Lowercase id like 'dlg-en-hotel-a1' (lang + scenario + level, all lowercase)." },
     language: { type: "STRING", description: "The language code (en/zh/ja/ko/es/fr/de/it/th/yue/vi/ms/id)." },
-    level: { type: "STRING", description: "CEFR/HSK/JLPT level string." },
-    scenario: { type: "STRING", description: "Short scenario slug like 'hotel'." },
+    level: { type: "STRING", description: "CEFR/HSK/JLPT level string like 'A1', 'HSK3', 'N2', 'TOPIK4'." },
+    scenario: { type: "STRING", description: "Short scenario slug like 'hotel' or 'restaurant'." },
     title: { type: "STRING", description: "Human-readable title in the target language (e.g. '酒店入住')." },
     opening: { type: "STRING", description: "The first line the NPC says to start the conversation." },
     startTurnId: { type: "STRING", description: "Id of the first turn (must exist as a key in `turns`)." },
@@ -185,15 +203,44 @@ const RESPONSE_SCHEMA = {
   required: ["id", "language", "level", "scenario", "title", "opening", "startTurnId", "turns"],
 } as const;
 
-function buildPrompt(lang: LangKey, scenario: typeof SCENARIOS[number]): string {
+// level 描述:告诉 LLM 等级对应的语言复杂度
+function levelDescriptor(level: string): string {
+  const lvl = level.toLowerCase();
+  if (lvl.startsWith("a1")) return "absolute beginner — extremely simple vocabulary, short sentences, present tense only, basic greetings and numbers";
+  if (lvl.startsWith("a2")) return "elementary — simple everyday vocabulary, some past/future tense, polite forms, common phrases for shopping/travel";
+  if (lvl.startsWith("b1")) return "intermediate — broader vocabulary, narrative past tense, opinions and explanations, can handle travel situations fully";
+  if (lvl.startsWith("b2")) return "upper-intermediate — fluent everyday conversation, abstract topics, hypothesis, news, professional context";
+  if (lvl.startsWith("c1")) return "advanced — nuanced vocabulary, idioms, complex sentences, formal/informal register, debate, professional discussion";
+  if (lvl.startsWith("c2")) return "mastery — native-like fluency, idiomatic expressions, cultural references, register shifts, complex arguments";
+  if (lvl.startsWith("n5")) return "JLPT N5 — basic Japanese, ~800 words, simple polite (desu/masu), everyday greetings";
+  if (lvl.startsWith("n4")) return "JLPT N4 — elementary Japanese, ~1500 words, casual/polite forms, daily life conversation";
+  if (lvl.startsWith("n3")) return "JLPT N3 — intermediate, ~3000 words, mixed registers, can handle general conversation";
+  if (lvl.startsWith("n2")) return "JLPT N2 — upper-intermediate, ~6000 words, news/abstract topics, keigo";
+  if (lvl.startsWith("n1")) return "JLPT N1 — advanced, ~10000 words, idioms, formal business, nuanced debate";
+  if (lvl.startsWith("hsk1")) return "HSK 1 — absolute beginner, ~150 words, basic greetings and self-introduction";
+  if (lvl.startsWith("hsk2")) return "HSK 2 — elementary, ~300 words, simple daily topics";
+  if (lvl.startsWith("hsk3")) return "HSK 3 — pre-intermediate, ~600 words, everyday life, travel";
+  if (lvl.startsWith("hsk4")) return "HSK 4 — intermediate, ~1200 words, work/study topics, opinions";
+  if (lvl.startsWith("hsk5")) return "HSK 5 — upper-intermediate, ~2500 words, news, abstract topics";
+  if (lvl.startsWith("hsk6")) return "HSK 6 — advanced, ~5000 words, idiomatic, formal register";
+  if (lvl.startsWith("topik1") || lvl.startsWith("topik2")) return "TOPIK 1-2 — beginner, basic greetings and simple daily life";
+  if (lvl.startsWith("topik3")) return "TOPIK 3 — intermediate, daily life and routine topics";
+  if (lvl.startsWith("topik4")) return "TOPIK 4 — upper-intermediate, social/abstract topics";
+  if (lvl.startsWith("topik5")) return "TOPIK 5 — advanced, professional context, news";
+  if (lvl.startsWith("topik6")) return "TOPIK 6 — mastery, idiomatic, formal debate";
+  return level;
+}
+
+function buildPrompt(lang: LangKey, scenario: typeof SCENARIOS[number], level: string): string {
   const meta = LANG_META[lang];
+  const lvlDesc = levelDescriptor(level);
   return `You are authoring a multi-turn conversation scene for a language-learning app.
 
 Language: ${meta.english} (${meta.native})
-Level: ${meta.level}
+Level: ${level} — ${lvlDesc}
 Scenario: ${scenario.title} — ${scenario.description}
 
-Design a small directed graph of 4-8 turns. Each turn is one NPC line + matching branches.
+Design a small directed graph of 4-8 turns. Each turn is one NPC line + matching branches. Vocabulary and grammar MUST match the target level: do NOT use words/grammar far above or below the level. At lower levels keep sentences short and use only present tense / polite forms; at higher levels use idioms, complex sentences, and register shifts.
 
 HARD RULES (output rejected otherwise):
 1. All NPC prompts MUST be in ${meta.native} (target language), not English. Translation fields go in 'promptTranslation'.
@@ -206,14 +253,15 @@ HARD RULES (output rejected otherwise):
 8. Every branch MUST have non-empty keywords (no wildcards except the LAST branch of a turn, which can use [""] to mean "anything else" — but only as the last resort).
 9. Conversation should reach the terminal in 3-5 user replies (not too long).
 10. Include cultural-natural phrases native speakers actually use (e.g. "能説慢啲嗎？" for Cantonese, "もう一度お願いします" for Japanese).
+11. Keywords should be in the TARGET language (lowercased), not English — they match the learner's reply in the target language.
 
 Output ONLY the JSON object — no markdown fences, no commentary.
 
 JSON structure (follow exactly):
 {
-  "id": "dlg-${lang}-${scenario.id}",
+  "id": "dlg-${lang}-${scenario.id}-${level.toLowerCase()}",
   "language": "${lang}",
-  "level": "${meta.level}",
+  "level": "${level}",
   "scenario": "${scenario.id}",
   "title": "<title in target language>",
   "opening": "<first NPC line in target language>",
@@ -353,18 +401,19 @@ async function main() {
   const outDir = path.join(process.cwd(), "scripts", "generated", "dialogues");
   fs.mkdirSync(outDir, { recursive: true });
 
-  console.log(`Planning ${tasks.length} (lang, scenario) batches...`);
+  console.log(`Planning ${tasks.length} (lang, scenario, level) batches...`);
   let ok = 0;
   let fail = 0;
   for (let i = 0; i < tasks.length; i++) {
-    const { lang, scenario } = tasks[i];
-    const file = path.join(outDir, `${lang}-${scenario.id}.json`);
+    const { lang, scenario, level } = tasks[i];
+    const levelSlug = level.toLowerCase();
+    const file = path.join(outDir, `${lang}-${scenario.id}-${levelSlug}.json`);
     if (fs.existsSync(file) && !argv.overwrite) {
-      console.log(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id} — exists, skip (use --overwrite=true to regen)`);
+      console.log(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id}/${level} — exists, skip (use --overwrite=true to regen)`);
       continue;
     }
-    const prompt = buildPrompt(lang, scenario);
-    process.stdout.write(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id} ... `);
+    const prompt = buildPrompt(lang, scenario, level);
+    process.stdout.write(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id}/${level} ... `);
     try {
       const scene = await callLLM(prompt, lang);
       // Normalize: Gemini occasionally omits nextTurnId on branches.
@@ -377,6 +426,11 @@ async function main() {
           }
         }
       }
+      // 强制规范 id 与 level,确保与文件名一致(防止 LLM 写错)
+      scene.id = `dlg-${lang}-${scenario.id}-${levelSlug}`;
+      scene.language = lang;
+      scene.level = level;
+      scene.scenario = scenario.id;
       fs.writeFileSync(file, JSON.stringify(scene, null, 2));
       console.log("ok");
       ok++;
