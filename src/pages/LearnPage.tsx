@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
+import { JsonLd, buildCourseLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { GlassCard } from "../components/GlassCard";
 import LoginPromptModal from "../components/LoginPromptModal";
 import PronunciationScore from "../components/PronunciationScore";
@@ -155,6 +156,24 @@ export default function LearnPage() {
             noindex
             pathname={`/learn/${courseId ?? ""}`}
           />
+          {course && (
+            <JsonLd
+              data={[
+                buildBreadcrumbLd([
+                  { name: "Home", url: "https://lang-oria.com/" },
+                  { name: "Courses", url: "https://lang-oria.com/courses" },
+                  { name: title, url: `https://lang-oria.com/learn/${course.id}` },
+                ]),
+                buildCourseLd({
+                  name: title,
+                  description: t(course.description),
+                  url: `https://lang-oria.com/learn/${course.id}`,
+                  inLanguage: course.language,
+                  offers: [{ price: 0, currency: "USD" }],
+                }),
+              ]}
+            />
+          )}
           {locked ? (
             <div className="glass flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-brand-200/80">
               <span>{getLanguage(lang).flag}</span>

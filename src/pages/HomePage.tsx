@@ -131,6 +131,10 @@ export default function HomePage() {
           ),
         ]}
       />
+      {/* AI-readable summary for LLM crawlers and answer engines */}
+      <div className="sr-only" data-ai-summary="homepage">
+        {t("home.seoDescription")} LangOria offers free structured courses from A1 to C2 across 10 languages with spaced repetition, native audio, and daily speaking drills.
+      </div>
       {/* Hero */}
       <section id="hero" className="relative">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
