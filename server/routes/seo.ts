@@ -111,6 +111,48 @@ const STATIC_PAGES = [
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
+  // 词汇等级页 (ko) — TOPIK 1-6
+  ...["topik1", "topik2", "topik3", "topik4", "topik5", "topik6"].map((lvl) => ({
+    path: `/languages/korean/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (es) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+    path: `/languages/spanish/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (fr) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+    path: `/languages/french/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (de) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+    path: `/languages/german/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (it) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+    path: `/languages/italian/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (th) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+    path: `/languages/thai/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
+  // 词汇等级页 (yue) — CEFR A1-B2
+  ...["a1", "a2", "b1", "b2"].map((lvl) => ({
+    path: `/languages/cantonese/vocabulary/${lvl}`,
+    changefreq: "weekly" as const,
+    priority: "0.6",
+  })),
 ] as const;
 
 function escapeXml(str: string): string {
