@@ -419,7 +419,12 @@ async function main() {
       // Normalize: Gemini occasionally omits nextTurnId on branches.
       // Fix by pointing them at the current turn's fallbackBranchId
       // (keeps the graph valid; user repeats → same fallback path).
+      // Also strip any extra fields that the model may have placed on
+      // the turn object (e.g. nextTurnId mistakenly on the turn itself),
+      // because DialogueTurn does not allow arbitrary properties.
       for (const turn of Object.values(scene.turns)) {
+        // @ts-expect-error extra fields from LLM output
+        delete turn.nextTurnId;
         for (const branch of turn.branches) {
           if (!branch.nextTurnId) {
             branch.nextTurnId = turn.fallbackBranchId || turn.id;

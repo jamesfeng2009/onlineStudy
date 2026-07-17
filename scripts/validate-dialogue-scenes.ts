@@ -59,7 +59,21 @@ function validate(file: string, scene: Scene): { errors: string[]; warnings: str
 
   // Defense 2 + 3: per-turn checks
   let hasTerminal = false;
+  const allowedTurnKeys = new Set([
+    "id",
+    "prompt",
+    "promptTranslation",
+    "branches",
+    "fallbackBranchId",
+    "isTerminal",
+  ]);
   for (const [turnId, turn] of Object.entries(scene.turns)) {
+    const extraKeys = Object.keys(turn).filter((k) => !allowedTurnKeys.has(k));
+    if (extraKeys.length > 0) {
+      errors.push(
+        `turn "${turnId}" has unexpected properties: ${extraKeys.join(", ")}`,
+      );
+    }
     if (turn.id !== turnId) {
       errors.push(`turn key "${turnId}" doesn't match inner id "${turn.id}"`);
     }
