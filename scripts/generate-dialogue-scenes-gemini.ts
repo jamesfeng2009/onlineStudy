@@ -46,6 +46,7 @@ type Provider = "gemini" | "dashscope";
 const PROVIDER_BY_LANG: Record<string, Provider> = {
   zh: "dashscope", ja: "dashscope", ko: "dashscope", yue: "dashscope",
   en: "gemini", es: "gemini", fr: "gemini", de: "gemini", it: "gemini", th: "gemini",
+  vi: "gemini", ms: "gemini", id: "gemini",
 };
 const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: "gemini-2.5-flash",

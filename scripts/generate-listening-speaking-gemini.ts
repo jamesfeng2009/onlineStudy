@@ -63,6 +63,9 @@ const PROVIDER_BY_LANG: Record<string, Provider> = {
   de: "gemini",
   it: "gemini",
   th: "gemini",
+  vi: "gemini",
+  ms: "gemini",
+  id: "gemini",
 };
 
 // Fallback provider (when lang not in PROVIDER_BY_LANG)
