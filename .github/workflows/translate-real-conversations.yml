@@ -1,0 +1,153 @@
+name: Translate real conversations
+
+# Batch-translate real-conversations source data to target languages
+# via Gemini API. Samples ~200 utterances per domain (deterministic:
+# first N conversations until the target is reached).
+#
+# Matrix: 10 languages (en + 9 targets). Each job runs independently,
+# uploads its JSON files as an artifact. A merge job downloads all
+# artifacts, places them in the correct directories, and commits.
+#
+# Trigger: manual (workflow_dispatch).
+
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "Single language (leave empty for all 10: en,fr,de,it,th,yue,vi,ms,id,ja)"
+        required: false
+        type: string
+        default: ""
+      sample:
+        description: "Utterances per domain (default 200)"
+        required: false
+        type: string
+        default: "200"
+      overwrite:
+        description: "Overwrite existing files (default true)"
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  # ── Decide: matrix or single language ──
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          INPUT_LANG='${{ inputs.lang }}'
+          if [ -n "$INPUT_LANG" ]; then
+            echo "matrix={\"lang\":[\"$INPUT_LANG\"]}" >> "$GITHUB_OUTPUT"
+          else
+            echo 'matrix={"lang":["en","fr","de","it","th","yue","vi","ms","id","ja"]}' >> "$GITHUB_OUTPUT"
+          fi
+
+  # ── Per-language translation job ──
+  translate:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Translate for ${{ matrix.lang }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-2.5-flash
+        run: |
+          ARGS="--lang=${{ matrix.lang }} --sample=${{ inputs.sample }}"
+          if [ "${{ inputs.overwrite }}" = "true" ]; then ARGS="$ARGS --overwrite"; fi
+          pnpm tsx scripts/translate-real-conversations-gemini.ts $ARGS
+
+      - name: Upload translated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-conv-${{ matrix.lang }}
+          path: scripts/generated/real-conversations/${{ matrix.lang }}/
+          if-no-files-found: error
+          retention-days: 1
+
+  # ── Merge all artifacts and commit ──
+  merge-and-push:
+    needs: translate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all translation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/artifacts
+          pattern: real-conv-*
+
+      - name: Move artifacts into place
+        run: |
+          for d in /tmp/artifacts/real-conv-*/; do
+            lang=$(basename "$d" | sed 's/real-conv-//')
+            mkdir -p "scripts/generated/real-conversations/$lang"
+            cp -r "$d"* "scripts/generated/real-conversations/$lang/"
+            echo "✓ placed $lang"
+          done
+
+      - name: Verify file counts
+        run: |
+          for lang in en fr de it th yue vi ms id ja; do
+            dir="scripts/generated/real-conversations/$lang"
+            if [ -d "$dir" ]; then
+              count=$(ls "$dir"/*.json 2>/dev/null | wc -l)
+              utts=$(python3 -c "
+          import json,glob
+          t=0
+          for f in glob.glob('$dir/*.json'):
+              t+=sum(len(d['utterances']) for d in json.load(open(f)))
+          print(t)
+          " 2>/dev/null || echo "?")
+              echo "  $lang: $count files, $utts utterances"
+            fi
+          done
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main || true
+            if [ -n "$(git status --porcelain -- scripts/generated/real-conversations/)" ]; then
+              git add scripts/generated/real-conversations/
+              git commit -m "chore(real-conversations): batch-translate via Gemini [skip ci]" || true
+              if git push origin main; then
+                echo "Push succeeded."
+                exit 0
+              fi
+              echo "Push failed, retrying in $((i * 30))s..."
+              sleep $((i * 30))
+            else
+              echo "No changes to commit."
+              exit 0
+            fi
+          done
+          echo "ERROR: Failed to push after 5 retries"
+          exit 1
