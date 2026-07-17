@@ -1603,6 +1603,8 @@
     "reviewDesc": "Spaced repetition review",
     "conversationLabel": "Conversation",
     "conversationDesc": "Practice dialogue with AI",
+    "realConversationLabel": "Real conversations",
+    "realConversationDesc": "Shadow real human dialogues (Taskmaster-2)",
     "wordRoot": "Word Root",
     "grammarMap": "Grammar Map",
     "errorProneN": "{{count}} error-prone",
@@ -1660,6 +1662,36 @@
       "tip2": "Keep it short and natural.",
       "tip3": "Use voice input to practice speaking.",
       "tip4": "Don't worry about mistakes — just keep going."
+    },
+    "realConv": {
+      "aboutTitle": "About this module",
+      "about": "These are real Taskmaster-2 dialogues (translated to your target language). Practice by shadowing each ASSISTANT line aloud — your pronunciation is scored automatically.",
+      "empty": "No real conversations available for this language yet.",
+      "emptyHint": "Try English (fallback) or another language.",
+      "prevConv": "Prev conversation",
+      "nextConv": "Next conversation",
+      "conversationN": "Conversation {{n}} of {{total}}",
+      "assistantTurn": "Assistant turn — shadow it",
+      "userTurn": "User turn (read only)",
+      "userTurnHint": "Read the user line silently, then continue.",
+      "bestScore": "Best score",
+      "prev": "Prev",
+      "next": "Next",
+      "sessionTitle": "Session average",
+      "avgScore": "Avg score",
+      "shadowed": "Shadowed {{n}} lines",
+      "tip1": "Listen first, then repeat aloud.",
+      "tip2": "Match intonation, not just words.",
+      "tip3": "Re-record to beat your best score.",
+      "domains": {
+        "restaurant": "Restaurant",
+        "foodOrdering": "Food ordering",
+        "movies": "Movies",
+        "hotels": "Hotels",
+        "flights": "Flights",
+        "music": "Music",
+        "sports": "Sports"
+      }
     }
   },
   "home": {

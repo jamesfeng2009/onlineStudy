@@ -390,6 +390,8 @@
     "reviewDesc": "Spaced repetition review",
     "conversationLabel": "Conversation",
     "conversationDesc": "Practice dialogue with AI",
+    "realConversationLabel": "真实对话",
+    "realConversationDesc": "影子跟读真实人机对话(Taskmaster-2)",
     "wordRoot": "Word Root",
     "grammarMap": "Grammar Map",
     "errorProneN": "{{count}} error-prone",
@@ -447,6 +449,36 @@
       "tip2": "Keep it short and natural.",
       "tip3": "Use voice input to practice speaking.",
       "tip4": "Don't worry about mistakes — just keep going."
+    },
+    "realConv": {
+      "aboutTitle": "关于本模块",
+      "about": "这些是 Taskmaster-2 真实对话数据集(已翻译到目标语言)。通过影子跟读 ASSISTANT 句子练习口语,系统会自动给你的发音打分。",
+      "empty": "此语言暂无真实对话数据。",
+      "emptyHint": "可切换到英语(兜底)或其他语言。",
+      "prevConv": "上一对话",
+      "nextConv": "下一对话",
+      "conversationN": "第 {{n}} / {{total}} 段对话",
+      "assistantTurn": "助手句 — 请跟读",
+      "userTurn": "用户句(只读)",
+      "userTurnHint": "默读用户句,然后继续。",
+      "bestScore": "最佳分",
+      "prev": "上一句",
+      "next": "下一句",
+      "sessionTitle": "本次会话",
+      "avgScore": "平均分",
+      "shadowed": "已跟读 {{n}} 句",
+      "tip1": "先听再读。",
+      "tip2": "模仿语调,不只是单词。",
+      "tip3": "重录可刷新最佳分。",
+      "domains": {
+        "restaurant": "餐厅",
+        "foodOrdering": "点餐",
+        "movies": "电影",
+        "hotels": "酒店",
+        "flights": "机票",
+        "music": "音乐",
+        "sports": "体育"
+      }
     }
   },
   "home": {

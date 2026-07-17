@@ -1,7 +1,8 @@
-import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase } from "../types";
+import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase, RealConversation, Language } from "../types";
 import { GENERATED_QUIZZES } from "./generated-quizzes";
 import { GENERATED_LISTENING } from "./generated-listening";
 import { GENERATED_SPEAKING } from "./generated-speaking";
+import { REAL_CONVERSATIONS } from "./real-conversations";
 
 export const WORDS: WordItem[] = [
   // English A1
@@ -235,6 +236,18 @@ export const getWords = (language: string, level?: string) => filterByLangLevel(
 export const getQuizzes = (language: string, level?: string) => filterByLangLevel(QUIZZES, language, level);
 export const getListening = (language: string, level?: string) => filterByLangLevel(LISTENING, language, level);
 export const getSpeaking = (language: string, level?: string) => filterByLangLevel(SPEAKING, language, level);
+export const getRealConversations = (language: Language, domain?: string) => {
+  const byLang = REAL_CONVERSATIONS.filter((c) => c.language === language);
+  const filtered = domain
+    ? byLang.filter((c) => c.domain === domain)
+    : byLang;
+  // Fall back to English if the requested language has nothing yet.
+  if (filtered.length === 0 && language !== "en") {
+    const enAll = REAL_CONVERSATIONS.filter((c) => c.language === "en");
+    return domain ? enAll.filter((c) => c.domain === domain) : enAll;
+  }
+  return filtered;
+};
 
 function filterByLangLevel<T extends { language: string; level?: string }>(items: T[], language: string, level?: string): T[] {
   const byLang = items.filter((item) => item.language === language);

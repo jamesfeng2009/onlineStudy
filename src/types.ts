@@ -310,6 +310,45 @@ export interface DialogueBranch {
   nextTurnId: string;
 }
 
+// ─────────────────────────────────────────────────────────────────────
+//  Real conversations (Taskmaster-2 dataset)
+//  Unlike DialogueScene (a directed graph the user navigates by
+//  answering), RealConversation is a linear transcript of an actual
+//  human↔assistant dialogue. Used in the "shadowing" practice mode:
+//  the learner listens to each ASSISTANT turn, then repeats it aloud
+//  and gets a pronunciation score.
+// ─────────────────────────────────────────────────────────────────────
+
+/** One line of a real conversation transcript. */
+export interface RealConversationUtterance {
+  /** Sequential index within the conversation (0-based). */
+  index: number;
+  /** Who said this line. */
+  speaker: "USER" | "ASSISTANT";
+  /** The line itself, in the target language. */
+  text: string;
+}
+
+/** A single real conversation (e.g. ordering food at a restaurant).
+ *  Source: Taskmaster-2 dataset, translated to target languages via
+ *  Gemini. Each domain has ~200 utterances sampled from real human
+ *  conversations. */
+export interface RealConversation {
+  /** Stable id from the source dataset (e.g. "dlg-a5ffe1df-..."),
+   *  namespaced by language to avoid collisions across translations
+   *  of the same source conversation. */
+  id: string;
+  /** Language this conversation is in (added by the merge script). */
+  language: Language;
+  /** Stable id from the source dataset (e.g. "dlg-a5ffe1df-..."). */
+  conversationId: string;
+  /** Conversation domain (restaurant, movies, hotels, flights,
+   *  food-ordering, music, sports). */
+  domain: string;
+  /** The full transcript, in order. */
+  utterances: RealConversationUtterance[];
+}
+
 export interface UserProgress {
   wordsLearned: number;
   wordCorrect: number;
