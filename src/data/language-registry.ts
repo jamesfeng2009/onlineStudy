@@ -184,7 +184,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
     ogLocale: "th_TH",
     ttsTag: "th-TH",
     levelSystem: "CEFR",
-    levels: ["A1", "A2", "B1", "B2", "C1"],
+    levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
   },
   {
     code: "yue",

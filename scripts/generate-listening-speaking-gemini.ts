@@ -145,8 +145,8 @@ const overwrite = process.argv.includes("--overwrite");
 const dryRun = process.argv.includes("--dry-run");
 
 // ─── Language / level tables ───
-type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
-const LANGS: LangKey[] = ["en", "ja", "zh", "ko", "es", "fr", "de", "it", "th", "yue"];
+type LangKey = "en" | "ja" | "zh" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue" | "vi" | "ms" | "id";
+const LANGS: LangKey[] = ["en", "ja", "zh", "ko", "es", "fr", "de", "it", "th", "yue", "vi", "ms", "id"];
 
 const LEVELS: Record<LangKey, string[]> = {
   // P4-1: 扩展到完整等级体系,与 src/data/languages.ts 对齐
@@ -158,8 +158,11 @@ const LEVELS: Record<LangKey, string[]> = {
   fr: ["A1", "A2", "B1", "B2", "C1", "C2"],
   de: ["A1", "A2", "B1", "B2", "C1", "C2"],
   it: ["A1", "A2", "B1", "B2", "C1", "C2"],
-  th: ["A1", "A2", "B1", "B2", "C1"],
+  th: ["A1", "A2", "B1", "B2", "C1", "C2"],
   yue: ["A1", "A2", "B1", "B2"],
+  vi: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  ms: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  id: ["A1", "A2", "B1", "B2", "C1", "C2"],
 };
 
 const LANG_NATIVE: Record<LangKey, string> = {
@@ -173,6 +176,9 @@ const LANG_NATIVE: Record<LangKey, string> = {
   it: "Italian",
   th: "Thai",
   yue: "Cantonese (traditional, Hong Kong)",
+  vi: "Vietnamese",
+  ms: "Malay",
+  id: "Indonesian",
 };
 
 // Per-language extra rules appended to the prompt.
@@ -186,6 +192,9 @@ function langRules(lang: LangKey): string {
   }
   if (lang === "th") {
     return "Script: Thai script only. Do not use romanization or transliteration in phrase or script.";
+  }
+  if (lang === "vi") {
+    return "Script: Vietnamese with diacritics (Quốc Ngữ). Do not use romanization without diacritics.";
   }
   return "";
 }

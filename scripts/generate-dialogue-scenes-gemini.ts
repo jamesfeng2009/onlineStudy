@@ -96,7 +96,7 @@ const ONLY_PROVIDER = argv.provider as Provider | undefined;
 
 // ---- Generation plan: per (language, scenario) one scene. ----
 // P4-1: 扩展到 10 语言 × 6 场景,语言等级对齐 languages.ts
-type LangKey = "en" | "zh" | "ja" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue";
+type LangKey = "en" | "zh" | "ja" | "ko" | "es" | "fr" | "de" | "it" | "th" | "yue" | "vi" | "ms" | "id";
 
 const LANG_META: Record<LangKey, { native: string; english: string; level: string }> = {
   en:  { native: "English",                          english: "English",    level: "A1" },
@@ -109,6 +109,9 @@ const LANG_META: Record<LangKey, { native: string; english: string; level: strin
   it:  { native: "Italian",                            english: "Italian",    level: "A1" },
   th:  { native: "Thai",                               english: "Thai",       level: "A1" },
   yue: { native: "Cantonese (Traditional, Hong Kong)", english: "Cantonese",  level: "A1" },
+  vi:  { native: "Vietnamese",                         english: "Vietnamese", level: "A1" },
+  ms:  { native: "Malay",                              english: "Malay",      level: "A1" },
+  id:  { native: "Indonesian",                         english: "Indonesian", level: "A1" },
 };
 
 const SCENARIOS: { id: string; title: string; description: string }[] = [
@@ -140,7 +143,7 @@ const RESPONSE_SCHEMA = {
   type: "OBJECT",
   properties: {
     id: { type: "STRING", description: "Lowercase id like 'dlg-en-hotel'." },
-    language: { type: "STRING", description: "The language code (en/zh/ja/yue)." },
+    language: { type: "STRING", description: "The language code (en/zh/ja/ko/es/fr/de/it/th/yue/vi/ms/id)." },
     level: { type: "STRING", description: "CEFR/HSK/JLPT level string." },
     scenario: { type: "STRING", description: "Short scenario slug like 'hotel'." },
     title: { type: "STRING", description: "Human-readable title in the target language (e.g. '酒店入住')." },
