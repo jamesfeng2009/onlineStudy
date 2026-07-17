@@ -6,14 +6,11 @@ name: Generate dialogue scenes
 # 扩展支持 14 scenarios × 多 level(每语言 4-6 个 level)。
 # 9 个 Gemini 语言在 GHA 跑,4 个 DashScope 语言(zh/ja/ko/yue)本地跑。
 #
-# 默认 matrix 跑 3 路并行(en/es/fr | de/it/th | vi/ms/id)。
-# 也可手动指定 --lang / --scenario / --level / --provider 缩小范围。
+# Matrix: 每语言一个独立 job + 240min timeout(Gemini 15rpm 下单语言 84 批约 120min)。
+# 生成产物通过 artifact 汇总,最终由单独的 merge job 统一合并、编译、提交。
+# 这样避免 9 个 job 并发 push 到同一个 dialogue-scenes.ts 造成冲突。
 #
-# Workflow:
-#   1. Generate scenes (lang × scenario × level,跳过已存在)。
-#   2. Validate each scene against the 4 defenses。
-#   3. Merge into src/data/dialogue-scenes.ts。
-#   4. Build 验证 + commit + push if anything changed。
+# 也可手动指定 --lang / --scenario / --level 缩小范围。
 
 on:
   workflow_dispatch:
@@ -38,11 +35,6 @@ on:
         required: false
         type: boolean
         default: false
-      parallel:
-        description: "Use matrix parallelism (3 runners). Set to false to run sequentially on 1 runner."
-        required: false
-        type: boolean
-        default: true
 
 jobs:
   # ── Decide: matrix or single ──
@@ -54,22 +46,19 @@ jobs:
       - id: set-matrix
         run: |
           INPUT_LANG='${{ inputs.lang }}'
-          INPUT_PARALLEL='${{ inputs.parallel }}'
           if [ -n "$INPUT_LANG" ]; then
-            # 单 lang 模式:不并行
+            # 单 lang 模式
             echo "matrix={\"lang\":[\"$INPUT_LANG\"]}" >> "$GITHUB_OUTPUT"
-          elif [ "$INPUT_PARALLEL" = "false" ]; then
-            # 单 runner 全跑
-            echo 'matrix={"lang":["all"]}' >> "$GITHUB_OUTPUT"
           else
-            # 3 路 matrix 并行
-            echo 'matrix={"lang":["en,es,fr","de,it,th","vi,ms,id"]}' >> "$GITHUB_OUTPUT"
+            # 9 个 Gemini 语言,每语言一个 job
+            echo 'matrix={"lang":["en","es","fr","de","it","th","vi","ms","id"]}' >> "$GITHUB_OUTPUT"
           fi
 
+  # ── 每个语言独立生成 JSON 产物 ──
   generate:
     needs: generate-matrix
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 240
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
@@ -91,40 +80,57 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Generate scenes
+      - name: Generate scenes for ${{ matrix.lang }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
-          INPUT_LANG: ${{ matrix.lang }}
           INPUT_SCENARIO: ${{ inputs.scenario }}
           INPUT_LEVEL: ${{ inputs.level }}
           INPUT_OVERWRITE: ${{ inputs.overwrite }}
         run: |
-          # INPUT_LANG 可能是 "all"(单 runner 全跑)或 "en,es,fr"(matrix 块)
-          if [ "$INPUT_LANG" = "all" ]; then
-            LANG_ARGS=""
-          else
-            # 拆 "en,es,fr" → --lang=en --lang=es --lang=fr 不行,脚本是单值
-            # 实际:matrix 中每块是一个逗号分隔的列表,需要逐语言跑
-            LANG_ARGS=""
-          fi
-          ARGS="--provider=gemini"
+          ARGS="--provider=gemini --lang=${{ matrix.lang }}"
           if [ -n "$INPUT_SCENARIO" ]; then ARGS="$ARGS --scenario=$INPUT_SCENARIO"; fi
           if [ -n "$INPUT_LEVEL" ]; then ARGS="$ARGS --level=$INPUT_LEVEL"; fi
           if [ "$INPUT_OVERWRITE" = "true" ]; then ARGS="$ARGS --overwrite=true"; fi
+          pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS
 
-          # 单 runner + INPUT_LANG=all → 全量
-          # matrix 块 "en,es,fr" → 逐语言跑
-          if [ "$INPUT_LANG" = "all" ]; then
-            echo "Running ALL Gemini languages in single runner..."
-            pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS
-          else
-            IFS=',' read -ra LANG_ARRAY <<< "$INPUT_LANG"
-            for lang in "${LANG_ARRAY[@]}"; do
-              echo "Running lang=$lang..."
-              pnpm tsx scripts/generate-dialogue-scenes-gemini.ts $ARGS --lang=$lang
-            done
-          fi
+      - name: Upload generated dialogues artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dialogues-${{ matrix.lang }}
+          path: scripts/generated/dialogues/
+          if-no-files-found: ignore
+          retention-days: 1
+
+  # ── 汇总所有产物,统一合并/编译/提交 ──
+  merge-and-push:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Download all dialogue artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: scripts/generated/dialogues/
+          pattern: dialogues-*
+          merge-multiple: true
 
       - name: "Validate (strict: warnings fail too)"
         run: pnpm tsx scripts/validate-dialogue-scenes.ts --strict || echo "::warning::Some scenes have warnings — review before merging."
@@ -139,7 +145,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # pull --rebase 处理与其他 matrix 块的并发 push
           for i in 1 2 3 4 5; do
             git pull --rebase --autostash origin main || true
             if [ -n "$(git status --porcelain -- src/data/dialogue-scenes.ts scripts/generated/dialogues/)" ]; then
