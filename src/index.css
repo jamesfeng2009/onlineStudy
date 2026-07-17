@@ -98,6 +98,7 @@ body {
 /* 翻卡动画 */
 .card-flip {
   perspective: 1400px;
+  position: relative;
 }
 .card-flip-inner {
   position: relative;
@@ -106,7 +107,7 @@ body {
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.card-flip.is-flipped .card-flip-inner {
+.card-flip-inner.is-flipped {
   transform: rotateY(180deg);
 }
 .card-face {
