@@ -132,8 +132,12 @@ jobs:
           pattern: dialogues-*
           merge-multiple: true
 
-      - name: "Validate (strict: warnings fail too)"
-        run: pnpm tsx scripts/validate-dialogue-scenes.ts --strict || echo "::warning::Some scenes have warnings — review before merging."
+      - name: "Validate scenes (informational — merge will skip invalid ones)"
+        # validate is informational only. The real gatekeeper is the
+        # merge step below, which runs validateScene() per scene and
+        # skips anything that fails. This keeps the workflow green
+        # even when a few LLM outputs can't be repaired.
+        run: pnpm tsx scripts/validate-dialogue-scenes.ts || echo "::warning::validate reported errors — merge will skip those scenes."
 
       - name: Merge into src/data/dialogue-scenes.ts
         run: pnpm tsx scripts/merge-dialogue-scenes.ts

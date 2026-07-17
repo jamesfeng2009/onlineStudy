@@ -396,6 +396,141 @@ async function callLLM(prompt: string, lang: string, attempt = 0): Promise<unkno
   }
 }
 
+// ── Defensive post-processing: bring LLM output up to DialogueScene
+//    schema. Returns null only if the scene is unrecoverable.
+//
+//    Handles the 4 failure patterns we saw in validate output:
+//      1. branches is undefined / not an array → []
+//      2. fallbackBranchId missing or dangling → repair
+//      3. branch.nextTurnId missing or dangling (LLM uses t_end vs t-end) → normalize
+//      4. no terminal turn → mark last turn terminal
+//    Also strips any extra fields LLM places on the turn object
+//    (e.g. nextTurnId mistakenly at the turn level instead of branch)
+//    by rebuilding the turn from a known-safe shape.
+// ────────────────────────────────────────────────────────────
+function repairScene(
+  raw: any,
+  lang: string,
+  scenarioId: string,
+  level: string,
+): any | null {
+  if (!raw || typeof raw !== "object") return null;
+  if (!raw.turns || typeof raw.turns !== "object") return null;
+
+  const turns = raw.turns;
+  const turnIds = new Set(Object.keys(turns));
+  if (turnIds.size === 0) return null;
+
+  // Case-insensitive ref resolver: t_end / t-end / T-END all map to
+  // whichever case variant actually exists as a key.
+  const refLookup = new Map<string, string>();
+  for (const tid of turnIds) {
+    refLookup.set(tid.toLowerCase().replace(/[_\s-]+/g, "-"), tid);
+  }
+  const resolveRef = (ref: string | undefined): string | undefined => {
+    if (!ref) return undefined;
+    if (turnIds.has(ref)) return ref;
+    return refLookup.get(ref.toLowerCase().replace(/[_\s-]+/g, "-"));
+  };
+
+  // Find or designate a terminal turn (needed for repairing dangling refs).
+  let terminalId: string | undefined;
+  for (const [tid, t] of Object.entries<any>(turns)) {
+    if (t && t.isTerminal) {
+      terminalId = tid;
+      break;
+    }
+  }
+  if (!terminalId) {
+    const ids = Object.keys(turns);
+    terminalId = ids[ids.length - 1];
+    const t = turns[terminalId];
+    t.isTerminal = true;
+    t.branches = [];
+  }
+
+  for (const [tid, turnRaw] of Object.entries<any>(turns)) {
+    // Replace the value entirely so we control its shape.
+    const turn: any = {
+      id: tid,
+      prompt: typeof turnRaw?.prompt === "string" ? turnRaw.prompt : "",
+      branches: Array.isArray(turnRaw?.branches) ? turnRaw.branches : [],
+      fallbackBranchId:
+        typeof turnRaw?.fallbackBranchId === "string"
+          ? turnRaw.fallbackBranchId
+          : "",
+    };
+    if (typeof turnRaw?.promptTranslation === "string") {
+      turn.promptTranslation = turnRaw.promptTranslation;
+    }
+    if (turnRaw?.isTerminal) turn.isTerminal = true;
+    turns[tid] = turn;
+
+    // Skip branch repair for terminal turns.
+    if (turn.isTerminal) {
+      turn.branches = [];
+      turn.fallbackBranchId = resolveRef(turn.fallbackBranchId) || tid;
+      continue;
+    }
+
+    // Non-terminal: ensure at least one branch.
+    if (!Array.isArray(turnRaw.branches) || turnRaw.branches.length === 0) {
+      // Point a wildcard at the terminal so the conversation can end.
+      turn.branches = [{ keywords: [""], nextTurnId: terminalId }];
+    }
+
+    // Repair each branch.nextTurnId.
+    const seen = new Set<string>();
+    const repairedBranches: any[] = [];
+    for (const b of turn.branches) {
+      if (!b || typeof b !== "object") continue;
+      const keywords = Array.isArray(b.keywords)
+        ? b.keywords.filter((k: any) => typeof k === "string")
+        : [];
+      const nextOk = resolveRef(b.nextTurnId);
+      if (!nextOk) {
+        // Dangling ref — skip silently; will fall through to fallback.
+        continue;
+      }
+      if (seen.has(nextOk)) continue; // dedup
+      seen.add(nextOk);
+      repairedBranches.push({ keywords, nextTurnId: nextOk });
+    }
+    if (repairedBranches.length === 0) {
+      // All branches were dangling — keep one wildcard at the terminal.
+      repairedBranches.push({ keywords: [""], nextTurnId: terminalId });
+    }
+    turn.branches = repairedBranches;
+
+    // Repair fallbackBranchId: prefer the original (resolved), else the
+    // last branch (typically the wildcard).
+    const fbResolved = resolveRef(turn.fallbackBranchId);
+    if (fbResolved) {
+      turn.fallbackBranchId = fbResolved;
+    } else {
+      turn.fallbackBranchId =
+        repairedBranches[repairedBranches.length - 1].nextTurnId;
+    }
+  }
+
+  // Scene-level fields (force canonical — LLM occasionally drifts).
+  raw.id = `dlg-${lang}-${scenarioId}-${level.toLowerCase()}`;
+  raw.language = lang;
+  raw.level = level;
+  raw.scenario = scenarioId;
+  if (typeof raw.title !== "string" || !raw.title) {
+    raw.title = `${scenarioId} / ${level}`;
+  }
+  if (typeof raw.opening !== "string" || !raw.opening) {
+    const first = turns[Object.keys(turns)[0]];
+    raw.opening = first?.prompt || "";
+  }
+  if (!raw.startTurnId || !turnIds.has(raw.startTurnId)) {
+    raw.startTurnId = Object.keys(turns)[0];
+  }
+  return raw;
+}
+
 async function main() {
   const tasks = plan();
   const outDir = path.join(process.cwd(), "scripts", "generated", "dialogues");
@@ -415,28 +550,14 @@ async function main() {
     const prompt = buildPrompt(lang, scenario, level);
     process.stdout.write(`[${i + 1}/${tasks.length}] ${lang}/${scenario.id}/${level} ... `);
     try {
-      const scene = await callLLM(prompt, lang);
-      // Normalize: Gemini occasionally omits nextTurnId on branches.
-      // Fix by pointing them at the current turn's fallbackBranchId
-      // (keeps the graph valid; user repeats → same fallback path).
-      // Also strip any extra fields that the model may have placed on
-      // the turn object (e.g. nextTurnId mistakenly on the turn itself),
-      // because DialogueTurn does not allow arbitrary properties.
-      for (const turn of Object.values(scene.turns)) {
-        // @ts-expect-error extra fields from LLM output
-        delete turn.nextTurnId;
-        for (const branch of turn.branches) {
-          if (!branch.nextTurnId) {
-            branch.nextTurnId = turn.fallbackBranchId || turn.id;
-          }
-        }
+      const scene = (await callLLM(prompt, lang)) as any;
+      const repaired = repairScene(scene, lang, scenario.id, level);
+      if (!repaired) {
+        console.log("FAIL (unrepairable)");
+        fail++;
+        continue;
       }
-      // 强制规范 id 与 level,确保与文件名一致(防止 LLM 写错)
-      scene.id = `dlg-${lang}-${scenario.id}-${levelSlug}`;
-      scene.language = lang;
-      scene.level = level;
-      scene.scenario = scenario.id;
-      fs.writeFileSync(file, JSON.stringify(scene, null, 2));
+      fs.writeFileSync(file, JSON.stringify(repaired, null, 2));
       console.log("ok");
       ok++;
     } catch (e) {
