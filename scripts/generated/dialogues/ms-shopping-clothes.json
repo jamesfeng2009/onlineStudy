@@ -1,0 +1,256 @@
+{
+  "id": "dlg-ms-shopping-clothes",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "shopping-clothes",
+  "title": "Membeli Pakaian",
+  "opening": "Selamat datang! Boleh saya bantu?",
+  "startTurnId": "t1",
+  "turns": {
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang! Boleh saya bantu?",
+      "promptTranslation": "Se-la-mat da-tang! Bo-leh sa-ya ban-tu? — Welcome! Can I help you?",
+      "branches": [
+        {
+          "keywords": [
+            "cari",
+            "baju",
+            "pakaian"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "tengok",
+            "lihat",
+            "saja"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            "pulang",
+            "balik",
+            "keluar"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Baiklah. Anda cari pakaian jenis apa? Kemeja, T-shirt, atau seluar?",
+      "promptTranslation": "Ba-ik-lah. An-da ca-ri pa-ka-i-an je-nis a-pa? Ke-me-ja, T-shirt, a-tau se-lu-ar? — Alright. What kind of clothing are you looking for? Collared shirt, T-shirt, or pants?",
+      "branches": [
+        {
+          "keywords": [
+            "t-shirt",
+            "kaos"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "kemeja",
+            "kameja"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            "seluar",
+            "celana",
+            "jeans"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Saiz apa? Dan warna apa yang anda suka?",
+      "promptTranslation": "Ba-ik. Sa-iz a-pa? Dan war-na a-pa yang an-da su-ka? — Okay. What size? And what color do you like?",
+      "branches": [
+        {
+          "keywords": [
+            "saiz",
+            "ukuran",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "warna",
+            "biru",
+            "merah",
+            "hijau",
+            "hitam",
+            "putih"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            "cuba",
+            "pakai"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Ini ada saiz M, warna biru. Sesuai? Nak cuba?",
+      "promptTranslation": "I-ni a-da sa-iz M, war-na bi-ru. Se-su-ai? Nak cu-ba? — Here's size M, blue color. Does it fit/suit? Want to try it on?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "sesuai",
+            "ok"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "cuba",
+            "pakai"
+          ],
+          "nextTurnId": "t5"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tak",
+            "besar",
+            "kecil",
+            "lain"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t5": {
+      "id": "t5",
+      "prompt": "Bagus! Anda suka? Mahu beli? Harganya RM50.",
+      "promptTranslation": "Ba-gus! An-da su-ka? Ma-hu be-li? Har-ga-nya li-ma pu-luh ri-nggit. — Great! Do you like it? Want to buy it? The price is RM50.",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "suka",
+            "beli",
+            "ambil"
+          ],
+          "nextTurnId": "t6"
+        },
+        {
+          "keywords": [
+            "tidak",
+            "tak",
+            "mahal"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t6": {
+      "id": "t6",
+      "prompt": "Baik. Mahu bayar tunai atau kad?",
+      "promptTranslation": "Ba-ik. Ma-hu ba-yar tu-nai a-tau kad? — Okay. Want to pay cash or card?",
+      "branches": [
+        {
+          "keywords": [
+            "tunai",
+            "duit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            "kad",
+            "kredit",
+            "debit"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang? Saya tidak faham.",
+      "promptTranslation": "Ma-af, bo-leh u-lang? Sa-ya ti-dak fa-ham. — Sorry, can you repeat? I don't understand.",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Terima kasih, sila datang lagi!",
+      "promptTranslation": "Te-ri-ma ka-sih, si-la da-tang la-gi! — Thank you, please come again!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}

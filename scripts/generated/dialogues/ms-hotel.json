@@ -1,0 +1,136 @@
+{
+  "id": "dlg-ms-hotel",
+  "language": "ms",
+  "level": "A1",
+  "scenario": "hotel",
+  "title": "Daftar Masuk Hotel",
+  "opening": "Selamat datang ke Hotel Bahagia! Boleh saya dapatkan nama awak?",
+  "startTurnId": "t1",
+  "turns": {
+    "t-repeat": {
+      "id": "t-repeat",
+      "prompt": "Maaf, boleh ulang sekali lagi?",
+      "promptTranslation": "Maaf, (mah-ahf) boleh ulang sekali lagi? — Sorry, could you repeat that?",
+      "branches": [
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t1"
+        }
+      ],
+      "fallbackBranchId": "t1",
+      "isTerminal": false
+    },
+    "t1": {
+      "id": "t1",
+      "prompt": "Selamat datang ke Hotel Bahagia! Boleh saya dapatkan nama awak?",
+      "promptTranslation": "Selamat datang ke Hotel Bahagia! (seh-lah-mat dah-tang keh ho-tel bah-hah-gee-ah) — Welcome to Happy Hotel! Can I have your name?",
+      "branches": [
+        {
+          "keywords": [
+            "nama",
+            "saya",
+            "namasaya",
+            "ini"
+          ],
+          "nextTurnId": "t2"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t2": {
+      "id": "t2",
+      "prompt": "Terima kasih. Boleh saya lihat kad pengenalan atau pasport awak?",
+      "promptTranslation": "Terima kasih. (teh-ree-ma kah-seeh) Boleh saya lihat kad pengenalan atau pasport awak? — Thank you. May I see your ID card or passport?",
+      "branches": [
+        {
+          "keywords": [
+            "kad",
+            "pengenalan",
+            "pasport",
+            "inikad",
+            "inipasport"
+          ],
+          "nextTurnId": "t3"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t3": {
+      "id": "t3",
+      "prompt": "Baik. Adakah anda ingin bilik dengan pemandangan laut atau bandar? Dan bagaimana dengan pembayaran?",
+      "promptTranslation": "Baik. (ba-eek) Adakah anda ingin bilik dengan pemandangan laut atau bandar? Dan bagaimana dengan pembayaran? — Alright. Do you want a room with a sea view or city view? And how about payment?",
+      "branches": [
+        {
+          "keywords": [
+            "laut",
+            "bandar",
+            "kadkredit",
+            "tunai",
+            "bayar",
+            "visa",
+            "mastercard"
+          ],
+          "nextTurnId": "t4"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t4": {
+      "id": "t4",
+      "prompt": "Faham. Sarapan pagi termasuk, adakah anda akan mengambil sarapan pagi esok?",
+      "promptTranslation": "Faham. (fah-ham) Sarapan pagi termasuk, adakah anda akan mengambil sarapan pagi esok? — Understood. Breakfast is included, will you be taking breakfast tomorrow morning?",
+      "branches": [
+        {
+          "keywords": [
+            "ya",
+            "ambil",
+            "tentu",
+            "tidak",
+            "takambil",
+            "tak"
+          ],
+          "nextTurnId": "t-end"
+        },
+        {
+          "keywords": [
+            ""
+          ],
+          "nextTurnId": "t-repeat"
+        }
+      ],
+      "fallbackBranchId": "t-repeat",
+      "isTerminal": false
+    },
+    "t-end": {
+      "id": "t-end",
+      "prompt": "Baiklah. Kunci bilik anda sedia. Selamat menikmati penginapan anda di Hotel Bahagia!",
+      "promptTranslation": "Baiklah. (ba-eek-lah) Kunci bilik anda sedia. Selamat menikmati penginapan anda di Hotel Bahagia! — Alright. Your room key is ready. Enjoy your stay at Happy Hotel!",
+      "branches": [],
+      "fallbackBranchId": "t-end",
+      "isTerminal": true
+    }
+  }
+}
