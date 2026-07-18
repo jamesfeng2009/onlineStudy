@@ -5,8 +5,7 @@ import {
   UI_LANGUAGES,
   LEARN_LANGUAGES,
   LANG_CODE_TO_SLUG,
-  LANG_SLUG_TO_CODE,
-} from "../../src/lib/i18n/registry.js";
+} from "../lib/i18n-registry.js";
 
 /**
  * SEO/GEO 后端路由
