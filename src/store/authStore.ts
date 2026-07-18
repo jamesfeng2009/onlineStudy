@@ -36,6 +36,11 @@ function writeToken(token: string | null) {
   }
 }
 
+// Module-level in-flight guard: prevents concurrent /api/auth/me requests
+// when multiple components call bootstrap() simultaneously (e.g. React
+// StrictMode double-mount + OAuthCallbackPage + App useEffect).
+let bootstrapInFlight: Promise<void> | null = null;
+
 export const useAuthStore = create<AuthState>()((set, get) => ({
   token: readToken(),
   user: null,
@@ -44,20 +49,29 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   async bootstrap() {
     const existing = readToken();
     if (!existing) return;
-    // Guard: if already logged in with user data, skip duplicate fetch.
-    // This prevents /api/auth/me from being called multiple times when
-    // OAuthCallbackPage calls bootstrap() and then App's useEffect also
-    // calls bootstrap() after navigation.
+
+    // Guard 1: already logged in with user data — nothing to do.
     const state = get();
     if (state.status === "logged" && state.user) return;
-    try {
-      set({ status: "loading" });
-      const res = await api.me();
-      set({ user: res.user, status: "logged" });
-    } catch {
-      writeToken(null);
-      set({ token: null, user: null, status: "idle" });
-    }
+
+    // Guard 2: another bootstrap() is already in flight — reuse its promise.
+    if (bootstrapInFlight) return bootstrapInFlight;
+
+    const doFetch = async () => {
+      try {
+        set({ status: "loading" });
+        const res = await api.me();
+        set({ user: res.user, status: "logged" });
+      } catch {
+        writeToken(null);
+        set({ token: null, user: null, status: "idle" });
+      } finally {
+        bootstrapInFlight = null;
+      }
+    };
+
+    bootstrapInFlight = doFetch();
+    return bootstrapInFlight;
   },
 
   async register({ email, password, username, language, uiLanguage, nativeLanguage }) {
