@@ -168,8 +168,8 @@ export default function LearnPage() {
             <JsonLd
               data={[
                 buildBreadcrumbLd([
-                  { name: "Home", url: "https://lang-oria.com/" },
-                  { name: "Courses", url: "https://lang-oria.com/courses" },
+                  { name: t("learn:ui.navHome"), url: "https://lang-oria.com/" },
+                  { name: t("learn:ui.navCourses"), url: "https://lang-oria.com/courses" },
                   { name: title, url: `https://lang-oria.com/learn/${course.id}` },
                 ]),
                 buildCourseLd({

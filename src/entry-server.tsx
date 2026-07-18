@@ -4,6 +4,7 @@ import { StaticRouter } from "react-router-dom";
 import App from "./App";
 import i18n from "./lib/i18n";
 import { extractLocaleFromPath, type SupportedLanguage } from "./lib/i18n";
+import { ensureLearnNamespace } from "./lib/learn-i18n";
 
 /**
  * SSR entry — used by scripts/prerender.ts at build time.
@@ -23,9 +24,15 @@ export async function render(url: string): Promise<string> {
   // SSR 下 i18n 没有 LanguageDetector（见 i18n.ts 的 isBrowser 分支），
   // 这里根据 URL 前缀手动切语言，保证 <Seo> 输出的 hreflang/canonical
   // 与最终 HTML 的 lang 属性一致。
-  const { locale } = extractLocaleFromPath(url);
+  const { locale, strippedPath } = extractLocaleFromPath(url);
   if (i18n.language !== locale) {
     await i18n.changeLanguage(locale as SupportedLanguage);
+  }
+
+  // Pre-load the "learn" namespace so /languages/* pages render with
+  // correct editorial copy during SSR (no fallback flashes).
+  if (strippedPath.startsWith("/languages")) {
+    await ensureLearnNamespace(locale);
   }
 
   const app = (

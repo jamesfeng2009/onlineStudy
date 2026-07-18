@@ -5,6 +5,8 @@ import { ArrowRight, ArrowLeft, BookOpen, Sparkles, Volume2 } from "lucide-react
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildBreadcrumbLd } from "../components/JsonLd";
+import { useLearnTranslation } from "../lib/learn-i18n";
+import { getLanguageDisplayName } from "../data/languages";
 import {
   LEARN_CONTENT_LOADERS,
   LEARN_LANG_META,
@@ -27,16 +29,20 @@ import {
  */
 export default function LearnWordPage() {
   const { langSlug, wordSlug } = useParams<{ langSlug: string; wordSlug: string }>();
+  const { t, i18n, ready } = useLearnTranslation();
   const [words, setWords] = useState<LearnWord[] | null>(null);
 
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const valid = Boolean(dataSlug);
   const slug = (dataSlug ?? "en") as LearnLangSlug;
   const meta = LEARN_LANG_META[slug];
+  const langName = getLanguageDisplayName(slug, i18n.language);
   // 4 new languages (ko/es/fr/de) ship per-sentence-pair data, not
   // per-word. The page renders them as "sentence cards" — same UI,
   // bigger word field.
   const isSentence = meta.dataShape === "sentence";
+  const unit = isSentence ? t("learn:ui.unitSentence") : t("learn:ui.unitWord");
+  const unitSingular = isSentence ? t("learn:ui.unitSentenceSingular") : t("learn:ui.unitWordSingular");
 
   useEffect(() => {
     let cancelled = false;
@@ -62,11 +68,19 @@ export default function LearnWordPage() {
       .slice(0, 8);
   }, [word, words]);
 
+  if (!ready) {
+    return (
+      <PageShell title="">
+        <div className="min-h-[40vh]" />
+      </PageShell>
+    );
+  }
+
   if (!valid) {
     return (
-      <PageShell title="Language not found">
+      <PageShell title={t("learn:ui.languageNotFound")}>
         <Link to="/" className="text-sky-300 hover:underline">
-          ← Home
+          {t("learn:ui.homeLink")}
         </Link>
       </PageShell>
     );
@@ -74,12 +88,15 @@ export default function LearnWordPage() {
 
   if (!word && words !== null) {
     return (
-      <PageShell title="Word not found" subtitle={`No entry for "${wordSlug}"`}>
+      <PageShell
+        title={t("learn:ui.wordNotFound", { unit: unitSingular })}
+        subtitle={t("learn:ui.noEntry", { slug: wordSlug })}
+      >
         <Link
           to={`/languages/${slug}`}
           className="inline-flex items-center gap-1 text-sky-300 hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to {meta.englishName}
+          <ArrowLeft className="h-4 w-4" /> {t("learn:ui.backToOverview", { lang: langName })}
         </Link>
       </PageShell>
     );
@@ -90,27 +107,27 @@ export default function LearnWordPage() {
 
   return (
     <PageShell
-      title={word?.word ?? "Loading…"}
+      title={word?.word ?? t("learn:ui.loading")}
       subtitle={
         word
-          ? `${meta.englishName} · ${word.level} · ${word.translation || "(no translation)"}`
-          : "Loading vocabulary…"
+          ? `${langName} · ${word.level} · ${word.translation || t("learn:ui.noTranslation")}`
+          : t("learn:ui.loading")
       }
       action={
         <Link
           to={`/languages/${slug}`}
           className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200"
         >
-          <ArrowLeft className="h-4 w-4" /> {meta.englishName} overview
+          <ArrowLeft className="h-4 w-4" /> {t("learn:ui.backToOverview", { lang: langName })}
         </Link>
       }
     >
       <Seo
-        title={`${word?.word ?? ""} — ${meta.englishName} vocabulary | LangOria`}
+        title={t("learn:ui.seoWordTitle", { word: word?.word ?? "", lang: langName })}
         description={
           word?.example
             ? `"${word.example}" — ${word.exampleTranslation}`
-            : `${word?.word} in ${meta.englishName}`
+            : t("learn:ui.seoWordDescFallback", { word: word?.word ?? "", lang: langName })
         }
         noindex
         pathname={`/languages/${langSlug}/word/${word?.slug ?? ""}`}
@@ -119,8 +136,8 @@ export default function LearnWordPage() {
         <JsonLd
           data={[
             buildBreadcrumbLd([
-              { name: "Home", url: `${siteUrl}/` },
-              { name: meta.englishName, url: `${siteUrl}/languages/${slug}` },
+              { name: t("learn:ui.navHome"), url: `${siteUrl}/` },
+              { name: langName, url: `${siteUrl}/languages/${slug}` },
               { name: word.word, url: pageUrl },
             ]),
             {
@@ -174,13 +191,13 @@ export default function LearnWordPage() {
               </div>
             )}
             <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-200/80">
-              <BookOpen className="h-3.5 w-3.5" /> {word.level} · {isSentence ? "sentence" : "word"}
+              <BookOpen className="h-3.5 w-3.5" /> {word.level} · {unitSingular}
             </div>
 
             {!isSentence && word.translation && (
               <div className="mt-6">
                 <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
-                  Meaning
+                  {t("learn:ui.meaning")}
                 </div>
                 <p className="mt-2 text-base leading-relaxed text-white">
                   {word.translation}
@@ -191,7 +208,7 @@ export default function LearnWordPage() {
             {word.example && word.example !== word.word && (
               <div className="mt-8">
                 <div className="text-xs font-semibold uppercase tracking-widest text-fuchsia-300">
-                  Example
+                  {t("learn:ui.example")}
                 </div>
                 <blockquote className="mt-2 rounded-2xl border-l-4 border-fuchsia-400/60 bg-white/5 p-4 text-base italic text-white">
                   {word.example}
@@ -207,23 +224,21 @@ export default function LearnWordPage() {
 
           <aside className="glass rounded-3xl p-6">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-sky-300">
-              <Sparkles className="h-3.5 w-3.5" /> Practice this word
+              <Sparkles className="h-3.5 w-3.5" /> {t("learn:ui.practiceThisWord", { unit: unitSingular })}
             </div>
             <p className="mt-3 text-sm text-brand-100/80">
-              Add {word.word} to your spaced-repetition deck and review it
-              tomorrow, then in 3 days, then in a week — the way your
-              brain actually wants to learn.
+              {t("learn:ui.practiceDesc", { word: word.word })}
             </p>
             <LocaleLink
               to="/register"
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5"
             >
-              Start practicing <ArrowRight className="h-4 w-4" />
+              {t("learn:ui.startPracticing")} <ArrowRight className="h-4 w-4" />
             </LocaleLink>
 
             <div className="mt-6 border-t border-white/10 pt-5">
               <div className="text-xs font-semibold uppercase tracking-widest text-sky-300">
-                Related words
+                {t("learn:ui.relatedWords", { unit })}
               </div>
               <ul className="mt-3 space-y-1.5">
                 {related.map((w) => (
@@ -242,7 +257,7 @@ export default function LearnWordPage() {
           </aside>
         </div>
       ) : (
-        <div className="text-brand-200/60">Loading vocabulary…</div>
+        <div className="text-brand-200/60">{t("learn:ui.loading")}</div>
       )}
     </PageShell>
   );

@@ -5,6 +5,8 @@ import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildBreadcrumbLd, buildItemListLd } from "../components/JsonLd";
 import AudioButton from "../components/AudioButton";
+import { useLearnTranslation } from "../lib/learn-i18n";
+import { getLanguageDisplayName } from "../data/languages";
 import {
   LEARN_LANG_META,
   URL_SLUG_TO_DATA,
@@ -37,6 +39,7 @@ export default function LearnScenarioPage() {
     langSlug: string;
     scenarioSlug?: string;
   }>();
+  const { t, i18n, ready } = useLearnTranslation();
 
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const validLang = dataSlug !== undefined;
@@ -44,18 +47,27 @@ export default function LearnScenarioPage() {
   const hasContent = (SCENARIO_LANGS as readonly string[]).includes(langKey);
   const slug = (dataSlug ?? "en") as LearnLangSlug;
   const meta = LEARN_LANG_META[slug];
+  const langName = getLanguageDisplayName(slug, i18n.language);
 
   const siteUrl = "https://lang-oria.com";
+
+  if (!ready) {
+    return (
+      <PageShell title="">
+        <div className="min-h-[40vh]" />
+      </PageShell>
+    );
+  }
 
   // /languages/:langSlug/scenarios — index of all 4 scenarios for this lang
   if (!scenarioSlug) {
     if (!validLang) {
       return (
-        <PageShell title="Language not found" subtitle="That language is not yet supported.">
-          <Seo noindex title="Language not found" />
+        <PageShell title={t("learn:ui.languageNotFound")} subtitle={t("learn:ui.languageNotSupported")}>
+          <Seo noindex title={t("learn:ui.languageNotFound")} />
           <p className="text-brand-200/80">
             <LocaleLink to="/languages" className="text-sky-300 hover:underline">
-              ← Pick a language
+              {t("learn:ui.pickLanguage")}
             </LocaleLink>
           </p>
         </PageShell>
@@ -64,43 +76,42 @@ export default function LearnScenarioPage() {
     if (!hasContent) {
       return (
         <PageShell
-          title={`${meta.englishName} scenarios`}
-          subtitle="Scenario lessons are coming soon for this language."
+          title={t("learn:ui.scenariosIndexTitle", { lang: langName })}
+          subtitle={t("learn:ui.scenarioComingSoon")}
         >
-          <Seo noindex title={`${meta.englishName} scenarios`} />
+          <Seo noindex title={t("learn:ui.scenariosIndexTitle", { lang: langName })} />
           <p className="text-brand-200/80">
             <Link
               to={`/languages/${langSlug}`}
               className="text-sky-300 hover:underline"
             >
-              ← Back to {meta.englishName}
+              {t("learn:ui.backToLang", { lang: langName })}
             </Link>
           </p>
         </PageShell>
       );
     }
-    const scenariosForLang = SCENARIO_CONTENT[langKey]!;
     const overviewUrl = `${siteUrl}/languages/${langSlug}/scenarios`;
     return (
       <PageShell
-        title={`${meta.englishName} scenarios — 4 real-world situations`}
-        subtitle={`Four high-leverage ${meta.englishName} scenarios — travel, business, food, and small talk — each with 10 hand-picked phrases, a sample dialogue, and a culture tip.`}
+        title={t("learn:ui.scenariosIndexTitle", { lang: langName })}
+        subtitle={t("learn:ui.scenariosIndexSubtitle", { lang: langName })}
       >
         <Seo
-          title={`${meta.englishName} scenarios — travel, business, food, small talk | LangOria`}
-          description={`Four high-leverage ${meta.englishName} scenarios with 10 phrases each, sample dialogues, and culture tips. ${meta.englishName} for travel, business, food, and small talk.`}
+          title={t("learn:ui.seoScenariosTitle", { lang: langName })}
+          description={t("learn:ui.seoScenariosDesc", { lang: langName })}
           pathname={`/languages/${langSlug}/scenarios`}
         />
         <JsonLd
           data={[
             buildBreadcrumbLd([
-              { name: "Home", url: `${siteUrl}/` },
-              { name: "Languages", url: `${siteUrl}/languages` },
-              { name: meta.englishName, url: `${siteUrl}/languages/${langSlug}` },
-              { name: "Scenarios", url: overviewUrl },
+              { name: t("learn:ui.navHome"), url: `${siteUrl}/` },
+              { name: t("learn:ui.navLanguages"), url: `${siteUrl}/languages` },
+              { name: langName, url: `${siteUrl}/languages/${langSlug}` },
+              { name: t("learn:ui.navScenarios"), url: overviewUrl },
             ]),
             buildItemListLd({
-              name: `${meta.englishName} learning scenarios`,
+              name: t("learn:ui.scenariosItemListName", { lang: langName }),
               url: overviewUrl,
               items: SCENARIO_KEYS.map((s) => ({
                 name: SCENARIO_META[s].name,
@@ -113,16 +124,10 @@ export default function LearnScenarioPage() {
         <article className="prose prose-invert max-w-none">
           <section className="glass rounded-3xl p-8 md:p-12">
             <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
-              Why learn {meta.englishName} by scenario?
+              {t("learn:ui.whyScenarioLearning", { lang: langName })}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-100/90 md:text-base">
-              Scenario-based learning is the fastest way to usable {meta.englishName}.
-              Instead of memorising 1000 words you'll forget, you master 10 phrases you'll
-              actually use — and then the next 10, and the next 10. The four scenarios
-              below cover the situations adult learners most often ask us about: travel,
-              business, food, and small talk. Each one is built from a 10-phrase deck, a
-              sample dialogue, and a culture tip that tells you when to use the formal
-              register and when the casual one is fine.
+              {t("learn:ui.scenarioIndexIntro", { lang: langName })}
             </p>
           </section>
           <section className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -140,7 +145,7 @@ export default function LearnScenarioPage() {
                         {sc.name}
                       </div>
                       <div className="mt-1 text-xs uppercase tracking-widest text-brand-200/50">
-                        {meta.englishName} · 10 phrases
+                        {t("learn:ui.phrasesBadge", { lang: langName })}
                       </div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-sky-300 transition group-hover:translate-x-1" />
@@ -161,13 +166,13 @@ export default function LearnScenarioPage() {
   if (!validLang || !hasContent) {
     return (
       <PageShell
-        title="Scenario not available"
-        subtitle="That language / scenario combination is not yet supported."
+        title={t("learn:ui.scenarioNotAvailable")}
+        subtitle={t("learn:ui.scenarioNotSupported")}
       >
-        <Seo noindex title="Scenario not available" />
+        <Seo noindex title={t("learn:ui.scenarioNotAvailable")} />
         <p className="text-brand-200/80">
           <Link to={`/languages/${langSlug}`} className="text-sky-300 hover:underline">
-            ← Back to {meta.englishName}
+            {t("learn:ui.backToLang", { lang: langName })}
           </Link>
         </p>
       </PageShell>
@@ -176,16 +181,16 @@ export default function LearnScenarioPage() {
   if (!(SCENARIO_KEYS as readonly string[]).includes(scenarioSlug)) {
     return (
       <PageShell
-        title="Scenario not found"
-        subtitle="That scenario is not one of the four supported scenarios."
+        title={t("learn:ui.scenarioNotFound")}
+        subtitle={t("learn:ui.scenarioNotOneOfFour")}
       >
-        <Seo noindex title="Scenario not found" />
+        <Seo noindex title={t("learn:ui.scenarioNotFound")} />
         <p className="text-brand-200/80">
           <Link
             to={`/languages/${langSlug}/scenarios`}
             className="text-sky-300 hover:underline"
           >
-            ← Back to {meta.englishName} scenarios
+            {t("learn:ui.backToScenarios", { lang: langName })}
           </Link>
         </p>
       </PageShell>
@@ -207,7 +212,7 @@ export default function LearnScenarioPage() {
           to="/register"
           className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5"
         >
-          Start free trial <ArrowRight className="h-4 w-4" />
+          {t("learn:ui.startFreeTrial")} <ArrowRight className="h-4 w-4" />
         </LocaleLink>
       }
     >
@@ -219,10 +224,10 @@ export default function LearnScenarioPage() {
       <JsonLd
         data={[
           buildBreadcrumbLd([
-            { name: "Home", url: `${siteUrl}/` },
-            { name: "Languages", url: `${siteUrl}/languages` },
-            { name: meta.englishName, url: `${siteUrl}/languages/${langSlug}` },
-            { name: "Scenarios", url: `${siteUrl}/languages/${langSlug}/scenarios` },
+            { name: t("learn:ui.navHome"), url: `${siteUrl}/` },
+            { name: t("learn:ui.navLanguages"), url: `${siteUrl}/languages` },
+            { name: langName, url: `${siteUrl}/languages/${langSlug}` },
+            { name: t("learn:ui.navScenarios"), url: `${siteUrl}/languages/${langSlug}/scenarios` },
             { name: scMeta.name, url: pageUrl },
           ]),
         ]}
@@ -230,10 +235,10 @@ export default function LearnScenarioPage() {
       <article className="prose prose-invert max-w-none">
         <section className="glass rounded-3xl p-8 md:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
-            <Sparkles className="h-3.5 w-3.5 text-sky-300" /> {scMeta.name} · {meta.englishName} · {meta.flag}
+            <Sparkles className="h-3.5 w-3.5 text-sky-300" /> {scMeta.name} · {langName} · {meta.flag}
           </div>
           <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
-            Why {scMeta.name.toLowerCase()} {meta.englishName}?
+            {t("learn:ui.whyScenario", { scenario: scMeta.name.toLowerCase(), lang: langName })}
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-brand-100/90 md:text-base">
             {content.intro}
@@ -242,10 +247,10 @@ export default function LearnScenarioPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            10 phrases you will actually use
+            {t("learn:ui.tenPhrasesTitle")}
           </h2>
           <p className="mt-2 text-sm text-brand-200/70">
-            These 10 sentences cover roughly 95% of {scMeta.name.toLowerCase()} in {meta.englishName}. Tap the speaker icon to hear the pronunciation.
+            {t("learn:ui.tenPhrasesDesc", { scenario: scMeta.name.toLowerCase(), lang: langName })}
           </p>
           <div className="mt-6 space-y-3">
             {content.phrases.map((p, i) => (
@@ -264,11 +269,11 @@ export default function LearnScenarioPage() {
                       </div>
                     ) : null}
                     <div className="mt-2 text-sm text-brand-100/80">
-                      <span className="text-brand-200/50">EN:</span> {p.en}
+                      <span className="text-brand-200/50">{t("learn:ui.enLabel")}</span> {p.en}
                     </div>
                     {p.literal ? (
                       <div className="mt-1 text-xs text-brand-200/60">
-                        <span className="text-brand-200/40">Lit:</span> {p.literal}
+                        <span className="text-brand-200/40">{t("learn:ui.litLabel")}</span> {p.literal}
                       </div>
                     ) : null}
                   </div>
@@ -281,36 +286,36 @@ export default function LearnScenarioPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            Sample dialogue
+            {t("learn:ui.sampleDialogueTitle")}
           </h2>
           <p className="mt-2 text-sm text-brand-200/70">
-            Read this conversation out loud — it uses the same 10 phrases in context.
+            {t("learn:ui.sampleDialogueDesc")}
           </p>
           <div className="mt-6 glass rounded-3xl p-6 md:p-8">
             <MessageSquare className="h-5 w-5 text-sky-300" />
             <div className="mt-4 space-y-4">
-              {content.conversation.map((t, i) => (
+              {content.conversation.map((turn, i) => (
                 <div key={i} className="flex gap-3">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-fuchsia-400 text-xs font-bold text-slate-900">
-                    {t.speaker}
+                    {turn.speaker}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-start gap-3">
                       <div className="flex-1">
-                        <div className="text-base text-white">{t.tgt}</div>
-                        {t.romanization ? (
+                        <div className="text-base text-white">{turn.tgt}</div>
+                        {turn.romanization ? (
                           <div className="mt-1 text-sm italic text-sky-300/70">
-                            {t.romanization}
+                            {turn.romanization}
                           </div>
                         ) : null}
-                        {t.literal ? (
+                        {turn.literal ? (
                           <div className="mt-1 text-xs text-brand-200/60">
-                            <span className="text-brand-200/40">Lit:</span> {t.literal}
+                            <span className="text-brand-200/40">{t("learn:ui.litLabel")}</span> {turn.literal}
                           </div>
                         ) : null}
-                        <div className="mt-1 text-sm text-brand-200/60">{t.en}</div>
+                        <div className="mt-1 text-sm text-brand-200/60">{turn.en}</div>
                       </div>
-                      <AudioButton text={t.tgt} lang={ttsLang} size="sm" />
+                      <AudioButton text={turn.tgt} lang={ttsLang} size="sm" />
                     </div>
                   </div>
                 </div>
@@ -321,7 +326,7 @@ export default function LearnScenarioPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            Culture & etiquette
+            {t("learn:ui.cultureTitle")}
           </h2>
           <div className="mt-4 glass rounded-3xl p-8">
             <p className="text-sm leading-relaxed text-brand-100/90 md:text-base">
@@ -332,7 +337,7 @@ export default function LearnScenarioPage() {
 
         <section className="mt-10">
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            How to study this scenario
+            {t("learn:ui.howToStudyScenario")}
           </h2>
           <div className="mt-4 glass rounded-3xl p-8">
             <p className="text-sm leading-relaxed text-brand-100/90 md:text-base">
@@ -345,17 +350,17 @@ export default function LearnScenarioPage() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
               <h2 className="font-display text-xl font-bold text-white md:text-2xl">
-                More {meta.englishName} scenarios
+                {t("learn:ui.moreScenarios", { lang: langName })}
               </h2>
               <p className="mt-1 text-sm text-brand-100/80">
-                Jump to a different scenario in the same language.
+                {t("learn:ui.moreScenariosDesc")}
               </p>
             </div>
             <Link
               to={`/languages/${langSlug}/scenarios`}
               className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              All {meta.englishName} scenarios <ArrowRight className="h-4 w-4" />
+              {t("learn:ui.allScenarios", { lang: langName })} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">

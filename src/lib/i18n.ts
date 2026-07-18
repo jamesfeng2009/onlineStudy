@@ -95,6 +95,13 @@ i18nBuilder.init({
   fallbackLng: DEFAULT_UI_LANGUAGE,
   supportedLngs: SUPPORTED_LANGUAGES as unknown as string[],
   interpolation: { escapeValue: false },
+  // The "learn" namespace (/languages/* editorial copy, ~212 KB/locale)
+  // is NOT bundled here — it is added at runtime via addResourceBundle
+  // (see src/lib/learn-i18n.ts). partialBundledLanguages tells i18next
+  // that namespaces may arrive later.
+  ns: ["translation", "learn"],
+  defaultNS: "translation",
+  partialBundledLanguages: true,
   ...(isBrowser
     ? {
         detection: {
