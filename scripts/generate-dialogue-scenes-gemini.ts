@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Batch-generate multi-turn dialogue scenes via Google Gemini.
  *
@@ -158,7 +159,7 @@ function plan(): { lang: LangKey; scenario: typeof SCENARIOS[number]; level: str
 }
 
 // ---- JSON Schema: strict DialogueScene shape ----
-const RESPONSE_SCHEMA = {
+const _RESPONSE_SCHEMA = {
   type: "OBJECT",
   properties: {
     id: { type: "STRING", description: "Lowercase id like 'dlg-en-hotel-a1' (lang + scenario + level, all lowercase)." },

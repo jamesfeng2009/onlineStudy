@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Validate generated quiz JSON files for common quality issues.
  *

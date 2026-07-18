@@ -22,8 +22,7 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { sendSuccess, sendError } from "../lib/response.js";
-import { tokenize, computeScore } from "../lib/writing-score.js";
-import type { ScoreResult } from "../lib/writing-score.js";
+import { computeScore } from "../lib/writing-score.js";
 import { createRouteLogger } from "../lib/logger.js";
 
 const log = createRouteLogger("writing");

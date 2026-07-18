@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Translate real-conversations source data to target languages via Gemini.
  *

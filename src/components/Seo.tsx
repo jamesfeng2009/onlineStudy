@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { buildLocalePath, DEFAULT_UI_LANGUAGE } from "../lib/i18n";
+import { buildLocalePath } from "../lib/i18n";
 import { UI_LANGUAGES, OG_LOCALE_MAP } from "../lib/i18n/registry";
 
 // 生产域名（Vercel 上确认过是 lang-oria.com）

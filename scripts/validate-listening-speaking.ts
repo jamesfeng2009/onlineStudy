@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Validate generated listening + speaking JSON files for common issues.
  *
@@ -77,7 +77,6 @@ function fileNameLevel(file: string): string {
 
 function validateListening(file: string, item: ListenItem): Issue[] {
   const out: Issue[] = [];
-  const fid = `${file} | ${item.id}`;
 
   // 1. required fields
   if (!item.id) out.push({ file, id: item.id, severity: "error", rule: "missing-id", message: "id is missing" });

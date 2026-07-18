@@ -1,4 +1,4 @@
-import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase, RealConversation, Language } from "../types";
+import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase, Language } from "../types";
 import { GENERATED_QUIZZES } from "./generated-quizzes";
 import { GENERATED_LISTENING } from "./generated-listening";
 import { GENERATED_SPEAKING } from "./generated-speaking";

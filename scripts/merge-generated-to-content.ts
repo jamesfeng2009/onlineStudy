@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Scan scripts/generated/quizzes/*.json and emit a single TypeScript
  * module at src/data/generated-quizzes.ts that re-exports all quizzes

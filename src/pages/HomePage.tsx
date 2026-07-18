@@ -35,8 +35,12 @@ export default function HomePage() {
   const status = useAuthStore((s) => s.status);
   const progress = useProgressStore((s) => s.progress);
   const refreshProgress = useProgressStore((s) => s.refresh);
-  const [courses, setCourses] = useState<CourseResp[]>([]);
-  const [coursesLoading, setCoursesLoading] = useState(true);
+  // 预渲染 HTML 已带本地课程数据，直接用 COURSES 作为初始值，
+  // 避免首屏 "Loading courses..." 空白。API 返回后静默更新。
+  const [courses, setCourses] = useState<CourseResp[]>(() =>
+    COURSES.slice(0, 4).map((c) => ({ ...c, vipOnly: false }))
+  );
+  const [coursesLoading, setCoursesLoading] = useState(false);
 
   useEffect(() => {
     if (user) refreshProgress();
@@ -44,14 +48,15 @@ export default function HomePage() {
 
   useEffect(() => {
     let alive = true;
-    setCoursesLoading(true);
+    // 如果已经有本地数据（预渲染或 COURSES fallback），不显示 loading
+    if (courses.length === 0) setCoursesLoading(true);
     api
       .courses()
       .then((data) => {
-        if (alive) setCourses(data);
+        if (alive && data.length > 0) setCourses(data);
       })
       .catch(() => {
-        if (alive) setCourses([]);
+        // 静默失败，保留本地 COURSES 数据
       })
       .finally(() => {
         if (alive) setCoursesLoading(false);
@@ -59,6 +64,7 @@ export default function HomePage() {
     return () => {
       alive = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const featureCourses = useMemo(() => {

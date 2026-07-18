@@ -16,8 +16,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
-  Loader2, Check, X, Save, RotateCcw, ArrowLeft, ArrowRight,
-  Award, ClipboardList, Info, Sparkles,
+  Loader2, Check, X, Save, RotateCcw, ArrowLeft,
+  Award, ClipboardList, Sparkles,
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
@@ -57,7 +57,7 @@ export default function CefrSelfAssessmentPage() {
   const [levels, setLevels] = useState<CefrLevelMeta[]>([]);
   const [levelsLoading, setLevelsLoading] = useState(true);
   const [savedEntry, setSavedEntry] = useState<CefrSelfAssessmentEntry | null>(null);
-  const [savedLoading, setSavedLoading] = useState(true);
+  const [, setSavedLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
 
   // 选中的 can-do keys

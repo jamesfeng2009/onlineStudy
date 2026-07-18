@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Batch-generate CEFR/JLPT/HSK/TOPIK grammar quiz items via LLM.
  *

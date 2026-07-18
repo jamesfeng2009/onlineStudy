@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Merge generated dialogue scenes into the hand-authored list in
  * src/data/dialogue-scenes.ts. Idempotent: scenes that already

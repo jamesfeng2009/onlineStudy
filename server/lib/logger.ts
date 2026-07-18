@@ -16,6 +16,28 @@
 import { randomUUID } from "crypto";
 
 /**
+ * logger 实际访问的 request/reply 最小结构。
+ * 用结构化类型而非 FastifyRequest/FastifyReply，避免 fastify() 的
+ * options 重载推断因 serializers 参数类型而落到 http2 分支。
+ */
+interface LoggableRequest {
+  id: string | number;
+  method: string;
+  url: string;
+  user?: { userId?: string };
+  log: {
+    info(obj: object, msg?: string): void;
+    warn(obj: object, msg?: string): void;
+    error(obj: object, msg?: string): void;
+    debug(obj: object, msg?: string): void;
+  };
+}
+
+interface LoggableReply {
+  statusCode: number;
+}
+
+/**
  * 生成 trace_id（UUID v4，去掉连字符更短）
  * 用于唯一标识一个请求的全链路
  */
@@ -28,6 +50,7 @@ export function generateTraceId(): string {
  * 避免把整个 request 对象打进去（可能含敏感 header）
  */
 export const pinoSerializers = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   req(req: any) {
     return {
       method: req.method,
@@ -36,6 +59,7 @@ export const pinoSerializers = {
       trace_id: req.id,
     };
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   res(res: any) {
     return {
       statusCode: res.statusCode,
@@ -47,7 +71,7 @@ export const pinoSerializers = {
  * 从 FastifyRequest 中提取 user_id（如果 JWT 已验证）
  * Fastify JWT 插件验证后会把 payload 挂到 request.user 上
  */
-export function extractUserId(request: any): string | undefined {
+export function extractUserId(request: LoggableRequest): string | undefined {
   try {
     return request.user?.userId;
   } catch {
@@ -59,7 +83,7 @@ export function extractUserId(request: any): string | undefined {
  * 构建请求级日志上下文 — 包含 trace_id + user_id
  * 供 onResponse hook 使用
  */
-export function buildRequestLogContext(request: any, reply: any, durationMs: number) {
+export function buildRequestLogContext(request: LoggableRequest, reply: LoggableReply, durationMs: number) {
   return {
     trace_id: request.id,
     user_id: extractUserId(request) ?? "-",
@@ -82,25 +106,25 @@ export function buildRequestLogContext(request: any, reply: any, durationMs: num
  */
 export function createRouteLogger(module: string) {
   return {
-    info(request: any, msg: string, extra?: Record<string, unknown>) {
+    info(request: LoggableRequest, msg: string, extra?: Record<string, unknown>) {
       request.log.info(
         { module, trace_id: request.id, user_id: extractUserId(request) ?? "-", ...extra },
         msg,
       );
     },
-    warn(request: any, msg: string, extra?: Record<string, unknown>) {
+    warn(request: LoggableRequest, msg: string, extra?: Record<string, unknown>) {
       request.log.warn(
         { module, trace_id: request.id, user_id: extractUserId(request) ?? "-", ...extra },
         msg,
       );
     },
-    error(request: any, msg: string, extra?: Record<string, unknown>) {
+    error(request: LoggableRequest, msg: string, extra?: Record<string, unknown>) {
       request.log.error(
         { module, trace_id: request.id, user_id: extractUserId(request) ?? "-", ...extra },
         msg,
       );
     },
-    debug(request: any, msg: string, extra?: Record<string, unknown>) {
+    debug(request: LoggableRequest, msg: string, extra?: Record<string, unknown>) {
       request.log.debug(
         { module, trace_id: request.id, user_id: extractUserId(request) ?? "-", ...extra },
         msg,

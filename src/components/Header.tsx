@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { cn } from "../lib/utils";
-import i18n, { buildLocalePath, extractLocaleFromPath, type SupportedLanguage } from "../lib/i18n";
+import { buildLocalePath, extractLocaleFromPath, type SupportedLanguage } from "../lib/i18n";
 import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { LocaleLink, LocaleNavLink } from "./LocaleLink";
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Scan scripts/generated/real-conversations/{lang}/{domain}.json and
  * emit a single TypeScript module at src/data/real-conversations.ts

@@ -44,6 +44,12 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   async bootstrap() {
     const existing = readToken();
     if (!existing) return;
+    // Guard: if already logged in with user data, skip duplicate fetch.
+    // This prevents /api/auth/me from being called multiple times when
+    // OAuthCallbackPage calls bootstrap() and then App's useEffect also
+    // calls bootstrap() after navigation.
+    const state = get();
+    if (state.status === "logged" && state.user) return;
     try {
       set({ status: "loading" });
       const res = await api.me();

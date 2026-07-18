@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * P0-4: migrate ko learn-content levels from CEFR (A1/A2/B1) to TOPIK
  * (TOPIK1/TOPIK2/TOPIK3), so ko.ts aligns with language-registry.ts.

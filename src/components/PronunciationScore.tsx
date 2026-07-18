@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, Square, RotateCcw, Check, AlertCircle, Loader2 } from "lucide-react";
+import { Mic, Square, RotateCcw, Check, AlertCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AudioButton from "./AudioButton";
 

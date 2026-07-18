@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Scan scripts/generated/listening/*.json and speaking/*.json,
  * emit two TypeScript modules:
@@ -47,7 +47,7 @@ function readJsonDir<T>(dir: string): { data: T[]; labels: string[] } {
         data.push(...arr);
         labels.push(`  // ${file}: ${arr.length} items`);
       }
-    } catch (e) {
+    } catch {
       console.warn(`⚠ ${file}: parse error, skipped`);
     }
   }

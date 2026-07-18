@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Convert Tatoeba sentences into fill-in-the-blank ListeningItems.
  *
@@ -317,7 +317,7 @@ function tokenize(text: string, lang: LangKey): string[] {
     // show a wider input box and the answer lands on a real word
     // rather than half of a 漢字. Tatoeba has no spaces, so we
     // chunk greedily by 2. Punctuation and whitespace are dropped.
-    const stripped = text.replace(/[.,!?;:"'\(\)\[\]「」『』、。！？…・\s]/g, "");
+    const stripped = text.replace(/[.,!?;:"'()[\]「」『』、。！？…・\s]/g, "");
     const out: string[] = [];
     for (let i = 0; i < stripped.length; i += 2) {
       out.push(stripped.slice(i, i + 2));
@@ -326,7 +326,7 @@ function tokenize(text: string, lang: LangKey): string[] {
   }
   return text
     .split(/\s+/)
-    .map((t) => t.replace(/[.,!?;:"'\(\)\[\]]+$/g, ""))
+    .map((t) => t.replace(/[.,!?;:"'()[\]]+$/g, ""))
     .filter(Boolean);
 }
 

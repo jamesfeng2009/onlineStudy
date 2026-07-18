@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * Validate generated dialogue scenes against the 4 defenses:
  *   1. id 唯一 (no duplicate scene ids)
@@ -36,6 +36,7 @@ interface Scene {
   turns: Record<string, Turn>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isValidScene(s: any): s is Scene {
   return s && typeof s === "object" && s.turns && typeof s.turns === "object" && s.id && s.startTurnId;
 }

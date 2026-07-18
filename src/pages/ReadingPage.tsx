@@ -311,7 +311,7 @@ function ReadingList({
 // ============================================================
 
 function ReadingDetail({ id, onBack }: { id: string; onBack: () => void }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const nativeLanguage = (user?.nativeLanguage as string) || "en";
 

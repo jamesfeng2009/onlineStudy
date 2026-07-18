@@ -67,7 +67,7 @@ function WritingList({ onOpen }: { onOpen: (id: string) => void }) {
   const [error, setError] = useState<string | null>(null);
 
   // 用户提交历史（仅登录），用于显示完成标记
-  const [submissions, setSubmissions] = useState<WritingSubmissionEntry[]>([]);
+  const [, setSubmissions] = useState<WritingSubmissionEntry[]>([]);
   const [bestScoreMap, setBestScoreMap] = useState<Record<string, number>>({});
 
   const nativeLanguage = (user?.nativeLanguage as string) ?? "en";

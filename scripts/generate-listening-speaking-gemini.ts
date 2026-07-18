@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Generate listening fill-in-the-blank exercises and speaking phrases
  * via LLM (Gemini / OpenRouter / Doubao) for all 10 languages.

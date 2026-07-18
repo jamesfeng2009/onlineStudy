@@ -1185,7 +1185,7 @@ interface ChatBubble {
   translation?: string;
 }
 
-function ConversationModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
+function ConversationModule({ language, level: _level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const { t } = useTranslation();
   const scenes = useMemo(() => getDialogueScenes(language), [language]);
   const [sceneId, setSceneId] = useState<string>(scenes[0]?.id ?? "");

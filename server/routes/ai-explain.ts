@@ -102,7 +102,12 @@ async function callLLM(systemPrompt: string, userPrompt: string): Promise<LLMRes
     throw new Error(`LLM API ${resp.status}: ${errText.slice(0, 200)}`);
   }
 
-  const json = await resp.json() as any;
+  const json = await resp.json() as {
+    candidates?: { content?: { parts?: { text?: string }[] } }[];
+    usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number };
+    choices?: { message?: { content?: string } }[];
+    usage?: { prompt_tokens?: number; completion_tokens?: number };
+  };
   let text = "";
   let tokensInput = 0;
   let tokensOutput = 0;
@@ -298,7 +303,7 @@ const aiExplainRoutes: FastifyPluginAsync = async (fastify) => {
     try {
       const userId = request.user.userId;
       const { passageId } = request.params;
-      const { sentence, nativeLanguage } = request.body ?? {};
+      const { sentence } = request.body ?? {};
 
       if (!sentence?.trim()) {
         return sendError(reply, "BAD_REQUEST", "sentence 不能为空");

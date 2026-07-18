@@ -21,7 +21,6 @@ import {
   LANG_PAGE_COPY,
   VOCAB_OVERVIEW_COPY,
   LEVEL_COPY_TEMPLATES,
-  resolveLevelCopyKey,
 } from "../src/data/learn-copy.ts";
 
 import {
@@ -31,15 +30,8 @@ import {
   SCENARIO_LANGS,
 } from "../src/data/scenarios.ts";
 
-import { LEARN_LANG_META, ALL_LEARN_LANG_SLUGS } from "../src/data/learn-content/index.ts";
+import { ALL_LEARN_LANG_SLUGS } from "../src/data/learn-content/index.ts";
 import type { LearnLangSlug } from "../src/data/learn-content/index.ts";
-
-// ---------------------------------------------------------------------------
-// Flat key builder so translators see a human-readable path.
-// ---------------------------------------------------------------------------
-function flatKey(parts: (string | number)[]): string {
-  return parts.join(".");
-}
 
 // ---------------------------------------------------------------------------
 // Build the learn namespace.
@@ -216,7 +208,7 @@ for (const slug of ALL_LEARN_LANG_SLUGS) {
     lead: copy.lead,
     whoFor: copy.whoFor,
     method: copy.method,
-    faq: copy.faq.map((f, i) => ({ q: f.q, a: f.a })),
+    faq: copy.faq.map((f) => ({ q: f.q, a: f.a })),
   };
 }
 

@@ -14,7 +14,6 @@
 
 import {
   UI_LANGUAGES,
-  LEARN_LANGUAGES,
   LANG_CODE_TO_SLUG,
   OG_LOCALE_MAP,
   type LanguageCode,

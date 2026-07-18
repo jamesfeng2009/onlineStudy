@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /**
  * P0 consistency fix: migrate ko/yue quiz level names to the new
  * registry-defined naming, so quizzes align with language-registry.ts

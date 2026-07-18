@@ -58,7 +58,7 @@ export function currentTurn(state: ConversationState): DialogueTurn | null {
 function normalize(input: string): string {
   return input
     .toLowerCase()
-    .replace(/[，。！？、；：""''（）【】《》,.!?;:"'()\[\]{}<>]/g, " ")
+    .replace(/[，。！？、；：""''（）【】《》,.!?;:"'()[\]{}<>]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
