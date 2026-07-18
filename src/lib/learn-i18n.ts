@@ -30,6 +30,9 @@ const LEARN_LOADERS: Record<string, () => Promise<LearnBundle>> = {
   it: () => import("../locales/it/learn.json").then((m) => m.default as LearnBundle),
   th: () => import("../locales/th/learn.json").then((m) => m.default as LearnBundle),
   yue: () => import("../locales/yue/learn.json").then((m) => m.default as LearnBundle),
+  ms: () => import("../locales/ms/learn.json").then((m) => m.default as LearnBundle),
+  id: () => import("../locales/id/learn.json").then((m) => m.default as LearnBundle),
+  vi: () => import("../locales/vi/learn.json").then((m) => m.default as LearnBundle),
 };
 
 const loaded = new Set<string>();

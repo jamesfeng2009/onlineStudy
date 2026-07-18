@@ -1,0 +1,2771 @@
+{
+  "achievements": {
+    "title": "Thành tựu",
+    "subtitle": "Mỗi sự kiên trì đều xứng đáng được ghi nhận.",
+    "wall": "Tường thành tựu",
+    "heading": "Đã mở khóa {{earned}} / {{total}} huy hiệu",
+    "description": "Đạt các cột mốc học tập để nhận huy hiệu danh dự và ghi lại từng bước trưởng thành.",
+    "unlocked": "Đã mở khóa",
+    "stats": {
+      "streak": "Chuỗi ngày",
+      "level": "Cấp độ",
+      "words": "Từ vựng",
+      "quizzes": "Câu hỏi"
+    },
+    "units": {
+      "streak": "ngày",
+      "level": "Lv.",
+      "words": "từ",
+      "quizzes": "câu"
+    },
+    "badges": {
+      "streak-3": {
+        "title": "Chuỗi 3 ngày",
+        "description": "Học liên tiếp 3 ngày để xây dựng một thói quen nhỏ"
+      },
+      "streak-7": {
+        "title": "Ngôi sao tuần",
+        "description": "Học liên tiếp 7 ngày"
+      },
+      "streak-30": {
+        "title": "Nhà vô địch tháng",
+        "description": "Học liên tiếp 30 ngày"
+      },
+      "words-20": {
+        "title": "Ngôi sao từ vựng mới nổi",
+        "description": "Thành thạo 20 từ mới"
+      },
+      "words-100": {
+        "title": "Bậc thầy từ vựng",
+        "description": "Thành thạo 100 từ mới"
+      },
+      "quizzes-10": {
+        "title": "Học viên ngữ pháp",
+        "description": "Hoàn thành 10 câu hỏi ngữ pháp"
+      },
+      "quizzes-50": {
+        "title": "Bậc thầy ngữ pháp",
+        "description": "Hoàn thành 50 câu hỏi ngữ pháp"
+      },
+      "speaking-10": {
+        "title": "Ngườoi luyện nói",
+        "description": "Luyện đọc to tổng cộng 10 phút"
+      },
+      "listening-10": {
+        "title": "Ngườoi luyện nghe",
+        "description": "Nghe tổng cộng 10 phút"
+      },
+      "level-5": {
+        "title": "Từng bước một",
+        "description": "Đạt cấp độ 5"
+      },
+      "level-10": {
+        "title": "Nâng cao",
+        "description": "Đạt cấp độ 10"
+      }
+    }
+  },
+  "admin": {
+    "title": "Quản trị",
+    "subtitle": "Quản lý nội dung học tập: ngôn ngữ, khóa học, từ vựng, bài kiểm tra, bài nghe và bài nói.",
+    "loading": "Đang tải…",
+    "noPermissionTitle": "Không có quyền",
+    "noPermissionDesc": "Trang này chỉ dành cho quản trị viên.",
+    "query": "Tìm kiếm",
+    "add": "Thêm",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa {{label}} này không?",
+    "noData": "Không có dữ liệu",
+    "resources": {
+      "languages": "Ngôn ngữ",
+      "courses": "Khóa học",
+      "words": "Từ vựng",
+      "quizzes": "Bài kiểm tra",
+      "listening": "Bài nghe",
+      "speaking": "Bài nói",
+      "blog": "Bài viết blog"
+    },
+    "blog": {
+      "newPost": "Bài viết mới",
+      "editPost": "Sửa bài viết",
+      "searchPlaceholder": "Tìm theo tiêu đề hoặc tóm tắt...",
+      "allStatus": "Tất cả trạng thái",
+      "allLanguages": "Tất cả ngôn ngữ",
+      "draft": "Bản nháp",
+      "published": "Đã xuất bản",
+      "colTitle": "Tiêu đề",
+      "colSlug": "Slug",
+      "colLang": "Ngôn ngữ",
+      "colStatus": "Trạng thái",
+      "colUpdated": "Cập nhật",
+      "slugHint": "Để trống để tự động tạo từ tiêu đề",
+      "contentHint": "Viết nội dung bài viết bằng Markdown. Hỗ trợ tiêu đề, danh sách, khối mã, bảng, liên kết và hình ảnh.",
+      "markdownHint": "Hỗ trợ Markdown",
+      "tldrHint": "Câu dẫn tùy chọn gồm 1-2 câu, hiển thị phía trên bài viết.",
+      "tabEdit": "Sửa",
+      "tabPreview": "Xem trước",
+      "previewEmpty": "Chưa có gì để xem trước — chuyển sang tab Sửa và bắt đầu viết.",
+      "fields": {
+        "title": "Tiêu đề",
+        "slug": "Slug",
+        "excerpt": "Tóm tắt",
+        "content": "Nội dung",
+        "tag": "Thẻ",
+        "readTime": "Thời gian đọc",
+        "language": "Ngôn ngữ",
+        "status": "Trạng thái",
+        "coverImageUrl": "URL ảnh bìa",
+        "tldr": "TL;DR",
+        "seoTitle": "Tiêu đề SEO",
+        "seoDescription": "Mô tả SEO"
+      }
+    },
+    "actions": "Thao tác",
+    "fields": {
+      "code": "Mã",
+      "name": "Tên",
+      "native": "Tên bản địa",
+      "flag": "Cờ",
+      "tagline": "Khẩu hiệu",
+      "levels": "Cấp độ",
+      "status": "Trạng thái",
+      "languageCode": "Mã ngôn ngữ",
+      "title": "Tiêu đề",
+      "level": "Cấp độ",
+      "levelGroup": "Nhóm cấp độ",
+      "description": "Mô tả",
+      "lessons": "Bài học",
+      "minutes": "Số phút",
+      "cover": "Ảnh bìa",
+      "tags": "Thẻ",
+      "vipOnly": "VIP",
+      "courseOrder": "Thứ tự",
+      "word": "Từ",
+      "translation": "Bản dịch",
+      "phonetic": "Phiên âm",
+      "exampleSentence": "Câu ví dụ",
+      "vocabOrder": "Thứ tự",
+      "question": "Câu hỏi",
+      "options": "Các lựa chọn",
+      "answer": "Đáp án",
+      "explain": "Giải thích",
+      "quizOrder": "Thứ tự",
+      "script": "Kịch bản",
+      "blanks": "Chỗ trống",
+      "listenOrder": "Thứ tự",
+      "phrase": "Cụm từ",
+      "speakOrder": "Thứ tự"
+    },
+    "errors": {
+      "required": "{{label}} là bắt buộc",
+      "invalidJson": "{{label}} không phải là JSON hợp lệ"
+    },
+    "enabled": "Đã bật",
+    "disabled": "Đã tắt",
+    "addLabel": "Thêm {{label}}",
+    "editLabel": "Sửa {{label}}",
+    "arrayPlaceholder": "Mỗi dòng một mục",
+    "jsonPlaceholder": "Mảng JSON hợp lệ"
+  },
+  "aiConversation": {
+    "title": "Trò chuyện với AI",
+    "loginPrompt": "Đăng nhập để bắt đầu trò chuyện với AI.",
+    "loginButton": "Đăng nhập",
+    "subtitle": "Luyện tập hội thoại thực tế với AI.",
+    "remainingToday": "Còn {{count}} lượt hôm nay",
+    "newChat": "Cuộc trò chuyện mới",
+    "targetLanguage": "Ngôn ngữ mục tiêu",
+    "levelOptional": "Cấp độ (không bắt buộc)",
+    "levelPlaceholder": "VD: A1, N5",
+    "starting": "Đang bắt đầu...",
+    "startChat": "Bắt đầu trò chuyện",
+    "history": "Lịch sử",
+    "noHistory": "Chưa có cuộc trò chuyện nào.",
+    "untitledChat": "Cuộc trò chuyện {{language}} chưa đặt tên",
+    "turnCount": "{{count}} lượt",
+    "active": "Cuộc trò chuyện đang diễn ra",
+    "selectOrCreate": "Chọn hoặc tạo cuộc trò chuyện",
+    "endChat": "Kết thúc trò chuyện",
+    "emptyTitle": "Chưa có tin nhắn nào",
+    "emptyHint": "Bắt đầu cuộc trò chuyện ở trên.",
+    "typing": "AI đang nhập...",
+    "inputPlaceholder": "Nhập tin nhắn của bạn...",
+    "sessionClosed": "Phiên đã đóng · {{status}}",
+    "timeout": "Hết thời gian",
+    "ended": "Đã kết thúc",
+    "errors": {
+      "loadConversations": "Không tải được danh sách cuộc trò chuyện",
+      "loadMessages": "Không tải được tin nhắn",
+      "createConversation": "Không tạo được cuộc trò chuyện",
+      "sendMessage": "Không gửi được tin nhắn",
+      "endConversation": "Không kết thúc được cuộc trò chuyện"
+    }
+  },
+  "alphabet": {
+    "title": "Bảng chữ cái",
+    "subtitle": "Học hệ thống chữ viết và âm thanh.",
+    "seoTitle": "Bảng chữ cái & Nền tảng phát âm | LangOria",
+    "seoDescription": "Học Hiragana, Katakana, Hangul, Pinyin, Jyutping, tiếng Thái và nhiều hơn nữa. Chạm vào ký tự để nghe phát âm.",
+    "enter": "Vào",
+    "ttsDisclaimer": "Chất lượng giọng nói thay đổi tùy theo trình duyệt và hệ điều hành.",
+    "noLanguageSubtitle": "Chọn một ngôn ngữ để bắt đầu.",
+    "switchLanguage": "Đổi ngôn ngữ",
+    "seoDescriptionLang": "Bảng chữ cái {{language}} và nền tảng phát âm — LangOria",
+    "tapToSpeak": "Chạm để nghe phát âm",
+    "tapDetailToScore": "Chạm vào thẻ để luyện shadowing",
+    "pronunciationHint": "Phát âm",
+    "example": "Ví dụ",
+    "speakChar": "Nghe",
+    "closeDetail": "Đóng chi tiết",
+    "shadowing": "Shadowing",
+    "ttsDisclaimerDetail": "Phát âm được tạo bởi chức năng chuyển văn bản thành giọng nói tích hợp sẵn trong trình duyệt của bạn. Kết quả có thể khác nhau tùy theo trình duyệt, hệ điều hành và gói giọng nói.",
+    "readyForCourses": "Sẵn sàng cho các khóa học có cấu trúc?",
+    "viewCourses": "Xem khóa học"
+  },
+  "api": {
+    "errors": {
+      "notFound": "Không tìm thấy điểm cuối (dịch vụ chưa được triển khai)",
+      "serverError": "Lỗi máy chủ nội bộ",
+      "unauthorized": "Chưa đăng nhập hoặc phiên đăng nhập đã hết hạn",
+      "forbidden": "Bạn không có quyền thực hiện thao tác này",
+      "conflict": "Xung đột tài nguyên",
+      "badRequest": "Tham số không hợp lệ",
+      "requestFailed": "Yêu cầu thất bại ({{status}})",
+      "emptyResponse": "Máy chủ trả về dữ liệu rỗng"
+    }
+  },
+  "app": {
+    "name": "LangOria",
+    "tagline": "Học Ngôn Ngữ Đắm Chìm"
+  },
+  "auth": {
+    "notLoggedIn": "Chưa đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "username": "Tên người dùng",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "iSpeak": "Tôi nói",
+    "iWantToLearn": "Tôi muốn học",
+    "interfaceLanguage": "Ngôn ngữ giao diện",
+    "nativeLanguage": "Ngôn ngữ mẹ đẻ",
+    "targetLanguage": "Ngôn ngữ mục tiêu",
+    "haveAccount": "Đã có tài khoản? Đăng nhập",
+    "noAccount": "Chưa có tài khoản? Đăng ký",
+    "registerSuccess": "Đăng ký thành công",
+    "loginSuccess": "Đăng nhập thành công",
+    "login": {
+      "title": "Chào mừng trở lại",
+      "subtitle": "Đăng nhập để tiếp tục hành trình học ngôn ngữ đắm chìm của bạn",
+      "button": "Đăng nhập",
+      "loading": "Đang đăng nhập…",
+      "error": "Vui lòng nhập email và mật khẩu",
+      "errorDefault": "Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản hoặc mật khẩu",
+      "usageTitle": "Hướng dẫn sử dụng",
+      "usageText": "Nhập email và mật khẩu đã đăng ký để đăng nhập. Người dùng mới vui lòng đăng ký trước.",
+      "heroTitle": "Theo nhịp độ của riêng bạn,",
+      "heroHighlight": "chinh phục một ngôn ngữ mới.",
+      "heroDesc": "Khóa học phân cấp, bài tập tương tác và động lực từ cộng đồng — biến việc học thành thói quen, không phải gánh nặng.",
+      "oauthDivider": "hoặc tiếp tục với",
+      "continueWithGoogle": "Tiếp tục với Google",
+      "continueWithGitHub": "Tiếp tục với GitHub",
+      "forgotPassword": "Quên mật khẩu?",
+      "forgotPasswordHint": "Tính năng đặt lại mật khẩu chưa khả dụng. Vui lòng liên hệ bộ phận hỗ trợ.",
+      "features": [
+        {
+          "title": "Khóa học phân cấp",
+          "desc": "Từ người mới bắt đầu đến thành thạo",
+          "c": "from-sky-400/20 to-sky-500/0"
+        },
+        {
+          "title": "Đa ngôn ngữ",
+          "desc": "Tiếng Anh · Tiếng Nhật · Tiếng Hàn",
+          "c": "from-fuchsia-400/20 to-fuchsia-500/0"
+        },
+        {
+          "title": "Lộ trình cá nhân hóa",
+          "desc": "Gợi ý thông minh dựa trên dữ liệu của bạn",
+          "c": "from-amber-400/20 to-amber-500/0"
+        },
+        {
+          "title": "Thành tựu",
+          "desc": "Huy hiệu · Cấp độ · Điểm số",
+          "c": "from-rose-400/20 to-rose-500/0"
+        }
+      ]
+    },
+    "register": {
+      "badge": "Học ngôn ngữ đắm chìm",
+      "title": "Hãy để cả thế giới",
+      "titleHighlight": "trở thành lớp học của bạn.",
+      "description": "Đăng ký tài khoản để bắt đầu lộ trình học phân cấp được cá nhân hóa, theo dõi tiến độ và cùng trưởng thành với người học trên toàn thế giới.",
+      "formTitle": "Tạo tài khoản của bạn",
+      "formSubtitle": "Bắt đầu học trong vài giây",
+      "mobileLabel": "Ngôn ngữ bạn muốn học nhất",
+      "button": "Đăng ký ngay",
+      "loading": "Đang đăng ký…",
+      "validation": "Vui lòng điền tên người dùng và email, mật khẩu tối thiểu 4 ký tự",
+      "errorDefault": "Đăng ký thất bại, vui lòng thử lại sau",
+      "usernamePlaceholder": "Chọn tên người dùng",
+      "passwordPlaceholder": "Tạo mật khẩu"
+    },
+    "oauth": {
+      "processing": "Đang hoàn tất đăng nhập…",
+      "callbackNoToken": "Đăng nhập thất bại: không nhận được token.",
+      "callbackFailed": "Đăng nhập thất bại. Vui lòng thử lại."
+    }
+  },
+  "blog": {
+    "seoTitle": "Blog học ngôn ngữ — Mẹo & Khoa học | LangOria",
+    "seoDescription": "Hướng dẫn thực tế, khoa học học tập và mẹo chinh phục một ngôn ngữ với lặp lại ngắt quãng, shadowing và thói quen 10 phút mỗi ngày.",
+    "title": "Blog LangOria",
+    "subtitle": "Hướng dẫn thực tế, khoa học học tập và câu chuyện từ những người học thực sự.",
+    "readMore": "Đọc thêm",
+    "backToList": "← Quay lại tất cả bài viết",
+    "notFoundTitle": "Không tìm thấy bài viết",
+    "notFoundDesc": "Bài viết bạn đang tìm đã được chuyển đi hoặc không còn tồn tại.",
+    "empty": "Chưa có bài viết nào được xuất bản. Hãy quay lại sớm nhé!",
+    "ctaTitle": "Áp dụng những mẹo này vào thực tế",
+    "ctaDesc": "Tạo tài khoản miễn phí và bắt đầu vòng lặp 10 phút mỗi ngày ngay hôm nay.",
+    "cta": "Bắt đầu học",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Tại sao 10 phút mỗi ngày hiệu quả hơn 2 tiếng cuối tuần",
+        "excerpt": "Lặp lại ngắt quãng là kỹ thuật được nghiên cứu nhiều nhất trong khoa học học tập. Đây là lý do vì sao các buổi học ngắn hơn, thường xuyên hơn lại vượt trội so với việc học dồn dài hơi.",
+        "tag": "Phương pháp",
+        "readTime": "6 phút đọc",
+        "date": "2026-06-10",
+        "content": [
+          "Nếu bạn từng học dồn cho một kỳ thi rồi quên sạch mọi thứ sau hai tuần, bạn đã hiểu vấn đề của những buổi học dài nhưng thưa thớt. Cách khắc phục không phải là học chăm hơn. Mà là học thường xuyên hơn.",
+          "Khoa học học tập đã khẳng định điều này từ nhiều thập kỷ. Hermann Ebbinghaus phát hiện ra đường cong quên vào năm 1885: chúng ta mất thông tin vừa học theo một tốc độ có thể dự đoán, trừ khi chủ động gợi nhớ lại nó đúng thời điểm. 'Thời điểm đúng' là ngay trước khi bạn sắp quên.",
+          "Đó chính xác là cách lặp lại ngắt quãng hoạt động. LangOria lên lịch ôn tập từng từ vựng và điểm ngữ pháp vào đúng thời điểm bạn có khả năng quên nó nhất. Chọn 'đã nhớ' và lần ôn tiếp theo sẽ được đẩy xa hơn. Chọn 'chưa quen' và lần ôn tiếp theo sẽ đến sớm hơn.",
+          "Kết quả: chỉ với 10 phút mỗi ngày, bạn học được nhiều hơn 2 tiếng vào Chủ nhật, vì mỗi phút đều dành cho thứ mà não bộ bạn thực sự cần gợi nhớ. Sau 30 ngày, hầu hết người học đã ôn tập hơn 600 mục — nhiều hơn bất kỳ buổi học dồn cuối tuần nào có thể mang lại.",
+          "Vậy nên nếu bạn vẫn tự nhủ rằng mình không có thời gian học ngoại ngữ, thì thực ra bạn có. Mười phút. Mỗi ngày. Đó là toàn bộ bí quyết."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "Cách nhớ 1000 từ vựng mà không kiệt sức",
+        "excerpt": "Kế hoạch 8 tuần thực tế xây dựng trên quy tắc 3-2-1, kèm ví dụ bằng tiếng Anh, tiếng Nhật và tiếng Tây Ban Nha.",
+        "tag": "Từ vựng",
+        "readTime": "8 phút đọc",
+        "date": "2026-06-04",
+        "content": [
+          "Hầu hết người học ngôn ngữ đều đặt mục tiêu 1000 từ làm cột mốc đầu tiên. Tin xấu: cố ghi nhớ tất cả một lúc là công thức dẫn đến kiệt sức. Tin tốt: bạn không cần phải 'học thuộc' chúng. Bạn chỉ cần 'gặp' chúng.",
+          "Chúng tôi áp dụng quy tắc 3-2-1 đơn giản. Ba lần gặp mỗi ngày, hai ngữ cảnh cho mỗi lần gặp, và một lần chủ động gợi nhớ. Chỉ vậy thôi.",
+          "Ngày 1: học 3 từ mới. Gặp chúng trong flashcard, gặp trong câu, gặp trong ví dụ ngữ pháp. Ngày 2: thêm 3 từ mới, cộng 6 từ của hôm qua. Ngày 7: 21 từ mới trong tuần, nhưng hơn 80 lượt ôn tập. Khi một từ đã được ôn tập 5 lần, tỷ lệ ghi nhớ vượt quá 90%.",
+          "Trong 8 tuần, con số này cộng dồn thành 168 từ với nhịp độ 3 từ mỗi ngày. Để đạt 1000 từ, bạn tăng lên 15 từ mới mỗi ngày từ tháng thứ 3, khi phần lớn các lượt ôn tập đã nằm trong bộ nhớ. Vòng lặp 10 phút mỗi ngày trong LangOria tự động xử lý việc này cho bạn.",
+          "Điểm mấu chốt: từ vựng không phải cuộc thi trí nhớ. Đó là trò chơi của tần suất. Xuất hiện mỗi ngày, tin tưởng vào hệ thống, và các từ sẽ ở lại với bạn."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Shadowing: bài tập nói thực sự hiệu quả",
+        "excerpt": "Tại sao việc lặp lại âm thanh bản xứ là cách nhanh nhất để cải thiện phát âm, cùng thói quen 5 bước bạn có thể bắt đầu ngay hôm nay.",
+        "tag": "Kỹ năng nói",
+        "readTime": "5 phút đọc",
+        "date": "2026-05-28",
+        "content": [
+          "Nếu bạn có thể đọc một câu nhưng không nói được, bạn không đơn độc. Hầu hết người học dành 90% thời gian để đọc và nghe, chỉ 10% để nói. Tỷ lệ đó hoàn toàn ngược.",
+          "Shadowing là phương pháp nghe người bản xứ nói và lặp lại theo thời gian thực, bắt chước nhịp điệu, ngữ điệu và trọng âm. Đây là kỹ thuật mà các phiên dịch viên chuyên nghiệp dùng để duy trì độ trôi chảy, và nó hiệu quả với mọi ngôn ngữ.",
+          "Thói quen 5 bước: (1) Nghe một câu ở tốc độ bản xứ. (2) Nghe lại kèm bản chép. (3) Lặp lại ở tốc độ bản xứ đồng thời ghi âm. (4) So sánh bản ghi của bạn với bản gốc. (5) Lặp lại 3 lần trước khi chuyển sang câu tiếp theo.",
+          "Thực hiện 5 phút mỗi ngày. Trong vòng một tháng, giọng của bạn sẽ bắt đầu thay đổi rõ rệt. Trong vòng ba tháng, bạn sẽ nói được những câu mà trước đây bạn còn không đọc to được.",
+          "Mô-đun Speaking của LangOria được xây dựng chính xác dựa trên ý tưởng này. Chọn một câu, nghe, lặp lại, lặp lại, lặp lại. Không phán xét, không lo lắng chờ phản hồi. Chỉ có giọng nói của bạn và mẫu chuẩn."
+        ]
+      }
+    ]
+  },
+  "cefr": {
+    "title": "Tự đánh giá CEFR",
+    "subtitle": "Xác định trình độ của bạn qua các câu mô tả năng lực (Can-Do).",
+    "seoTitle": "Tự đánh giá CEFR — LangOria",
+    "seoDescription": "Tự đánh giá trình độ ngôn ngữ của bạn từ A1 đến C2 qua các câu mô tả năng lực. Bổ sung cho bài kiểm tra xếp lớp.",
+    "introTitle": "Trình độ của bạn là gì?",
+    "introText": "Chọn các câu mô tả năng lực mà bạn tự tin có thể làm được. Chúng tôi sẽ tự động suy ra trình độ CEFR của bạn.",
+    "assessmentSubtitle": "Chọn những điều bạn có thể làm",
+    "assessmentSeoDescription": "Tự đánh giá CEFR tiếng {{language}} — chọn những điều bạn có thể làm",
+    "backToSelection": "Quay lại chọn ngôn ngữ",
+    "currentInferred": "Trình độ suy ra",
+    "noneChecked": "Chưa chọn mục nào",
+    "manualOverride": "Chỉnh thủ công (tự động: {{inferred}})",
+    "savedAssessment": "Đã lưu đánh giá",
+    "guestHint": "Đăng nhập để lưu bài tự đánh giá và nhận gợi ý khóa học.",
+    "loginButton": "Đăng nhập",
+    "loadingCanDo": "Đang tải các câu mô tả năng lực...",
+    "selectAtLeastOne": "Vui lòng chọn ít nhất một câu mô tả để lưu.",
+    "saveSuccess": "Lưu thành công",
+    "saveFailed": "Lưu thất bại",
+    "manualOverrideTitle": "Chỉnh trình độ thủ công",
+    "manualOverrideHint": "Chọn trình độ phù hợp nhất với năng lực của bạn.",
+    "auto": "Tự động",
+    "noteTitle": "Ghi chú",
+    "noteHint": "Thêm bối cảnh cho bài đánh giá của bạn (không bắt buộc).",
+    "notePlaceholder": "VD: Tôi tự tin khi nói nhưng yếu về viết.",
+    "save": "Lưu",
+    "reset": "Đặt lại",
+    "languageNotFound": "Không tìm thấy ngôn ngữ",
+    "languageNotFoundDetail": "Không có dữ liệu ngôn ngữ cho {{lang}}."
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "retry": "Thử lại",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "submit": "Gửi",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "finish": "Hoàn thành",
+    "minutes": "phút",
+    "days": "ngày",
+    "all": "Tất cả"
+  },
+  "community": {
+    "title": "Cộng đồng",
+    "subtitle": "Chia sẻ trải nghiệm học tập của bạn và cùng phát triển với những người học khác.",
+    "topic": "Chủ đề",
+    "topics": {
+      "all": "Tất cả",
+      "daily": "Câu hằng ngày",
+      "japanese": "Mẹo học tiếng Nhật",
+      "kpop": "Học tiếng Hàn qua K-pop",
+      "english": "Tiếng Anh công sở",
+      "help": "Hỏi đáp & Hỗ trợ"
+    },
+    "placeholderLogged": "Chia sẻ một cách diễn đạt bạn vừa học được hoặc đặt câu hỏi…",
+    "placeholderGuest": "Vui lòng đăng nhập để đăng bài.",
+    "post": "Đăng",
+    "charCount": "{{length}} / 500",
+    "signature": "{{name}} · Mỗi lời bạn nói hôm nay đều vang vọng đến tương lai.",
+    "loading": "Đang tải bài viết...",
+    "empty": "Chưa có ai đăng bài trong chủ đề này. Hãy bắt đầu nhé!",
+    "commentPlaceholderLogged": "Viết phản hồi…",
+    "commentPlaceholderGuest": "Đăng nhập để bình luận",
+    "send": "Gửi",
+    "guest": "Khách",
+    "official": "{{name}} Chính thức"
+  },
+  "courses": {
+    "seoTitle": "Khóa Học Ngôn Ngữ — A1 đến C1 | LangOria",
+    "seoDescription": "Khám phá các khóa học ngôn ngữ có cấu trúc từ A1 đến C2 bao gồm tiếng Anh, tiếng Nhật, tiếng Hàn, tiếng Trung, tiếng Tây Ban Nha, tiếng Pháp, tiếng Đức, tiếng Ý, tiếng Thái và tiếng Quảng Đông. Từ vựng lặp lại ngắt quãng, bài tập nghe và luyện nói.",
+    "title": "Hệ Thống Khóa Học Theo Cấp Độ",
+    "subtitle": "Lọc theo ngôn ngữ và trình độ — từ con số không đến thành thạo.",
+    "currentLanguage": "Ngôn Ngữ Hiện Tại",
+    "select": "Chọn",
+    "locked": "Đã Khóa",
+    "start": "Bắt Đầu Học",
+    "continue": "Tiếp Tục",
+    "filter": {
+      "language": "Ngôn Ngữ",
+      "all": "Tất Cả",
+      "level": "Trình Độ"
+    },
+    "levelGroups": {
+      "beginner": "Sơ Cấp",
+      "intermediate": "Trung Cấp",
+      "advanced": "Cao Cấp"
+    },
+    "lessons": "{{count}} bài học",
+    "minutes": "{{count}} phút",
+    "noResults": "Không có khóa học phù hợp. Hãy thử bộ lọc khác.",
+    "progress": "Tiến Độ",
+    "disclaimer": "Các nhãn trình độ (CEFR / JLPT / HSK / TOPIK) chỉ mang tính chất tham chiếu định hướng, nhằm tạo thuận lợi cho việc so sánh giữa các hệ thống. CEFR là nhãn hiệu của Council of Europe, JLPT là nhãn hiệu của Japan Foundation, HSK là nhãn hiệu của Hanban, và TOPIK là nhãn hiệu của Viện Giáo Dục Quốc Tế Quốc Gia Hàn Quốc. Dự án này không được bất kỳ tổ chức chính thức nào trong số trên chứng nhận hay ủy quyền; dữ liệu về trình độ đạt được chỉ là ước tính nội bộ.",
+    "entryCards": {
+      "placement": "Chưa biết bắt đầu từ đâu? Hãy thử bài kiểm tra đầu vào",
+      "placementDesc": "6 câu hỏi thích ứng giúp xác định chính xác trình độ xuất phát của bạn · không cần đăng nhập",
+      "alphabet": "Bắt Đầu Từ Bảng Chữ Cái: Nhập Môn Ngôn Ngữ Châu Á",
+      "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai · chạm vào ký tự để nghe phát âm",
+      "reading": "Đọc Hiểu · Hoàn Thiện Đầy Đủ Kỹ Năng CEFR Của Bạn",
+      "readingDesc": "Bài đọc theo cấp độ + ghi chú từ vựng + câu hỏi đọc hiểu · tự động ghi lại điểm cao nhất của bạn",
+      "league": "Bảng Xếp Hạng Tuần · Tranh Đoạt Bậc Master",
+      "leagueDesc": "XP tích lũy theo tuần · Đồng → Bạc → Vàng → Bạch Kim → Kim Cương → Master · thăng hạng và xuống hạng được chốt vào mỗi thứ Hai",
+      "cefr": "Tự Đánh Giá CEFR · Tôi Có Thể Làm Được Gì?",
+      "cefrDesc": "Tự đánh giá A1-C2 theo các mô tả năng lực Can-Do · bổ sung cho bài kiểm tra đầu vào · tự động suy ra trình độ của bạn",
+      "writing": "Luyện Viết · Phản Hồi Chấm Điểm Tức Thì",
+      "writingDesc": "Bài luận / email / tóm tắt / truyện / hội thoại · chấm điểm ba chiều theo số từ + mức độ đa dạng từ vựng + từ khóa"
+    },
+    "items": {
+      "en-a1-1": {
+        "title": "Từ Con Số Không: Tiếng Anh Hàng Ngày",
+        "description": "Chào hỏi, số đếm và các cách diễn đạt hàng ngày. Bắt đầu nói ngay từ ngày đầu tiên."
+      },
+      "en-a2-1": {
+        "title": "Tiếng Anh Đời Sống Hàng Ngày",
+        "description": "Mua sắm, ăn uống và sinh hoạt thường nhật. Xây dựng vốn từ vựng A2 thực tiễn."
+      },
+      "en-b1-1": {
+        "title": "Diễn Đạt Bản Thân Bằng Tiếng Anh",
+        "description": "Nói về quan điểm, kế hoạch và trải nghiệm một cách tự tin."
+      },
+      "en-b2-1": {
+        "title": "Tiếng Anh Cho Công Việc & Học Tập",
+        "description": "Họp hành, email, thuyết trình và thảo luận học thuật."
+      },
+      "en-c1-1": {
+        "title": "Tiếng Anh Cao Cấp: Văn Hóa & Tư Tưởng",
+        "description": "Tranh luận các chủ đề phức tạp và hiểu những cách diễn đạt tinh tế."
+      },
+      "en-c2-1": {
+        "title": "Thành Thạo: Tu Từ & Độ Lưu Loát Tiếng Anh",
+        "description": "Lưu loát gần như người bản xứ, tu từ và độ chính xác."
+      },
+      "ja-n5-1": {
+        "title": "Nhập Môn Hiragana & Katakana",
+        "description": "Học hai bảng chữ kana và những câu chào hỏi đơn giản."
+      },
+      "ja-n4-1": {
+        "title": "Tiếng Nhật Hàng Ngày",
+        "description": "Hội thoại đời thường và ngữ pháp thiết yếu."
+      },
+      "ja-n3-1": {
+        "title": "Tiếng Nhật Trung Cấp",
+        "description": "Đọc bài viết ngắn và theo kịp các đoạn hội thoại tự nhiên."
+      },
+      "ja-n2-1": {
+        "title": "Tiếng Nhật Cho Công Việc & Du Học",
+        "description": "Giao tiếp chuyên nghiệp và chiến lược thi JLPT N2."
+      },
+      "ja-n1-1": {
+        "title": "Thành Thạo Tiếng Nhật Cao Cấp",
+        "description": "Đọc ở trình độ người bản xứ, kính ngữ (keigo) và độ lưu loát chuyên nghiệp."
+      },
+      "ko-beginner-1": {
+        "title": "Hangeul & Tiếng Hàn Cơ Bản",
+        "description": "Nắm vững bảng chữ cái tiếng Hàn và các cụm từ nền tảng."
+      },
+      "ko-intermediate-1": {
+        "title": "Học Tiếng Hàn Qua K-Drama & K-Pop",
+        "description": "Học những cách diễn đạt tự nhiên qua phim và bài hát."
+      },
+      "ko-advanced-1": {
+        "title": "Tiếng Hàn Cao Cấp: TOPIK & Công Việc",
+        "description": "Ngữ pháp trình độ cao cho kỳ thi và nơi làm việc."
+      },
+      "zh-hsk1-1": {
+        "title": "Pinyin & Tiếng Trung HSK 1",
+        "description": "Bắt đầu với thanh điệu, Pinyin và các chữ Hán cơ bản."
+      },
+      "zh-hsk3-1": {
+        "title": "Tiếng Trung Giao Tiếp HSK 3",
+        "description": "Thực hiện hội thoại đời thường và đọc văn bản đơn giản."
+      },
+      "zh-hsk5-1": {
+        "title": "Tiếng Trung Tin Tức & Học Thuật HSK 5",
+        "description": "Hiểu tin tức, bài luận và bài phát biểu trang trọng."
+      },
+      "es-a1-1": {
+        "title": "Từ Con Số Không: Tiếng Tây Ban Nha",
+        "description": "Chào hỏi, cụm từ du lịch và phát âm cơ bản."
+      },
+      "es-b1-1": {
+        "title": "Diễn Đạt Bản Thân Bằng Tiếng Tây Ban Nha",
+        "description": "Chia sẻ quan điểm, câu chuyện và kế hoạch du lịch một cách dễ dàng."
+      },
+      "es-c1-1": {
+        "title": "Tiếng Tây Ban Nha Cao Cấp: Văn Học & Học Thuật",
+        "description": "Phân tích văn bản và thảo luận văn hóa một cách sâu sắc."
+      },
+      "fr-a1-1": {
+        "title": "Từ Con Số Không: Tiếng Pháp",
+        "description": "Phát âm, chào hỏi và những điều thiết yếu hàng ngày."
+      },
+      "fr-b2-1": {
+        "title": "Diễn Đạt & Viết Tiếng Pháp",
+        "description": "Viết văn bản rõ ràng và bảo vệ quan điểm của bạn bằng tiếng Pháp."
+      },
+      "fr-c1-1": {
+        "title": "Tiếng Pháp Cao Cấp: Văn Hóa & Triết Học",
+        "description": "Khám phá tư tưởng, nghệ thuật và cách diễn đạt tinh tế."
+      },
+      "de-a1-1": {
+        "title": "Từ Con Số Không: Tiếng Đức",
+        "description": "Bảng chữ cái, âm thanh và các cụm từ đời sống."
+      },
+      "de-b2-1": {
+        "title": "Tiếng Đức Cho Công Việc & Viết",
+        "description": "Giao tiếp chuyên nghiệp và viết có cấu trúc."
+      },
+      "de-c1-1": {
+        "title": "Tiếng Đức Cao Cấp: Văn Học & Tư Tưởng",
+        "description": "Đọc văn học và thảo luận các chủ đề phức tạp."
+      },
+      "it-a1-1": {
+        "title": "Từ Con Số Không: Tiếng Ý",
+        "description": "Phát âm, chào hỏi và những điều thiết yếu về văn hóa."
+      },
+      "it-b1-1": {
+        "title": "Trò Chuyện Bằng Tiếng Ý",
+        "description": "Nói về du lịch, ẩm thực, văn hóa và đời sống hàng ngày."
+      },
+      "it-c1-1": {
+        "title": "Tiếng Ý Cao Cấp: Nghệ Thuật & Văn Học",
+        "description": "Đắm mình vào nghệ thuật, văn học và tu từ của Ý."
+      },
+      "th-beg-1": {
+        "title": "Thanh Điệu & Kiến Thức Cơ Bản Tiếng Thái",
+        "description": "Nắm vững thanh điệu, phụ âm và những cuộc hội thoại đầu tiên."
+      },
+      "th-int-1": {
+        "title": "Tiếng Thái Du Lịch & Hội Thoại",
+        "description": "Đi lại, gọi món và trò chuyện với người dân địa phương."
+      },
+      "th-adv-1": {
+        "title": "Tiếng Thái Cao Cấp: Văn Hóa & Độ Lưu Loát",
+        "description": "Hiểu truyền thông, văn hóa và tiếng Thái thành ngữ."
+      },
+      "yue-beg-1": {
+        "title": "Thanh Điệu & Kiến Thức Cơ Bản Tiếng Quảng Đông",
+        "description": "Học Jyutping, thanh điệu và các cụm từ hàng ngày."
+      },
+      "yue-int-1": {
+        "title": "Hội Thoại Tiếng Quảng Đông Hàng Ngày",
+        "description": "Nói về cuộc sống, ẩm thực và việc đi lại."
+      },
+      "yue-adv-1": {
+        "title": "Tiếng Quảng Đông Cao Cấp: Điện Ảnh & Văn Hóa",
+        "description": "Hiểu phim ảnh, tiếng lóng và văn hóa địa phương."
+      }
+    },
+    "tags": {
+      "zero-to-beginner": "Từ Con Số Không",
+      "daily-speaking": "Giao Tiếp Hàng Ngày",
+      "daily-life": "Đời Sống Hàng Ngày",
+      "conversation": "Hội Thoại",
+      "expression": "Diễn Đạt",
+      "writing": "Viết",
+      "workplace": "Nơi Làm Việc",
+      "academic": "Học Thuật",
+      "culture": "Văn Hóa",
+      "literature": "Văn Học",
+      "mastery": "Thành Thạo",
+      "rhetoric": "Tu Từ",
+      "kana": "Kana",
+      "intro": "Nhập Môn",
+      "daily": "Hàng Ngày",
+      "communication": "Giao Tiếp",
+      "reading": "Đọc",
+      "listening": "Nghe",
+      "business": "Thương Mại",
+      "study-abroad": "Du Học",
+      "professional": "Chuyên Nghiệp",
+      "advanced": "Cao Cấp",
+      "hangeul": "Hangeul",
+      "k-drama": "K-Drama",
+      "k-pop": "K-Pop",
+      "topik": "TOPIK",
+      "pinyin": "Pinyin",
+      "social": "Xã Hội",
+      "news": "Tin Tức",
+      "pronunciation": "Phát Âm",
+      "philosophy": "Triết Học",
+      "art": "Nghệ Thuật",
+      "tones": "Thanh Điệu",
+      "travel": "Du Lịch",
+      "film-tv": "Điện Ảnh & Truyền Hình"
+    }
+  },
+  "crown": {
+    "loadFailed": "Không tải được tiến độ vương miện",
+    "loading": "Đang tải tiến độ vương miện...",
+    "noCheckpoints": "Khóa học này chưa có điểm kiểm tra nào.",
+    "hint": "Vượt qua các bài kiểm tra chặng với điểm số từ {{threshold}}% trở lên để nhận vương miện.",
+    "completion": "Mức độ hoàn thành",
+    "earned": "Đã nhận vương miện {{n}}",
+    "locked": "Vương miện {{n}} đã khóa",
+    "passedCheckpoints": "Các điểm kiểm tra đã vượt qua",
+    "score": "Điểm {{score}}"
+  },
+  "dashboard": {
+    "title": "Bảng điều khiển học tập",
+    "subtitle": "Chào {{name}}, đây là toàn cảnh dữ liệu học tập của bạn.",
+    "subtitleGuest": "Vui lòng đăng nhập để xem tiến độ học tập của bạn.",
+    "welcomeBack": "Chào mừng trở lại, {{name}}!",
+    "learnedToday": "Hôm nay bạn đã học {{minutes}} phút, mục tiêu {{goal}} phút. Cố lên nhé!",
+    "startToday": "Bắt đầu học hôm nay",
+    "browseCourses": "Duyệt khóa học",
+    "streak": "Chuỗi ngày",
+    "level": "Cấp độ",
+    "todaysGoal": "Mục tiêu hôm nay",
+    "recommended": "Gợi ý hôm nay",
+    "viewAll": "Xem tất cả",
+    "loading": "Đang tải dữ liệu học tập...",
+    "streakLearn": "Chuỗi ngày",
+    "wordsLearned": "Từ đã học",
+    "wordsAnswered": "Đã trả lởi {{count}} lần",
+    "grammar": "Ngữ pháp",
+    "grammarAccuracy": "Độ chính xác {{pct}}%",
+    "total14": "Tổng 14 ngày",
+    "total14Value": "{{total}} phút",
+    "avgPerDay": "Trung bình {{avg}} phút/ngày",
+    "chartTitle": "Thởi gian học 14 ngày qua",
+    "chartUnit": "Đơn vị: phút · tổng mỗi ngày",
+    "todayGoal": "Mục tiêu hôm nay",
+    "progressTitle": "Tiến độ",
+    "exp": "EXP",
+    "radarTitle": "Biểu đồ kỹ năng",
+    "radarSubtitle": "Từ vựng · Ngữ pháp · Nghe · Nói",
+    "moduleTitle": "Hiệu suất từng phần · Gần đây",
+    "moduleTip": "Luyện tập đều đặn sẽ nâng dần các chỉ số này",
+    "moduleScore": "Điểm",
+    "heatmapTitle": "Bản đồ nhiệt 14 ngày",
+    "heatmapSubtitle": "Mỗi ô là một ngày · màu càng đậm nghĩa là học càng nhiều",
+    "heatmapTooltip": "{{date}} · {{minutes}} phút",
+    "skills": {
+      "words": "Từ vựng",
+      "grammar": "Ngữ pháp",
+      "listening": "Nghe",
+      "speaking": "Nói"
+    },
+    "keepGoing": "Tiếp tục phát huy nhé!"
+  },
+  "faq": {
+    "seoTitle": "Câu hỏi thường gặp | LangOria",
+    "seoDescription": "Giải đáp các câu hỏi phổ biến về việc học ngôn ngữ bằng phương pháp lặp lại ngắt quãng của LangOria: vòng lặp 10 phút hoạt động thế nào, bảng giá, các ngôn ngữ được hỗ trợ và trợ giúp tài khoản.",
+    "title": "Câu hỏi thường gặp",
+    "subtitle": "Mọi điều bạn cần biết về LangOria.",
+    "intro": "Không tìm thấy câu trả lời bạn cần? Hãy liên hệ qua cộng đồng, đội ngũ của chúng tôi sẽ phản hồi bạn sớm.",
+    "groups": [
+      {
+        "title": "Bắt đầu",
+        "items": [
+          {
+            "q": "Làm thế nào để tạo tài khoản?",
+            "a": "Nhấp vào nút Đăng ký ở góc trên bên phải, nhập email và mật khẩu, chọn ngôn ngữ mục tiêu và ngôn ngữ mẹ đẻ của bạn — thế là xong."
+          },
+          {
+            "q": "Tôi có cần thẻ tín dụng không?",
+            "a": "Không. Trải nghiệm học tập cốt lõi hoàn toàn miễn phí. Bạn chỉ cần phương thức thanh toán khi chọn nâng cấp lên Premium trong tương lai."
+          },
+          {
+            "q": "Tôi có thể đổi ngôn ngữ mục tiêu sau không?",
+            "a": "Có. Vào Cài đặt → Ngôn ngữ mục tiêu bất cứ lúc nào. Toàn bộ tiến độ của bạn vẫn được giữ nguyên theo ngôn ngữ bạn đã luyện tập."
+          }
+        ]
+      },
+      {
+        "title": "Học tập",
+        "items": [
+          {
+            "q": "Mỗi ngày tôi nên học bao lâu?",
+            "a": "Chúng tôi khuyên bạn học 10 phút mỗi ngày. Lặp lại ngắt quãng phát huy hiệu quả tốt nhất với các buổi học ngắn, đều đặn — không phải học dồn."
+          },
+          {
+            "q": "Tại sao phần giải thích lại bằng ngôn ngữ mẹ đẻ của tôi?",
+            "a": "Nghiên cứu cho thấy việc học nhanh hơn khi phần giải thích được trình bày bằng ngôn ngữ bạn thành thạo nhất. Các từ bạn thực sự học luôn bằng ngôn ngữ mục tiêu."
+          },
+          {
+            "q": "Chuỗi ngày học của tôi có bị reset nếu tôi bỏ lỡ một ngày?",
+            "a": "Có, chuỗi ngày sẽ reset nếu bạn bỏ lỡ trọn một ngày. Khoảng thời ân hạn là 36 giờ để bù đắp chênh lệch múi giờ."
+          }
+        ]
+      },
+      {
+        "title": "Tài khoản & Quyền riêng tư",
+        "items": [
+          {
+            "q": "Dữ liệu của tôi được lưu trữ ở đâu?",
+            "a": "Dữ liệu học tập của bạn được lưu trữ trên Supabase (Postgres) tại khu vực gần bạn. Chúng tôi không bán bất kỳ dữ liệu người dùng nào."
+          },
+          {
+            "q": "Làm thế nào để xóa tài khoản?",
+            "a": "Vào Hồ sơ → Vùng nguy hiểm, rồi nhấp Xóa tài khoản. Toàn bộ dữ liệu của bạn sẽ bị xóa trong vòng 7 ngày."
+          }
+        ]
+      }
+    ],
+    "ctaTitle": "Sẵn sàng bắt đầu chưa?",
+    "ctaDesc": "Tạo tài khoản miễn phí và trải nghiệm thói quen 10 phút mỗi ngày.",
+    "cta": "Đăng ký miễn phí"
+  },
+  "footer": {
+    "copyright": "© {{year}} LangOria · Nền Tảng Học Đa Ngôn Ngữ Đắm Chìm"
+  },
+  "grammarMap": {
+    "noData": "Không có dữ liệu ngữ pháp cho ngôn ngữ này.",
+    "wrongCount": " · {{count}} lỗi sai",
+    "pitfallsTitle": "Lỗi sai thường gặp",
+    "dependencies": "Kiến thức cần có trước: {{list}}"
+  },
+  "header": {
+    "streak": "Chuỗi {{days}} ngày",
+    "level": "Lv.{{level}}",
+    "login": "Đăng nhập / Đăng ký",
+    "loading": "Đang tải...",
+    "logout": "Đăng xuất"
+  },
+  "home": {
+    "seoTitle": "Học tiếng Anh, tiếng Nhật, tiếng Trung, tiếng Hàn và nhiều hơn nữa | LangOria",
+    "seoDescription": "Học tiếng Anh, tiếng Nhật, tiếng Trung, tiếng Hàn, tiếng Tây Ban Nha, tiếng Pháp, tiếng Đức, tiếng Ý, tiếng Thái và tiếng Quảng Đông với từ vựng lặp lại ngắt quãng, bài tập nghe và luyện nói. Bài học nhỏ gọn 10 phút mỗi ngày.",
+    "hero": {
+      "badge": "Nền tảng học ngoại ngữ đa ngôn ngữ nhập vai",
+      "title": "Hôm nay, hãy để thế giới",
+      "titleHighlight": "có thêm một người bản ngữ.",
+      "welcomeBack": "Chào mừng trở lại, {{name}}! Hôm nay bạn đã học {{minutes}} phút, mục tiêu {{goal}} phút. Cố lên!",
+      "guest": "Chọn một ngôn ngữ bạn muốn chinh phục và xây dựng thói quen học tập ngay từ hôm nay.",
+      "startToday": "Khám phá ngôn ngữ",
+      "browseCourses": "Xem khóa học",
+      "learnMethod": "Tìm hiểu cách học",
+      "streak": "Chuỗi ngày",
+      "level": "Trình độ",
+      "todaysGoal": "Mục tiêu hôm nay",
+      "minutesOfGoal": "{{minutes}}/{{goal}} phút"
+    },
+    "languages": {
+      "choose": "Chọn ngôn ngữ bạn đang học",
+      "countBadge": "10 ngôn ngữ",
+      "current": "Hiện tại: {{language}}",
+      "currentLanguage": "Ngôn ngữ hiện tại",
+      "select": "Chạm để chọn",
+      "standaloneDesc": "Chọn ngôn ngữ bạn đang học. Mỗi khóa học đều được chia cấp độ, với từ vựng lặp lại ngắt quãng, âm thanh người bản ngữ và vòng lặp 10 phút mỗi ngày.",
+      "taglines": {
+        "en": "Ngôn ngữ chung toàn cầu",
+        "zh": "Chữ viết tượng hình cổ xưa và đầy sức sống",
+        "ja": "Nhịp điệu phương Đông tinh tế và thanh lịch",
+        "ko": "Văn hóa Hallyu sống động và đang thịnh hành",
+        "es": "Tiếng nói Latin đầy đam mê",
+        "fr": "Nghệ thuật ngôn ngữ lãng mạn và thanh lịch",
+        "de": "Ngôn ngữ chính xác của triết học và kỹ thuật",
+        "it": "Tiếng nói Địa Trung Hải đam mê và lãng mạn",
+        "th": "Ngôn ngữ mỉm cưới với năm thanh điệu",
+        "yue": "Văn hóa Lĩnh Nam với chín thanh sáu điệu"
+      }
+    },
+    "tasks": {
+      "title": "Đề xuất hôm nay",
+      "viewAll": "Xem tất cả →",
+      "items": [
+        {
+          "title": "Học 20 từ mới",
+          "time": "10 phút"
+        },
+        {
+          "title": "Ngữ pháp · Các thì cơ bản",
+          "time": "15 phút"
+        },
+        {
+          "title": "Nhắc lại một đoạn hội thoại",
+          "time": "8 phút"
+        },
+        {
+          "title": "Nghe 5 phút",
+          "time": "5 phút"
+        }
+      ]
+    },
+    "steps": {
+      "badge": "Cách hoạt động",
+      "title": "Lộ trình 3 bước đã được kiểm chứng từ mới bắt đầu đến thành thạo",
+      "desc": "Mỗi người học đều khác nhau, nhưng con đường đến sự thành thạo luôn giống nhau: tiếp nhận, thực hành và phản hồi. LangOria biến vòng lặp đó thành nghi thức 10 phút mỗi ngày.",
+      "items": [
+        {
+          "title": "Chẩn đoán trình độ của bạn",
+          "desc": "Chọn ngôn ngữ mục tiêu và trình độ xuất phát. Chúng tôi xây dựng lộ trình cá nhân hóa dựa trên những gì bạn đã biết."
+        },
+        {
+          "title": "Vòng lặp 10 phút mỗi ngày",
+          "desc": "Từ vựng + ngữ pháp + nghe + nói, được sắp xếp theo lặp lại ngắt quãng để bạn nhớ những gì đã học."
+        },
+        {
+          "title": "Nói với sự tự tin",
+          "desc": "Đọc theo câu thật, nhận phản hồi tức thì và theo dõi chuỗi ngày để duy trì thói quen."
+        }
+      ]
+    },
+    "features": {
+      "title": "Bốn bài luyện cốt lõi cho sự thành thạo toàn diện",
+      "desc": "Tiếp nhận · Thực hành · Phản hồi — xây dựng sự tự tin khi nói thật sự.",
+      "enter": "Thử ngay →",
+      "items": [
+        {
+          "title": "Thẻ từ vựng",
+          "desc": "Lặp lại ngắt quãng — đã nhớ là không quên",
+          "action": "Thử ngay"
+        },
+        {
+          "title": "Luyện ngữ pháp",
+          "desc": "Phản hồi tức thì + giải thích, quy tắc rõ ràng",
+          "action": "Thử ngay"
+        },
+        {
+          "title": "Nhắc lại luyện nói",
+          "desc": "Đọc to để tạo phản xạ cơ cho miệng",
+          "action": "Thử ngay"
+        },
+        {
+          "title": "Luyện nghe",
+          "desc": "Ngữ cảnh thực tế, điền vào chỗ trống, nghe rõ hơn",
+          "action": "Thử ngay"
+        }
+      ]
+    },
+    "courses": {
+      "title": "Khóa học nổi bật",
+      "desc": "Chia cấp độ, tiến trình rõ ràng, phù hợp với nhiều mục tiêu học tập",
+      "viewAll": "Xem tất cả →",
+      "loading": "Đang tải khóa học...",
+      "lessons": "{{count}} bài học",
+      "minutes": "{{count}} phút"
+    },
+    "stories": {
+      "badge": "Câu chuyện học viên",
+      "title": "Tiến bộ thật, con người thật",
+      "desc": "Lắng nghe những học viên đã biến thói quen 10 phút mỗi ngày thành một ngôn ngữ có thể thực sự sử dụng.",
+      "items": [
+        {
+          "name": "Yuki, 27",
+          "role": "Quản lý Marketing · Tokyo",
+          "quote": "Tôi đã thử ba ứng dụng trước đây. LangOria là ứng dụng duy nhất mà tôi thực sự mở ra mỗi ngày. Hệ thống chuỗi ngày thực sự hiệu quả."
+        },
+        {
+          "name": "Carlos, 34",
+          "role": "Kỹ sư phần mềm · Madrid",
+          "quote": "Phần giải thích ngữ pháp ngắn gọn và rõ ràng. Tôi đã từ A2 lên B1 trong ba tháng chỉ với thời gian đi lại."
+        },
+        {
+          "name": "Mei, 22",
+          "role": "Sinh viên đại học · Thượng Hải",
+          "quote": "Tôi thích việc giao diện bằng tiếng Trung nhưng từ vựng là tiếng Nhật. Cảm giác như ứng dụng thực sự hiểu mình."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Câu hỏi thường gặp",
+      "title": "Câu hỏi phổ biến, câu trả lời rõ ràng",
+      "desc": "Mọi thứ bạn cần biết trước khi bắt đầu.",
+      "viewAll": "Xem tất cả câu hỏi",
+      "items": [
+        {
+          "q": "LangOria có thực sự miễn phí không?",
+          "a": "Có. Trải nghiệm học tập cốt lõi — từ vựng, ngữ pháp, nghe, nói và cộng đồng — hoàn toàn miễn phí. Các tính năng cao cấp sẽ được bổ sung sau cho người dùng nâng cao."
+        },
+        {
+          "q": "Tôi có cần cài đặt gì không?",
+          "a": "Không. LangOria chạy trên mọi trình duyệt hiện đại. Ứng dụng di động sẽ ra mắt khi phiên bản web ổn định."
+        },
+        {
+          "q": "Những ngôn ngữ nào được hỗ trợ?",
+          "a": "Tiếng Anh, tiếng Nhật, tiếng Hàn, tiếng Trung, tiếng Tây Ban Nha, tiếng Pháp và tiếng Đức. Ngôn ngữ mới được thêm mỗi tháng dựa trên nhu cầu của học viên."
+        },
+        {
+          "q": "Bao lâu thì tôi thấy tiến bộ?",
+          "a": "Hầu hết học viên cảm nhận sự khác biệt rõ rệt trong 4-6 tuần khi kiên trì vòng lặp 10 phút mỗi ngày. Hệ thống chuỗi ngày và lặp lại ngắt quãng được thiết kế để giúp thói quen đó bền vững."
+        },
+        {
+          "q": "Tôi có thể dùng trên điện thoại không?",
+          "a": "Có. Trang web hoàn toàn thích ứng và hoạt động tốt trên trình duyệt di động. Thêm vào màn hình chính để có trải nghiệm như ứng dụng."
+        }
+      ]
+    },
+    "blog": {
+      "badge": "Từ Blog",
+      "title": "Mẹo, hướng dẫn và khoa học học tập",
+      "desc": "Những bài viết ngắn gọn giúp thời gian học của bạn hiệu quả hơn.",
+      "viewAll": "Tất cả bài viết →",
+      "readMore": "Đọc thêm",
+      "items": [
+        {
+          "tag": "Phương pháp",
+          "title": "Vì sao 10 phút mỗi ngày tốt hơn 2 giờ cuối tuần",
+          "excerpt": "Lặp lại ngắt quãng là kỹ thuật được nghiên cứu nhiều nhất trong khoa học học tập. Đây là lý do các buổi học ngắn, thường xuyên vượt trội hơn học dồn dài."
+        },
+        {
+          "tag": "Từ vựng",
+          "title": "Cách nhớ 1000 từ mà không kiệt sức",
+          "excerpt": "Kế hoạch 8 tuần thực tế dựa trên quy tắc 3-2-1, với ví dụ qua tiếng Anh, tiếng Nhật và tiếng Tây Ban Nha."
+        },
+        {
+          "tag": "Nói",
+          "title": "Shadowing: bài tập nói thực sự hiệu quả",
+          "excerpt": "Vì sao nhắc lại âm thanh bản ngữ là cách nhanh nhất để sửa phát âm, và quy trình 5 bước bạn có thể bắt đầu ngay hôm nay."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bắt đầu nghi thức 10 phút mỗi ngày của bạn",
+      "desc": "Miễn phí mãi mãi. Không cần thẻ tín dụng. Hủy bất cứ lúc nào bạn muốn — nhưng có lẽ bạn sẽ không muốn đâu.",
+      "start": "Tạo tài khoản miễn phí",
+      "browse": "Xem khóa học trước"
+    }
+  },
+  "league": {
+    "title": "Bảng xếp hạng tuần",
+    "subtitle": "Tích lũy XP mỗi tuần, chinh phục bậc Master · thăng hạng và xuống hạng chốt vào mỗi thứ Hai",
+    "seoTitle": "Bảng xếp hạng tuần · League | LangOria",
+    "seoDescription": "Thi đấu trên bảng xếp hạng XP tuần của LangOria. Leo hạng từ Bronze đến Master trong các giải đấu ngôn ngữ.",
+    "refresh": "Làm mới",
+    "loadFailed": "Không tải được bảng xếp hạng",
+    "refreshFailed": "Làm mới thất bại",
+    "season": "Mùa giải {{key}}",
+    "players": "{{count}} ngườoi chơi",
+    "timeRemaining": "Còn {{time}}",
+    "time": {
+      "daysHours": "{{days}}n {{hours}}g",
+      "hoursMinutes": "{{hours}}g {{mins}}p"
+    },
+    "divisionMinExp": "{{division}}: XP tuần ≥ {{minExp}}",
+    "loginCardTitle": "Đăng nhập để xem thứ hạng của bạn",
+    "loginCardDesc": "Sau khi đăng nhập, bạn sẽ tự động tham gia mùa giải tuần này và được xếp vào hạng dựa trên tổng XP của mình.",
+    "loginButton": "Đăng nhập ngay",
+    "loadingMyRank": "Đang tải thứ hạng của bạn…",
+    "rankInDivision": "Thứ hạng trong hạng:",
+    "weekExp": "XP tuần:",
+    "totalExp": "Tổng XP:",
+    "bestDivision": "Cao nhất từng đạt:",
+    "promotionMsg": "Bạn đang ở khu vực thăng hạng! Bạn sẽ được lên một hạng khi mùa giải kết thúc.",
+    "demotionMsg": "Bạn đang ở khu vực xuống hạng và có thể bị tụt một hạng khi mùa giải kết thúc. Cố lên nhé!",
+    "rules": "Quy tắc thăng/xuống hạng: 10% đầu mỗi hạng được thăng, 10% cuối bị xuống. Việc chốt hạng diễn ra hàng loạt vào mỗi thứ Hai khi mùa giải kết thúc.",
+    "leaderboard": "Bảng xếp hạng",
+    "leaderboardSubtitle": "Sắp xếp theo XP tuần · tối đa 50 ngườoi mỗi trang",
+    "loadingStandings": "Đang tải bảng xếp hạng…",
+    "emptyDivision": "Tuần này chưa có ai trong hạng này — hãy tích XP và trở thành ngườoi đầu tiên lên bảng!",
+    "you": "Bạn",
+    "totalXp": "Tổng XP {{total}}",
+    "startingXp": "Đầu tuần {{starting}}",
+    "weekXpLabel": "XP tuần",
+    "division": {
+      "bronze": "Bronze",
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum",
+      "diamond": "Diamond",
+      "master": "Master"
+    }
+  },
+  "learn": {
+    "wordMemory": "Ghi nhớ từ vựng",
+    "wordMemoryDesc": "Lật thẻ flashcard, gợi nhớ chủ động, củng cố trí nhớ lâu dài",
+    "grammar": "Luyện ngữ pháp",
+    "grammarDesc": "Trắc nghiệm + điền vào chỗ trống, phản hồi tức thì",
+    "speaking": "Luyện nói",
+    "speakingDesc": "Nghe và nhắc lại, tạo phản xạ cơ miệng",
+    "listening": "Luyện nghe",
+    "listeningDesc": "Tài liệu nghe thực tế, luyện điền vào chỗ trống",
+    "inUse": "Đang dùng",
+    "card": "Thẻ {{current}} / {{total}}",
+    "tapToSeeMeaning": "Chạm vào thẻ để xem nghĩa",
+    "notFamiliar": "Chưa quen",
+    "remembered": "Đã nhớ",
+    "word": "Từ",
+    "translation": "Bản dịch",
+    "example": "Ví dụ",
+    "tips": "Mẹo",
+    "grammarModule": {
+      "question": "Câu {{current}} / {{total}}",
+      "correct": "Đúng",
+      "wrong": "Sai",
+      "explain": "Giải thích",
+      "submit": "Nộp đáp án",
+      "next": "Tiếp theo",
+      "accuracy": "Độ chính xác",
+      "answered": "Đã trả lời {{count}} câu hỏi",
+      "tip1": "Hãy đọc toàn bộ câu trước, rồi mới phán đoán cấu trúc ngữ pháp.",
+      "tip2": "Nếu không chắc, hãy tin vào trực giác đầu tiên của bạn.",
+      "tip3": "Mỗi phần giải thích đều đáng để đọc kỹ.",
+      "pitfallOfThis": "Những lỗi dễ mắc của {{title}}"
+    },
+    "speakingModule": {
+      "title": "Nhắc lại câu này",
+      "recording": "Đang ghi âm · {{seconds}}s",
+      "startHint": "Chạm để bắt đầu ghi âm và đọc to",
+      "privacyHint": "Lưu ý: Trình duyệt sẽ không tải âm thanh lên; ghi âm chỉ dùng để bấm giờ trên máy của bạn.",
+      "reset": "Đặt lại",
+      "next": "Câu tiếp theo",
+      "session": "Phiên này",
+      "count": "{{count}} lần",
+      "times": "Số lần nhắc lại",
+      "otherSentences": "Các câu khác",
+      "loginToStart": "Đăng nhập để bắt đầu luyện nói"
+    },
+    "listeningModule": {
+      "title": "Nghe và điền từ",
+      "progress": "{{current}} / {{total}}",
+      "playHint": "Chạm phát (trình duyệt sẽ đọc to văn bản này)",
+      "playing": "Đang phát…",
+      "placeholder": "____",
+      "check": "Kiểm tra đáp án",
+      "next": "Tiếp theo",
+      "completed": "Đã hoàn thành {{count}} bài nghe",
+      "tip1": "Nghe thử một lần mà không nhìn, xem bạn hiểu được bao nhiêu.",
+      "tip2": "Sau đó vừa đọc vừa điền vào chỗ trống để nhận ra dạng yếu và âm nối.",
+      "tip3": "Phát lặp lại nhiều lần và đọc theo cùng lúc.",
+      "reference": "Bản ghi tham khảo",
+      "showAfterFinish": "Hiển thị sau khi hoàn thành.",
+      "speechRate": "Tốc độ đọc",
+      "tip4": "Sau khi kiểm tra, hãy đọc to bản ghi để củng cố âm thanh.",
+      "speed": {
+        "slow": "Chậm",
+        "slower": "Chậm hơn",
+        "normal": "Bình thường",
+        "faster": "Nhanh hơn"
+      }
+    },
+    "wordFamily": "Gia đình từ",
+    "totalNWords": "{{count}} từ",
+    "commonRoot": "Gốc từ chung",
+    "reviewLabel": "Ôn tập",
+    "reviewDesc": "Ôn tập lặp lại ngắt quãng",
+    "conversationLabel": "Hội thoại",
+    "conversationDesc": "Luyện hội thoại với AI",
+    "realConversationLabel": "Hội thoại thực tế",
+    "realConversationDesc": "Đọc theo hội thoại người thật (Taskmaster-2)",
+    "wordRoot": "Gốc từ",
+    "grammarMap": "Bản đồ ngữ pháp",
+    "errorProneN": "{{count}} lỗi dễ mắc",
+    "path": "Lộ trình",
+    "modules": "Học phần",
+    "review": {
+      "again": "Làm lại",
+      "hard": "Khó",
+      "good": "Tốt",
+      "easy": "Dễ",
+      "cardCounter": "{{current}} / {{total}}",
+      "queue": "Hàng đợi ôn tập",
+      "due": "Đến hạn",
+      "loginToStart": "Đăng nhập để bắt đầu ôn tập",
+      "allDone": "Đã ôn xong tất cả!",
+      "noCardsForLang": "Không có thẻ nào đến hạn cho ngôn ngữ này.",
+      "addedAutomatically": "Thẻ sẽ được thêm tự động khi bạn luyện tập.",
+      "kindQuiz": "Ngữ pháp",
+      "kindListening": "Nghe",
+      "kindSpeaking": "Nói",
+      "kindWord": "Từ vựng",
+      "tapToShowAnswer": "Chạm để hiện đáp án",
+      "answer": "Đáp án",
+      "tapToFlipBack": "Chạm để lật lại",
+      "principle": "Cách thức ôn tập hoạt động",
+      "principle1": "Ôn tập ngay trước khi bạn quên.",
+      "principle2": "Thẻ khó sẽ quay lại sớm hơn.",
+      "principle3": "Thẻ dễ sẽ được đẩy xa ra hơn.",
+      "principle4": "Kiên trì mỗi ngày tốt hơn học dồn dài hơi.",
+      "thisSession": "Phiên này",
+      "cardsRemaining": "thẻ còn lại",
+      "nextInterval": {
+        "now": "Ngay bây giờ",
+        "day": "sau 1 ngày",
+        "days": "sau {{count}} ngày",
+        "week": "sau 1 tuần",
+        "weeks": "sau {{count}} tuần",
+        "month": "sau 1 tháng",
+        "months": "sau {{count}} tháng"
+      }
+    },
+    "conversation": {
+      "unsupportedBrowser": "Trình duyệt này không hỗ trợ nhận dạng giọng nói.",
+      "didNotHear": "Không nghe rõ. Vui lòng thử lại.",
+      "fallbackBranch": "Không khớp chính xác — AI sẽ tiếp tục một cách tự nhiên.",
+      "completed": "Hoàn thành cuộc hội thoại!",
+      "restart": "Bắt đầu lại",
+      "inputPlaceholder": "Nhập câu trả lời của bạn...",
+      "voiceInput": "Nhập bằng giọng nói",
+      "send": "Gửi",
+      "currentScene": "Tình huống hiện tại",
+      "sceneHint": "Trả lờ tự nhiên bằng ngôn ngữ mục tiêu.",
+      "tipsTitle": "Mẹo",
+      "tip1": "Trả lờ bằng ngôn ngữ mục tiêu.",
+      "tip2": "Giữ câu trả lời ngắn gọn và tự nhiên.",
+      "tip3": "Dùng nhập giọng nói để luyện nói.",
+      "tip4": "Đừng lo lắng về lỗi sai — cứ tiếp tục."
+    },
+    "realConv": {
+      "aboutTitle": "Giới thiệu về học phần này",
+      "about": "Đây là các cuộc hội thoại Taskmaster-2 thực tế (đã dịch sang ngôn ngữ mục tiêu của bạn). Luyện tập bằng cách đọc theo to từng câu của ASSISTANT — phát âm của bạn sẽ được chấm điểm tự động.",
+      "empty": "Chưa có hội thoại thực tế nào cho ngôn ngữ này.",
+      "emptyHint": "Hãy thử tiếng Anh (dự phòng) hoặc ngôn ngữ khác.",
+      "prevConv": "Hội thoại trước",
+      "nextConv": "Hội thoại sau",
+      "conversationN": "Hội thoại {{n}} / {{total}}",
+      "assistantTurn": "Lượt Assistant — đọc theo câu này",
+      "userTurn": "Lượt người dùng (chỉ đọc)",
+      "userTurnHint": "Đọc thầm câu của người dùng, rồi tiếp tục.",
+      "bestScore": "Điểm cao nhất",
+      "prev": "Trước",
+      "next": "Sau",
+      "sessionTitle": "Điểm trung bình phiên",
+      "avgScore": "Điểm TB",
+      "shadowed": "Đã đọc theo {{n}} câu",
+      "tip1": "Nghe trước, rồi nhắc lại to.",
+      "tip2": "Bắt chước ngữ điệu, không chỉ từ ngữ.",
+      "tip3": "Ghi âm lại để phá kỷ lục điểm cao nhất của bạn.",
+      "domains": {
+        "restaurant": "Nhà hàng",
+        "foodOrdering": "Gọi món ăn",
+        "movies": "Phim ảnh",
+        "hotels": "Khách sạn",
+        "flights": "Chuyến bay",
+        "music": "Âm nhạc",
+        "sports": "Thể thao"
+      }
+    }
+  },
+  "lesson": {
+    "status": {
+      "locked": "Đã khóa",
+      "unlocked": "Bắt đầu",
+      "inProgress": "Tiếp tục",
+      "completed": "Đã hoàn thành",
+      "redo": "Làm lại",
+      "continue": "Tiếp tục"
+    },
+    "skill": {
+      "vocab": "Từ vựng",
+      "grammar": "Ngữ pháp",
+      "listening": "Nghe",
+      "speaking": "Nói",
+      "mixed": "Tổng hợp"
+    },
+    "loadingPath": "Đang tải lộ trình học…",
+    "loginToTrackProgress": "Đăng nhập để theo dõi tiến độ bài học.",
+    "noLessons": "Khóa học này chưa được cấu hình bài học nào.",
+    "courseProgress": "Tiến Độ Khóa Học",
+    "completedCount": "Đã hoàn thành {{completed}} / {{total}} bài học",
+    "bestScore": "Cao nhất {{score}}",
+    "loadFailed": "Không tải được danh sách bài học"
+  },
+  "lessonPlayer": {
+    "loadFailed": "Không tải được bài học",
+    "startFailed": "Không bắt đầu được bài học",
+    "completeFailed": "Không hoàn thành được bài học",
+    "loading": "Đang tải bài học...",
+    "backToPath": "Quay lại lộ trình",
+    "exerciseCount": "{{count}} bài tập",
+    "bestScore": "Cao nhất {{score}}",
+    "lockedHint": "Hoàn thành các bài học trước để mở khóa bài này.",
+    "start": "Bắt đầu bài học",
+    "inProgressHint": "Bài học đang diễn ra",
+    "completed": "Đã hoàn thành bài học!",
+    "scoreThisTime": "Điểm lần này: {{score}}",
+    "nextUnlocked": "Đã mở khóa bài học tiếp theo!",
+    "nextLesson": "Đi đến bài học tiếp theo",
+    "emptyExercises": "Bài học này chưa có bài tập.",
+    "emptyExercisesHint": "Nhấn Hoàn thành để kết thúc.",
+    "submitting": "Đang gửi...",
+    "complete": "Hoàn thành bài học",
+    "completeHint": "Hoàn thành bài học để lưu tiến độ.",
+    "vocabTitle": "Từ vựng ({{count}})",
+    "readAloud": "Đọc to",
+    "tapToFlip": "Chạm để lật",
+    "grammarTitle": "Ngữ pháp ({{count}})",
+    "correct": "Đúng",
+    "wrong": "Sai",
+    "explanation": "Giải thích: ",
+    "next": "Tiếp theo",
+    "listeningTitle": "Nghe ({{count}})",
+    "playing": "Đang phát...",
+    "tapToPlay": "Chạm để phát",
+    "nextSegment": "Đoạn tiếp theo",
+    "speakingTitle": "Nói ({{count}})",
+    "nextSentence": "Câu tiếp theo",
+    "speakingHint": "Nghe và nhắc lại to thành tiếng."
+  },
+  "loginPrompt": {
+    "title": "Yêu Cầu Đăng Nhập",
+    "message": "Vui lòng đăng nhập hoặc đăng ký để tiếp tục. Tiến độ học tập của bạn sẽ được lưu tự động.",
+    "login": "Đi đến Đăng nhập",
+    "register": "Đăng ký"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "courses": "Khóa học",
+    "learn": "Học tập",
+    "progress": "Tiến độ",
+    "recommended": "Đề xuất",
+    "community": "Cộng đồng",
+    "achievements": "Thành tích",
+    "profile": "Hồ sơ",
+    "settings": "Cài đặt",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "faq": "Câu hỏi thường gặp",
+    "blog": "Blog"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "subtitle": "Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.",
+    "suggestion": "Hãy kiểm tra lại URL xem có lỗi đánh máy không, hoặc thử một trong các tùy chọn sau:",
+    "seoTitle": "Không tìm thấy trang — LangOria",
+    "seoDescription": "Trang bạn đang tìm kiếm không tồn tại trên LangOria. Hãy quay về trang chủ để bắt đầu học ngôn ngữ.",
+    "goHome": "Trang chủ",
+    "browseCourses": "Duyệt khóa học",
+    "readBlog": "Đọc blog"
+  },
+  "placement": {
+    "title": "Bài kiểm tra đầu vào",
+    "subtitle": "6 câu hỏi giúp xác định nhanh cấp độ khởi đầu của bạn",
+    "seoTitle": "Bài kiểm tra đầu vào — LangOria",
+    "seoDescription": "Bài kiểm tra đầu vào thích ứng: 6 câu hỏi xác định cấp độ khởi đầu của bạn.",
+    "loginHint": "Không cần đăng nhập để làm bài kiểm tra. Đăng nhập để lưu kết quả và nhận gợi ý khóa học vào lần sau.",
+    "loading": "Đang chuẩn bị câu hỏi cho {{lang}}…",
+    "loadingText": "Đang tải…",
+    "questionTitle": "Bài kiểm tra đầu vào · Câu {{current}} / {{total}}",
+    "questionSubtitle": "Cấp độ hiện tại: {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(Câu hỏi trống)",
+    "reselectLang": "Chọn lại ngôn ngữ",
+    "submit": "Nộp bài",
+    "nextQuestion": "Câu tiếp theo…",
+    "resultTitle": "Kết quả kiểm tra đầu vào",
+    "resultSubtitle": "Cấp độ khởi đầu được đề xuất: {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "Kết quả kiểm tra đầu vào — LangOria",
+    "testComplete": "Đã hoàn thành bài kiểm tra",
+    "correctCount": "Số câu trả lởi đúng",
+    "recommendedLevel": "Cấp độ đề xuất",
+    "cefrAlignment": "Tương ứng CEFR",
+    "cefrRank": "Bậc CEFR",
+    "language": "Ngôn ngữ",
+    "startCourse": "Bắt đầu khóa học này",
+    "noCourseMatch": "Không tìm thấy khóa học nào khớp chính xác với {{level}}. Vui lòng vào danh sách khóa học và tự chọn cấp độ tương tự.",
+    "saving": "Đang lưu…",
+    "saveResult": "Lưu kết quả",
+    "saved": "Đã lưu vào tài khoản của bạn. Cấp độ này sẽ tự động được đề xuất vào lần sau khi bạn chọn ngôn ngữ này.",
+    "loginToSave": "Đăng nhập để lưu kết quả",
+    "retake": "Làm lại bài kiểm tra",
+    "errorOccurred": "Đã xảy ra lỗi, vui lòng",
+    "restart": "Bắt đầu lại",
+    "errors": {
+      "noQuestions": "Ngôn ngữ này chưa có câu hỏi kiểm tra đầu vào. Vui lòng chọn ngôn ngữ khác.",
+      "noStartQuestion": "Không thể chọn câu hỏi bắt đầu.",
+      "fetchFailed": "Không tải được câu hỏi",
+      "saveFailed": "Không lưu được kết quả"
+    }
+  },
+  "profile": {
+    "title": "Hồ sơ",
+    "subtitle": "Quản lý thông tin tài khoản, mục tiêu và tùy chọn của bạn.",
+    "pleaseLogin": "Vui lòng đăng nhập để xem hồ sơ của bạn.",
+    "goLogin": "Đi đến đăng nhập",
+    "createdAt": "Tạo ngày {{date}}",
+    "info": {
+      "streak": "Chuỗi ngày",
+      "level": "Cấp độ",
+      "words": "Từ đã học",
+      "grammar": "Luyện ngữ pháp",
+      "speaking": "Nói",
+      "listening": "Nghe"
+    },
+    "settingsTitle": "Tài khoản & Tùy chọn",
+    "settingsHint": "Nhấn Lưu sau khi thay đổi.",
+    "fields": {
+      "nickname": "Biệt danh",
+      "email": "Email",
+      "targetLanguage": "Ngôn ngữ mục tiêu",
+      "uiLanguage": "Ngôn ngữ giao diện",
+      "nativeLanguage": "Ngôn ngữ mẹ đẻ / Ngôn ngữ giải thích",
+      "dailyGoal": "Mục tiêu hằng ngày ({{goal}} phút)"
+    },
+    "saving": "Đang lưu…",
+    "save": "Lưu thay đổi",
+    "saved": "Đã lưu ✓",
+    "saveFailed": "Lưu thất bại",
+    "logout": "Đăng xuất",
+    "bannerTitle": "Tiếp tục học, tiếp tục tiến về phía trước",
+    "bannerText": "LangOria ghi lại mọi dữ liệu học tập qua API backend, đồng bộ tiến độ trên mọi thiết bị."
+  },
+  "pronunciation": {
+    "excellent": "Xuất sắc",
+    "great": "Rất tốt",
+    "okay": "Ổn",
+    "practiceMore": "Tiếp tục luyện tập",
+    "errors": {
+      "noSpeech": "Không nhận diện được giọng nói. Vui lòng thử lại.",
+      "microphoneNotAllowed": "Vui lòng cho phép truy cập micro trong trình duyệt của bạn.",
+      "network": "Lỗi mạng. Vui lòng kiểm tra kết nối và thử lại.",
+      "recognitionFailed": "Nhận diện thất bại ({{error}})",
+      "cannotStart": "Không thể bắt đầu ghi âm. Vui lòng thử lại."
+    },
+    "unsupportedBrowser": "Trình duyệt này không hỗ trợ nhận diện giọng nói. Vui lòng sử dụng Chrome, Edge hoặc Safari.",
+    "repeatThis": "Nhắc lại câu này",
+    "listening": "Đang nghe… vui lòng đọc to",
+    "tapToStart": "Chạm vào micro để bắt đầu",
+    "toneHint": "Mẹo: điểm số này dựa trên độ tương đồng tổng thể; độ chính xác của thanh điệu sẽ được hỗ trợ trong phiên bản tương lai.",
+    "fullScore": "Trên thang 100",
+    "youSaid": "Bạn đã nói",
+    "target": "Mục tiêu",
+    "noSpeechDetected": "(Không nhận diện được giọng nói)",
+    "tryAgain": "Thử lại"
+  },
+  "reading": {
+    "fetchFailed": "Không tải được bài đọc",
+    "title": "Đọc hiểu",
+    "subtitle": "Bài đọc phân cấp kèm câu hỏi kiểm tra hiểu bài",
+    "seoTitle": "Luyện đọc hiểu — LangOria",
+    "seoDescription": "Bài đọc phân cấp kèm bảng chú giải và câu hỏi hiểu bài bằng tiếng Anh, Nhật, Hàn, Trung và nhiều ngôn ngữ khác.",
+    "disclaimer": "Các bài đọc được tạo hoặc tuyển chọn cho ngườoi học và có thể không hoàn toàn giống nội dung của ngườoi bản ngữ.",
+    "listSubtitle": "Chọn một bài đọc",
+    "switchLanguage": "Đổi ngôn ngữ",
+    "seoDescriptionLang": "Đọc hiểu {{language}} — LangOria",
+    "empty": "Chưa có bài đọc nào.",
+    "emptyHint": "Hãy thử cấp độ hoặc ngôn ngữ khác sau nhé.",
+    "completed": "Đã hoàn thành",
+    "bestAccuracy": "Cao nhất {{accuracy}}%",
+    "words": "{{count}} từ",
+    "minutes": "{{count}} phút",
+    "start": "Bắt đầu",
+    "aiExplainFailed": "Không giải thích được câu này",
+    "loadFailed": "Không tải được bài đọc",
+    "loadingTitle": "Đang tải bài đọc...",
+    "loadPassageFailed": "Không thể tải bài đọc này.",
+    "backToList": "Quay lại danh sách",
+    "passageMeta": "{{level}} {{cefr}} · {{words}} từ · {{minutes}} phút",
+    "accuracyThisTime": "Đúng {{correct}}/{{total}} ({{accuracy}}%)",
+    "passageCompleted": "Đã hoàn thành bài đọc",
+    "attemptHistory": "Lần thứ {{count}} · cao nhất {{best}}%",
+    "redo": "Làm lại",
+    "aiExplaining": "Đang giải thích...",
+    "aiExplain": "Giải thích",
+    "aiSentenceTitle": "AI giải thích",
+    "aiRemaining": "Còn {{count}} lượt hôm nay",
+    "aiGenerating": "Đang tạo lởi giải thích...",
+    "source": "Nguồn: {{source}}",
+    "glossary": "Bảng chú giải",
+    "comprehensionTitle": "Câu hỏi hiểu bài ({{count}})",
+    "explanation": "Giải thích: ",
+    "answered": "Đã trả lởi {{answered}}/{{total}}",
+    "submit": "Nộp bài",
+    "submitFailed": "Không nộp được câu trả lởi",
+    "correctCount": "Đúng {{correct}}/{{total}}"
+  },
+  "recommend": {
+    "title": "Lộ trình học cá nhân hóa",
+    "subtitle": "Lộ trình cải thiện được thiết kế riêng dựa trên dữ liệu luyện tập gần đây và ngôn ngữ mục tiêu của bạn.",
+    "badge": "Lộ trình gợi ý hôm nay",
+    "heading": "{{name}}, hãy cùng củng cố những điểm yếu nhé",
+    "headingGuest": "Định hướng học tập rõ ràng hơn cho bạn",
+    "description": "Học theo thứ tự điểm yếu → củng cố → thử thách tổng hợp để nâng điểm từng phần.",
+    "refresh": "Làm mới dữ liệu",
+    "currentLevel": "Cấp độ hiện tại",
+    "streak": "Chuỗi ngày",
+    "targetLanguage": "Ngôn ngữ mục tiêu",
+    "step": "Bước {{n}}",
+    "suggestMinutes": "Gợi ý {{minutes}} phút",
+    "priorityHigh": "Cao nhất",
+    "priorityMedium": "Trung bình",
+    "priorityLow": "Thấp hơn",
+    "priorityLabel": "Độ ưu tiên",
+    "start": "Bắt đầu học",
+    "titles": {
+      "words": "Tăng tốc ghi nhớ Flashcard",
+      "grammar": "Luyện ngữ pháp",
+      "listening": "Nghe mỗi ngày",
+      "speaking": "Luyện nói Shadowing"
+    },
+    "moduleTraining": "Luyện phần {{key}}",
+    "scoreHint": "Điểm hiện tại {{score}} / 100 · ưu tiên củng cố",
+    "fallback": [
+      {
+        "title": "Nhập môn từ vựng bằng Flashcard",
+        "desc": "Xây dựng bộ từ vựng đầu tiên từ con số không"
+      },
+      {
+        "title": "Luyện ngữ pháp cơ bản",
+        "desc": "Nắm vững các quy tắc cấu trúc nền tảng của ngôn ngữ"
+      },
+      {
+        "title": "Nhập môn hội thoại hằng ngày",
+        "desc": "Lặp lại những câu nói phổ biến nhất trong giao tiếp"
+      }
+    ],
+    "coursesTitle": "Gợi ý · {{flag}} {{name}}",
+    "coursesDesc": "Được chọn lọc kỹ theo cấp độ để học có hệ thống.",
+    "browseAll": "Duyệt tất cả →",
+    "joinPlan": "Thêm vào lộ trình →"
+  },
+  "settings": {
+    "title": "Cài Đặt Ngôn Ngữ",
+    "subtitle": "Thiết lập ngôn ngữ giao diện và ngôn ngữ dùng để giải thích từ vựng.",
+    "interface": "Ngôn Ngữ Giao Diện",
+    "interfaceDesc": "Điều khiển ngôn ngữ của menu, nút bấm và các lời nhắc.",
+    "native": "Ngôn Ngữ Mẹ Đẻ / Ngôn Ngữ Giải Thích",
+    "nativeDesc": "Định nghĩa từ và bản dịch ví dụ sẽ được hiển thị bằng ngôn ngữ này khi có sẵn.",
+    "target": "Ngôn Ngữ Mục Tiêu",
+    "targetDesc": "Ngôn ngữ bạn đang học hiện tại.",
+    "saving": "Đang lưu…",
+    "save": "Lưu Cài Đặt Ngôn Ngữ",
+    "saved": "Đã lưu ✓",
+    "saveFailed": "Lưu thất bại"
+  },
+  "writing": {
+    "fetchFailed": "Không tải được đề bài viết",
+    "title": "Viết",
+    "subtitle": "Luyện viết với phản hồi tức thì",
+    "seoTitle": "Luyện viết — LangOria",
+    "seoDescription": "Bài luận, email, tóm tắt, truyện và hội thoại. Chấm điểm tức thì theo độ dài, độ đa dạng và từ khóa.",
+    "allLanguages": "Tất cả ngôn ngữ",
+    "allLevels": "Tất cả cấp độ",
+    "loading": "Đang tải đề bài...",
+    "empty": "Chưa có đề bài viết nào.",
+    "wordRange": "{{min}}–{{max}} từ",
+    "bestScore": "Cao nhất {{score}}",
+    "start": "Bắt đầu",
+    "aiPolishFailed": "Không lấy được bản AI chỉnh sửa",
+    "emptyContent": "Vui lòng viết gì đó trước khi nộp.",
+    "submitFailed": "Không nộp được bài viết",
+    "detailTitle": "Đề bài viết",
+    "loadFailed": "Không tải được đề bài",
+    "backToList": "Quay lại danh sách",
+    "targetWords": "{{min}}–{{max}} từ",
+    "tips": "Mẹo",
+    "hideSample": "Ẩn bài mẫu",
+    "showSample": "Xem bài mẫu",
+    "yourWriting": "Bài viết của bạn",
+    "wordRangeCurrent": "{{current}} / {{min}}–{{max}} từ",
+    "placeholder": "Viết bằng {{language}} ({{min}}–{{max}} từ)",
+    "charLimit": "{{current}} / 10000 ký tự",
+    "submit": "Nộp bài",
+    "clear": "Xóa",
+    "scoreResult": "Điểm",
+    "overall": "Tổng quan",
+    "length": "Độ dài",
+    "variety": "Độ đa dạng",
+    "keywords": "Từ khóa",
+    "lengthFeedback": "Độ dài",
+    "varietyFeedback": "Độ đa dạng",
+    "keywordFeedback": "Từ khóa",
+    "matched": "Đã khớp",
+    "missed": "Còn thiếu",
+    "suggestions": "Gợi ý",
+    "aiPolishTitle": "AI chỉnh sửa",
+    "requestAiPolish": "Chỉnh sửa bằng AI",
+    "aiRemaining": "Còn {{count}} lượt hôm nay",
+    "aiPolishing": "Đang chỉnh sửa...",
+    "historyTitle": "Lịch sử nộp bài ({{count}})",
+    "historyMeta": "{{words}} từ · {{date}}",
+    "lengthShort": "Dài",
+    "varietyShort": "Đa dạng",
+    "keywordsShort": "Từ khóa"
+  },
+  "levelMeta": {
+    "alignment": "Đối chiếu",
+    "words": "từ",
+    "hours": "giờ",
+    "vocabTarget": "Từ vựng mục tiêu",
+    "guidedHours": "Số giờ học có hướng dẫn",
+    "grammarPoints": "Điểm ngữ pháp",
+    "learningGoals": "Mục tiêu học tập",
+    "grammarToMaster": "Ngữ pháp cần nắm vững",
+    "disclaimer": "Các nhãn cấp độ (CEFR / JLPT / HSK / TOPIK) chỉ mang tính đối chiếu tham khảo, nhằm tạo thuận lợi cho việc so sánh giữa các hệ thống. CEFR là nhãn hiệu của Council of Europe, JLPT là nhãn hiệu của Japan Foundation, HSK là nhãn hiệu của Hanban, và TOPIK là nhãn hiệu của National Institute for International Education of Korea. Dự án này không được bất kỳ tổ chức chính thức nào trong số các tổ chức trên chứng nhận hoặc ủy quyền; dữ liệu về trình độ đạt được chỉ là ước tính nội bộ.",
+    "framework": {
+      "CEFR": "CEFR",
+      "JLPT": "JLPT",
+      "HSK": "HSK",
+      "TOPIK": "TOPIK",
+      "ACTFL": "ACTFL"
+    },
+    "content": {
+      "de": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và giới thiệu bản thân",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (hiểu khoảng 60% nội dung)",
+            "Viết được các đoạn văn đơn giản từ 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống hằng ngày như mua sắm, hỏi đường và gọi món ăn",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết các đoạn mô tả 100–150 từ về cuộc sống hằng ngày"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Ứng phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc các tài liệu viết thông thường và các bài báo ngắn",
+            "Trình bày bằng lời nói hoặc văn viết một cách đơn giản, mạch lạc về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cao cấp",
+          "goals": [
+            "Hiểu được ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ một cách tương đối lưu loát và tự nhiên",
+            "Viết các bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ không chia thì",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa ngầm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng một cách lưu loát, tự nhiên trong các ngữ cảnh xã hội, học thuật và nghề nghiệp",
+            "Viết các văn bản phức tạp rõ ràng, có cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được mà không tốn nhiều công sức",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt các sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong các lĩnh vực học thuật, văn học và chuyên ngành"
+          ],
+          "grammar": [
+            "Nắm vững toàn bộ ngữ pháp",
+            "Nhận thức về thanh điệu và phong cách",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "en": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và giới thiệu bản thân",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (hiểu khoảng 60% nội dung)",
+            "Viết được các đoạn văn đơn giản từ 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống hằng ngày như mua sắm, hỏi đường và gọi món ăn",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết các đoạn mô tả 100–150 từ về cuộc sống hằng ngày"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Ứng phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc các tài liệu viết thông thường và các bài báo ngắn",
+            "Trình bày bằng lời nói hoặc văn viết một cách đơn giản, mạch lạc về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cao cấp",
+          "goals": [
+            "Hiểu được ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ một cách tương đối lưu loát và tự nhiên",
+            "Viết các bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ không chia thì",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa ngầm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng một cách lưu loát, tự nhiên trong các ngữ cảnh xã hội, học thuật và nghề nghiệp",
+            "Viết các văn bản phức tạp rõ ràng, có cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được mà không tốn nhiều công sức",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt các sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong các lĩnh vực học thuật, văn học và chuyên ngành"
+          ],
+          "grammar": [
+            "Nắm vững toàn bộ ngữ pháp",
+            "Nhận thức về thanh điệu và phong cách",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "es": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và giới thiệu bản thân",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (hiểu khoảng 60% nội dung)",
+            "Viết được các đoạn văn đơn giản từ 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống hằng ngày như mua sắm, hỏi đường và gọi món ăn",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết các đoạn mô tả 100–150 từ về cuộc sống hằng ngày"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Ứng phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc các tài liệu viết thông thường và các bài báo ngắn",
+            "Trình bày bằng lời nói hoặc văn viết một cách đơn giản, mạch lạc về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cao cấp",
+          "goals": [
+            "Hiểu được ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ một cách tương đối lưu loát và tự nhiên",
+            "Viết các bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ không chia thì",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa ngầm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng một cách lưu loát, tự nhiên trong các ngữ cảnh xã hội, học thuật và nghề nghiệp",
+            "Viết các văn bản phức tạp rõ ràng, có cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được mà không tốn nhiều công sức",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt các sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong các lĩnh vực học thuật, văn học và chuyên ngành"
+          ],
+          "grammar": [
+            "Nắm vững toàn bộ ngữ pháp",
+            "Nhận thức về thanh điệu và phong cách",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "fr": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và giới thiệu bản thân",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (hiểu khoảng 60% nội dung)",
+            "Viết được các đoạn văn đơn giản từ 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống hằng ngày như mua sắm, hỏi đường và gọi món ăn",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết các đoạn mô tả 100–150 từ về cuộc sống hằng ngày"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Ứng phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc các tài liệu viết thông thường và các bài báo ngắn",
+            "Trình bày bằng lời nói hoặc văn viết một cách đơn giản, mạch lạc về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cao cấp",
+          "goals": [
+            "Hiểu được ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ một cách tương đối lưu loát và tự nhiên",
+            "Viết các bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ không chia thì",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa ngầm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng một cách lưu loát, tự nhiên trong các ngữ cảnh xã hội, học thuật và nghề nghiệp",
+            "Viết các văn bản phức tạp rõ ràng, có cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được mà không tốn nhiều công sức",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt các sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong các lĩnh vực học thuật, văn học và chuyên ngành"
+          ],
+          "grammar": [
+            "Nắm vững toàn bộ ngữ pháp",
+            "Nhận thức về thanh điệu và phong cách",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "id": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và tự giới thiệu",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (khoảng 60% nội dung)",
+            "Viết các đoạn văn đơn giản dài 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống như mua sắm, hỏi đường và gọi món",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết đoạn miêu tả cuộc sống hằng ngày dài 100–150 từ"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Đối phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc tài liệu viết hằng ngày và các bài báo ngắn",
+            "Trình bày đơn giản, mạch lạc bằng lời nói hoặc văn viết về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Hiểu ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ khá trôi chảy và tự nhiên",
+            "Viết bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ dạng phi hạn định",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa hàm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng trôi chảy, tự nhiên trong đời sống xã hội, học thuật và công việc",
+            "Viết các văn bản phức tạp rõ ràng, cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được một cách dễ dàng",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong lĩnh vực học thuật, văn học và chuyên môn"
+          ],
+          "grammar": [
+            "Thành thạo toàn bộ ngữ pháp",
+            "Nhận thức về phong cách và ngữ điệu",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "it": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và tự giới thiệu",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (khoảng 60% nội dung)",
+            "Viết các đoạn văn đơn giản dài 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống như mua sắm, hỏi đường và gọi món",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết đoạn miêu tả cuộc sống hằng ngày dài 100–150 từ"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Đối phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc tài liệu viết hằng ngày và các bài báo ngắn",
+            "Trình bày đơn giản, mạch lạc bằng lời nói hoặc văn viết về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Hiểu ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ khá trôi chảy và tự nhiên",
+            "Viết bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ dạng phi hạn định",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa hàm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng trôi chảy, tự nhiên trong đời sống xã hội, học thuật và công việc",
+            "Viết các văn bản phức tạp rõ ràng, cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được một cách dễ dàng",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong lĩnh vực học thuật, văn học và chuyên môn"
+          ],
+          "grammar": [
+            "Thành thạo toàn bộ ngữ pháp",
+            "Nhận thức về phong cách và ngữ điệu",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "ja": {
+        "N5": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Thành thạo Hiragana, Katakana và khoảng 100 Kanji cơ bản",
+            "Nhận biết khoảng 800 từ",
+            "Hiểu các cuộc hội thoại hàng ngày nói chậm",
+            "Đọc các đoạn văn ngắn và thông báo cơ bản"
+          ],
+          "grammar": [
+            "Các dạng desu/masu",
+            "Trợ từ chủ đề wa/ga",
+            "Các trợ từ wa/ga/wo/ni/de",
+            "Tính từ đuôi i và tính từ đuôi na",
+            "Động từ thể Masu"
+          ]
+        },
+        "N4": {
+          "name": "Sơ cấp cao",
+          "goals": [
+            "Nhận biết khoảng 1.500 từ và khoảng 300 Kanji",
+            "Đọc các văn bản cơ bản về các chủ đề quen thuộc hàng ngày",
+            "Hiểu các cuộc hội thoại hàng ngày ở tốc độ vừa phải"
+          ],
+          "grammar": [
+            "Động từ thể Te",
+            "Các dạng Ta/Nai",
+            "Thể khả năng",
+            "Các dạng điều kiện to/ba/tara",
+            "Động từ cho/nhận teageru/temorau"
+          ]
+        },
+        "N3": {
+          "name": "Trung cấp",
+          "goals": [
+            "Nhận biết khoảng 3.500–4.000 từ và khoảng 600 Kanji",
+            "Đọc các bản tóm tắt của tài liệu viết hàng ngày",
+            "Hiểu các cuộc hội thoại hàng ngày ở tốc độ gần như tự nhiên"
+          ],
+          "grammar": [
+            "Thể bị động và sai khiến",
+            "Danh từ hình thức koto/mono/tokoro",
+            "Dạng diễn tả vẻ ngoài So/Yō",
+            "Điều kiện nara",
+            "Kiến thức cơ bản về Keigo"
+          ]
+        },
+        "N2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Nhận biết khoảng 6.000 từ và khoảng 1.000 Kanji",
+            "Đọc các bài bình luận trên báo chí và các bài luận tổng quát",
+            "Hiểu các cuộc hội thoại mạch lạc và tin tức ở tốc độ tự nhiên"
+          ],
+          "grammar": [
+            "Hệ thống Keigo hoàn chỉnh",
+            "Văn phong viết da/dearu",
+            "Các thành phần cổ điển còn sót lại",
+            "Động từ ghép",
+            "Các kết hợp trợ từ nâng cao"
+          ]
+        },
+        "N1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Nhận biết khoảng 10.000–15.000 từ và khoảng 2.000 Kanji",
+            "Đọc các văn bản trừu tượng, logic phức tạp",
+            "Hiểu các bài giảng, tin tức và thảo luận ở tốc độ tự nhiên"
+          ],
+          "grammar": [
+            "Các thành phần tiếng Nhật cổ điển còn sót lại",
+            "Ngôn ngữ viết nâng cao",
+            "Thuật ngữ học thuật",
+            "Phân tích câu dài phức tạp"
+          ]
+        }
+      },
+      "ko": {
+        "TOPIK1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Thành thạo đọc và viết Hangul",
+            "Nhận biết khoảng 800 từ cơ bản",
+            "Tự giới thiệu, chào hỏi, gọi món ăn và hỏi đường",
+            "Đọc các văn bản ngắn đơn giản hàng ngày"
+          ],
+          "grammar": [
+            "Dạng 입니다/입니까",
+            "Trợ từ chủ đề 은/는",
+            "Trợ từ chủ ngữ 이/가",
+            "Trợ từ tân ngữ 을/를",
+            "Trợ từ địa điểm 에/에서"
+          ]
+        },
+        "TOPIK2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Nhận biết khoảng 1.500–2.000 từ",
+            "Xử lý các công việc hàng ngày và sử dụng các cơ sở công cộng",
+            "Đọc các văn bản ngắn đơn giản và viết các ghi chú ngắn"
+          ],
+          "grammar": [
+            "Đuôi câu 아요/어요",
+            "Thì quá khứ 았/었",
+            "Liên kết 'và' (고)",
+            "'Nhưng' (지만)",
+            "'Muốn' (원하다/하고 싶다)"
+          ]
+        },
+        "TOPIK3": {
+          "name": "Trung cấp",
+          "goals": [
+            "Nhận biết khoảng 3.000–4.000 từ",
+            "Tự xử lý cuộc sống hàng ngày và hiểu các mối quan hệ xã hội",
+            "Theo dõi các chủ đề tin tức quen thuộc"
+          ],
+          "grammar": [
+            "게 되다/게 하다",
+            "기 때문에",
+            "느라고",
+            "을/ㄹ 수 있다",
+            "은/는 편이다"
+          ]
+        },
+        "TOPIK4": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Nhận biết khoảng 4.000–6.000 từ",
+            "Sử dụng các cơ sở công cộng và duy trì các mối quan hệ xã hội",
+            "Đọc báo chí và tin tức (ngưỡng trình độ du học)"
+          ],
+          "grammar": [
+            "은/ㄴ 것 같다",
+            "기로 하다",
+            "더라",
+            "ㄹ/을 뻔하다",
+            "는/(으)ㄴ 척하다"
+          ]
+        },
+        "TOPIK5": {
+          "name": "Cao cấp",
+          "goals": [
+            "Nhận biết khoảng 6.000–8.000 từ",
+            "Giao tiếp chuyên nghiệp và hiểu các chủ đề không quen thuộc",
+            "Sử dụng ngôn ngữ trang trọng và không trang trọng một cách phù hợp"
+          ],
+          "grammar": [
+            "기 마련이다",
+            "ㄹ/을 법하다",
+            "는/(으)ㄴ 김에",
+            "자마자",
+            "ㄴ/는다기보다"
+          ]
+        },
+        "TOPIK6": {
+          "name": "Thành thạo",
+          "goals": [
+            "Nhận biết khoảng 8.000–10.000+ từ",
+            "Đạt độ trôi chảy gần như người bản xứ",
+            "Diễn đạt ý kiến chính xác và xử lý các tình huống học thuật/chuyên môn"
+          ],
+          "grammar": [
+            "Từ vựng Hán-Hàn nâng cao",
+            "Văn phong viết",
+            "Ẩn dụ và ngụ ngôn"
+          ]
+        }
+      },
+      "ms": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và tự giới thiệu",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (khoảng 60% nội dung)",
+            "Viết các đoạn văn đơn giản dài 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống như mua sắm, hỏi đường và gọi món",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết đoạn miêu tả cuộc sống hằng ngày dài 100–150 từ"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Đối phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc tài liệu viết hằng ngày và các bài báo ngắn",
+            "Trình bày đơn giản, mạch lạc bằng lời nói hoặc văn viết về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Hiểu ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ khá trôi chảy và tự nhiên",
+            "Viết bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ dạng phi hạn định",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa hàm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng trôi chảy, tự nhiên trong đời sống xã hội, học thuật và công việc",
+            "Viết các văn bản phức tạp rõ ràng, cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc được một cách dễ dàng",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt sắc thái tinh tế với độ chính xác gần như người bản xứ",
+            "Xử lý các văn bản phức tạp trong lĩnh vực học thuật, văn học và chuyên môn"
+          ],
+          "grammar": [
+            "Thành thạo toàn bộ ngữ pháp",
+            "Nhận thức về phong cách và ngữ điệu",
+            "Sử dụng các biện pháp tu từ"
+          ]
+        }
+      },
+      "th": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi hằng ngày và tự giới thiệu",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc hội thoại hằng ngày nói chậm (khoảng 60% nội dung)",
+            "Viết các đoạn văn đơn giản dài 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi Yes/No",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống thường gặp trong đời sống như mua sắm, hỏi đường và gọi món",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc các thông báo ngắn, quảng cáo và email",
+            "Viết đoạn miêu tả cuộc sống hằng ngày dài 100–150 từ"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Đối phó với hầu hết các tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc tài liệu viết hằng ngày và các bài báo ngắn",
+            "Trình bày đơn giản, mạch lạc bằng lời nói hoặc văn viết về trải nghiệm và quan điểm"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Hiểu ý chính của các văn bản phức tạp và các chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản xứ khá trôi chảy và tự nhiên",
+            "Viết bài luận trình bày quan điểm và lập luận chi tiết"
+          ],
+          "grammar": [
+            "Thức giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ dạng phi hạn định",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, khó và ý nghĩa hàm ẩn",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng trôi chảy, tự nhiên trong đời sống xã hội, học thuật và công việc",
+            "Viết các văn bản phức tạp rõ ràng, cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Cấu trúc mệnh đề lồng nhau phức tạp",
+            "Thức giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc độc lập"
+          ]
+        }
+      },
+      "vi": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững 50 mẫu câu cốt lõi để chào hỏi và giới thiệu bản thân hàng ngày",
+            "Nhận biết khoảng 700 từ tần suất cao",
+            "Hiểu các cuộc trò chuyện chậm trong đời sống hàng ngày (khoảng 60% nội dung)",
+            "Viết văn bản đơn giản dài 50–100 từ"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi có/không",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Xử lý các tình huống đời sống hàng ngày như mua sắm, hỏi đường, gọi món",
+            "Nhận biết khoảng 1.500 từ",
+            "Đọc thông báo ngắn, quảng cáo và email",
+            "Viết đoạn mô tả đời sống hàng ngày dài 100–150 từ"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "So sánh hơn/kém",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Đối phó với hầu hết tình huống khi đi du lịch",
+            "Nhận biết khoảng 2.500–3.000 từ",
+            "Đọc tài liệu văn bản hàng ngày và bài báo ngắn",
+            "Trình bày mạch lạc các trải nghiệm và ý kiến bằng lời hoặc văn bản"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Thể bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Hiểu ý chính của văn bản phức tạp và chủ đề trừu tượng",
+            "Nhận biết khoảng 4.000–5.000 từ",
+            "Giao tiếp với người bản ngữ một cách trôi chảy và tự nhiên",
+            "Viết bài luận chi tiết trình bày ý kiến và lập luận"
+          ],
+          "grammar": [
+            "Thể giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ phi hạn định",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        },
+        "C1": {
+          "name": "Cao cấp",
+          "goals": [
+            "Hiểu các văn bản dài, đòi hỏi và ý nghĩa ngầm",
+            "Nhận biết khoảng 8.000 từ",
+            "Diễn đạt ý tưởng trôi chảy và tự nhiên trong môi trường xã hội, học thuật và chuyên môn",
+            "Viết văn bản phức tạp rõ ràng, có cấu trúc chặt chẽ"
+          ],
+          "grammar": [
+            "Lồng mệnh đề phức tạp",
+            "Thể giả định nâng cao",
+            "Đảo ngữ tu từ",
+            "Cấu trúc tuyệt đối"
+          ]
+        },
+        "C2": {
+          "name": "Thành thạo",
+          "goals": [
+            "Hiểu gần như mọi thứ nghe hoặc đọc mà không cần nỗ lực",
+            "Nhận biết khoảng 16.000 từ",
+            "Diễn đạt sắc thái tinh tế với độ chính xác gần như người bản ngữ",
+            "Xử lý văn bản phức tạp trong các lĩnh vực học thuật, văn học và chuyên môn"
+          ],
+          "grammar": [
+            "Nắm vững toàn bộ ngữ pháp",
+            "Nhận thức về thanh giao và phong cách",
+            "Sử dụng các tu từ"
+          ]
+        }
+      },
+      "yue": {
+        "A1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Nắm vững kiến thức cơ bản về chín thanh điệu và sáu thanh khúc của tiếng Quảng Đông",
+            "Nhận biết khoảng 800 từ tiếng Quảng Đông thông dụng",
+            "Xử lý các lời chào hỏi hàng ngày, tự giới thiệu và gọi món ăn",
+            "Hiểu các cuộc hội thoại tiếng Quảng Đông nói chậm"
+          ],
+          "grammar": [
+            "Động từ be",
+            "Câu hỏi có/không",
+            "Đại từ sở hữu",
+            "Thì hiện tại đơn",
+            "Danh từ số ít và số nhiều"
+          ]
+        },
+        "A2": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Nhận biết khoảng 1.500 từ tiếng Quảng Đông",
+            "Xử lý các tình huống mua sắm, hỏi đường và trò chuyện thân mật",
+            "Hiểu các cuộc hội thoại hàng ngày ở tốc độ vừa phải"
+          ],
+          "grammar": [
+            "Thì quá khứ đơn",
+            "Thì hiện tại tiếp diễn",
+            "Cấp so sánh",
+            "Mạo từ",
+            "Danh từ đếm được/không đếm được"
+          ]
+        },
+        "B1": {
+          "name": "Trung cấp",
+          "goals": [
+            "Nhận biết khoảng 3.000 từ tiếng Quảng Đông",
+            "Nói về nhiều chủ đề quen thuộc",
+            "Nắm bắt thông tin chính trong phim truyền hình Hồng Kông và tin tức tiếng Quảng Đông"
+          ],
+          "grammar": [
+            "Thì hiện tại hoàn thành",
+            "Câu bị động",
+            "Câu điều kiện",
+            "Mệnh đề quan hệ",
+            "Động từ khuyết thiếu"
+          ]
+        },
+        "B2": {
+          "name": "Trung cấp cao",
+          "goals": [
+            "Nhận biết khoảng 5.000 từ tiếng Quảng Đông",
+            "Nói trôi chảy với người bản xứ",
+            "Hiểu phim và tin tức Hồng Kông có nhịp độ nhanh"
+          ],
+          "grammar": [
+            "Thể giả định",
+            "Thì quá khứ hoàn thành",
+            "Động từ không chia",
+            "Đảo ngữ",
+            "Mệnh đề danh từ"
+          ]
+        }
+      },
+      "zh": {
+        "HSK1": {
+          "name": "Người mới bắt đầu",
+          "goals": [
+            "Thành thạo Pinyin, thanh điệu và khoảng 500 chữ Hán thông dụng (HSK 3.0)",
+            "Hiểu và sử dụng các lời chào hỏi cơ bản và cụm từ đơn giản",
+            "Hiểu các cuộc hội thoại hàng ngày nói chậm"
+          ],
+          "grammar": [
+            "是/不是",
+            "的 biểu thị sở hữu",
+            "在 biểu thị vị trí",
+            "Từ để hỏi 什么/谁/哪",
+            "Số từ và lượng từ"
+          ]
+        },
+        "HSK2": {
+          "name": "Cơ bản",
+          "goals": [
+            "Nhận biết khoảng 1.200 từ (HSK 3.0)",
+            "Giao tiếp đơn giản về các chủ đề quen thuộc hàng ngày",
+            "Đọc các văn bản ngắn"
+          ],
+          "grammar": [
+            "了 biểu thị hoàn thành",
+            "正在 biểu thị hành động đang diễn ra",
+            "想/要 biểu thị mong muốn",
+            "太...了 biểu thị mức độ",
+            "So sánh với 比"
+          ]
+        },
+        "HSK3": {
+          "name": "Sơ cấp",
+          "goals": [
+            "Nhận biết khoảng 2.200 từ (HSK 3.0)",
+            "Xử lý giao tiếp cơ bản về cuộc sống, học tập và công việc",
+            "Hiểu các cuộc hội thoại hàng ngày ở tốc độ bình thường"
+          ],
+          "grammar": [
+            "过 biểu thị kinh nghiệm",
+            "Bổ ngữ kết quả",
+            "Câu 把",
+            "Câu 被",
+            "虽然...但是"
+          ]
+        },
+        "HSK4": {
+          "name": "Trung cấp",
+          "goals": [
+            "Nhận biết khoảng 3.245 từ (HSK 3.0)",
+            "Giao tiếp khá trôi chảy về nhiều chủ đề",
+            "Đọc bài báo và hiểu phim/chương trình truyền hình"
+          ],
+          "grammar": [
+            "连...都",
+            "不仅...而且",
+            "既然...就",
+            "即使...也",
+            "Bổ ngữ mức độ 极了/得很"
+          ]
+        },
+        "HSK5": {
+          "name": "Cao cấp",
+          "goals": [
+            "Nhận biết khoảng 4.316 từ (HSK 3.0)",
+            "Đọc báo tiếng Trung, xem phim/truyền hình và viết bài luận ngắn",
+            "Hiểu các chương trình phát thanh và bản tin"
+          ],
+          "grammar": [
+            "却 biểu thị tương phản",
+            "并 biểu thị nhấn mạnh",
+            "何况 biểu thị tăng tiến",
+            "以免 diễn tả mục đích tránh",
+            "Cấu trúc 连 diễn tả mức độ cực đoan"
+          ]
+        },
+        "HSK6": {
+          "name": "Cao cấp tăng cường",
+          "goals": [
+            "Nhận biết khoảng 5.456 từ (HSK 3.0)",
+            "Hiểu thoải mái nội dung qua nghe, nói, đọc, viết",
+            "Viết các bài luận nghị luận và học thuật dài hơn"
+          ],
+          "grammar": [
+            "Các thành phần cổ văn còn sót lại",
+            "Thành ngữ và cụm từ cố định",
+            "Sử dụng văn phong viết",
+            "Cấu trúc câu dài phức tạp"
+          ]
+        },
+        "HSK7": {
+          "name": "Cao cấp mở rộng",
+          "goals": [
+            "Nhận biết hơn 6.000 từ (HSK 3.0 Cao cấp)",
+            "Đọc các văn bản học thuật, chuyên môn và văn học dài",
+            "Hiểu các bài giảng, tranh luận và chương trình phát thanh",
+            "Viết các bài nghị luận có cấu trúc tốt về các chủ đề phức tạp"
+          ],
+          "grammar": [
+            "Chuyển sang ngữ điệu viết",
+            "Liên từ nâng cao",
+            "Phân tích các thành phần cổ văn còn sót lại",
+            "Phân tách và tái cấu trúc câu dài",
+            "Sử dụng thành ngữ và điển cố"
+          ]
+        },
+        "HSK8": {
+          "name": "Thành thạo",
+          "goals": [
+            "Nhận biết hơn 8.000 từ (HSK 3.0 Thành thạo)",
+            "Hiểu các tài liệu chuyên môn tiếng Trung không rào cản",
+            "Tham gia các cuộc tranh luận học thuật cấp cao và phát biểu ứng khẩu",
+            "Viết các tác phẩm học thuật và văn học gần trình độ người bản xứ"
+          ],
+          "grammar": [
+            "Quy ước ngữ điệu học thuật",
+            "Sử dụng toàn diện các biện pháp tu từ",
+            "Chuyển đổi linh hoạt giữa ngữ điệu viết và nói",
+            "Diễn đạt trong ngữ cảnh liên văn hóa",
+            "Lồng ghép câu phức tạp"
+          ]
+        },
+        "HSK9": {
+          "name": "Tinh thông",
+          "goals": [
+            "Nhận biết hơn 11.000 từ (HSK 3.0 Tinh thông)",
+            "Xử lý tự do mọi tình huống tiếng Trung, đạt gần trình độ người bản xứ",
+            "Phân tích phản biện các văn bản phức tạp và nắm bắt ý nghĩa hàm ẩn",
+            "Hoạt động thành thạo trong các lĩnh vực học thuật, ngoại giao và sáng tác văn học"
+          ],
+          "grammar": [
+            "Kiểm soát ngữ điệu chính xác",
+            "Làm chủ toàn diện ngữ pháp",
+            "Kết hợp tiếng Trung cổ điển và hiện đại",
+            "Làm chủ nghệ thuật tu từ",
+            "Tư duy liên ngôn ngữ"
+          ]
+        }
+      }
+    }
+  }
+}

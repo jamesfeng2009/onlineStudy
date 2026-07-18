@@ -1,0 +1,2771 @@
+{
+  "app": {
+    "name": "LangOria",
+    "tagline": "Pembelajaran Bahasa yang Imersif"
+  },
+  "loginPrompt": {
+    "title": "Perlu Log Masuk",
+    "message": "Sila log masuk atau daftar untuk meneruskan. Kemajuan pembelajaran anda akan disimpan secara automatik.",
+    "login": "Ke Halaman Log Masuk",
+    "register": "Daftar"
+  },
+  "nav": {
+    "home": "Laman Utama",
+    "courses": "Kursus",
+    "learn": "Belajar",
+    "progress": "Kemajuan",
+    "recommended": "Disyorkan",
+    "community": "Komuniti",
+    "achievements": "Pencapaian",
+    "profile": "Profil",
+    "settings": "Tetapan",
+    "login": "Log Masuk",
+    "register": "Daftar",
+    "logout": "Log Keluar",
+    "faq": "Soalan Lazim",
+    "blog": "Blog"
+  },
+  "header": {
+    "streak": "Rekod {{days}} hari",
+    "level": "Tahap {{level}}",
+    "login": "Log Masuk / Daftar",
+    "loading": "Memuatkan...",
+    "logout": "Log Keluar"
+  },
+  "footer": {
+    "copyright": "© {{year}} LangOria · Platform Pembelajaran Pelbagai Bahasa yang Imersif"
+  },
+  "dashboard": {
+    "title": "Papan Pemuka Pembelajaran",
+    "subtitle": "Hai {{name}}, berikut gambaran lengkap data pembelajaran anda.",
+    "subtitleGuest": "Sila log masuk untuk melihat kemajuan pembelajaran anda.",
+    "welcomeBack": "Selamat kembali, {{name}}!",
+    "learnedToday": "Hari ini anda telah belajar selama {{minutes}} minit, sasaran {{goal}} minit. Teruskan!",
+    "startToday": "Mula Belajar Hari Ini",
+    "browseCourses": "Lihat Kursus",
+    "streak": "Rekod",
+    "level": "Tahap",
+    "todaysGoal": "Sasaran Hari Ini",
+    "recommended": "Cadangan Hari Ini",
+    "viewAll": "Lihat Semua",
+    "loading": "Memuatkan data pembelajaran...",
+    "streakLearn": "Rekod",
+    "wordsLearned": "Perkataan Dipelajari",
+    "wordsAnswered": "Dijawab {{count}} kali",
+    "grammar": "Tatabahasa",
+    "grammarAccuracy": "Ketepatan {{pct}}%",
+    "total14": "Jumlah 14 Hari",
+    "total14Value": "{{total}} min",
+    "avgPerDay": "Purata {{avg}} min/hari",
+    "chartTitle": "Masa Belajar 14 Hari Lepas",
+    "chartUnit": "Unit: minit · jumlah harian",
+    "todayGoal": "Sasaran Hari Ini",
+    "progressTitle": "Kemajuan",
+    "exp": "EXP",
+    "radarTitle": "Radar Kemahiran",
+    "radarSubtitle": "Kosa Kata · Tatabahasa · Pendengaran · Pertuturan",
+    "moduleTitle": "Prestasi Modul · Terkini",
+    "moduleTip": "Latihan yang konsisten akan meningkatkan metrik ini secara beransur-ansur",
+    "moduleScore": "Skor",
+    "heatmapTitle": "Peta Haba 14 Hari",
+    "heatmapSubtitle": "Setiap sel mewakili satu hari · semakin gelap bermakna masa belajar semakin lama",
+    "heatmapTooltip": "{{date}} · {{minutes}} min",
+    "skills": {
+      "words": "Kosa Kata",
+      "grammar": "Tatabahasa",
+      "listening": "Pendengaran",
+      "speaking": "Pertuturan"
+    },
+    "keepGoing": "Teruskan!"
+  },
+  "courses": {
+    "seoTitle": "Kursus Bahasa — A1 hingga C1 | LangOria",
+    "seoDescription": "Lihat kursus bahasa berstruktur dari A1 hingga C2 untuk bahasa Inggeris, Jepun, Korea, Cina, Sepanyol, Perancis, Jerman, Itali, Thai, dan Kantonis. Kosa kata pengulangan berjarak, latihan pendengaran, dan latihan pertuturan.",
+    "title": "Sistem Kursus Bertahap",
+    "subtitle": "Tapis mengikut bahasa dan tahap — dari sifar hingga mahir.",
+    "currentLanguage": "Bahasa Semasa",
+    "select": "Pilih",
+    "locked": "Terkunci",
+    "start": "Mula Belajar",
+    "continue": "Sambung",
+    "filter": {
+      "language": "Bahasa",
+      "all": "Semua",
+      "level": "Tahap"
+    },
+    "levelGroups": {
+      "beginner": "Pemula",
+      "intermediate": "Pertengahan",
+      "advanced": "Lanjutan"
+    },
+    "lessons": "{{count}} pelajaran",
+    "minutes": "{{count}} min",
+    "noResults": "Tiada kursus yang sepadan. Cuba tapis lain.",
+    "progress": "Kemajuan",
+    "disclaimer": "Label tahap (CEFR / JLPT / HSK / TOPIK) hanya untuk penanda aras indikatif, bagi memudahkan perbandingan antara sistem. CEFR adalah tanda dagangan Majlis Eropah, JLPT adalah tanda dagangan Yayasan Jepun, HSK adalah tanda dagangan Hanban, dan TOPIK adalah tanda dagangan Institut Antarabangsa Pendidikan Antarabangsa Korea. Projek ini tidak disahkan atau diberi kuasa oleh mana-mana organisasi rasmi; data pencapaian tahap adalah anggaran dalaman.",
+    "entryCards": {
+      "placement": "Tidak pasti dari mana hendak mula? Cuba ujian penempatan",
+      "placementDesc": "6 soalan adaptif untuk menentukan tahap permulaan anda · tidak perlu log masuk",
+      "alphabet": "Mula dari huruf: asas bahasa Asia",
+      "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Thai · ketik aksara untuk mendengarnya",
+      "reading": "Pemahaman bacaan · lengkapkan kemahiran CEFR anda",
+      "readingDesc": "Bacaan bertahap + nota kosa kata + soalan pemahaman · skor terbaik anda direkodkan secara automatik",
+      "league": "Papan pendahulu mingguan · bersaing untuk tahap Master",
+      "leagueDesc": "XP terkumpul setiap minggu · Gangsa → Perak → Emas → Platinum → Berlian → Master · kenaikan dan penurunan diselesaikan setiap Isnin",
+      "cefr": "Penilaian diri CEFR · apa yang boleh saya lakukan?",
+      "cefrDesc": "Nilai sendiri A1-C2 berdasarkan pernyataan Boleh-Lakukan · pelengkap ujian penempatan · tahap anda disimpulkan secara automatik",
+      "writing": "Latihan menulis · maklum balas skor segera",
+      "writingDesc": "Esei / e-mel / ringkasan / cerita / dialog · penilaian tiga dimensi: bilangan perkataan + kepelbagaian kosa kata + kata kunci"
+    },
+    "items": {
+      "en-a1-1": {
+        "title": "Dari Sifar ke Pemula: Bahasa Inggeris Harian",
+        "description": "Salam, nombor, dan ungkapan harian. Mula bercakap sejak hari pertama."
+      },
+      "en-a2-1": {
+        "title": "Bahasa Inggeris Kehidupan Harian",
+        "description": "Beli-belah, makan di luar, dan rutin. Bina kosa kata A2 yang praktikal."
+      },
+      "en-b1-1": {
+        "title": "Luahkan Diri Anda dalam Bahasa Inggeris",
+        "description": "Bincangkan pendapat, rancangan, dan pengalaman dengan yakin."
+      },
+      "en-b2-1": {
+        "title": "Bahasa Inggeris untuk Kerja & Pengajian",
+        "description": "Mesyuarat, e-mel, pembentangan, dan perbincangan akademik."
+      },
+      "en-c1-1": {
+        "title": "Bahasa Inggeris Lanjutan: Budaya & Idea",
+        "description": "Bahaskan topik kompleks dan fahami ungkapan yang bernuansa."
+      },
+      "en-c2-1": {
+        "title": "Penguasaan: Retorik & Kelancaran Bahasa Inggeris",
+        "description": "Kelancaran hampir penutur asli, retorik, dan ketepatan."
+      },
+      "ja-n5-1": {
+        "title": "Asas Hiragana & Katakana",
+        "description": "Pelajari dua tulisan kana dan salam mudah."
+      },
+      "ja-n4-1": {
+        "title": "Bahasa Jepun Harian",
+        "description": "Perbualan harian dan tatabahasa penting."
+      },
+      "ja-n3-1": {
+        "title": "Bahasa Jepun Pertengahan",
+        "description": "Baca artikel pendek dan ikuti dialog semula jadi."
+      },
+      "ja-n2-1": {
+        "title": "Bahasa Jepun Perniagaan & Pengajian di Luar Negara",
+        "description": "Komunikasi profesional dan strategi JLPT N2."
+      },
+      "ja-n1-1": {
+        "title": "Penguasaan Bahasa Jepun Lanjutan",
+        "description": "Bacaan setara penutur asli, keigo, dan kelancaran profesional."
+      },
+      "ko-beginner-1": {
+        "title": "Hangeul & Asas Bahasa Korea",
+        "description": "Kuasai abjad Korea dan frasa asas."
+      },
+      "ko-intermediate-1": {
+        "title": "Bahasa Korea melalui K-Drama & K-Pop",
+        "description": "Pelajari ungkapan semula jadi melalui drama dan lagu."
+      },
+      "ko-advanced-1": {
+        "title": "Bahasa Korea Lanjutan: TOPIK & Perniagaan",
+        "description": "Tatabahasa peringkat tinggi untuk peperiksaan dan tempat kerja."
+      },
+      "zh-hsk1-1": {
+        "title": "Pinyin & Bahasa Cina HSK 1",
+        "description": "Mula dengan nada, pinyin, dan aksara asas."
+      },
+      "zh-hsk3-1": {
+        "title": "Bahasa Cina Sosial HSK 3",
+        "description": "Lakukan perbualan harian dan baca teks mudah."
+      },
+      "zh-hsk5-1": {
+        "title": "Bahasa Cina Berita & Akademik HSK 5",
+        "description": "Fahami berita, esei, dan ucapan formal."
+      },
+      "es-a1-1": {
+        "title": "Dari Sifar ke Pemula: Bahasa Sepanyol",
+        "description": "Salam, frasa perjalanan, dan asas sebutan."
+      },
+      "es-b1-1": {
+        "title": "Luahkan Diri Anda dalam Bahasa Sepanyol",
+        "description": "Kongsi pendapat, cerita, dan rancangan perjalanan dengan mudah."
+      },
+      "es-c1-1": {
+        "title": "Bahasa Sepanyol Lanjutan: Sastera & Akademik",
+        "description": "Analisis teks dan bincangkan budaya secara mendalam."
+      },
+      "fr-a1-1": {
+        "title": "Dari Sifar ke Pemula: Bahasa Perancis",
+        "description": "Sebutan, salam, dan keperluan harian."
+      },
+      "fr-b2-1": {
+        "title": "Ekspresi & Penulisan Bahasa Perancis",
+        "description": "Tulis teks yang jelas dan kemukakan hujah anda dalam bahasa Perancis."
+      },
+      "fr-c1-1": {
+        "title": "Bahasa Perancis Lanjutan: Budaya & Falsafah",
+        "description": "Terokai idea, seni, dan ekspresi yang bernuansa."
+      },
+      "de-a1-1": {
+        "title": "Dari Sifar ke Pemula: Bahasa Jerman",
+        "description": "Abjad, bunyi, dan frasa kehidupan harian."
+      },
+      "de-b2-1": {
+        "title": "Bahasa Jerman untuk Kerja & Penulisan",
+        "description": "Komunikasi profesional dan penulisan berstruktur."
+      },
+      "de-c1-1": {
+        "title": "Bahasa Jerman Lanjutan: Sastera & Idea",
+        "description": "Baca sastera dan bincangkan topik kompleks."
+      },
+      "it-a1-1": {
+        "title": "Dari Sifar ke Pemula: Bahasa Itali",
+        "description": "Sebutan, salam, dan keperluan budaya."
+      },
+      "it-b1-1": {
+        "title": "Berbual dalam Bahasa Itali",
+        "description": "Bincangkan perjalanan, makanan, budaya, dan kehidupan harian."
+      },
+      "it-c1-1": {
+        "title": "Bahasa Itali Lanjutan: Seni & Sastera",
+        "description": "Selami seni, sastera, dan retorik Itali."
+      },
+      "th-beg-1": {
+        "title": "Nada & Asas Bahasa Thai",
+        "description": "Kuasai nada, konsonan, dan perbualan pertama anda."
+      },
+      "th-int-1": {
+        "title": "Bahasa Thai untuk Perjalanan & Perbualan",
+        "description": "Bergerak, pesan makanan, dan berbual dengan penduduk tempatan."
+      },
+      "th-adv-1": {
+        "title": "Bahasa Thai Lanjutan: Budaya & Kelancaran",
+        "description": "Fahami media, budaya, dan bahasa Thai idiomatik."
+      },
+      "yue-beg-1": {
+        "title": "Nada & Asas Bahasa Kantonis",
+        "description": "Pelajari Jyutping, nada, dan frasa harian."
+      },
+      "yue-int-1": {
+        "title": "Perbualan Bahasa Kantonis Harian",
+        "description": "Bincangkan kehidupan, makanan, dan perjalanan."
+      },
+      "yue-adv-1": {
+        "title": "Bahasa Kantonis Lanjutan: Filem & Budaya",
+        "description": "Fahami filem, slang, dan budaya tempatan."
+      }
+    },
+    "tags": {
+      "zero-to-beginner": "Dari Sifar ke Pemula",
+      "daily-speaking": "Pertuturan Harian",
+      "daily-life": "Kehidupan Harian",
+      "conversation": "Perbualan",
+      "expression": "Ekspresi",
+      "writing": "Penulisan",
+      "workplace": "Tempat Kerja",
+      "academic": "Akademik",
+      "culture": "Budaya",
+      "literature": "Sastera",
+      "mastery": "Penguasaan",
+      "rhetoric": "Retorik",
+      "kana": "Kana",
+      "intro": "Pengenalan",
+      "daily": "Harian",
+      "communication": "Komunikasi",
+      "reading": "Membaca",
+      "listening": "Pendengaran",
+      "business": "Perniagaan",
+      "study-abroad": "Pengajian di Luar Negara",
+      "professional": "Profesional",
+      "advanced": "Lanjutan",
+      "hangeul": "Hangeul",
+      "k-drama": "K-Drama",
+      "k-pop": "K-Pop",
+      "topik": "TOPIK",
+      "pinyin": "Pinyin",
+      "social": "Sosial",
+      "news": "Berita",
+      "pronunciation": "Sebutan",
+      "philosophy": "Falsafah",
+      "art": "Seni",
+      "tones": "Nada",
+      "travel": "Perjalanan",
+      "film-tv": "Filem & TV"
+    }
+  },
+  "levelMeta": {
+    "alignment": "Setara",
+    "words": "perkataan",
+    "hours": "jam",
+    "vocabTarget": "Sasaran kosa kata",
+    "guidedHours": "Jam berpandu",
+    "grammarPoints": "Titik tatabahasa",
+    "learningGoals": "Matlamat pembelajaran",
+    "grammarToMaster": "Tatabahasa untuk dikuasai",
+    "disclaimer": "Label tahap (CEFR / JLPT / HSK / TOPIK) hanya untuk penanda aras indikatif, bagi memudahkan perbandingan antara sistem. CEFR adalah tanda dagangan Majlis Eropah, JLPT adalah tanda dagangan Yayasan Jepun, HSK adalah tanda dagangan Hanban, dan TOPIK adalah tanda dagangan Institut Antarabangsa Pendidikan Antarabangsa Korea. Projek ini tidak disahkan atau diberi kuasa oleh mana-mana organisasi rasmi; data pencapaian tahap adalah anggaran dalaman.",
+    "framework": {
+      "CEFR": "CEFR",
+      "JLPT": "JLPT",
+      "HSK": "HSK",
+      "TOPIK": "TOPIK",
+      "ACTFL": "ACTFL"
+    },
+    "content": {
+      "en": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Kuasai 50 pola ayat teras untuk salam harian dan perkenalan diri",
+            "Kenali kira-kira 700 perkataan frekuensi tinggi",
+            "Fahami perbualan harian yang perlahan (kira-kira 60% pemahaman)",
+            "Tulis teks mudah sepanjang 50–100 perkataan"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "soalan ya/tidak",
+            "kata ganti pemilikan",
+            "simple present",
+            "kata nama tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Asas",
+          "goals": [
+            "Tangani situasi harian biasa seperti membeli-belah, menanyakan arah, dan memesan makanan",
+            "Kenali kira-kira 1,500 perkataan",
+            "Baca notis pendek, iklan, dan e-mel",
+            "Tulis penerangan kehidupan harian sepanjang 100–150 perkataan"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk perbandingan",
+            "artikel",
+            "kata nama boleh/tidak boleh dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Pertengahan",
+          "goals": [
+            "Tangani kebanyakan situasi semasa melancong",
+            "Kenali kira-kira 2,500–3,000 perkataan",
+            "Baca bahan bertulis harian dan artikel berita pendek",
+            "Sampaikan pengalaman dan pendapat secara lisan atau bertulis secara mudah dan tersusun"
+          ],
+          "grammar": [
+            "present perfect",
+            "ayat pasif",
+            "ayat andaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Pertengahan Atas",
+          "goals": [
+            "Fahami idea utama teks kompleks dan topik abstrak",
+            "Kenali kira-kira 4,000–5,000 perkataan",
+            "Berinteraksi dengan penutur asli dengan agak lancar dan spontan",
+            "Tulis esei pendapat dan hujah yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjungtif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Fahami teks panjang dan mencabar serta makna tersirat",
+            "Kenali kira-kira 8,000 perkataan",
+            "Luahkan idea dengan lancar dan spontan untuk kegunaan sosial, akademik, dan profesional",
+            "Tulis teks kompleks yang jelas dan tersusun dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjungtif lanjutan",
+            "inversi retoris",
+            "konstruksi mutlak"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Fahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Kenali kira-kira 16,000 perkataan",
+            "Luahkan nuansa halus dengan ketepatan hampir penutur asli",
+            "Tangani teks kompleks dalam bidang akademik, sastera, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tatabahasa penuh",
+            "Kesedaran register dan gaya",
+            "Penggunaan peranti retorik"
+          ]
+        }
+      },
+      "es": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "fr": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "de": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "it": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "ms": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "id": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "vi": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        },
+        "C2": {
+          "name": "Penguasaan",
+          "goals": [
+            "Memahami hampir semua yang didengar atau dibaca dengan mudah",
+            "Mengenali sekitar 16.000 kata",
+            "Mengekspresikan nuansa halus dengan ketepatan mendekati penutur asli",
+            "Menangani teks kompleks di bidang akademik, sastra, dan profesional"
+          ],
+          "grammar": [
+            "Penguasaan tata bahasa penuh",
+            "Kesadaran register dan gaya",
+            "Penggunaan perangkat retorika"
+          ]
+        }
+      },
+      "th": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai 50 pola kalimat inti untuk salam sehari-hari dan perkenalan diri",
+            "Mengenali sekitar 700 kata frekuensi tinggi",
+            "Memahami percakapan sehari-hari yang lambat (sekitar 60% pemahaman)",
+            "Menulis teks sederhana sepanjang 50–100 kata"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Menangani situasi sehari-hari umum seperti berbelanja, menanyakan arah, dan memesan makanan",
+            "Mengenali sekitar 1.500 kata",
+            "Membaca pengumuman singkat, iklan, dan email",
+            "Menulis deskripsi kehidupan sehari-hari sepanjang 100–150 kata"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Menangani sebagian besar situasi saat bepergian",
+            "Mengenali sekitar 2.500–3.000 kata",
+            "Membaca materi tertulis sehari-hari dan artikel berita pendek",
+            "Menyampaikan pengalaman dan pendapat secara lisan atau tulisan secara sederhana dan runtut"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Memahami gagasan utama teks kompleks dan topik abstrak",
+            "Mengenali sekitar 4.000–5.000 kata",
+            "Berinteraksi dengan penutur asli dengan cukup lancar dan spontan",
+            "Menulis esai opini dan argumentasi yang terperinci"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        },
+        "C1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Memahami teks panjang dan menantang serta makna tersirat",
+            "Mengenali sekitar 8.000 kata",
+            "Mengekspresikan gagasan dengan lancar dan spontan untuk keperluan sosial, akademik, dan profesional",
+            "Menulis teks kompleks yang jelas dan terstruktur dengan baik"
+          ],
+          "grammar": [
+            "penyusunan klausa kompleks",
+            "subjuntif lanjutan",
+            "inversi retoris",
+            "konstruksi absolut"
+          ]
+        }
+      },
+      "yue": {
+        "A1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai dasar sembilan nada dan enam kontur bahasa Kanton",
+            "Mengenali sekitar 800 kata Kanton umum",
+            "Menangani salam sehari-hari, perkenalan diri, dan memesan makanan",
+            "Memahami percakapan bahasa Kanton yang lambat"
+          ],
+          "grammar": [
+            "kata kerja be",
+            "pertanyaan ya/tidak",
+            "kata ganti kepemilikan",
+            "simple present",
+            "kata benda tunggal dan jamak"
+          ]
+        },
+        "A2": {
+          "name": "Dasar",
+          "goals": [
+            "Mengenali sekitar 1.500 kata Kanton",
+            "Menangani belanja, menanyakan arah, dan mengobrol santai",
+            "Memahami percakapan sehari-hari dengan kecepatan sedang"
+          ],
+          "grammar": [
+            "simple past",
+            "present continuous",
+            "bentuk komparatif",
+            "artikel",
+            "kata benda dapat/tidak dapat dihitung"
+          ]
+        },
+        "B1": {
+          "name": "Menengah",
+          "goals": [
+            "Mengenali sekitar 3.000 kata Kanton",
+            "Membicarakan berbagai topik yang familier",
+            "Menangkap informasi utama dalam drama Hong Kong dan berita berbahasa Kanton"
+          ],
+          "grammar": [
+            "present perfect",
+            "kalimat pasif",
+            "kalimat pengandaian",
+            "klausa relatif",
+            "kata kerja modal"
+          ]
+        },
+        "B2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Mengenali sekitar 5.000 kata Kanton",
+            "Berbicara dengan lancar bersama penutur asli",
+            "Memahami film dan berita Hong Kong yang berkecepatan tinggi"
+          ],
+          "grammar": [
+            "bentuk subjuntif",
+            "past perfect",
+            "kata kerja non-finit",
+            "inversi",
+            "klausa nomina"
+          ]
+        }
+      },
+      "ja": {
+        "N5": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai hiragana, katakana, dan sekitar 100 kanji dasar",
+            "Mengenali sekitar 800 kata",
+            "Memahami percakapan sehari-hari yang lambat",
+            "Membaca paragraf pendek dan pengumuman dasar"
+          ],
+          "grammar": [
+            "bentuk desu/masu",
+            "penanda topik wa/ga",
+            "partikel wa/ga/wo/ni/de",
+            "kata sifat-i dan kata sifat-na",
+            "bentuk masu kata kerja"
+          ]
+        },
+        "N4": {
+          "name": "Pemula Lanjut",
+          "goals": [
+            "Mengenali sekitar 1.500 kata dan sekitar 300 kanji",
+            "Membaca teks dasar tentang topik sehari-hari yang familier",
+            "Memahami percakapan sehari-hari dengan kecepatan sedang"
+          ],
+          "grammar": [
+            "bentuk te kata kerja",
+            "bentuk ta/nai",
+            "bentuk potensial",
+            "bentuk pengandaian to/ba/tara",
+            "kata kerja memberi/menerima teageru/temorau"
+          ]
+        },
+        "N3": {
+          "name": "Menengah",
+          "goals": [
+            "Mengenali sekitar 3.500–4.000 kata dan sekitar 600 kanji",
+            "Membaca ringkasan materi tertulis sehari-hari",
+            "Memahami percakapan sehari-hari dengan kecepatan mendekati alami"
+          ],
+          "grammar": [
+            "pasif dan kausatif",
+            "kata benda formal koto/mono/tokoro",
+            "penampakan so/yō",
+            "pengandaian nara",
+            "dasar keigo"
+          ]
+        },
+        "N2": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Mengenali sekitar 6.000 kata dan sekitar 1.000 kanji",
+            "Membaca kolom surat kabar dan esai umum",
+            "Memahami percakapan runtut dan berita dengan kecepatan alami"
+          ],
+          "grammar": [
+            "sistem keigo lengkap",
+            "gaya tulisan da/dearu",
+            "sisa-sisa bahasa klasik",
+            "kata kerja majemuk",
+            "kombinasi partikel lanjutan"
+          ]
+        },
+        "N1": {
+          "name": "Lanjutan",
+          "goals": [
+            "Mengenali sekitar 10.000–15.000 kata dan sekitar 2.000 kanji",
+            "Membaca teks yang kompleks secara logika dan abstrak",
+            "Memahami kuliah, berita, dan diskusi dengan kecepatan alami"
+          ],
+          "grammar": [
+            "Sisa-sisa bahasa Jepang klasik",
+            "Bahasa tulisan tingkat lanjut",
+            "Terminologi akademik",
+            "Analisis kalimat panjang yang kompleks"
+          ]
+        }
+      },
+      "ko": {
+        "TOPIK1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai membaca dan menulis Hangeul",
+            "Mengenali sekitar 800 kata dasar",
+            "Memperkenalkan diri, menyapa, memesan makanan, dan menanyakan arah",
+            "Membaca teks pendek sehari-hari yang sederhana"
+          ],
+          "grammar": [
+            "bentuk 입니다/입니까",
+            "penanda topik 은/는",
+            "penanda subjek 이/가",
+            "penanda objek 을/를",
+            "penanda lokasi 에/에서"
+          ]
+        },
+        "TOPIK2": {
+          "name": "Dasar",
+          "goals": [
+            "Mengenali sekitar 1.500–2.000 kata",
+            "Menangani urusan harian dan menggunakan fasilitas umum",
+            "Membaca teks pendek sederhana dan menulis catatan singkat"
+          ],
+          "grammar": [
+            "akhiran 아요/어요",
+            "bentuk lampau 았/었",
+            "penghubung dan (고)",
+            "tetapi (지만)",
+            "ingin (원하다/하고 싶다)"
+          ]
+        },
+        "TOPIK3": {
+          "name": "Menengah",
+          "goals": [
+            "Mengenali sekitar 3.000–4.000 kata",
+            "Menjalani kehidupan sehari-hari secara mandiri dan memahami hubungan sosial",
+            "Mengikuti topik berita yang familier"
+          ],
+          "grammar": [
+            "게 되다/게 하다",
+            "기 때문에",
+            "느라고",
+            "을/ㄹ 수 있다",
+            "은/는 편이다"
+          ]
+        },
+        "TOPIK4": {
+          "name": "Menengah Atas",
+          "goals": [
+            "Mengenali sekitar 4.000–6.000 kata",
+            "Menggunakan fasilitas umum dan menjaga hubungan sosial",
+            "Membaca surat kabar dan berita (ambang studi di luar negeri)"
+          ],
+          "grammar": [
+            "은/ㄴ 것 같다",
+            "기로 하다",
+            "더라",
+            "ㄹ/을 뻔하다",
+            "는/(으)ㄴ 척하다"
+          ]
+        },
+        "TOPIK5": {
+          "name": "Lanjutan",
+          "goals": [
+            "Mengenali sekitar 6.000–8.000 kata",
+            "Berkomunikasi secara profesional dan memahami topik yang tidak familier",
+            "Menggunakan bahasa formal dan informal dengan tepat"
+          ],
+          "grammar": [
+            "기 마련이다",
+            "ㄹ/을 법하다",
+            "는/(으)ㄴ 김에",
+            "자마자",
+            "ㄴ/는다기보다"
+          ]
+        },
+        "TOPIK6": {
+          "name": "Penguasaan",
+          "goals": [
+            "Mengenali sekitar 8.000–10.000+ kata",
+            "Mendekati kelancaran penutur asli",
+            "Mengekspresikan pendapat dengan tepat dan menangani situasi akademik/profesional"
+          ],
+          "grammar": [
+            "Kosakata Sino-Korea tingkat lanjut",
+            "Gaya tulisan",
+            "Metafora dan alegori"
+          ]
+        }
+      },
+      "zh": {
+        "HSK1": {
+          "name": "Pemula",
+          "goals": [
+            "Menguasai pinyin, nada, dan sekitar 500 karakter umum (HSK 3.0)",
+            "Memahami dan menggunakan salam dasar serta frasa sederhana",
+            "Memahami percakapan sehari-hari yang lambat"
+          ],
+          "grammar": [
+            "是/不是",
+            "的 untuk kepemilikan",
+            "在 untuk lokasi",
+            "kata tanya 什么/谁/哪",
+            "angka dan kata pengukur"
+          ]
+        },
+        "HSK2": {
+          "name": "Dasar",
+          "goals": [
+            "Mengenali sekitar 1.200 kata (HSK 3.0)",
+            "Berkomunikasi secara sederhana tentang topik sehari-hari yang familier",
+            "Membaca teks pendek"
+          ],
+          "grammar": [
+            "了 untuk penyelesaian",
+            "正在 untuk aksi yang sedang berlangsung",
+            "想/要 untuk keinginan",
+            "太...了 untuk tingkat",
+            "perbandingan dengan 比"
+          ]
+        },
+        "HSK3": {
+          "name": "Pemula Lanjut",
+          "goals": [
+            "Mengenali sekitar 2.200 kata (HSK 3.0)",
+            "Menangani komunikasi dasar tentang kehidupan, studi, dan pekerjaan",
+            "Memahami percakapan sehari-hari dengan kecepatan normal"
+          ],
+          "grammar": [
+            "过 untuk pengalaman",
+            "komplemen resultatif",
+            "kalimat 把",
+            "kalimat 被",
+            "虽然...但是"
+          ]
+        },
+        "HSK4": {
+          "name": "Menengah",
+          "goals": [
+            "Mengenali sekitar 3.245 kata (HSK 3.0)",
+            "Berkomunikasi dengan cukup lancar dalam berbagai topik",
+            "Membaca artikel surat kabar dan memahami film/acara TV"
+          ],
+          "grammar": [
+            "连...都",
+            "不仅...而且",
+            "既然...就",
+            "即使...也",
+            "komplemen tingkat 极了/得很"
+          ]
+        },
+        "HSK5": {
+          "name": "Lanjutan",
+          "goals": [
+            "Mengenali sekitar 4.316 kata (HSK 3.0)",
+            "Membaca surat kabar Mandarin, menonton film/TV, dan menulis esai pendek",
+            "Memahami siaran radio dan berita"
+          ],
+          "grammar": [
+            "却 untuk kontras",
+            "并 untuk penegasan",
+            "何况 untuk perkembangani",
+            "以免 untuk tujuan",
+            "konstruksi 连 untuk hal ekstrem"
+          ]
+        },
+        "HSK6": {
+          "name": "Lanjutan Plus",
+          "goals": [
+            "Mengenali sekitar 5.456 kata (HSK 3.0)",
+            "Memahami berbagai konten dengan nyaman dalam menyimak, berbicara, membaca, dan menulis",
+            "Menulis esai argumentatif dan akademik yang lebih panjang"
+          ],
+          "grammar": [
+            "Sisa-sisa bahasa Mandarin klasik",
+            "Idiom dan frasa baku",
+            "Penggunaan gaya tulisan",
+            "Struktur kalimat panjang yang kompleks"
+          ]
+        },
+        "HSK7": {
+          "name": "Ekstensi Lanjutan",
+          "goals": [
+            "Mengenali 6.000+ kata (HSK 3.0 Lanjutan)",
+            "Membaca teks akademik, profesional, dan sastra yang panjang",
+            "Memahami kuliah, debat, dan program radio",
+            "Menulis argumentasi terstruktur dengan baik tentang topik kompleks"
+          ],
+          "grammar": [
+            "Peralihan ke register tulisan",
+            "Konjungsi tingkat lanjut",
+            "Analisis sisa-sisa bahasa Mandarin klasik",
+            "Mengurai dan menyusun ulang kalimat panjang",
+            "Penggunaan idiom dan alusi"
+          ]
+        },
+        "HSK8": {
+          "name": "Kemahiran",
+          "goals": [
+            "Mengenali 8.000+ kata (HSK 3.0 Kemahiran)",
+            "Memahami dokumen profesional berbahasa Mandarin tanpa hambatan",
+            "Berpartisipasi dalam debat akademik tingkat tinggi dan pidato impromptu",
+            "Menulis karya akademik dan sastra mendekati level penutur asli"
+          ],
+          "grammar": [
+            "Konvensi register akademik",
+            "Penggunaan perangkat retorika secara komprehensif",
+            "Peralihan fleksibel antara register tulisan dan lisan",
+            "Ekspresi kontekstual lintas budaya",
+            "Penyusunan kalimat kompleks"
+          ]
+        },
+        "HSK9": {
+          "name": "Penguasaan",
+          "goals": [
+            "Mengenali 11.000+ kata (HSK 3.0 Penguasaan)",
+            "Menangani situasi berbahasa Mandarin apa pun dengan leluasa, mendekati level penutur asli",
+            "Menganalisis teks kompleks secara kritis dan menangkap makna tersirat",
+            "Tampil mahir di bidang akademik, diplomatik, dan penciptaan sastra"
+          ],
+          "grammar": [
+            "Kontrol register yang presisi",
+            "Penguasaan tata bahasa penuh",
+            "Perpaduan bahasa Mandarin klasik dan modern",
+            "Penguasaan retorika",
+            "Pemikiran lintas bahasa"
+          ]
+        }
+      }
+    }
+  },
+  "learn": {
+    "wordMemory": "Hafalan Perkataan",
+    "wordMemoryDesc": "Kad imbas, ingatan aktif, perkuat memori jangka panjang",
+    "grammar": "Latihan Tatabahasa",
+    "grammarDesc": "Pilihan berganda + isian, maklum balas segera",
+    "speaking": "Latihan Pertuturan",
+    "speakingDesc": "Dengar dan ulang, bina memori otot",
+    "listening": "Latihan Pendengaran",
+    "listeningDesc": "Bahan pendengaran autentik, latihan isian",
+    "inUse": "Sedang Digunakan",
+    "card": "Kad {{current}} / {{total}}",
+    "tapToSeeMeaning": "Ketik kad untuk melihat maksud",
+    "notFamiliar": "Belum Hafal",
+    "remembered": "Sudah Hafal",
+    "word": "Perkataan",
+    "translation": "Terjemahan",
+    "example": "Contoh",
+    "tips": "Petua",
+    "grammarModule": {
+      "question": "Soalan {{current}} / {{total}}",
+      "correct": "Betul",
+      "wrong": "Salah",
+      "explain": "Penjelasan",
+      "submit": "Hantar Jawapan",
+      "next": "Seterusnya",
+      "accuracy": "Ketepatan",
+      "answered": "Dijawab {{count}} soalan",
+      "tip1": "Baca ayat lengkap dahulu, kemudian nilai strukturnya.",
+      "tip2": "Jika ragu, ikut intuisi anda dahulu.",
+      "tip3": "Setiap penjelasan patut dibaca dengan teliti.",
+      "pitfallOfThis": "Perangkap untuk {{title}}"
+    },
+    "speakingModule": {
+      "title": "Ulang Ayat Ini",
+      "recording": "Merakam · {{seconds}}s",
+      "startHint": "Ketik untuk mula merakam dan baca dengan kuat",
+      "privacyHint": "Petua: Pelayar tidak memuat naik audio; rakaman hanya untuk pengiraan masa tempatan.",
+      "reset": "Ulang",
+      "next": "Ayat Seterusnya",
+      "session": "Sesi Ini",
+      "count": "{{count}} kali",
+      "times": "Bilangan ulangan",
+      "otherSentences": "Ayat Lain",
+      "loginToStart": "Log masuk untuk mula latihan pertuturan"
+    },
+    "listeningModule": {
+      "title": "Dengar dan Isi",
+      "progress": "{{current}} / {{total}}",
+      "playHint": "Ketik main (pelayar akan membaca teks ini)",
+      "playing": "Memainkan…",
+      "placeholder": "____",
+      "check": "Semak Jawapan",
+      "next": "Seterusnya",
+      "completed": "Menyelesaikan {{count}} sesi pendengaran",
+      "tip1": "Dengar sekali tanpa melihat dan lihat berapa banyak yang anda faham.",
+      "tip2": "Kemudian isi sambil membaca untuk mengenal pasti bentuk lemah dan pautan.",
+      "tip3": "Main berulang kali dan baca serentak.",
+      "reference": "Skrip Rujukan",
+      "showAfterFinish": "Ditunjukkan selepas selesai.",
+      "speechRate": "Kadar pertuturan",
+      "tip4": "Selepas menyemak, baca skrip dengan kuat untuk menguatkan bunyi.",
+      "speed": {
+        "slow": "Perlahan",
+        "slower": "Lebih Perlahan",
+        "normal": "Biasa",
+        "faster": "Lebih Pantas"
+      }
+    },
+    "wordFamily": "Keluarga Perkataan",
+    "totalNWords": "{{count}} perkataan",
+    "commonRoot": "Akar biasa",
+    "reviewLabel": "Ulang Kaji",
+    "reviewDesc": "Ulangan dengan pengulangan berjarak",
+    "conversationLabel": "Perbualan",
+    "conversationDesc": "Latih dialog dengan AI",
+    "realConversationLabel": "Perbualan sebenar",
+    "realConversationDesc": "Bayangi perbualan manusia autentik (Taskmaster-2)",
+    "wordRoot": "Akar Perkataan",
+    "grammarMap": "Peta Tatabahasa",
+    "errorProneN": "{{count}} mudah salah",
+    "path": "Laluan",
+    "modules": "Modul",
+    "review": {
+      "again": "Lagi",
+      "hard": "Sukar",
+      "good": "Baik",
+      "easy": "Mudah",
+      "cardCounter": "{{current}} / {{total}}",
+      "queue": "Antrean ulangan",
+      "due": "Tamat tempoh",
+      "loginToStart": "Log masuk untuk mula ulangan",
+      "allDone": "Semua sudah selesai!",
+      "noCardsForLang": "Tiada kad yang tamat tempoh untuk bahasa ini.",
+      "addedAutomatically": "Kad ditambah secara automatik semasa anda berlatih.",
+      "kindQuiz": "Tatabahasa",
+      "kindListening": "Pendengaran",
+      "kindSpeaking": "Pertuturan",
+      "kindWord": "Perkataan",
+      "tapToShowAnswer": "Ketik untuk tunjukkan jawapan",
+      "answer": "Jawapan",
+      "tapToFlipBack": "Ketik untuk balik semula",
+      "principle": "Cara ulangan berfungsi",
+      "principle1": "Ulang sebelum anda lupa.",
+      "principle2": "Kad sukar akan kembali lebih cepat.",
+      "principle3": "Kad mudah akan ditangguhkan lebih lama.",
+      "principle4": "Konsistensi mengalahkan sesi yang panjang.",
+      "thisSession": "Sesi ini",
+      "cardsRemaining": "kad tinggal",
+      "nextInterval": {
+        "now": "Sekarang",
+        "day": "dalam 1 hari",
+        "days": "dalam {{count}} hari",
+        "week": "dalam 1 minggu",
+        "weeks": "dalam {{count}} minggu",
+        "month": "dalam 1 bulan",
+        "months": "dalam {{count}} bulan"
+      }
+    },
+    "conversation": {
+      "unsupportedBrowser": "Pengecaman pertuturan tidak disokong dalam pelayar ini.",
+      "didNotHear": "Tidak menangkap suara. Cuba lagi.",
+      "fallbackBranch": "Tiada padanan pasti — AI akan meneruskan secara semula jadi.",
+      "completed": "Perbualan selesai!",
+      "restart": "Mula Semula",
+      "inputPlaceholder": "Taip balasan anda…",
+      "voiceInput": "Input suara",
+      "send": "Hantar",
+      "currentScene": "Adegan semasa",
+      "sceneHint": "Balas secara semula jadi dalam bahasa sasaran.",
+      "tipsTitle": "Petua",
+      "tip1": "Balas dalam bahasa sasaran.",
+      "tip2": "Pendek dan semula jadi.",
+      "tip3": "Gunakan input suara untuk latihan pertuturan.",
+      "tip4": "Jangan risau tentang kesalahan — teruskan sahaja."
+    },
+    "realConv": {
+      "aboutTitle": "Tentang modul ini",
+      "about": "Ini adalah dialog sebenar Taskmaster-2 (diterjemahkan ke bahasa sasaran anda). Latih dengan membayangkan setiap baris ASSISTANT dengan kuat — sebutan anda dinilai secara automatik.",
+      "empty": "Belum ada perbualan sebenar untuk bahasa ini.",
+      "emptyHint": "Cuba bahasa Inggeris (sandaran) atau bahasa lain.",
+      "prevConv": "Perbualan sebelumnya",
+      "nextConv": "Perbualan seterusnya",
+      "conversationN": "Perbualan {{n}} daripada {{total}}",
+      "assistantTurn": "Giliran pembantu — bayangkan",
+      "userTurn": "Giliran pengguna (baca sahaja)",
+      "userTurnHint": "Baca baris pengguna dalam hati, kemudian teruskan.",
+      "bestScore": "Skor terbaik",
+      "prev": "Sebelumnya",
+      "next": "Seterusnya",
+      "sessionTitle": "Purata sesi",
+      "avgScore": "Skor purata",
+      "shadowed": "Membayangkan {{n}} baris",
+      "tip1": "Dengar dahulu, kemudian ulang dengan kuat.",
+      "tip2": "Padankan intonasi, bukan hanya perkataan.",
+      "tip3": "Rakam semula untuk mengalahkan skor terbaik anda.",
+      "domains": {
+        "restaurant": "Restoran",
+        "foodOrdering": "Pesanan Makanan",
+        "movies": "Filem",
+        "hotels": "Hotel",
+        "flights": "Penerbangan",
+        "music": "Muzik",
+        "sports": "Sukan"
+      }
+    }
+  },
+  "home": {
+    "seoTitle": "Belajar Bahasa Inggeris, Jepun, Cina, Korea & Lainnya | LangOria",
+    "seoDescription": "Belajar bahasa Inggeris, Jepun, Cina, Korea, Sepanyol, Perancis, Jerman, Itali, Thai, dan Kantonis dengan kosa kata pengulangan berjarak, latihan pendengaran, dan latihan pertuturan. Pelajaran harian 10 minit dalam saiz kecil.",
+    "hero": {
+      "badge": "Platform Pembelajaran Pelbagai Bahasa yang Imersif",
+      "title": "Hari ini, biarkan dunia",
+      "titleHighlight": "bertambah satu penutur asli.",
+      "welcomeBack": "Selamat kembali, {{name}}! Hari ini anda telah belajar selama {{minutes}} minit, sasaran {{goal}} minit. Teruskan!",
+      "guest": "Pilih bahasa yang ingin anda kuasai dan bina tabiat pembelajaran bermula hari ini.",
+      "startToday": "Terokai Bahasa",
+      "browseCourses": "Lihat Kursus",
+      "learnMethod": "Lihat Cara Ia Berfungsi",
+      "streak": "Rekod",
+      "level": "Tahap",
+      "todaysGoal": "Sasaran Hari Ini",
+      "minutesOfGoal": "{{minutes}}/{{goal}} min"
+    },
+    "languages": {
+      "choose": "Pilih bahasa yang sedang anda pelajari",
+      "countBadge": "10 bahasa",
+      "current": "Semasa: {{language}}",
+      "currentLanguage": "Bahasa Semasa",
+      "select": "Ketik untuk memilih",
+      "standaloneDesc": "Pilih bahasa yang sedang anda pelajari. Setiap kursus bertahap, dengan kosa kata pengulangan berjarak, audio penutur asli, dan putaran harian 10 minit.",
+      "taglines": {
+        "en": "Lingua franca dunia",
+        "zh": "Aksara logografik kuno dan penuh semangat",
+        "ja": "Irama Timur yang halus dan anggun",
+        "ko": "Budaya Hallyu yang hidup dan trending",
+        "es": "Suara Latin yang penuh semangat",
+        "fr": "Seni bahasa yang romantik dan anggun",
+        "de": "Bahasa yang tepat dari falsafah dan kejuruteraan",
+        "it": "Suara Mediterranean yang penuh semangat dan romantik",
+        "th": "Bahasa lima nada yang mesra tersenyum",
+        "yue": "Budaya Lingnan dalam sembilan nada dan enam kontur"
+      }
+    },
+    "tasks": {
+      "title": "Cadangan Hari Ini",
+      "viewAll": "Lihat Semua →",
+      "items": [
+        {
+          "title": "Pelajari 20 perkataan baharu",
+          "time": "10 min"
+        },
+        {
+          "title": "Tatabahasa · Tenses asas",
+          "time": "15 min"
+        },
+        {
+          "title": "Ulang sebuah dialog",
+          "time": "8 min"
+        },
+        {
+          "title": "Pendengaran 5 minit",
+          "time": "5 min"
+        }
+      ]
+    },
+    "steps": {
+      "badge": "Cara Ia Berfungsi",
+      "title": "Laluan 3 langkah terbukti dari pemula hingga fasih",
+      "desc": "Setiap pelajar berbeza, tetapi laluan menuju kefasihan sentiasa sama: input, output, dan maklum balas. LangOria mengubah putaran itu menjadi ritual harian 10 minit.",
+      "items": [
+        {
+          "title": "Diagnosis tahap anda",
+          "desc": "Pilih bahasa sasaran dan tahap permulaan anda. Kami membina laluan peribadi berdasarkan apa yang sudah anda kuasai."
+        },
+        {
+          "title": "Putaran harian 10 minit",
+          "desc": "Kosa kata + tatabahasa + pendengaran + pertuturan, dijadualkan oleh pengulangan berjarak supaya anda mengingati apa yang dipelajari."
+        },
+        {
+          "title": "Bercakap dengan yakin",
+          "desc": "Bayangi ayat sebenar, dapatkan maklum balas segera, dan pantau rekod anda untuk mengekalkan tabiat."
+        }
+      ]
+    },
+    "features": {
+      "title": "Empat Latihan Teras untuk Fasih Secara Menyeluruh",
+      "desc": "Input · Output · Maklum Balas — bina keyakinan bercakap yang sebenar.",
+      "enter": "Cuba →",
+      "items": [
+        {
+          "title": "Kad Imbas Perkataan",
+          "desc": "Pengulangan berjarak — sekali hafal, tidak akan dilupakan",
+          "action": "Cuba"
+        },
+        {
+          "title": "Latihan Tatabahasa",
+          "desc": "Maklum balas segera + penjelasan, peraturan jadi jelas",
+          "action": "Cuba"
+        },
+        {
+          "title": "Pengulangan Pertuturan",
+          "desc": "Baca dengan kuat untuk membina memori otot lidah anda",
+          "action": "Cuba"
+        },
+        {
+          "title": "Latihan Pendengaran",
+          "desc": "Konteks sebenar, isian, dengar lebih jelas",
+          "action": "Cuba"
+        }
+      ]
+    },
+    "courses": {
+      "title": "Kursus Pilihan",
+      "desc": "Bertahap, progresif, boleh disesuaikan dengan pelbagai matlamat pembelajaran",
+      "viewAll": "Lihat Semua →",
+      "loading": "Memuatkan kursus...",
+      "lessons": "{{count}} pelajaran",
+      "minutes": "{{count}} min"
+    },
+    "stories": {
+      "badge": "Cerita Pelajar",
+      "title": "Kemajuan sebenar, orang sebenar",
+      "desc": "Dengar daripada pelajar yang mengubah tabiat harian 10 minit menjadi bahasa yang benar-benar boleh mereka gunakan.",
+      "items": [
+        {
+          "name": "Yuki, 27",
+          "role": "Pengurus Pemasaran · Tokyo",
+          "quote": "Saya mencuba tiga aplikasi sebelum ini. LangOria adalah satu-satunya yang saya benar-benar buka setiap hari. Sistem rekodnya berfungsi."
+        },
+        {
+          "name": "Carlos, 34",
+          "role": "Jurutera Perisian · Madrid",
+          "quote": "Penjelasan tatabahasanya ringkas dan jelas. Saya dari A2 ke B1 dalam tiga bulan sambil menumpang."
+        },
+        {
+          "name": "Mei, 22",
+          "role": "Pelajar · Shanghai",
+          "quote": "Saya suka antara mukanya dalam bahasa Cina tetapi perkataannya dalam bahasa Jepun. Rasanya seperti aplikasi ini benar-benar mengenali saya."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Soalan Lazim",
+      "title": "Soalan biasa, jawapan jelas",
+      "desc": "Semua yang perlu anda ketahui sebelum bermula.",
+      "viewAll": "Lihat semua soalan",
+      "items": [
+        {
+          "q": "Adakah LangOria benar-benar percuma?",
+          "a": "Ya. Pengalaman pembelajaran teras — kosa kata, tatabahasa, pendengaran, pertuturan, dan komuniti — adalah percuma. Ciri premium akan ditambah kemudian untuk pengguna yang lebih serius."
+        },
+        {
+          "q": "Adakah saya perlu memasang sesuatu?",
+          "a": "Tidak. LangOria berjalan dalam mana-mana pelayar moden. Aplikasi mudah alih akan menyusul selepas versi web stabil."
+        },
+        {
+          "q": "Bahasa apa yang disokong?",
+          "a": "Inggeris, Jepun, Korea, Cina, Sepanyol, Perancis, dan Jerman. Bahasa baharu ditambah setiap bulan berdasarkan permintaan pelajar."
+        },
+        {
+          "q": "Berapa lama sehingga saya melihat kemajuan?",
+          "a": "Kebanyakan pelajar merasakan perbezaan yang jelas dalam 4-6 minggu jika konsisten dengan putaran harian 10 minit. Sistem rekod dan pengulangan berjarak direka untuk mengekalkan tabiat itu."
+        },
+        {
+          "q": "Bolehkah saya menggunakannya di telefon?",
+          "a": "Ya. Laman web ini sepenuhnya responsif dan berfungsi baik dalam pelayar mudah alih. Tambahkan ke skrin utama untuk pengalaman seperti aplikasi."
+        }
+      ]
+    },
+    "blog": {
+      "badge": "Dari Blog",
+      "title": "Petua, panduan, dan sains pembelajaran",
+      "desc": "Artikel dalam saiz kecil yang menjadikan masa belajar anda lebih berkesan.",
+      "viewAll": "Semua artikel →",
+      "readMore": "Baca selanjutnya",
+      "items": [
+        {
+          "tag": "Kaedah",
+          "title": "Mengapa 10 minit sehari mengalahkan 2 jam di hujung minggu",
+          "excerpt": "Pengulangan berjarak adalah teknik yang paling banyak dikaji dalam sains pembelajaran. Berikut mengapa sesi yang lebih pendek dan lebih kerap mengatasi belajar panjang tergesa-gesa."
+        },
+        {
+          "tag": "Kosa Kata",
+          "title": "Cara mengingati 1000 perkataan tanpa keletihan",
+          "excerpt": "Pelan praktikal 8 minggu berdasarkan peraturan 3-2-1, dengan contoh dalam bahasa Inggeris, Jepun, dan Sepanyol."
+        },
+        {
+          "tag": "Pertuturan",
+          "title": "Bayangan: latihan pertuturan yang benar-benar berkesan",
+          "excerpt": "Mengapa mengulangi audio penutur asli adalah cara terpantas untuk memperbaiki sebutan, dan rutin 5 langkah yang boleh anda mulakan hari ini."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Mulakan ritual harian 10 minit anda",
+      "desc": "Percuma selamanya. Tiada kad kredit. Batal bila-bila masa — tetapi anda mungkin tidak akan melakukannya.",
+      "start": "Buat akaun percuma",
+      "browse": "Lihat kursus dahulu"
+    }
+  },
+  "faq": {
+    "seoTitle": "Soalan yang Kerap Ditanya | LangOria",
+    "seoDescription": "Jawapan kepada soalan biasa tentang pembelajaran bahasa dengan pengulangan berjarak LangOria: cara putaran 10 minit berfungsi, harga, bahasa yang disokong, dan bantuan akaun.",
+    "title": "Soalan yang Kerap Ditanya",
+    "subtitle": "Semua yang perlu anda ketahui tentang LangOria.",
+    "intro": "Tidak menemui jawapan yang anda cari? Hubungi kami melalui komuniti, dan pasukan kami akan menghubungi anda.",
+    "groups": [
+      {
+        "title": "Bermula",
+        "items": [
+          {
+            "q": "Bagaimana cara membuat akaun?",
+            "a": "Klik butang Daftar di penjuru kanan atas, masukkan e-mel dan kata laluan, pilih bahasa sasaran dan bahasa asal anda, dan selesai."
+          },
+          {
+            "q": "Adakah saya perlu kad kredit?",
+            "a": "Tidak. Pengalaman pembelajaran teras adalah percuma. Anda hanya memerlukan kaedah pembayaran apabila memilih untuk menaik taraf ke Premium pada masa hadapan."
+          },
+          {
+            "q": "Bolehkah saya menukar bahasa sasaran kemudian?",
+            "a": "Ya. Pergi ke Tetapan → Bahasa Sasaran pada bila-bila masa. Semua kemajuan kekal dikaitkan dengan bahasa yang sedang anda latih."
+          }
+        ]
+      },
+      {
+        "title": "Pembelajaran",
+        "items": [
+          {
+            "q": "Berapa lama saya harus belajar setiap hari?",
+            "a": "Kami mengesyorkan 10 minit sehari. Pengulangan berjarak berfungsi paling baik dengan sesi yang konsisten dan pendek — bukan belajar tergesa-gesa."
+          },
+          {
+            "q": "Mengapa penjelasan dalam bahasa asal saya?",
+            "a": "Penyelidikan menunjukkan pembelajaran lebih pantas apabila penjelasan datang dari bahasa terkuat anda. Perkataan yang sebenarnya anda pelajari sentiasa dalam bahasa sasaran."
+          },
+          {
+            "q": "Adakah rekod saya akan tamat jika terlepas satu hari?",
+            "a": "Ya, rekod tamat jika anda terlepas satu hari penuh. Jangka masa toleransi adalah 36 jam untuk menampung perbezaan zon masa."
+          }
+        ]
+      },
+      {
+        "title": "Akaun & Privasi",
+        "items": [
+          {
+            "q": "Di mana data saya disimpan?",
+            "a": "Data pembelajaran anda disimpan dalam Supabase (Postgres) di rantau terdekat dengan anda. Kami tidak menjual data pengguna apa pun."
+          },
+          {
+            "q": "Bagaimana cara memadam akaun saya?",
+            "a": "Pergi ke Profil → Zon Berbahaya, dan klik Padam Akaun. Semua data anda dipadam dalam masa 7 hari."
+          }
+        ]
+      }
+    ],
+    "ctaTitle": "Sedia untuk mula?",
+    "ctaDesc": "Buat akaun percuma dan cuba ritual harian 10 minit.",
+    "cta": "Daftar percuma"
+  },
+  "blog": {
+    "seoTitle": "Blog Pembelajaran Bahasa — Petua & Sains | LangOria",
+    "seoDescription": "Panduan praktikal, sains pembelajaran, dan petua untuk menguasai bahasa dengan pengulangan berjarak, bayangan, dan tabiat harian 10 minit.",
+    "title": "Blog LangOria",
+    "subtitle": "Panduan praktikal, sains pembelajaran, dan cerita daripada pelajar sebenar.",
+    "readMore": "Baca selanjutnya",
+    "backToList": "← Kembali ke semua artikel",
+    "notFoundTitle": "Artikel tidak ditemui",
+    "notFoundDesc": "Artikel yang anda cari telah dialihkan atau tidak lagi wujud.",
+    "empty": "Belum ada artikel yang diterbitkan. Kembali lagi nanti!",
+    "ctaTitle": "Amalkan petua ini",
+    "ctaDesc": "Buat akaun percuma dan mulakan putaran harian 10 minit anda hari ini.",
+    "cta": "Mula belajar",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Mengapa 10 minit sehari mengalahkan 2 jam di hujung minggu",
+        "excerpt": "Pengulangan berjarak adalah teknik yang paling banyak dikaji dalam sains pembelajaran. Berikut mengapa sesi yang lebih pendek dan lebih kerap mengatasi belajar panjang tergesa-gesa.",
+        "tag": "Kaedah",
+        "readTime": "6 minit baca",
+        "date": "2026-06-10",
+        "content": [
+          "Jika anda pernah belajar tergesa-gesa untuk peperiksaan dan melupakan semuanya dua minggu kemudian, anda sudah tahu masalahnya dengan sesi belajar yang panjang dan jarang. Penyelesaiannya bukan belajar lebih keras. Penyelesaiannya adalah belajar lebih kerap.",
+          "Sains pembelajaran sudah jelas tentang ini selama beberapa dekad. Hermann Ebbinghaus menemui lengkung pelupa pada tahun 1885: kita kehilangan maklumat yang baru dipelajari pada kadar yang boleh diramal kecuali kita mengingatinya secara aktif pada masa yang tepat. Masa yang tepat adalah sebaik sahaja sebelum anda akan melupakannya.",
+          "Inilah tepatnya yang dilakukan oleh pengulangan berjarak. LangOria menjadualkan setiap perkataan dan titik tatabahasa untuk diulang pada saat anda paling mungkin melupakannya. Ketik sudah hafal dan ulangan seterusnya akan ditangguhkan lebih lama. Ketik belum hafal dan ulangan seterusnya akan datang lebih cepat.",
+          "Hasilnya: dalam 10 minit sehari, anda menempuh lebih banyak daripada 2 jam pada hari Ahad, kerana setiap minit dihabiskan untuk sesuatu yang otak anda benar-benar perlu diingati. Selepas 30 hari, kebanyakan pelajar telah mengulang 600+ item — lebih daripada yang dapat diliputi oleh satu sesi belajar tergesa-gesa di hujung minggu.",
+          "Jadi jika anda terus memberitahu diri sendiri bahawa anda tiada masa untuk belajar bahasa, anda ada. Sepuluh minit. Setiap hari. Itulah keseluruhan rahsianya."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "Cara mengingati 1000 perkataan tanpa keletihan",
+        "excerpt": "Pelan praktikal 8 minggu berdasarkan peraturan 3-2-1, dengan contoh dalam bahasa Inggeris, Jepun, dan Sepanyol.",
+        "tag": "Kosa Kata",
+        "readTime": "8 minit baca",
+        "date": "2026-06-04",
+        "content": [
+          "Kebanyakan pelajar bahasa menyasarkan 1000 perkataan sebagai tonggak pertama. Berita buruk: cuba menghafal semuanya sekaligus adalah resepi untuk keletihan. Berita baiknya: anda tidak perlu menghafalnya. Anda hanya perlu bertemu dengan mereka.",
+          "Kami menggunakan peraturan mudah 3-2-1. Tiga pertemuan sehari, dua konteks setiap pertemuan, dan satu pemaksaan pengingatan. Itu sahaja.",
+          "Hari 1: pelajari 3 perkataan baharu. Lihat dalam kad imbas anda, lihat dalam ayat, lihat dalam contoh tatabahasa. Hari 2: 3 perkataan baharu lagi, tambah 6 dari semalam. Hari 7: 21 perkataan baharu minggu ini, tetapi 80+ ulangan. Pada masa satu perkataan telah diulang 5 kali, pengekalan lebih daripada 90%.",
+          "Selama 8 minggu, ini menambah 168 perkataan pada kadar 3 setiap hari. Untuk mencapai 1000, tingkatkan kepada 15 perkataan baharu setiap hari pada bulan ke-3, apabila ulangan sebahagian besarnya sudah di-cache. Putaran harian 10 minit dalam LangOria mengendalikan ini secara automatik untuk anda.",
+          "Pandangan utamanya: kosa kata bukanlah pertandingan memori. Ia adalah permainan frekuensi. Hadir setiap hari, percayai sistem, dan perkataan akan melekat."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Bayangan: latihan pertuturan yang benar-benar berkesan",
+        "excerpt": "Mengapa mengulangi audio penutur asli adalah cara terpantas untuk memperbaiki sebutan, dan rutin 5 langkah yang boleh anda mulakan hari ini.",
+        "tag": "Pertuturan",
+        "readTime": "5 minit baca",
+        "date": "2026-05-28",
+        "content": [
+          "Jika anda boleh membaca ayat tetapi tidak boleh mengucapkannya, anda tidak bersendirian. Kebanyakan pelajar menghabiskan 90% masa mereka untuk membaca dan mendengar, dan 10% untuk bercakap. Nisbah itu terbalik.",
+          "Bayangan adalah amalan mendengar penutur asli dan mengulangi apa yang mereka katakan secara masa nyata, meniru irama, intonasi, dan tekanan. Ini adalah teknik yang digunakan oleh juru bahasa profesional untuk mengekalkan kelancaran, dan ia berkesan untuk mana-mana bahasa.",
+          "Rutin 5 langkah: (1) Dengar ayat pada kelajuan asli. (2) Dengar lagi dengan transkrip. (3) Ulang pada kelajuan asli sambil merakam. (4) Bandingkan rakaman anda dengan asalnya. (5) Ulang 3 kali sebelum meneruskan.",
+          "Lakukan ini selama 5 minit sehari. Dalam sebulan, aksen anda akan mula berubah secara ketara. Dalam tiga bulan, anda akan dapat menghasilkan ayat yang tidak dapat anda baca sebelum ini.",
+          "Modul Pertuturan LangOria dibina di sekeliling idea tepat ini. Pilih ayat, dengar, ulang, ulang, ulang. Tanpa penghakiman, tanpa kebimbangan maklum balas. Hanya suara anda dan modelnya."
+        ]
+      }
+    ]
+  },
+  "recommend": {
+    "title": "Laluan Pembelajaran Peribadi",
+    "subtitle": "Laluan peningkatan yang disesuaikan berdasarkan data latihan terkini anda dan bahasa sasaran.",
+    "badge": "Laluan Cadangan Hari Ini",
+    "heading": "{{name}}, mari perkuat titik lemah anda",
+    "headingGuest": "Berikan arah dan kejelasan pada pembelajaran anda",
+    "description": "Ikut urutan titik lemah → perkuat → cabaran komprehensif untuk meningkatkan skor setiap modul.",
+    "refresh": "Segarkan Data",
+    "currentLevel": "Tahap Semasa",
+    "streak": "Rekod",
+    "targetLanguage": "Bahasa Sasaran",
+    "step": "Langkah {{n}}",
+    "suggestMinutes": "Dicadangkan {{minutes}} min",
+    "priorityHigh": "Tertinggi",
+    "priorityMedium": "Sederhana",
+    "priorityLow": "Lebih Rendah",
+    "priorityLabel": "Keutamaan",
+    "start": "Mula Belajar",
+    "titles": {
+      "words": "Pengukuhan Hafalan Kad Imbas",
+      "grammar": "Latihan Tatabahasa",
+      "listening": "Pendengaran Harian",
+      "speaking": "Bayangan Pertuturan"
+    },
+    "moduleTraining": "Latihan modul {{key}}",
+    "scoreHint": "Skor semasa {{score}} / 100 · keutamaan pengukuhan",
+    "fallback": [
+      {
+        "title": "Pengenalan Kosa Kata Kad Imbas",
+        "desc": "Bina set kosa kata pertama anda dari sifar"
+      },
+      {
+        "title": "Latihan Tatabahasa Asas",
+        "desc": "Kuasai peraturan asas struktur bahasa"
+      },
+      {
+        "title": "Pengenalan Perbualan Harian",
+        "desc": "Ulang ungkapan lisan yang paling biasa"
+      }
+    ],
+    "coursesTitle": "Cadangan · {{flag}} {{name}}",
+    "coursesDesc": "Dipilih dengan teliti berdasarkan tahap untuk pembelajaran sistematik.",
+    "browseAll": "Lihat Semua →",
+    "joinPlan": "Tambah ke pelan →"
+  },
+  "achievements": {
+    "title": "Pencapaian",
+    "subtitle": "Setiap ketekunan patut dilihat.",
+    "wall": "Dinding Pencapaian",
+    "heading": "Membuka {{earned}} / {{total}} lencana",
+    "description": "Raih lencana kehormatan dengan mencapai tonggak pembelajaran dan catat setiap langkah pertumbuhan.",
+    "unlocked": "Dibuka",
+    "stats": {
+      "streak": "Rekod",
+      "level": "Tahap",
+      "words": "Perkataan",
+      "quizzes": "Kuiz"
+    },
+    "units": {
+      "streak": "hari",
+      "level": "Tahap",
+      "words": "perkataan",
+      "quizzes": "kuiz"
+    },
+    "badges": {
+      "streak-3": {
+        "title": "Rekod 3 Hari",
+        "description": "Belajar 3 hari berturut-turut untuk membina tabiat kecil"
+      },
+      "streak-7": {
+        "title": "Bintang Mingguan",
+        "description": "Belajar 7 hari berturut-turut"
+      },
+      "streak-30": {
+        "title": "Juara Bulanan",
+        "description": "Belajar 30 hari berturut-turut"
+      },
+      "words-20": {
+        "title": "Bintang Kosa Kata Muda",
+        "description": "Kuasai 20 perkataan baharu"
+      },
+      "words-100": {
+        "title": "Pakar Kosa Kata",
+        "description": "Kuasai 100 perkataan baharu"
+      },
+      "quizzes-10": {
+        "title": "Peserta Tatabahasa",
+        "description": "Selesaikan 10 soalan tatabahasa"
+      },
+      "quizzes-50": {
+        "title": "Pakar Tatabahasa",
+        "description": "Selesaikan 50 soalan tatabahasa"
+      },
+      "speaking-10": {
+        "title": "Pembicara",
+        "description": "Ulang dengan kuat jumlah 10 minit"
+      },
+      "listening-10": {
+        "title": "Pendengar",
+        "description": "Mendengar jumlah 10 minit"
+      },
+      "level-5": {
+        "title": "Langkah demi Langkah",
+        "description": "Capai tahap 5"
+      },
+      "level-10": {
+        "title": "Tahap Lanjut",
+        "description": "Capai tahap 10"
+      }
+    }
+  },
+  "community": {
+    "title": "Komuniti",
+    "subtitle": "Kongsi pengalaman pembelajaran anda dan tumbuh bersama pelajar lain.",
+    "topic": "Topik",
+    "topics": {
+      "all": "Semua",
+      "daily": "Ayat Harian",
+      "japanese": "Petua Belajar Bahasa Jepun",
+      "kpop": "Belajar Bahasa Korea K-pop",
+      "english": "Bahasa Inggeris Tempat Kerja",
+      "help": "Bantuan Soal Jawab"
+    },
+    "placeholderLogged": "Kongsi ungkapan yang baru anda pelajari atau ajukan soalan…",
+    "placeholderGuest": "Sila log masuk untuk menyiarkan.",
+    "post": "Siarkan",
+    "charCount": "{{length}} / 500",
+    "signature": "{{name}} · Setiap perkataan yang anda ucapkan sekarang bergema ke masa depan.",
+    "loading": "Memuatkan siaran...",
+    "empty": "Belum ada yang bercakap dalam topik ini. Mengapa tidak memulakan?",
+    "commentPlaceholderLogged": "Tulis respons…",
+    "commentPlaceholderGuest": "Log masuk untuk mengulas",
+    "send": "Hantar",
+    "guest": "Tetamu",
+    "official": "{{name}} Rasmi"
+  },
+  "profile": {
+    "title": "Profil",
+    "subtitle": "Urus maklumat akaun, matlamat, dan keutamaan anda.",
+    "pleaseLogin": "Sila log masuk untuk melihat profil anda.",
+    "goLogin": "Ke Halaman Log Masuk",
+    "createdAt": "Dicipta {{date}}",
+    "info": {
+      "streak": "Rekod",
+      "level": "Tahap",
+      "words": "Perkataan Dipelajari",
+      "grammar": "Latihan Tatabahasa",
+      "speaking": "Pertuturan",
+      "listening": "Pendengaran"
+    },
+    "settingsTitle": "Akaun & Keutamaan",
+    "settingsHint": "Klik Simpan selepas membuat perubahan.",
+    "fields": {
+      "nickname": "Nama Panggilan",
+      "email": "E-mel",
+      "targetLanguage": "Bahasa Sasaran",
+      "uiLanguage": "Bahasa Antara Muka",
+      "nativeLanguage": "Bahasa Asal / Bahasa Penjelasan",
+      "dailyGoal": "Sasaran Harian ({{goal}} min)"
+    },
+    "saving": "Menyimpan…",
+    "save": "Simpan Perubahan",
+    "saved": "Disimpan ✓",
+    "saveFailed": "Gagal menyimpan",
+    "logout": "Log Keluar",
+    "bannerTitle": "Terus belajar, terus maju",
+    "bannerText": "LangOria merekodkan semua data pembelajaran melalui API backend, menyegerakkan kemajuan merentas semua peranti."
+  },
+  "settings": {
+    "title": "Tetapan Bahasa",
+    "subtitle": "Tetapkan bahasa antara muka dan bahasa yang digunakan untuk penjelasan perkataan.",
+    "interface": "Bahasa Antara Muka",
+    "interfaceDesc": "Mengawal bahasa menu, butang, dan petunjuk.",
+    "native": "Bahasa Asal / Bahasa Penjelasan",
+    "nativeDesc": "Definisi perkataan dan terjemahan contoh akan dipaparkan dalam bahasa ini jika tersedia.",
+    "target": "Bahasa Sasaran",
+    "targetDesc": "Bahasa yang sedang anda pelajari.",
+    "saving": "Menyimpan…",
+    "save": "Simpan Tetapan Bahasa",
+    "saved": "Disimpan ✓",
+    "saveFailed": "Gagal menyimpan"
+  },
+  "api": {
+    "errors": {
+      "notFound": "Titik akhir tidak ditemui (perkhidmatan belum dideploy)",
+      "serverError": "Ralat dalaman pelayan",
+      "unauthorized": "Belum log masuk atau sesi tamat tempoh",
+      "forbidden": "Tiada kebenaran untuk operasi ini",
+      "conflict": "Konflik sumber",
+      "badRequest": "Parameter tidak sah",
+      "requestFailed": "Permintaan gagal ({{status}})",
+      "emptyResponse": "Pelayan mengembalikan data kosong"
+    }
+  },
+  "auth": {
+    "notLoggedIn": "Belum log masuk",
+    "email": "E-mel",
+    "password": "Kata Laluan",
+    "username": "Nama Pengguna",
+    "confirmPassword": "Sahkan Kata Laluan",
+    "iSpeak": "Saya bercakap",
+    "iWantToLearn": "Saya ingin belajar",
+    "interfaceLanguage": "Bahasa Antara Muka",
+    "nativeLanguage": "Bahasa Asal",
+    "targetLanguage": "Bahasa Sasaran",
+    "haveAccount": "Sudah ada akaun? Log masuk",
+    "noAccount": "Belum ada akaun? Daftar",
+    "registerSuccess": "Pendaftaran berjaya",
+    "loginSuccess": "Berjaya log masuk",
+    "login": {
+      "title": "Selamat Kembali",
+      "subtitle": "Log masuk untuk meneruskan perjalanan pembelajaran imersif anda",
+      "button": "Log Masuk",
+      "loading": "Log masuk…",
+      "error": "Sila masukkan e-mel dan kata laluan",
+      "errorDefault": "Gagal log masuk, semak akaun atau kata laluan anda",
+      "usageTitle": "Arahan",
+      "usageText": "Masukkan e-mel dan kata laluan yang didaftarkan untuk log masuk. Pengguna baharu sila daftar terlebih dahulu.",
+      "heroTitle": "Dengan rentak sendiri",
+      "heroHighlight": "kuasai bahasa baharu.",
+      "heroDesc": "Kursus bertahap, latihan interaktif, dan motivasi komuniti — ubah belajar menjadi tabiat, bukan tugas.",
+      "oauthDivider": "atau teruskan dengan",
+      "continueWithGoogle": "Teruskan dengan Google",
+      "continueWithGitHub": "Teruskan dengan GitHub",
+      "forgotPassword": "Lupa kata laluan?",
+      "forgotPasswordHint": "Set semula kata laluan belum tersedia. Sila hubungi sokongan.",
+      "features": [
+        {
+          "title": "Kursus Bertahap",
+          "desc": "Dari pemula hingga mahir",
+          "c": "from-sky-400/20 to-sky-500/0"
+        },
+        {
+          "title": "Pelbagai Bahasa",
+          "desc": "Inggeris · Jepun · Korea",
+          "c": "from-fuchsia-400/20 to-fuchsia-500/0"
+        },
+        {
+          "title": "Laluan Peribadi",
+          "desc": "Cadangan pintar daripada data anda",
+          "c": "from-amber-400/20 to-amber-500/0"
+        },
+        {
+          "title": "Pencapaian",
+          "desc": "Lencana · Tahap · Mata",
+          "c": "from-rose-400/20 to-rose-500/0"
+        }
+      ]
+    },
+    "register": {
+      "badge": "Pembelajaran Bahasa yang Imersif",
+      "title": "Biarkan seluruh dunia",
+      "titleHighlight": "menjadi kelas anda.",
+      "description": "Daftar akaun untuk memulakan laluan pembelajaran bertahap yang peribadi, jejak kemajuan, dan tumbuh bersama pelajar di seluruh dunia.",
+      "formTitle": "Buat Akaun Anda",
+      "formSubtitle": "Mula belajar dalam beberapa saat",
+      "mobileLabel": "Bahasa yang paling ingin anda pelajari",
+      "button": "Daftar Sekarang",
+      "loading": "Mendaftar…",
+      "validation": "Sila isi nama pengguna dan e-mel, kata laluan sekurang-kurangnya 4 aksara",
+      "errorDefault": "Pendaftaran gagal, cuba lagi kemudian",
+      "usernamePlaceholder": "Pilih nama pengguna",
+      "passwordPlaceholder": "Buat kata laluan"
+    },
+    "oauth": {
+      "processing": "Menyelesaikan log masuk…",
+      "callbackNoToken": "Gagal log masuk: tiada token yang dikembalikan.",
+      "callbackFailed": "Gagal log masuk. Sila cuba lagi."
+    }
+  },
+  "admin": {
+    "title": "Pentadbir",
+    "subtitle": "Urus kandungan pembelajaran: bahasa, kursus, perkataan, kuiz, pendengaran, dan pertuturan.",
+    "loading": "Memuatkan…",
+    "noPermissionTitle": "Tiada Kebenaran",
+    "noPermissionDesc": "Halaman ini hanya untuk pentadbir.",
+    "query": "Cari",
+    "add": "Tambah",
+    "edit": "Edit",
+    "delete": "Padam",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "confirmDelete": "Pasti ingin memadam {{label}} ini?",
+    "noData": "Tiada data",
+    "resources": {
+      "languages": "Bahasa",
+      "courses": "Kursus",
+      "words": "Perkataan",
+      "quizzes": "Kuiz",
+      "listening": "Pendengaran",
+      "speaking": "Pertuturan",
+      "blog": "Siaran Blog"
+    },
+    "blog": {
+      "newPost": "Siaran Baharu",
+      "editPost": "Edit Siaran",
+      "searchPlaceholder": "Cari tajuk atau petikan...",
+      "allStatus": "Semua Status",
+      "allLanguages": "Semua Bahasa",
+      "draft": "Draf",
+      "published": "Diterbitkan",
+      "colTitle": "Tajuk",
+      "colSlug": "Slug",
+      "colLang": "Bahasa",
+      "colStatus": "Status",
+      "colUpdated": "Dikemas kini",
+      "slugHint": "Kosongkan untuk dijana secara automatik daripada tajuk",
+      "contentHint": "Tulis badan artikel dalam Markdown. Menyokong tajuk, senarai, blok kod, jadual, pautan, dan imej.",
+      "markdownHint": "Markdown disokong",
+      "tldrHint": "Cangkuk pilihan 1-2 ayat yang dipaparkan di atas artikel.",
+      "tabEdit": "Edit",
+      "tabPreview": "Pratonton",
+      "previewEmpty": "Belum ada apa yang boleh dipratonton — tukar ke Edit dan mula menulis.",
+      "fields": {
+        "title": "Tajuk",
+        "slug": "Slug",
+        "excerpt": "Petikan",
+        "content": "Kandungan",
+        "tag": "Tag",
+        "readTime": "Masa Baca",
+        "language": "Bahasa",
+        "status": "Status",
+        "coverImageUrl": "URL imej muka depan",
+        "tldr": "TL;DR",
+        "seoTitle": "Tajuk SEO",
+        "seoDescription": "Penerangan SEO"
+      }
+    },
+    "actions": "Tindakan",
+    "fields": {
+      "code": "Kod",
+      "name": "Nama",
+      "native": "Nama Asal",
+      "flag": "Bendera",
+      "tagline": "Slogan",
+      "levels": "Tahap",
+      "status": "Status",
+      "languageCode": "Kod Bahasa",
+      "title": "Tajuk",
+      "level": "Tahap",
+      "levelGroup": "Kumpulan Tahap",
+      "description": "Penerangan",
+      "lessons": "Pelajaran",
+      "minutes": "Minit",
+      "cover": "Muka Depan",
+      "tags": "Tag",
+      "vipOnly": "VIP",
+      "courseOrder": "Urutan",
+      "word": "Perkataan",
+      "translation": "Terjemahan",
+      "phonetic": "Fonetik",
+      "exampleSentence": "Ayat Contoh",
+      "vocabOrder": "Urutan",
+      "question": "Soalan",
+      "options": "Pilihan",
+      "answer": "Jawapan",
+      "explain": "Penjelasan",
+      "quizOrder": "Urutan",
+      "script": "Skrip",
+      "blanks": "Isian",
+      "listenOrder": "Urutan",
+      "phrase": "Frasa",
+      "speakOrder": "Urutan"
+    },
+    "errors": {
+      "required": "{{label}} wajib diisi",
+      "invalidJson": "{{label}} bukan JSON yang sah"
+    },
+    "enabled": "Diaktifkan",
+    "disabled": "Dinyahaktifkan",
+    "addLabel": "Tambah {{label}}",
+    "editLabel": "Edit {{label}}",
+    "arrayPlaceholder": "Satu setiap baris",
+    "jsonPlaceholder": "Array JSON yang sah"
+  },
+  "common": {
+    "loading": "Memuatkan...",
+    "error": "Ralat",
+    "retry": "Cuba Lagi",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "confirm": "Sahkan",
+    "submit": "Hantar",
+    "back": "Kembali",
+    "next": "Seterusnya",
+    "finish": "Selesai",
+    "minutes": "min",
+    "days": "hari",
+    "all": "Semua"
+  },
+  "lesson": {
+    "status": {
+      "locked": "Terkunci",
+      "unlocked": "Mula",
+      "inProgress": "Sambung",
+      "completed": "Selesai",
+      "redo": "Ulang",
+      "continue": "Sambung"
+    },
+    "skill": {
+      "vocab": "Kosa Kata",
+      "grammar": "Tatabahasa",
+      "listening": "Pendengaran",
+      "speaking": "Pertuturan",
+      "mixed": "Campuran"
+    },
+    "loadingPath": "Memuatkan laluan pembelajaran…",
+    "loginToTrackProgress": "Log masuk untuk menjejak kemajuan pelajaran.",
+    "noLessons": "Kursus ini belum mempunyai pelajaran yang dikonfigurasi.",
+    "courseProgress": "Kemajuan Kursus",
+    "completedCount": "{{completed}} / {{total}} pelajaran selesai",
+    "bestScore": "Terbaik {{score}}",
+    "loadFailed": "Gagal memuatkan pelajaran"
+  },
+  "league": {
+    "title": "Papan Pendahulu Mingguan",
+    "subtitle": "Akumulasi XP mingguan, bersaing untuk tahap Master · kenaikan dan penurunan diselesaikan setiap Isnin",
+    "seoTitle": "Papan Pendahulu Mingguan · Liga | LangOria",
+    "seoDescription": "Bersaing dalam papan pendahulu XP mingguan LangOria. Naik dari Gangsa ke Master dalam pelbagai liga bahasa.",
+    "refresh": "Segarkan",
+    "loadFailed": "Gagal memuatkan papan pendahulu",
+    "refreshFailed": "Gagal menyegarkan",
+    "season": "Musim {{key}}",
+    "players": "{{count}} pemain",
+    "timeRemaining": "{{time}} tinggal",
+    "time": {
+      "daysHours": "{{days}}h {{hours}}j",
+      "hoursMinutes": "{{hours}}j {{mins}}m"
+    },
+    "divisionMinExp": "{{division}}: XP mingguan ≥ {{minExp}}",
+    "loginCardTitle": "Log masuk untuk melihat kedudukan anda",
+    "loginCardDesc": "Selepas log masuk anda akan secara automatik menyertai musim minggu ini dan ditempatkan dalam divisi berdasarkan jumlah XP anda.",
+    "loginButton": "Log masuk sekarang",
+    "loadingMyRank": "Memuatkan kedudukan anda…",
+    "rankInDivision": "Kedudukan dalam divisi:",
+    "weekExp": "XP Mingguan:",
+    "totalExp": "Jumlah XP:",
+    "bestDivision": "Terbaik sepanjang masa:",
+    "promotionMsg": "Anda berada dalam zon kenaikan! Anda akan naik divisi apabila musim berakhir.",
+    "demotionMsg": "Anda berada dalam zon penurunan dan mungkin turun divisi apabila musim berakhir. Teruskan!",
+    "rules": "Peraturan kenaikan/penurunan: 10% teratas setiap divisi naik, 10% terbawah turun. Penyelesaian dilakukan secara pukal setiap Isnin apabila musim berakhir.",
+    "leaderboard": "Papan Pendahulu",
+    "leaderboardSubtitle": "Disusun mengikut XP mingguan · maksimum 50 setiap halaman",
+    "loadingStandings": "Memuatkan papan pendahulu…",
+    "emptyDivision": "Belum ada pemain dalam divisi ini minggu ini — kumpulkan XP dan jadilah yang pertama dalam papan!",
+    "you": "Anda",
+    "totalXp": "Jumlah XP {{total}}",
+    "startingXp": "Awal minggu {{starting}}",
+    "weekXpLabel": "XP Mingguan",
+    "division": {
+      "bronze": "Gangsa",
+      "silver": "Perak",
+      "gold": "Emas",
+      "platinum": "Platinum",
+      "diamond": "Berlian",
+      "master": "Master"
+    }
+  },
+  "pronunciation": {
+    "excellent": "Cemerlang",
+    "great": "Hebat",
+    "okay": "Baik",
+    "practiceMore": "Terus berlatih",
+    "errors": {
+      "noSpeech": "Tiada pertuturan dikesan. Cuba lagi.",
+      "microphoneNotAllowed": "Sila benarkan akses mikrofon dalam pelayar anda.",
+      "network": "Ralat rangkaian. Semak sambungan dan cuba lagi.",
+      "recognitionFailed": "Pengecaman gagal ({{error}})",
+      "cannotStart": "Tidak dapat memulakan rakaman. Sila cuba lagi."
+    },
+    "unsupportedBrowser": "Pengecaman pertuturan tidak disokong dalam pelayar ini. Sila gunakan Chrome, Edge, atau Safari.",
+    "repeatThis": "Ulang ini",
+    "listening": "Mendengar… sila baca dengan kuat",
+    "tapToStart": "Ketik mikrofon untuk mula",
+    "toneHint": "Petua: skor ini berdasarkan persamaan secara keseluruhan; ketepatan nada akan disokong dalam versi akan datang.",
+    "fullScore": "Daripada 100",
+    "youSaid": "Yang anda ucapkan",
+    "target": "Sasaran",
+    "noSpeechDetected": "(Tiada pertuturan dikesan)",
+    "tryAgain": "Cuba lagi"
+  },
+  "placement": {
+    "title": "Ujian Penempatan",
+    "subtitle": "6 soalan untuk menentukan tahap permulaan anda dengan cepat",
+    "seoTitle": "Ujian Penempatan — LangOria",
+    "seoDescription": "Ujian penempatan adaptif: 6 soalan untuk menentukan tahap permulaan anda.",
+    "loginHint": "Tidak perlu log masuk untuk mengambil ujian. Log masuk untuk menyimpan keputusan anda dan mendapatkan cadangan kursus apabila anda log masuk seterusnya.",
+    "loading": "Menyediakan soalan untuk {{lang}}…",
+    "loadingText": "Memuatkan…",
+    "questionTitle": "Ujian Penempatan · Soalan {{current}} / {{total}}",
+    "questionSubtitle": "Tahap semasa: {{level}} (CEFR {{cefr}})",
+    "emptyQuestion": "(Soalan kosong)",
+    "reselectLang": "Pilih semula bahasa",
+    "submit": "Hantar",
+    "nextQuestion": "Soalan seterusnya…",
+    "resultTitle": "Keputusan Ujian Penempatan",
+    "resultSubtitle": "Tahap permulaan yang disyorkan: {{level}} (CEFR {{cefr}})",
+    "resultSeoTitle": "Keputusan Ujian Penempatan — LangOria",
+    "testComplete": "Ujian selesai",
+    "correctCount": "Jawapan betul",
+    "recommendedLevel": "Tahap yang disyorkan",
+    "cefrAlignment": "Penanda aras CEFR",
+    "cefrRank": "Kedudukan CEFR",
+    "language": "Bahasa",
+    "startCourse": "Mula kursus ini",
+    "noCourseMatch": "Tiada kursus yang sepadan tepat untuk {{level}}. Sila pergi ke senarai kursus dan pilih tahap yang serupa.",
+    "saving": "Menyimpan…",
+    "saveResult": "Simpan keputusan",
+    "saved": "Disimpan dalam akaun anda. Tahap ini akan disyorkan secara automatik apabila anda memasuki bahasa ini seterusnya.",
+    "loginToSave": "Log masuk untuk menyimpan keputusan",
+    "retake": "Ambil semula ujian",
+    "errorOccurred": "Berlaku ralat, sila",
+    "restart": "Mula dari awal",
+    "errors": {
+      "noQuestions": "Belum ada soalan ujian penempatan untuk bahasa ini. Sila pilih bahasa lain.",
+      "noStartQuestion": "Tidak dapat memilih soalan permulaan.",
+      "fetchFailed": "Gagal mengambil soalan",
+      "saveFailed": "Gagal menyimpan keputusan"
+    }
+  },
+  "aiConversation": {
+    "title": "Perbualan AI",
+    "loginPrompt": "Log masuk untuk memulakan perbualan AI.",
+    "loginButton": "Log masuk",
+    "subtitle": "Latih dialog kehidupan sebenar dengan AI.",
+    "remainingToday": "{{count}} tinggal hari ini",
+    "newChat": "Sembang baharu",
+    "targetLanguage": "Bahasa sasaran",
+    "levelOptional": "Tahap (pilihan)",
+    "levelPlaceholder": "cth. A1, N5",
+    "starting": "Memulakan...",
+    "startChat": "Mula sembang",
+    "history": "Sejarah",
+    "noHistory": "Belum ada perbualan.",
+    "untitledChat": "Sembang {{language}} tanpa tajuk",
+    "turnCount": "{{count}} giliran",
+    "active": "Perbualan aktif",
+    "selectOrCreate": "Pilih atau buat sembang",
+    "endChat": "Tamatkan sembang",
+    "emptyTitle": "Belum ada mesej",
+    "emptyHint": "Mulakan perbualan di atas.",
+    "typing": "AI sedang menaip...",
+    "inputPlaceholder": "Taip mesej anda...",
+    "sessionClosed": "Sesi ditutup · {{status}}",
+    "timeout": "Masa tamat",
+    "ended": "Ditamatkan",
+    "errors": {
+      "loadConversations": "Gagal memuatkan perbualan",
+      "loadMessages": "Gagal memuatkan mesej",
+      "createConversation": "Gagal membuat perbualan",
+      "sendMessage": "Gagal menghantar mesej",
+      "endConversation": "Gagal menamatkan perbualan"
+    }
+  },
+  "alphabet": {
+    "title": "Abjad",
+    "subtitle": "Pelajari sistem penulisan dan bunyi.",
+    "seoTitle": "Asas Abjad & Sebutan | LangOria",
+    "seoDescription": "Pelajari Hiragana, Katakana, Hangul, Pinyin, Jyutping, Thai, dan lainnya. Ketik aksara untuk mendengarnya.",
+    "enter": "Masuk",
+    "ttsDisclaimer": "Kualiti bunyi berbeza mengikut pelayar dan OS.",
+    "noLanguageSubtitle": "Pilih bahasa untuk bermula.",
+    "switchLanguage": "Tukar bahasa",
+    "seoDescriptionLang": "Asas abjad dan sebutan {{language}} — LangOria",
+    "tapToSpeak": "Ketik untuk mendengar sebutan",
+    "tapDetailToScore": "Ketik kad untuk latihan bayangan",
+    "pronunciationHint": "Sebutan",
+    "example": "Contoh",
+    "speakChar": "Dengar",
+    "closeDetail": "Tutup butiran",
+    "shadowing": "Bayangan",
+    "ttsDisclaimerDetail": "Sebutan dihasilkan oleh teks-kepada-pertuturan terbina dalam pelayar anda. Hasil mungkin berbeza bergantung pada pelayar, sistem operasi, dan pakej suara.",
+    "readyForCourses": "Sedia untuk kursus berstruktur?",
+    "viewCourses": "Lihat kursus"
+  },
+  "cefr": {
+    "title": "Penilaian Diri CEFR",
+    "subtitle": "Cari tahap anda dengan pernyataan Boleh-Lakukan.",
+    "seoTitle": "Penilaian Diri CEFR — LangOria",
+    "seoDescription": "Nilai sendiri tahap bahasa anda dari A1 hingga C2 dengan pernyataan Boleh-Lakukan. Pelengkap ujian penempatan.",
+    "introTitle": "Apa tahap anda?",
+    "introText": "Tanda pernyataan Boleh-Lakukan yang boleh anda lakukan dengan yakin. Kami akan menyimpulkan tahap CEFR anda secara automatik.",
+    "assessmentSubtitle": "Tanda apa yang boleh anda lakukan",
+    "assessmentSeoDescription": "Penilaian diri CEFR {{language}} — tanda apa yang boleh anda lakukan",
+    "backToSelection": "Kembali ke pemilihan bahasa",
+    "currentInferred": "Tahap yang disimpulkan",
+    "noneChecked": "Belum ada yang dipilih",
+    "manualOverride": "Penimpaan manual (automatik: {{inferred}})",
+    "savedAssessment": "Penilaian disimpan",
+    "guestHint": "Log masuk untuk menyimpan penilaian diri anda dan mendapatkan cadangan kursus.",
+    "loginButton": "Log masuk",
+    "loadingCanDo": "Memuatkan pernyataan Boleh-Lakukan...",
+    "selectAtLeastOne": "Sila pilih sekurang-kurangnya satu pernyataan untuk disimpan.",
+    "saveSuccess": "Berjaya disimpan",
+    "saveFailed": "Gagal menyimpan",
+    "manualOverrideTitle": "Penimpaan tahap manual",
+    "manualOverrideHint": "Pilih tahap yang paling sesuai dengan keupayaan anda.",
+    "auto": "Automatik",
+    "noteTitle": "Nota",
+    "noteHint": "Tambah konteks tentang penilaian anda (pilihan).",
+    "notePlaceholder": "cth. Saya selesa bercakap tetapi lemah dalam menulis.",
+    "save": "Simpan",
+    "reset": "Tetap Semula",
+    "languageNotFound": "Bahasa tidak ditemui",
+    "languageNotFoundDetail": "Tiada data bahasa untuk {{lang}}."
+  },
+  "crown": {
+    "loadFailed": "Gagal memuatkan kemajuan mahkota",
+    "loading": "Memuatkan kemajuan mahkota...",
+    "noCheckpoints": "Belum ada pos pemeriksaan dalam kursus ini.",
+    "hint": "Lulus pelajaran pos pemeriksaan dengan {{threshold}}% atau lebih tinggi untuk mendapatkan mahkota.",
+    "completion": "Penyelesaian",
+    "earned": "Mahkota {{n}} diperolehi",
+    "locked": "Mahkota {{n}} terkunci",
+    "passedCheckpoints": "Pos pemeriksaan yang lulus",
+    "score": "Skor {{score}}"
+  },
+  "grammarMap": {
+    "noData": "Tiada data tatabahasa untuk bahasa ini.",
+    "wrongCount": " · {{count}} salah",
+    "pitfallsTitle": "Kesalahan biasa",
+    "dependencies": "Prasyarat: {{list}}"
+  },
+  "lessonPlayer": {
+    "loadFailed": "Gagal memuatkan pelajaran",
+    "startFailed": "Gagal memulakan pelajaran",
+    "completeFailed": "Gagal menyelesaikan pelajaran",
+    "loading": "Memuatkan pelajaran...",
+    "backToPath": "Kembali ke laluan",
+    "exerciseCount": "{{count}} latihan",
+    "bestScore": "Terbaik {{score}}",
+    "lockedHint": "Selesaikan pelajaran sebelumnya untuk membuka pelajaran ini.",
+    "start": "Mula pelajaran",
+    "inProgressHint": "Pelajaran sedang berlangsung",
+    "completed": "Pelajaran selesai!",
+    "scoreThisTime": "Skor kali ini: {{score}}",
+    "nextUnlocked": "Pelajaran seterusnya terbuka!",
+    "nextLesson": "Ke pelajaran seterusnya",
+    "emptyExercises": "Tiada latihan dalam pelajaran ini.",
+    "emptyExercisesHint": "Klik Selesai untuk menyelesaikan.",
+    "submitting": "Menghantar...",
+    "complete": "Selesaikan pelajaran",
+    "completeHint": "Selesaikan pelajaran untuk menyimpan kemajuan.",
+    "vocabTitle": "Kosa Kata ({{count}})",
+    "readAloud": "Baca dengan kuat",
+    "tapToFlip": "Ketik untuk balik",
+    "grammarTitle": "Tatabahasa ({{count}})",
+    "correct": "Betul",
+    "wrong": "Salah",
+    "explanation": "Penjelasan: ",
+    "next": "Seterusnya",
+    "listeningTitle": "Pendengaran ({{count}})",
+    "playing": "Memainkan...",
+    "tapToPlay": "Ketik untuk main",
+    "nextSegment": "Segmen seterusnya",
+    "speakingTitle": "Pertuturan ({{count}})",
+    "nextSentence": "Ayat seterusnya",
+    "speakingHint": "Dengar dan ulang dengan kuat."
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemui",
+    "subtitle": "Halaman yang anda cari tidak wujud atau telah dialihkan.",
+    "suggestion": "Semak URL untuk kesalahan taip, atau cuba salah satu daripada ini:",
+    "seoTitle": "Halaman tidak ditemui — LangOria",
+    "seoDescription": "Halaman yang anda cari tidak wujud dalam LangOria. Kembali ke laman utama untuk mula belajar bahasa.",
+    "goHome": "Laman Utama",
+    "browseCourses": "Lihat kursus",
+    "readBlog": "Baca blog"
+  },
+  "reading": {
+    "fetchFailed": "Gagal memuatkan bacaan",
+    "title": "Membaca",
+    "subtitle": "Bacaan bertahap dengan soalan pemahaman",
+    "seoTitle": "Pemahaman Bacaan — LangOria",
+    "seoDescription": "Bacaan bertahap dengan glosari dan soalan pemahaman dalam bahasa Inggeris, Jepun, Korea, Cina, dan lainnya.",
+    "disclaimer": "Bacaan dihasilkan atau dikurasi untuk pelajar dan mungkin tidak mencerminkan kandungan hanya untuk penutur asli.",
+    "listSubtitle": "Pilih bacaan",
+    "switchLanguage": "Tukar bahasa",
+    "seoDescriptionLang": "Pemahaman bacaan {{language}} — LangOria",
+    "empty": "Belum ada bacaan.",
+    "emptyHint": "Cuba tahap atau bahasa lain kemudian.",
+    "completed": "Selesai",
+    "bestAccuracy": "Terbaik {{accuracy}}%",
+    "words": "{{count}} perkataan",
+    "minutes": "{{count}} min",
+    "start": "Mula",
+    "aiExplainFailed": "Gagal menjelaskan ayat",
+    "loadFailed": "Gagal memuatkan bacaan",
+    "loadingTitle": "Memuatkan bacaan...",
+    "loadPassageFailed": "Tidak dapat memuatkan bacaan ini.",
+    "backToList": "Kembali ke senarai",
+    "passageMeta": "{{level}} {{cefr}} · {{words}} perkataan · {{minutes}} min",
+    "accuracyThisTime": "{{correct}}/{{total}} betul ({{accuracy}}%)",
+    "passageCompleted": "Bacaan selesai",
+    "attemptHistory": "Percubaan {{count}} · terbaik {{best}}%",
+    "redo": "Ulang",
+    "aiExplaining": "Menjelaskan...",
+    "aiExplain": "Terangkan",
+    "aiSentenceTitle": "Penjelasan AI",
+    "aiRemaining": "{{count}} tinggal hari ini",
+    "aiGenerating": "Menjana penjelasan...",
+    "source": "Sumber: {{source}}",
+    "glossary": "Glosari",
+    "comprehensionTitle": "Pemahaman ({{count}})",
+    "explanation": "Penjelasan: ",
+    "answered": "{{answered}}/{{total}} dijawab",
+    "submit": "Hantar",
+    "submitFailed": "Gagal menghantar jawapan",
+    "correctCount": "{{correct}}/{{total}} betul"
+  },
+  "writing": {
+    "fetchFailed": "Gagal memuatkan prompt",
+    "title": "Menulis",
+    "subtitle": "Latih menulis dengan maklum balas segera",
+    "seoTitle": "Latihan Menulis — LangOria",
+    "seoDescription": "Esei, e-mel, ringkasan, cerita, dan dialog. Skor segera untuk panjang, kepelbagaian, dan kata kunci.",
+    "allLanguages": "Semua bahasa",
+    "allLevels": "Semua tahap",
+    "loading": "Memuatkan prompt...",
+    "empty": "Belum ada prompt menulis.",
+    "wordRange": "{{min}}–{{max}} perkataan",
+    "bestScore": "Terbaik {{score}}",
+    "start": "Mula",
+    "aiPolishFailed": "Gagal mendapatkan gilapan AI",
+    "emptyContent": "Sila tulis sesuatu sebelum menghantar.",
+    "submitFailed": "Gagal menghantar tulisan",
+    "detailTitle": "Prompt Menulis",
+    "loadFailed": "Gagal memuatkan prompt",
+    "backToList": "Kembali ke senarai",
+    "targetWords": "{{min}}–{{max}} perkataan",
+    "tips": "Petua",
+    "hideSample": "Sembunyikan contoh",
+    "showSample": "Tunjukkan contoh",
+    "yourWriting": "Tulisan anda",
+    "wordRangeCurrent": "{{current}} / {{min}}–{{max}} perkataan",
+    "placeholder": "Tulis dalam {{language}} ({{min}}–{{max}} perkataan)",
+    "charLimit": "{{current}} / 10000 aksara",
+    "submit": "Hantar",
+    "clear": "Kosongkan",
+    "scoreResult": "Skor",
+    "overall": "Keseluruhan",
+    "length": "Panjang",
+    "variety": "Kepelbagaian",
+    "keywords": "Kata Kunci",
+    "lengthFeedback": "Panjang",
+    "varietyFeedback": "Kepelbagaian",
+    "keywordFeedback": "Kata Kunci",
+    "matched": "Padan",
+    "missed": "Terlepas",
+    "suggestions": "Cadangan",
+    "aiPolishTitle": "Gilapan AI",
+    "requestAiPolish": "Gilap dengan AI",
+    "aiRemaining": "{{count}} tinggal hari ini",
+    "aiPolishing": "Menggilap...",
+    "historyTitle": "Sejarah Penghantaran ({{count}})",
+    "historyMeta": "{{words}} perkataan · {{date}}",
+    "lengthShort": "Pjg",
+    "varietyShort": "Pelb",
+    "keywordsShort": "Kunci"
+  }
+}

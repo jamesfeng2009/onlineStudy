@@ -11,6 +11,9 @@ import de from "../locales/de/translation.json";
 import it from "../locales/it/translation.json";
 import th from "../locales/th/translation.json";
 import yue from "../locales/yue/translation.json";
+import ms from "../locales/ms/translation.json";
+import id from "../locales/id/translation.json";
+import vi from "../locales/vi/translation.json";
 
 export const resources = {
   en: { translation: en },
@@ -23,6 +26,9 @@ export const resources = {
   it: { translation: it },
   th: { translation: th },
   yue: { translation: yue },
+  ms: { translation: ms },
+  id: { translation: id },
+  vi: { translation: vi },
 };
 
 import { UI_LANGUAGES, PREFIXED_UI_LANGUAGES } from "./i18n/registry";

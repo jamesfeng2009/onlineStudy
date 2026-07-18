@@ -27,7 +27,7 @@ const ROOT = path.resolve(__dirname, "..");
 const PUBLIC_DIR = path.join(ROOT, "public");
 
 const SITE_URL = "https://lang-oria.com";
-const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
+const SUPPORTED_LANGUAGES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue", "ms", "id", "vi"] as const;
 
 // ---------- minimal .env loader (avoid dotenv dep) ----------
 function loadDotenv() {

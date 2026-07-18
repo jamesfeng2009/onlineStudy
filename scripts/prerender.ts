@@ -29,7 +29,7 @@ const templatePath = path.join(distDir, "index.html");
 
 /* ───────── 路由生成 ───────── */
 
-const UI_LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
+const UI_LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue", "ms", "id", "vi"] as const;
 
 const LEARN_LANG_SLUGS = [
   "english",

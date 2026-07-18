@@ -205,7 +205,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
   {
     code: "ms",
     slug: "malay",
-    isUiLanguage: false,
+    isUiLanguage: true,
     isLearnLanguage: true,
     name: "Malay",
     englishName: "Malay",
@@ -220,7 +220,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
   {
     code: "id",
     slug: "indonesian",
-    isUiLanguage: false,
+    isUiLanguage: true,
     isLearnLanguage: true,
     name: "Indonesian",
     englishName: "Indonesian",
@@ -235,7 +235,7 @@ export const LANGUAGE_REGISTRY: LanguageRegistryEntry[] = [
   {
     code: "vi",
     slug: "vietnamese",
-    isUiLanguage: false,
+    isUiLanguage: true,
     isLearnLanguage: true,
     name: "Vietnamese",
     englishName: "Vietnamese",
