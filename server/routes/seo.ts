@@ -310,6 +310,64 @@ Allow: /`;
   });
 
   /**
+   * GET /seo/rss — RSS 2.0 feed of published blog posts
+   *
+   * 每篇文章只在其 baseLanguageCode 对应的 locale URL 上存在（与
+   * sitemap 的博客 hreflang 策略一致），guid 使用该规范 URL。
+   */
+  fastify.get("/seo/rss", async (_request, reply) => {
+    try {
+      const posts = await prisma.blogPost.findMany({
+        where: { status: "published" },
+        select: {
+          slug: true,
+          title: true,
+          excerpt: true,
+          baseLanguageCode: true,
+          publishedAt: true,
+        },
+        orderBy: { publishedAt: "desc" },
+        take: 50,
+      });
+
+      const items = posts
+        .map((post) => {
+          const url = localeUrl(post.baseLanguageCode || DEFAULT_LOCALE, `/blog/${post.slug}`);
+          const pubDate = post.publishedAt
+            ? post.publishedAt.toUTCString()
+            : new Date().toUTCString();
+          return `    <item>
+      <title>${escapeXml(post.title)}</title>
+      <link>${escapeXml(url)}</link>
+      <guid isPermaLink="true">${escapeXml(url)}</guid>
+      <description>${escapeXml(post.excerpt)}</description>
+      <pubDate>${pubDate}</pubDate>
+    </item>`;
+        })
+        .join("\n");
+
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>LangOria Blog</title>
+    <link>${SITE_URL}/blog</link>
+    <description>Language learning articles: methods, vocabulary, and speaking practice.</description>
+    <language>en</language>
+${items}
+  </channel>
+</rss>`;
+
+      reply.type("application/rss+xml; charset=utf-8");
+      reply.header("Cache-Control", "public, max-age=3600, s-maxage=3600");
+      return reply.send(xml);
+    } catch (err) {
+      fastify.log.error({ err }, "[seo] rss generation failed");
+      reply.code(500);
+      return reply.send("Internal Server Error");
+    }
+  });
+
+  /**
    * POST /seo/indexnow — 批量提交全量 sitemap URL 到 Bing IndexNow
    *
    * 使用场景：

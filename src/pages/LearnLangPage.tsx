@@ -172,6 +172,16 @@ export default function LearnLangPage() {
       />
 
       <article className="prose prose-invert max-w-none">
+        {/* TL;DR — GEO: one-paragraph quotable summary for AI answer
+            engines. Built from the same hand-written copy as the page
+            body so it stays unique per language. */}
+        <div className="not-prose mb-8 rounded-2xl border border-sky-400/20 bg-sky-400/5 p-5 text-sm leading-relaxed text-brand-100 md:text-base">
+          <div className="mb-1 text-xs font-semibold uppercase tracking-widest text-sky-300">
+            TL;DR
+          </div>
+          {lead} {method.split(".")[0]}.
+        </div>
+
         <section className="glass rounded-3xl p-8 md:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-brand-100">
             <Globe2 className="h-3.5 w-3.5 text-sky-300" /> {getLanguageDisplayName(slug, i18n.language)} · {meta.flag}
