@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocaleLink from "../../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../store/authStore";
+
+// Module-level flag: survives StrictMode remounts.
+// useRef would be reset when StrictMode unmounts/remounts the component.
+let oauthCallbackStarted = false;
 
 /**
  * OAuth 回调页：后端重定向到 /auth/callback#token=xxx
@@ -14,11 +18,10 @@ export default function OAuthCallbackPage() {
   const writeTokenAndBootstrap = useAuthStore((s) => s.bootstrap);
   const logout = useAuthStore((s) => s.logout);
   const [err, setErr] = useState<string | null>(null);
-  const startedRef = useRef(false);
 
   useEffect(() => {
-    if (startedRef.current) return;
-    startedRef.current = true;
+    if (oauthCallbackStarted) return;
+    oauthCallbackStarted = true;
 
     (async () => {
       const hash = window.location.hash.replace(/^#/, "");
