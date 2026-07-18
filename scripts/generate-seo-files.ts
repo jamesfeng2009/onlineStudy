@@ -218,39 +218,55 @@ function buildLlmsTxt(blogPosts: BlogPostRow[]) {
   lines.push(`- [Courses catalog](${bare("/courses")}): structured language courses from A1 to C1.`);
   lines.push(`- [Blog](${bare("/blog")}): language learning articles.`);
   lines.push(`- [FAQ](${bare("/faq")}): common questions about how LangOria works.`);
-  lines.push(`- [Learn Japanese online](${bare("/languages/japanese")}): hand-written guide to learning Japanese with JLPT-level spaced repetition.`);
-  lines.push(`- [Learn English online](${bare("/languages/english")}): hand-written guide to learning English across CEFR A1-C2.`);
-  lines.push(`- [Learn Chinese online](${bare("/languages/chinese")}): hand-written guide to learning Mandarin with HSK-level spaced repetition.`);
+  lines.push(`- [CEFR self-assessment](${bare("/cefr-self-assessment")}): quick level check mapping study history to CEFR A1-C2.`);
+  lines.push("");
+  lines.push("## Language hubs");
+  lines.push("One hand-written guide per language: why learn it, how the platform teaches it, level system (CEFR / JLPT / HSK / TOPIK), and entry points to vocabulary and scenarios.");
+  const ALL_LANG_SLUGS = [
+    "english", "japanese", "chinese", "korean", "spanish",
+    "french", "german", "italian", "thai", "cantonese",
+    "malay", "indonesian", "vietnamese",
+  ] as const;
+  for (const slug of ALL_LANG_SLUGS) {
+    const name = slug.charAt(0).toUpperCase() + slug.slice(1);
+    lines.push(`- [Learn ${name} online](${bare(`/languages/${slug}`)}): hand-written guide to learning ${name} with level-based spaced repetition.`);
+  }
   lines.push("");
   lines.push("## Vocabulary indexes");
-  lines.push("One per supported language. Each page lists every level (CEFR / JLPT / HSK tier) with the actual word count, a sample of the vocabulary, and a link to the level detail page.");
-  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german", "italian", "thai", "cantonese"]) {
+  lines.push("One per supported language. Each page lists every level (CEFR / JLPT / HSK / TOPIK tier) with the actual word count, a sample of the vocabulary, and a link to the level detail page.");
+  for (const slug of ALL_LANG_SLUGS) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} vocabulary by level](${bare(`/languages/${slug}/vocabulary`)}): data-driven list of every ${name} vocabulary level in the library, with example sentences.`);
   }
   lines.push("");
   lines.push("## Vocabulary level details");
-  lines.push("Hand-written detail page for each (language, level) pair. 11 pages total: 6 English CEFR levels (A1-C2), 1 Japanese JLPT level (N5), and 4 Chinese HSK levels (HSK 1-4).");
-  const LEVEL_DETAIL: Array<{ slug: string; name: string; levelSlug: string; label: string }> = [
-    { slug: "english", name: "English", levelSlug: "a1", label: "A1" },
-    { slug: "english", name: "English", levelSlug: "a2", label: "A2" },
-    { slug: "english", name: "English", levelSlug: "b1", label: "B1" },
-    { slug: "english", name: "English", levelSlug: "b2", label: "B2" },
-    { slug: "english", name: "English", levelSlug: "c1", label: "C1" },
-    { slug: "english", name: "English", levelSlug: "c2", label: "C2" },
-    { slug: "japanese", name: "Japanese", levelSlug: "n5", label: "N5" },
-    { slug: "chinese", name: "Chinese", levelSlug: "hsk1", label: "HSK 1" },
-    { slug: "chinese", name: "Chinese", levelSlug: "hsk2", label: "HSK 2" },
-    { slug: "chinese", name: "Chinese", levelSlug: "hsk3", label: "HSK 3" },
-    { slug: "chinese", name: "Chinese", levelSlug: "hsk4", label: "HSK 4" },
-  ];
-  for (const l of LEVEL_DETAIL) {
-    lines.push(`- [${l.name} ${l.label} vocabulary](${bare(`/languages/${l.slug}/vocabulary/${l.levelSlug}`)}): full ${l.name} ${l.label} word/sentence list with study advice and example usage.`);
+  lines.push("Detail page for each (language, level) pair actually backed by data: English A1-C2, Japanese N5, Chinese HSK1-4, Korean TOPIK1-3, Spanish/French/German A1-B1, Italian/Thai/Cantonese/Malay/Indonesian/Vietnamese A1-C2.");
+  const LEVELS_BY_LANG: Record<string, readonly string[]> = {
+    english: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    japanese: ["n5"],
+    chinese: ["hsk1", "hsk2", "hsk3", "hsk4"],
+    korean: ["topik1", "topik2", "topik3"],
+    spanish: ["a1", "a2", "b1"],
+    french: ["a1", "a2", "b1"],
+    german: ["a1", "a2", "b1"],
+    italian: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    thai: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    cantonese: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    malay: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    indonesian: ["a1", "a2", "b1", "b2", "c1", "c2"],
+    vietnamese: ["a1", "a2", "b1", "b2", "c1", "c2"],
+  };
+  for (const [slug, levels] of Object.entries(LEVELS_BY_LANG)) {
+    const name = slug.charAt(0).toUpperCase() + slug.slice(1);
+    for (const lvl of levels) {
+      const label = lvl.toUpperCase().replace(/^HSK(\d)/, "HSK $1").replace(/^TOPIK(\d)/, "TOPIK $1");
+      lines.push(`- [${name} ${label} vocabulary](${bare(`/languages/${slug}/vocabulary/${lvl}`)}): full ${name} ${label} word/sentence list with study advice and example usage.`);
+    }
   }
   lines.push("");
   lines.push("## Scenario-based learning");
   lines.push("Real-world phrases for the 4 most-requested situations: travel, business, food, and small talk. Each (language, scenario) page is hand-written with 10 phrases, a sample dialogue, a culture tip, and study advice.");
-  for (const slug of ["english", "japanese", "chinese", "korean", "spanish", "french", "german", "italian", "thai", "cantonese"]) {
+  for (const slug of ALL_LANG_SLUGS) {
     const name = slug.charAt(0).toUpperCase() + slug.slice(1);
     lines.push(`- [${name} scenarios](${bare(`/languages/${slug}/scenarios`)}): 4 high-leverage ${name} situations, each with 10 phrases and a sample dialogue.`);
     for (const scenario of ["travel", "business", "food", "small-talk"]) {

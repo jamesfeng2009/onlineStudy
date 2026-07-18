@@ -4,6 +4,14 @@ import { SUPPORTED_LANGUAGES, buildLocalePath, DEFAULT_UI_LANGUAGE, type Support
 // 生产域名（Vercel 上确认过是 lang-oria.com）
 const SITE_URL = "https://lang-oria.com";
 
+/**
+ * Default social-share image (1200×630, generated brand banner).
+ * Pages can override via the `image` prop (e.g. blog post covers);
+ * every other page falls back to this so og:image / twitter:image
+ * are never empty.
+ */
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+
 import { LEARN_LANGUAGES } from "../data/language-registry";
 
 // 站点支持的所有 locale，对应 og:locale 与 hreflang
@@ -114,19 +122,35 @@ export function Seo({
   canonical,
   noindex = false,
 }: SeoProps) {
+  const ogImage = image || DEFAULT_OG_IMAGE;
+  const currentPath =
+    pathname ?? (typeof window !== "undefined" ? window.location.pathname : "/");
+  const currentLang =
+    lang ??
+    ((typeof window !== "undefined" ? document.documentElement.lang : "en") || "en");
+
+  const alternates = buildAlternates(currentPath, localizedPaths);
+  const xDefault = alternates.find((a) => a.lang === "en") ?? alternates[0];
+  const canonicalUrl = resolveCanonical(currentLang, currentPath, canonical);
+  const matchedOg = SITE_LOCALES.find((l) => l.code === currentLang);
+  const ogLocale = matchedOg?.og ?? "en_US";
+
+  // SSR: 将 SEO 数据写入全局对象，由 prerender 脚本注入 <head>
+  if (typeof window === "undefined") {
+    (globalThis as Record<string, unknown>).__SEO_DATA__ = {
+      title,
+      description,
+      ogImage,
+      canonicalUrl,
+      ogLocale,
+      alternates,
+      xDefault,
+      noindex,
+      type,
+    };
+  }
+
   useEffect(() => {
-    const currentPath =
-      pathname ?? (typeof window !== "undefined" ? window.location.pathname : "/");
-    const currentLang =
-      lang ??
-      ((typeof window !== "undefined" ? document.documentElement.lang : "en") || "en");
-
-    const alternates = buildAlternates(currentPath, localizedPaths);
-    const xDefault = alternates.find((a) => a.lang === "en") ?? alternates[0];
-    const canonicalUrl = resolveCanonical(currentLang, currentPath, canonical);
-    const matchedOg = SITE_LOCALES.find((l) => l.code === currentLang);
-    const ogLocale = matchedOg?.og ?? "en_US";
-
     // ---------- 基础 meta ----------
     document.title = title;
 
@@ -148,11 +172,11 @@ export function Seo({
     setMeta("og:url", canonicalUrl, "property");
     setMeta("og:site_name", "LangOria", "property");
     setMeta("og:locale", ogLocale, "property");
-    if (image) setMeta("og:image", image, "property");
+    setMeta("og:image", ogImage, "property");
     setMeta("twitter:card", "summary_large_image", "name");
     if (description) setMeta("twitter:description", description, "name");
     setMeta("twitter:title", title, "name");
-    if (image) setMeta("twitter:image", image, "name");
+    setMeta("twitter:image", ogImage, "name");
 
     // ---------- robots (noindex opt-in) ----------
     setMeta(
@@ -191,6 +215,6 @@ export function Seo({
       link.setAttribute("data-seo", "1");
       document.head.appendChild(link);
     }
-  }, [title, description, image, type, lang, pathname, localizedPaths, canonical, noindex]);
+  }, [title, description, ogImage, type, currentLang, canonicalUrl, ogLocale, alternates, xDefault, noindex]);
   return null;
 }

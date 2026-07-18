@@ -84,20 +84,31 @@ export function buildLocalePath(locale: SupportedLanguage, pathname: string): st
   return `/${locale}${strippedPath}`;
 }
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources,
-    fallbackLng: DEFAULT_UI_LANGUAGE,
-    supportedLngs: SUPPORTED_LANGUAGES as unknown as string[],
-    interpolation: { escapeValue: false },
-    detection: {
-      order: ["localStorage", "navigator", "htmlTag"],
-      caches: ["localStorage"],
-      lookupLocalStorage: "i18nextLng",
-    },
-  });
+const isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
+
+const i18nBuilder = isBrowser
+  ? i18n.use(LanguageDetector).use(initReactI18next)
+  : i18n.use(initReactI18next);
+
+i18nBuilder.init({
+  resources,
+  fallbackLng: DEFAULT_UI_LANGUAGE,
+  supportedLngs: SUPPORTED_LANGUAGES as unknown as string[],
+  interpolation: { escapeValue: false },
+  ...(isBrowser
+    ? {
+        detection: {
+          order: ["localStorage", "navigator", "htmlTag"],
+          caches: ["localStorage"],
+          lookupLocalStorage: "i18nextLng",
+        },
+      }
+    : {
+        // SSR：无 localStorage / navigator，用固定默认语言，
+        // 具体 locale 由 entry-server 在渲染前 changeLanguage 指定。
+        lng: DEFAULT_UI_LANGUAGE,
+      }),
+});
 
 // ----------------------------------------------------------------------------
 // URL ↔ i18n sync
@@ -105,7 +116,7 @@ i18n
 // ----------------------------------------------------------------------------
 
 function applyLocaleFromUrl() {
-  if (typeof window === "undefined") return;
+  if (!isBrowser) return;
   const { locale } = extractLocaleFromPath(window.location.pathname);
   if (i18n.language !== locale) {
     void i18n.changeLanguage(locale);
@@ -115,28 +126,30 @@ function applyLocaleFromUrl() {
   }
 }
 
-// Apply on first paint (overrides whatever localStorage / navigator said).
-applyLocaleFromUrl();
+if (isBrowser) {
+  // Apply on first paint (overrides whatever localStorage / navigator said).
+  applyLocaleFromUrl();
 
-// Re-apply on history navigation.
-window.addEventListener("popstate", applyLocaleFromUrl);
+  // Re-apply on history navigation.
+  window.addEventListener("popstate", applyLocaleFromUrl);
 
-// Monkey-patch pushState / replaceState so SPA route changes also sync.
-// (These do not fire popstate; we wrap them to call our sync after the
-// real call completes.)
-type HistoryMethod = typeof history.pushState;
-const originalPush: HistoryMethod = history.pushState.bind(history);
-const originalReplace: HistoryMethod = history.replaceState.bind(history);
-history.pushState = function (...args: Parameters<HistoryMethod>) {
-  const r = originalPush(...args);
-  // Run after React Router's internal handler so its pathname is up to date.
-  setTimeout(applyLocaleFromUrl, 0);
-  return r;
-} as HistoryMethod;
-history.replaceState = function (...args: Parameters<HistoryMethod>) {
-  const r = originalReplace(...args);
-  setTimeout(applyLocaleFromUrl, 0);
-  return r;
-} as HistoryMethod;
+  // Monkey-patch pushState / replaceState so SPA route changes also sync.
+  // (These do not fire popstate; we wrap them to call our sync after the
+  // real call completes.)
+  type HistoryMethod = typeof history.pushState;
+  const originalPush: HistoryMethod = history.pushState.bind(history);
+  const originalReplace: HistoryMethod = history.replaceState.bind(history);
+  history.pushState = function (...args: Parameters<HistoryMethod>) {
+    const r = originalPush(...args);
+    // Run after React Router's internal handler so its pathname is up to date.
+    setTimeout(applyLocaleFromUrl, 0);
+    return r;
+  } as HistoryMethod;
+  history.replaceState = function (...args: Parameters<HistoryMethod>) {
+    const r = originalReplace(...args);
+    setTimeout(applyLocaleFromUrl, 0);
+    return r;
+  } as HistoryMethod;
+}
 
 export default i18n;

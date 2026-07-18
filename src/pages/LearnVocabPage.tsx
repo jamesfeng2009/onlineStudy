@@ -101,7 +101,7 @@ export default function LearnVocabPage() {
         <Seo
           title={`${meta.englishName} ${levelLabel} ${unit} (${levelEntry.items.length}) | LangOria`}
           description={copy.summary}
-          pathname={`/languages/${slug}/vocabulary/${slugifyLevel(levelLabel)}`}
+          pathname={`/languages/${langSlug}/vocabulary/${slugifyLevel(levelLabel)}`}
         />
         <JsonLd
           data={[
@@ -199,7 +199,7 @@ export default function LearnVocabPage() {
       <Seo
         title={`${meta.englishName} vocabulary by level — ${words?.length ?? 0} ${unit} | LangOria`}
         description={`Browse ${meta.englishName} ${unit} organised by proficiency level. ${words?.length ?? 0} entries across ${grouped.length} ${isSentence ? "tiers" : "CEFR / JLPT / HSK levels"}, with real example sentences and spaced-repetition practice.`}
-        pathname={`/languages/${slug}/vocabulary`}
+        pathname={`/languages/${langSlug}/vocabulary`}
       />
       <JsonLd
         data={[

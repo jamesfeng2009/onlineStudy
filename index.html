@@ -5,7 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LangOria — Learn languages with spaced repetition</title>
-    <meta name="description" content="Master English, Japanese, Chinese, Korean, Spanish, French, German, Italian, Thai, and Cantonese through bite-sized lessons, spaced repetition vocabulary, and native-speaker listening practice." />
 
     <!--
       SEO webmaster verification meta tags.
@@ -42,8 +41,13 @@
       Pre-render hreflang / canonical / og:meta before React boots.
       Vite serves this as-is; SPA hydration later replaces these via the
       data-seo="1" sentinel inside the React <Seo /> component.
+
+      NOTE: scripts/prerender.ts strips this inline script from the
+      prerendered route snapshots (dist/<route>/index.html) because those
+      files already carry the resolved tags baked in — keeping it would
+      emit duplicate canonical/hreflang links for crawlers.
     -->
-    <script>
+    <script id="seo-inline-prerender">
       (function () {
         var SITE = "https://lang-oria.com";
         var LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"];

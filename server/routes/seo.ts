@@ -93,44 +93,44 @@ const STATIC_PAGES = [
       priority: "0.7",
     }))
   ),
-  // 词汇等级页 (en)
+  // 词汇等级页 (en) — CEFR A1-C2
   ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
     path: `/languages/english/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (ja)
-  ...["n5", "n4", "n3", "n2", "n1"].map((lvl) => ({
+  // 词汇等级页 (ja) — 数据实际只含 N5
+  ...["n5"].map((lvl) => ({
     path: `/languages/japanese/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (zh)
-  ...["hsk1", "hsk2", "hsk3", "hsk4", "hsk5", "hsk6"].map((lvl) => ({
+  // 词汇等级页 (zh) — 数据实际含 HSK1-HSK4
+  ...["hsk1", "hsk2", "hsk3", "hsk4"].map((lvl) => ({
     path: `/languages/chinese/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (ko) — TOPIK 1-6
-  ...["topik1", "topik2", "topik3", "topik4", "topik5", "topik6"].map((lvl) => ({
+  // 词汇等级页 (ko) — 数据实际含 TOPIK1-3
+  ...["topik1", "topik2", "topik3"].map((lvl) => ({
     path: `/languages/korean/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (es) — CEFR A1-C2
-  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+  // 词汇等级页 (es) — 数据实际含 A1-B1
+  ...["a1", "a2", "b1"].map((lvl) => ({
     path: `/languages/spanish/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (fr) — CEFR A1-C2
-  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+  // 词汇等级页 (fr) — 数据实际含 A1-B1
+  ...["a1", "a2", "b1"].map((lvl) => ({
     path: `/languages/french/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (de) — CEFR A1-C2
-  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
+  // 词汇等级页 (de) — 数据实际含 A1-B1
+  ...["a1", "a2", "b1"].map((lvl) => ({
     path: `/languages/german/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
@@ -147,8 +147,8 @@ const STATIC_PAGES = [
     changefreq: "weekly" as const,
     priority: "0.6",
   })),
-  // 词汇等级页 (yue) — CEFR A1-B2
-  ...["a1", "a2", "b1", "b2"].map((lvl) => ({
+  // 词汇等级页 (yue) — CEFR A1-C2
+  ...["a1", "a2", "b1", "b2", "c1", "c2"].map((lvl) => ({
     path: `/languages/cantonese/vocabulary/${lvl}`,
     changefreq: "weekly" as const,
     priority: "0.6",
@@ -183,13 +183,19 @@ const seoRoutes: FastifyPluginAsync = async (fastify) => {
       });
 
       const today = new Date().toISOString().split("T")[0];
+      // 博客文章最新发布日期，作为全站内容变更的 lastmod 信号
+      const latestPostDate = posts.length > 0 && posts[0].publishedAt
+        ? posts[0].publishedAt.toISOString().split("T")[0]
+        : today;
+      // 静态页面用构建日期，动态聚合页（语言/词汇/场景）用最新内容日期
+      const contentLastmod = latestPostDate > today ? today : latestPostDate;
 
       // 静态页面 URL
       const staticUrls = STATIC_PAGES.map((page) => {
         const loc = localeUrl(DEFAULT_LOCALE, page.path);
         return `  <url>
     <loc>${escapeXml(loc)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${contentLastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
 ${hreflangLinks(page.path)}
@@ -218,7 +224,7 @@ ${hreflangLinks(page.path)}
           const loc = localeUrl(DEFAULT_LOCALE, page.path);
           return `  <url>
     <loc>${escapeXml(loc)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${contentLastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc)}"/>

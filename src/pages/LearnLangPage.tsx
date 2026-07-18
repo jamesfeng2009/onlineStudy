@@ -152,7 +152,7 @@ export default function LearnLangPage() {
       <Seo
         title={`Learn ${getLanguageDisplayName(slug, i18n.language)} online — A1 to C1 | LangOria`}
         description={`${lead} ${whoFor.split(".")[0]}.`}
-        pathname={`/languages/${slug}`}
+        pathname={`/languages/${langSlug}`}
       />
       <JsonLd
         data={[

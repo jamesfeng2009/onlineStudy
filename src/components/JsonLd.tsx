@@ -34,8 +34,15 @@ function serialize(items: JsonLd[]): string {
 }
 
 export function JsonLd({ data }: JsonLdProps) {
+  const items = Array.isArray(data) ? data : [data];
+  const json = serialize(items);
+
+  // SSR: 将 JSON-LD 写入全局对象，由 prerender 脚本注入 <head>
+  if (typeof window === "undefined") {
+    (globalThis as Record<string, unknown>).__JSON_LD__ = json;
+  }
+
   useEffect(() => {
-    const items = Array.isArray(data) ? data : [data];
     let el = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
     if (!el) {
       el = document.createElement("script");
@@ -43,14 +50,14 @@ export function JsonLd({ data }: JsonLdProps) {
       el.type = "application/ld+json";
       document.head.appendChild(el);
     }
-    el.textContent = serialize(items);
+    el.textContent = json;
     return () => {
       // Don't remove on unmount: the next page may inject again and
       // a brief flicker of the previous page's JSON-LD in the
       // head is preferable to accidentally dropping structured
       // data that crawlers may have already read.
     };
-  }, [data]);
+  }, [json]);
   return null;
 }
 

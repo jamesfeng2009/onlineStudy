@@ -34,7 +34,10 @@ export default defineConfig(({ mode }) => {
       react({
         babel: {
           plugins: [
-            'react-dev-locator',
+            // react-dev-locator 仅用于 Trae IDE 开发期元素定位。
+            // 生产构建必须排除：它会给每个元素注入 trae-inspector-*
+            // 属性，与预渲染的干净 HTML 产生 hydration mismatch。
+            ...(mode === 'development' ? ['react-dev-locator'] : []),
           ],
         },
       }),

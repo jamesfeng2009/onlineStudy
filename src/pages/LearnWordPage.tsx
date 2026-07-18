@@ -113,7 +113,7 @@ export default function LearnWordPage() {
             : `${word?.word} in ${meta.englishName}`
         }
         noindex
-        pathname={`/languages/${slug}/word/${word?.slug ?? ""}`}
+        pathname={`/languages/${langSlug}/word/${word?.slug ?? ""}`}
       />
       {word && (
         <JsonLd

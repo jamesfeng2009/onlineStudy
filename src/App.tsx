@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Outlet, Route, Routes, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
@@ -166,30 +166,28 @@ export default function App() {
   }, [user]);
 
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-[#050c1a] text-white">
-        <Header />
-        <main>
-          <Routes>
-            {rootRoutes}
-            <Route path="/:locale" element={<LocaleSync />}>
-              {localeRoutes}
-            </Route>
-          </Routes>
-        </main>
-        <footer className="border-t border-white/5 py-10 text-center text-xs text-brand-200/50">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 md:flex-row md:justify-between md:px-8">
-            <div>{t("footer.copyright", { year: new Date().getFullYear() })}</div>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <LocaleLink to="/faq" className="hover:text-white">{t("nav.faq")}</LocaleLink>
-              <span className="text-white/10">·</span>
-              <LocaleLink to="/blog" className="hover:text-white">{t("nav.blog")}</LocaleLink>
-              <span className="text-white/10">·</span>
-              <LocaleLink to="/courses" className="hover:text-white">{t("nav.courses")}</LocaleLink>
-            </div>
+    <div className="min-h-screen bg-[#050c1a] text-white">
+      <Header />
+      <main>
+        <Routes>
+          {rootRoutes}
+          <Route path="/:locale" element={<LocaleSync />}>
+            {localeRoutes}
+          </Route>
+        </Routes>
+      </main>
+      <footer className="border-t border-white/5 py-10 text-center text-xs text-brand-200/50">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 md:flex-row md:justify-between md:px-8">
+          <div>{t("footer.copyright", { year: new Date().getFullYear() })}</div>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <LocaleLink to="/faq" className="hover:text-white">{t("nav.faq")}</LocaleLink>
+            <span className="text-white/10">·</span>
+            <LocaleLink to="/blog" className="hover:text-white">{t("nav.blog")}</LocaleLink>
+            <span className="text-white/10">·</span>
+            <LocaleLink to="/courses" className="hover:text-white">{t("nav.courses")}</LocaleLink>
           </div>
-        </footer>
-      </div>
-    </BrowserRouter>
+        </div>
+      </footer>
+    </div>
   );
 }
