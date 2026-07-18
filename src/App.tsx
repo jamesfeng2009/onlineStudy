@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
@@ -32,6 +32,7 @@ import LearnVocabPage from "./pages/LearnVocabPage";
 import LearnScenarioPage from "./pages/LearnScenarioPage";
 import { useAuthStore } from "./store/authStore";
 import i18n, { SUPPORTED_LANGUAGES, type SupportedLanguage } from "./lib/i18n";
+import { langSlugFromCode } from "./lib/i18n/registry";
 import { LocaleLink } from "./components/LocaleLink";
 
 /**
@@ -52,6 +53,45 @@ function LocaleSync() {
       }
     }
   }, [locale]);
+  return <Outlet />;
+}
+
+/**
+ * Redirect /:locale/:langCode to the language hub page.
+ *
+ * Example: /zh/id → /zh/languages/indonesian
+ *          /ja/ms → /ja/languages/malay
+ *
+ * This handles the case where a user or crawler constructs a URL like
+ * /zh/id (locale prefix + language code) instead of the correct
+ * /zh/languages/indonesian. Without this redirect, React Router falls
+ * through to the * catch-all and shows a 404.
+ *
+ * Performance: O(1) lookup via LANG_CODE_TO_SLUG map; no DB or async work.
+ * Idempotency: replace={true} ensures no redirect loops.
+ */
+function LangCodeRedirect() {
+  const { locale, langCode } = useParams<{ locale: string; langCode: string }>();
+  const location = useLocation();
+
+  // Only redirect if:
+  // 1. locale is a valid UI language (otherwise let the route fall through)
+  // 2. langCode is a valid learn language code (e.g. id, ms, vi, ja, ...)
+  // 3. langCode is NOT a valid UI language (otherwise it might be a real page)
+  if (
+    locale &&
+    langCode &&
+    (SUPPORTED_LANGUAGES as readonly string[]).includes(locale) &&
+    !(SUPPORTED_LANGUAGES as readonly string[]).includes(langCode)
+  ) {
+    const slug = langSlugFromCode(langCode);
+    if (slug) {
+      const target = `/${locale}/languages/${slug}${location.search}${location.hash}`;
+      return <Navigate to={target} replace />;
+    }
+  }
+
+  // Not a language code — let the router continue to the * catch-all
   return <Outlet />;
 }
 
@@ -134,7 +174,6 @@ const localeRoutes = (
     <Route path="register" element={<RegisterPage />} />
     <Route path="auth/callback" element={<OAuthCallbackPage />} />
     <Route path="auth/callback/:provider" element={<OAuthCallbackPage />} />
-    <Route path="*" element={<NotFoundPage />} />
   </>
 );
 
@@ -172,6 +211,9 @@ export default function App() {
         <Routes>
           {rootRoutes}
           <Route path="/:locale" element={<LocaleSync />}>
+            <Route path=":langCode" element={<LangCodeRedirect />}>
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
             {localeRoutes}
           </Route>
         </Routes>

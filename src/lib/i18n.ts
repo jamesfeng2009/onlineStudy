@@ -25,7 +25,7 @@ export const resources = {
   yue: { translation: yue },
 };
 
-import { UI_LANGUAGES } from "../data/language-registry";
+import { UI_LANGUAGES, PREFIXED_UI_LANGUAGES } from "./i18n/registry";
 
 export const SUPPORTED_LANGUAGES = UI_LANGUAGES;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
@@ -40,9 +40,7 @@ export const DEFAULT_UI_LANGUAGE: SupportedLanguage = "en";
  *   /zh/courses    → zh
  *   ...
  */
-const PREFIXED_LOCALES = SUPPORTED_LANGUAGES.filter(
-  (l) => l !== DEFAULT_UI_LANGUAGE
-) as readonly Exclude<SupportedLanguage, "en">[];
+const PREFIXED_LOCALES = PREFIXED_UI_LANGUAGES;
 
 /**
  * Parse a URL pathname into a locale + the locale-stripped path.

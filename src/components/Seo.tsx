@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { SUPPORTED_LANGUAGES, buildLocalePath, DEFAULT_UI_LANGUAGE, type SupportedLanguage } from "../lib/i18n";
+import { buildLocalePath, DEFAULT_UI_LANGUAGE } from "../lib/i18n";
+import { UI_LANGUAGES, OG_LOCALE_MAP } from "../lib/i18n/registry";
 
 // 生产域名（Vercel 上确认过是 lang-oria.com）
 const SITE_URL = "https://lang-oria.com";
@@ -12,12 +13,10 @@ const SITE_URL = "https://lang-oria.com";
  */
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
-import { LEARN_LANGUAGES } from "../data/language-registry";
-
 // 站点支持的所有 locale，对应 og:locale 与 hreflang
-// 从 language-registry 派生（Phase 1 = 7 个 isLearnLanguage 语言，与现状一致）
+// 从 registry 派生（单一事实源，与 i18n / sitemap 保持一致）
 export const SITE_LOCALES: ReadonlyArray<{ code: string; og: string }> =
-  LEARN_LANGUAGES.map((e) => ({ code: e.code, og: e.ogLocale }));
+  UI_LANGUAGES.map((code) => ({ code, og: OG_LOCALE_MAP[code] ?? "en_US" }));
 
 export type SiteLocaleCode = (typeof SITE_LOCALES)[number]["code"];
 
@@ -74,7 +73,7 @@ function buildAlternates(
   const pathByLang = new Map<string, string>(
     (localizedPaths ?? []).map((p) => [p.lang, p.path])
   );
-  return SUPPORTED_LANGUAGES.map((code) => {
+  return UI_LANGUAGES.map((code) => {
     const customPath = pathByLang.get(code);
     if (customPath) {
       return { lang: code, url: `${SITE_URL}${customPath}` };

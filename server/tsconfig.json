@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": ".",
+    "rootDir": "..",
     "outDir": "./dist",
     "module": "CommonJS",
     "moduleResolution": "Node",
@@ -13,7 +13,10 @@
     "strict": true,
     "types": ["node"],
     "declaration": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["."]
+  "include": [".", "../src/lib/i18n/registry.ts"]
 }

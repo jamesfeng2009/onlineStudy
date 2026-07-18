@@ -1,6 +1,12 @@
 import type { FastifyPluginAsync } from "fastify";
 import { prisma } from "../lib/prisma.js";
 import { submitToIndexNow } from "../lib/indexnow.js";
+import {
+  UI_LANGUAGES,
+  LEARN_LANGUAGES,
+  LANG_CODE_TO_SLUG,
+  LANG_SLUG_TO_CODE,
+} from "../../src/lib/i18n/registry.js";
 
 /**
  * SEO/GEO 后端路由
@@ -11,29 +17,15 @@ import { submitToIndexNow } from "../lib/indexnow.js";
  *
  * 内容变更（新增题目/单词）不需要修改此文件，
  * sitemap 会自动从数据库读取最新的博客文章。
+ *
+ * 语言配置从 src/lib/i18n/registry.ts 派生（单一事实源）。
  */
 
 const SITE_URL = "https://lang-oria.com";
-// ⚠️ LOCALES / LANG_SLUGS 应与 src/data/language-registry.ts 的 LEARN_LANG_CODES / LANG_CODE_TO_SLUG 保持一致。
-// Phase 2 将通过调整 server/tsconfig.json 或共享 registry 来消除此重复。
-const LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de", "it", "th", "yue"] as const;
+const LOCALES = UI_LANGUAGES;
 const DEFAULT_LOCALE = "en";
 
-const LANG_SLUGS: Record<string, string> = {
-  en: "english",
-  zh: "chinese",
-  ja: "japanese",
-  ko: "korean",
-  es: "spanish",
-  fr: "french",
-  de: "german",
-  it: "italian",
-  th: "thai",
-  yue: "cantonese",
-  ms: "malay",
-  id: "indonesian",
-  vi: "vietnamese",
-};
+const LANG_SLUGS = LANG_CODE_TO_SLUG;
 
 /**
  * Learn-only 语言 slug 列表（isUiLanguage=false，无 UI 翻译）。
@@ -41,7 +33,9 @@ const LANG_SLUGS: Record<string, string> = {
  * 但不进 hreflang（因为没有界面翻译，不存在 /ms/ /id/ /vi/ locale 变体）。
  * sitemap 中这些页面仅声明 self + x-default。
  */
-const EXTRA_LEARN_SLUGS = ["malay", "indonesian", "vietnamese"] as const;
+const EXTRA_LEARN_SLUGS = LEARN_LANGUAGES.filter(
+  (e) => !e.isUiLanguage
+).map((e) => e.slug);
 
 /** 生成带 locale 前缀的完整 URL */
 function localeUrl(locale: string, path: string): string {

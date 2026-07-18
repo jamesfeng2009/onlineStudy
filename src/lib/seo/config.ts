@@ -4,44 +4,39 @@
  * 所有 SEO 相关的常量和工具函数集中在这里，
  * 内容变更（新增题目/单词）不需要修改此模块。
  * 只在以下情况需要改：
- * - 新增语言
+ * - 新增语言 → 改 src/data/language-registry.ts
  * - 域名变更
  * - 新增静态页面路由
+ *
+ * 本文件不再硬编码 LOCALES / LANG_SLUGS / OG_LOCALES，
+ * 全部从 src/lib/i18n/registry.ts 派生（单一事实源）。
  */
+
+import {
+  UI_LANGUAGES,
+  LEARN_LANGUAGES,
+  LANG_CODE_TO_SLUG,
+  OG_LOCALE_MAP,
+  type LanguageCode,
+} from "../i18n/registry";
 
 export const SITE_URL = "https://lang-oria.com";
 export const SITE_NAME = "LangOria";
 export const SITE_DESCRIPTION =
   "Immersive language learning — vocabulary, grammar, speaking and listening exercises for English, Japanese, Chinese, Korean, Spanish, French and German.";
 
-/** 所有支持的 locale（用于 hreflang + sitemap） */
-export const LOCALES = ["en", "zh", "ja", "ko", "es", "fr", "de"] as const;
-export type Locale = (typeof LOCALES)[number];
+/** 所有支持的 locale（用于 hreflang + sitemap），从 registry 派生 */
+export const LOCALES = UI_LANGUAGES as readonly LanguageCode[];
+export type Locale = LanguageCode;
 
 /** 默认语言（无 URL 前缀） */
 export const DEFAULT_LOCALE: Locale = "en";
 
-/** og:locale 映射 */
-export const OG_LOCALES: Record<Locale, string> = {
-  en: "en_US",
-  zh: "zh_CN",
-  ja: "ja_JP",
-  ko: "ko_KR",
-  es: "es_ES",
-  fr: "fr_FR",
-  de: "de_DE",
-};
+/** og:locale 映射，从 registry 派生 */
+export const OG_LOCALES = OG_LOCALE_MAP;
 
-/** 语言 slug → URL slug 映射（/languages/:langSlug） */
-export const LANG_SLUGS: Record<Locale, string> = {
-  en: "english",
-  zh: "chinese",
-  ja: "japanese",
-  ko: "korean",
-  es: "spanish",
-  fr: "french",
-  de: "german",
-};
+/** 语言 slug → URL slug 映射（/languages/:langSlug），从 registry 派生 */
+export const LANG_SLUGS = LANG_CODE_TO_SLUG;
 
 /** 生成带 locale 前缀的完整 URL */
 export function localeUrl(locale: Locale, path: string): string {
@@ -68,7 +63,7 @@ export const STATIC_PAGES: SitemapEntry[] = [
   { path: "/blog", changefreq: "daily", priority: 0.9 },
   { path: "/faq", changefreq: "monthly", priority: 0.7 },
   { path: "/languages", changefreq: "monthly", priority: 0.8 },
-  // 语言主页
+  // 语言主页 — 只包含有 UI 翻译的语言（hreflang 需要对应 locale 变体）
   ...LOCALES.map((l) => ({
     path: `/languages/${LANG_SLUGS[l]}`,
     changefreq: "monthly" as const,
