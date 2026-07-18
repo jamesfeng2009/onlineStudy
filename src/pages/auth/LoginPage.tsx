@@ -31,6 +31,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
+  const [oauthLoading, setOauthLoading] = useState<"google" | "github" | null>(null);
   const login = useAuthStore((s) => s.login);
   const navigate = useNavigate();
 
@@ -53,6 +54,8 @@ export default function LoginPage() {
 
   // OAuth 入口：直接跳后端 /api/auth/oauth/:provider
   const startOAuth = (provider: "google" | "github") => {
+    setOauthLoading(provider);
+    setErr("");
     const base = import.meta.env.VITE_API_URL ?? "/api";
     const url = `${base.replace(/\/$/, "")}/auth/oauth/${provider}`;
     window.location.href = url;
@@ -83,17 +86,29 @@ export default function LoginPage() {
             <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
                 type="button"
+                disabled={oauthLoading !== null}
                 onClick={() => startOAuth("google")}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 disabled:opacity-50"
               >
-                <GoogleIcon /> {continueWithGoogle}
+                {oauthLoading === "google" ? (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                ) : (
+                  <GoogleIcon />
+                )}
+                {continueWithGoogle}
               </button>
               <button
                 type="button"
+                disabled={oauthLoading !== null}
                 onClick={() => startOAuth("github")}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 disabled:opacity-50"
               >
-                <GitHubIcon /> {continueWithGitHub}
+                {oauthLoading === "github" ? (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                ) : (
+                  <GitHubIcon />
+                )}
+                {continueWithGitHub}
               </button>
             </div>
 

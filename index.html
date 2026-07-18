@@ -132,6 +132,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- OAuth provider DNS prefetch: resolves github.com / accounts.google.com
+         early so the OAuth redirect handshake starts faster. -->
+    <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="dns-prefetch" href="https://accounts.google.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
