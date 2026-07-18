@@ -74,26 +74,19 @@ function LangCodeRedirect() {
   const { locale, langCode } = useParams<{ locale: string; langCode: string }>();
   const location = useLocation();
 
-  // Reserved paths: never treat these as language codes.
-  // This prevents /zh/login, /ja/courses, etc. from being swallowed
-  // by the redirect logic and showing a 404.
-  const RESERVED = new Set([
-    "login", "register", "courses", "learn", "languages", "blog", "faq",
-    "settings", "profile", "admin", "auth", "dashboard", "recommend",
-    "community", "achievements", "writing", "reading", "league",
-    "placement", "alphabet", "ai-conversation", "cefr-self-assessment",
-  ]);
-
   // Only redirect if:
-  // 1. locale is a valid UI language (otherwise let the route fall through)
-  // 2. langCode is NOT a reserved path
-  // 3. langCode is a valid learn language code (e.g. id, ms, vi, ja, ...)
-  // 4. langCode is NOT a valid UI language (otherwise it might be a real page)
+  // 1. locale is a valid UI language
+  // 2. langCode is a valid learn language code (e.g. id, ms, vi, ja, ...)
+  // 3. langCode is NOT a valid UI language (otherwise it might be a real page)
+  //
+  // Note: we don't need a RESERVED path list — if langCode is not a valid
+  // learn language code, langSlugFromCode returns undefined and we fall
+  // through to the * catch-all naturally. This is more robust than
+  // maintaining a hardcoded RESERVED set.
   if (
     locale &&
     langCode &&
     (SUPPORTED_LANGUAGES as readonly string[]).includes(locale) &&
-    !RESERVED.has(langCode) &&
     !(SUPPORTED_LANGUAGES as readonly string[]).includes(langCode)
   ) {
     const slug = langSlugFromCode(langCode);
