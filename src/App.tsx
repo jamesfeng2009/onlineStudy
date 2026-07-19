@@ -164,6 +164,10 @@ const localeRoutes = (
     <Route path="learn/:courseId" element={<LearnPage />} />
     <Route path="languages" element={<LearnLangPage />} />
     <Route path="languages/:langSlug" element={<LearnLangPage />} />
+    <Route path="languages/:langSlug/vocabulary" element={<LearnVocabPage />} />
+    <Route path="languages/:langSlug/vocabulary/:levelSlug" element={<LearnVocabPage />} />
+    <Route path="languages/:langSlug/scenarios" element={<LearnScenarioPage />} />
+    <Route path="languages/:langSlug/scenarios/:scenarioSlug" element={<LearnScenarioPage />} />
     <Route path="languages/:langSlug/word/:wordSlug" element={<LearnWordPage />} />
     <Route path="dashboard" element={<DashboardPage />} />
     <Route path="recommend" element={<RecommendPage />} />

@@ -86,6 +86,16 @@ export default function LearnVocabPage() {
   if (levelSlug) {
     const levelEntry = grouped.find((g) => slugifyLevel(g.level) === levelSlug);
     if (!levelEntry) {
+      if (words === null) {
+        // 数据仍在加载（useEffect 动态导入）。此时绝不能渲染 noindex
+        // 的 "levelNotFound" —— Googlebot 若在数据到达前快照页面，
+        // 会把整页误判为 noindex（GSC "Excluded by 'noindex' tag"）。
+        return (
+          <PageShell title="">
+            <div className="min-h-[40vh]" />
+          </PageShell>
+        );
+      }
       return (
         <PageShell title={t("ui.levelNotFound")} subtitle={t("ui.levelNotAvailable")}>
           <Seo noindex title={t("ui.levelNotFound")} />
