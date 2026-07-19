@@ -47,7 +47,40 @@ const LEARN_LANG_SLUGS = [
   "vietnamese",
 ];
 
-function generateRoutes(): string[] {
+/** 博客文章（构建时从线上 API 拉取，用于预渲染 /blog/:slug）。 */
+interface BlogPostForPrerender {
+  slug: string;
+  baseLanguageCode?: string;
+  [key: string]: unknown;
+}
+
+/**
+ * 构建时获取已发布博客文章。
+ * 前端运行时走同域 /api；Node 构建环境没有同域概念，需要完整 URL。
+ * fetch 失败时降级为空数组（不阻塞构建，文章页退回客户端渲染）。
+ */
+async function fetchBlogPosts(): Promise<BlogPostForPrerender[]> {
+  const apiBase = (process.env.VITE_API_URL ?? "https://lang-oria.com/api").replace(/\/$/, "");
+  try {
+    const resp = await fetch(`${apiBase}/blog/posts`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const json = (await resp.json()) as { data?: BlogPostForPrerender[] };
+    return json.data ?? [];
+  } catch (err) {
+    console.warn("[prerender] failed to fetch blog posts, skipping article routes:", err);
+    return [];
+  }
+}
+
+/** 文章只在其 baseLanguageCode 对应的 locale 下存在，其他语言版本不生成。 */
+function blogPostRoute(post: BlogPostForPrerender): string | null {
+  const lang = post.baseLanguageCode || "en";
+  if (!UI_LOCALES.includes(lang as (typeof UI_LOCALES)[number])) return null;
+  const prefix = lang === "en" ? "" : `/${lang}`;
+  return `${prefix}/blog/${post.slug}`;
+}
+
+async function generateRoutes(posts: BlogPostForPrerender[]): Promise<string[]> {
   const routes: string[] = [];
 
   for (const locale of UI_LOCALES) {
@@ -67,6 +100,12 @@ function generateRoutes(): string[] {
       routes.push(`${prefix}/languages/${slug}/vocabulary`);
       routes.push(`${prefix}/languages/${slug}/scenarios`);
     }
+  }
+
+  // 博客文章详情页（每篇只生成其原文语言版本）
+  for (const post of posts) {
+    const route = blogPostRoute(post);
+    if (route) routes.push(route);
   }
 
   return routes;
@@ -170,7 +209,25 @@ async function prerender() {
   // 若模板在之前的构建中已被污染（含 trae-inspector），先还原为干净骨架
   template = template.replace(/\s*<div id="root">[\s\S]*?<\/div>/, '<div id="root"></div>');
   template = template.replace(/\s+trae-inspector-[a-z-]+="[^"]*"/g, "");
-  const routes = generateRoutes();
+
+  // 生成 app-shell.html：未预渲染路径的 SPA 兜底壳。
+  // 之前 vercel.json 兜底 rewrite 到 "/"，而 dist/index.html 会被首页预渲染
+  // 覆盖，导致所有未预渲染 URL（/ko/settings、非法语言组合页等）返回首页
+  // 内容 —— GSC 的 Soft 404 / Duplicate-canonical 报告均源于此。
+  // 壳带 noindex，客户端 React 加载后正常接管路由。
+  const appShell = template.replace(
+    "</head>",
+    '    <meta name="robots" content="noindex, nofollow" />\n  </head>'
+  );
+  fs.writeFileSync(path.join(distDir, "app-shell.html"), appShell, "utf-8");
+
+  const posts = await fetchBlogPosts();
+  const postByRoute = new Map<string, BlogPostForPrerender>();
+  for (const post of posts) {
+    const route = blogPostRoute(post);
+    if (route) postByRoute.set(route, post);
+  }
+  const routes = await generateRoutes(posts);
 
   console.log(`[prerender] ${routes.length} routes`);
 
@@ -185,7 +242,14 @@ async function prerender() {
 
     for (const route of routes) {
       try {
+        // 博客文章页：渲染前把文章数据注入全局，供 BlogPostPage 在 SSR 时读取
+        //（renderToString 不执行 useEffect，必须预加载数据避免返回空壳）。
+        const post = postByRoute.get(route);
+        if (post) {
+          (globalThis as Record<string, unknown>).__BLOG_POST__ = post;
+        }
         const html: string = await render(route);
+        delete (globalThis as Record<string, unknown>).__BLOG_POST__;
 
         // 1) 把 renderToString 结果注入 root。
         //    ssrLoadModule 走 Vite dev pipeline，Trae inspector 插件会在

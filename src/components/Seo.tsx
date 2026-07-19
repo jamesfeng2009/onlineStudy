@@ -71,14 +71,14 @@ function buildAlternates(
   pathname: string,
   localizedPaths?: { lang: string; path: string }[]
 ) {
-  const pathByLang = new Map<string, string>(
-    (localizedPaths ?? []).map((p) => [p.lang, p.path])
-  );
+  // 传入 localizedPaths 时只为指定语言生成 alternate。
+  // 用于博客文章等只存在单一语言版本的页面——声明不存在的
+  // 语言版本（如 /fr/blog/<英文文章>）会让 Google 发现并抓取
+  // 空壳 URL，误判为 Soft 404。
+  if (localizedPaths && localizedPaths.length > 0) {
+    return localizedPaths.map((p) => ({ lang: p.lang, url: `${SITE_URL}${p.path}` }));
+  }
   return UI_LANGUAGES.map((code) => {
-    const customPath = pathByLang.get(code);
-    if (customPath) {
-      return { lang: code, url: `${SITE_URL}${customPath}` };
-    }
     const cleanTarget = (pathname ?? "/").split("?")[0].split("#")[0] || "/";
     const prefixed = buildLocalePath(code, cleanTarget);
     return {

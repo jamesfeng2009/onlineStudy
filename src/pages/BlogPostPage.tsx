@@ -33,14 +33,25 @@ export default function BlogPostPage() {
   const { slug } = useParams();
   const { t } = useTranslation();
   const location = useLocation();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+  // SSR（预渲染）时 prerender 脚本会把文章数据注入 globalThis.__BLOG_POST__，
+  // 直接渲染完整内容，避免文章页返回空壳（GSC Soft 404 根因）。
+  // 客户端 hydration 时 globalThis 为空 → null → useEffect 正常 fetch。
+  const [post, setPost] = useState<BlogPost | null>(() => {
+    if (typeof window === "undefined") {
+      const injected = (globalThis as Record<string, unknown>).__BLOG_POST__ as BlogPost | undefined;
+      return injected ?? null;
+    }
+    return null;
+  });
+  const [loading, setLoading] = useState(post === null);
   const [notFound, setNotFound] = useState(false);
 
   const { locale: urlLocale } = extractLocaleFromPath(location.pathname);
 
   useEffect(() => {
     if (!slug) return;
+    // 已有 SSR 注入且 slug 匹配的数据时跳过客户端加载
+    if (post && post.slug === slug) return;
     let alive = true;
     setLoading(true);
     setNotFound(false);
@@ -58,7 +69,7 @@ export default function BlogPostPage() {
     return () => {
       alive = false;
     };
-  }, [slug]);
+  }, [slug, post]);
 
   if (loading) {
     return (
@@ -105,6 +116,7 @@ export default function BlogPostPage() {
         type="article"
         lang={post.baseLanguageCode}
         pathname={pagePath}
+        localizedPaths={[{ lang: postLang, path: buildLocalePath(postLang as never, pagePath) }]}
       />
       <JsonLd
         data={[

@@ -20,6 +20,6 @@
     { "source": "/sitemap.xml", "destination": "/api/handler?__path=seo/sitemap" },
     { "source": "/robots.txt", "destination": "/api/handler?__path=seo/robots" },
     { "source": "/rss.xml", "destination": "/api/handler?__path=seo/rss" },
-    { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/" }
+    { "source": "/((?!assets/|favicon\\.svg|api/).*)", "destination": "/app-shell.html" }
   ]
 }
