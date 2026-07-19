@@ -54,4 +54,5 @@ DO $$ BEGIN
         ALTER TABLE "dialogue_scenes"
             ADD CONSTRAINT "dialogue_scenes_languageCode_fkey"
             FOREIGN KEY ("languageCode") REFERENCES "languages"("code") ON DELETE CASCADE ON UPDATE CASCADE;
-    END IF
+    END IF;
+END $$;
