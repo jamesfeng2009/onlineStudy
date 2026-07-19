@@ -79,17 +79,39 @@ export async function buildApp(): Promise<FastifyInstance> {
   });
 
   // ── 全局速率限制（P1-1 反爬） ──
-  // 按 IP + 路由 双维度限制：
-  //   1. 公开 GET API：每个 IP 100 次/分钟（博客、课程、词汇等核心数据接口）
-  //   2. 登录/认证端点：每个 IP 20 次/分钟（防爆破）
-  //   3. 管理端点 /admin/*：每个 IP 30 次/分钟
-  //   4. AI 接口（ai-explain / ai-converse）：每个 IP 10 次/分钟（防刷额度）
+  // 分层策略（按端点敏感度区分阈值，各自独立计数桶）：
+  //   1. 全局公开 API：每个 IP 100 次/分钟（博客、课程、词汇等读取接口）
+  //   2. 登录/注册：每个 IP 10 次/分钟（防密码爆破，正常人 1-2 次足够）
+  //   3. 学习写操作 record-*：每个 IP 30 次/分钟（人类答题极限约 30 题/分钟）
+  //   4. AI 接口（ai-explain / ai-converse）：每个 IP 10 次/分钟（防刷 LLM 额度）
   //
   // 白名单：Health check、静态资源、robots/sitemap/rss 不限制。
+  /** 限流类别：返回计数桶后缀与阈值，null 表示走全局默认 */
+  const classifyRateLimit = (rawUrl: string): { bucket: string; max: number } | null => {
+    const url = rawUrl.split("?")[0];
+    if (url === "/api/auth/login" || url === "/api/auth/register") {
+      return { bucket: ":auth", max: 10 };
+    }
+    if (url.startsWith("/api/progress/record")) {
+      return { bucket: ":record", max: 30 };
+    }
+    if (url.startsWith("/api/ai-explain") || url.startsWith("/api/ai-converse")) {
+      return { bucket: ":ai", max: 10 };
+    }
+    return null;
+  };
+
   await app.register(fastifyRateLimit, {
-    max: 100,
+    max: async (request) => {
+      const cls = classifyRateLimit(request.raw.url ?? "");
+      return cls ? cls.max : 100;
+    },
     timeWindow: "1 minute",
-    keyGenerator: (request) => request.ip,
+    // 按类别分桶计数（ip:auth / ip:record / ip:ai / ip），互不干扰
+    keyGenerator: (request) => {
+      const cls = classifyRateLimit(request.raw.url ?? "");
+      return cls ? `${request.ip}${cls.bucket}` : request.ip;
+    },
     errorResponseBuilder: (_request, context) => ({
       statusCode: 429,
       code: "RATE_LIMITED",
@@ -108,34 +130,6 @@ export async function buildApp(): Promise<FastifyInstance> {
       );
     },
   });
-
-  // AI 接口严格限流（每个 IP 10 次/分钟）
-  await app.register(async (instance) => {
-    await instance.register(fastifyRateLimit, {
-      max: 10,
-      timeWindow: "1 minute",
-      keyGenerator: (request) => request.ip,
-      errorResponseBuilder: (_request, context) => ({
-        statusCode: 429,
-        code: "RATE_LIMITED",
-        message: `AI 功能请求过于频繁，请 ${context.after} 秒后重试`,
-        data: null,
-      }),
-    });
-  }, { prefix: "/api/ai-explain" });
-  await app.register(async (instance) => {
-    await instance.register(fastifyRateLimit, {
-      max: 10,
-      timeWindow: "1 minute",
-      keyGenerator: (request) => request.ip,
-      errorResponseBuilder: (_request, context) => ({
-        statusCode: 429,
-        code: "RATE_LIMITED",
-        message: `AI 功能请求过于频繁，请 ${context.after} 秒后重试`,
-        data: null,
-      }),
-    });
-  }, { prefix: "/api/ai-converse" });
 
   await app.register(fastifyJwt, { secret: SECRET });
   await app.register(jwtPlugin);
@@ -180,6 +174,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     else if (status === 403) code = "FORBIDDEN";
     else if (status === 404) code = "NOT_FOUND";
     else if (status === 409) code = "CONFLICT";
+    else if (status === 429) code = "RATE_LIMITED";
 
     app.log.error(
       {

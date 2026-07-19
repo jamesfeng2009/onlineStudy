@@ -22,6 +22,7 @@ export type ApiCode =
   | "FORBIDDEN"
   | "NOT_FOUND"
   | "CONFLICT"
+  | "RATE_LIMITED"
   | "INTERNAL_ERROR";
 
 export interface ApiResponse<T = unknown> {
@@ -37,6 +38,7 @@ const codeToStatus: Record<ApiCode, number> = {
   FORBIDDEN: 403,
   NOT_FOUND: 404,
   CONFLICT: 409,
+  RATE_LIMITED: 429,
   INTERNAL_ERROR: 500,
 };
 
