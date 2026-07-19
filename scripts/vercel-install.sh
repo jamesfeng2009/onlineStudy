@@ -19,14 +19,13 @@ SQL
 pnpm prisma generate
 
 # 023_add_conversation_content 之前在本地通过 run-migration-023.ts 手动建表。
-# 首次 migrate deploy 失败（P3018 relation exists）在 _prisma_migrations 留了记录，
-# 直接 migrate resolve --applied 会报 P2002（migration_name unique 冲突）。
-# 先 DELETE 清理残留记录，再 resolve --applied 插入带正确 checksum 的记录。
+# 首次 migrate deploy 失败（P3018）在 _prisma_migrations 留了 failed 记录。
+# 清理 failed 记录后，migrate deploy 重新执行 023（SQL 已幂等化，IF NOT EXISTS / DO 块，
+# 表已存在不会报错），Prisma 写入 applied 记录，后续部署正常跳过。
 pnpm prisma db execute --stdin <<'SQL'
 DELETE FROM "_prisma_migrations"
  WHERE "migration_name" = '023_add_conversation_content';
 SQL
-pnpm prisma migrate resolve --applied 023_add_conversation_content || true
 
 # 自动执行未应用的数据库迁移
 pnpm prisma migrate deploy

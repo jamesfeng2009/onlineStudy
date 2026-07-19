@@ -7,9 +7,10 @@
 -- （匿名仅样例，登录用户全量）。
 --
 -- 数据由 scripts/seed-conversations.ts 导入（upsert，幂等）。
+-- 迁移 SQL 幂等化（IF NOT EXISTS / DO 块），支持重复执行不报错。
 -- ============================================================
 
-CREATE TABLE "real_conversations" (
+CREATE TABLE IF NOT EXISTS "real_conversations" (
     "id"             TEXT      NOT NULL,     -- 源数据 id（已按语言命名空间，如 "dlg-xxx-en"）
     "languageCode"   TEXT      NOT NULL,
     "conversationId" TEXT      NOT NULL,     -- 源数据集 conversation id（跨语言共享同一源对话）
@@ -20,10 +21,10 @@ CREATE TABLE "real_conversations" (
 );
 
 -- 列表查询主路径：按语言 + 场景域过滤
-CREATE INDEX "real_conversations_languageCode_domain_idx"
+CREATE INDEX IF NOT EXISTS "real_conversations_languageCode_domain_idx"
     ON "real_conversations"("languageCode", "domain");
 
-CREATE TABLE "dialogue_scenes" (
+CREATE TABLE IF NOT EXISTS "dialogue_scenes" (
     "id"           TEXT      NOT NULL,       -- 如 "dlg-en-coffee"
     "languageCode" TEXT      NOT NULL,
     "level"        TEXT      NOT NULL,
@@ -36,13 +37,21 @@ CREATE TABLE "dialogue_scenes" (
     CONSTRAINT "dialogue_scenes_pkey" PRIMARY KEY ("id")
 );
 
-CREATE INDEX "dialogue_scenes_languageCode_idx"
+CREATE INDEX IF NOT EXISTS "dialogue_scenes_languageCode_idx"
     ON "dialogue_scenes"("languageCode");
 
-ALTER TABLE "real_conversations"
-    ADD CONSTRAINT "real_conversations_languageCode_fkey"
-    FOREIGN KEY ("languageCode") REFERENCES "languages"("code") ON DELETE CASCADE ON UPDATE CASCADE;
+-- 外键约束幂等添加（表可能已通过 run-migration-023.ts 手动建好）
+DO $$ BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'real_conversations_languageCode_fkey') THEN
+        ALTER TABLE "real_conversations"
+            ADD CONSTRAINT "real_conversations_languageCode_fkey"
+            FOREIGN KEY ("languageCode") REFERENCES "languages"("code") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF;
+END $$;
 
-ALTER TABLE "dialogue_scenes"
-    ADD CONSTRAINT "dialogue_scenes_languageCode_fkey"
-    FOREIGN KEY ("languageCode") REFERENCES "languages"("code") ON DELETE CASCADE ON UPDATE CASCADE;
+DO $$ BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'dialogue_scenes_languageCode_fkey') THEN
+        ALTER TABLE "dialogue_scenes"
+            ADD CONSTRAINT "dialogue_scenes_languageCode_fkey"
+            FOREIGN KEY ("languageCode") REFERENCES "languages"("code") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF
