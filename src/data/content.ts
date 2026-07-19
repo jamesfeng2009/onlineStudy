@@ -1,8 +1,10 @@
-import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase, Language } from "../types";
-import { GENERATED_QUIZZES } from "./generated-quizzes";
-import { GENERATED_LISTENING } from "./generated-listening";
-import { GENERATED_SPEAKING } from "./generated-speaking";
-import { REAL_CONVERSATIONS } from "./real-conversations";
+import type { WordItem, QuizItem, ListeningItem, SpeakingPhrase } from "../types";
+
+// P0 反爬：generated-quizzes / generated-listening / generated-speaking /
+// real-conversations 不再打进前端 bundle —— 完整内容统一走后端 API
+// （/api/quizzes、/api/listening、/api/speaking、/api/real-conversations）。
+// 此处仅保留手工编写的小规模样例，作为 API 不可用时的离线兜底；
+// 原始数据文件仍保留在 src/data/ 下供 seed 脚本使用，但不会被打包。
 
 export const WORDS: WordItem[] = [
   // English A1
@@ -55,9 +57,7 @@ export const WORDS: WordItem[] = [
 ];
 
 export const QUIZZES: QuizItem[] = [
-  // ── Auto-generated quizzes from Gemini (755 items: de:78, en:79, es:76, fr:78, it:77, ja:80, ko:77, th:80, yue:60, zh:70) ──
-  ...GENERATED_QUIZZES,
-  // ── Hand-crafted quizzes (kept for variety) ──
+  // ── Hand-crafted quizzes (离线兜底样本；完整题库走 /api/quizzes) ──
   {
     id: "q-en-1",
     question: "She ___ to the gym every morning before work.",
@@ -151,9 +151,7 @@ export const QUIZZES: QuizItem[] = [
 ];
 
 export const LISTENING: ListeningItem[] = [
-  // ── Auto-generated listening exercises (45 items: en:15, ja:15, zh:15) ──
-  ...GENERATED_LISTENING,
-  // ── Hand-crafted listening exercises (kept for variety) ──
+  // ── Hand-crafted listening exercises (离线兜底样本；完整材料走 /api/listening) ──
   {
     id: "l-en-1",
     title: "Morning Routine",
@@ -205,9 +203,7 @@ export const LISTENING: ListeningItem[] = [
 ];
 
 export const SPEAKING: SpeakingPhrase[] = [
-  // ── Auto-generated speaking phrases (45 items: en:15, ja:15, zh:15) ──
-  ...GENERATED_SPEAKING,
-  // ── Hand-crafted speaking phrases (kept for variety) ──
+  // ── Hand-crafted speaking phrases (离线兜底样本；完整语料走 /api/speaking) ──
   { id: "s-en-1", phrase: "Hello! Nice to meet you.", translation: "你好！很高兴认识你。", phonetic: "/həˈloʊ/ /naɪs/ /tə/ /mit/ /ju/", language: "en", level: "A1" },
   { id: "s-en-2", phrase: "How was your weekend?", translation: "你周末过得怎么样？", phonetic: "/haʊ/ /wʌz/ /jʊr/ /ˈwikˌɛnd/", language: "en", level: "A2" },
   { id: "s-en-3", phrase: "Could you repeat that, please?", translation: "你能重复一下吗？", phonetic: "/kʊd/ /ju/ /rɪˈpit/ /ðæt/", language: "en", level: "B1" },
@@ -236,18 +232,6 @@ export const getWords = (language: string, level?: string) => filterByLangLevel(
 export const getQuizzes = (language: string, level?: string) => filterByLangLevel(QUIZZES, language, level);
 export const getListening = (language: string, level?: string) => filterByLangLevel(LISTENING, language, level);
 export const getSpeaking = (language: string, level?: string) => filterByLangLevel(SPEAKING, language, level);
-export const getRealConversations = (language: Language, domain?: string) => {
-  const byLang = REAL_CONVERSATIONS.filter((c) => c.language === language);
-  const filtered = domain
-    ? byLang.filter((c) => c.domain === domain)
-    : byLang;
-  // Fall back to English if the requested language has nothing yet.
-  if (filtered.length === 0 && language !== "en") {
-    const enAll = REAL_CONVERSATIONS.filter((c) => c.language === "en");
-    return domain ? enAll.filter((c) => c.domain === domain) : enAll;
-  }
-  return filtered;
-};
 
 function filterByLangLevel<T extends { language: string; level?: string }>(items: T[], language: string, level?: string): T[] {
   const byLang = items.filter((item) => item.language === language);

@@ -1,39 +1,20 @@
 /**
  * RealConversationModule — 真实对话影子跟读模式
  *
- * This module is lazy-loaded by LearnPage to keep the main bundle
- * small (the REAL_CONVERSATIONS data adds ~1.4 MB / ~300 KB gz).
- * Only loaded when the user actually switches to the "Real
- * conversations" tab.
+ * P1 反爬：REAL_CONVERSATIONS 数据已迁入 DB，通过
+ * /api/real-conversations 按需下发（匿名仅每个 domain 第 1 条样例，
+ * 登录解锁全部）。不再打进前端 bundle。
  *
  * 来源:Taskmaster-2 真实人机对话数据集
  * 模式:逐句听 ASSISTANT → 跟读 → 打分 → 下一句
  */
-import { useEffect, useMemo, useState } from "react";
-import { Mic, ArrowRight, MessagesSquare } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Mic, ArrowRight, MessagesSquare, Lock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { GlassCard } from "../components/GlassCard";
 import PronunciationScore from "../components/PronunciationScore";
-// Direct import (bypassing ../data/content) so Vite keeps the ~1.4 MB
-// REAL_CONVERSATIONS array bundled inside this lazy chunk instead of
-// pulling it into the main chunk via content.ts.
-import { REAL_CONVERSATIONS } from "../data/real-conversations";
+import { api } from "../lib/api";
 import type { Language, RealConversation } from "../types";
-
-function getRealConversations(
-  language: Language,
-  domain?: string,
-): RealConversation[] {
-  const byLang = REAL_CONVERSATIONS.filter((c) => c.language === language);
-  const filtered = domain
-    ? byLang.filter((c) => c.domain === domain)
-    : byLang;
-  if (filtered.length === 0 && language !== "en") {
-    const enAll = REAL_CONVERSATIONS.filter((c) => c.language === "en");
-    return domain ? enAll.filter((c) => c.domain === domain) : enAll;
-  }
-  return filtered;
-}
 
 const BCP47: Record<Language, string> = {
   en: "en-US",
@@ -72,15 +53,49 @@ export default function RealConversationModule({
 }) {
   const { t } = useTranslation();
   const [domain, setDomain] = useState<string>("restaurant");
-  const conversations = useMemo(
-    () => getRealConversations(language, domain),
-    [language, domain],
-  );
+  const [conversations, setConversations] = useState<RealConversation[]>([]);
+  const [total, setTotal] = useState(0);
+  const [preview, setPreview] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [convIdx, setConvIdx] = useState(0);
   const [uttIdx, setUttIdx] = useState(0);
   const [scoredCount, setScoredCount] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [bestScores, setBestScores] = useState<Record<number, number>>({});
+
+  // P1 反爬：语料走 /api/real-conversations（匿名仅样例，登录全量）。
+  // 目标语言无数据时回退英文（与原 getRealConversations 行为一致）。
+  useEffect(() => {
+    let alive = true;
+    setLoading(true);
+    api
+      .realConversations({ language, domain })
+      .then(async (resp) => {
+        if (!alive) return;
+        if (resp.items.length === 0 && language !== "en") {
+          const enResp = await api.realConversations({ language: "en", domain });
+          if (!alive) return;
+          setConversations(enResp.items);
+          setTotal(enResp.total);
+          setPreview(enResp.preview);
+        } else {
+          setConversations(resp.items);
+          setTotal(resp.total);
+          setPreview(resp.preview);
+        }
+      })
+      .catch(() => {
+        if (!alive) return;
+        setConversations([]);
+        setTotal(0);
+      })
+      .finally(() => {
+        if (alive) setLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, [language, domain]);
 
   // Pick the first non-empty conversation for this domain.
   const conv: RealConversation | null =
@@ -142,6 +157,21 @@ export default function RealConversationModule({
     totalAssistantUtts > 0
       ? Math.round((completedInConv / totalAssistantUtts) * 100)
       : 0;
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <GlassCard className="flex min-h-[380px] flex-col items-center justify-center py-12">
+            <MessagesSquare className="h-12 w-12 animate-pulse text-brand-200/40" />
+            <div className="mt-4 text-sm text-brand-200/70">
+              {t("common.loading")}
+            </div>
+          </GlassCard>
+        </div>
+      </div>
+    );
+  }
 
   if (!conv) {
     return (
@@ -218,6 +248,17 @@ export default function RealConversationModule({
               {t("learn.realConv.nextConv")} →
             </button>
           </div>
+
+          {/* 匿名预览提示：登录解锁全部语料 */}
+          {preview && total > conversations.length && (
+            <button
+              onClick={onNeedLogin}
+              className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2.5 text-xs text-amber-200 transition hover:bg-amber-400/20"
+            >
+              <Lock className="h-3.5 w-3.5" />
+              {t("learn.realConv.loginUnlockAll", { total })}
+            </button>
+          )}
 
           {/* Progress bar */}
           <div className="mb-4 h-[3px] overflow-hidden rounded-full bg-white/5">

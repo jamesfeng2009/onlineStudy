@@ -21,8 +21,12 @@ function getAt(node, p) {
 const PH = /\{\{[^}]+\}\}/g;
 const multiset = (s) => (s.match(PH) ?? []).sort().join(" ");
 
+const LANGS = process.argv[2]
+  ? process.argv[2].split(",")
+  : ["th", "ms", "id", "vi", "zh", "ja", "ko", "yue", "es", "fr", "de", "it"];
+
 let fail = 0;
-for (const lang of ["th", "ms", "id", "vi"]) {
+for (const lang of LANGS) {
   for (const file of ["translation", "learn"]) {
     const target = JSON.parse(fs.readFileSync(`src/locales/${lang}/${file}.json`, "utf-8"));
     const enPaths = keyPaths(en[file]);

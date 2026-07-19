@@ -29,6 +29,8 @@ import stripeRoutes from "./routes/stripe.js";
 import adminRoutes from "./routes/admin.js";
 import blogRoutes from "./routes/blog.js";
 import seoRoutes from "./routes/seo.js";
+import realConversationsRoutes from "./routes/real-conversations.js";
+import dialogueSceneRoutes from "./routes/dialogue-scenes.js";
 import jwtPlugin from "./lib/jwt.js";
 import { prisma } from "./lib/prisma.js";
 import { sendSuccess } from "./lib/response.js";
@@ -84,8 +86,21 @@ export async function buildApp(): Promise<FastifyInstance> {
   //   2. 登录/注册：每个 IP 10 次/分钟（防密码爆破，正常人 1-2 次足够）
   //   3. 学习写操作 record-*：每个 IP 30 次/分钟（人类答题极限约 30 题/分钟）
   //   4. AI 接口（ai-explain / ai-converse）：每个 IP 10 次/分钟（防刷 LLM 额度）
+  //   5. 内容全量接口（P2-b）：每个账号 60 次/分钟
+  //      （real-conversations / dialogue-scenes / quizzes / listening / speaking
+  //        登录用户按 userId 计数，防"注册脚本号批量拉取核心语料"；
+  //        匿名用户回退按 IP 计数，不影响 SEO 抓取与正常学习）
   //
   // 白名单：Health check、静态资源、robots/sitemap/rss 不限制。
+  /** 内容类核心资产接口前缀（P2-b 按 userId 限流） */
+  const CONTENT_API_PREFIXES = [
+    "/api/real-conversations",
+    "/api/dialogue-scenes",
+    "/api/quizzes",
+    "/api/listening",
+    "/api/speaking",
+  ];
+
   /** 限流类别：返回计数桶后缀与阈值，null 表示走全局默认 */
   const classifyRateLimit = (rawUrl: string): { bucket: string; max: number } | null => {
     const url = rawUrl.split("?")[0];
@@ -98,7 +113,23 @@ export async function buildApp(): Promise<FastifyInstance> {
     if (url.startsWith("/api/ai-explain") || url.startsWith("/api/ai-converse")) {
       return { bucket: ":ai", max: 10 };
     }
+    if (CONTENT_API_PREFIXES.some((p) => url.startsWith(p))) {
+      return { bucket: ":content", max: 60 };
+    }
     return null;
+  };
+
+  /** 同步解析 Authorization header 中的 JWT，返回 userId（无效/缺失返回 null）。
+   *  仅用于限流分桶：伪造无效 token 会回退到 IP 桶，无法借此放大配额。 */
+  const extractJwtUserId = (request: import("fastify").FastifyRequest): string | null => {
+    const header = request.headers.authorization;
+    if (!header || !header.startsWith("Bearer ")) return null;
+    try {
+      const payload = app.jwt.verify<{ userId?: string }>(header.slice(7));
+      return payload?.userId ?? null;
+    } catch {
+      return null;
+    }
   };
 
   await app.register(fastifyRateLimit, {
@@ -107,9 +138,14 @@ export async function buildApp(): Promise<FastifyInstance> {
       return cls ? cls.max : 100;
     },
     timeWindow: "1 minute",
-    // 按类别分桶计数（ip:auth / ip:record / ip:ai / ip），互不干扰
+    // 按类别分桶计数（ip:auth / ip:record / ip:ai / u:userId:content / ip），互不干扰
     keyGenerator: (request) => {
       const cls = classifyRateLimit(request.raw.url ?? "");
+      // P2-b：内容接口对登录用户按 userId 限流（防脚本号批量拉）
+      if (cls?.bucket === ":content") {
+        const uid = extractJwtUserId(request);
+        if (uid) return `u:${uid}:content`;
+      }
       return cls ? `${request.ip}${cls.bucket}` : request.ip;
     },
     errorResponseBuilder: (_request, context) => ({
@@ -162,6 +198,18 @@ export async function buildApp(): Promise<FastifyInstance> {
       },
       "← response",
     );
+  });
+
+  // ── P2-a 反爬：API 响应统一声明 X-Robots-Tag: noindex ──
+  // 配合 robots.txt 的 Disallow: /api/ 双保险：
+  //   robots.txt 阻止合规爬虫抓取，X-Robots-Tag 确保已抓取的 API 响应
+  //   不会进入搜索索引。排除 /api/seo/*（robots/sitemap/rss 本身就是
+  //   给搜索引擎读取的文件，不能带 noindex）。对页面 SEO 零影响。
+  app.addHook("onSend", async (request, reply) => {
+    const url = request.raw.url?.split("?")[0] ?? "";
+    if (url.startsWith("/api/") && !url.startsWith("/api/seo/")) {
+      reply.header("X-Robots-Tag", "noindex, nofollow");
+    }
   });
 
   // 全局错误处理：统一返回 { code, message, data }
@@ -225,6 +273,8 @@ export async function buildApp(): Promise<FastifyInstance> {
     adminRoutes,
     blogRoutes,
     seoRoutes,
+    realConversationsRoutes,
+    dialogueSceneRoutes,
   ];
 
   for (const route of apiRoutes) {

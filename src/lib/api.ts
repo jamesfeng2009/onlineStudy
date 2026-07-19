@@ -145,6 +145,38 @@ export async function getSpeaking(params?: { language?: string; level?: string }
   return request(`/speaking${query ? `?${query}` : ""}`);
 }
 
+// ====== P1 反爬：真实对话语料 + 分支对话场景 ======
+// 数据已迁入 DB，匿名仅返回样例（preview=true），登录返回全量。
+// 响应 items 的元素结构与 src/types.ts 的 RealConversation / DialogueScene 一致。
+
+export interface RealConversationListResp {
+  items: import("../types").RealConversation[];
+  total: number;
+  preview: boolean;
+}
+
+export async function getRealConversations(params: {
+  language: string;
+  domain?: string;
+}): Promise<RealConversationListResp> {
+  const qs = new URLSearchParams({ language: params.language });
+  if (params.domain) qs.set("domain", params.domain);
+  return request(`/real-conversations?${qs.toString()}`, {}, true);
+}
+
+export interface DialogueSceneListResp {
+  items: import("../types").DialogueScene[];
+  total: number;
+  preview: boolean;
+}
+
+export async function getDialogueSceneList(params: {
+  language: string;
+}): Promise<DialogueSceneListResp> {
+  const qs = new URLSearchParams({ language: params.language });
+  return request(`/dialogue-scenes?${qs.toString()}`, {}, true);
+}
+
 // ====== User SRS review queues (auth) ======
 export async function getWordReviews(params?: { language?: string; due?: boolean }): Promise<Record<string, unknown>[]> {
   const qs = new URLSearchParams();
@@ -1298,6 +1330,8 @@ export const api = {
   quizzes: getQuizzes,
   listening: getListening,
   speaking: getSpeaking,
+  realConversations: getRealConversations,
+  dialogueScenes: getDialogueSceneList,
   wordReviews: getWordReviews,
   quizReviews: getQuizReviews,
   listeningReviews: getListeningReviews,

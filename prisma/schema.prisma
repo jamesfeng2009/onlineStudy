@@ -26,6 +26,8 @@ model Language {
   speaking  Speaking[]
   readingPassages ReadingPassage[]
   writingPrompts  WritingPrompt[]
+  realConversations RealConversation[]
+  dialogueScenes    DialogueScene[]
   users     User[]
 
   @@map("languages")
@@ -148,6 +150,41 @@ model Speaking {
 
   @@map("speaking")
   @@index([languageCode, level])
+}
+
+// P1 反爬：真实对话语料（Taskmaster-2 翻译版），从 src/data/real-conversations.ts 迁入 DB，
+// 不再打进前端 bundle，通过 /api/real-conversations 按需下发（匿名仅样例，登录全量）。
+model RealConversation {
+  id             String @id // 源数据 id（已按语言命名空间，如 "dlg-xxx-en"）
+  languageCode   String
+  conversationId String // 源数据集 conversation id（跨语言共享同一源对话）
+  domain         String // restaurant / movies / hotels / flights / food-ordering / music / sports
+  utterances     Json   // { index: number; speaker: "USER"|"ASSISTANT"; text: string }[]
+  convOrder      Int    @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("real_conversations")
+  @@index([languageCode, domain])
+}
+
+// P1 反爬：手写的分支对话场景图，从 src/data/dialogue-scenes.ts 迁入 DB，
+// 通过 /api/dialogue-scenes 按需下发。
+model DialogueScene {
+  id          String @id // 如 "dlg-en-coffee"
+  languageCode String
+  level       String
+  scenario    String // ordering-coffee / asking-directions ...
+  title       String
+  opening     String
+  turns       Json   // Record<turnId, DialogueTurn>（分支图）
+  startTurnId String
+  sceneOrder  Int    @default(0)
+
+  language Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  @@map("dialogue_scenes")
+  @@index([languageCode])
 }
 
 model User {

@@ -26,10 +26,9 @@ import { LANGUAGES, getLanguage, getLanguageDisplayName } from "../data/language
 import { getWordFamily } from "../data/word-families";
 import { getGrammarPoints, getGrammarPoint, matchGrammarPoint } from "../data/grammar-points";
 import GrammarMap from "../components/GrammarMap";
-import { getDialogueScenes } from "../data/dialogue-scenes";
 import { runConversationTurn, startConversation } from "../lib/conversation";
 import type { ConversationState } from "../lib/conversation";
-import type { Language, WordFamily, ReviewQuality, DialogueScene } from "../types";
+import type { Language, WordFamily, ReviewQuality, DialogueScene, QuizItem, ListeningItem, SpeakingPhrase } from "../types";
 
 // Lazy-load the RealConversationModule so the ~1.4 MB REAL_CONVERSATIONS
 // data array is only fetched when the user actually opens the "Real
@@ -520,10 +519,23 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
   const recordQuiz = useProgressStore((s) => s.recordQuiz);
   const recordMistake = useMistakeStore((s) => s.recordWrong);
   const mistakes = useMistakeStore((s) => s.byLanguage(language));
+  const user = useAuthStore((s) => s.user);
+  const nativeLanguage = (user?.nativeLanguage as string | undefined) ?? "en";
+  // P0 反爬：题库优先走后端 API（完整题库不再打进 bundle），本地静态数据仅作离线兜底
+  const [apiQuizzes, setApiQuizzes] = useState<QuizItem[]>([]);
+  useEffect(() => {
+    let alive = true;
+    api
+      .quizzes({ language, level, nativeLanguage })
+      .then((data) => { if (alive) setApiQuizzes((data as unknown as QuizItem[]) ?? []); })
+      .catch(() => { if (alive) setApiQuizzes([]); });
+    return () => { alive = false; };
+  }, [language, level, nativeLanguage]);
   const quizzes = useMemo(() => {
+    if (apiQuizzes.length >= 2) return apiQuizzes;
     const base = getQuizzes(language, level);
     return base && base.length >= 2 ? base : getQuizzes("en");
-  }, [language, level]);
+  }, [apiQuizzes, language, level]);
   const grammarPoints = useMemo(() => getGrammarPoints(language), [language]);
 
   const [i, setI] = useState(0);
@@ -709,7 +721,21 @@ function GrammarModule({ language, level, isLoggedIn, onNeedLogin }: { language:
 function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const { t } = useTranslation();
   const recordSpeaking = useProgressStore((s) => s.recordSpeaking);
-  const phrases = useMemo(() => getSpeaking(language, level), [language, level]);
+  // P0 反爬：语料优先走后端 API（完整语料不再打进 bundle），本地静态数据仅作离线兜底
+  const [apiPhrases, setApiPhrases] = useState<SpeakingPhrase[]>([]);
+  useEffect(() => {
+    let alive = true;
+    api
+      .speaking({ language, level })
+      .then((data) => { if (alive) setApiPhrases((data as unknown as SpeakingPhrase[]) ?? []); })
+      .catch(() => { if (alive) setApiPhrases([]); });
+    return () => { alive = false; };
+  }, [language, level]);
+  const phrases = useMemo(() => {
+    if (apiPhrases.length > 0) return apiPhrases;
+    const base = getSpeaking(language, level);
+    return base && base.length > 0 ? base : getSpeaking("en");
+  }, [apiPhrases, language, level]);
   const [i, setI] = useState(0);
   const [count, setCount] = useState(0);
   const p = phrases[i % Math.max(1, phrases.length)];
@@ -790,7 +816,21 @@ function SpeakingModule({ language, level, isLoggedIn, onNeedLogin }: { language
 function ListeningModule({ language, level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const { t } = useTranslation();
   const recordListening = useProgressStore((s) => s.recordListening);
-  const allItems = useMemo(() => getListening(language, level), [language, level]);
+  // P0 反爬：听力材料优先走后端 API（完整脚本不再打进 bundle），本地静态数据仅作离线兜底
+  const [apiItems, setApiItems] = useState<ListeningItem[]>([]);
+  useEffect(() => {
+    let alive = true;
+    api
+      .listening({ language, level })
+      .then((data) => { if (alive) setApiItems((data as unknown as ListeningItem[]) ?? []); })
+      .catch(() => { if (alive) setApiItems([]); });
+    return () => { alive = false; };
+  }, [language, level]);
+  const allItems = useMemo(() => {
+    if (apiItems.length > 0) return apiItems;
+    const base = getListening(language, level);
+    return base && base.length > 0 ? base : getListening("en");
+  }, [apiItems, language, level]);
   const [sceneFilter, setSceneFilter] = useState<string>("all");
   const items = useMemo(() => {
     if (sceneFilter === "all") return allItems;
@@ -1187,15 +1227,28 @@ interface ChatBubble {
 
 function ConversationModule({ language, level: _level, isLoggedIn, onNeedLogin }: { language: Language; level?: string; isLoggedIn: boolean; onNeedLogin: () => void }) {
   const { t } = useTranslation();
-  const scenes = useMemo(() => getDialogueScenes(language), [language]);
-  const [sceneId, setSceneId] = useState<string>(scenes[0]?.id ?? "");
+  // P1 反爬：分支对话场景走 /api/dialogue-scenes（匿名仅 2 条，登录全量）。
+  // 服务端已处理目标语言无场景时的英文回退。
+  const [scenes, setScenes] = useState<DialogueScene[]>([]);
+  const [scenesLoading, setScenesLoading] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    setScenesLoading(true);
+    api
+      .dialogueScenes({ language })
+      .then((resp) => { if (alive) setScenes(resp.items); })
+      .catch(() => { if (alive) setScenes([]); })
+      .finally(() => { if (alive) setScenesLoading(false); });
+    return () => { alive = false; };
+  }, [language]);
+  const [sceneId, setSceneId] = useState<string>("");
   const [bubbles, setBubbles] = useState<ChatBubble[]>([]);
   const [input, setInput] = useState("");
   const [convState, setConvState] = useState<ConversationState | null>(null);
   const [listening, setListening] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Reset selection when language changes.
+  // Reset selection when language changes or API returns new scenes.
   useEffect(() => {
     if (scenes.length > 0 && !scenes.find((s) => s.id === sceneId)) {
       setSceneId(scenes[0].id);
@@ -1296,6 +1349,9 @@ function ConversationModule({ language, level: _level, isLoggedIn, onNeedLogin }
                 {s.title}
               </button>
             ))}
+            {!scenesLoading && scenes.length === 0 && (
+              <div className="text-xs text-brand-200/60">{t("learn.conversation.noScenes")}</div>
+            )}
           </div>
 
           {/* Chat area */}
