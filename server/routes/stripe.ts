@@ -144,7 +144,8 @@ const stripeRoutes: FastifyPluginAsync = async (fastify) => {
       preParsing: [
         async (_request, _reply, payload) => payload,
       ],
-      config: { rawBody: true },
+      // fastify v5 + TS: rawBody 不在 FastifyContextConfig 中，直接 cast
+      config: { rawBody: true } as Record<string, unknown>,
     },
     async (request, reply) => {
       const sigHeader = (request.headers["stripe-signature"] as string) ?? "";

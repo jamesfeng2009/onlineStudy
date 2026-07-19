@@ -2,6 +2,7 @@ import fastify from "fastify";
 import type { FastifyInstance } from "fastify";
 import fastifyCors from "@fastify/cors";
 import fastifyJwt from "@fastify/jwt";
+import fastifyRateLimit from "@fastify/rate-limit";
 import bcrypt from "bcryptjs";
 
 import authRoutes from "./routes/auth.js";
@@ -76,6 +77,65 @@ export async function buildApp(): Promise<FastifyInstance> {
     origin: [FRONTEND_URL, /localhost:/, /127\.0\.0\.1:/, /\.vercel\.app$/],
     credentials: true,
   });
+
+  // ── 全局速率限制（P1-1 反爬） ──
+  // 按 IP + 路由 双维度限制：
+  //   1. 公开 GET API：每个 IP 100 次/分钟（博客、课程、词汇等核心数据接口）
+  //   2. 登录/认证端点：每个 IP 20 次/分钟（防爆破）
+  //   3. 管理端点 /admin/*：每个 IP 30 次/分钟
+  //   4. AI 接口（ai-explain / ai-converse）：每个 IP 10 次/分钟（防刷额度）
+  //
+  // 白名单：Health check、静态资源、robots/sitemap/rss 不限制。
+  await app.register(fastifyRateLimit, {
+    max: 100,
+    timeWindow: "1 minute",
+    keyGenerator: (request) => request.ip,
+    errorResponseBuilder: (_request, context) => ({
+      statusCode: 429,
+      code: "RATE_LIMITED",
+      message: `请求过于频繁，请 ${context.after} 秒后重试`,
+      data: null,
+    }),
+    allowList: (request) => {
+      const url = request.raw.url?.split("?")[0] ?? "";
+      return (
+        url === "/health" ||
+        url === "/" ||
+        url.startsWith("/assets/") ||
+        url === "/robots.txt" ||
+        url === "/sitemap.xml" ||
+        url === "/rss.xml"
+      );
+    },
+  });
+
+  // AI 接口严格限流（每个 IP 10 次/分钟）
+  await app.register(async (instance) => {
+    await instance.register(fastifyRateLimit, {
+      max: 10,
+      timeWindow: "1 minute",
+      keyGenerator: (request) => request.ip,
+      errorResponseBuilder: (_request, context) => ({
+        statusCode: 429,
+        code: "RATE_LIMITED",
+        message: `AI 功能请求过于频繁，请 ${context.after} 秒后重试`,
+        data: null,
+      }),
+    });
+  }, { prefix: "/api/ai-explain" });
+  await app.register(async (instance) => {
+    await instance.register(fastifyRateLimit, {
+      max: 10,
+      timeWindow: "1 minute",
+      keyGenerator: (request) => request.ip,
+      errorResponseBuilder: (_request, context) => ({
+        statusCode: 429,
+        code: "RATE_LIMITED",
+        message: `AI 功能请求过于频繁，请 ${context.after} 秒后重试`,
+        data: null,
+      }),
+    });
+  }, { prefix: "/api/ai-converse" });
 
   await app.register(fastifyJwt, { secret: SECRET });
   await app.register(jwtPlugin);

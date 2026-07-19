@@ -267,10 +267,8 @@ ${[...staticUrls, ...extraLearnUrls, ...blogUrls].join("\n")}
    * GET /seo/robots — 动态 robots.txt
    */
   fastify.get("/seo/robots", async (_request, reply) => {
-    const txt = `# LangOria robots.txt
-User-agent: *
-Allow: /
-Disallow: /admin
+    // 通用禁止项（特定 bot 组不继承 `*` 组规则，需完整重复）
+    const commonDisallow = `Disallow: /admin
 Disallow: /api/
 Disallow: /login
 Disallow: /register
@@ -280,22 +278,37 @@ Disallow: /dashboard
 Disallow: /learn/*
 Disallow: /achievements
 Disallow: /recommend
-Disallow: /community
+Disallow: /community`;
+
+    const txt = `# LangOria robots.txt
+User-agent: *
+Allow: /
+${commonDisallow}
 
 Sitemap: ${SITE_URL}/sitemap.xml
 
-# AI bots: full access
+# AI bots 分两类对待（P1-2 反爬）：
+#   1. 纯训练爬虫（GPTBot / ClaudeBot）：不带来流量，只白嫖内容训练竞品模型
+#      → 额外禁止抓取词汇库页面（/languages/），保护核心内容资产
+#   2. AI 搜索爬虫（PerplexityBot / Google-Extended）：带来 AI 引用流量（GEO）
+#      → 保持全站允许，与 prerender 的 AI-友好策略一致
 User-agent: GPTBot
 Allow: /
-
-User-agent: PerplexityBot
-Allow: /
+${commonDisallow}
+Disallow: /languages/
 
 User-agent: ClaudeBot
 Allow: /
+${commonDisallow}
+Disallow: /languages/
+
+User-agent: PerplexityBot
+Allow: /
+${commonDisallow}
 
 User-agent: Google-Extended
-Allow: /`;
+Allow: /
+${commonDisallow}`;
 
     reply.type("text/plain; charset=utf-8");
     reply.header("Cache-Control", "public, max-age=3600, s-maxage=3600");
