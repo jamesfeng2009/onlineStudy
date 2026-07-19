@@ -18,9 +18,14 @@ SQL
 
 pnpm prisma generate
 
-# 023_add_conversation_content 之前在本地通过 run-migration-023.ts 手动建表，
-# _prisma_migrations 表无记录，migrate deploy 会重复建表报 P3018。
-# 标记为已应用（Prisma 自动计算 checksum），后续部署 migrate deploy 自动跳过。
+# 023_add_conversation_content 之前在本地通过 run-migration-023.ts 手动建表。
+# 首次 migrate deploy 失败（P3018 relation exists）在 _prisma_migrations 留了记录，
+# 直接 migrate resolve --applied 会报 P2002（migration_name unique 冲突）。
+# 先 DELETE 清理残留记录，再 resolve --applied 插入带正确 checksum 的记录。
+pnpm prisma db execute --stdin <<'SQL'
+DELETE FROM "_prisma_migrations"
+ WHERE "migration_name" = '023_add_conversation_content';
+SQL
 pnpm prisma migrate resolve --applied 023_add_conversation_content || true
 
 # 自动执行未应用的数据库迁移
