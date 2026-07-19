@@ -17,5 +17,11 @@ DELETE FROM "_prisma_migrations"
 SQL
 
 pnpm prisma generate
+
+# 023_add_conversation_content 之前在本地通过 run-migration-023.ts 手动建表，
+# _prisma_migrations 表无记录，migrate deploy 会重复建表报 P3018。
+# 标记为已应用（Prisma 自动计算 checksum），后续部署 migrate deploy 自动跳过。
+pnpm prisma migrate resolve --applied 023_add_conversation_content || true
+
 # 自动执行未应用的数据库迁移
 pnpm prisma migrate deploy
