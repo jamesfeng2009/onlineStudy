@@ -1,0 +1,78 @@
+# Translate UI i18n files (translation.json + learn.json) for the
+# Gemini-routed languages: zh/ja/ko/yue/es/fr/de/it.
+# SEA languages (th/ms/id/vi) are routed to DashScope and run locally
+# — see scripts/translate-i18n.ts for the routing table.
+#
+# Trigger manually from the Actions tab.
+name: Translate i18n
+
+on:
+  workflow_dispatch:
+    inputs:
+      langs:
+        description: "Comma-separated languages (default: all Gemini-routed)"
+        default: "zh,ja,ko,yue,es,fr,de,it"
+        required: false
+      max_cost:
+        description: "Cost cap in USD"
+        default: "5.00"
+        required: false
+      overwrite:
+        description: "Re-translate cached chunks? (true/false)"
+        default: "false"
+        required: false
+      refine:
+        description: "Refine pass with flagship model? (true/false)"
+        default: "false"
+        required: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Translate i18n chunks
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Gemini free tier: report $0 so the script's cost cap
+          # doesn't abort early on generous free quota.
+          LLM_COST_PER_1M_IN: "0"
+          LLM_COST_PER_1M_OUT: "0"
+        run: |
+          ARGS="--provider=gemini --max-cost=${{ inputs.max_cost || '5.00' }}"
+          if [ -n "${{ inputs.langs }}" ]; then
+            ARGS="$ARGS --lang=${{ inputs.langs }}"
+          fi
+          if [ "${{ inputs.overwrite }}" = "true" ]; then
+            ARGS="$ARGS --overwrite"
+          fi
+          if [ "${{ inputs.refine }}" = "true" ]; then
+            ARGS="$ARGS --refine"
+          fi
+          npx tsx scripts/translate-i18n.ts $ARGS
+
+      - name: Commit translated locales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet src/locales/ scripts/generated/i18n-chunks/ && ! git ls-files --others --exclude-standard src/locales/ scripts/generated/i18n-chunks/ | grep -q .; then
+            echo "No changes — all translations already up to date."
+            exit 0
+          fi
+          git pull --rebase --autostash origin main
+          git add src/locales/ scripts/generated/i18n-chunks/
+          git commit -m "chore: LLM-translate i18n locales (gemini) [skip ci]"
+          git push
