@@ -17,6 +17,8 @@ export default function SettingsPage() {
 
   const [uiLang, setUiLang] = useState<string>(user?.uiLanguage ?? i18n.language ?? "en");
   const [nativeLang, setNativeLang] = useState<string>(user?.nativeLanguage ?? "en");
+  // 高级设置：默认隐藏"解释语言"选择器，跟随界面语言
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [savedMsg, setSavedMsg] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,6 +29,13 @@ export default function SettingsPage() {
       setNativeLang((user.nativeLanguage as string) ?? "en");
     }
   }, [user, i18n.language]);
+
+  // 当界面语言变化时，自动同步解释语言（除非用户已展开高级设置手动改过）
+  useEffect(() => {
+    if (!showAdvanced) {
+      setNativeLang(uiLang);
+    }
+  }, [uiLang, showAdvanced]);
 
   const save = async () => {
     setErr("");
@@ -94,41 +103,6 @@ export default function SettingsPage() {
           </div>
         </GlassCard>
 
-        <GlassCard className="p-6">
-          <div className="mb-4 flex items-center gap-3">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia-400/10 text-fuchsia-300">
-              <MessageCircleQuestion className="h-5 w-5" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-white">{t("settings.native")}</div>
-              <div className="text-xs text-brand-200/70">{t("settings.nativeDesc")}</div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {SUPPORTED_LANGUAGES.map((id) => {
-              const l = LANGUAGES.find((x) => x.id === id);
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setNativeLang(id)}
-                  className={
-                    "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
-                    (nativeLang === id
-                      ? "border-fuchsia-400/50 bg-fuchsia-400/10 text-white"
-                      : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
-                  }
-                >
-                  <span className="flex items-center gap-2">
-                    {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
-                  </span>
-                  {nativeLang === id && <Check className="h-4 w-4 text-fuchsia-300" />}
-                </button>
-              );
-            })}
-          </div>
-        </GlassCard>
-
         <GlassCard className="p-6 lg:col-span-2">
           <div className="mb-4 flex items-center gap-3">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-400/10 text-amber-300">
@@ -156,6 +130,65 @@ export default function SettingsPage() {
             ))}
           </div>
           <p className="mt-3 text-xs text-brand-200/50">{t("profile.settingsHint")}</p>
+        </GlassCard>
+
+        {/* 高级设置：默认折叠，展开后可单独设置解释语言（默认跟随界面语言） */}
+        <GlassCard className="p-6 lg:col-span-2">
+          <button
+            type="button"
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            className="flex w-full items-center justify-between text-left"
+          >
+            <div className="flex items-center gap-3">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia-400/10 text-fuchsia-300">
+                <MessageCircleQuestion className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">
+                  {t("settings.advanced") ?? "高级设置"}
+                </div>
+                <div className="text-xs text-brand-200/70">
+                  {showAdvanced
+                    ? (t("settings.nativeDesc") ?? "解释语言设置")
+                    : (t("settings.advancedDesc") ?? "默认跟随界面语言，展开可单独设置")}
+                </div>
+              </div>
+            </div>
+            <div className={`text-brand-200/70 transition-transform ${showAdvanced ? "rotate-180" : ""}`}>
+              ▼
+            </div>
+          </button>
+
+          {showAdvanced && (
+            <div className="mt-4">
+              <div className="mb-2 text-xs text-brand-200/70">
+                {t("settings.native") ?? "解释语言"}（{t("settings.followsInterface") ?? "默认跟随界面语言"}）
+              </div>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {SUPPORTED_LANGUAGES.map((id) => {
+                  const l = LANGUAGES.find((x) => x.id === id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setNativeLang(id)}
+                      className={
+                        "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
+                        (nativeLang === id
+                          ? "border-fuchsia-400/50 bg-fuchsia-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                      }
+                    >
+                      <span className="flex items-center gap-2">
+                        {l?.flag ?? "🌐"} {l ? getLanguageDisplayName(l.id, i18n.language) : id}
+                      </span>
+                      {nativeLang === id && <Check className="h-4 w-4 text-fuchsia-300" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </GlassCard>
       </div>
 
