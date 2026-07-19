@@ -1,12 +1,12 @@
 {
   "app": {
     "name": "LangOria",
-    "tagline": "Aprendizaje inmersivo de idiomas"
+    "tagline": "Aprendizaje de idiomas inmersivo"
   },
   "loginPrompt": {
     "title": "Inicio de sesión requerido",
-    "message": "Inicia sesión o regístrate para continuar. Tu progreso de aprendizaje se guardará automáticamente.",
-    "login": "Iniciar sesión",
+    "message": "Por favor, inicia sesión o regístrate para continuar. Tu progreso de aprendizaje se guardará automáticamente.",
+    "login": "Ir a Iniciar sesión",
     "register": "Registrarse"
   },
   "nav": {
@@ -18,73 +18,75 @@
     "community": "Comunidad",
     "achievements": "Logros",
     "profile": "Perfil",
+    "settings": "Configuración",
     "login": "Iniciar sesión",
     "register": "Registrarse",
     "logout": "Cerrar sesión",
-    "settings": "Settings",
-    "faq": "FAQ",
+    "faq": "Preguntas frecuentes",
     "blog": "Blog"
   },
   "header": {
-    "streak": "{{days}} días seguidos",
-    "level": "Lv.{{level}}",
+    "streak": "{{days}} días de racha",
+    "level": "Nv.{{level}}",
     "login": "Iniciar sesión / Registrarse",
     "loading": "Cargando...",
     "logout": "Cerrar sesión"
   },
   "footer": {
-    "copyright": "© {{year}} LangOria · Plataforma de aprendizaje multilingüe inmersivo"
+    "copyright": "© {{year}} LangOria · Plataforma de Aprendizaje Multilingüe Inmersivo"
   },
   "dashboard": {
-    "title": "Panel de aprendizaje",
-    "subtitle": "Hola {{name}}, aquí tienes una vista completa de tus datos de aprendizaje.",
-    "subtitleGuest": "Inicia sesión para ver tu progreso de aprendizaje.",
+    "title": "Panel de Aprendizaje",
+    "subtitle": "Hola {{name}}, aquí tienes el panorama completo de tus datos de aprendizaje.",
+    "subtitleGuest": "Por favor, inicia sesión para ver tu progreso de aprendizaje.",
     "welcomeBack": "¡Bienvenido de nuevo, {{name}}!",
-    "learnedToday": "Has estudiado {{minutes}} minutos hoy, objetivo {{goal}} minutos. ¡Sigue así!",
-    "startToday": "Empezar a aprender hoy",
-    "browseCourses": "Explorar cursos",
+    "learnedToday": "Hoy has estudiado {{minutes}} minutos, meta {{goal}} minutos. ¡Sigue así!",
+    "startToday": "Empezar el Aprendizaje de Hoy",
+    "browseCourses": "Explorar Cursos",
     "streak": "Racha",
     "level": "Nivel",
-    "todaysGoal": "Objetivo de hoy",
-    "recommended": "Recomendación de hoy",
-    "viewAll": "Ver todo",
+    "todaysGoal": "Meta de Hoy",
+    "recommended": "Recomendación de Hoy",
+    "viewAll": "Ver Todo",
     "loading": "Cargando datos de aprendizaje...",
     "streakLearn": "Racha",
-    "wordsLearned": "Palabras aprendidas",
-    "wordsAnswered": "Respondido {{count}} veces",
+    "wordsLearned": "Palabras Aprendidas",
+    "wordsAnswered": "Respondidas {{count}} veces",
     "grammar": "Gramática",
     "grammarAccuracy": "Precisión {{pct}}%",
-    "total14": "Total de 14 días",
+    "total14": "Total de 14 Días",
     "total14Value": "{{total}} min",
-    "avgPerDay": "Media {{avg}} min/día",
-    "chartTitle": "Tiempo de estudio de los últimos 14 días",
+    "avgPerDay": "Promedio {{avg}} min/día",
+    "chartTitle": "Tiempo de Estudio de los Últimos 14 Días",
     "chartUnit": "Unidad: minutos · total diario",
-    "todayGoal": "Objetivo de hoy",
+    "todayGoal": "Meta de Hoy",
     "progressTitle": "Progreso",
     "exp": "EXP",
-    "radarTitle": "Radar de habilidades",
-    "radarSubtitle": "Vocabulario · Gramática · Escucha · Habla",
-    "moduleTitle": "Rendimiento por módulo · Reciente",
-    "moduleTip": "La práctica constante hará que estas métricas suban poco a poco",
+    "radarTitle": "Radar de Habilidades",
+    "radarSubtitle": "Vocabulario · Gramática · Comprensión Auditiva · Expresión Oral",
+    "moduleTitle": "Rendimiento del Módulo · Reciente",
+    "moduleTip": "La práctica constante aumentará gradualmente estas métricas",
     "moduleScore": "Puntuación",
-    "heatmapTitle": "Mapa de calor de 14 días",
-    "heatmapSubtitle": "Cada celda es un día · cuanto más oscuro, más tiempo de estudio",
+    "heatmapTitle": "Mapa de Calor de 14 Días",
+    "heatmapSubtitle": "Cada celda es un día · más oscuro significa más tiempo de estudio",
     "heatmapTooltip": "{{date}} · {{minutes}} min",
     "skills": {
       "words": "Vocabulario",
       "grammar": "Gramática",
-      "listening": "Escucha",
-      "speaking": "Habla"
+      "listening": "Comprensión Auditiva",
+      "speaking": "Expresión Oral"
     },
-    "keepGoing": "Keep going!"
+    "keepGoing": "¡Sigue así!"
   },
   "courses": {
-    "title": "Sistema de cursos por niveles",
-    "subtitle": "Filtra por idioma y nivel — de principiante a dominio.",
-    "currentLanguage": "Idioma actual",
+    "seoTitle": "Cursos de Idiomas — A1 a C1 | LangOria",
+    "seoDescription": "Explora cursos de idiomas estructurados desde A1 hasta C2 en inglés, japonés, coreano, chino, español, francés, alemán, italiano, tailandés y cantonés. Vocabulario con repetición espaciada, ejercicios de escucha y práctica de conversación.",
+    "title": "Sistema de Cursos por Nivel",
+    "subtitle": "Filtra por idioma y nivel — desde cero hasta el dominio.",
+    "currentLanguage": "Idioma Actual",
     "select": "Seleccionar",
     "locked": "Bloqueado",
-    "start": "Empezar a aprender",
+    "start": "Empezar a Aprender",
     "continue": "Continuar",
     "filter": {
       "language": "Idioma",
@@ -98,173 +100,173 @@
     },
     "lessons": "{{count}} lecciones",
     "minutes": "{{count}} min",
-    "noResults": "Ningún curso coincide. Prueba otro filtro.",
+    "noResults": "No hay cursos que coincidan. Prueba con un filtro diferente.",
     "progress": "Progreso",
-    "disclaimer": "Las etiquetas de nivel (CEFR / JLPT / HSK / TOPIK) son solo una alineación orientativa, para facilitar la comparación entre sistemas. CEFR es una marca del Consejo de Europa, JLPT es una marca de la Fundación Japón, HSK es una marca de Hanban y TOPIK es una marca del Instituto Nacional de Educación Internacional de Corea. Este proyecto no está certificado ni autorizado por ninguna de estas organizaciones oficiales; los datos de logro de nivel son una estimación interna del proyecto.",
+    "disclaimer": "Las etiquetas de nivel (MCER / JLPT / HSK / TOPIK) son solo para alineación indicativa, para facilitar la comparación entre sistemas. MCER es una marca registrada del Consejo de Europa, JLPT es una marca registrada de la Japan Foundation, HSK es una marca registrada de Hanban, y TOPIK es una marca registrada del Instituto Nacional para la Educación Internacional de Corea. Este proyecto no está certificado ni autorizado por ninguna de estas organizaciones oficiales; los datos de logro de nivel son una estimación interna.",
     "entryCards": {
-      "placement": "¿No sabes por dónde empezar? Prueba el test de nivel",
-      "placementDesc": "6 preguntas adaptativas para situar tu nivel inicial · sin necesidad de iniciar sesión",
-      "alphabet": "Empieza por las letras: introducción a los idiomas asiáticos",
+      "placement": "¿No sabes por dónde empezar? Prueba el examen de nivel",
+      "placementDesc": "6 preguntas adaptativas para determinar tu nivel inicial · no requiere inicio de sesión",
+      "alphabet": "Empieza por las letras: fundamentos de idiomas asiáticos",
       "alphabetDesc": "Hiragana / Katakana / Hangul / Pinyin / Jyutping / Tailandés · toca un carácter para escucharlo",
-      "reading": "Comprensión lectora · completa tus competencias CEFR",
-      "readingDesc": "Lectura por niveles + notas de vocabulario + preguntas de comprensión · registra automáticamente tu mejor puntuación",
-      "league": "Liga semanal · compite por el rango Maestro",
-      "leagueDesc": "XP acumulado semanalmente · Bronce → Plata → Oro → Platino → Diamante → Maestro · ascensos y descensos cada lunes",
-      "cefr": "Autoevaluación CEFR · ¿qué puedo hacer?",
-      "cefrDesc": "Autoevalúate de A1 a C2 con afirmaciones Can-Do · complementa al test de nivel · infiere tu nivel automáticamente",
-      "writing": "Práctica de escritura · corrección instantánea",
-      "writingDesc": "Ensayos / correos / resúmenes / historias / diálogos · puntuación tridimensional: conteo de palabras + diversidad léxica + palabras clave"
+      "reading": "Comprensión lectora · completa tus habilidades MCER",
+      "readingDesc": "Lectura graduada + notas de vocabulario + preguntas de comprensión · registra automáticamente tu mejor puntuación",
+      "league": "Clasificación semanal · compite por el nivel Maestro",
+      "leagueDesc": "Los XP se acumulan semanalmente · Bronce → Plata → Oro → Platino → Diamante → Maestro · ascensos y descensos se resuelven cada lunes",
+      "cefr": "Autoevaluación MCER · ¿qué puedo hacer?",
+      "cefrDesc": "Autoevalúa A1-C2 con declaraciones 'Puedo hacer' · complementa el examen de nivel · infiere automáticamente tu nivel",
+      "writing": "Práctica de escritura · retroalimentación de puntuación instantánea",
+      "writingDesc": "Ensayos / correos electrónicos / resúmenes / historias / diálogos · puntuación tridimensional por recuento de palabras + diversidad léxica + palabras clave"
     },
     "items": {
       "en-a1-1": {
-        "title": "De cero a principiante: inglés cotidiano",
+        "title": "De Cero a Principiante: Inglés Cotidiano",
         "description": "Saludos, números y expresiones diarias. Empieza a hablar desde el primer día."
       },
       "en-a2-1": {
-        "title": "Inglés para la vida diaria",
+        "title": "Inglés para la Vida Diaria",
         "description": "Compras, comidas y rutinas. Construye vocabulario práctico de A2."
       },
       "en-b1-1": {
-        "title": "Exprésate en inglés",
+        "title": "Exprésate en Inglés",
         "description": "Habla sobre opiniones, planes y experiencias con confianza."
       },
       "en-b2-1": {
-        "title": "Inglés para el trabajo y los estudios",
-        "description": "Reuniones, correos, presentaciones y debates académicos."
+        "title": "Inglés para el Trabajo y el Estudio",
+        "description": "Reuniones, correos electrónicos, presentaciones y debates académicos."
       },
       "en-c1-1": {
-        "title": "Inglés avanzado: cultura e ideas",
+        "title": "Inglés Avanzado: Cultura e Ideas",
         "description": "Debate temas complejos y comprende expresiones matizadas."
       },
       "en-c2-1": {
-        "title": "Dominio: retórica y fluidez en inglés",
-        "description": "Fluidez cercana a la nativa, retórica y precisión."
+        "title": "Dominio: Retórica y Fluidez en Inglés",
+        "description": "Fluidez casi nativa, retórica y precisión."
       },
       "ja-n5-1": {
-        "title": "Bases del hiragana y katakana",
-        "description": "Aprende los dos silabarios y saludos sencillos."
+        "title": "Conceptos Básicos de Hiragana y Katakana",
+        "description": "Aprende los dos sistemas de escritura kana y saludos sencillos."
       },
       "ja-n4-1": {
-        "title": "Japonés cotidiano",
-        "description": "Conversaciones cotidianas y gramática esencial."
+        "title": "Japonés Cotidiano",
+        "description": "Conversaciones diarias y gramática esencial."
       },
       "ja-n3-1": {
-        "title": "Japonés intermedio",
+        "title": "Japonés Intermedio",
         "description": "Lee artículos cortos y sigue diálogos naturales."
       },
       "ja-n2-1": {
-        "title": "Japonés para negocios y estudios en el extranjero",
+        "title": "Japonés para Negocios y Estudios en el Extranjero",
         "description": "Comunicación profesional y estrategias para el JLPT N2."
       },
       "ja-n1-1": {
-        "title": "Dominio del japonés avanzado",
-        "description": "Lectura de nivel nativo, keigo y fluidez profesional."
+        "title": "Dominio Avanzado del Japonés",
+        "description": "Lectura a nivel nativo, keigo y fluidez profesional."
       },
       "ko-beginner-1": {
-        "title": "Hangeul y coreano básico",
-        "description": "Domina el alfabeto coreano y las frases fundamentales."
+        "title": "Hangeul y Coreano Básico",
+        "description": "Domina el alfabeto coreano y frases fundamentales."
       },
       "ko-intermediate-1": {
         "title": "Coreano a través de K-Dramas y K-Pop",
         "description": "Aprende expresiones naturales a través de dramas y canciones."
       },
       "ko-advanced-1": {
-        "title": "Coreano avanzado: TOPIK y negocios",
-        "description": "Gramática avanzada para exámenes y el trabajo."
+        "title": "Coreano Avanzado: TOPIK y Negocios",
+        "description": "Gramática de alto nivel para exámenes y el ámbito laboral."
       },
       "zh-hsk1-1": {
-        "title": "Pinyin y chino HSK 1",
+        "title": "Pinyin y Chino HSK 1",
         "description": "Empieza con tonos, pinyin y caracteres básicos."
       },
       "zh-hsk3-1": {
-        "title": "Chino social HSK 3",
-        "description": "Mantén conversaciones cotidianas y lee textos sencillos."
+        "title": "Chino Social HSK 3",
+        "description": "Mantén conversaciones diarias y lee textos sencillos."
       },
       "zh-hsk5-1": {
-        "title": "Chino para noticias y academia HSK 5",
-        "description": "Comprende noticias, ensayos y discursos formales."
+        "title": "Chino HSK 5 para Noticias y Ámbito Académico",
+        "description": "Comprende noticias, ensayos y lenguaje formal."
       },
       "es-a1-1": {
-        "title": "De cero a principiante: español",
-        "description": "Saludos, frases de viaje y bases de pronunciación."
+        "title": "De Cero a Principiante: Español",
+        "description": "Saludos, frases de viaje y fundamentos de pronunciación."
       },
       "es-b1-1": {
-        "title": "Exprésate en español",
+        "title": "Exprésate en Español",
         "description": "Comparte opiniones, historias y planes de viaje con facilidad."
       },
       "es-c1-1": {
-        "title": "Español avanzado: literatura y academia",
+        "title": "Español Avanzado: Literatura y Academia",
         "description": "Analiza textos y discute la cultura en profundidad."
       },
       "fr-a1-1": {
-        "title": "De cero a principiante: francés",
-        "description": "Pronunciación, saludos y lo esencial del día a día."
+        "title": "De Cero a Principiante: Francés",
+        "description": "Pronunciación, saludos y elementos esenciales del día a día."
       },
       "fr-b2-1": {
-        "title": "Expresión y escritura en francés",
-        "description": "Escribe textos claros y defiende tu punto en francés."
+        "title": "Expresión y Escritura en Francés",
+        "description": "Escribe textos claros y defiende tu punto de vista en francés."
       },
       "fr-c1-1": {
-        "title": "Francés avanzado: cultura y filosofía",
-        "description": "Explora ideas, artes y expresión matizada."
+        "title": "Francés Avanzado: Cultura y Filosofía",
+        "description": "Explora ideas, artes y expresiones matizadas."
       },
       "de-a1-1": {
-        "title": "De cero a principiante: alemán",
+        "title": "De Cero a Principiante: Alemán",
         "description": "Alfabeto, sonidos y frases de la vida diaria."
       },
       "de-b2-1": {
-        "title": "Alemán para el trabajo y la escritura",
+        "title": "Alemán para el Trabajo y la Escritura",
         "description": "Comunicación profesional y escritura estructurada."
       },
       "de-c1-1": {
-        "title": "Alemán avanzado: literatura e ideas",
+        "title": "Alemán Avanzado: Literatura e Ideas",
         "description": "Lee literatura y discute temas complejos."
       },
       "it-a1-1": {
-        "title": "De cero a principiante: italiano",
-        "description": "Pronunciación, saludos y lo esencial de la cultura."
+        "title": "De Cero a Principiante: Italiano",
+        "description": "Pronunciación, saludos y elementos culturales esenciales."
       },
       "it-b1-1": {
-        "title": "Conversación en italiano",
-        "description": "Habla de viajes, comida, cultura y vida diaria."
+        "title": "Conversa en Italiano",
+        "description": "Habla sobre viajes, comida, cultura y la vida diaria."
       },
       "it-c1-1": {
-        "title": "Italiano avanzado: arte y literatura",
-        "description": "Sumérgete en el arte, la literatura y la retórica italianos."
+        "title": "Italiano Avanzado: Arte y Literatura",
+        "description": "Sumérgete en las artes, la literatura y la retórica italianas."
       },
       "th-beg-1": {
-        "title": "Tonos y bases del tailandés",
-        "description": "Domina tonos, consonantes y primeras conversaciones."
+        "title": "Tonos y Conceptos Básicos del Tailandés",
+        "description": "Domina los tonos, las consonantes y las primeras conversaciones."
       },
       "th-int-1": {
-        "title": "Tailandés para viajar y conversar",
-        "description": "Desplázate, pide comida y charla con locales."
+        "title": "Tailandés para Viajes y Conversación",
+        "description": "Muévete, pide comida y conversa con los lugareños."
       },
       "th-adv-1": {
-        "title": "Tailandés avanzado: cultura y fluidez",
-        "description": "Comprende medios, cultura y tailandés idiomático."
+        "title": "Tailandés Avanzado: Cultura y Fluidez",
+        "description": "Comprende los medios, la cultura y el tailandés idiomático."
       },
       "yue-beg-1": {
-        "title": "Tonos y bases del cantonés",
+        "title": "Tonos y Conceptos Básicos del Cantonés",
         "description": "Aprende Jyutping, tonos y frases cotidianas."
       },
       "yue-int-1": {
-        "title": "Conversaciones cotidianas en cantonés",
-        "description": "Habla de vida, comida y desplazamientos."
+        "title": "Conversaciones Diarias en Cantonés",
+        "description": "Habla sobre la vida, la comida y cómo moverte."
       },
       "yue-adv-1": {
-        "title": "Cantonés avanzado: cine y cultura",
-        "description": "Comprende películas, jerga y cultura local."
+        "title": "Cantonés Avanzado: Cine y Cultura",
+        "description": "Comprende películas, jerga y la cultura local."
       }
     },
     "tags": {
-      "zero-to-beginner": "De cero a principiante",
-      "daily-speaking": "Habla cotidiana",
-      "daily-life": "Vida diaria",
+      "zero-to-beginner": "De Cero a Principiante",
+      "daily-speaking": "Habla Diaria",
+      "daily-life": "Vida Diaria",
       "conversation": "Conversación",
       "expression": "Expresión",
       "writing": "Escritura",
-      "workplace": "Trabajo",
+      "workplace": "Ámbito Laboral",
       "academic": "Académico",
       "culture": "Cultura",
       "literature": "Literatura",
@@ -275,9 +277,9 @@
       "daily": "Diario",
       "communication": "Comunicación",
       "reading": "Lectura",
-      "listening": "Escuchar",
+      "listening": "Escucha",
       "business": "Negocios",
-      "study-abroad": "Estudios en el extranjero",
+      "study-abroad": "Estudiar en el Extranjero",
       "professional": "Profesional",
       "advanced": "Avanzado",
       "hangeul": "Hangeul",
@@ -293,42 +295,1253 @@
       "tones": "Tonos",
       "travel": "Viajes",
       "film-tv": "Cine y TV"
-    },
-    "seoTitle": "Language Courses — A1 to C1 | LangOria",
-    "seoDescription": "Browse structured language courses from A1 to C2 across English, Japanese, Korean, Chinese, Spanish, French, German, Italian, Thai, and Cantonese. Spaced-repetition vocab, listening drills, and speaking practice."
+    }
   },
   "levelMeta": {
-    "alignment": "Alineación",
+    "alignment": "Alinear",
     "words": "palabras",
     "hours": "h",
     "vocabTarget": "Vocabulario objetivo",
-    "guidedHours": "Horas recomendadas",
-    "grammarPoints": "Puntos gramaticales",
+    "guidedHours": "Horas guiadas",
+    "grammarPoints": "Puntos de gramática",
     "learningGoals": "Objetivos de aprendizaje",
     "grammarToMaster": "Gramática a dominar",
-    "disclaimer": "Level labels (CEFR / JLPT / HSK / TOPIK) are for indicative alignment only, to facilitate cross-system comparison. CEFR is a trademark of the Council of Europe, JLPT is a trademark of the Japan Foundation, HSK is a trademark of Hanban, and TOPIK is a trademark of the National Institute for International Education of Korea. This project is not certified or authorized by any of these official organizations; level achievement data is an internal estimate.",
+    "disclaimer": "Las etiquetas de nivel (CEFR / JLPT / HSK / TOPIK) son solo para alineación indicativa, para facilitar la comparación entre sistemas. CEFR es una marca registrada del Consejo de Europa, JLPT es una marca registrada de la Fundación Japón, HSK es una marca registrada de Hanban, y TOPIK es una marca registrada del Instituto Nacional para la Educación Internacional de Corea. Este proyecto no está certificado ni autorizado por ninguna de estas organizaciones oficiales; los datos de logro de nivel son una estimación interna.",
     "framework": {
       "CEFR": "CEFR",
       "JLPT": "JLPT",
       "HSK": "HSK",
       "TOPIK": "TOPIK",
       "ACTFL": "ACTFL"
+    },
+    "content": {
+      "en": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos y presentaciones diarias",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Oraciones de relativo",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pretérito pluscuamperfecto",
+            "Verbos no personales",
+            "Inversión",
+            "Oraciones sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas de forma fluida y espontánea para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de oraciones complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Maestría",
+          "goals": [
+            "Comprender casi todo lo oído o leído con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia del registro y el estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "es": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos y presentaciones diarias",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Oraciones de relativo",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pretérito pluscuamperfecto",
+            "Verbos no personales",
+            "Inversión",
+            "Oraciones sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas de forma fluida y espontánea para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de oraciones complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Maestría",
+          "goals": [
+            "Comprender casi todo lo oído o leído con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia del registro y el estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "fr": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos y presentaciones diarias",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Oraciones de relativo",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pretérito pluscuamperfecto",
+            "Verbos no personales",
+            "Inversión",
+            "Oraciones sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas de forma fluida y espontánea para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de oraciones complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Maestría",
+          "goals": [
+            "Comprender casi todo lo oído o leído con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia del registro y el estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "de": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500–3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000–5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Dominio",
+          "goals": [
+            "Comprender casi todo lo que se escucha o lee con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia de registro y estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "it": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500–3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000–5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Dominio",
+          "goals": [
+            "Comprender casi todo lo que se escucha o lee con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia de registro y estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "ms": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones cotidianas lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser' y 'estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500–3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000–5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejas",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Dominio",
+          "goals": [
+            "Comprender casi todo lo que se escucha o lee con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia de registro y estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "id": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones diarias lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser/estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio-Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejo",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Maestría",
+          "goals": [
+            "Comprender casi todo lo que se escucha o lee con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con una precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia del registro y estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "vi": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones diarias lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser/estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio-Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejo",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        },
+        "C2": {
+          "name": "Maestría",
+          "goals": [
+            "Comprender casi todo lo que se escucha o lee con poco esfuerzo",
+            "Reconocer alrededor de 16.000 palabras",
+            "Expresar matices sutiles con una precisión casi nativa",
+            "Manejar textos complejos en campos académicos, literarios y profesionales"
+          ],
+          "grammar": [
+            "Dominio completo de la gramática",
+            "Conciencia del registro y estilo",
+            "Uso de recursos retóricos"
+          ]
+        }
+      },
+      "th": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar 50 patrones de oraciones clave para saludos diarios y presentaciones personales",
+            "Reconocer alrededor de 700 palabras de alta frecuencia",
+            "Comprender conversaciones diarias lentas (alrededor del 60% de comprensión)",
+            "Escribir textos sencillos de 50 a 100 palabras"
+          ],
+          "grammar": [
+            "Verbos 'ser/estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Manejar situaciones cotidianas comunes como ir de compras, pedir direcciones y pedir comida",
+            "Reconocer alrededor de 1.500 palabras",
+            "Leer avisos cortos, anuncios y correos electrónicos",
+            "Escribir descripciones de la vida diaria de 100 a 150 palabras"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Manejar la mayoría de las situaciones al viajar",
+            "Reconocer alrededor de 2.500 a 3.000 palabras",
+            "Leer materiales escritos cotidianos y artículos de noticias cortos",
+            "Dar relatos sencillos y conectados, orales o escritos, de experiencias y opiniones"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio-Alto",
+          "goals": [
+            "Comprender las ideas principales de textos complejos y temas abstractos",
+            "Reconocer alrededor de 4.000 a 5.000 palabras",
+            "Interactuar con hablantes nativos con fluidez y espontaneidad razonables",
+            "Escribir ensayos detallados de opinión y argumentación"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        },
+        "C1": {
+          "name": "Avanzado",
+          "goals": [
+            "Comprender textos largos y exigentes y el significado implícito",
+            "Reconocer alrededor de 8.000 palabras",
+            "Expresar ideas con fluidez y espontaneidad para uso social, académico y profesional",
+            "Escribir textos complejos claros y bien estructurados"
+          ],
+          "grammar": [
+            "Anidamiento de cláusulas complejo",
+            "Subjuntivo avanzado",
+            "Inversión retórica",
+            "Construcciones absolutas"
+          ]
+        }
+      },
+      "yue": {
+        "A1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar los conceptos básicos de los nueve tonos y seis contornos del cantonés",
+            "Reconocer alrededor de 800 palabras comunes en cantonés",
+            "Manejar saludos diarios, presentaciones personales y pedir comida",
+            "Comprender conversaciones lentas en cantonés"
+          ],
+          "grammar": [
+            "Verbos 'ser/estar'",
+            "Preguntas de sí/no",
+            "Pronombres posesivos",
+            "Presente simple",
+            "Sustantivos singulares y plurales"
+          ]
+        },
+        "A2": {
+          "name": "Elemental",
+          "goals": [
+            "Reconocer alrededor de 1.500 palabras en cantonés",
+            "Manejar compras, pedir direcciones y charlas informales",
+            "Comprender conversaciones cotidianas a velocidad moderada"
+          ],
+          "grammar": [
+            "Pasado simple",
+            "Presente continuo",
+            "Comparativos",
+            "Artículos",
+            "Sustantivos contables/incontables"
+          ]
+        },
+        "B1": {
+          "name": "Intermedio",
+          "goals": [
+            "Reconocer alrededor de 3.000 palabras en cantonés",
+            "Hablar sobre una amplia gama de temas familiares",
+            "Captar la información principal en dramas de Hong Kong y noticias en cantonés"
+          ],
+          "grammar": [
+            "Presente perfecto",
+            "Voz pasiva",
+            "Condicionales",
+            "Cláusulas relativas",
+            "Verbos modales"
+          ]
+        },
+        "B2": {
+          "name": "Intermedio-Alto",
+          "goals": [
+            "Reconocer alrededor de 5.000 palabras en cantonés",
+            "Hablar con fluidez con hablantes nativos",
+            "Comprender películas y noticias de Hong Kong de ritmo rápido"
+          ],
+          "grammar": [
+            "Modo subjuntivo",
+            "Pasado perfecto",
+            "Verbos no finitos",
+            "Inversión",
+            "Cláusulas sustantivas"
+          ]
+        }
+      },
+      "ja": {
+        "N5": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar hiragana, katakana y unos 100 kanji básicos",
+            "Reconocer unas 800 palabras",
+            "Comprender conversaciones cotidianas lentas",
+            "Leer pasajes cortos y avisos básicos"
+          ],
+          "grammar": [
+            "Formas desu/masu",
+            "Marcadores de tema wa/ga",
+            "Partículas wa/ga/wo/ni/de",
+            "Adjetivos i y adjetivos na",
+            "Verbos en forma masu"
+          ]
+        },
+        "N4": {
+          "name": "Principiante avanzado",
+          "goals": [
+            "Reconocer unas 1.500 palabras y alrededor de 300 kanji",
+            "Leer textos básicos sobre temas cotidianos familiares",
+            "Comprender conversaciones cotidianas a velocidad moderada"
+          ],
+          "grammar": [
+            "Verbos en forma te",
+            "Formas ta/nai",
+            "Forma potencial",
+            "Formas condicionales to/ba/tara",
+            "Verbos de dar/recibir teageru/temorau"
+          ]
+        },
+        "N3": {
+          "name": "Intermedio",
+          "goals": [
+            "Reconocer entre 3.500 y 4.000 palabras y alrededor de 600 kanji",
+            "Leer resúmenes de materiales escritos cotidianos",
+            "Comprender conversaciones cotidianas a una velocidad cercana a la natural"
+          ],
+          "grammar": [
+            "Pasiva y causativa",
+            "Sustantivos formales koto/mono/tokoro",
+            "Apariencia so/yō",
+            "Condicional nara",
+            "Conceptos básicos de keigo"
+          ]
+        },
+        "N2": {
+          "name": "Intermedio-alto",
+          "goals": [
+            "Reconocer unas 6.000 palabras y alrededor de 1.000 kanji",
+            "Leer comentarios de periódicos y ensayos generales",
+            "Comprender conversaciones coherentes y noticias a velocidad natural"
+          ],
+          "grammar": [
+            "Sistema keigo completo",
+            "Estilo escrito da/dearu",
+            "Remanentes clásicos",
+            "Verbos compuestos",
+            "Combinaciones avanzadas de partículas"
+          ]
+        },
+        "N1": {
+          "name": "Avanzado",
+          "goals": [
+            "Reconocer entre 10.000 y 15.000 palabras y alrededor de 2.000 kanji",
+            "Leer textos lógicamente complejos y abstractos",
+            "Comprender conferencias, noticias y debates a velocidad natural"
+          ],
+          "grammar": [
+            "Remanentes del japonés clásico",
+            "Lenguaje escrito avanzado",
+            "Terminología académica",
+            "Análisis de oraciones largas y complejas"
+          ]
+        }
+      },
+      "ko": {
+        "TOPIK1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar la lectura y escritura de Hangeul",
+            "Reconocer unas 800 palabras básicas",
+            "Presentarse, saludar, pedir comida y preguntar direcciones",
+            "Leer textos cortos y sencillos de la vida cotidiana"
+          ],
+          "grammar": [
+            "Forma 입니다/입니까",
+            "Marcador de tema 은/는",
+            "Marcador de sujeto 이/가",
+            "Marcador de objeto 을/를",
+            "Marcadores de ubicación 에/에서"
+          ]
+        },
+        "TOPIK2": {
+          "name": "Elemental",
+          "goals": [
+            "Reconocer entre 1.500 y 2.000 palabras",
+            "Manejar tareas diarias y usar instalaciones públicas",
+            "Leer textos cortos y sencillos y escribir notas breves"
+          ],
+          "grammar": [
+            "Terminaciones 아요/어요",
+            "Pasado 았/었",
+            "Conjunción (고)",
+            "Pero (지만)",
+            "Querer (원하다/하고 싶다)"
+          ]
+        },
+        "TOPIK3": {
+          "name": "Intermedio",
+          "goals": [
+            "Reconocer entre 3.000 y 4.000 palabras",
+            "Manejar la vida diaria de forma independiente y comprender las relaciones sociales",
+            "Seguir temas de noticias familiares"
+          ],
+          "grammar": [
+            "게 되다/게 하다",
+            "기 때문에",
+            "느라고",
+            "을/ㄹ 수 있다",
+            "은/는 편이다"
+          ]
+        },
+        "TOPIK4": {
+          "name": "Intermedio-alto",
+          "goals": [
+            "Reconocer entre 4.000 y 6.000 palabras",
+            "Usar instalaciones públicas y mantener relaciones sociales",
+            "Leer periódicos y noticias (umbral para estudiar en el extranjero)"
+          ],
+          "grammar": [
+            "은/ㄴ 것 같다",
+            "기로 하다",
+            "더라",
+            "ㄹ/을 뻔하다",
+            "는/(으)ㄴ 척하다"
+          ]
+        },
+        "TOPIK5": {
+          "name": "Avanzado",
+          "goals": [
+            "Reconocer entre 6.000 y 8.000 palabras",
+            "Comunicarse profesionalmente y comprender temas desconocidos",
+            "Usar el lenguaje formal e informal de manera apropiada"
+          ],
+          "grammar": [
+            "기 마련이다",
+            "ㄹ/을 법하다",
+            "는/(으)ㄴ 김에",
+            "자마자",
+            "ㄴ/는다기보다"
+          ]
+        },
+        "TOPIK6": {
+          "name": "Dominio",
+          "goals": [
+            "Reconocer más de 8.000–10.000 palabras",
+            "Acercarse a la fluidez de un hablante nativo",
+            "Expresar opiniones con precisión y manejar situaciones académicas/profesionales"
+          ],
+          "grammar": [
+            "Vocabulario sino-coreano avanzado",
+            "Estilo escrito",
+            "Metáfora y alegoría"
+          ]
+        }
+      },
+      "zh": {
+        "HSK1": {
+          "name": "Principiante",
+          "goals": [
+            "Dominar pinyin, tonos y unos 500 caracteres comunes (HSK 3.0)",
+            "Comprender y usar saludos básicos y frases sencillas",
+            "Comprender conversaciones cotidianas lentas"
+          ],
+          "grammar": [
+            "是/不是",
+            "的 para posesión",
+            "在 para ubicación",
+            "Palabras interrogativas 什么/谁/哪",
+            "Números y clasificadores"
+          ]
+        },
+        "HSK2": {
+          "name": "Básico",
+          "goals": [
+            "Reconocer unas 1.200 palabras (HSK 3.0)",
+            "Comunicarse de forma sencilla sobre temas cotidianos familiares",
+            "Leer textos cortos"
+          ],
+          "grammar": [
+            "了 para finalización",
+            "正在 para acciones en curso",
+            "想/要 para deseo",
+            "太...了 para grado",
+            "Comparación con 比"
+          ]
+        },
+        "HSK3": {
+          "name": "Elemental",
+          "goals": [
+            "Reconocer unas 2.200 palabras (HSK 3.0)",
+            "Manejar la comunicación básica sobre la vida, el estudio y el trabajo",
+            "Comprender conversaciones cotidianas a velocidad normal"
+          ],
+          "grammar": [
+            "过 para experiencia",
+            "Complementos resultativos",
+            "Oraciones con 把",
+            "Oraciones con 被",
+            "虽然...但是"
+          ]
+        },
+        "HSK4": {
+          "name": "Intermedio",
+          "goals": [
+            "Reconocer unas 3.245 palabras (HSK 3.0)",
+            "Comunicarse con bastante fluidez sobre una amplia gama de temas",
+            "Leer artículos de periódicos y comprender películas/programas de televisión"
+          ],
+          "grammar": [
+            "连...都",
+            "不仅...而且",
+            "既然...就",
+            "即使...也",
+            "Complementos de grado 极了/得很"
+          ]
+        },
+        "HSK5": {
+          "name": "Avanzado",
+          "goals": [
+            "Reconocer unas 4.316 palabras (HSK 3.0)",
+            "Leer periódicos chinos, ver películas/TV y escribir ensayos cortos",
+            "Comprender transmisiones de radio y noticias"
+          ],
+          "grammar": [
+            "却 para contraste",
+            "并 para énfasis",
+            "何况 para progresión",
+            "以免 para propósito",
+            "Construcciones con 连 para extremos"
+          ]
+        },
+        "HSK6": {
+          "name": "Avanzado Plus",
+          "goals": [
+            "Reconocer unas 5.456 palabras (HSK 3.0)",
+            "Comprender cómodamente el contenido en escucha, habla, lectura y escritura",
+            "Escribir ensayos argumentativos y académicos más largos"
+          ],
+          "grammar": [
+            "Remanentes del chino clásico",
+            "Modismos y frases hechas",
+            "Uso del estilo escrito",
+            "Estructuras de oraciones largas y complejas"
+          ]
+        },
+        "HSK7": {
+          "name": "Extensión Avanzada",
+          "goals": [
+            "Reconocer más de 6.000 palabras (HSK 3.0 Avanzado)",
+            "Leer textos académicos, profesionales y literarios largos",
+            "Comprender conferencias, debates y programas de radio",
+            "Escribir argumentos bien estructurados sobre temas complejos"
+          ],
+          "grammar": [
+            "Cambio al registro escrito",
+            "Conjunciones avanzadas",
+            "Análisis de remanentes del chino clásico",
+            "Descomposición y reconstrucción de oraciones largas",
+            "Uso de modismos y alusiones"
+          ]
+        },
+        "HSK8": {
+          "name": "Dominio",
+          "goals": [
+            "Reconocer más de 8.000 palabras (HSK 3.0 Dominio)",
+            "Comprender documentos profesionales en chino sin barreras",
+            "Participar en debates académicos de alto nivel y discursos improvisados",
+            "Escribir obras académicas y literarias cercanas al nivel de un hablante nativo"
+          ],
+          "grammar": [
+            "Convenciones del registro académico",
+            "Uso exhaustivo de recursos retóricos",
+            "Cambio flexible entre registros escritos y orales",
+            "Expresión contextual intercultural",
+            "Anidamiento de oraciones complejas"
+          ]
+        },
+        "HSK9": {
+          "name": "Maestría",
+          "goals": [
+            "Reconocer más de 11.000 palabras (HSK 3.0 Maestría)",
+            "Manejar cualquier situación en chino libremente, acercándose al nivel de un hablante nativo",
+            "Analizar críticamente textos complejos y captar el significado implícito",
+            "Desempeñarse con soltura en los campos académico, diplomático y de creación literaria"
+          ],
+          "grammar": [
+            "Control preciso del registro",
+            "Dominio completo de la gramática",
+            "Fusión del chino clásico y moderno",
+            "Dominio de la retórica",
+            "Pensamiento interlingüístico"
+          ]
+        }
+      }
     }
   },
   "learn": {
-    "wordMemory": "Memoria de palabras",
-    "wordMemoryDesc": "Gira tarjetas, recuerda activamente, refuerza la memoria a largo plazo",
-    "grammar": "Práctica de gramática",
-    "grammarDesc": "Opción múltiple y completar espacios, retroalimentación inmediata",
-    "speaking": "Práctica oral",
-    "speakingDesc": "Escucha y repite, crea memoria muscular",
-    "listening": "Práctica de escucha",
-    "listeningDesc": "Material de escucha real, ejercicios de completar",
-    "inUse": "En uso",
+    "wordMemory": "Memoria de Palabras",
+    "wordMemoryDesc": "Voltea tarjetas, recuerdo activo, fortalece la memoria a largo plazo",
+    "grammar": "Práctica de Gramática",
+    "grammarDesc": "Opción múltiple + rellenar espacios, retroalimentación instantánea",
+    "speaking": "Práctica de Habla",
+    "speakingDesc": "Escucha y repite, desarrolla la memoria muscular",
+    "listening": "Práctica de Escucha",
+    "listeningDesc": "Material de escucha real, entrenamiento de rellenar espacios",
+    "inUse": "En Uso",
     "card": "Tarjeta {{current}} / {{total}}",
     "tapToSeeMeaning": "Toca la tarjeta para ver el significado",
-    "notFamiliar": "No lo recuerdo",
-    "remembered": "Lo recordé",
+    "notFamiliar": "No Familiar",
+    "remembered": "Recordada",
     "word": "Palabra",
     "translation": "Traducción",
     "example": "Ejemplo",
@@ -338,164 +1551,196 @@
       "correct": "Correcto",
       "wrong": "Incorrecto",
       "explain": "Explicación",
-      "submit": "Enviar respuesta",
+      "submit": "Enviar Respuesta",
       "next": "Siguiente",
       "accuracy": "Precisión",
       "answered": "Respondidas {{count}} preguntas",
       "tip1": "Lee la oración completa primero, luego juzga la estructura gramatical.",
-      "tip2": "Si no estás seguro, confía en tu intuición primero.",
+      "tip2": "Si no estás seguro, confía primero en tu intuición.",
       "tip3": "Cada explicación merece ser leída con atención.",
-      "pitfallOfThis": "Pitfalls for {{title}}"
+      "pitfallOfThis": "Errores comunes para {{title}}"
     },
     "speakingModule": {
-      "title": "Repite esta oración",
+      "title": "Repite Esta Oración",
       "recording": "Grabando · {{seconds}}s",
-      "startHint": "Toca para empezar a grabar y lee en voz alta",
-      "privacyHint": "Consejo: el navegador no sube el audio; la grabación solo sirve para temporizar localmente.",
+      "startHint": "Toca para empezar a grabar y leer en voz alta",
+      "privacyHint": "Consejo: El navegador no subirá el audio; la grabación es solo para cronometraje local.",
       "reset": "Reiniciar",
-      "next": "Siguiente oración",
-      "session": "Esta sesión",
+      "next": "Siguiente Oración",
+      "session": "Esta Sesión",
       "count": "{{count}} veces",
       "times": "Veces repetidas",
-      "otherSentences": "Otras oraciones",
-      "loginToStart": "Log in to start speaking practice"
+      "otherSentences": "Otras Oraciones",
+      "loginToStart": "Inicia sesión para empezar la práctica de habla"
     },
     "listeningModule": {
-      "title": "Escucha y completa",
+      "title": "Escucha y Rellena",
       "progress": "{{current}} / {{total}}",
       "playHint": "Toca reproducir (el navegador leerá este texto en voz alta)",
       "playing": "Reproduciendo…",
       "placeholder": "____",
-      "check": "Comprobar respuesta",
+      "check": "Comprobar Respuesta",
       "next": "Siguiente",
       "completed": "Completadas {{count}} sesiones de escucha",
-      "tip1": "Escucha una vez sin leer y ve cuánto entiendes.",
-      "tip2": "Luego completa los espacios mientras lees para identificar formas débiles y enlaces.",
+      "tip1": "Escucha a ciegas una vez y mira cuánto entiendes.",
+      "tip2": "Luego rellena los espacios mientras lees para identificar formas débiles y enlaces.",
       "tip3": "Reproduce repetidamente y lee al mismo tiempo.",
-      "reference": "Reference Script",
-      "showAfterFinish": "Shown after completion.",
-      "speechRate": "Speech rate",
-      "tip4": "After checking, read the script aloud to reinforce the sounds.",
+      "reference": "Guion de Referencia",
+      "showAfterFinish": "Se muestra después de completar.",
+      "speechRate": "Velocidad del habla",
+      "tip4": "Después de comprobar, lee el guion en voz alta para reforzar los sonidos.",
       "speed": {
-        "slow": "Slow",
-        "slower": "Slower",
+        "slow": "Lenta",
+        "slower": "Más lenta",
         "normal": "Normal",
-        "faster": "Faster"
+        "faster": "Más rápida"
       }
     },
-    "wordFamily": "Word Family",
-    "totalNWords": "{{count}} words",
-    "commonRoot": "Common root",
-    "reviewLabel": "Review",
-    "reviewDesc": "Spaced repetition review",
-    "conversationLabel": "Conversation",
-    "conversationDesc": "Practice dialogue with AI",
-    "wordRoot": "Word Root",
-    "grammarMap": "Grammar Map",
-    "errorProneN": "{{count}} error-prone",
-    "path": "Path",
-    "modules": "Modules",
+    "wordFamily": "Familia de Palabras",
+    "totalNWords": "{{count}} palabras",
+    "commonRoot": "Raíz común",
+    "reviewLabel": "Repaso",
+    "reviewDesc": "Repaso con repetición espaciada",
+    "conversationLabel": "Conversación",
+    "conversationDesc": "Practica diálogos con IA",
+    "realConversationLabel": "Conversaciones reales",
+    "realConversationDesc": "Imita diálogos humanos reales (Taskmaster-2)",
+    "wordRoot": "Raíz de la Palabra",
+    "grammarMap": "Mapa Gramatical",
+    "errorProneN": "{{count}} propensos a errores",
+    "path": "Ruta",
+    "modules": "Módulos",
     "review": {
-      "again": "Again",
-      "hard": "Hard",
-      "good": "Good",
-      "easy": "Easy",
+      "again": "De nuevo",
+      "hard": "Difícil",
+      "good": "Bien",
+      "easy": "Fácil",
       "cardCounter": "{{current}} / {{total}}",
-      "queue": "Review queue",
-      "due": "Due",
-      "loginToStart": "Log in to start review",
-      "allDone": "All caught up!",
-      "noCardsForLang": "No cards due for this language.",
-      "addedAutomatically": "Cards are added automatically as you practice.",
-      "kindQuiz": "Grammar",
-      "kindListening": "Listening",
-      "kindSpeaking": "Speaking",
-      "kindWord": "Word",
-      "tapToShowAnswer": "Tap to show answer",
-      "answer": "Answer",
-      "tapToFlipBack": "Tap to flip back",
-      "principle": "How review works",
-      "principle1": "Review right before you forget.",
-      "principle2": "Hard cards come back sooner.",
-      "principle3": "Easy cards are pushed further out.",
-      "principle4": "Consistency beats long sessions.",
-      "thisSession": "This session",
-      "cardsRemaining": "cards remaining",
+      "queue": "Cola de repaso",
+      "due": "Pendiente",
+      "loginToStart": "Inicia sesión para empezar el repaso",
+      "allDone": "¡Todo al día!",
+      "noCardsForLang": "No hay tarjetas pendientes para este idioma.",
+      "addedAutomatically": "Las tarjetas se añaden automáticamente a medida que practicas.",
+      "kindQuiz": "Gramática",
+      "kindListening": "Escucha",
+      "kindSpeaking": "Habla",
+      "kindWord": "Palabra",
+      "tapToShowAnswer": "Toca para mostrar la respuesta",
+      "answer": "Respuesta",
+      "tapToFlipBack": "Toca para voltear",
+      "principle": "Cómo funciona el repaso",
+      "principle1": "Repasa justo antes de olvidar.",
+      "principle2": "Las tarjetas difíciles vuelven antes.",
+      "principle3": "Las tarjetas fáciles se posponen más.",
+      "principle4": "La constancia supera las sesiones largas.",
+      "thisSession": "Esta sesión",
+      "cardsRemaining": "tarjetas restantes",
       "nextInterval": {
-        "now": "Now",
-        "day": "in 1 day",
-        "days": "in {{count}} days",
-        "week": "in 1 week",
-        "weeks": "in {{count}} weeks",
-        "month": "in 1 month",
-        "months": "in {{count}} months"
+        "now": "Ahora",
+        "day": "en 1 día",
+        "days": "en {{count}} días",
+        "week": "en 1 semana",
+        "weeks": "en {{count}} semanas",
+        "month": "en 1 mes",
+        "months": "en {{count}} meses"
       }
     },
     "conversation": {
-      "unsupportedBrowser": "Speech recognition is not supported in this browser.",
-      "didNotHear": "Didn't catch that. Please try again.",
-      "fallbackBranch": "No exact match — the AI will continue naturally.",
-      "completed": "Conversation completed!",
-      "restart": "Restart",
-      "inputPlaceholder": "Type your reply...",
-      "voiceInput": "Voice input",
-      "send": "Send",
-      "currentScene": "Current scene",
-      "sceneHint": "Reply naturally in the target language.",
-      "tipsTitle": "Tips",
-      "tip1": "Reply in the target language.",
-      "tip2": "Keep it short and natural.",
-      "tip3": "Use voice input to practice speaking.",
-      "tip4": "Don't worry about mistakes — just keep going."
+      "unsupportedBrowser": "El reconocimiento de voz no es compatible con este navegador.",
+      "didNotHear": "No lo he entendido. Por favor, inténtalo de nuevo.",
+      "fallbackBranch": "No hay coincidencia exacta — la IA continuará de forma natural.",
+      "completed": "¡Conversación completada!",
+      "restart": "Reiniciar",
+      "inputPlaceholder": "Escribe tu respuesta...",
+      "voiceInput": "Entrada de voz",
+      "send": "Enviar",
+      "currentScene": "Escena actual",
+      "sceneHint": "Responde de forma natural en el idioma objetivo.",
+      "tipsTitle": "Consejos",
+      "tip1": "Responde en el idioma objetivo.",
+      "tip2": "Sé breve y natural.",
+      "tip3": "Usa la entrada de voz para practicar el habla.",
+      "tip4": "No te preocupes por los errores, solo sigue adelante."
+    },
+    "realConv": {
+      "aboutTitle": "Acerca de este módulo",
+      "about": "Estos son diálogos reales de Taskmaster-2 (traducidos a tu idioma objetivo). Practica imitando cada línea del ASISTENTE en voz alta — tu pronunciación se puntúa automáticamente.",
+      "empty": "Aún no hay conversaciones reales disponibles para este idioma.",
+      "emptyHint": "Prueba inglés (alternativa) u otro idioma.",
+      "prevConv": "Conversación anterior",
+      "nextConv": "Siguiente conversación",
+      "conversationN": "Conversación {{n}} de {{total}}",
+      "assistantTurn": "Turno del asistente — imítalo",
+      "userTurn": "Turno del usuario (solo lectura)",
+      "userTurnHint": "Lee la línea del usuario en silencio, luego continúa.",
+      "bestScore": "Mejor puntuación",
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "sessionTitle": "Promedio de la sesión",
+      "avgScore": "Puntuación promedio",
+      "shadowed": "Imitadas {{n}} líneas",
+      "tip1": "Escucha primero, luego repite en voz alta.",
+      "tip2": "Coincide la entonación, no solo las palabras.",
+      "tip3": "Vuelve a grabar para superar tu mejor puntuación.",
+      "domains": {
+        "restaurant": "Restaurante",
+        "foodOrdering": "Pedido de comida",
+        "movies": "Películas",
+        "hotels": "Hoteles",
+        "flights": "Vuelos",
+        "music": "Música",
+        "sports": "Deportes"
+      }
     }
   },
   "home": {
-    "seoTitle": "Aprende idiomas con IA | LangOria",
-    "seoDescription": "Aprendizaje inmersivo de idiomas con IA. 10 minutos al día con repetición espaciada, audio nativo y lecciones adaptativas en 7 idiomas.",
+    "seoTitle": "Aprende inglés, japonés, chino, coreano y más | LangOria",
+    "seoDescription": "Aprende inglés, japonés, chino, coreano, español, francés, alemán, italiano, tailandés y cantonés con vocabulario de repetición espaciada, ejercicios de escucha y práctica de conversación. Lecciones diarias de 10 minutos.",
     "hero": {
-      "badge": "Plataforma de aprendizaje multilingüe inmersivo",
+      "badge": "Plataforma de Aprendizaje Multilingüe Inmersiva",
       "title": "Hoy, deja que el mundo",
       "titleHighlight": "gane un hablante nativo más.",
-      "welcomeBack": "Bienvenido de nuevo, {{name}}! Has estudiado {{minutes}} minutos hoy, objetivo {{goal}} minutos. ¡Sigue así!",
-      "guest": "Elige un idioma que quieras dominar y construye tu hábito de aprendizaje desde hoy.",
-      "startToday": "Explorar idiomas",
-      "browseCourses": "Explorar cursos",
+      "welcomeBack": "¡Bienvenido de nuevo, {{name}}! Has estudiado {{minutes}} minutos hoy, tu objetivo es {{goal}} minutos. ¡Sigue así!",
+      "guest": "Elige un idioma que quieras dominar y construye tu hábito de aprendizaje a partir de hoy.",
+      "startToday": "Explorar Idiomas",
+      "browseCourses": "Explorar Cursos",
+      "learnMethod": "Ver Cómo Funciona",
       "streak": "Racha",
       "level": "Nivel",
-      "todaysGoal": "Objetivo de hoy",
-      "minutesOfGoal": "{{minutes}}/{{goal}} min",
-      "learnMethod": "See How It Works"
+      "todaysGoal": "Meta de Hoy",
+      "minutesOfGoal": "{{minutes}}/{{goal}} min"
     },
     "languages": {
       "choose": "Elige el idioma que estás aprendiendo",
-      "countBadge": "10 languages",
+      "countBadge": "10 idiomas",
       "current": "Actual: {{language}}",
-      "currentLanguage": "Idioma actual",
+      "currentLanguage": "Idioma Actual",
       "select": "Toca para seleccionar",
-      "standaloneDesc": "Pick the language you are learning. Each course is leveled, with spaced-repetition vocab, native-speaker audio, and a daily 10-minute loop.",
+      "standaloneDesc": "Elige el idioma que estás aprendiendo. Cada curso está nivelado, con vocabulario de repetición espaciada, audio de hablantes nativos y un ciclo diario de 10 minutos.",
       "taglines": {
-        "en": "Global lingua franca",
-        "zh": "Ancient and vibrant logographic script",
-        "ja": "Subtle and elegant Eastern rhythm",
-        "ko": "Vivid and trending Hallyu culture",
-        "es": "Passionate Latin voice",
-        "fr": "Romantic and elegant art of language",
-        "de": "Precise language of philosophy and engineering",
-        "it": "Passionate and romantic Mediterranean voice",
-        "th": "The smiling language of five tones",
-        "yue": "Lingnan culture in nine tones and six contours"
+        "en": "Lingua franca global",
+        "zh": "Escritura logográfica antigua y vibrante",
+        "ja": "Ritmo oriental sutil y elegante",
+        "ko": "Cultura Hallyu vívida y de moda",
+        "es": "Voz latina apasionada",
+        "fr": "Arte del lenguaje romántico y elegante",
+        "de": "Lenguaje preciso de la filosofía y la ingeniería",
+        "it": "Voz mediterránea apasionada y romántica",
+        "th": "El idioma sonriente de cinco tonos",
+        "yue": "Cultura Lingnan en nueve tonos y seis contornos"
       }
     },
     "tasks": {
-      "title": "Recomendación de hoy",
-      "viewAll": "Ver todo →",
+      "title": "Recomendado para Hoy",
+      "viewAll": "Ver Todo →",
       "items": [
         {
           "title": "Aprender 20 palabras nuevas",
           "time": "10 min"
         },
         {
-          "title": "Gramática · Tiempos básicos",
+          "title": "Gramática · Tiempos verbales básicos",
           "time": "15 min"
         },
         {
@@ -503,197 +1748,317 @@
           "time": "8 min"
         },
         {
-          "title": "Escuchar 5 minutos",
+          "title": "Escucha 5 minutos",
           "time": "5 min"
         }
       ]
     },
     "steps": {
-      "badge": "Cómo funciona",
-      "title": "Un camino probado en 3 pasos de principiante a fluido",
-      "desc": "Cada aprendiz es distinto, pero el camino hacia la fluidez siempre es el mismo: input, output y feedback. LangOria convierte ese ciclo en un ritual diario de 10 minutos.",
+      "badge": "Cómo Funciona",
+      "title": "Un camino probado de 3 pasos de principiante a fluido",
+      "desc": "Cada estudiante es diferente, pero el camino hacia la fluidez es siempre el mismo: entrada, salida y retroalimentación. LangOria convierte ese ciclo en un ritual diario de 10 minutos.",
       "items": [
         {
           "title": "Diagnostica tu nivel",
-          "desc": "Elige tu idioma objetivo y tu nivel de partida. Creamos una ruta personalizada según lo que ya sabes."
+          "desc": "Elige tu idioma objetivo y nivel de inicio. Construimos un camino personalizado basado en lo que ya sabes."
         },
         {
-          "title": "Bucle diario de 10 minutos",
-          "desc": "Vocabulario + gramática + escucha + habla, programados por repetición espaciada para que lo aprendido permanezca."
+          "title": "Ciclo diario de 10 minutos",
+          "desc": "Vocabulario + gramática + escucha + habla, programado por repetición espaciada para que recuerdes lo que aprendes."
         },
         {
           "title": "Habla con confianza",
-          "desc": "Repite frases reales, recibe feedback al instante y mantén tu racha viva."
+          "desc": "Imita frases reales, obtén retroalimentación instantánea y sigue tu racha para mantener vivo el hábito."
         }
       ]
     },
     "features": {
-      "title": "Cuatro ejercicios clave para una fluidez completa",
-      "desc": "Entrada · Salida · Retroalimentación — desarrolla confianza real para hablar.",
+      "title": "Cuatro Ejercicios Clave para una Fluidez Completa",
+      "desc": "Entrada · Salida · Retroalimentación — construye una confianza real al hablar.",
       "enter": "Pruébalo →",
       "items": [
         {
-          "title": "Tarjetas de vocabulario",
+          "title": "Palabras con Flashcards",
           "desc": "Repetición espaciada — una vez recordado, nunca olvidado",
           "action": "Pruébalo"
         },
         {
-          "title": "Práctica de gramática",
-          "desc": "Retroalimentación inmediata + explicaciones, reglas claras",
+          "title": "Práctica de Gramática",
+          "desc": "Retroalimentación instantánea + explicaciones, reglas claras",
           "action": "Pruébalo"
         },
         {
-          "title": "Repetición oral",
-          "desc": "Lee en voz alta para crear memoria muscular en tu lengua",
+          "title": "Repetición Oral",
+          "desc": "Lee en voz alta para desarrollar memoria muscular en tu lengua",
           "action": "Pruébalo"
         },
         {
-          "title": "Entrenamiento auditivo",
-          "desc": "Contexto real, completar espacios, escucha con más claridad",
+          "title": "Entrenamiento Auditivo",
+          "desc": "Contexto real, rellenar espacios, escuchar con más claridad",
           "action": "Pruébalo"
         }
       ]
     },
     "courses": {
-      "title": "Cursos destacados",
-      "desc": "Por niveles, progresivos, adaptables a múltiples objetivos de aprendizaje",
-      "viewAll": "Ver todo →",
+      "title": "Cursos Destacados",
+      "desc": "Nivelados, progresivos, adaptables a múltiples objetivos de aprendizaje",
+      "viewAll": "Ver Todos →",
       "loading": "Cargando cursos...",
       "lessons": "{{count}} lecciones",
       "minutes": "{{count}} min"
     },
     "stories": {
-      "badge": "Historias de aprendices",
+      "badge": "Historias de Estudiantes",
       "title": "Progreso real, personas reales",
-      "desc": "Escucha a aprendices que convirtieron un hábito diario de 10 minutos en un idioma que realmente pueden usar.",
+      "desc": "Escucha a estudiantes que convirtieron un hábito diario de 10 minutos en un idioma que realmente pueden usar.",
       "items": [
         {
           "name": "Yuki, 27",
-          "role": "Responsable de marketing · Tokio",
-          "quote": "Probé tres apps antes. LangOria es la única que abro cada día. El sistema de rachas funciona."
+          "role": "Gerente de Marketing · Tokio",
+          "quote": "Probé tres aplicaciones antes. LangOria es la única que realmente abro todos los días. El sistema de rachas funciona."
         },
         {
           "name": "Carlos, 34",
-          "role": "Ingeniero de software · Madrid",
-          "quote": "Las explicaciones de gramática son cortas y claras. Pasé de A2 a B1 en tres meses yendo al trabajo."
+          "role": "Ingeniero de Software · Madrid",
+          "quote": "Las explicaciones de gramática son cortas y claras. Pasé de A2 a B1 en tres meses mientras viajaba."
         },
         {
           "name": "Mei, 22",
-          "role": "Estudiante universitaria · Shanghái",
-          "quote": "Me encanta que la interfaz esté en chino pero las palabras en japonés. Se siente como si la app me conociera."
+          "role": "Estudiante Universitaria · Shanghái",
+          "quote": "Me encanta que la interfaz esté en chino pero las palabras en japonés. Siento que la aplicación realmente me conoce."
         }
       ]
     },
     "faq": {
-      "badge": "FAQ",
-      "title": "Preguntas frecuentes, respuestas claras",
+      "badge": "Preguntas Frecuentes",
+      "title": "Preguntas comunes, respuestas claras",
       "desc": "Todo lo que necesitas saber antes de empezar.",
       "viewAll": "Ver todas las preguntas",
       "items": [
         {
-          "q": "¿LangOria es realmente gratis?",
-          "a": "Sí. La experiencia central — vocabulario, gramática, escucha, habla y la comunidad — es gratuita. Las funciones premium se añadirán más adelante para usuarios avanzados."
+          "q": "¿Es LangOria realmente gratis?",
+          "a": "Sí. La experiencia de aprendizaje principal — vocabulario, gramática, escucha, habla y la comunidad — es gratuita. Las funciones premium se añadirán más tarde para usuarios avanzados."
         },
         {
           "q": "¿Necesito instalar algo?",
-          "a": "No. LangOria funciona en cualquier navegador moderno. Las apps móviles llegarán cuando la versión web se estabilice."
+          "a": "No. LangOria funciona en cualquier navegador moderno. Las aplicaciones móviles se lanzarán una vez que la versión web se estabilice."
         },
         {
-          "q": "¿Qué idiomas están soportados?",
-          "a": "Inglés, japonés, coreano, chino, español, francés y alemán. Cada mes añadimos nuevos idiomas según la demanda."
+          "q": "¿Qué idiomas son compatibles?",
+          "a": "Inglés, japonés, coreano, chino, español, francés y alemán. Se añaden nuevos idiomas cada mes según la demanda de los estudiantes."
         },
         {
-          "q": "¿Cuánto tarda en notarse el progreso?",
-          "a": "La mayoría de los aprendices nota una diferencia clara en 4–6 semanas si mantiene la rutina de 10 minutos. El sistema de rachas y la repetición espaciada están diseñados para que el hábito se mantenga."
+          "q": "¿Cuánto tiempo tardaré en ver progreso?",
+          "a": "La mayoría de los estudiantes sienten una clara diferencia en 4-6 semanas si se adhieren al ciclo diario de 10 minutos. El sistema de rachas y la repetición espaciada están diseñados para que ese hábito se mantenga."
         },
         {
-          "q": "¿Puedo usarlo en el móvil?",
-          "a": "Sí. El sitio es totalmente responsivo y funciona muy bien en navegadores móviles. Añádelo a la pantalla de inicio para tener una experiencia tipo app."
+          "q": "¿Puedo usarlo en mi teléfono?",
+          "a": "Sí. El sitio es totalmente adaptable y funciona muy bien en navegadores móviles. Añádelo a tu pantalla de inicio para una experiencia similar a la de una aplicación."
         }
       ]
     },
     "blog": {
-      "badge": "Desde el blog",
+      "badge": "Del Blog",
       "title": "Consejos, guías y ciencia del aprendizaje",
-      "desc": "Artículos breves que hacen tu tiempo de estudio más efectivo.",
+      "desc": "Artículos breves que hacen que tu tiempo de estudio sea más efectivo.",
       "viewAll": "Todos los artículos →",
       "readMore": "Leer más",
       "items": [
         {
           "tag": "Métodos",
-          "title": "Por qué 10 minutos al día ganan a 2 horas el fin de semana",
-          "excerpt": "La repetición espaciada es la técnica más investigada en la ciencia del aprendizaje. Por qué las sesiones cortas y frecuentes superan al estudio maratoniano."
+          "title": "Por qué 10 minutos al día superan a 2 horas los fines de semana",
+          "excerpt": "La repetición espaciada es la técnica más investigada en la ciencia del aprendizaje. Aquí te explicamos por qué las sesiones más cortas y frecuentes superan a las largas sesiones de estudio intensivo."
         },
         {
           "tag": "Vocabulario",
-          "title": "Cómo recordar 1000 palabras sin quemarte",
+          "title": "Cómo recordar 1000 palabras sin agotarse",
           "excerpt": "Un plan práctico de 8 semanas basado en la regla 3-2-1, con ejemplos en inglés, japonés y español."
         },
         {
-          "tag": "Speaking",
-          "title": "Shadowing: el ejercicio de speaking que sí funciona",
-          "excerpt": "Por qué repetir audio nativo es la forma más rápida de corregir la pronunciación, y una rutina de 5 pasos para empezar hoy."
+          "tag": "Habla",
+          "title": "Shadowing: el ejercicio de habla que realmente funciona",
+          "excerpt": "Por qué repetir audio nativo es la forma más rápida de corregir la pronunciación, y una rutina de 5 pasos que puedes empezar hoy."
         }
       ]
     },
     "cta": {
-      "title": "Empieza tu ritual diario de 10 minutos",
-      "desc": "Gratis para siempre. Sin tarjeta de crédito. Cancela cuando quieras — aunque probablemente no lo harás.",
-      "start": "Crear cuenta gratis",
-      "browse": "Ver cursos primero"
+      "title": "Comienza tu ritual diario de 10 minutos",
+      "desc": "Gratis para siempre. Sin tarjeta de crédito. Cancela cuando quieras — pero probablemente no lo harás.",
+      "start": "Crear cuenta gratuita",
+      "browse": "Explorar cursos primero"
     }
   },
+  "faq": {
+    "seoTitle": "Preguntas Frecuentes | LangOria",
+    "seoDescription": "Respuestas a preguntas comunes sobre el aprendizaje de idiomas con repetición espaciada de LangOria: cómo funciona el ciclo de 10 minutos, precios, idiomas compatibles y ayuda con la cuenta.",
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre LangOria.",
+    "intro": "¿No encuentras la respuesta que buscas? Ponte en contacto a través de la comunidad y nuestro equipo te responderá.",
+    "groups": [
+      {
+        "title": "Primeros pasos",
+        "items": [
+          {
+            "q": "¿Cómo creo una cuenta?",
+            "a": "Haz clic en el botón Registrarse en la esquina superior derecha, introduce tu correo electrónico y una contraseña, elige tu idioma de destino y tu idioma nativo, y listo."
+          },
+          {
+            "q": "¿Necesito una tarjeta de crédito?",
+            "a": "No. La experiencia de aprendizaje principal es gratuita. Solo necesitarás un método de pago cuando decidas actualizar a Premium en el futuro."
+          },
+          {
+            "q": "¿Puedo cambiar mi idioma de destino más tarde?",
+            "a": "Sí. Ve a Ajustes → Idioma de destino en cualquier momento. Todo tu progreso permanece vinculado al idioma que estabas practicando."
+          }
+        ]
+      },
+      {
+        "title": "Aprendizaje",
+        "items": [
+          {
+            "q": "¿Cuánto tiempo debo estudiar cada día?",
+            "a": "Recomendamos 10 minutos al día. La repetición espaciada funciona mejor con sesiones cortas y consistentes, no con atracones."
+          },
+          {
+            "q": "¿Por qué las explicaciones están en mi idioma nativo?",
+            "a": "La investigación muestra que el aprendizaje es más rápido cuando las explicaciones provienen de tu idioma más fuerte. Las palabras reales que estudias siempre están en el idioma de destino."
+          },
+          {
+            "q": "¿Se reiniciará mi racha si me salto un día?",
+            "a": "Sí, la racha se reinicia si te saltas un día completo. El período de gracia es de 36 horas para cubrir las diferencias de zona horaria."
+          }
+        ]
+      },
+      {
+        "title": "Cuenta y Privacidad",
+        "items": [
+          {
+            "q": "¿Dónde se almacenan mis datos?",
+            "a": "Tus datos de aprendizaje se almacenan en Supabase (Postgres) en una región cercana a ti. No vendemos ningún dato de usuario."
+          },
+          {
+            "q": "¿Cómo elimino mi cuenta?",
+            "a": "Ve a Perfil → Zona de Peligro, y haz clic en Eliminar Cuenta. Todos tus datos se eliminarán en un plazo de 7 días."
+          }
+        ]
+      }
+    ],
+    "ctaTitle": "¿Listo para empezar?",
+    "ctaDesc": "Crea una cuenta gratuita y prueba el ritual diario de 10 minutos.",
+    "cta": "Registrarse gratis"
+  },
+  "blog": {
+    "seoTitle": "Blog de Aprendizaje de Idiomas — Consejos y Ciencia | LangOria",
+    "seoDescription": "Guías prácticas, ciencia del aprendizaje y consejos para dominar un idioma con repetición espaciada, shadowing y un hábito diario de 10 minutos.",
+    "title": "Blog de LangOria",
+    "subtitle": "Guías prácticas, ciencia del aprendizaje e historias de estudiantes reales.",
+    "readMore": "Leer más",
+    "backToList": "← Volver a todos los artículos",
+    "notFoundTitle": "Artículo no encontrado",
+    "notFoundDesc": "El artículo que buscas se ha movido o ya no existe.",
+    "empty": "Aún no se han publicado artículos. ¡Vuelve pronto!",
+    "ctaTitle": "Pon en práctica estos consejos",
+    "ctaDesc": "Crea una cuenta gratuita y comienza hoy mismo tu ciclo diario de 10 minutos.",
+    "cta": "Empezar a aprender",
+    "posts": [
+      {
+        "slug": "ten-minutes-beat-two-hours",
+        "title": "Por qué 10 minutos al día superan a 2 horas los fines de semana",
+        "excerpt": "La repetición espaciada es la técnica más investigada en la ciencia del aprendizaje. Aquí te explicamos por qué las sesiones más cortas y frecuentes superan al estudio intensivo prolongado.",
+        "tag": "Métodos",
+        "readTime": "6 min de lectura",
+        "date": "2026-06-10",
+        "content": [
+          "Si alguna vez has estudiado intensivamente para un examen y lo has olvidado todo dos semanas después, ya conoces el problema de las sesiones de estudio largas y poco frecuentes. La solución no es estudiar más duro. La solución es estudiar con más frecuencia.",
+          "La ciencia del aprendizaje ha sido clara al respecto durante décadas. Hermann Ebbinghaus descubrió la curva del olvido en 1885: perdemos la información recién aprendida a un ritmo predecible a menos que la recordemos activamente en el momento adecuado. El 'momento adecuado' es justo antes de que vayas a olvidarla.",
+          "Esto es exactamente lo que hace la repetición espaciada. LangOria programa cada palabra y punto gramatical para su revisión en el momento en que es más probable que lo olvides. Pulsa 'recordado' y la siguiente revisión se pospondrá. Pulsa 'no familiar' y la siguiente revisión llegará antes.",
+          "El resultado: en 10 minutos al día, cubres más terreno que en 2 horas un domingo, porque cada minuto se dedica a algo que tu cerebro realmente necesita recordar. Después de 30 días, la mayoría de los estudiantes han revisado más de 600 elementos, más de lo que una sola sesión de estudio intensivo de fin de semana podría cubrir.",
+          "Así que si te has estado diciendo a ti mismo que no tienes tiempo para aprender un idioma, sí lo tienes. Diez minutos. Cada día. Ese es todo el truco."
+        ]
+      },
+      {
+        "slug": "how-to-remember-1000-words",
+        "title": "Cómo recordar 1000 palabras sin agotarse",
+        "excerpt": "Un plan práctico de 8 semanas basado en la regla 3-2-1, con ejemplos en inglés, japonés y español.",
+        "tag": "Vocabulario",
+        "readTime": "8 min de lectura",
+        "date": "2026-06-04",
+        "content": [
+          "La mayoría de los estudiantes de idiomas aspiran a 1000 palabras como primer hito. La mala noticia: intentar memorizarlas todas a la vez es una receta para el agotamiento. La buena noticia: no necesitas memorizarlas. Necesitas encontrarte con ellas.",
+          "Utilizamos una sencilla regla 3-2-1. Tres encuentros al día, dos contextos por encuentro y una recuperación forzada. Eso es todo.",
+          "Día 1: aprende 3 palabras nuevas. Vélos en tu tarjeta de memoria, vélos en una frase, vélos en un ejemplo de gramática. Día 2: 3 palabras nuevas más, más 6 de ayer. Día 7: 21 palabras nuevas esta semana, pero más de 80 repasos. Cuando una palabra ha sido revisada 5 veces, la retención supera el 90%.",
+          "A lo largo de 8 semanas, esto suma 168 palabras a un ritmo de 3 por día. Para alcanzar las 1000, aumentas a 15 palabras nuevas al día para el tercer mes, cuando los repasos están mayormente almacenados en caché. El ciclo diario de 10 minutos en LangOria se encarga de esto automáticamente por ti.",
+          "La clave: el vocabulario no es un concurso de memoria. Es un juego de frecuencia. Preséntate todos los días, confía en el sistema y las palabras se quedarán."
+        ]
+      },
+      {
+        "slug": "shadowing-the-speaking-exercise-that-works",
+        "title": "Shadowing: el ejercicio de habla que realmente funciona",
+        "excerpt": "Por qué repetir audio nativo es la forma más rápida de corregir la pronunciación, y una rutina de 5 pasos que puedes empezar hoy mismo.",
+        "tag": "Habla",
+        "readTime": "5 min de lectura",
+        "date": "2026-05-28",
+        "content": [
+          "Si puedes leer una frase pero no puedes decirla, no estás solo. La mayoría de los estudiantes dedican el 90% de su tiempo a leer y escuchar, y el 10% a hablar. Esa proporción está invertida.",
+          "El shadowing es la práctica de escuchar a un hablante nativo y repetir lo que dice en tiempo real, imitando el ritmo, la entonación y el acento. Es la técnica que utilizan los intérpretes profesionales para mantener la fluidez, y funciona para cualquier idioma.",
+          "La rutina de 5 pasos: (1) Escucha una frase a velocidad nativa. (2) Escucha de nuevo con la transcripción. (3) Repite a velocidad nativa mientras grabas. (4) Compara tu grabación con la original. (5) Repite 3 veces antes de continuar.",
+          "Haz esto durante 5 minutos al día. En un mes, tu acento empezará a cambiar notablemente. En tres meses, podrás producir frases que antes no podías leer en voz alta.",
+          "El módulo de Habla de LangOria se basa en esta misma idea. Elige una frase, escucha, repite, repite, repite. Sin juicios, sin ansiedad por la retroalimentación. Solo tu voz y el modelo."
+        ]
+      }
+    ]
+  },
   "recommend": {
-    "title": "Ruta de aprendizaje personalizada",
-    "subtitle": "Una ruta de mejora personalizada basada en tus datos de práctica recientes y tu idioma objetivo.",
-    "badge": "Ruta recomendada para hoy",
+    "title": "Ruta de Aprendizaje Personalizada",
+    "subtitle": "Una ruta de mejora adaptada a tus datos de práctica recientes y a tu idioma objetivo.",
+    "badge": "Ruta Recomendada para Hoy",
     "heading": "{{name}}, fortalezcamos los puntos débiles",
     "headingGuest": "Dale dirección y claridad a tu aprendizaje",
-    "description": "Sigue el orden punto débil → fortalecer → desafío integral para subir la puntuación de cada módulo.",
-    "refresh": "Actualizar datos",
-    "currentLevel": "Nivel actual",
+    "description": "Sigue el orden punto débil → fortalecer → desafío integral para aumentar la puntuación de cada módulo.",
+    "refresh": "Actualizar Datos",
+    "currentLevel": "Nivel Actual",
     "streak": "Racha",
-    "targetLanguage": "Idioma objetivo",
+    "targetLanguage": "Idioma Objetivo",
     "step": "Paso {{n}}",
     "suggestMinutes": "Sugerido {{minutes}} min",
-    "priorityHigh": "Más alta",
+    "priorityHigh": "Máxima",
     "priorityMedium": "Media",
     "priorityLow": "Baja",
     "priorityLabel": "Prioridad",
-    "start": "Empezar a aprender",
+    "start": "Empezar a Aprender",
     "titles": {
-      "words": "Impulso de vocabulario con tarjetas",
-      "grammar": "Ejercicio de gramática",
-      "listening": "Escucha diaria",
-      "speaking": "Shadowing oral"
+      "words": "Refuerzo de Memoria con Flashcards",
+      "grammar": "Ejercicio de Gramática",
+      "listening": "Escucha Diaria",
+      "speaking": "Sombreado de Habla"
     },
     "moduleTraining": "Entrenamiento del módulo {{key}}",
-    "scoreHint": "Puntuación actual {{score}} / 100 · prioriza reforzar",
+    "scoreHint": "Puntuación actual {{score}} / 100 · priorizar el fortalecimiento",
     "fallback": [
       {
-        "title": "Introducción al vocabulario con tarjetas",
+        "title": "Introducción al Vocabulario con Flashcards",
         "desc": "Construye tu primer conjunto de vocabulario desde cero"
       },
       {
-        "title": "Entrenamiento básico de gramática",
+        "title": "Entrenamiento Básico de Gramática",
         "desc": "Domina las reglas fundamentales de la estructura del idioma"
       },
       {
-        "title": "Introducción a la conversación diaria",
+        "title": "Introducción a la Conversación Diaria",
         "desc": "Repite las expresiones habladas más comunes"
       }
     ],
     "coursesTitle": "Recomendado · {{flag}} {{name}}",
     "coursesDesc": "Cuidadosamente seleccionados por nivel para un aprendizaje sistemático.",
-    "browseAll": "Ver todo →",
+    "browseAll": "Explorar Todo →",
     "joinPlan": "Añadir al plan →"
   },
   "achievements": {
     "title": "Logros",
     "subtitle": "Cada persistencia merece ser vista.",
-    "wall": "Muro de logros",
-    "heading": "Desbloqueados {{earned}} / {{total}} insignias",
-    "description": "Gana insignias de honor al alcanzar hitos de aprendizaje y registra cada paso de crecimiento.",
+    "wall": "Muro de Logros",
+    "heading": "Insignias desbloqueadas {{earned}} / {{total}}",
+    "description": "Gana insignias de honor al alcanzar hitos de aprendizaje y registra cada paso de tu crecimiento.",
     "unlocked": "Desbloqueado",
     "stats": {
       "streak": "Racha",
@@ -713,27 +2078,27 @@
         "description": "Estudia 3 días seguidos para crear un pequeño hábito"
       },
       "streak-7": {
-        "title": "Estrella de la semana",
+        "title": "Estrella de la Semana",
         "description": "Estudia 7 días seguidos"
       },
       "streak-30": {
-        "title": "Campeón mensual",
+        "title": "Campeón Mensual",
         "description": "Estudia 30 días seguidos"
       },
       "words-20": {
-        "title": "Estrella en vocabulario",
+        "title": "Estrella Emergente de Vocabulario",
         "description": "Domina 20 palabras nuevas"
       },
       "words-100": {
-        "title": "Maestro del vocabulario",
+        "title": "Maestro de Vocabulario",
         "description": "Domina 100 palabras nuevas"
       },
       "quizzes-10": {
-        "title": "Aprendiz de gramática",
+        "title": "Aprendiz de Gramática",
         "description": "Completa 10 preguntas de gramática"
       },
       "quizzes-50": {
-        "title": "Maestro de gramática",
+        "title": "Maestro de Gramática",
         "description": "Completa 50 preguntas de gramática"
       },
       "speaking-10": {
@@ -741,11 +2106,11 @@
         "description": "Repite en voz alta durante 10 minutos en total"
       },
       "listening-10": {
-        "title": "Escucha",
+        "title": "Oyente",
         "description": "Escucha durante 10 minutos en total"
       },
       "level-5": {
-        "title": "Paso a paso",
+        "title": "Paso a Paso",
         "description": "Alcanza el nivel 5"
       },
       "level-10": {
@@ -760,19 +2125,19 @@
     "topic": "Tema",
     "topics": {
       "all": "Todos",
-      "daily": "Frase del día",
-      "japanese": "Consejos para aprender japonés",
-      "kpop": "Coreano con K-pop",
-      "english": "Inglés para el trabajo",
-      "help": "Preguntas y ayuda"
+      "daily": "Frase Diaria",
+      "japanese": "Consejos para Aprender Japonés",
+      "kpop": "Aprendizaje de Coreano K-pop",
+      "english": "Inglés para el Trabajo",
+      "help": "Ayuda de Preguntas y Respuestas"
     },
     "placeholderLogged": "Comparte una expresión que hayas aprendido recientemente o haz una pregunta…",
-    "placeholderGuest": "Inicia sesión para publicar.",
+    "placeholderGuest": "Por favor, inicia sesión para publicar.",
     "post": "Publicar",
     "charCount": "{{length}} / 500",
     "signature": "{{name}} · Cada palabra que dices ahora resuena en el futuro.",
     "loading": "Cargando publicaciones...",
-    "empty": "Nadie ha hablado en este tema aún. ¿Por qué no empezar tú?",
+    "empty": "Nadie ha hablado en este tema todavía. ¿Por qué no empiezas tú?",
     "commentPlaceholderLogged": "Escribe una respuesta…",
     "commentPlaceholderGuest": "Inicia sesión para comentar",
     "send": "Enviar",
@@ -781,51 +2146,64 @@
   },
   "profile": {
     "title": "Perfil",
-    "subtitle": "Gestiona tu información de cuenta, objetivos y preferencias.",
-    "pleaseLogin": "Inicia sesión para ver tu perfil.",
-    "goLogin": "Ir a iniciar sesión",
+    "subtitle": "Gestiona la información de tu cuenta, tus objetivos y tus preferencias.",
+    "pleaseLogin": "Por favor, inicia sesión para ver tu perfil.",
+    "goLogin": "Ir a Iniciar Sesión",
     "createdAt": "Creado el {{date}}",
     "info": {
       "streak": "Racha",
       "level": "Nivel",
-      "words": "Palabras aprendidas",
-      "grammar": "Gramática",
+      "words": "Palabras Aprendidas",
+      "grammar": "Práctica de Gramática",
       "speaking": "Habla",
       "listening": "Escucha"
     },
-    "settingsTitle": "Cuenta y preferencias",
+    "settingsTitle": "Cuenta y Preferencias",
     "settingsHint": "Haz clic en Guardar después de hacer cambios.",
     "fields": {
       "nickname": "Apodo",
-      "email": "Correo electrónico",
-      "targetLanguage": "Idioma objetivo",
-      "uiLanguage": "Idioma de la interfaz",
-      "nativeLanguage": "Idioma nativo / de explicaciones",
-      "dailyGoal": "Objetivo diario ({{goal}} min)"
+      "email": "Correo Electrónico",
+      "targetLanguage": "Idioma Objetivo",
+      "uiLanguage": "Idioma de la Interfaz",
+      "nativeLanguage": "Idioma Nativo / Idioma de Explicación",
+      "dailyGoal": "Meta Diaria ({{goal}} min)"
     },
     "saving": "Guardando…",
-    "save": "Guardar cambios",
+    "save": "Guardar Cambios",
     "saved": "Guardado ✓",
     "saveFailed": "Error al guardar",
-    "logout": "Cerrar sesión",
+    "logout": "Cerrar Sesión",
     "bannerTitle": "Sigue aprendiendo, sigue avanzando",
-    "bannerText": "LangOria registra todos tus datos de aprendizaje mediante la API del backend, sincronizando el progreso en cualquier dispositivo."
+    "bannerText": "LangOria registra todos los datos de aprendizaje a través de la API de backend, sincronizando el progreso en cualquier dispositivo."
   },
   "settings": {
-    "title": "Configuración de idioma",
-    "subtitle": "Configura el idioma de la interfaz y el idioma utilizado para las explicaciones de palabras.",
-    "interface": "Idioma de la interfaz",
+    "title": "Configuración de Idioma",
+    "subtitle": "Establece el idioma de tu interfaz y el idioma utilizado para las explicaciones de palabras.",
+    "interface": "Idioma de la Interfaz",
     "interfaceDesc": "Controla el idioma de los menús, botones y mensajes.",
-    "native": "Idioma nativo / de explicaciones",
+    "native": "Idioma Nativo / de Explicación",
     "nativeDesc": "Las definiciones de palabras y las traducciones de ejemplos se mostrarán en este idioma cuando estén disponibles.",
-    "target": "Idioma objetivo",
+    "target": "Idioma Objetivo",
     "targetDesc": "El idioma que estás aprendiendo actualmente.",
     "saving": "Guardando…",
-    "save": "Guardar configuración de idioma",
+    "save": "Guardar Configuración de Idioma",
     "saved": "Guardado ✓",
     "saveFailed": "Error al guardar"
   },
+  "api": {
+    "errors": {
+      "notFound": "Endpoint no encontrado (servicio no desplegado)",
+      "serverError": "Error interno del servidor",
+      "unauthorized": "No ha iniciado sesión o la sesión ha caducado",
+      "forbidden": "Sin permiso para esta operación",
+      "conflict": "Conflicto de recursos",
+      "badRequest": "Parámetros inválidos",
+      "requestFailed": "Solicitud fallida ({{status}})",
+      "emptyResponse": "El servidor devolvió datos vacíos"
+    }
+  },
   "auth": {
+    "notLoggedIn": "No has iniciado sesión",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "username": "Nombre de usuario",
@@ -844,17 +2222,22 @@
       "subtitle": "Inicia sesión para continuar tu viaje de aprendizaje inmersivo",
       "button": "Iniciar sesión",
       "loading": "Iniciando sesión…",
-      "error": "Por favor ingresa correo y contraseña",
-      "errorDefault": "Error al iniciar sesión, verifica tu cuenta o contraseña",
+      "error": "Por favor, introduce tu correo electrónico y contraseña",
+      "errorDefault": "Error al iniciar sesión, por favor, verifica tu cuenta o contraseña",
       "usageTitle": "Instrucciones",
-      "usageText": "Ingresa tu correo y contraseña registrados para iniciar sesión. Los nuevos usuarios deben registrarse primero.",
+      "usageText": "Introduce tu correo electrónico y contraseña registrados para iniciar sesión. Los nuevos usuarios deben registrarse primero.",
       "heroTitle": "A tu propio ritmo",
       "heroHighlight": "conquista un nuevo idioma.",
-      "heroDesc": "Cursos por niveles, ejercicios interactivos y motivación de la comunidad — convierte el aprendizaje en un hábito, no una tarea.",
+      "heroDesc": "Cursos por niveles, ejercicios interactivos y motivación comunitaria: convierte el aprendizaje en un hábito, no en una tarea.",
+      "oauthDivider": "o continuar con",
+      "continueWithGoogle": "Continuar con Google",
+      "continueWithGitHub": "Continuar con GitHub",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "forgotPasswordHint": "El restablecimiento de contraseña aún no está disponible. Por favor, contacta con soporte.",
       "features": [
         {
           "title": "Cursos por niveles",
-          "desc": "De principiante a dominio",
+          "desc": "Desde principiante hasta el dominio",
           "c": "from-sky-400/20 to-sky-500/0"
         },
         {
@@ -864,7 +2247,7 @@
         },
         {
           "title": "Ruta personalizada",
-          "desc": "Recomendaciones inteligentes de tus datos",
+          "desc": "Recomendaciones inteligentes basadas en tus datos",
           "c": "from-amber-400/20 to-amber-500/0"
         },
         {
@@ -872,40 +2255,34 @@
           "desc": "Insignias · Niveles · Puntos",
           "c": "from-rose-400/20 to-rose-500/0"
         }
-      ],
-      "oauthDivider": "or continue with",
-      "continueWithGoogle": "Continue with Google",
-      "continueWithGitHub": "Continue with GitHub",
-      "forgotPassword": "Forgot password?",
-      "forgotPasswordHint": "Password reset is not available yet. Please contact support."
+      ]
     },
     "register": {
-      "badge": "Aprendizaje inmersivo de idiomas",
+      "badge": "Aprendizaje de idiomas inmersivo",
       "title": "Deja que el mundo entero",
-      "titleHighlight": "sea tu aula.",
-      "description": "Regístrate para comenzar una ruta de aprendizaje personalizada por niveles, seguir tu progreso y crecer con estudiantes de todo el mundo.",
+      "titleHighlight": "se convierta en tu aula.",
+      "description": "Registra una cuenta para iniciar un camino de aprendizaje personalizado por niveles, seguir tu progreso y crecer con estudiantes de todo el mundo.",
       "formTitle": "Crea tu cuenta",
       "formSubtitle": "Empieza a aprender en segundos",
       "mobileLabel": "Idioma que más quieres aprender",
       "button": "Registrarse ahora",
       "loading": "Registrando…",
-      "validation": "Por favor completa el nombre de usuario y correo, la contraseña debe tener al menos 4 caracteres",
-      "errorDefault": "Error al registrarse, por favor inténtalo más tarde",
-      "usernamePlaceholder": "Choose a username",
-      "passwordPlaceholder": "Create a password"
+      "validation": "Por favor, rellena el nombre de usuario y el correo electrónico, la contraseña debe tener al menos 4 caracteres",
+      "errorDefault": "Error en el registro, por favor, inténtalo de nuevo más tarde",
+      "usernamePlaceholder": "Elige un nombre de usuario",
+      "passwordPlaceholder": "Crea una contraseña"
     },
     "oauth": {
-      "processing": "Completing sign-in…",
-      "callbackNoToken": "Sign-in failed: no token returned.",
-      "callbackFailed": "Sign-in failed. Please try again."
-    },
-    "notLoggedIn": "Not logged in"
+      "processing": "Completando inicio de sesión…",
+      "callbackNoToken": "Error al iniciar sesión: no se devolvió ningún token.",
+      "callbackFailed": "Error al iniciar sesión. Por favor, inténtalo de nuevo."
+    }
   },
   "admin": {
-    "title": "Administración",
-    "subtitle": "Gestiona el contenido de aprendizaje: idiomas, cursos, palabras, cuestionarios, escucha y habla.",
+    "title": "Administrador",
+    "subtitle": "Gestionar contenido de aprendizaje: idiomas, cursos, palabras, cuestionarios, comprensión auditiva y expresión oral.",
     "loading": "Cargando…",
-    "noPermissionTitle": "Sin permiso",
+    "noPermissionTitle": "Sin Permiso",
     "noPermissionDesc": "Esta página es solo para administradores.",
     "query": "Buscar",
     "add": "Añadir",
@@ -920,14 +2297,14 @@
       "courses": "Cursos",
       "words": "Palabras",
       "quizzes": "Cuestionarios",
-      "listening": "Escucha",
-      "speaking": "Habla",
-      "blog": "Blog"
+      "listening": "Comprensión auditiva",
+      "speaking": "Expresión oral",
+      "blog": "Entradas de blog"
     },
     "blog": {
       "newPost": "Nueva entrada",
       "editPost": "Editar entrada",
-      "searchPlaceholder": "Buscar título o resumen...",
+      "searchPlaceholder": "Buscar título o extracto...",
       "allStatus": "Todos los estados",
       "allLanguages": "Todos los idiomas",
       "draft": "Borrador",
@@ -937,23 +2314,23 @@
       "colLang": "Idioma",
       "colStatus": "Estado",
       "colUpdated": "Actualizado",
-      "slugHint": "Déjalo vacío para generarlo desde el título",
-      "contentHint": "Escribe el artículo en Markdown. Soporta títulos, listas, código, tablas, enlaces e imágenes.",
-      "markdownHint": "Markdown soportado",
-      "tldrHint": "Opcional: 1-2 frases como gancho al inicio.",
+      "slugHint": "Dejar vacío para generar automáticamente a partir del título",
+      "contentHint": "Escribe el cuerpo del artículo en Markdown. Admite encabezados, listas, bloques de código, tablas, enlaces e imágenes.",
+      "markdownHint": "Markdown compatible",
+      "tldrHint": "Gancho opcional de 1-2 frases que se muestra encima del artículo.",
       "tabEdit": "Editar",
       "tabPreview": "Vista previa",
-      "previewEmpty": "Aún no hay contenido. Cambia a «Editar» para empezar.",
+      "previewEmpty": "Nada que previsualizar todavía — cambia a Editar y empieza a escribir.",
       "fields": {
         "title": "Título",
         "slug": "Slug",
-        "excerpt": "Resumen",
+        "excerpt": "Extracto",
         "content": "Contenido",
         "tag": "Etiqueta",
         "readTime": "Tiempo de lectura",
         "language": "Idioma",
         "status": "Estado",
-        "coverImageUrl": "URL de imagen de portada",
+        "coverImageUrl": "URL de la imagen de portada",
         "tldr": "TL;DR",
         "seoTitle": "Título SEO",
         "seoDescription": "Descripción SEO"
@@ -977,20 +2354,20 @@
       "minutes": "Minutos",
       "cover": "Portada",
       "tags": "Etiquetas",
-      "vipOnly": "VIP",
+      "vipOnly": "Solo VIP",
       "courseOrder": "Orden",
       "word": "Palabra",
       "translation": "Traducción",
       "phonetic": "Fonética",
-      "exampleSentence": "Oración de ejemplo",
+      "exampleSentence": "Frase de ejemplo",
       "vocabOrder": "Orden",
       "question": "Pregunta",
       "options": "Opciones",
       "answer": "Respuesta",
       "explain": "Explicación",
       "quizOrder": "Orden",
-      "script": "Guión",
-      "blanks": "Espacios",
+      "script": "Guion",
+      "blanks": "Espacios en blanco",
       "listenOrder": "Orden",
       "phrase": "Frase",
       "speakOrder": "Orden"
@@ -1001,10 +2378,10 @@
     },
     "enabled": "Habilitado",
     "disabled": "Deshabilitado",
-    "addLabel": "Add {{label}}",
-    "editLabel": "Edit {{label}}",
-    "arrayPlaceholder": "One per line",
-    "jsonPlaceholder": "Valid JSON array"
+    "addLabel": "Añadir {{label}}",
+    "editLabel": "Editar {{label}}",
+    "arrayPlaceholder": "Uno por línea",
+    "jsonPlaceholder": "Array JSON válido"
   },
   "common": {
     "loading": "Cargando...",
@@ -1016,511 +2393,379 @@
     "submit": "Enviar",
     "back": "Atrás",
     "next": "Siguiente",
-    "finish": "Terminar",
+    "finish": "Finalizar",
     "minutes": "min",
     "days": "días",
     "all": "Todos"
   },
-  "faq": {
-    "seoTitle": "Preguntas frecuentes | LangOria",
-    "seoDescription": "Respuestas a preguntas frecuentes sobre el aprendizaje por repetición espaciada de LangOria: cómo funciona el bucle de 10 minutos, precios, idiomas y cuenta.",
-    "title": "Preguntas frecuentes",
-    "subtitle": "Todo lo que necesitas saber sobre LangOria.",
-    "intro": "¿No encuentras la respuesta? Escríbenos por la comunidad y nuestro equipo te responderá.",
-    "groups": [
-      {
-        "title": "Primeros pasos",
-        "items": [
-          {
-            "q": "¿Cómo creo una cuenta?",
-            "a": "Pulsa 'Registrarse' arriba a la derecha, introduce email y contraseña, elige tu idioma objetivo y nativo, y listo."
-          },
-          {
-            "q": "¿Necesito una tarjeta de crédito?",
-            "a": "No. La experiencia de aprendizaje es gratuita. Solo necesitarás un método de pago si en el futuro decides pasarte a Premium."
-          },
-          {
-            "q": "¿Puedo cambiar mi idioma objetivo más tarde?",
-            "a": "Sí. Ve a Ajustes → Idioma objetivo en cualquier momento. Tu progreso se mantiene ligado al idioma que venías practicando."
-          }
-        ]
-      },
-      {
-        "title": "Aprendizaje",
-        "items": [
-          {
-            "q": "¿Cuánto debo estudiar cada día?",
-            "a": "Recomendamos 10 minutos al día. La repetición espaciada funciona mejor con sesiones cortas y constantes."
-          },
-          {
-            "q": "¿Por qué las explicaciones están en mi idioma nativo?",
-            "a": "Las investigaciones muestran que aprender es más rápido cuando las explicaciones vienen de tu idioma más fuerte. Las palabras que estudias siempre están en el idioma objetivo."
-          },
-          {
-            "q": "¿Se reinicia la racha si me salto un día?",
-            "a": "Sí, se reinicia si te saltas un día entero. Hay una ventana de gracia de 36 horas para cubrir diferencias horarias."
-          }
-        ]
-      },
-      {
-        "title": "Cuenta y privacidad",
-        "items": [
-          {
-            "q": "¿Dónde se guardan mis datos?",
-            "a": "Tus datos de aprendizaje se guardan en Supabase (Postgres) en una región cercana a ti. No vendemos datos de usuario."
-          },
-          {
-            "q": "¿Cómo elimino mi cuenta?",
-            "a": "Ve a Perfil → Zona peligrosa y haz clic en 'Eliminar cuenta'. Todos los datos se eliminan en 7 días."
-          }
-        ]
-      }
-    ],
-    "ctaTitle": "¿Listo para empezar?",
-    "ctaDesc": "Crea una cuenta gratis y prueba el ritual diario de 10 minutos.",
-    "cta": "Regístrate gratis"
+  "lesson": {
+    "status": {
+      "locked": "Bloqueado",
+      "unlocked": "Empezar",
+      "inProgress": "Continuar",
+      "completed": "Completado",
+      "redo": "Repetir",
+      "continue": "Continuar"
+    },
+    "skill": {
+      "vocab": "Vocabulario",
+      "grammar": "Gramática",
+      "listening": "Comprensión auditiva",
+      "speaking": "Expresión oral",
+      "mixed": "Mixto"
+    },
+    "loadingPath": "Cargando ruta de aprendizaje…",
+    "loginToTrackProgress": "Inicia sesión para seguir el progreso de las lecciones.",
+    "noLessons": "Este curso aún no tiene lecciones configuradas.",
+    "courseProgress": "Progreso del curso",
+    "completedCount": "{{completed}} / {{total}} lecciones completadas",
+    "bestScore": "Mejor {{score}}",
+    "loadFailed": "Error al cargar las lecciones"
   },
-  "blog": {
-    "seoTitle": "Blog de aprendizaje de idiomas — Consejos y ciencia | LangOria",
-    "seoDescription": "Guías prácticas, ciencia del aprendizaje y consejos para dominar un idioma con repetición espaciada, shadowing y un hábito diario de 10 minutos.",
-    "title": "Blog de LangOria",
-    "subtitle": "Guías prácticas, ciencia del aprendizaje e historias reales.",
-    "readMore": "Leer más",
-    "backToList": "← Volver a todos los artículos",
-    "notFoundTitle": "Artículo no encontrado",
-    "notFoundDesc": "El artículo que buscas se ha movido o ya no existe.",
-    "empty": "Aún no hay artículos publicados. ¡Vuelve pronto!",
-    "ctaTitle": "Pon en práctica estos consejos",
-    "ctaDesc": "Crea una cuenta gratis y empieza hoy tu bucle diario de 10 minutos.",
-    "cta": "Empezar a aprender",
-    "posts": [
-      {
-        "slug": "ten-minutes-beat-two-hours",
-        "title": "Why 10 minutes a day beats 2 hours on weekends",
-        "excerpt": "Spaced repetition is the most researched technique in learning science. Here is why shorter, more frequent sessions outperform long cramming.",
-        "tag": "Methods",
-        "readTime": "6 min read",
-        "date": "2026-06-10",
-        "content": [
-          "If you have ever crammed for an exam and forgotten everything two weeks later, you already know the problem with long, infrequent study sessions. The fix is not studying harder. The fix is studying more often.",
-          "Learning science has been clear on this for decades. Hermann Ebbinghaus discovered the forgetting curve in 1885: we lose newly learned information at a predictable rate unless we actively recall it at the right moment. The 'right moment' is just before you are about to forget.",
-          "This is exactly what spaced repetition does. LangOria schedules each word and grammar point for review at the moment you are most likely to forget it. Hit 'remembered' and the next review gets pushed further out. Hit 'not familiar' and the next review comes sooner.",
-          "The result: in 10 minutes a day, you cover more ground than 2 hours on Sunday, because every minute is spent on something your brain actually needs to recall. After 30 days, most learners have reviewed 600+ items — more than a single weekend cramming session could ever cover.",
-          "So if you have been telling yourself you don't have time to learn a language, you do. Ten minutes. Every day. That is the entire trick."
-        ]
-      },
-      {
-        "slug": "how-to-remember-1000-words",
-        "title": "How to remember 1000 words without burning out",
-        "excerpt": "A practical 8-week plan built on the 3-2-1 rule, with examples across English, Japanese, and Spanish.",
-        "tag": "Vocabulary",
-        "readTime": "8 min read",
-        "date": "2026-06-04",
-        "content": [
-          "Most language learners aim for 1000 words as a first milestone. The bad news: trying to memorize them all at once is a recipe for burnout. The good news: you do not need to memorize them. You need to meet them.",
-          "We use a simple 3-2-1 rule. Three encounters a day, two contexts per encounter, and one forced recall. That is it.",
-          "Day 1: learn 3 new words. See them in your flashcard, see them in a sentence, see them in a grammar example. Day 2: 3 more new words, plus 6 from yesterday. Day 7: 21 new words this week, but 80+ reviews. By the time a word has been reviewed 5 times, retention is over 90%.",
-          "Across 8 weeks, this adds up to 168 words at a pace of 3 per day. To hit 1000, you scale to 15 new words a day by month 3, when reviews are mostly cached. The 10-minute daily loop in LangOria handles this for you automatically.",
-          "The key insight: vocabulary is not a memory contest. It is a frequency game. Show up every day, trust the system, and the words will stick."
-        ]
-      },
-      {
-        "slug": "shadowing-the-speaking-exercise-that-works",
-        "title": "Shadowing: the speaking exercise that actually works",
-        "excerpt": "Why repeating native audio is the fastest way to fix pronunciation, and a 5-step routine you can start today.",
-        "tag": "Speaking",
-        "readTime": "5 min read",
-        "date": "2026-05-28",
-        "content": [
-          "If you can read a sentence but cannot say it, you are not alone. Most learners spend 90% of their time reading and listening, and 10% speaking. That ratio is backwards.",
-          "Shadowing is the practice of listening to a native speaker and repeating what they say in real time, mimicking rhythm, intonation, and stress. It is the technique professional interpreters use to maintain fluency, and it works for any language.",
-          "The 5-step routine: (1) Listen to a sentence at native speed. (2) Listen again with the transcript. (3) Repeat at native speed while recording. (4) Compare your recording to the original. (5) Repeat 3 times before moving on.",
-          "Do this for 5 minutes a day. Within a month, your accent will start to shift noticeably. Within three months, you will be able to produce sentences you could not read aloud before.",
-          "LangOria's Speaking module is built around this exact idea. Pick a sentence, listen, repeat, repeat, repeat. No judging, no feedback anxiety. Just your voice and the model."
-        ]
-      }
-    ]
+  "league": {
+    "title": "Clasificación semanal",
+    "subtitle": "Acumula XP semanalmente, compite por el nivel Maestro · los ascensos y descensos se resuelven cada lunes",
+    "seoTitle": "Clasificación semanal · Liga | LangOria",
+    "seoDescription": "Compite en la clasificación semanal de XP de LangOria. Asciende de Bronce a Maestro en las ligas de idiomas.",
+    "refresh": "Actualizar",
+    "loadFailed": "No se pudo cargar la clasificación",
+    "refreshFailed": "Error al actualizar",
+    "season": "Temporada {{key}}",
+    "players": "{{count}} jugadores",
+    "timeRemaining": "{{time}} restantes",
+    "time": {
+      "daysHours": "{{days}}d {{hours}}h",
+      "hoursMinutes": "{{hours}}h {{mins}}m"
+    },
+    "divisionMinExp": "{{division}}: XP semanal ≥ {{minExp}}",
+    "loginCardTitle": "Inicia sesión para ver tu rango",
+    "loginCardDesc": "Después de iniciar sesión, te unirás automáticamente a la temporada de esta semana y serás colocado en una división según tu XP total.",
+    "loginButton": "Iniciar sesión ahora",
+    "loadingMyRank": "Cargando tu rango…",
+    "rankInDivision": "Rango en la división:",
+    "weekExp": "XP semanal:",
+    "totalExp": "XP total:",
+    "bestDivision": "Mejor histórico:",
+    "promotionMsg": "¡Estás en zona de ascenso! Subirás de división cuando termine la temporada.",
+    "demotionMsg": "Estás en zona de descenso y podrías bajar de división cuando termine la temporada. ¡Sigue así!",
+    "rules": "Reglas de ascenso/descenso: el 10% superior de cada división asciende, el 10% inferior desciende. Los ajustes se realizan en bloque cada lunes al finalizar la temporada.",
+    "leaderboard": "Clasificación",
+    "leaderboardSubtitle": "Ordenado por XP semanal · hasta 50 por página",
+    "loadingStandings": "Cargando clasificación…",
+    "emptyDivision": "Aún no hay jugadores en esta división esta semana — ¡acumula XP y sé el primero en la tabla!",
+    "you": "Tú",
+    "totalXp": "XP total {{total}}",
+    "startingXp": "Inicio de semana {{starting}}",
+    "weekXpLabel": "XP semanal",
+    "division": {
+      "bronze": "Bronce",
+      "silver": "Plata",
+      "gold": "Oro",
+      "platinum": "Platino",
+      "diamond": "Diamante",
+      "master": "Maestro"
+    }
+  },
+  "pronunciation": {
+    "excellent": "Excelente",
+    "great": "Genial",
+    "okay": "Bien",
+    "practiceMore": "Sigue practicando",
+    "errors": {
+      "noSpeech": "No se detectó voz. Por favor, inténtalo de nuevo.",
+      "microphoneNotAllowed": "Por favor, permite el acceso al micrófono en tu navegador.",
+      "network": "Error de red. Por favor, comprueba tu conexión e inténtalo de nuevo.",
+      "recognitionFailed": "Reconocimiento fallido ({{error}})",
+      "cannotStart": "No se pudo iniciar la grabación. Por favor, inténtalo de nuevo."
+    },
+    "unsupportedBrowser": "El reconocimiento de voz no es compatible con este navegador. Por favor, usa Chrome, Edge o Safari.",
+    "repeatThis": "Repite esto",
+    "listening": "Escuchando… por favor, lee en voz alta",
+    "tapToStart": "Toca el micrófono para empezar",
+    "toneHint": "Consejo: esta puntuación se basa en la similitud general; la precisión del tono será compatible en una versión futura.",
+    "fullScore": "De 100",
+    "youSaid": "Dijiste",
+    "target": "Objetivo",
+    "noSpeechDetected": "(No se detectó voz)",
+    "tryAgain": "Inténtalo de nuevo"
   },
   "placement": {
-    "title": "Test de nivel",
-    "subtitle": "6 preguntas para situar rápidamente tu nivel inicial",
-    "seoTitle": "Test de nivel — LangOria",
-    "seoDescription": "Test de nivel adaptativo: 6 preguntas para situar tu nivel inicial.",
-    "loginHint": "No hace falta iniciar sesión para hacer el test. Inicia sesión para guardar tu resultado y recibir recomendaciones de cursos la próxima vez.",
+    "title": "Prueba de nivel",
+    "subtitle": "6 preguntas para determinar rápidamente tu nivel inicial",
+    "seoTitle": "Prueba de nivel — LangOria",
+    "seoDescription": "Prueba de nivel adaptativa: 6 preguntas para determinar tu nivel inicial.",
+    "loginHint": "No es necesario iniciar sesión para realizar la prueba. Inicia sesión para guardar tu resultado y obtener recomendaciones de cursos la próxima vez que entres.",
     "loading": "Preparando preguntas para {{lang}}…",
     "loadingText": "Cargando…",
-    "questionTitle": "Test de nivel · Pregunta {{current}} / {{total}}",
+    "questionTitle": "Prueba de nivel · Pregunta {{current}} / {{total}}",
     "questionSubtitle": "Nivel actual: {{level}} (CEFR {{cefr}})",
-    "emptyQuestion": "(Pregunta vacía)",
-    "reselectLang": "Elegir otro idioma",
+    "emptyQuestion": "(La pregunta está vacía)",
+    "reselectLang": "Volver a seleccionar idioma",
     "submit": "Enviar",
     "nextQuestion": "Siguiente pregunta…",
-    "resultTitle": "Resultado del test de nivel",
+    "resultTitle": "Resultado de la prueba de nivel",
     "resultSubtitle": "Nivel inicial recomendado: {{level}} (CEFR {{cefr}})",
-    "resultSeoTitle": "Resultado del test de nivel — LangOria",
-    "testComplete": "Test completado",
+    "resultSeoTitle": "Resultado de la prueba de nivel — LangOria",
+    "testComplete": "Prueba completada",
     "correctCount": "Respuestas correctas",
     "recommendedLevel": "Nivel recomendado",
     "cefrAlignment": "Alineación CEFR",
     "cefrRank": "Rango CEFR",
     "language": "Idioma",
     "startCourse": "Empezar este curso",
-    "noCourseMatch": "No se ha encontrado un curso que coincida exactamente con {{level}}. Ve a la lista de cursos y elige un nivel similar.",
+    "noCourseMatch": "No se encontró ningún curso que coincida exactamente con {{level}}. Por favor, ve a la lista de cursos y elige un nivel similar tú mismo.",
     "saving": "Guardando…",
     "saveResult": "Guardar resultado",
-    "saved": "Guardado en tu cuenta. La próxima vez que entres a este idioma se recomendará este nivel automáticamente.",
+    "saved": "Guardado en tu cuenta. Este nivel se recomendará automáticamente la próxima vez que entres en este idioma.",
     "loginToSave": "Inicia sesión para guardar el resultado",
-    "retake": "Repetir test",
-    "errorOccurred": "Algo salió mal,",
+    "retake": "Repetir prueba",
+    "errorOccurred": "Algo salió mal, por favor",
     "restart": "Empezar de nuevo",
     "errors": {
-      "noQuestions": "Aún no hay preguntas de test de nivel para este idioma. Elige otro idioma.",
+      "noQuestions": "Aún no hay preguntas de prueba de nivel para este idioma. Por favor, elige otro idioma.",
       "noStartQuestion": "No se pudo seleccionar una pregunta inicial.",
       "fetchFailed": "Error al obtener las preguntas",
       "saveFailed": "Error al guardar el resultado"
     }
   },
-  "lesson": {
-    "status": {
-      "locked": "Locked",
-      "unlocked": "Start",
-      "inProgress": "Continue",
-      "completed": "Completed",
-      "redo": "Redo",
-      "continue": "Continue"
-    },
-    "skill": {
-      "vocab": "Vocab",
-      "grammar": "Grammar",
-      "listening": "Listening",
-      "speaking": "Speaking",
-      "mixed": "Mixed"
-    },
-    "loadingPath": "Loading learning path…",
-    "loginToTrackProgress": "Log in to track lesson progress.",
-    "noLessons": "This course has no lessons configured yet.",
-    "courseProgress": "Course Progress",
-    "completedCount": "{{completed}} / {{total}} lessons completed",
-    "bestScore": "Best {{score}}",
-    "loadFailed": "Failed to load lessons"
-  },
-  "league": {
-    "title": "Weekly Leaderboard",
-    "subtitle": "Accumulate XP weekly, compete for Master tier · promotions and demotions settle every Monday",
-    "seoTitle": "Weekly Leaderboard · League | LangOria",
-    "seoDescription": "Compete in LangOria's weekly XP leaderboard. Climb from Bronze to Master across language leagues.",
-    "refresh": "Refresh",
-    "loadFailed": "Failed to load leaderboard",
-    "refreshFailed": "Refresh failed",
-    "season": "Season {{key}}",
-    "players": "{{count}} players",
-    "timeRemaining": "{{time}} remaining",
-    "time": {
-      "daysHours": "{{days}}d {{hours}}h",
-      "hoursMinutes": "{{hours}}h {{mins}}m"
-    },
-    "divisionMinExp": "{{division}}: weekly XP ≥ {{minExp}}",
-    "loginCardTitle": "Log in to see your rank",
-    "loginCardDesc": "After logging in you'll automatically join this week's season and be placed in a division based on your total XP.",
-    "loginButton": "Log in now",
-    "loadingMyRank": "Loading your rank…",
-    "rankInDivision": "Rank in division:",
-    "weekExp": "Weekly XP:",
-    "totalExp": "Total XP:",
-    "bestDivision": "Best ever:",
-    "promotionMsg": "You're in the promotion zone! You'll move up a division when the season ends.",
-    "demotionMsg": "You're in the demotion zone and may drop a division when the season ends. Keep going!",
-    "rules": "Promotion/demotion rules: top 10% of each division promote, bottom 10% demote. Settlements run in bulk every Monday when the season ends.",
-    "leaderboard": "Leaderboard",
-    "leaderboardSubtitle": "Sorted by weekly XP · up to 50 per page",
-    "loadingStandings": "Loading leaderboard…",
-    "emptyDivision": "No players in this division yet this week — grind XP and be the first on the board!",
-    "you": "You",
-    "totalXp": "Total XP {{total}}",
-    "startingXp": "Week start {{starting}}",
-    "weekXpLabel": "Weekly XP",
-    "division": {
-      "bronze": "Bronze",
-      "silver": "Silver",
-      "gold": "Gold",
-      "platinum": "Platinum",
-      "diamond": "Diamond",
-      "master": "Master"
-    }
-  },
-  "pronunciation": {
-    "excellent": "Excellent",
-    "great": "Great",
-    "okay": "Okay",
-    "practiceMore": "Keep practicing",
-    "errors": {
-      "noSpeech": "No speech detected. Please try again.",
-      "microphoneNotAllowed": "Please allow microphone access in your browser.",
-      "network": "Network error. Please check your connection and retry.",
-      "recognitionFailed": "Recognition failed ({{error}})",
-      "cannotStart": "Unable to start recording. Please retry."
-    },
-    "unsupportedBrowser": "Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.",
-    "repeatThis": "Repeat this",
-    "listening": "Listening… please read aloud",
-    "tapToStart": "Tap the microphone to start",
-    "toneHint": "Tip: this score is based on overall similarity; tone accuracy will be supported in a future version.",
-    "fullScore": "Out of 100",
-    "youSaid": "You said",
-    "target": "Target",
-    "noSpeechDetected": "(No speech detected)",
-    "tryAgain": "Try again"
-  },
   "aiConversation": {
-    "title": "AI Conversation",
-    "loginPrompt": "Log in to start AI conversations.",
-    "loginButton": "Log in",
-    "subtitle": "Practice real-life dialogue with AI.",
-    "remainingToday": "{{count}} remaining today",
-    "newChat": "New chat",
-    "targetLanguage": "Target language",
-    "levelOptional": "Level (optional)",
-    "levelPlaceholder": "e.g. A1, N5",
-    "starting": "Starting...",
-    "startChat": "Start chat",
-    "history": "History",
-    "noHistory": "No conversations yet.",
-    "untitledChat": "Untitled {{language}} chat",
-    "turnCount": "{{count}} turns",
-    "active": "Active conversation",
-    "selectOrCreate": "Select or create a chat",
-    "endChat": "End chat",
-    "emptyTitle": "No messages yet",
-    "emptyHint": "Start the conversation above.",
-    "typing": "AI is typing...",
-    "inputPlaceholder": "Type your message...",
-    "sessionClosed": "Session closed · {{status}}",
-    "timeout": "Timed out",
-    "ended": "Ended",
+    "title": "Conversación con IA",
+    "loginPrompt": "Inicia sesión para empezar conversaciones con IA.",
+    "loginButton": "Iniciar sesión",
+    "subtitle": "Practica diálogos de la vida real con IA.",
+    "remainingToday": "{{count}} restantes hoy",
+    "newChat": "Nueva conversación",
+    "targetLanguage": "Idioma objetivo",
+    "levelOptional": "Nivel (opcional)",
+    "levelPlaceholder": "ej. A1, N5",
+    "starting": "Iniciando...",
+    "startChat": "Iniciar conversación",
+    "history": "Historial",
+    "noHistory": "Aún no hay conversaciones.",
+    "untitledChat": "Conversación sin título en {{language}}",
+    "turnCount": "{{count}} turnos",
+    "active": "Conversación activa",
+    "selectOrCreate": "Selecciona o crea una conversación",
+    "endChat": "Terminar conversación",
+    "emptyTitle": "Aún no hay mensajes",
+    "emptyHint": "Inicia la conversación arriba.",
+    "typing": "La IA está escribiendo...",
+    "inputPlaceholder": "Escribe tu mensaje...",
+    "sessionClosed": "Sesión cerrada · {{status}}",
+    "timeout": "Tiempo agotado",
+    "ended": "Finalizada",
     "errors": {
-      "loadConversations": "Failed to load conversations",
-      "loadMessages": "Failed to load messages",
-      "createConversation": "Failed to create conversation",
-      "sendMessage": "Failed to send message",
-      "endConversation": "Failed to end conversation"
+      "loadConversations": "Error al cargar conversaciones",
+      "loadMessages": "Error al cargar mensajes",
+      "createConversation": "Error al crear conversación",
+      "sendMessage": "Error al enviar mensaje",
+      "endConversation": "Error al terminar conversación"
     }
   },
   "alphabet": {
-    "title": "Alphabet",
-    "subtitle": "Learn the writing system and sounds.",
-    "seoTitle": "Alphabet & Pronunciation Basics | LangOria",
-    "seoDescription": "Learn Hiragana, Katakana, Hangul, Pinyin, Jyutping, Thai and more. Tap a character to hear it.",
-    "enter": "Enter",
-    "ttsDisclaimer": "Voice quality varies by browser and OS.",
-    "noLanguageSubtitle": "Choose a language to start.",
-    "switchLanguage": "Switch language",
-    "seoDescriptionLang": "{{language}} alphabet and pronunciation basics — LangOria",
-    "tapToSpeak": "Tap to hear pronunciation",
-    "tapDetailToScore": "Tap a card to practice shadowing",
-    "pronunciationHint": "Pronunciation",
-    "example": "Example",
-    "speakChar": "Listen",
-    "closeDetail": "Close detail",
+    "title": "Alfabeto",
+    "subtitle": "Aprende el sistema de escritura y los sonidos.",
+    "seoTitle": "Conceptos básicos de alfabeto y pronunciación | LangOria",
+    "seoDescription": "Aprende Hiragana, Katakana, Hangul, Pinyin, Jyutping, tailandés y más. Toca un carácter para escucharlo.",
+    "enter": "Entrar",
+    "ttsDisclaimer": "La calidad de la voz varía según el navegador y el sistema operativo.",
+    "noLanguageSubtitle": "Elige un idioma para empezar.",
+    "switchLanguage": "Cambiar idioma",
+    "seoDescriptionLang": "Conceptos básicos de alfabeto y pronunciación de {{language}} — LangOria",
+    "tapToSpeak": "Toca para escuchar la pronunciación",
+    "tapDetailToScore": "Toca una tarjeta para practicar el shadowing",
+    "pronunciationHint": "Pronunciación",
+    "example": "Ejemplo",
+    "speakChar": "Escuchar",
+    "closeDetail": "Cerrar detalle",
     "shadowing": "Shadowing",
-    "ttsDisclaimerDetail": "Pronunciation is generated by your browser's built-in text-to-speech. Results may vary by browser, operating system, and voice pack.",
-    "readyForCourses": "Ready for structured courses?",
-    "viewCourses": "View courses"
+    "ttsDisclaimerDetail": "La pronunciación es generada por el sistema de texto a voz integrado en tu navegador. Los resultados pueden variar según el navegador, el sistema operativo y el paquete de voz.",
+    "readyForCourses": "¿Listo para cursos estructurados?",
+    "viewCourses": "Ver cursos"
   },
   "cefr": {
-    "title": "CEFR Self-Assessment",
-    "subtitle": "Find your level with Can-Do statements.",
-    "seoTitle": "CEFR Self-Assessment — LangOria",
-    "seoDescription": "Self-assess your language level from A1 to C2 with Can-Do statements. Complements the placement test.",
-    "introTitle": "What is your level?",
-    "introText": "Check the Can-Do statements you can confidently do. We will infer your CEFR level automatically.",
-    "assessmentSubtitle": "Check what you can do",
-    "assessmentSeoDescription": "{{language}} CEFR self-assessment — check what you can do",
-    "backToSelection": "Back to language selection",
-    "currentInferred": "Inferred level",
-    "noneChecked": "None selected yet",
-    "manualOverride": "Manual override (auto: {{inferred}})",
-    "savedAssessment": "Saved assessment",
-    "guestHint": "Log in to save your self-assessment and get course recommendations.",
-    "loginButton": "Log in",
-    "loadingCanDo": "Loading Can-Do statements...",
-    "selectAtLeastOne": "Please select at least one statement to save.",
-    "saveSuccess": "Saved successfully",
-    "saveFailed": "Save failed",
-    "manualOverrideTitle": "Manual level override",
-    "manualOverrideHint": "Pick the level that best matches your ability.",
-    "auto": "Auto",
-    "noteTitle": "Note",
-    "noteHint": "Add context about your assessment (optional).",
-    "notePlaceholder": "e.g. I am comfortable speaking but weak at writing.",
-    "save": "Save",
-    "reset": "Reset",
-    "languageNotFound": "Language not found",
-    "languageNotFoundDetail": "No language data for {{lang}}."
+    "title": "Autoevaluación MCER",
+    "subtitle": "Encuentra tu nivel con las declaraciones 'Puedo hacer'.",
+    "seoTitle": "Autoevaluación MCER — LangOria",
+    "seoDescription": "Autoevalúa tu nivel de idioma de A1 a C2 con las declaraciones 'Puedo hacer'. Complementa la prueba de nivel.",
+    "introTitle": "¿Cuál es tu nivel?",
+    "introText": "Marca las declaraciones 'Puedo hacer' que puedes realizar con confianza. Inferiremos tu nivel MCER automáticamente.",
+    "assessmentSubtitle": "Marca lo que puedes hacer",
+    "assessmentSeoDescription": "Autoevaluación MCER de {{language}} — marca lo que puedes hacer",
+    "backToSelection": "Volver a la selección de idioma",
+    "currentInferred": "Nivel inferido",
+    "noneChecked": "Ninguno seleccionado aún",
+    "manualOverride": "Anulación manual (automático: {{inferred}})",
+    "savedAssessment": "Evaluación guardada",
+    "guestHint": "Inicia sesión para guardar tu autoevaluación y obtener recomendaciones de cursos.",
+    "loginButton": "Iniciar sesión",
+    "loadingCanDo": "Cargando declaraciones 'Puedo hacer'...",
+    "selectAtLeastOne": "Por favor, selecciona al menos una declaración para guardar.",
+    "saveSuccess": "Guardado correctamente",
+    "saveFailed": "Error al guardar",
+    "manualOverrideTitle": "Anulación manual de nivel",
+    "manualOverrideHint": "Elige el nivel que mejor se adapte a tu habilidad.",
+    "auto": "Automático",
+    "noteTitle": "Nota",
+    "noteHint": "Añade contexto sobre tu evaluación (opcional).",
+    "notePlaceholder": "ej. Me siento cómodo hablando pero soy débil escribiendo.",
+    "save": "Guardar",
+    "reset": "Restablecer",
+    "languageNotFound": "Idioma no encontrado",
+    "languageNotFoundDetail": "No hay datos de idioma para {{lang}}."
   },
   "crown": {
-    "loadFailed": "Failed to load crown progress",
-    "loading": "Loading crown progress...",
-    "noCheckpoints": "No checkpoints in this course yet.",
-    "hint": "Pass checkpoint lessons with {{threshold}}% or higher to earn crowns.",
-    "completion": "Completion",
-    "earned": "Crown {{n}} earned",
-    "locked": "Crown {{n}} locked",
-    "passedCheckpoints": "Passed checkpoints",
-    "score": "Score {{score}}"
+    "loadFailed": "Error al cargar el progreso de coronas",
+    "loading": "Cargando progreso de coronas...",
+    "noCheckpoints": "Aún no hay puntos de control en este curso.",
+    "hint": "Supera las lecciones de punto de control con {{threshold}}% o más para ganar coronas.",
+    "completion": "Completado",
+    "earned": "Corona {{n}} obtenida",
+    "locked": "Corona {{n}} bloqueada",
+    "passedCheckpoints": "Puntos de control superados",
+    "score": "Puntuación {{score}}"
   },
   "grammarMap": {
-    "noData": "No grammar data for this language.",
-    "wrongCount": " · {{count}} wrong",
-    "pitfallsTitle": "Common mistakes",
-    "dependencies": "Prerequisites: {{list}}"
+    "noData": "No hay datos gramaticales para este idioma.",
+    "wrongCount": " · {{count}} incorrectas",
+    "pitfallsTitle": "Errores comunes",
+    "dependencies": "Requisitos previos: {{list}}"
   },
   "lessonPlayer": {
-    "loadFailed": "Failed to load lesson",
-    "startFailed": "Failed to start lesson",
-    "completeFailed": "Failed to complete lesson",
-    "loading": "Loading lesson...",
-    "backToPath": "Back to path",
-    "exerciseCount": "{{count}} exercises",
-    "bestScore": "Best {{score}}",
-    "lockedHint": "Complete previous lessons to unlock this one.",
-    "start": "Start lesson",
-    "inProgressHint": "Lesson in progress",
-    "completed": "Lesson completed!",
-    "scoreThisTime": "Score this time: {{score}}",
-    "nextUnlocked": "Next lesson unlocked!",
-    "nextLesson": "Go to next lesson",
-    "emptyExercises": "No exercises in this lesson.",
-    "emptyExercisesHint": "Click Complete to finish.",
-    "submitting": "Submitting...",
-    "complete": "Complete lesson",
-    "completeHint": "Complete the lesson to save progress.",
-    "vocabTitle": "Vocabulary ({{count}})",
-    "readAloud": "Read aloud",
-    "tapToFlip": "Tap to flip",
-    "grammarTitle": "Grammar ({{count}})",
-    "correct": "Correct",
-    "wrong": "Wrong",
-    "explanation": "Explanation: ",
-    "next": "Next",
-    "listeningTitle": "Listening ({{count}})",
-    "playing": "Playing...",
-    "tapToPlay": "Tap to play",
-    "nextSegment": "Next segment",
-    "speakingTitle": "Speaking ({{count}})",
-    "nextSentence": "Next sentence",
-    "speakingHint": "Listen and repeat out loud."
+    "loadFailed": "Error al cargar la lección",
+    "startFailed": "Error al iniciar la lección",
+    "completeFailed": "Error al completar la lección",
+    "loading": "Cargando lección...",
+    "backToPath": "Volver al camino",
+    "exerciseCount": "{{count}} ejercicios",
+    "bestScore": "Mejor {{score}}",
+    "lockedHint": "Completa las lecciones anteriores para desbloquear esta.",
+    "start": "Iniciar lección",
+    "inProgressHint": "Lección en progreso",
+    "completed": "¡Lección completada!",
+    "scoreThisTime": "Puntuación esta vez: {{score}}",
+    "nextUnlocked": "¡Siguiente lección desbloqueada!",
+    "nextLesson": "Ir a la siguiente lección",
+    "emptyExercises": "No hay ejercicios en esta lección.",
+    "emptyExercisesHint": "Haz clic en Completar para finalizar.",
+    "submitting": "Enviando...",
+    "complete": "Completar lección",
+    "completeHint": "Completa la lección para guardar el progreso.",
+    "vocabTitle": "Vocabulario ({{count}})",
+    "readAloud": "Leer en voz alta",
+    "tapToFlip": "Toca para voltear",
+    "grammarTitle": "Gramática ({{count}})",
+    "correct": "Correcto",
+    "wrong": "Incorrecto",
+    "explanation": "Explicación: ",
+    "next": "Siguiente",
+    "listeningTitle": "Comprensión auditiva ({{count}})",
+    "playing": "Reproduciendo...",
+    "tapToPlay": "Toca para reproducir",
+    "nextSegment": "Siguiente segmento",
+    "speakingTitle": "Expresión oral ({{count}})",
+    "nextSentence": "Siguiente frase",
+    "speakingHint": "Escucha y repite en voz alta."
   },
   "notFound": {
-    "title": "Page not found",
-    "subtitle": "The page you're looking for doesn't exist or has been moved.",
-    "suggestion": "Check the URL for typos, or try one of these:",
-    "seoTitle": "Page not found — LangOria",
-    "seoDescription": "The page you're looking for doesn't exist on LangOria. Head back to the homepage to start learning languages.",
-    "goHome": "Home",
-    "browseCourses": "Browse courses",
-    "readBlog": "Read the blog"
+    "title": "Página no encontrada",
+    "subtitle": "La página que buscas no existe o ha sido movida.",
+    "suggestion": "Verifica la URL en busca de errores tipográficos, o prueba una de estas opciones:",
+    "seoTitle": "Página no encontrada — LangOria",
+    "seoDescription": "La página que buscas no existe en LangOria. Vuelve a la página de inicio para empezar a aprender idiomas.",
+    "goHome": "Inicio",
+    "browseCourses": "Explorar cursos",
+    "readBlog": "Leer el blog"
   },
   "reading": {
-    "fetchFailed": "Failed to load reading passages",
-    "title": "Reading",
-    "subtitle": "Graded reading with comprehension questions",
-    "seoTitle": "Reading Comprehension — LangOria",
-    "seoDescription": "Graded reading passages with glossary and comprehension questions across English, Japanese, Korean, Chinese, and more.",
-    "disclaimer": "Passages are generated or curated for learners and may not reflect native-only content.",
-    "listSubtitle": "Choose a passage",
-    "switchLanguage": "Switch language",
-    "seoDescriptionLang": "{{language}} reading comprehension — LangOria",
-    "empty": "No passages yet.",
-    "emptyHint": "Try another level or language later.",
-    "completed": "Completed",
-    "bestAccuracy": "Best {{accuracy}}%",
-    "words": "{{count}} words",
+    "fetchFailed": "No se pudieron cargar los pasajes de lectura",
+    "title": "Lectura",
+    "subtitle": "Lectura graduada con preguntas de comprensión",
+    "seoTitle": "Comprensión de lectura — LangOria",
+    "seoDescription": "Pasajes de lectura graduados con glosario y preguntas de comprensión en inglés, japonés, coreano, chino y más.",
+    "disclaimer": "Los pasajes son generados o seleccionados para estudiantes y pueden no reflejar contenido exclusivo para nativos.",
+    "listSubtitle": "Elige un pasaje",
+    "switchLanguage": "Cambiar idioma",
+    "seoDescriptionLang": "Comprensión de lectura de {{language}} — LangOria",
+    "empty": "Aún no hay pasajes.",
+    "emptyHint": "Intenta con otro nivel o idioma más tarde.",
+    "completed": "Completado",
+    "bestAccuracy": "Mejor {{accuracy}}%",
+    "words": "{{count}} palabras",
     "minutes": "{{count}} min",
-    "start": "Start",
-    "aiExplainFailed": "Failed to explain sentence",
-    "loadFailed": "Failed to load passage",
-    "loadingTitle": "Loading passage...",
-    "loadPassageFailed": "Could not load this passage.",
-    "backToList": "Back to list",
-    "passageMeta": "{{level}} {{cefr}} · {{words}} words · {{minutes}} min",
-    "accuracyThisTime": "{{correct}}/{{total}} correct ({{accuracy}}%)",
-    "passageCompleted": "Passage completed",
-    "attemptHistory": "Attempt {{count}} · best {{best}}%",
-    "redo": "Redo",
-    "aiExplaining": "Explaining...",
-    "aiExplain": "Explain",
-    "aiSentenceTitle": "AI Explanation",
-    "aiRemaining": "{{count}} left today",
-    "aiGenerating": "Generating explanation...",
-    "source": "Source: {{source}}",
-    "glossary": "Glossary",
-    "comprehensionTitle": "Comprehension ({{count}})",
-    "explanation": "Explanation: ",
-    "answered": "{{answered}}/{{total}} answered",
-    "submit": "Submit",
-    "submitFailed": "Failed to submit answers",
-    "correctCount": "{{correct}}/{{total}} correct"
+    "start": "Empezar",
+    "aiExplainFailed": "No se pudo explicar la oración",
+    "loadFailed": "No se pudo cargar el pasaje",
+    "loadingTitle": "Cargando pasaje...",
+    "loadPassageFailed": "No se pudo cargar este pasaje.",
+    "backToList": "Volver a la lista",
+    "passageMeta": "{{level}} {{cefr}} · {{words}} palabras · {{minutes}} min",
+    "accuracyThisTime": "{{correct}}/{{total}} correctas ({{accuracy}}%)",
+    "passageCompleted": "Pasaje completado",
+    "attemptHistory": "Intento {{count}} · mejor {{best}}%",
+    "redo": "Rehacer",
+    "aiExplaining": "Explicando...",
+    "aiExplain": "Explicar",
+    "aiSentenceTitle": "Explicación de IA",
+    "aiRemaining": "{{count}} restantes hoy",
+    "aiGenerating": "Generando explicación...",
+    "source": "Fuente: {{source}}",
+    "glossary": "Glosario",
+    "comprehensionTitle": "Comprensión ({{count}})",
+    "explanation": "Explicación: ",
+    "answered": "{{answered}}/{{total}} respondidas",
+    "submit": "Enviar",
+    "submitFailed": "No se pudieron enviar las respuestas",
+    "correctCount": "{{correct}}/{{total}} correctas"
   },
   "writing": {
-    "fetchFailed": "Failed to load prompts",
-    "title": "Writing",
-    "subtitle": "Practice writing with instant feedback",
-    "seoTitle": "Writing Practice — LangOria",
-    "seoDescription": "Essays, emails, summaries, stories and dialogues. Instant scoring on length, variety, and keywords.",
-    "allLanguages": "All languages",
-    "allLevels": "All levels",
-    "loading": "Loading prompts...",
-    "empty": "No writing prompts yet.",
-    "wordRange": "{{min}}–{{max}} words",
-    "bestScore": "Best {{score}}",
-    "start": "Start",
-    "aiPolishFailed": "Failed to get AI polish",
-    "emptyContent": "Please write something before submitting.",
-    "submitFailed": "Failed to submit writing",
-    "detailTitle": "Writing Prompt",
-    "loadFailed": "Failed to load prompt",
-    "backToList": "Back to list",
-    "targetWords": "{{min}}–{{max}} words",
-    "tips": "Tips",
-    "hideSample": "Hide sample",
-    "showSample": "Show sample",
-    "yourWriting": "Your writing",
-    "wordRangeCurrent": "{{current}} / {{min}}–{{max}} words",
-    "placeholder": "Write in {{language}} ({{min}}–{{max}} words)",
-    "charLimit": "{{current}} / 10000 characters",
-    "submit": "Submit",
-    "clear": "Clear",
-    "scoreResult": "Score",
-    "overall": "Overall",
-    "length": "Length",
-    "variety": "Variety",
-    "keywords": "Keywords",
-    "lengthFeedback": "Length",
-    "varietyFeedback": "Variety",
-    "keywordFeedback": "Keywords",
-    "matched": "Matched",
-    "missed": "Missed",
-    "suggestions": "Suggestions",
-    "aiPolishTitle": "AI Polish",
-    "requestAiPolish": "Polish with AI",
-    "aiRemaining": "{{count}} left today",
-    "aiPolishing": "Polishing...",
-    "historyTitle": "Submission History ({{count}})",
-    "historyMeta": "{{words}} words · {{date}}",
-    "lengthShort": "Len",
+    "fetchFailed": "Error al cargar las indicaciones",
+    "title": "Escritura",
+    "subtitle": "Practica la escritura con retroalimentación instantánea",
+    "seoTitle": "Práctica de Escritura — LangOria",
+    "seoDescription": "Ensayos, correos electrónicos, resúmenes, historias y diálogos. Puntuación instantánea en longitud, variedad y palabras clave.",
+    "allLanguages": "Todos los idiomas",
+    "allLevels": "Todos los niveles",
+    "loading": "Cargando indicaciones...",
+    "empty": "Aún no hay indicaciones de escritura.",
+    "wordRange": "{{min}}–{{max}} palabras",
+    "bestScore": "Mejor {{score}}",
+    "start": "Empezar",
+    "aiPolishFailed": "Error al obtener el pulido de IA",
+    "emptyContent": "Por favor, escribe algo antes de enviar.",
+    "submitFailed": "Error al enviar la escritura",
+    "detailTitle": "Indicación de Escritura",
+    "loadFailed": "Error al cargar la indicación",
+    "backToList": "Volver a la lista",
+    "targetWords": "{{min}}–{{max}} palabras",
+    "tips": "Consejos",
+    "hideSample": "Ocultar ejemplo",
+    "showSample": "Mostrar ejemplo",
+    "yourWriting": "Tu escritura",
+    "wordRangeCurrent": "{{current}} / {{min}}–{{max}} palabras",
+    "placeholder": "Escribe en {{language}} ({{min}}–{{max}} palabras)",
+    "charLimit": "{{current}} / 10000 caracteres",
+    "submit": "Enviar",
+    "clear": "Borrar",
+    "scoreResult": "Puntuación",
+    "overall": "General",
+    "length": "Longitud",
+    "variety": "Variedad",
+    "keywords": "Palabras clave",
+    "lengthFeedback": "Longitud",
+    "varietyFeedback": "Variedad",
+    "keywordFeedback": "Palabras clave",
+    "matched": "Coincidencias",
+    "missed": "Faltantes",
+    "suggestions": "Sugerencias",
+    "aiPolishTitle": "Pulido de IA",
+    "requestAiPolish": "Pulir con IA",
+    "aiRemaining": "{{count}} restantes hoy",
+    "aiPolishing": "Pulido en curso...",
+    "historyTitle": "Historial de Envíos ({{count}})",
+    "historyMeta": "{{words}} palabras · {{date}}",
+    "lengthShort": "Long",
     "varietyShort": "Var",
-    "keywordsShort": "Key"
-  },
-  "api": {
-    "errors": {
-      "notFound": "Endpoint not found (service not deployed)",
-      "serverError": "Server internal error",
-      "unauthorized": "Not logged in or session expired",
-      "forbidden": "No permission for this operation",
-      "conflict": "Resource conflict",
-      "badRequest": "Invalid parameters",
-      "requestFailed": "Request failed ({{status}})",
-      "emptyResponse": "Server returned empty data"
-    }
+    "keywordsShort": "Clave"
   }
 }
