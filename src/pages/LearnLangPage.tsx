@@ -32,11 +32,17 @@ interface FaqItem {
 export default function LearnLangPage() {
   const { langSlug } = useParams<{ langSlug: string }>();
   const { t, i18n, ready } = useLearnTranslation();
-  const [words, setWords] = useState<LearnWord[] | null>(null);
+  // SSR 时 entry-server 会预加载数据到 globalThis.__LEARN_WORDS__
+  const [words, setWords] = useState<LearnWord[] | null>(() => {
+    if (typeof window === "undefined") {
+      return ((globalThis as Record<string, unknown>).__LEARN_WORDS__ as LearnWord[] | undefined) ?? null;
+    }
+    return null;
+  });
 
   // /languages/:langSlug — the URL slug is a human-friendly name
-  // ("english", "japanese", "korean", "spanish", …) but the data
-  // loader keys are ISO codes ("en", "ja", "ko", "es", …). Map
+  // ("english", "japanese", "korean", "spanish", "french", "german", …) but the data
+  // loader keys are ISO codes ("en", "ja", "ko", "es", "fr", "de", …). Map
   // between them.
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const valid = Boolean(dataSlug);
@@ -45,6 +51,8 @@ export default function LearnLangPage() {
 
   useEffect(() => {
     if (!valid) return;
+    // 已有 SSR 注入的数据时跳过客户端加载
+    if (words !== null) return;
     let cancelled = false;
     LEARN_CONTENT_LOADERS[slug]().then((data) => {
       if (!cancelled) setWords(data);
@@ -52,7 +60,7 @@ export default function LearnLangPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, valid]);
+  }, [slug, valid, words]);
 
   // Hold render until the learn namespace is loaded (SPA navigations).
   // SSR / first-load hydration always has the bundle (preloaded), so
@@ -153,7 +161,7 @@ export default function LearnLangPage() {
   const faq = t(`langPage.${slug}.faq`, { returnObjects: true }) as FaqItem[];
 
   const siteUrl = "https://lang-oria.com";
-  const pageUrl = `${siteUrl}/languages/${slug}`;
+  const pageUrl = `${siteUrl}/languages/${langSlug}`;
 
   return (
     <PageShell
@@ -258,7 +266,7 @@ export default function LearnLangPage() {
               {t("ui.vocabStart")}
             </h2>
             <Link
-              to={`/languages/${slug}/word/${sampleWords[0]?.slug ?? ""}`}
+              to={`/languages/${langSlug}/word/${sampleWords[0]?.slug ?? ""}`}
               className="text-sm text-sky-300 hover:underline"
             >
               {t("ui.seeAll", { count: words?.length ?? 0, unit })}
@@ -268,7 +276,7 @@ export default function LearnLangPage() {
             {sampleWords.map((w) => (
               <Link
                 key={w.slug}
-                to={`/languages/${slug}/word/${w.slug}`}
+                to={`/languages/${langSlug}/word/${w.slug}`}
                 className="glass group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-white/10"
               >
                 <span className="truncate font-mono text-white">{w.word}</span>
@@ -311,7 +319,7 @@ export default function LearnLangPage() {
               </p>
             </div>
             <Link
-              to={`/languages/${slug}/vocabulary`}
+              to={`/languages/${langSlug}/vocabulary`}
               className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               {t("ui.openVocabIndex")} <ArrowRight className="h-4 w-4" />
@@ -331,7 +339,7 @@ export default function LearnLangPage() {
                 </p>
               </div>
               <Link
-                to={`/languages/${slug}/scenarios`}
+                to={`/languages/${langSlug}/scenarios`}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 {t("ui.openScenarioLessons")} <ArrowRight className="h-4 w-4" />

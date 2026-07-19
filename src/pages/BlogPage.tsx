@@ -83,7 +83,7 @@ export default function BlogPage() {
             : []),
         ]}
       />
-      {loading ? (
+      {loading && typeof window !== "undefined" ? (
         <div className="flex items-center justify-center py-20 text-brand-200/70">
           <Loader2 className="mr-2 h-5 w-5 animate-spin" />
           {t("admin.loading")}

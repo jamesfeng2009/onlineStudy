@@ -93,7 +93,7 @@ export default function LearnWordPage() {
         subtitle={t("learn:ui.noEntry", { slug: wordSlug })}
       >
         <Link
-          to={`/languages/${slug}`}
+          to={`/languages/${langSlug}`}
           className="inline-flex items-center gap-1 text-sky-300 hover:underline"
         >
           <ArrowLeft className="h-4 w-4" /> {t("learn:ui.backToOverview", { lang: langName })}
@@ -103,7 +103,7 @@ export default function LearnWordPage() {
   }
 
   const siteUrl = "https://lang-oria.com";
-  const pageUrl = `${siteUrl}/languages/${slug}/word/${word?.slug ?? ""}`;
+  const pageUrl = `${siteUrl}/languages/${langSlug}/word/${word?.slug ?? ""}`;
 
   return (
     <PageShell
@@ -115,7 +115,7 @@ export default function LearnWordPage() {
       }
       action={
         <Link
-          to={`/languages/${slug}`}
+          to={`/languages/${langSlug}`}
           className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200"
         >
           <ArrowLeft className="h-4 w-4" /> {t("learn:ui.backToOverview", { lang: langName })}
@@ -244,9 +244,9 @@ export default function LearnWordPage() {
                 {related.map((w) => (
                   <li key={w.slug}>
                     <Link
-                      to={`/languages/${slug}/word/${w.slug}`}
-                      className="flex items-center justify-between rounded-lg px-2 py-1.5 text-sm text-brand-100 hover:bg-white/5"
-                    >
+                        to={`/languages/${langSlug}/word/${w.slug}`}
+                        className="flex items-center justify-between rounded-lg px-2 py-1.5 text-sm text-brand-100 hover:bg-white/5"
+                      >
                       <span className="truncate">{w.word}</span>
                       <ArrowRight className="h-3 w-3 text-brand-200/40" />
                     </Link>

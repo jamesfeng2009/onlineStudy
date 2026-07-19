@@ -4,6 +4,7 @@ import { Monitor, MessageCircleQuestion, Globe2, Check, Target } from "lucide-re
 import { useTranslation } from "react-i18next";
 import PageShell from "../components/PageShell";
 import { GlassCard } from "../components/GlassCard";
+import { Seo } from "../components/Seo";
 import { useAuthStore } from "../store/authStore";
 import { LANGUAGES, getLanguageDisplayName } from "../data/languages";
 import { SUPPORTED_LANGUAGES, buildLocalePath, type SupportedLanguage } from "../lib/i18n";
@@ -56,6 +57,7 @@ export default function SettingsPage() {
 
   return (
     <PageShell title={t("settings.title")} subtitle={t("settings.subtitle")}>
+      <Seo noindex title={t("settings.title")} />
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <GlassCard className="p-6">
           <div className="mb-4 flex items-center gap-3">

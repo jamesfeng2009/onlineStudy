@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { buildLocalePath } from "../lib/i18n";
+import { useLocation } from "react-router-dom";
+import { buildLocalePath, extractLocaleFromPath } from "../lib/i18n";
 import { UI_LANGUAGES, OG_LOCALE_MAP } from "../lib/i18n/registry";
 
 // 生产域名（Vercel 上确认过是 lang-oria.com）
@@ -101,7 +102,6 @@ function buildAlternates(
  *   "/de"                               → "/de"
  */
 function resolveCanonical(
-  _uiLang: string,
   pathname: string,
   canonical?: string
 ) {
@@ -121,16 +121,24 @@ export function Seo({
   canonical,
   noindex = false,
 }: SeoProps) {
+  const location = useLocation();
+  const { locale: urlLocale } = extractLocaleFromPath(location.pathname);
+
+  // 自动将传入的 pathname 转换为带当前 locale 前缀的路径。
+  // 例如：当前路径 /es/courses，传入 pathname="/courses" → /es/courses
+  // 这样所有页面无需关心 locale 前缀，hardcode "/courses" 也能得到正确 canonical。
+  const currentPath = pathname
+    ? buildLocalePath(urlLocale, pathname)
+    : location.pathname;
+
   const ogImage = image || DEFAULT_OG_IMAGE;
-  const currentPath =
-    pathname ?? (typeof window !== "undefined" ? window.location.pathname : "/");
   const currentLang =
     lang ??
-    ((typeof window !== "undefined" ? document.documentElement.lang : "en") || "en");
+    ((typeof window !== "undefined" ? document.documentElement.lang : urlLocale) || "en");
 
   const alternates = buildAlternates(currentPath, localizedPaths);
   const xDefault = alternates.find((a) => a.lang === "en") ?? alternates[0];
-  const canonicalUrl = resolveCanonical(currentLang, currentPath, canonical);
+  const canonicalUrl = resolveCanonical(currentPath, canonical);
   const matchedOg = SITE_LOCALES.find((l) => l.code === currentLang);
   const ogLocale = matchedOg?.og ?? "en_US";
 

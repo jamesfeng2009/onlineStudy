@@ -100,6 +100,20 @@ function LangCodeRedirect() {
   return <Outlet />;
 }
 
+/**
+ * Redirect /jp/* to /ja/*.
+ *
+ * "/jp" is not a valid UI locale (the correct code is "ja"), but
+ * Google keeps discovering /jp/* URLs from external links. Vercel
+ * already has a redirect rule, but it only fires on the edge — if the
+ * request ever hits the SPA fallback we handle it here too.
+ */
+function JpRedirect() {
+  const location = useLocation();
+  const target = location.pathname.replace(/^\/jp/, "/ja") + location.search + location.hash;
+  return <Navigate to={target} replace />;
+}
+
 // Root-level routes (no locale prefix → English default).
 // Paths MUST be absolute (start with "/").
 const rootRoutes = (
@@ -219,6 +233,7 @@ export default function App() {
       <main>
         <Routes>
           {rootRoutes}
+          <Route path="/jp/*" element={<JpRedirect />} />
           <Route path="/:locale" element={<LocaleSync />}>
             <Route path=":langCode" element={<LangCodeRedirect />}>
               <Route path="*" element={<NotFoundPage />} />

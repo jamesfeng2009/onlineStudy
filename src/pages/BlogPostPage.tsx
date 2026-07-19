@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, Navigate } from "react-router-dom";
 import LocaleLink from "../components/LocaleLink";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
@@ -9,6 +9,7 @@ import PageShell from "../components/PageShell";
 import { Seo } from "../components/Seo";
 import { JsonLd, buildBreadcrumbLd } from "../components/JsonLd";
 import { api } from "../lib/api";
+import { extractLocaleFromPath, buildLocalePath } from "../lib/i18n";
 
 interface BlogPost {
   id: string;
@@ -31,9 +32,12 @@ interface BlogPost {
 export default function BlogPostPage() {
   const { slug } = useParams();
   const { t } = useTranslation();
+  const location = useLocation();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  const { locale: urlLocale } = extractLocaleFromPath(location.pathname);
 
   useEffect(() => {
     if (!slug) return;
@@ -71,7 +75,7 @@ export default function BlogPostPage() {
   if (notFound || !post) {
     return (
       <PageShell title={t("blog.notFoundTitle")} subtitle={t("blog.notFoundDesc")}>
-        <Seo title={t("blog.notFoundTitle")} />
+        <Seo noindex title={t("blog.notFoundTitle")} />
         <LocaleLink to="/blog" className="inline-flex items-center gap-1 text-sm text-sky-300 hover:text-sky-200">
           <ArrowLeft className="h-4 w-4" /> {t("blog.backToList")}
         </LocaleLink>
@@ -79,9 +83,18 @@ export default function BlogPostPage() {
     );
   }
 
+  // 文章只在其 baseLanguageCode 对应的 locale 下存在。
+  // 若用户通过其他 locale URL（如 /fr/blog/xxx）访问了一篇 en 文章，
+  // 301 到规范 URL，避免 Google 把跨语言 URL 误判为 Soft 404。
+  const postLang = post.baseLanguageCode || "en";
+  if (postLang !== urlLocale) {
+    const target = buildLocalePath(postLang as never, `/blog/${post.slug}`);
+    return <Navigate to={target} replace />;
+  }
+
   const seoTitle = post.seoTitle ?? post.title;
   const seoDesc = post.seoDescription ?? post.excerpt;
-  const pagePath = typeof window !== "undefined" ? `/blog/${post.slug}` : `/blog/${post.slug}`;
+  const pagePath = `/blog/${post.slug}`;
 
   return (
     <PageShell>

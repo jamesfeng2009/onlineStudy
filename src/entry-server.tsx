@@ -5,6 +5,7 @@ import App from "./App";
 import i18n from "./lib/i18n";
 import { extractLocaleFromPath, type SupportedLanguage } from "./lib/i18n";
 import { ensureLearnNamespace } from "./lib/learn-i18n";
+import { LEARN_CONTENT_LOADERS, URL_SLUG_TO_DATA } from "./data/learn-content";
 
 /**
  * SSR entry — used by scripts/prerender.ts at build time.
@@ -33,6 +34,23 @@ export async function render(url: string): Promise<string> {
   // correct editorial copy during SSR (no fallback flashes).
   if (strippedPath.startsWith("/languages")) {
     await ensureLearnNamespace(locale);
+
+    // Pre-load vocabulary data so /languages/:slug and
+    // /languages/:slug/vocabulary render real content during SSR
+    // instead of an empty shell (fixes "Discovered - currently not
+    // indexed" in Google Search Console).
+    const langSlug = strippedPath.split("/")[2];
+    if (langSlug) {
+      const dataSlug = URL_SLUG_TO_DATA[langSlug];
+      if (dataSlug && LEARN_CONTENT_LOADERS[dataSlug]) {
+        try {
+          const words = await LEARN_CONTENT_LOADERS[dataSlug]();
+          (globalThis as Record<string, unknown>).__LEARN_WORDS__ = words;
+        } catch (err) {
+          console.warn(`[entry-server] failed to preload words for ${langSlug}:`, err);
+        }
+      }
+    }
   }
 
   const app = (

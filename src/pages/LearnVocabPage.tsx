@@ -34,7 +34,13 @@ export default function LearnVocabPage() {
     levelSlug?: string;
   }>();
   const { t, i18n, ready } = useLearnTranslation();
-  const [words, setWords] = useState<LearnWord[] | null>(null);
+  // SSR 时 entry-server 会预加载数据到 globalThis.__LEARN_WORDS__
+  const [words, setWords] = useState<LearnWord[] | null>(() => {
+    if (typeof window === "undefined") {
+      return ((globalThis as Record<string, unknown>).__LEARN_WORDS__ as LearnWord[] | undefined) ?? null;
+    }
+    return null;
+  });
 
   const dataSlug = langSlug ? URL_SLUG_TO_DATA[langSlug] : undefined;
   const valid = Boolean(dataSlug);
@@ -43,6 +49,8 @@ export default function LearnVocabPage() {
 
   useEffect(() => {
     if (!valid) return;
+    // 已有 SSR 注入的数据时跳过客户端加载
+    if (words !== null) return;
     let cancelled = false;
     LEARN_CONTENT_LOADERS[slug]().then((data) => {
       if (!cancelled) setWords(data);
@@ -50,7 +58,7 @@ export default function LearnVocabPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, valid]);
+  }, [slug, valid, words]);
 
   const grouped = useMemo(() => groupByLevel(words ?? [], slug), [words, slug]);
 
@@ -80,7 +88,7 @@ export default function LearnVocabPage() {
   const unit = isSentence ? t("ui.unitSentence") : t("ui.unitWord");
   const unitSingular = isSentence ? t("ui.unitSentenceSingular") : t("ui.unitWordSingular");
   const siteUrl = "https://lang-oria.com";
-  const overviewUrl = `${siteUrl}/languages/${slug}/vocabulary`;
+  const overviewUrl = `${siteUrl}/languages/${langSlug}/vocabulary`;
 
   // --- Level-detail page ------------------------------------------------
   if (levelSlug) {
@@ -101,7 +109,7 @@ export default function LearnVocabPage() {
           <Seo noindex title={t("ui.levelNotFound")} />
           <p className="text-brand-200/80">
             <Link
-              to={`/languages/${slug}/vocabulary`}
+              to={`/languages/${langSlug}/vocabulary`}
               className="text-sky-300 hover:underline"
             >
               {t("ui.backToVocab", { lang: langName })}
@@ -170,7 +178,7 @@ export default function LearnVocabPage() {
               {levelEntry.items.map((w) => (
                 <Link
                   key={w.slug}
-                  to={`/languages/${slug}/word/${w.slug}`}
+                  to={`/languages/${langSlug}/word/${w.slug}`}
                   className="glass group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-white/10"
                 >
                   <span className="truncate font-mono text-white">{w.word}</span>
@@ -205,10 +213,10 @@ export default function LearnVocabPage() {
                   .filter((g) => g.level !== levelLabel)
                   .map((g) => (
                     <Link
-                      key={g.level}
-                      to={`/languages/${slug}/vocabulary/${slugifyLevel(g.level)}`}
-                      className="glass group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-white/10"
-                    >
+                        key={g.level}
+                        to={`/languages/${langSlug}/vocabulary/${slugifyLevel(g.level)}`}
+                        className="glass group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-white/10"
+                      >
                       <span className="font-display text-white">
                         {langName} {g.level}
                       </span>
@@ -316,7 +324,7 @@ export default function LearnVocabPage() {
             {grouped.map((g) => (
               <Link
                 key={g.level}
-                to={`/languages/${slug}/vocabulary/${slugifyLevel(g.level)}`}
+                to={`/languages/${langSlug}/vocabulary/${slugifyLevel(g.level)}`}
                 className="glass group rounded-3xl p-6 transition hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
