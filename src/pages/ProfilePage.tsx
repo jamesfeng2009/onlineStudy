@@ -25,6 +25,8 @@ export default function ProfilePage() {
   const [lang, setLang] = useState<string>(user?.targetLanguage ?? "en");
   const [uiLang, setUiLang] = useState<string>((user?.uiLanguage as string) ?? i18n.language ?? "en");
   const [nativeLang, setNativeLang] = useState<string>((user?.nativeLanguage as string) ?? "en");
+  // 高级设置：默认隐藏"解释语言"选择器，跟随界面语言
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [savedMsg, setSavedMsg] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,6 +40,13 @@ export default function ProfilePage() {
       setNativeLang((user.nativeLanguage as string) ?? "en");
     }
   }, [user, i18n.language]);
+
+  // 当界面语言变化时，自动同步解释语言（除非用户已展开高级设置手动改过）
+  useEffect(() => {
+    if (!showAdvanced) {
+      setNativeLang(uiLang);
+    }
+  }, [uiLang, showAdvanced]);
 
   if (!user && status !== "loading") {
     return (
@@ -206,31 +215,46 @@ export default function ProfilePage() {
               </div>
             </Field>
 
-            <Field label={t("profile.fields.nativeLanguage")}>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {SUPPORTED_LANGUAGES.map((id) => {
-                  const l = LANGUAGES.find((x) => x.id === id);
-                  return (
-                    <button
-                      key={id}
-                      type="button"
-                      onClick={() => setNativeLang(id)}
-                      className={
-                        "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
-                        (nativeLang === id
-                          ? "border-sky-400/50 bg-sky-400/10 text-white"
-                          : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
-                      }
-                    >
-                      <span className="flex items-center gap-2">
-                        <MessageCircleQuestion className="h-4 w-4" />
-                        {l?.flag ?? "🌐"} {getLanguageDisplayName(id, i18n.language)}
-                      </span>
-                      {nativeLang === id && <Check className="h-4 w-4 text-sky-300" />}
-                    </button>
-                  );
-                })}
-              </div>
+            {/* 高级设置：默认折叠，展开后可单独设置解释语言（默认跟随界面语言） */}
+            <Field label={t("profile.fields.advanced") ?? "高级设置"}>
+              <button
+                type="button"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                className="flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-brand-100 transition hover:bg-white/10"
+              >
+                <span className="flex items-center gap-2">
+                  <MessageCircleQuestion className="h-4 w-4" />
+                  {showAdvanced
+                    ? (t("profile.fields.nativeLanguage") ?? "解释语言")
+                    : (t("profile.fields.advancedHint") ?? "默认跟随界面语言，展开可单独设置")}
+                </span>
+                <span className={`text-brand-200/70 transition-transform ${showAdvanced ? "rotate-180" : ""}`}>▼</span>
+              </button>
+              {showAdvanced && (
+                <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                  {SUPPORTED_LANGUAGES.map((id) => {
+                    const l = LANGUAGES.find((x) => x.id === id);
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        onClick={() => setNativeLang(id)}
+                        className={
+                          "flex items-center justify-between rounded-xl border px-3 py-3 text-sm transition " +
+                          (nativeLang === id
+                            ? "border-fuchsia-400/50 bg-fuchsia-400/10 text-white"
+                            : "border-white/10 bg-white/5 text-brand-100 hover:bg-white/10")
+                        }
+                      >
+                        <span className="flex items-center gap-2">
+                          {l?.flag ?? "🌐"} {getLanguageDisplayName(id, i18n.language)}
+                        </span>
+                        {nativeLang === id && <Check className="h-4 w-4 text-fuchsia-300" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </Field>
 
             <Field label={t("profile.fields.dailyGoal", { goal })}>
